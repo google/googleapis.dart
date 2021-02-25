@@ -749,7 +749,7 @@ void checkWebpushFcmOptions(api.WebpushFcmOptions o) {
 
 void main() {
   unittest.group('obj-schema-AndroidConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAndroidConfig();
       var od = api.AndroidConfig.fromJson(o.toJson());
       checkAndroidConfig(od as api.AndroidConfig);
@@ -757,7 +757,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AndroidFcmOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAndroidFcmOptions();
       var od = api.AndroidFcmOptions.fromJson(o.toJson());
       checkAndroidFcmOptions(od as api.AndroidFcmOptions);
@@ -765,7 +765,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AndroidNotification', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAndroidNotification();
       var od = api.AndroidNotification.fromJson(o.toJson());
       checkAndroidNotification(od as api.AndroidNotification);
@@ -773,7 +773,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApnsConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApnsConfig();
       var od = api.ApnsConfig.fromJson(o.toJson());
       checkApnsConfig(od as api.ApnsConfig);
@@ -781,7 +781,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApnsFcmOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApnsFcmOptions();
       var od = api.ApnsFcmOptions.fromJson(o.toJson());
       checkApnsFcmOptions(od as api.ApnsFcmOptions);
@@ -789,7 +789,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Color', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildColor();
       var od = api.Color.fromJson(o.toJson());
       checkColor(od as api.Color);
@@ -797,7 +797,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FcmOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFcmOptions();
       var od = api.FcmOptions.fromJson(o.toJson());
       checkFcmOptions(od as api.FcmOptions);
@@ -805,7 +805,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LightSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLightSettings();
       var od = api.LightSettings.fromJson(o.toJson());
       checkLightSettings(od as api.LightSettings);
@@ -813,7 +813,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Message', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMessage();
       var od = api.Message.fromJson(o.toJson());
       checkMessage(od as api.Message);
@@ -821,7 +821,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Notification', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNotification();
       var od = api.Notification.fromJson(o.toJson());
       checkNotification(od as api.Notification);
@@ -829,7 +829,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SendMessageRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSendMessageRequest();
       var od = api.SendMessageRequest.fromJson(o.toJson());
       checkSendMessageRequest(od as api.SendMessageRequest);
@@ -837,7 +837,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebpushConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebpushConfig();
       var od = api.WebpushConfig.fromJson(o.toJson());
       checkWebpushConfig(od as api.WebpushConfig);
@@ -845,7 +845,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebpushFcmOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebpushFcmOptions();
       var od = api.WebpushFcmOptions.fromJson(o.toJson());
       checkWebpushFcmOptions(od as api.WebpushFcmOptions);
@@ -853,7 +853,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsMessagesResource', () {
-    unittest.test('method--send', () {
+    unittest.test('method--send', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseCloudMessagingApi(mock).projects.messages;
       var arg_request = buildSendMessageRequest();
@@ -906,11 +906,9 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .send(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response =
+          await res.send(arg_request, arg_parent, $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
   });
 }

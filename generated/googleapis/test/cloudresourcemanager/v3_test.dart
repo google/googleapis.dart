@@ -1239,7 +1239,7 @@ void checkUpdateTagValueMetadata(api.UpdateTagValueMetadata o) {
 
 void main() {
   unittest.group('obj-schema-AuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
       checkAuditConfig(od as api.AuditConfig);
@@ -1247,7 +1247,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
       checkAuditLogConfig(od as api.AuditLogConfig);
@@ -1255,7 +1255,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -1265,7 +1265,7 @@ void main() {
   unittest.group(
       'obj-schema-CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildCloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation();
       var od =
@@ -1280,7 +1280,7 @@ void main() {
   unittest.group(
       'obj-schema-CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildCloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation();
       var od =
@@ -1293,7 +1293,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateTagKeyMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateTagKeyMetadata();
       var od = api.CreateTagKeyMetadata.fromJson(o.toJson());
       checkCreateTagKeyMetadata(od as api.CreateTagKeyMetadata);
@@ -1301,7 +1301,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateTagValueMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateTagValueMetadata();
       var od = api.CreateTagValueMetadata.fromJson(o.toJson());
       checkCreateTagValueMetadata(od as api.CreateTagValueMetadata);
@@ -1309,7 +1309,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteTagKeyMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteTagKeyMetadata();
       var od = api.DeleteTagKeyMetadata.fromJson(o.toJson());
       checkDeleteTagKeyMetadata(od as api.DeleteTagKeyMetadata);
@@ -1317,7 +1317,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteTagValueMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteTagValueMetadata();
       var od = api.DeleteTagValueMetadata.fromJson(o.toJson());
       checkDeleteTagValueMetadata(od as api.DeleteTagValueMetadata);
@@ -1325,7 +1325,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1333,7 +1333,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -1341,7 +1341,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FolderOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFolderOperation();
       var od = api.FolderOperation.fromJson(o.toJson());
       checkFolderOperation(od as api.FolderOperation);
@@ -1349,7 +1349,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FolderOperationError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFolderOperationError();
       var od = api.FolderOperationError.fromJson(o.toJson());
       checkFolderOperationError(od as api.FolderOperationError);
@@ -1357,7 +1357,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetIamPolicyRequest();
       var od = api.GetIamPolicyRequest.fromJson(o.toJson());
       checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
@@ -1365,7 +1365,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetPolicyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetPolicyOptions();
       var od = api.GetPolicyOptions.fromJson(o.toJson());
       checkGetPolicyOptions(od as api.GetPolicyOptions);
@@ -1373,7 +1373,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Lien', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLien();
       var od = api.Lien.fromJson(o.toJson());
       checkLien(od as api.Lien);
@@ -1381,7 +1381,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLiensResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLiensResponse();
       var od = api.ListLiensResponse.fromJson(o.toJson());
       checkListLiensResponse(od as api.ListLiensResponse);
@@ -1389,7 +1389,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTagBindingsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTagBindingsResponse();
       var od = api.ListTagBindingsResponse.fromJson(o.toJson());
       checkListTagBindingsResponse(od as api.ListTagBindingsResponse);
@@ -1397,7 +1397,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTagKeysResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTagKeysResponse();
       var od = api.ListTagKeysResponse.fromJson(o.toJson());
       checkListTagKeysResponse(od as api.ListTagKeysResponse);
@@ -1405,7 +1405,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTagValuesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTagValuesResponse();
       var od = api.ListTagValuesResponse.fromJson(o.toJson());
       checkListTagValuesResponse(od as api.ListTagValuesResponse);
@@ -1413,7 +1413,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -1421,7 +1421,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -1429,7 +1429,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProjectCreationStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProjectCreationStatus();
       var od = api.ProjectCreationStatus.fromJson(o.toJson());
       checkProjectCreationStatus(od as api.ProjectCreationStatus);
@@ -1437,7 +1437,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -1445,7 +1445,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -1453,7 +1453,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TagBinding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTagBinding();
       var od = api.TagBinding.fromJson(o.toJson());
       checkTagBinding(od as api.TagBinding);
@@ -1461,7 +1461,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TagKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTagKey();
       var od = api.TagKey.fromJson(o.toJson());
       checkTagKey(od as api.TagKey);
@@ -1469,7 +1469,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TagValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTagValue();
       var od = api.TagValue.fromJson(o.toJson());
       checkTagValue(od as api.TagValue);
@@ -1477,7 +1477,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -1485,7 +1485,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -1493,7 +1493,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateTagKeyMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateTagKeyMetadata();
       var od = api.UpdateTagKeyMetadata.fromJson(o.toJson());
       checkUpdateTagKeyMetadata(od as api.UpdateTagKeyMetadata);
@@ -1501,7 +1501,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateTagValueMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateTagValueMetadata();
       var od = api.UpdateTagValueMetadata.fromJson(o.toJson());
       checkUpdateTagValueMetadata(od as api.UpdateTagValueMetadata);
@@ -1509,7 +1509,7 @@ void main() {
   });
 
   unittest.group('resource-LiensResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).liens;
       var arg_request = buildLien();
@@ -1560,14 +1560,11 @@ void main() {
         var resp = convert.json.encode(buildLien());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLien(response as api.Lien);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkLien(response as api.Lien);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).liens;
       var arg_name = 'foo';
@@ -1615,14 +1612,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).liens;
       var arg_name = 'foo';
@@ -1670,14 +1664,11 @@ void main() {
         var resp = convert.json.encode(buildLien());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLien(response as api.Lien);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLien(response as api.Lien);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).liens;
       var arg_pageSize = 42;
@@ -1738,20 +1729,17 @@ void main() {
         var resp = convert.json.encode(buildListLiensResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              parent: arg_parent,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLiensResponse(response as api.ListLiensResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          parent: arg_parent,
+          $fields: arg_$fields);
+      checkListLiensResponse(response as api.ListLiensResponse);
     });
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).operations;
       var arg_name = 'foo';
@@ -1799,16 +1787,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-TagBindingsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagBindings;
       var arg_request = buildTagBinding();
@@ -1864,15 +1849,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request,
-              validateOnly: arg_validateOnly, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request,
+          validateOnly: arg_validateOnly, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagBindings;
       var arg_name = 'foo';
@@ -1920,14 +1902,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagBindings;
       var arg_pageSize = 42;
@@ -1988,20 +1967,17 @@ void main() {
         var resp = convert.json.encode(buildListTagBindingsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              parent: arg_parent,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTagBindingsResponse(response as api.ListTagBindingsResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          parent: arg_parent,
+          $fields: arg_$fields);
+      checkListTagBindingsResponse(response as api.ListTagBindingsResponse);
     });
   });
 
   unittest.group('resource-TagKeysResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagKeys;
       var arg_request = buildTagKey();
@@ -2057,15 +2033,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request,
-              validateOnly: arg_validateOnly, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request,
+          validateOnly: arg_validateOnly, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagKeys;
       var arg_name = 'foo';
@@ -2123,17 +2096,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name,
-              etag: arg_etag,
-              validateOnly: arg_validateOnly,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name,
+          etag: arg_etag, validateOnly: arg_validateOnly, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagKeys;
       var arg_name = 'foo';
@@ -2181,14 +2149,11 @@ void main() {
         var resp = convert.json.encode(buildTagKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTagKey(response as api.TagKey);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkTagKey(response as api.TagKey);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagKeys;
       var arg_request = buildGetIamPolicyRequest();
@@ -2241,14 +2206,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagKeys;
       var arg_pageSize = 42;
@@ -2309,18 +2272,15 @@ void main() {
         var resp = convert.json.encode(buildListTagKeysResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              parent: arg_parent,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTagKeysResponse(response as api.ListTagKeysResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          parent: arg_parent,
+          $fields: arg_$fields);
+      checkListTagKeysResponse(response as api.ListTagKeysResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagKeys;
       var arg_request = buildTagKey();
@@ -2383,17 +2343,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask,
-              validateOnly: arg_validateOnly,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask,
+          validateOnly: arg_validateOnly,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagKeys;
       var arg_request = buildSetIamPolicyRequest();
@@ -2446,14 +2403,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagKeys;
       var arg_request = buildTestIamPermissionsRequest();
@@ -2506,17 +2461,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-TagValuesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagValues;
       var arg_request = buildTagValue();
@@ -2572,15 +2525,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request,
-              validateOnly: arg_validateOnly, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request,
+          validateOnly: arg_validateOnly, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagValues;
       var arg_name = 'foo';
@@ -2638,17 +2588,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name,
-              etag: arg_etag,
-              validateOnly: arg_validateOnly,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name,
+          etag: arg_etag, validateOnly: arg_validateOnly, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagValues;
       var arg_name = 'foo';
@@ -2696,14 +2641,11 @@ void main() {
         var resp = convert.json.encode(buildTagValue());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTagValue(response as api.TagValue);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkTagValue(response as api.TagValue);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagValues;
       var arg_request = buildGetIamPolicyRequest();
@@ -2756,14 +2698,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagValues;
       var arg_pageSize = 42;
@@ -2824,18 +2764,15 @@ void main() {
         var resp = convert.json.encode(buildListTagValuesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              parent: arg_parent,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTagValuesResponse(response as api.ListTagValuesResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          parent: arg_parent,
+          $fields: arg_$fields);
+      checkListTagValuesResponse(response as api.ListTagValuesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagValues;
       var arg_request = buildTagValue();
@@ -2898,17 +2835,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask,
-              validateOnly: arg_validateOnly,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask,
+          validateOnly: arg_validateOnly,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagValues;
       var arg_request = buildSetIamPolicyRequest();
@@ -2961,14 +2895,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).tagValues;
       var arg_request = buildTestIamPermissionsRequest();
@@ -3021,12 +2953,10 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 }

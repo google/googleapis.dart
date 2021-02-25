@@ -6705,7 +6705,7 @@ void checkGoogleTypeTimeOfDay(api.GoogleTypeTimeOfDay o) {
 
 void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Action', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Action();
       var od = api.GooglePrivacyDlpV2Action.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Action(od as api.GooglePrivacyDlpV2Action);
@@ -6713,7 +6713,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ActivateJobTriggerRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ActivateJobTriggerRequest();
       var od =
           api.GooglePrivacyDlpV2ActivateJobTriggerRequest.fromJson(o.toJson());
@@ -6724,7 +6724,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2AnalyzeDataSourceRiskDetails();
       var od = api.GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails.fromJson(
           o.toJson());
@@ -6734,7 +6734,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2AuxiliaryTable', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2AuxiliaryTable();
       var od = api.GooglePrivacyDlpV2AuxiliaryTable.fromJson(o.toJson());
       checkGooglePrivacyDlpV2AuxiliaryTable(
@@ -6743,7 +6743,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2BigQueryField', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2BigQueryField();
       var od = api.GooglePrivacyDlpV2BigQueryField.fromJson(o.toJson());
       checkGooglePrivacyDlpV2BigQueryField(
@@ -6752,7 +6752,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2BigQueryKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2BigQueryKey();
       var od = api.GooglePrivacyDlpV2BigQueryKey.fromJson(o.toJson());
       checkGooglePrivacyDlpV2BigQueryKey(
@@ -6761,7 +6761,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2BigQueryOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2BigQueryOptions();
       var od = api.GooglePrivacyDlpV2BigQueryOptions.fromJson(o.toJson());
       checkGooglePrivacyDlpV2BigQueryOptions(
@@ -6770,7 +6770,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2BigQueryTable', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2BigQueryTable();
       var od = api.GooglePrivacyDlpV2BigQueryTable.fromJson(o.toJson());
       checkGooglePrivacyDlpV2BigQueryTable(
@@ -6779,7 +6779,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2BoundingBox', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2BoundingBox();
       var od = api.GooglePrivacyDlpV2BoundingBox.fromJson(o.toJson());
       checkGooglePrivacyDlpV2BoundingBox(
@@ -6788,7 +6788,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Bucket', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Bucket();
       var od = api.GooglePrivacyDlpV2Bucket.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Bucket(od as api.GooglePrivacyDlpV2Bucket);
@@ -6796,7 +6796,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2BucketingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2BucketingConfig();
       var od = api.GooglePrivacyDlpV2BucketingConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2BucketingConfig(
@@ -6805,7 +6805,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ByteContentItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ByteContentItem();
       var od = api.GooglePrivacyDlpV2ByteContentItem.fromJson(o.toJson());
       checkGooglePrivacyDlpV2ByteContentItem(
@@ -6814,7 +6814,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CancelDlpJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CancelDlpJobRequest();
       var od = api.GooglePrivacyDlpV2CancelDlpJobRequest.fromJson(o.toJson());
       checkGooglePrivacyDlpV2CancelDlpJobRequest(
@@ -6823,7 +6823,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CategoricalStatsConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CategoricalStatsConfig();
       var od =
           api.GooglePrivacyDlpV2CategoricalStatsConfig.fromJson(o.toJson());
@@ -6834,7 +6834,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CategoricalStatsHistogramBucket',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CategoricalStatsHistogramBucket();
       var od = api.GooglePrivacyDlpV2CategoricalStatsHistogramBucket.fromJson(
           o.toJson());
@@ -6844,7 +6844,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CategoricalStatsResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CategoricalStatsResult();
       var od =
           api.GooglePrivacyDlpV2CategoricalStatsResult.fromJson(o.toJson());
@@ -6854,7 +6854,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CharacterMaskConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CharacterMaskConfig();
       var od = api.GooglePrivacyDlpV2CharacterMaskConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2CharacterMaskConfig(
@@ -6863,7 +6863,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CharsToIgnore', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CharsToIgnore();
       var od = api.GooglePrivacyDlpV2CharsToIgnore.fromJson(o.toJson());
       checkGooglePrivacyDlpV2CharsToIgnore(
@@ -6872,7 +6872,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CloudStorageFileSet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CloudStorageFileSet();
       var od = api.GooglePrivacyDlpV2CloudStorageFileSet.fromJson(o.toJson());
       checkGooglePrivacyDlpV2CloudStorageFileSet(
@@ -6881,7 +6881,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CloudStorageOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CloudStorageOptions();
       var od = api.GooglePrivacyDlpV2CloudStorageOptions.fromJson(o.toJson());
       checkGooglePrivacyDlpV2CloudStorageOptions(
@@ -6890,7 +6890,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CloudStoragePath', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CloudStoragePath();
       var od = api.GooglePrivacyDlpV2CloudStoragePath.fromJson(o.toJson());
       checkGooglePrivacyDlpV2CloudStoragePath(
@@ -6899,7 +6899,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CloudStorageRegexFileSet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CloudStorageRegexFileSet();
       var od =
           api.GooglePrivacyDlpV2CloudStorageRegexFileSet.fromJson(o.toJson());
@@ -6909,7 +6909,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Color', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Color();
       var od = api.GooglePrivacyDlpV2Color.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Color(od as api.GooglePrivacyDlpV2Color);
@@ -6917,7 +6917,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Condition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Condition();
       var od = api.GooglePrivacyDlpV2Condition.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Condition(od as api.GooglePrivacyDlpV2Condition);
@@ -6925,7 +6925,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Conditions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Conditions();
       var od = api.GooglePrivacyDlpV2Conditions.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Conditions(od as api.GooglePrivacyDlpV2Conditions);
@@ -6933,7 +6933,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Container', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Container();
       var od = api.GooglePrivacyDlpV2Container.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Container(od as api.GooglePrivacyDlpV2Container);
@@ -6941,7 +6941,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ContentItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ContentItem();
       var od = api.GooglePrivacyDlpV2ContentItem.fromJson(o.toJson());
       checkGooglePrivacyDlpV2ContentItem(
@@ -6950,7 +6950,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ContentLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ContentLocation();
       var od = api.GooglePrivacyDlpV2ContentLocation.fromJson(o.toJson());
       checkGooglePrivacyDlpV2ContentLocation(
@@ -6960,7 +6960,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CreateDeidentifyTemplateRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CreateDeidentifyTemplateRequest();
       var od = api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
           o.toJson());
@@ -6970,7 +6970,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CreateDlpJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CreateDlpJobRequest();
       var od = api.GooglePrivacyDlpV2CreateDlpJobRequest.fromJson(o.toJson());
       checkGooglePrivacyDlpV2CreateDlpJobRequest(
@@ -6980,7 +6980,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CreateInspectTemplateRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CreateInspectTemplateRequest();
       var od = api.GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
           o.toJson());
@@ -6990,7 +6990,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CreateJobTriggerRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CreateJobTriggerRequest();
       var od =
           api.GooglePrivacyDlpV2CreateJobTriggerRequest.fromJson(o.toJson());
@@ -7001,7 +7001,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CreateStoredInfoTypeRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CreateStoredInfoTypeRequest();
       var od = api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
           o.toJson());
@@ -7011,7 +7011,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CryptoDeterministicConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CryptoDeterministicConfig();
       var od =
           api.GooglePrivacyDlpV2CryptoDeterministicConfig.fromJson(o.toJson());
@@ -7021,7 +7021,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CryptoHashConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CryptoHashConfig();
       var od = api.GooglePrivacyDlpV2CryptoHashConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2CryptoHashConfig(
@@ -7030,7 +7030,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CryptoKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CryptoKey();
       var od = api.GooglePrivacyDlpV2CryptoKey.fromJson(o.toJson());
       checkGooglePrivacyDlpV2CryptoKey(od as api.GooglePrivacyDlpV2CryptoKey);
@@ -7038,7 +7038,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CryptoReplaceFfxFpeConfig();
       var od =
           api.GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig.fromJson(o.toJson());
@@ -7048,7 +7048,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2CustomInfoType', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CustomInfoType();
       var od = api.GooglePrivacyDlpV2CustomInfoType.fromJson(o.toJson());
       checkGooglePrivacyDlpV2CustomInfoType(
@@ -7057,7 +7057,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DatastoreKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DatastoreKey();
       var od = api.GooglePrivacyDlpV2DatastoreKey.fromJson(o.toJson());
       checkGooglePrivacyDlpV2DatastoreKey(
@@ -7066,7 +7066,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DatastoreOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DatastoreOptions();
       var od = api.GooglePrivacyDlpV2DatastoreOptions.fromJson(o.toJson());
       checkGooglePrivacyDlpV2DatastoreOptions(
@@ -7075,7 +7075,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DateShiftConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DateShiftConfig();
       var od = api.GooglePrivacyDlpV2DateShiftConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2DateShiftConfig(
@@ -7084,7 +7084,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DateTime', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DateTime();
       var od = api.GooglePrivacyDlpV2DateTime.fromJson(o.toJson());
       checkGooglePrivacyDlpV2DateTime(od as api.GooglePrivacyDlpV2DateTime);
@@ -7092,7 +7092,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DeidentifyConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DeidentifyConfig();
       var od = api.GooglePrivacyDlpV2DeidentifyConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2DeidentifyConfig(
@@ -7101,7 +7101,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DeidentifyContentRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DeidentifyContentRequest();
       var od =
           api.GooglePrivacyDlpV2DeidentifyContentRequest.fromJson(o.toJson());
@@ -7111,7 +7111,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DeidentifyContentResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DeidentifyContentResponse();
       var od =
           api.GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(o.toJson());
@@ -7121,7 +7121,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DeidentifyTemplate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DeidentifyTemplate();
       var od = api.GooglePrivacyDlpV2DeidentifyTemplate.fromJson(o.toJson());
       checkGooglePrivacyDlpV2DeidentifyTemplate(
@@ -7131,7 +7131,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DeltaPresenceEstimationConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DeltaPresenceEstimationConfig();
       var od = api.GooglePrivacyDlpV2DeltaPresenceEstimationConfig.fromJson(
           o.toJson());
@@ -7143,7 +7143,7 @@ void main() {
   unittest.group(
       'obj-schema-GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket();
       var od =
           api.GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket.fromJson(
@@ -7155,7 +7155,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues();
       var od =
           api.GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues.fromJson(
@@ -7167,7 +7167,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DeltaPresenceEstimationResult',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DeltaPresenceEstimationResult();
       var od = api.GooglePrivacyDlpV2DeltaPresenceEstimationResult.fromJson(
           o.toJson());
@@ -7177,7 +7177,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DetectionRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DetectionRule();
       var od = api.GooglePrivacyDlpV2DetectionRule.fromJson(o.toJson());
       checkGooglePrivacyDlpV2DetectionRule(
@@ -7186,7 +7186,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Dictionary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Dictionary();
       var od = api.GooglePrivacyDlpV2Dictionary.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Dictionary(od as api.GooglePrivacyDlpV2Dictionary);
@@ -7194,7 +7194,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DlpJob', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DlpJob();
       var od = api.GooglePrivacyDlpV2DlpJob.fromJson(o.toJson());
       checkGooglePrivacyDlpV2DlpJob(od as api.GooglePrivacyDlpV2DlpJob);
@@ -7202,7 +7202,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2DocumentLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DocumentLocation();
       var od = api.GooglePrivacyDlpV2DocumentLocation.fromJson(o.toJson());
       checkGooglePrivacyDlpV2DocumentLocation(
@@ -7211,7 +7211,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2EntityId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2EntityId();
       var od = api.GooglePrivacyDlpV2EntityId.fromJson(o.toJson());
       checkGooglePrivacyDlpV2EntityId(od as api.GooglePrivacyDlpV2EntityId);
@@ -7219,7 +7219,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Error', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Error();
       var od = api.GooglePrivacyDlpV2Error.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Error(od as api.GooglePrivacyDlpV2Error);
@@ -7227,7 +7227,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ExcludeInfoTypes', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ExcludeInfoTypes();
       var od = api.GooglePrivacyDlpV2ExcludeInfoTypes.fromJson(o.toJson());
       checkGooglePrivacyDlpV2ExcludeInfoTypes(
@@ -7236,7 +7236,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ExclusionRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ExclusionRule();
       var od = api.GooglePrivacyDlpV2ExclusionRule.fromJson(o.toJson());
       checkGooglePrivacyDlpV2ExclusionRule(
@@ -7245,7 +7245,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Expressions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Expressions();
       var od = api.GooglePrivacyDlpV2Expressions.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Expressions(
@@ -7254,7 +7254,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2FieldId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2FieldId();
       var od = api.GooglePrivacyDlpV2FieldId.fromJson(o.toJson());
       checkGooglePrivacyDlpV2FieldId(od as api.GooglePrivacyDlpV2FieldId);
@@ -7262,7 +7262,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2FieldTransformation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2FieldTransformation();
       var od = api.GooglePrivacyDlpV2FieldTransformation.fromJson(o.toJson());
       checkGooglePrivacyDlpV2FieldTransformation(
@@ -7271,7 +7271,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2FileSet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2FileSet();
       var od = api.GooglePrivacyDlpV2FileSet.fromJson(o.toJson());
       checkGooglePrivacyDlpV2FileSet(od as api.GooglePrivacyDlpV2FileSet);
@@ -7279,7 +7279,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Finding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Finding();
       var od = api.GooglePrivacyDlpV2Finding.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Finding(od as api.GooglePrivacyDlpV2Finding);
@@ -7287,7 +7287,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2FindingLimits', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2FindingLimits();
       var od = api.GooglePrivacyDlpV2FindingLimits.fromJson(o.toJson());
       checkGooglePrivacyDlpV2FindingLimits(
@@ -7296,7 +7296,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2FinishDlpJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2FinishDlpJobRequest();
       var od = api.GooglePrivacyDlpV2FinishDlpJobRequest.fromJson(o.toJson());
       checkGooglePrivacyDlpV2FinishDlpJobRequest(
@@ -7305,7 +7305,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2FixedSizeBucketingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2FixedSizeBucketingConfig();
       var od =
           api.GooglePrivacyDlpV2FixedSizeBucketingConfig.fromJson(o.toJson());
@@ -7315,7 +7315,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2HotwordRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2HotwordRule();
       var od = api.GooglePrivacyDlpV2HotwordRule.fromJson(o.toJson());
       checkGooglePrivacyDlpV2HotwordRule(
@@ -7324,7 +7324,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2HybridContentItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2HybridContentItem();
       var od = api.GooglePrivacyDlpV2HybridContentItem.fromJson(o.toJson());
       checkGooglePrivacyDlpV2HybridContentItem(
@@ -7333,7 +7333,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2HybridFindingDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2HybridFindingDetails();
       var od = api.GooglePrivacyDlpV2HybridFindingDetails.fromJson(o.toJson());
       checkGooglePrivacyDlpV2HybridFindingDetails(
@@ -7342,7 +7342,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2HybridInspectDlpJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2HybridInspectDlpJobRequest();
       var od =
           api.GooglePrivacyDlpV2HybridInspectDlpJobRequest.fromJson(o.toJson());
@@ -7353,7 +7353,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2HybridInspectJobTriggerRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2HybridInspectJobTriggerRequest();
       var od = api.GooglePrivacyDlpV2HybridInspectJobTriggerRequest.fromJson(
           o.toJson());
@@ -7363,7 +7363,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2HybridInspectResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2HybridInspectResponse();
       var od = api.GooglePrivacyDlpV2HybridInspectResponse.fromJson(o.toJson());
       checkGooglePrivacyDlpV2HybridInspectResponse(
@@ -7372,7 +7372,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2HybridInspectStatistics', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2HybridInspectStatistics();
       var od =
           api.GooglePrivacyDlpV2HybridInspectStatistics.fromJson(o.toJson());
@@ -7382,7 +7382,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2HybridOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2HybridOptions();
       var od = api.GooglePrivacyDlpV2HybridOptions.fromJson(o.toJson());
       checkGooglePrivacyDlpV2HybridOptions(
@@ -7391,7 +7391,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ImageLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ImageLocation();
       var od = api.GooglePrivacyDlpV2ImageLocation.fromJson(o.toJson());
       checkGooglePrivacyDlpV2ImageLocation(
@@ -7400,7 +7400,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ImageRedactionConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ImageRedactionConfig();
       var od = api.GooglePrivacyDlpV2ImageRedactionConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2ImageRedactionConfig(
@@ -7409,7 +7409,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2InfoType', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InfoType();
       var od = api.GooglePrivacyDlpV2InfoType.fromJson(o.toJson());
       checkGooglePrivacyDlpV2InfoType(od as api.GooglePrivacyDlpV2InfoType);
@@ -7417,7 +7417,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2InfoTypeDescription', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InfoTypeDescription();
       var od = api.GooglePrivacyDlpV2InfoTypeDescription.fromJson(o.toJson());
       checkGooglePrivacyDlpV2InfoTypeDescription(
@@ -7426,7 +7426,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2InfoTypeLimit', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InfoTypeLimit();
       var od = api.GooglePrivacyDlpV2InfoTypeLimit.fromJson(o.toJson());
       checkGooglePrivacyDlpV2InfoTypeLimit(
@@ -7435,7 +7435,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2InfoTypeStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InfoTypeStats();
       var od = api.GooglePrivacyDlpV2InfoTypeStats.fromJson(o.toJson());
       checkGooglePrivacyDlpV2InfoTypeStats(
@@ -7444,7 +7444,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2InfoTypeTransformation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InfoTypeTransformation();
       var od =
           api.GooglePrivacyDlpV2InfoTypeTransformation.fromJson(o.toJson());
@@ -7454,7 +7454,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2InfoTypeTransformations', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InfoTypeTransformations();
       var od =
           api.GooglePrivacyDlpV2InfoTypeTransformations.fromJson(o.toJson());
@@ -7464,7 +7464,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2InspectConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InspectConfig();
       var od = api.GooglePrivacyDlpV2InspectConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2InspectConfig(
@@ -7473,7 +7473,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2InspectContentRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InspectContentRequest();
       var od = api.GooglePrivacyDlpV2InspectContentRequest.fromJson(o.toJson());
       checkGooglePrivacyDlpV2InspectContentRequest(
@@ -7482,7 +7482,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2InspectContentResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InspectContentResponse();
       var od =
           api.GooglePrivacyDlpV2InspectContentResponse.fromJson(o.toJson());
@@ -7492,7 +7492,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2InspectDataSourceDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InspectDataSourceDetails();
       var od =
           api.GooglePrivacyDlpV2InspectDataSourceDetails.fromJson(o.toJson());
@@ -7502,7 +7502,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2InspectJobConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InspectJobConfig();
       var od = api.GooglePrivacyDlpV2InspectJobConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2InspectJobConfig(
@@ -7511,7 +7511,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2InspectResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InspectResult();
       var od = api.GooglePrivacyDlpV2InspectResult.fromJson(o.toJson());
       checkGooglePrivacyDlpV2InspectResult(
@@ -7520,7 +7520,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2InspectTemplate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InspectTemplate();
       var od = api.GooglePrivacyDlpV2InspectTemplate.fromJson(o.toJson());
       checkGooglePrivacyDlpV2InspectTemplate(
@@ -7529,7 +7529,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2InspectionRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InspectionRule();
       var od = api.GooglePrivacyDlpV2InspectionRule.fromJson(o.toJson());
       checkGooglePrivacyDlpV2InspectionRule(
@@ -7538,7 +7538,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2InspectionRuleSet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InspectionRuleSet();
       var od = api.GooglePrivacyDlpV2InspectionRuleSet.fromJson(o.toJson());
       checkGooglePrivacyDlpV2InspectionRuleSet(
@@ -7547,7 +7547,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2JobNotificationEmails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2JobNotificationEmails();
       var od = api.GooglePrivacyDlpV2JobNotificationEmails.fromJson(o.toJson());
       checkGooglePrivacyDlpV2JobNotificationEmails(
@@ -7556,7 +7556,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2JobTrigger', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2JobTrigger();
       var od = api.GooglePrivacyDlpV2JobTrigger.fromJson(o.toJson());
       checkGooglePrivacyDlpV2JobTrigger(od as api.GooglePrivacyDlpV2JobTrigger);
@@ -7564,7 +7564,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2KAnonymityConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KAnonymityConfig();
       var od = api.GooglePrivacyDlpV2KAnonymityConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2KAnonymityConfig(
@@ -7573,7 +7573,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2KAnonymityEquivalenceClass', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KAnonymityEquivalenceClass();
       var od =
           api.GooglePrivacyDlpV2KAnonymityEquivalenceClass.fromJson(o.toJson());
@@ -7583,7 +7583,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2KAnonymityHistogramBucket', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KAnonymityHistogramBucket();
       var od =
           api.GooglePrivacyDlpV2KAnonymityHistogramBucket.fromJson(o.toJson());
@@ -7593,7 +7593,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2KAnonymityResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KAnonymityResult();
       var od = api.GooglePrivacyDlpV2KAnonymityResult.fromJson(o.toJson());
       checkGooglePrivacyDlpV2KAnonymityResult(
@@ -7602,7 +7602,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2KMapEstimationConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KMapEstimationConfig();
       var od = api.GooglePrivacyDlpV2KMapEstimationConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2KMapEstimationConfig(
@@ -7612,7 +7612,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2KMapEstimationHistogramBucket',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KMapEstimationHistogramBucket();
       var od = api.GooglePrivacyDlpV2KMapEstimationHistogramBucket.fromJson(
           o.toJson());
@@ -7623,7 +7623,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2KMapEstimationQuasiIdValues',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KMapEstimationQuasiIdValues();
       var od = api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues.fromJson(
           o.toJson());
@@ -7633,7 +7633,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2KMapEstimationResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KMapEstimationResult();
       var od = api.GooglePrivacyDlpV2KMapEstimationResult.fromJson(o.toJson());
       checkGooglePrivacyDlpV2KMapEstimationResult(
@@ -7642,7 +7642,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Key', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Key();
       var od = api.GooglePrivacyDlpV2Key.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Key(od as api.GooglePrivacyDlpV2Key);
@@ -7650,7 +7650,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2KindExpression', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KindExpression();
       var od = api.GooglePrivacyDlpV2KindExpression.fromJson(o.toJson());
       checkGooglePrivacyDlpV2KindExpression(
@@ -7659,7 +7659,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2KmsWrappedCryptoKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KmsWrappedCryptoKey();
       var od = api.GooglePrivacyDlpV2KmsWrappedCryptoKey.fromJson(o.toJson());
       checkGooglePrivacyDlpV2KmsWrappedCryptoKey(
@@ -7668,7 +7668,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2LDiversityConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2LDiversityConfig();
       var od = api.GooglePrivacyDlpV2LDiversityConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2LDiversityConfig(
@@ -7677,7 +7677,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2LDiversityEquivalenceClass', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2LDiversityEquivalenceClass();
       var od =
           api.GooglePrivacyDlpV2LDiversityEquivalenceClass.fromJson(o.toJson());
@@ -7687,7 +7687,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2LDiversityHistogramBucket', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2LDiversityHistogramBucket();
       var od =
           api.GooglePrivacyDlpV2LDiversityHistogramBucket.fromJson(o.toJson());
@@ -7697,7 +7697,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2LDiversityResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2LDiversityResult();
       var od = api.GooglePrivacyDlpV2LDiversityResult.fromJson(o.toJson());
       checkGooglePrivacyDlpV2LDiversityResult(
@@ -7707,7 +7707,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2LargeCustomDictionaryConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2LargeCustomDictionaryConfig();
       var od = api.GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromJson(
           o.toJson());
@@ -7717,7 +7717,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2LargeCustomDictionaryStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2LargeCustomDictionaryStats();
       var od =
           api.GooglePrivacyDlpV2LargeCustomDictionaryStats.fromJson(o.toJson());
@@ -7727,7 +7727,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2LeaveUntransformed', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2LeaveUntransformed();
       var od = api.GooglePrivacyDlpV2LeaveUntransformed.fromJson(o.toJson());
       checkGooglePrivacyDlpV2LeaveUntransformed(
@@ -7736,7 +7736,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2LikelihoodAdjustment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2LikelihoodAdjustment();
       var od = api.GooglePrivacyDlpV2LikelihoodAdjustment.fromJson(o.toJson());
       checkGooglePrivacyDlpV2LikelihoodAdjustment(
@@ -7746,7 +7746,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ListDeidentifyTemplatesResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ListDeidentifyTemplatesResponse();
       var od = api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
           o.toJson());
@@ -7756,7 +7756,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ListDlpJobsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ListDlpJobsResponse();
       var od = api.GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(o.toJson());
       checkGooglePrivacyDlpV2ListDlpJobsResponse(
@@ -7765,7 +7765,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ListInfoTypesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ListInfoTypesResponse();
       var od = api.GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(o.toJson());
       checkGooglePrivacyDlpV2ListInfoTypesResponse(
@@ -7775,7 +7775,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ListInspectTemplatesResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ListInspectTemplatesResponse();
       var od = api.GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
           o.toJson());
@@ -7785,7 +7785,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ListJobTriggersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ListJobTriggersResponse();
       var od =
           api.GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(o.toJson());
@@ -7796,7 +7796,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ListStoredInfoTypesResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ListStoredInfoTypesResponse();
       var od = api.GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
           o.toJson());
@@ -7806,7 +7806,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Location();
       var od = api.GooglePrivacyDlpV2Location.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Location(od as api.GooglePrivacyDlpV2Location);
@@ -7814,7 +7814,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Manual', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Manual();
       var od = api.GooglePrivacyDlpV2Manual.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Manual(od as api.GooglePrivacyDlpV2Manual);
@@ -7822,7 +7822,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2MetadataLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2MetadataLocation();
       var od = api.GooglePrivacyDlpV2MetadataLocation.fromJson(o.toJson());
       checkGooglePrivacyDlpV2MetadataLocation(
@@ -7831,7 +7831,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2NumericalStatsConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2NumericalStatsConfig();
       var od = api.GooglePrivacyDlpV2NumericalStatsConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2NumericalStatsConfig(
@@ -7840,7 +7840,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2NumericalStatsResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2NumericalStatsResult();
       var od = api.GooglePrivacyDlpV2NumericalStatsResult.fromJson(o.toJson());
       checkGooglePrivacyDlpV2NumericalStatsResult(
@@ -7849,7 +7849,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2OutputStorageConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2OutputStorageConfig();
       var od = api.GooglePrivacyDlpV2OutputStorageConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2OutputStorageConfig(
@@ -7858,7 +7858,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2PartitionId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2PartitionId();
       var od = api.GooglePrivacyDlpV2PartitionId.fromJson(o.toJson());
       checkGooglePrivacyDlpV2PartitionId(
@@ -7867,7 +7867,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2PathElement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2PathElement();
       var od = api.GooglePrivacyDlpV2PathElement.fromJson(o.toJson());
       checkGooglePrivacyDlpV2PathElement(
@@ -7876,7 +7876,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2PrimitiveTransformation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2PrimitiveTransformation();
       var od =
           api.GooglePrivacyDlpV2PrimitiveTransformation.fromJson(o.toJson());
@@ -7886,7 +7886,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2PrivacyMetric', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2PrivacyMetric();
       var od = api.GooglePrivacyDlpV2PrivacyMetric.fromJson(o.toJson());
       checkGooglePrivacyDlpV2PrivacyMetric(
@@ -7895,7 +7895,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Proximity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Proximity();
       var od = api.GooglePrivacyDlpV2Proximity.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Proximity(od as api.GooglePrivacyDlpV2Proximity);
@@ -7904,7 +7904,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2PublishFindingsToCloudDataCatalog();
       var od = api.GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog.fromJson(
           o.toJson());
@@ -7914,7 +7914,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2PublishSummaryToCscc', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2PublishSummaryToCscc();
       var od = api.GooglePrivacyDlpV2PublishSummaryToCscc.fromJson(o.toJson());
       checkGooglePrivacyDlpV2PublishSummaryToCscc(
@@ -7923,7 +7923,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2PublishToPubSub', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2PublishToPubSub();
       var od = api.GooglePrivacyDlpV2PublishToPubSub.fromJson(o.toJson());
       checkGooglePrivacyDlpV2PublishToPubSub(
@@ -7932,7 +7932,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2PublishToStackdriver', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2PublishToStackdriver();
       var od = api.GooglePrivacyDlpV2PublishToStackdriver.fromJson(o.toJson());
       checkGooglePrivacyDlpV2PublishToStackdriver(
@@ -7941,7 +7941,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2QuasiId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2QuasiId();
       var od = api.GooglePrivacyDlpV2QuasiId.fromJson(o.toJson());
       checkGooglePrivacyDlpV2QuasiId(od as api.GooglePrivacyDlpV2QuasiId);
@@ -7949,7 +7949,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2QuasiIdField', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2QuasiIdField();
       var od = api.GooglePrivacyDlpV2QuasiIdField.fromJson(o.toJson());
       checkGooglePrivacyDlpV2QuasiIdField(
@@ -7958,7 +7958,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2QuasiIdentifierField', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2QuasiIdentifierField();
       var od = api.GooglePrivacyDlpV2QuasiIdentifierField.fromJson(o.toJson());
       checkGooglePrivacyDlpV2QuasiIdentifierField(
@@ -7967,7 +7967,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2QuoteInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2QuoteInfo();
       var od = api.GooglePrivacyDlpV2QuoteInfo.fromJson(o.toJson());
       checkGooglePrivacyDlpV2QuoteInfo(od as api.GooglePrivacyDlpV2QuoteInfo);
@@ -7975,7 +7975,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Range', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Range();
       var od = api.GooglePrivacyDlpV2Range.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Range(od as api.GooglePrivacyDlpV2Range);
@@ -7983,7 +7983,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2RecordCondition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RecordCondition();
       var od = api.GooglePrivacyDlpV2RecordCondition.fromJson(o.toJson());
       checkGooglePrivacyDlpV2RecordCondition(
@@ -7992,7 +7992,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2RecordKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RecordKey();
       var od = api.GooglePrivacyDlpV2RecordKey.fromJson(o.toJson());
       checkGooglePrivacyDlpV2RecordKey(od as api.GooglePrivacyDlpV2RecordKey);
@@ -8000,7 +8000,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2RecordLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RecordLocation();
       var od = api.GooglePrivacyDlpV2RecordLocation.fromJson(o.toJson());
       checkGooglePrivacyDlpV2RecordLocation(
@@ -8009,7 +8009,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2RecordSuppression', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RecordSuppression();
       var od = api.GooglePrivacyDlpV2RecordSuppression.fromJson(o.toJson());
       checkGooglePrivacyDlpV2RecordSuppression(
@@ -8018,7 +8018,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2RecordTransformations', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RecordTransformations();
       var od = api.GooglePrivacyDlpV2RecordTransformations.fromJson(o.toJson());
       checkGooglePrivacyDlpV2RecordTransformations(
@@ -8027,7 +8027,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2RedactConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RedactConfig();
       var od = api.GooglePrivacyDlpV2RedactConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2RedactConfig(
@@ -8036,7 +8036,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2RedactImageRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RedactImageRequest();
       var od = api.GooglePrivacyDlpV2RedactImageRequest.fromJson(o.toJson());
       checkGooglePrivacyDlpV2RedactImageRequest(
@@ -8045,7 +8045,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2RedactImageResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RedactImageResponse();
       var od = api.GooglePrivacyDlpV2RedactImageResponse.fromJson(o.toJson());
       checkGooglePrivacyDlpV2RedactImageResponse(
@@ -8054,7 +8054,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Regex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Regex();
       var od = api.GooglePrivacyDlpV2Regex.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Regex(od as api.GooglePrivacyDlpV2Regex);
@@ -8062,7 +8062,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ReidentifyContentRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ReidentifyContentRequest();
       var od =
           api.GooglePrivacyDlpV2ReidentifyContentRequest.fromJson(o.toJson());
@@ -8072,7 +8072,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ReidentifyContentResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ReidentifyContentResponse();
       var od =
           api.GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(o.toJson());
@@ -8082,7 +8082,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ReplaceValueConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ReplaceValueConfig();
       var od = api.GooglePrivacyDlpV2ReplaceValueConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2ReplaceValueConfig(
@@ -8091,7 +8091,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ReplaceWithInfoTypeConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ReplaceWithInfoTypeConfig();
       var od =
           api.GooglePrivacyDlpV2ReplaceWithInfoTypeConfig.fromJson(o.toJson());
@@ -8101,7 +8101,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2RequestedOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RequestedOptions();
       var od = api.GooglePrivacyDlpV2RequestedOptions.fromJson(o.toJson());
       checkGooglePrivacyDlpV2RequestedOptions(
@@ -8111,7 +8111,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2RequestedRiskAnalysisOptions',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RequestedRiskAnalysisOptions();
       var od = api.GooglePrivacyDlpV2RequestedRiskAnalysisOptions.fromJson(
           o.toJson());
@@ -8121,7 +8121,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Result', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Result();
       var od = api.GooglePrivacyDlpV2Result.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Result(od as api.GooglePrivacyDlpV2Result);
@@ -8129,7 +8129,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2RiskAnalysisJobConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RiskAnalysisJobConfig();
       var od = api.GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2RiskAnalysisJobConfig(
@@ -8138,7 +8138,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Row', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Row();
       var od = api.GooglePrivacyDlpV2Row.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Row(od as api.GooglePrivacyDlpV2Row);
@@ -8146,7 +8146,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2SaveFindings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2SaveFindings();
       var od = api.GooglePrivacyDlpV2SaveFindings.fromJson(o.toJson());
       checkGooglePrivacyDlpV2SaveFindings(
@@ -8155,7 +8155,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Schedule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Schedule();
       var od = api.GooglePrivacyDlpV2Schedule.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Schedule(od as api.GooglePrivacyDlpV2Schedule);
@@ -8163,7 +8163,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2StatisticalTable', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2StatisticalTable();
       var od = api.GooglePrivacyDlpV2StatisticalTable.fromJson(o.toJson());
       checkGooglePrivacyDlpV2StatisticalTable(
@@ -8172,7 +8172,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2StorageConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2StorageConfig();
       var od = api.GooglePrivacyDlpV2StorageConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2StorageConfig(
@@ -8181,7 +8181,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2StorageMetadataLabel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2StorageMetadataLabel();
       var od = api.GooglePrivacyDlpV2StorageMetadataLabel.fromJson(o.toJson());
       checkGooglePrivacyDlpV2StorageMetadataLabel(
@@ -8190,7 +8190,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2StoredInfoType', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2StoredInfoType();
       var od = api.GooglePrivacyDlpV2StoredInfoType.fromJson(o.toJson());
       checkGooglePrivacyDlpV2StoredInfoType(
@@ -8199,7 +8199,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2StoredInfoTypeConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2StoredInfoTypeConfig();
       var od = api.GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2StoredInfoTypeConfig(
@@ -8208,7 +8208,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2StoredInfoTypeStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2StoredInfoTypeStats();
       var od = api.GooglePrivacyDlpV2StoredInfoTypeStats.fromJson(o.toJson());
       checkGooglePrivacyDlpV2StoredInfoTypeStats(
@@ -8217,7 +8217,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2StoredInfoTypeVersion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2StoredInfoTypeVersion();
       var od = api.GooglePrivacyDlpV2StoredInfoTypeVersion.fromJson(o.toJson());
       checkGooglePrivacyDlpV2StoredInfoTypeVersion(
@@ -8226,7 +8226,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2StoredType', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2StoredType();
       var od = api.GooglePrivacyDlpV2StoredType.fromJson(o.toJson());
       checkGooglePrivacyDlpV2StoredType(od as api.GooglePrivacyDlpV2StoredType);
@@ -8234,7 +8234,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2SummaryResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2SummaryResult();
       var od = api.GooglePrivacyDlpV2SummaryResult.fromJson(o.toJson());
       checkGooglePrivacyDlpV2SummaryResult(
@@ -8243,7 +8243,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2SurrogateType', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2SurrogateType();
       var od = api.GooglePrivacyDlpV2SurrogateType.fromJson(o.toJson());
       checkGooglePrivacyDlpV2SurrogateType(
@@ -8252,7 +8252,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Table', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Table();
       var od = api.GooglePrivacyDlpV2Table.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Table(od as api.GooglePrivacyDlpV2Table);
@@ -8260,7 +8260,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2TableLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TableLocation();
       var od = api.GooglePrivacyDlpV2TableLocation.fromJson(o.toJson());
       checkGooglePrivacyDlpV2TableLocation(
@@ -8269,7 +8269,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2TableOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TableOptions();
       var od = api.GooglePrivacyDlpV2TableOptions.fromJson(o.toJson());
       checkGooglePrivacyDlpV2TableOptions(
@@ -8278,7 +8278,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2TaggedField', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TaggedField();
       var od = api.GooglePrivacyDlpV2TaggedField.fromJson(o.toJson());
       checkGooglePrivacyDlpV2TaggedField(
@@ -8287,7 +8287,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ThrowError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ThrowError();
       var od = api.GooglePrivacyDlpV2ThrowError.fromJson(o.toJson());
       checkGooglePrivacyDlpV2ThrowError(od as api.GooglePrivacyDlpV2ThrowError);
@@ -8295,7 +8295,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2TimePartConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TimePartConfig();
       var od = api.GooglePrivacyDlpV2TimePartConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2TimePartConfig(
@@ -8304,7 +8304,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2TimeZone', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TimeZone();
       var od = api.GooglePrivacyDlpV2TimeZone.fromJson(o.toJson());
       checkGooglePrivacyDlpV2TimeZone(od as api.GooglePrivacyDlpV2TimeZone);
@@ -8312,7 +8312,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2TimespanConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TimespanConfig();
       var od = api.GooglePrivacyDlpV2TimespanConfig.fromJson(o.toJson());
       checkGooglePrivacyDlpV2TimespanConfig(
@@ -8322,7 +8322,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2TransformationErrorHandling',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TransformationErrorHandling();
       var od = api.GooglePrivacyDlpV2TransformationErrorHandling.fromJson(
           o.toJson());
@@ -8332,7 +8332,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2TransformationOverview', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TransformationOverview();
       var od =
           api.GooglePrivacyDlpV2TransformationOverview.fromJson(o.toJson());
@@ -8342,7 +8342,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2TransformationSummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TransformationSummary();
       var od = api.GooglePrivacyDlpV2TransformationSummary.fromJson(o.toJson());
       checkGooglePrivacyDlpV2TransformationSummary(
@@ -8351,7 +8351,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2TransientCryptoKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TransientCryptoKey();
       var od = api.GooglePrivacyDlpV2TransientCryptoKey.fromJson(o.toJson());
       checkGooglePrivacyDlpV2TransientCryptoKey(
@@ -8360,7 +8360,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Trigger', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Trigger();
       var od = api.GooglePrivacyDlpV2Trigger.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Trigger(od as api.GooglePrivacyDlpV2Trigger);
@@ -8368,7 +8368,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2UnwrappedCryptoKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2UnwrappedCryptoKey();
       var od = api.GooglePrivacyDlpV2UnwrappedCryptoKey.fromJson(o.toJson());
       checkGooglePrivacyDlpV2UnwrappedCryptoKey(
@@ -8378,7 +8378,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest();
       var od = api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
           o.toJson());
@@ -8389,7 +8389,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2UpdateInspectTemplateRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2UpdateInspectTemplateRequest();
       var od = api.GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
           o.toJson());
@@ -8399,7 +8399,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2UpdateJobTriggerRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2UpdateJobTriggerRequest();
       var od =
           api.GooglePrivacyDlpV2UpdateJobTriggerRequest.fromJson(o.toJson());
@@ -8410,7 +8410,7 @@ void main() {
 
   unittest.group('obj-schema-GooglePrivacyDlpV2UpdateStoredInfoTypeRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2UpdateStoredInfoTypeRequest();
       var od = api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
           o.toJson());
@@ -8420,7 +8420,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2Value', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Value();
       var od = api.GooglePrivacyDlpV2Value.fromJson(o.toJson());
       checkGooglePrivacyDlpV2Value(od as api.GooglePrivacyDlpV2Value);
@@ -8428,7 +8428,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2ValueFrequency', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ValueFrequency();
       var od = api.GooglePrivacyDlpV2ValueFrequency.fromJson(o.toJson());
       checkGooglePrivacyDlpV2ValueFrequency(
@@ -8437,7 +8437,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePrivacyDlpV2WordList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2WordList();
       var od = api.GooglePrivacyDlpV2WordList.fromJson(o.toJson());
       checkGooglePrivacyDlpV2WordList(od as api.GooglePrivacyDlpV2WordList);
@@ -8445,7 +8445,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
@@ -8453,7 +8453,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleRpcStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
       var od = api.GoogleRpcStatus.fromJson(o.toJson());
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
@@ -8461,7 +8461,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypeDate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeDate();
       var od = api.GoogleTypeDate.fromJson(o.toJson());
       checkGoogleTypeDate(od as api.GoogleTypeDate);
@@ -8469,7 +8469,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypeTimeOfDay', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeTimeOfDay();
       var od = api.GoogleTypeTimeOfDay.fromJson(o.toJson());
       checkGoogleTypeTimeOfDay(od as api.GoogleTypeTimeOfDay);
@@ -8477,7 +8477,7 @@ void main() {
   });
 
   unittest.group('resource-InfoTypesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).infoTypes;
       var arg_filter = 'foo';
@@ -8544,22 +8544,19 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2ListInfoTypesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              filter: arg_filter,
-              languageCode: arg_languageCode,
-              locationId: arg_locationId,
-              parent: arg_parent,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListInfoTypesResponse(
-            response as api.GooglePrivacyDlpV2ListInfoTypesResponse);
-      })));
+      final response = await res.list(
+          filter: arg_filter,
+          languageCode: arg_languageCode,
+          locationId: arg_locationId,
+          parent: arg_parent,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListInfoTypesResponse(
+          response as api.GooglePrivacyDlpV2ListInfoTypesResponse);
     });
   });
 
   unittest.group('resource-LocationsInfoTypesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).locations.infoTypes;
       var arg_parent = 'foo';
@@ -8623,21 +8620,18 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2ListInfoTypesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              languageCode: arg_languageCode,
-              locationId: arg_locationId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListInfoTypesResponse(
-            response as api.GooglePrivacyDlpV2ListInfoTypesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          languageCode: arg_languageCode,
+          locationId: arg_locationId,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListInfoTypesResponse(
+          response as api.GooglePrivacyDlpV2ListInfoTypesResponse);
     });
   });
 
   unittest.group('resource-OrganizationsDeidentifyTemplatesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.deidentifyTemplates;
       var arg_request =
@@ -8694,15 +8688,13 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DeidentifyTemplate(
-            response as api.GooglePrivacyDlpV2DeidentifyTemplate);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DeidentifyTemplate(
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.deidentifyTemplates;
       var arg_name = 'foo';
@@ -8750,14 +8742,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.deidentifyTemplates;
       var arg_name = 'foo';
@@ -8806,15 +8795,12 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DeidentifyTemplate(
-            response as api.GooglePrivacyDlpV2DeidentifyTemplate);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DeidentifyTemplate(
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.deidentifyTemplates;
       var arg_parent = 'foo';
@@ -8883,20 +8869,17 @@ void main() {
             .encode(buildGooglePrivacyDlpV2ListDeidentifyTemplatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              locationId: arg_locationId,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(
-            response as api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(
+          response as api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.deidentifyTemplates;
       var arg_request =
@@ -8953,17 +8936,15 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DeidentifyTemplate(
-            response as api.GooglePrivacyDlpV2DeidentifyTemplate);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DeidentifyTemplate(
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
   });
 
   unittest.group('resource-OrganizationsInspectTemplatesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.inspectTemplates;
       var arg_request = buildGooglePrivacyDlpV2CreateInspectTemplateRequest();
@@ -9018,15 +8999,13 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2InspectTemplate(
-            response as api.GooglePrivacyDlpV2InspectTemplate);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2InspectTemplate(
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.inspectTemplates;
       var arg_name = 'foo';
@@ -9074,14 +9053,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.inspectTemplates;
       var arg_name = 'foo';
@@ -9130,15 +9106,12 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2InspectTemplate(
-            response as api.GooglePrivacyDlpV2InspectTemplate);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2InspectTemplate(
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.inspectTemplates;
       var arg_parent = 'foo';
@@ -9207,20 +9180,17 @@ void main() {
             .encode(buildGooglePrivacyDlpV2ListInspectTemplatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              locationId: arg_locationId,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListInspectTemplatesResponse(
-            response as api.GooglePrivacyDlpV2ListInspectTemplatesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListInspectTemplatesResponse(
+          response as api.GooglePrivacyDlpV2ListInspectTemplatesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.inspectTemplates;
       var arg_request = buildGooglePrivacyDlpV2UpdateInspectTemplateRequest();
@@ -9275,18 +9245,16 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2InspectTemplate(
-            response as api.GooglePrivacyDlpV2InspectTemplate);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2InspectTemplate(
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
   });
 
   unittest.group('resource-OrganizationsLocationsDeidentifyTemplatesResource',
       () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.deidentifyTemplates;
       var arg_request =
@@ -9343,15 +9311,13 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DeidentifyTemplate(
-            response as api.GooglePrivacyDlpV2DeidentifyTemplate);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DeidentifyTemplate(
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.deidentifyTemplates;
       var arg_name = 'foo';
@@ -9399,14 +9365,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.deidentifyTemplates;
       var arg_name = 'foo';
@@ -9455,15 +9418,12 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DeidentifyTemplate(
-            response as api.GooglePrivacyDlpV2DeidentifyTemplate);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DeidentifyTemplate(
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.deidentifyTemplates;
       var arg_parent = 'foo';
@@ -9532,20 +9492,17 @@ void main() {
             .encode(buildGooglePrivacyDlpV2ListDeidentifyTemplatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              locationId: arg_locationId,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(
-            response as api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(
+          response as api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.deidentifyTemplates;
       var arg_request =
@@ -9602,17 +9559,15 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DeidentifyTemplate(
-            response as api.GooglePrivacyDlpV2DeidentifyTemplate);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DeidentifyTemplate(
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
   });
 
   unittest.group('resource-OrganizationsLocationsDlpJobsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.dlpJobs;
       var arg_parent = 'foo';
@@ -9691,24 +9646,21 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2ListDlpJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              locationId: arg_locationId,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              type: arg_type,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListDlpJobsResponse(
-            response as api.GooglePrivacyDlpV2ListDlpJobsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          type: arg_type,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListDlpJobsResponse(
+          response as api.GooglePrivacyDlpV2ListDlpJobsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsLocationsInspectTemplatesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.inspectTemplates;
       var arg_request = buildGooglePrivacyDlpV2CreateInspectTemplateRequest();
@@ -9763,15 +9715,13 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2InspectTemplate(
-            response as api.GooglePrivacyDlpV2InspectTemplate);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2InspectTemplate(
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.inspectTemplates;
       var arg_name = 'foo';
@@ -9819,14 +9769,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.inspectTemplates;
       var arg_name = 'foo';
@@ -9875,15 +9822,12 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2InspectTemplate(
-            response as api.GooglePrivacyDlpV2InspectTemplate);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2InspectTemplate(
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.inspectTemplates;
       var arg_parent = 'foo';
@@ -9952,20 +9896,17 @@ void main() {
             .encode(buildGooglePrivacyDlpV2ListInspectTemplatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              locationId: arg_locationId,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListInspectTemplatesResponse(
-            response as api.GooglePrivacyDlpV2ListInspectTemplatesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListInspectTemplatesResponse(
+          response as api.GooglePrivacyDlpV2ListInspectTemplatesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.inspectTemplates;
       var arg_request = buildGooglePrivacyDlpV2UpdateInspectTemplateRequest();
@@ -10020,17 +9961,15 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2InspectTemplate(
-            response as api.GooglePrivacyDlpV2InspectTemplate);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2InspectTemplate(
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
   });
 
   unittest.group('resource-OrganizationsLocationsJobTriggersResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.jobTriggers;
       var arg_request = buildGooglePrivacyDlpV2CreateJobTriggerRequest();
@@ -10084,15 +10023,13 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2JobTrigger(
-            response as api.GooglePrivacyDlpV2JobTrigger);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2JobTrigger(
+          response as api.GooglePrivacyDlpV2JobTrigger);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.jobTriggers;
       var arg_name = 'foo';
@@ -10140,14 +10077,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.jobTriggers;
       var arg_name = 'foo';
@@ -10195,15 +10129,12 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2JobTrigger(
-            response as api.GooglePrivacyDlpV2JobTrigger);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2JobTrigger(
+          response as api.GooglePrivacyDlpV2JobTrigger);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.jobTriggers;
       var arg_parent = 'foo';
@@ -10277,21 +10208,18 @@ void main() {
             .encode(buildGooglePrivacyDlpV2ListJobTriggersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              locationId: arg_locationId,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListJobTriggersResponse(
-            response as api.GooglePrivacyDlpV2ListJobTriggersResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListJobTriggersResponse(
+          response as api.GooglePrivacyDlpV2ListJobTriggersResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.jobTriggers;
       var arg_request = buildGooglePrivacyDlpV2UpdateJobTriggerRequest();
@@ -10345,17 +10273,15 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2JobTrigger(
-            response as api.GooglePrivacyDlpV2JobTrigger);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2JobTrigger(
+          response as api.GooglePrivacyDlpV2JobTrigger);
     });
   });
 
   unittest.group('resource-OrganizationsLocationsStoredInfoTypesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.storedInfoTypes;
       var arg_request = buildGooglePrivacyDlpV2CreateStoredInfoTypeRequest();
@@ -10409,15 +10335,13 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2StoredInfoType(
-            response as api.GooglePrivacyDlpV2StoredInfoType);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2StoredInfoType(
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.storedInfoTypes;
       var arg_name = 'foo';
@@ -10465,14 +10389,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.storedInfoTypes;
       var arg_name = 'foo';
@@ -10520,15 +10441,12 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2StoredInfoType(
-            response as api.GooglePrivacyDlpV2StoredInfoType);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2StoredInfoType(
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.storedInfoTypes;
       var arg_parent = 'foo';
@@ -10597,20 +10515,17 @@ void main() {
             .encode(buildGooglePrivacyDlpV2ListStoredInfoTypesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              locationId: arg_locationId,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(
-            response as api.GooglePrivacyDlpV2ListStoredInfoTypesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(
+          response as api.GooglePrivacyDlpV2ListStoredInfoTypesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.locations.storedInfoTypes;
       var arg_request = buildGooglePrivacyDlpV2UpdateStoredInfoTypeRequest();
@@ -10664,17 +10579,15 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2StoredInfoType(
-            response as api.GooglePrivacyDlpV2StoredInfoType);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2StoredInfoType(
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
   });
 
   unittest.group('resource-OrganizationsStoredInfoTypesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.storedInfoTypes;
       var arg_request = buildGooglePrivacyDlpV2CreateStoredInfoTypeRequest();
@@ -10728,15 +10641,13 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2StoredInfoType(
-            response as api.GooglePrivacyDlpV2StoredInfoType);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2StoredInfoType(
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.storedInfoTypes;
       var arg_name = 'foo';
@@ -10784,14 +10695,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.storedInfoTypes;
       var arg_name = 'foo';
@@ -10839,15 +10747,12 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2StoredInfoType(
-            response as api.GooglePrivacyDlpV2StoredInfoType);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2StoredInfoType(
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.storedInfoTypes;
       var arg_parent = 'foo';
@@ -10916,20 +10821,17 @@ void main() {
             .encode(buildGooglePrivacyDlpV2ListStoredInfoTypesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              locationId: arg_locationId,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(
-            response as api.GooglePrivacyDlpV2ListStoredInfoTypesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(
+          response as api.GooglePrivacyDlpV2ListStoredInfoTypesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).organizations.storedInfoTypes;
       var arg_request = buildGooglePrivacyDlpV2UpdateStoredInfoTypeRequest();
@@ -10983,17 +10885,15 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2StoredInfoType(
-            response as api.GooglePrivacyDlpV2StoredInfoType);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2StoredInfoType(
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
   });
 
   unittest.group('resource-ProjectsContentResource', () {
-    unittest.test('method--deidentify', () {
+    unittest.test('method--deidentify', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.content;
       var arg_request = buildGooglePrivacyDlpV2DeidentifyContentRequest();
@@ -11048,15 +10948,13 @@ void main() {
             .encode(buildGooglePrivacyDlpV2DeidentifyContentResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deidentify(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DeidentifyContentResponse(
-            response as api.GooglePrivacyDlpV2DeidentifyContentResponse);
-      })));
+      final response =
+          await res.deidentify(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DeidentifyContentResponse(
+          response as api.GooglePrivacyDlpV2DeidentifyContentResponse);
     });
 
-    unittest.test('method--inspect', () {
+    unittest.test('method--inspect', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.content;
       var arg_request = buildGooglePrivacyDlpV2InspectContentRequest();
@@ -11111,15 +11009,13 @@ void main() {
             .encode(buildGooglePrivacyDlpV2InspectContentResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .inspect(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2InspectContentResponse(
-            response as api.GooglePrivacyDlpV2InspectContentResponse);
-      })));
+      final response =
+          await res.inspect(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2InspectContentResponse(
+          response as api.GooglePrivacyDlpV2InspectContentResponse);
     });
 
-    unittest.test('method--reidentify', () {
+    unittest.test('method--reidentify', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.content;
       var arg_request = buildGooglePrivacyDlpV2ReidentifyContentRequest();
@@ -11174,17 +11070,15 @@ void main() {
             .encode(buildGooglePrivacyDlpV2ReidentifyContentResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reidentify(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ReidentifyContentResponse(
-            response as api.GooglePrivacyDlpV2ReidentifyContentResponse);
-      })));
+      final response =
+          await res.reidentify(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ReidentifyContentResponse(
+          response as api.GooglePrivacyDlpV2ReidentifyContentResponse);
     });
   });
 
   unittest.group('resource-ProjectsDeidentifyTemplatesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.deidentifyTemplates;
       var arg_request =
@@ -11241,15 +11135,13 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DeidentifyTemplate(
-            response as api.GooglePrivacyDlpV2DeidentifyTemplate);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DeidentifyTemplate(
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.deidentifyTemplates;
       var arg_name = 'foo';
@@ -11297,14 +11189,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.deidentifyTemplates;
       var arg_name = 'foo';
@@ -11353,15 +11242,12 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DeidentifyTemplate(
-            response as api.GooglePrivacyDlpV2DeidentifyTemplate);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DeidentifyTemplate(
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.deidentifyTemplates;
       var arg_parent = 'foo';
@@ -11430,20 +11316,17 @@ void main() {
             .encode(buildGooglePrivacyDlpV2ListDeidentifyTemplatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              locationId: arg_locationId,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(
-            response as api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(
+          response as api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.deidentifyTemplates;
       var arg_request =
@@ -11500,17 +11383,15 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DeidentifyTemplate(
-            response as api.GooglePrivacyDlpV2DeidentifyTemplate);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DeidentifyTemplate(
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
   });
 
   unittest.group('resource-ProjectsDlpJobsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.dlpJobs;
       var arg_request = buildGooglePrivacyDlpV2CancelDlpJobRequest();
@@ -11564,14 +11445,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.dlpJobs;
       var arg_request = buildGooglePrivacyDlpV2CreateDlpJobRequest();
@@ -11625,14 +11504,12 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2DlpJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DlpJob(response as api.GooglePrivacyDlpV2DlpJob);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DlpJob(response as api.GooglePrivacyDlpV2DlpJob);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.dlpJobs;
       var arg_name = 'foo';
@@ -11680,14 +11557,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.dlpJobs;
       var arg_name = 'foo';
@@ -11735,14 +11609,11 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2DlpJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DlpJob(response as api.GooglePrivacyDlpV2DlpJob);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DlpJob(response as api.GooglePrivacyDlpV2DlpJob);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.dlpJobs;
       var arg_parent = 'foo';
@@ -11821,24 +11692,21 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2ListDlpJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              locationId: arg_locationId,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              type: arg_type,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListDlpJobsResponse(
-            response as api.GooglePrivacyDlpV2ListDlpJobsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          type: arg_type,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListDlpJobsResponse(
+          response as api.GooglePrivacyDlpV2ListDlpJobsResponse);
     });
   });
 
   unittest.group('resource-ProjectsImageResource', () {
-    unittest.test('method--redact', () {
+    unittest.test('method--redact', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.image;
       var arg_request = buildGooglePrivacyDlpV2RedactImageRequest();
@@ -11893,17 +11761,15 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2RedactImageResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .redact(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2RedactImageResponse(
-            response as api.GooglePrivacyDlpV2RedactImageResponse);
-      })));
+      final response =
+          await res.redact(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2RedactImageResponse(
+          response as api.GooglePrivacyDlpV2RedactImageResponse);
     });
   });
 
   unittest.group('resource-ProjectsInspectTemplatesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.inspectTemplates;
       var arg_request = buildGooglePrivacyDlpV2CreateInspectTemplateRequest();
@@ -11958,15 +11824,13 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2InspectTemplate(
-            response as api.GooglePrivacyDlpV2InspectTemplate);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2InspectTemplate(
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.inspectTemplates;
       var arg_name = 'foo';
@@ -12014,14 +11878,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.inspectTemplates;
       var arg_name = 'foo';
@@ -12070,15 +11931,12 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2InspectTemplate(
-            response as api.GooglePrivacyDlpV2InspectTemplate);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2InspectTemplate(
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.inspectTemplates;
       var arg_parent = 'foo';
@@ -12147,20 +12005,17 @@ void main() {
             .encode(buildGooglePrivacyDlpV2ListInspectTemplatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              locationId: arg_locationId,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListInspectTemplatesResponse(
-            response as api.GooglePrivacyDlpV2ListInspectTemplatesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListInspectTemplatesResponse(
+          response as api.GooglePrivacyDlpV2ListInspectTemplatesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.inspectTemplates;
       var arg_request = buildGooglePrivacyDlpV2UpdateInspectTemplateRequest();
@@ -12215,17 +12070,15 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2InspectTemplate(
-            response as api.GooglePrivacyDlpV2InspectTemplate);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2InspectTemplate(
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
   });
 
   unittest.group('resource-ProjectsJobTriggersResource', () {
-    unittest.test('method--activate', () {
+    unittest.test('method--activate', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.jobTriggers;
       var arg_request = buildGooglePrivacyDlpV2ActivateJobTriggerRequest();
@@ -12279,14 +12132,12 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2DlpJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .activate(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DlpJob(response as api.GooglePrivacyDlpV2DlpJob);
-      })));
+      final response =
+          await res.activate(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DlpJob(response as api.GooglePrivacyDlpV2DlpJob);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.jobTriggers;
       var arg_request = buildGooglePrivacyDlpV2CreateJobTriggerRequest();
@@ -12340,15 +12191,13 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2JobTrigger(
-            response as api.GooglePrivacyDlpV2JobTrigger);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2JobTrigger(
+          response as api.GooglePrivacyDlpV2JobTrigger);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.jobTriggers;
       var arg_name = 'foo';
@@ -12396,14 +12245,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.jobTriggers;
       var arg_name = 'foo';
@@ -12451,15 +12297,12 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2JobTrigger(
-            response as api.GooglePrivacyDlpV2JobTrigger);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2JobTrigger(
+          response as api.GooglePrivacyDlpV2JobTrigger);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.jobTriggers;
       var arg_parent = 'foo';
@@ -12533,21 +12376,18 @@ void main() {
             .encode(buildGooglePrivacyDlpV2ListJobTriggersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              locationId: arg_locationId,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListJobTriggersResponse(
-            response as api.GooglePrivacyDlpV2ListJobTriggersResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListJobTriggersResponse(
+          response as api.GooglePrivacyDlpV2ListJobTriggersResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.jobTriggers;
       var arg_request = buildGooglePrivacyDlpV2UpdateJobTriggerRequest();
@@ -12601,17 +12441,15 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2JobTrigger(
-            response as api.GooglePrivacyDlpV2JobTrigger);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2JobTrigger(
+          response as api.GooglePrivacyDlpV2JobTrigger);
     });
   });
 
   unittest.group('resource-ProjectsLocationsContentResource', () {
-    unittest.test('method--deidentify', () {
+    unittest.test('method--deidentify', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.content;
       var arg_request = buildGooglePrivacyDlpV2DeidentifyContentRequest();
@@ -12666,15 +12504,13 @@ void main() {
             .encode(buildGooglePrivacyDlpV2DeidentifyContentResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deidentify(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DeidentifyContentResponse(
-            response as api.GooglePrivacyDlpV2DeidentifyContentResponse);
-      })));
+      final response =
+          await res.deidentify(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DeidentifyContentResponse(
+          response as api.GooglePrivacyDlpV2DeidentifyContentResponse);
     });
 
-    unittest.test('method--inspect', () {
+    unittest.test('method--inspect', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.content;
       var arg_request = buildGooglePrivacyDlpV2InspectContentRequest();
@@ -12729,15 +12565,13 @@ void main() {
             .encode(buildGooglePrivacyDlpV2InspectContentResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .inspect(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2InspectContentResponse(
-            response as api.GooglePrivacyDlpV2InspectContentResponse);
-      })));
+      final response =
+          await res.inspect(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2InspectContentResponse(
+          response as api.GooglePrivacyDlpV2InspectContentResponse);
     });
 
-    unittest.test('method--reidentify', () {
+    unittest.test('method--reidentify', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.content;
       var arg_request = buildGooglePrivacyDlpV2ReidentifyContentRequest();
@@ -12792,17 +12626,15 @@ void main() {
             .encode(buildGooglePrivacyDlpV2ReidentifyContentResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reidentify(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ReidentifyContentResponse(
-            response as api.GooglePrivacyDlpV2ReidentifyContentResponse);
-      })));
+      final response =
+          await res.reidentify(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ReidentifyContentResponse(
+          response as api.GooglePrivacyDlpV2ReidentifyContentResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsDeidentifyTemplatesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.deidentifyTemplates;
       var arg_request =
@@ -12859,15 +12691,13 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DeidentifyTemplate(
-            response as api.GooglePrivacyDlpV2DeidentifyTemplate);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DeidentifyTemplate(
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.deidentifyTemplates;
       var arg_name = 'foo';
@@ -12915,14 +12745,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.deidentifyTemplates;
       var arg_name = 'foo';
@@ -12971,15 +12798,12 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DeidentifyTemplate(
-            response as api.GooglePrivacyDlpV2DeidentifyTemplate);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DeidentifyTemplate(
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.deidentifyTemplates;
       var arg_parent = 'foo';
@@ -13048,20 +12872,17 @@ void main() {
             .encode(buildGooglePrivacyDlpV2ListDeidentifyTemplatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              locationId: arg_locationId,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(
-            response as api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(
+          response as api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.deidentifyTemplates;
       var arg_request =
@@ -13118,17 +12939,15 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2DeidentifyTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DeidentifyTemplate(
-            response as api.GooglePrivacyDlpV2DeidentifyTemplate);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DeidentifyTemplate(
+          response as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
   });
 
   unittest.group('resource-ProjectsLocationsDlpJobsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.dlpJobs;
       var arg_request = buildGooglePrivacyDlpV2CancelDlpJobRequest();
@@ -13182,14 +13001,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.dlpJobs;
       var arg_request = buildGooglePrivacyDlpV2CreateDlpJobRequest();
@@ -13243,14 +13060,12 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2DlpJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DlpJob(response as api.GooglePrivacyDlpV2DlpJob);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DlpJob(response as api.GooglePrivacyDlpV2DlpJob);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.dlpJobs;
       var arg_name = 'foo';
@@ -13298,14 +13113,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--finish', () {
+    unittest.test('method--finish', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.dlpJobs;
       var arg_request = buildGooglePrivacyDlpV2FinishDlpJobRequest();
@@ -13359,14 +13171,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .finish(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response =
+          await res.finish(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.dlpJobs;
       var arg_name = 'foo';
@@ -13414,14 +13224,11 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2DlpJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DlpJob(response as api.GooglePrivacyDlpV2DlpJob);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DlpJob(response as api.GooglePrivacyDlpV2DlpJob);
     });
 
-    unittest.test('method--hybridInspect', () {
+    unittest.test('method--hybridInspect', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.dlpJobs;
       var arg_request = buildGooglePrivacyDlpV2HybridInspectDlpJobRequest();
@@ -13476,15 +13283,13 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2HybridInspectResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .hybridInspect(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2HybridInspectResponse(
-            response as api.GooglePrivacyDlpV2HybridInspectResponse);
-      })));
+      final response =
+          await res.hybridInspect(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2HybridInspectResponse(
+          response as api.GooglePrivacyDlpV2HybridInspectResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.dlpJobs;
       var arg_parent = 'foo';
@@ -13563,24 +13368,21 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2ListDlpJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              locationId: arg_locationId,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              type: arg_type,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListDlpJobsResponse(
-            response as api.GooglePrivacyDlpV2ListDlpJobsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          type: arg_type,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListDlpJobsResponse(
+          response as api.GooglePrivacyDlpV2ListDlpJobsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsImageResource', () {
-    unittest.test('method--redact', () {
+    unittest.test('method--redact', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.image;
       var arg_request = buildGooglePrivacyDlpV2RedactImageRequest();
@@ -13635,17 +13437,15 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2RedactImageResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .redact(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2RedactImageResponse(
-            response as api.GooglePrivacyDlpV2RedactImageResponse);
-      })));
+      final response =
+          await res.redact(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2RedactImageResponse(
+          response as api.GooglePrivacyDlpV2RedactImageResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsInspectTemplatesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.inspectTemplates;
       var arg_request = buildGooglePrivacyDlpV2CreateInspectTemplateRequest();
@@ -13700,15 +13500,13 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2InspectTemplate(
-            response as api.GooglePrivacyDlpV2InspectTemplate);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2InspectTemplate(
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.inspectTemplates;
       var arg_name = 'foo';
@@ -13756,14 +13554,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.inspectTemplates;
       var arg_name = 'foo';
@@ -13812,15 +13607,12 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2InspectTemplate(
-            response as api.GooglePrivacyDlpV2InspectTemplate);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2InspectTemplate(
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.inspectTemplates;
       var arg_parent = 'foo';
@@ -13889,20 +13681,17 @@ void main() {
             .encode(buildGooglePrivacyDlpV2ListInspectTemplatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              locationId: arg_locationId,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListInspectTemplatesResponse(
-            response as api.GooglePrivacyDlpV2ListInspectTemplatesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListInspectTemplatesResponse(
+          response as api.GooglePrivacyDlpV2ListInspectTemplatesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.inspectTemplates;
       var arg_request = buildGooglePrivacyDlpV2UpdateInspectTemplateRequest();
@@ -13957,17 +13746,15 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2InspectTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2InspectTemplate(
-            response as api.GooglePrivacyDlpV2InspectTemplate);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2InspectTemplate(
+          response as api.GooglePrivacyDlpV2InspectTemplate);
     });
   });
 
   unittest.group('resource-ProjectsLocationsJobTriggersResource', () {
-    unittest.test('method--activate', () {
+    unittest.test('method--activate', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.jobTriggers;
       var arg_request = buildGooglePrivacyDlpV2ActivateJobTriggerRequest();
@@ -14021,14 +13808,12 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2DlpJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .activate(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2DlpJob(response as api.GooglePrivacyDlpV2DlpJob);
-      })));
+      final response =
+          await res.activate(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2DlpJob(response as api.GooglePrivacyDlpV2DlpJob);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.jobTriggers;
       var arg_request = buildGooglePrivacyDlpV2CreateJobTriggerRequest();
@@ -14082,15 +13867,13 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2JobTrigger(
-            response as api.GooglePrivacyDlpV2JobTrigger);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2JobTrigger(
+          response as api.GooglePrivacyDlpV2JobTrigger);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.jobTriggers;
       var arg_name = 'foo';
@@ -14138,14 +13921,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.jobTriggers;
       var arg_name = 'foo';
@@ -14193,15 +13973,12 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2JobTrigger(
-            response as api.GooglePrivacyDlpV2JobTrigger);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2JobTrigger(
+          response as api.GooglePrivacyDlpV2JobTrigger);
     });
 
-    unittest.test('method--hybridInspect', () {
+    unittest.test('method--hybridInspect', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.jobTriggers;
       var arg_request = buildGooglePrivacyDlpV2HybridInspectJobTriggerRequest();
@@ -14256,15 +14033,13 @@ void main() {
             convert.json.encode(buildGooglePrivacyDlpV2HybridInspectResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .hybridInspect(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2HybridInspectResponse(
-            response as api.GooglePrivacyDlpV2HybridInspectResponse);
-      })));
+      final response =
+          await res.hybridInspect(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2HybridInspectResponse(
+          response as api.GooglePrivacyDlpV2HybridInspectResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.jobTriggers;
       var arg_parent = 'foo';
@@ -14338,21 +14113,18 @@ void main() {
             .encode(buildGooglePrivacyDlpV2ListJobTriggersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              locationId: arg_locationId,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListJobTriggersResponse(
-            response as api.GooglePrivacyDlpV2ListJobTriggersResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListJobTriggersResponse(
+          response as api.GooglePrivacyDlpV2ListJobTriggersResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.jobTriggers;
       var arg_request = buildGooglePrivacyDlpV2UpdateJobTriggerRequest();
@@ -14406,17 +14178,15 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2JobTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2JobTrigger(
-            response as api.GooglePrivacyDlpV2JobTrigger);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2JobTrigger(
+          response as api.GooglePrivacyDlpV2JobTrigger);
     });
   });
 
   unittest.group('resource-ProjectsLocationsStoredInfoTypesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.storedInfoTypes;
       var arg_request = buildGooglePrivacyDlpV2CreateStoredInfoTypeRequest();
@@ -14470,15 +14240,13 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2StoredInfoType(
-            response as api.GooglePrivacyDlpV2StoredInfoType);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2StoredInfoType(
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.storedInfoTypes;
       var arg_name = 'foo';
@@ -14526,14 +14294,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.storedInfoTypes;
       var arg_name = 'foo';
@@ -14581,15 +14346,12 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2StoredInfoType(
-            response as api.GooglePrivacyDlpV2StoredInfoType);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2StoredInfoType(
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.storedInfoTypes;
       var arg_parent = 'foo';
@@ -14658,20 +14420,17 @@ void main() {
             .encode(buildGooglePrivacyDlpV2ListStoredInfoTypesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              locationId: arg_locationId,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(
-            response as api.GooglePrivacyDlpV2ListStoredInfoTypesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(
+          response as api.GooglePrivacyDlpV2ListStoredInfoTypesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.locations.storedInfoTypes;
       var arg_request = buildGooglePrivacyDlpV2UpdateStoredInfoTypeRequest();
@@ -14725,17 +14484,15 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2StoredInfoType(
-            response as api.GooglePrivacyDlpV2StoredInfoType);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2StoredInfoType(
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
   });
 
   unittest.group('resource-ProjectsStoredInfoTypesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.storedInfoTypes;
       var arg_request = buildGooglePrivacyDlpV2CreateStoredInfoTypeRequest();
@@ -14789,15 +14546,13 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2StoredInfoType(
-            response as api.GooglePrivacyDlpV2StoredInfoType);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2StoredInfoType(
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.storedInfoTypes;
       var arg_name = 'foo';
@@ -14845,14 +14600,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.storedInfoTypes;
       var arg_name = 'foo';
@@ -14900,15 +14652,12 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2StoredInfoType(
-            response as api.GooglePrivacyDlpV2StoredInfoType);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2StoredInfoType(
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.storedInfoTypes;
       var arg_parent = 'foo';
@@ -14977,20 +14726,17 @@ void main() {
             .encode(buildGooglePrivacyDlpV2ListStoredInfoTypesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              locationId: arg_locationId,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(
-            response as api.GooglePrivacyDlpV2ListStoredInfoTypesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          locationId: arg_locationId,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(
+          response as api.GooglePrivacyDlpV2ListStoredInfoTypesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DLPApi(mock).projects.storedInfoTypes;
       var arg_request = buildGooglePrivacyDlpV2UpdateStoredInfoTypeRequest();
@@ -15044,12 +14790,10 @@ void main() {
         var resp = convert.json.encode(buildGooglePrivacyDlpV2StoredInfoType());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGooglePrivacyDlpV2StoredInfoType(
-            response as api.GooglePrivacyDlpV2StoredInfoType);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGooglePrivacyDlpV2StoredInfoType(
+          response as api.GooglePrivacyDlpV2StoredInfoType);
     });
   });
 }

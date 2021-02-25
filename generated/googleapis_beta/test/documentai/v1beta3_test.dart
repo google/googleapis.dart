@@ -8136,7 +8136,7 @@ void checkGoogleTypeTimeZone(api.GoogleTypeTimeZone o) {
 void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiUiv1beta3CommonOperationMetadata();
       var od =
           api.GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata.fromJson(
@@ -8149,7 +8149,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata();
       var od =
@@ -8164,7 +8164,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata();
       var od =
@@ -8178,7 +8178,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata();
       var od =
           api.GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata.fromJson(
@@ -8191,7 +8191,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata();
       var od = api.GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata
@@ -8204,7 +8204,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata();
       var od = api.GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata
@@ -8217,7 +8217,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse();
       var od = api.GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse
@@ -8229,7 +8229,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata();
       var od =
           api.GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata.fromJson(
@@ -8241,7 +8241,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiUiv1beta3DisableProcessorResponse();
       var od =
           api.GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse.fromJson(
@@ -8253,7 +8253,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata();
       var od =
           api.GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata.fromJson(
@@ -8265,7 +8265,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiUiv1beta3EnableProcessorResponse();
       var od =
           api.GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse.fromJson(
@@ -8278,7 +8278,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata();
       var od =
@@ -8293,7 +8293,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse();
       var od =
@@ -8308,7 +8308,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata();
       var od = api.GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata
@@ -8321,7 +8321,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidation();
       var od =
@@ -8336,7 +8336,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse();
       var od = api.GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse
@@ -8349,7 +8349,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata();
       var od =
@@ -8364,7 +8364,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse();
       var od =
@@ -8379,7 +8379,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata();
       var od = api.GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata
@@ -8392,7 +8392,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata();
       var od =
@@ -8405,7 +8405,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1BatchProcessMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1BatchProcessMetadata();
       var od =
           api.GoogleCloudDocumentaiV1BatchProcessMetadata.fromJson(o.toJson());
@@ -8417,7 +8417,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus();
       var od =
@@ -8430,7 +8430,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1BatchProcessResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1BatchProcessResponse();
       var od =
           api.GoogleCloudDocumentaiV1BatchProcessResponse.fromJson(o.toJson());
@@ -8441,7 +8441,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1CommonOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1CommonOperationMetadata();
       var od = api.GoogleCloudDocumentaiV1CommonOperationMetadata.fromJson(
           o.toJson());
@@ -8451,7 +8451,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1HumanReviewStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1HumanReviewStatus();
       var od =
           api.GoogleCloudDocumentaiV1HumanReviewStatus.fromJson(o.toJson());
@@ -8462,7 +8462,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1ReviewDocumentOperationMetadata();
       var od =
           api.GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata.fromJson(
@@ -8474,7 +8474,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1ReviewDocumentResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1ReviewDocumentResponse();
       var od = api.GoogleCloudDocumentaiV1ReviewDocumentResponse.fromJson(
           o.toJson());
@@ -8486,7 +8486,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse();
       var od = api.GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse
           .fromJson(o.toJson());
@@ -8496,7 +8496,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1BoundingPoly', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1BoundingPoly();
       var od =
           api.GoogleCloudDocumentaiV1beta1BoundingPoly.fromJson(o.toJson());
@@ -8506,7 +8506,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1Document', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1Document();
       var od = api.GoogleCloudDocumentaiV1beta1Document.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta1Document(
@@ -8515,7 +8515,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentEntity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentEntity();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentEntity.fromJson(o.toJson());
@@ -8527,7 +8527,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue
           .fromJson(o.toJson());
@@ -8538,7 +8538,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta1DocumentEntityRelation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentEntityRelation();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentEntityRelation.fromJson(
           o.toJson());
@@ -8548,7 +8548,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPage();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentPage.fromJson(o.toJson());
@@ -8559,7 +8559,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageAnchor',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageAnchor();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageAnchor.fromJson(
           o.toJson());
@@ -8570,7 +8570,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef.fromJson(
@@ -8582,7 +8582,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageBlock',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageBlock();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageBlock.fromJson(
           o.toJson());
@@ -8594,7 +8594,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage.fromJson(
@@ -8606,7 +8606,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageDimension',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageDimension();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageDimension.fromJson(
           o.toJson());
@@ -8617,7 +8617,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageFormField',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageFormField();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageFormField.fromJson(
           o.toJson());
@@ -8628,7 +8628,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageImage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageImage();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageImage.fromJson(
           o.toJson());
@@ -8639,7 +8639,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageLayout',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageLayout();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageLayout.fromJson(
           o.toJson());
@@ -8649,7 +8649,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageLine', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageLine();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentPageLine.fromJson(o.toJson());
@@ -8660,7 +8660,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageMatrix',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageMatrix();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageMatrix.fromJson(
           o.toJson());
@@ -8671,7 +8671,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageParagraph',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageParagraph();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageParagraph.fromJson(
           o.toJson());
@@ -8682,7 +8682,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageTable',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageTable();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageTable.fromJson(
           o.toJson());
@@ -8693,7 +8693,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageTableTableCell();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell.fromJson(
@@ -8705,7 +8705,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageTableTableRow();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow.fromJson(
@@ -8717,7 +8717,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageToken',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageToken();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageToken.fromJson(
           o.toJson());
@@ -8729,7 +8729,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak
           .fromJson(o.toJson());
@@ -8740,7 +8740,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta1DocumentPageVisualElement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentPageVisualElement();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentPageVisualElement.fromJson(
@@ -8752,7 +8752,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentProvenance',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentProvenance();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentProvenance.fromJson(
           o.toJson());
@@ -8763,7 +8763,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta1DocumentProvenanceParent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentProvenanceParent();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentProvenanceParent.fromJson(
@@ -8774,7 +8774,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentRevision', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentRevision();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentRevision.fromJson(o.toJson());
@@ -8785,7 +8785,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview.fromJson(
@@ -8797,7 +8797,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentShardInfo',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentShardInfo();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentShardInfo.fromJson(
           o.toJson());
@@ -8807,7 +8807,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentStyle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentStyle();
       var od =
           api.GoogleCloudDocumentaiV1beta1DocumentStyle.fromJson(o.toJson());
@@ -8818,7 +8818,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentStyleFontSize',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentStyleFontSize();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentStyleFontSize.fromJson(
           o.toJson());
@@ -8829,7 +8829,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentTextAnchor',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentTextAnchor();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentTextAnchor.fromJson(
           o.toJson());
@@ -8841,7 +8841,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment
           .fromJson(o.toJson());
@@ -8852,7 +8852,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentTextChange',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentTextChange();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentTextChange.fromJson(
           o.toJson());
@@ -8863,7 +8863,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1DocumentTranslation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1DocumentTranslation();
       var od = api.GoogleCloudDocumentaiV1beta1DocumentTranslation.fromJson(
           o.toJson());
@@ -8873,7 +8873,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1GcsDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1GcsDestination();
       var od =
           api.GoogleCloudDocumentaiV1beta1GcsDestination.fromJson(o.toJson());
@@ -8883,7 +8883,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1GcsSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1GcsSource();
       var od = api.GoogleCloudDocumentaiV1beta1GcsSource.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta1GcsSource(
@@ -8892,7 +8892,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1InputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1InputConfig();
       var od = api.GoogleCloudDocumentaiV1beta1InputConfig.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta1InputConfig(
@@ -8901,7 +8901,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1NormalizedVertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1NormalizedVertex();
       var od =
           api.GoogleCloudDocumentaiV1beta1NormalizedVertex.fromJson(o.toJson());
@@ -8912,7 +8912,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1OperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1OperationMetadata();
       var od = api.GoogleCloudDocumentaiV1beta1OperationMetadata.fromJson(
           o.toJson());
@@ -8922,7 +8922,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1OutputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1OutputConfig();
       var od =
           api.GoogleCloudDocumentaiV1beta1OutputConfig.fromJson(o.toJson());
@@ -8933,7 +8933,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta1ProcessDocumentResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1ProcessDocumentResponse();
       var od = api.GoogleCloudDocumentaiV1beta1ProcessDocumentResponse.fromJson(
           o.toJson());
@@ -8943,7 +8943,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta1Vertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta1Vertex();
       var od = api.GoogleCloudDocumentaiV1beta1Vertex.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta1Vertex(
@@ -8954,7 +8954,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse();
       var od = api.GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse
           .fromJson(o.toJson());
@@ -8964,7 +8964,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2BoundingPoly', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2BoundingPoly();
       var od =
           api.GoogleCloudDocumentaiV1beta2BoundingPoly.fromJson(o.toJson());
@@ -8974,7 +8974,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2Document', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2Document();
       var od = api.GoogleCloudDocumentaiV1beta2Document.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta2Document(
@@ -8983,7 +8983,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentEntity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentEntity();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentEntity.fromJson(o.toJson());
@@ -8995,7 +8995,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue
           .fromJson(o.toJson());
@@ -9006,7 +9006,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta2DocumentEntityRelation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentEntityRelation();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentEntityRelation.fromJson(
           o.toJson());
@@ -9016,7 +9016,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentLabel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentLabel();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentLabel.fromJson(o.toJson());
@@ -9026,7 +9026,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPage();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentPage.fromJson(o.toJson());
@@ -9037,7 +9037,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageAnchor',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageAnchor();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageAnchor.fromJson(
           o.toJson());
@@ -9048,7 +9048,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef.fromJson(
@@ -9060,7 +9060,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageBlock',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageBlock();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageBlock.fromJson(
           o.toJson());
@@ -9072,7 +9072,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage.fromJson(
@@ -9084,7 +9084,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageDimension',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageDimension();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageDimension.fromJson(
           o.toJson());
@@ -9095,7 +9095,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageFormField',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageFormField();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageFormField.fromJson(
           o.toJson());
@@ -9106,7 +9106,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageImage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageImage();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageImage.fromJson(
           o.toJson());
@@ -9117,7 +9117,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageLayout',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageLayout();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageLayout.fromJson(
           o.toJson());
@@ -9127,7 +9127,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageLine', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageLine();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentPageLine.fromJson(o.toJson());
@@ -9138,7 +9138,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageMatrix',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageMatrix();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageMatrix.fromJson(
           o.toJson());
@@ -9149,7 +9149,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageParagraph',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageParagraph();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageParagraph.fromJson(
           o.toJson());
@@ -9160,7 +9160,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageTable',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageTable();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageTable.fromJson(
           o.toJson());
@@ -9171,7 +9171,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageTableTableCell();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell.fromJson(
@@ -9183,7 +9183,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageTableTableRow();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow.fromJson(
@@ -9195,7 +9195,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageToken',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageToken();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageToken.fromJson(
           o.toJson());
@@ -9207,7 +9207,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak
           .fromJson(o.toJson());
@@ -9218,7 +9218,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta2DocumentPageVisualElement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentPageVisualElement();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentPageVisualElement.fromJson(
@@ -9230,7 +9230,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentProvenance',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentProvenance();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentProvenance.fromJson(
           o.toJson());
@@ -9241,7 +9241,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta2DocumentProvenanceParent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentProvenanceParent();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentProvenanceParent.fromJson(
@@ -9252,7 +9252,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentRevision', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentRevision();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentRevision.fromJson(o.toJson());
@@ -9263,7 +9263,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview.fromJson(
@@ -9275,7 +9275,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentShardInfo',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentShardInfo();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentShardInfo.fromJson(
           o.toJson());
@@ -9285,7 +9285,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentStyle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentStyle();
       var od =
           api.GoogleCloudDocumentaiV1beta2DocumentStyle.fromJson(o.toJson());
@@ -9296,7 +9296,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentStyleFontSize',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentStyleFontSize();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentStyleFontSize.fromJson(
           o.toJson());
@@ -9307,7 +9307,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentTextAnchor',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentTextAnchor();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentTextAnchor.fromJson(
           o.toJson());
@@ -9319,7 +9319,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment
           .fromJson(o.toJson());
@@ -9330,7 +9330,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentTextChange',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentTextChange();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentTextChange.fromJson(
           o.toJson());
@@ -9341,7 +9341,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2DocumentTranslation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2DocumentTranslation();
       var od = api.GoogleCloudDocumentaiV1beta2DocumentTranslation.fromJson(
           o.toJson());
@@ -9351,7 +9351,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2GcsDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2GcsDestination();
       var od =
           api.GoogleCloudDocumentaiV1beta2GcsDestination.fromJson(o.toJson());
@@ -9361,7 +9361,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2GcsSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2GcsSource();
       var od = api.GoogleCloudDocumentaiV1beta2GcsSource.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta2GcsSource(
@@ -9370,7 +9370,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2InputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2InputConfig();
       var od = api.GoogleCloudDocumentaiV1beta2InputConfig.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta2InputConfig(
@@ -9379,7 +9379,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2NormalizedVertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2NormalizedVertex();
       var od =
           api.GoogleCloudDocumentaiV1beta2NormalizedVertex.fromJson(o.toJson());
@@ -9390,7 +9390,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2OperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2OperationMetadata();
       var od = api.GoogleCloudDocumentaiV1beta2OperationMetadata.fromJson(
           o.toJson());
@@ -9400,7 +9400,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2OutputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2OutputConfig();
       var od =
           api.GoogleCloudDocumentaiV1beta2OutputConfig.fromJson(o.toJson());
@@ -9411,7 +9411,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta2ProcessDocumentResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2ProcessDocumentResponse();
       var od = api.GoogleCloudDocumentaiV1beta2ProcessDocumentResponse.fromJson(
           o.toJson());
@@ -9421,7 +9421,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta2Vertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta2Vertex();
       var od = api.GoogleCloudDocumentaiV1beta2Vertex.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta2Vertex(
@@ -9431,7 +9431,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig();
       var od =
           api.GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig.fromJson(
@@ -9443,7 +9443,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3BatchProcessMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3BatchProcessMetadata();
       var od = api.GoogleCloudDocumentaiV1beta3BatchProcessMetadata.fromJson(
           o.toJson());
@@ -9455,7 +9455,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus();
       var od =
@@ -9469,7 +9469,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3BatchProcessRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3BatchProcessRequest();
       var od = api.GoogleCloudDocumentaiV1beta3BatchProcessRequest.fromJson(
           o.toJson());
@@ -9481,7 +9481,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig();
       var od =
@@ -9496,7 +9496,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig();
       var od =
@@ -9510,7 +9510,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3BatchProcessResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3BatchProcessResponse();
       var od = api.GoogleCloudDocumentaiV1beta3BatchProcessResponse.fromJson(
           o.toJson());
@@ -9520,7 +9520,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3BoundingPoly', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3BoundingPoly();
       var od =
           api.GoogleCloudDocumentaiV1beta3BoundingPoly.fromJson(o.toJson());
@@ -9531,7 +9531,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3CommonOperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3CommonOperationMetadata();
       var od = api.GoogleCloudDocumentaiV1beta3CommonOperationMetadata.fromJson(
           o.toJson());
@@ -9541,7 +9541,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3Document', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3Document();
       var od = api.GoogleCloudDocumentaiV1beta3Document.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta3Document(
@@ -9550,7 +9550,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentEntity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentEntity();
       var od =
           api.GoogleCloudDocumentaiV1beta3DocumentEntity.fromJson(o.toJson());
@@ -9562,7 +9562,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue
           .fromJson(o.toJson());
@@ -9573,7 +9573,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3DocumentEntityRelation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentEntityRelation();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentEntityRelation.fromJson(
           o.toJson());
@@ -9584,7 +9584,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentOutputConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentOutputConfig();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentOutputConfig.fromJson(
           o.toJson());
@@ -9596,7 +9596,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig();
       var od =
@@ -9609,7 +9609,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentPage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentPage();
       var od =
           api.GoogleCloudDocumentaiV1beta3DocumentPage.fromJson(o.toJson());
@@ -9620,7 +9620,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentPageAnchor',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentPageAnchor();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentPageAnchor.fromJson(
           o.toJson());
@@ -9631,7 +9631,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef();
       var od =
           api.GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef.fromJson(
@@ -9643,7 +9643,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentPageBlock',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentPageBlock();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentPageBlock.fromJson(
           o.toJson());
@@ -9655,7 +9655,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage();
       var od =
           api.GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage.fromJson(
@@ -9667,7 +9667,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentPageDimension',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentPageDimension();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentPageDimension.fromJson(
           o.toJson());
@@ -9678,7 +9678,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentPageFormField',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentPageFormField();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentPageFormField.fromJson(
           o.toJson());
@@ -9689,7 +9689,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentPageImage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentPageImage();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentPageImage.fromJson(
           o.toJson());
@@ -9700,7 +9700,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentPageLayout',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentPageLayout();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentPageLayout.fromJson(
           o.toJson());
@@ -9710,7 +9710,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentPageLine', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentPageLine();
       var od =
           api.GoogleCloudDocumentaiV1beta3DocumentPageLine.fromJson(o.toJson());
@@ -9721,7 +9721,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentPageMatrix',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentPageMatrix();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentPageMatrix.fromJson(
           o.toJson());
@@ -9732,7 +9732,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentPageParagraph',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentPageParagraph();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentPageParagraph.fromJson(
           o.toJson());
@@ -9743,7 +9743,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentPageTable',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentPageTable();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentPageTable.fromJson(
           o.toJson());
@@ -9754,7 +9754,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3DocumentPageTableTableCell', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentPageTableTableCell();
       var od =
           api.GoogleCloudDocumentaiV1beta3DocumentPageTableTableCell.fromJson(
@@ -9766,7 +9766,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentPageTableTableRow();
       var od =
           api.GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow.fromJson(
@@ -9778,7 +9778,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentPageToken',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentPageToken();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentPageToken.fromJson(
           o.toJson());
@@ -9790,7 +9790,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreak',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreak();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreak
           .fromJson(o.toJson());
@@ -9801,7 +9801,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3DocumentPageVisualElement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentPageVisualElement();
       var od =
           api.GoogleCloudDocumentaiV1beta3DocumentPageVisualElement.fromJson(
@@ -9813,7 +9813,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentProvenance',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentProvenance();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentProvenance.fromJson(
           o.toJson());
@@ -9824,7 +9824,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3DocumentProvenanceParent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentProvenanceParent();
       var od =
           api.GoogleCloudDocumentaiV1beta3DocumentProvenanceParent.fromJson(
@@ -9835,7 +9835,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentRevision', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentRevision();
       var od =
           api.GoogleCloudDocumentaiV1beta3DocumentRevision.fromJson(o.toJson());
@@ -9846,7 +9846,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3DocumentRevisionHumanReview', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentRevisionHumanReview();
       var od =
           api.GoogleCloudDocumentaiV1beta3DocumentRevisionHumanReview.fromJson(
@@ -9858,7 +9858,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentShardInfo',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentShardInfo();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentShardInfo.fromJson(
           o.toJson());
@@ -9868,7 +9868,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentStyle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentStyle();
       var od =
           api.GoogleCloudDocumentaiV1beta3DocumentStyle.fromJson(o.toJson());
@@ -9879,7 +9879,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentStyleFontSize',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentStyleFontSize();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentStyleFontSize.fromJson(
           o.toJson());
@@ -9890,7 +9890,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentTextAnchor',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentTextAnchor();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentTextAnchor.fromJson(
           o.toJson());
@@ -9902,7 +9902,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3DocumentTextAnchorTextSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentTextAnchorTextSegment();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentTextAnchorTextSegment
           .fromJson(o.toJson());
@@ -9913,7 +9913,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentTextChange',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentTextChange();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentTextChange.fromJson(
           o.toJson());
@@ -9924,7 +9924,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3DocumentTranslation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3DocumentTranslation();
       var od = api.GoogleCloudDocumentaiV1beta3DocumentTranslation.fromJson(
           o.toJson());
@@ -9934,7 +9934,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3GcsDocument', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3GcsDocument();
       var od = api.GoogleCloudDocumentaiV1beta3GcsDocument.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta3GcsDocument(
@@ -9943,7 +9943,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3GcsDocuments', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3GcsDocuments();
       var od =
           api.GoogleCloudDocumentaiV1beta3GcsDocuments.fromJson(o.toJson());
@@ -9953,7 +9953,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3GcsPrefix', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3GcsPrefix();
       var od = api.GoogleCloudDocumentaiV1beta3GcsPrefix.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta3GcsPrefix(
@@ -9963,7 +9963,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3HumanReviewStatus',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3HumanReviewStatus();
       var od = api.GoogleCloudDocumentaiV1beta3HumanReviewStatus.fromJson(
           o.toJson());
@@ -9973,7 +9973,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3NormalizedVertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3NormalizedVertex();
       var od =
           api.GoogleCloudDocumentaiV1beta3NormalizedVertex.fromJson(o.toJson());
@@ -9983,7 +9983,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3ProcessRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3ProcessRequest();
       var od =
           api.GoogleCloudDocumentaiV1beta3ProcessRequest.fromJson(o.toJson());
@@ -9993,7 +9993,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3ProcessResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3ProcessResponse();
       var od =
           api.GoogleCloudDocumentaiV1beta3ProcessResponse.fromJson(o.toJson());
@@ -10003,7 +10003,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3RawDocument', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3RawDocument();
       var od = api.GoogleCloudDocumentaiV1beta3RawDocument.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta3RawDocument(
@@ -10014,7 +10014,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata();
       var od = api.GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata
@@ -10026,7 +10026,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3ReviewDocumentRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3ReviewDocumentRequest();
       var od = api.GoogleCloudDocumentaiV1beta3ReviewDocumentRequest.fromJson(
           o.toJson());
@@ -10037,7 +10037,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDocumentaiV1beta3ReviewDocumentResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3ReviewDocumentResponse();
       var od = api.GoogleCloudDocumentaiV1beta3ReviewDocumentResponse.fromJson(
           o.toJson());
@@ -10047,7 +10047,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDocumentaiV1beta3Vertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDocumentaiV1beta3Vertex();
       var od = api.GoogleCloudDocumentaiV1beta3Vertex.fromJson(o.toJson());
       checkGoogleCloudDocumentaiV1beta3Vertex(
@@ -10056,7 +10056,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudLocationListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudLocationListLocationsResponse();
       var od =
           api.GoogleCloudLocationListLocationsResponse.fromJson(o.toJson());
@@ -10066,7 +10066,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudLocationLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudLocationLocation();
       var od = api.GoogleCloudLocationLocation.fromJson(o.toJson());
       checkGoogleCloudLocationLocation(od as api.GoogleCloudLocationLocation);
@@ -10074,7 +10074,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
@@ -10082,7 +10082,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
@@ -10090,7 +10090,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleRpcStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
       var od = api.GoogleRpcStatus.fromJson(o.toJson());
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
@@ -10098,7 +10098,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypeColor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeColor();
       var od = api.GoogleTypeColor.fromJson(o.toJson());
       checkGoogleTypeColor(od as api.GoogleTypeColor);
@@ -10106,7 +10106,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypeDate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeDate();
       var od = api.GoogleTypeDate.fromJson(o.toJson());
       checkGoogleTypeDate(od as api.GoogleTypeDate);
@@ -10114,7 +10114,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypeDateTime', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeDateTime();
       var od = api.GoogleTypeDateTime.fromJson(o.toJson());
       checkGoogleTypeDateTime(od as api.GoogleTypeDateTime);
@@ -10122,7 +10122,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypeMoney', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeMoney();
       var od = api.GoogleTypeMoney.fromJson(o.toJson());
       checkGoogleTypeMoney(od as api.GoogleTypeMoney);
@@ -10130,7 +10130,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypePostalAddress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypePostalAddress();
       var od = api.GoogleTypePostalAddress.fromJson(o.toJson());
       checkGoogleTypePostalAddress(od as api.GoogleTypePostalAddress);
@@ -10138,7 +10138,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypeTimeZone', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeTimeZone();
       var od = api.GoogleTypeTimeZone.fromJson(o.toJson());
       checkGoogleTypeTimeZone(od as api.GoogleTypeTimeZone);
@@ -10146,7 +10146,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DocumentApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -10194,15 +10194,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudLocationLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudLocationLocation(
-            response as api.GoogleCloudLocationLocation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudLocationLocation(
+          response as api.GoogleCloudLocationLocation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DocumentApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -10266,21 +10263,18 @@ void main() {
             .encode(buildGoogleCloudLocationListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudLocationListLocationsResponse(
-            response as api.GoogleCloudLocationListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudLocationListLocationsResponse(
+          response as api.GoogleCloudLocationListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DocumentApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -10328,17 +10322,14 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsProcessorsResource', () {
-    unittest.test('method--batchProcess', () {
+    unittest.test('method--batchProcess', () async {
       var mock = HttpServerMock();
       var res = api.DocumentApi(mock).projects.locations.processors;
       var arg_request = buildGoogleCloudDocumentaiV1beta3BatchProcessRequest();
@@ -10392,15 +10383,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchProcess(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.batchProcess(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--process', () {
+    unittest.test('method--process', () async {
       var mock = HttpServerMock();
       var res = api.DocumentApi(mock).projects.locations.processors;
       var arg_request = buildGoogleCloudDocumentaiV1beta3ProcessRequest();
@@ -10455,18 +10444,16 @@ void main() {
             .encode(buildGoogleCloudDocumentaiV1beta3ProcessResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .process(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDocumentaiV1beta3ProcessResponse(
-            response as api.GoogleCloudDocumentaiV1beta3ProcessResponse);
-      })));
+      final response =
+          await res.process(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudDocumentaiV1beta3ProcessResponse(
+          response as api.GoogleCloudDocumentaiV1beta3ProcessResponse);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsProcessorsHumanReviewConfigResource', () {
-    unittest.test('method--reviewDocument', () {
+    unittest.test('method--reviewDocument', () async {
       var mock = HttpServerMock();
       var res =
           api.DocumentApi(mock).projects.locations.processors.humanReviewConfig;
@@ -10523,19 +10510,17 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reviewDocument(arg_request, arg_humanReviewConfig,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.reviewDocument(
+          arg_request, arg_humanReviewConfig,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsProcessorsProcessorVersionsResource', () {
-    unittest.test('method--batchProcess', () {
+    unittest.test('method--batchProcess', () async {
       var mock = HttpServerMock();
       var res =
           api.DocumentApi(mock).projects.locations.processors.processorVersions;
@@ -10590,15 +10575,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchProcess(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.batchProcess(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--process', () {
+    unittest.test('method--process', () async {
       var mock = HttpServerMock();
       var res =
           api.DocumentApi(mock).projects.locations.processors.processorVersions;
@@ -10654,12 +10637,10 @@ void main() {
             .encode(buildGoogleCloudDocumentaiV1beta3ProcessResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .process(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDocumentaiV1beta3ProcessResponse(
-            response as api.GoogleCloudDocumentaiV1beta3ProcessResponse);
-      })));
+      final response =
+          await res.process(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudDocumentaiV1beta3ProcessResponse(
+          response as api.GoogleCloudDocumentaiV1beta3ProcessResponse);
     });
   });
 }

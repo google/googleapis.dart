@@ -783,7 +783,7 @@ void checkValidateAttestationOccurrenceResponse(
 
 void main() {
   unittest.group('obj-schema-AdmissionRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdmissionRule();
       var od = api.AdmissionRule.fromJson(o.toJson());
       checkAdmissionRule(od as api.AdmissionRule);
@@ -791,7 +791,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AdmissionWhitelistPattern', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdmissionWhitelistPattern();
       var od = api.AdmissionWhitelistPattern.fromJson(o.toJson());
       checkAdmissionWhitelistPattern(od as api.AdmissionWhitelistPattern);
@@ -799,7 +799,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AttestationOccurrence', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAttestationOccurrence();
       var od = api.AttestationOccurrence.fromJson(o.toJson());
       checkAttestationOccurrence(od as api.AttestationOccurrence);
@@ -807,7 +807,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Attestor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAttestor();
       var od = api.Attestor.fromJson(o.toJson());
       checkAttestor(od as api.Attestor);
@@ -815,7 +815,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AttestorPublicKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAttestorPublicKey();
       var od = api.AttestorPublicKey.fromJson(o.toJson());
       checkAttestorPublicKey(od as api.AttestorPublicKey);
@@ -823,7 +823,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -831,7 +831,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -839,7 +839,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -847,7 +847,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IamPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIamPolicy();
       var od = api.IamPolicy.fromJson(o.toJson());
       checkIamPolicy(od as api.IamPolicy);
@@ -855,7 +855,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Jwt', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJwt();
       var od = api.Jwt.fromJson(o.toJson());
       checkJwt(od as api.Jwt);
@@ -863,7 +863,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAttestorsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAttestorsResponse();
       var od = api.ListAttestorsResponse.fromJson(o.toJson());
       checkListAttestorsResponse(od as api.ListAttestorsResponse);
@@ -871,7 +871,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PkixPublicKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPkixPublicKey();
       var od = api.PkixPublicKey.fromJson(o.toJson());
       checkPkixPublicKey(od as api.PkixPublicKey);
@@ -879,7 +879,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -887,7 +887,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -895,7 +895,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Signature', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSignature();
       var od = api.Signature.fromJson(o.toJson());
       checkSignature(od as api.Signature);
@@ -903,7 +903,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -911,7 +911,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -919,7 +919,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserOwnedGrafeasNote', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserOwnedGrafeasNote();
       var od = api.UserOwnedGrafeasNote.fromJson(o.toJson());
       checkUserOwnedGrafeasNote(od as api.UserOwnedGrafeasNote);
@@ -927,7 +927,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ValidateAttestationOccurrenceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildValidateAttestationOccurrenceRequest();
       var od = api.ValidateAttestationOccurrenceRequest.fromJson(o.toJson());
       checkValidateAttestationOccurrenceRequest(
@@ -936,7 +936,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ValidateAttestationOccurrenceResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildValidateAttestationOccurrenceResponse();
       var od = api.ValidateAttestationOccurrenceResponse.fromJson(o.toJson());
       checkValidateAttestationOccurrenceResponse(
@@ -945,7 +945,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsResource', () {
-    unittest.test('method--getPolicy', () {
+    unittest.test('method--getPolicy', () async {
       var mock = HttpServerMock();
       var res = api.BinaryAuthorizationApi(mock).projects;
       var arg_name = 'foo';
@@ -993,14 +993,11 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getPolicy(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getPolicy(arg_name, $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--updatePolicy', () {
+    unittest.test('method--updatePolicy', () async {
       var mock = HttpServerMock();
       var res = api.BinaryAuthorizationApi(mock).projects;
       var arg_request = buildPolicy();
@@ -1053,16 +1050,14 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updatePolicy(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response =
+          await res.updatePolicy(arg_request, arg_name, $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
   });
 
   unittest.group('resource-ProjectsAttestorsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.BinaryAuthorizationApi(mock).projects.attestors;
       var arg_request = buildAttestor();
@@ -1120,15 +1115,12 @@ void main() {
         var resp = convert.json.encode(buildAttestor());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              attestorId: arg_attestorId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAttestor(response as api.Attestor);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          attestorId: arg_attestorId, $fields: arg_$fields);
+      checkAttestor(response as api.Attestor);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.BinaryAuthorizationApi(mock).projects.attestors;
       var arg_name = 'foo';
@@ -1176,14 +1168,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BinaryAuthorizationApi(mock).projects.attestors;
       var arg_name = 'foo';
@@ -1231,14 +1220,11 @@ void main() {
         var resp = convert.json.encode(buildAttestor());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAttestor(response as api.Attestor);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkAttestor(response as api.Attestor);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.BinaryAuthorizationApi(mock).projects.attestors;
       var arg_resource = 'foo';
@@ -1291,17 +1277,13 @@ void main() {
         var resp = convert.json.encode(buildIamPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIamPolicy(response as api.IamPolicy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkIamPolicy(response as api.IamPolicy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BinaryAuthorizationApi(mock).projects.attestors;
       var arg_parent = 'foo';
@@ -1359,17 +1341,14 @@ void main() {
         var resp = convert.json.encode(buildListAttestorsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAttestorsResponse(response as api.ListAttestorsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAttestorsResponse(response as api.ListAttestorsResponse);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.BinaryAuthorizationApi(mock).projects.attestors;
       var arg_request = buildSetIamPolicyRequest();
@@ -1422,14 +1401,12 @@ void main() {
         var resp = convert.json.encode(buildIamPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIamPolicy(response as api.IamPolicy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkIamPolicy(response as api.IamPolicy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.BinaryAuthorizationApi(mock).projects.attestors;
       var arg_request = buildTestIamPermissionsRequest();
@@ -1482,15 +1459,13 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.BinaryAuthorizationApi(mock).projects.attestors;
       var arg_request = buildAttestor();
@@ -1543,14 +1518,12 @@ void main() {
         var resp = convert.json.encode(buildAttestor());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAttestor(response as api.Attestor);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkAttestor(response as api.Attestor);
     });
 
-    unittest.test('method--validateAttestationOccurrence', () {
+    unittest.test('method--validateAttestationOccurrence', () async {
       var mock = HttpServerMock();
       var res = api.BinaryAuthorizationApi(mock).projects.attestors;
       var arg_request = buildValidateAttestationOccurrenceRequest();
@@ -1605,18 +1578,16 @@ void main() {
             convert.json.encode(buildValidateAttestationOccurrenceResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .validateAttestationOccurrence(arg_request, arg_attestor,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkValidateAttestationOccurrenceResponse(
-            response as api.ValidateAttestationOccurrenceResponse);
-      })));
+      final response = await res.validateAttestationOccurrence(
+          arg_request, arg_attestor,
+          $fields: arg_$fields);
+      checkValidateAttestationOccurrenceResponse(
+          response as api.ValidateAttestationOccurrenceResponse);
     });
   });
 
   unittest.group('resource-ProjectsPolicyResource', () {
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.BinaryAuthorizationApi(mock).projects.policy;
       var arg_resource = 'foo';
@@ -1669,17 +1640,13 @@ void main() {
         var resp = convert.json.encode(buildIamPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIamPolicy(response as api.IamPolicy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkIamPolicy(response as api.IamPolicy);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.BinaryAuthorizationApi(mock).projects.policy;
       var arg_request = buildSetIamPolicyRequest();
@@ -1732,14 +1699,12 @@ void main() {
         var resp = convert.json.encode(buildIamPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIamPolicy(response as api.IamPolicy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkIamPolicy(response as api.IamPolicy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.BinaryAuthorizationApi(mock).projects.policy;
       var arg_request = buildTestIamPermissionsRequest();
@@ -1792,17 +1757,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-SystempolicyResource', () {
-    unittest.test('method--getPolicy', () {
+    unittest.test('method--getPolicy', () async {
       var mock = HttpServerMock();
       var res = api.BinaryAuthorizationApi(mock).systempolicy;
       var arg_name = 'foo';
@@ -1850,11 +1813,8 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getPolicy(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getPolicy(arg_name, $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
   });
 }

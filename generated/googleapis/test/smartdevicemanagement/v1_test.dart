@@ -559,7 +559,7 @@ void checkGoogleHomeEnterpriseSdmV1Structure(
 
 void main() {
   unittest.group('obj-schema-GoogleHomeEnterpriseSdmV1Device', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleHomeEnterpriseSdmV1Device();
       var od = api.GoogleHomeEnterpriseSdmV1Device.fromJson(o.toJson());
       checkGoogleHomeEnterpriseSdmV1Device(
@@ -569,7 +569,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest();
       var od =
           api.GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest.fromJson(
@@ -581,7 +581,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse();
       var od =
           api.GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse.fromJson(
@@ -592,7 +592,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleHomeEnterpriseSdmV1ListDevicesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleHomeEnterpriseSdmV1ListDevicesResponse();
       var od =
           api.GoogleHomeEnterpriseSdmV1ListDevicesResponse.fromJson(o.toJson());
@@ -602,7 +602,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleHomeEnterpriseSdmV1ListRoomsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleHomeEnterpriseSdmV1ListRoomsResponse();
       var od =
           api.GoogleHomeEnterpriseSdmV1ListRoomsResponse.fromJson(o.toJson());
@@ -613,7 +613,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleHomeEnterpriseSdmV1ListStructuresResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleHomeEnterpriseSdmV1ListStructuresResponse();
       var od = api.GoogleHomeEnterpriseSdmV1ListStructuresResponse.fromJson(
           o.toJson());
@@ -623,7 +623,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleHomeEnterpriseSdmV1ParentRelation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleHomeEnterpriseSdmV1ParentRelation();
       var od = api.GoogleHomeEnterpriseSdmV1ParentRelation.fromJson(o.toJson());
       checkGoogleHomeEnterpriseSdmV1ParentRelation(
@@ -632,7 +632,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleHomeEnterpriseSdmV1Room', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleHomeEnterpriseSdmV1Room();
       var od = api.GoogleHomeEnterpriseSdmV1Room.fromJson(o.toJson());
       checkGoogleHomeEnterpriseSdmV1Room(
@@ -641,7 +641,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleHomeEnterpriseSdmV1Structure', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleHomeEnterpriseSdmV1Structure();
       var od = api.GoogleHomeEnterpriseSdmV1Structure.fromJson(o.toJson());
       checkGoogleHomeEnterpriseSdmV1Structure(
@@ -650,7 +650,7 @@ void main() {
   });
 
   unittest.group('resource-EnterprisesDevicesResource', () {
-    unittest.test('method--executeCommand', () {
+    unittest.test('method--executeCommand', () async {
       var mock = HttpServerMock();
       var res = api.SmartDeviceManagementApi(mock).enterprises.devices;
       var arg_request =
@@ -707,15 +707,13 @@ void main() {
             buildGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .executeCommand(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse(response
-            as api.GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse);
-      })));
+      final response =
+          await res.executeCommand(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse(response
+          as api.GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SmartDeviceManagementApi(mock).enterprises.devices;
       var arg_name = 'foo';
@@ -763,15 +761,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleHomeEnterpriseSdmV1Device());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleHomeEnterpriseSdmV1Device(
-            response as api.GoogleHomeEnterpriseSdmV1Device);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleHomeEnterpriseSdmV1Device(
+          response as api.GoogleHomeEnterpriseSdmV1Device);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SmartDeviceManagementApi(mock).enterprises.devices;
       var arg_parent = 'foo';
@@ -835,21 +830,18 @@ void main() {
             .encode(buildGoogleHomeEnterpriseSdmV1ListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleHomeEnterpriseSdmV1ListDevicesResponse(
-            response as api.GoogleHomeEnterpriseSdmV1ListDevicesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleHomeEnterpriseSdmV1ListDevicesResponse(
+          response as api.GoogleHomeEnterpriseSdmV1ListDevicesResponse);
     });
   });
 
   unittest.group('resource-EnterprisesStructuresResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SmartDeviceManagementApi(mock).enterprises.structures;
       var arg_name = 'foo';
@@ -898,15 +890,12 @@ void main() {
             convert.json.encode(buildGoogleHomeEnterpriseSdmV1Structure());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleHomeEnterpriseSdmV1Structure(
-            response as api.GoogleHomeEnterpriseSdmV1Structure);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleHomeEnterpriseSdmV1Structure(
+          response as api.GoogleHomeEnterpriseSdmV1Structure);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SmartDeviceManagementApi(mock).enterprises.structures;
       var arg_parent = 'foo';
@@ -970,21 +959,18 @@ void main() {
             .encode(buildGoogleHomeEnterpriseSdmV1ListStructuresResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleHomeEnterpriseSdmV1ListStructuresResponse(
-            response as api.GoogleHomeEnterpriseSdmV1ListStructuresResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleHomeEnterpriseSdmV1ListStructuresResponse(
+          response as api.GoogleHomeEnterpriseSdmV1ListStructuresResponse);
     });
   });
 
   unittest.group('resource-EnterprisesStructuresRoomsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SmartDeviceManagementApi(mock).enterprises.structures.rooms;
       var arg_name = 'foo';
@@ -1032,15 +1018,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleHomeEnterpriseSdmV1Room());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleHomeEnterpriseSdmV1Room(
-            response as api.GoogleHomeEnterpriseSdmV1Room);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleHomeEnterpriseSdmV1Room(
+          response as api.GoogleHomeEnterpriseSdmV1Room);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SmartDeviceManagementApi(mock).enterprises.structures.rooms;
       var arg_parent = 'foo';
@@ -1099,15 +1082,12 @@ void main() {
             .encode(buildGoogleHomeEnterpriseSdmV1ListRoomsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleHomeEnterpriseSdmV1ListRoomsResponse(
-            response as api.GoogleHomeEnterpriseSdmV1ListRoomsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleHomeEnterpriseSdmV1ListRoomsResponse(
+          response as api.GoogleHomeEnterpriseSdmV1ListRoomsResponse);
     });
   });
 }

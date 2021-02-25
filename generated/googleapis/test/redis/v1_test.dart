@@ -988,7 +988,7 @@ void checkUpgradeInstanceRequest(api.UpgradeInstanceRequest o) {
 
 void main() {
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -996,7 +996,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExportInstanceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExportInstanceRequest();
       var od = api.ExportInstanceRequest.fromJson(o.toJson());
       checkExportInstanceRequest(od as api.ExportInstanceRequest);
@@ -1004,7 +1004,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FailoverInstanceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFailoverInstanceRequest();
       var od = api.FailoverInstanceRequest.fromJson(o.toJson());
       checkFailoverInstanceRequest(od as api.FailoverInstanceRequest);
@@ -1012,7 +1012,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GcsDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGcsDestination();
       var od = api.GcsDestination.fromJson(o.toJson());
       checkGcsDestination(od as api.GcsDestination);
@@ -1020,7 +1020,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GcsSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGcsSource();
       var od = api.GcsSource.fromJson(o.toJson());
       checkGcsSource(od as api.GcsSource);
@@ -1028,7 +1028,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRedisV1LocationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRedisV1LocationMetadata();
       var od = api.GoogleCloudRedisV1LocationMetadata.fromJson(o.toJson());
       checkGoogleCloudRedisV1LocationMetadata(
@@ -1037,7 +1037,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRedisV1OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRedisV1OperationMetadata();
       var od = api.GoogleCloudRedisV1OperationMetadata.fromJson(o.toJson());
       checkGoogleCloudRedisV1OperationMetadata(
@@ -1046,7 +1046,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRedisV1ZoneMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRedisV1ZoneMetadata();
       var od = api.GoogleCloudRedisV1ZoneMetadata.fromJson(o.toJson());
       checkGoogleCloudRedisV1ZoneMetadata(
@@ -1055,7 +1055,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImportInstanceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImportInstanceRequest();
       var od = api.ImportInstanceRequest.fromJson(o.toJson());
       checkImportInstanceRequest(od as api.ImportInstanceRequest);
@@ -1063,7 +1063,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInputConfig();
       var od = api.InputConfig.fromJson(o.toJson());
       checkInputConfig(od as api.InputConfig);
@@ -1071,7 +1071,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Instance', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstance();
       var od = api.Instance.fromJson(o.toJson());
       checkInstance(od as api.Instance);
@@ -1079,7 +1079,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstanceAuthString', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstanceAuthString();
       var od = api.InstanceAuthString.fromJson(o.toJson());
       checkInstanceAuthString(od as api.InstanceAuthString);
@@ -1087,7 +1087,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListInstancesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListInstancesResponse();
       var od = api.ListInstancesResponse.fromJson(o.toJson());
       checkListInstancesResponse(od as api.ListInstancesResponse);
@@ -1095,7 +1095,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -1103,7 +1103,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -1111,7 +1111,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -1119,7 +1119,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -1127,7 +1127,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OutputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOutputConfig();
       var od = api.OutputConfig.fromJson(o.toJson());
       checkOutputConfig(od as api.OutputConfig);
@@ -1135,7 +1135,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -1143,7 +1143,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TlsCertificate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTlsCertificate();
       var od = api.TlsCertificate.fromJson(o.toJson());
       checkTlsCertificate(od as api.TlsCertificate);
@@ -1151,7 +1151,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpgradeInstanceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpgradeInstanceRequest();
       var od = api.UpgradeInstanceRequest.fromJson(o.toJson());
       checkUpgradeInstanceRequest(od as api.UpgradeInstanceRequest);
@@ -1159,7 +1159,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudRedisApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -1207,14 +1207,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudRedisApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -1277,20 +1274,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsInstancesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_request = buildInstance();
@@ -1348,15 +1342,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              instanceId: arg_instanceId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          instanceId: arg_instanceId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_name = 'foo';
@@ -1404,14 +1395,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--export', () {
+    unittest.test('method--export', () async {
       var mock = HttpServerMock();
       var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_request = buildExportInstanceRequest();
@@ -1464,14 +1452,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .export(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.export(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--failover', () {
+    unittest.test('method--failover', () async {
       var mock = HttpServerMock();
       var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_request = buildFailoverInstanceRequest();
@@ -1524,14 +1510,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .failover(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.failover(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_name = 'foo';
@@ -1579,14 +1563,11 @@ void main() {
         var resp = convert.json.encode(buildInstance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInstance(response as api.Instance);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkInstance(response as api.Instance);
     });
 
-    unittest.test('method--getAuthString', () {
+    unittest.test('method--getAuthString', () async {
       var mock = HttpServerMock();
       var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_name = 'foo';
@@ -1634,14 +1615,11 @@ void main() {
         var resp = convert.json.encode(buildInstanceAuthString());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getAuthString(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInstanceAuthString(response as api.InstanceAuthString);
-      })));
+      final response = await res.getAuthString(arg_name, $fields: arg_$fields);
+      checkInstanceAuthString(response as api.InstanceAuthString);
     });
 
-    unittest.test('method--import', () {
+    unittest.test('method--import', () async {
       var mock = HttpServerMock();
       var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_request = buildImportInstanceRequest();
@@ -1694,14 +1672,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .import(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.import(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_parent = 'foo';
@@ -1759,17 +1735,14 @@ void main() {
         var resp = convert.json.encode(buildListInstancesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListInstancesResponse(response as api.ListInstancesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListInstancesResponse(response as api.ListInstancesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_request = buildInstance();
@@ -1827,15 +1800,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--upgrade', () {
+    unittest.test('method--upgrade', () async {
       var mock = HttpServerMock();
       var res = api.CloudRedisApi(mock).projects.locations.instances;
       var arg_request = buildUpgradeInstanceRequest();
@@ -1888,16 +1858,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .upgrade(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.upgrade(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.CloudRedisApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -1945,14 +1913,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.cancel(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudRedisApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -2000,14 +1965,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudRedisApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -2055,14 +2017,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudRedisApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -2125,15 +2084,12 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 }

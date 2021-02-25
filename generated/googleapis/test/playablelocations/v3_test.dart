@@ -651,7 +651,7 @@ void checkGoogleTypeLatLng(api.GoogleTypeLatLng o) {
 
 void main() {
   unittest.group('obj-schema-GoogleMapsPlayablelocationsV3Impression', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleMapsPlayablelocationsV3Impression();
       var od = api.GoogleMapsPlayablelocationsV3Impression.fromJson(o.toJson());
       checkGoogleMapsPlayablelocationsV3Impression(
@@ -661,7 +661,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleMapsPlayablelocationsV3LogImpressionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleMapsPlayablelocationsV3LogImpressionsRequest();
       var od = api.GoogleMapsPlayablelocationsV3LogImpressionsRequest.fromJson(
           o.toJson());
@@ -672,7 +672,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleMapsPlayablelocationsV3LogImpressionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleMapsPlayablelocationsV3LogImpressionsResponse();
       var od = api.GoogleMapsPlayablelocationsV3LogImpressionsResponse.fromJson(
           o.toJson());
@@ -683,7 +683,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleMapsPlayablelocationsV3LogPlayerReportsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleMapsPlayablelocationsV3LogPlayerReportsRequest();
       var od =
           api.GoogleMapsPlayablelocationsV3LogPlayerReportsRequest.fromJson(
@@ -695,7 +695,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleMapsPlayablelocationsV3LogPlayerReportsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleMapsPlayablelocationsV3LogPlayerReportsResponse();
       var od =
           api.GoogleMapsPlayablelocationsV3LogPlayerReportsResponse.fromJson(
@@ -706,7 +706,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleMapsPlayablelocationsV3PlayerReport', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleMapsPlayablelocationsV3PlayerReport();
       var od =
           api.GoogleMapsPlayablelocationsV3PlayerReport.fromJson(o.toJson());
@@ -717,7 +717,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleMapsPlayablelocationsV3SampleAreaFilter',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleMapsPlayablelocationsV3SampleAreaFilter();
       var od = api.GoogleMapsPlayablelocationsV3SampleAreaFilter.fromJson(
           o.toJson());
@@ -727,7 +727,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleMapsPlayablelocationsV3SampleCriterion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleMapsPlayablelocationsV3SampleCriterion();
       var od =
           api.GoogleMapsPlayablelocationsV3SampleCriterion.fromJson(o.toJson());
@@ -737,7 +737,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleMapsPlayablelocationsV3SampleFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleMapsPlayablelocationsV3SampleFilter();
       var od =
           api.GoogleMapsPlayablelocationsV3SampleFilter.fromJson(o.toJson());
@@ -748,7 +748,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleMapsPlayablelocationsV3SamplePlayableLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleMapsPlayablelocationsV3SamplePlayableLocation();
       var od = api.GoogleMapsPlayablelocationsV3SamplePlayableLocation.fromJson(
           o.toJson());
@@ -759,7 +759,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleMapsPlayablelocationsV3SamplePlayableLocationList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleMapsPlayablelocationsV3SamplePlayableLocationList();
       var od =
           api.GoogleMapsPlayablelocationsV3SamplePlayableLocationList.fromJson(
@@ -772,7 +772,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest();
       var od = api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest
@@ -785,7 +785,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse();
       var od = api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse
@@ -797,7 +797,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleMapsPlayablelocationsV3SampleSpacingOptions',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleMapsPlayablelocationsV3SampleSpacingOptions();
       var od = api.GoogleMapsPlayablelocationsV3SampleSpacingOptions.fromJson(
           o.toJson());
@@ -807,7 +807,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleMapsUnityClientInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleMapsUnityClientInfo();
       var od = api.GoogleMapsUnityClientInfo.fromJson(o.toJson());
       checkGoogleMapsUnityClientInfo(od as api.GoogleMapsUnityClientInfo);
@@ -815,7 +815,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypeLatLng', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeLatLng();
       var od = api.GoogleTypeLatLng.fromJson(o.toJson());
       checkGoogleTypeLatLng(od as api.GoogleTypeLatLng);
@@ -823,7 +823,7 @@ void main() {
   });
 
   unittest.group('resource-V3Resource', () {
-    unittest.test('method--logImpressions', () {
+    unittest.test('method--logImpressions', () async {
       var mock = HttpServerMock();
       var res = api.PlayableLocationsApi(mock).v3;
       var arg_request =
@@ -878,15 +878,13 @@ void main() {
             .encode(buildGoogleMapsPlayablelocationsV3LogImpressionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .logImpressions(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleMapsPlayablelocationsV3LogImpressionsResponse(response
-            as api.GoogleMapsPlayablelocationsV3LogImpressionsResponse);
-      })));
+      final response =
+          await res.logImpressions(arg_request, $fields: arg_$fields);
+      checkGoogleMapsPlayablelocationsV3LogImpressionsResponse(
+          response as api.GoogleMapsPlayablelocationsV3LogImpressionsResponse);
     });
 
-    unittest.test('method--logPlayerReports', () {
+    unittest.test('method--logPlayerReports', () async {
       var mock = HttpServerMock();
       var res = api.PlayableLocationsApi(mock).v3;
       var arg_request =
@@ -941,15 +939,13 @@ void main() {
             buildGoogleMapsPlayablelocationsV3LogPlayerReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .logPlayerReports(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleMapsPlayablelocationsV3LogPlayerReportsResponse(response
-            as api.GoogleMapsPlayablelocationsV3LogPlayerReportsResponse);
-      })));
+      final response =
+          await res.logPlayerReports(arg_request, $fields: arg_$fields);
+      checkGoogleMapsPlayablelocationsV3LogPlayerReportsResponse(response
+          as api.GoogleMapsPlayablelocationsV3LogPlayerReportsResponse);
     });
 
-    unittest.test('method--samplePlayableLocations', () {
+    unittest.test('method--samplePlayableLocations', () async {
       var mock = HttpServerMock();
       var res = api.PlayableLocationsApi(mock).v3;
       var arg_request =
@@ -1004,13 +1000,10 @@ void main() {
             buildGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .samplePlayableLocations(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse(
-            response as api
-                .GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse);
-      })));
+      final response =
+          await res.samplePlayableLocations(arg_request, $fields: arg_$fields);
+      checkGoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse(response
+          as api.GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse);
     });
   });
 }

@@ -501,7 +501,7 @@ void checkTargetLocation(api.TargetLocation o) {
 
 void main() {
   unittest.group('obj-schema-AcceptInvitationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAcceptInvitationRequest();
       var od = api.AcceptInvitationRequest.fromJson(o.toJson());
       checkAcceptInvitationRequest(od as api.AcceptInvitationRequest);
@@ -509,7 +509,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Account', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccount();
       var od = api.Account.fromJson(o.toJson());
       checkAccount(od as api.Account);
@@ -517,7 +517,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Admin', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdmin();
       var od = api.Admin.fromJson(o.toJson());
       checkAdmin(od as api.Admin);
@@ -525,7 +525,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeclineInvitationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeclineInvitationRequest();
       var od = api.DeclineInvitationRequest.fromJson(o.toJson());
       checkDeclineInvitationRequest(od as api.DeclineInvitationRequest);
@@ -533,7 +533,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -541,7 +541,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Invitation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInvitation();
       var od = api.Invitation.fromJson(o.toJson());
       checkInvitation(od as api.Invitation);
@@ -549,7 +549,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAccountAdminsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAccountAdminsResponse();
       var od = api.ListAccountAdminsResponse.fromJson(o.toJson());
       checkListAccountAdminsResponse(od as api.ListAccountAdminsResponse);
@@ -557,7 +557,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAccountsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAccountsResponse();
       var od = api.ListAccountsResponse.fromJson(o.toJson());
       checkListAccountsResponse(od as api.ListAccountsResponse);
@@ -565,7 +565,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListInvitationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListInvitationsResponse();
       var od = api.ListInvitationsResponse.fromJson(o.toJson());
       checkListInvitationsResponse(od as api.ListInvitationsResponse);
@@ -573,7 +573,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationAdminsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationAdminsResponse();
       var od = api.ListLocationAdminsResponse.fromJson(o.toJson());
       checkListLocationAdminsResponse(od as api.ListLocationAdminsResponse);
@@ -581,7 +581,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrganizationInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrganizationInfo();
       var od = api.OrganizationInfo.fromJson(o.toJson());
       checkOrganizationInfo(od as api.OrganizationInfo);
@@ -589,7 +589,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PostalAddress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPostalAddress();
       var od = api.PostalAddress.fromJson(o.toJson());
       checkPostalAddress(od as api.PostalAddress);
@@ -597,7 +597,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TargetLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTargetLocation();
       var od = api.TargetLocation.fromJson(o.toJson());
       checkTargetLocation(od as api.TargetLocation);
@@ -605,7 +605,7 @@ void main() {
   });
 
   unittest.group('resource-AccountsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.MyBusinessAccountManagementApi(mock).accounts;
       var arg_request = buildAccount();
@@ -656,14 +656,11 @@ void main() {
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccount(response as api.Account);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkAccount(response as api.Account);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.MyBusinessAccountManagementApi(mock).accounts;
       var arg_name = 'foo';
@@ -711,14 +708,11 @@ void main() {
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccount(response as api.Account);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkAccount(response as api.Account);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.MyBusinessAccountManagementApi(mock).accounts;
       var arg_filter = 'foo';
@@ -784,19 +778,16 @@ void main() {
         var resp = convert.json.encode(buildListAccountsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              parentAccount: arg_parentAccount,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAccountsResponse(response as api.ListAccountsResponse);
-      })));
+      final response = await res.list(
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          parentAccount: arg_parentAccount,
+          $fields: arg_$fields);
+      checkListAccountsResponse(response as api.ListAccountsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.MyBusinessAccountManagementApi(mock).accounts;
       var arg_request = buildAccount();
@@ -859,19 +850,16 @@ void main() {
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask,
-              validateOnly: arg_validateOnly,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccount(response as api.Account);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask,
+          validateOnly: arg_validateOnly,
+          $fields: arg_$fields);
+      checkAccount(response as api.Account);
     });
   });
 
   unittest.group('resource-AccountsAdminsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.MyBusinessAccountManagementApi(mock).accounts.admins;
       var arg_request = buildAdmin();
@@ -924,14 +912,12 @@ void main() {
         var resp = convert.json.encode(buildAdmin());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAdmin(response as api.Admin);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkAdmin(response as api.Admin);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.MyBusinessAccountManagementApi(mock).accounts.admins;
       var arg_name = 'foo';
@@ -979,14 +965,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.MyBusinessAccountManagementApi(mock).accounts.admins;
       var arg_parent = 'foo';
@@ -1034,15 +1017,11 @@ void main() {
         var resp = convert.json.encode(buildListAccountAdminsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAccountAdminsResponse(
-            response as api.ListAccountAdminsResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkListAccountAdminsResponse(response as api.ListAccountAdminsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.MyBusinessAccountManagementApi(mock).accounts.admins;
       var arg_request = buildAdmin();
@@ -1100,17 +1079,14 @@ void main() {
         var resp = convert.json.encode(buildAdmin());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAdmin(response as api.Admin);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkAdmin(response as api.Admin);
     });
   });
 
   unittest.group('resource-AccountsInvitationsResource', () {
-    unittest.test('method--accept', () {
+    unittest.test('method--accept', () async {
       var mock = HttpServerMock();
       var res = api.MyBusinessAccountManagementApi(mock).accounts.invitations;
       var arg_request = buildAcceptInvitationRequest();
@@ -1163,14 +1139,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .accept(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.accept(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--decline', () {
+    unittest.test('method--decline', () async {
       var mock = HttpServerMock();
       var res = api.MyBusinessAccountManagementApi(mock).accounts.invitations;
       var arg_request = buildDeclineInvitationRequest();
@@ -1223,14 +1197,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .decline(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.decline(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.MyBusinessAccountManagementApi(mock).accounts.invitations;
       var arg_parent = 'foo';
@@ -1283,16 +1255,14 @@ void main() {
         var resp = convert.json.encode(buildListInvitationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, filter: arg_filter, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListInvitationsResponse(response as api.ListInvitationsResponse);
-      })));
+      final response =
+          await res.list(arg_parent, filter: arg_filter, $fields: arg_$fields);
+      checkListInvitationsResponse(response as api.ListInvitationsResponse);
     });
   });
 
   unittest.group('resource-LocationsAdminsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.MyBusinessAccountManagementApi(mock).locations.admins;
       var arg_request = buildAdmin();
@@ -1345,14 +1315,12 @@ void main() {
         var resp = convert.json.encode(buildAdmin());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAdmin(response as api.Admin);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkAdmin(response as api.Admin);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.MyBusinessAccountManagementApi(mock).locations.admins;
       var arg_name = 'foo';
@@ -1400,14 +1368,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.MyBusinessAccountManagementApi(mock).locations.admins;
       var arg_parent = 'foo';
@@ -1455,15 +1420,12 @@ void main() {
         var resp = convert.json.encode(buildListLocationAdminsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationAdminsResponse(
-            response as api.ListLocationAdminsResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkListLocationAdminsResponse(
+          response as api.ListLocationAdminsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.MyBusinessAccountManagementApi(mock).locations.admins;
       var arg_request = buildAdmin();
@@ -1521,12 +1483,9 @@ void main() {
         var resp = convert.json.encode(buildAdmin());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAdmin(response as api.Admin);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkAdmin(response as api.Admin);
     });
   });
 }

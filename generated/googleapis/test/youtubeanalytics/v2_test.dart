@@ -544,7 +544,7 @@ void checkResultTableColumnHeader(api.ResultTableColumnHeader o) {
 
 void main() {
   unittest.group('obj-schema-EmptyResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmptyResponse();
       var od = api.EmptyResponse.fromJson(o.toJson());
       checkEmptyResponse(od as api.EmptyResponse);
@@ -552,7 +552,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ErrorProto', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildErrorProto();
       var od = api.ErrorProto.fromJson(o.toJson());
       checkErrorProto(od as api.ErrorProto);
@@ -560,7 +560,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Errors', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildErrors();
       var od = api.Errors.fromJson(o.toJson());
       checkErrors(od as api.Errors);
@@ -568,7 +568,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Group', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroup();
       var od = api.Group.fromJson(o.toJson());
       checkGroup(od as api.Group);
@@ -576,7 +576,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GroupContentDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroupContentDetails();
       var od = api.GroupContentDetails.fromJson(o.toJson());
       checkGroupContentDetails(od as api.GroupContentDetails);
@@ -584,7 +584,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GroupItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroupItem();
       var od = api.GroupItem.fromJson(o.toJson());
       checkGroupItem(od as api.GroupItem);
@@ -592,7 +592,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GroupItemResource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroupItemResource();
       var od = api.GroupItemResource.fromJson(o.toJson());
       checkGroupItemResource(od as api.GroupItemResource);
@@ -600,7 +600,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GroupSnippet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroupSnippet();
       var od = api.GroupSnippet.fromJson(o.toJson());
       checkGroupSnippet(od as api.GroupSnippet);
@@ -608,7 +608,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListGroupItemsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListGroupItemsResponse();
       var od = api.ListGroupItemsResponse.fromJson(o.toJson());
       checkListGroupItemsResponse(od as api.ListGroupItemsResponse);
@@ -616,7 +616,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListGroupsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListGroupsResponse();
       var od = api.ListGroupsResponse.fromJson(o.toJson());
       checkListGroupsResponse(od as api.ListGroupsResponse);
@@ -624,7 +624,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryResponse();
       var od = api.QueryResponse.fromJson(o.toJson());
       checkQueryResponse(od as api.QueryResponse);
@@ -632,7 +632,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResultTableColumnHeader', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResultTableColumnHeader();
       var od = api.ResultTableColumnHeader.fromJson(o.toJson());
       checkResultTableColumnHeader(od as api.ResultTableColumnHeader);
@@ -640,7 +640,7 @@ void main() {
   });
 
   unittest.group('resource-GroupItemsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.YouTubeAnalyticsApi(mock).groupItems;
       var arg_id = 'foo';
@@ -696,17 +696,14 @@ void main() {
         var resp = convert.json.encode(buildEmptyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(
-              id: arg_id,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmptyResponse(response as api.EmptyResponse);
-      })));
+      final response = await res.delete(
+          id: arg_id,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          $fields: arg_$fields);
+      checkEmptyResponse(response as api.EmptyResponse);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.YouTubeAnalyticsApi(mock).groupItems;
       var arg_request = buildGroupItem();
@@ -762,16 +759,13 @@ void main() {
         var resp = convert.json.encode(buildGroupItem());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroupItem(response as api.GroupItem);
-      })));
+      final response = await res.insert(arg_request,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          $fields: arg_$fields);
+      checkGroupItem(response as api.GroupItem);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.YouTubeAnalyticsApi(mock).groupItems;
       var arg_groupId = 'foo';
@@ -827,19 +821,16 @@ void main() {
         var resp = convert.json.encode(buildListGroupItemsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              groupId: arg_groupId,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListGroupItemsResponse(response as api.ListGroupItemsResponse);
-      })));
+      final response = await res.list(
+          groupId: arg_groupId,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          $fields: arg_$fields);
+      checkListGroupItemsResponse(response as api.ListGroupItemsResponse);
     });
   });
 
   unittest.group('resource-GroupsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.YouTubeAnalyticsApi(mock).groups;
       var arg_id = 'foo';
@@ -895,17 +886,14 @@ void main() {
         var resp = convert.json.encode(buildEmptyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(
-              id: arg_id,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmptyResponse(response as api.EmptyResponse);
-      })));
+      final response = await res.delete(
+          id: arg_id,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          $fields: arg_$fields);
+      checkEmptyResponse(response as api.EmptyResponse);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.YouTubeAnalyticsApi(mock).groups;
       var arg_request = buildGroup();
@@ -961,16 +949,13 @@ void main() {
         var resp = convert.json.encode(buildGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroup(response as api.Group);
-      })));
+      final response = await res.insert(arg_request,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          $fields: arg_$fields);
+      checkGroup(response as api.Group);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.YouTubeAnalyticsApi(mock).groups;
       var arg_id = 'foo';
@@ -1036,19 +1021,16 @@ void main() {
         var resp = convert.json.encode(buildListGroupsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              id: arg_id,
-              mine: arg_mine,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListGroupsResponse(response as api.ListGroupsResponse);
-      })));
+      final response = await res.list(
+          id: arg_id,
+          mine: arg_mine,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListGroupsResponse(response as api.ListGroupsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.YouTubeAnalyticsApi(mock).groups;
       var arg_request = buildGroup();
@@ -1104,18 +1086,15 @@ void main() {
         var resp = convert.json.encode(buildGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroup(response as api.Group);
-      })));
+      final response = await res.update(arg_request,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          $fields: arg_$fields);
+      checkGroup(response as api.Group);
     });
   });
 
   unittest.group('resource-ReportsResource', () {
-    unittest.test('method--query', () {
+    unittest.test('method--query', () async {
       var mock = HttpServerMock();
       var res = api.YouTubeAnalyticsApi(mock).reports;
       var arg_currency = 'foo';
@@ -1216,23 +1195,20 @@ void main() {
         var resp = convert.json.encode(buildQueryResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .query(
-              currency: arg_currency,
-              dimensions: arg_dimensions,
-              endDate: arg_endDate,
-              filters: arg_filters,
-              ids: arg_ids,
-              includeHistoricalChannelData: arg_includeHistoricalChannelData,
-              maxResults: arg_maxResults,
-              metrics: arg_metrics,
-              sort: arg_sort,
-              startDate: arg_startDate,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkQueryResponse(response as api.QueryResponse);
-      })));
+      final response = await res.query(
+          currency: arg_currency,
+          dimensions: arg_dimensions,
+          endDate: arg_endDate,
+          filters: arg_filters,
+          ids: arg_ids,
+          includeHistoricalChannelData: arg_includeHistoricalChannelData,
+          maxResults: arg_maxResults,
+          metrics: arg_metrics,
+          sort: arg_sort,
+          startDate: arg_startDate,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkQueryResponse(response as api.QueryResponse);
     });
   });
 }

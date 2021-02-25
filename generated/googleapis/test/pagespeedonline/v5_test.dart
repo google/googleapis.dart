@@ -1018,7 +1018,7 @@ void checkUnnamed2818(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-AuditRefs', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditRefs();
       var od = api.AuditRefs.fromJson(o.toJson());
       checkAuditRefs(od as api.AuditRefs);
@@ -1026,7 +1026,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Bucket', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucket();
       var od = api.Bucket.fromJson(o.toJson());
       checkBucket(od as api.Bucket);
@@ -1034,7 +1034,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Categories', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCategories();
       var od = api.Categories.fromJson(o.toJson());
       checkCategories(od as api.Categories);
@@ -1042,7 +1042,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CategoryGroupV5', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCategoryGroupV5();
       var od = api.CategoryGroupV5.fromJson(o.toJson());
       checkCategoryGroupV5(od as api.CategoryGroupV5);
@@ -1050,7 +1050,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConfigSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConfigSettings();
       var od = api.ConfigSettings.fromJson(o.toJson());
       checkConfigSettings(od as api.ConfigSettings);
@@ -1058,7 +1058,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Environment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnvironment();
       var od = api.Environment.fromJson(o.toJson());
       checkEnvironment(od as api.Environment);
@@ -1066,7 +1066,7 @@ void main() {
   });
 
   unittest.group('obj-schema-I18n', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildI18n();
       var od = api.I18n.fromJson(o.toJson());
       checkI18n(od as api.I18n);
@@ -1074,7 +1074,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LighthouseAuditResultV5', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLighthouseAuditResultV5();
       var od = api.LighthouseAuditResultV5.fromJson(o.toJson());
       checkLighthouseAuditResultV5(od as api.LighthouseAuditResultV5);
@@ -1082,7 +1082,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LighthouseCategoryV5', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLighthouseCategoryV5();
       var od = api.LighthouseCategoryV5.fromJson(o.toJson());
       checkLighthouseCategoryV5(od as api.LighthouseCategoryV5);
@@ -1090,7 +1090,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LighthouseResultV5', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLighthouseResultV5();
       var od = api.LighthouseResultV5.fromJson(o.toJson());
       checkLighthouseResultV5(od as api.LighthouseResultV5);
@@ -1098,7 +1098,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PagespeedApiLoadingExperienceV5', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPagespeedApiLoadingExperienceV5();
       var od = api.PagespeedApiLoadingExperienceV5.fromJson(o.toJson());
       checkPagespeedApiLoadingExperienceV5(
@@ -1107,7 +1107,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PagespeedApiPagespeedResponseV5', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPagespeedApiPagespeedResponseV5();
       var od = api.PagespeedApiPagespeedResponseV5.fromJson(o.toJson());
       checkPagespeedApiPagespeedResponseV5(
@@ -1116,7 +1116,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PagespeedVersion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPagespeedVersion();
       var od = api.PagespeedVersion.fromJson(o.toJson());
       checkPagespeedVersion(od as api.PagespeedVersion);
@@ -1124,7 +1124,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RendererFormattedStrings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRendererFormattedStrings();
       var od = api.RendererFormattedStrings.fromJson(o.toJson());
       checkRendererFormattedStrings(od as api.RendererFormattedStrings);
@@ -1132,7 +1132,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RuntimeError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRuntimeError();
       var od = api.RuntimeError.fromJson(o.toJson());
       checkRuntimeError(od as api.RuntimeError);
@@ -1140,7 +1140,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StackPack', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStackPack();
       var od = api.StackPack.fromJson(o.toJson());
       checkStackPack(od as api.StackPack);
@@ -1148,7 +1148,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Timing', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTiming();
       var od = api.Timing.fromJson(o.toJson());
       checkTiming(od as api.Timing);
@@ -1156,7 +1156,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserPageLoadMetricV5', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserPageLoadMetricV5();
       var od = api.UserPageLoadMetricV5.fromJson(o.toJson());
       checkUserPageLoadMetricV5(od as api.UserPageLoadMetricV5);
@@ -1164,7 +1164,7 @@ void main() {
   });
 
   unittest.group('resource-PagespeedapiResource', () {
-    unittest.test('method--runpagespeed', () {
+    unittest.test('method--runpagespeed', () async {
       var mock = HttpServerMock();
       var res = api.PagespeedInsightsApi(mock).pagespeedapi;
       var arg_url = 'foo';
@@ -1245,19 +1245,16 @@ void main() {
         var resp = convert.json.encode(buildPagespeedApiPagespeedResponseV5());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .runpagespeed(arg_url,
-              captchaToken: arg_captchaToken,
-              category: arg_category,
-              locale: arg_locale,
-              strategy: arg_strategy,
-              utmCampaign: arg_utmCampaign,
-              utmSource: arg_utmSource,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPagespeedApiPagespeedResponseV5(
-            response as api.PagespeedApiPagespeedResponseV5);
-      })));
+      final response = await res.runpagespeed(arg_url,
+          captchaToken: arg_captchaToken,
+          category: arg_category,
+          locale: arg_locale,
+          strategy: arg_strategy,
+          utmCampaign: arg_utmCampaign,
+          utmSource: arg_utmSource,
+          $fields: arg_$fields);
+      checkPagespeedApiPagespeedResponseV5(
+          response as api.PagespeedApiPagespeedResponseV5);
     });
   });
 }

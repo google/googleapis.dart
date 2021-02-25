@@ -2069,7 +2069,7 @@ void checkUnnamed4540(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-BucketBilling', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketBilling();
       var od = api.BucketBilling.fromJson(o.toJson());
       checkBucketBilling(od as api.BucketBilling);
@@ -2077,7 +2077,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketCors', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketCors();
       var od = api.BucketCors.fromJson(o.toJson());
       checkBucketCors(od as api.BucketCors);
@@ -2085,7 +2085,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketEncryption', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketEncryption();
       var od = api.BucketEncryption.fromJson(o.toJson());
       checkBucketEncryption(od as api.BucketEncryption);
@@ -2093,7 +2093,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketIamConfigurationBucketPolicyOnly', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketIamConfigurationBucketPolicyOnly();
       var od = api.BucketIamConfigurationBucketPolicyOnly.fromJson(o.toJson());
       checkBucketIamConfigurationBucketPolicyOnly(
@@ -2103,7 +2103,7 @@ void main() {
 
   unittest.group('obj-schema-BucketIamConfigurationUniformBucketLevelAccess',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketIamConfigurationUniformBucketLevelAccess();
       var od = api.BucketIamConfigurationUniformBucketLevelAccess.fromJson(
           o.toJson());
@@ -2113,7 +2113,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketIamConfiguration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketIamConfiguration();
       var od = api.BucketIamConfiguration.fromJson(o.toJson());
       checkBucketIamConfiguration(od as api.BucketIamConfiguration);
@@ -2121,7 +2121,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketLifecycleRuleAction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketLifecycleRuleAction();
       var od = api.BucketLifecycleRuleAction.fromJson(o.toJson());
       checkBucketLifecycleRuleAction(od as api.BucketLifecycleRuleAction);
@@ -2129,7 +2129,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketLifecycleRuleCondition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketLifecycleRuleCondition();
       var od = api.BucketLifecycleRuleCondition.fromJson(o.toJson());
       checkBucketLifecycleRuleCondition(od as api.BucketLifecycleRuleCondition);
@@ -2137,7 +2137,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketLifecycleRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketLifecycleRule();
       var od = api.BucketLifecycleRule.fromJson(o.toJson());
       checkBucketLifecycleRule(od as api.BucketLifecycleRule);
@@ -2145,7 +2145,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketLifecycle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketLifecycle();
       var od = api.BucketLifecycle.fromJson(o.toJson());
       checkBucketLifecycle(od as api.BucketLifecycle);
@@ -2153,7 +2153,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketLogging', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketLogging();
       var od = api.BucketLogging.fromJson(o.toJson());
       checkBucketLogging(od as api.BucketLogging);
@@ -2161,7 +2161,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketOwner', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketOwner();
       var od = api.BucketOwner.fromJson(o.toJson());
       checkBucketOwner(od as api.BucketOwner);
@@ -2169,7 +2169,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketRetentionPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketRetentionPolicy();
       var od = api.BucketRetentionPolicy.fromJson(o.toJson());
       checkBucketRetentionPolicy(od as api.BucketRetentionPolicy);
@@ -2177,7 +2177,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketVersioning', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketVersioning();
       var od = api.BucketVersioning.fromJson(o.toJson());
       checkBucketVersioning(od as api.BucketVersioning);
@@ -2185,7 +2185,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketWebsite', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketWebsite();
       var od = api.BucketWebsite.fromJson(o.toJson());
       checkBucketWebsite(od as api.BucketWebsite);
@@ -2193,7 +2193,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Bucket', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucket();
       var od = api.Bucket.fromJson(o.toJson());
       checkBucket(od as api.Bucket);
@@ -2201,7 +2201,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketAccessControlProjectTeam', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketAccessControlProjectTeam();
       var od = api.BucketAccessControlProjectTeam.fromJson(o.toJson());
       checkBucketAccessControlProjectTeam(
@@ -2210,7 +2210,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketAccessControl', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketAccessControl();
       var od = api.BucketAccessControl.fromJson(o.toJson());
       checkBucketAccessControl(od as api.BucketAccessControl);
@@ -2218,7 +2218,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketAccessControls', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketAccessControls();
       var od = api.BucketAccessControls.fromJson(o.toJson());
       checkBucketAccessControls(od as api.BucketAccessControls);
@@ -2226,7 +2226,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Buckets', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuckets();
       var od = api.Buckets.fromJson(o.toJson());
       checkBuckets(od as api.Buckets);
@@ -2234,7 +2234,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Channel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChannel();
       var od = api.Channel.fromJson(o.toJson());
       checkChannel(od as api.Channel);
@@ -2243,7 +2243,7 @@ void main() {
 
   unittest.group('obj-schema-ComposeRequestSourceObjectsObjectPreconditions',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildComposeRequestSourceObjectsObjectPreconditions();
       var od = api.ComposeRequestSourceObjectsObjectPreconditions.fromJson(
           o.toJson());
@@ -2253,7 +2253,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ComposeRequestSourceObjects', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildComposeRequestSourceObjects();
       var od = api.ComposeRequestSourceObjects.fromJson(o.toJson());
       checkComposeRequestSourceObjects(od as api.ComposeRequestSourceObjects);
@@ -2261,7 +2261,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ComposeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildComposeRequest();
       var od = api.ComposeRequest.fromJson(o.toJson());
       checkComposeRequest(od as api.ComposeRequest);
@@ -2269,7 +2269,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -2277,7 +2277,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HmacKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHmacKey();
       var od = api.HmacKey.fromJson(o.toJson());
       checkHmacKey(od as api.HmacKey);
@@ -2285,7 +2285,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HmacKeyMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHmacKeyMetadata();
       var od = api.HmacKeyMetadata.fromJson(o.toJson());
       checkHmacKeyMetadata(od as api.HmacKeyMetadata);
@@ -2293,7 +2293,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HmacKeysMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHmacKeysMetadata();
       var od = api.HmacKeysMetadata.fromJson(o.toJson());
       checkHmacKeysMetadata(od as api.HmacKeysMetadata);
@@ -2301,7 +2301,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Notification', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNotification();
       var od = api.Notification.fromJson(o.toJson());
       checkNotification(od as api.Notification);
@@ -2309,7 +2309,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Notifications', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNotifications();
       var od = api.Notifications.fromJson(o.toJson());
       checkNotifications(od as api.Notifications);
@@ -2317,7 +2317,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ObjectCustomerEncryption', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildObjectCustomerEncryption();
       var od = api.ObjectCustomerEncryption.fromJson(o.toJson());
       checkObjectCustomerEncryption(od as api.ObjectCustomerEncryption);
@@ -2325,7 +2325,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ObjectOwner', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildObjectOwner();
       var od = api.ObjectOwner.fromJson(o.toJson());
       checkObjectOwner(od as api.ObjectOwner);
@@ -2333,7 +2333,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Object', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildObject();
       var od = api.Object.fromJson(o.toJson());
       checkObject(od as api.Object);
@@ -2341,7 +2341,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ObjectAccessControlProjectTeam', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildObjectAccessControlProjectTeam();
       var od = api.ObjectAccessControlProjectTeam.fromJson(o.toJson());
       checkObjectAccessControlProjectTeam(
@@ -2350,7 +2350,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ObjectAccessControl', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildObjectAccessControl();
       var od = api.ObjectAccessControl.fromJson(o.toJson());
       checkObjectAccessControl(od as api.ObjectAccessControl);
@@ -2358,7 +2358,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ObjectAccessControls', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildObjectAccessControls();
       var od = api.ObjectAccessControls.fromJson(o.toJson());
       checkObjectAccessControls(od as api.ObjectAccessControls);
@@ -2366,7 +2366,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Objects', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildObjects();
       var od = api.Objects.fromJson(o.toJson());
       checkObjects(od as api.Objects);
@@ -2374,7 +2374,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PolicyBindings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicyBindings();
       var od = api.PolicyBindings.fromJson(o.toJson());
       checkPolicyBindings(od as api.PolicyBindings);
@@ -2382,7 +2382,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -2390,7 +2390,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RewriteResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRewriteResponse();
       var od = api.RewriteResponse.fromJson(o.toJson());
       checkRewriteResponse(od as api.RewriteResponse);
@@ -2398,7 +2398,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ServiceAccount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildServiceAccount();
       var od = api.ServiceAccount.fromJson(o.toJson());
       checkServiceAccount(od as api.ServiceAccount);
@@ -2406,7 +2406,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -2414,7 +2414,7 @@ void main() {
   });
 
   unittest.group('resource-BucketAccessControlsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).bucketAccessControls;
       var arg_bucket = 'foo';
@@ -2497,15 +2497,13 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_bucket, arg_entity,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_bucket, arg_entity,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).bucketAccessControls;
       var arg_bucket = 'foo';
@@ -2588,17 +2586,14 @@ void main() {
         var resp = convert.json.encode(buildBucketAccessControl());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_bucket, arg_entity,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBucketAccessControl(response as api.BucketAccessControl);
-      })));
+      final response = await res.get(arg_bucket, arg_entity,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkBucketAccessControl(response as api.BucketAccessControl);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).bucketAccessControls;
       var arg_request = buildBucketAccessControl();
@@ -2679,17 +2674,14 @@ void main() {
         var resp = convert.json.encode(buildBucketAccessControl());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_bucket,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBucketAccessControl(response as api.BucketAccessControl);
-      })));
+      final response = await res.insert(arg_request, arg_bucket,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkBucketAccessControl(response as api.BucketAccessControl);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).bucketAccessControls;
       var arg_bucket = 'foo';
@@ -2765,17 +2757,14 @@ void main() {
         var resp = convert.json.encode(buildBucketAccessControls());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_bucket,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBucketAccessControls(response as api.BucketAccessControls);
-      })));
+      final response = await res.list(arg_bucket,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkBucketAccessControls(response as api.BucketAccessControls);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).bucketAccessControls;
       var arg_request = buildBucketAccessControl();
@@ -2863,17 +2852,14 @@ void main() {
         var resp = convert.json.encode(buildBucketAccessControl());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_bucket, arg_entity,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBucketAccessControl(response as api.BucketAccessControl);
-      })));
+      final response = await res.patch(arg_request, arg_bucket, arg_entity,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkBucketAccessControl(response as api.BucketAccessControl);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).bucketAccessControls;
       var arg_request = buildBucketAccessControl();
@@ -2961,19 +2947,16 @@ void main() {
         var resp = convert.json.encode(buildBucketAccessControl());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_bucket, arg_entity,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBucketAccessControl(response as api.BucketAccessControl);
-      })));
+      final response = await res.update(arg_request, arg_bucket, arg_entity,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkBucketAccessControl(response as api.BucketAccessControl);
     });
   });
 
   unittest.group('resource-BucketsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).buckets;
       var arg_bucket = 'foo';
@@ -3051,17 +3034,15 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_bucket,
-              ifMetagenerationMatch: arg_ifMetagenerationMatch,
-              ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_bucket,
+          ifMetagenerationMatch: arg_ifMetagenerationMatch,
+          ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).buckets;
       var arg_bucket = 'foo';
@@ -3144,20 +3125,17 @@ void main() {
         var resp = convert.json.encode(buildBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_bucket,
-              ifMetagenerationMatch: arg_ifMetagenerationMatch,
-              ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
-              projection: arg_projection,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBucket(response as api.Bucket);
-      })));
+      final response = await res.get(arg_bucket,
+          ifMetagenerationMatch: arg_ifMetagenerationMatch,
+          ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
+          projection: arg_projection,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkBucket(response as api.Bucket);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).buckets;
       var arg_bucket = 'foo';
@@ -3238,18 +3216,15 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_bucket,
-              optionsRequestedPolicyVersion: arg_optionsRequestedPolicyVersion,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_bucket,
+          optionsRequestedPolicyVersion: arg_optionsRequestedPolicyVersion,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).buckets;
       var arg_request = buildBucket();
@@ -3335,20 +3310,17 @@ void main() {
         var resp = convert.json.encode(buildBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_project,
-              predefinedAcl: arg_predefinedAcl,
-              predefinedDefaultObjectAcl: arg_predefinedDefaultObjectAcl,
-              projection: arg_projection,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBucket(response as api.Bucket);
-      })));
+      final response = await res.insert(arg_request, arg_project,
+          predefinedAcl: arg_predefinedAcl,
+          predefinedDefaultObjectAcl: arg_predefinedDefaultObjectAcl,
+          projection: arg_projection,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkBucket(response as api.Bucket);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).buckets;
       var arg_project = 'foo';
@@ -3434,21 +3406,18 @@ void main() {
         var resp = convert.json.encode(buildBuckets());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_project,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              prefix: arg_prefix,
-              projection: arg_projection,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBuckets(response as api.Buckets);
-      })));
+      final response = await res.list(arg_project,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          prefix: arg_prefix,
+          projection: arg_projection,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkBuckets(response as api.Buckets);
     });
 
-    unittest.test('method--lockRetentionPolicy', () {
+    unittest.test('method--lockRetentionPolicy', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).buckets;
       var arg_bucket = 'foo';
@@ -3529,17 +3498,15 @@ void main() {
         var resp = convert.json.encode(buildBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .lockRetentionPolicy(arg_bucket, arg_ifMetagenerationMatch,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBucket(response as api.Bucket);
-      })));
+      final response = await res.lockRetentionPolicy(
+          arg_bucket, arg_ifMetagenerationMatch,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkBucket(response as api.Bucket);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).buckets;
       var arg_request = buildBucket();
@@ -3637,22 +3604,19 @@ void main() {
         var resp = convert.json.encode(buildBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_bucket,
-              ifMetagenerationMatch: arg_ifMetagenerationMatch,
-              ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
-              predefinedAcl: arg_predefinedAcl,
-              predefinedDefaultObjectAcl: arg_predefinedDefaultObjectAcl,
-              projection: arg_projection,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBucket(response as api.Bucket);
-      })));
+      final response = await res.patch(arg_request, arg_bucket,
+          ifMetagenerationMatch: arg_ifMetagenerationMatch,
+          ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
+          predefinedAcl: arg_predefinedAcl,
+          predefinedDefaultObjectAcl: arg_predefinedDefaultObjectAcl,
+          projection: arg_projection,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkBucket(response as api.Bucket);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).buckets;
       var arg_request = buildPolicy();
@@ -3733,17 +3697,14 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_bucket,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_bucket,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).buckets;
       var arg_bucket = 'foo';
@@ -3824,18 +3785,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_bucket, arg_permissions,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_bucket, arg_permissions,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).buckets;
       var arg_request = buildBucket();
@@ -3933,24 +3891,21 @@ void main() {
         var resp = convert.json.encode(buildBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_bucket,
-              ifMetagenerationMatch: arg_ifMetagenerationMatch,
-              ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
-              predefinedAcl: arg_predefinedAcl,
-              predefinedDefaultObjectAcl: arg_predefinedDefaultObjectAcl,
-              projection: arg_projection,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBucket(response as api.Bucket);
-      })));
+      final response = await res.update(arg_request, arg_bucket,
+          ifMetagenerationMatch: arg_ifMetagenerationMatch,
+          ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
+          predefinedAcl: arg_predefinedAcl,
+          predefinedDefaultObjectAcl: arg_predefinedDefaultObjectAcl,
+          projection: arg_projection,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkBucket(response as api.Bucket);
     });
   });
 
   unittest.group('resource-ChannelsResource', () {
-    unittest.test('method--stop', () {
+    unittest.test('method--stop', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).channels;
       var arg_request = buildChannel();
@@ -4006,14 +3961,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .stop(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.stop(arg_request, $fields: arg_$fields);
     });
   });
 
   unittest.group('resource-DefaultObjectAccessControlsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).defaultObjectAccessControls;
       var arg_bucket = 'foo';
@@ -4096,15 +4049,13 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_bucket, arg_entity,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_bucket, arg_entity,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).defaultObjectAccessControls;
       var arg_bucket = 'foo';
@@ -4187,17 +4138,14 @@ void main() {
         var resp = convert.json.encode(buildObjectAccessControl());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_bucket, arg_entity,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControl(response as api.ObjectAccessControl);
-      })));
+      final response = await res.get(arg_bucket, arg_entity,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkObjectAccessControl(response as api.ObjectAccessControl);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).defaultObjectAccessControls;
       var arg_request = buildObjectAccessControl();
@@ -4278,17 +4226,14 @@ void main() {
         var resp = convert.json.encode(buildObjectAccessControl());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_bucket,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControl(response as api.ObjectAccessControl);
-      })));
+      final response = await res.insert(arg_request, arg_bucket,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkObjectAccessControl(response as api.ObjectAccessControl);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).defaultObjectAccessControls;
       var arg_bucket = 'foo';
@@ -4374,19 +4319,16 @@ void main() {
         var resp = convert.json.encode(buildObjectAccessControls());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_bucket,
-              ifMetagenerationMatch: arg_ifMetagenerationMatch,
-              ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControls(response as api.ObjectAccessControls);
-      })));
+      final response = await res.list(arg_bucket,
+          ifMetagenerationMatch: arg_ifMetagenerationMatch,
+          ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkObjectAccessControls(response as api.ObjectAccessControls);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).defaultObjectAccessControls;
       var arg_request = buildObjectAccessControl();
@@ -4474,17 +4416,14 @@ void main() {
         var resp = convert.json.encode(buildObjectAccessControl());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_bucket, arg_entity,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControl(response as api.ObjectAccessControl);
-      })));
+      final response = await res.patch(arg_request, arg_bucket, arg_entity,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkObjectAccessControl(response as api.ObjectAccessControl);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).defaultObjectAccessControls;
       var arg_request = buildObjectAccessControl();
@@ -4572,19 +4511,16 @@ void main() {
         var resp = convert.json.encode(buildObjectAccessControl());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_bucket, arg_entity,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControl(response as api.ObjectAccessControl);
-      })));
+      final response = await res.update(arg_request, arg_bucket, arg_entity,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkObjectAccessControl(response as api.ObjectAccessControl);
     });
   });
 
   unittest.group('resource-NotificationsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).notifications;
       var arg_bucket = 'foo';
@@ -4667,15 +4603,13 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_bucket, arg_notification,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_bucket, arg_notification,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).notifications;
       var arg_bucket = 'foo';
@@ -4758,17 +4692,14 @@ void main() {
         var resp = convert.json.encode(buildNotification());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_bucket, arg_notification,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNotification(response as api.Notification);
-      })));
+      final response = await res.get(arg_bucket, arg_notification,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkNotification(response as api.Notification);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).notifications;
       var arg_request = buildNotification();
@@ -4849,17 +4780,14 @@ void main() {
         var resp = convert.json.encode(buildNotification());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_bucket,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNotification(response as api.Notification);
-      })));
+      final response = await res.insert(arg_request, arg_bucket,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkNotification(response as api.Notification);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).notifications;
       var arg_bucket = 'foo';
@@ -4935,19 +4863,16 @@ void main() {
         var resp = convert.json.encode(buildNotifications());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_bucket,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNotifications(response as api.Notifications);
-      })));
+      final response = await res.list(arg_bucket,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkNotifications(response as api.Notifications);
     });
   });
 
   unittest.group('resource-ObjectAccessControlsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objectAccessControls;
       var arg_bucket = 'foo';
@@ -5050,16 +4975,14 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_bucket, arg_object, arg_entity,
-              generation: arg_generation,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_bucket, arg_object, arg_entity,
+          generation: arg_generation,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objectAccessControls;
       var arg_bucket = 'foo';
@@ -5162,18 +5085,15 @@ void main() {
         var resp = convert.json.encode(buildObjectAccessControl());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_bucket, arg_object, arg_entity,
-              generation: arg_generation,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControl(response as api.ObjectAccessControl);
-      })));
+      final response = await res.get(arg_bucket, arg_object, arg_entity,
+          generation: arg_generation,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkObjectAccessControl(response as api.ObjectAccessControl);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objectAccessControls;
       var arg_request = buildObjectAccessControl();
@@ -5274,18 +5194,15 @@ void main() {
         var resp = convert.json.encode(buildObjectAccessControl());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_bucket, arg_object,
-              generation: arg_generation,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControl(response as api.ObjectAccessControl);
-      })));
+      final response = await res.insert(arg_request, arg_bucket, arg_object,
+          generation: arg_generation,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkObjectAccessControl(response as api.ObjectAccessControl);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objectAccessControls;
       var arg_bucket = 'foo';
@@ -5381,18 +5298,15 @@ void main() {
         var resp = convert.json.encode(buildObjectAccessControls());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_bucket, arg_object,
-              generation: arg_generation,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControls(response as api.ObjectAccessControls);
-      })));
+      final response = await res.list(arg_bucket, arg_object,
+          generation: arg_generation,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkObjectAccessControls(response as api.ObjectAccessControls);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objectAccessControls;
       var arg_request = buildObjectAccessControl();
@@ -5500,18 +5414,16 @@ void main() {
         var resp = convert.json.encode(buildObjectAccessControl());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_bucket, arg_object, arg_entity,
-              generation: arg_generation,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControl(response as api.ObjectAccessControl);
-      })));
+      final response = await res.patch(
+          arg_request, arg_bucket, arg_object, arg_entity,
+          generation: arg_generation,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkObjectAccessControl(response as api.ObjectAccessControl);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objectAccessControls;
       var arg_request = buildObjectAccessControl();
@@ -5619,20 +5531,18 @@ void main() {
         var resp = convert.json.encode(buildObjectAccessControl());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_bucket, arg_object, arg_entity,
-              generation: arg_generation,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControl(response as api.ObjectAccessControl);
-      })));
+      final response = await res.update(
+          arg_request, arg_bucket, arg_object, arg_entity,
+          generation: arg_generation,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkObjectAccessControl(response as api.ObjectAccessControl);
     });
   });
 
   unittest.group('resource-ObjectsResource', () {
-    unittest.test('method--compose', () {
+    unittest.test('method--compose', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objects;
       var arg_request = buildComposeRequest();
@@ -5748,21 +5658,19 @@ void main() {
         var resp = convert.json.encode(buildObject());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .compose(arg_request, arg_destinationBucket, arg_destinationObject,
-              destinationPredefinedAcl: arg_destinationPredefinedAcl,
-              ifGenerationMatch: arg_ifGenerationMatch,
-              ifMetagenerationMatch: arg_ifMetagenerationMatch,
-              kmsKeyName: arg_kmsKeyName,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkObject(response as api.Object);
-      })));
+      final response = await res.compose(
+          arg_request, arg_destinationBucket, arg_destinationObject,
+          destinationPredefinedAcl: arg_destinationPredefinedAcl,
+          ifGenerationMatch: arg_ifGenerationMatch,
+          ifMetagenerationMatch: arg_ifMetagenerationMatch,
+          kmsKeyName: arg_kmsKeyName,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkObject(response as api.Object);
     });
 
-    unittest.test('method--copy', () {
+    unittest.test('method--copy', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objects;
       var arg_request = buildObject();
@@ -5940,31 +5848,27 @@ void main() {
         var resp = convert.json.encode(buildObject());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .copy(arg_request, arg_sourceBucket, arg_sourceObject,
-              arg_destinationBucket, arg_destinationObject,
-              destinationKmsKeyName: arg_destinationKmsKeyName,
-              destinationPredefinedAcl: arg_destinationPredefinedAcl,
-              ifGenerationMatch: arg_ifGenerationMatch,
-              ifGenerationNotMatch: arg_ifGenerationNotMatch,
-              ifMetagenerationMatch: arg_ifMetagenerationMatch,
-              ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
-              ifSourceGenerationMatch: arg_ifSourceGenerationMatch,
-              ifSourceGenerationNotMatch: arg_ifSourceGenerationNotMatch,
-              ifSourceMetagenerationMatch: arg_ifSourceMetagenerationMatch,
-              ifSourceMetagenerationNotMatch:
-                  arg_ifSourceMetagenerationNotMatch,
-              projection: arg_projection,
-              provisionalUserProject: arg_provisionalUserProject,
-              sourceGeneration: arg_sourceGeneration,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkObject(response as api.Object);
-      })));
+      final response = await res.copy(arg_request, arg_sourceBucket,
+          arg_sourceObject, arg_destinationBucket, arg_destinationObject,
+          destinationKmsKeyName: arg_destinationKmsKeyName,
+          destinationPredefinedAcl: arg_destinationPredefinedAcl,
+          ifGenerationMatch: arg_ifGenerationMatch,
+          ifGenerationNotMatch: arg_ifGenerationNotMatch,
+          ifMetagenerationMatch: arg_ifMetagenerationMatch,
+          ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
+          ifSourceGenerationMatch: arg_ifSourceGenerationMatch,
+          ifSourceGenerationNotMatch: arg_ifSourceGenerationNotMatch,
+          ifSourceMetagenerationMatch: arg_ifSourceMetagenerationMatch,
+          ifSourceMetagenerationNotMatch: arg_ifSourceMetagenerationNotMatch,
+          projection: arg_projection,
+          provisionalUserProject: arg_provisionalUserProject,
+          sourceGeneration: arg_sourceGeneration,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkObject(response as api.Object);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objects;
       var arg_bucket = 'foo';
@@ -6072,20 +5976,18 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_bucket, arg_object,
-              generation: arg_generation,
-              ifGenerationMatch: arg_ifGenerationMatch,
-              ifGenerationNotMatch: arg_ifGenerationNotMatch,
-              ifMetagenerationMatch: arg_ifMetagenerationMatch,
-              ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_bucket, arg_object,
+          generation: arg_generation,
+          ifGenerationMatch: arg_ifGenerationMatch,
+          ifGenerationNotMatch: arg_ifGenerationNotMatch,
+          ifMetagenerationMatch: arg_ifMetagenerationMatch,
+          ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -6201,23 +6103,20 @@ void main() {
         var resp = convert.json.encode(buildObject());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_bucket, arg_object,
-              generation: arg_generation,
-              ifGenerationMatch: arg_ifGenerationMatch,
-              ifGenerationNotMatch: arg_ifGenerationNotMatch,
-              ifMetagenerationMatch: arg_ifMetagenerationMatch,
-              ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
-              projection: arg_projection,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkObject(response as api.Object);
-      })));
+      final response = await res.get(arg_bucket, arg_object,
+          generation: arg_generation,
+          ifGenerationMatch: arg_ifGenerationMatch,
+          ifGenerationNotMatch: arg_ifGenerationNotMatch,
+          ifMetagenerationMatch: arg_ifMetagenerationMatch,
+          ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
+          projection: arg_projection,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkObject(response as api.Object);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objects;
       var arg_bucket = 'foo';
@@ -6313,18 +6212,15 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_bucket, arg_object,
-              generation: arg_generation,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_bucket, arg_object,
+          generation: arg_generation,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -6453,26 +6349,23 @@ void main() {
         var resp = convert.json.encode(buildObject());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_bucket,
-              contentEncoding: arg_contentEncoding,
-              ifGenerationMatch: arg_ifGenerationMatch,
-              ifGenerationNotMatch: arg_ifGenerationNotMatch,
-              ifMetagenerationMatch: arg_ifMetagenerationMatch,
-              ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
-              kmsKeyName: arg_kmsKeyName,
-              name: arg_name,
-              predefinedAcl: arg_predefinedAcl,
-              projection: arg_projection,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkObject(response as api.Object);
-      })));
+      final response = await res.insert(arg_request, arg_bucket,
+          contentEncoding: arg_contentEncoding,
+          ifGenerationMatch: arg_ifGenerationMatch,
+          ifGenerationNotMatch: arg_ifGenerationNotMatch,
+          ifMetagenerationMatch: arg_ifMetagenerationMatch,
+          ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
+          kmsKeyName: arg_kmsKeyName,
+          name: arg_name,
+          predefinedAcl: arg_predefinedAcl,
+          projection: arg_projection,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkObject(response as api.Object);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objects;
       var arg_bucket = 'foo';
@@ -6593,26 +6486,23 @@ void main() {
         var resp = convert.json.encode(buildObjects());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_bucket,
-              delimiter: arg_delimiter,
-              endOffset: arg_endOffset,
-              includeTrailingDelimiter: arg_includeTrailingDelimiter,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              prefix: arg_prefix,
-              projection: arg_projection,
-              provisionalUserProject: arg_provisionalUserProject,
-              startOffset: arg_startOffset,
-              userProject: arg_userProject,
-              versions: arg_versions,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkObjects(response as api.Objects);
-      })));
+      final response = await res.list(arg_bucket,
+          delimiter: arg_delimiter,
+          endOffset: arg_endOffset,
+          includeTrailingDelimiter: arg_includeTrailingDelimiter,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          prefix: arg_prefix,
+          projection: arg_projection,
+          provisionalUserProject: arg_provisionalUserProject,
+          startOffset: arg_startOffset,
+          userProject: arg_userProject,
+          versions: arg_versions,
+          $fields: arg_$fields);
+      checkObjects(response as api.Objects);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objects;
       var arg_request = buildObject();
@@ -6735,24 +6625,21 @@ void main() {
         var resp = convert.json.encode(buildObject());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_bucket, arg_object,
-              generation: arg_generation,
-              ifGenerationMatch: arg_ifGenerationMatch,
-              ifGenerationNotMatch: arg_ifGenerationNotMatch,
-              ifMetagenerationMatch: arg_ifMetagenerationMatch,
-              ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
-              predefinedAcl: arg_predefinedAcl,
-              projection: arg_projection,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkObject(response as api.Object);
-      })));
+      final response = await res.patch(arg_request, arg_bucket, arg_object,
+          generation: arg_generation,
+          ifGenerationMatch: arg_ifGenerationMatch,
+          ifGenerationNotMatch: arg_ifGenerationNotMatch,
+          ifMetagenerationMatch: arg_ifMetagenerationMatch,
+          ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
+          predefinedAcl: arg_predefinedAcl,
+          projection: arg_projection,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkObject(response as api.Object);
     });
 
-    unittest.test('method--rewrite', () {
+    unittest.test('method--rewrite', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objects;
       var arg_request = buildObject();
@@ -6940,33 +6827,29 @@ void main() {
         var resp = convert.json.encode(buildRewriteResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .rewrite(arg_request, arg_sourceBucket, arg_sourceObject,
-              arg_destinationBucket, arg_destinationObject,
-              destinationKmsKeyName: arg_destinationKmsKeyName,
-              destinationPredefinedAcl: arg_destinationPredefinedAcl,
-              ifGenerationMatch: arg_ifGenerationMatch,
-              ifGenerationNotMatch: arg_ifGenerationNotMatch,
-              ifMetagenerationMatch: arg_ifMetagenerationMatch,
-              ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
-              ifSourceGenerationMatch: arg_ifSourceGenerationMatch,
-              ifSourceGenerationNotMatch: arg_ifSourceGenerationNotMatch,
-              ifSourceMetagenerationMatch: arg_ifSourceMetagenerationMatch,
-              ifSourceMetagenerationNotMatch:
-                  arg_ifSourceMetagenerationNotMatch,
-              maxBytesRewrittenPerCall: arg_maxBytesRewrittenPerCall,
-              projection: arg_projection,
-              provisionalUserProject: arg_provisionalUserProject,
-              rewriteToken: arg_rewriteToken,
-              sourceGeneration: arg_sourceGeneration,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRewriteResponse(response as api.RewriteResponse);
-      })));
+      final response = await res.rewrite(arg_request, arg_sourceBucket,
+          arg_sourceObject, arg_destinationBucket, arg_destinationObject,
+          destinationKmsKeyName: arg_destinationKmsKeyName,
+          destinationPredefinedAcl: arg_destinationPredefinedAcl,
+          ifGenerationMatch: arg_ifGenerationMatch,
+          ifGenerationNotMatch: arg_ifGenerationNotMatch,
+          ifMetagenerationMatch: arg_ifMetagenerationMatch,
+          ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
+          ifSourceGenerationMatch: arg_ifSourceGenerationMatch,
+          ifSourceGenerationNotMatch: arg_ifSourceGenerationNotMatch,
+          ifSourceMetagenerationMatch: arg_ifSourceMetagenerationMatch,
+          ifSourceMetagenerationNotMatch: arg_ifSourceMetagenerationNotMatch,
+          maxBytesRewrittenPerCall: arg_maxBytesRewrittenPerCall,
+          projection: arg_projection,
+          provisionalUserProject: arg_provisionalUserProject,
+          rewriteToken: arg_rewriteToken,
+          sourceGeneration: arg_sourceGeneration,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkRewriteResponse(response as api.RewriteResponse);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objects;
       var arg_request = buildPolicy();
@@ -7067,18 +6950,16 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_bucket, arg_object,
-              generation: arg_generation,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(
+          arg_request, arg_bucket, arg_object,
+          generation: arg_generation,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objects;
       var arg_bucket = 'foo';
@@ -7179,19 +7060,17 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_bucket, arg_object, arg_permissions,
-              generation: arg_generation,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(
+          arg_bucket, arg_object, arg_permissions,
+          generation: arg_generation,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objects;
       var arg_request = buildObject();
@@ -7314,24 +7193,21 @@ void main() {
         var resp = convert.json.encode(buildObject());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_bucket, arg_object,
-              generation: arg_generation,
-              ifGenerationMatch: arg_ifGenerationMatch,
-              ifGenerationNotMatch: arg_ifGenerationNotMatch,
-              ifMetagenerationMatch: arg_ifMetagenerationMatch,
-              ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
-              predefinedAcl: arg_predefinedAcl,
-              projection: arg_projection,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkObject(response as api.Object);
-      })));
+      final response = await res.update(arg_request, arg_bucket, arg_object,
+          generation: arg_generation,
+          ifGenerationMatch: arg_ifGenerationMatch,
+          ifGenerationNotMatch: arg_ifGenerationNotMatch,
+          ifMetagenerationMatch: arg_ifMetagenerationMatch,
+          ifMetagenerationNotMatch: arg_ifMetagenerationNotMatch,
+          predefinedAcl: arg_predefinedAcl,
+          projection: arg_projection,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkObject(response as api.Object);
     });
 
-    unittest.test('method--watchAll', () {
+    unittest.test('method--watchAll', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).objects;
       var arg_request = buildChannel();
@@ -7457,28 +7333,25 @@ void main() {
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .watchAll(arg_request, arg_bucket,
-              delimiter: arg_delimiter,
-              endOffset: arg_endOffset,
-              includeTrailingDelimiter: arg_includeTrailingDelimiter,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              prefix: arg_prefix,
-              projection: arg_projection,
-              provisionalUserProject: arg_provisionalUserProject,
-              startOffset: arg_startOffset,
-              userProject: arg_userProject,
-              versions: arg_versions,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChannel(response as api.Channel);
-      })));
+      final response = await res.watchAll(arg_request, arg_bucket,
+          delimiter: arg_delimiter,
+          endOffset: arg_endOffset,
+          includeTrailingDelimiter: arg_includeTrailingDelimiter,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          prefix: arg_prefix,
+          projection: arg_projection,
+          provisionalUserProject: arg_provisionalUserProject,
+          startOffset: arg_startOffset,
+          userProject: arg_userProject,
+          versions: arg_versions,
+          $fields: arg_$fields);
+      checkChannel(response as api.Channel);
     });
   });
 
   unittest.group('resource-ProjectsHmacKeysResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).projects.hmacKeys;
       var arg_projectId = 'foo';
@@ -7554,15 +7427,12 @@ void main() {
         var resp = convert.json.encode(buildHmacKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_projectId, arg_serviceAccountEmail,
-              userProject: arg_userProject, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHmacKey(response as api.HmacKey);
-      })));
+      final response = await res.create(arg_projectId, arg_serviceAccountEmail,
+          userProject: arg_userProject, $fields: arg_$fields);
+      checkHmacKey(response as api.HmacKey);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).projects.hmacKeys;
       var arg_projectId = 'foo';
@@ -7640,13 +7510,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_projectId, arg_accessId,
-              userProject: arg_userProject, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_projectId, arg_accessId,
+          userProject: arg_userProject, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).projects.hmacKeys;
       var arg_projectId = 'foo';
@@ -7724,15 +7592,12 @@ void main() {
         var resp = convert.json.encode(buildHmacKeyMetadata());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_projectId, arg_accessId,
-              userProject: arg_userProject, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHmacKeyMetadata(response as api.HmacKeyMetadata);
-      })));
+      final response = await res.get(arg_projectId, arg_accessId,
+          userProject: arg_userProject, $fields: arg_$fields);
+      checkHmacKeyMetadata(response as api.HmacKeyMetadata);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).projects.hmacKeys;
       var arg_projectId = 'foo';
@@ -7823,20 +7688,17 @@ void main() {
         var resp = convert.json.encode(buildHmacKeysMetadata());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_projectId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              serviceAccountEmail: arg_serviceAccountEmail,
-              showDeletedKeys: arg_showDeletedKeys,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHmacKeysMetadata(response as api.HmacKeysMetadata);
-      })));
+      final response = await res.list(arg_projectId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          serviceAccountEmail: arg_serviceAccountEmail,
+          showDeletedKeys: arg_showDeletedKeys,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkHmacKeysMetadata(response as api.HmacKeysMetadata);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).projects.hmacKeys;
       var arg_request = buildHmacKeyMetadata();
@@ -7919,17 +7781,15 @@ void main() {
         var resp = convert.json.encode(buildHmacKeyMetadata());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_projectId, arg_accessId,
-              userProject: arg_userProject, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHmacKeyMetadata(response as api.HmacKeyMetadata);
-      })));
+      final response = await res.update(
+          arg_request, arg_projectId, arg_accessId,
+          userProject: arg_userProject, $fields: arg_$fields);
+      checkHmacKeyMetadata(response as api.HmacKeyMetadata);
     });
   });
 
   unittest.group('resource-ProjectsServiceAccountResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.StorageApi(mock).projects.serviceAccount;
       var arg_projectId = 'foo';
@@ -8005,14 +7865,11 @@ void main() {
         var resp = convert.json.encode(buildServiceAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_projectId,
-              provisionalUserProject: arg_provisionalUserProject,
-              userProject: arg_userProject,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkServiceAccount(response as api.ServiceAccount);
-      })));
+      final response = await res.get(arg_projectId,
+          provisionalUserProject: arg_provisionalUserProject,
+          userProject: arg_userProject,
+          $fields: arg_$fields);
+      checkServiceAccount(response as api.ServiceAccount);
     });
   });
 }

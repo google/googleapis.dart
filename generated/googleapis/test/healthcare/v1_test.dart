@@ -2626,7 +2626,7 @@ void checkTextConfig(api.TextConfig o) {
 
 void main() {
   unittest.group('obj-schema-AuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
       checkAuditConfig(od as api.AuditConfig);
@@ -2634,7 +2634,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
       checkAuditLogConfig(od as api.AuditLogConfig);
@@ -2642,7 +2642,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -2650,7 +2650,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od as api.CancelOperationRequest);
@@ -2658,7 +2658,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CharacterMaskConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCharacterMaskConfig();
       var od = api.CharacterMaskConfig.fromJson(o.toJson());
       checkCharacterMaskConfig(od as api.CharacterMaskConfig);
@@ -2666,7 +2666,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateMessageRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateMessageRequest();
       var od = api.CreateMessageRequest.fromJson(o.toJson());
       checkCreateMessageRequest(od as api.CreateMessageRequest);
@@ -2674,7 +2674,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CryptoHashConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCryptoHashConfig();
       var od = api.CryptoHashConfig.fromJson(o.toJson());
       checkCryptoHashConfig(od as api.CryptoHashConfig);
@@ -2682,7 +2682,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Dataset', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDataset();
       var od = api.Dataset.fromJson(o.toJson());
       checkDataset(od as api.Dataset);
@@ -2690,7 +2690,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DateShiftConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDateShiftConfig();
       var od = api.DateShiftConfig.fromJson(o.toJson());
       checkDateShiftConfig(od as api.DateShiftConfig);
@@ -2698,7 +2698,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeidentifyConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeidentifyConfig();
       var od = api.DeidentifyConfig.fromJson(o.toJson());
       checkDeidentifyConfig(od as api.DeidentifyConfig);
@@ -2706,7 +2706,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeidentifyDatasetRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeidentifyDatasetRequest();
       var od = api.DeidentifyDatasetRequest.fromJson(o.toJson());
       checkDeidentifyDatasetRequest(od as api.DeidentifyDatasetRequest);
@@ -2714,7 +2714,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeidentifyDicomStoreRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeidentifyDicomStoreRequest();
       var od = api.DeidentifyDicomStoreRequest.fromJson(o.toJson());
       checkDeidentifyDicomStoreRequest(od as api.DeidentifyDicomStoreRequest);
@@ -2722,7 +2722,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeidentifyFhirStoreRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeidentifyFhirStoreRequest();
       var od = api.DeidentifyFhirStoreRequest.fromJson(o.toJson());
       checkDeidentifyFhirStoreRequest(od as api.DeidentifyFhirStoreRequest);
@@ -2730,7 +2730,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeidentifySummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeidentifySummary();
       var od = api.DeidentifySummary.fromJson(o.toJson());
       checkDeidentifySummary(od as api.DeidentifySummary);
@@ -2738,7 +2738,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DicomConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDicomConfig();
       var od = api.DicomConfig.fromJson(o.toJson());
       checkDicomConfig(od as api.DicomConfig);
@@ -2746,7 +2746,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DicomFilterConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDicomFilterConfig();
       var od = api.DicomFilterConfig.fromJson(o.toJson());
       checkDicomFilterConfig(od as api.DicomFilterConfig);
@@ -2754,7 +2754,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DicomStore', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDicomStore();
       var od = api.DicomStore.fromJson(o.toJson());
       checkDicomStore(od as api.DicomStore);
@@ -2762,7 +2762,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -2770,7 +2770,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExportDicomDataRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExportDicomDataRequest();
       var od = api.ExportDicomDataRequest.fromJson(o.toJson());
       checkExportDicomDataRequest(od as api.ExportDicomDataRequest);
@@ -2778,7 +2778,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExportDicomDataResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExportDicomDataResponse();
       var od = api.ExportDicomDataResponse.fromJson(o.toJson());
       checkExportDicomDataResponse(od as api.ExportDicomDataResponse);
@@ -2786,7 +2786,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExportResourcesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExportResourcesRequest();
       var od = api.ExportResourcesRequest.fromJson(o.toJson());
       checkExportResourcesRequest(od as api.ExportResourcesRequest);
@@ -2794,7 +2794,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExportResourcesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExportResourcesResponse();
       var od = api.ExportResourcesResponse.fromJson(o.toJson());
       checkExportResourcesResponse(od as api.ExportResourcesResponse);
@@ -2802,7 +2802,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -2810,7 +2810,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FhirConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFhirConfig();
       var od = api.FhirConfig.fromJson(o.toJson());
       checkFhirConfig(od as api.FhirConfig);
@@ -2818,7 +2818,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FhirFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFhirFilter();
       var od = api.FhirFilter.fromJson(o.toJson());
       checkFhirFilter(od as api.FhirFilter);
@@ -2826,7 +2826,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FhirStore', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFhirStore();
       var od = api.FhirStore.fromJson(o.toJson());
       checkFhirStore(od as api.FhirStore);
@@ -2834,7 +2834,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FieldMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFieldMetadata();
       var od = api.FieldMetadata.fromJson(o.toJson());
       checkFieldMetadata(od as api.FieldMetadata);
@@ -2844,7 +2844,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary();
       var od = api.GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary
@@ -2857,7 +2857,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary();
       var od = api.GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary
@@ -2869,7 +2869,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudHealthcareV1DicomBigQueryDestination',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudHealthcareV1DicomBigQueryDestination();
       var od = api.GoogleCloudHealthcareV1DicomBigQueryDestination.fromJson(
           o.toJson());
@@ -2879,7 +2879,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudHealthcareV1DicomGcsDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudHealthcareV1DicomGcsDestination();
       var od =
           api.GoogleCloudHealthcareV1DicomGcsDestination.fromJson(o.toJson());
@@ -2889,7 +2889,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudHealthcareV1DicomGcsSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudHealthcareV1DicomGcsSource();
       var od = api.GoogleCloudHealthcareV1DicomGcsSource.fromJson(o.toJson());
       checkGoogleCloudHealthcareV1DicomGcsSource(
@@ -2899,7 +2899,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudHealthcareV1FhirBigQueryDestination',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudHealthcareV1FhirBigQueryDestination();
       var od = api.GoogleCloudHealthcareV1FhirBigQueryDestination.fromJson(
           o.toJson());
@@ -2909,7 +2909,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudHealthcareV1FhirGcsDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudHealthcareV1FhirGcsDestination();
       var od =
           api.GoogleCloudHealthcareV1FhirGcsDestination.fromJson(o.toJson());
@@ -2919,7 +2919,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudHealthcareV1FhirGcsSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudHealthcareV1FhirGcsSource();
       var od = api.GoogleCloudHealthcareV1FhirGcsSource.fromJson(o.toJson());
       checkGoogleCloudHealthcareV1FhirGcsSource(
@@ -2928,7 +2928,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Hl7V2NotificationConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHl7V2NotificationConfig();
       var od = api.Hl7V2NotificationConfig.fromJson(o.toJson());
       checkHl7V2NotificationConfig(od as api.Hl7V2NotificationConfig);
@@ -2936,7 +2936,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Hl7V2Store', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHl7V2Store();
       var od = api.Hl7V2Store.fromJson(o.toJson());
       checkHl7V2Store(od as api.Hl7V2Store);
@@ -2944,7 +2944,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HttpBody', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHttpBody();
       var od = api.HttpBody.fromJson(o.toJson());
       checkHttpBody(od as api.HttpBody);
@@ -2952,7 +2952,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImageConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImageConfig();
       var od = api.ImageConfig.fromJson(o.toJson());
       checkImageConfig(od as api.ImageConfig);
@@ -2960,7 +2960,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImportDicomDataRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImportDicomDataRequest();
       var od = api.ImportDicomDataRequest.fromJson(o.toJson());
       checkImportDicomDataRequest(od as api.ImportDicomDataRequest);
@@ -2968,7 +2968,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImportDicomDataResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImportDicomDataResponse();
       var od = api.ImportDicomDataResponse.fromJson(o.toJson());
       checkImportDicomDataResponse(od as api.ImportDicomDataResponse);
@@ -2976,7 +2976,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImportResourcesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImportResourcesRequest();
       var od = api.ImportResourcesRequest.fromJson(o.toJson());
       checkImportResourcesRequest(od as api.ImportResourcesRequest);
@@ -2984,7 +2984,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImportResourcesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImportResourcesResponse();
       var od = api.ImportResourcesResponse.fromJson(o.toJson());
       checkImportResourcesResponse(od as api.ImportResourcesResponse);
@@ -2992,7 +2992,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InfoTypeTransformation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInfoTypeTransformation();
       var od = api.InfoTypeTransformation.fromJson(o.toJson());
       checkInfoTypeTransformation(od as api.InfoTypeTransformation);
@@ -3000,7 +3000,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IngestMessageRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIngestMessageRequest();
       var od = api.IngestMessageRequest.fromJson(o.toJson());
       checkIngestMessageRequest(od as api.IngestMessageRequest);
@@ -3008,7 +3008,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IngestMessageResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIngestMessageResponse();
       var od = api.IngestMessageResponse.fromJson(o.toJson());
       checkIngestMessageResponse(od as api.IngestMessageResponse);
@@ -3016,7 +3016,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDatasetsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDatasetsResponse();
       var od = api.ListDatasetsResponse.fromJson(o.toJson());
       checkListDatasetsResponse(od as api.ListDatasetsResponse);
@@ -3024,7 +3024,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDicomStoresResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDicomStoresResponse();
       var od = api.ListDicomStoresResponse.fromJson(o.toJson());
       checkListDicomStoresResponse(od as api.ListDicomStoresResponse);
@@ -3032,7 +3032,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListFhirStoresResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListFhirStoresResponse();
       var od = api.ListFhirStoresResponse.fromJson(o.toJson());
       checkListFhirStoresResponse(od as api.ListFhirStoresResponse);
@@ -3040,7 +3040,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListHl7V2StoresResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListHl7V2StoresResponse();
       var od = api.ListHl7V2StoresResponse.fromJson(o.toJson());
       checkListHl7V2StoresResponse(od as api.ListHl7V2StoresResponse);
@@ -3048,7 +3048,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -3056,7 +3056,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListMessagesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListMessagesResponse();
       var od = api.ListMessagesResponse.fromJson(o.toJson());
       checkListMessagesResponse(od as api.ListMessagesResponse);
@@ -3064,7 +3064,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -3072,7 +3072,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -3080,7 +3080,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Message', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMessage();
       var od = api.Message.fromJson(o.toJson());
       checkMessage(od as api.Message);
@@ -3088,7 +3088,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NotificationConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNotificationConfig();
       var od = api.NotificationConfig.fromJson(o.toJson());
       checkNotificationConfig(od as api.NotificationConfig);
@@ -3096,7 +3096,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -3104,7 +3104,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
       checkOperationMetadata(od as api.OperationMetadata);
@@ -3112,7 +3112,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ParsedData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildParsedData();
       var od = api.ParsedData.fromJson(o.toJson());
       checkParsedData(od as api.ParsedData);
@@ -3120,7 +3120,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ParserConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildParserConfig();
       var od = api.ParserConfig.fromJson(o.toJson());
       checkParserConfig(od as api.ParserConfig);
@@ -3128,7 +3128,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PatientId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPatientId();
       var od = api.PatientId.fromJson(o.toJson());
       checkPatientId(od as api.PatientId);
@@ -3136,7 +3136,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -3144,7 +3144,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProgressCounter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProgressCounter();
       var od = api.ProgressCounter.fromJson(o.toJson());
       checkProgressCounter(od as api.ProgressCounter);
@@ -3152,7 +3152,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RedactConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRedactConfig();
       var od = api.RedactConfig.fromJson(o.toJson());
       checkRedactConfig(od as api.RedactConfig);
@@ -3160,7 +3160,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReplaceWithInfoTypeConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReplaceWithInfoTypeConfig();
       var od = api.ReplaceWithInfoTypeConfig.fromJson(o.toJson());
       checkReplaceWithInfoTypeConfig(od as api.ReplaceWithInfoTypeConfig);
@@ -3168,7 +3168,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Resources', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResources();
       var od = api.Resources.fromJson(o.toJson());
       checkResources(od as api.Resources);
@@ -3176,7 +3176,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SchemaConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSchemaConfig();
       var od = api.SchemaConfig.fromJson(o.toJson());
       checkSchemaConfig(od as api.SchemaConfig);
@@ -3184,7 +3184,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchResourcesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchResourcesRequest();
       var od = api.SearchResourcesRequest.fromJson(o.toJson());
       checkSearchResourcesRequest(od as api.SearchResourcesRequest);
@@ -3192,7 +3192,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Segment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSegment();
       var od = api.Segment.fromJson(o.toJson());
       checkSegment(od as api.Segment);
@@ -3200,7 +3200,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -3208,7 +3208,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -3216,7 +3216,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StreamConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStreamConfig();
       var od = api.StreamConfig.fromJson(o.toJson());
       checkStreamConfig(od as api.StreamConfig);
@@ -3224,7 +3224,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TagFilterList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTagFilterList();
       var od = api.TagFilterList.fromJson(o.toJson());
       checkTagFilterList(od as api.TagFilterList);
@@ -3232,7 +3232,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -3240,7 +3240,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -3248,7 +3248,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TextConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTextConfig();
       var od = api.TextConfig.fromJson(o.toJson());
       checkTextConfig(od as api.TextConfig);
@@ -3256,7 +3256,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -3304,14 +3304,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -3374,20 +3371,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsDatasetsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
       var arg_request = buildDataset();
@@ -3445,15 +3439,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              datasetId: arg_datasetId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          datasetId: arg_datasetId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--deidentify', () {
+    unittest.test('method--deidentify', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
       var arg_request = buildDeidentifyDatasetRequest();
@@ -3506,14 +3497,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deidentify(arg_request, arg_sourceDataset, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.deidentify(arg_request, arg_sourceDataset,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
       var arg_name = 'foo';
@@ -3561,14 +3550,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
       var arg_name = 'foo';
@@ -3616,14 +3602,11 @@ void main() {
         var resp = convert.json.encode(buildDataset());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDataset(response as api.Dataset);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkDataset(response as api.Dataset);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
       var arg_resource = 'foo';
@@ -3676,17 +3659,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
       var arg_parent = 'foo';
@@ -3744,17 +3723,14 @@ void main() {
         var resp = convert.json.encode(buildListDatasetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDatasetsResponse(response as api.ListDatasetsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListDatasetsResponse(response as api.ListDatasetsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
       var arg_request = buildDataset();
@@ -3812,15 +3788,12 @@ void main() {
         var resp = convert.json.encode(buildDataset());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDataset(response as api.Dataset);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkDataset(response as api.Dataset);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
       var arg_request = buildSetIamPolicyRequest();
@@ -3873,14 +3846,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock).projects.locations.datasets;
       var arg_request = buildTestIamPermissionsRequest();
@@ -3933,17 +3904,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsDatasetsConsentStoresResource', () {
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -4000,17 +3969,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -4067,14 +4032,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -4131,17 +4094,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsDatasetsDicomStoresResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
@@ -4200,15 +4161,12 @@ void main() {
         var resp = convert.json.encode(buildDicomStore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              dicomStoreId: arg_dicomStoreId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDicomStore(response as api.DicomStore);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          dicomStoreId: arg_dicomStoreId, $fields: arg_$fields);
+      checkDicomStore(response as api.DicomStore);
     });
 
-    unittest.test('method--deidentify', () {
+    unittest.test('method--deidentify', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
@@ -4263,14 +4221,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deidentify(arg_request, arg_sourceStore, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.deidentify(arg_request, arg_sourceStore,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
@@ -4319,14 +4275,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--export', () {
+    unittest.test('method--export', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
@@ -4380,14 +4333,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .export(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.export(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
@@ -4436,14 +4387,11 @@ void main() {
         var resp = convert.json.encode(buildDicomStore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDicomStore(response as api.DicomStore);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkDicomStore(response as api.DicomStore);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
@@ -4497,17 +4445,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--import', () {
+    unittest.test('method--import', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
@@ -4561,14 +4505,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .import(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.import(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
@@ -4632,18 +4574,15 @@ void main() {
         var resp = convert.json.encode(buildListDicomStoresResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDicomStoresResponse(response as api.ListDicomStoresResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListDicomStoresResponse(response as api.ListDicomStoresResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
@@ -4702,15 +4641,12 @@ void main() {
         var resp = convert.json.encode(buildDicomStore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDicomStore(response as api.DicomStore);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkDicomStore(response as api.DicomStore);
     });
 
-    unittest.test('method--searchForInstances', () {
+    unittest.test('method--searchForInstances', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
@@ -4760,15 +4696,13 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchForInstances(arg_parent, arg_dicomWebPath,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.searchForInstances(
+          arg_parent, arg_dicomWebPath,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--searchForSeries', () {
+    unittest.test('method--searchForSeries', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
@@ -4818,14 +4752,12 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchForSeries(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.searchForSeries(arg_parent, arg_dicomWebPath,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--searchForStudies', () {
+    unittest.test('method--searchForStudies', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
@@ -4875,14 +4807,12 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchForStudies(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.searchForStudies(arg_parent, arg_dicomWebPath,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
@@ -4936,14 +4866,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--storeInstances', () {
+    unittest.test('method--storeInstances', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
@@ -4998,15 +4926,13 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .storeInstances(arg_request, arg_parent, arg_dicomWebPath,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.storeInstances(
+          arg_request, arg_parent, arg_dicomWebPath,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.dicomStores;
@@ -5060,18 +4986,16 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsDatasetsDicomStoresStudiesResource',
       () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -5125,14 +5049,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.delete(arg_parent, arg_dicomWebPath, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--retrieveMetadata', () {
+    unittest.test('method--retrieveMetadata', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -5186,14 +5108,12 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .retrieveMetadata(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.retrieveMetadata(arg_parent, arg_dicomWebPath,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--retrieveStudy', () {
+    unittest.test('method--retrieveStudy', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -5247,14 +5167,12 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .retrieveStudy(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.retrieveStudy(arg_parent, arg_dicomWebPath,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--searchForInstances', () {
+    unittest.test('method--searchForInstances', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -5308,15 +5226,13 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchForInstances(arg_parent, arg_dicomWebPath,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.searchForInstances(
+          arg_parent, arg_dicomWebPath,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--searchForSeries', () {
+    unittest.test('method--searchForSeries', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -5370,14 +5286,12 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchForSeries(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.searchForSeries(arg_parent, arg_dicomWebPath,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--storeInstances', () {
+    unittest.test('method--storeInstances', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -5436,18 +5350,16 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .storeInstances(arg_request, arg_parent, arg_dicomWebPath,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.storeInstances(
+          arg_request, arg_parent, arg_dicomWebPath,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsDatasetsDicomStoresStudiesSeriesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -5502,14 +5414,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.delete(arg_parent, arg_dicomWebPath, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--retrieveMetadata', () {
+    unittest.test('method--retrieveMetadata', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -5564,14 +5474,12 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .retrieveMetadata(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.retrieveMetadata(arg_parent, arg_dicomWebPath,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--retrieveSeries', () {
+    unittest.test('method--retrieveSeries', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -5626,14 +5534,12 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .retrieveSeries(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.retrieveSeries(arg_parent, arg_dicomWebPath,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--searchForInstances', () {
+    unittest.test('method--searchForInstances', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -5688,19 +5594,17 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchForInstances(arg_parent, arg_dicomWebPath,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.searchForInstances(
+          arg_parent, arg_dicomWebPath,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResource',
       () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -5756,14 +5660,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.delete(arg_parent, arg_dicomWebPath, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--retrieveInstance', () {
+    unittest.test('method--retrieveInstance', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -5819,14 +5721,12 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .retrieveInstance(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.retrieveInstance(arg_parent, arg_dicomWebPath,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--retrieveMetadata', () {
+    unittest.test('method--retrieveMetadata', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -5882,14 +5782,12 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .retrieveMetadata(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.retrieveMetadata(arg_parent, arg_dicomWebPath,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--retrieveRendered', () {
+    unittest.test('method--retrieveRendered', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -5945,18 +5843,16 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .retrieveRendered(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.retrieveRendered(arg_parent, arg_dicomWebPath,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResource',
       () {
-    unittest.test('method--retrieveFrames', () {
+    unittest.test('method--retrieveFrames', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -6013,14 +5909,12 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .retrieveFrames(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.retrieveFrames(arg_parent, arg_dicomWebPath,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--retrieveRendered', () {
+    unittest.test('method--retrieveRendered', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -6077,16 +5971,14 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .retrieveRendered(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.retrieveRendered(arg_parent, arg_dicomWebPath,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
   });
 
   unittest.group('resource-ProjectsLocationsDatasetsFhirStoresResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
@@ -6145,15 +6037,12 @@ void main() {
         var resp = convert.json.encode(buildFhirStore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              fhirStoreId: arg_fhirStoreId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFhirStore(response as api.FhirStore);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          fhirStoreId: arg_fhirStoreId, $fields: arg_$fields);
+      checkFhirStore(response as api.FhirStore);
     });
 
-    unittest.test('method--deidentify', () {
+    unittest.test('method--deidentify', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
@@ -6207,14 +6096,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deidentify(arg_request, arg_sourceStore, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.deidentify(arg_request, arg_sourceStore,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
@@ -6263,14 +6150,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--export', () {
+    unittest.test('method--export', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
@@ -6324,14 +6208,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .export(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.export(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
@@ -6380,14 +6262,11 @@ void main() {
         var resp = convert.json.encode(buildFhirStore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFhirStore(response as api.FhirStore);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkFhirStore(response as api.FhirStore);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
@@ -6441,17 +6320,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--import', () {
+    unittest.test('method--import', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
@@ -6505,14 +6380,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .import(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.import(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
@@ -6576,18 +6449,15 @@ void main() {
         var resp = convert.json.encode(buildListFhirStoresResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListFhirStoresResponse(response as api.ListFhirStoresResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListFhirStoresResponse(response as api.ListFhirStoresResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
@@ -6646,15 +6516,12 @@ void main() {
         var resp = convert.json.encode(buildFhirStore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFhirStore(response as api.FhirStore);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkFhirStore(response as api.FhirStore);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
@@ -6708,14 +6575,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.fhirStores;
@@ -6769,18 +6634,16 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsDatasetsFhirStoresFhirResource',
       () {
-    unittest.test('method--PatientEverything', () {
+    unittest.test('method--PatientEverything', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -6863,20 +6726,18 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.PatientEverything(arg_name,
-              P_count: arg_P_count,
-              P_pageToken: arg_P_pageToken,
-              P_since: arg_P_since,
-              P_type: arg_P_type,
-              end: arg_end,
-              start: arg_start,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.PatientEverything(arg_name,
+          P_count: arg_P_count,
+          P_pageToken: arg_P_pageToken,
+          P_since: arg_P_since,
+          P_type: arg_P_type,
+          end: arg_end,
+          start: arg_start,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--ResourcePurge', () {
+    unittest.test('method--ResourcePurge', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -6929,13 +6790,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.ResourcePurge(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.ResourcePurge(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--capabilities', () {
+    unittest.test('method--capabilities', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -6988,14 +6847,11 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .capabilities(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.capabilities(arg_name, $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -7054,14 +6910,12 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, arg_type, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.create(arg_request, arg_parent, arg_type,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -7114,14 +6968,11 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--executeBundle', () {
+    unittest.test('method--executeBundle', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -7179,14 +7030,12 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .executeBundle(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.executeBundle(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--history', () {
+    unittest.test('method--history', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -7259,19 +7108,16 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .history(arg_name,
-              P_at: arg_P_at,
-              P_count: arg_P_count,
-              P_pageToken: arg_P_pageToken,
-              P_since: arg_P_since,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.history(arg_name,
+          P_at: arg_P_at,
+          P_count: arg_P_count,
+          P_pageToken: arg_P_pageToken,
+          P_since: arg_P_since,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -7329,14 +7175,12 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--read', () {
+    unittest.test('method--read', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -7389,14 +7233,11 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .read(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.read(arg_name, $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -7454,14 +7295,12 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response =
+          await res.search(arg_request, arg_parent, $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--searchType', () {
+    unittest.test('method--searchType', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -7520,15 +7359,13 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchType(arg_request, arg_parent, arg_resourceType,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.searchType(
+          arg_request, arg_parent, arg_resourceType,
+          $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -7586,14 +7423,12 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--vread', () {
+    unittest.test('method--vread', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -7646,16 +7481,13 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .vread(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.vread(arg_name, $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
   });
 
   unittest.group('resource-ProjectsLocationsDatasetsHl7V2StoresResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
@@ -7714,15 +7546,12 @@ void main() {
         var resp = convert.json.encode(buildHl7V2Store());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              hl7V2StoreId: arg_hl7V2StoreId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHl7V2Store(response as api.Hl7V2Store);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          hl7V2StoreId: arg_hl7V2StoreId, $fields: arg_$fields);
+      checkHl7V2Store(response as api.Hl7V2Store);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
@@ -7771,14 +7600,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
@@ -7827,14 +7653,11 @@ void main() {
         var resp = convert.json.encode(buildHl7V2Store());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHl7V2Store(response as api.Hl7V2Store);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkHl7V2Store(response as api.Hl7V2Store);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
@@ -7888,17 +7711,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
@@ -7962,18 +7781,15 @@ void main() {
         var resp = convert.json.encode(buildListHl7V2StoresResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListHl7V2StoresResponse(response as api.ListHl7V2StoresResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListHl7V2StoresResponse(response as api.ListHl7V2StoresResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
@@ -8032,15 +7848,12 @@ void main() {
         var resp = convert.json.encode(buildHl7V2Store());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHl7V2Store(response as api.Hl7V2Store);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkHl7V2Store(response as api.Hl7V2Store);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
@@ -8094,14 +7907,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.hl7V2Stores;
@@ -8155,18 +7966,16 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsDatasetsHl7V2StoresMessagesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -8224,14 +8033,12 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -8284,14 +8091,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -8349,14 +8153,12 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, view: arg_view, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response =
+          await res.get(arg_name, view: arg_view, $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
 
-    unittest.test('method--ingest', () {
+    unittest.test('method--ingest', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -8414,14 +8216,12 @@ void main() {
         var resp = convert.json.encode(buildIngestMessageResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .ingest(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIngestMessageResponse(response as api.IngestMessageResponse);
-      })));
+      final response =
+          await res.ingest(arg_request, arg_parent, $fields: arg_$fields);
+      checkIngestMessageResponse(response as api.IngestMessageResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -8499,20 +8299,17 @@ void main() {
         var resp = convert.json.encode(buildListMessagesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListMessagesResponse(response as api.ListMessagesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListMessagesResponse(response as api.ListMessagesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudHealthcareApi(mock)
           .projects
@@ -8575,17 +8372,14 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
   });
 
   unittest.group('resource-ProjectsLocationsDatasetsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.operations;
@@ -8639,14 +8433,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.operations;
@@ -8695,14 +8487,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudHealthcareApi(mock).projects.locations.datasets.operations;
@@ -8766,15 +8555,12 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 }

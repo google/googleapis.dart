@@ -2618,7 +2618,7 @@ void checkVerifyPasswordResponse(api.VerifyPasswordResponse o) {
 
 void main() {
   unittest.group('obj-schema-CreateAuthUriResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateAuthUriResponse();
       var od = api.CreateAuthUriResponse.fromJson(o.toJson());
       checkCreateAuthUriResponse(od as api.CreateAuthUriResponse);
@@ -2626,7 +2626,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteAccountResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteAccountResponse();
       var od = api.DeleteAccountResponse.fromJson(o.toJson());
       checkDeleteAccountResponse(od as api.DeleteAccountResponse);
@@ -2634,7 +2634,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DownloadAccountResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDownloadAccountResponse();
       var od = api.DownloadAccountResponse.fromJson(o.toJson());
       checkDownloadAccountResponse(od as api.DownloadAccountResponse);
@@ -2642,7 +2642,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EmailLinkSigninResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmailLinkSigninResponse();
       var od = api.EmailLinkSigninResponse.fromJson(o.toJson());
       checkEmailLinkSigninResponse(od as api.EmailLinkSigninResponse);
@@ -2650,7 +2650,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EmailTemplate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmailTemplate();
       var od = api.EmailTemplate.fromJson(o.toJson());
       checkEmailTemplate(od as api.EmailTemplate);
@@ -2658,7 +2658,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetAccountInfoResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetAccountInfoResponse();
       var od = api.GetAccountInfoResponse.fromJson(o.toJson());
       checkGetAccountInfoResponse(od as api.GetAccountInfoResponse);
@@ -2666,7 +2666,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetOobConfirmationCodeResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetOobConfirmationCodeResponse();
       var od = api.GetOobConfirmationCodeResponse.fromJson(o.toJson());
       checkGetOobConfirmationCodeResponse(
@@ -2675,7 +2675,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetRecaptchaParamResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetRecaptchaParamResponse();
       var od = api.GetRecaptchaParamResponse.fromJson(o.toJson());
       checkGetRecaptchaParamResponse(od as api.GetRecaptchaParamResponse);
@@ -2684,7 +2684,7 @@ void main() {
 
   unittest.group('obj-schema-IdentitytoolkitRelyingpartyCreateAuthUriRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyCreateAuthUriRequest();
       var od = api.IdentitytoolkitRelyingpartyCreateAuthUriRequest.fromJson(
           o.toJson());
@@ -2695,7 +2695,7 @@ void main() {
 
   unittest.group('obj-schema-IdentitytoolkitRelyingpartyDeleteAccountRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyDeleteAccountRequest();
       var od = api.IdentitytoolkitRelyingpartyDeleteAccountRequest.fromJson(
           o.toJson());
@@ -2706,7 +2706,7 @@ void main() {
 
   unittest.group('obj-schema-IdentitytoolkitRelyingpartyDownloadAccountRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyDownloadAccountRequest();
       var od = api.IdentitytoolkitRelyingpartyDownloadAccountRequest.fromJson(
           o.toJson());
@@ -2717,7 +2717,7 @@ void main() {
 
   unittest.group('obj-schema-IdentitytoolkitRelyingpartyEmailLinkSigninRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyEmailLinkSigninRequest();
       var od = api.IdentitytoolkitRelyingpartyEmailLinkSigninRequest.fromJson(
           o.toJson());
@@ -2728,7 +2728,7 @@ void main() {
 
   unittest.group('obj-schema-IdentitytoolkitRelyingpartyGetAccountInfoRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyGetAccountInfoRequest();
       var od = api.IdentitytoolkitRelyingpartyGetAccountInfoRequest.fromJson(
           o.toJson());
@@ -2739,7 +2739,7 @@ void main() {
 
   unittest.group(
       'obj-schema-IdentitytoolkitRelyingpartyGetProjectConfigResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyGetProjectConfigResponse();
       var od = api.IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(
           o.toJson());
@@ -2750,7 +2750,7 @@ void main() {
 
   unittest.group('obj-schema-IdentitytoolkitRelyingpartyGetPublicKeysResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyGetPublicKeysResponse();
       var od = api.IdentitytoolkitRelyingpartyGetPublicKeysResponse.fromJson(
           o.toJson());
@@ -2761,7 +2761,7 @@ void main() {
 
   unittest.group('obj-schema-IdentitytoolkitRelyingpartyResetPasswordRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyResetPasswordRequest();
       var od = api.IdentitytoolkitRelyingpartyResetPasswordRequest.fromJson(
           o.toJson());
@@ -2772,7 +2772,7 @@ void main() {
 
   unittest.group(
       'obj-schema-IdentitytoolkitRelyingpartySendVerificationCodeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartySendVerificationCodeRequest();
       var od =
           api.IdentitytoolkitRelyingpartySendVerificationCodeRequest.fromJson(
@@ -2784,7 +2784,7 @@ void main() {
 
   unittest.group(
       'obj-schema-IdentitytoolkitRelyingpartySendVerificationCodeResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartySendVerificationCodeResponse();
       var od =
           api.IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(
@@ -2796,7 +2796,7 @@ void main() {
 
   unittest.group('obj-schema-IdentitytoolkitRelyingpartySetAccountInfoRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartySetAccountInfoRequest();
       var od = api.IdentitytoolkitRelyingpartySetAccountInfoRequest.fromJson(
           o.toJson());
@@ -2807,7 +2807,7 @@ void main() {
 
   unittest.group(
       'obj-schema-IdentitytoolkitRelyingpartySetProjectConfigRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartySetProjectConfigRequest();
       var od = api.IdentitytoolkitRelyingpartySetProjectConfigRequest.fromJson(
           o.toJson());
@@ -2818,7 +2818,7 @@ void main() {
 
   unittest.group(
       'obj-schema-IdentitytoolkitRelyingpartySetProjectConfigResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartySetProjectConfigResponse();
       var od = api.IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(
           o.toJson());
@@ -2829,7 +2829,7 @@ void main() {
 
   unittest.group('obj-schema-IdentitytoolkitRelyingpartySignOutUserRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartySignOutUserRequest();
       var od = api.IdentitytoolkitRelyingpartySignOutUserRequest.fromJson(
           o.toJson());
@@ -2840,7 +2840,7 @@ void main() {
 
   unittest.group('obj-schema-IdentitytoolkitRelyingpartySignOutUserResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartySignOutUserResponse();
       var od = api.IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(
           o.toJson());
@@ -2851,7 +2851,7 @@ void main() {
 
   unittest.group('obj-schema-IdentitytoolkitRelyingpartySignupNewUserRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartySignupNewUserRequest();
       var od = api.IdentitytoolkitRelyingpartySignupNewUserRequest.fromJson(
           o.toJson());
@@ -2862,7 +2862,7 @@ void main() {
 
   unittest.group('obj-schema-IdentitytoolkitRelyingpartyUploadAccountRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyUploadAccountRequest();
       var od = api.IdentitytoolkitRelyingpartyUploadAccountRequest.fromJson(
           o.toJson());
@@ -2873,7 +2873,7 @@ void main() {
 
   unittest.group('obj-schema-IdentitytoolkitRelyingpartyVerifyAssertionRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyVerifyAssertionRequest();
       var od = api.IdentitytoolkitRelyingpartyVerifyAssertionRequest.fromJson(
           o.toJson());
@@ -2884,7 +2884,7 @@ void main() {
 
   unittest.group(
       'obj-schema-IdentitytoolkitRelyingpartyVerifyCustomTokenRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyVerifyCustomTokenRequest();
       var od = api.IdentitytoolkitRelyingpartyVerifyCustomTokenRequest.fromJson(
           o.toJson());
@@ -2895,7 +2895,7 @@ void main() {
 
   unittest.group('obj-schema-IdentitytoolkitRelyingpartyVerifyPasswordRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyVerifyPasswordRequest();
       var od = api.IdentitytoolkitRelyingpartyVerifyPasswordRequest.fromJson(
           o.toJson());
@@ -2906,7 +2906,7 @@ void main() {
 
   unittest.group(
       'obj-schema-IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyVerifyPhoneNumberRequest();
       var od = api.IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest.fromJson(
           o.toJson());
@@ -2917,7 +2917,7 @@ void main() {
 
   unittest.group(
       'obj-schema-IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyVerifyPhoneNumberResponse();
       var od =
           api.IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(
@@ -2928,7 +2928,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IdpConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdpConfig();
       var od = api.IdpConfig.fromJson(o.toJson());
       checkIdpConfig(od as api.IdpConfig);
@@ -2936,7 +2936,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Relyingparty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRelyingparty();
       var od = api.Relyingparty.fromJson(o.toJson());
       checkRelyingparty(od as api.Relyingparty);
@@ -2944,7 +2944,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResetPasswordResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResetPasswordResponse();
       var od = api.ResetPasswordResponse.fromJson(o.toJson());
       checkResetPasswordResponse(od as api.ResetPasswordResponse);
@@ -2952,7 +2952,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetAccountInfoResponseProviderUserInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetAccountInfoResponseProviderUserInfo();
       var od = api.SetAccountInfoResponseProviderUserInfo.fromJson(o.toJson());
       checkSetAccountInfoResponseProviderUserInfo(
@@ -2961,7 +2961,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetAccountInfoResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetAccountInfoResponse();
       var od = api.SetAccountInfoResponse.fromJson(o.toJson());
       checkSetAccountInfoResponse(od as api.SetAccountInfoResponse);
@@ -2969,7 +2969,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SignupNewUserResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSignupNewUserResponse();
       var od = api.SignupNewUserResponse.fromJson(o.toJson());
       checkSignupNewUserResponse(od as api.SignupNewUserResponse);
@@ -2977,7 +2977,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UploadAccountResponseError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUploadAccountResponseError();
       var od = api.UploadAccountResponseError.fromJson(o.toJson());
       checkUploadAccountResponseError(od as api.UploadAccountResponseError);
@@ -2985,7 +2985,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UploadAccountResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUploadAccountResponse();
       var od = api.UploadAccountResponse.fromJson(o.toJson());
       checkUploadAccountResponse(od as api.UploadAccountResponse);
@@ -2993,7 +2993,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserInfoProviderUserInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserInfoProviderUserInfo();
       var od = api.UserInfoProviderUserInfo.fromJson(o.toJson());
       checkUserInfoProviderUserInfo(od as api.UserInfoProviderUserInfo);
@@ -3001,7 +3001,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserInfo();
       var od = api.UserInfo.fromJson(o.toJson());
       checkUserInfo(od as api.UserInfo);
@@ -3009,7 +3009,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VerifyAssertionResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVerifyAssertionResponse();
       var od = api.VerifyAssertionResponse.fromJson(o.toJson());
       checkVerifyAssertionResponse(od as api.VerifyAssertionResponse);
@@ -3017,7 +3017,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VerifyCustomTokenResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVerifyCustomTokenResponse();
       var od = api.VerifyCustomTokenResponse.fromJson(o.toJson());
       checkVerifyCustomTokenResponse(od as api.VerifyCustomTokenResponse);
@@ -3025,7 +3025,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VerifyPasswordResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVerifyPasswordResponse();
       var od = api.VerifyPasswordResponse.fromJson(o.toJson());
       checkVerifyPasswordResponse(od as api.VerifyPasswordResponse);
@@ -3033,7 +3033,7 @@ void main() {
   });
 
   unittest.group('resource-RelyingpartyResource', () {
-    unittest.test('method--createAuthUri', () {
+    unittest.test('method--createAuthUri', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_request = buildIdentitytoolkitRelyingpartyCreateAuthUriRequest();
@@ -3090,14 +3090,12 @@ void main() {
         var resp = convert.json.encode(buildCreateAuthUriResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createAuthUri(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCreateAuthUriResponse(response as api.CreateAuthUriResponse);
-      })));
+      final response =
+          await res.createAuthUri(arg_request, $fields: arg_$fields);
+      checkCreateAuthUriResponse(response as api.CreateAuthUriResponse);
     });
 
-    unittest.test('method--deleteAccount', () {
+    unittest.test('method--deleteAccount', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_request = buildIdentitytoolkitRelyingpartyDeleteAccountRequest();
@@ -3154,14 +3152,12 @@ void main() {
         var resp = convert.json.encode(buildDeleteAccountResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deleteAccount(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDeleteAccountResponse(response as api.DeleteAccountResponse);
-      })));
+      final response =
+          await res.deleteAccount(arg_request, $fields: arg_$fields);
+      checkDeleteAccountResponse(response as api.DeleteAccountResponse);
     });
 
-    unittest.test('method--downloadAccount', () {
+    unittest.test('method--downloadAccount', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_request =
@@ -3220,14 +3216,12 @@ void main() {
         var resp = convert.json.encode(buildDownloadAccountResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .downloadAccount(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDownloadAccountResponse(response as api.DownloadAccountResponse);
-      })));
+      final response =
+          await res.downloadAccount(arg_request, $fields: arg_$fields);
+      checkDownloadAccountResponse(response as api.DownloadAccountResponse);
     });
 
-    unittest.test('method--emailLinkSignin', () {
+    unittest.test('method--emailLinkSignin', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_request =
@@ -3286,14 +3280,12 @@ void main() {
         var resp = convert.json.encode(buildEmailLinkSigninResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .emailLinkSignin(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmailLinkSigninResponse(response as api.EmailLinkSigninResponse);
-      })));
+      final response =
+          await res.emailLinkSignin(arg_request, $fields: arg_$fields);
+      checkEmailLinkSigninResponse(response as api.EmailLinkSigninResponse);
     });
 
-    unittest.test('method--getAccountInfo', () {
+    unittest.test('method--getAccountInfo', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_request = buildIdentitytoolkitRelyingpartyGetAccountInfoRequest();
@@ -3350,14 +3342,12 @@ void main() {
         var resp = convert.json.encode(buildGetAccountInfoResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getAccountInfo(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetAccountInfoResponse(response as api.GetAccountInfoResponse);
-      })));
+      final response =
+          await res.getAccountInfo(arg_request, $fields: arg_$fields);
+      checkGetAccountInfoResponse(response as api.GetAccountInfoResponse);
     });
 
-    unittest.test('method--getOobConfirmationCode', () {
+    unittest.test('method--getOobConfirmationCode', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_request = buildRelyingparty();
@@ -3413,15 +3403,13 @@ void main() {
         var resp = convert.json.encode(buildGetOobConfirmationCodeResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getOobConfirmationCode(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetOobConfirmationCodeResponse(
-            response as api.GetOobConfirmationCodeResponse);
-      })));
+      final response =
+          await res.getOobConfirmationCode(arg_request, $fields: arg_$fields);
+      checkGetOobConfirmationCodeResponse(
+          response as api.GetOobConfirmationCodeResponse);
     });
 
-    unittest.test('method--getProjectConfig', () {
+    unittest.test('method--getProjectConfig', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_delegatedProjectNumber = 'foo';
@@ -3483,18 +3471,15 @@ void main() {
             .encode(buildIdentitytoolkitRelyingpartyGetProjectConfigResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getProjectConfig(
-              delegatedProjectNumber: arg_delegatedProjectNumber,
-              projectNumber: arg_projectNumber,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIdentitytoolkitRelyingpartyGetProjectConfigResponse(response
-            as api.IdentitytoolkitRelyingpartyGetProjectConfigResponse);
-      })));
+      final response = await res.getProjectConfig(
+          delegatedProjectNumber: arg_delegatedProjectNumber,
+          projectNumber: arg_projectNumber,
+          $fields: arg_$fields);
+      checkIdentitytoolkitRelyingpartyGetProjectConfigResponse(
+          response as api.IdentitytoolkitRelyingpartyGetProjectConfigResponse);
     });
 
-    unittest.test('method--getPublicKeys', () {
+    unittest.test('method--getPublicKeys', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_$fields = 'foo';
@@ -3546,15 +3531,12 @@ void main() {
             .encode(buildIdentitytoolkitRelyingpartyGetPublicKeysResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getPublicKeys($fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIdentitytoolkitRelyingpartyGetPublicKeysResponse(
-            response as api.IdentitytoolkitRelyingpartyGetPublicKeysResponse);
-      })));
+      final response = await res.getPublicKeys($fields: arg_$fields);
+      checkIdentitytoolkitRelyingpartyGetPublicKeysResponse(
+          response as api.IdentitytoolkitRelyingpartyGetPublicKeysResponse);
     });
 
-    unittest.test('method--getRecaptchaParam', () {
+    unittest.test('method--getRecaptchaParam', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_$fields = 'foo';
@@ -3605,15 +3587,11 @@ void main() {
         var resp = convert.json.encode(buildGetRecaptchaParamResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getRecaptchaParam($fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetRecaptchaParamResponse(
-            response as api.GetRecaptchaParamResponse);
-      })));
+      final response = await res.getRecaptchaParam($fields: arg_$fields);
+      checkGetRecaptchaParamResponse(response as api.GetRecaptchaParamResponse);
     });
 
-    unittest.test('method--resetPassword', () {
+    unittest.test('method--resetPassword', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_request = buildIdentitytoolkitRelyingpartyResetPasswordRequest();
@@ -3670,14 +3648,12 @@ void main() {
         var resp = convert.json.encode(buildResetPasswordResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resetPassword(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkResetPasswordResponse(response as api.ResetPasswordResponse);
-      })));
+      final response =
+          await res.resetPassword(arg_request, $fields: arg_$fields);
+      checkResetPasswordResponse(response as api.ResetPasswordResponse);
     });
 
-    unittest.test('method--sendVerificationCode', () {
+    unittest.test('method--sendVerificationCode', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_request =
@@ -3737,15 +3713,13 @@ void main() {
             buildIdentitytoolkitRelyingpartySendVerificationCodeResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .sendVerificationCode(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIdentitytoolkitRelyingpartySendVerificationCodeResponse(response
-            as api.IdentitytoolkitRelyingpartySendVerificationCodeResponse);
-      })));
+      final response =
+          await res.sendVerificationCode(arg_request, $fields: arg_$fields);
+      checkIdentitytoolkitRelyingpartySendVerificationCodeResponse(response
+          as api.IdentitytoolkitRelyingpartySendVerificationCodeResponse);
     });
 
-    unittest.test('method--setAccountInfo', () {
+    unittest.test('method--setAccountInfo', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_request = buildIdentitytoolkitRelyingpartySetAccountInfoRequest();
@@ -3802,14 +3776,12 @@ void main() {
         var resp = convert.json.encode(buildSetAccountInfoResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setAccountInfo(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSetAccountInfoResponse(response as api.SetAccountInfoResponse);
-      })));
+      final response =
+          await res.setAccountInfo(arg_request, $fields: arg_$fields);
+      checkSetAccountInfoResponse(response as api.SetAccountInfoResponse);
     });
 
-    unittest.test('method--setProjectConfig', () {
+    unittest.test('method--setProjectConfig', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_request =
@@ -3869,15 +3841,13 @@ void main() {
             .encode(buildIdentitytoolkitRelyingpartySetProjectConfigResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setProjectConfig(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIdentitytoolkitRelyingpartySetProjectConfigResponse(response
-            as api.IdentitytoolkitRelyingpartySetProjectConfigResponse);
-      })));
+      final response =
+          await res.setProjectConfig(arg_request, $fields: arg_$fields);
+      checkIdentitytoolkitRelyingpartySetProjectConfigResponse(
+          response as api.IdentitytoolkitRelyingpartySetProjectConfigResponse);
     });
 
-    unittest.test('method--signOutUser', () {
+    unittest.test('method--signOutUser', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_request = buildIdentitytoolkitRelyingpartySignOutUserRequest();
@@ -3935,15 +3905,12 @@ void main() {
             .encode(buildIdentitytoolkitRelyingpartySignOutUserResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .signOutUser(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIdentitytoolkitRelyingpartySignOutUserResponse(
-            response as api.IdentitytoolkitRelyingpartySignOutUserResponse);
-      })));
+      final response = await res.signOutUser(arg_request, $fields: arg_$fields);
+      checkIdentitytoolkitRelyingpartySignOutUserResponse(
+          response as api.IdentitytoolkitRelyingpartySignOutUserResponse);
     });
 
-    unittest.test('method--signupNewUser', () {
+    unittest.test('method--signupNewUser', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_request = buildIdentitytoolkitRelyingpartySignupNewUserRequest();
@@ -4000,14 +3967,12 @@ void main() {
         var resp = convert.json.encode(buildSignupNewUserResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .signupNewUser(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSignupNewUserResponse(response as api.SignupNewUserResponse);
-      })));
+      final response =
+          await res.signupNewUser(arg_request, $fields: arg_$fields);
+      checkSignupNewUserResponse(response as api.SignupNewUserResponse);
     });
 
-    unittest.test('method--uploadAccount', () {
+    unittest.test('method--uploadAccount', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_request = buildIdentitytoolkitRelyingpartyUploadAccountRequest();
@@ -4064,14 +4029,12 @@ void main() {
         var resp = convert.json.encode(buildUploadAccountResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .uploadAccount(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUploadAccountResponse(response as api.UploadAccountResponse);
-      })));
+      final response =
+          await res.uploadAccount(arg_request, $fields: arg_$fields);
+      checkUploadAccountResponse(response as api.UploadAccountResponse);
     });
 
-    unittest.test('method--verifyAssertion', () {
+    unittest.test('method--verifyAssertion', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_request =
@@ -4130,14 +4093,12 @@ void main() {
         var resp = convert.json.encode(buildVerifyAssertionResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .verifyAssertion(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVerifyAssertionResponse(response as api.VerifyAssertionResponse);
-      })));
+      final response =
+          await res.verifyAssertion(arg_request, $fields: arg_$fields);
+      checkVerifyAssertionResponse(response as api.VerifyAssertionResponse);
     });
 
-    unittest.test('method--verifyCustomToken', () {
+    unittest.test('method--verifyCustomToken', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_request =
@@ -4196,15 +4157,12 @@ void main() {
         var resp = convert.json.encode(buildVerifyCustomTokenResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .verifyCustomToken(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVerifyCustomTokenResponse(
-            response as api.VerifyCustomTokenResponse);
-      })));
+      final response =
+          await res.verifyCustomToken(arg_request, $fields: arg_$fields);
+      checkVerifyCustomTokenResponse(response as api.VerifyCustomTokenResponse);
     });
 
-    unittest.test('method--verifyPassword', () {
+    unittest.test('method--verifyPassword', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_request = buildIdentitytoolkitRelyingpartyVerifyPasswordRequest();
@@ -4261,14 +4219,12 @@ void main() {
         var resp = convert.json.encode(buildVerifyPasswordResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .verifyPassword(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVerifyPasswordResponse(response as api.VerifyPasswordResponse);
-      })));
+      final response =
+          await res.verifyPassword(arg_request, $fields: arg_$fields);
+      checkVerifyPasswordResponse(response as api.VerifyPasswordResponse);
     });
 
-    unittest.test('method--verifyPhoneNumber', () {
+    unittest.test('method--verifyPhoneNumber', () async {
       var mock = HttpServerMock();
       var res = api.IdentityToolkitApi(mock).relyingparty;
       var arg_request =
@@ -4328,12 +4284,10 @@ void main() {
             buildIdentitytoolkitRelyingpartyVerifyPhoneNumberResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .verifyPhoneNumber(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIdentitytoolkitRelyingpartyVerifyPhoneNumberResponse(response
-            as api.IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse);
-      })));
+      final response =
+          await res.verifyPhoneNumber(arg_request, $fields: arg_$fields);
+      checkIdentitytoolkitRelyingpartyVerifyPhoneNumberResponse(
+          response as api.IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse);
     });
   });
 }

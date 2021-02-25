@@ -1507,7 +1507,7 @@ void checkUnnamed2562(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-AdministrationRegion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdministrationRegion();
       var od = api.AdministrationRegion.fromJson(o.toJson());
       checkAdministrationRegion(od as api.AdministrationRegion);
@@ -1515,7 +1515,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AdministrativeBody', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdministrativeBody();
       var od = api.AdministrativeBody.fromJson(o.toJson());
       checkAdministrativeBody(od as api.AdministrativeBody);
@@ -1523,7 +1523,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Candidate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCandidate();
       var od = api.Candidate.fromJson(o.toJson());
       checkCandidate(od as api.Candidate);
@@ -1531,7 +1531,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Channel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChannel();
       var od = api.Channel.fromJson(o.toJson());
       checkChannel(od as api.Channel);
@@ -1539,7 +1539,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Contest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContest();
       var od = api.Contest.fromJson(o.toJson());
       checkContest(od as api.Contest);
@@ -1547,7 +1547,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DivisionSearchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDivisionSearchResponse();
       var od = api.DivisionSearchResponse.fromJson(o.toJson());
       checkDivisionSearchResponse(od as api.DivisionSearchResponse);
@@ -1555,7 +1555,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DivisionSearchResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDivisionSearchResult();
       var od = api.DivisionSearchResult.fromJson(o.toJson());
       checkDivisionSearchResult(od as api.DivisionSearchResult);
@@ -1563,7 +1563,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Election', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildElection();
       var od = api.Election.fromJson(o.toJson());
       checkElection(od as api.Election);
@@ -1571,7 +1571,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ElectionOfficial', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildElectionOfficial();
       var od = api.ElectionOfficial.fromJson(o.toJson());
       checkElectionOfficial(od as api.ElectionOfficial);
@@ -1579,7 +1579,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ElectionsQueryResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildElectionsQueryResponse();
       var od = api.ElectionsQueryResponse.fromJson(o.toJson());
       checkElectionsQueryResponse(od as api.ElectionsQueryResponse);
@@ -1587,7 +1587,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ElectoralDistrict', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildElectoralDistrict();
       var od = api.ElectoralDistrict.fromJson(o.toJson());
       checkElectoralDistrict(od as api.ElectoralDistrict);
@@ -1595,7 +1595,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GeographicDivision', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGeographicDivision();
       var od = api.GeographicDivision.fromJson(o.toJson());
       checkGeographicDivision(od as api.GeographicDivision);
@@ -1603,7 +1603,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Office', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOffice();
       var od = api.Office.fromJson(o.toJson());
       checkOffice(od as api.Office);
@@ -1611,7 +1611,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Official', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOfficial();
       var od = api.Official.fromJson(o.toJson());
       checkOfficial(od as api.Official);
@@ -1619,7 +1619,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PollingLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPollingLocation();
       var od = api.PollingLocation.fromJson(o.toJson());
       checkPollingLocation(od as api.PollingLocation);
@@ -1627,7 +1627,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RepresentativeInfoData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepresentativeInfoData();
       var od = api.RepresentativeInfoData.fromJson(o.toJson());
       checkRepresentativeInfoData(od as api.RepresentativeInfoData);
@@ -1635,7 +1635,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RepresentativeInfoResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepresentativeInfoResponse();
       var od = api.RepresentativeInfoResponse.fromJson(o.toJson());
       checkRepresentativeInfoResponse(od as api.RepresentativeInfoResponse);
@@ -1643,7 +1643,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SimpleAddressType', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSimpleAddressType();
       var od = api.SimpleAddressType.fromJson(o.toJson());
       checkSimpleAddressType(od as api.SimpleAddressType);
@@ -1651,7 +1651,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Source', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSource();
       var od = api.Source.fromJson(o.toJson());
       checkSource(od as api.Source);
@@ -1659,7 +1659,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VoterInfoResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVoterInfoResponse();
       var od = api.VoterInfoResponse.fromJson(o.toJson());
       checkVoterInfoResponse(od as api.VoterInfoResponse);
@@ -1667,7 +1667,7 @@ void main() {
   });
 
   unittest.group('resource-DivisionsResource', () {
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.CivicInfoApi(mock).divisions;
       var arg_query = 'foo';
@@ -1718,16 +1718,13 @@ void main() {
         var resp = convert.json.encode(buildDivisionSearchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(query: arg_query, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDivisionSearchResponse(response as api.DivisionSearchResponse);
-      })));
+      final response = await res.search(query: arg_query, $fields: arg_$fields);
+      checkDivisionSearchResponse(response as api.DivisionSearchResponse);
     });
   });
 
   unittest.group('resource-ElectionsResource', () {
-    unittest.test('method--electionQuery', () {
+    unittest.test('method--electionQuery', () async {
       var mock = HttpServerMock();
       var res = api.CivicInfoApi(mock).elections;
       var arg_$fields = 'foo';
@@ -1773,14 +1770,11 @@ void main() {
         var resp = convert.json.encode(buildElectionsQueryResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .electionQuery($fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkElectionsQueryResponse(response as api.ElectionsQueryResponse);
-      })));
+      final response = await res.electionQuery($fields: arg_$fields);
+      checkElectionsQueryResponse(response as api.ElectionsQueryResponse);
     });
 
-    unittest.test('method--voterInfoQuery', () {
+    unittest.test('method--voterInfoQuery', () async {
       var mock = HttpServerMock();
       var res = api.CivicInfoApi(mock).elections;
       var arg_address = 'foo';
@@ -1846,20 +1840,17 @@ void main() {
         var resp = convert.json.encode(buildVoterInfoResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .voterInfoQuery(arg_address,
-              electionId: arg_electionId,
-              officialOnly: arg_officialOnly,
-              returnAllAvailableData: arg_returnAllAvailableData,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVoterInfoResponse(response as api.VoterInfoResponse);
-      })));
+      final response = await res.voterInfoQuery(arg_address,
+          electionId: arg_electionId,
+          officialOnly: arg_officialOnly,
+          returnAllAvailableData: arg_returnAllAvailableData,
+          $fields: arg_$fields);
+      checkVoterInfoResponse(response as api.VoterInfoResponse);
     });
   });
 
   unittest.group('resource-RepresentativesResource', () {
-    unittest.test('method--representativeInfoByAddress', () {
+    unittest.test('method--representativeInfoByAddress', () async {
       var mock = HttpServerMock();
       var res = api.CivicInfoApi(mock).representatives;
       var arg_address = 'foo';
@@ -1925,20 +1916,17 @@ void main() {
         var resp = convert.json.encode(buildRepresentativeInfoResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .representativeInfoByAddress(
-              address: arg_address,
-              includeOffices: arg_includeOffices,
-              levels: arg_levels,
-              roles: arg_roles,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRepresentativeInfoResponse(
-            response as api.RepresentativeInfoResponse);
-      })));
+      final response = await res.representativeInfoByAddress(
+          address: arg_address,
+          includeOffices: arg_includeOffices,
+          levels: arg_levels,
+          roles: arg_roles,
+          $fields: arg_$fields);
+      checkRepresentativeInfoResponse(
+          response as api.RepresentativeInfoResponse);
     });
 
-    unittest.test('method--representativeInfoByDivision', () {
+    unittest.test('method--representativeInfoByDivision', () async {
       var mock = HttpServerMock();
       var res = api.CivicInfoApi(mock).representatives;
       var arg_ocdId = 'foo';
@@ -2006,15 +1994,12 @@ void main() {
         var resp = convert.json.encode(buildRepresentativeInfoData());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .representativeInfoByDivision(arg_ocdId,
-              levels: arg_levels,
-              recursive: arg_recursive,
-              roles: arg_roles,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRepresentativeInfoData(response as api.RepresentativeInfoData);
-      })));
+      final response = await res.representativeInfoByDivision(arg_ocdId,
+          levels: arg_levels,
+          recursive: arg_recursive,
+          roles: arg_roles,
+          $fields: arg_$fields);
+      checkRepresentativeInfoData(response as api.RepresentativeInfoData);
     });
   });
 }

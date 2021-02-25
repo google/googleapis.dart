@@ -1617,7 +1617,7 @@ void checkVpcAccessibleServices(api.VpcAccessibleServices o) {
 
 void main() {
   unittest.group('obj-schema-AccessLevel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccessLevel();
       var od = api.AccessLevel.fromJson(o.toJson());
       checkAccessLevel(od as api.AccessLevel);
@@ -1625,7 +1625,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccessPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccessPolicy();
       var od = api.AccessPolicy.fromJson(o.toJson());
       checkAccessPolicy(od as api.AccessPolicy);
@@ -1633,7 +1633,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApiOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApiOperation();
       var od = api.ApiOperation.fromJson(o.toJson());
       checkApiOperation(od as api.ApiOperation);
@@ -1641,7 +1641,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BasicLevel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBasicLevel();
       var od = api.BasicLevel.fromJson(o.toJson());
       checkBasicLevel(od as api.BasicLevel);
@@ -1649,7 +1649,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od as api.CancelOperationRequest);
@@ -1657,7 +1657,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CommitServicePerimetersRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCommitServicePerimetersRequest();
       var od = api.CommitServicePerimetersRequest.fromJson(o.toJson());
       checkCommitServicePerimetersRequest(
@@ -1666,7 +1666,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CommitServicePerimetersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCommitServicePerimetersResponse();
       var od = api.CommitServicePerimetersResponse.fromJson(o.toJson());
       checkCommitServicePerimetersResponse(
@@ -1675,7 +1675,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Condition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCondition();
       var od = api.Condition.fromJson(o.toJson());
       checkCondition(od as api.Condition);
@@ -1683,7 +1683,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomLevel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomLevel();
       var od = api.CustomLevel.fromJson(o.toJson());
       checkCustomLevel(od as api.CustomLevel);
@@ -1691,7 +1691,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DevicePolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDevicePolicy();
       var od = api.DevicePolicy.fromJson(o.toJson());
       checkDevicePolicy(od as api.DevicePolicy);
@@ -1699,7 +1699,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EgressFrom', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEgressFrom();
       var od = api.EgressFrom.fromJson(o.toJson());
       checkEgressFrom(od as api.EgressFrom);
@@ -1707,7 +1707,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EgressPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEgressPolicy();
       var od = api.EgressPolicy.fromJson(o.toJson());
       checkEgressPolicy(od as api.EgressPolicy);
@@ -1715,7 +1715,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EgressTo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEgressTo();
       var od = api.EgressTo.fromJson(o.toJson());
       checkEgressTo(od as api.EgressTo);
@@ -1723,7 +1723,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1731,7 +1731,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -1739,7 +1739,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GcpUserAccessBinding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGcpUserAccessBinding();
       var od = api.GcpUserAccessBinding.fromJson(o.toJson());
       checkGcpUserAccessBinding(od as api.GcpUserAccessBinding);
@@ -1747,7 +1747,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IngressFrom', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIngressFrom();
       var od = api.IngressFrom.fromJson(o.toJson());
       checkIngressFrom(od as api.IngressFrom);
@@ -1755,7 +1755,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IngressPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIngressPolicy();
       var od = api.IngressPolicy.fromJson(o.toJson());
       checkIngressPolicy(od as api.IngressPolicy);
@@ -1763,7 +1763,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IngressSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIngressSource();
       var od = api.IngressSource.fromJson(o.toJson());
       checkIngressSource(od as api.IngressSource);
@@ -1771,7 +1771,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IngressTo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIngressTo();
       var od = api.IngressTo.fromJson(o.toJson());
       checkIngressTo(od as api.IngressTo);
@@ -1779,7 +1779,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAccessLevelsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAccessLevelsResponse();
       var od = api.ListAccessLevelsResponse.fromJson(o.toJson());
       checkListAccessLevelsResponse(od as api.ListAccessLevelsResponse);
@@ -1787,7 +1787,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAccessPoliciesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAccessPoliciesResponse();
       var od = api.ListAccessPoliciesResponse.fromJson(o.toJson());
       checkListAccessPoliciesResponse(od as api.ListAccessPoliciesResponse);
@@ -1795,7 +1795,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListGcpUserAccessBindingsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListGcpUserAccessBindingsResponse();
       var od = api.ListGcpUserAccessBindingsResponse.fromJson(o.toJson());
       checkListGcpUserAccessBindingsResponse(
@@ -1804,7 +1804,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -1812,7 +1812,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListServicePerimetersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListServicePerimetersResponse();
       var od = api.ListServicePerimetersResponse.fromJson(o.toJson());
       checkListServicePerimetersResponse(
@@ -1821,7 +1821,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MethodSelector', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMethodSelector();
       var od = api.MethodSelector.fromJson(o.toJson());
       checkMethodSelector(od as api.MethodSelector);
@@ -1829,7 +1829,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -1837,7 +1837,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OsConstraint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOsConstraint();
       var od = api.OsConstraint.fromJson(o.toJson());
       checkOsConstraint(od as api.OsConstraint);
@@ -1845,7 +1845,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReplaceAccessLevelsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReplaceAccessLevelsRequest();
       var od = api.ReplaceAccessLevelsRequest.fromJson(o.toJson());
       checkReplaceAccessLevelsRequest(od as api.ReplaceAccessLevelsRequest);
@@ -1853,7 +1853,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReplaceAccessLevelsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReplaceAccessLevelsResponse();
       var od = api.ReplaceAccessLevelsResponse.fromJson(o.toJson());
       checkReplaceAccessLevelsResponse(od as api.ReplaceAccessLevelsResponse);
@@ -1861,7 +1861,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReplaceServicePerimetersRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReplaceServicePerimetersRequest();
       var od = api.ReplaceServicePerimetersRequest.fromJson(o.toJson());
       checkReplaceServicePerimetersRequest(
@@ -1870,7 +1870,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReplaceServicePerimetersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReplaceServicePerimetersResponse();
       var od = api.ReplaceServicePerimetersResponse.fromJson(o.toJson());
       checkReplaceServicePerimetersResponse(
@@ -1879,7 +1879,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ServicePerimeter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildServicePerimeter();
       var od = api.ServicePerimeter.fromJson(o.toJson());
       checkServicePerimeter(od as api.ServicePerimeter);
@@ -1887,7 +1887,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ServicePerimeterConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildServicePerimeterConfig();
       var od = api.ServicePerimeterConfig.fromJson(o.toJson());
       checkServicePerimeterConfig(od as api.ServicePerimeterConfig);
@@ -1895,7 +1895,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -1903,7 +1903,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VpcAccessibleServices', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVpcAccessibleServices();
       var od = api.VpcAccessibleServices.fromJson(o.toJson());
       checkVpcAccessibleServices(od as api.VpcAccessibleServices);
@@ -1911,7 +1911,7 @@ void main() {
   });
 
   unittest.group('resource-AccessPoliciesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.AccessContextManagerApi(mock).accessPolicies;
       var arg_request = buildAccessPolicy();
@@ -1962,14 +1962,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AccessContextManagerApi(mock).accessPolicies;
       var arg_name = 'foo';
@@ -2017,14 +2014,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AccessContextManagerApi(mock).accessPolicies;
       var arg_name = 'foo';
@@ -2072,14 +2066,11 @@ void main() {
         var resp = convert.json.encode(buildAccessPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccessPolicy(response as api.AccessPolicy);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkAccessPolicy(response as api.AccessPolicy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AccessContextManagerApi(mock).accessPolicies;
       var arg_pageSize = 42;
@@ -2140,19 +2131,16 @@ void main() {
         var resp = convert.json.encode(buildListAccessPoliciesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              parent: arg_parent,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAccessPoliciesResponse(
-            response as api.ListAccessPoliciesResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          parent: arg_parent,
+          $fields: arg_$fields);
+      checkListAccessPoliciesResponse(
+          response as api.ListAccessPoliciesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AccessContextManagerApi(mock).accessPolicies;
       var arg_request = buildAccessPolicy();
@@ -2210,17 +2198,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-AccessPoliciesAccessLevelsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.AccessContextManagerApi(mock).accessPolicies.accessLevels;
       var arg_request = buildAccessLevel();
@@ -2273,14 +2258,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AccessContextManagerApi(mock).accessPolicies.accessLevels;
       var arg_name = 'foo';
@@ -2328,14 +2311,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AccessContextManagerApi(mock).accessPolicies.accessLevels;
       var arg_name = 'foo';
@@ -2388,15 +2368,12 @@ void main() {
         var resp = convert.json.encode(buildAccessLevel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name,
-              accessLevelFormat: arg_accessLevelFormat, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccessLevel(response as api.AccessLevel);
-      })));
+      final response = await res.get(arg_name,
+          accessLevelFormat: arg_accessLevelFormat, $fields: arg_$fields);
+      checkAccessLevel(response as api.AccessLevel);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AccessContextManagerApi(mock).accessPolicies.accessLevels;
       var arg_parent = 'foo';
@@ -2459,18 +2436,15 @@ void main() {
         var resp = convert.json.encode(buildListAccessLevelsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              accessLevelFormat: arg_accessLevelFormat,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAccessLevelsResponse(response as api.ListAccessLevelsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          accessLevelFormat: arg_accessLevelFormat,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAccessLevelsResponse(response as api.ListAccessLevelsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AccessContextManagerApi(mock).accessPolicies.accessLevels;
       var arg_request = buildAccessLevel();
@@ -2528,15 +2502,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--replaceAll', () {
+    unittest.test('method--replaceAll', () async {
       var mock = HttpServerMock();
       var res = api.AccessContextManagerApi(mock).accessPolicies.accessLevels;
       var arg_request = buildReplaceAccessLevelsRequest();
@@ -2589,16 +2560,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .replaceAll(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.replaceAll(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-AccessPoliciesServicePerimetersResource', () {
-    unittest.test('method--commit', () {
+    unittest.test('method--commit', () async {
       var mock = HttpServerMock();
       var res =
           api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
@@ -2653,14 +2622,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .commit(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.commit(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
@@ -2714,14 +2681,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
@@ -2770,14 +2735,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
@@ -2826,14 +2788,11 @@ void main() {
         var resp = convert.json.encode(buildServicePerimeter());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkServicePerimeter(response as api.ServicePerimeter);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkServicePerimeter(response as api.ServicePerimeter);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
@@ -2892,18 +2851,15 @@ void main() {
         var resp = convert.json.encode(buildListServicePerimetersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListServicePerimetersResponse(
-            response as api.ListServicePerimetersResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListServicePerimetersResponse(
+          response as api.ListServicePerimetersResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res =
           api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
@@ -2962,15 +2918,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--replaceAll', () {
+    unittest.test('method--replaceAll', () async {
       var mock = HttpServerMock();
       var res =
           api.AccessContextManagerApi(mock).accessPolicies.servicePerimeters;
@@ -3025,16 +2978,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .replaceAll(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.replaceAll(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.AccessContextManagerApi(mock).operations;
       var arg_request = buildCancelOperationRequest();
@@ -3087,14 +3038,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AccessContextManagerApi(mock).operations;
       var arg_name = 'foo';
@@ -3142,14 +3091,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AccessContextManagerApi(mock).operations;
       var arg_name = 'foo';
@@ -3197,14 +3143,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AccessContextManagerApi(mock).operations;
       var arg_name = 'foo';
@@ -3267,20 +3210,17 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsGcpUserAccessBindingsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.AccessContextManagerApi(mock).organizations.gcpUserAccessBindings;
@@ -3334,14 +3274,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.AccessContextManagerApi(mock).organizations.gcpUserAccessBindings;
@@ -3390,14 +3328,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.AccessContextManagerApi(mock).organizations.gcpUserAccessBindings;
@@ -3446,14 +3381,11 @@ void main() {
         var resp = convert.json.encode(buildGcpUserAccessBinding());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGcpUserAccessBinding(response as api.GcpUserAccessBinding);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGcpUserAccessBinding(response as api.GcpUserAccessBinding);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.AccessContextManagerApi(mock).organizations.gcpUserAccessBindings;
@@ -3513,18 +3445,15 @@ void main() {
             convert.json.encode(buildListGcpUserAccessBindingsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListGcpUserAccessBindingsResponse(
-            response as api.ListGcpUserAccessBindingsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListGcpUserAccessBindingsResponse(
+          response as api.ListGcpUserAccessBindingsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res =
           api.AccessContextManagerApi(mock).organizations.gcpUserAccessBindings;
@@ -3583,12 +3512,9 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 }

@@ -1338,7 +1338,7 @@ void checkWebAppConfig(api.WebAppConfig o) {
 
 void main() {
   unittest.group('obj-schema-AddFirebaseRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddFirebaseRequest();
       var od = api.AddFirebaseRequest.fromJson(o.toJson());
       checkAddFirebaseRequest(od as api.AddFirebaseRequest);
@@ -1346,7 +1346,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AddGoogleAnalyticsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddGoogleAnalyticsRequest();
       var od = api.AddGoogleAnalyticsRequest.fromJson(o.toJson());
       checkAddGoogleAnalyticsRequest(od as api.AddGoogleAnalyticsRequest);
@@ -1354,7 +1354,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AdminSdkConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdminSdkConfig();
       var od = api.AdminSdkConfig.fromJson(o.toJson());
       checkAdminSdkConfig(od as api.AdminSdkConfig);
@@ -1362,7 +1362,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnalyticsDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnalyticsDetails();
       var od = api.AnalyticsDetails.fromJson(o.toJson());
       checkAnalyticsDetails(od as api.AnalyticsDetails);
@@ -1370,7 +1370,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnalyticsProperty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnalyticsProperty();
       var od = api.AnalyticsProperty.fromJson(o.toJson());
       checkAnalyticsProperty(od as api.AnalyticsProperty);
@@ -1378,7 +1378,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AndroidApp', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAndroidApp();
       var od = api.AndroidApp.fromJson(o.toJson());
       checkAndroidApp(od as api.AndroidApp);
@@ -1386,7 +1386,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AndroidAppConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAndroidAppConfig();
       var od = api.AndroidAppConfig.fromJson(o.toJson());
       checkAndroidAppConfig(od as api.AndroidAppConfig);
@@ -1394,7 +1394,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DefaultResources', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDefaultResources();
       var od = api.DefaultResources.fromJson(o.toJson());
       checkDefaultResources(od as api.DefaultResources);
@@ -1402,7 +1402,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1410,7 +1410,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FinalizeDefaultLocationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFinalizeDefaultLocationRequest();
       var od = api.FinalizeDefaultLocationRequest.fromJson(o.toJson());
       checkFinalizeDefaultLocationRequest(
@@ -1419,7 +1419,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FirebaseAppInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFirebaseAppInfo();
       var od = api.FirebaseAppInfo.fromJson(o.toJson());
       checkFirebaseAppInfo(od as api.FirebaseAppInfo);
@@ -1427,7 +1427,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FirebaseProject', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFirebaseProject();
       var od = api.FirebaseProject.fromJson(o.toJson());
       checkFirebaseProject(od as api.FirebaseProject);
@@ -1435,7 +1435,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IosApp', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIosApp();
       var od = api.IosApp.fromJson(o.toJson());
       checkIosApp(od as api.IosApp);
@@ -1443,7 +1443,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IosAppConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIosAppConfig();
       var od = api.IosAppConfig.fromJson(o.toJson());
       checkIosAppConfig(od as api.IosAppConfig);
@@ -1451,7 +1451,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAndroidAppsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAndroidAppsResponse();
       var od = api.ListAndroidAppsResponse.fromJson(o.toJson());
       checkListAndroidAppsResponse(od as api.ListAndroidAppsResponse);
@@ -1459,7 +1459,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAvailableLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAvailableLocationsResponse();
       var od = api.ListAvailableLocationsResponse.fromJson(o.toJson());
       checkListAvailableLocationsResponse(
@@ -1468,7 +1468,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAvailableProjectsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAvailableProjectsResponse();
       var od = api.ListAvailableProjectsResponse.fromJson(o.toJson());
       checkListAvailableProjectsResponse(
@@ -1477,7 +1477,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListFirebaseProjectsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListFirebaseProjectsResponse();
       var od = api.ListFirebaseProjectsResponse.fromJson(o.toJson());
       checkListFirebaseProjectsResponse(od as api.ListFirebaseProjectsResponse);
@@ -1485,7 +1485,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListIosAppsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListIosAppsResponse();
       var od = api.ListIosAppsResponse.fromJson(o.toJson());
       checkListIosAppsResponse(od as api.ListIosAppsResponse);
@@ -1493,7 +1493,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListShaCertificatesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListShaCertificatesResponse();
       var od = api.ListShaCertificatesResponse.fromJson(o.toJson());
       checkListShaCertificatesResponse(od as api.ListShaCertificatesResponse);
@@ -1501,7 +1501,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListWebAppsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListWebAppsResponse();
       var od = api.ListWebAppsResponse.fromJson(o.toJson());
       checkListWebAppsResponse(od as api.ListWebAppsResponse);
@@ -1509,7 +1509,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -1517,7 +1517,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MessageSet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMessageSet();
       var od = api.MessageSet.fromJson(o.toJson());
       checkMessageSet(od as api.MessageSet);
@@ -1525,7 +1525,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -1533,7 +1533,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProjectInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProjectInfo();
       var od = api.ProjectInfo.fromJson(o.toJson());
       checkProjectInfo(od as api.ProjectInfo);
@@ -1541,7 +1541,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RemoveAnalyticsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRemoveAnalyticsRequest();
       var od = api.RemoveAnalyticsRequest.fromJson(o.toJson());
       checkRemoveAnalyticsRequest(od as api.RemoveAnalyticsRequest);
@@ -1549,7 +1549,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchFirebaseAppsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchFirebaseAppsResponse();
       var od = api.SearchFirebaseAppsResponse.fromJson(o.toJson());
       checkSearchFirebaseAppsResponse(od as api.SearchFirebaseAppsResponse);
@@ -1557,7 +1557,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShaCertificate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShaCertificate();
       var od = api.ShaCertificate.fromJson(o.toJson());
       checkShaCertificate(od as api.ShaCertificate);
@@ -1565,7 +1565,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -1573,7 +1573,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StatusProto', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatusProto();
       var od = api.StatusProto.fromJson(o.toJson());
       checkStatusProto(od as api.StatusProto);
@@ -1581,7 +1581,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StreamMapping', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStreamMapping();
       var od = api.StreamMapping.fromJson(o.toJson());
       checkStreamMapping(od as api.StreamMapping);
@@ -1589,7 +1589,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebApp', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebApp();
       var od = api.WebApp.fromJson(o.toJson());
       checkWebApp(od as api.WebApp);
@@ -1597,7 +1597,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebAppConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebAppConfig();
       var od = api.WebAppConfig.fromJson(o.toJson());
       checkWebAppConfig(od as api.WebAppConfig);
@@ -1605,7 +1605,7 @@ void main() {
   });
 
   unittest.group('resource-AvailableProjectsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).availableProjects;
       var arg_pageSize = 42;
@@ -1661,20 +1661,17 @@ void main() {
         var resp = convert.json.encode(buildListAvailableProjectsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAvailableProjectsResponse(
-            response as api.ListAvailableProjectsResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAvailableProjectsResponse(
+          response as api.ListAvailableProjectsResponse);
     });
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).operations;
       var arg_name = 'foo';
@@ -1722,16 +1719,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsResource', () {
-    unittest.test('method--addFirebase', () {
+    unittest.test('method--addFirebase', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects;
       var arg_request = buildAddFirebaseRequest();
@@ -1784,14 +1778,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .addFirebase(arg_request, arg_project, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.addFirebase(arg_request, arg_project, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--addGoogleAnalytics', () {
+    unittest.test('method--addGoogleAnalytics', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects;
       var arg_request = buildAddGoogleAnalyticsRequest();
@@ -1844,14 +1836,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .addGoogleAnalytics(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.addGoogleAnalytics(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects;
       var arg_name = 'foo';
@@ -1899,14 +1889,11 @@ void main() {
         var resp = convert.json.encode(buildFirebaseProject());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFirebaseProject(response as api.FirebaseProject);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkFirebaseProject(response as api.FirebaseProject);
     });
 
-    unittest.test('method--getAdminSdkConfig', () {
+    unittest.test('method--getAdminSdkConfig', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects;
       var arg_name = 'foo';
@@ -1954,14 +1941,12 @@ void main() {
         var resp = convert.json.encode(buildAdminSdkConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getAdminSdkConfig(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAdminSdkConfig(response as api.AdminSdkConfig);
-      })));
+      final response =
+          await res.getAdminSdkConfig(arg_name, $fields: arg_$fields);
+      checkAdminSdkConfig(response as api.AdminSdkConfig);
     });
 
-    unittest.test('method--getAnalyticsDetails', () {
+    unittest.test('method--getAnalyticsDetails', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects;
       var arg_name = 'foo';
@@ -2009,14 +1994,12 @@ void main() {
         var resp = convert.json.encode(buildAnalyticsDetails());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getAnalyticsDetails(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAnalyticsDetails(response as api.AnalyticsDetails);
-      })));
+      final response =
+          await res.getAnalyticsDetails(arg_name, $fields: arg_$fields);
+      checkAnalyticsDetails(response as api.AnalyticsDetails);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects;
       var arg_pageSize = 42;
@@ -2072,18 +2055,15 @@ void main() {
         var resp = convert.json.encode(buildListFirebaseProjectsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListFirebaseProjectsResponse(
-            response as api.ListFirebaseProjectsResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListFirebaseProjectsResponse(
+          response as api.ListFirebaseProjectsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects;
       var arg_request = buildFirebaseProject();
@@ -2141,15 +2121,12 @@ void main() {
         var resp = convert.json.encode(buildFirebaseProject());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFirebaseProject(response as api.FirebaseProject);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkFirebaseProject(response as api.FirebaseProject);
     });
 
-    unittest.test('method--removeAnalytics', () {
+    unittest.test('method--removeAnalytics', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects;
       var arg_request = buildRemoveAnalyticsRequest();
@@ -2202,14 +2179,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .removeAnalytics(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.removeAnalytics(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--searchApps', () {
+    unittest.test('method--searchApps', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects;
       var arg_parent = 'foo';
@@ -2272,21 +2247,18 @@ void main() {
         var resp = convert.json.encode(buildSearchFirebaseAppsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchApps(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchFirebaseAppsResponse(
-            response as api.SearchFirebaseAppsResponse);
-      })));
+      final response = await res.searchApps(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSearchFirebaseAppsResponse(
+          response as api.SearchFirebaseAppsResponse);
     });
   });
 
   unittest.group('resource-ProjectsAndroidAppsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.androidApps;
       var arg_request = buildAndroidApp();
@@ -2339,14 +2311,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.androidApps;
       var arg_name = 'foo';
@@ -2394,14 +2364,11 @@ void main() {
         var resp = convert.json.encode(buildAndroidApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAndroidApp(response as api.AndroidApp);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkAndroidApp(response as api.AndroidApp);
     });
 
-    unittest.test('method--getConfig', () {
+    unittest.test('method--getConfig', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.androidApps;
       var arg_name = 'foo';
@@ -2449,14 +2416,11 @@ void main() {
         var resp = convert.json.encode(buildAndroidAppConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getConfig(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAndroidAppConfig(response as api.AndroidAppConfig);
-      })));
+      final response = await res.getConfig(arg_name, $fields: arg_$fields);
+      checkAndroidAppConfig(response as api.AndroidAppConfig);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.androidApps;
       var arg_parent = 'foo';
@@ -2514,17 +2478,14 @@ void main() {
         var resp = convert.json.encode(buildListAndroidAppsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAndroidAppsResponse(response as api.ListAndroidAppsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAndroidAppsResponse(response as api.ListAndroidAppsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.androidApps;
       var arg_request = buildAndroidApp();
@@ -2582,17 +2543,14 @@ void main() {
         var resp = convert.json.encode(buildAndroidApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAndroidApp(response as api.AndroidApp);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkAndroidApp(response as api.AndroidApp);
     });
   });
 
   unittest.group('resource-ProjectsAndroidAppsShaResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.androidApps.sha;
       var arg_request = buildShaCertificate();
@@ -2645,14 +2603,12 @@ void main() {
         var resp = convert.json.encode(buildShaCertificate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkShaCertificate(response as api.ShaCertificate);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkShaCertificate(response as api.ShaCertificate);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.androidApps.sha;
       var arg_name = 'foo';
@@ -2700,14 +2656,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.androidApps.sha;
       var arg_parent = 'foo';
@@ -2755,17 +2708,14 @@ void main() {
         var resp = convert.json.encode(buildListShaCertificatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListShaCertificatesResponse(
-            response as api.ListShaCertificatesResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkListShaCertificatesResponse(
+          response as api.ListShaCertificatesResponse);
     });
   });
 
   unittest.group('resource-ProjectsAvailableLocationsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.availableLocations;
       var arg_parent = 'foo';
@@ -2823,20 +2773,17 @@ void main() {
         var resp = convert.json.encode(buildListAvailableLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAvailableLocationsResponse(
-            response as api.ListAvailableLocationsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAvailableLocationsResponse(
+          response as api.ListAvailableLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsDefaultLocationResource', () {
-    unittest.test('method--finalize', () {
+    unittest.test('method--finalize', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.defaultLocation;
       var arg_request = buildFinalizeDefaultLocationRequest();
@@ -2890,16 +2837,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .finalize(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.finalize(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsIosAppsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.iosApps;
       var arg_request = buildIosApp();
@@ -2952,14 +2897,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.iosApps;
       var arg_name = 'foo';
@@ -3007,14 +2950,11 @@ void main() {
         var resp = convert.json.encode(buildIosApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIosApp(response as api.IosApp);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkIosApp(response as api.IosApp);
     });
 
-    unittest.test('method--getConfig', () {
+    unittest.test('method--getConfig', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.iosApps;
       var arg_name = 'foo';
@@ -3062,14 +3002,11 @@ void main() {
         var resp = convert.json.encode(buildIosAppConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getConfig(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIosAppConfig(response as api.IosAppConfig);
-      })));
+      final response = await res.getConfig(arg_name, $fields: arg_$fields);
+      checkIosAppConfig(response as api.IosAppConfig);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.iosApps;
       var arg_parent = 'foo';
@@ -3127,17 +3064,14 @@ void main() {
         var resp = convert.json.encode(buildListIosAppsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListIosAppsResponse(response as api.ListIosAppsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListIosAppsResponse(response as api.ListIosAppsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.iosApps;
       var arg_request = buildIosApp();
@@ -3195,17 +3129,14 @@ void main() {
         var resp = convert.json.encode(buildIosApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIosApp(response as api.IosApp);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkIosApp(response as api.IosApp);
     });
   });
 
   unittest.group('resource-ProjectsWebAppsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.webApps;
       var arg_request = buildWebApp();
@@ -3258,14 +3189,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.webApps;
       var arg_name = 'foo';
@@ -3313,14 +3242,11 @@ void main() {
         var resp = convert.json.encode(buildWebApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWebApp(response as api.WebApp);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkWebApp(response as api.WebApp);
     });
 
-    unittest.test('method--getConfig', () {
+    unittest.test('method--getConfig', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.webApps;
       var arg_name = 'foo';
@@ -3368,14 +3294,11 @@ void main() {
         var resp = convert.json.encode(buildWebAppConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getConfig(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWebAppConfig(response as api.WebAppConfig);
-      })));
+      final response = await res.getConfig(arg_name, $fields: arg_$fields);
+      checkWebAppConfig(response as api.WebAppConfig);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.webApps;
       var arg_parent = 'foo';
@@ -3433,17 +3356,14 @@ void main() {
         var resp = convert.json.encode(buildListWebAppsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListWebAppsResponse(response as api.ListWebAppsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListWebAppsResponse(response as api.ListWebAppsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseManagementApi(mock).projects.webApps;
       var arg_request = buildWebApp();
@@ -3501,12 +3421,9 @@ void main() {
         var resp = convert.json.encode(buildWebApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWebApp(response as api.WebApp);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkWebApp(response as api.WebApp);
     });
   });
 }

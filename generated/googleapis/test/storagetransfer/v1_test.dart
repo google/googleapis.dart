@@ -1204,7 +1204,7 @@ void checkUpdateTransferJobRequest(api.UpdateTransferJobRequest o) {
 
 void main() {
   unittest.group('obj-schema-AwsAccessKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAwsAccessKey();
       var od = api.AwsAccessKey.fromJson(o.toJson());
       checkAwsAccessKey(od as api.AwsAccessKey);
@@ -1212,7 +1212,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AwsS3Data', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAwsS3Data();
       var od = api.AwsS3Data.fromJson(o.toJson());
       checkAwsS3Data(od as api.AwsS3Data);
@@ -1220,7 +1220,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AzureBlobStorageData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAzureBlobStorageData();
       var od = api.AzureBlobStorageData.fromJson(o.toJson());
       checkAzureBlobStorageData(od as api.AzureBlobStorageData);
@@ -1228,7 +1228,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AzureCredentials', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAzureCredentials();
       var od = api.AzureCredentials.fromJson(o.toJson());
       checkAzureCredentials(od as api.AzureCredentials);
@@ -1236,7 +1236,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od as api.CancelOperationRequest);
@@ -1244,7 +1244,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Date', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
       checkDate(od as api.Date);
@@ -1252,7 +1252,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1260,7 +1260,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ErrorLogEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildErrorLogEntry();
       var od = api.ErrorLogEntry.fromJson(o.toJson());
       checkErrorLogEntry(od as api.ErrorLogEntry);
@@ -1268,7 +1268,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ErrorSummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildErrorSummary();
       var od = api.ErrorSummary.fromJson(o.toJson());
       checkErrorSummary(od as api.ErrorSummary);
@@ -1276,7 +1276,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GcsData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGcsData();
       var od = api.GcsData.fromJson(o.toJson());
       checkGcsData(od as api.GcsData);
@@ -1284,7 +1284,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleServiceAccount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleServiceAccount();
       var od = api.GoogleServiceAccount.fromJson(o.toJson());
       checkGoogleServiceAccount(od as api.GoogleServiceAccount);
@@ -1292,7 +1292,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HttpData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHttpData();
       var od = api.HttpData.fromJson(o.toJson());
       checkHttpData(od as api.HttpData);
@@ -1300,7 +1300,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -1308,7 +1308,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTransferJobsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTransferJobsResponse();
       var od = api.ListTransferJobsResponse.fromJson(o.toJson());
       checkListTransferJobsResponse(od as api.ListTransferJobsResponse);
@@ -1316,7 +1316,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NotificationConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNotificationConfig();
       var od = api.NotificationConfig.fromJson(o.toJson());
       checkNotificationConfig(od as api.NotificationConfig);
@@ -1324,7 +1324,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ObjectConditions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildObjectConditions();
       var od = api.ObjectConditions.fromJson(o.toJson());
       checkObjectConditions(od as api.ObjectConditions);
@@ -1332,7 +1332,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -1340,7 +1340,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PauseTransferOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPauseTransferOperationRequest();
       var od = api.PauseTransferOperationRequest.fromJson(o.toJson());
       checkPauseTransferOperationRequest(
@@ -1349,7 +1349,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResumeTransferOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResumeTransferOperationRequest();
       var od = api.ResumeTransferOperationRequest.fromJson(o.toJson());
       checkResumeTransferOperationRequest(
@@ -1358,7 +1358,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RunTransferJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRunTransferJobRequest();
       var od = api.RunTransferJobRequest.fromJson(o.toJson());
       checkRunTransferJobRequest(od as api.RunTransferJobRequest);
@@ -1366,7 +1366,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Schedule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSchedule();
       var od = api.Schedule.fromJson(o.toJson());
       checkSchedule(od as api.Schedule);
@@ -1374,7 +1374,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -1382,7 +1382,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimeOfDay', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimeOfDay();
       var od = api.TimeOfDay.fromJson(o.toJson());
       checkTimeOfDay(od as api.TimeOfDay);
@@ -1390,7 +1390,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TransferCounters', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTransferCounters();
       var od = api.TransferCounters.fromJson(o.toJson());
       checkTransferCounters(od as api.TransferCounters);
@@ -1398,7 +1398,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TransferJob', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTransferJob();
       var od = api.TransferJob.fromJson(o.toJson());
       checkTransferJob(od as api.TransferJob);
@@ -1406,7 +1406,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TransferOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTransferOperation();
       var od = api.TransferOperation.fromJson(o.toJson());
       checkTransferOperation(od as api.TransferOperation);
@@ -1414,7 +1414,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TransferOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTransferOptions();
       var od = api.TransferOptions.fromJson(o.toJson());
       checkTransferOptions(od as api.TransferOptions);
@@ -1422,7 +1422,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TransferSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTransferSpec();
       var od = api.TransferSpec.fromJson(o.toJson());
       checkTransferSpec(od as api.TransferSpec);
@@ -1430,7 +1430,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateTransferJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateTransferJobRequest();
       var od = api.UpdateTransferJobRequest.fromJson(o.toJson());
       checkUpdateTransferJobRequest(od as api.UpdateTransferJobRequest);
@@ -1438,7 +1438,7 @@ void main() {
   });
 
   unittest.group('resource-GoogleServiceAccountsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.StoragetransferApi(mock).googleServiceAccounts;
       var arg_projectId = 'foo';
@@ -1491,16 +1491,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleServiceAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleServiceAccount(response as api.GoogleServiceAccount);
-      })));
+      final response = await res.get(arg_projectId, $fields: arg_$fields);
+      checkGoogleServiceAccount(response as api.GoogleServiceAccount);
     });
   });
 
   unittest.group('resource-TransferJobsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.StoragetransferApi(mock).transferJobs;
       var arg_request = buildTransferJob();
@@ -1551,14 +1548,11 @@ void main() {
         var resp = convert.json.encode(buildTransferJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTransferJob(response as api.TransferJob);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkTransferJob(response as api.TransferJob);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.StoragetransferApi(mock).transferJobs;
       var arg_jobName = 'foo';
@@ -1611,14 +1605,12 @@ void main() {
         var resp = convert.json.encode(buildTransferJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_jobName, arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTransferJob(response as api.TransferJob);
-      })));
+      final response =
+          await res.get(arg_jobName, arg_projectId, $fields: arg_$fields);
+      checkTransferJob(response as api.TransferJob);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.StoragetransferApi(mock).transferJobs;
       var arg_filter = 'foo';
@@ -1679,17 +1671,14 @@ void main() {
         var resp = convert.json.encode(buildListTransferJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTransferJobsResponse(response as api.ListTransferJobsResponse);
-      })));
+      final response = await res.list(arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListTransferJobsResponse(response as api.ListTransferJobsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.StoragetransferApi(mock).transferJobs;
       var arg_request = buildUpdateTransferJobRequest();
@@ -1742,14 +1731,12 @@ void main() {
         var resp = convert.json.encode(buildTransferJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_jobName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTransferJob(response as api.TransferJob);
-      })));
+      final response =
+          await res.patch(arg_request, arg_jobName, $fields: arg_$fields);
+      checkTransferJob(response as api.TransferJob);
     });
 
-    unittest.test('method--run', () {
+    unittest.test('method--run', () async {
       var mock = HttpServerMock();
       var res = api.StoragetransferApi(mock).transferJobs;
       var arg_request = buildRunTransferJobRequest();
@@ -1802,16 +1789,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .run(arg_request, arg_jobName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.run(arg_request, arg_jobName, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-TransferOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.StoragetransferApi(mock).transferOperations;
       var arg_request = buildCancelOperationRequest();
@@ -1864,14 +1849,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.StoragetransferApi(mock).transferOperations;
       var arg_name = 'foo';
@@ -1919,14 +1902,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.StoragetransferApi(mock).transferOperations;
       var arg_name = 'foo';
@@ -1989,17 +1969,14 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name, arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name, arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
 
-    unittest.test('method--pause', () {
+    unittest.test('method--pause', () async {
       var mock = HttpServerMock();
       var res = api.StoragetransferApi(mock).transferOperations;
       var arg_request = buildPauseTransferOperationRequest();
@@ -2053,14 +2030,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .pause(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.pause(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--resume', () {
+    unittest.test('method--resume', () async {
       var mock = HttpServerMock();
       var res = api.StoragetransferApi(mock).transferOperations;
       var arg_request = buildResumeTransferOperationRequest();
@@ -2114,11 +2089,9 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resume(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.resume(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 }

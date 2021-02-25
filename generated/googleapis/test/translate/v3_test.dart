@@ -1202,7 +1202,7 @@ void checkWaitOperationRequest(api.WaitOperationRequest o) {
 
 void main() {
   unittest.group('obj-schema-BatchTranslateTextRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchTranslateTextRequest();
       var od = api.BatchTranslateTextRequest.fromJson(o.toJson());
       checkBatchTranslateTextRequest(od as api.BatchTranslateTextRequest);
@@ -1210,7 +1210,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od as api.CancelOperationRequest);
@@ -1218,7 +1218,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DetectLanguageRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDetectLanguageRequest();
       var od = api.DetectLanguageRequest.fromJson(o.toJson());
       checkDetectLanguageRequest(od as api.DetectLanguageRequest);
@@ -1226,7 +1226,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DetectLanguageResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDetectLanguageResponse();
       var od = api.DetectLanguageResponse.fromJson(o.toJson());
       checkDetectLanguageResponse(od as api.DetectLanguageResponse);
@@ -1234,7 +1234,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DetectedLanguage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDetectedLanguage();
       var od = api.DetectedLanguage.fromJson(o.toJson());
       checkDetectedLanguage(od as api.DetectedLanguage);
@@ -1242,7 +1242,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1250,7 +1250,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GcsDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGcsDestination();
       var od = api.GcsDestination.fromJson(o.toJson());
       checkGcsDestination(od as api.GcsDestination);
@@ -1258,7 +1258,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GcsSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGcsSource();
       var od = api.GcsSource.fromJson(o.toJson());
       checkGcsSource(od as api.GcsSource);
@@ -1266,7 +1266,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Glossary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGlossary();
       var od = api.Glossary.fromJson(o.toJson());
       checkGlossary(od as api.Glossary);
@@ -1274,7 +1274,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GlossaryInputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGlossaryInputConfig();
       var od = api.GlossaryInputConfig.fromJson(o.toJson());
       checkGlossaryInputConfig(od as api.GlossaryInputConfig);
@@ -1282,7 +1282,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInputConfig();
       var od = api.InputConfig.fromJson(o.toJson());
       checkInputConfig(od as api.InputConfig);
@@ -1290,7 +1290,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LanguageCodePair', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLanguageCodePair();
       var od = api.LanguageCodePair.fromJson(o.toJson());
       checkLanguageCodePair(od as api.LanguageCodePair);
@@ -1298,7 +1298,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LanguageCodesSet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLanguageCodesSet();
       var od = api.LanguageCodesSet.fromJson(o.toJson());
       checkLanguageCodesSet(od as api.LanguageCodesSet);
@@ -1306,7 +1306,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListGlossariesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListGlossariesResponse();
       var od = api.ListGlossariesResponse.fromJson(o.toJson());
       checkListGlossariesResponse(od as api.ListGlossariesResponse);
@@ -1314,7 +1314,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -1322,7 +1322,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -1330,7 +1330,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -1338,7 +1338,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -1346,7 +1346,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OutputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOutputConfig();
       var od = api.OutputConfig.fromJson(o.toJson());
       checkOutputConfig(od as api.OutputConfig);
@@ -1354,7 +1354,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -1362,7 +1362,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SupportedLanguage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSupportedLanguage();
       var od = api.SupportedLanguage.fromJson(o.toJson());
       checkSupportedLanguage(od as api.SupportedLanguage);
@@ -1370,7 +1370,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SupportedLanguages', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSupportedLanguages();
       var od = api.SupportedLanguages.fromJson(o.toJson());
       checkSupportedLanguages(od as api.SupportedLanguages);
@@ -1378,7 +1378,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TranslateTextGlossaryConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTranslateTextGlossaryConfig();
       var od = api.TranslateTextGlossaryConfig.fromJson(o.toJson());
       checkTranslateTextGlossaryConfig(od as api.TranslateTextGlossaryConfig);
@@ -1386,7 +1386,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TranslateTextRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTranslateTextRequest();
       var od = api.TranslateTextRequest.fromJson(o.toJson());
       checkTranslateTextRequest(od as api.TranslateTextRequest);
@@ -1394,7 +1394,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TranslateTextResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTranslateTextResponse();
       var od = api.TranslateTextResponse.fromJson(o.toJson());
       checkTranslateTextResponse(od as api.TranslateTextResponse);
@@ -1402,7 +1402,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Translation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTranslation();
       var od = api.Translation.fromJson(o.toJson());
       checkTranslation(od as api.Translation);
@@ -1410,7 +1410,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WaitOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWaitOperationRequest();
       var od = api.WaitOperationRequest.fromJson(o.toJson());
       checkWaitOperationRequest(od as api.WaitOperationRequest);
@@ -1418,7 +1418,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsResource', () {
-    unittest.test('method--detectLanguage', () {
+    unittest.test('method--detectLanguage', () async {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects;
       var arg_request = buildDetectLanguageRequest();
@@ -1471,14 +1471,12 @@ void main() {
         var resp = convert.json.encode(buildDetectLanguageResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .detectLanguage(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDetectLanguageResponse(response as api.DetectLanguageResponse);
-      })));
+      final response = await res.detectLanguage(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkDetectLanguageResponse(response as api.DetectLanguageResponse);
     });
 
-    unittest.test('method--getSupportedLanguages', () {
+    unittest.test('method--getSupportedLanguages', () async {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects;
       var arg_parent = 'foo';
@@ -1536,17 +1534,14 @@ void main() {
         var resp = convert.json.encode(buildSupportedLanguages());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getSupportedLanguages(arg_parent,
-              displayLanguageCode: arg_displayLanguageCode,
-              model: arg_model,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSupportedLanguages(response as api.SupportedLanguages);
-      })));
+      final response = await res.getSupportedLanguages(arg_parent,
+          displayLanguageCode: arg_displayLanguageCode,
+          model: arg_model,
+          $fields: arg_$fields);
+      checkSupportedLanguages(response as api.SupportedLanguages);
     });
 
-    unittest.test('method--translateText', () {
+    unittest.test('method--translateText', () async {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects;
       var arg_request = buildTranslateTextRequest();
@@ -1599,16 +1594,14 @@ void main() {
         var resp = convert.json.encode(buildTranslateTextResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .translateText(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTranslateTextResponse(response as api.TranslateTextResponse);
-      })));
+      final response = await res.translateText(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkTranslateTextResponse(response as api.TranslateTextResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--batchTranslateText', () {
+    unittest.test('method--batchTranslateText', () async {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects.locations;
       var arg_request = buildBatchTranslateTextRequest();
@@ -1661,14 +1654,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchTranslateText(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.batchTranslateText(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--detectLanguage', () {
+    unittest.test('method--detectLanguage', () async {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects.locations;
       var arg_request = buildDetectLanguageRequest();
@@ -1721,14 +1712,12 @@ void main() {
         var resp = convert.json.encode(buildDetectLanguageResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .detectLanguage(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDetectLanguageResponse(response as api.DetectLanguageResponse);
-      })));
+      final response = await res.detectLanguage(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkDetectLanguageResponse(response as api.DetectLanguageResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -1776,14 +1765,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--getSupportedLanguages', () {
+    unittest.test('method--getSupportedLanguages', () async {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects.locations;
       var arg_parent = 'foo';
@@ -1841,17 +1827,14 @@ void main() {
         var resp = convert.json.encode(buildSupportedLanguages());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getSupportedLanguages(arg_parent,
-              displayLanguageCode: arg_displayLanguageCode,
-              model: arg_model,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSupportedLanguages(response as api.SupportedLanguages);
-      })));
+      final response = await res.getSupportedLanguages(arg_parent,
+          displayLanguageCode: arg_displayLanguageCode,
+          model: arg_model,
+          $fields: arg_$fields);
+      checkSupportedLanguages(response as api.SupportedLanguages);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -1914,18 +1897,15 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
 
-    unittest.test('method--translateText', () {
+    unittest.test('method--translateText', () async {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects.locations;
       var arg_request = buildTranslateTextRequest();
@@ -1978,16 +1958,14 @@ void main() {
         var resp = convert.json.encode(buildTranslateTextResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .translateText(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTranslateTextResponse(response as api.TranslateTextResponse);
-      })));
+      final response = await res.translateText(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkTranslateTextResponse(response as api.TranslateTextResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsGlossariesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects.locations.glossaries;
       var arg_request = buildGlossary();
@@ -2040,14 +2018,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects.locations.glossaries;
       var arg_name = 'foo';
@@ -2095,14 +2071,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects.locations.glossaries;
       var arg_name = 'foo';
@@ -2150,14 +2123,11 @@ void main() {
         var resp = convert.json.encode(buildGlossary());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGlossary(response as api.Glossary);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGlossary(response as api.Glossary);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects.locations.glossaries;
       var arg_parent = 'foo';
@@ -2220,20 +2190,17 @@ void main() {
         var resp = convert.json.encode(buildListGlossariesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListGlossariesResponse(response as api.ListGlossariesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListGlossariesResponse(response as api.ListGlossariesResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects.locations.operations;
       var arg_request = buildCancelOperationRequest();
@@ -2286,14 +2253,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -2341,14 +2306,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -2396,14 +2358,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -2466,18 +2425,15 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
 
-    unittest.test('method--wait', () {
+    unittest.test('method--wait', () async {
       var mock = HttpServerMock();
       var res = api.TranslateApi(mock).projects.locations.operations;
       var arg_request = buildWaitOperationRequest();
@@ -2530,11 +2486,9 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .wait(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.wait(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 }

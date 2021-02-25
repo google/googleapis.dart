@@ -1070,7 +1070,7 @@ void checkGoogleTypeExpr(api.GoogleTypeExpr o) {
 void main() {
   unittest.group('obj-schema-GoogleCloudPolicysimulatorV1beta1AccessStateDiff',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1AccessStateDiff();
       var od = api.GoogleCloudPolicysimulatorV1beta1AccessStateDiff.fromJson(
           o.toJson());
@@ -1080,7 +1080,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudPolicysimulatorV1beta1AccessTuple', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1AccessTuple();
       var od =
           api.GoogleCloudPolicysimulatorV1beta1AccessTuple.fromJson(o.toJson());
@@ -1091,7 +1091,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudPolicysimulatorV1beta1BindingExplanation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1BindingExplanation();
       var od = api.GoogleCloudPolicysimulatorV1beta1BindingExplanation.fromJson(
           o.toJson());
@@ -1103,7 +1103,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership();
       var od =
@@ -1117,7 +1117,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudPolicysimulatorV1beta1ExplainedAccess',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1ExplainedAccess();
       var od = api.GoogleCloudPolicysimulatorV1beta1ExplainedAccess.fromJson(
           o.toJson());
@@ -1128,7 +1128,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudPolicysimulatorV1beta1ExplainedPolicy',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1ExplainedPolicy();
       var od = api.GoogleCloudPolicysimulatorV1beta1ExplainedPolicy.fromJson(
           o.toJson());
@@ -1140,7 +1140,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse();
       var od = api.GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse
           .fromJson(o.toJson());
@@ -1150,7 +1150,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudPolicysimulatorV1beta1Replay', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1Replay();
       var od = api.GoogleCloudPolicysimulatorV1beta1Replay.fromJson(o.toJson());
       checkGoogleCloudPolicysimulatorV1beta1Replay(
@@ -1160,7 +1160,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudPolicysimulatorV1beta1ReplayConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1ReplayConfig();
       var od = api.GoogleCloudPolicysimulatorV1beta1ReplayConfig.fromJson(
           o.toJson());
@@ -1170,7 +1170,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudPolicysimulatorV1beta1ReplayDiff', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1ReplayDiff();
       var od =
           api.GoogleCloudPolicysimulatorV1beta1ReplayDiff.fromJson(o.toJson());
@@ -1182,7 +1182,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata();
       var od =
           api.GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata.fromJson(
@@ -1194,7 +1194,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudPolicysimulatorV1beta1ReplayResult',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1ReplayResult();
       var od = api.GoogleCloudPolicysimulatorV1beta1ReplayResult.fromJson(
           o.toJson());
@@ -1205,7 +1205,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1ReplayResultsSummary();
       var od =
           api.GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary.fromJson(
@@ -1216,7 +1216,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1AuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1AuditConfig();
       var od = api.GoogleIamV1AuditConfig.fromJson(o.toJson());
       checkGoogleIamV1AuditConfig(od as api.GoogleIamV1AuditConfig);
@@ -1224,7 +1224,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1AuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1AuditLogConfig();
       var od = api.GoogleIamV1AuditLogConfig.fromJson(o.toJson());
       checkGoogleIamV1AuditLogConfig(od as api.GoogleIamV1AuditLogConfig);
@@ -1232,7 +1232,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1Binding();
       var od = api.GoogleIamV1Binding.fromJson(o.toJson());
       checkGoogleIamV1Binding(od as api.GoogleIamV1Binding);
@@ -1240,7 +1240,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1Policy();
       var od = api.GoogleIamV1Policy.fromJson(o.toJson());
       checkGoogleIamV1Policy(od as api.GoogleIamV1Policy);
@@ -1248,7 +1248,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
       var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
       checkGoogleLongrunningListOperationsResponse(
@@ -1257,7 +1257,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
@@ -1265,7 +1265,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleRpcStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
       var od = api.GoogleRpcStatus.fromJson(o.toJson());
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
@@ -1273,7 +1273,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypeDate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeDate();
       var od = api.GoogleTypeDate.fromJson(o.toJson());
       checkGoogleTypeDate(od as api.GoogleTypeDate);
@@ -1281,7 +1281,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypeExpr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeExpr();
       var od = api.GoogleTypeExpr.fromJson(o.toJson());
       checkGoogleTypeExpr(od as api.GoogleTypeExpr);
@@ -1289,7 +1289,7 @@ void main() {
   });
 
   unittest.group('resource-FoldersLocationsReplaysResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.PolicySimulatorApi(mock).folders.locations.replays;
       var arg_request = buildGoogleCloudPolicysimulatorV1beta1Replay();
@@ -1343,15 +1343,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.PolicySimulatorApi(mock).folders.locations.replays;
       var arg_name = 'foo';
@@ -1400,17 +1398,14 @@ void main() {
             convert.json.encode(buildGoogleCloudPolicysimulatorV1beta1Replay());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudPolicysimulatorV1beta1Replay(
-            response as api.GoogleCloudPolicysimulatorV1beta1Replay);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudPolicysimulatorV1beta1Replay(
+          response as api.GoogleCloudPolicysimulatorV1beta1Replay);
     });
   });
 
   unittest.group('resource-FoldersLocationsReplaysResultsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.PolicySimulatorApi(mock).folders.locations.replays.results;
       var arg_parent = 'foo';
@@ -1469,20 +1464,17 @@ void main() {
             buildGoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse(response
-            as api.GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse(response
+          as api.GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse);
     });
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.PolicySimulatorApi(mock).operations;
       var arg_name = 'foo';
@@ -1530,15 +1522,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.PolicySimulatorApi(mock).operations;
       var arg_filter = 'foo';
@@ -1605,22 +1594,19 @@ void main() {
             convert.json.encode(buildGoogleLongrunningListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              filter: arg_filter,
-              name: arg_name,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningListOperationsResponse(
-            response as api.GoogleLongrunningListOperationsResponse);
-      })));
+      final response = await res.list(
+          filter: arg_filter,
+          name: arg_name,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleLongrunningListOperationsResponse(
+          response as api.GoogleLongrunningListOperationsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsLocationsReplaysResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.PolicySimulatorApi(mock).organizations.locations.replays;
       var arg_request = buildGoogleCloudPolicysimulatorV1beta1Replay();
@@ -1674,15 +1660,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.PolicySimulatorApi(mock).organizations.locations.replays;
       var arg_name = 'foo';
@@ -1731,17 +1715,14 @@ void main() {
             convert.json.encode(buildGoogleCloudPolicysimulatorV1beta1Replay());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudPolicysimulatorV1beta1Replay(
-            response as api.GoogleCloudPolicysimulatorV1beta1Replay);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudPolicysimulatorV1beta1Replay(
+          response as api.GoogleCloudPolicysimulatorV1beta1Replay);
     });
   });
 
   unittest.group('resource-OrganizationsLocationsReplaysResultsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.PolicySimulatorApi(mock).organizations.locations.replays.results;
@@ -1801,20 +1782,17 @@ void main() {
             buildGoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse(response
-            as api.GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse(response
+          as api.GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsReplaysResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.PolicySimulatorApi(mock).projects.locations.replays;
       var arg_request = buildGoogleCloudPolicysimulatorV1beta1Replay();
@@ -1868,15 +1846,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.PolicySimulatorApi(mock).projects.locations.replays;
       var arg_name = 'foo';
@@ -1925,17 +1901,14 @@ void main() {
             convert.json.encode(buildGoogleCloudPolicysimulatorV1beta1Replay());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudPolicysimulatorV1beta1Replay(
-            response as api.GoogleCloudPolicysimulatorV1beta1Replay);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudPolicysimulatorV1beta1Replay(
+          response as api.GoogleCloudPolicysimulatorV1beta1Replay);
     });
   });
 
   unittest.group('resource-ProjectsLocationsReplaysResultsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.PolicySimulatorApi(mock).projects.locations.replays.results;
       var arg_parent = 'foo';
@@ -1994,15 +1967,12 @@ void main() {
             buildGoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse(response
-            as api.GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse(response
+          as api.GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse);
     });
   });
 }

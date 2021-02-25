@@ -5237,7 +5237,7 @@ void checkValueFilter(api.ValueFilter o) {
 
 void main() {
   unittest.group('obj-schema-BooleanOperatorOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBooleanOperatorOptions();
       var od = api.BooleanOperatorOptions.fromJson(o.toJson());
       checkBooleanOperatorOptions(od as api.BooleanOperatorOptions);
@@ -5245,7 +5245,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BooleanPropertyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBooleanPropertyOptions();
       var od = api.BooleanPropertyOptions.fromJson(o.toJson());
       checkBooleanPropertyOptions(od as api.BooleanPropertyOptions);
@@ -5253,7 +5253,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CheckAccessResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCheckAccessResponse();
       var od = api.CheckAccessResponse.fromJson(o.toJson());
       checkCheckAccessResponse(od as api.CheckAccessResponse);
@@ -5261,7 +5261,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CompositeFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCompositeFilter();
       var od = api.CompositeFilter.fromJson(o.toJson());
       checkCompositeFilter(od as api.CompositeFilter);
@@ -5269,7 +5269,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomerIndexStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomerIndexStats();
       var od = api.CustomerIndexStats.fromJson(o.toJson());
       checkCustomerIndexStats(od as api.CustomerIndexStats);
@@ -5277,7 +5277,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomerQueryStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomerQueryStats();
       var od = api.CustomerQueryStats.fromJson(o.toJson());
       checkCustomerQueryStats(od as api.CustomerQueryStats);
@@ -5285,7 +5285,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomerSessionStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomerSessionStats();
       var od = api.CustomerSessionStats.fromJson(o.toJson());
       checkCustomerSessionStats(od as api.CustomerSessionStats);
@@ -5293,7 +5293,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomerUserStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomerUserStats();
       var od = api.CustomerUserStats.fromJson(o.toJson());
       checkCustomerUserStats(od as api.CustomerUserStats);
@@ -5301,7 +5301,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DataSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDataSource();
       var od = api.DataSource.fromJson(o.toJson());
       checkDataSource(od as api.DataSource);
@@ -5309,7 +5309,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DataSourceIndexStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDataSourceIndexStats();
       var od = api.DataSourceIndexStats.fromJson(o.toJson());
       checkDataSourceIndexStats(od as api.DataSourceIndexStats);
@@ -5317,7 +5317,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DataSourceRestriction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDataSourceRestriction();
       var od = api.DataSourceRestriction.fromJson(o.toJson());
       checkDataSourceRestriction(od as api.DataSourceRestriction);
@@ -5325,7 +5325,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Date', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
       checkDate(od as api.Date);
@@ -5333,7 +5333,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DateOperatorOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDateOperatorOptions();
       var od = api.DateOperatorOptions.fromJson(o.toJson());
       checkDateOperatorOptions(od as api.DateOperatorOptions);
@@ -5341,7 +5341,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatePropertyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatePropertyOptions();
       var od = api.DatePropertyOptions.fromJson(o.toJson());
       checkDatePropertyOptions(od as api.DatePropertyOptions);
@@ -5349,7 +5349,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DateValues', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDateValues();
       var od = api.DateValues.fromJson(o.toJson());
       checkDateValues(od as api.DateValues);
@@ -5357,7 +5357,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DebugOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDebugOptions();
       var od = api.DebugOptions.fromJson(o.toJson());
       checkDebugOptions(od as api.DebugOptions);
@@ -5365,7 +5365,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteQueueItemsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteQueueItemsRequest();
       var od = api.DeleteQueueItemsRequest.fromJson(o.toJson());
       checkDeleteQueueItemsRequest(od as api.DeleteQueueItemsRequest);
@@ -5373,7 +5373,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DisplayedProperty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDisplayedProperty();
       var od = api.DisplayedProperty.fromJson(o.toJson());
       checkDisplayedProperty(od as api.DisplayedProperty);
@@ -5381,7 +5381,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DoubleOperatorOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDoubleOperatorOptions();
       var od = api.DoubleOperatorOptions.fromJson(o.toJson());
       checkDoubleOperatorOptions(od as api.DoubleOperatorOptions);
@@ -5389,7 +5389,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DoublePropertyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDoublePropertyOptions();
       var od = api.DoublePropertyOptions.fromJson(o.toJson());
       checkDoublePropertyOptions(od as api.DoublePropertyOptions);
@@ -5397,7 +5397,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DoubleValues', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDoubleValues();
       var od = api.DoubleValues.fromJson(o.toJson());
       checkDoubleValues(od as api.DoubleValues);
@@ -5405,7 +5405,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DriveFollowUpRestrict', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDriveFollowUpRestrict();
       var od = api.DriveFollowUpRestrict.fromJson(o.toJson());
       checkDriveFollowUpRestrict(od as api.DriveFollowUpRestrict);
@@ -5413,7 +5413,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DriveLocationRestrict', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDriveLocationRestrict();
       var od = api.DriveLocationRestrict.fromJson(o.toJson());
       checkDriveLocationRestrict(od as api.DriveLocationRestrict);
@@ -5421,7 +5421,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DriveMimeTypeRestrict', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDriveMimeTypeRestrict();
       var od = api.DriveMimeTypeRestrict.fromJson(o.toJson());
       checkDriveMimeTypeRestrict(od as api.DriveMimeTypeRestrict);
@@ -5429,7 +5429,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DriveTimeSpanRestrict', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDriveTimeSpanRestrict();
       var od = api.DriveTimeSpanRestrict.fromJson(o.toJson());
       checkDriveTimeSpanRestrict(od as api.DriveTimeSpanRestrict);
@@ -5437,7 +5437,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EmailAddress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmailAddress();
       var od = api.EmailAddress.fromJson(o.toJson());
       checkEmailAddress(od as api.EmailAddress);
@@ -5445,7 +5445,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnumOperatorOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnumOperatorOptions();
       var od = api.EnumOperatorOptions.fromJson(o.toJson());
       checkEnumOperatorOptions(od as api.EnumOperatorOptions);
@@ -5453,7 +5453,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnumPropertyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnumPropertyOptions();
       var od = api.EnumPropertyOptions.fromJson(o.toJson());
       checkEnumPropertyOptions(od as api.EnumPropertyOptions);
@@ -5461,7 +5461,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnumValuePair', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnumValuePair();
       var od = api.EnumValuePair.fromJson(o.toJson());
       checkEnumValuePair(od as api.EnumValuePair);
@@ -5469,7 +5469,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnumValues', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnumValues();
       var od = api.EnumValues.fromJson(o.toJson());
       checkEnumValues(od as api.EnumValues);
@@ -5477,7 +5477,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ErrorInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildErrorInfo();
       var od = api.ErrorInfo.fromJson(o.toJson());
       checkErrorInfo(od as api.ErrorInfo);
@@ -5485,7 +5485,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ErrorMessage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildErrorMessage();
       var od = api.ErrorMessage.fromJson(o.toJson());
       checkErrorMessage(od as api.ErrorMessage);
@@ -5493,7 +5493,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FacetBucket', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFacetBucket();
       var od = api.FacetBucket.fromJson(o.toJson());
       checkFacetBucket(od as api.FacetBucket);
@@ -5501,7 +5501,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FacetOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFacetOptions();
       var od = api.FacetOptions.fromJson(o.toJson());
       checkFacetOptions(od as api.FacetOptions);
@@ -5509,7 +5509,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FacetResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFacetResult();
       var od = api.FacetResult.fromJson(o.toJson());
       checkFacetResult(od as api.FacetResult);
@@ -5517,7 +5517,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FieldViolation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFieldViolation();
       var od = api.FieldViolation.fromJson(o.toJson());
       checkFieldViolation(od as api.FieldViolation);
@@ -5525,7 +5525,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Filter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilter();
       var od = api.Filter.fromJson(o.toJson());
       checkFilter(od as api.Filter);
@@ -5533,7 +5533,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FilterOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilterOptions();
       var od = api.FilterOptions.fromJson(o.toJson());
       checkFilterOptions(od as api.FilterOptions);
@@ -5541,7 +5541,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FreshnessOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFreshnessOptions();
       var od = api.FreshnessOptions.fromJson(o.toJson());
       checkFreshnessOptions(od as api.FreshnessOptions);
@@ -5549,7 +5549,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GSuitePrincipal', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGSuitePrincipal();
       var od = api.GSuitePrincipal.fromJson(o.toJson());
       checkGSuitePrincipal(od as api.GSuitePrincipal);
@@ -5557,7 +5557,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetCustomerIndexStatsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetCustomerIndexStatsResponse();
       var od = api.GetCustomerIndexStatsResponse.fromJson(o.toJson());
       checkGetCustomerIndexStatsResponse(
@@ -5566,7 +5566,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetCustomerQueryStatsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetCustomerQueryStatsResponse();
       var od = api.GetCustomerQueryStatsResponse.fromJson(o.toJson());
       checkGetCustomerQueryStatsResponse(
@@ -5575,7 +5575,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetCustomerSessionStatsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetCustomerSessionStatsResponse();
       var od = api.GetCustomerSessionStatsResponse.fromJson(o.toJson());
       checkGetCustomerSessionStatsResponse(
@@ -5584,7 +5584,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetCustomerUserStatsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetCustomerUserStatsResponse();
       var od = api.GetCustomerUserStatsResponse.fromJson(o.toJson());
       checkGetCustomerUserStatsResponse(od as api.GetCustomerUserStatsResponse);
@@ -5592,7 +5592,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetDataSourceIndexStatsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetDataSourceIndexStatsResponse();
       var od = api.GetDataSourceIndexStatsResponse.fromJson(o.toJson());
       checkGetDataSourceIndexStatsResponse(
@@ -5601,7 +5601,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetSearchApplicationQueryStatsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetSearchApplicationQueryStatsResponse();
       var od = api.GetSearchApplicationQueryStatsResponse.fromJson(o.toJson());
       checkGetSearchApplicationQueryStatsResponse(
@@ -5610,7 +5610,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetSearchApplicationSessionStatsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetSearchApplicationSessionStatsResponse();
       var od =
           api.GetSearchApplicationSessionStatsResponse.fromJson(o.toJson());
@@ -5620,7 +5620,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetSearchApplicationUserStatsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetSearchApplicationUserStatsResponse();
       var od = api.GetSearchApplicationUserStatsResponse.fromJson(o.toJson());
       checkGetSearchApplicationUserStatsResponse(
@@ -5629,7 +5629,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HtmlOperatorOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHtmlOperatorOptions();
       var od = api.HtmlOperatorOptions.fromJson(o.toJson());
       checkHtmlOperatorOptions(od as api.HtmlOperatorOptions);
@@ -5637,7 +5637,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HtmlPropertyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHtmlPropertyOptions();
       var od = api.HtmlPropertyOptions.fromJson(o.toJson());
       checkHtmlPropertyOptions(od as api.HtmlPropertyOptions);
@@ -5645,7 +5645,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HtmlValues', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHtmlValues();
       var od = api.HtmlValues.fromJson(o.toJson());
       checkHtmlValues(od as api.HtmlValues);
@@ -5653,7 +5653,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IndexItemOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIndexItemOptions();
       var od = api.IndexItemOptions.fromJson(o.toJson());
       checkIndexItemOptions(od as api.IndexItemOptions);
@@ -5661,7 +5661,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IndexItemRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIndexItemRequest();
       var od = api.IndexItemRequest.fromJson(o.toJson());
       checkIndexItemRequest(od as api.IndexItemRequest);
@@ -5669,7 +5669,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IntegerOperatorOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIntegerOperatorOptions();
       var od = api.IntegerOperatorOptions.fromJson(o.toJson());
       checkIntegerOperatorOptions(od as api.IntegerOperatorOptions);
@@ -5677,7 +5677,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IntegerPropertyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIntegerPropertyOptions();
       var od = api.IntegerPropertyOptions.fromJson(o.toJson());
       checkIntegerPropertyOptions(od as api.IntegerPropertyOptions);
@@ -5685,7 +5685,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IntegerValues', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIntegerValues();
       var od = api.IntegerValues.fromJson(o.toJson());
       checkIntegerValues(od as api.IntegerValues);
@@ -5693,7 +5693,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Interaction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInteraction();
       var od = api.Interaction.fromJson(o.toJson());
       checkInteraction(od as api.Interaction);
@@ -5701,7 +5701,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Item', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildItem();
       var od = api.Item.fromJson(o.toJson());
       checkItem(od as api.Item);
@@ -5709,7 +5709,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ItemAcl', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildItemAcl();
       var od = api.ItemAcl.fromJson(o.toJson());
       checkItemAcl(od as api.ItemAcl);
@@ -5717,7 +5717,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ItemContent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildItemContent();
       var od = api.ItemContent.fromJson(o.toJson());
       checkItemContent(od as api.ItemContent);
@@ -5725,7 +5725,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ItemCountByStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildItemCountByStatus();
       var od = api.ItemCountByStatus.fromJson(o.toJson());
       checkItemCountByStatus(od as api.ItemCountByStatus);
@@ -5733,7 +5733,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ItemMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildItemMetadata();
       var od = api.ItemMetadata.fromJson(o.toJson());
       checkItemMetadata(od as api.ItemMetadata);
@@ -5741,7 +5741,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ItemStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildItemStatus();
       var od = api.ItemStatus.fromJson(o.toJson());
       checkItemStatus(od as api.ItemStatus);
@@ -5749,7 +5749,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ItemStructuredData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildItemStructuredData();
       var od = api.ItemStructuredData.fromJson(o.toJson());
       checkItemStructuredData(od as api.ItemStructuredData);
@@ -5757,7 +5757,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDataSourceResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDataSourceResponse();
       var od = api.ListDataSourceResponse.fromJson(o.toJson());
       checkListDataSourceResponse(od as api.ListDataSourceResponse);
@@ -5765,7 +5765,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListItemNamesForUnmappedIdentityResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListItemNamesForUnmappedIdentityResponse();
       var od =
           api.ListItemNamesForUnmappedIdentityResponse.fromJson(o.toJson());
@@ -5775,7 +5775,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListItemsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListItemsResponse();
       var od = api.ListItemsResponse.fromJson(o.toJson());
       checkListItemsResponse(od as api.ListItemsResponse);
@@ -5783,7 +5783,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -5791,7 +5791,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListQuerySourcesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListQuerySourcesResponse();
       var od = api.ListQuerySourcesResponse.fromJson(o.toJson());
       checkListQuerySourcesResponse(od as api.ListQuerySourcesResponse);
@@ -5799,7 +5799,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListSearchApplicationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListSearchApplicationsResponse();
       var od = api.ListSearchApplicationsResponse.fromJson(o.toJson());
       checkListSearchApplicationsResponse(
@@ -5808,7 +5808,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListUnmappedIdentitiesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListUnmappedIdentitiesResponse();
       var od = api.ListUnmappedIdentitiesResponse.fromJson(o.toJson());
       checkListUnmappedIdentitiesResponse(
@@ -5817,7 +5817,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MatchRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMatchRange();
       var od = api.MatchRange.fromJson(o.toJson());
       checkMatchRange(od as api.MatchRange);
@@ -5825,7 +5825,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Media', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMedia();
       var od = api.Media.fromJson(o.toJson());
       checkMedia(od as api.Media);
@@ -5833,7 +5833,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Metadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetadata();
       var od = api.Metadata.fromJson(o.toJson());
       checkMetadata(od as api.Metadata);
@@ -5841,7 +5841,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Metaline', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetaline();
       var od = api.Metaline.fromJson(o.toJson());
       checkMetaline(od as api.Metaline);
@@ -5849,7 +5849,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Name', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildName();
       var od = api.Name.fromJson(o.toJson());
       checkName(od as api.Name);
@@ -5857,7 +5857,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NamedProperty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNamedProperty();
       var od = api.NamedProperty.fromJson(o.toJson());
       checkNamedProperty(od as api.NamedProperty);
@@ -5865,7 +5865,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ObjectDefinition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildObjectDefinition();
       var od = api.ObjectDefinition.fromJson(o.toJson());
       checkObjectDefinition(od as api.ObjectDefinition);
@@ -5873,7 +5873,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ObjectDisplayOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildObjectDisplayOptions();
       var od = api.ObjectDisplayOptions.fromJson(o.toJson());
       checkObjectDisplayOptions(od as api.ObjectDisplayOptions);
@@ -5881,7 +5881,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ObjectOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildObjectOptions();
       var od = api.ObjectOptions.fromJson(o.toJson());
       checkObjectOptions(od as api.ObjectOptions);
@@ -5889,7 +5889,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ObjectPropertyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildObjectPropertyOptions();
       var od = api.ObjectPropertyOptions.fromJson(o.toJson());
       checkObjectPropertyOptions(od as api.ObjectPropertyOptions);
@@ -5897,7 +5897,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ObjectValues', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildObjectValues();
       var od = api.ObjectValues.fromJson(o.toJson());
       checkObjectValues(od as api.ObjectValues);
@@ -5905,7 +5905,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -5913,7 +5913,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PeopleSuggestion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPeopleSuggestion();
       var od = api.PeopleSuggestion.fromJson(o.toJson());
       checkPeopleSuggestion(od as api.PeopleSuggestion);
@@ -5921,7 +5921,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Person', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPerson();
       var od = api.Person.fromJson(o.toJson());
       checkPerson(od as api.Person);
@@ -5929,7 +5929,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Photo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPhoto();
       var od = api.Photo.fromJson(o.toJson());
       checkPhoto(od as api.Photo);
@@ -5937,7 +5937,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PollItemsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPollItemsRequest();
       var od = api.PollItemsRequest.fromJson(o.toJson());
       checkPollItemsRequest(od as api.PollItemsRequest);
@@ -5945,7 +5945,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PollItemsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPollItemsResponse();
       var od = api.PollItemsResponse.fromJson(o.toJson());
       checkPollItemsResponse(od as api.PollItemsResponse);
@@ -5953,7 +5953,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Principal', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPrincipal();
       var od = api.Principal.fromJson(o.toJson());
       checkPrincipal(od as api.Principal);
@@ -5961,7 +5961,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProcessingError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProcessingError();
       var od = api.ProcessingError.fromJson(o.toJson());
       checkProcessingError(od as api.ProcessingError);
@@ -5969,7 +5969,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PropertyDefinition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPropertyDefinition();
       var od = api.PropertyDefinition.fromJson(o.toJson());
       checkPropertyDefinition(od as api.PropertyDefinition);
@@ -5977,7 +5977,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PropertyDisplayOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPropertyDisplayOptions();
       var od = api.PropertyDisplayOptions.fromJson(o.toJson());
       checkPropertyDisplayOptions(od as api.PropertyDisplayOptions);
@@ -5985,7 +5985,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PushItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPushItem();
       var od = api.PushItem.fromJson(o.toJson());
       checkPushItem(od as api.PushItem);
@@ -5993,7 +5993,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PushItemRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPushItemRequest();
       var od = api.PushItemRequest.fromJson(o.toJson());
       checkPushItemRequest(od as api.PushItemRequest);
@@ -6001,7 +6001,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryCountByStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryCountByStatus();
       var od = api.QueryCountByStatus.fromJson(o.toJson());
       checkQueryCountByStatus(od as api.QueryCountByStatus);
@@ -6009,7 +6009,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryInterpretation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryInterpretation();
       var od = api.QueryInterpretation.fromJson(o.toJson());
       checkQueryInterpretation(od as api.QueryInterpretation);
@@ -6017,7 +6017,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryInterpretationOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryInterpretationOptions();
       var od = api.QueryInterpretationOptions.fromJson(o.toJson());
       checkQueryInterpretationOptions(od as api.QueryInterpretationOptions);
@@ -6025,7 +6025,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryItem();
       var od = api.QueryItem.fromJson(o.toJson());
       checkQueryItem(od as api.QueryItem);
@@ -6033,7 +6033,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryOperator', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryOperator();
       var od = api.QueryOperator.fromJson(o.toJson());
       checkQueryOperator(od as api.QueryOperator);
@@ -6041,7 +6041,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QuerySource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQuerySource();
       var od = api.QuerySource.fromJson(o.toJson());
       checkQuerySource(od as api.QuerySource);
@@ -6049,7 +6049,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QuerySuggestion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQuerySuggestion();
       var od = api.QuerySuggestion.fromJson(o.toJson());
       checkQuerySuggestion(od as api.QuerySuggestion);
@@ -6057,7 +6057,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RepositoryError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepositoryError();
       var od = api.RepositoryError.fromJson(o.toJson());
       checkRepositoryError(od as api.RepositoryError);
@@ -6065,7 +6065,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RequestOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRequestOptions();
       var od = api.RequestOptions.fromJson(o.toJson());
       checkRequestOptions(od as api.RequestOptions);
@@ -6073,7 +6073,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResetSearchApplicationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResetSearchApplicationRequest();
       var od = api.ResetSearchApplicationRequest.fromJson(o.toJson());
       checkResetSearchApplicationRequest(
@@ -6082,7 +6082,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResponseDebugInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResponseDebugInfo();
       var od = api.ResponseDebugInfo.fromJson(o.toJson());
       checkResponseDebugInfo(od as api.ResponseDebugInfo);
@@ -6090,7 +6090,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestrictItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestrictItem();
       var od = api.RestrictItem.fromJson(o.toJson());
       checkRestrictItem(od as api.RestrictItem);
@@ -6098,7 +6098,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResultCounts', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResultCounts();
       var od = api.ResultCounts.fromJson(o.toJson());
       checkResultCounts(od as api.ResultCounts);
@@ -6106,7 +6106,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResultDebugInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResultDebugInfo();
       var od = api.ResultDebugInfo.fromJson(o.toJson());
       checkResultDebugInfo(od as api.ResultDebugInfo);
@@ -6114,7 +6114,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResultDisplayField', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResultDisplayField();
       var od = api.ResultDisplayField.fromJson(o.toJson());
       checkResultDisplayField(od as api.ResultDisplayField);
@@ -6122,7 +6122,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResultDisplayLine', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResultDisplayLine();
       var od = api.ResultDisplayLine.fromJson(o.toJson());
       checkResultDisplayLine(od as api.ResultDisplayLine);
@@ -6130,7 +6130,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResultDisplayMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResultDisplayMetadata();
       var od = api.ResultDisplayMetadata.fromJson(o.toJson());
       checkResultDisplayMetadata(od as api.ResultDisplayMetadata);
@@ -6138,7 +6138,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RetrievalImportance', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRetrievalImportance();
       var od = api.RetrievalImportance.fromJson(o.toJson());
       checkRetrievalImportance(od as api.RetrievalImportance);
@@ -6146,7 +6146,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Schema', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSchema();
       var od = api.Schema.fromJson(o.toJson());
       checkSchema(od as api.Schema);
@@ -6154,7 +6154,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScoringConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScoringConfig();
       var od = api.ScoringConfig.fromJson(o.toJson());
       checkScoringConfig(od as api.ScoringConfig);
@@ -6162,7 +6162,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchApplication', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchApplication();
       var od = api.SearchApplication.fromJson(o.toJson());
       checkSearchApplication(od as api.SearchApplication);
@@ -6170,7 +6170,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchApplicationQueryStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchApplicationQueryStats();
       var od = api.SearchApplicationQueryStats.fromJson(o.toJson());
       checkSearchApplicationQueryStats(od as api.SearchApplicationQueryStats);
@@ -6178,7 +6178,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchApplicationSessionStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchApplicationSessionStats();
       var od = api.SearchApplicationSessionStats.fromJson(o.toJson());
       checkSearchApplicationSessionStats(
@@ -6187,7 +6187,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchApplicationUserStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchApplicationUserStats();
       var od = api.SearchApplicationUserStats.fromJson(o.toJson());
       checkSearchApplicationUserStats(od as api.SearchApplicationUserStats);
@@ -6195,7 +6195,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchItemsByViewUrlRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchItemsByViewUrlRequest();
       var od = api.SearchItemsByViewUrlRequest.fromJson(o.toJson());
       checkSearchItemsByViewUrlRequest(od as api.SearchItemsByViewUrlRequest);
@@ -6203,7 +6203,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchItemsByViewUrlResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchItemsByViewUrlResponse();
       var od = api.SearchItemsByViewUrlResponse.fromJson(o.toJson());
       checkSearchItemsByViewUrlResponse(od as api.SearchItemsByViewUrlResponse);
@@ -6211,7 +6211,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchQualityMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchQualityMetadata();
       var od = api.SearchQualityMetadata.fromJson(o.toJson());
       checkSearchQualityMetadata(od as api.SearchQualityMetadata);
@@ -6219,7 +6219,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchRequest();
       var od = api.SearchRequest.fromJson(o.toJson());
       checkSearchRequest(od as api.SearchRequest);
@@ -6227,7 +6227,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchResponse();
       var od = api.SearchResponse.fromJson(o.toJson());
       checkSearchResponse(od as api.SearchResponse);
@@ -6235,7 +6235,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchResult();
       var od = api.SearchResult.fromJson(o.toJson());
       checkSearchResult(od as api.SearchResult);
@@ -6243,7 +6243,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Snippet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSnippet();
       var od = api.Snippet.fromJson(o.toJson());
       checkSnippet(od as api.Snippet);
@@ -6251,7 +6251,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SortOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSortOptions();
       var od = api.SortOptions.fromJson(o.toJson());
       checkSortOptions(od as api.SortOptions);
@@ -6259,7 +6259,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Source', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSource();
       var od = api.Source.fromJson(o.toJson());
       checkSource(od as api.Source);
@@ -6267,7 +6267,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SourceConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSourceConfig();
       var od = api.SourceConfig.fromJson(o.toJson());
       checkSourceConfig(od as api.SourceConfig);
@@ -6275,7 +6275,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SourceCrowdingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSourceCrowdingConfig();
       var od = api.SourceCrowdingConfig.fromJson(o.toJson());
       checkSourceCrowdingConfig(od as api.SourceCrowdingConfig);
@@ -6283,7 +6283,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SourceResultCount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSourceResultCount();
       var od = api.SourceResultCount.fromJson(o.toJson());
       checkSourceResultCount(od as api.SourceResultCount);
@@ -6291,7 +6291,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SourceScoringConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSourceScoringConfig();
       var od = api.SourceScoringConfig.fromJson(o.toJson());
       checkSourceScoringConfig(od as api.SourceScoringConfig);
@@ -6299,7 +6299,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SpellResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSpellResult();
       var od = api.SpellResult.fromJson(o.toJson());
       checkSpellResult(od as api.SpellResult);
@@ -6307,7 +6307,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StartUploadItemRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStartUploadItemRequest();
       var od = api.StartUploadItemRequest.fromJson(o.toJson());
       checkStartUploadItemRequest(od as api.StartUploadItemRequest);
@@ -6315,7 +6315,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -6323,7 +6323,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StructuredDataObject', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStructuredDataObject();
       var od = api.StructuredDataObject.fromJson(o.toJson());
       checkStructuredDataObject(od as api.StructuredDataObject);
@@ -6331,7 +6331,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StructuredResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStructuredResult();
       var od = api.StructuredResult.fromJson(o.toJson());
       checkStructuredResult(od as api.StructuredResult);
@@ -6339,7 +6339,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuggestRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuggestRequest();
       var od = api.SuggestRequest.fromJson(o.toJson());
       checkSuggestRequest(od as api.SuggestRequest);
@@ -6347,7 +6347,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuggestResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuggestResponse();
       var od = api.SuggestResponse.fromJson(o.toJson());
       checkSuggestResponse(od as api.SuggestResponse);
@@ -6355,7 +6355,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuggestResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuggestResult();
       var od = api.SuggestResult.fromJson(o.toJson());
       checkSuggestResult(od as api.SuggestResult);
@@ -6363,7 +6363,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TextOperatorOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTextOperatorOptions();
       var od = api.TextOperatorOptions.fromJson(o.toJson());
       checkTextOperatorOptions(od as api.TextOperatorOptions);
@@ -6371,7 +6371,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TextPropertyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTextPropertyOptions();
       var od = api.TextPropertyOptions.fromJson(o.toJson());
       checkTextPropertyOptions(od as api.TextPropertyOptions);
@@ -6379,7 +6379,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TextValues', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTextValues();
       var od = api.TextValues.fromJson(o.toJson());
       checkTextValues(od as api.TextValues);
@@ -6387,7 +6387,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimestampOperatorOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimestampOperatorOptions();
       var od = api.TimestampOperatorOptions.fromJson(o.toJson());
       checkTimestampOperatorOptions(od as api.TimestampOperatorOptions);
@@ -6395,7 +6395,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimestampPropertyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimestampPropertyOptions();
       var od = api.TimestampPropertyOptions.fromJson(o.toJson());
       checkTimestampPropertyOptions(od as api.TimestampPropertyOptions);
@@ -6403,7 +6403,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimestampValues', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimestampValues();
       var od = api.TimestampValues.fromJson(o.toJson());
       checkTimestampValues(od as api.TimestampValues);
@@ -6411,7 +6411,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UnmappedIdentity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUnmappedIdentity();
       var od = api.UnmappedIdentity.fromJson(o.toJson());
       checkUnmappedIdentity(od as api.UnmappedIdentity);
@@ -6419,7 +6419,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UnreserveItemsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUnreserveItemsRequest();
       var od = api.UnreserveItemsRequest.fromJson(o.toJson());
       checkUnreserveItemsRequest(od as api.UnreserveItemsRequest);
@@ -6427,7 +6427,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateDataSourceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateDataSourceRequest();
       var od = api.UpdateDataSourceRequest.fromJson(o.toJson());
       checkUpdateDataSourceRequest(od as api.UpdateDataSourceRequest);
@@ -6435,7 +6435,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateSchemaRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateSchemaRequest();
       var od = api.UpdateSchemaRequest.fromJson(o.toJson());
       checkUpdateSchemaRequest(od as api.UpdateSchemaRequest);
@@ -6443,7 +6443,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UploadItemRef', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUploadItemRef();
       var od = api.UploadItemRef.fromJson(o.toJson());
       checkUploadItemRef(od as api.UploadItemRef);
@@ -6451,7 +6451,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Value', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildValue();
       var od = api.Value.fromJson(o.toJson());
       checkValue(od as api.Value);
@@ -6459,7 +6459,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ValueFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildValueFilter();
       var od = api.ValueFilter.fromJson(o.toJson());
       checkValueFilter(od as api.ValueFilter);
@@ -6467,7 +6467,7 @@ void main() {
   });
 
   unittest.group('resource-DebugDatasourcesItemsResource', () {
-    unittest.test('method--checkAccess', () {
+    unittest.test('method--checkAccess', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).debug.datasources.items;
       var arg_request = buildPrincipal();
@@ -6525,16 +6525,13 @@ void main() {
         var resp = convert.json.encode(buildCheckAccessResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .checkAccess(arg_request, arg_name,
-              debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCheckAccessResponse(response as api.CheckAccessResponse);
-      })));
+      final response = await res.checkAccess(arg_request, arg_name,
+          debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
+          $fields: arg_$fields);
+      checkCheckAccessResponse(response as api.CheckAccessResponse);
     });
 
-    unittest.test('method--searchByViewUrl', () {
+    unittest.test('method--searchByViewUrl', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).debug.datasources.items;
       var arg_request = buildSearchItemsByViewUrlRequest();
@@ -6588,17 +6585,15 @@ void main() {
         var resp = convert.json.encode(buildSearchItemsByViewUrlResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchByViewUrl(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchItemsByViewUrlResponse(
-            response as api.SearchItemsByViewUrlResponse);
-      })));
+      final response = await res.searchByViewUrl(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkSearchItemsByViewUrlResponse(
+          response as api.SearchItemsByViewUrlResponse);
     });
   });
 
   unittest.group('resource-DebugDatasourcesItemsUnmappedidsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).debug.datasources.items.unmappedids;
       var arg_parent = 'foo';
@@ -6661,21 +6656,18 @@ void main() {
         var resp = convert.json.encode(buildListUnmappedIdentitiesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListUnmappedIdentitiesResponse(
-            response as api.ListUnmappedIdentitiesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListUnmappedIdentitiesResponse(
+          response as api.ListUnmappedIdentitiesResponse);
     });
   });
 
   unittest.group('resource-DebugIdentitysourcesItemsResource', () {
-    unittest.test('method--listForunmappedidentity', () {
+    unittest.test('method--listForunmappedidentity', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).debug.identitysources.items;
       var arg_parent = 'foo';
@@ -6749,23 +6741,20 @@ void main() {
             .encode(buildListItemNamesForUnmappedIdentityResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listForunmappedidentity(arg_parent,
-              debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
-              groupResourceName: arg_groupResourceName,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              userResourceName: arg_userResourceName,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListItemNamesForUnmappedIdentityResponse(
-            response as api.ListItemNamesForUnmappedIdentityResponse);
-      })));
+      final response = await res.listForunmappedidentity(arg_parent,
+          debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
+          groupResourceName: arg_groupResourceName,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          userResourceName: arg_userResourceName,
+          $fields: arg_$fields);
+      checkListItemNamesForUnmappedIdentityResponse(
+          response as api.ListItemNamesForUnmappedIdentityResponse);
     });
   });
 
   unittest.group('resource-DebugIdentitysourcesUnmappedidsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).debug.identitysources.unmappedids;
       var arg_parent = 'foo';
@@ -6833,22 +6822,19 @@ void main() {
         var resp = convert.json.encode(buildListUnmappedIdentitiesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              resolutionStatusCode: arg_resolutionStatusCode,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListUnmappedIdentitiesResponse(
-            response as api.ListUnmappedIdentitiesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          resolutionStatusCode: arg_resolutionStatusCode,
+          $fields: arg_$fields);
+      checkListUnmappedIdentitiesResponse(
+          response as api.ListUnmappedIdentitiesResponse);
     });
   });
 
   unittest.group('resource-IndexingDatasourcesResource', () {
-    unittest.test('method--deleteSchema', () {
+    unittest.test('method--deleteSchema', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).indexing.datasources;
       var arg_name = 'foo';
@@ -6901,16 +6887,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deleteSchema(arg_name,
-              debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.deleteSchema(arg_name,
+          debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--getSchema', () {
+    unittest.test('method--getSchema', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).indexing.datasources;
       var arg_name = 'foo';
@@ -6963,16 +6946,13 @@ void main() {
         var resp = convert.json.encode(buildSchema());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getSchema(arg_name,
-              debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSchema(response as api.Schema);
-      })));
+      final response = await res.getSchema(arg_name,
+          debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
+          $fields: arg_$fields);
+      checkSchema(response as api.Schema);
     });
 
-    unittest.test('method--updateSchema', () {
+    unittest.test('method--updateSchema', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).indexing.datasources;
       var arg_request = buildUpdateSchemaRequest();
@@ -7025,16 +7005,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateSchema(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.updateSchema(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-IndexingDatasourcesItemsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).indexing.datasources.items;
       var arg_name = 'foo';
@@ -7102,19 +7080,16 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name,
-              connectorName: arg_connectorName,
-              debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
-              mode: arg_mode,
-              version: arg_version,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name,
+          connectorName: arg_connectorName,
+          debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
+          mode: arg_mode,
+          version: arg_version,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--deleteQueueItems', () {
+    unittest.test('method--deleteQueueItems', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).indexing.datasources.items;
       var arg_request = buildDeleteQueueItemsRequest();
@@ -7167,14 +7142,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deleteQueueItems(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.deleteQueueItems(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).indexing.datasources.items;
       var arg_name = 'foo';
@@ -7232,17 +7205,14 @@ void main() {
         var resp = convert.json.encode(buildItem());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name,
-              connectorName: arg_connectorName,
-              debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkItem(response as api.Item);
-      })));
+      final response = await res.get(arg_name,
+          connectorName: arg_connectorName,
+          debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
+          $fields: arg_$fields);
+      checkItem(response as api.Item);
     });
 
-    unittest.test('method--index', () {
+    unittest.test('method--index', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).indexing.datasources.items;
       var arg_request = buildIndexItemRequest();
@@ -7295,14 +7265,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .index(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.index(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).indexing.datasources.items;
       var arg_name = 'foo';
@@ -7375,20 +7343,17 @@ void main() {
         var resp = convert.json.encode(buildListItemsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              brief: arg_brief,
-              connectorName: arg_connectorName,
-              debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListItemsResponse(response as api.ListItemsResponse);
-      })));
+      final response = await res.list(arg_name,
+          brief: arg_brief,
+          connectorName: arg_connectorName,
+          debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListItemsResponse(response as api.ListItemsResponse);
     });
 
-    unittest.test('method--poll', () {
+    unittest.test('method--poll', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).indexing.datasources.items;
       var arg_request = buildPollItemsRequest();
@@ -7441,14 +7406,12 @@ void main() {
         var resp = convert.json.encode(buildPollItemsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .poll(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPollItemsResponse(response as api.PollItemsResponse);
-      })));
+      final response =
+          await res.poll(arg_request, arg_name, $fields: arg_$fields);
+      checkPollItemsResponse(response as api.PollItemsResponse);
     });
 
-    unittest.test('method--push', () {
+    unittest.test('method--push', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).indexing.datasources.items;
       var arg_request = buildPushItemRequest();
@@ -7501,14 +7464,12 @@ void main() {
         var resp = convert.json.encode(buildItem());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .push(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkItem(response as api.Item);
-      })));
+      final response =
+          await res.push(arg_request, arg_name, $fields: arg_$fields);
+      checkItem(response as api.Item);
     });
 
-    unittest.test('method--unreserve', () {
+    unittest.test('method--unreserve', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).indexing.datasources.items;
       var arg_request = buildUnreserveItemsRequest();
@@ -7561,14 +7522,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .unreserve(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.unreserve(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--upload', () {
+    unittest.test('method--upload', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).indexing.datasources.items;
       var arg_request = buildStartUploadItemRequest();
@@ -7621,16 +7580,14 @@ void main() {
         var resp = convert.json.encode(buildUploadItemRef());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .upload(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUploadItemRef(response as api.UploadItemRef);
-      })));
+      final response =
+          await res.upload(arg_request, arg_name, $fields: arg_$fields);
+      checkUploadItemRef(response as api.UploadItemRef);
     });
   });
 
   unittest.group('resource-MediaResource', () {
-    unittest.test('method--upload', () {
+    unittest.test('method--upload', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -7686,16 +7643,14 @@ void main() {
         var resp = convert.json.encode(buildMedia());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .upload(arg_request, arg_resourceName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMedia(response as api.Media);
-      })));
+      final response =
+          await res.upload(arg_request, arg_resourceName, $fields: arg_$fields);
+      checkMedia(response as api.Media);
     });
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).operations;
       var arg_name = 'foo';
@@ -7743,16 +7698,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-OperationsLroResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).operations.lro;
       var arg_name = 'foo';
@@ -7815,20 +7767,17 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 
   unittest.group('resource-QueryResource', () {
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).query;
       var arg_request = buildSearchRequest();
@@ -7879,14 +7828,11 @@ void main() {
         var resp = convert.json.encode(buildSearchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchResponse(response as api.SearchResponse);
-      })));
+      final response = await res.search(arg_request, $fields: arg_$fields);
+      checkSearchResponse(response as api.SearchResponse);
     });
 
-    unittest.test('method--suggest', () {
+    unittest.test('method--suggest', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).query;
       var arg_request = buildSuggestRequest();
@@ -7937,16 +7883,13 @@ void main() {
         var resp = convert.json.encode(buildSuggestResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .suggest(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSuggestResponse(response as api.SuggestResponse);
-      })));
+      final response = await res.suggest(arg_request, $fields: arg_$fields);
+      checkSuggestResponse(response as api.SuggestResponse);
     });
   });
 
   unittest.group('resource-QuerySourcesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).query.sources;
       var arg_pageToken = 'foo';
@@ -8017,24 +7960,21 @@ void main() {
         var resp = convert.json.encode(buildListQuerySourcesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageToken: arg_pageToken,
-              requestOptions_debugOptions_enableDebugging:
-                  arg_requestOptions_debugOptions_enableDebugging,
-              requestOptions_languageCode: arg_requestOptions_languageCode,
-              requestOptions_searchApplicationId:
-                  arg_requestOptions_searchApplicationId,
-              requestOptions_timeZone: arg_requestOptions_timeZone,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListQuerySourcesResponse(response as api.ListQuerySourcesResponse);
-      })));
+      final response = await res.list(
+          pageToken: arg_pageToken,
+          requestOptions_debugOptions_enableDebugging:
+              arg_requestOptions_debugOptions_enableDebugging,
+          requestOptions_languageCode: arg_requestOptions_languageCode,
+          requestOptions_searchApplicationId:
+              arg_requestOptions_searchApplicationId,
+          requestOptions_timeZone: arg_requestOptions_timeZone,
+          $fields: arg_$fields);
+      checkListQuerySourcesResponse(response as api.ListQuerySourcesResponse);
     });
   });
 
   unittest.group('resource-SettingsDatasourcesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).settings.datasources;
       var arg_request = buildDataSource();
@@ -8085,14 +8025,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).settings.datasources;
       var arg_name = 'foo';
@@ -8145,16 +8082,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name,
-              debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name,
+          debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).settings.datasources;
       var arg_name = 'foo';
@@ -8207,16 +8141,13 @@ void main() {
         var resp = convert.json.encode(buildDataSource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name,
-              debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDataSource(response as api.DataSource);
-      })));
+      final response = await res.get(arg_name,
+          debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
+          $fields: arg_$fields);
+      checkDataSource(response as api.DataSource);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).settings.datasources;
       var arg_debugOptions_enableDebugging = true;
@@ -8277,18 +8208,15 @@ void main() {
         var resp = convert.json.encode(buildListDataSourceResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDataSourceResponse(response as api.ListDataSourceResponse);
-      })));
+      final response = await res.list(
+          debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListDataSourceResponse(response as api.ListDataSourceResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).settings.datasources;
       var arg_request = buildUpdateDataSourceRequest();
@@ -8341,16 +8269,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-SettingsSearchapplicationsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).settings.searchapplications;
       var arg_request = buildSearchApplication();
@@ -8401,14 +8327,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).settings.searchapplications;
       var arg_name = 'foo';
@@ -8461,16 +8384,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name,
-              debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name,
+          debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).settings.searchapplications;
       var arg_name = 'foo';
@@ -8523,16 +8443,13 @@ void main() {
         var resp = convert.json.encode(buildSearchApplication());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name,
-              debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchApplication(response as api.SearchApplication);
-      })));
+      final response = await res.get(arg_name,
+          debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
+          $fields: arg_$fields);
+      checkSearchApplication(response as api.SearchApplication);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).settings.searchapplications;
       var arg_debugOptions_enableDebugging = true;
@@ -8593,19 +8510,16 @@ void main() {
         var resp = convert.json.encode(buildListSearchApplicationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSearchApplicationsResponse(
-            response as api.ListSearchApplicationsResponse);
-      })));
+      final response = await res.list(
+          debugOptions_enableDebugging: arg_debugOptions_enableDebugging,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListSearchApplicationsResponse(
+          response as api.ListSearchApplicationsResponse);
     });
 
-    unittest.test('method--reset', () {
+    unittest.test('method--reset', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).settings.searchapplications;
       var arg_request = buildResetSearchApplicationRequest();
@@ -8659,14 +8573,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reset(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.reset(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).settings.searchapplications;
       var arg_request = buildSearchApplication();
@@ -8719,16 +8631,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-StatsResource', () {
-    unittest.test('method--getIndex', () {
+    unittest.test('method--getIndex', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).stats;
       var arg_fromDate_day = 42;
@@ -8804,22 +8714,19 @@ void main() {
         var resp = convert.json.encode(buildGetCustomerIndexStatsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIndex(
-              fromDate_day: arg_fromDate_day,
-              fromDate_month: arg_fromDate_month,
-              fromDate_year: arg_fromDate_year,
-              toDate_day: arg_toDate_day,
-              toDate_month: arg_toDate_month,
-              toDate_year: arg_toDate_year,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetCustomerIndexStatsResponse(
-            response as api.GetCustomerIndexStatsResponse);
-      })));
+      final response = await res.getIndex(
+          fromDate_day: arg_fromDate_day,
+          fromDate_month: arg_fromDate_month,
+          fromDate_year: arg_fromDate_year,
+          toDate_day: arg_toDate_day,
+          toDate_month: arg_toDate_month,
+          toDate_year: arg_toDate_year,
+          $fields: arg_$fields);
+      checkGetCustomerIndexStatsResponse(
+          response as api.GetCustomerIndexStatsResponse);
     });
 
-    unittest.test('method--getQuery', () {
+    unittest.test('method--getQuery', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).stats;
       var arg_fromDate_day = 42;
@@ -8895,22 +8802,19 @@ void main() {
         var resp = convert.json.encode(buildGetCustomerQueryStatsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getQuery(
-              fromDate_day: arg_fromDate_day,
-              fromDate_month: arg_fromDate_month,
-              fromDate_year: arg_fromDate_year,
-              toDate_day: arg_toDate_day,
-              toDate_month: arg_toDate_month,
-              toDate_year: arg_toDate_year,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetCustomerQueryStatsResponse(
-            response as api.GetCustomerQueryStatsResponse);
-      })));
+      final response = await res.getQuery(
+          fromDate_day: arg_fromDate_day,
+          fromDate_month: arg_fromDate_month,
+          fromDate_year: arg_fromDate_year,
+          toDate_day: arg_toDate_day,
+          toDate_month: arg_toDate_month,
+          toDate_year: arg_toDate_year,
+          $fields: arg_$fields);
+      checkGetCustomerQueryStatsResponse(
+          response as api.GetCustomerQueryStatsResponse);
     });
 
-    unittest.test('method--getSession', () {
+    unittest.test('method--getSession', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).stats;
       var arg_fromDate_day = 42;
@@ -8986,22 +8890,19 @@ void main() {
         var resp = convert.json.encode(buildGetCustomerSessionStatsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getSession(
-              fromDate_day: arg_fromDate_day,
-              fromDate_month: arg_fromDate_month,
-              fromDate_year: arg_fromDate_year,
-              toDate_day: arg_toDate_day,
-              toDate_month: arg_toDate_month,
-              toDate_year: arg_toDate_year,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetCustomerSessionStatsResponse(
-            response as api.GetCustomerSessionStatsResponse);
-      })));
+      final response = await res.getSession(
+          fromDate_day: arg_fromDate_day,
+          fromDate_month: arg_fromDate_month,
+          fromDate_year: arg_fromDate_year,
+          toDate_day: arg_toDate_day,
+          toDate_month: arg_toDate_month,
+          toDate_year: arg_toDate_year,
+          $fields: arg_$fields);
+      checkGetCustomerSessionStatsResponse(
+          response as api.GetCustomerSessionStatsResponse);
     });
 
-    unittest.test('method--getUser', () {
+    unittest.test('method--getUser', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).stats;
       var arg_fromDate_day = 42;
@@ -9077,24 +8978,21 @@ void main() {
         var resp = convert.json.encode(buildGetCustomerUserStatsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getUser(
-              fromDate_day: arg_fromDate_day,
-              fromDate_month: arg_fromDate_month,
-              fromDate_year: arg_fromDate_year,
-              toDate_day: arg_toDate_day,
-              toDate_month: arg_toDate_month,
-              toDate_year: arg_toDate_year,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetCustomerUserStatsResponse(
-            response as api.GetCustomerUserStatsResponse);
-      })));
+      final response = await res.getUser(
+          fromDate_day: arg_fromDate_day,
+          fromDate_month: arg_fromDate_month,
+          fromDate_year: arg_fromDate_year,
+          toDate_day: arg_toDate_day,
+          toDate_month: arg_toDate_month,
+          toDate_year: arg_toDate_year,
+          $fields: arg_$fields);
+      checkGetCustomerUserStatsResponse(
+          response as api.GetCustomerUserStatsResponse);
     });
   });
 
   unittest.group('resource-StatsIndexDatasourcesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).stats.index.datasources;
       var arg_name = 'foo';
@@ -9172,24 +9070,21 @@ void main() {
         var resp = convert.json.encode(buildGetDataSourceIndexStatsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name,
-              fromDate_day: arg_fromDate_day,
-              fromDate_month: arg_fromDate_month,
-              fromDate_year: arg_fromDate_year,
-              toDate_day: arg_toDate_day,
-              toDate_month: arg_toDate_month,
-              toDate_year: arg_toDate_year,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetDataSourceIndexStatsResponse(
-            response as api.GetDataSourceIndexStatsResponse);
-      })));
+      final response = await res.get(arg_name,
+          fromDate_day: arg_fromDate_day,
+          fromDate_month: arg_fromDate_month,
+          fromDate_year: arg_fromDate_year,
+          toDate_day: arg_toDate_day,
+          toDate_month: arg_toDate_month,
+          toDate_year: arg_toDate_year,
+          $fields: arg_$fields);
+      checkGetDataSourceIndexStatsResponse(
+          response as api.GetDataSourceIndexStatsResponse);
     });
   });
 
   unittest.group('resource-StatsQuerySearchapplicationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).stats.query.searchapplications;
       var arg_name = 'foo';
@@ -9268,24 +9163,21 @@ void main() {
             convert.json.encode(buildGetSearchApplicationQueryStatsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name,
-              fromDate_day: arg_fromDate_day,
-              fromDate_month: arg_fromDate_month,
-              fromDate_year: arg_fromDate_year,
-              toDate_day: arg_toDate_day,
-              toDate_month: arg_toDate_month,
-              toDate_year: arg_toDate_year,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetSearchApplicationQueryStatsResponse(
-            response as api.GetSearchApplicationQueryStatsResponse);
-      })));
+      final response = await res.get(arg_name,
+          fromDate_day: arg_fromDate_day,
+          fromDate_month: arg_fromDate_month,
+          fromDate_year: arg_fromDate_year,
+          toDate_day: arg_toDate_day,
+          toDate_month: arg_toDate_month,
+          toDate_year: arg_toDate_year,
+          $fields: arg_$fields);
+      checkGetSearchApplicationQueryStatsResponse(
+          response as api.GetSearchApplicationQueryStatsResponse);
     });
   });
 
   unittest.group('resource-StatsSessionSearchapplicationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).stats.session.searchapplications;
       var arg_name = 'foo';
@@ -9364,24 +9256,21 @@ void main() {
             .encode(buildGetSearchApplicationSessionStatsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name,
-              fromDate_day: arg_fromDate_day,
-              fromDate_month: arg_fromDate_month,
-              fromDate_year: arg_fromDate_year,
-              toDate_day: arg_toDate_day,
-              toDate_month: arg_toDate_month,
-              toDate_year: arg_toDate_year,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetSearchApplicationSessionStatsResponse(
-            response as api.GetSearchApplicationSessionStatsResponse);
-      })));
+      final response = await res.get(arg_name,
+          fromDate_day: arg_fromDate_day,
+          fromDate_month: arg_fromDate_month,
+          fromDate_year: arg_fromDate_year,
+          toDate_day: arg_toDate_day,
+          toDate_month: arg_toDate_month,
+          toDate_year: arg_toDate_year,
+          $fields: arg_$fields);
+      checkGetSearchApplicationSessionStatsResponse(
+          response as api.GetSearchApplicationSessionStatsResponse);
     });
   });
 
   unittest.group('resource-StatsUserSearchapplicationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudSearchApi(mock).stats.user.searchapplications;
       var arg_name = 'foo';
@@ -9460,19 +9349,16 @@ void main() {
             convert.json.encode(buildGetSearchApplicationUserStatsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name,
-              fromDate_day: arg_fromDate_day,
-              fromDate_month: arg_fromDate_month,
-              fromDate_year: arg_fromDate_year,
-              toDate_day: arg_toDate_day,
-              toDate_month: arg_toDate_month,
-              toDate_year: arg_toDate_year,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetSearchApplicationUserStatsResponse(
-            response as api.GetSearchApplicationUserStatsResponse);
-      })));
+      final response = await res.get(arg_name,
+          fromDate_day: arg_fromDate_day,
+          fromDate_month: arg_fromDate_month,
+          fromDate_year: arg_fromDate_year,
+          toDate_day: arg_toDate_day,
+          toDate_month: arg_toDate_month,
+          toDate_year: arg_toDate_year,
+          $fields: arg_$fields);
+      checkGetSearchApplicationUserStatsResponse(
+          response as api.GetSearchApplicationUserStatsResponse);
     });
   });
 }

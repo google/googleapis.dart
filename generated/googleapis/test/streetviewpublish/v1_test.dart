@@ -807,7 +807,7 @@ void checkUnnamed6751(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-BatchDeletePhotosRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchDeletePhotosRequest();
       var od = api.BatchDeletePhotosRequest.fromJson(o.toJson());
       checkBatchDeletePhotosRequest(od as api.BatchDeletePhotosRequest);
@@ -815,7 +815,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchDeletePhotosResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchDeletePhotosResponse();
       var od = api.BatchDeletePhotosResponse.fromJson(o.toJson());
       checkBatchDeletePhotosResponse(od as api.BatchDeletePhotosResponse);
@@ -823,7 +823,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchGetPhotosResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchGetPhotosResponse();
       var od = api.BatchGetPhotosResponse.fromJson(o.toJson());
       checkBatchGetPhotosResponse(od as api.BatchGetPhotosResponse);
@@ -831,7 +831,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchUpdatePhotosRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchUpdatePhotosRequest();
       var od = api.BatchUpdatePhotosRequest.fromJson(o.toJson());
       checkBatchUpdatePhotosRequest(od as api.BatchUpdatePhotosRequest);
@@ -839,7 +839,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchUpdatePhotosResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchUpdatePhotosResponse();
       var od = api.BatchUpdatePhotosResponse.fromJson(o.toJson());
       checkBatchUpdatePhotosResponse(od as api.BatchUpdatePhotosResponse);
@@ -847,7 +847,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Connection', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConnection();
       var od = api.Connection.fromJson(o.toJson());
       checkConnection(od as api.Connection);
@@ -855,7 +855,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -863,7 +863,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LatLng', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLatLng();
       var od = api.LatLng.fromJson(o.toJson());
       checkLatLng(od as api.LatLng);
@@ -871,7 +871,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Level', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLevel();
       var od = api.Level.fromJson(o.toJson());
       checkLevel(od as api.Level);
@@ -879,7 +879,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListPhotosResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListPhotosResponse();
       var od = api.ListPhotosResponse.fromJson(o.toJson());
       checkListPhotosResponse(od as api.ListPhotosResponse);
@@ -887,7 +887,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -895,7 +895,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Photo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPhoto();
       var od = api.Photo.fromJson(o.toJson());
       checkPhoto(od as api.Photo);
@@ -903,7 +903,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PhotoId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPhotoId();
       var od = api.PhotoId.fromJson(o.toJson());
       checkPhotoId(od as api.PhotoId);
@@ -911,7 +911,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PhotoResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPhotoResponse();
       var od = api.PhotoResponse.fromJson(o.toJson());
       checkPhotoResponse(od as api.PhotoResponse);
@@ -919,7 +919,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Place', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlace();
       var od = api.Place.fromJson(o.toJson());
       checkPlace(od as api.Place);
@@ -927,7 +927,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Pose', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPose();
       var od = api.Pose.fromJson(o.toJson());
       checkPose(od as api.Pose);
@@ -935,7 +935,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -943,7 +943,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdatePhotoRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdatePhotoRequest();
       var od = api.UpdatePhotoRequest.fromJson(o.toJson());
       checkUpdatePhotoRequest(od as api.UpdatePhotoRequest);
@@ -951,7 +951,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UploadRef', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUploadRef();
       var od = api.UploadRef.fromJson(o.toJson());
       checkUploadRef(od as api.UploadRef);
@@ -959,7 +959,7 @@ void main() {
   });
 
   unittest.group('resource-PhotoResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.StreetViewPublishApi(mock).photo;
       var arg_request = buildPhoto();
@@ -1010,14 +1010,11 @@ void main() {
         var resp = convert.json.encode(buildPhoto());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPhoto(response as api.Photo);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkPhoto(response as api.Photo);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.StreetViewPublishApi(mock).photo;
       var arg_photoId = 'foo';
@@ -1070,14 +1067,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_photoId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_photoId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.StreetViewPublishApi(mock).photo;
       var arg_photoId = 'foo';
@@ -1140,17 +1134,12 @@ void main() {
         var resp = convert.json.encode(buildPhoto());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_photoId,
-              languageCode: arg_languageCode,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPhoto(response as api.Photo);
-      })));
+      final response = await res.get(arg_photoId,
+          languageCode: arg_languageCode, view: arg_view, $fields: arg_$fields);
+      checkPhoto(response as api.Photo);
     });
 
-    unittest.test('method--startUpload', () {
+    unittest.test('method--startUpload', () async {
       var mock = HttpServerMock();
       var res = api.StreetViewPublishApi(mock).photo;
       var arg_request = buildEmpty();
@@ -1201,14 +1190,11 @@ void main() {
         var resp = convert.json.encode(buildUploadRef());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .startUpload(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUploadRef(response as api.UploadRef);
-      })));
+      final response = await res.startUpload(arg_request, $fields: arg_$fields);
+      checkUploadRef(response as api.UploadRef);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.StreetViewPublishApi(mock).photo;
       var arg_request = buildPhoto();
@@ -1271,17 +1257,14 @@ void main() {
         var resp = convert.json.encode(buildPhoto());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_id,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPhoto(response as api.Photo);
-      })));
+      final response = await res.update(arg_request, arg_id,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkPhoto(response as api.Photo);
     });
   });
 
   unittest.group('resource-PhotosResource', () {
-    unittest.test('method--batchDelete', () {
+    unittest.test('method--batchDelete', () async {
       var mock = HttpServerMock();
       var res = api.StreetViewPublishApi(mock).photos;
       var arg_request = buildBatchDeletePhotosRequest();
@@ -1332,15 +1315,11 @@ void main() {
         var resp = convert.json.encode(buildBatchDeletePhotosResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchDelete(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchDeletePhotosResponse(
-            response as api.BatchDeletePhotosResponse);
-      })));
+      final response = await res.batchDelete(arg_request, $fields: arg_$fields);
+      checkBatchDeletePhotosResponse(response as api.BatchDeletePhotosResponse);
     });
 
-    unittest.test('method--batchGet', () {
+    unittest.test('method--batchGet', () async {
       var mock = HttpServerMock();
       var res = api.StreetViewPublishApi(mock).photos;
       var arg_languageCode = 'foo';
@@ -1401,18 +1380,15 @@ void main() {
         var resp = convert.json.encode(buildBatchGetPhotosResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchGet(
-              languageCode: arg_languageCode,
-              photoIds: arg_photoIds,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchGetPhotosResponse(response as api.BatchGetPhotosResponse);
-      })));
+      final response = await res.batchGet(
+          languageCode: arg_languageCode,
+          photoIds: arg_photoIds,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkBatchGetPhotosResponse(response as api.BatchGetPhotosResponse);
     });
 
-    unittest.test('method--batchUpdate', () {
+    unittest.test('method--batchUpdate', () async {
       var mock = HttpServerMock();
       var res = api.StreetViewPublishApi(mock).photos;
       var arg_request = buildBatchUpdatePhotosRequest();
@@ -1463,15 +1439,11 @@ void main() {
         var resp = convert.json.encode(buildBatchUpdatePhotosResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchUpdate(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchUpdatePhotosResponse(
-            response as api.BatchUpdatePhotosResponse);
-      })));
+      final response = await res.batchUpdate(arg_request, $fields: arg_$fields);
+      checkBatchUpdatePhotosResponse(response as api.BatchUpdatePhotosResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.StreetViewPublishApi(mock).photos;
       var arg_filter = 'foo';
@@ -1542,17 +1514,14 @@ void main() {
         var resp = convert.json.encode(buildListPhotosResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              filter: arg_filter,
-              languageCode: arg_languageCode,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListPhotosResponse(response as api.ListPhotosResponse);
-      })));
+      final response = await res.list(
+          filter: arg_filter,
+          languageCode: arg_languageCode,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListPhotosResponse(response as api.ListPhotosResponse);
     });
   });
 }

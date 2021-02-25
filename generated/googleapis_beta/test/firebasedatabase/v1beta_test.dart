@@ -139,7 +139,7 @@ void checkReenableDatabaseInstanceRequest(
 
 void main() {
   unittest.group('obj-schema-DatabaseInstance', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatabaseInstance();
       var od = api.DatabaseInstance.fromJson(o.toJson());
       checkDatabaseInstance(od as api.DatabaseInstance);
@@ -147,7 +147,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DisableDatabaseInstanceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDisableDatabaseInstanceRequest();
       var od = api.DisableDatabaseInstanceRequest.fromJson(o.toJson());
       checkDisableDatabaseInstanceRequest(
@@ -156,7 +156,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDatabaseInstancesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDatabaseInstancesResponse();
       var od = api.ListDatabaseInstancesResponse.fromJson(o.toJson());
       checkListDatabaseInstancesResponse(
@@ -165,7 +165,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReenableDatabaseInstanceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReenableDatabaseInstanceRequest();
       var od = api.ReenableDatabaseInstanceRequest.fromJson(o.toJson());
       checkReenableDatabaseInstanceRequest(
@@ -174,7 +174,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsInstancesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
@@ -238,17 +238,14 @@ void main() {
         var resp = convert.json.encode(buildDatabaseInstance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              databaseId: arg_databaseId,
-              validateOnly: arg_validateOnly,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDatabaseInstance(response as api.DatabaseInstance);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          databaseId: arg_databaseId,
+          validateOnly: arg_validateOnly,
+          $fields: arg_$fields);
+      checkDatabaseInstance(response as api.DatabaseInstance);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
@@ -297,14 +294,11 @@ void main() {
         var resp = convert.json.encode(buildDatabaseInstance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDatabaseInstance(response as api.DatabaseInstance);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkDatabaseInstance(response as api.DatabaseInstance);
     });
 
-    unittest.test('method--disable', () {
+    unittest.test('method--disable', () async {
       var mock = HttpServerMock();
       var res =
           api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
@@ -359,14 +353,12 @@ void main() {
         var resp = convert.json.encode(buildDatabaseInstance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .disable(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDatabaseInstance(response as api.DatabaseInstance);
-      })));
+      final response =
+          await res.disable(arg_request, arg_name, $fields: arg_$fields);
+      checkDatabaseInstance(response as api.DatabaseInstance);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
@@ -415,14 +407,11 @@ void main() {
         var resp = convert.json.encode(buildDatabaseInstance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDatabaseInstance(response as api.DatabaseInstance);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkDatabaseInstance(response as api.DatabaseInstance);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
@@ -481,18 +470,15 @@ void main() {
         var resp = convert.json.encode(buildListDatabaseInstancesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDatabaseInstancesResponse(
-            response as api.ListDatabaseInstancesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListDatabaseInstancesResponse(
+          response as api.ListDatabaseInstancesResponse);
     });
 
-    unittest.test('method--reenable', () {
+    unittest.test('method--reenable', () async {
       var mock = HttpServerMock();
       var res =
           api.FirebaseRealtimeDatabaseApi(mock).projects.locations.instances;
@@ -547,11 +533,9 @@ void main() {
         var resp = convert.json.encode(buildDatabaseInstance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reenable(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDatabaseInstance(response as api.DatabaseInstance);
-      })));
+      final response =
+          await res.reenable(arg_request, arg_name, $fields: arg_$fields);
+      checkDatabaseInstance(response as api.DatabaseInstance);
     });
   });
 }

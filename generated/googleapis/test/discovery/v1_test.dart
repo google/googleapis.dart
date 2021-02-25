@@ -1085,7 +1085,7 @@ void checkRestResource(api.RestResource o) {
 
 void main() {
   unittest.group('obj-schema-DirectoryListItemsIcons', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDirectoryListItemsIcons();
       var od = api.DirectoryListItemsIcons.fromJson(o.toJson());
       checkDirectoryListItemsIcons(od as api.DirectoryListItemsIcons);
@@ -1093,7 +1093,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DirectoryListItems', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDirectoryListItems();
       var od = api.DirectoryListItems.fromJson(o.toJson());
       checkDirectoryListItems(od as api.DirectoryListItems);
@@ -1101,7 +1101,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DirectoryList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDirectoryList();
       var od = api.DirectoryList.fromJson(o.toJson());
       checkDirectoryList(od as api.DirectoryList);
@@ -1109,7 +1109,7 @@ void main() {
   });
 
   unittest.group('obj-schema-JsonSchemaAnnotations', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJsonSchemaAnnotations();
       var od = api.JsonSchemaAnnotations.fromJson(o.toJson());
       checkJsonSchemaAnnotations(od as api.JsonSchemaAnnotations);
@@ -1117,7 +1117,7 @@ void main() {
   });
 
   unittest.group('obj-schema-JsonSchemaVariantMap', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJsonSchemaVariantMap();
       var od = api.JsonSchemaVariantMap.fromJson(o.toJson());
       checkJsonSchemaVariantMap(od as api.JsonSchemaVariantMap);
@@ -1125,7 +1125,7 @@ void main() {
   });
 
   unittest.group('obj-schema-JsonSchemaVariant', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJsonSchemaVariant();
       var od = api.JsonSchemaVariant.fromJson(o.toJson());
       checkJsonSchemaVariant(od as api.JsonSchemaVariant);
@@ -1133,7 +1133,7 @@ void main() {
   });
 
   unittest.group('obj-schema-JsonSchema', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJsonSchema();
       var od = api.JsonSchema.fromJson(o.toJson());
       checkJsonSchema(od as api.JsonSchema);
@@ -1141,7 +1141,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestDescriptionAuthOauth2ScopesValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestDescriptionAuthOauth2ScopesValue();
       var od = api.RestDescriptionAuthOauth2ScopesValue.fromJson(o.toJson());
       checkRestDescriptionAuthOauth2ScopesValue(
@@ -1150,7 +1150,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestDescriptionAuthOauth2', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestDescriptionAuthOauth2();
       var od = api.RestDescriptionAuthOauth2.fromJson(o.toJson());
       checkRestDescriptionAuthOauth2(od as api.RestDescriptionAuthOauth2);
@@ -1158,7 +1158,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestDescriptionAuth', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestDescriptionAuth();
       var od = api.RestDescriptionAuth.fromJson(o.toJson());
       checkRestDescriptionAuth(od as api.RestDescriptionAuth);
@@ -1166,7 +1166,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestDescriptionIcons', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestDescriptionIcons();
       var od = api.RestDescriptionIcons.fromJson(o.toJson());
       checkRestDescriptionIcons(od as api.RestDescriptionIcons);
@@ -1174,7 +1174,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestDescription', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestDescription();
       var od = api.RestDescription.fromJson(o.toJson());
       checkRestDescription(od as api.RestDescription);
@@ -1182,7 +1182,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestMethodMediaUploadProtocolsResumable', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestMethodMediaUploadProtocolsResumable();
       var od = api.RestMethodMediaUploadProtocolsResumable.fromJson(o.toJson());
       checkRestMethodMediaUploadProtocolsResumable(
@@ -1191,7 +1191,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestMethodMediaUploadProtocolsSimple', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestMethodMediaUploadProtocolsSimple();
       var od = api.RestMethodMediaUploadProtocolsSimple.fromJson(o.toJson());
       checkRestMethodMediaUploadProtocolsSimple(
@@ -1200,7 +1200,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestMethodMediaUploadProtocols', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestMethodMediaUploadProtocols();
       var od = api.RestMethodMediaUploadProtocols.fromJson(o.toJson());
       checkRestMethodMediaUploadProtocols(
@@ -1209,7 +1209,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestMethodMediaUpload', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestMethodMediaUpload();
       var od = api.RestMethodMediaUpload.fromJson(o.toJson());
       checkRestMethodMediaUpload(od as api.RestMethodMediaUpload);
@@ -1217,7 +1217,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestMethodRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestMethodRequest();
       var od = api.RestMethodRequest.fromJson(o.toJson());
       checkRestMethodRequest(od as api.RestMethodRequest);
@@ -1225,7 +1225,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestMethodResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestMethodResponse();
       var od = api.RestMethodResponse.fromJson(o.toJson());
       checkRestMethodResponse(od as api.RestMethodResponse);
@@ -1233,7 +1233,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestMethod', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestMethod();
       var od = api.RestMethod.fromJson(o.toJson());
       checkRestMethod(od as api.RestMethod);
@@ -1241,7 +1241,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestResource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestResource();
       var od = api.RestResource.fromJson(o.toJson());
       checkRestResource(od as api.RestResource);
@@ -1249,7 +1249,7 @@ void main() {
   });
 
   unittest.group('resource-ApisResource', () {
-    unittest.test('method--getRest', () {
+    unittest.test('method--getRest', () async {
       var mock = HttpServerMock();
       var res = api.DiscoveryApi(mock).apis;
       var arg_api = 'foo';
@@ -1330,14 +1330,12 @@ void main() {
         var resp = convert.json.encode(buildRestDescription());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getRest(arg_api, arg_version, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRestDescription(response as api.RestDescription);
-      })));
+      final response =
+          await res.getRest(arg_api, arg_version, $fields: arg_$fields);
+      checkRestDescription(response as api.RestDescription);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DiscoveryApi(mock).apis;
       var arg_name = 'foo';
@@ -1398,11 +1396,9 @@ void main() {
         var resp = convert.json.encode(buildDirectoryList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(name: arg_name, preferred: arg_preferred, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDirectoryList(response as api.DirectoryList);
-      })));
+      final response = await res.list(
+          name: arg_name, preferred: arg_preferred, $fields: arg_$fields);
+      checkDirectoryList(response as api.DirectoryList);
     });
   });
 }

@@ -2148,7 +2148,7 @@ void checkWeeklyCycle(api.WeeklyCycle o) {
 
 void main() {
   unittest.group('obj-schema-AttachTrustRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAttachTrustRequest();
       var od = api.AttachTrustRequest.fromJson(o.toJson());
       checkAttachTrustRequest(od as api.AttachTrustRequest);
@@ -2156,7 +2156,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -2164,7 +2164,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od as api.CancelOperationRequest);
@@ -2172,7 +2172,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DailyCycle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDailyCycle();
       var od = api.DailyCycle.fromJson(o.toJson());
       checkDailyCycle(od as api.DailyCycle);
@@ -2180,7 +2180,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Date', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
       checkDate(od as api.Date);
@@ -2188,7 +2188,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DenyMaintenancePeriod', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDenyMaintenancePeriod();
       var od = api.DenyMaintenancePeriod.fromJson(o.toJson());
       checkDenyMaintenancePeriod(od as api.DenyMaintenancePeriod);
@@ -2196,7 +2196,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DetachTrustRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDetachTrustRequest();
       var od = api.DetachTrustRequest.fromJson(o.toJson());
       checkDetachTrustRequest(od as api.DetachTrustRequest);
@@ -2204,7 +2204,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Domain', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDomain();
       var od = api.Domain.fromJson(o.toJson());
       checkDomain(od as api.Domain);
@@ -2212,7 +2212,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -2220,7 +2220,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -2228,7 +2228,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudManagedidentitiesV1OpMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudManagedidentitiesV1OpMetadata();
       var od =
           api.GoogleCloudManagedidentitiesV1OpMetadata.fromJson(o.toJson());
@@ -2239,7 +2239,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudManagedidentitiesV1alpha1OpMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudManagedidentitiesV1alpha1OpMetadata();
       var od = api.GoogleCloudManagedidentitiesV1alpha1OpMetadata.fromJson(
           o.toJson());
@@ -2250,7 +2250,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudManagedidentitiesV1beta1OpMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudManagedidentitiesV1beta1OpMetadata();
       var od = api.GoogleCloudManagedidentitiesV1beta1OpMetadata.fromJson(
           o.toJson());
@@ -2261,7 +2261,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudSaasacceleratorManagementProvidersV1Instance', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudSaasacceleratorManagementProvidersV1Instance();
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1Instance.fromJson(
@@ -2274,7 +2274,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule();
       var od =
@@ -2289,7 +2289,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings();
       var od =
@@ -2304,7 +2304,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata();
       var od =
@@ -2319,7 +2319,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility();
       var od =
@@ -2334,7 +2334,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource();
       var od =
@@ -2349,7 +2349,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility();
       var od = api.GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
@@ -2362,7 +2362,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion();
       var od = api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
@@ -2375,7 +2375,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata();
       var od = api.GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
           .fromJson(o.toJson());
@@ -2385,7 +2385,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDomainsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDomainsResponse();
       var od = api.ListDomainsResponse.fromJson(o.toJson());
       checkListDomainsResponse(od as api.ListDomainsResponse);
@@ -2393,7 +2393,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -2401,7 +2401,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -2409,7 +2409,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -2417,7 +2417,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MaintenancePolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMaintenancePolicy();
       var od = api.MaintenancePolicy.fromJson(o.toJson());
       checkMaintenancePolicy(od as api.MaintenancePolicy);
@@ -2425,7 +2425,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MaintenanceWindow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMaintenanceWindow();
       var od = api.MaintenanceWindow.fromJson(o.toJson());
       checkMaintenanceWindow(od as api.MaintenanceWindow);
@@ -2433,7 +2433,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -2441,7 +2441,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
       checkOperationMetadata(od as api.OperationMetadata);
@@ -2449,7 +2449,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -2457,7 +2457,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReconfigureTrustRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReconfigureTrustRequest();
       var od = api.ReconfigureTrustRequest.fromJson(o.toJson());
       checkReconfigureTrustRequest(od as api.ReconfigureTrustRequest);
@@ -2465,7 +2465,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResetAdminPasswordRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResetAdminPasswordRequest();
       var od = api.ResetAdminPasswordRequest.fromJson(o.toJson());
       checkResetAdminPasswordRequest(od as api.ResetAdminPasswordRequest);
@@ -2473,7 +2473,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResetAdminPasswordResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResetAdminPasswordResponse();
       var od = api.ResetAdminPasswordResponse.fromJson(o.toJson());
       checkResetAdminPasswordResponse(od as api.ResetAdminPasswordResponse);
@@ -2481,7 +2481,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Schedule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSchedule();
       var od = api.Schedule.fromJson(o.toJson());
       checkSchedule(od as api.Schedule);
@@ -2489,7 +2489,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -2497,7 +2497,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -2505,7 +2505,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -2513,7 +2513,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -2521,7 +2521,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimeOfDay', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimeOfDay();
       var od = api.TimeOfDay.fromJson(o.toJson());
       checkTimeOfDay(od as api.TimeOfDay);
@@ -2529,7 +2529,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Trust', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTrust();
       var od = api.Trust.fromJson(o.toJson());
       checkTrust(od as api.Trust);
@@ -2537,7 +2537,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdatePolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdatePolicy();
       var od = api.UpdatePolicy.fromJson(o.toJson());
       checkUpdatePolicy(od as api.UpdatePolicy);
@@ -2545,7 +2545,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ValidateTrustRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildValidateTrustRequest();
       var od = api.ValidateTrustRequest.fromJson(o.toJson());
       checkValidateTrustRequest(od as api.ValidateTrustRequest);
@@ -2553,7 +2553,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WeeklyCycle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWeeklyCycle();
       var od = api.WeeklyCycle.fromJson(o.toJson());
       checkWeeklyCycle(od as api.WeeklyCycle);
@@ -2561,7 +2561,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -2611,14 +2611,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -2683,20 +2680,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsGlobalDomainsResource', () {
-    unittest.test('method--attachTrust', () {
+    unittest.test('method--attachTrust', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -2753,14 +2747,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .attachTrust(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.attachTrust(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -2822,15 +2814,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              domainName: arg_domainName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          domainName: arg_domainName, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -2882,14 +2871,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--detachTrust', () {
+    unittest.test('method--detachTrust', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -2946,14 +2932,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .detachTrust(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.detachTrust(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -3005,14 +2989,11 @@ void main() {
         var resp = convert.json.encode(buildDomain());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDomain(response as api.Domain);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkDomain(response as api.Domain);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -3069,17 +3050,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -3151,19 +3128,16 @@ void main() {
         var resp = convert.json.encode(buildListDomainsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDomainsResponse(response as api.ListDomainsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListDomainsResponse(response as api.ListDomainsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -3225,15 +3199,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--reconfigureTrust', () {
+    unittest.test('method--reconfigureTrust', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -3290,14 +3261,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reconfigureTrust(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.reconfigureTrust(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--resetAdminPassword', () {
+    unittest.test('method--resetAdminPassword', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -3354,15 +3323,13 @@ void main() {
         var resp = convert.json.encode(buildResetAdminPasswordResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resetAdminPassword(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkResetAdminPasswordResponse(
-            response as api.ResetAdminPasswordResponse);
-      })));
+      final response = await res.resetAdminPassword(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkResetAdminPasswordResponse(
+          response as api.ResetAdminPasswordResponse);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -3419,14 +3386,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -3483,15 +3448,13 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
 
-    unittest.test('method--validateTrust', () {
+    unittest.test('method--validateTrust', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -3548,16 +3511,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .validateTrust(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.validateTrust(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsGlobalOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -3614,14 +3575,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -3673,14 +3632,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -3732,14 +3688,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ManagedServiceForMicrosoftActiveDirectoryConsumerApi(mock)
           .projects
@@ -3806,15 +3759,12 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 }

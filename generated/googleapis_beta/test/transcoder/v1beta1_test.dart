@@ -1795,7 +1795,7 @@ void checkVideoStream(api.VideoStream o) {
 
 void main() {
   unittest.group('obj-schema-AdBreak', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdBreak();
       var od = api.AdBreak.fromJson(o.toJson());
       checkAdBreak(od as api.AdBreak);
@@ -1803,7 +1803,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Aes128Encryption', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAes128Encryption();
       var od = api.Aes128Encryption.fromJson(o.toJson());
       checkAes128Encryption(od as api.Aes128Encryption);
@@ -1811,7 +1811,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Animation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnimation();
       var od = api.Animation.fromJson(o.toJson());
       checkAnimation(od as api.Animation);
@@ -1819,7 +1819,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnimationEnd', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnimationEnd();
       var od = api.AnimationEnd.fromJson(o.toJson());
       checkAnimationEnd(od as api.AnimationEnd);
@@ -1827,7 +1827,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnimationFade', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnimationFade();
       var od = api.AnimationFade.fromJson(o.toJson());
       checkAnimationFade(od as api.AnimationFade);
@@ -1835,7 +1835,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnimationStatic', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnimationStatic();
       var od = api.AnimationStatic.fromJson(o.toJson());
       checkAnimationStatic(od as api.AnimationStatic);
@@ -1843,7 +1843,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Audio', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAudio();
       var od = api.Audio.fromJson(o.toJson());
       checkAudio(od as api.Audio);
@@ -1851,7 +1851,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AudioAtom', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAudioAtom();
       var od = api.AudioAtom.fromJson(o.toJson());
       checkAudioAtom(od as api.AudioAtom);
@@ -1859,7 +1859,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AudioChannel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAudioChannel();
       var od = api.AudioChannel.fromJson(o.toJson());
       checkAudioChannel(od as api.AudioChannel);
@@ -1867,7 +1867,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AudioChannelInput', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAudioChannelInput();
       var od = api.AudioChannelInput.fromJson(o.toJson());
       checkAudioChannelInput(od as api.AudioChannelInput);
@@ -1875,7 +1875,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AudioStream', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAudioStream();
       var od = api.AudioStream.fromJson(o.toJson());
       checkAudioStream(od as api.AudioStream);
@@ -1883,7 +1883,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Color', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildColor();
       var od = api.Color.fromJson(o.toJson());
       checkColor(od as api.Color);
@@ -1891,7 +1891,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Crop', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCrop();
       var od = api.Crop.fromJson(o.toJson());
       checkCrop(od as api.Crop);
@@ -1899,7 +1899,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Deblock', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeblock();
       var od = api.Deblock.fromJson(o.toJson());
       checkDeblock(od as api.Deblock);
@@ -1907,7 +1907,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Denoise', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDenoise();
       var od = api.Denoise.fromJson(o.toJson());
       checkDenoise(od as api.Denoise);
@@ -1915,7 +1915,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EditAtom', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEditAtom();
       var od = api.EditAtom.fromJson(o.toJson());
       checkEditAtom(od as api.EditAtom);
@@ -1923,7 +1923,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ElementaryStream', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildElementaryStream();
       var od = api.ElementaryStream.fromJson(o.toJson());
       checkElementaryStream(od as api.ElementaryStream);
@@ -1931,7 +1931,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1939,7 +1939,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Encryption', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEncryption();
       var od = api.Encryption.fromJson(o.toJson());
       checkEncryption(od as api.Encryption);
@@ -1947,7 +1947,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FailureDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFailureDetail();
       var od = api.FailureDetail.fromJson(o.toJson());
       checkFailureDetail(od as api.FailureDetail);
@@ -1955,7 +1955,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Image', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImage();
       var od = api.Image.fromJson(o.toJson());
       checkImage(od as api.Image);
@@ -1963,7 +1963,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Input', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInput();
       var od = api.Input.fromJson(o.toJson());
       checkInput(od as api.Input);
@@ -1971,7 +1971,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Job', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJob();
       var od = api.Job.fromJson(o.toJson());
       checkJob(od as api.Job);
@@ -1979,7 +1979,7 @@ void main() {
   });
 
   unittest.group('obj-schema-JobConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJobConfig();
       var od = api.JobConfig.fromJson(o.toJson());
       checkJobConfig(od as api.JobConfig);
@@ -1987,7 +1987,7 @@ void main() {
   });
 
   unittest.group('obj-schema-JobTemplate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJobTemplate();
       var od = api.JobTemplate.fromJson(o.toJson());
       checkJobTemplate(od as api.JobTemplate);
@@ -1995,7 +1995,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListJobTemplatesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListJobTemplatesResponse();
       var od = api.ListJobTemplatesResponse.fromJson(o.toJson());
       checkListJobTemplatesResponse(od as api.ListJobTemplatesResponse);
@@ -2003,7 +2003,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListJobsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListJobsResponse();
       var od = api.ListJobsResponse.fromJson(o.toJson());
       checkListJobsResponse(od as api.ListJobsResponse);
@@ -2011,7 +2011,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Manifest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManifest();
       var od = api.Manifest.fromJson(o.toJson());
       checkManifest(od as api.Manifest);
@@ -2019,7 +2019,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MpegCommonEncryption', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMpegCommonEncryption();
       var od = api.MpegCommonEncryption.fromJson(o.toJson());
       checkMpegCommonEncryption(od as api.MpegCommonEncryption);
@@ -2027,7 +2027,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MuxStream', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMuxStream();
       var od = api.MuxStream.fromJson(o.toJson());
       checkMuxStream(od as api.MuxStream);
@@ -2035,7 +2035,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NormalizedCoordinate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNormalizedCoordinate();
       var od = api.NormalizedCoordinate.fromJson(o.toJson());
       checkNormalizedCoordinate(od as api.NormalizedCoordinate);
@@ -2043,7 +2043,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
       checkOperationMetadata(od as api.OperationMetadata);
@@ -2051,7 +2051,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OriginUri', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOriginUri();
       var od = api.OriginUri.fromJson(o.toJson());
       checkOriginUri(od as api.OriginUri);
@@ -2059,7 +2059,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Output', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOutput();
       var od = api.Output.fromJson(o.toJson());
       checkOutput(od as api.Output);
@@ -2067,7 +2067,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Overlay', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOverlay();
       var od = api.Overlay.fromJson(o.toJson());
       checkOverlay(od as api.Overlay);
@@ -2075,7 +2075,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Pad', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPad();
       var od = api.Pad.fromJson(o.toJson());
       checkPad(od as api.Pad);
@@ -2083,7 +2083,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PreprocessingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPreprocessingConfig();
       var od = api.PreprocessingConfig.fromJson(o.toJson());
       checkPreprocessingConfig(od as api.PreprocessingConfig);
@@ -2091,7 +2091,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Progress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProgress();
       var od = api.Progress.fromJson(o.toJson());
       checkProgress(od as api.Progress);
@@ -2099,7 +2099,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PubsubDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPubsubDestination();
       var od = api.PubsubDestination.fromJson(o.toJson());
       checkPubsubDestination(od as api.PubsubDestination);
@@ -2107,7 +2107,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SampleAesEncryption', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSampleAesEncryption();
       var od = api.SampleAesEncryption.fromJson(o.toJson());
       checkSampleAesEncryption(od as api.SampleAesEncryption);
@@ -2115,7 +2115,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SegmentSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSegmentSettings();
       var od = api.SegmentSettings.fromJson(o.toJson());
       checkSegmentSettings(od as api.SegmentSettings);
@@ -2123,7 +2123,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SpriteSheet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSpriteSheet();
       var od = api.SpriteSheet.fromJson(o.toJson());
       checkSpriteSheet(od as api.SpriteSheet);
@@ -2131,7 +2131,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TextAtom', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTextAtom();
       var od = api.TextAtom.fromJson(o.toJson());
       checkTextAtom(od as api.TextAtom);
@@ -2139,7 +2139,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TextInput', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTextInput();
       var od = api.TextInput.fromJson(o.toJson());
       checkTextInput(od as api.TextInput);
@@ -2147,7 +2147,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TextStream', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTextStream();
       var od = api.TextStream.fromJson(o.toJson());
       checkTextStream(od as api.TextStream);
@@ -2155,7 +2155,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VideoStream', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVideoStream();
       var od = api.VideoStream.fromJson(o.toJson());
       checkVideoStream(od as api.VideoStream);
@@ -2163,7 +2163,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsJobTemplatesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.TranscoderApi(mock).projects.locations.jobTemplates;
       var arg_request = buildJobTemplate();
@@ -2221,15 +2221,12 @@ void main() {
         var resp = convert.json.encode(buildJobTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              jobTemplateId: arg_jobTemplateId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJobTemplate(response as api.JobTemplate);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          jobTemplateId: arg_jobTemplateId, $fields: arg_$fields);
+      checkJobTemplate(response as api.JobTemplate);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.TranscoderApi(mock).projects.locations.jobTemplates;
       var arg_name = 'foo';
@@ -2277,14 +2274,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TranscoderApi(mock).projects.locations.jobTemplates;
       var arg_name = 'foo';
@@ -2332,14 +2326,11 @@ void main() {
         var resp = convert.json.encode(buildJobTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJobTemplate(response as api.JobTemplate);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkJobTemplate(response as api.JobTemplate);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TranscoderApi(mock).projects.locations.jobTemplates;
       var arg_parent = 'foo';
@@ -2397,19 +2388,16 @@ void main() {
         var resp = convert.json.encode(buildListJobTemplatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListJobTemplatesResponse(response as api.ListJobTemplatesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListJobTemplatesResponse(response as api.ListJobTemplatesResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsJobsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.TranscoderApi(mock).projects.locations.jobs;
       var arg_request = buildJob();
@@ -2461,14 +2449,12 @@ void main() {
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJob(response as api.Job);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkJob(response as api.Job);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.TranscoderApi(mock).projects.locations.jobs;
       var arg_name = 'foo';
@@ -2516,14 +2502,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TranscoderApi(mock).projects.locations.jobs;
       var arg_name = 'foo';
@@ -2571,14 +2554,11 @@ void main() {
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJob(response as api.Job);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkJob(response as api.Job);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TranscoderApi(mock).projects.locations.jobs;
       var arg_parent = 'foo';
@@ -2636,14 +2616,11 @@ void main() {
         var resp = convert.json.encode(buildListJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListJobsResponse(response as api.ListJobsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListJobsResponse(response as api.ListJobsResponse);
     });
   });
 }

@@ -3716,7 +3716,7 @@ void checkUnnamed3098(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-AccessSelector', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccessSelector();
       var od = api.AccessSelector.fromJson(o.toJson());
       checkAccessSelector(od as api.AccessSelector);
@@ -3724,7 +3724,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnalyzeIamPolicyLongrunningRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnalyzeIamPolicyLongrunningRequest();
       var od = api.AnalyzeIamPolicyLongrunningRequest.fromJson(o.toJson());
       checkAnalyzeIamPolicyLongrunningRequest(
@@ -3733,7 +3733,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnalyzeIamPolicyResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnalyzeIamPolicyResponse();
       var od = api.AnalyzeIamPolicyResponse.fromJson(o.toJson());
       checkAnalyzeIamPolicyResponse(od as api.AnalyzeIamPolicyResponse);
@@ -3741,7 +3741,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Asset', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAsset();
       var od = api.Asset.fromJson(o.toJson());
       checkAsset(od as api.Asset);
@@ -3749,7 +3749,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
       checkAuditConfig(od as api.AuditConfig);
@@ -3757,7 +3757,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
       checkAuditLogConfig(od as api.AuditLogConfig);
@@ -3765,7 +3765,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchGetAssetsHistoryResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchGetAssetsHistoryResponse();
       var od = api.BatchGetAssetsHistoryResponse.fromJson(o.toJson());
       checkBatchGetAssetsHistoryResponse(
@@ -3774,7 +3774,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BigQueryDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBigQueryDestination();
       var od = api.BigQueryDestination.fromJson(o.toJson());
       checkBigQueryDestination(od as api.BigQueryDestination);
@@ -3782,7 +3782,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -3790,7 +3790,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateFeedRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateFeedRequest();
       var od = api.CreateFeedRequest.fromJson(o.toJson());
       checkCreateFeedRequest(od as api.CreateFeedRequest);
@@ -3798,7 +3798,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -3806,7 +3806,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Explanation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExplanation();
       var od = api.Explanation.fromJson(o.toJson());
       checkExplanation(od as api.Explanation);
@@ -3814,7 +3814,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExportAssetsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExportAssetsRequest();
       var od = api.ExportAssetsRequest.fromJson(o.toJson());
       checkExportAssetsRequest(od as api.ExportAssetsRequest);
@@ -3822,7 +3822,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -3830,7 +3830,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Feed', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFeed();
       var od = api.Feed.fromJson(o.toJson());
       checkFeed(od as api.Feed);
@@ -3838,7 +3838,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FeedOutputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFeedOutputConfig();
       var od = api.FeedOutputConfig.fromJson(o.toJson());
       checkFeedOutputConfig(od as api.FeedOutputConfig);
@@ -3846,7 +3846,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GcsDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGcsDestination();
       var od = api.GcsDestination.fromJson(o.toJson());
       checkGcsDestination(od as api.GcsDestination);
@@ -3854,7 +3854,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudAssetV1Access', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssetV1Access();
       var od = api.GoogleCloudAssetV1Access.fromJson(o.toJson());
       checkGoogleCloudAssetV1Access(od as api.GoogleCloudAssetV1Access);
@@ -3862,7 +3862,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudAssetV1AccessControlList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssetV1AccessControlList();
       var od = api.GoogleCloudAssetV1AccessControlList.fromJson(o.toJson());
       checkGoogleCloudAssetV1AccessControlList(
@@ -3871,7 +3871,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudAssetV1BigQueryDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssetV1BigQueryDestination();
       var od = api.GoogleCloudAssetV1BigQueryDestination.fromJson(o.toJson());
       checkGoogleCloudAssetV1BigQueryDestination(
@@ -3880,7 +3880,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudAssetV1Edge', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssetV1Edge();
       var od = api.GoogleCloudAssetV1Edge.fromJson(o.toJson());
       checkGoogleCloudAssetV1Edge(od as api.GoogleCloudAssetV1Edge);
@@ -3888,7 +3888,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudAssetV1GcsDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssetV1GcsDestination();
       var od = api.GoogleCloudAssetV1GcsDestination.fromJson(o.toJson());
       checkGoogleCloudAssetV1GcsDestination(
@@ -3897,7 +3897,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudAssetV1Identity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssetV1Identity();
       var od = api.GoogleCloudAssetV1Identity.fromJson(o.toJson());
       checkGoogleCloudAssetV1Identity(od as api.GoogleCloudAssetV1Identity);
@@ -3905,7 +3905,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudAssetV1IdentityList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssetV1IdentityList();
       var od = api.GoogleCloudAssetV1IdentityList.fromJson(o.toJson());
       checkGoogleCloudAssetV1IdentityList(
@@ -3914,7 +3914,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudAssetV1Resource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssetV1Resource();
       var od = api.GoogleCloudAssetV1Resource.fromJson(o.toJson());
       checkGoogleCloudAssetV1Resource(od as api.GoogleCloudAssetV1Resource);
@@ -3922,7 +3922,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudOrgpolicyV1BooleanPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudOrgpolicyV1BooleanPolicy();
       var od = api.GoogleCloudOrgpolicyV1BooleanPolicy.fromJson(o.toJson());
       checkGoogleCloudOrgpolicyV1BooleanPolicy(
@@ -3931,7 +3931,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudOrgpolicyV1ListPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudOrgpolicyV1ListPolicy();
       var od = api.GoogleCloudOrgpolicyV1ListPolicy.fromJson(o.toJson());
       checkGoogleCloudOrgpolicyV1ListPolicy(
@@ -3940,7 +3940,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudOrgpolicyV1Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudOrgpolicyV1Policy();
       var od = api.GoogleCloudOrgpolicyV1Policy.fromJson(o.toJson());
       checkGoogleCloudOrgpolicyV1Policy(od as api.GoogleCloudOrgpolicyV1Policy);
@@ -3948,7 +3948,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudOrgpolicyV1RestoreDefault', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudOrgpolicyV1RestoreDefault();
       var od = api.GoogleCloudOrgpolicyV1RestoreDefault.fromJson(o.toJson());
       checkGoogleCloudOrgpolicyV1RestoreDefault(
@@ -3958,7 +3958,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleIdentityAccesscontextmanagerV1AccessLevel',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1AccessLevel();
       var od = api.GoogleIdentityAccesscontextmanagerV1AccessLevel.fromJson(
           o.toJson());
@@ -3969,7 +3969,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleIdentityAccesscontextmanagerV1AccessPolicy',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1AccessPolicy();
       var od = api.GoogleIdentityAccesscontextmanagerV1AccessPolicy.fromJson(
           o.toJson());
@@ -3980,7 +3980,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleIdentityAccesscontextmanagerV1ApiOperation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1ApiOperation();
       var od = api.GoogleIdentityAccesscontextmanagerV1ApiOperation.fromJson(
           o.toJson());
@@ -3991,7 +3991,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleIdentityAccesscontextmanagerV1BasicLevel',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1BasicLevel();
       var od = api.GoogleIdentityAccesscontextmanagerV1BasicLevel.fromJson(
           o.toJson());
@@ -4002,7 +4002,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleIdentityAccesscontextmanagerV1Condition',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1Condition();
       var od = api.GoogleIdentityAccesscontextmanagerV1Condition.fromJson(
           o.toJson());
@@ -4013,7 +4013,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleIdentityAccesscontextmanagerV1CustomLevel',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1CustomLevel();
       var od = api.GoogleIdentityAccesscontextmanagerV1CustomLevel.fromJson(
           o.toJson());
@@ -4024,7 +4024,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleIdentityAccesscontextmanagerV1DevicePolicy',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1DevicePolicy();
       var od = api.GoogleIdentityAccesscontextmanagerV1DevicePolicy.fromJson(
           o.toJson());
@@ -4035,7 +4035,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleIdentityAccesscontextmanagerV1EgressFrom',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1EgressFrom();
       var od = api.GoogleIdentityAccesscontextmanagerV1EgressFrom.fromJson(
           o.toJson());
@@ -4046,7 +4046,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleIdentityAccesscontextmanagerV1EgressPolicy',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1EgressPolicy();
       var od = api.GoogleIdentityAccesscontextmanagerV1EgressPolicy.fromJson(
           o.toJson());
@@ -4056,7 +4056,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIdentityAccesscontextmanagerV1EgressTo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1EgressTo();
       var od =
           api.GoogleIdentityAccesscontextmanagerV1EgressTo.fromJson(o.toJson());
@@ -4067,7 +4067,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleIdentityAccesscontextmanagerV1IngressFrom',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1IngressFrom();
       var od = api.GoogleIdentityAccesscontextmanagerV1IngressFrom.fromJson(
           o.toJson());
@@ -4078,7 +4078,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleIdentityAccesscontextmanagerV1IngressPolicy',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1IngressPolicy();
       var od = api.GoogleIdentityAccesscontextmanagerV1IngressPolicy.fromJson(
           o.toJson());
@@ -4089,7 +4089,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleIdentityAccesscontextmanagerV1IngressSource',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1IngressSource();
       var od = api.GoogleIdentityAccesscontextmanagerV1IngressSource.fromJson(
           o.toJson());
@@ -4100,7 +4100,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleIdentityAccesscontextmanagerV1IngressTo',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1IngressTo();
       var od = api.GoogleIdentityAccesscontextmanagerV1IngressTo.fromJson(
           o.toJson());
@@ -4111,7 +4111,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleIdentityAccesscontextmanagerV1MethodSelector', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1MethodSelector();
       var od = api.GoogleIdentityAccesscontextmanagerV1MethodSelector.fromJson(
           o.toJson());
@@ -4122,7 +4122,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleIdentityAccesscontextmanagerV1OsConstraint',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1OsConstraint();
       var od = api.GoogleIdentityAccesscontextmanagerV1OsConstraint.fromJson(
           o.toJson());
@@ -4133,7 +4133,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleIdentityAccesscontextmanagerV1ServicePerimeter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1ServicePerimeter();
       var od =
           api.GoogleIdentityAccesscontextmanagerV1ServicePerimeter.fromJson(
@@ -4146,7 +4146,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig();
       var od = api.GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig
           .fromJson(o.toJson());
@@ -4158,7 +4158,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityAccesscontextmanagerV1VpcAccessibleServices();
       var od = api.GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
           .fromJson(o.toJson());
@@ -4168,7 +4168,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IamPolicyAnalysis', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIamPolicyAnalysis();
       var od = api.IamPolicyAnalysis.fromJson(o.toJson());
       checkIamPolicyAnalysis(od as api.IamPolicyAnalysis);
@@ -4176,7 +4176,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IamPolicyAnalysisOutputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIamPolicyAnalysisOutputConfig();
       var od = api.IamPolicyAnalysisOutputConfig.fromJson(o.toJson());
       checkIamPolicyAnalysisOutputConfig(
@@ -4185,7 +4185,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IamPolicyAnalysisQuery', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIamPolicyAnalysisQuery();
       var od = api.IamPolicyAnalysisQuery.fromJson(o.toJson());
       checkIamPolicyAnalysisQuery(od as api.IamPolicyAnalysisQuery);
@@ -4193,7 +4193,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IamPolicyAnalysisResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIamPolicyAnalysisResult();
       var od = api.IamPolicyAnalysisResult.fromJson(o.toJson());
       checkIamPolicyAnalysisResult(od as api.IamPolicyAnalysisResult);
@@ -4201,7 +4201,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IamPolicyAnalysisState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIamPolicyAnalysisState();
       var od = api.IamPolicyAnalysisState.fromJson(o.toJson());
       checkIamPolicyAnalysisState(od as api.IamPolicyAnalysisState);
@@ -4209,7 +4209,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IamPolicySearchResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIamPolicySearchResult();
       var od = api.IamPolicySearchResult.fromJson(o.toJson());
       checkIamPolicySearchResult(od as api.IamPolicySearchResult);
@@ -4217,7 +4217,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IdentitySelector', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentitySelector();
       var od = api.IdentitySelector.fromJson(o.toJson());
       checkIdentitySelector(od as api.IdentitySelector);
@@ -4225,7 +4225,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Inventory', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInventory();
       var od = api.Inventory.fromJson(o.toJson());
       checkInventory(od as api.Inventory);
@@ -4233,7 +4233,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Item', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildItem();
       var od = api.Item.fromJson(o.toJson());
       checkItem(od as api.Item);
@@ -4241,7 +4241,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListFeedsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListFeedsResponse();
       var od = api.ListFeedsResponse.fromJson(o.toJson());
       checkListFeedsResponse(od as api.ListFeedsResponse);
@@ -4249,7 +4249,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -4257,7 +4257,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Options', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOptions();
       var od = api.Options.fromJson(o.toJson());
       checkOptions(od as api.Options);
@@ -4265,7 +4265,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OsInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOsInfo();
       var od = api.OsInfo.fromJson(o.toJson());
       checkOsInfo(od as api.OsInfo);
@@ -4273,7 +4273,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OutputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOutputConfig();
       var od = api.OutputConfig.fromJson(o.toJson());
       checkOutputConfig(od as api.OutputConfig);
@@ -4281,7 +4281,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PartitionSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPartitionSpec();
       var od = api.PartitionSpec.fromJson(o.toJson());
       checkPartitionSpec(od as api.PartitionSpec);
@@ -4289,7 +4289,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Permissions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPermissions();
       var od = api.Permissions.fromJson(o.toJson());
       checkPermissions(od as api.Permissions);
@@ -4297,7 +4297,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -4305,7 +4305,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PubsubDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPubsubDestination();
       var od = api.PubsubDestination.fromJson(o.toJson());
       checkPubsubDestination(od as api.PubsubDestination);
@@ -4313,7 +4313,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Resource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResource();
       var od = api.Resource.fromJson(o.toJson());
       checkResource(od as api.Resource);
@@ -4321,7 +4321,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResourceSearchResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResourceSearchResult();
       var od = api.ResourceSearchResult.fromJson(o.toJson());
       checkResourceSearchResult(od as api.ResourceSearchResult);
@@ -4329,7 +4329,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResourceSelector', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResourceSelector();
       var od = api.ResourceSelector.fromJson(o.toJson());
       checkResourceSelector(od as api.ResourceSelector);
@@ -4337,7 +4337,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchAllIamPoliciesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchAllIamPoliciesResponse();
       var od = api.SearchAllIamPoliciesResponse.fromJson(o.toJson());
       checkSearchAllIamPoliciesResponse(od as api.SearchAllIamPoliciesResponse);
@@ -4345,7 +4345,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchAllResourcesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchAllResourcesResponse();
       var od = api.SearchAllResourcesResponse.fromJson(o.toJson());
       checkSearchAllResourcesResponse(od as api.SearchAllResourcesResponse);
@@ -4353,7 +4353,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SoftwarePackage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSoftwarePackage();
       var od = api.SoftwarePackage.fromJson(o.toJson());
       checkSoftwarePackage(od as api.SoftwarePackage);
@@ -4361,7 +4361,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -4369,7 +4369,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TemporalAsset', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTemporalAsset();
       var od = api.TemporalAsset.fromJson(o.toJson());
       checkTemporalAsset(od as api.TemporalAsset);
@@ -4377,7 +4377,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimeWindow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimeWindow();
       var od = api.TimeWindow.fromJson(o.toJson());
       checkTimeWindow(od as api.TimeWindow);
@@ -4385,7 +4385,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateFeedRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateFeedRequest();
       var od = api.UpdateFeedRequest.fromJson(o.toJson());
       checkUpdateFeedRequest(od as api.UpdateFeedRequest);
@@ -4393,7 +4393,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VersionedPackage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVersionedPackage();
       var od = api.VersionedPackage.fromJson(o.toJson());
       checkVersionedPackage(od as api.VersionedPackage);
@@ -4401,7 +4401,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WindowsQuickFixEngineeringPackage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWindowsQuickFixEngineeringPackage();
       var od = api.WindowsQuickFixEngineeringPackage.fromJson(o.toJson());
       checkWindowsQuickFixEngineeringPackage(
@@ -4410,7 +4410,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WindowsUpdateCategory', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWindowsUpdateCategory();
       var od = api.WindowsUpdateCategory.fromJson(o.toJson());
       checkWindowsUpdateCategory(od as api.WindowsUpdateCategory);
@@ -4418,7 +4418,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WindowsUpdatePackage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWindowsUpdatePackage();
       var od = api.WindowsUpdatePackage.fromJson(o.toJson());
       checkWindowsUpdatePackage(od as api.WindowsUpdatePackage);
@@ -4426,7 +4426,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ZypperPatch', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildZypperPatch();
       var od = api.ZypperPatch.fromJson(o.toJson());
       checkZypperPatch(od as api.ZypperPatch);
@@ -4434,7 +4434,7 @@ void main() {
   });
 
   unittest.group('resource-FeedsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudAssetApi(mock).feeds;
       var arg_request = buildCreateFeedRequest();
@@ -4487,14 +4487,12 @@ void main() {
         var resp = convert.json.encode(buildFeed());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFeed(response as api.Feed);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkFeed(response as api.Feed);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudAssetApi(mock).feeds;
       var arg_name = 'foo';
@@ -4542,14 +4540,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudAssetApi(mock).feeds;
       var arg_name = 'foo';
@@ -4597,14 +4592,11 @@ void main() {
         var resp = convert.json.encode(buildFeed());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFeed(response as api.Feed);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkFeed(response as api.Feed);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudAssetApi(mock).feeds;
       var arg_parent = 'foo';
@@ -4652,14 +4644,11 @@ void main() {
         var resp = convert.json.encode(buildListFeedsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListFeedsResponse(response as api.ListFeedsResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkListFeedsResponse(response as api.ListFeedsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudAssetApi(mock).feeds;
       var arg_request = buildUpdateFeedRequest();
@@ -4712,16 +4701,14 @@ void main() {
         var resp = convert.json.encode(buildFeed());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFeed(response as api.Feed);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkFeed(response as api.Feed);
     });
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudAssetApi(mock).operations;
       var arg_name = 'foo';
@@ -4769,16 +4756,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-V1Resource', () {
-    unittest.test('method--analyzeIamPolicy', () {
+    unittest.test('method--analyzeIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudAssetApi(mock).v1;
       var arg_scope = 'foo';
@@ -4883,36 +4867,33 @@ void main() {
         var resp = convert.json.encode(buildAnalyzeIamPolicyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .analyzeIamPolicy(arg_scope,
-              analysisQuery_accessSelector_permissions:
-                  arg_analysisQuery_accessSelector_permissions,
-              analysisQuery_accessSelector_roles:
-                  arg_analysisQuery_accessSelector_roles,
-              analysisQuery_identitySelector_identity:
-                  arg_analysisQuery_identitySelector_identity,
-              analysisQuery_options_analyzeServiceAccountImpersonation:
-                  arg_analysisQuery_options_analyzeServiceAccountImpersonation,
-              analysisQuery_options_expandGroups:
-                  arg_analysisQuery_options_expandGroups,
-              analysisQuery_options_expandResources:
-                  arg_analysisQuery_options_expandResources,
-              analysisQuery_options_expandRoles:
-                  arg_analysisQuery_options_expandRoles,
-              analysisQuery_options_outputGroupEdges:
-                  arg_analysisQuery_options_outputGroupEdges,
-              analysisQuery_options_outputResourceEdges:
-                  arg_analysisQuery_options_outputResourceEdges,
-              analysisQuery_resourceSelector_fullResourceName:
-                  arg_analysisQuery_resourceSelector_fullResourceName,
-              executionTimeout: arg_executionTimeout,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAnalyzeIamPolicyResponse(response as api.AnalyzeIamPolicyResponse);
-      })));
+      final response = await res.analyzeIamPolicy(arg_scope,
+          analysisQuery_accessSelector_permissions:
+              arg_analysisQuery_accessSelector_permissions,
+          analysisQuery_accessSelector_roles:
+              arg_analysisQuery_accessSelector_roles,
+          analysisQuery_identitySelector_identity:
+              arg_analysisQuery_identitySelector_identity,
+          analysisQuery_options_analyzeServiceAccountImpersonation:
+              arg_analysisQuery_options_analyzeServiceAccountImpersonation,
+          analysisQuery_options_expandGroups:
+              arg_analysisQuery_options_expandGroups,
+          analysisQuery_options_expandResources:
+              arg_analysisQuery_options_expandResources,
+          analysisQuery_options_expandRoles:
+              arg_analysisQuery_options_expandRoles,
+          analysisQuery_options_outputGroupEdges:
+              arg_analysisQuery_options_outputGroupEdges,
+          analysisQuery_options_outputResourceEdges:
+              arg_analysisQuery_options_outputResourceEdges,
+          analysisQuery_resourceSelector_fullResourceName:
+              arg_analysisQuery_resourceSelector_fullResourceName,
+          executionTimeout: arg_executionTimeout,
+          $fields: arg_$fields);
+      checkAnalyzeIamPolicyResponse(response as api.AnalyzeIamPolicyResponse);
     });
 
-    unittest.test('method--analyzeIamPolicyLongrunning', () {
+    unittest.test('method--analyzeIamPolicyLongrunning', () async {
       var mock = HttpServerMock();
       var res = api.CloudAssetApi(mock).v1;
       var arg_request = buildAnalyzeIamPolicyLongrunningRequest();
@@ -4966,15 +4947,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .analyzeIamPolicyLongrunning(arg_request, arg_scope,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.analyzeIamPolicyLongrunning(
+          arg_request, arg_scope,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--batchGetAssetsHistory', () {
+    unittest.test('method--batchGetAssetsHistory', () async {
       var mock = HttpServerMock();
       var res = api.CloudAssetApi(mock).v1;
       var arg_parent = 'foo';
@@ -5042,20 +5021,17 @@ void main() {
         var resp = convert.json.encode(buildBatchGetAssetsHistoryResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchGetAssetsHistory(arg_parent,
-              assetNames: arg_assetNames,
-              contentType: arg_contentType,
-              readTimeWindow_endTime: arg_readTimeWindow_endTime,
-              readTimeWindow_startTime: arg_readTimeWindow_startTime,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchGetAssetsHistoryResponse(
-            response as api.BatchGetAssetsHistoryResponse);
-      })));
+      final response = await res.batchGetAssetsHistory(arg_parent,
+          assetNames: arg_assetNames,
+          contentType: arg_contentType,
+          readTimeWindow_endTime: arg_readTimeWindow_endTime,
+          readTimeWindow_startTime: arg_readTimeWindow_startTime,
+          $fields: arg_$fields);
+      checkBatchGetAssetsHistoryResponse(
+          response as api.BatchGetAssetsHistoryResponse);
     });
 
-    unittest.test('method--exportAssets', () {
+    unittest.test('method--exportAssets', () async {
       var mock = HttpServerMock();
       var res = api.CloudAssetApi(mock).v1;
       var arg_request = buildExportAssetsRequest();
@@ -5108,14 +5084,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .exportAssets(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.exportAssets(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--searchAllIamPolicies', () {
+    unittest.test('method--searchAllIamPolicies', () async {
       var mock = HttpServerMock();
       var res = api.CloudAssetApi(mock).v1;
       var arg_scope = 'foo';
@@ -5178,19 +5152,16 @@ void main() {
         var resp = convert.json.encode(buildSearchAllIamPoliciesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchAllIamPolicies(arg_scope,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              query: arg_query,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchAllIamPoliciesResponse(
-            response as api.SearchAllIamPoliciesResponse);
-      })));
+      final response = await res.searchAllIamPolicies(arg_scope,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          query: arg_query,
+          $fields: arg_$fields);
+      checkSearchAllIamPoliciesResponse(
+          response as api.SearchAllIamPoliciesResponse);
     });
 
-    unittest.test('method--searchAllResources', () {
+    unittest.test('method--searchAllResources', () async {
       var mock = HttpServerMock();
       var res = api.CloudAssetApi(mock).v1;
       var arg_scope = 'foo';
@@ -5263,18 +5234,15 @@ void main() {
         var resp = convert.json.encode(buildSearchAllResourcesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchAllResources(arg_scope,
-              assetTypes: arg_assetTypes,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              query: arg_query,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchAllResourcesResponse(
-            response as api.SearchAllResourcesResponse);
-      })));
+      final response = await res.searchAllResources(arg_scope,
+          assetTypes: arg_assetTypes,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          query: arg_query,
+          $fields: arg_$fields);
+      checkSearchAllResourcesResponse(
+          response as api.SearchAllResourcesResponse);
     });
   });
 }

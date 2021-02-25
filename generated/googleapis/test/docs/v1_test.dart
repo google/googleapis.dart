@@ -5391,7 +5391,7 @@ void checkWriteControl(api.WriteControl o) {
 
 void main() {
   unittest.group('obj-schema-AutoText', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAutoText();
       var od = api.AutoText.fromJson(o.toJson());
       checkAutoText(od as api.AutoText);
@@ -5399,7 +5399,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Background', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBackground();
       var od = api.Background.fromJson(o.toJson());
       checkBackground(od as api.Background);
@@ -5407,7 +5407,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BackgroundSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBackgroundSuggestionState();
       var od = api.BackgroundSuggestionState.fromJson(o.toJson());
       checkBackgroundSuggestionState(od as api.BackgroundSuggestionState);
@@ -5415,7 +5415,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchUpdateDocumentRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchUpdateDocumentRequest();
       var od = api.BatchUpdateDocumentRequest.fromJson(o.toJson());
       checkBatchUpdateDocumentRequest(od as api.BatchUpdateDocumentRequest);
@@ -5423,7 +5423,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchUpdateDocumentResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchUpdateDocumentResponse();
       var od = api.BatchUpdateDocumentResponse.fromJson(o.toJson());
       checkBatchUpdateDocumentResponse(od as api.BatchUpdateDocumentResponse);
@@ -5431,7 +5431,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Body', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBody();
       var od = api.Body.fromJson(o.toJson());
       checkBody(od as api.Body);
@@ -5439,7 +5439,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Bullet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBullet();
       var od = api.Bullet.fromJson(o.toJson());
       checkBullet(od as api.Bullet);
@@ -5447,7 +5447,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BulletSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulletSuggestionState();
       var od = api.BulletSuggestionState.fromJson(o.toJson());
       checkBulletSuggestionState(od as api.BulletSuggestionState);
@@ -5455,7 +5455,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Color', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildColor();
       var od = api.Color.fromJson(o.toJson());
       checkColor(od as api.Color);
@@ -5463,7 +5463,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ColumnBreak', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildColumnBreak();
       var od = api.ColumnBreak.fromJson(o.toJson());
       checkColumnBreak(od as api.ColumnBreak);
@@ -5471,7 +5471,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateFooterRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateFooterRequest();
       var od = api.CreateFooterRequest.fromJson(o.toJson());
       checkCreateFooterRequest(od as api.CreateFooterRequest);
@@ -5479,7 +5479,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateFooterResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateFooterResponse();
       var od = api.CreateFooterResponse.fromJson(o.toJson());
       checkCreateFooterResponse(od as api.CreateFooterResponse);
@@ -5487,7 +5487,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateFootnoteRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateFootnoteRequest();
       var od = api.CreateFootnoteRequest.fromJson(o.toJson());
       checkCreateFootnoteRequest(od as api.CreateFootnoteRequest);
@@ -5495,7 +5495,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateFootnoteResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateFootnoteResponse();
       var od = api.CreateFootnoteResponse.fromJson(o.toJson());
       checkCreateFootnoteResponse(od as api.CreateFootnoteResponse);
@@ -5503,7 +5503,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateHeaderRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateHeaderRequest();
       var od = api.CreateHeaderRequest.fromJson(o.toJson());
       checkCreateHeaderRequest(od as api.CreateHeaderRequest);
@@ -5511,7 +5511,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateHeaderResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateHeaderResponse();
       var od = api.CreateHeaderResponse.fromJson(o.toJson());
       checkCreateHeaderResponse(od as api.CreateHeaderResponse);
@@ -5519,7 +5519,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateNamedRangeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateNamedRangeRequest();
       var od = api.CreateNamedRangeRequest.fromJson(o.toJson());
       checkCreateNamedRangeRequest(od as api.CreateNamedRangeRequest);
@@ -5527,7 +5527,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateNamedRangeResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateNamedRangeResponse();
       var od = api.CreateNamedRangeResponse.fromJson(o.toJson());
       checkCreateNamedRangeResponse(od as api.CreateNamedRangeResponse);
@@ -5535,7 +5535,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateParagraphBulletsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateParagraphBulletsRequest();
       var od = api.CreateParagraphBulletsRequest.fromJson(o.toJson());
       checkCreateParagraphBulletsRequest(
@@ -5544,7 +5544,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CropProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCropProperties();
       var od = api.CropProperties.fromJson(o.toJson());
       checkCropProperties(od as api.CropProperties);
@@ -5552,7 +5552,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CropPropertiesSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCropPropertiesSuggestionState();
       var od = api.CropPropertiesSuggestionState.fromJson(o.toJson());
       checkCropPropertiesSuggestionState(
@@ -5561,7 +5561,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteContentRangeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteContentRangeRequest();
       var od = api.DeleteContentRangeRequest.fromJson(o.toJson());
       checkDeleteContentRangeRequest(od as api.DeleteContentRangeRequest);
@@ -5569,7 +5569,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteFooterRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteFooterRequest();
       var od = api.DeleteFooterRequest.fromJson(o.toJson());
       checkDeleteFooterRequest(od as api.DeleteFooterRequest);
@@ -5577,7 +5577,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteHeaderRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteHeaderRequest();
       var od = api.DeleteHeaderRequest.fromJson(o.toJson());
       checkDeleteHeaderRequest(od as api.DeleteHeaderRequest);
@@ -5585,7 +5585,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteNamedRangeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteNamedRangeRequest();
       var od = api.DeleteNamedRangeRequest.fromJson(o.toJson());
       checkDeleteNamedRangeRequest(od as api.DeleteNamedRangeRequest);
@@ -5593,7 +5593,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteParagraphBulletsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteParagraphBulletsRequest();
       var od = api.DeleteParagraphBulletsRequest.fromJson(o.toJson());
       checkDeleteParagraphBulletsRequest(
@@ -5602,7 +5602,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeletePositionedObjectRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeletePositionedObjectRequest();
       var od = api.DeletePositionedObjectRequest.fromJson(o.toJson());
       checkDeletePositionedObjectRequest(
@@ -5611,7 +5611,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteTableColumnRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteTableColumnRequest();
       var od = api.DeleteTableColumnRequest.fromJson(o.toJson());
       checkDeleteTableColumnRequest(od as api.DeleteTableColumnRequest);
@@ -5619,7 +5619,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteTableRowRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteTableRowRequest();
       var od = api.DeleteTableRowRequest.fromJson(o.toJson());
       checkDeleteTableRowRequest(od as api.DeleteTableRowRequest);
@@ -5627,7 +5627,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Dimension', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDimension();
       var od = api.Dimension.fromJson(o.toJson());
       checkDimension(od as api.Dimension);
@@ -5635,7 +5635,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Document', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDocument();
       var od = api.Document.fromJson(o.toJson());
       checkDocument(od as api.Document);
@@ -5643,7 +5643,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DocumentStyle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDocumentStyle();
       var od = api.DocumentStyle.fromJson(o.toJson());
       checkDocumentStyle(od as api.DocumentStyle);
@@ -5651,7 +5651,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DocumentStyleSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDocumentStyleSuggestionState();
       var od = api.DocumentStyleSuggestionState.fromJson(o.toJson());
       checkDocumentStyleSuggestionState(od as api.DocumentStyleSuggestionState);
@@ -5659,7 +5659,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EmbeddedDrawingProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmbeddedDrawingProperties();
       var od = api.EmbeddedDrawingProperties.fromJson(o.toJson());
       checkEmbeddedDrawingProperties(od as api.EmbeddedDrawingProperties);
@@ -5667,7 +5667,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EmbeddedDrawingPropertiesSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmbeddedDrawingPropertiesSuggestionState();
       var od =
           api.EmbeddedDrawingPropertiesSuggestionState.fromJson(o.toJson());
@@ -5677,7 +5677,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EmbeddedObject', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmbeddedObject();
       var od = api.EmbeddedObject.fromJson(o.toJson());
       checkEmbeddedObject(od as api.EmbeddedObject);
@@ -5685,7 +5685,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EmbeddedObjectBorder', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmbeddedObjectBorder();
       var od = api.EmbeddedObjectBorder.fromJson(o.toJson());
       checkEmbeddedObjectBorder(od as api.EmbeddedObjectBorder);
@@ -5693,7 +5693,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EmbeddedObjectBorderSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmbeddedObjectBorderSuggestionState();
       var od = api.EmbeddedObjectBorderSuggestionState.fromJson(o.toJson());
       checkEmbeddedObjectBorderSuggestionState(
@@ -5702,7 +5702,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EmbeddedObjectSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmbeddedObjectSuggestionState();
       var od = api.EmbeddedObjectSuggestionState.fromJson(o.toJson());
       checkEmbeddedObjectSuggestionState(
@@ -5711,7 +5711,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EndOfSegmentLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEndOfSegmentLocation();
       var od = api.EndOfSegmentLocation.fromJson(o.toJson());
       checkEndOfSegmentLocation(od as api.EndOfSegmentLocation);
@@ -5719,7 +5719,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Equation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEquation();
       var od = api.Equation.fromJson(o.toJson());
       checkEquation(od as api.Equation);
@@ -5727,7 +5727,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Footer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFooter();
       var od = api.Footer.fromJson(o.toJson());
       checkFooter(od as api.Footer);
@@ -5735,7 +5735,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Footnote', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFootnote();
       var od = api.Footnote.fromJson(o.toJson());
       checkFootnote(od as api.Footnote);
@@ -5743,7 +5743,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FootnoteReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFootnoteReference();
       var od = api.FootnoteReference.fromJson(o.toJson());
       checkFootnoteReference(od as api.FootnoteReference);
@@ -5751,7 +5751,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Header', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHeader();
       var od = api.Header.fromJson(o.toJson());
       checkHeader(od as api.Header);
@@ -5759,7 +5759,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HorizontalRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHorizontalRule();
       var od = api.HorizontalRule.fromJson(o.toJson());
       checkHorizontalRule(od as api.HorizontalRule);
@@ -5767,7 +5767,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImageProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImageProperties();
       var od = api.ImageProperties.fromJson(o.toJson());
       checkImageProperties(od as api.ImageProperties);
@@ -5775,7 +5775,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImagePropertiesSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImagePropertiesSuggestionState();
       var od = api.ImagePropertiesSuggestionState.fromJson(o.toJson());
       checkImagePropertiesSuggestionState(
@@ -5784,7 +5784,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InlineObject', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInlineObject();
       var od = api.InlineObject.fromJson(o.toJson());
       checkInlineObject(od as api.InlineObject);
@@ -5792,7 +5792,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InlineObjectElement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInlineObjectElement();
       var od = api.InlineObjectElement.fromJson(o.toJson());
       checkInlineObjectElement(od as api.InlineObjectElement);
@@ -5800,7 +5800,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InlineObjectProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInlineObjectProperties();
       var od = api.InlineObjectProperties.fromJson(o.toJson());
       checkInlineObjectProperties(od as api.InlineObjectProperties);
@@ -5808,7 +5808,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InlineObjectPropertiesSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInlineObjectPropertiesSuggestionState();
       var od = api.InlineObjectPropertiesSuggestionState.fromJson(o.toJson());
       checkInlineObjectPropertiesSuggestionState(
@@ -5817,7 +5817,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InsertInlineImageRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInsertInlineImageRequest();
       var od = api.InsertInlineImageRequest.fromJson(o.toJson());
       checkInsertInlineImageRequest(od as api.InsertInlineImageRequest);
@@ -5825,7 +5825,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InsertInlineImageResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInsertInlineImageResponse();
       var od = api.InsertInlineImageResponse.fromJson(o.toJson());
       checkInsertInlineImageResponse(od as api.InsertInlineImageResponse);
@@ -5833,7 +5833,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InsertInlineSheetsChartResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInsertInlineSheetsChartResponse();
       var od = api.InsertInlineSheetsChartResponse.fromJson(o.toJson());
       checkInsertInlineSheetsChartResponse(
@@ -5842,7 +5842,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InsertPageBreakRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInsertPageBreakRequest();
       var od = api.InsertPageBreakRequest.fromJson(o.toJson());
       checkInsertPageBreakRequest(od as api.InsertPageBreakRequest);
@@ -5850,7 +5850,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InsertSectionBreakRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInsertSectionBreakRequest();
       var od = api.InsertSectionBreakRequest.fromJson(o.toJson());
       checkInsertSectionBreakRequest(od as api.InsertSectionBreakRequest);
@@ -5858,7 +5858,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InsertTableColumnRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInsertTableColumnRequest();
       var od = api.InsertTableColumnRequest.fromJson(o.toJson());
       checkInsertTableColumnRequest(od as api.InsertTableColumnRequest);
@@ -5866,7 +5866,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InsertTableRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInsertTableRequest();
       var od = api.InsertTableRequest.fromJson(o.toJson());
       checkInsertTableRequest(od as api.InsertTableRequest);
@@ -5874,7 +5874,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InsertTableRowRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInsertTableRowRequest();
       var od = api.InsertTableRowRequest.fromJson(o.toJson());
       checkInsertTableRowRequest(od as api.InsertTableRowRequest);
@@ -5882,7 +5882,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InsertTextRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInsertTextRequest();
       var od = api.InsertTextRequest.fromJson(o.toJson());
       checkInsertTextRequest(od as api.InsertTextRequest);
@@ -5890,7 +5890,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Link', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLink();
       var od = api.Link.fromJson(o.toJson());
       checkLink(od as api.Link);
@@ -5898,7 +5898,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LinkedContentReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLinkedContentReference();
       var od = api.LinkedContentReference.fromJson(o.toJson());
       checkLinkedContentReference(od as api.LinkedContentReference);
@@ -5906,7 +5906,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LinkedContentReferenceSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLinkedContentReferenceSuggestionState();
       var od = api.LinkedContentReferenceSuggestionState.fromJson(o.toJson());
       checkLinkedContentReferenceSuggestionState(
@@ -5915,7 +5915,7 @@ void main() {
   });
 
   unittest.group('obj-schema-List', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildList();
       var od = api.List.fromJson(o.toJson());
       checkList(od as api.List);
@@ -5923,7 +5923,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListProperties();
       var od = api.ListProperties.fromJson(o.toJson());
       checkListProperties(od as api.ListProperties);
@@ -5931,7 +5931,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListPropertiesSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListPropertiesSuggestionState();
       var od = api.ListPropertiesSuggestionState.fromJson(o.toJson());
       checkListPropertiesSuggestionState(
@@ -5940,7 +5940,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -5948,7 +5948,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MergeTableCellsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMergeTableCellsRequest();
       var od = api.MergeTableCellsRequest.fromJson(o.toJson());
       checkMergeTableCellsRequest(od as api.MergeTableCellsRequest);
@@ -5956,7 +5956,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NamedRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNamedRange();
       var od = api.NamedRange.fromJson(o.toJson());
       checkNamedRange(od as api.NamedRange);
@@ -5964,7 +5964,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NamedRanges', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNamedRanges();
       var od = api.NamedRanges.fromJson(o.toJson());
       checkNamedRanges(od as api.NamedRanges);
@@ -5972,7 +5972,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NamedStyle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNamedStyle();
       var od = api.NamedStyle.fromJson(o.toJson());
       checkNamedStyle(od as api.NamedStyle);
@@ -5980,7 +5980,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NamedStyleSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNamedStyleSuggestionState();
       var od = api.NamedStyleSuggestionState.fromJson(o.toJson());
       checkNamedStyleSuggestionState(od as api.NamedStyleSuggestionState);
@@ -5988,7 +5988,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NamedStyles', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNamedStyles();
       var od = api.NamedStyles.fromJson(o.toJson());
       checkNamedStyles(od as api.NamedStyles);
@@ -5996,7 +5996,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NamedStylesSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNamedStylesSuggestionState();
       var od = api.NamedStylesSuggestionState.fromJson(o.toJson());
       checkNamedStylesSuggestionState(od as api.NamedStylesSuggestionState);
@@ -6004,7 +6004,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NestingLevel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNestingLevel();
       var od = api.NestingLevel.fromJson(o.toJson());
       checkNestingLevel(od as api.NestingLevel);
@@ -6012,7 +6012,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NestingLevelSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNestingLevelSuggestionState();
       var od = api.NestingLevelSuggestionState.fromJson(o.toJson());
       checkNestingLevelSuggestionState(od as api.NestingLevelSuggestionState);
@@ -6020,7 +6020,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ObjectReferences', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildObjectReferences();
       var od = api.ObjectReferences.fromJson(o.toJson());
       checkObjectReferences(od as api.ObjectReferences);
@@ -6028,7 +6028,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OptionalColor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOptionalColor();
       var od = api.OptionalColor.fromJson(o.toJson());
       checkOptionalColor(od as api.OptionalColor);
@@ -6036,7 +6036,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PageBreak', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPageBreak();
       var od = api.PageBreak.fromJson(o.toJson());
       checkPageBreak(od as api.PageBreak);
@@ -6044,7 +6044,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Paragraph', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildParagraph();
       var od = api.Paragraph.fromJson(o.toJson());
       checkParagraph(od as api.Paragraph);
@@ -6052,7 +6052,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ParagraphBorder', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildParagraphBorder();
       var od = api.ParagraphBorder.fromJson(o.toJson());
       checkParagraphBorder(od as api.ParagraphBorder);
@@ -6060,7 +6060,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ParagraphElement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildParagraphElement();
       var od = api.ParagraphElement.fromJson(o.toJson());
       checkParagraphElement(od as api.ParagraphElement);
@@ -6068,7 +6068,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ParagraphStyle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildParagraphStyle();
       var od = api.ParagraphStyle.fromJson(o.toJson());
       checkParagraphStyle(od as api.ParagraphStyle);
@@ -6076,7 +6076,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ParagraphStyleSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildParagraphStyleSuggestionState();
       var od = api.ParagraphStyleSuggestionState.fromJson(o.toJson());
       checkParagraphStyleSuggestionState(
@@ -6085,7 +6085,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PositionedObject', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPositionedObject();
       var od = api.PositionedObject.fromJson(o.toJson());
       checkPositionedObject(od as api.PositionedObject);
@@ -6093,7 +6093,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PositionedObjectPositioning', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPositionedObjectPositioning();
       var od = api.PositionedObjectPositioning.fromJson(o.toJson());
       checkPositionedObjectPositioning(od as api.PositionedObjectPositioning);
@@ -6101,7 +6101,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PositionedObjectPositioningSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPositionedObjectPositioningSuggestionState();
       var od =
           api.PositionedObjectPositioningSuggestionState.fromJson(o.toJson());
@@ -6111,7 +6111,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PositionedObjectProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPositionedObjectProperties();
       var od = api.PositionedObjectProperties.fromJson(o.toJson());
       checkPositionedObjectProperties(od as api.PositionedObjectProperties);
@@ -6119,7 +6119,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PositionedObjectPropertiesSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPositionedObjectPropertiesSuggestionState();
       var od =
           api.PositionedObjectPropertiesSuggestionState.fromJson(o.toJson());
@@ -6129,7 +6129,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Range', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRange();
       var od = api.Range.fromJson(o.toJson());
       checkRange(od as api.Range);
@@ -6137,7 +6137,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReplaceAllTextRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReplaceAllTextRequest();
       var od = api.ReplaceAllTextRequest.fromJson(o.toJson());
       checkReplaceAllTextRequest(od as api.ReplaceAllTextRequest);
@@ -6145,7 +6145,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReplaceAllTextResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReplaceAllTextResponse();
       var od = api.ReplaceAllTextResponse.fromJson(o.toJson());
       checkReplaceAllTextResponse(od as api.ReplaceAllTextResponse);
@@ -6153,7 +6153,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReplaceImageRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReplaceImageRequest();
       var od = api.ReplaceImageRequest.fromJson(o.toJson());
       checkReplaceImageRequest(od as api.ReplaceImageRequest);
@@ -6161,7 +6161,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReplaceNamedRangeContentRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReplaceNamedRangeContentRequest();
       var od = api.ReplaceNamedRangeContentRequest.fromJson(o.toJson());
       checkReplaceNamedRangeContentRequest(
@@ -6170,7 +6170,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Request', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRequest();
       var od = api.Request.fromJson(o.toJson());
       checkRequest(od as api.Request);
@@ -6178,7 +6178,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Response', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResponse();
       var od = api.Response.fromJson(o.toJson());
       checkResponse(od as api.Response);
@@ -6186,7 +6186,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RgbColor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRgbColor();
       var od = api.RgbColor.fromJson(o.toJson());
       checkRgbColor(od as api.RgbColor);
@@ -6194,7 +6194,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SectionBreak', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSectionBreak();
       var od = api.SectionBreak.fromJson(o.toJson());
       checkSectionBreak(od as api.SectionBreak);
@@ -6202,7 +6202,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SectionColumnProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSectionColumnProperties();
       var od = api.SectionColumnProperties.fromJson(o.toJson());
       checkSectionColumnProperties(od as api.SectionColumnProperties);
@@ -6210,7 +6210,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SectionStyle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSectionStyle();
       var od = api.SectionStyle.fromJson(o.toJson());
       checkSectionStyle(od as api.SectionStyle);
@@ -6218,7 +6218,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Shading', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShading();
       var od = api.Shading.fromJson(o.toJson());
       checkShading(od as api.Shading);
@@ -6226,7 +6226,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShadingSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShadingSuggestionState();
       var od = api.ShadingSuggestionState.fromJson(o.toJson());
       checkShadingSuggestionState(od as api.ShadingSuggestionState);
@@ -6234,7 +6234,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SheetsChartReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSheetsChartReference();
       var od = api.SheetsChartReference.fromJson(o.toJson());
       checkSheetsChartReference(od as api.SheetsChartReference);
@@ -6242,7 +6242,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SheetsChartReferenceSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSheetsChartReferenceSuggestionState();
       var od = api.SheetsChartReferenceSuggestionState.fromJson(o.toJson());
       checkSheetsChartReferenceSuggestionState(
@@ -6251,7 +6251,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Size', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSize();
       var od = api.Size.fromJson(o.toJson());
       checkSize(od as api.Size);
@@ -6259,7 +6259,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SizeSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSizeSuggestionState();
       var od = api.SizeSuggestionState.fromJson(o.toJson());
       checkSizeSuggestionState(od as api.SizeSuggestionState);
@@ -6267,7 +6267,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StructuralElement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStructuralElement();
       var od = api.StructuralElement.fromJson(o.toJson());
       checkStructuralElement(od as api.StructuralElement);
@@ -6275,7 +6275,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SubstringMatchCriteria', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubstringMatchCriteria();
       var od = api.SubstringMatchCriteria.fromJson(o.toJson());
       checkSubstringMatchCriteria(od as api.SubstringMatchCriteria);
@@ -6283,7 +6283,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuggestedBullet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuggestedBullet();
       var od = api.SuggestedBullet.fromJson(o.toJson());
       checkSuggestedBullet(od as api.SuggestedBullet);
@@ -6291,7 +6291,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuggestedDocumentStyle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuggestedDocumentStyle();
       var od = api.SuggestedDocumentStyle.fromJson(o.toJson());
       checkSuggestedDocumentStyle(od as api.SuggestedDocumentStyle);
@@ -6299,7 +6299,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuggestedInlineObjectProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuggestedInlineObjectProperties();
       var od = api.SuggestedInlineObjectProperties.fromJson(o.toJson());
       checkSuggestedInlineObjectProperties(
@@ -6308,7 +6308,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuggestedListProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuggestedListProperties();
       var od = api.SuggestedListProperties.fromJson(o.toJson());
       checkSuggestedListProperties(od as api.SuggestedListProperties);
@@ -6316,7 +6316,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuggestedNamedStyles', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuggestedNamedStyles();
       var od = api.SuggestedNamedStyles.fromJson(o.toJson());
       checkSuggestedNamedStyles(od as api.SuggestedNamedStyles);
@@ -6324,7 +6324,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuggestedParagraphStyle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuggestedParagraphStyle();
       var od = api.SuggestedParagraphStyle.fromJson(o.toJson());
       checkSuggestedParagraphStyle(od as api.SuggestedParagraphStyle);
@@ -6332,7 +6332,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuggestedPositionedObjectProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuggestedPositionedObjectProperties();
       var od = api.SuggestedPositionedObjectProperties.fromJson(o.toJson());
       checkSuggestedPositionedObjectProperties(
@@ -6341,7 +6341,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuggestedTableCellStyle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuggestedTableCellStyle();
       var od = api.SuggestedTableCellStyle.fromJson(o.toJson());
       checkSuggestedTableCellStyle(od as api.SuggestedTableCellStyle);
@@ -6349,7 +6349,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuggestedTableRowStyle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuggestedTableRowStyle();
       var od = api.SuggestedTableRowStyle.fromJson(o.toJson());
       checkSuggestedTableRowStyle(od as api.SuggestedTableRowStyle);
@@ -6357,7 +6357,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuggestedTextStyle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuggestedTextStyle();
       var od = api.SuggestedTextStyle.fromJson(o.toJson());
       checkSuggestedTextStyle(od as api.SuggestedTextStyle);
@@ -6365,7 +6365,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TabStop', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTabStop();
       var od = api.TabStop.fromJson(o.toJson());
       checkTabStop(od as api.TabStop);
@@ -6373,7 +6373,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Table', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTable();
       var od = api.Table.fromJson(o.toJson());
       checkTable(od as api.Table);
@@ -6381,7 +6381,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TableCell', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTableCell();
       var od = api.TableCell.fromJson(o.toJson());
       checkTableCell(od as api.TableCell);
@@ -6389,7 +6389,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TableCellBorder', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTableCellBorder();
       var od = api.TableCellBorder.fromJson(o.toJson());
       checkTableCellBorder(od as api.TableCellBorder);
@@ -6397,7 +6397,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TableCellLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTableCellLocation();
       var od = api.TableCellLocation.fromJson(o.toJson());
       checkTableCellLocation(od as api.TableCellLocation);
@@ -6405,7 +6405,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TableCellStyle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTableCellStyle();
       var od = api.TableCellStyle.fromJson(o.toJson());
       checkTableCellStyle(od as api.TableCellStyle);
@@ -6413,7 +6413,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TableCellStyleSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTableCellStyleSuggestionState();
       var od = api.TableCellStyleSuggestionState.fromJson(o.toJson());
       checkTableCellStyleSuggestionState(
@@ -6422,7 +6422,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TableColumnProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTableColumnProperties();
       var od = api.TableColumnProperties.fromJson(o.toJson());
       checkTableColumnProperties(od as api.TableColumnProperties);
@@ -6430,7 +6430,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TableOfContents', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTableOfContents();
       var od = api.TableOfContents.fromJson(o.toJson());
       checkTableOfContents(od as api.TableOfContents);
@@ -6438,7 +6438,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TableRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTableRange();
       var od = api.TableRange.fromJson(o.toJson());
       checkTableRange(od as api.TableRange);
@@ -6446,7 +6446,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TableRow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTableRow();
       var od = api.TableRow.fromJson(o.toJson());
       checkTableRow(od as api.TableRow);
@@ -6454,7 +6454,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TableRowStyle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTableRowStyle();
       var od = api.TableRowStyle.fromJson(o.toJson());
       checkTableRowStyle(od as api.TableRowStyle);
@@ -6462,7 +6462,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TableRowStyleSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTableRowStyleSuggestionState();
       var od = api.TableRowStyleSuggestionState.fromJson(o.toJson());
       checkTableRowStyleSuggestionState(od as api.TableRowStyleSuggestionState);
@@ -6470,7 +6470,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TableStyle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTableStyle();
       var od = api.TableStyle.fromJson(o.toJson());
       checkTableStyle(od as api.TableStyle);
@@ -6478,7 +6478,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TextRun', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTextRun();
       var od = api.TextRun.fromJson(o.toJson());
       checkTextRun(od as api.TextRun);
@@ -6486,7 +6486,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TextStyle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTextStyle();
       var od = api.TextStyle.fromJson(o.toJson());
       checkTextStyle(od as api.TextStyle);
@@ -6494,7 +6494,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TextStyleSuggestionState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTextStyleSuggestionState();
       var od = api.TextStyleSuggestionState.fromJson(o.toJson());
       checkTextStyleSuggestionState(od as api.TextStyleSuggestionState);
@@ -6502,7 +6502,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UnmergeTableCellsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUnmergeTableCellsRequest();
       var od = api.UnmergeTableCellsRequest.fromJson(o.toJson());
       checkUnmergeTableCellsRequest(od as api.UnmergeTableCellsRequest);
@@ -6510,7 +6510,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateDocumentStyleRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateDocumentStyleRequest();
       var od = api.UpdateDocumentStyleRequest.fromJson(o.toJson());
       checkUpdateDocumentStyleRequest(od as api.UpdateDocumentStyleRequest);
@@ -6518,7 +6518,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateParagraphStyleRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateParagraphStyleRequest();
       var od = api.UpdateParagraphStyleRequest.fromJson(o.toJson());
       checkUpdateParagraphStyleRequest(od as api.UpdateParagraphStyleRequest);
@@ -6526,7 +6526,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateSectionStyleRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateSectionStyleRequest();
       var od = api.UpdateSectionStyleRequest.fromJson(o.toJson());
       checkUpdateSectionStyleRequest(od as api.UpdateSectionStyleRequest);
@@ -6534,7 +6534,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateTableCellStyleRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateTableCellStyleRequest();
       var od = api.UpdateTableCellStyleRequest.fromJson(o.toJson());
       checkUpdateTableCellStyleRequest(od as api.UpdateTableCellStyleRequest);
@@ -6542,7 +6542,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateTableColumnPropertiesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateTableColumnPropertiesRequest();
       var od = api.UpdateTableColumnPropertiesRequest.fromJson(o.toJson());
       checkUpdateTableColumnPropertiesRequest(
@@ -6551,7 +6551,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateTableRowStyleRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateTableRowStyleRequest();
       var od = api.UpdateTableRowStyleRequest.fromJson(o.toJson());
       checkUpdateTableRowStyleRequest(od as api.UpdateTableRowStyleRequest);
@@ -6559,7 +6559,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateTextStyleRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateTextStyleRequest();
       var od = api.UpdateTextStyleRequest.fromJson(o.toJson());
       checkUpdateTextStyleRequest(od as api.UpdateTextStyleRequest);
@@ -6567,7 +6567,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WeightedFontFamily', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWeightedFontFamily();
       var od = api.WeightedFontFamily.fromJson(o.toJson());
       checkWeightedFontFamily(od as api.WeightedFontFamily);
@@ -6575,7 +6575,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WriteControl', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWriteControl();
       var od = api.WriteControl.fromJson(o.toJson());
       checkWriteControl(od as api.WriteControl);
@@ -6583,7 +6583,7 @@ void main() {
   });
 
   unittest.group('resource-DocumentsResource', () {
-    unittest.test('method--batchUpdate', () {
+    unittest.test('method--batchUpdate', () async {
       var mock = HttpServerMock();
       var res = api.DocsApi(mock).documents;
       var arg_request = buildBatchUpdateDocumentRequest();
@@ -6649,15 +6649,13 @@ void main() {
         var resp = convert.json.encode(buildBatchUpdateDocumentResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchUpdate(arg_request, arg_documentId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchUpdateDocumentResponse(
-            response as api.BatchUpdateDocumentResponse);
-      })));
+      final response = await res.batchUpdate(arg_request, arg_documentId,
+          $fields: arg_$fields);
+      checkBatchUpdateDocumentResponse(
+          response as api.BatchUpdateDocumentResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DocsApi(mock).documents;
       var arg_request = buildDocument();
@@ -6708,14 +6706,11 @@ void main() {
         var resp = convert.json.encode(buildDocument());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDocument(response as api.Document);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkDocument(response as api.Document);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DocsApi(mock).documents;
       var arg_documentId = 'foo';
@@ -6773,13 +6768,9 @@ void main() {
         var resp = convert.json.encode(buildDocument());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_documentId,
-              suggestionsViewMode: arg_suggestionsViewMode,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDocument(response as api.Document);
-      })));
+      final response = await res.get(arg_documentId,
+          suggestionsViewMode: arg_suggestionsViewMode, $fields: arg_$fields);
+      checkDocument(response as api.Document);
     });
   });
 }

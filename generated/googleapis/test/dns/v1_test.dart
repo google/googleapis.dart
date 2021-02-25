@@ -1491,7 +1491,7 @@ void checkResponseHeader(api.ResponseHeader o) {
 
 void main() {
   unittest.group('obj-schema-Change', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChange();
       var od = api.Change.fromJson(o.toJson());
       checkChange(od as api.Change);
@@ -1499,7 +1499,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChangesListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChangesListResponse();
       var od = api.ChangesListResponse.fromJson(o.toJson());
       checkChangesListResponse(od as api.ChangesListResponse);
@@ -1507,7 +1507,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DnsKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDnsKey();
       var od = api.DnsKey.fromJson(o.toJson());
       checkDnsKey(od as api.DnsKey);
@@ -1515,7 +1515,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DnsKeyDigest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDnsKeyDigest();
       var od = api.DnsKeyDigest.fromJson(o.toJson());
       checkDnsKeyDigest(od as api.DnsKeyDigest);
@@ -1523,7 +1523,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DnsKeySpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDnsKeySpec();
       var od = api.DnsKeySpec.fromJson(o.toJson());
       checkDnsKeySpec(od as api.DnsKeySpec);
@@ -1531,7 +1531,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DnsKeysListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDnsKeysListResponse();
       var od = api.DnsKeysListResponse.fromJson(o.toJson());
       checkDnsKeysListResponse(od as api.DnsKeysListResponse);
@@ -1539,7 +1539,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedZone', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedZone();
       var od = api.ManagedZone.fromJson(o.toJson());
       checkManagedZone(od as api.ManagedZone);
@@ -1547,7 +1547,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedZoneDnsSecConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedZoneDnsSecConfig();
       var od = api.ManagedZoneDnsSecConfig.fromJson(o.toJson());
       checkManagedZoneDnsSecConfig(od as api.ManagedZoneDnsSecConfig);
@@ -1555,7 +1555,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedZoneForwardingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedZoneForwardingConfig();
       var od = api.ManagedZoneForwardingConfig.fromJson(o.toJson());
       checkManagedZoneForwardingConfig(od as api.ManagedZoneForwardingConfig);
@@ -1563,7 +1563,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedZoneForwardingConfigNameServerTarget', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedZoneForwardingConfigNameServerTarget();
       var od =
           api.ManagedZoneForwardingConfigNameServerTarget.fromJson(o.toJson());
@@ -1573,7 +1573,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedZoneOperationsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedZoneOperationsListResponse();
       var od = api.ManagedZoneOperationsListResponse.fromJson(o.toJson());
       checkManagedZoneOperationsListResponse(
@@ -1582,7 +1582,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedZonePeeringConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedZonePeeringConfig();
       var od = api.ManagedZonePeeringConfig.fromJson(o.toJson());
       checkManagedZonePeeringConfig(od as api.ManagedZonePeeringConfig);
@@ -1590,7 +1590,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedZonePeeringConfigTargetNetwork', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedZonePeeringConfigTargetNetwork();
       var od = api.ManagedZonePeeringConfigTargetNetwork.fromJson(o.toJson());
       checkManagedZonePeeringConfigTargetNetwork(
@@ -1599,7 +1599,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedZonePrivateVisibilityConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedZonePrivateVisibilityConfig();
       var od = api.ManagedZonePrivateVisibilityConfig.fromJson(o.toJson());
       checkManagedZonePrivateVisibilityConfig(
@@ -1608,7 +1608,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedZonePrivateVisibilityConfigNetwork', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedZonePrivateVisibilityConfigNetwork();
       var od =
           api.ManagedZonePrivateVisibilityConfigNetwork.fromJson(o.toJson());
@@ -1618,7 +1618,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedZoneReverseLookupConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedZoneReverseLookupConfig();
       var od = api.ManagedZoneReverseLookupConfig.fromJson(o.toJson());
       checkManagedZoneReverseLookupConfig(
@@ -1627,7 +1627,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedZoneServiceDirectoryConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedZoneServiceDirectoryConfig();
       var od = api.ManagedZoneServiceDirectoryConfig.fromJson(o.toJson());
       checkManagedZoneServiceDirectoryConfig(
@@ -1636,7 +1636,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedZoneServiceDirectoryConfigNamespace', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedZoneServiceDirectoryConfigNamespace();
       var od =
           api.ManagedZoneServiceDirectoryConfigNamespace.fromJson(o.toJson());
@@ -1646,7 +1646,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedZonesListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedZonesListResponse();
       var od = api.ManagedZonesListResponse.fromJson(o.toJson());
       checkManagedZonesListResponse(od as api.ManagedZonesListResponse);
@@ -1654,7 +1654,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -1662,7 +1662,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationDnsKeyContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationDnsKeyContext();
       var od = api.OperationDnsKeyContext.fromJson(o.toJson());
       checkOperationDnsKeyContext(od as api.OperationDnsKeyContext);
@@ -1670,7 +1670,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationManagedZoneContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationManagedZoneContext();
       var od = api.OperationManagedZoneContext.fromJson(o.toJson());
       checkOperationManagedZoneContext(od as api.OperationManagedZoneContext);
@@ -1678,7 +1678,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PoliciesListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPoliciesListResponse();
       var od = api.PoliciesListResponse.fromJson(o.toJson());
       checkPoliciesListResponse(od as api.PoliciesListResponse);
@@ -1686,7 +1686,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PoliciesPatchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPoliciesPatchResponse();
       var od = api.PoliciesPatchResponse.fromJson(o.toJson());
       checkPoliciesPatchResponse(od as api.PoliciesPatchResponse);
@@ -1694,7 +1694,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PoliciesUpdateResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPoliciesUpdateResponse();
       var od = api.PoliciesUpdateResponse.fromJson(o.toJson());
       checkPoliciesUpdateResponse(od as api.PoliciesUpdateResponse);
@@ -1702,7 +1702,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -1710,7 +1710,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PolicyAlternativeNameServerConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicyAlternativeNameServerConfig();
       var od = api.PolicyAlternativeNameServerConfig.fromJson(o.toJson());
       checkPolicyAlternativeNameServerConfig(
@@ -1720,7 +1720,7 @@ void main() {
 
   unittest.group('obj-schema-PolicyAlternativeNameServerConfigTargetNameServer',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicyAlternativeNameServerConfigTargetNameServer();
       var od = api.PolicyAlternativeNameServerConfigTargetNameServer.fromJson(
           o.toJson());
@@ -1730,7 +1730,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PolicyNetwork', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicyNetwork();
       var od = api.PolicyNetwork.fromJson(o.toJson());
       checkPolicyNetwork(od as api.PolicyNetwork);
@@ -1738,7 +1738,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Project', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProject();
       var od = api.Project.fromJson(o.toJson());
       checkProject(od as api.Project);
@@ -1746,7 +1746,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Quota', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQuota();
       var od = api.Quota.fromJson(o.toJson());
       checkQuota(od as api.Quota);
@@ -1754,7 +1754,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResourceRecordSet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResourceRecordSet();
       var od = api.ResourceRecordSet.fromJson(o.toJson());
       checkResourceRecordSet(od as api.ResourceRecordSet);
@@ -1762,7 +1762,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResourceRecordSetsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResourceRecordSetsListResponse();
       var od = api.ResourceRecordSetsListResponse.fromJson(o.toJson());
       checkResourceRecordSetsListResponse(
@@ -1771,7 +1771,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResponseHeader', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResponseHeader();
       var od = api.ResponseHeader.fromJson(o.toJson());
       checkResponseHeader(od as api.ResponseHeader);
@@ -1779,7 +1779,7 @@ void main() {
   });
 
   unittest.group('resource-ChangesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).changes;
       var arg_request = buildChange();
@@ -1865,15 +1865,13 @@ void main() {
         var resp = convert.json.encode(buildChange());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_project, arg_managedZone,
-              clientOperationId: arg_clientOperationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChange(response as api.Change);
-      })));
+      final response = await res.create(
+          arg_request, arg_project, arg_managedZone,
+          clientOperationId: arg_clientOperationId, $fields: arg_$fields);
+      checkChange(response as api.Change);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).changes;
       var arg_project = 'foo';
@@ -1961,15 +1959,12 @@ void main() {
         var resp = convert.json.encode(buildChange());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_project, arg_managedZone, arg_changeId,
-              clientOperationId: arg_clientOperationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChange(response as api.Change);
-      })));
+      final response = await res.get(arg_project, arg_managedZone, arg_changeId,
+          clientOperationId: arg_clientOperationId, $fields: arg_$fields);
+      checkChange(response as api.Change);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).changes;
       var arg_project = 'foo';
@@ -2065,21 +2060,18 @@ void main() {
         var resp = convert.json.encode(buildChangesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_project, arg_managedZone,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              sortBy: arg_sortBy,
-              sortOrder: arg_sortOrder,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChangesListResponse(response as api.ChangesListResponse);
-      })));
+      final response = await res.list(arg_project, arg_managedZone,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          sortBy: arg_sortBy,
+          sortOrder: arg_sortOrder,
+          $fields: arg_$fields);
+      checkChangesListResponse(response as api.ChangesListResponse);
     });
   });
 
   unittest.group('resource-DnsKeysResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).dnsKeys;
       var arg_project = 'foo';
@@ -2172,17 +2164,14 @@ void main() {
         var resp = convert.json.encode(buildDnsKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_project, arg_managedZone, arg_dnsKeyId,
-              clientOperationId: arg_clientOperationId,
-              digestType: arg_digestType,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDnsKey(response as api.DnsKey);
-      })));
+      final response = await res.get(arg_project, arg_managedZone, arg_dnsKeyId,
+          clientOperationId: arg_clientOperationId,
+          digestType: arg_digestType,
+          $fields: arg_$fields);
+      checkDnsKey(response as api.DnsKey);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).dnsKeys;
       var arg_project = 'foo';
@@ -2273,20 +2262,17 @@ void main() {
         var resp = convert.json.encode(buildDnsKeysListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_project, arg_managedZone,
-              digestType: arg_digestType,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDnsKeysListResponse(response as api.DnsKeysListResponse);
-      })));
+      final response = await res.list(arg_project, arg_managedZone,
+          digestType: arg_digestType,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkDnsKeysListResponse(response as api.DnsKeysListResponse);
     });
   });
 
   unittest.group('resource-ManagedZoneOperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).managedZoneOperations;
       var arg_project = 'foo';
@@ -2374,15 +2360,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_project, arg_managedZone, arg_operation,
-              clientOperationId: arg_clientOperationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(
+          arg_project, arg_managedZone, arg_operation,
+          clientOperationId: arg_clientOperationId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).managedZoneOperations;
       var arg_project = 'foo';
@@ -2474,21 +2458,18 @@ void main() {
             convert.json.encode(buildManagedZoneOperationsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_project, arg_managedZone,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              sortBy: arg_sortBy,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkManagedZoneOperationsListResponse(
-            response as api.ManagedZoneOperationsListResponse);
-      })));
+      final response = await res.list(arg_project, arg_managedZone,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          sortBy: arg_sortBy,
+          $fields: arg_$fields);
+      checkManagedZoneOperationsListResponse(
+          response as api.ManagedZoneOperationsListResponse);
     });
   });
 
   unittest.group('resource-ManagedZonesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).managedZones;
       var arg_request = buildManagedZone();
@@ -2559,15 +2540,12 @@ void main() {
         var resp = convert.json.encode(buildManagedZone());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_project,
-              clientOperationId: arg_clientOperationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkManagedZone(response as api.ManagedZone);
-      })));
+      final response = await res.create(arg_request, arg_project,
+          clientOperationId: arg_clientOperationId, $fields: arg_$fields);
+      checkManagedZone(response as api.ManagedZone);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).managedZones;
       var arg_project = 'foo';
@@ -2640,13 +2618,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_project, arg_managedZone,
-              clientOperationId: arg_clientOperationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_project, arg_managedZone,
+          clientOperationId: arg_clientOperationId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).managedZones;
       var arg_project = 'foo';
@@ -2719,15 +2695,12 @@ void main() {
         var resp = convert.json.encode(buildManagedZone());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_project, arg_managedZone,
-              clientOperationId: arg_clientOperationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkManagedZone(response as api.ManagedZone);
-      })));
+      final response = await res.get(arg_project, arg_managedZone,
+          clientOperationId: arg_clientOperationId, $fields: arg_$fields);
+      checkManagedZone(response as api.ManagedZone);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).managedZones;
       var arg_project = 'foo';
@@ -2803,18 +2776,15 @@ void main() {
         var resp = convert.json.encode(buildManagedZonesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_project,
-              dnsName: arg_dnsName,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkManagedZonesListResponse(response as api.ManagedZonesListResponse);
-      })));
+      final response = await res.list(arg_project,
+          dnsName: arg_dnsName,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkManagedZonesListResponse(response as api.ManagedZonesListResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).managedZones;
       var arg_request = buildManagedZone();
@@ -2892,15 +2862,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_project, arg_managedZone,
-              clientOperationId: arg_clientOperationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(
+          arg_request, arg_project, arg_managedZone,
+          clientOperationId: arg_clientOperationId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).managedZones;
       var arg_request = buildManagedZone();
@@ -2978,17 +2946,15 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_project, arg_managedZone,
-              clientOperationId: arg_clientOperationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.update(
+          arg_request, arg_project, arg_managedZone,
+          clientOperationId: arg_clientOperationId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-PoliciesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).policies;
       var arg_request = buildPolicy();
@@ -3059,15 +3025,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_project,
-              clientOperationId: arg_clientOperationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.create(arg_request, arg_project,
+          clientOperationId: arg_clientOperationId, $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).policies;
       var arg_project = 'foo';
@@ -3140,13 +3103,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_project, arg_policy,
-              clientOperationId: arg_clientOperationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_project, arg_policy,
+          clientOperationId: arg_clientOperationId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).policies;
       var arg_project = 'foo';
@@ -3219,15 +3180,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_project, arg_policy,
-              clientOperationId: arg_clientOperationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.get(arg_project, arg_policy,
+          clientOperationId: arg_clientOperationId, $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).policies;
       var arg_project = 'foo';
@@ -3298,17 +3256,14 @@ void main() {
         var resp = convert.json.encode(buildPoliciesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_project,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPoliciesListResponse(response as api.PoliciesListResponse);
-      })));
+      final response = await res.list(arg_project,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkPoliciesListResponse(response as api.PoliciesListResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).policies;
       var arg_request = buildPolicy();
@@ -3386,15 +3341,12 @@ void main() {
         var resp = convert.json.encode(buildPoliciesPatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_project, arg_policy,
-              clientOperationId: arg_clientOperationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPoliciesPatchResponse(response as api.PoliciesPatchResponse);
-      })));
+      final response = await res.patch(arg_request, arg_project, arg_policy,
+          clientOperationId: arg_clientOperationId, $fields: arg_$fields);
+      checkPoliciesPatchResponse(response as api.PoliciesPatchResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).policies;
       var arg_request = buildPolicy();
@@ -3472,17 +3424,14 @@ void main() {
         var resp = convert.json.encode(buildPoliciesUpdateResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_project, arg_policy,
-              clientOperationId: arg_clientOperationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPoliciesUpdateResponse(response as api.PoliciesUpdateResponse);
-      })));
+      final response = await res.update(arg_request, arg_project, arg_policy,
+          clientOperationId: arg_clientOperationId, $fields: arg_$fields);
+      checkPoliciesUpdateResponse(response as api.PoliciesUpdateResponse);
     });
   });
 
   unittest.group('resource-ProjectsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).projects;
       var arg_project = 'foo';
@@ -3540,17 +3489,14 @@ void main() {
         var resp = convert.json.encode(buildProject());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_project,
-              clientOperationId: arg_clientOperationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProject(response as api.Project);
-      })));
+      final response = await res.get(arg_project,
+          clientOperationId: arg_clientOperationId, $fields: arg_$fields);
+      checkProject(response as api.Project);
     });
   });
 
   unittest.group('resource-ResourceRecordSetsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DnsApi(mock).resourceRecordSets;
       var arg_project = 'foo';
@@ -3646,17 +3592,14 @@ void main() {
         var resp = convert.json.encode(buildResourceRecordSetsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_project, arg_managedZone,
-              maxResults: arg_maxResults,
-              name: arg_name,
-              pageToken: arg_pageToken,
-              type: arg_type,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkResourceRecordSetsListResponse(
-            response as api.ResourceRecordSetsListResponse);
-      })));
+      final response = await res.list(arg_project, arg_managedZone,
+          maxResults: arg_maxResults,
+          name: arg_name,
+          pageToken: arg_pageToken,
+          type: arg_type,
+          $fields: arg_$fields);
+      checkResourceRecordSetsListResponse(
+          response as api.ResourceRecordSetsListResponse);
     });
   });
 }

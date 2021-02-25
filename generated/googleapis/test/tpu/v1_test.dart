@@ -984,7 +984,7 @@ void checkTensorFlowVersion(api.TensorFlowVersion o) {
 
 void main() {
   unittest.group('obj-schema-AcceleratorType', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAcceleratorType();
       var od = api.AcceleratorType.fromJson(o.toJson());
       checkAcceleratorType(od as api.AcceleratorType);
@@ -992,7 +992,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1000,7 +1000,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAcceleratorTypesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAcceleratorTypesResponse();
       var od = api.ListAcceleratorTypesResponse.fromJson(o.toJson());
       checkListAcceleratorTypesResponse(od as api.ListAcceleratorTypesResponse);
@@ -1008,7 +1008,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -1016,7 +1016,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListNodesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListNodesResponse();
       var od = api.ListNodesResponse.fromJson(o.toJson());
       checkListNodesResponse(od as api.ListNodesResponse);
@@ -1024,7 +1024,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -1032,7 +1032,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTensorFlowVersionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTensorFlowVersionsResponse();
       var od = api.ListTensorFlowVersionsResponse.fromJson(o.toJson());
       checkListTensorFlowVersionsResponse(
@@ -1041,7 +1041,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -1049,7 +1049,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NetworkEndpoint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNetworkEndpoint();
       var od = api.NetworkEndpoint.fromJson(o.toJson());
       checkNetworkEndpoint(od as api.NetworkEndpoint);
@@ -1057,7 +1057,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Node', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNode();
       var od = api.Node.fromJson(o.toJson());
       checkNode(od as api.Node);
@@ -1065,7 +1065,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -1073,7 +1073,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
       checkOperationMetadata(od as api.OperationMetadata);
@@ -1081,7 +1081,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReimageNodeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReimageNodeRequest();
       var od = api.ReimageNodeRequest.fromJson(o.toJson());
       checkReimageNodeRequest(od as api.ReimageNodeRequest);
@@ -1089,7 +1089,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SchedulingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSchedulingConfig();
       var od = api.SchedulingConfig.fromJson(o.toJson());
       checkSchedulingConfig(od as api.SchedulingConfig);
@@ -1097,7 +1097,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StartNodeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStartNodeRequest();
       var od = api.StartNodeRequest.fromJson(o.toJson());
       checkStartNodeRequest(od as api.StartNodeRequest);
@@ -1105,7 +1105,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -1113,7 +1113,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StopNodeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStopNodeRequest();
       var od = api.StopNodeRequest.fromJson(o.toJson());
       checkStopNodeRequest(od as api.StopNodeRequest);
@@ -1121,7 +1121,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Symptom', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSymptom();
       var od = api.Symptom.fromJson(o.toJson());
       checkSymptom(od as api.Symptom);
@@ -1129,7 +1129,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TensorFlowVersion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTensorFlowVersion();
       var od = api.TensorFlowVersion.fromJson(o.toJson());
       checkTensorFlowVersion(od as api.TensorFlowVersion);
@@ -1137,7 +1137,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -1185,14 +1185,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -1255,20 +1252,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsAcceleratorTypesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.acceleratorTypes;
       var arg_name = 'foo';
@@ -1316,14 +1310,11 @@ void main() {
         var resp = convert.json.encode(buildAcceleratorType());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAcceleratorType(response as api.AcceleratorType);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkAcceleratorType(response as api.AcceleratorType);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.acceleratorTypes;
       var arg_parent = 'foo';
@@ -1391,22 +1382,19 @@ void main() {
         var resp = convert.json.encode(buildListAcceleratorTypesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAcceleratorTypesResponse(
-            response as api.ListAcceleratorTypesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAcceleratorTypesResponse(
+          response as api.ListAcceleratorTypesResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsNodesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.nodes;
       var arg_request = buildNode();
@@ -1464,15 +1452,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              nodeId: arg_nodeId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          nodeId: arg_nodeId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.nodes;
       var arg_name = 'foo';
@@ -1520,14 +1505,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.nodes;
       var arg_name = 'foo';
@@ -1575,14 +1557,11 @@ void main() {
         var resp = convert.json.encode(buildNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNode(response as api.Node);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkNode(response as api.Node);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.nodes;
       var arg_parent = 'foo';
@@ -1640,17 +1619,14 @@ void main() {
         var resp = convert.json.encode(buildListNodesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListNodesResponse(response as api.ListNodesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListNodesResponse(response as api.ListNodesResponse);
     });
 
-    unittest.test('method--reimage', () {
+    unittest.test('method--reimage', () async {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.nodes;
       var arg_request = buildReimageNodeRequest();
@@ -1703,14 +1679,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reimage(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.reimage(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--start', () {
+    unittest.test('method--start', () async {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.nodes;
       var arg_request = buildStartNodeRequest();
@@ -1763,14 +1737,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .start(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.start(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--stop', () {
+    unittest.test('method--stop', () async {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.nodes;
       var arg_request = buildStopNodeRequest();
@@ -1823,16 +1795,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .stop(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.stop(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -1880,14 +1850,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.cancel(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -1935,14 +1902,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -1990,14 +1954,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -2060,20 +2021,17 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsTensorflowVersionsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.tensorflowVersions;
       var arg_name = 'foo';
@@ -2121,14 +2079,11 @@ void main() {
         var resp = convert.json.encode(buildTensorFlowVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTensorFlowVersion(response as api.TensorFlowVersion);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkTensorFlowVersion(response as api.TensorFlowVersion);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TPUApi(mock).projects.locations.tensorflowVersions;
       var arg_parent = 'foo';
@@ -2196,17 +2151,14 @@ void main() {
         var resp = convert.json.encode(buildListTensorFlowVersionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTensorFlowVersionsResponse(
-            response as api.ListTensorFlowVersionsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListTensorFlowVersionsResponse(
+          response as api.ListTensorFlowVersionsResponse);
     });
   });
 }

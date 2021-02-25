@@ -907,7 +907,7 @@ void checkUsageReports(api.UsageReports o) {
 
 void main() {
   unittest.group('obj-schema-Activities', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildActivities();
       var od = api.Activities.fromJson(o.toJson());
       checkActivities(od as api.Activities);
@@ -915,7 +915,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ActivityActor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildActivityActor();
       var od = api.ActivityActor.fromJson(o.toJson());
       checkActivityActor(od as api.ActivityActor);
@@ -923,7 +923,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ActivityEventsParametersMessageValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildActivityEventsParametersMessageValue();
       var od = api.ActivityEventsParametersMessageValue.fromJson(o.toJson());
       checkActivityEventsParametersMessageValue(
@@ -932,7 +932,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ActivityEventsParametersMultiMessageValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildActivityEventsParametersMultiMessageValue();
       var od =
           api.ActivityEventsParametersMultiMessageValue.fromJson(o.toJson());
@@ -942,7 +942,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ActivityEventsParameters', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildActivityEventsParameters();
       var od = api.ActivityEventsParameters.fromJson(o.toJson());
       checkActivityEventsParameters(od as api.ActivityEventsParameters);
@@ -950,7 +950,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ActivityEvents', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildActivityEvents();
       var od = api.ActivityEvents.fromJson(o.toJson());
       checkActivityEvents(od as api.ActivityEvents);
@@ -958,7 +958,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ActivityId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildActivityId();
       var od = api.ActivityId.fromJson(o.toJson());
       checkActivityId(od as api.ActivityId);
@@ -966,7 +966,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Activity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildActivity();
       var od = api.Activity.fromJson(o.toJson());
       checkActivity(od as api.Activity);
@@ -974,7 +974,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Channel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChannel();
       var od = api.Channel.fromJson(o.toJson());
       checkChannel(od as api.Channel);
@@ -982,7 +982,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NestedParameter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNestedParameter();
       var od = api.NestedParameter.fromJson(o.toJson());
       checkNestedParameter(od as api.NestedParameter);
@@ -990,7 +990,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsageReportEntity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsageReportEntity();
       var od = api.UsageReportEntity.fromJson(o.toJson());
       checkUsageReportEntity(od as api.UsageReportEntity);
@@ -998,7 +998,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsageReportParameters', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsageReportParameters();
       var od = api.UsageReportParameters.fromJson(o.toJson());
       checkUsageReportParameters(od as api.UsageReportParameters);
@@ -1006,7 +1006,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsageReport', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsageReport();
       var od = api.UsageReport.fromJson(o.toJson());
       checkUsageReport(od as api.UsageReport);
@@ -1014,7 +1014,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsageReportsWarningsData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsageReportsWarningsData();
       var od = api.UsageReportsWarningsData.fromJson(o.toJson());
       checkUsageReportsWarningsData(od as api.UsageReportsWarningsData);
@@ -1022,7 +1022,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsageReportsWarnings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsageReportsWarnings();
       var od = api.UsageReportsWarnings.fromJson(o.toJson());
       checkUsageReportsWarnings(od as api.UsageReportsWarnings);
@@ -1030,7 +1030,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsageReports', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsageReports();
       var od = api.UsageReports.fromJson(o.toJson());
       checkUsageReports(od as api.UsageReports);
@@ -1038,7 +1038,7 @@ void main() {
   });
 
   unittest.group('resource-ActivitiesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ReportsApi(mock).activities;
       var arg_userKey = 'foo';
@@ -1156,25 +1156,22 @@ void main() {
         var resp = convert.json.encode(buildActivities());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userKey, arg_applicationName,
-              actorIpAddress: arg_actorIpAddress,
-              customerId: arg_customerId,
-              endTime: arg_endTime,
-              eventName: arg_eventName,
-              filters: arg_filters,
-              groupIdFilter: arg_groupIdFilter,
-              maxResults: arg_maxResults,
-              orgUnitID: arg_orgUnitID,
-              pageToken: arg_pageToken,
-              startTime: arg_startTime,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkActivities(response as api.Activities);
-      })));
+      final response = await res.list(arg_userKey, arg_applicationName,
+          actorIpAddress: arg_actorIpAddress,
+          customerId: arg_customerId,
+          endTime: arg_endTime,
+          eventName: arg_eventName,
+          filters: arg_filters,
+          groupIdFilter: arg_groupIdFilter,
+          maxResults: arg_maxResults,
+          orgUnitID: arg_orgUnitID,
+          pageToken: arg_pageToken,
+          startTime: arg_startTime,
+          $fields: arg_$fields);
+      checkActivities(response as api.Activities);
     });
 
-    unittest.test('method--watch', () {
+    unittest.test('method--watch', () async {
       var mock = HttpServerMock();
       var res = api.ReportsApi(mock).activities;
       var arg_request = buildChannel();
@@ -1305,27 +1302,25 @@ void main() {
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .watch(arg_request, arg_userKey, arg_applicationName,
-              actorIpAddress: arg_actorIpAddress,
-              customerId: arg_customerId,
-              endTime: arg_endTime,
-              eventName: arg_eventName,
-              filters: arg_filters,
-              groupIdFilter: arg_groupIdFilter,
-              maxResults: arg_maxResults,
-              orgUnitID: arg_orgUnitID,
-              pageToken: arg_pageToken,
-              startTime: arg_startTime,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChannel(response as api.Channel);
-      })));
+      final response = await res.watch(
+          arg_request, arg_userKey, arg_applicationName,
+          actorIpAddress: arg_actorIpAddress,
+          customerId: arg_customerId,
+          endTime: arg_endTime,
+          eventName: arg_eventName,
+          filters: arg_filters,
+          groupIdFilter: arg_groupIdFilter,
+          maxResults: arg_maxResults,
+          orgUnitID: arg_orgUnitID,
+          pageToken: arg_pageToken,
+          startTime: arg_startTime,
+          $fields: arg_$fields);
+      checkChannel(response as api.Channel);
     });
   });
 
   unittest.group('resource-ChannelsResource', () {
-    unittest.test('method--stop', () {
+    unittest.test('method--stop', () async {
       var mock = HttpServerMock();
       var res = api.ReportsApi(mock).channels;
       var arg_request = buildChannel();
@@ -1376,14 +1371,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .stop(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.stop(arg_request, $fields: arg_$fields);
     });
   });
 
   unittest.group('resource-CustomerUsageReportsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ReportsApi(mock).customerUsageReports;
       var arg_date = 'foo';
@@ -1451,20 +1444,17 @@ void main() {
         var resp = convert.json.encode(buildUsageReports());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_date,
-              customerId: arg_customerId,
-              pageToken: arg_pageToken,
-              parameters: arg_parameters,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUsageReports(response as api.UsageReports);
-      })));
+      final response = await res.get(arg_date,
+          customerId: arg_customerId,
+          pageToken: arg_pageToken,
+          parameters: arg_parameters,
+          $fields: arg_$fields);
+      checkUsageReports(response as api.UsageReports);
     });
   });
 
   unittest.group('resource-EntityUsageReportsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ReportsApi(mock).entityUsageReports;
       var arg_entityType = 'foo';
@@ -1572,22 +1562,19 @@ void main() {
         var resp = convert.json.encode(buildUsageReports());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_entityType, arg_entityKey, arg_date,
-              customerId: arg_customerId,
-              filters: arg_filters,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              parameters: arg_parameters,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUsageReports(response as api.UsageReports);
-      })));
+      final response = await res.get(arg_entityType, arg_entityKey, arg_date,
+          customerId: arg_customerId,
+          filters: arg_filters,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          parameters: arg_parameters,
+          $fields: arg_$fields);
+      checkUsageReports(response as api.UsageReports);
     });
   });
 
   unittest.group('resource-UserUsageReportResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ReportsApi(mock).userUsageReport;
       var arg_userKey = 'foo';
@@ -1690,19 +1677,16 @@ void main() {
         var resp = convert.json.encode(buildUsageReports());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userKey, arg_date,
-              customerId: arg_customerId,
-              filters: arg_filters,
-              groupIdFilter: arg_groupIdFilter,
-              maxResults: arg_maxResults,
-              orgUnitID: arg_orgUnitID,
-              pageToken: arg_pageToken,
-              parameters: arg_parameters,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUsageReports(response as api.UsageReports);
-      })));
+      final response = await res.get(arg_userKey, arg_date,
+          customerId: arg_customerId,
+          filters: arg_filters,
+          groupIdFilter: arg_groupIdFilter,
+          maxResults: arg_maxResults,
+          orgUnitID: arg_orgUnitID,
+          pageToken: arg_pageToken,
+          parameters: arg_parameters,
+          $fields: arg_$fields);
+      checkUsageReports(response as api.UsageReports);
     });
   });
 }

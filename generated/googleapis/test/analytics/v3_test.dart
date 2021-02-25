@@ -5676,7 +5676,7 @@ void checkWebproperty(api.Webproperty o) {
 
 void main() {
   unittest.group('obj-schema-AccountChildLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountChildLink();
       var od = api.AccountChildLink.fromJson(o.toJson());
       checkAccountChildLink(od as api.AccountChildLink);
@@ -5684,7 +5684,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountPermissions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountPermissions();
       var od = api.AccountPermissions.fromJson(o.toJson());
       checkAccountPermissions(od as api.AccountPermissions);
@@ -5692,7 +5692,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Account', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccount();
       var od = api.Account.fromJson(o.toJson());
       checkAccount(od as api.Account);
@@ -5700,7 +5700,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountRef', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountRef();
       var od = api.AccountRef.fromJson(o.toJson());
       checkAccountRef(od as api.AccountRef);
@@ -5708,7 +5708,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountSummaries', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountSummaries();
       var od = api.AccountSummaries.fromJson(o.toJson());
       checkAccountSummaries(od as api.AccountSummaries);
@@ -5716,7 +5716,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountSummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountSummary();
       var od = api.AccountSummary.fromJson(o.toJson());
       checkAccountSummary(od as api.AccountSummary);
@@ -5724,7 +5724,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountTicket', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountTicket();
       var od = api.AccountTicket.fromJson(o.toJson());
       checkAccountTicket(od as api.AccountTicket);
@@ -5732,7 +5732,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountTreeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountTreeRequest();
       var od = api.AccountTreeRequest.fromJson(o.toJson());
       checkAccountTreeRequest(od as api.AccountTreeRequest);
@@ -5740,7 +5740,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountTreeResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountTreeResponse();
       var od = api.AccountTreeResponse.fromJson(o.toJson());
       checkAccountTreeResponse(od as api.AccountTreeResponse);
@@ -5748,7 +5748,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Accounts', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccounts();
       var od = api.Accounts.fromJson(o.toJson());
       checkAccounts(od as api.Accounts);
@@ -5756,7 +5756,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AdWordsAccount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdWordsAccount();
       var od = api.AdWordsAccount.fromJson(o.toJson());
       checkAdWordsAccount(od as api.AdWordsAccount);
@@ -5764,7 +5764,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnalyticsDataimportDeleteUploadDataRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnalyticsDataimportDeleteUploadDataRequest();
       var od =
           api.AnalyticsDataimportDeleteUploadDataRequest.fromJson(o.toJson());
@@ -5774,7 +5774,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Column', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildColumn();
       var od = api.Column.fromJson(o.toJson());
       checkColumn(od as api.Column);
@@ -5782,7 +5782,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Columns', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildColumns();
       var od = api.Columns.fromJson(o.toJson());
       checkColumns(od as api.Columns);
@@ -5790,7 +5790,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomDataSourceChildLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomDataSourceChildLink();
       var od = api.CustomDataSourceChildLink.fromJson(o.toJson());
       checkCustomDataSourceChildLink(od as api.CustomDataSourceChildLink);
@@ -5798,7 +5798,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomDataSourceParentLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomDataSourceParentLink();
       var od = api.CustomDataSourceParentLink.fromJson(o.toJson());
       checkCustomDataSourceParentLink(od as api.CustomDataSourceParentLink);
@@ -5806,7 +5806,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomDataSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomDataSource();
       var od = api.CustomDataSource.fromJson(o.toJson());
       checkCustomDataSource(od as api.CustomDataSource);
@@ -5814,7 +5814,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomDataSources', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomDataSources();
       var od = api.CustomDataSources.fromJson(o.toJson());
       checkCustomDataSources(od as api.CustomDataSources);
@@ -5822,7 +5822,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomDimensionParentLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomDimensionParentLink();
       var od = api.CustomDimensionParentLink.fromJson(o.toJson());
       checkCustomDimensionParentLink(od as api.CustomDimensionParentLink);
@@ -5830,7 +5830,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomDimension', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomDimension();
       var od = api.CustomDimension.fromJson(o.toJson());
       checkCustomDimension(od as api.CustomDimension);
@@ -5838,7 +5838,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomDimensions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomDimensions();
       var od = api.CustomDimensions.fromJson(o.toJson());
       checkCustomDimensions(od as api.CustomDimensions);
@@ -5846,7 +5846,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomMetricParentLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomMetricParentLink();
       var od = api.CustomMetricParentLink.fromJson(o.toJson());
       checkCustomMetricParentLink(od as api.CustomMetricParentLink);
@@ -5854,7 +5854,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomMetric', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomMetric();
       var od = api.CustomMetric.fromJson(o.toJson());
       checkCustomMetric(od as api.CustomMetric);
@@ -5862,7 +5862,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomMetrics', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomMetrics();
       var od = api.CustomMetrics.fromJson(o.toJson());
       checkCustomMetrics(od as api.CustomMetrics);
@@ -5870,7 +5870,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EntityAdWordsLinkEntity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntityAdWordsLinkEntity();
       var od = api.EntityAdWordsLinkEntity.fromJson(o.toJson());
       checkEntityAdWordsLinkEntity(od as api.EntityAdWordsLinkEntity);
@@ -5878,7 +5878,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EntityAdWordsLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntityAdWordsLink();
       var od = api.EntityAdWordsLink.fromJson(o.toJson());
       checkEntityAdWordsLink(od as api.EntityAdWordsLink);
@@ -5886,7 +5886,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EntityAdWordsLinks', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntityAdWordsLinks();
       var od = api.EntityAdWordsLinks.fromJson(o.toJson());
       checkEntityAdWordsLinks(od as api.EntityAdWordsLinks);
@@ -5894,7 +5894,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EntityUserLinkEntity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntityUserLinkEntity();
       var od = api.EntityUserLinkEntity.fromJson(o.toJson());
       checkEntityUserLinkEntity(od as api.EntityUserLinkEntity);
@@ -5902,7 +5902,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EntityUserLinkPermissions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntityUserLinkPermissions();
       var od = api.EntityUserLinkPermissions.fromJson(o.toJson());
       checkEntityUserLinkPermissions(od as api.EntityUserLinkPermissions);
@@ -5910,7 +5910,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EntityUserLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntityUserLink();
       var od = api.EntityUserLink.fromJson(o.toJson());
       checkEntityUserLink(od as api.EntityUserLink);
@@ -5918,7 +5918,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EntityUserLinks', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntityUserLinks();
       var od = api.EntityUserLinks.fromJson(o.toJson());
       checkEntityUserLinks(od as api.EntityUserLinks);
@@ -5926,7 +5926,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExperimentParentLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExperimentParentLink();
       var od = api.ExperimentParentLink.fromJson(o.toJson());
       checkExperimentParentLink(od as api.ExperimentParentLink);
@@ -5934,7 +5934,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExperimentVariations', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExperimentVariations();
       var od = api.ExperimentVariations.fromJson(o.toJson());
       checkExperimentVariations(od as api.ExperimentVariations);
@@ -5942,7 +5942,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Experiment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExperiment();
       var od = api.Experiment.fromJson(o.toJson());
       checkExperiment(od as api.Experiment);
@@ -5950,7 +5950,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Experiments', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExperiments();
       var od = api.Experiments.fromJson(o.toJson());
       checkExperiments(od as api.Experiments);
@@ -5958,7 +5958,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FilterAdvancedDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilterAdvancedDetails();
       var od = api.FilterAdvancedDetails.fromJson(o.toJson());
       checkFilterAdvancedDetails(od as api.FilterAdvancedDetails);
@@ -5966,7 +5966,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FilterLowercaseDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilterLowercaseDetails();
       var od = api.FilterLowercaseDetails.fromJson(o.toJson());
       checkFilterLowercaseDetails(od as api.FilterLowercaseDetails);
@@ -5974,7 +5974,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FilterParentLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilterParentLink();
       var od = api.FilterParentLink.fromJson(o.toJson());
       checkFilterParentLink(od as api.FilterParentLink);
@@ -5982,7 +5982,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FilterSearchAndReplaceDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilterSearchAndReplaceDetails();
       var od = api.FilterSearchAndReplaceDetails.fromJson(o.toJson());
       checkFilterSearchAndReplaceDetails(
@@ -5991,7 +5991,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FilterUppercaseDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilterUppercaseDetails();
       var od = api.FilterUppercaseDetails.fromJson(o.toJson());
       checkFilterUppercaseDetails(od as api.FilterUppercaseDetails);
@@ -5999,7 +5999,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Filter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilter();
       var od = api.Filter.fromJson(o.toJson());
       checkFilter(od as api.Filter);
@@ -6007,7 +6007,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FilterExpression', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilterExpression();
       var od = api.FilterExpression.fromJson(o.toJson());
       checkFilterExpression(od as api.FilterExpression);
@@ -6015,7 +6015,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FilterRef', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilterRef();
       var od = api.FilterRef.fromJson(o.toJson());
       checkFilterRef(od as api.FilterRef);
@@ -6023,7 +6023,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Filters', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilters();
       var od = api.Filters.fromJson(o.toJson());
       checkFilters(od as api.Filters);
@@ -6031,7 +6031,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GaDataColumnHeaders', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGaDataColumnHeaders();
       var od = api.GaDataColumnHeaders.fromJson(o.toJson());
       checkGaDataColumnHeaders(od as api.GaDataColumnHeaders);
@@ -6039,7 +6039,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GaDataDataTableCols', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGaDataDataTableCols();
       var od = api.GaDataDataTableCols.fromJson(o.toJson());
       checkGaDataDataTableCols(od as api.GaDataDataTableCols);
@@ -6047,7 +6047,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GaDataDataTableRowsC', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGaDataDataTableRowsC();
       var od = api.GaDataDataTableRowsC.fromJson(o.toJson());
       checkGaDataDataTableRowsC(od as api.GaDataDataTableRowsC);
@@ -6055,7 +6055,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GaDataDataTableRows', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGaDataDataTableRows();
       var od = api.GaDataDataTableRows.fromJson(o.toJson());
       checkGaDataDataTableRows(od as api.GaDataDataTableRows);
@@ -6063,7 +6063,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GaDataDataTable', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGaDataDataTable();
       var od = api.GaDataDataTable.fromJson(o.toJson());
       checkGaDataDataTable(od as api.GaDataDataTable);
@@ -6071,7 +6071,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GaDataProfileInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGaDataProfileInfo();
       var od = api.GaDataProfileInfo.fromJson(o.toJson());
       checkGaDataProfileInfo(od as api.GaDataProfileInfo);
@@ -6079,7 +6079,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GaDataQuery', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGaDataQuery();
       var od = api.GaDataQuery.fromJson(o.toJson());
       checkGaDataQuery(od as api.GaDataQuery);
@@ -6087,7 +6087,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GaData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGaData();
       var od = api.GaData.fromJson(o.toJson());
       checkGaData(od as api.GaData);
@@ -6095,7 +6095,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoalEventDetailsEventConditions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoalEventDetailsEventConditions();
       var od = api.GoalEventDetailsEventConditions.fromJson(o.toJson());
       checkGoalEventDetailsEventConditions(
@@ -6104,7 +6104,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoalEventDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoalEventDetails();
       var od = api.GoalEventDetails.fromJson(o.toJson());
       checkGoalEventDetails(od as api.GoalEventDetails);
@@ -6112,7 +6112,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoalParentLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoalParentLink();
       var od = api.GoalParentLink.fromJson(o.toJson());
       checkGoalParentLink(od as api.GoalParentLink);
@@ -6120,7 +6120,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoalUrlDestinationDetailsSteps', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoalUrlDestinationDetailsSteps();
       var od = api.GoalUrlDestinationDetailsSteps.fromJson(o.toJson());
       checkGoalUrlDestinationDetailsSteps(
@@ -6129,7 +6129,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoalUrlDestinationDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoalUrlDestinationDetails();
       var od = api.GoalUrlDestinationDetails.fromJson(o.toJson());
       checkGoalUrlDestinationDetails(od as api.GoalUrlDestinationDetails);
@@ -6137,7 +6137,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoalVisitNumPagesDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoalVisitNumPagesDetails();
       var od = api.GoalVisitNumPagesDetails.fromJson(o.toJson());
       checkGoalVisitNumPagesDetails(od as api.GoalVisitNumPagesDetails);
@@ -6145,7 +6145,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoalVisitTimeOnSiteDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoalVisitTimeOnSiteDetails();
       var od = api.GoalVisitTimeOnSiteDetails.fromJson(o.toJson());
       checkGoalVisitTimeOnSiteDetails(od as api.GoalVisitTimeOnSiteDetails);
@@ -6153,7 +6153,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Goal', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoal();
       var od = api.Goal.fromJson(o.toJson());
       checkGoal(od as api.Goal);
@@ -6161,7 +6161,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Goals', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoals();
       var od = api.Goals.fromJson(o.toJson());
       checkGoals(od as api.Goals);
@@ -6169,7 +6169,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HashClientIdRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHashClientIdRequest();
       var od = api.HashClientIdRequest.fromJson(o.toJson());
       checkHashClientIdRequest(od as api.HashClientIdRequest);
@@ -6177,7 +6177,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HashClientIdResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHashClientIdResponse();
       var od = api.HashClientIdResponse.fromJson(o.toJson());
       checkHashClientIdResponse(od as api.HashClientIdResponse);
@@ -6185,7 +6185,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IncludeConditions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIncludeConditions();
       var od = api.IncludeConditions.fromJson(o.toJson());
       checkIncludeConditions(od as api.IncludeConditions);
@@ -6193,7 +6193,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LinkedForeignAccount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLinkedForeignAccount();
       var od = api.LinkedForeignAccount.fromJson(o.toJson());
       checkLinkedForeignAccount(od as api.LinkedForeignAccount);
@@ -6201,7 +6201,7 @@ void main() {
   });
 
   unittest.group('obj-schema-McfDataColumnHeaders', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMcfDataColumnHeaders();
       var od = api.McfDataColumnHeaders.fromJson(o.toJson());
       checkMcfDataColumnHeaders(od as api.McfDataColumnHeaders);
@@ -6209,7 +6209,7 @@ void main() {
   });
 
   unittest.group('obj-schema-McfDataProfileInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMcfDataProfileInfo();
       var od = api.McfDataProfileInfo.fromJson(o.toJson());
       checkMcfDataProfileInfo(od as api.McfDataProfileInfo);
@@ -6217,7 +6217,7 @@ void main() {
   });
 
   unittest.group('obj-schema-McfDataQuery', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMcfDataQuery();
       var od = api.McfDataQuery.fromJson(o.toJson());
       checkMcfDataQuery(od as api.McfDataQuery);
@@ -6225,7 +6225,7 @@ void main() {
   });
 
   unittest.group('obj-schema-McfDataRowsConversionPathValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMcfDataRowsConversionPathValue();
       var od = api.McfDataRowsConversionPathValue.fromJson(o.toJson());
       checkMcfDataRowsConversionPathValue(
@@ -6234,7 +6234,7 @@ void main() {
   });
 
   unittest.group('obj-schema-McfDataRows', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMcfDataRows();
       var od = api.McfDataRows.fromJson(o.toJson());
       checkMcfDataRows(od as api.McfDataRows);
@@ -6242,7 +6242,7 @@ void main() {
   });
 
   unittest.group('obj-schema-McfData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMcfData();
       var od = api.McfData.fromJson(o.toJson());
       checkMcfData(od as api.McfData);
@@ -6250,7 +6250,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProfileChildLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProfileChildLink();
       var od = api.ProfileChildLink.fromJson(o.toJson());
       checkProfileChildLink(od as api.ProfileChildLink);
@@ -6258,7 +6258,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProfileParentLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProfileParentLink();
       var od = api.ProfileParentLink.fromJson(o.toJson());
       checkProfileParentLink(od as api.ProfileParentLink);
@@ -6266,7 +6266,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProfilePermissions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProfilePermissions();
       var od = api.ProfilePermissions.fromJson(o.toJson());
       checkProfilePermissions(od as api.ProfilePermissions);
@@ -6274,7 +6274,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Profile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProfile();
       var od = api.Profile.fromJson(o.toJson());
       checkProfile(od as api.Profile);
@@ -6282,7 +6282,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProfileFilterLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProfileFilterLink();
       var od = api.ProfileFilterLink.fromJson(o.toJson());
       checkProfileFilterLink(od as api.ProfileFilterLink);
@@ -6290,7 +6290,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProfileFilterLinks', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProfileFilterLinks();
       var od = api.ProfileFilterLinks.fromJson(o.toJson());
       checkProfileFilterLinks(od as api.ProfileFilterLinks);
@@ -6298,7 +6298,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProfileRef', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProfileRef();
       var od = api.ProfileRef.fromJson(o.toJson());
       checkProfileRef(od as api.ProfileRef);
@@ -6306,7 +6306,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProfileSummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProfileSummary();
       var od = api.ProfileSummary.fromJson(o.toJson());
       checkProfileSummary(od as api.ProfileSummary);
@@ -6314,7 +6314,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Profiles', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProfiles();
       var od = api.Profiles.fromJson(o.toJson());
       checkProfiles(od as api.Profiles);
@@ -6322,7 +6322,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RealtimeDataColumnHeaders', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRealtimeDataColumnHeaders();
       var od = api.RealtimeDataColumnHeaders.fromJson(o.toJson());
       checkRealtimeDataColumnHeaders(od as api.RealtimeDataColumnHeaders);
@@ -6330,7 +6330,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RealtimeDataProfileInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRealtimeDataProfileInfo();
       var od = api.RealtimeDataProfileInfo.fromJson(o.toJson());
       checkRealtimeDataProfileInfo(od as api.RealtimeDataProfileInfo);
@@ -6338,7 +6338,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RealtimeDataQuery', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRealtimeDataQuery();
       var od = api.RealtimeDataQuery.fromJson(o.toJson());
       checkRealtimeDataQuery(od as api.RealtimeDataQuery);
@@ -6346,7 +6346,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RealtimeData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRealtimeData();
       var od = api.RealtimeData.fromJson(o.toJson());
       checkRealtimeData(od as api.RealtimeData);
@@ -6354,7 +6354,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RemarketingAudienceAudienceDefinition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRemarketingAudienceAudienceDefinition();
       var od = api.RemarketingAudienceAudienceDefinition.fromJson(o.toJson());
       checkRemarketingAudienceAudienceDefinition(
@@ -6365,7 +6365,7 @@ void main() {
   unittest.group(
       'obj-schema-RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildRemarketingAudienceStateBasedAudienceDefinitionExcludeConditions();
       var od =
@@ -6379,7 +6379,7 @@ void main() {
 
   unittest.group('obj-schema-RemarketingAudienceStateBasedAudienceDefinition',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRemarketingAudienceStateBasedAudienceDefinition();
       var od = api.RemarketingAudienceStateBasedAudienceDefinition.fromJson(
           o.toJson());
@@ -6389,7 +6389,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RemarketingAudience', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRemarketingAudience();
       var od = api.RemarketingAudience.fromJson(o.toJson());
       checkRemarketingAudience(od as api.RemarketingAudience);
@@ -6397,7 +6397,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RemarketingAudiences', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRemarketingAudiences();
       var od = api.RemarketingAudiences.fromJson(o.toJson());
       checkRemarketingAudiences(od as api.RemarketingAudiences);
@@ -6405,7 +6405,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Segment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSegment();
       var od = api.Segment.fromJson(o.toJson());
       checkSegment(od as api.Segment);
@@ -6413,7 +6413,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Segments', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSegments();
       var od = api.Segments.fromJson(o.toJson());
       checkSegments(od as api.Segments);
@@ -6421,7 +6421,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UnsampledReportCloudStorageDownloadDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUnsampledReportCloudStorageDownloadDetails();
       var od =
           api.UnsampledReportCloudStorageDownloadDetails.fromJson(o.toJson());
@@ -6431,7 +6431,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UnsampledReportDriveDownloadDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUnsampledReportDriveDownloadDetails();
       var od = api.UnsampledReportDriveDownloadDetails.fromJson(o.toJson());
       checkUnsampledReportDriveDownloadDetails(
@@ -6440,7 +6440,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UnsampledReport', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUnsampledReport();
       var od = api.UnsampledReport.fromJson(o.toJson());
       checkUnsampledReport(od as api.UnsampledReport);
@@ -6448,7 +6448,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UnsampledReports', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUnsampledReports();
       var od = api.UnsampledReports.fromJson(o.toJson());
       checkUnsampledReports(od as api.UnsampledReports);
@@ -6456,7 +6456,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Upload', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpload();
       var od = api.Upload.fromJson(o.toJson());
       checkUpload(od as api.Upload);
@@ -6464,7 +6464,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Uploads', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUploads();
       var od = api.Uploads.fromJson(o.toJson());
       checkUploads(od as api.Uploads);
@@ -6472,7 +6472,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserDeletionRequestId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserDeletionRequestId();
       var od = api.UserDeletionRequestId.fromJson(o.toJson());
       checkUserDeletionRequestId(od as api.UserDeletionRequestId);
@@ -6480,7 +6480,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserDeletionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserDeletionRequest();
       var od = api.UserDeletionRequest.fromJson(o.toJson());
       checkUserDeletionRequest(od as api.UserDeletionRequest);
@@ -6488,7 +6488,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserRef', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserRef();
       var od = api.UserRef.fromJson(o.toJson());
       checkUserRef(od as api.UserRef);
@@ -6496,7 +6496,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebPropertyRef', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebPropertyRef();
       var od = api.WebPropertyRef.fromJson(o.toJson());
       checkWebPropertyRef(od as api.WebPropertyRef);
@@ -6504,7 +6504,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebPropertySummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebPropertySummary();
       var od = api.WebPropertySummary.fromJson(o.toJson());
       checkWebPropertySummary(od as api.WebPropertySummary);
@@ -6512,7 +6512,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Webproperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebproperties();
       var od = api.Webproperties.fromJson(o.toJson());
       checkWebproperties(od as api.Webproperties);
@@ -6520,7 +6520,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebpropertyChildLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebpropertyChildLink();
       var od = api.WebpropertyChildLink.fromJson(o.toJson());
       checkWebpropertyChildLink(od as api.WebpropertyChildLink);
@@ -6528,7 +6528,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebpropertyParentLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebpropertyParentLink();
       var od = api.WebpropertyParentLink.fromJson(o.toJson());
       checkWebpropertyParentLink(od as api.WebpropertyParentLink);
@@ -6536,7 +6536,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebpropertyPermissions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebpropertyPermissions();
       var od = api.WebpropertyPermissions.fromJson(o.toJson());
       checkWebpropertyPermissions(od as api.WebpropertyPermissions);
@@ -6544,7 +6544,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Webproperty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebproperty();
       var od = api.Webproperty.fromJson(o.toJson());
       checkWebproperty(od as api.Webproperty);
@@ -6552,7 +6552,7 @@ void main() {
   });
 
   unittest.group('resource-DataGaResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).data.ga;
       var arg_ids = 'foo';
@@ -6668,26 +6668,24 @@ void main() {
         var resp = convert.json.encode(buildGaData());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_ids, arg_startDate, arg_endDate, arg_metrics,
-              dimensions: arg_dimensions,
-              filters: arg_filters,
-              includeEmptyRows: arg_includeEmptyRows,
-              maxResults: arg_maxResults,
-              output: arg_output,
-              samplingLevel: arg_samplingLevel,
-              segment: arg_segment,
-              sort: arg_sort,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGaData(response as api.GaData);
-      })));
+      final response = await res.get(
+          arg_ids, arg_startDate, arg_endDate, arg_metrics,
+          dimensions: arg_dimensions,
+          filters: arg_filters,
+          includeEmptyRows: arg_includeEmptyRows,
+          maxResults: arg_maxResults,
+          output: arg_output,
+          samplingLevel: arg_samplingLevel,
+          segment: arg_segment,
+          sort: arg_sort,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkGaData(response as api.GaData);
     });
   });
 
   unittest.group('resource-DataMcfResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).data.mcf;
       var arg_ids = 'foo';
@@ -6788,23 +6786,21 @@ void main() {
         var resp = convert.json.encode(buildMcfData());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_ids, arg_startDate, arg_endDate, arg_metrics,
-              dimensions: arg_dimensions,
-              filters: arg_filters,
-              maxResults: arg_maxResults,
-              samplingLevel: arg_samplingLevel,
-              sort: arg_sort,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMcfData(response as api.McfData);
-      })));
+      final response = await res.get(
+          arg_ids, arg_startDate, arg_endDate, arg_metrics,
+          dimensions: arg_dimensions,
+          filters: arg_filters,
+          maxResults: arg_maxResults,
+          samplingLevel: arg_samplingLevel,
+          sort: arg_sort,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkMcfData(response as api.McfData);
     });
   });
 
   unittest.group('resource-DataRealtimeResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).data.realtime;
       var arg_ids = 'foo';
@@ -6885,21 +6881,18 @@ void main() {
         var resp = convert.json.encode(buildRealtimeData());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_ids, arg_metrics,
-              dimensions: arg_dimensions,
-              filters: arg_filters,
-              maxResults: arg_maxResults,
-              sort: arg_sort,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRealtimeData(response as api.RealtimeData);
-      })));
+      final response = await res.get(arg_ids, arg_metrics,
+          dimensions: arg_dimensions,
+          filters: arg_filters,
+          maxResults: arg_maxResults,
+          sort: arg_sort,
+          $fields: arg_$fields);
+      checkRealtimeData(response as api.RealtimeData);
     });
   });
 
   unittest.group('resource-ManagementAccountSummariesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.accountSummaries;
       var arg_maxResults = 42;
@@ -6960,19 +6953,16 @@ void main() {
         var resp = convert.json.encode(buildAccountSummaries());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountSummaries(response as api.AccountSummaries);
-      })));
+      final response = await res.list(
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkAccountSummaries(response as api.AccountSummaries);
     });
   });
 
   unittest.group('resource-ManagementAccountUserLinksResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.accountUserLinks;
       var arg_accountId = 'foo';
@@ -7045,12 +7035,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_accountId, arg_linkId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_accountId, arg_linkId, $fields: arg_$fields);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.accountUserLinks;
       var arg_request = buildEntityUserLink();
@@ -7121,14 +7109,12 @@ void main() {
         var resp = convert.json.encode(buildEntityUserLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_accountId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEntityUserLink(response as api.EntityUserLink);
-      })));
+      final response =
+          await res.insert(arg_request, arg_accountId, $fields: arg_$fields);
+      checkEntityUserLink(response as api.EntityUserLink);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.accountUserLinks;
       var arg_accountId = 'foo';
@@ -7204,17 +7190,14 @@ void main() {
         var resp = convert.json.encode(buildEntityUserLinks());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId,
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEntityUserLinks(response as api.EntityUserLinks);
-      })));
+      final response = await res.list(arg_accountId,
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkEntityUserLinks(response as api.EntityUserLinks);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.accountUserLinks;
       var arg_request = buildEntityUserLink();
@@ -7292,16 +7275,14 @@ void main() {
         var resp = convert.json.encode(buildEntityUserLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_accountId, arg_linkId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEntityUserLink(response as api.EntityUserLink);
-      })));
+      final response = await res.update(arg_request, arg_accountId, arg_linkId,
+          $fields: arg_$fields);
+      checkEntityUserLink(response as api.EntityUserLink);
     });
   });
 
   unittest.group('resource-ManagementAccountsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.accounts;
       var arg_maxResults = 42;
@@ -7362,19 +7343,16 @@ void main() {
         var resp = convert.json.encode(buildAccounts());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccounts(response as api.Accounts);
-      })));
+      final response = await res.list(
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkAccounts(response as api.Accounts);
     });
   });
 
   unittest.group('resource-ManagementClientIdResource', () {
-    unittest.test('method--hashClientId', () {
+    unittest.test('method--hashClientId', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.clientId;
       var arg_request = buildHashClientIdRequest();
@@ -7430,16 +7408,14 @@ void main() {
         var resp = convert.json.encode(buildHashClientIdResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .hashClientId(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHashClientIdResponse(response as api.HashClientIdResponse);
-      })));
+      final response =
+          await res.hashClientId(arg_request, $fields: arg_$fields);
+      checkHashClientIdResponse(response as api.HashClientIdResponse);
     });
   });
 
   unittest.group('resource-ManagementCustomDataSourcesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.customDataSources;
       var arg_accountId = 'foo';
@@ -7530,19 +7506,16 @@ void main() {
         var resp = convert.json.encode(buildCustomDataSources());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId, arg_webPropertyId,
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomDataSources(response as api.CustomDataSources);
-      })));
+      final response = await res.list(arg_accountId, arg_webPropertyId,
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkCustomDataSources(response as api.CustomDataSources);
     });
   });
 
   unittest.group('resource-ManagementCustomDimensionsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.customDimensions;
       var arg_accountId = 'foo';
@@ -7630,15 +7603,13 @@ void main() {
         var resp = convert.json.encode(buildCustomDimension());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_accountId, arg_webPropertyId, arg_customDimensionId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomDimension(response as api.CustomDimension);
-      })));
+      final response = await res.get(
+          arg_accountId, arg_webPropertyId, arg_customDimensionId,
+          $fields: arg_$fields);
+      checkCustomDimension(response as api.CustomDimension);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.customDimensions;
       var arg_request = buildCustomDimension();
@@ -7724,15 +7695,13 @@ void main() {
         var resp = convert.json.encode(buildCustomDimension());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_accountId, arg_webPropertyId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomDimension(response as api.CustomDimension);
-      })));
+      final response = await res.insert(
+          arg_request, arg_accountId, arg_webPropertyId,
+          $fields: arg_$fields);
+      checkCustomDimension(response as api.CustomDimension);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.customDimensions;
       var arg_accountId = 'foo';
@@ -7823,17 +7792,14 @@ void main() {
         var resp = convert.json.encode(buildCustomDimensions());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId, arg_webPropertyId,
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomDimensions(response as api.CustomDimensions);
-      })));
+      final response = await res.list(arg_accountId, arg_webPropertyId,
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkCustomDimensions(response as api.CustomDimensions);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.customDimensions;
       var arg_request = buildCustomDimension();
@@ -7931,17 +7897,14 @@ void main() {
         var resp = convert.json.encode(buildCustomDimension());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_accountId, arg_webPropertyId,
-              arg_customDimensionId,
-              ignoreCustomDataSourceLinks: arg_ignoreCustomDataSourceLinks,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomDimension(response as api.CustomDimension);
-      })));
+      final response = await res.patch(
+          arg_request, arg_accountId, arg_webPropertyId, arg_customDimensionId,
+          ignoreCustomDataSourceLinks: arg_ignoreCustomDataSourceLinks,
+          $fields: arg_$fields);
+      checkCustomDimension(response as api.CustomDimension);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.customDimensions;
       var arg_request = buildCustomDimension();
@@ -8039,19 +8002,16 @@ void main() {
         var resp = convert.json.encode(buildCustomDimension());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_accountId, arg_webPropertyId,
-              arg_customDimensionId,
-              ignoreCustomDataSourceLinks: arg_ignoreCustomDataSourceLinks,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomDimension(response as api.CustomDimension);
-      })));
+      final response = await res.update(
+          arg_request, arg_accountId, arg_webPropertyId, arg_customDimensionId,
+          ignoreCustomDataSourceLinks: arg_ignoreCustomDataSourceLinks,
+          $fields: arg_$fields);
+      checkCustomDimension(response as api.CustomDimension);
     });
   });
 
   unittest.group('resource-ManagementCustomMetricsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.customMetrics;
       var arg_accountId = 'foo';
@@ -8139,15 +8099,13 @@ void main() {
         var resp = convert.json.encode(buildCustomMetric());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_accountId, arg_webPropertyId, arg_customMetricId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomMetric(response as api.CustomMetric);
-      })));
+      final response = await res.get(
+          arg_accountId, arg_webPropertyId, arg_customMetricId,
+          $fields: arg_$fields);
+      checkCustomMetric(response as api.CustomMetric);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.customMetrics;
       var arg_request = buildCustomMetric();
@@ -8233,15 +8191,13 @@ void main() {
         var resp = convert.json.encode(buildCustomMetric());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_accountId, arg_webPropertyId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomMetric(response as api.CustomMetric);
-      })));
+      final response = await res.insert(
+          arg_request, arg_accountId, arg_webPropertyId,
+          $fields: arg_$fields);
+      checkCustomMetric(response as api.CustomMetric);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.customMetrics;
       var arg_accountId = 'foo';
@@ -8332,17 +8288,14 @@ void main() {
         var resp = convert.json.encode(buildCustomMetrics());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId, arg_webPropertyId,
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomMetrics(response as api.CustomMetrics);
-      })));
+      final response = await res.list(arg_accountId, arg_webPropertyId,
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkCustomMetrics(response as api.CustomMetrics);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.customMetrics;
       var arg_request = buildCustomMetric();
@@ -8440,17 +8393,14 @@ void main() {
         var resp = convert.json.encode(buildCustomMetric());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(
-              arg_request, arg_accountId, arg_webPropertyId, arg_customMetricId,
-              ignoreCustomDataSourceLinks: arg_ignoreCustomDataSourceLinks,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomMetric(response as api.CustomMetric);
-      })));
+      final response = await res.patch(
+          arg_request, arg_accountId, arg_webPropertyId, arg_customMetricId,
+          ignoreCustomDataSourceLinks: arg_ignoreCustomDataSourceLinks,
+          $fields: arg_$fields);
+      checkCustomMetric(response as api.CustomMetric);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.customMetrics;
       var arg_request = buildCustomMetric();
@@ -8548,19 +8498,16 @@ void main() {
         var resp = convert.json.encode(buildCustomMetric());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(
-              arg_request, arg_accountId, arg_webPropertyId, arg_customMetricId,
-              ignoreCustomDataSourceLinks: arg_ignoreCustomDataSourceLinks,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomMetric(response as api.CustomMetric);
-      })));
+      final response = await res.update(
+          arg_request, arg_accountId, arg_webPropertyId, arg_customMetricId,
+          ignoreCustomDataSourceLinks: arg_ignoreCustomDataSourceLinks,
+          $fields: arg_$fields);
+      checkCustomMetric(response as api.CustomMetric);
     });
   });
 
   unittest.group('resource-ManagementExperimentsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.experiments;
       var arg_accountId = 'foo';
@@ -8663,14 +8610,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(
-              arg_accountId, arg_webPropertyId, arg_profileId, arg_experimentId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(
+          arg_accountId, arg_webPropertyId, arg_profileId, arg_experimentId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.experiments;
       var arg_accountId = 'foo';
@@ -8773,16 +8718,13 @@ void main() {
         var resp = convert.json.encode(buildExperiment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(
-              arg_accountId, arg_webPropertyId, arg_profileId, arg_experimentId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkExperiment(response as api.Experiment);
-      })));
+      final response = await res.get(
+          arg_accountId, arg_webPropertyId, arg_profileId, arg_experimentId,
+          $fields: arg_$fields);
+      checkExperiment(response as api.Experiment);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.experiments;
       var arg_request = buildExperiment();
@@ -8883,15 +8825,13 @@ void main() {
         var resp = convert.json.encode(buildExperiment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkExperiment(response as api.Experiment);
-      })));
+      final response = await res.insert(
+          arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
+          $fields: arg_$fields);
+      checkExperiment(response as api.Experiment);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.experiments;
       var arg_accountId = 'foo';
@@ -8997,17 +8937,15 @@ void main() {
         var resp = convert.json.encode(buildExperiments());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId, arg_webPropertyId, arg_profileId,
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkExperiments(response as api.Experiments);
-      })));
+      final response = await res.list(
+          arg_accountId, arg_webPropertyId, arg_profileId,
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkExperiments(response as api.Experiments);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.experiments;
       var arg_request = buildExperiment();
@@ -9115,16 +9053,13 @@ void main() {
         var resp = convert.json.encode(buildExperiment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
-              arg_experimentId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkExperiment(response as api.Experiment);
-      })));
+      final response = await res.patch(arg_request, arg_accountId,
+          arg_webPropertyId, arg_profileId, arg_experimentId,
+          $fields: arg_$fields);
+      checkExperiment(response as api.Experiment);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.experiments;
       var arg_request = buildExperiment();
@@ -9232,18 +9167,15 @@ void main() {
         var resp = convert.json.encode(buildExperiment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
-              arg_experimentId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkExperiment(response as api.Experiment);
-      })));
+      final response = await res.update(arg_request, arg_accountId,
+          arg_webPropertyId, arg_profileId, arg_experimentId,
+          $fields: arg_$fields);
+      checkExperiment(response as api.Experiment);
     });
   });
 
   unittest.group('resource-ManagementFiltersResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.filters;
       var arg_accountId = 'foo';
@@ -9316,14 +9248,12 @@ void main() {
         var resp = convert.json.encode(buildFilter());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_accountId, arg_filterId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFilter(response as api.Filter);
-      })));
+      final response =
+          await res.delete(arg_accountId, arg_filterId, $fields: arg_$fields);
+      checkFilter(response as api.Filter);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.filters;
       var arg_accountId = 'foo';
@@ -9396,14 +9326,12 @@ void main() {
         var resp = convert.json.encode(buildFilter());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_accountId, arg_filterId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFilter(response as api.Filter);
-      })));
+      final response =
+          await res.get(arg_accountId, arg_filterId, $fields: arg_$fields);
+      checkFilter(response as api.Filter);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.filters;
       var arg_request = buildFilter();
@@ -9474,14 +9402,12 @@ void main() {
         var resp = convert.json.encode(buildFilter());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_accountId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFilter(response as api.Filter);
-      })));
+      final response =
+          await res.insert(arg_request, arg_accountId, $fields: arg_$fields);
+      checkFilter(response as api.Filter);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.filters;
       var arg_accountId = 'foo';
@@ -9557,17 +9483,14 @@ void main() {
         var resp = convert.json.encode(buildFilters());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId,
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFilters(response as api.Filters);
-      })));
+      final response = await res.list(arg_accountId,
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkFilters(response as api.Filters);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.filters;
       var arg_request = buildFilter();
@@ -9645,14 +9568,12 @@ void main() {
         var resp = convert.json.encode(buildFilter());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_accountId, arg_filterId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFilter(response as api.Filter);
-      })));
+      final response = await res.patch(arg_request, arg_accountId, arg_filterId,
+          $fields: arg_$fields);
+      checkFilter(response as api.Filter);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.filters;
       var arg_request = buildFilter();
@@ -9730,17 +9651,15 @@ void main() {
         var resp = convert.json.encode(buildFilter());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_accountId, arg_filterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFilter(response as api.Filter);
-      })));
+      final response = await res.update(
+          arg_request, arg_accountId, arg_filterId,
+          $fields: arg_$fields);
+      checkFilter(response as api.Filter);
     });
   });
 
   unittest.group('resource-ManagementGoalsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.goals;
       var arg_accountId = 'foo';
@@ -9843,15 +9762,13 @@ void main() {
         var resp = convert.json.encode(buildGoal());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_accountId, arg_webPropertyId, arg_profileId, arg_goalId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoal(response as api.Goal);
-      })));
+      final response = await res.get(
+          arg_accountId, arg_webPropertyId, arg_profileId, arg_goalId,
+          $fields: arg_$fields);
+      checkGoal(response as api.Goal);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.goals;
       var arg_request = buildGoal();
@@ -9952,15 +9869,13 @@ void main() {
         var resp = convert.json.encode(buildGoal());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoal(response as api.Goal);
-      })));
+      final response = await res.insert(
+          arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
+          $fields: arg_$fields);
+      checkGoal(response as api.Goal);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.goals;
       var arg_accountId = 'foo';
@@ -10066,17 +9981,15 @@ void main() {
         var resp = convert.json.encode(buildGoals());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId, arg_webPropertyId, arg_profileId,
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoals(response as api.Goals);
-      })));
+      final response = await res.list(
+          arg_accountId, arg_webPropertyId, arg_profileId,
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkGoals(response as api.Goals);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.goals;
       var arg_request = buildGoal();
@@ -10184,16 +10097,13 @@ void main() {
         var resp = convert.json.encode(buildGoal());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
-              arg_goalId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoal(response as api.Goal);
-      })));
+      final response = await res.patch(arg_request, arg_accountId,
+          arg_webPropertyId, arg_profileId, arg_goalId,
+          $fields: arg_$fields);
+      checkGoal(response as api.Goal);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.goals;
       var arg_request = buildGoal();
@@ -10301,18 +10211,15 @@ void main() {
         var resp = convert.json.encode(buildGoal());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
-              arg_goalId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoal(response as api.Goal);
-      })));
+      final response = await res.update(arg_request, arg_accountId,
+          arg_webPropertyId, arg_profileId, arg_goalId,
+          $fields: arg_$fields);
+      checkGoal(response as api.Goal);
     });
   });
 
   unittest.group('resource-ManagementProfileFilterLinksResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profileFilterLinks;
       var arg_accountId = 'foo';
@@ -10415,13 +10322,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_accountId, arg_webPropertyId, arg_profileId, arg_linkId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(
+          arg_accountId, arg_webPropertyId, arg_profileId, arg_linkId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profileFilterLinks;
       var arg_accountId = 'foo';
@@ -10524,15 +10430,13 @@ void main() {
         var resp = convert.json.encode(buildProfileFilterLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_accountId, arg_webPropertyId, arg_profileId, arg_linkId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProfileFilterLink(response as api.ProfileFilterLink);
-      })));
+      final response = await res.get(
+          arg_accountId, arg_webPropertyId, arg_profileId, arg_linkId,
+          $fields: arg_$fields);
+      checkProfileFilterLink(response as api.ProfileFilterLink);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profileFilterLinks;
       var arg_request = buildProfileFilterLink();
@@ -10633,15 +10537,13 @@ void main() {
         var resp = convert.json.encode(buildProfileFilterLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProfileFilterLink(response as api.ProfileFilterLink);
-      })));
+      final response = await res.insert(
+          arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
+          $fields: arg_$fields);
+      checkProfileFilterLink(response as api.ProfileFilterLink);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profileFilterLinks;
       var arg_accountId = 'foo';
@@ -10747,17 +10649,15 @@ void main() {
         var resp = convert.json.encode(buildProfileFilterLinks());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId, arg_webPropertyId, arg_profileId,
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProfileFilterLinks(response as api.ProfileFilterLinks);
-      })));
+      final response = await res.list(
+          arg_accountId, arg_webPropertyId, arg_profileId,
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkProfileFilterLinks(response as api.ProfileFilterLinks);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profileFilterLinks;
       var arg_request = buildProfileFilterLink();
@@ -10865,16 +10765,13 @@ void main() {
         var resp = convert.json.encode(buildProfileFilterLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
-              arg_linkId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProfileFilterLink(response as api.ProfileFilterLink);
-      })));
+      final response = await res.patch(arg_request, arg_accountId,
+          arg_webPropertyId, arg_profileId, arg_linkId,
+          $fields: arg_$fields);
+      checkProfileFilterLink(response as api.ProfileFilterLink);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profileFilterLinks;
       var arg_request = buildProfileFilterLink();
@@ -10982,18 +10879,15 @@ void main() {
         var resp = convert.json.encode(buildProfileFilterLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
-              arg_linkId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProfileFilterLink(response as api.ProfileFilterLink);
-      })));
+      final response = await res.update(arg_request, arg_accountId,
+          arg_webPropertyId, arg_profileId, arg_linkId,
+          $fields: arg_$fields);
+      checkProfileFilterLink(response as api.ProfileFilterLink);
     });
   });
 
   unittest.group('resource-ManagementProfileUserLinksResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profileUserLinks;
       var arg_accountId = 'foo';
@@ -11096,13 +10990,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_accountId, arg_webPropertyId, arg_profileId, arg_linkId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(
+          arg_accountId, arg_webPropertyId, arg_profileId, arg_linkId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profileUserLinks;
       var arg_request = buildEntityUserLink();
@@ -11203,15 +11096,13 @@ void main() {
         var resp = convert.json.encode(buildEntityUserLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEntityUserLink(response as api.EntityUserLink);
-      })));
+      final response = await res.insert(
+          arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
+          $fields: arg_$fields);
+      checkEntityUserLink(response as api.EntityUserLink);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profileUserLinks;
       var arg_accountId = 'foo';
@@ -11317,17 +11208,15 @@ void main() {
         var resp = convert.json.encode(buildEntityUserLinks());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId, arg_webPropertyId, arg_profileId,
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEntityUserLinks(response as api.EntityUserLinks);
-      })));
+      final response = await res.list(
+          arg_accountId, arg_webPropertyId, arg_profileId,
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkEntityUserLinks(response as api.EntityUserLinks);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profileUserLinks;
       var arg_request = buildEntityUserLink();
@@ -11435,18 +11324,15 @@ void main() {
         var resp = convert.json.encode(buildEntityUserLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
-              arg_linkId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEntityUserLink(response as api.EntityUserLink);
-      })));
+      final response = await res.update(arg_request, arg_accountId,
+          arg_webPropertyId, arg_profileId, arg_linkId,
+          $fields: arg_$fields);
+      checkEntityUserLink(response as api.EntityUserLink);
     });
   });
 
   unittest.group('resource-ManagementProfilesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profiles;
       var arg_accountId = 'foo';
@@ -11534,13 +11420,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_accountId, arg_webPropertyId, arg_profileId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_accountId, arg_webPropertyId, arg_profileId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profiles;
       var arg_accountId = 'foo';
@@ -11628,15 +11512,13 @@ void main() {
         var resp = convert.json.encode(buildProfile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_accountId, arg_webPropertyId, arg_profileId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProfile(response as api.Profile);
-      })));
+      final response = await res.get(
+          arg_accountId, arg_webPropertyId, arg_profileId,
+          $fields: arg_$fields);
+      checkProfile(response as api.Profile);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profiles;
       var arg_request = buildProfile();
@@ -11722,15 +11604,13 @@ void main() {
         var resp = convert.json.encode(buildProfile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_accountId, arg_webPropertyId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProfile(response as api.Profile);
-      })));
+      final response = await res.insert(
+          arg_request, arg_accountId, arg_webPropertyId,
+          $fields: arg_$fields);
+      checkProfile(response as api.Profile);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profiles;
       var arg_accountId = 'foo';
@@ -11821,17 +11701,14 @@ void main() {
         var resp = convert.json.encode(buildProfiles());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId, arg_webPropertyId,
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProfiles(response as api.Profiles);
-      })));
+      final response = await res.list(arg_accountId, arg_webPropertyId,
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkProfiles(response as api.Profiles);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profiles;
       var arg_request = buildProfile();
@@ -11924,15 +11801,13 @@ void main() {
         var resp = convert.json.encode(buildProfile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProfile(response as api.Profile);
-      })));
+      final response = await res.patch(
+          arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
+          $fields: arg_$fields);
+      checkProfile(response as api.Profile);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.profiles;
       var arg_request = buildProfile();
@@ -12025,17 +11900,15 @@ void main() {
         var resp = convert.json.encode(buildProfile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProfile(response as api.Profile);
-      })));
+      final response = await res.update(
+          arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
+          $fields: arg_$fields);
+      checkProfile(response as api.Profile);
     });
   });
 
   unittest.group('resource-ManagementRemarketingAudienceResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.remarketingAudience;
       var arg_accountId = 'foo';
@@ -12123,13 +11996,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_accountId, arg_webPropertyId, arg_remarketingAudienceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(
+          arg_accountId, arg_webPropertyId, arg_remarketingAudienceId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.remarketingAudience;
       var arg_accountId = 'foo';
@@ -12217,15 +12089,13 @@ void main() {
         var resp = convert.json.encode(buildRemarketingAudience());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_accountId, arg_webPropertyId, arg_remarketingAudienceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRemarketingAudience(response as api.RemarketingAudience);
-      })));
+      final response = await res.get(
+          arg_accountId, arg_webPropertyId, arg_remarketingAudienceId,
+          $fields: arg_$fields);
+      checkRemarketingAudience(response as api.RemarketingAudience);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.remarketingAudience;
       var arg_request = buildRemarketingAudience();
@@ -12311,15 +12181,13 @@ void main() {
         var resp = convert.json.encode(buildRemarketingAudience());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_accountId, arg_webPropertyId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRemarketingAudience(response as api.RemarketingAudience);
-      })));
+      final response = await res.insert(
+          arg_request, arg_accountId, arg_webPropertyId,
+          $fields: arg_$fields);
+      checkRemarketingAudience(response as api.RemarketingAudience);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.remarketingAudience;
       var arg_accountId = 'foo';
@@ -12415,18 +12283,15 @@ void main() {
         var resp = convert.json.encode(buildRemarketingAudiences());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId, arg_webPropertyId,
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              type: arg_type,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRemarketingAudiences(response as api.RemarketingAudiences);
-      })));
+      final response = await res.list(arg_accountId, arg_webPropertyId,
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          type: arg_type,
+          $fields: arg_$fields);
+      checkRemarketingAudiences(response as api.RemarketingAudiences);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.remarketingAudience;
       var arg_request = buildRemarketingAudience();
@@ -12519,16 +12384,13 @@ void main() {
         var resp = convert.json.encode(buildRemarketingAudience());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_accountId, arg_webPropertyId,
-              arg_remarketingAudienceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRemarketingAudience(response as api.RemarketingAudience);
-      })));
+      final response = await res.patch(arg_request, arg_accountId,
+          arg_webPropertyId, arg_remarketingAudienceId,
+          $fields: arg_$fields);
+      checkRemarketingAudience(response as api.RemarketingAudience);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.remarketingAudience;
       var arg_request = buildRemarketingAudience();
@@ -12621,18 +12483,15 @@ void main() {
         var resp = convert.json.encode(buildRemarketingAudience());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_accountId, arg_webPropertyId,
-              arg_remarketingAudienceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRemarketingAudience(response as api.RemarketingAudience);
-      })));
+      final response = await res.update(arg_request, arg_accountId,
+          arg_webPropertyId, arg_remarketingAudienceId,
+          $fields: arg_$fields);
+      checkRemarketingAudience(response as api.RemarketingAudience);
     });
   });
 
   unittest.group('resource-ManagementSegmentsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.segments;
       var arg_maxResults = 42;
@@ -12693,19 +12552,16 @@ void main() {
         var resp = convert.json.encode(buildSegments());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSegments(response as api.Segments);
-      })));
+      final response = await res.list(
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkSegments(response as api.Segments);
     });
   });
 
   unittest.group('resource-ManagementUnsampledReportsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.unsampledReports;
       var arg_accountId = 'foo';
@@ -12808,14 +12664,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_accountId, arg_webPropertyId, arg_profileId,
-              arg_unsampledReportId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_accountId, arg_webPropertyId, arg_profileId,
+          arg_unsampledReportId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.unsampledReports;
       var arg_accountId = 'foo';
@@ -12918,16 +12772,13 @@ void main() {
         var resp = convert.json.encode(buildUnsampledReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_accountId, arg_webPropertyId, arg_profileId,
-              arg_unsampledReportId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUnsampledReport(response as api.UnsampledReport);
-      })));
+      final response = await res.get(arg_accountId, arg_webPropertyId,
+          arg_profileId, arg_unsampledReportId,
+          $fields: arg_$fields);
+      checkUnsampledReport(response as api.UnsampledReport);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.unsampledReports;
       var arg_request = buildUnsampledReport();
@@ -13028,15 +12879,13 @@ void main() {
         var resp = convert.json.encode(buildUnsampledReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUnsampledReport(response as api.UnsampledReport);
-      })));
+      final response = await res.insert(
+          arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
+          $fields: arg_$fields);
+      checkUnsampledReport(response as api.UnsampledReport);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.unsampledReports;
       var arg_accountId = 'foo';
@@ -13142,19 +12991,17 @@ void main() {
         var resp = convert.json.encode(buildUnsampledReports());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId, arg_webPropertyId, arg_profileId,
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUnsampledReports(response as api.UnsampledReports);
-      })));
+      final response = await res.list(
+          arg_accountId, arg_webPropertyId, arg_profileId,
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkUnsampledReports(response as api.UnsampledReports);
     });
   });
 
   unittest.group('resource-ManagementUploadsResource', () {
-    unittest.test('method--deleteUploadData', () {
+    unittest.test('method--deleteUploadData', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.uploads;
       var arg_request = buildAnalyticsDataimportDeleteUploadDataRequest();
@@ -13256,14 +13103,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deleteUploadData(arg_request, arg_accountId, arg_webPropertyId,
-              arg_customDataSourceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.deleteUploadData(
+          arg_request, arg_accountId, arg_webPropertyId, arg_customDataSourceId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.uploads;
       var arg_accountId = 'foo';
@@ -13366,16 +13211,13 @@ void main() {
         var resp = convert.json.encode(buildUpload());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_accountId, arg_webPropertyId, arg_customDataSourceId,
-              arg_uploadId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUpload(response as api.Upload);
-      })));
+      final response = await res.get(arg_accountId, arg_webPropertyId,
+          arg_customDataSourceId, arg_uploadId,
+          $fields: arg_$fields);
+      checkUpload(response as api.Upload);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.uploads;
       var arg_accountId = 'foo';
@@ -13481,17 +13323,15 @@ void main() {
         var resp = convert.json.encode(buildUploads());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId, arg_webPropertyId, arg_customDataSourceId,
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUploads(response as api.Uploads);
-      })));
+      final response = await res.list(
+          arg_accountId, arg_webPropertyId, arg_customDataSourceId,
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkUploads(response as api.Uploads);
     });
 
-    unittest.test('method--uploadData', () {
+    unittest.test('method--uploadData', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -13590,17 +13430,15 @@ void main() {
         var resp = convert.json.encode(buildUpload());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .uploadData(arg_accountId, arg_webPropertyId, arg_customDataSourceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUpload(response as api.Upload);
-      })));
+      final response = await res.uploadData(
+          arg_accountId, arg_webPropertyId, arg_customDataSourceId,
+          $fields: arg_$fields);
+      checkUpload(response as api.Upload);
     });
   });
 
   unittest.group('resource-ManagementWebPropertyAdWordsLinksResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
       var arg_accountId = 'foo';
@@ -13688,14 +13526,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(
-              arg_accountId, arg_webPropertyId, arg_webPropertyAdWordsLinkId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(
+          arg_accountId, arg_webPropertyId, arg_webPropertyAdWordsLinkId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
       var arg_accountId = 'foo';
@@ -13783,15 +13619,13 @@ void main() {
         var resp = convert.json.encode(buildEntityAdWordsLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_accountId, arg_webPropertyId, arg_webPropertyAdWordsLinkId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEntityAdWordsLink(response as api.EntityAdWordsLink);
-      })));
+      final response = await res.get(
+          arg_accountId, arg_webPropertyId, arg_webPropertyAdWordsLinkId,
+          $fields: arg_$fields);
+      checkEntityAdWordsLink(response as api.EntityAdWordsLink);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
       var arg_request = buildEntityAdWordsLink();
@@ -13877,15 +13711,13 @@ void main() {
         var resp = convert.json.encode(buildEntityAdWordsLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_accountId, arg_webPropertyId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEntityAdWordsLink(response as api.EntityAdWordsLink);
-      })));
+      final response = await res.insert(
+          arg_request, arg_accountId, arg_webPropertyId,
+          $fields: arg_$fields);
+      checkEntityAdWordsLink(response as api.EntityAdWordsLink);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
       var arg_accountId = 'foo';
@@ -13976,17 +13808,14 @@ void main() {
         var resp = convert.json.encode(buildEntityAdWordsLinks());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId, arg_webPropertyId,
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEntityAdWordsLinks(response as api.EntityAdWordsLinks);
-      })));
+      final response = await res.list(arg_accountId, arg_webPropertyId,
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkEntityAdWordsLinks(response as api.EntityAdWordsLinks);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
       var arg_request = buildEntityAdWordsLink();
@@ -14079,16 +13908,13 @@ void main() {
         var resp = convert.json.encode(buildEntityAdWordsLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_accountId, arg_webPropertyId,
-              arg_webPropertyAdWordsLinkId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEntityAdWordsLink(response as api.EntityAdWordsLink);
-      })));
+      final response = await res.patch(arg_request, arg_accountId,
+          arg_webPropertyId, arg_webPropertyAdWordsLinkId,
+          $fields: arg_$fields);
+      checkEntityAdWordsLink(response as api.EntityAdWordsLink);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webPropertyAdWordsLinks;
       var arg_request = buildEntityAdWordsLink();
@@ -14181,18 +14007,15 @@ void main() {
         var resp = convert.json.encode(buildEntityAdWordsLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_accountId, arg_webPropertyId,
-              arg_webPropertyAdWordsLinkId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEntityAdWordsLink(response as api.EntityAdWordsLink);
-      })));
+      final response = await res.update(arg_request, arg_accountId,
+          arg_webPropertyId, arg_webPropertyAdWordsLinkId,
+          $fields: arg_$fields);
+      checkEntityAdWordsLink(response as api.EntityAdWordsLink);
     });
   });
 
   unittest.group('resource-ManagementWebpropertiesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webproperties;
       var arg_accountId = 'foo';
@@ -14265,14 +14088,12 @@ void main() {
         var resp = convert.json.encode(buildWebproperty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_accountId, arg_webPropertyId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWebproperty(response as api.Webproperty);
-      })));
+      final response =
+          await res.get(arg_accountId, arg_webPropertyId, $fields: arg_$fields);
+      checkWebproperty(response as api.Webproperty);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webproperties;
       var arg_request = buildWebproperty();
@@ -14343,14 +14164,12 @@ void main() {
         var resp = convert.json.encode(buildWebproperty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_accountId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWebproperty(response as api.Webproperty);
-      })));
+      final response =
+          await res.insert(arg_request, arg_accountId, $fields: arg_$fields);
+      checkWebproperty(response as api.Webproperty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webproperties;
       var arg_accountId = 'foo';
@@ -14426,17 +14245,14 @@ void main() {
         var resp = convert.json.encode(buildWebproperties());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId,
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWebproperties(response as api.Webproperties);
-      })));
+      final response = await res.list(arg_accountId,
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkWebproperties(response as api.Webproperties);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webproperties;
       var arg_request = buildWebproperty();
@@ -14514,15 +14330,13 @@ void main() {
         var resp = convert.json.encode(buildWebproperty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_accountId, arg_webPropertyId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWebproperty(response as api.Webproperty);
-      })));
+      final response = await res.patch(
+          arg_request, arg_accountId, arg_webPropertyId,
+          $fields: arg_$fields);
+      checkWebproperty(response as api.Webproperty);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webproperties;
       var arg_request = buildWebproperty();
@@ -14600,17 +14414,15 @@ void main() {
         var resp = convert.json.encode(buildWebproperty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_accountId, arg_webPropertyId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWebproperty(response as api.Webproperty);
-      })));
+      final response = await res.update(
+          arg_request, arg_accountId, arg_webPropertyId,
+          $fields: arg_$fields);
+      checkWebproperty(response as api.Webproperty);
     });
   });
 
   unittest.group('resource-ManagementWebpropertyUserLinksResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webpropertyUserLinks;
       var arg_accountId = 'foo';
@@ -14698,13 +14510,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_accountId, arg_webPropertyId, arg_linkId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_accountId, arg_webPropertyId, arg_linkId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webpropertyUserLinks;
       var arg_request = buildEntityUserLink();
@@ -14790,15 +14600,13 @@ void main() {
         var resp = convert.json.encode(buildEntityUserLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_accountId, arg_webPropertyId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEntityUserLink(response as api.EntityUserLink);
-      })));
+      final response = await res.insert(
+          arg_request, arg_accountId, arg_webPropertyId,
+          $fields: arg_$fields);
+      checkEntityUserLink(response as api.EntityUserLink);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webpropertyUserLinks;
       var arg_accountId = 'foo';
@@ -14889,17 +14697,14 @@ void main() {
         var resp = convert.json.encode(buildEntityUserLinks());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId, arg_webPropertyId,
-              maxResults: arg_maxResults,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEntityUserLinks(response as api.EntityUserLinks);
-      })));
+      final response = await res.list(arg_accountId, arg_webPropertyId,
+          maxResults: arg_maxResults,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkEntityUserLinks(response as api.EntityUserLinks);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).management.webpropertyUserLinks;
       var arg_request = buildEntityUserLink();
@@ -14992,17 +14797,15 @@ void main() {
         var resp = convert.json.encode(buildEntityUserLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_accountId, arg_webPropertyId, arg_linkId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEntityUserLink(response as api.EntityUserLink);
-      })));
+      final response = await res.update(
+          arg_request, arg_accountId, arg_webPropertyId, arg_linkId,
+          $fields: arg_$fields);
+      checkEntityUserLink(response as api.EntityUserLink);
     });
   });
 
   unittest.group('resource-MetadataColumnsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).metadata.columns;
       var arg_reportType = 'foo';
@@ -15068,16 +14871,13 @@ void main() {
         var resp = convert.json.encode(buildColumns());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_reportType, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkColumns(response as api.Columns);
-      })));
+      final response = await res.list(arg_reportType, $fields: arg_$fields);
+      checkColumns(response as api.Columns);
     });
   });
 
   unittest.group('resource-ProvisioningResource', () {
-    unittest.test('method--createAccountTicket', () {
+    unittest.test('method--createAccountTicket', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).provisioning;
       var arg_request = buildAccountTicket();
@@ -15133,14 +14933,12 @@ void main() {
         var resp = convert.json.encode(buildAccountTicket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createAccountTicket(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountTicket(response as api.AccountTicket);
-      })));
+      final response =
+          await res.createAccountTicket(arg_request, $fields: arg_$fields);
+      checkAccountTicket(response as api.AccountTicket);
     });
 
-    unittest.test('method--createAccountTree', () {
+    unittest.test('method--createAccountTree', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).provisioning;
       var arg_request = buildAccountTreeRequest();
@@ -15196,16 +14994,14 @@ void main() {
         var resp = convert.json.encode(buildAccountTreeResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createAccountTree(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountTreeResponse(response as api.AccountTreeResponse);
-      })));
+      final response =
+          await res.createAccountTree(arg_request, $fields: arg_$fields);
+      checkAccountTreeResponse(response as api.AccountTreeResponse);
     });
   });
 
   unittest.group('resource-UserDeletionUserDeletionRequestResource', () {
-    unittest.test('method--upsert', () {
+    unittest.test('method--upsert', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsApi(mock).userDeletion.userDeletionRequest;
       var arg_request = buildUserDeletionRequest();
@@ -15261,11 +15057,8 @@ void main() {
         var resp = convert.json.encode(buildUserDeletionRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .upsert(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUserDeletionRequest(response as api.UserDeletionRequest);
-      })));
+      final response = await res.upsert(arg_request, $fields: arg_$fields);
+      checkUserDeletionRequest(response as api.UserDeletionRequest);
     });
   });
 }

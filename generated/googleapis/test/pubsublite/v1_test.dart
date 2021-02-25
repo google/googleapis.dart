@@ -530,7 +530,7 @@ void checkTopicPartitions(api.TopicPartitions o) {
 
 void main() {
   unittest.group('obj-schema-Capacity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCapacity();
       var od = api.Capacity.fromJson(o.toJson());
       checkCapacity(od as api.Capacity);
@@ -538,7 +538,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ComputeHeadCursorRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildComputeHeadCursorRequest();
       var od = api.ComputeHeadCursorRequest.fromJson(o.toJson());
       checkComputeHeadCursorRequest(od as api.ComputeHeadCursorRequest);
@@ -546,7 +546,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ComputeHeadCursorResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildComputeHeadCursorResponse();
       var od = api.ComputeHeadCursorResponse.fromJson(o.toJson());
       checkComputeHeadCursorResponse(od as api.ComputeHeadCursorResponse);
@@ -554,7 +554,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ComputeMessageStatsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildComputeMessageStatsRequest();
       var od = api.ComputeMessageStatsRequest.fromJson(o.toJson());
       checkComputeMessageStatsRequest(od as api.ComputeMessageStatsRequest);
@@ -562,7 +562,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ComputeMessageStatsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildComputeMessageStatsResponse();
       var od = api.ComputeMessageStatsResponse.fromJson(o.toJson());
       checkComputeMessageStatsResponse(od as api.ComputeMessageStatsResponse);
@@ -570,7 +570,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Cursor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCursor();
       var od = api.Cursor.fromJson(o.toJson());
       checkCursor(od as api.Cursor);
@@ -578,7 +578,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeliveryConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeliveryConfig();
       var od = api.DeliveryConfig.fromJson(o.toJson());
       checkDeliveryConfig(od as api.DeliveryConfig);
@@ -586,7 +586,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -594,7 +594,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListPartitionCursorsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListPartitionCursorsResponse();
       var od = api.ListPartitionCursorsResponse.fromJson(o.toJson());
       checkListPartitionCursorsResponse(od as api.ListPartitionCursorsResponse);
@@ -602,7 +602,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListSubscriptionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListSubscriptionsResponse();
       var od = api.ListSubscriptionsResponse.fromJson(o.toJson());
       checkListSubscriptionsResponse(od as api.ListSubscriptionsResponse);
@@ -610,7 +610,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTopicSubscriptionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTopicSubscriptionsResponse();
       var od = api.ListTopicSubscriptionsResponse.fromJson(o.toJson());
       checkListTopicSubscriptionsResponse(
@@ -619,7 +619,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTopicsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTopicsResponse();
       var od = api.ListTopicsResponse.fromJson(o.toJson());
       checkListTopicsResponse(od as api.ListTopicsResponse);
@@ -627,7 +627,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PartitionConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPartitionConfig();
       var od = api.PartitionConfig.fromJson(o.toJson());
       checkPartitionConfig(od as api.PartitionConfig);
@@ -635,7 +635,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PartitionCursor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPartitionCursor();
       var od = api.PartitionCursor.fromJson(o.toJson());
       checkPartitionCursor(od as api.PartitionCursor);
@@ -643,7 +643,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RetentionConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRetentionConfig();
       var od = api.RetentionConfig.fromJson(o.toJson());
       checkRetentionConfig(od as api.RetentionConfig);
@@ -651,7 +651,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Subscription', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubscription();
       var od = api.Subscription.fromJson(o.toJson());
       checkSubscription(od as api.Subscription);
@@ -659,7 +659,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Topic', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTopic();
       var od = api.Topic.fromJson(o.toJson());
       checkTopic(od as api.Topic);
@@ -667,7 +667,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TopicPartitions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTopicPartitions();
       var od = api.TopicPartitions.fromJson(o.toJson());
       checkTopicPartitions(od as api.TopicPartitions);
@@ -675,7 +675,7 @@ void main() {
   });
 
   unittest.group('resource-AdminProjectsLocationsSubscriptionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.PubsubLiteApi(mock).admin.projects.locations.subscriptions;
       var arg_request = buildSubscription();
@@ -733,15 +733,12 @@ void main() {
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              subscriptionId: arg_subscriptionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSubscription(response as api.Subscription);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          subscriptionId: arg_subscriptionId, $fields: arg_$fields);
+      checkSubscription(response as api.Subscription);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.PubsubLiteApi(mock).admin.projects.locations.subscriptions;
       var arg_name = 'foo';
@@ -789,14 +786,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.PubsubLiteApi(mock).admin.projects.locations.subscriptions;
       var arg_name = 'foo';
@@ -844,14 +838,11 @@ void main() {
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSubscription(response as api.Subscription);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSubscription(response as api.Subscription);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.PubsubLiteApi(mock).admin.projects.locations.subscriptions;
       var arg_parent = 'foo';
@@ -909,18 +900,14 @@ void main() {
         var resp = convert.json.encode(buildListSubscriptionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSubscriptionsResponse(
-            response as api.ListSubscriptionsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListSubscriptionsResponse(response as api.ListSubscriptionsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.PubsubLiteApi(mock).admin.projects.locations.subscriptions;
       var arg_request = buildSubscription();
@@ -978,17 +965,14 @@ void main() {
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSubscription(response as api.Subscription);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkSubscription(response as api.Subscription);
     });
   });
 
   unittest.group('resource-AdminProjectsLocationsTopicsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.PubsubLiteApi(mock).admin.projects.locations.topics;
       var arg_request = buildTopic();
@@ -1046,15 +1030,12 @@ void main() {
         var resp = convert.json.encode(buildTopic());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              topicId: arg_topicId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTopic(response as api.Topic);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          topicId: arg_topicId, $fields: arg_$fields);
+      checkTopic(response as api.Topic);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.PubsubLiteApi(mock).admin.projects.locations.topics;
       var arg_name = 'foo';
@@ -1102,14 +1083,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.PubsubLiteApi(mock).admin.projects.locations.topics;
       var arg_name = 'foo';
@@ -1157,14 +1135,11 @@ void main() {
         var resp = convert.json.encode(buildTopic());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTopic(response as api.Topic);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkTopic(response as api.Topic);
     });
 
-    unittest.test('method--getPartitions', () {
+    unittest.test('method--getPartitions', () async {
       var mock = HttpServerMock();
       var res = api.PubsubLiteApi(mock).admin.projects.locations.topics;
       var arg_name = 'foo';
@@ -1212,14 +1187,11 @@ void main() {
         var resp = convert.json.encode(buildTopicPartitions());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getPartitions(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTopicPartitions(response as api.TopicPartitions);
-      })));
+      final response = await res.getPartitions(arg_name, $fields: arg_$fields);
+      checkTopicPartitions(response as api.TopicPartitions);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.PubsubLiteApi(mock).admin.projects.locations.topics;
       var arg_parent = 'foo';
@@ -1277,17 +1249,14 @@ void main() {
         var resp = convert.json.encode(buildListTopicsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTopicsResponse(response as api.ListTopicsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListTopicsResponse(response as api.ListTopicsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.PubsubLiteApi(mock).admin.projects.locations.topics;
       var arg_request = buildTopic();
@@ -1345,18 +1314,15 @@ void main() {
         var resp = convert.json.encode(buildTopic());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTopic(response as api.Topic);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkTopic(response as api.Topic);
     });
   });
 
   unittest.group('resource-AdminProjectsLocationsTopicsSubscriptionsResource',
       () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.PubsubLiteApi(mock).admin.projects.locations.topics.subscriptions;
@@ -1415,21 +1381,18 @@ void main() {
         var resp = convert.json.encode(buildListTopicSubscriptionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTopicSubscriptionsResponse(
-            response as api.ListTopicSubscriptionsResponse);
-      })));
+      final response = await res.list(arg_name,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListTopicSubscriptionsResponse(
+          response as api.ListTopicSubscriptionsResponse);
     });
   });
 
   unittest.group('resource-CursorProjectsLocationsSubscriptionsCursorsResource',
       () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.PubsubLiteApi(mock)
           .cursor
@@ -1492,20 +1455,17 @@ void main() {
         var resp = convert.json.encode(buildListPartitionCursorsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListPartitionCursorsResponse(
-            response as api.ListPartitionCursorsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListPartitionCursorsResponse(
+          response as api.ListPartitionCursorsResponse);
     });
   });
 
   unittest.group('resource-TopicStatsProjectsLocationsTopicsResource', () {
-    unittest.test('method--computeHeadCursor', () {
+    unittest.test('method--computeHeadCursor', () async {
       var mock = HttpServerMock();
       var res = api.PubsubLiteApi(mock).topicStats.projects.locations.topics;
       var arg_request = buildComputeHeadCursorRequest();
@@ -1558,15 +1518,12 @@ void main() {
         var resp = convert.json.encode(buildComputeHeadCursorResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .computeHeadCursor(arg_request, arg_topic, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkComputeHeadCursorResponse(
-            response as api.ComputeHeadCursorResponse);
-      })));
+      final response = await res.computeHeadCursor(arg_request, arg_topic,
+          $fields: arg_$fields);
+      checkComputeHeadCursorResponse(response as api.ComputeHeadCursorResponse);
     });
 
-    unittest.test('method--computeMessageStats', () {
+    unittest.test('method--computeMessageStats', () async {
       var mock = HttpServerMock();
       var res = api.PubsubLiteApi(mock).topicStats.projects.locations.topics;
       var arg_request = buildComputeMessageStatsRequest();
@@ -1619,12 +1576,10 @@ void main() {
         var resp = convert.json.encode(buildComputeMessageStatsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .computeMessageStats(arg_request, arg_topic, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkComputeMessageStatsResponse(
-            response as api.ComputeMessageStatsResponse);
-      })));
+      final response = await res.computeMessageStats(arg_request, arg_topic,
+          $fields: arg_$fields);
+      checkComputeMessageStatsResponse(
+          response as api.ComputeMessageStatsResponse);
     });
   });
 }

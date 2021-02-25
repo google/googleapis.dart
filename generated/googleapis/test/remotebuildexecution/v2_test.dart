@@ -3708,7 +3708,7 @@ void checkUnnamed6028(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2Action', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2Action();
       var od = api.BuildBazelRemoteExecutionV2Action.fromJson(o.toJson());
       checkBuildBazelRemoteExecutionV2Action(
@@ -3719,7 +3719,7 @@ void main() {
   unittest.group(
       'obj-schema-BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities();
       var od =
           api.BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities.fromJson(
@@ -3730,7 +3730,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2ActionResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ActionResult();
       var od = api.BuildBazelRemoteExecutionV2ActionResult.fromJson(o.toJson());
       checkBuildBazelRemoteExecutionV2ActionResult(
@@ -3740,7 +3740,7 @@ void main() {
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2BatchReadBlobsRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2BatchReadBlobsRequest();
       var od = api.BuildBazelRemoteExecutionV2BatchReadBlobsRequest.fromJson(
           o.toJson());
@@ -3751,7 +3751,7 @@ void main() {
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2BatchReadBlobsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2BatchReadBlobsResponse();
       var od = api.BuildBazelRemoteExecutionV2BatchReadBlobsResponse.fromJson(
           o.toJson());
@@ -3763,7 +3763,7 @@ void main() {
   unittest.group(
       'obj-schema-BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse();
       var od = api.BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse
           .fromJson(o.toJson());
@@ -3774,7 +3774,7 @@ void main() {
 
   unittest.group(
       'obj-schema-BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest();
       var od = api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest.fromJson(
           o.toJson());
@@ -3786,7 +3786,7 @@ void main() {
   unittest.group(
       'obj-schema-BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest();
       var od = api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest
           .fromJson(o.toJson());
@@ -3797,7 +3797,7 @@ void main() {
 
   unittest.group(
       'obj-schema-BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse();
       var od = api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse.fromJson(
           o.toJson());
@@ -3809,7 +3809,7 @@ void main() {
   unittest.group(
       'obj-schema-BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse();
       var od = api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse
@@ -3820,7 +3820,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2CacheCapabilities', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2CacheCapabilities();
       var od =
           api.BuildBazelRemoteExecutionV2CacheCapabilities.fromJson(o.toJson());
@@ -3830,7 +3830,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2Command', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2Command();
       var od = api.BuildBazelRemoteExecutionV2Command.fromJson(o.toJson());
       checkBuildBazelRemoteExecutionV2Command(
@@ -3840,7 +3840,7 @@ void main() {
 
   unittest.group(
       'obj-schema-BuildBazelRemoteExecutionV2CommandEnvironmentVariable', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2CommandEnvironmentVariable();
       var od =
           api.BuildBazelRemoteExecutionV2CommandEnvironmentVariable.fromJson(
@@ -3851,7 +3851,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2Digest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2Digest();
       var od = api.BuildBazelRemoteExecutionV2Digest.fromJson(o.toJson());
       checkBuildBazelRemoteExecutionV2Digest(
@@ -3860,7 +3860,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2Directory', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2Directory();
       var od = api.BuildBazelRemoteExecutionV2Directory.fromJson(o.toJson());
       checkBuildBazelRemoteExecutionV2Directory(
@@ -3869,7 +3869,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2DirectoryNode', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2DirectoryNode();
       var od =
           api.BuildBazelRemoteExecutionV2DirectoryNode.fromJson(o.toJson());
@@ -3880,7 +3880,7 @@ void main() {
 
   unittest.group(
       'obj-schema-BuildBazelRemoteExecutionV2ExecuteOperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ExecuteOperationMetadata();
       var od = api.BuildBazelRemoteExecutionV2ExecuteOperationMetadata.fromJson(
           o.toJson());
@@ -3890,7 +3890,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2ExecuteRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ExecuteRequest();
       var od =
           api.BuildBazelRemoteExecutionV2ExecuteRequest.fromJson(o.toJson());
@@ -3900,7 +3900,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2ExecuteResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ExecuteResponse();
       var od =
           api.BuildBazelRemoteExecutionV2ExecuteResponse.fromJson(o.toJson());
@@ -3911,7 +3911,7 @@ void main() {
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2ExecutedActionMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ExecutedActionMetadata();
       var od = api.BuildBazelRemoteExecutionV2ExecutedActionMetadata.fromJson(
           o.toJson());
@@ -3922,7 +3922,7 @@ void main() {
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2ExecutionCapabilities',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ExecutionCapabilities();
       var od = api.BuildBazelRemoteExecutionV2ExecutionCapabilities.fromJson(
           o.toJson());
@@ -3932,7 +3932,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2ExecutionPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ExecutionPolicy();
       var od =
           api.BuildBazelRemoteExecutionV2ExecutionPolicy.fromJson(o.toJson());
@@ -3942,7 +3942,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2FileNode', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2FileNode();
       var od = api.BuildBazelRemoteExecutionV2FileNode.fromJson(o.toJson());
       checkBuildBazelRemoteExecutionV2FileNode(
@@ -3952,7 +3952,7 @@ void main() {
 
   unittest.group(
       'obj-schema-BuildBazelRemoteExecutionV2FindMissingBlobsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2FindMissingBlobsRequest();
       var od = api.BuildBazelRemoteExecutionV2FindMissingBlobsRequest.fromJson(
           o.toJson());
@@ -3963,7 +3963,7 @@ void main() {
 
   unittest.group(
       'obj-schema-BuildBazelRemoteExecutionV2FindMissingBlobsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2FindMissingBlobsResponse();
       var od = api.BuildBazelRemoteExecutionV2FindMissingBlobsResponse.fromJson(
           o.toJson());
@@ -3973,7 +3973,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2GetTreeResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2GetTreeResponse();
       var od =
           api.BuildBazelRemoteExecutionV2GetTreeResponse.fromJson(o.toJson());
@@ -3983,7 +3983,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2LogFile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2LogFile();
       var od = api.BuildBazelRemoteExecutionV2LogFile.fromJson(o.toJson());
       checkBuildBazelRemoteExecutionV2LogFile(
@@ -3992,7 +3992,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2NodeProperty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2NodeProperty();
       var od = api.BuildBazelRemoteExecutionV2NodeProperty.fromJson(o.toJson());
       checkBuildBazelRemoteExecutionV2NodeProperty(
@@ -4001,7 +4001,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2OutputDirectory', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2OutputDirectory();
       var od =
           api.BuildBazelRemoteExecutionV2OutputDirectory.fromJson(o.toJson());
@@ -4011,7 +4011,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2OutputFile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2OutputFile();
       var od = api.BuildBazelRemoteExecutionV2OutputFile.fromJson(o.toJson());
       checkBuildBazelRemoteExecutionV2OutputFile(
@@ -4020,7 +4020,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2OutputSymlink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2OutputSymlink();
       var od =
           api.BuildBazelRemoteExecutionV2OutputSymlink.fromJson(o.toJson());
@@ -4030,7 +4030,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2Platform', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2Platform();
       var od = api.BuildBazelRemoteExecutionV2Platform.fromJson(o.toJson());
       checkBuildBazelRemoteExecutionV2Platform(
@@ -4039,7 +4039,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2PlatformProperty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2PlatformProperty();
       var od =
           api.BuildBazelRemoteExecutionV2PlatformProperty.fromJson(o.toJson());
@@ -4050,7 +4050,7 @@ void main() {
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2PriorityCapabilities',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2PriorityCapabilities();
       var od = api.BuildBazelRemoteExecutionV2PriorityCapabilities.fromJson(
           o.toJson());
@@ -4062,7 +4062,7 @@ void main() {
   unittest.group(
       'obj-schema-BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildBuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange();
       var od = api.BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange
@@ -4073,7 +4073,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2RequestMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2RequestMetadata();
       var od =
           api.BuildBazelRemoteExecutionV2RequestMetadata.fromJson(o.toJson());
@@ -4084,7 +4084,7 @@ void main() {
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2ResultsCachePolicy',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ResultsCachePolicy();
       var od = api.BuildBazelRemoteExecutionV2ResultsCachePolicy.fromJson(
           o.toJson());
@@ -4095,7 +4095,7 @@ void main() {
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2ServerCapabilities',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ServerCapabilities();
       var od = api.BuildBazelRemoteExecutionV2ServerCapabilities.fromJson(
           o.toJson());
@@ -4105,7 +4105,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2SymlinkNode', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2SymlinkNode();
       var od = api.BuildBazelRemoteExecutionV2SymlinkNode.fromJson(o.toJson());
       checkBuildBazelRemoteExecutionV2SymlinkNode(
@@ -4114,7 +4114,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2ToolDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ToolDetails();
       var od = api.BuildBazelRemoteExecutionV2ToolDetails.fromJson(o.toJson());
       checkBuildBazelRemoteExecutionV2ToolDetails(
@@ -4123,7 +4123,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2Tree', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2Tree();
       var od = api.BuildBazelRemoteExecutionV2Tree.fromJson(o.toJson());
       checkBuildBazelRemoteExecutionV2Tree(
@@ -4133,7 +4133,7 @@ void main() {
 
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2WaitExecutionRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2WaitExecutionRequest();
       var od = api.BuildBazelRemoteExecutionV2WaitExecutionRequest.fromJson(
           o.toJson());
@@ -4143,7 +4143,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildBazelSemverSemVer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelSemverSemVer();
       var od = api.BuildBazelSemverSemVer.fromJson(o.toJson());
       checkBuildBazelSemverSemVer(od as api.BuildBazelSemverSemVer);
@@ -4151,7 +4151,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDevtoolsRemotebuildbotCommandDurations', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemotebuildbotCommandDurations();
       var od =
           api.GoogleDevtoolsRemotebuildbotCommandDurations.fromJson(o.toJson());
@@ -4161,7 +4161,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDevtoolsRemotebuildbotCommandEvents', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemotebuildbotCommandEvents();
       var od =
           api.GoogleDevtoolsRemotebuildbotCommandEvents.fromJson(o.toJson());
@@ -4171,7 +4171,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDevtoolsRemotebuildbotCommandStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemotebuildbotCommandStatus();
       var od =
           api.GoogleDevtoolsRemotebuildbotCommandStatus.fromJson(o.toJson());
@@ -4181,7 +4181,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDevtoolsRemotebuildbotResourceUsage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemotebuildbotResourceUsage();
       var od =
           api.GoogleDevtoolsRemotebuildbotResourceUsage.fromJson(o.toJson());
@@ -4192,7 +4192,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleDevtoolsRemotebuildbotResourceUsageStat',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemotebuildbotResourceUsageStat();
       var od = api.GoogleDevtoolsRemotebuildbotResourceUsageStat.fromJson(
           o.toJson());
@@ -4204,7 +4204,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig();
       var od =
@@ -4218,7 +4218,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale();
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale.fromJson(
@@ -4231,7 +4231,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest();
       var od =
@@ -4246,7 +4246,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest();
       var od =
@@ -4261,7 +4261,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest();
       var od =
@@ -4276,7 +4276,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest();
       var od =
@@ -4291,7 +4291,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy();
       var od = api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy
@@ -4304,7 +4304,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature();
       var od =
@@ -4319,7 +4319,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest();
       var od =
@@ -4334,7 +4334,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest();
       var od =
@@ -4348,7 +4348,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance();
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance.fromJson(
@@ -4361,7 +4361,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest();
       var od =
@@ -4376,7 +4376,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse();
       var od =
@@ -4391,7 +4391,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest();
       var od =
@@ -4406,7 +4406,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse();
       var od =
@@ -4421,7 +4421,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest();
       var od =
@@ -4436,7 +4436,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest();
       var od =
@@ -4451,7 +4451,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig();
       var od = api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig
           .fromJson(o.toJson());
@@ -4463,7 +4463,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool();
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool.fromJson(
@@ -4474,7 +4474,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDevtoolsRemoteworkersV1test2AdminTemp', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2AdminTemp();
       var od =
           api.GoogleDevtoolsRemoteworkersV1test2AdminTemp.fromJson(o.toJson());
@@ -4484,7 +4484,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDevtoolsRemoteworkersV1test2Blob', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2Blob();
       var od = api.GoogleDevtoolsRemoteworkersV1test2Blob.fromJson(o.toJson());
       checkGoogleDevtoolsRemoteworkersV1test2Blob(
@@ -4494,7 +4494,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleDevtoolsRemoteworkersV1test2CommandOutputs',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandOutputs();
       var od = api.GoogleDevtoolsRemoteworkersV1test2CommandOutputs.fromJson(
           o.toJson());
@@ -4505,7 +4505,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleDevtoolsRemoteworkersV1test2CommandOverhead',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandOverhead();
       var od = api.GoogleDevtoolsRemoteworkersV1test2CommandOverhead.fromJson(
           o.toJson());
@@ -4516,7 +4516,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleDevtoolsRemoteworkersV1test2CommandResult',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandResult();
       var od = api.GoogleDevtoolsRemoteworkersV1test2CommandResult.fromJson(
           o.toJson());
@@ -4527,7 +4527,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleDevtoolsRemoteworkersV1test2CommandTask',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandTask();
       var od = api.GoogleDevtoolsRemoteworkersV1test2CommandTask.fromJson(
           o.toJson());
@@ -4538,7 +4538,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs();
       var od = api.GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs.fromJson(
           o.toJson());
@@ -4550,7 +4550,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable();
       var od =
@@ -4564,7 +4564,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs();
       var od =
           api.GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs.fromJson(
@@ -4576,7 +4576,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts();
       var od =
           api.GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts.fromJson(
@@ -4587,7 +4587,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDevtoolsRemoteworkersV1test2Digest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2Digest();
       var od =
           api.GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(o.toJson());
@@ -4597,7 +4597,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDevtoolsRemoteworkersV1test2Directory', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2Directory();
       var od =
           api.GoogleDevtoolsRemoteworkersV1test2Directory.fromJson(o.toJson());
@@ -4608,7 +4608,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata();
       var od = api.GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata.fromJson(
           o.toJson());
@@ -4619,7 +4619,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleDevtoolsRemoteworkersV1test2FileMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2FileMetadata();
       var od = api.GoogleDevtoolsRemoteworkersV1test2FileMetadata.fromJson(
           o.toJson());
@@ -4629,7 +4629,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
@@ -4637,7 +4637,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleRpcStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
       var od = api.GoogleRpcStatus.fromJson(o.toJson());
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
@@ -4645,7 +4645,7 @@ void main() {
   });
 
   unittest.group('resource-ActionResultsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.RemoteBuildExecutionApi(mock).actionResults;
       var arg_instanceName = 'foo';
@@ -4711,19 +4711,16 @@ void main() {
             convert.json.encode(buildBuildBazelRemoteExecutionV2ActionResult());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_instanceName, arg_hash, arg_sizeBytes,
-              inlineOutputFiles: arg_inlineOutputFiles,
-              inlineStderr: arg_inlineStderr,
-              inlineStdout: arg_inlineStdout,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBuildBazelRemoteExecutionV2ActionResult(
-            response as api.BuildBazelRemoteExecutionV2ActionResult);
-      })));
+      final response = await res.get(arg_instanceName, arg_hash, arg_sizeBytes,
+          inlineOutputFiles: arg_inlineOutputFiles,
+          inlineStderr: arg_inlineStderr,
+          inlineStdout: arg_inlineStdout,
+          $fields: arg_$fields);
+      checkBuildBazelRemoteExecutionV2ActionResult(
+          response as api.BuildBazelRemoteExecutionV2ActionResult);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.RemoteBuildExecutionApi(mock).actionResults;
       var arg_request = buildBuildBazelRemoteExecutionV2ActionResult();
@@ -4785,19 +4782,17 @@ void main() {
             convert.json.encode(buildBuildBazelRemoteExecutionV2ActionResult());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_instanceName, arg_hash, arg_sizeBytes,
-              resultsCachePolicy_priority: arg_resultsCachePolicy_priority,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBuildBazelRemoteExecutionV2ActionResult(
-            response as api.BuildBazelRemoteExecutionV2ActionResult);
-      })));
+      final response = await res.update(
+          arg_request, arg_instanceName, arg_hash, arg_sizeBytes,
+          resultsCachePolicy_priority: arg_resultsCachePolicy_priority,
+          $fields: arg_$fields);
+      checkBuildBazelRemoteExecutionV2ActionResult(
+          response as api.BuildBazelRemoteExecutionV2ActionResult);
     });
   });
 
   unittest.group('resource-ActionsResource', () {
-    unittest.test('method--execute', () {
+    unittest.test('method--execute', () async {
       var mock = HttpServerMock();
       var res = api.RemoteBuildExecutionApi(mock).actions;
       var arg_request = buildBuildBazelRemoteExecutionV2ExecuteRequest();
@@ -4851,17 +4846,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .execute(arg_request, arg_instanceName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.execute(arg_request, arg_instanceName,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 
   unittest.group('resource-BlobsResource', () {
-    unittest.test('method--batchRead', () {
+    unittest.test('method--batchRead', () async {
       var mock = HttpServerMock();
       var res = api.RemoteBuildExecutionApi(mock).blobs;
       var arg_request = buildBuildBazelRemoteExecutionV2BatchReadBlobsRequest();
@@ -4916,15 +4909,13 @@ void main() {
             .encode(buildBuildBazelRemoteExecutionV2BatchReadBlobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchRead(arg_request, arg_instanceName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBuildBazelRemoteExecutionV2BatchReadBlobsResponse(
-            response as api.BuildBazelRemoteExecutionV2BatchReadBlobsResponse);
-      })));
+      final response = await res.batchRead(arg_request, arg_instanceName,
+          $fields: arg_$fields);
+      checkBuildBazelRemoteExecutionV2BatchReadBlobsResponse(
+          response as api.BuildBazelRemoteExecutionV2BatchReadBlobsResponse);
     });
 
-    unittest.test('method--batchUpdate', () {
+    unittest.test('method--batchUpdate', () async {
       var mock = HttpServerMock();
       var res = api.RemoteBuildExecutionApi(mock).blobs;
       var arg_request =
@@ -4981,15 +4972,13 @@ void main() {
             .encode(buildBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchUpdate(arg_request, arg_instanceName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse(response
-            as api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse);
-      })));
+      final response = await res.batchUpdate(arg_request, arg_instanceName,
+          $fields: arg_$fields);
+      checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse(
+          response as api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse);
     });
 
-    unittest.test('method--findMissing', () {
+    unittest.test('method--findMissing', () async {
       var mock = HttpServerMock();
       var res = api.RemoteBuildExecutionApi(mock).blobs;
       var arg_request =
@@ -5046,15 +5035,13 @@ void main() {
             .encode(buildBuildBazelRemoteExecutionV2FindMissingBlobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .findMissing(arg_request, arg_instanceName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBuildBazelRemoteExecutionV2FindMissingBlobsResponse(response
-            as api.BuildBazelRemoteExecutionV2FindMissingBlobsResponse);
-      })));
+      final response = await res.findMissing(arg_request, arg_instanceName,
+          $fields: arg_$fields);
+      checkBuildBazelRemoteExecutionV2FindMissingBlobsResponse(
+          response as api.BuildBazelRemoteExecutionV2FindMissingBlobsResponse);
     });
 
-    unittest.test('method--getTree', () {
+    unittest.test('method--getTree', () async {
       var mock = HttpServerMock();
       var res = api.RemoteBuildExecutionApi(mock).blobs;
       var arg_instanceName = 'foo';
@@ -5115,20 +5102,18 @@ void main() {
             .encode(buildBuildBazelRemoteExecutionV2GetTreeResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getTree(arg_instanceName, arg_hash, arg_sizeBytes,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBuildBazelRemoteExecutionV2GetTreeResponse(
-            response as api.BuildBazelRemoteExecutionV2GetTreeResponse);
-      })));
+      final response = await res.getTree(
+          arg_instanceName, arg_hash, arg_sizeBytes,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkBuildBazelRemoteExecutionV2GetTreeResponse(
+          response as api.BuildBazelRemoteExecutionV2GetTreeResponse);
     });
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--waitExecution', () {
+    unittest.test('method--waitExecution', () async {
       var mock = HttpServerMock();
       var res = api.RemoteBuildExecutionApi(mock).operations;
       var arg_request = buildBuildBazelRemoteExecutionV2WaitExecutionRequest();
@@ -5182,17 +5167,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .waitExecution(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.waitExecution(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 
   unittest.group('resource-V2Resource', () {
-    unittest.test('method--getCapabilities', () {
+    unittest.test('method--getCapabilities', () async {
       var mock = HttpServerMock();
       var res = api.RemoteBuildExecutionApi(mock).v2;
       var arg_instanceName = 'foo';
@@ -5241,12 +5224,10 @@ void main() {
             .encode(buildBuildBazelRemoteExecutionV2ServerCapabilities());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getCapabilities(arg_instanceName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBuildBazelRemoteExecutionV2ServerCapabilities(
-            response as api.BuildBazelRemoteExecutionV2ServerCapabilities);
-      })));
+      final response =
+          await res.getCapabilities(arg_instanceName, $fields: arg_$fields);
+      checkBuildBazelRemoteExecutionV2ServerCapabilities(
+          response as api.BuildBazelRemoteExecutionV2ServerCapabilities);
     });
   });
 }

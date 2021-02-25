@@ -2414,7 +2414,7 @@ void checkUnnamed5201(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-Announcement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnnouncement();
       var od = api.Announcement.fromJson(o.toJson());
       checkAnnouncement(od as api.Announcement);
@@ -2422,7 +2422,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Assignment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAssignment();
       var od = api.Assignment.fromJson(o.toJson());
       checkAssignment(od as api.Assignment);
@@ -2430,7 +2430,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AssignmentSubmission', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAssignmentSubmission();
       var od = api.AssignmentSubmission.fromJson(o.toJson());
       checkAssignmentSubmission(od as api.AssignmentSubmission);
@@ -2438,7 +2438,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Attachment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAttachment();
       var od = api.Attachment.fromJson(o.toJson());
       checkAttachment(od as api.Attachment);
@@ -2446,7 +2446,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CloudPubsubTopic', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCloudPubsubTopic();
       var od = api.CloudPubsubTopic.fromJson(o.toJson());
       checkCloudPubsubTopic(od as api.CloudPubsubTopic);
@@ -2454,7 +2454,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Course', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCourse();
       var od = api.Course.fromJson(o.toJson());
       checkCourse(od as api.Course);
@@ -2462,7 +2462,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CourseAlias', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCourseAlias();
       var od = api.CourseAlias.fromJson(o.toJson());
       checkCourseAlias(od as api.CourseAlias);
@@ -2470,7 +2470,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CourseMaterial', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCourseMaterial();
       var od = api.CourseMaterial.fromJson(o.toJson());
       checkCourseMaterial(od as api.CourseMaterial);
@@ -2478,7 +2478,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CourseMaterialSet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCourseMaterialSet();
       var od = api.CourseMaterialSet.fromJson(o.toJson());
       checkCourseMaterialSet(od as api.CourseMaterialSet);
@@ -2486,7 +2486,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CourseRosterChangesInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCourseRosterChangesInfo();
       var od = api.CourseRosterChangesInfo.fromJson(o.toJson());
       checkCourseRosterChangesInfo(od as api.CourseRosterChangesInfo);
@@ -2494,7 +2494,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CourseWork', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCourseWork();
       var od = api.CourseWork.fromJson(o.toJson());
       checkCourseWork(od as api.CourseWork);
@@ -2502,7 +2502,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CourseWorkChangesInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCourseWorkChangesInfo();
       var od = api.CourseWorkChangesInfo.fromJson(o.toJson());
       checkCourseWorkChangesInfo(od as api.CourseWorkChangesInfo);
@@ -2510,7 +2510,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CourseWorkMaterial', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCourseWorkMaterial();
       var od = api.CourseWorkMaterial.fromJson(o.toJson());
       checkCourseWorkMaterial(od as api.CourseWorkMaterial);
@@ -2518,7 +2518,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Date', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
       checkDate(od as api.Date);
@@ -2526,7 +2526,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DriveFile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDriveFile();
       var od = api.DriveFile.fromJson(o.toJson());
       checkDriveFile(od as api.DriveFile);
@@ -2534,7 +2534,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DriveFolder', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDriveFolder();
       var od = api.DriveFolder.fromJson(o.toJson());
       checkDriveFolder(od as api.DriveFolder);
@@ -2542,7 +2542,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -2550,7 +2550,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Feed', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFeed();
       var od = api.Feed.fromJson(o.toJson());
       checkFeed(od as api.Feed);
@@ -2558,7 +2558,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Form', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildForm();
       var od = api.Form.fromJson(o.toJson());
       checkForm(od as api.Form);
@@ -2566,7 +2566,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GlobalPermission', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGlobalPermission();
       var od = api.GlobalPermission.fromJson(o.toJson());
       checkGlobalPermission(od as api.GlobalPermission);
@@ -2574,7 +2574,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GradeHistory', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGradeHistory();
       var od = api.GradeHistory.fromJson(o.toJson());
       checkGradeHistory(od as api.GradeHistory);
@@ -2582,7 +2582,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Guardian', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGuardian();
       var od = api.Guardian.fromJson(o.toJson());
       checkGuardian(od as api.Guardian);
@@ -2590,7 +2590,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GuardianInvitation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGuardianInvitation();
       var od = api.GuardianInvitation.fromJson(o.toJson());
       checkGuardianInvitation(od as api.GuardianInvitation);
@@ -2598,7 +2598,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IndividualStudentsOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIndividualStudentsOptions();
       var od = api.IndividualStudentsOptions.fromJson(o.toJson());
       checkIndividualStudentsOptions(od as api.IndividualStudentsOptions);
@@ -2606,7 +2606,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Invitation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInvitation();
       var od = api.Invitation.fromJson(o.toJson());
       checkInvitation(od as api.Invitation);
@@ -2614,7 +2614,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Link', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLink();
       var od = api.Link.fromJson(o.toJson());
       checkLink(od as api.Link);
@@ -2622,7 +2622,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAnnouncementsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAnnouncementsResponse();
       var od = api.ListAnnouncementsResponse.fromJson(o.toJson());
       checkListAnnouncementsResponse(od as api.ListAnnouncementsResponse);
@@ -2630,7 +2630,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCourseAliasesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCourseAliasesResponse();
       var od = api.ListCourseAliasesResponse.fromJson(o.toJson());
       checkListCourseAliasesResponse(od as api.ListCourseAliasesResponse);
@@ -2638,7 +2638,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCourseWorkMaterialResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCourseWorkMaterialResponse();
       var od = api.ListCourseWorkMaterialResponse.fromJson(o.toJson());
       checkListCourseWorkMaterialResponse(
@@ -2647,7 +2647,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCourseWorkResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCourseWorkResponse();
       var od = api.ListCourseWorkResponse.fromJson(o.toJson());
       checkListCourseWorkResponse(od as api.ListCourseWorkResponse);
@@ -2655,7 +2655,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCoursesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCoursesResponse();
       var od = api.ListCoursesResponse.fromJson(o.toJson());
       checkListCoursesResponse(od as api.ListCoursesResponse);
@@ -2663,7 +2663,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListGuardianInvitationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListGuardianInvitationsResponse();
       var od = api.ListGuardianInvitationsResponse.fromJson(o.toJson());
       checkListGuardianInvitationsResponse(
@@ -2672,7 +2672,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListGuardiansResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListGuardiansResponse();
       var od = api.ListGuardiansResponse.fromJson(o.toJson());
       checkListGuardiansResponse(od as api.ListGuardiansResponse);
@@ -2680,7 +2680,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListInvitationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListInvitationsResponse();
       var od = api.ListInvitationsResponse.fromJson(o.toJson());
       checkListInvitationsResponse(od as api.ListInvitationsResponse);
@@ -2688,7 +2688,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListStudentSubmissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListStudentSubmissionsResponse();
       var od = api.ListStudentSubmissionsResponse.fromJson(o.toJson());
       checkListStudentSubmissionsResponse(
@@ -2697,7 +2697,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListStudentsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListStudentsResponse();
       var od = api.ListStudentsResponse.fromJson(o.toJson());
       checkListStudentsResponse(od as api.ListStudentsResponse);
@@ -2705,7 +2705,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTeachersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTeachersResponse();
       var od = api.ListTeachersResponse.fromJson(o.toJson());
       checkListTeachersResponse(od as api.ListTeachersResponse);
@@ -2713,7 +2713,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTopicResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTopicResponse();
       var od = api.ListTopicResponse.fromJson(o.toJson());
       checkListTopicResponse(od as api.ListTopicResponse);
@@ -2721,7 +2721,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Material', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMaterial();
       var od = api.Material.fromJson(o.toJson());
       checkMaterial(od as api.Material);
@@ -2729,7 +2729,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ModifyAnnouncementAssigneesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildModifyAnnouncementAssigneesRequest();
       var od = api.ModifyAnnouncementAssigneesRequest.fromJson(o.toJson());
       checkModifyAnnouncementAssigneesRequest(
@@ -2738,7 +2738,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ModifyAttachmentsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildModifyAttachmentsRequest();
       var od = api.ModifyAttachmentsRequest.fromJson(o.toJson());
       checkModifyAttachmentsRequest(od as api.ModifyAttachmentsRequest);
@@ -2746,7 +2746,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ModifyCourseWorkAssigneesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildModifyCourseWorkAssigneesRequest();
       var od = api.ModifyCourseWorkAssigneesRequest.fromJson(o.toJson());
       checkModifyCourseWorkAssigneesRequest(
@@ -2755,7 +2755,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ModifyIndividualStudentsOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildModifyIndividualStudentsOptions();
       var od = api.ModifyIndividualStudentsOptions.fromJson(o.toJson());
       checkModifyIndividualStudentsOptions(
@@ -2764,7 +2764,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MultipleChoiceQuestion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMultipleChoiceQuestion();
       var od = api.MultipleChoiceQuestion.fromJson(o.toJson());
       checkMultipleChoiceQuestion(od as api.MultipleChoiceQuestion);
@@ -2772,7 +2772,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MultipleChoiceSubmission', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMultipleChoiceSubmission();
       var od = api.MultipleChoiceSubmission.fromJson(o.toJson());
       checkMultipleChoiceSubmission(od as api.MultipleChoiceSubmission);
@@ -2780,7 +2780,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Name', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildName();
       var od = api.Name.fromJson(o.toJson());
       checkName(od as api.Name);
@@ -2788,7 +2788,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReclaimStudentSubmissionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReclaimStudentSubmissionRequest();
       var od = api.ReclaimStudentSubmissionRequest.fromJson(o.toJson());
       checkReclaimStudentSubmissionRequest(
@@ -2797,7 +2797,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Registration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRegistration();
       var od = api.Registration.fromJson(o.toJson());
       checkRegistration(od as api.Registration);
@@ -2805,7 +2805,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnStudentSubmissionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnStudentSubmissionRequest();
       var od = api.ReturnStudentSubmissionRequest.fromJson(o.toJson());
       checkReturnStudentSubmissionRequest(
@@ -2814,7 +2814,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SharedDriveFile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSharedDriveFile();
       var od = api.SharedDriveFile.fromJson(o.toJson());
       checkSharedDriveFile(od as api.SharedDriveFile);
@@ -2822,7 +2822,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShortAnswerSubmission', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShortAnswerSubmission();
       var od = api.ShortAnswerSubmission.fromJson(o.toJson());
       checkShortAnswerSubmission(od as api.ShortAnswerSubmission);
@@ -2830,7 +2830,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StateHistory', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStateHistory();
       var od = api.StateHistory.fromJson(o.toJson());
       checkStateHistory(od as api.StateHistory);
@@ -2838,7 +2838,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Student', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStudent();
       var od = api.Student.fromJson(o.toJson());
       checkStudent(od as api.Student);
@@ -2846,7 +2846,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StudentSubmission', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStudentSubmission();
       var od = api.StudentSubmission.fromJson(o.toJson());
       checkStudentSubmission(od as api.StudentSubmission);
@@ -2854,7 +2854,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SubmissionHistory', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubmissionHistory();
       var od = api.SubmissionHistory.fromJson(o.toJson());
       checkSubmissionHistory(od as api.SubmissionHistory);
@@ -2862,7 +2862,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Teacher', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTeacher();
       var od = api.Teacher.fromJson(o.toJson());
       checkTeacher(od as api.Teacher);
@@ -2870,7 +2870,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimeOfDay', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimeOfDay();
       var od = api.TimeOfDay.fromJson(o.toJson());
       checkTimeOfDay(od as api.TimeOfDay);
@@ -2878,7 +2878,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Topic', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTopic();
       var od = api.Topic.fromJson(o.toJson());
       checkTopic(od as api.Topic);
@@ -2886,7 +2886,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TurnInStudentSubmissionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTurnInStudentSubmissionRequest();
       var od = api.TurnInStudentSubmissionRequest.fromJson(o.toJson());
       checkTurnInStudentSubmissionRequest(
@@ -2895,7 +2895,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserProfile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserProfile();
       var od = api.UserProfile.fromJson(o.toJson());
       checkUserProfile(od as api.UserProfile);
@@ -2903,7 +2903,7 @@ void main() {
   });
 
   unittest.group('obj-schema-YouTubeVideo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildYouTubeVideo();
       var od = api.YouTubeVideo.fromJson(o.toJson());
       checkYouTubeVideo(od as api.YouTubeVideo);
@@ -2911,7 +2911,7 @@ void main() {
   });
 
   unittest.group('resource-CoursesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses;
       var arg_request = buildCourse();
@@ -2962,14 +2962,11 @@ void main() {
         var resp = convert.json.encode(buildCourse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCourse(response as api.Course);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkCourse(response as api.Course);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses;
       var arg_id = 'foo';
@@ -3022,14 +3019,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_id, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses;
       var arg_id = 'foo';
@@ -3082,14 +3076,11 @@ void main() {
         var resp = convert.json.encode(buildCourse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCourse(response as api.Course);
-      })));
+      final response = await res.get(arg_id, $fields: arg_$fields);
+      checkCourse(response as api.Course);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses;
       var arg_courseStates = buildUnnamed5196();
@@ -3160,20 +3151,17 @@ void main() {
         var resp = convert.json.encode(buildListCoursesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              courseStates: arg_courseStates,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              studentId: arg_studentId,
-              teacherId: arg_teacherId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCoursesResponse(response as api.ListCoursesResponse);
-      })));
+      final response = await res.list(
+          courseStates: arg_courseStates,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          studentId: arg_studentId,
+          teacherId: arg_teacherId,
+          $fields: arg_$fields);
+      checkListCoursesResponse(response as api.ListCoursesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses;
       var arg_request = buildCourse();
@@ -3236,15 +3224,12 @@ void main() {
         var resp = convert.json.encode(buildCourse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_id,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCourse(response as api.Course);
-      })));
+      final response = await res.patch(arg_request, arg_id,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkCourse(response as api.Course);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses;
       var arg_request = buildCourse();
@@ -3302,16 +3287,14 @@ void main() {
         var resp = convert.json.encode(buildCourse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCourse(response as api.Course);
-      })));
+      final response =
+          await res.update(arg_request, arg_id, $fields: arg_$fields);
+      checkCourse(response as api.Course);
     });
   });
 
   unittest.group('resource-CoursesAliasesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.aliases;
       var arg_request = buildCourseAlias();
@@ -3377,14 +3360,12 @@ void main() {
         var resp = convert.json.encode(buildCourseAlias());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_courseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCourseAlias(response as api.CourseAlias);
-      })));
+      final response =
+          await res.create(arg_request, arg_courseId, $fields: arg_$fields);
+      checkCourseAlias(response as api.CourseAlias);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.aliases;
       var arg_courseId = 'foo';
@@ -3452,14 +3433,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_courseId, arg_alias, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.delete(arg_courseId, arg_alias, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.aliases;
       var arg_courseId = 'foo';
@@ -3530,20 +3509,16 @@ void main() {
         var resp = convert.json.encode(buildListCourseAliasesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_courseId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCourseAliasesResponse(
-            response as api.ListCourseAliasesResponse);
-      })));
+      final response = await res.list(arg_courseId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListCourseAliasesResponse(response as api.ListCourseAliasesResponse);
     });
   });
 
   unittest.group('resource-CoursesAnnouncementsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.announcements;
       var arg_request = buildAnnouncement();
@@ -3609,14 +3584,12 @@ void main() {
         var resp = convert.json.encode(buildAnnouncement());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_courseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAnnouncement(response as api.Announcement);
-      })));
+      final response =
+          await res.create(arg_request, arg_courseId, $fields: arg_$fields);
+      checkAnnouncement(response as api.Announcement);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.announcements;
       var arg_courseId = 'foo';
@@ -3684,14 +3657,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_courseId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.delete(arg_courseId, arg_id, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.announcements;
       var arg_courseId = 'foo';
@@ -3759,14 +3730,12 @@ void main() {
         var resp = convert.json.encode(buildAnnouncement());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_courseId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAnnouncement(response as api.Announcement);
-      })));
+      final response =
+          await res.get(arg_courseId, arg_id, $fields: arg_$fields);
+      checkAnnouncement(response as api.Announcement);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.announcements;
       var arg_courseId = 'foo';
@@ -3847,20 +3816,16 @@ void main() {
         var resp = convert.json.encode(buildListAnnouncementsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_courseId,
-              announcementStates: arg_announcementStates,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAnnouncementsResponse(
-            response as api.ListAnnouncementsResponse);
-      })));
+      final response = await res.list(arg_courseId,
+          announcementStates: arg_announcementStates,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAnnouncementsResponse(response as api.ListAnnouncementsResponse);
     });
 
-    unittest.test('method--modifyAssignees', () {
+    unittest.test('method--modifyAssignees', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.announcements;
       var arg_request = buildModifyAnnouncementAssigneesRequest();
@@ -3942,15 +3907,13 @@ void main() {
         var resp = convert.json.encode(buildAnnouncement());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .modifyAssignees(arg_request, arg_courseId, arg_id,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAnnouncement(response as api.Announcement);
-      })));
+      final response = await res.modifyAssignees(
+          arg_request, arg_courseId, arg_id,
+          $fields: arg_$fields);
+      checkAnnouncement(response as api.Announcement);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.announcements;
       var arg_request = buildAnnouncement();
@@ -4028,17 +3991,14 @@ void main() {
         var resp = convert.json.encode(buildAnnouncement());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_courseId, arg_id,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAnnouncement(response as api.Announcement);
-      })));
+      final response = await res.patch(arg_request, arg_courseId, arg_id,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkAnnouncement(response as api.Announcement);
     });
   });
 
   unittest.group('resource-CoursesCourseWorkResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWork;
       var arg_request = buildCourseWork();
@@ -4104,14 +4064,12 @@ void main() {
         var resp = convert.json.encode(buildCourseWork());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_courseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCourseWork(response as api.CourseWork);
-      })));
+      final response =
+          await res.create(arg_request, arg_courseId, $fields: arg_$fields);
+      checkCourseWork(response as api.CourseWork);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWork;
       var arg_courseId = 'foo';
@@ -4179,14 +4137,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_courseId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.delete(arg_courseId, arg_id, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWork;
       var arg_courseId = 'foo';
@@ -4254,14 +4210,12 @@ void main() {
         var resp = convert.json.encode(buildCourseWork());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_courseId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCourseWork(response as api.CourseWork);
-      })));
+      final response =
+          await res.get(arg_courseId, arg_id, $fields: arg_$fields);
+      checkCourseWork(response as api.CourseWork);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWork;
       var arg_courseId = 'foo';
@@ -4342,19 +4296,16 @@ void main() {
         var resp = convert.json.encode(buildListCourseWorkResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_courseId,
-              courseWorkStates: arg_courseWorkStates,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCourseWorkResponse(response as api.ListCourseWorkResponse);
-      })));
+      final response = await res.list(arg_courseId,
+          courseWorkStates: arg_courseWorkStates,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListCourseWorkResponse(response as api.ListCourseWorkResponse);
     });
 
-    unittest.test('method--modifyAssignees', () {
+    unittest.test('method--modifyAssignees', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWork;
       var arg_request = buildModifyCourseWorkAssigneesRequest();
@@ -4436,15 +4387,13 @@ void main() {
         var resp = convert.json.encode(buildCourseWork());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .modifyAssignees(arg_request, arg_courseId, arg_id,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCourseWork(response as api.CourseWork);
-      })));
+      final response = await res.modifyAssignees(
+          arg_request, arg_courseId, arg_id,
+          $fields: arg_$fields);
+      checkCourseWork(response as api.CourseWork);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWork;
       var arg_request = buildCourseWork();
@@ -4522,17 +4471,14 @@ void main() {
         var resp = convert.json.encode(buildCourseWork());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_courseId, arg_id,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCourseWork(response as api.CourseWork);
-      })));
+      final response = await res.patch(arg_request, arg_courseId, arg_id,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkCourseWork(response as api.CourseWork);
     });
   });
 
   unittest.group('resource-CoursesCourseWorkStudentSubmissionsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
       var arg_courseId = 'foo';
@@ -4615,14 +4561,12 @@ void main() {
         var resp = convert.json.encode(buildStudentSubmission());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_courseId, arg_courseWorkId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStudentSubmission(response as api.StudentSubmission);
-      })));
+      final response = await res.get(arg_courseId, arg_courseWorkId, arg_id,
+          $fields: arg_$fields);
+      checkStudentSubmission(response as api.StudentSubmission);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
       var arg_courseId = 'foo';
@@ -4723,21 +4667,18 @@ void main() {
         var resp = convert.json.encode(buildListStudentSubmissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_courseId, arg_courseWorkId,
-              late: arg_late,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              states: arg_states,
-              userId: arg_userId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListStudentSubmissionsResponse(
-            response as api.ListStudentSubmissionsResponse);
-      })));
+      final response = await res.list(arg_courseId, arg_courseWorkId,
+          late: arg_late,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          states: arg_states,
+          userId: arg_userId,
+          $fields: arg_$fields);
+      checkListStudentSubmissionsResponse(
+          response as api.ListStudentSubmissionsResponse);
     });
 
-    unittest.test('method--modifyAttachments', () {
+    unittest.test('method--modifyAttachments', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
       var arg_request = buildModifyAttachmentsRequest();
@@ -4833,16 +4774,13 @@ void main() {
         var resp = convert.json.encode(buildStudentSubmission());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .modifyAttachments(
-              arg_request, arg_courseId, arg_courseWorkId, arg_id,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStudentSubmission(response as api.StudentSubmission);
-      })));
+      final response = await res.modifyAttachments(
+          arg_request, arg_courseId, arg_courseWorkId, arg_id,
+          $fields: arg_$fields);
+      checkStudentSubmission(response as api.StudentSubmission);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
       var arg_request = buildStudentSubmission();
@@ -4935,15 +4873,13 @@ void main() {
         var resp = convert.json.encode(buildStudentSubmission());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_courseId, arg_courseWorkId, arg_id,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStudentSubmission(response as api.StudentSubmission);
-      })));
+      final response = await res.patch(
+          arg_request, arg_courseId, arg_courseWorkId, arg_id,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkStudentSubmission(response as api.StudentSubmission);
     });
 
-    unittest.test('method--reclaim', () {
+    unittest.test('method--reclaim', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
       var arg_request = buildReclaimStudentSubmissionRequest();
@@ -5040,15 +4976,13 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reclaim(arg_request, arg_courseId, arg_courseWorkId, arg_id,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.reclaim(
+          arg_request, arg_courseId, arg_courseWorkId, arg_id,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--return_', () {
+    unittest.test('method--return_', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
       var arg_request = buildReturnStudentSubmissionRequest();
@@ -5145,15 +5079,13 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .return_(arg_request, arg_courseId, arg_courseWorkId, arg_id,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.return_(
+          arg_request, arg_courseId, arg_courseWorkId, arg_id,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--turnIn', () {
+    unittest.test('method--turnIn', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWork.studentSubmissions;
       var arg_request = buildTurnInStudentSubmissionRequest();
@@ -5250,17 +5182,15 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .turnIn(arg_request, arg_courseId, arg_courseWorkId, arg_id,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.turnIn(
+          arg_request, arg_courseId, arg_courseWorkId, arg_id,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 
   unittest.group('resource-CoursesCourseWorkMaterialsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWorkMaterials;
       var arg_request = buildCourseWorkMaterial();
@@ -5326,14 +5256,12 @@ void main() {
         var resp = convert.json.encode(buildCourseWorkMaterial());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_courseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCourseWorkMaterial(response as api.CourseWorkMaterial);
-      })));
+      final response =
+          await res.create(arg_request, arg_courseId, $fields: arg_$fields);
+      checkCourseWorkMaterial(response as api.CourseWorkMaterial);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWorkMaterials;
       var arg_courseId = 'foo';
@@ -5401,14 +5329,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_courseId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.delete(arg_courseId, arg_id, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWorkMaterials;
       var arg_courseId = 'foo';
@@ -5476,14 +5402,12 @@ void main() {
         var resp = convert.json.encode(buildCourseWorkMaterial());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_courseId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCourseWorkMaterial(response as api.CourseWorkMaterial);
-      })));
+      final response =
+          await res.get(arg_courseId, arg_id, $fields: arg_$fields);
+      checkCourseWorkMaterial(response as api.CourseWorkMaterial);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWorkMaterials;
       var arg_courseId = 'foo';
@@ -5574,22 +5498,19 @@ void main() {
         var resp = convert.json.encode(buildListCourseWorkMaterialResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_courseId,
-              courseWorkMaterialStates: arg_courseWorkMaterialStates,
-              materialDriveId: arg_materialDriveId,
-              materialLink: arg_materialLink,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCourseWorkMaterialResponse(
-            response as api.ListCourseWorkMaterialResponse);
-      })));
+      final response = await res.list(arg_courseId,
+          courseWorkMaterialStates: arg_courseWorkMaterialStates,
+          materialDriveId: arg_materialDriveId,
+          materialLink: arg_materialLink,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListCourseWorkMaterialResponse(
+          response as api.ListCourseWorkMaterialResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.courseWorkMaterials;
       var arg_request = buildCourseWorkMaterial();
@@ -5667,17 +5588,14 @@ void main() {
         var resp = convert.json.encode(buildCourseWorkMaterial());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_courseId, arg_id,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCourseWorkMaterial(response as api.CourseWorkMaterial);
-      })));
+      final response = await res.patch(arg_request, arg_courseId, arg_id,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkCourseWorkMaterial(response as api.CourseWorkMaterial);
     });
   });
 
   unittest.group('resource-CoursesStudentsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.students;
       var arg_request = buildStudent();
@@ -5748,15 +5666,12 @@ void main() {
         var resp = convert.json.encode(buildStudent());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_courseId,
-              enrollmentCode: arg_enrollmentCode, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStudent(response as api.Student);
-      })));
+      final response = await res.create(arg_request, arg_courseId,
+          enrollmentCode: arg_enrollmentCode, $fields: arg_$fields);
+      checkStudent(response as api.Student);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.students;
       var arg_courseId = 'foo';
@@ -5824,14 +5739,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_courseId, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.delete(arg_courseId, arg_userId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.students;
       var arg_courseId = 'foo';
@@ -5899,14 +5812,12 @@ void main() {
         var resp = convert.json.encode(buildStudent());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_courseId, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStudent(response as api.Student);
-      })));
+      final response =
+          await res.get(arg_courseId, arg_userId, $fields: arg_$fields);
+      checkStudent(response as api.Student);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.students;
       var arg_courseId = 'foo';
@@ -5977,19 +5888,16 @@ void main() {
         var resp = convert.json.encode(buildListStudentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_courseId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListStudentsResponse(response as api.ListStudentsResponse);
-      })));
+      final response = await res.list(arg_courseId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListStudentsResponse(response as api.ListStudentsResponse);
     });
   });
 
   unittest.group('resource-CoursesTeachersResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.teachers;
       var arg_request = buildTeacher();
@@ -6055,14 +5963,12 @@ void main() {
         var resp = convert.json.encode(buildTeacher());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_courseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTeacher(response as api.Teacher);
-      })));
+      final response =
+          await res.create(arg_request, arg_courseId, $fields: arg_$fields);
+      checkTeacher(response as api.Teacher);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.teachers;
       var arg_courseId = 'foo';
@@ -6130,14 +6036,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_courseId, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.delete(arg_courseId, arg_userId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.teachers;
       var arg_courseId = 'foo';
@@ -6205,14 +6109,12 @@ void main() {
         var resp = convert.json.encode(buildTeacher());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_courseId, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTeacher(response as api.Teacher);
-      })));
+      final response =
+          await res.get(arg_courseId, arg_userId, $fields: arg_$fields);
+      checkTeacher(response as api.Teacher);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.teachers;
       var arg_courseId = 'foo';
@@ -6283,19 +6185,16 @@ void main() {
         var resp = convert.json.encode(buildListTeachersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_courseId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTeachersResponse(response as api.ListTeachersResponse);
-      })));
+      final response = await res.list(arg_courseId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListTeachersResponse(response as api.ListTeachersResponse);
     });
   });
 
   unittest.group('resource-CoursesTopicsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.topics;
       var arg_request = buildTopic();
@@ -6361,14 +6260,12 @@ void main() {
         var resp = convert.json.encode(buildTopic());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_courseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTopic(response as api.Topic);
-      })));
+      final response =
+          await res.create(arg_request, arg_courseId, $fields: arg_$fields);
+      checkTopic(response as api.Topic);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.topics;
       var arg_courseId = 'foo';
@@ -6436,14 +6333,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_courseId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.delete(arg_courseId, arg_id, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.topics;
       var arg_courseId = 'foo';
@@ -6511,14 +6406,12 @@ void main() {
         var resp = convert.json.encode(buildTopic());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_courseId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTopic(response as api.Topic);
-      })));
+      final response =
+          await res.get(arg_courseId, arg_id, $fields: arg_$fields);
+      checkTopic(response as api.Topic);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.topics;
       var arg_courseId = 'foo';
@@ -6589,17 +6482,14 @@ void main() {
         var resp = convert.json.encode(buildListTopicResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_courseId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTopicResponse(response as api.ListTopicResponse);
-      })));
+      final response = await res.list(arg_courseId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListTopicResponse(response as api.ListTopicResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).courses.topics;
       var arg_request = buildTopic();
@@ -6677,17 +6567,14 @@ void main() {
         var resp = convert.json.encode(buildTopic());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_courseId, arg_id,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTopic(response as api.Topic);
-      })));
+      final response = await res.patch(arg_request, arg_courseId, arg_id,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkTopic(response as api.Topic);
     });
   });
 
   unittest.group('resource-InvitationsResource', () {
-    unittest.test('method--accept', () {
+    unittest.test('method--accept', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).invitations;
       var arg_id = 'foo';
@@ -6748,14 +6635,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .accept(arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.accept(arg_id, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).invitations;
       var arg_request = buildInvitation();
@@ -6806,14 +6690,11 @@ void main() {
         var resp = convert.json.encode(buildInvitation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInvitation(response as api.Invitation);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkInvitation(response as api.Invitation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).invitations;
       var arg_id = 'foo';
@@ -6866,14 +6747,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_id, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).invitations;
       var arg_id = 'foo';
@@ -6926,14 +6804,11 @@ void main() {
         var resp = convert.json.encode(buildInvitation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInvitation(response as api.Invitation);
-      })));
+      final response = await res.get(arg_id, $fields: arg_$fields);
+      checkInvitation(response as api.Invitation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).invitations;
       var arg_courseId = 'foo';
@@ -6999,21 +6874,18 @@ void main() {
         var resp = convert.json.encode(buildListInvitationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              courseId: arg_courseId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              userId: arg_userId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListInvitationsResponse(response as api.ListInvitationsResponse);
-      })));
+      final response = await res.list(
+          courseId: arg_courseId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          userId: arg_userId,
+          $fields: arg_$fields);
+      checkListInvitationsResponse(response as api.ListInvitationsResponse);
     });
   });
 
   unittest.group('resource-RegistrationsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).registrations;
       var arg_request = buildRegistration();
@@ -7064,14 +6936,11 @@ void main() {
         var resp = convert.json.encode(buildRegistration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRegistration(response as api.Registration);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkRegistration(response as api.Registration);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).registrations;
       var arg_registrationId = 'foo';
@@ -7124,16 +6993,14 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_registrationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.delete(arg_registrationId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 
   unittest.group('resource-UserProfilesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).userProfiles;
       var arg_userId = 'foo';
@@ -7186,16 +7053,13 @@ void main() {
         var resp = convert.json.encode(buildUserProfile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUserProfile(response as api.UserProfile);
-      })));
+      final response = await res.get(arg_userId, $fields: arg_$fields);
+      checkUserProfile(response as api.UserProfile);
     });
   });
 
   unittest.group('resource-UserProfilesGuardianInvitationsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).userProfiles.guardianInvitations;
       var arg_request = buildGuardianInvitation();
@@ -7261,14 +7125,12 @@ void main() {
         var resp = convert.json.encode(buildGuardianInvitation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_studentId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGuardianInvitation(response as api.GuardianInvitation);
-      })));
+      final response =
+          await res.create(arg_request, arg_studentId, $fields: arg_$fields);
+      checkGuardianInvitation(response as api.GuardianInvitation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).userProfiles.guardianInvitations;
       var arg_studentId = 'foo';
@@ -7336,14 +7198,12 @@ void main() {
         var resp = convert.json.encode(buildGuardianInvitation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_studentId, arg_invitationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGuardianInvitation(response as api.GuardianInvitation);
-      })));
+      final response =
+          await res.get(arg_studentId, arg_invitationId, $fields: arg_$fields);
+      checkGuardianInvitation(response as api.GuardianInvitation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).userProfiles.guardianInvitations;
       var arg_studentId = 'foo';
@@ -7424,20 +7284,17 @@ void main() {
         var resp = convert.json.encode(buildListGuardianInvitationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_studentId,
-              invitedEmailAddress: arg_invitedEmailAddress,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              states: arg_states,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListGuardianInvitationsResponse(
-            response as api.ListGuardianInvitationsResponse);
-      })));
+      final response = await res.list(arg_studentId,
+          invitedEmailAddress: arg_invitedEmailAddress,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          states: arg_states,
+          $fields: arg_$fields);
+      checkListGuardianInvitationsResponse(
+          response as api.ListGuardianInvitationsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).userProfiles.guardianInvitations;
       var arg_request = buildGuardianInvitation();
@@ -7515,17 +7372,15 @@ void main() {
         var resp = convert.json.encode(buildGuardianInvitation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_studentId, arg_invitationId,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGuardianInvitation(response as api.GuardianInvitation);
-      })));
+      final response = await res.patch(
+          arg_request, arg_studentId, arg_invitationId,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGuardianInvitation(response as api.GuardianInvitation);
     });
   });
 
   unittest.group('resource-UserProfilesGuardiansResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).userProfiles.guardians;
       var arg_studentId = 'foo';
@@ -7593,14 +7448,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_studentId, arg_guardianId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.delete(arg_studentId, arg_guardianId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).userProfiles.guardians;
       var arg_studentId = 'foo';
@@ -7668,14 +7521,12 @@ void main() {
         var resp = convert.json.encode(buildGuardian());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_studentId, arg_guardianId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGuardian(response as api.Guardian);
-      })));
+      final response =
+          await res.get(arg_studentId, arg_guardianId, $fields: arg_$fields);
+      checkGuardian(response as api.Guardian);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ClassroomApi(mock).userProfiles.guardians;
       var arg_studentId = 'foo';
@@ -7751,15 +7602,12 @@ void main() {
         var resp = convert.json.encode(buildListGuardiansResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_studentId,
-              invitedEmailAddress: arg_invitedEmailAddress,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListGuardiansResponse(response as api.ListGuardiansResponse);
-      })));
+      final response = await res.list(arg_studentId,
+          invitedEmailAddress: arg_invitedEmailAddress,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListGuardiansResponse(response as api.ListGuardiansResponse);
     });
   });
 }

@@ -1083,7 +1083,7 @@ void checkXss(api.Xss o) {
 
 void main() {
   unittest.group('obj-schema-Authentication', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuthentication();
       var od = api.Authentication.fromJson(o.toJson());
       checkAuthentication(od as api.Authentication);
@@ -1091,7 +1091,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CrawledUrl', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCrawledUrl();
       var od = api.CrawledUrl.fromJson(o.toJson());
       checkCrawledUrl(od as api.CrawledUrl);
@@ -1099,7 +1099,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomAccount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomAccount();
       var od = api.CustomAccount.fromJson(o.toJson());
       checkCustomAccount(od as api.CustomAccount);
@@ -1107,7 +1107,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1115,7 +1115,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Finding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFinding();
       var od = api.Finding.fromJson(o.toJson());
       checkFinding(od as api.Finding);
@@ -1123,7 +1123,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FindingTypeStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFindingTypeStats();
       var od = api.FindingTypeStats.fromJson(o.toJson());
       checkFindingTypeStats(od as api.FindingTypeStats);
@@ -1131,7 +1131,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Form', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildForm();
       var od = api.Form.fromJson(o.toJson());
       checkForm(od as api.Form);
@@ -1139,7 +1139,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAccount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAccount();
       var od = api.GoogleAccount.fromJson(o.toJson());
       checkGoogleAccount(od as api.GoogleAccount);
@@ -1147,7 +1147,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Header', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHeader();
       var od = api.Header.fromJson(o.toJson());
       checkHeader(od as api.Header);
@@ -1155,7 +1155,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IapCredential', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIapCredential();
       var od = api.IapCredential.fromJson(o.toJson());
       checkIapCredential(od as api.IapCredential);
@@ -1163,7 +1163,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IapTestServiceAccountInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIapTestServiceAccountInfo();
       var od = api.IapTestServiceAccountInfo.fromJson(o.toJson());
       checkIapTestServiceAccountInfo(od as api.IapTestServiceAccountInfo);
@@ -1171,7 +1171,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCrawledUrlsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCrawledUrlsResponse();
       var od = api.ListCrawledUrlsResponse.fromJson(o.toJson());
       checkListCrawledUrlsResponse(od as api.ListCrawledUrlsResponse);
@@ -1179,7 +1179,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListFindingTypeStatsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListFindingTypeStatsResponse();
       var od = api.ListFindingTypeStatsResponse.fromJson(o.toJson());
       checkListFindingTypeStatsResponse(od as api.ListFindingTypeStatsResponse);
@@ -1187,7 +1187,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListFindingsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListFindingsResponse();
       var od = api.ListFindingsResponse.fromJson(o.toJson());
       checkListFindingsResponse(od as api.ListFindingsResponse);
@@ -1195,7 +1195,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListScanConfigsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListScanConfigsResponse();
       var od = api.ListScanConfigsResponse.fromJson(o.toJson());
       checkListScanConfigsResponse(od as api.ListScanConfigsResponse);
@@ -1203,7 +1203,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListScanRunsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListScanRunsResponse();
       var od = api.ListScanRunsResponse.fromJson(o.toJson());
       checkListScanRunsResponse(od as api.ListScanRunsResponse);
@@ -1211,7 +1211,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OutdatedLibrary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOutdatedLibrary();
       var od = api.OutdatedLibrary.fromJson(o.toJson());
       checkOutdatedLibrary(od as api.OutdatedLibrary);
@@ -1219,7 +1219,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScanConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScanConfig();
       var od = api.ScanConfig.fromJson(o.toJson());
       checkScanConfig(od as api.ScanConfig);
@@ -1227,7 +1227,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScanConfigError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScanConfigError();
       var od = api.ScanConfigError.fromJson(o.toJson());
       checkScanConfigError(od as api.ScanConfigError);
@@ -1235,7 +1235,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScanRun', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScanRun();
       var od = api.ScanRun.fromJson(o.toJson());
       checkScanRun(od as api.ScanRun);
@@ -1243,7 +1243,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScanRunErrorTrace', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScanRunErrorTrace();
       var od = api.ScanRunErrorTrace.fromJson(o.toJson());
       checkScanRunErrorTrace(od as api.ScanRunErrorTrace);
@@ -1251,7 +1251,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScanRunWarningTrace', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScanRunWarningTrace();
       var od = api.ScanRunWarningTrace.fromJson(o.toJson());
       checkScanRunWarningTrace(od as api.ScanRunWarningTrace);
@@ -1259,7 +1259,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Schedule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSchedule();
       var od = api.Schedule.fromJson(o.toJson());
       checkSchedule(od as api.Schedule);
@@ -1267,7 +1267,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StartScanRunRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStartScanRunRequest();
       var od = api.StartScanRunRequest.fromJson(o.toJson());
       checkStartScanRunRequest(od as api.StartScanRunRequest);
@@ -1275,7 +1275,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StopScanRunRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStopScanRunRequest();
       var od = api.StopScanRunRequest.fromJson(o.toJson());
       checkStopScanRunRequest(od as api.StopScanRunRequest);
@@ -1283,7 +1283,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ViolatingResource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildViolatingResource();
       var od = api.ViolatingResource.fromJson(o.toJson());
       checkViolatingResource(od as api.ViolatingResource);
@@ -1291,7 +1291,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VulnerableHeaders', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVulnerableHeaders();
       var od = api.VulnerableHeaders.fromJson(o.toJson());
       checkVulnerableHeaders(od as api.VulnerableHeaders);
@@ -1299,7 +1299,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VulnerableParameters', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVulnerableParameters();
       var od = api.VulnerableParameters.fromJson(o.toJson());
       checkVulnerableParameters(od as api.VulnerableParameters);
@@ -1307,7 +1307,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Xss', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildXss();
       var od = api.Xss.fromJson(o.toJson());
       checkXss(od as api.Xss);
@@ -1315,7 +1315,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsScanConfigsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.WebSecurityScannerApi(mock).projects.scanConfigs;
       var arg_request = buildScanConfig();
@@ -1368,14 +1368,12 @@ void main() {
         var resp = convert.json.encode(buildScanConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkScanConfig(response as api.ScanConfig);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkScanConfig(response as api.ScanConfig);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.WebSecurityScannerApi(mock).projects.scanConfigs;
       var arg_name = 'foo';
@@ -1423,14 +1421,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.WebSecurityScannerApi(mock).projects.scanConfigs;
       var arg_name = 'foo';
@@ -1478,14 +1473,11 @@ void main() {
         var resp = convert.json.encode(buildScanConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkScanConfig(response as api.ScanConfig);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkScanConfig(response as api.ScanConfig);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.WebSecurityScannerApi(mock).projects.scanConfigs;
       var arg_parent = 'foo';
@@ -1543,17 +1535,14 @@ void main() {
         var resp = convert.json.encode(buildListScanConfigsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListScanConfigsResponse(response as api.ListScanConfigsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListScanConfigsResponse(response as api.ListScanConfigsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.WebSecurityScannerApi(mock).projects.scanConfigs;
       var arg_request = buildScanConfig();
@@ -1611,15 +1600,12 @@ void main() {
         var resp = convert.json.encode(buildScanConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkScanConfig(response as api.ScanConfig);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkScanConfig(response as api.ScanConfig);
     });
 
-    unittest.test('method--start', () {
+    unittest.test('method--start', () async {
       var mock = HttpServerMock();
       var res = api.WebSecurityScannerApi(mock).projects.scanConfigs;
       var arg_request = buildStartScanRunRequest();
@@ -1672,16 +1658,14 @@ void main() {
         var resp = convert.json.encode(buildScanRun());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .start(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkScanRun(response as api.ScanRun);
-      })));
+      final response =
+          await res.start(arg_request, arg_name, $fields: arg_$fields);
+      checkScanRun(response as api.ScanRun);
     });
   });
 
   unittest.group('resource-ProjectsScanConfigsScanRunsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.WebSecurityScannerApi(mock).projects.scanConfigs.scanRuns;
       var arg_name = 'foo';
@@ -1729,14 +1713,11 @@ void main() {
         var resp = convert.json.encode(buildScanRun());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkScanRun(response as api.ScanRun);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkScanRun(response as api.ScanRun);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.WebSecurityScannerApi(mock).projects.scanConfigs.scanRuns;
       var arg_parent = 'foo';
@@ -1794,17 +1775,14 @@ void main() {
         var resp = convert.json.encode(buildListScanRunsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListScanRunsResponse(response as api.ListScanRunsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListScanRunsResponse(response as api.ListScanRunsResponse);
     });
 
-    unittest.test('method--stop', () {
+    unittest.test('method--stop', () async {
       var mock = HttpServerMock();
       var res = api.WebSecurityScannerApi(mock).projects.scanConfigs.scanRuns;
       var arg_request = buildStopScanRunRequest();
@@ -1857,16 +1835,14 @@ void main() {
         var resp = convert.json.encode(buildScanRun());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .stop(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkScanRun(response as api.ScanRun);
-      })));
+      final response =
+          await res.stop(arg_request, arg_name, $fields: arg_$fields);
+      checkScanRun(response as api.ScanRun);
     });
   });
 
   unittest.group('resource-ProjectsScanConfigsScanRunsCrawledUrlsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.WebSecurityScannerApi(mock)
           .projects
@@ -1928,20 +1904,17 @@ void main() {
         var resp = convert.json.encode(buildListCrawledUrlsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCrawledUrlsResponse(response as api.ListCrawledUrlsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListCrawledUrlsResponse(response as api.ListCrawledUrlsResponse);
     });
   });
 
   unittest.group('resource-ProjectsScanConfigsScanRunsFindingTypeStatsResource',
       () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.WebSecurityScannerApi(mock)
           .projects
@@ -1993,17 +1966,14 @@ void main() {
         var resp = convert.json.encode(buildListFindingTypeStatsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListFindingTypeStatsResponse(
-            response as api.ListFindingTypeStatsResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkListFindingTypeStatsResponse(
+          response as api.ListFindingTypeStatsResponse);
     });
   });
 
   unittest.group('resource-ProjectsScanConfigsScanRunsFindingsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.WebSecurityScannerApi(mock)
           .projects
@@ -2055,14 +2025,11 @@ void main() {
         var resp = convert.json.encode(buildFinding());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFinding(response as api.Finding);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkFinding(response as api.Finding);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.WebSecurityScannerApi(mock)
           .projects
@@ -2129,15 +2096,12 @@ void main() {
         var resp = convert.json.encode(buildListFindingsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListFindingsResponse(response as api.ListFindingsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListFindingsResponse(response as api.ListFindingsResponse);
     });
   });
 }

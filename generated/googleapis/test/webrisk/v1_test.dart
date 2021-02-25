@@ -833,7 +833,7 @@ void checkUnnamed1515(core.List<core.String> o) {
 void main() {
   unittest.group('obj-schema-GoogleCloudWebriskV1ComputeThreatListDiffResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1ComputeThreatListDiffResponse();
       var od = api.GoogleCloudWebriskV1ComputeThreatListDiffResponse.fromJson(
           o.toJson());
@@ -845,7 +845,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum();
       var od = api.GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum
           .fromJson(o.toJson());
@@ -855,7 +855,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudWebriskV1RawHashes', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1RawHashes();
       var od = api.GoogleCloudWebriskV1RawHashes.fromJson(o.toJson());
       checkGoogleCloudWebriskV1RawHashes(
@@ -864,7 +864,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudWebriskV1RawIndices', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1RawIndices();
       var od = api.GoogleCloudWebriskV1RawIndices.fromJson(o.toJson());
       checkGoogleCloudWebriskV1RawIndices(
@@ -873,7 +873,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudWebriskV1RiceDeltaEncoding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1RiceDeltaEncoding();
       var od = api.GoogleCloudWebriskV1RiceDeltaEncoding.fromJson(o.toJson());
       checkGoogleCloudWebriskV1RiceDeltaEncoding(
@@ -882,7 +882,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudWebriskV1SearchHashesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1SearchHashesResponse();
       var od =
           api.GoogleCloudWebriskV1SearchHashesResponse.fromJson(o.toJson());
@@ -893,7 +893,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudWebriskV1SearchHashesResponseThreatHash', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1SearchHashesResponseThreatHash();
       var od = api.GoogleCloudWebriskV1SearchHashesResponseThreatHash.fromJson(
           o.toJson());
@@ -903,7 +903,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudWebriskV1SearchUrisResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1SearchUrisResponse();
       var od = api.GoogleCloudWebriskV1SearchUrisResponse.fromJson(o.toJson());
       checkGoogleCloudWebriskV1SearchUrisResponse(
@@ -913,7 +913,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudWebriskV1SearchUrisResponseThreatUri',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1SearchUrisResponseThreatUri();
       var od = api.GoogleCloudWebriskV1SearchUrisResponseThreatUri.fromJson(
           o.toJson());
@@ -923,7 +923,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudWebriskV1Submission', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1Submission();
       var od = api.GoogleCloudWebriskV1Submission.fromJson(o.toJson());
       checkGoogleCloudWebriskV1Submission(
@@ -932,7 +932,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudWebriskV1SubmitUriRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1SubmitUriRequest();
       var od = api.GoogleCloudWebriskV1SubmitUriRequest.fromJson(o.toJson());
       checkGoogleCloudWebriskV1SubmitUriRequest(
@@ -941,7 +941,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudWebriskV1ThreatEntryAdditions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1ThreatEntryAdditions();
       var od =
           api.GoogleCloudWebriskV1ThreatEntryAdditions.fromJson(o.toJson());
@@ -951,7 +951,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudWebriskV1ThreatEntryRemovals', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1ThreatEntryRemovals();
       var od = api.GoogleCloudWebriskV1ThreatEntryRemovals.fromJson(o.toJson());
       checkGoogleCloudWebriskV1ThreatEntryRemovals(
@@ -960,7 +960,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningCancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningCancelOperationRequest();
       var od = api.GoogleLongrunningCancelOperationRequest.fromJson(o.toJson());
       checkGoogleLongrunningCancelOperationRequest(
@@ -969,7 +969,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
       var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
       checkGoogleLongrunningListOperationsResponse(
@@ -978,7 +978,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
@@ -986,7 +986,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
@@ -994,7 +994,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleRpcStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
       var od = api.GoogleRpcStatus.fromJson(o.toJson());
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
@@ -1002,7 +1002,7 @@ void main() {
   });
 
   unittest.group('resource-HashesResource', () {
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.WebRiskApi(mock).hashes;
       var arg_hashPrefix = 'foo';
@@ -1059,20 +1059,17 @@ void main() {
             .encode(buildGoogleCloudWebriskV1SearchHashesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(
-              hashPrefix: arg_hashPrefix,
-              threatTypes: arg_threatTypes,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudWebriskV1SearchHashesResponse(
-            response as api.GoogleCloudWebriskV1SearchHashesResponse);
-      })));
+      final response = await res.search(
+          hashPrefix: arg_hashPrefix,
+          threatTypes: arg_threatTypes,
+          $fields: arg_$fields);
+      checkGoogleCloudWebriskV1SearchHashesResponse(
+          response as api.GoogleCloudWebriskV1SearchHashesResponse);
     });
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.WebRiskApi(mock).operations;
       var arg_request = buildGoogleLongrunningCancelOperationRequest();
@@ -1126,14 +1123,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.WebRiskApi(mock).operations;
       var arg_name = 'foo';
@@ -1181,14 +1176,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.WebRiskApi(mock).operations;
       var arg_name = 'foo';
@@ -1236,15 +1228,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.WebRiskApi(mock).operations;
       var arg_name = 'foo';
@@ -1308,21 +1297,18 @@ void main() {
             convert.json.encode(buildGoogleLongrunningListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningListOperationsResponse(
-            response as api.GoogleLongrunningListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleLongrunningListOperationsResponse(
+          response as api.GoogleLongrunningListOperationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsSubmissionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.WebRiskApi(mock).projects.submissions;
       var arg_request = buildGoogleCloudWebriskV1Submission();
@@ -1376,17 +1362,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudWebriskV1Submission());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudWebriskV1Submission(
-            response as api.GoogleCloudWebriskV1Submission);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudWebriskV1Submission(
+          response as api.GoogleCloudWebriskV1Submission);
     });
   });
 
   unittest.group('resource-ProjectsUrisResource', () {
-    unittest.test('method--submit', () {
+    unittest.test('method--submit', () async {
       var mock = HttpServerMock();
       var res = api.WebRiskApi(mock).projects.uris;
       var arg_request = buildGoogleCloudWebriskV1SubmitUriRequest();
@@ -1440,17 +1424,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .submit(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.submit(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 
   unittest.group('resource-ThreatListsResource', () {
-    unittest.test('method--computeDiff', () {
+    unittest.test('method--computeDiff', () async {
       var mock = HttpServerMock();
       var res = api.WebRiskApi(mock).threatLists;
       var arg_constraints_maxDatabaseEntries = 42;
@@ -1522,25 +1504,21 @@ void main() {
             .encode(buildGoogleCloudWebriskV1ComputeThreatListDiffResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .computeDiff(
-              constraints_maxDatabaseEntries:
-                  arg_constraints_maxDatabaseEntries,
-              constraints_maxDiffEntries: arg_constraints_maxDiffEntries,
-              constraints_supportedCompressions:
-                  arg_constraints_supportedCompressions,
-              threatType: arg_threatType,
-              versionToken: arg_versionToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudWebriskV1ComputeThreatListDiffResponse(
-            response as api.GoogleCloudWebriskV1ComputeThreatListDiffResponse);
-      })));
+      final response = await res.computeDiff(
+          constraints_maxDatabaseEntries: arg_constraints_maxDatabaseEntries,
+          constraints_maxDiffEntries: arg_constraints_maxDiffEntries,
+          constraints_supportedCompressions:
+              arg_constraints_supportedCompressions,
+          threatType: arg_threatType,
+          versionToken: arg_versionToken,
+          $fields: arg_$fields);
+      checkGoogleCloudWebriskV1ComputeThreatListDiffResponse(
+          response as api.GoogleCloudWebriskV1ComputeThreatListDiffResponse);
     });
   });
 
   unittest.group('resource-UrisResource', () {
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.WebRiskApi(mock).uris;
       var arg_threatTypes = buildUnnamed1515();
@@ -1597,13 +1575,10 @@ void main() {
             convert.json.encode(buildGoogleCloudWebriskV1SearchUrisResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(
-              threatTypes: arg_threatTypes, uri: arg_uri, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudWebriskV1SearchUrisResponse(
-            response as api.GoogleCloudWebriskV1SearchUrisResponse);
-      })));
+      final response = await res.search(
+          threatTypes: arg_threatTypes, uri: arg_uri, $fields: arg_$fields);
+      checkGoogleCloudWebriskV1SearchUrisResponse(
+          response as api.GoogleCloudWebriskV1SearchUrisResponse);
     });
   });
 }

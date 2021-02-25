@@ -9331,7 +9331,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
 void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1AnnotateVideoProgress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1AnnotateVideoProgress();
       var od = api.GoogleCloudVideointelligenceV1AnnotateVideoProgress.fromJson(
           o.toJson());
@@ -9342,7 +9342,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1AnnotateVideoRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1AnnotateVideoRequest();
       var od = api.GoogleCloudVideointelligenceV1AnnotateVideoRequest.fromJson(
           o.toJson());
@@ -9353,7 +9353,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1AnnotateVideoResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1AnnotateVideoResponse();
       var od = api.GoogleCloudVideointelligenceV1AnnotateVideoResponse.fromJson(
           o.toJson());
@@ -9364,7 +9364,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1DetectedAttribute',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1DetectedAttribute();
       var od = api.GoogleCloudVideointelligenceV1DetectedAttribute.fromJson(
           o.toJson());
@@ -9375,7 +9375,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1DetectedLandmark',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1DetectedLandmark();
       var od = api.GoogleCloudVideointelligenceV1DetectedLandmark.fromJson(
           o.toJson());
@@ -9385,7 +9385,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1Entity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1Entity();
       var od = api.GoogleCloudVideointelligenceV1Entity.fromJson(o.toJson());
       checkGoogleCloudVideointelligenceV1Entity(
@@ -9395,7 +9395,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1ExplicitContentAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1ExplicitContentAnnotation();
       var od =
           api.GoogleCloudVideointelligenceV1ExplicitContentAnnotation.fromJson(
@@ -9408,7 +9408,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1ExplicitContentDetectionConfig();
       var od = api.GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig
@@ -9420,7 +9420,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1ExplicitContentFrame', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1ExplicitContentFrame();
       var od = api.GoogleCloudVideointelligenceV1ExplicitContentFrame.fromJson(
           o.toJson());
@@ -9430,7 +9430,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1FaceAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1FaceAnnotation();
       var od =
           api.GoogleCloudVideointelligenceV1FaceAnnotation.fromJson(o.toJson());
@@ -9441,7 +9441,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1FaceDetectionAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1FaceDetectionAnnotation();
       var od =
           api.GoogleCloudVideointelligenceV1FaceDetectionAnnotation.fromJson(
@@ -9453,7 +9453,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1FaceDetectionConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1FaceDetectionConfig();
       var od = api.GoogleCloudVideointelligenceV1FaceDetectionConfig.fromJson(
           o.toJson());
@@ -9463,7 +9463,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1FaceFrame', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1FaceFrame();
       var od = api.GoogleCloudVideointelligenceV1FaceFrame.fromJson(o.toJson());
       checkGoogleCloudVideointelligenceV1FaceFrame(
@@ -9472,7 +9472,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1FaceSegment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1FaceSegment();
       var od =
           api.GoogleCloudVideointelligenceV1FaceSegment.fromJson(o.toJson());
@@ -9483,7 +9483,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1LabelAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1LabelAnnotation();
       var od = api.GoogleCloudVideointelligenceV1LabelAnnotation.fromJson(
           o.toJson());
@@ -9494,7 +9494,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1LabelDetectionConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1LabelDetectionConfig();
       var od = api.GoogleCloudVideointelligenceV1LabelDetectionConfig.fromJson(
           o.toJson());
@@ -9504,7 +9504,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1LabelFrame', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1LabelFrame();
       var od =
           api.GoogleCloudVideointelligenceV1LabelFrame.fromJson(o.toJson());
@@ -9514,7 +9514,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1LabelSegment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1LabelSegment();
       var od =
           api.GoogleCloudVideointelligenceV1LabelSegment.fromJson(o.toJson());
@@ -9525,7 +9525,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1LogoRecognitionAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1LogoRecognitionAnnotation();
       var od =
           api.GoogleCloudVideointelligenceV1LogoRecognitionAnnotation.fromJson(
@@ -9537,7 +9537,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1NormalizedBoundingBox', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1NormalizedBoundingBox();
       var od = api.GoogleCloudVideointelligenceV1NormalizedBoundingBox.fromJson(
           o.toJson());
@@ -9548,7 +9548,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1NormalizedBoundingPoly', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1NormalizedBoundingPoly();
       var od =
           api.GoogleCloudVideointelligenceV1NormalizedBoundingPoly.fromJson(
@@ -9560,7 +9560,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1NormalizedVertex',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1NormalizedVertex();
       var od = api.GoogleCloudVideointelligenceV1NormalizedVertex.fromJson(
           o.toJson());
@@ -9571,7 +9571,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1ObjectTrackingAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1ObjectTrackingAnnotation();
       var od =
           api.GoogleCloudVideointelligenceV1ObjectTrackingAnnotation.fromJson(
@@ -9583,7 +9583,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1ObjectTrackingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1ObjectTrackingConfig();
       var od = api.GoogleCloudVideointelligenceV1ObjectTrackingConfig.fromJson(
           o.toJson());
@@ -9594,7 +9594,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1ObjectTrackingFrame',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1ObjectTrackingFrame();
       var od = api.GoogleCloudVideointelligenceV1ObjectTrackingFrame.fromJson(
           o.toJson());
@@ -9605,7 +9605,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1PersonDetectionAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1PersonDetectionAnnotation();
       var od =
           api.GoogleCloudVideointelligenceV1PersonDetectionAnnotation.fromJson(
@@ -9617,7 +9617,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1PersonDetectionConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1PersonDetectionConfig();
       var od = api.GoogleCloudVideointelligenceV1PersonDetectionConfig.fromJson(
           o.toJson());
@@ -9628,7 +9628,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1ShotChangeDetectionConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1ShotChangeDetectionConfig();
       var od =
           api.GoogleCloudVideointelligenceV1ShotChangeDetectionConfig.fromJson(
@@ -9639,7 +9639,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1SpeechContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1SpeechContext();
       var od =
           api.GoogleCloudVideointelligenceV1SpeechContext.fromJson(o.toJson());
@@ -9651,7 +9651,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1SpeechRecognitionAlternative',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1SpeechRecognitionAlternative();
       var od = api.GoogleCloudVideointelligenceV1SpeechRecognitionAlternative
           .fromJson(o.toJson());
@@ -9662,7 +9662,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1SpeechTranscription',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1SpeechTranscription();
       var od = api.GoogleCloudVideointelligenceV1SpeechTranscription.fromJson(
           o.toJson());
@@ -9673,7 +9673,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1SpeechTranscriptionConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1SpeechTranscriptionConfig();
       var od =
           api.GoogleCloudVideointelligenceV1SpeechTranscriptionConfig.fromJson(
@@ -9684,7 +9684,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1TextAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1TextAnnotation();
       var od =
           api.GoogleCloudVideointelligenceV1TextAnnotation.fromJson(o.toJson());
@@ -9695,7 +9695,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1TextDetectionConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1TextDetectionConfig();
       var od = api.GoogleCloudVideointelligenceV1TextDetectionConfig.fromJson(
           o.toJson());
@@ -9705,7 +9705,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1TextFrame', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1TextFrame();
       var od = api.GoogleCloudVideointelligenceV1TextFrame.fromJson(o.toJson());
       checkGoogleCloudVideointelligenceV1TextFrame(
@@ -9714,7 +9714,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1TextSegment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1TextSegment();
       var od =
           api.GoogleCloudVideointelligenceV1TextSegment.fromJson(o.toJson());
@@ -9725,7 +9725,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1TimestampedObject',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1TimestampedObject();
       var od = api.GoogleCloudVideointelligenceV1TimestampedObject.fromJson(
           o.toJson());
@@ -9735,7 +9735,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1Track', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1Track();
       var od = api.GoogleCloudVideointelligenceV1Track.fromJson(o.toJson());
       checkGoogleCloudVideointelligenceV1Track(
@@ -9745,7 +9745,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1VideoAnnotationProgress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1VideoAnnotationProgress();
       var od =
           api.GoogleCloudVideointelligenceV1VideoAnnotationProgress.fromJson(
@@ -9757,7 +9757,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1VideoAnnotationResults', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1VideoAnnotationResults();
       var od =
           api.GoogleCloudVideointelligenceV1VideoAnnotationResults.fromJson(
@@ -9768,7 +9768,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1VideoContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1VideoContext();
       var od =
           api.GoogleCloudVideointelligenceV1VideoContext.fromJson(o.toJson());
@@ -9778,7 +9778,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1VideoSegment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1VideoSegment();
       var od =
           api.GoogleCloudVideointelligenceV1VideoSegment.fromJson(o.toJson());
@@ -9788,7 +9788,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1WordInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1WordInfo();
       var od = api.GoogleCloudVideointelligenceV1WordInfo.fromJson(o.toJson());
       checkGoogleCloudVideointelligenceV1WordInfo(
@@ -9799,7 +9799,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2AnnotateVideoProgress',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2AnnotateVideoProgress();
       var od =
           api.GoogleCloudVideointelligenceV1beta2AnnotateVideoProgress.fromJson(
@@ -9812,7 +9812,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2AnnotateVideoResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2AnnotateVideoResponse();
       var od =
           api.GoogleCloudVideointelligenceV1beta2AnnotateVideoResponse.fromJson(
@@ -9824,7 +9824,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2DetectedAttribute', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2DetectedAttribute();
       var od =
           api.GoogleCloudVideointelligenceV1beta2DetectedAttribute.fromJson(
@@ -9836,7 +9836,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2DetectedLandmark', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2DetectedLandmark();
       var od = api.GoogleCloudVideointelligenceV1beta2DetectedLandmark.fromJson(
           o.toJson());
@@ -9846,7 +9846,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1beta2Entity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2Entity();
       var od =
           api.GoogleCloudVideointelligenceV1beta2Entity.fromJson(o.toJson());
@@ -9858,7 +9858,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation();
       var od = api.GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation
@@ -9870,7 +9870,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2ExplicitContentFrame', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2ExplicitContentFrame();
       var od =
           api.GoogleCloudVideointelligenceV1beta2ExplicitContentFrame.fromJson(
@@ -9882,7 +9882,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1beta2FaceAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2FaceAnnotation();
       var od = api.GoogleCloudVideointelligenceV1beta2FaceAnnotation.fromJson(
           o.toJson());
@@ -9894,7 +9894,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation();
       var od = api.GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation
           .fromJson(o.toJson());
@@ -9904,7 +9904,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1beta2FaceFrame', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2FaceFrame();
       var od =
           api.GoogleCloudVideointelligenceV1beta2FaceFrame.fromJson(o.toJson());
@@ -9915,7 +9915,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1beta2FaceSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2FaceSegment();
       var od = api.GoogleCloudVideointelligenceV1beta2FaceSegment.fromJson(
           o.toJson());
@@ -9926,7 +9926,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2LabelAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2LabelAnnotation();
       var od = api.GoogleCloudVideointelligenceV1beta2LabelAnnotation.fromJson(
           o.toJson());
@@ -9937,7 +9937,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1beta2LabelFrame',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2LabelFrame();
       var od = api.GoogleCloudVideointelligenceV1beta2LabelFrame.fromJson(
           o.toJson());
@@ -9948,7 +9948,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1beta2LabelSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2LabelSegment();
       var od = api.GoogleCloudVideointelligenceV1beta2LabelSegment.fromJson(
           o.toJson());
@@ -9960,7 +9960,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation();
       var od = api.GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation
@@ -9973,7 +9973,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2NormalizedBoundingBox();
       var od =
           api.GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox.fromJson(
@@ -9986,7 +9986,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly();
       var od = api.GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly
           .fromJson(o.toJson());
@@ -9997,7 +9997,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2NormalizedVertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2NormalizedVertex();
       var od = api.GoogleCloudVideointelligenceV1beta2NormalizedVertex.fromJson(
           o.toJson());
@@ -10009,7 +10009,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation();
       var od = api.GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation
@@ -10021,7 +10021,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2ObjectTrackingFrame();
       var od =
           api.GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame.fromJson(
@@ -10034,7 +10034,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation();
       var od = api.GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation
@@ -10047,7 +10047,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative();
       var od =
@@ -10061,7 +10061,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2SpeechTranscription', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2SpeechTranscription();
       var od =
           api.GoogleCloudVideointelligenceV1beta2SpeechTranscription.fromJson(
@@ -10073,7 +10073,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1beta2TextAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2TextAnnotation();
       var od = api.GoogleCloudVideointelligenceV1beta2TextAnnotation.fromJson(
           o.toJson());
@@ -10083,7 +10083,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1beta2TextFrame', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2TextFrame();
       var od =
           api.GoogleCloudVideointelligenceV1beta2TextFrame.fromJson(o.toJson());
@@ -10094,7 +10094,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1beta2TextSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2TextSegment();
       var od = api.GoogleCloudVideointelligenceV1beta2TextSegment.fromJson(
           o.toJson());
@@ -10105,7 +10105,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2TimestampedObject', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2TimestampedObject();
       var od =
           api.GoogleCloudVideointelligenceV1beta2TimestampedObject.fromJson(
@@ -10116,7 +10116,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1beta2Track', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2Track();
       var od =
           api.GoogleCloudVideointelligenceV1beta2Track.fromJson(o.toJson());
@@ -10128,7 +10128,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2VideoAnnotationProgress();
       var od = api.GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress
           .fromJson(o.toJson());
@@ -10140,7 +10140,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1beta2VideoAnnotationResults',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2VideoAnnotationResults();
       var od = api.GoogleCloudVideointelligenceV1beta2VideoAnnotationResults
           .fromJson(o.toJson());
@@ -10151,7 +10151,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1beta2VideoSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2VideoSegment();
       var od = api.GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(
           o.toJson());
@@ -10161,7 +10161,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1beta2WordInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1beta2WordInfo();
       var od =
           api.GoogleCloudVideointelligenceV1beta2WordInfo.fromJson(o.toJson());
@@ -10173,7 +10173,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress();
       var od = api.GoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress
           .fromJson(o.toJson());
@@ -10185,7 +10185,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse();
       var od = api.GoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse
           .fromJson(o.toJson());
@@ -10196,7 +10196,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1DetectedAttribute', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1DetectedAttribute();
       var od =
           api.GoogleCloudVideointelligenceV1p1beta1DetectedAttribute.fromJson(
@@ -10208,7 +10208,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1DetectedLandmark', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1DetectedLandmark();
       var od =
           api.GoogleCloudVideointelligenceV1p1beta1DetectedLandmark.fromJson(
@@ -10219,7 +10219,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p1beta1Entity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1Entity();
       var od =
           api.GoogleCloudVideointelligenceV1p1beta1Entity.fromJson(o.toJson());
@@ -10231,7 +10231,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation();
       var od =
@@ -10246,7 +10246,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame();
       var od = api.GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame
           .fromJson(o.toJson());
@@ -10257,7 +10257,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1FaceAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1FaceAnnotation();
       var od = api.GoogleCloudVideointelligenceV1p1beta1FaceAnnotation.fromJson(
           o.toJson());
@@ -10269,7 +10269,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation();
       var od = api.GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation
@@ -10281,7 +10281,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p1beta1FaceFrame',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1FaceFrame();
       var od = api.GoogleCloudVideointelligenceV1p1beta1FaceFrame.fromJson(
           o.toJson());
@@ -10292,7 +10292,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p1beta1FaceSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1FaceSegment();
       var od = api.GoogleCloudVideointelligenceV1p1beta1FaceSegment.fromJson(
           o.toJson());
@@ -10303,7 +10303,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1LabelAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1LabelAnnotation();
       var od =
           api.GoogleCloudVideointelligenceV1p1beta1LabelAnnotation.fromJson(
@@ -10315,7 +10315,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p1beta1LabelFrame',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1LabelFrame();
       var od = api.GoogleCloudVideointelligenceV1p1beta1LabelFrame.fromJson(
           o.toJson());
@@ -10326,7 +10326,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p1beta1LabelSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1LabelSegment();
       var od = api.GoogleCloudVideointelligenceV1p1beta1LabelSegment.fromJson(
           o.toJson());
@@ -10338,7 +10338,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation();
       var od =
@@ -10353,7 +10353,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox();
       var od = api.GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox
           .fromJson(o.toJson());
@@ -10365,7 +10365,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly();
       var od = api.GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly
@@ -10377,7 +10377,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1NormalizedVertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1NormalizedVertex();
       var od =
           api.GoogleCloudVideointelligenceV1p1beta1NormalizedVertex.fromJson(
@@ -10390,7 +10390,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation();
       var od = api.GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation
@@ -10403,7 +10403,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame();
       var od =
           api.GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame.fromJson(
@@ -10416,7 +10416,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation();
       var od =
@@ -10431,7 +10431,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative();
       var od =
@@ -10446,7 +10446,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1SpeechTranscription',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1SpeechTranscription();
       var od =
           api.GoogleCloudVideointelligenceV1p1beta1SpeechTranscription.fromJson(
@@ -10458,7 +10458,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1TextAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1TextAnnotation();
       var od = api.GoogleCloudVideointelligenceV1p1beta1TextAnnotation.fromJson(
           o.toJson());
@@ -10469,7 +10469,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p1beta1TextFrame',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1TextFrame();
       var od = api.GoogleCloudVideointelligenceV1p1beta1TextFrame.fromJson(
           o.toJson());
@@ -10480,7 +10480,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p1beta1TextSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1TextSegment();
       var od = api.GoogleCloudVideointelligenceV1p1beta1TextSegment.fromJson(
           o.toJson());
@@ -10491,7 +10491,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1TimestampedObject', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1TimestampedObject();
       var od =
           api.GoogleCloudVideointelligenceV1p1beta1TimestampedObject.fromJson(
@@ -10502,7 +10502,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p1beta1Track', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1Track();
       var od =
           api.GoogleCloudVideointelligenceV1p1beta1Track.fromJson(o.toJson());
@@ -10514,7 +10514,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress();
       var od = api.GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress
@@ -10527,7 +10527,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults();
       var od = api.GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults
@@ -10539,7 +10539,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p1beta1VideoSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1VideoSegment();
       var od = api.GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(
           o.toJson());
@@ -10550,7 +10550,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p1beta1WordInfo',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p1beta1WordInfo();
       var od = api.GoogleCloudVideointelligenceV1p1beta1WordInfo.fromJson(
           o.toJson());
@@ -10562,7 +10562,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress();
       var od = api.GoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress
           .fromJson(o.toJson());
@@ -10574,7 +10574,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse();
       var od = api.GoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse
           .fromJson(o.toJson());
@@ -10585,7 +10585,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1DetectedAttribute', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1DetectedAttribute();
       var od =
           api.GoogleCloudVideointelligenceV1p2beta1DetectedAttribute.fromJson(
@@ -10597,7 +10597,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1DetectedLandmark', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1DetectedLandmark();
       var od =
           api.GoogleCloudVideointelligenceV1p2beta1DetectedLandmark.fromJson(
@@ -10608,7 +10608,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p2beta1Entity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1Entity();
       var od =
           api.GoogleCloudVideointelligenceV1p2beta1Entity.fromJson(o.toJson());
@@ -10620,7 +10620,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation();
       var od =
@@ -10635,7 +10635,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame();
       var od = api.GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame
           .fromJson(o.toJson());
@@ -10646,7 +10646,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1FaceAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1FaceAnnotation();
       var od = api.GoogleCloudVideointelligenceV1p2beta1FaceAnnotation.fromJson(
           o.toJson());
@@ -10658,7 +10658,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation();
       var od = api.GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation
@@ -10670,7 +10670,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p2beta1FaceFrame',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1FaceFrame();
       var od = api.GoogleCloudVideointelligenceV1p2beta1FaceFrame.fromJson(
           o.toJson());
@@ -10681,7 +10681,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p2beta1FaceSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1FaceSegment();
       var od = api.GoogleCloudVideointelligenceV1p2beta1FaceSegment.fromJson(
           o.toJson());
@@ -10692,7 +10692,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1LabelAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1LabelAnnotation();
       var od =
           api.GoogleCloudVideointelligenceV1p2beta1LabelAnnotation.fromJson(
@@ -10704,7 +10704,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p2beta1LabelFrame',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1LabelFrame();
       var od = api.GoogleCloudVideointelligenceV1p2beta1LabelFrame.fromJson(
           o.toJson());
@@ -10715,7 +10715,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p2beta1LabelSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1LabelSegment();
       var od = api.GoogleCloudVideointelligenceV1p2beta1LabelSegment.fromJson(
           o.toJson());
@@ -10727,7 +10727,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation();
       var od =
@@ -10742,7 +10742,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox();
       var od = api.GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox
           .fromJson(o.toJson());
@@ -10754,7 +10754,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly();
       var od = api.GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly
@@ -10766,7 +10766,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1NormalizedVertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1NormalizedVertex();
       var od =
           api.GoogleCloudVideointelligenceV1p2beta1NormalizedVertex.fromJson(
@@ -10779,7 +10779,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation();
       var od = api.GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation
@@ -10792,7 +10792,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame();
       var od =
           api.GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame.fromJson(
@@ -10805,7 +10805,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation();
       var od =
@@ -10820,7 +10820,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative();
       var od =
@@ -10835,7 +10835,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1SpeechTranscription',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1SpeechTranscription();
       var od =
           api.GoogleCloudVideointelligenceV1p2beta1SpeechTranscription.fromJson(
@@ -10847,7 +10847,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1TextAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1TextAnnotation();
       var od = api.GoogleCloudVideointelligenceV1p2beta1TextAnnotation.fromJson(
           o.toJson());
@@ -10858,7 +10858,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p2beta1TextFrame',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1TextFrame();
       var od = api.GoogleCloudVideointelligenceV1p2beta1TextFrame.fromJson(
           o.toJson());
@@ -10869,7 +10869,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p2beta1TextSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1TextSegment();
       var od = api.GoogleCloudVideointelligenceV1p2beta1TextSegment.fromJson(
           o.toJson());
@@ -10880,7 +10880,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1TimestampedObject', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1TimestampedObject();
       var od =
           api.GoogleCloudVideointelligenceV1p2beta1TimestampedObject.fromJson(
@@ -10891,7 +10891,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p2beta1Track', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1Track();
       var od =
           api.GoogleCloudVideointelligenceV1p2beta1Track.fromJson(o.toJson());
@@ -10903,7 +10903,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress();
       var od = api.GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress
@@ -10916,7 +10916,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults();
       var od = api.GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults
@@ -10928,7 +10928,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p2beta1VideoSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1VideoSegment();
       var od = api.GoogleCloudVideointelligenceV1p2beta1VideoSegment.fromJson(
           o.toJson());
@@ -10939,7 +10939,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p2beta1WordInfo',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p2beta1WordInfo();
       var od = api.GoogleCloudVideointelligenceV1p2beta1WordInfo.fromJson(
           o.toJson());
@@ -10951,7 +10951,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress();
       var od = api.GoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress
           .fromJson(o.toJson());
@@ -10963,7 +10963,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse();
       var od = api.GoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse
           .fromJson(o.toJson());
@@ -10974,7 +10974,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p3beta1Celebrity',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1Celebrity();
       var od = api.GoogleCloudVideointelligenceV1p3beta1Celebrity.fromJson(
           o.toJson());
@@ -10986,7 +10986,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation();
       var od =
@@ -11000,7 +11000,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1CelebrityTrack', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1CelebrityTrack();
       var od = api.GoogleCloudVideointelligenceV1p3beta1CelebrityTrack.fromJson(
           o.toJson());
@@ -11011,7 +11011,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1DetectedAttribute', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1DetectedAttribute();
       var od =
           api.GoogleCloudVideointelligenceV1p3beta1DetectedAttribute.fromJson(
@@ -11023,7 +11023,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1DetectedLandmark', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1DetectedLandmark();
       var od =
           api.GoogleCloudVideointelligenceV1p3beta1DetectedLandmark.fromJson(
@@ -11034,7 +11034,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p3beta1Entity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1Entity();
       var od =
           api.GoogleCloudVideointelligenceV1p3beta1Entity.fromJson(o.toJson());
@@ -11046,7 +11046,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation();
       var od =
@@ -11061,7 +11061,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame();
       var od = api.GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame
           .fromJson(o.toJson());
@@ -11072,7 +11072,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1FaceAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1FaceAnnotation();
       var od = api.GoogleCloudVideointelligenceV1p3beta1FaceAnnotation.fromJson(
           o.toJson());
@@ -11084,7 +11084,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation();
       var od = api.GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation
@@ -11096,7 +11096,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p3beta1FaceFrame',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1FaceFrame();
       var od = api.GoogleCloudVideointelligenceV1p3beta1FaceFrame.fromJson(
           o.toJson());
@@ -11107,7 +11107,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p3beta1FaceSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1FaceSegment();
       var od = api.GoogleCloudVideointelligenceV1p3beta1FaceSegment.fromJson(
           o.toJson());
@@ -11118,7 +11118,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1LabelAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1LabelAnnotation();
       var od =
           api.GoogleCloudVideointelligenceV1p3beta1LabelAnnotation.fromJson(
@@ -11130,7 +11130,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p3beta1LabelFrame',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1LabelFrame();
       var od = api.GoogleCloudVideointelligenceV1p3beta1LabelFrame.fromJson(
           o.toJson());
@@ -11141,7 +11141,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p3beta1LabelSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1LabelSegment();
       var od = api.GoogleCloudVideointelligenceV1p3beta1LabelSegment.fromJson(
           o.toJson());
@@ -11153,7 +11153,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation();
       var od =
@@ -11168,7 +11168,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox();
       var od = api.GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox
           .fromJson(o.toJson());
@@ -11180,7 +11180,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly();
       var od = api.GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly
@@ -11192,7 +11192,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1NormalizedVertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1NormalizedVertex();
       var od =
           api.GoogleCloudVideointelligenceV1p3beta1NormalizedVertex.fromJson(
@@ -11205,7 +11205,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation();
       var od = api.GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation
@@ -11218,7 +11218,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame();
       var od =
           api.GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame.fromJson(
@@ -11231,7 +11231,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation();
       var od =
@@ -11246,7 +11246,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity();
       var od =
           api.GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity.fromJson(
@@ -11259,7 +11259,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative();
       var od =
@@ -11274,7 +11274,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1SpeechTranscription',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1SpeechTranscription();
       var od =
           api.GoogleCloudVideointelligenceV1p3beta1SpeechTranscription.fromJson(
@@ -11287,7 +11287,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1StreamingAnnotateVideoResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p3beta1StreamingAnnotateVideoResponse();
       var od =
@@ -11302,7 +11302,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults();
       var od =
@@ -11316,7 +11316,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1TextAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1TextAnnotation();
       var od = api.GoogleCloudVideointelligenceV1p3beta1TextAnnotation.fromJson(
           o.toJson());
@@ -11327,7 +11327,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p3beta1TextFrame',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1TextFrame();
       var od = api.GoogleCloudVideointelligenceV1p3beta1TextFrame.fromJson(
           o.toJson());
@@ -11338,7 +11338,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p3beta1TextSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1TextSegment();
       var od = api.GoogleCloudVideointelligenceV1p3beta1TextSegment.fromJson(
           o.toJson());
@@ -11349,7 +11349,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1TimestampedObject', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1TimestampedObject();
       var od =
           api.GoogleCloudVideointelligenceV1p3beta1TimestampedObject.fromJson(
@@ -11360,7 +11360,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p3beta1Track', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1Track();
       var od =
           api.GoogleCloudVideointelligenceV1p3beta1Track.fromJson(o.toJson());
@@ -11372,7 +11372,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress();
       var od = api.GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress
@@ -11385,7 +11385,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults();
       var od = api.GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults
@@ -11397,7 +11397,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p3beta1VideoSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1VideoSegment();
       var od = api.GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
           o.toJson());
@@ -11408,7 +11408,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVideointelligenceV1p3beta1WordInfo',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVideointelligenceV1p3beta1WordInfo();
       var od = api.GoogleCloudVideointelligenceV1p3beta1WordInfo.fromJson(
           o.toJson());
@@ -11418,7 +11418,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningCancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningCancelOperationRequest();
       var od = api.GoogleLongrunningCancelOperationRequest.fromJson(o.toJson());
       checkGoogleLongrunningCancelOperationRequest(
@@ -11427,7 +11427,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
       var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
       checkGoogleLongrunningListOperationsResponse(
@@ -11436,7 +11436,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
@@ -11444,7 +11444,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
@@ -11452,7 +11452,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleRpcStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
       var od = api.GoogleRpcStatus.fromJson(o.toJson());
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
@@ -11460,7 +11460,7 @@ void main() {
   });
 
   unittest.group('resource-OperationsProjectsLocationsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.CloudVideoIntelligenceApi(mock)
           .operations
@@ -11512,14 +11512,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.cancel(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudVideoIntelligenceApi(mock)
           .operations
@@ -11571,14 +11568,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudVideoIntelligenceApi(mock)
           .operations
@@ -11630,17 +11624,14 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudVideoIntelligenceApi(mock).projects.locations.operations;
@@ -11695,14 +11686,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudVideoIntelligenceApi(mock).projects.locations.operations;
@@ -11751,14 +11740,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudVideoIntelligenceApi(mock).projects.locations.operations;
@@ -11807,15 +11793,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudVideoIntelligenceApi(mock).projects.locations.operations;
@@ -11880,21 +11863,18 @@ void main() {
             convert.json.encode(buildGoogleLongrunningListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningListOperationsResponse(
-            response as api.GoogleLongrunningListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleLongrunningListOperationsResponse(
+          response as api.GoogleLongrunningListOperationsResponse);
     });
   });
 
   unittest.group('resource-VideosResource', () {
-    unittest.test('method--annotate', () {
+    unittest.test('method--annotate', () async {
       var mock = HttpServerMock();
       var res = api.CloudVideoIntelligenceApi(mock).videos;
       var arg_request =
@@ -11948,12 +11928,9 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .annotate(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.annotate(arg_request, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 }

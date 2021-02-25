@@ -2758,7 +2758,7 @@ void checkUnnamed6540(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-ApplicationInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplicationInfo();
       var od = api.ApplicationInfo.fromJson(o.toJson());
       checkApplicationInfo(od as api.ApplicationInfo);
@@ -2766,7 +2766,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchCreateJobsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchCreateJobsRequest();
       var od = api.BatchCreateJobsRequest.fromJson(o.toJson());
       checkBatchCreateJobsRequest(od as api.BatchCreateJobsRequest);
@@ -2774,7 +2774,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchCreateJobsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchCreateJobsResponse();
       var od = api.BatchCreateJobsResponse.fromJson(o.toJson());
       checkBatchCreateJobsResponse(od as api.BatchCreateJobsResponse);
@@ -2782,7 +2782,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchDeleteJobsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchDeleteJobsRequest();
       var od = api.BatchDeleteJobsRequest.fromJson(o.toJson());
       checkBatchDeleteJobsRequest(od as api.BatchDeleteJobsRequest);
@@ -2790,7 +2790,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchDeleteJobsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchDeleteJobsResponse();
       var od = api.BatchDeleteJobsResponse.fromJson(o.toJson());
       checkBatchDeleteJobsResponse(od as api.BatchDeleteJobsResponse);
@@ -2798,7 +2798,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchOperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchOperationMetadata();
       var od = api.BatchOperationMetadata.fromJson(o.toJson());
       checkBatchOperationMetadata(od as api.BatchOperationMetadata);
@@ -2806,7 +2806,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchUpdateJobsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchUpdateJobsRequest();
       var od = api.BatchUpdateJobsRequest.fromJson(o.toJson());
       checkBatchUpdateJobsRequest(od as api.BatchUpdateJobsRequest);
@@ -2814,7 +2814,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchUpdateJobsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchUpdateJobsResponse();
       var od = api.BatchUpdateJobsResponse.fromJson(o.toJson());
       checkBatchUpdateJobsResponse(od as api.BatchUpdateJobsResponse);
@@ -2822,7 +2822,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClientEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClientEvent();
       var od = api.ClientEvent.fromJson(o.toJson());
       checkClientEvent(od as api.ClientEvent);
@@ -2830,7 +2830,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CommuteFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCommuteFilter();
       var od = api.CommuteFilter.fromJson(o.toJson());
       checkCommuteFilter(od as api.CommuteFilter);
@@ -2838,7 +2838,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CommuteInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCommuteInfo();
       var od = api.CommuteInfo.fromJson(o.toJson());
       checkCommuteInfo(od as api.CommuteInfo);
@@ -2846,7 +2846,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Company', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCompany();
       var od = api.Company.fromJson(o.toJson());
       checkCompany(od as api.Company);
@@ -2854,7 +2854,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CompanyDerivedInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCompanyDerivedInfo();
       var od = api.CompanyDerivedInfo.fromJson(o.toJson());
       checkCompanyDerivedInfo(od as api.CompanyDerivedInfo);
@@ -2862,7 +2862,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CompensationEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCompensationEntry();
       var od = api.CompensationEntry.fromJson(o.toJson());
       checkCompensationEntry(od as api.CompensationEntry);
@@ -2870,7 +2870,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CompensationFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCompensationFilter();
       var od = api.CompensationFilter.fromJson(o.toJson());
       checkCompensationFilter(od as api.CompensationFilter);
@@ -2878,7 +2878,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CompensationInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCompensationInfo();
       var od = api.CompensationInfo.fromJson(o.toJson());
       checkCompensationInfo(od as api.CompensationInfo);
@@ -2886,7 +2886,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CompensationRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCompensationRange();
       var od = api.CompensationRange.fromJson(o.toJson());
       checkCompensationRange(od as api.CompensationRange);
@@ -2894,7 +2894,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CompleteQueryResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCompleteQueryResponse();
       var od = api.CompleteQueryResponse.fromJson(o.toJson());
       checkCompleteQueryResponse(od as api.CompleteQueryResponse);
@@ -2902,7 +2902,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CompletionResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCompletionResult();
       var od = api.CompletionResult.fromJson(o.toJson());
       checkCompletionResult(od as api.CompletionResult);
@@ -2910,7 +2910,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomAttribute', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomAttribute();
       var od = api.CustomAttribute.fromJson(o.toJson());
       checkCustomAttribute(od as api.CustomAttribute);
@@ -2918,7 +2918,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomRankingInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomRankingInfo();
       var od = api.CustomRankingInfo.fromJson(o.toJson());
       checkCustomRankingInfo(od as api.CustomRankingInfo);
@@ -2926,7 +2926,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceInfo();
       var od = api.DeviceInfo.fromJson(o.toJson());
       checkDeviceInfo(od as api.DeviceInfo);
@@ -2934,7 +2934,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -2942,7 +2942,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HistogramQuery', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHistogramQuery();
       var od = api.HistogramQuery.fromJson(o.toJson());
       checkHistogramQuery(od as api.HistogramQuery);
@@ -2950,7 +2950,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HistogramQueryResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHistogramQueryResult();
       var od = api.HistogramQueryResult.fromJson(o.toJson());
       checkHistogramQueryResult(od as api.HistogramQueryResult);
@@ -2958,7 +2958,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Job', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJob();
       var od = api.Job.fromJson(o.toJson());
       checkJob(od as api.Job);
@@ -2966,7 +2966,7 @@ void main() {
   });
 
   unittest.group('obj-schema-JobDerivedInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJobDerivedInfo();
       var od = api.JobDerivedInfo.fromJson(o.toJson());
       checkJobDerivedInfo(od as api.JobDerivedInfo);
@@ -2974,7 +2974,7 @@ void main() {
   });
 
   unittest.group('obj-schema-JobEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJobEvent();
       var od = api.JobEvent.fromJson(o.toJson());
       checkJobEvent(od as api.JobEvent);
@@ -2982,7 +2982,7 @@ void main() {
   });
 
   unittest.group('obj-schema-JobQuery', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJobQuery();
       var od = api.JobQuery.fromJson(o.toJson());
       checkJobQuery(od as api.JobQuery);
@@ -2990,7 +2990,7 @@ void main() {
   });
 
   unittest.group('obj-schema-JobResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJobResult();
       var od = api.JobResult.fromJson(o.toJson());
       checkJobResult(od as api.JobResult);
@@ -2998,7 +2998,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LatLng', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLatLng();
       var od = api.LatLng.fromJson(o.toJson());
       checkLatLng(od as api.LatLng);
@@ -3006,7 +3006,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCompaniesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCompaniesResponse();
       var od = api.ListCompaniesResponse.fromJson(o.toJson());
       checkListCompaniesResponse(od as api.ListCompaniesResponse);
@@ -3014,7 +3014,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListJobsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListJobsResponse();
       var od = api.ListJobsResponse.fromJson(o.toJson());
       checkListJobsResponse(od as api.ListJobsResponse);
@@ -3022,7 +3022,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTenantsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTenantsResponse();
       var od = api.ListTenantsResponse.fromJson(o.toJson());
       checkListTenantsResponse(od as api.ListTenantsResponse);
@@ -3030,7 +3030,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -3038,7 +3038,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LocationFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocationFilter();
       var od = api.LocationFilter.fromJson(o.toJson());
       checkLocationFilter(od as api.LocationFilter);
@@ -3046,7 +3046,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MatchingJob', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMatchingJob();
       var od = api.MatchingJob.fromJson(o.toJson());
       checkMatchingJob(od as api.MatchingJob);
@@ -3054,7 +3054,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MendelDebugInput', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMendelDebugInput();
       var od = api.MendelDebugInput.fromJson(o.toJson());
       checkMendelDebugInput(od as api.MendelDebugInput);
@@ -3062,7 +3062,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Money', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMoney();
       var od = api.Money.fromJson(o.toJson());
       checkMoney(od as api.Money);
@@ -3070,7 +3070,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NamespacedDebugInput', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNamespacedDebugInput();
       var od = api.NamespacedDebugInput.fromJson(o.toJson());
       checkNamespacedDebugInput(od as api.NamespacedDebugInput);
@@ -3078,7 +3078,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -3086,7 +3086,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PostalAddress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPostalAddress();
       var od = api.PostalAddress.fromJson(o.toJson());
       checkPostalAddress(od as api.PostalAddress);
@@ -3094,7 +3094,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProcessingOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProcessingOptions();
       var od = api.ProcessingOptions.fromJson(o.toJson());
       checkProcessingOptions(od as api.ProcessingOptions);
@@ -3102,7 +3102,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RequestMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRequestMetadata();
       var od = api.RequestMetadata.fromJson(o.toJson());
       checkRequestMetadata(od as api.RequestMetadata);
@@ -3110,7 +3110,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResponseMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResponseMetadata();
       var od = api.ResponseMetadata.fromJson(o.toJson());
       checkResponseMetadata(od as api.ResponseMetadata);
@@ -3118,7 +3118,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchJobsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchJobsRequest();
       var od = api.SearchJobsRequest.fromJson(o.toJson());
       checkSearchJobsRequest(od as api.SearchJobsRequest);
@@ -3126,7 +3126,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchJobsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchJobsResponse();
       var od = api.SearchJobsResponse.fromJson(o.toJson());
       checkSearchJobsResponse(od as api.SearchJobsResponse);
@@ -3134,7 +3134,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SpellingCorrection', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSpellingCorrection();
       var od = api.SpellingCorrection.fromJson(o.toJson());
       checkSpellingCorrection(od as api.SpellingCorrection);
@@ -3142,7 +3142,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -3150,7 +3150,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Tenant', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTenant();
       var od = api.Tenant.fromJson(o.toJson());
       checkTenant(od as api.Tenant);
@@ -3158,7 +3158,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimeOfDay', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimeOfDay();
       var od = api.TimeOfDay.fromJson(o.toJson());
       checkTimeOfDay(od as api.TimeOfDay);
@@ -3166,7 +3166,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimestampRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimestampRange();
       var od = api.TimestampRange.fromJson(o.toJson());
       checkTimestampRange(od as api.TimestampRange);
@@ -3174,7 +3174,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsTenantsResource', () {
-    unittest.test('method--completeQuery', () {
+    unittest.test('method--completeQuery', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants;
       var arg_tenant = 'foo';
@@ -3252,21 +3252,18 @@ void main() {
         var resp = convert.json.encode(buildCompleteQueryResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .completeQuery(arg_tenant,
-              company: arg_company,
-              languageCodes: arg_languageCodes,
-              pageSize: arg_pageSize,
-              query: arg_query,
-              scope: arg_scope,
-              type: arg_type,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCompleteQueryResponse(response as api.CompleteQueryResponse);
-      })));
+      final response = await res.completeQuery(arg_tenant,
+          company: arg_company,
+          languageCodes: arg_languageCodes,
+          pageSize: arg_pageSize,
+          query: arg_query,
+          scope: arg_scope,
+          type: arg_type,
+          $fields: arg_$fields);
+      checkCompleteQueryResponse(response as api.CompleteQueryResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants;
       var arg_request = buildTenant();
@@ -3319,14 +3316,12 @@ void main() {
         var resp = convert.json.encode(buildTenant());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTenant(response as api.Tenant);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkTenant(response as api.Tenant);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants;
       var arg_name = 'foo';
@@ -3374,14 +3369,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants;
       var arg_name = 'foo';
@@ -3429,14 +3421,11 @@ void main() {
         var resp = convert.json.encode(buildTenant());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTenant(response as api.Tenant);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkTenant(response as api.Tenant);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants;
       var arg_parent = 'foo';
@@ -3494,17 +3483,14 @@ void main() {
         var resp = convert.json.encode(buildListTenantsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTenantsResponse(response as api.ListTenantsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListTenantsResponse(response as api.ListTenantsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants;
       var arg_request = buildTenant();
@@ -3562,17 +3548,14 @@ void main() {
         var resp = convert.json.encode(buildTenant());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTenant(response as api.Tenant);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkTenant(response as api.Tenant);
     });
   });
 
   unittest.group('resource-ProjectsTenantsClientEventsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants.clientEvents;
       var arg_request = buildClientEvent();
@@ -3625,16 +3608,14 @@ void main() {
         var resp = convert.json.encode(buildClientEvent());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkClientEvent(response as api.ClientEvent);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkClientEvent(response as api.ClientEvent);
     });
   });
 
   unittest.group('resource-ProjectsTenantsCompaniesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants.companies;
       var arg_request = buildCompany();
@@ -3687,14 +3668,12 @@ void main() {
         var resp = convert.json.encode(buildCompany());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCompany(response as api.Company);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkCompany(response as api.Company);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants.companies;
       var arg_name = 'foo';
@@ -3742,14 +3721,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants.companies;
       var arg_name = 'foo';
@@ -3797,14 +3773,11 @@ void main() {
         var resp = convert.json.encode(buildCompany());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCompany(response as api.Company);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkCompany(response as api.Company);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants.companies;
       var arg_parent = 'foo';
@@ -3867,18 +3840,15 @@ void main() {
         var resp = convert.json.encode(buildListCompaniesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              requireOpenJobs: arg_requireOpenJobs,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCompaniesResponse(response as api.ListCompaniesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          requireOpenJobs: arg_requireOpenJobs,
+          $fields: arg_$fields);
+      checkListCompaniesResponse(response as api.ListCompaniesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants.companies;
       var arg_request = buildCompany();
@@ -3936,17 +3906,14 @@ void main() {
         var resp = convert.json.encode(buildCompany());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCompany(response as api.Company);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkCompany(response as api.Company);
     });
   });
 
   unittest.group('resource-ProjectsTenantsJobsResource', () {
-    unittest.test('method--batchCreate', () {
+    unittest.test('method--batchCreate', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants.jobs;
       var arg_request = buildBatchCreateJobsRequest();
@@ -3999,14 +3966,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchCreate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.batchCreate(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--batchDelete', () {
+    unittest.test('method--batchDelete', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants.jobs;
       var arg_request = buildBatchDeleteJobsRequest();
@@ -4059,14 +4024,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchDelete(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.batchDelete(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--batchUpdate', () {
+    unittest.test('method--batchUpdate', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants.jobs;
       var arg_request = buildBatchUpdateJobsRequest();
@@ -4119,14 +4082,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchUpdate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.batchUpdate(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants.jobs;
       var arg_request = buildJob();
@@ -4178,14 +4139,12 @@ void main() {
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJob(response as api.Job);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkJob(response as api.Job);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants.jobs;
       var arg_name = 'foo';
@@ -4233,14 +4192,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants.jobs;
       var arg_name = 'foo';
@@ -4288,14 +4244,11 @@ void main() {
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJob(response as api.Job);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkJob(response as api.Job);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants.jobs;
       var arg_parent = 'foo';
@@ -4363,19 +4316,16 @@ void main() {
         var resp = convert.json.encode(buildListJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              jobView: arg_jobView,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListJobsResponse(response as api.ListJobsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          jobView: arg_jobView,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListJobsResponse(response as api.ListJobsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants.jobs;
       var arg_request = buildJob();
@@ -4432,15 +4382,12 @@ void main() {
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJob(response as api.Job);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkJob(response as api.Job);
     });
 
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants.jobs;
       var arg_request = buildSearchJobsRequest();
@@ -4493,14 +4440,12 @@ void main() {
         var resp = convert.json.encode(buildSearchJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchJobsResponse(response as api.SearchJobsResponse);
-      })));
+      final response =
+          await res.search(arg_request, arg_parent, $fields: arg_$fields);
+      checkSearchJobsResponse(response as api.SearchJobsResponse);
     });
 
-    unittest.test('method--searchForAlert', () {
+    unittest.test('method--searchForAlert', () async {
       var mock = HttpServerMock();
       var res = api.CloudTalentSolutionApi(mock).projects.tenants.jobs;
       var arg_request = buildSearchJobsRequest();
@@ -4553,11 +4498,9 @@ void main() {
         var resp = convert.json.encode(buildSearchJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchForAlert(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchJobsResponse(response as api.SearchJobsResponse);
-      })));
+      final response = await res.searchForAlert(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkSearchJobsResponse(response as api.SearchJobsResponse);
     });
   });
 }

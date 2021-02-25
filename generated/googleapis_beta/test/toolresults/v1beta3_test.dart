@@ -3663,7 +3663,7 @@ void checkUnnamed7226(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-ANR', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildANR();
       var od = api.ANR.fromJson(o.toJson());
       checkANR(od as api.ANR);
@@ -3671,7 +3671,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AndroidAppInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAndroidAppInfo();
       var od = api.AndroidAppInfo.fromJson(o.toJson());
       checkAndroidAppInfo(od as api.AndroidAppInfo);
@@ -3679,7 +3679,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AndroidInstrumentationTest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAndroidInstrumentationTest();
       var od = api.AndroidInstrumentationTest.fromJson(o.toJson());
       checkAndroidInstrumentationTest(od as api.AndroidInstrumentationTest);
@@ -3687,7 +3687,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AndroidRoboTest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAndroidRoboTest();
       var od = api.AndroidRoboTest.fromJson(o.toJson());
       checkAndroidRoboTest(od as api.AndroidRoboTest);
@@ -3695,7 +3695,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AndroidTest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAndroidTest();
       var od = api.AndroidTest.fromJson(o.toJson());
       checkAndroidTest(od as api.AndroidTest);
@@ -3703,7 +3703,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AndroidTestLoop', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAndroidTestLoop();
       var od = api.AndroidTestLoop.fromJson(o.toJson());
       checkAndroidTestLoop(od as api.AndroidTestLoop);
@@ -3711,7 +3711,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Any', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAny();
       var od = api.Any.fromJson(o.toJson());
       checkAny(od as api.Any);
@@ -3719,7 +3719,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AppStartTime', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppStartTime();
       var od = api.AppStartTime.fromJson(o.toJson());
       checkAppStartTime(od as api.AppStartTime);
@@ -3727,7 +3727,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AvailableDeepLinks', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAvailableDeepLinks();
       var od = api.AvailableDeepLinks.fromJson(o.toJson());
       checkAvailableDeepLinks(od as api.AvailableDeepLinks);
@@ -3735,7 +3735,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BasicPerfSampleSeries', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBasicPerfSampleSeries();
       var od = api.BasicPerfSampleSeries.fromJson(o.toJson());
       checkBasicPerfSampleSeries(od as api.BasicPerfSampleSeries);
@@ -3743,7 +3743,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchCreatePerfSamplesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchCreatePerfSamplesRequest();
       var od = api.BatchCreatePerfSamplesRequest.fromJson(o.toJson());
       checkBatchCreatePerfSamplesRequest(
@@ -3752,7 +3752,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchCreatePerfSamplesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchCreatePerfSamplesResponse();
       var od = api.BatchCreatePerfSamplesResponse.fromJson(o.toJson());
       checkBatchCreatePerfSamplesResponse(
@@ -3761,7 +3761,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BlankScreen', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBlankScreen();
       var od = api.BlankScreen.fromJson(o.toJson());
       checkBlankScreen(od as api.BlankScreen);
@@ -3769,7 +3769,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CPUInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCPUInfo();
       var od = api.CPUInfo.fromJson(o.toJson());
       checkCPUInfo(od as api.CPUInfo);
@@ -3777,7 +3777,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CrashDialogError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCrashDialogError();
       var od = api.CrashDialogError.fromJson(o.toJson());
       checkCrashDialogError(od as api.CrashDialogError);
@@ -3785,7 +3785,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceOutOfMemory', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceOutOfMemory();
       var od = api.DeviceOutOfMemory.fromJson(o.toJson());
       checkDeviceOutOfMemory(od as api.DeviceOutOfMemory);
@@ -3793,7 +3793,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Duration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDuration();
       var od = api.Duration.fromJson(o.toJson());
       checkDuration(od as api.Duration);
@@ -3801,7 +3801,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EncounteredLoginScreen', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEncounteredLoginScreen();
       var od = api.EncounteredLoginScreen.fromJson(o.toJson());
       checkEncounteredLoginScreen(od as api.EncounteredLoginScreen);
@@ -3809,7 +3809,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EncounteredNonAndroidUiWidgetScreen', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEncounteredNonAndroidUiWidgetScreen();
       var od = api.EncounteredNonAndroidUiWidgetScreen.fromJson(o.toJson());
       checkEncounteredNonAndroidUiWidgetScreen(
@@ -3818,7 +3818,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Environment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnvironment();
       var od = api.Environment.fromJson(o.toJson());
       checkEnvironment(od as api.Environment);
@@ -3826,7 +3826,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnvironmentDimensionValueEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnvironmentDimensionValueEntry();
       var od = api.EnvironmentDimensionValueEntry.fromJson(o.toJson());
       checkEnvironmentDimensionValueEntry(
@@ -3835,7 +3835,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Execution', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExecution();
       var od = api.Execution.fromJson(o.toJson());
       checkExecution(od as api.Execution);
@@ -3843,7 +3843,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FailedToInstall', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFailedToInstall();
       var od = api.FailedToInstall.fromJson(o.toJson());
       checkFailedToInstall(od as api.FailedToInstall);
@@ -3851,7 +3851,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FailureDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFailureDetail();
       var od = api.FailureDetail.fromJson(o.toJson());
       checkFailureDetail(od as api.FailureDetail);
@@ -3859,7 +3859,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FatalException', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFatalException();
       var od = api.FatalException.fromJson(o.toJson());
       checkFatalException(od as api.FatalException);
@@ -3867,7 +3867,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FileReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFileReference();
       var od = api.FileReference.fromJson(o.toJson());
       checkFileReference(od as api.FileReference);
@@ -3875,7 +3875,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GraphicsStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGraphicsStats();
       var od = api.GraphicsStats.fromJson(o.toJson());
       checkGraphicsStats(od as api.GraphicsStats);
@@ -3883,7 +3883,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GraphicsStatsBucket', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGraphicsStatsBucket();
       var od = api.GraphicsStatsBucket.fromJson(o.toJson());
       checkGraphicsStatsBucket(od as api.GraphicsStatsBucket);
@@ -3891,7 +3891,7 @@ void main() {
   });
 
   unittest.group('obj-schema-History', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHistory();
       var od = api.History.fromJson(o.toJson());
       checkHistory(od as api.History);
@@ -3899,7 +3899,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Image', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImage();
       var od = api.Image.fromJson(o.toJson());
       checkImage(od as api.Image);
@@ -3907,7 +3907,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InAppPurchasesFound', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInAppPurchasesFound();
       var od = api.InAppPurchasesFound.fromJson(o.toJson());
       checkInAppPurchasesFound(od as api.InAppPurchasesFound);
@@ -3915,7 +3915,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InconclusiveDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInconclusiveDetail();
       var od = api.InconclusiveDetail.fromJson(o.toJson());
       checkInconclusiveDetail(od as api.InconclusiveDetail);
@@ -3923,7 +3923,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IndividualOutcome', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIndividualOutcome();
       var od = api.IndividualOutcome.fromJson(o.toJson());
       checkIndividualOutcome(od as api.IndividualOutcome);
@@ -3931,7 +3931,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InsufficientCoverage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInsufficientCoverage();
       var od = api.InsufficientCoverage.fromJson(o.toJson());
       checkInsufficientCoverage(od as api.InsufficientCoverage);
@@ -3939,7 +3939,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IosAppCrashed', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIosAppCrashed();
       var od = api.IosAppCrashed.fromJson(o.toJson());
       checkIosAppCrashed(od as api.IosAppCrashed);
@@ -3947,7 +3947,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IosAppInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIosAppInfo();
       var od = api.IosAppInfo.fromJson(o.toJson());
       checkIosAppInfo(od as api.IosAppInfo);
@@ -3955,7 +3955,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IosRoboTest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIosRoboTest();
       var od = api.IosRoboTest.fromJson(o.toJson());
       checkIosRoboTest(od as api.IosRoboTest);
@@ -3963,7 +3963,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IosTest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIosTest();
       var od = api.IosTest.fromJson(o.toJson());
       checkIosTest(od as api.IosTest);
@@ -3971,7 +3971,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IosTestLoop', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIosTestLoop();
       var od = api.IosTestLoop.fromJson(o.toJson());
       checkIosTestLoop(od as api.IosTestLoop);
@@ -3979,7 +3979,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IosXcTest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIosXcTest();
       var od = api.IosXcTest.fromJson(o.toJson());
       checkIosXcTest(od as api.IosXcTest);
@@ -3987,7 +3987,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LauncherActivityNotFound', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLauncherActivityNotFound();
       var od = api.LauncherActivityNotFound.fromJson(o.toJson());
       checkLauncherActivityNotFound(od as api.LauncherActivityNotFound);
@@ -3995,7 +3995,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListEnvironmentsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListEnvironmentsResponse();
       var od = api.ListEnvironmentsResponse.fromJson(o.toJson());
       checkListEnvironmentsResponse(od as api.ListEnvironmentsResponse);
@@ -4003,7 +4003,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListExecutionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListExecutionsResponse();
       var od = api.ListExecutionsResponse.fromJson(o.toJson());
       checkListExecutionsResponse(od as api.ListExecutionsResponse);
@@ -4011,7 +4011,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListHistoriesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListHistoriesResponse();
       var od = api.ListHistoriesResponse.fromJson(o.toJson());
       checkListHistoriesResponse(od as api.ListHistoriesResponse);
@@ -4019,7 +4019,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListPerfSampleSeriesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListPerfSampleSeriesResponse();
       var od = api.ListPerfSampleSeriesResponse.fromJson(o.toJson());
       checkListPerfSampleSeriesResponse(od as api.ListPerfSampleSeriesResponse);
@@ -4027,7 +4027,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListPerfSamplesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListPerfSamplesResponse();
       var od = api.ListPerfSamplesResponse.fromJson(o.toJson());
       checkListPerfSamplesResponse(od as api.ListPerfSamplesResponse);
@@ -4035,7 +4035,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListScreenshotClustersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListScreenshotClustersResponse();
       var od = api.ListScreenshotClustersResponse.fromJson(o.toJson());
       checkListScreenshotClustersResponse(
@@ -4044,7 +4044,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListStepAccessibilityClustersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListStepAccessibilityClustersResponse();
       var od = api.ListStepAccessibilityClustersResponse.fromJson(o.toJson());
       checkListStepAccessibilityClustersResponse(
@@ -4053,7 +4053,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListStepThumbnailsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListStepThumbnailsResponse();
       var od = api.ListStepThumbnailsResponse.fromJson(o.toJson());
       checkListStepThumbnailsResponse(od as api.ListStepThumbnailsResponse);
@@ -4061,7 +4061,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListStepsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListStepsResponse();
       var od = api.ListStepsResponse.fromJson(o.toJson());
       checkListStepsResponse(od as api.ListStepsResponse);
@@ -4069,7 +4069,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTestCasesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTestCasesResponse();
       var od = api.ListTestCasesResponse.fromJson(o.toJson());
       checkListTestCasesResponse(od as api.ListTestCasesResponse);
@@ -4077,7 +4077,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LogcatCollectionError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLogcatCollectionError();
       var od = api.LogcatCollectionError.fromJson(o.toJson());
       checkLogcatCollectionError(od as api.LogcatCollectionError);
@@ -4085,7 +4085,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MatrixDimensionDefinition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMatrixDimensionDefinition();
       var od = api.MatrixDimensionDefinition.fromJson(o.toJson());
       checkMatrixDimensionDefinition(od as api.MatrixDimensionDefinition);
@@ -4093,7 +4093,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MemoryInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMemoryInfo();
       var od = api.MemoryInfo.fromJson(o.toJson());
       checkMemoryInfo(od as api.MemoryInfo);
@@ -4101,7 +4101,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MergedResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMergedResult();
       var od = api.MergedResult.fromJson(o.toJson());
       checkMergedResult(od as api.MergedResult);
@@ -4109,7 +4109,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MultiStep', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMultiStep();
       var od = api.MultiStep.fromJson(o.toJson());
       checkMultiStep(od as api.MultiStep);
@@ -4117,7 +4117,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NativeCrash', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNativeCrash();
       var od = api.NativeCrash.fromJson(o.toJson());
       checkNativeCrash(od as api.NativeCrash);
@@ -4125,7 +4125,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NonSdkApi', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNonSdkApi();
       var od = api.NonSdkApi.fromJson(o.toJson());
       checkNonSdkApi(od as api.NonSdkApi);
@@ -4133,7 +4133,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NonSdkApiInsight', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNonSdkApiInsight();
       var od = api.NonSdkApiInsight.fromJson(o.toJson());
       checkNonSdkApiInsight(od as api.NonSdkApiInsight);
@@ -4141,7 +4141,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NonSdkApiUsageViolation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNonSdkApiUsageViolation();
       var od = api.NonSdkApiUsageViolation.fromJson(o.toJson());
       checkNonSdkApiUsageViolation(od as api.NonSdkApiUsageViolation);
@@ -4149,7 +4149,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NonSdkApiUsageViolationReport', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNonSdkApiUsageViolationReport();
       var od = api.NonSdkApiUsageViolationReport.fromJson(o.toJson());
       checkNonSdkApiUsageViolationReport(
@@ -4158,7 +4158,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Outcome', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOutcome();
       var od = api.Outcome.fromJson(o.toJson());
       checkOutcome(od as api.Outcome);
@@ -4166,7 +4166,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OverlappingUIElements', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOverlappingUIElements();
       var od = api.OverlappingUIElements.fromJson(o.toJson());
       checkOverlappingUIElements(od as api.OverlappingUIElements);
@@ -4174,7 +4174,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PendingGoogleUpdateInsight', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPendingGoogleUpdateInsight();
       var od = api.PendingGoogleUpdateInsight.fromJson(o.toJson());
       checkPendingGoogleUpdateInsight(od as api.PendingGoogleUpdateInsight);
@@ -4182,7 +4182,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PerfEnvironment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPerfEnvironment();
       var od = api.PerfEnvironment.fromJson(o.toJson());
       checkPerfEnvironment(od as api.PerfEnvironment);
@@ -4190,7 +4190,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PerfMetricsSummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPerfMetricsSummary();
       var od = api.PerfMetricsSummary.fromJson(o.toJson());
       checkPerfMetricsSummary(od as api.PerfMetricsSummary);
@@ -4198,7 +4198,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PerfSample', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPerfSample();
       var od = api.PerfSample.fromJson(o.toJson());
       checkPerfSample(od as api.PerfSample);
@@ -4206,7 +4206,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PerfSampleSeries', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPerfSampleSeries();
       var od = api.PerfSampleSeries.fromJson(o.toJson());
       checkPerfSampleSeries(od as api.PerfSampleSeries);
@@ -4214,7 +4214,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PerformedGoogleLogin', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPerformedGoogleLogin();
       var od = api.PerformedGoogleLogin.fromJson(o.toJson());
       checkPerformedGoogleLogin(od as api.PerformedGoogleLogin);
@@ -4222,7 +4222,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PerformedMonkeyActions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPerformedMonkeyActions();
       var od = api.PerformedMonkeyActions.fromJson(o.toJson());
       checkPerformedMonkeyActions(od as api.PerformedMonkeyActions);
@@ -4230,7 +4230,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PrimaryStep', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPrimaryStep();
       var od = api.PrimaryStep.fromJson(o.toJson());
       checkPrimaryStep(od as api.PrimaryStep);
@@ -4238,7 +4238,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProjectSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProjectSettings();
       var od = api.ProjectSettings.fromJson(o.toJson());
       checkProjectSettings(od as api.ProjectSettings);
@@ -4246,7 +4246,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PublishXunitXmlFilesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPublishXunitXmlFilesRequest();
       var od = api.PublishXunitXmlFilesRequest.fromJson(o.toJson());
       checkPublishXunitXmlFilesRequest(od as api.PublishXunitXmlFilesRequest);
@@ -4254,7 +4254,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RegionProto', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRegionProto();
       var od = api.RegionProto.fromJson(o.toJson());
       checkRegionProto(od as api.RegionProto);
@@ -4262,7 +4262,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResultsStorage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResultsStorage();
       var od = api.ResultsStorage.fromJson(o.toJson());
       checkResultsStorage(od as api.ResultsStorage);
@@ -4270,7 +4270,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RoboScriptExecution', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRoboScriptExecution();
       var od = api.RoboScriptExecution.fromJson(o.toJson());
       checkRoboScriptExecution(od as api.RoboScriptExecution);
@@ -4278,7 +4278,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SafeHtmlProto', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSafeHtmlProto();
       var od = api.SafeHtmlProto.fromJson(o.toJson());
       checkSafeHtmlProto(od as api.SafeHtmlProto);
@@ -4286,7 +4286,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Screen', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScreen();
       var od = api.Screen.fromJson(o.toJson());
       checkScreen(od as api.Screen);
@@ -4294,7 +4294,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScreenshotCluster', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScreenshotCluster();
       var od = api.ScreenshotCluster.fromJson(o.toJson());
       checkScreenshotCluster(od as api.ScreenshotCluster);
@@ -4302,7 +4302,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShardSummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShardSummary();
       var od = api.ShardSummary.fromJson(o.toJson());
       checkShardSummary(od as api.ShardSummary);
@@ -4310,7 +4310,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SkippedDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSkippedDetail();
       var od = api.SkippedDetail.fromJson(o.toJson());
       checkSkippedDetail(od as api.SkippedDetail);
@@ -4318,7 +4318,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Specification', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSpecification();
       var od = api.Specification.fromJson(o.toJson());
       checkSpecification(od as api.Specification);
@@ -4326,7 +4326,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StackTrace', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStackTrace();
       var od = api.StackTrace.fromJson(o.toJson());
       checkStackTrace(od as api.StackTrace);
@@ -4334,7 +4334,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StartActivityNotFound', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStartActivityNotFound();
       var od = api.StartActivityNotFound.fromJson(o.toJson());
       checkStartActivityNotFound(od as api.StartActivityNotFound);
@@ -4342,7 +4342,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -4350,7 +4350,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Step', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStep();
       var od = api.Step.fromJson(o.toJson());
       checkStep(od as api.Step);
@@ -4358,7 +4358,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StepDimensionValueEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStepDimensionValueEntry();
       var od = api.StepDimensionValueEntry.fromJson(o.toJson());
       checkStepDimensionValueEntry(od as api.StepDimensionValueEntry);
@@ -4366,7 +4366,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StepLabelsEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStepLabelsEntry();
       var od = api.StepLabelsEntry.fromJson(o.toJson());
       checkStepLabelsEntry(od as api.StepLabelsEntry);
@@ -4374,7 +4374,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StepSummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStepSummary();
       var od = api.StepSummary.fromJson(o.toJson());
       checkStepSummary(od as api.StepSummary);
@@ -4382,7 +4382,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuccessDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuccessDetail();
       var od = api.SuccessDetail.fromJson(o.toJson());
       checkSuccessDetail(od as api.SuccessDetail);
@@ -4390,7 +4390,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuggestionClusterProto', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuggestionClusterProto();
       var od = api.SuggestionClusterProto.fromJson(o.toJson());
       checkSuggestionClusterProto(od as api.SuggestionClusterProto);
@@ -4398,7 +4398,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuggestionProto', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuggestionProto();
       var od = api.SuggestionProto.fromJson(o.toJson());
       checkSuggestionProto(od as api.SuggestionProto);
@@ -4406,7 +4406,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestCase', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestCase();
       var od = api.TestCase.fromJson(o.toJson());
       checkTestCase(od as api.TestCase);
@@ -4414,7 +4414,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestCaseReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestCaseReference();
       var od = api.TestCaseReference.fromJson(o.toJson());
       checkTestCaseReference(od as api.TestCaseReference);
@@ -4422,7 +4422,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestExecutionStep', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestExecutionStep();
       var od = api.TestExecutionStep.fromJson(o.toJson());
       checkTestExecutionStep(od as api.TestExecutionStep);
@@ -4430,7 +4430,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIssue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIssue();
       var od = api.TestIssue.fromJson(o.toJson());
       checkTestIssue(od as api.TestIssue);
@@ -4438,7 +4438,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestSuiteOverview', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestSuiteOverview();
       var od = api.TestSuiteOverview.fromJson(o.toJson());
       checkTestSuiteOverview(od as api.TestSuiteOverview);
@@ -4446,7 +4446,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestTiming', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestTiming();
       var od = api.TestTiming.fromJson(o.toJson());
       checkTestTiming(od as api.TestTiming);
@@ -4454,7 +4454,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Thumbnail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildThumbnail();
       var od = api.Thumbnail.fromJson(o.toJson());
       checkThumbnail(od as api.Thumbnail);
@@ -4462,7 +4462,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Timestamp', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimestamp();
       var od = api.Timestamp.fromJson(o.toJson());
       checkTimestamp(od as api.Timestamp);
@@ -4470,7 +4470,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ToolExecution', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildToolExecution();
       var od = api.ToolExecution.fromJson(o.toJson());
       checkToolExecution(od as api.ToolExecution);
@@ -4478,7 +4478,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ToolExecutionStep', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildToolExecutionStep();
       var od = api.ToolExecutionStep.fromJson(o.toJson());
       checkToolExecutionStep(od as api.ToolExecutionStep);
@@ -4486,7 +4486,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ToolExitCode', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildToolExitCode();
       var od = api.ToolExitCode.fromJson(o.toJson());
       checkToolExitCode(od as api.ToolExitCode);
@@ -4494,7 +4494,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ToolOutputReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildToolOutputReference();
       var od = api.ToolOutputReference.fromJson(o.toJson());
       checkToolOutputReference(od as api.ToolOutputReference);
@@ -4502,7 +4502,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UIElementTooDeep', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUIElementTooDeep();
       var od = api.UIElementTooDeep.fromJson(o.toJson());
       checkUIElementTooDeep(od as api.UIElementTooDeep);
@@ -4510,7 +4510,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UnspecifiedWarning', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUnspecifiedWarning();
       var od = api.UnspecifiedWarning.fromJson(o.toJson());
       checkUnspecifiedWarning(od as api.UnspecifiedWarning);
@@ -4518,7 +4518,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UnusedRoboDirective', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUnusedRoboDirective();
       var od = api.UnusedRoboDirective.fromJson(o.toJson());
       checkUnusedRoboDirective(od as api.UnusedRoboDirective);
@@ -4526,7 +4526,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpgradeInsight', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpgradeInsight();
       var od = api.UpgradeInsight.fromJson(o.toJson());
       checkUpgradeInsight(od as api.UpgradeInsight);
@@ -4534,7 +4534,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsedRoboDirective', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsedRoboDirective();
       var od = api.UsedRoboDirective.fromJson(o.toJson());
       checkUsedRoboDirective(od as api.UsedRoboDirective);
@@ -4542,7 +4542,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsedRoboIgnoreDirective', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsedRoboIgnoreDirective();
       var od = api.UsedRoboIgnoreDirective.fromJson(o.toJson());
       checkUsedRoboIgnoreDirective(od as api.UsedRoboIgnoreDirective);
@@ -4550,7 +4550,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsResource', () {
-    unittest.test('method--getSettings', () {
+    unittest.test('method--getSettings', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects;
       var arg_projectId = 'foo';
@@ -4611,14 +4611,12 @@ void main() {
         var resp = convert.json.encode(buildProjectSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getSettings(arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProjectSettings(response as api.ProjectSettings);
-      })));
+      final response =
+          await res.getSettings(arg_projectId, $fields: arg_$fields);
+      checkProjectSettings(response as api.ProjectSettings);
     });
 
-    unittest.test('method--initializeSettings', () {
+    unittest.test('method--initializeSettings', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects;
       var arg_projectId = 'foo';
@@ -4679,16 +4677,14 @@ void main() {
         var resp = convert.json.encode(buildProjectSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .initializeSettings(arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProjectSettings(response as api.ProjectSettings);
-      })));
+      final response =
+          await res.initializeSettings(arg_projectId, $fields: arg_$fields);
+      checkProjectSettings(response as api.ProjectSettings);
     });
   });
 
   unittest.group('resource-ProjectsHistoriesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories;
       var arg_request = buildHistory();
@@ -4759,15 +4755,12 @@ void main() {
         var resp = convert.json.encode(buildHistory());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_projectId,
-              requestId: arg_requestId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHistory(response as api.History);
-      })));
+      final response = await res.create(arg_request, arg_projectId,
+          requestId: arg_requestId, $fields: arg_$fields);
+      checkHistory(response as api.History);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories;
       var arg_projectId = 'foo';
@@ -4835,14 +4828,12 @@ void main() {
         var resp = convert.json.encode(buildHistory());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_projectId, arg_historyId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHistory(response as api.History);
-      })));
+      final response =
+          await res.get(arg_projectId, arg_historyId, $fields: arg_$fields);
+      checkHistory(response as api.History);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories;
       var arg_projectId = 'foo';
@@ -4918,20 +4909,17 @@ void main() {
         var resp = convert.json.encode(buildListHistoriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_projectId,
-              filterByName: arg_filterByName,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListHistoriesResponse(response as api.ListHistoriesResponse);
-      })));
+      final response = await res.list(arg_projectId,
+          filterByName: arg_filterByName,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListHistoriesResponse(response as api.ListHistoriesResponse);
     });
   });
 
   unittest.group('resource-ProjectsHistoriesExecutionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories.executions;
       var arg_request = buildExecution();
@@ -5017,15 +5005,13 @@ void main() {
         var resp = convert.json.encode(buildExecution());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_projectId, arg_historyId,
-              requestId: arg_requestId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkExecution(response as api.Execution);
-      })));
+      final response = await res.create(
+          arg_request, arg_projectId, arg_historyId,
+          requestId: arg_requestId, $fields: arg_$fields);
+      checkExecution(response as api.Execution);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories.executions;
       var arg_projectId = 'foo';
@@ -5108,15 +5094,13 @@ void main() {
         var resp = convert.json.encode(buildExecution());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_projectId, arg_historyId, arg_executionId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkExecution(response as api.Execution);
-      })));
+      final response = await res.get(
+          arg_projectId, arg_historyId, arg_executionId,
+          $fields: arg_$fields);
+      checkExecution(response as api.Execution);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories.executions;
       var arg_projectId = 'foo';
@@ -5202,17 +5186,14 @@ void main() {
         var resp = convert.json.encode(buildListExecutionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_projectId, arg_historyId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListExecutionsResponse(response as api.ListExecutionsResponse);
-      })));
+      final response = await res.list(arg_projectId, arg_historyId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListExecutionsResponse(response as api.ListExecutionsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories.executions;
       var arg_request = buildExecution();
@@ -5305,17 +5286,15 @@ void main() {
         var resp = convert.json.encode(buildExecution());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_projectId, arg_historyId, arg_executionId,
-              requestId: arg_requestId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkExecution(response as api.Execution);
-      })));
+      final response = await res.patch(
+          arg_request, arg_projectId, arg_historyId, arg_executionId,
+          requestId: arg_requestId, $fields: arg_$fields);
+      checkExecution(response as api.Execution);
     });
   });
 
   unittest.group('resource-ProjectsHistoriesExecutionsClustersResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories.executions.clusters;
       var arg_projectId = 'foo';
@@ -5413,15 +5392,13 @@ void main() {
         var resp = convert.json.encode(buildScreenshotCluster());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_projectId, arg_historyId, arg_executionId, arg_clusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkScreenshotCluster(response as api.ScreenshotCluster);
-      })));
+      final response = await res.get(
+          arg_projectId, arg_historyId, arg_executionId, arg_clusterId,
+          $fields: arg_$fields);
+      checkScreenshotCluster(response as api.ScreenshotCluster);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories.executions.clusters;
       var arg_projectId = 'foo';
@@ -5512,19 +5489,17 @@ void main() {
         var resp = convert.json.encode(buildListScreenshotClustersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_projectId, arg_historyId, arg_executionId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListScreenshotClustersResponse(
-            response as api.ListScreenshotClustersResponse);
-      })));
+      final response = await res.list(
+          arg_projectId, arg_historyId, arg_executionId,
+          $fields: arg_$fields);
+      checkListScreenshotClustersResponse(
+          response as api.ListScreenshotClustersResponse);
     });
   });
 
   unittest.group('resource-ProjectsHistoriesExecutionsEnvironmentsResource',
       () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.ToolResultsApi(mock).projects.histories.executions.environments;
@@ -5623,15 +5598,13 @@ void main() {
         var resp = convert.json.encode(buildEnvironment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_projectId, arg_historyId, arg_executionId, arg_environmentId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEnvironment(response as api.Environment);
-      })));
+      final response = await res.get(
+          arg_projectId, arg_historyId, arg_executionId, arg_environmentId,
+          $fields: arg_$fields);
+      checkEnvironment(response as api.Environment);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.ToolResultsApi(mock).projects.histories.executions.environments;
@@ -5733,19 +5706,17 @@ void main() {
         var resp = convert.json.encode(buildListEnvironmentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_projectId, arg_historyId, arg_executionId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListEnvironmentsResponse(response as api.ListEnvironmentsResponse);
-      })));
+      final response = await res.list(
+          arg_projectId, arg_historyId, arg_executionId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListEnvironmentsResponse(response as api.ListEnvironmentsResponse);
     });
   });
 
   unittest.group('resource-ProjectsHistoriesExecutionsStepsResource', () {
-    unittest.test('method--accessibilityClusters', () {
+    unittest.test('method--accessibilityClusters', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories.executions.steps;
       var arg_name = 'foo';
@@ -5799,16 +5770,13 @@ void main() {
             convert.json.encode(buildListStepAccessibilityClustersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .accessibilityClusters(arg_name,
-              locale: arg_locale, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListStepAccessibilityClustersResponse(
-            response as api.ListStepAccessibilityClustersResponse);
-      })));
+      final response = await res.accessibilityClusters(arg_name,
+          locale: arg_locale, $fields: arg_$fields);
+      checkListStepAccessibilityClustersResponse(
+          response as api.ListStepAccessibilityClustersResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories.executions.steps;
       var arg_request = buildStep();
@@ -5909,15 +5877,13 @@ void main() {
         var resp = convert.json.encode(buildStep());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_projectId, arg_historyId, arg_executionId,
-              requestId: arg_requestId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStep(response as api.Step);
-      })));
+      final response = await res.create(
+          arg_request, arg_projectId, arg_historyId, arg_executionId,
+          requestId: arg_requestId, $fields: arg_$fields);
+      checkStep(response as api.Step);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories.executions.steps;
       var arg_projectId = 'foo';
@@ -6015,15 +5981,13 @@ void main() {
         var resp = convert.json.encode(buildStep());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_projectId, arg_historyId, arg_executionId, arg_stepId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStep(response as api.Step);
-      })));
+      final response = await res.get(
+          arg_projectId, arg_historyId, arg_executionId, arg_stepId,
+          $fields: arg_$fields);
+      checkStep(response as api.Step);
     });
 
-    unittest.test('method--getPerfMetricsSummary', () {
+    unittest.test('method--getPerfMetricsSummary', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories.executions.steps;
       var arg_projectId = 'foo';
@@ -6129,16 +6093,13 @@ void main() {
         var resp = convert.json.encode(buildPerfMetricsSummary());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getPerfMetricsSummary(
-              arg_projectId, arg_historyId, arg_executionId, arg_stepId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPerfMetricsSummary(response as api.PerfMetricsSummary);
-      })));
+      final response = await res.getPerfMetricsSummary(
+          arg_projectId, arg_historyId, arg_executionId, arg_stepId,
+          $fields: arg_$fields);
+      checkPerfMetricsSummary(response as api.PerfMetricsSummary);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories.executions.steps;
       var arg_projectId = 'foo';
@@ -6239,17 +6200,15 @@ void main() {
         var resp = convert.json.encode(buildListStepsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_projectId, arg_historyId, arg_executionId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListStepsResponse(response as api.ListStepsResponse);
-      })));
+      final response = await res.list(
+          arg_projectId, arg_historyId, arg_executionId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListStepsResponse(response as api.ListStepsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories.executions.steps;
       var arg_request = buildStep();
@@ -6357,16 +6316,13 @@ void main() {
         var resp = convert.json.encode(buildStep());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_projectId, arg_historyId, arg_executionId,
-              arg_stepId,
-              requestId: arg_requestId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStep(response as api.Step);
-      })));
+      final response = await res.patch(arg_request, arg_projectId,
+          arg_historyId, arg_executionId, arg_stepId,
+          requestId: arg_requestId, $fields: arg_$fields);
+      checkStep(response as api.Step);
     });
 
-    unittest.test('method--publishXunitXmlFiles', () {
+    unittest.test('method--publishXunitXmlFiles', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock).projects.histories.executions.steps;
       var arg_request = buildPublishXunitXmlFilesRequest();
@@ -6478,20 +6434,17 @@ void main() {
         var resp = convert.json.encode(buildStep());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .publishXunitXmlFiles(arg_request, arg_projectId, arg_historyId,
-              arg_executionId, arg_stepId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStep(response as api.Step);
-      })));
+      final response = await res.publishXunitXmlFiles(arg_request,
+          arg_projectId, arg_historyId, arg_executionId, arg_stepId,
+          $fields: arg_$fields);
+      checkStep(response as api.Step);
     });
   });
 
   unittest.group(
       'resource-ProjectsHistoriesExecutionsStepsPerfMetricsSummaryResource',
       () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock)
           .projects
@@ -6607,19 +6560,16 @@ void main() {
         var resp = convert.json.encode(buildPerfMetricsSummary());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_projectId, arg_historyId, arg_executionId,
-              arg_stepId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPerfMetricsSummary(response as api.PerfMetricsSummary);
-      })));
+      final response = await res.create(arg_request, arg_projectId,
+          arg_historyId, arg_executionId, arg_stepId,
+          $fields: arg_$fields);
+      checkPerfMetricsSummary(response as api.PerfMetricsSummary);
     });
   });
 
   unittest.group(
       'resource-ProjectsHistoriesExecutionsStepsPerfSampleSeriesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock)
           .projects
@@ -6735,16 +6685,13 @@ void main() {
         var resp = convert.json.encode(buildPerfSampleSeries());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_projectId, arg_historyId, arg_executionId,
-              arg_stepId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPerfSampleSeries(response as api.PerfSampleSeries);
-      })));
+      final response = await res.create(arg_request, arg_projectId,
+          arg_historyId, arg_executionId, arg_stepId,
+          $fields: arg_$fields);
+      checkPerfSampleSeries(response as api.PerfSampleSeries);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock)
           .projects
@@ -6862,16 +6809,13 @@ void main() {
         var resp = convert.json.encode(buildPerfSampleSeries());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_projectId, arg_historyId, arg_executionId, arg_stepId,
-              arg_sampleSeriesId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPerfSampleSeries(response as api.PerfSampleSeries);
-      })));
+      final response = await res.get(arg_projectId, arg_historyId,
+          arg_executionId, arg_stepId, arg_sampleSeriesId,
+          $fields: arg_$fields);
+      checkPerfSampleSeries(response as api.PerfSampleSeries);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock)
           .projects
@@ -6987,20 +6931,18 @@ void main() {
         var resp = convert.json.encode(buildListPerfSampleSeriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_projectId, arg_historyId, arg_executionId, arg_stepId,
-              filter: arg_filter, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListPerfSampleSeriesResponse(
-            response as api.ListPerfSampleSeriesResponse);
-      })));
+      final response = await res.list(
+          arg_projectId, arg_historyId, arg_executionId, arg_stepId,
+          filter: arg_filter, $fields: arg_$fields);
+      checkListPerfSampleSeriesResponse(
+          response as api.ListPerfSampleSeriesResponse);
     });
   });
 
   unittest.group(
       'resource-ProjectsHistoriesExecutionsStepsPerfSampleSeriesSamplesResource',
       () {
-    unittest.test('method--batchCreate', () {
+    unittest.test('method--batchCreate', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock)
           .projects
@@ -7133,17 +7075,14 @@ void main() {
         var resp = convert.json.encode(buildBatchCreatePerfSamplesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchCreate(arg_request, arg_projectId, arg_historyId,
-              arg_executionId, arg_stepId, arg_sampleSeriesId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchCreatePerfSamplesResponse(
-            response as api.BatchCreatePerfSamplesResponse);
-      })));
+      final response = await res.batchCreate(arg_request, arg_projectId,
+          arg_historyId, arg_executionId, arg_stepId, arg_sampleSeriesId,
+          $fields: arg_$fields);
+      checkBatchCreatePerfSamplesResponse(
+          response as api.BatchCreatePerfSamplesResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock)
           .projects
@@ -7280,21 +7219,18 @@ void main() {
         var resp = convert.json.encode(buildListPerfSamplesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_projectId, arg_historyId, arg_executionId, arg_stepId,
-              arg_sampleSeriesId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListPerfSamplesResponse(response as api.ListPerfSamplesResponse);
-      })));
+      final response = await res.list(arg_projectId, arg_historyId,
+          arg_executionId, arg_stepId, arg_sampleSeriesId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListPerfSamplesResponse(response as api.ListPerfSamplesResponse);
     });
   });
 
   unittest.group('resource-ProjectsHistoriesExecutionsStepsTestCasesResource',
       () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock)
           .projects
@@ -7412,16 +7348,13 @@ void main() {
         var resp = convert.json.encode(buildTestCase());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_projectId, arg_historyId, arg_executionId, arg_stepId,
-              arg_testCaseId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestCase(response as api.TestCase);
-      })));
+      final response = await res.get(arg_projectId, arg_historyId,
+          arg_executionId, arg_stepId, arg_testCaseId,
+          $fields: arg_$fields);
+      checkTestCase(response as api.TestCase);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock)
           .projects
@@ -7542,20 +7475,18 @@ void main() {
         var resp = convert.json.encode(buildListTestCasesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_projectId, arg_historyId, arg_executionId, arg_stepId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTestCasesResponse(response as api.ListTestCasesResponse);
-      })));
+      final response = await res.list(
+          arg_projectId, arg_historyId, arg_executionId, arg_stepId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListTestCasesResponse(response as api.ListTestCasesResponse);
     });
   });
 
   unittest.group('resource-ProjectsHistoriesExecutionsStepsThumbnailsResource',
       () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ToolResultsApi(mock)
           .projects
@@ -7676,15 +7607,13 @@ void main() {
         var resp = convert.json.encode(buildListStepThumbnailsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_projectId, arg_historyId, arg_executionId, arg_stepId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListStepThumbnailsResponse(
-            response as api.ListStepThumbnailsResponse);
-      })));
+      final response = await res.list(
+          arg_projectId, arg_historyId, arg_executionId, arg_stepId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListStepThumbnailsResponse(
+          response as api.ListStepThumbnailsResponse);
     });
   });
 }

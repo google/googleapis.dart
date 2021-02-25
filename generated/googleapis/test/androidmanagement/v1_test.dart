@@ -4159,7 +4159,7 @@ void checkUnnamed6130(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-AdvancedSecurityOverrides', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdvancedSecurityOverrides();
       var od = api.AdvancedSecurityOverrides.fromJson(o.toJson());
       checkAdvancedSecurityOverrides(od as api.AdvancedSecurityOverrides);
@@ -4167,7 +4167,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AlwaysOnVpnPackage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAlwaysOnVpnPackage();
       var od = api.AlwaysOnVpnPackage.fromJson(o.toJson());
       checkAlwaysOnVpnPackage(od as api.AlwaysOnVpnPackage);
@@ -4175,7 +4175,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApiLevelCondition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApiLevelCondition();
       var od = api.ApiLevelCondition.fromJson(o.toJson());
       checkApiLevelCondition(od as api.ApiLevelCondition);
@@ -4183,7 +4183,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AppTrackInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppTrackInfo();
       var od = api.AppTrackInfo.fromJson(o.toJson());
       checkAppTrackInfo(od as api.AppTrackInfo);
@@ -4191,7 +4191,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Application', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplication();
       var od = api.Application.fromJson(o.toJson());
       checkApplication(od as api.Application);
@@ -4199,7 +4199,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApplicationEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplicationEvent();
       var od = api.ApplicationEvent.fromJson(o.toJson());
       checkApplicationEvent(od as api.ApplicationEvent);
@@ -4207,7 +4207,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApplicationPermission', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplicationPermission();
       var od = api.ApplicationPermission.fromJson(o.toJson());
       checkApplicationPermission(od as api.ApplicationPermission);
@@ -4215,7 +4215,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApplicationPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplicationPolicy();
       var od = api.ApplicationPolicy.fromJson(o.toJson());
       checkApplicationPolicy(od as api.ApplicationPolicy);
@@ -4223,7 +4223,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApplicationReport', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplicationReport();
       var od = api.ApplicationReport.fromJson(o.toJson());
       checkApplicationReport(od as api.ApplicationReport);
@@ -4231,7 +4231,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApplicationReportingSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplicationReportingSettings();
       var od = api.ApplicationReportingSettings.fromJson(o.toJson());
       checkApplicationReportingSettings(od as api.ApplicationReportingSettings);
@@ -4239,7 +4239,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BlockAction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBlockAction();
       var od = api.BlockAction.fromJson(o.toJson());
       checkBlockAction(od as api.BlockAction);
@@ -4247,7 +4247,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChoosePrivateKeyRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChoosePrivateKeyRule();
       var od = api.ChoosePrivateKeyRule.fromJson(o.toJson());
       checkChoosePrivateKeyRule(od as api.ChoosePrivateKeyRule);
@@ -4255,7 +4255,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Command', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCommand();
       var od = api.Command.fromJson(o.toJson());
       checkCommand(od as api.Command);
@@ -4263,7 +4263,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CommonCriteriaModeInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCommonCriteriaModeInfo();
       var od = api.CommonCriteriaModeInfo.fromJson(o.toJson());
       checkCommonCriteriaModeInfo(od as api.CommonCriteriaModeInfo);
@@ -4271,7 +4271,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ComplianceRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildComplianceRule();
       var od = api.ComplianceRule.fromJson(o.toJson());
       checkComplianceRule(od as api.ComplianceRule);
@@ -4279,7 +4279,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ContactInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContactInfo();
       var od = api.ContactInfo.fromJson(o.toJson());
       checkContactInfo(od as api.ContactInfo);
@@ -4287,7 +4287,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Date', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
       checkDate(od as api.Date);
@@ -4295,7 +4295,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Device', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDevice();
       var od = api.Device.fromJson(o.toJson());
       checkDevice(od as api.Device);
@@ -4303,7 +4303,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceSettings();
       var od = api.DeviceSettings.fromJson(o.toJson());
       checkDeviceSettings(od as api.DeviceSettings);
@@ -4311,7 +4311,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Display', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDisplay();
       var od = api.Display.fromJson(o.toJson());
       checkDisplay(od as api.Display);
@@ -4319,7 +4319,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -4327,7 +4327,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnrollmentToken', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnrollmentToken();
       var od = api.EnrollmentToken.fromJson(o.toJson());
       checkEnrollmentToken(od as api.EnrollmentToken);
@@ -4335,7 +4335,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Enterprise', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnterprise();
       var od = api.Enterprise.fromJson(o.toJson());
       checkEnterprise(od as api.Enterprise);
@@ -4343,7 +4343,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExternalData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExternalData();
       var od = api.ExternalData.fromJson(o.toJson());
       checkExternalData(od as api.ExternalData);
@@ -4351,7 +4351,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FreezePeriod', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFreezePeriod();
       var od = api.FreezePeriod.fromJson(o.toJson());
       checkFreezePeriod(od as api.FreezePeriod);
@@ -4359,7 +4359,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HardwareInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHardwareInfo();
       var od = api.HardwareInfo.fromJson(o.toJson());
       checkHardwareInfo(od as api.HardwareInfo);
@@ -4367,7 +4367,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HardwareStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHardwareStatus();
       var od = api.HardwareStatus.fromJson(o.toJson());
       checkHardwareStatus(od as api.HardwareStatus);
@@ -4375,7 +4375,7 @@ void main() {
   });
 
   unittest.group('obj-schema-KeyedAppState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildKeyedAppState();
       var od = api.KeyedAppState.fromJson(o.toJson());
       checkKeyedAppState(od as api.KeyedAppState);
@@ -4383,7 +4383,7 @@ void main() {
   });
 
   unittest.group('obj-schema-KioskCustomization', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildKioskCustomization();
       var od = api.KioskCustomization.fromJson(o.toJson());
       checkKioskCustomization(od as api.KioskCustomization);
@@ -4391,7 +4391,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LaunchAppAction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLaunchAppAction();
       var od = api.LaunchAppAction.fromJson(o.toJson());
       checkLaunchAppAction(od as api.LaunchAppAction);
@@ -4399,7 +4399,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDevicesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDevicesResponse();
       var od = api.ListDevicesResponse.fromJson(o.toJson());
       checkListDevicesResponse(od as api.ListDevicesResponse);
@@ -4407,7 +4407,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListEnterprisesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListEnterprisesResponse();
       var od = api.ListEnterprisesResponse.fromJson(o.toJson());
       checkListEnterprisesResponse(od as api.ListEnterprisesResponse);
@@ -4415,7 +4415,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -4423,7 +4423,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListPoliciesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListPoliciesResponse();
       var od = api.ListPoliciesResponse.fromJson(o.toJson());
       checkListPoliciesResponse(od as api.ListPoliciesResponse);
@@ -4431,7 +4431,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListWebAppsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListWebAppsResponse();
       var od = api.ListWebAppsResponse.fromJson(o.toJson());
       checkListWebAppsResponse(od as api.ListWebAppsResponse);
@@ -4439,7 +4439,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedConfigurationTemplate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedConfigurationTemplate();
       var od = api.ManagedConfigurationTemplate.fromJson(o.toJson());
       checkManagedConfigurationTemplate(od as api.ManagedConfigurationTemplate);
@@ -4447,7 +4447,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedProperty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedProperty();
       var od = api.ManagedProperty.fromJson(o.toJson());
       checkManagedProperty(od as api.ManagedProperty);
@@ -4455,7 +4455,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedPropertyEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedPropertyEntry();
       var od = api.ManagedPropertyEntry.fromJson(o.toJson());
       checkManagedPropertyEntry(od as api.ManagedPropertyEntry);
@@ -4463,7 +4463,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MemoryEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMemoryEvent();
       var od = api.MemoryEvent.fromJson(o.toJson());
       checkMemoryEvent(od as api.MemoryEvent);
@@ -4471,7 +4471,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MemoryInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMemoryInfo();
       var od = api.MemoryInfo.fromJson(o.toJson());
       checkMemoryInfo(od as api.MemoryInfo);
@@ -4479,7 +4479,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NetworkInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNetworkInfo();
       var od = api.NetworkInfo.fromJson(o.toJson());
       checkNetworkInfo(od as api.NetworkInfo);
@@ -4487,7 +4487,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NonComplianceDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNonComplianceDetail();
       var od = api.NonComplianceDetail.fromJson(o.toJson());
       checkNonComplianceDetail(od as api.NonComplianceDetail);
@@ -4495,7 +4495,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NonComplianceDetailCondition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNonComplianceDetailCondition();
       var od = api.NonComplianceDetailCondition.fromJson(o.toJson());
       checkNonComplianceDetailCondition(od as api.NonComplianceDetailCondition);
@@ -4503,7 +4503,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -4511,7 +4511,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PackageNameList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPackageNameList();
       var od = api.PackageNameList.fromJson(o.toJson());
       checkPackageNameList(od as api.PackageNameList);
@@ -4519,7 +4519,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PasswordRequirements', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPasswordRequirements();
       var od = api.PasswordRequirements.fromJson(o.toJson());
       checkPasswordRequirements(od as api.PasswordRequirements);
@@ -4527,7 +4527,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PermissionGrant', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPermissionGrant();
       var od = api.PermissionGrant.fromJson(o.toJson());
       checkPermissionGrant(od as api.PermissionGrant);
@@ -4535,7 +4535,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PersistentPreferredActivity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPersistentPreferredActivity();
       var od = api.PersistentPreferredActivity.fromJson(o.toJson());
       checkPersistentPreferredActivity(od as api.PersistentPreferredActivity);
@@ -4543,7 +4543,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PersonalApplicationPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPersonalApplicationPolicy();
       var od = api.PersonalApplicationPolicy.fromJson(o.toJson());
       checkPersonalApplicationPolicy(od as api.PersonalApplicationPolicy);
@@ -4551,7 +4551,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PersonalUsagePolicies', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPersonalUsagePolicies();
       var od = api.PersonalUsagePolicies.fromJson(o.toJson());
       checkPersonalUsagePolicies(od as api.PersonalUsagePolicies);
@@ -4559,7 +4559,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -4567,7 +4567,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PolicyEnforcementRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicyEnforcementRule();
       var od = api.PolicyEnforcementRule.fromJson(o.toJson());
       checkPolicyEnforcementRule(od as api.PolicyEnforcementRule);
@@ -4575,7 +4575,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PostureDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPostureDetail();
       var od = api.PostureDetail.fromJson(o.toJson());
       checkPostureDetail(od as api.PostureDetail);
@@ -4583,7 +4583,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PowerManagementEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPowerManagementEvent();
       var od = api.PowerManagementEvent.fromJson(o.toJson());
       checkPowerManagementEvent(od as api.PowerManagementEvent);
@@ -4591,7 +4591,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProxyInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProxyInfo();
       var od = api.ProxyInfo.fromJson(o.toJson());
       checkProxyInfo(od as api.ProxyInfo);
@@ -4599,7 +4599,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SecurityPosture', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSecurityPosture();
       var od = api.SecurityPosture.fromJson(o.toJson());
       checkSecurityPosture(od as api.SecurityPosture);
@@ -4607,7 +4607,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetupAction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetupAction();
       var od = api.SetupAction.fromJson(o.toJson());
       checkSetupAction(od as api.SetupAction);
@@ -4615,7 +4615,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SigninDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSigninDetail();
       var od = api.SigninDetail.fromJson(o.toJson());
       checkSigninDetail(od as api.SigninDetail);
@@ -4623,7 +4623,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SignupUrl', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSignupUrl();
       var od = api.SignupUrl.fromJson(o.toJson());
       checkSignupUrl(od as api.SignupUrl);
@@ -4631,7 +4631,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SoftwareInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSoftwareInfo();
       var od = api.SoftwareInfo.fromJson(o.toJson());
       checkSoftwareInfo(od as api.SoftwareInfo);
@@ -4639,7 +4639,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -4647,7 +4647,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StatusReportingSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatusReportingSettings();
       var od = api.StatusReportingSettings.fromJson(o.toJson());
       checkStatusReportingSettings(od as api.StatusReportingSettings);
@@ -4655,7 +4655,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SystemUpdate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSystemUpdate();
       var od = api.SystemUpdate.fromJson(o.toJson());
       checkSystemUpdate(od as api.SystemUpdate);
@@ -4663,7 +4663,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SystemUpdateInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSystemUpdateInfo();
       var od = api.SystemUpdateInfo.fromJson(o.toJson());
       checkSystemUpdateInfo(od as api.SystemUpdateInfo);
@@ -4671,7 +4671,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TelephonyInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTelephonyInfo();
       var od = api.TelephonyInfo.fromJson(o.toJson());
       checkTelephonyInfo(od as api.TelephonyInfo);
@@ -4679,7 +4679,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TermsAndConditions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTermsAndConditions();
       var od = api.TermsAndConditions.fromJson(o.toJson());
       checkTermsAndConditions(od as api.TermsAndConditions);
@@ -4687,7 +4687,7 @@ void main() {
   });
 
   unittest.group('obj-schema-User', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
       checkUser(od as api.User);
@@ -4695,7 +4695,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserFacingMessage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserFacingMessage();
       var od = api.UserFacingMessage.fromJson(o.toJson());
       checkUserFacingMessage(od as api.UserFacingMessage);
@@ -4703,7 +4703,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebApp', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebApp();
       var od = api.WebApp.fromJson(o.toJson());
       checkWebApp(od as api.WebApp);
@@ -4711,7 +4711,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebAppIcon', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebAppIcon();
       var od = api.WebAppIcon.fromJson(o.toJson());
       checkWebAppIcon(od as api.WebAppIcon);
@@ -4719,7 +4719,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebToken', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebToken();
       var od = api.WebToken.fromJson(o.toJson());
       checkWebToken(od as api.WebToken);
@@ -4727,7 +4727,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WipeAction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWipeAction();
       var od = api.WipeAction.fromJson(o.toJson());
       checkWipeAction(od as api.WipeAction);
@@ -4735,7 +4735,7 @@ void main() {
   });
 
   unittest.group('resource-EnterprisesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises;
       var arg_request = buildEnterprise();
@@ -4806,19 +4806,16 @@ void main() {
         var resp = convert.json.encode(buildEnterprise());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request,
-              agreementAccepted: arg_agreementAccepted,
-              enterpriseToken: arg_enterpriseToken,
-              projectId: arg_projectId,
-              signupUrlName: arg_signupUrlName,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEnterprise(response as api.Enterprise);
-      })));
+      final response = await res.create(arg_request,
+          agreementAccepted: arg_agreementAccepted,
+          enterpriseToken: arg_enterpriseToken,
+          projectId: arg_projectId,
+          signupUrlName: arg_signupUrlName,
+          $fields: arg_$fields);
+      checkEnterprise(response as api.Enterprise);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises;
       var arg_name = 'foo';
@@ -4866,14 +4863,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises;
       var arg_name = 'foo';
@@ -4921,14 +4915,11 @@ void main() {
         var resp = convert.json.encode(buildEnterprise());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEnterprise(response as api.Enterprise);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkEnterprise(response as api.Enterprise);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises;
       var arg_pageSize = 42;
@@ -4994,19 +4985,16 @@ void main() {
         var resp = convert.json.encode(buildListEnterprisesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              projectId: arg_projectId,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListEnterprisesResponse(response as api.ListEnterprisesResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          projectId: arg_projectId,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListEnterprisesResponse(response as api.ListEnterprisesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises;
       var arg_request = buildEnterprise();
@@ -5064,17 +5052,14 @@ void main() {
         var resp = convert.json.encode(buildEnterprise());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEnterprise(response as api.Enterprise);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkEnterprise(response as api.Enterprise);
     });
   });
 
   unittest.group('resource-EnterprisesApplicationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.applications;
       var arg_name = 'foo';
@@ -5127,16 +5112,14 @@ void main() {
         var resp = convert.json.encode(buildApplication());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, languageCode: arg_languageCode, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApplication(response as api.Application);
-      })));
+      final response = await res.get(arg_name,
+          languageCode: arg_languageCode, $fields: arg_$fields);
+      checkApplication(response as api.Application);
     });
   });
 
   unittest.group('resource-EnterprisesDevicesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.devices;
       var arg_name = 'foo';
@@ -5194,17 +5177,14 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name,
-              wipeDataFlags: arg_wipeDataFlags,
-              wipeReasonMessage: arg_wipeReasonMessage,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name,
+          wipeDataFlags: arg_wipeDataFlags,
+          wipeReasonMessage: arg_wipeReasonMessage,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.devices;
       var arg_name = 'foo';
@@ -5252,14 +5232,11 @@ void main() {
         var resp = convert.json.encode(buildDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDevice(response as api.Device);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkDevice(response as api.Device);
     });
 
-    unittest.test('method--issueCommand', () {
+    unittest.test('method--issueCommand', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.devices;
       var arg_request = buildCommand();
@@ -5312,14 +5289,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .issueCommand(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.issueCommand(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.devices;
       var arg_parent = 'foo';
@@ -5377,17 +5352,14 @@ void main() {
         var resp = convert.json.encode(buildListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDevicesResponse(response as api.ListDevicesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListDevicesResponse(response as api.ListDevicesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.devices;
       var arg_request = buildDevice();
@@ -5445,17 +5417,14 @@ void main() {
         var resp = convert.json.encode(buildDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDevice(response as api.Device);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkDevice(response as api.Device);
     });
   });
 
   unittest.group('resource-EnterprisesDevicesOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.devices.operations;
       var arg_name = 'foo';
@@ -5503,14 +5472,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.cancel(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.devices.operations;
       var arg_name = 'foo';
@@ -5558,14 +5524,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.devices.operations;
       var arg_name = 'foo';
@@ -5613,14 +5576,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.devices.operations;
       var arg_name = 'foo';
@@ -5683,20 +5643,17 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 
   unittest.group('resource-EnterprisesEnrollmentTokensResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.enrollmentTokens;
       var arg_request = buildEnrollmentToken();
@@ -5749,14 +5706,12 @@ void main() {
         var resp = convert.json.encode(buildEnrollmentToken());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEnrollmentToken(response as api.EnrollmentToken);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkEnrollmentToken(response as api.EnrollmentToken);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.enrollmentTokens;
       var arg_name = 'foo';
@@ -5804,16 +5759,13 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 
   unittest.group('resource-EnterprisesPoliciesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.policies;
       var arg_name = 'foo';
@@ -5861,14 +5813,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.policies;
       var arg_name = 'foo';
@@ -5916,14 +5865,11 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.policies;
       var arg_parent = 'foo';
@@ -5981,17 +5927,14 @@ void main() {
         var resp = convert.json.encode(buildListPoliciesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListPoliciesResponse(response as api.ListPoliciesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListPoliciesResponse(response as api.ListPoliciesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.policies;
       var arg_request = buildPolicy();
@@ -6049,17 +5992,14 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
   });
 
   unittest.group('resource-EnterprisesWebAppsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.webApps;
       var arg_request = buildWebApp();
@@ -6112,14 +6052,12 @@ void main() {
         var resp = convert.json.encode(buildWebApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWebApp(response as api.WebApp);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkWebApp(response as api.WebApp);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.webApps;
       var arg_name = 'foo';
@@ -6167,14 +6105,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.webApps;
       var arg_name = 'foo';
@@ -6222,14 +6157,11 @@ void main() {
         var resp = convert.json.encode(buildWebApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWebApp(response as api.WebApp);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkWebApp(response as api.WebApp);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.webApps;
       var arg_parent = 'foo';
@@ -6287,17 +6219,14 @@ void main() {
         var resp = convert.json.encode(buildListWebAppsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListWebAppsResponse(response as api.ListWebAppsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListWebAppsResponse(response as api.ListWebAppsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.webApps;
       var arg_request = buildWebApp();
@@ -6355,17 +6284,14 @@ void main() {
         var resp = convert.json.encode(buildWebApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWebApp(response as api.WebApp);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkWebApp(response as api.WebApp);
     });
   });
 
   unittest.group('resource-EnterprisesWebTokensResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).enterprises.webTokens;
       var arg_request = buildWebToken();
@@ -6418,16 +6344,14 @@ void main() {
         var resp = convert.json.encode(buildWebToken());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWebToken(response as api.WebToken);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkWebToken(response as api.WebToken);
     });
   });
 
   unittest.group('resource-SignupUrlsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.AndroidManagementApi(mock).signupUrls;
       var arg_callbackUrl = 'foo';
@@ -6483,14 +6407,11 @@ void main() {
         var resp = convert.json.encode(buildSignupUrl());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(
-              callbackUrl: arg_callbackUrl,
-              projectId: arg_projectId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSignupUrl(response as api.SignupUrl);
-      })));
+      final response = await res.create(
+          callbackUrl: arg_callbackUrl,
+          projectId: arg_projectId,
+          $fields: arg_$fields);
+      checkSignupUrl(response as api.SignupUrl);
     });
   });
 }

@@ -781,7 +781,7 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
 
 void main() {
   unittest.group('obj-schema-AccessDeniedPageSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccessDeniedPageSettings();
       var od = api.AccessDeniedPageSettings.fromJson(o.toJson());
       checkAccessDeniedPageSettings(od as api.AccessDeniedPageSettings);
@@ -789,7 +789,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccessSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccessSettings();
       var od = api.AccessSettings.fromJson(o.toJson());
       checkAccessSettings(od as api.AccessSettings);
@@ -797,7 +797,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApplicationSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplicationSettings();
       var od = api.ApplicationSettings.fromJson(o.toJson());
       checkApplicationSettings(od as api.ApplicationSettings);
@@ -805,7 +805,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -813,7 +813,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Brand', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBrand();
       var od = api.Brand.fromJson(o.toJson());
       checkBrand(od as api.Brand);
@@ -821,7 +821,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CorsSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCorsSettings();
       var od = api.CorsSettings.fromJson(o.toJson());
       checkCorsSettings(od as api.CorsSettings);
@@ -829,7 +829,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CsmSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCsmSettings();
       var od = api.CsmSettings.fromJson(o.toJson());
       checkCsmSettings(od as api.CsmSettings);
@@ -837,7 +837,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -845,7 +845,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -853,7 +853,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GcipSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGcipSettings();
       var od = api.GcipSettings.fromJson(o.toJson());
       checkGcipSettings(od as api.GcipSettings);
@@ -861,7 +861,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetIamPolicyRequest();
       var od = api.GetIamPolicyRequest.fromJson(o.toJson());
       checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
@@ -869,7 +869,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetPolicyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetPolicyOptions();
       var od = api.GetPolicyOptions.fromJson(o.toJson());
       checkGetPolicyOptions(od as api.GetPolicyOptions);
@@ -877,7 +877,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IapSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIapSettings();
       var od = api.IapSettings.fromJson(o.toJson());
       checkIapSettings(od as api.IapSettings);
@@ -885,7 +885,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IdentityAwareProxyClient', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentityAwareProxyClient();
       var od = api.IdentityAwareProxyClient.fromJson(o.toJson());
       checkIdentityAwareProxyClient(od as api.IdentityAwareProxyClient);
@@ -893,7 +893,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListBrandsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListBrandsResponse();
       var od = api.ListBrandsResponse.fromJson(o.toJson());
       checkListBrandsResponse(od as api.ListBrandsResponse);
@@ -901,7 +901,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListIdentityAwareProxyClientsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListIdentityAwareProxyClientsResponse();
       var od = api.ListIdentityAwareProxyClientsResponse.fromJson(o.toJson());
       checkListIdentityAwareProxyClientsResponse(
@@ -910,7 +910,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OAuthSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOAuthSettings();
       var od = api.OAuthSettings.fromJson(o.toJson());
       checkOAuthSettings(od as api.OAuthSettings);
@@ -918,7 +918,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -926,7 +926,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PolicyDelegationSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicyDelegationSettings();
       var od = api.PolicyDelegationSettings.fromJson(o.toJson());
       checkPolicyDelegationSettings(od as api.PolicyDelegationSettings);
@@ -934,7 +934,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PolicyName', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicyName();
       var od = api.PolicyName.fromJson(o.toJson());
       checkPolicyName(od as api.PolicyName);
@@ -942,7 +942,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResetIdentityAwareProxyClientSecretRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResetIdentityAwareProxyClientSecretRequest();
       var od =
           api.ResetIdentityAwareProxyClientSecretRequest.fromJson(o.toJson());
@@ -952,7 +952,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Resource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResource();
       var od = api.Resource.fromJson(o.toJson());
       checkResource(od as api.Resource);
@@ -960,7 +960,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -968,7 +968,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -976,7 +976,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -984,7 +984,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsBrandsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudIAPApi(mock).projects.brands;
       var arg_request = buildBrand();
@@ -1037,14 +1037,12 @@ void main() {
         var resp = convert.json.encode(buildBrand());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBrand(response as api.Brand);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkBrand(response as api.Brand);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudIAPApi(mock).projects.brands;
       var arg_name = 'foo';
@@ -1092,14 +1090,11 @@ void main() {
         var resp = convert.json.encode(buildBrand());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBrand(response as api.Brand);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkBrand(response as api.Brand);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudIAPApi(mock).projects.brands;
       var arg_parent = 'foo';
@@ -1147,17 +1142,14 @@ void main() {
         var resp = convert.json.encode(buildListBrandsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListBrandsResponse(response as api.ListBrandsResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkListBrandsResponse(response as api.ListBrandsResponse);
     });
   });
 
   unittest.group('resource-ProjectsBrandsIdentityAwareProxyClientsResource',
       () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudIAPApi(mock).projects.brands.identityAwareProxyClients;
       var arg_request = buildIdentityAwareProxyClient();
@@ -1210,14 +1202,12 @@ void main() {
         var resp = convert.json.encode(buildIdentityAwareProxyClient());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIdentityAwareProxyClient(response as api.IdentityAwareProxyClient);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkIdentityAwareProxyClient(response as api.IdentityAwareProxyClient);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudIAPApi(mock).projects.brands.identityAwareProxyClients;
       var arg_name = 'foo';
@@ -1265,14 +1255,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudIAPApi(mock).projects.brands.identityAwareProxyClients;
       var arg_name = 'foo';
@@ -1320,14 +1307,11 @@ void main() {
         var resp = convert.json.encode(buildIdentityAwareProxyClient());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIdentityAwareProxyClient(response as api.IdentityAwareProxyClient);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkIdentityAwareProxyClient(response as api.IdentityAwareProxyClient);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudIAPApi(mock).projects.brands.identityAwareProxyClients;
       var arg_parent = 'foo';
@@ -1386,18 +1370,15 @@ void main() {
             convert.json.encode(buildListIdentityAwareProxyClientsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListIdentityAwareProxyClientsResponse(
-            response as api.ListIdentityAwareProxyClientsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListIdentityAwareProxyClientsResponse(
+          response as api.ListIdentityAwareProxyClientsResponse);
     });
 
-    unittest.test('method--resetSecret', () {
+    unittest.test('method--resetSecret', () async {
       var mock = HttpServerMock();
       var res = api.CloudIAPApi(mock).projects.brands.identityAwareProxyClients;
       var arg_request = buildResetIdentityAwareProxyClientSecretRequest();
@@ -1451,16 +1432,14 @@ void main() {
         var resp = convert.json.encode(buildIdentityAwareProxyClient());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resetSecret(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIdentityAwareProxyClient(response as api.IdentityAwareProxyClient);
-      })));
+      final response =
+          await res.resetSecret(arg_request, arg_name, $fields: arg_$fields);
+      checkIdentityAwareProxyClient(response as api.IdentityAwareProxyClient);
     });
   });
 
   unittest.group('resource-V1Resource', () {
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudIAPApi(mock).v1;
       var arg_request = buildGetIamPolicyRequest();
@@ -1513,14 +1492,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--getIapSettings', () {
+    unittest.test('method--getIapSettings', () async {
       var mock = HttpServerMock();
       var res = api.CloudIAPApi(mock).v1;
       var arg_name = 'foo';
@@ -1568,14 +1545,11 @@ void main() {
         var resp = convert.json.encode(buildIapSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIapSettings(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIapSettings(response as api.IapSettings);
-      })));
+      final response = await res.getIapSettings(arg_name, $fields: arg_$fields);
+      checkIapSettings(response as api.IapSettings);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudIAPApi(mock).v1;
       var arg_request = buildSetIamPolicyRequest();
@@ -1628,14 +1602,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CloudIAPApi(mock).v1;
       var arg_request = buildTestIamPermissionsRequest();
@@ -1688,15 +1660,13 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
 
-    unittest.test('method--updateIapSettings', () {
+    unittest.test('method--updateIapSettings', () async {
       var mock = HttpServerMock();
       var res = api.CloudIAPApi(mock).v1;
       var arg_request = buildIapSettings();
@@ -1754,12 +1724,9 @@ void main() {
         var resp = convert.json.encode(buildIapSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateIapSettings(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIapSettings(response as api.IapSettings);
-      })));
+      final response = await res.updateIapSettings(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkIapSettings(response as api.IapSettings);
     });
   });
 }

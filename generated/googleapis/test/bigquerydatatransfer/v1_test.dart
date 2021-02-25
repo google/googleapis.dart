@@ -1285,7 +1285,7 @@ void checkUnnamed2606(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-CheckValidCredsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCheckValidCredsRequest();
       var od = api.CheckValidCredsRequest.fromJson(o.toJson());
       checkCheckValidCredsRequest(od as api.CheckValidCredsRequest);
@@ -1293,7 +1293,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CheckValidCredsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCheckValidCredsResponse();
       var od = api.CheckValidCredsResponse.fromJson(o.toJson());
       checkCheckValidCredsResponse(od as api.CheckValidCredsResponse);
@@ -1301,7 +1301,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DataSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDataSource();
       var od = api.DataSource.fromJson(o.toJson());
       checkDataSource(od as api.DataSource);
@@ -1309,7 +1309,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DataSourceParameter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDataSourceParameter();
       var od = api.DataSourceParameter.fromJson(o.toJson());
       checkDataSourceParameter(od as api.DataSourceParameter);
@@ -1317,7 +1317,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EmailPreferences', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmailPreferences();
       var od = api.EmailPreferences.fromJson(o.toJson());
       checkEmailPreferences(od as api.EmailPreferences);
@@ -1325,7 +1325,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1333,7 +1333,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDataSourcesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDataSourcesResponse();
       var od = api.ListDataSourcesResponse.fromJson(o.toJson());
       checkListDataSourcesResponse(od as api.ListDataSourcesResponse);
@@ -1341,7 +1341,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -1349,7 +1349,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTransferConfigsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTransferConfigsResponse();
       var od = api.ListTransferConfigsResponse.fromJson(o.toJson());
       checkListTransferConfigsResponse(od as api.ListTransferConfigsResponse);
@@ -1357,7 +1357,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTransferLogsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTransferLogsResponse();
       var od = api.ListTransferLogsResponse.fromJson(o.toJson());
       checkListTransferLogsResponse(od as api.ListTransferLogsResponse);
@@ -1365,7 +1365,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTransferRunsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTransferRunsResponse();
       var od = api.ListTransferRunsResponse.fromJson(o.toJson());
       checkListTransferRunsResponse(od as api.ListTransferRunsResponse);
@@ -1373,7 +1373,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -1381,7 +1381,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScheduleOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScheduleOptions();
       var od = api.ScheduleOptions.fromJson(o.toJson());
       checkScheduleOptions(od as api.ScheduleOptions);
@@ -1389,7 +1389,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScheduleTransferRunsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScheduleTransferRunsRequest();
       var od = api.ScheduleTransferRunsRequest.fromJson(o.toJson());
       checkScheduleTransferRunsRequest(od as api.ScheduleTransferRunsRequest);
@@ -1397,7 +1397,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScheduleTransferRunsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScheduleTransferRunsResponse();
       var od = api.ScheduleTransferRunsResponse.fromJson(o.toJson());
       checkScheduleTransferRunsResponse(od as api.ScheduleTransferRunsResponse);
@@ -1405,7 +1405,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StartManualTransferRunsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStartManualTransferRunsRequest();
       var od = api.StartManualTransferRunsRequest.fromJson(o.toJson());
       checkStartManualTransferRunsRequest(
@@ -1414,7 +1414,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StartManualTransferRunsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStartManualTransferRunsResponse();
       var od = api.StartManualTransferRunsResponse.fromJson(o.toJson());
       checkStartManualTransferRunsResponse(
@@ -1423,7 +1423,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -1431,7 +1431,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimeRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimeRange();
       var od = api.TimeRange.fromJson(o.toJson());
       checkTimeRange(od as api.TimeRange);
@@ -1439,7 +1439,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TransferConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTransferConfig();
       var od = api.TransferConfig.fromJson(o.toJson());
       checkTransferConfig(od as api.TransferConfig);
@@ -1447,7 +1447,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TransferMessage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTransferMessage();
       var od = api.TransferMessage.fromJson(o.toJson());
       checkTransferMessage(od as api.TransferMessage);
@@ -1455,7 +1455,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TransferRun', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTransferRun();
       var od = api.TransferRun.fromJson(o.toJson());
       checkTransferRun(od as api.TransferRun);
@@ -1463,7 +1463,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsDataSourcesResource', () {
-    unittest.test('method--checkValidCreds', () {
+    unittest.test('method--checkValidCreds', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.dataSources;
       var arg_request = buildCheckValidCredsRequest();
@@ -1516,14 +1516,12 @@ void main() {
         var resp = convert.json.encode(buildCheckValidCredsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .checkValidCreds(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCheckValidCredsResponse(response as api.CheckValidCredsResponse);
-      })));
+      final response = await res.checkValidCreds(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkCheckValidCredsResponse(response as api.CheckValidCredsResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.dataSources;
       var arg_name = 'foo';
@@ -1571,14 +1569,11 @@ void main() {
         var resp = convert.json.encode(buildDataSource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDataSource(response as api.DataSource);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkDataSource(response as api.DataSource);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.dataSources;
       var arg_parent = 'foo';
@@ -1636,19 +1631,16 @@ void main() {
         var resp = convert.json.encode(buildListDataSourcesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDataSourcesResponse(response as api.ListDataSourcesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListDataSourcesResponse(response as api.ListDataSourcesResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -1696,14 +1688,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -1766,20 +1755,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsDataSourcesResource', () {
-    unittest.test('method--checkValidCreds', () {
+    unittest.test('method--checkValidCreds', () async {
       var mock = HttpServerMock();
       var res =
           api.BigQueryDataTransferApi(mock).projects.locations.dataSources;
@@ -1833,14 +1819,12 @@ void main() {
         var resp = convert.json.encode(buildCheckValidCredsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .checkValidCreds(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCheckValidCredsResponse(response as api.CheckValidCredsResponse);
-      })));
+      final response = await res.checkValidCreds(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkCheckValidCredsResponse(response as api.CheckValidCredsResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.BigQueryDataTransferApi(mock).projects.locations.dataSources;
@@ -1889,14 +1873,11 @@ void main() {
         var resp = convert.json.encode(buildDataSource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDataSource(response as api.DataSource);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkDataSource(response as api.DataSource);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.BigQueryDataTransferApi(mock).projects.locations.dataSources;
@@ -1955,19 +1936,16 @@ void main() {
         var resp = convert.json.encode(buildListDataSourcesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDataSourcesResponse(response as api.ListDataSourcesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListDataSourcesResponse(response as api.ListDataSourcesResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsTransferConfigsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.BigQueryDataTransferApi(mock).projects.locations.transferConfigs;
@@ -2036,18 +2014,15 @@ void main() {
         var resp = convert.json.encode(buildTransferConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              authorizationCode: arg_authorizationCode,
-              serviceAccountName: arg_serviceAccountName,
-              versionInfo: arg_versionInfo,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTransferConfig(response as api.TransferConfig);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          authorizationCode: arg_authorizationCode,
+          serviceAccountName: arg_serviceAccountName,
+          versionInfo: arg_versionInfo,
+          $fields: arg_$fields);
+      checkTransferConfig(response as api.TransferConfig);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.BigQueryDataTransferApi(mock).projects.locations.transferConfigs;
@@ -2096,14 +2071,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.BigQueryDataTransferApi(mock).projects.locations.transferConfigs;
@@ -2152,14 +2124,11 @@ void main() {
         var resp = convert.json.encode(buildTransferConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTransferConfig(response as api.TransferConfig);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkTransferConfig(response as api.TransferConfig);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.BigQueryDataTransferApi(mock).projects.locations.transferConfigs;
@@ -2223,19 +2192,16 @@ void main() {
         var resp = convert.json.encode(buildListTransferConfigsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              dataSourceIds: arg_dataSourceIds,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTransferConfigsResponse(
-            response as api.ListTransferConfigsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          dataSourceIds: arg_dataSourceIds,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListTransferConfigsResponse(
+          response as api.ListTransferConfigsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res =
           api.BigQueryDataTransferApi(mock).projects.locations.transferConfigs;
@@ -2309,19 +2275,16 @@ void main() {
         var resp = convert.json.encode(buildTransferConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              authorizationCode: arg_authorizationCode,
-              serviceAccountName: arg_serviceAccountName,
-              updateMask: arg_updateMask,
-              versionInfo: arg_versionInfo,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTransferConfig(response as api.TransferConfig);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          authorizationCode: arg_authorizationCode,
+          serviceAccountName: arg_serviceAccountName,
+          updateMask: arg_updateMask,
+          versionInfo: arg_versionInfo,
+          $fields: arg_$fields);
+      checkTransferConfig(response as api.TransferConfig);
     });
 
-    unittest.test('method--scheduleRuns', () {
+    unittest.test('method--scheduleRuns', () async {
       var mock = HttpServerMock();
       var res =
           api.BigQueryDataTransferApi(mock).projects.locations.transferConfigs;
@@ -2376,15 +2339,13 @@ void main() {
         var resp = convert.json.encode(buildScheduleTransferRunsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .scheduleRuns(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkScheduleTransferRunsResponse(
-            response as api.ScheduleTransferRunsResponse);
-      })));
+      final response =
+          await res.scheduleRuns(arg_request, arg_parent, $fields: arg_$fields);
+      checkScheduleTransferRunsResponse(
+          response as api.ScheduleTransferRunsResponse);
     });
 
-    unittest.test('method--startManualRuns', () {
+    unittest.test('method--startManualRuns', () async {
       var mock = HttpServerMock();
       var res =
           api.BigQueryDataTransferApi(mock).projects.locations.transferConfigs;
@@ -2439,17 +2400,15 @@ void main() {
         var resp = convert.json.encode(buildStartManualTransferRunsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .startManualRuns(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStartManualTransferRunsResponse(
-            response as api.StartManualTransferRunsResponse);
-      })));
+      final response = await res.startManualRuns(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkStartManualTransferRunsResponse(
+          response as api.StartManualTransferRunsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsTransferConfigsRunsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock)
           .projects
@@ -2501,14 +2460,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock)
           .projects
@@ -2560,14 +2516,11 @@ void main() {
         var resp = convert.json.encode(buildTransferRun());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTransferRun(response as api.TransferRun);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkTransferRun(response as api.TransferRun);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock)
           .projects
@@ -2639,22 +2592,19 @@ void main() {
         var resp = convert.json.encode(buildListTransferRunsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              runAttempt: arg_runAttempt,
-              states: arg_states,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTransferRunsResponse(response as api.ListTransferRunsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          runAttempt: arg_runAttempt,
+          states: arg_states,
+          $fields: arg_$fields);
+      checkListTransferRunsResponse(response as api.ListTransferRunsResponse);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsTransferConfigsRunsTransferLogsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock)
           .projects
@@ -2722,20 +2672,17 @@ void main() {
         var resp = convert.json.encode(buildListTransferLogsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              messageTypes: arg_messageTypes,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTransferLogsResponse(response as api.ListTransferLogsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          messageTypes: arg_messageTypes,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListTransferLogsResponse(response as api.ListTransferLogsResponse);
     });
   });
 
   unittest.group('resource-ProjectsTransferConfigsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.transferConfigs;
       var arg_request = buildTransferConfig();
@@ -2803,18 +2750,15 @@ void main() {
         var resp = convert.json.encode(buildTransferConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              authorizationCode: arg_authorizationCode,
-              serviceAccountName: arg_serviceAccountName,
-              versionInfo: arg_versionInfo,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTransferConfig(response as api.TransferConfig);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          authorizationCode: arg_authorizationCode,
+          serviceAccountName: arg_serviceAccountName,
+          versionInfo: arg_versionInfo,
+          $fields: arg_$fields);
+      checkTransferConfig(response as api.TransferConfig);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.transferConfigs;
       var arg_name = 'foo';
@@ -2862,14 +2806,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.transferConfigs;
       var arg_name = 'foo';
@@ -2917,14 +2858,11 @@ void main() {
         var resp = convert.json.encode(buildTransferConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTransferConfig(response as api.TransferConfig);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkTransferConfig(response as api.TransferConfig);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.transferConfigs;
       var arg_parent = 'foo';
@@ -2987,19 +2925,16 @@ void main() {
         var resp = convert.json.encode(buildListTransferConfigsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              dataSourceIds: arg_dataSourceIds,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTransferConfigsResponse(
-            response as api.ListTransferConfigsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          dataSourceIds: arg_dataSourceIds,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListTransferConfigsResponse(
+          response as api.ListTransferConfigsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.transferConfigs;
       var arg_request = buildTransferConfig();
@@ -3072,19 +3007,16 @@ void main() {
         var resp = convert.json.encode(buildTransferConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              authorizationCode: arg_authorizationCode,
-              serviceAccountName: arg_serviceAccountName,
-              updateMask: arg_updateMask,
-              versionInfo: arg_versionInfo,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTransferConfig(response as api.TransferConfig);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          authorizationCode: arg_authorizationCode,
+          serviceAccountName: arg_serviceAccountName,
+          updateMask: arg_updateMask,
+          versionInfo: arg_versionInfo,
+          $fields: arg_$fields);
+      checkTransferConfig(response as api.TransferConfig);
     });
 
-    unittest.test('method--scheduleRuns', () {
+    unittest.test('method--scheduleRuns', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.transferConfigs;
       var arg_request = buildScheduleTransferRunsRequest();
@@ -3138,15 +3070,13 @@ void main() {
         var resp = convert.json.encode(buildScheduleTransferRunsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .scheduleRuns(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkScheduleTransferRunsResponse(
-            response as api.ScheduleTransferRunsResponse);
-      })));
+      final response =
+          await res.scheduleRuns(arg_request, arg_parent, $fields: arg_$fields);
+      checkScheduleTransferRunsResponse(
+          response as api.ScheduleTransferRunsResponse);
     });
 
-    unittest.test('method--startManualRuns', () {
+    unittest.test('method--startManualRuns', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.transferConfigs;
       var arg_request = buildStartManualTransferRunsRequest();
@@ -3200,17 +3130,15 @@ void main() {
         var resp = convert.json.encode(buildStartManualTransferRunsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .startManualRuns(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStartManualTransferRunsResponse(
-            response as api.StartManualTransferRunsResponse);
-      })));
+      final response = await res.startManualRuns(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkStartManualTransferRunsResponse(
+          response as api.StartManualTransferRunsResponse);
     });
   });
 
   unittest.group('resource-ProjectsTransferConfigsRunsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.transferConfigs.runs;
       var arg_name = 'foo';
@@ -3258,14 +3186,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.transferConfigs.runs;
       var arg_name = 'foo';
@@ -3313,14 +3238,11 @@ void main() {
         var resp = convert.json.encode(buildTransferRun());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTransferRun(response as api.TransferRun);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkTransferRun(response as api.TransferRun);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock).projects.transferConfigs.runs;
       var arg_parent = 'foo';
@@ -3388,22 +3310,19 @@ void main() {
         var resp = convert.json.encode(buildListTransferRunsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              runAttempt: arg_runAttempt,
-              states: arg_states,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTransferRunsResponse(response as api.ListTransferRunsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          runAttempt: arg_runAttempt,
+          states: arg_states,
+          $fields: arg_$fields);
+      checkListTransferRunsResponse(response as api.ListTransferRunsResponse);
     });
   });
 
   unittest.group('resource-ProjectsTransferConfigsRunsTransferLogsResource',
       () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryDataTransferApi(mock)
           .projects
@@ -3470,15 +3389,12 @@ void main() {
         var resp = convert.json.encode(buildListTransferLogsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              messageTypes: arg_messageTypes,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTransferLogsResponse(response as api.ListTransferLogsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          messageTypes: arg_messageTypes,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListTransferLogsResponse(response as api.ListTransferLogsResponse);
     });
   });
 }

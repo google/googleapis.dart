@@ -171,7 +171,7 @@ void checkWebfontList(api.WebfontList o) {
 
 void main() {
   unittest.group('obj-schema-Webfont', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebfont();
       var od = api.Webfont.fromJson(o.toJson());
       checkWebfont(od as api.Webfont);
@@ -179,7 +179,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebfontList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebfontList();
       var od = api.WebfontList.fromJson(o.toJson());
       checkWebfontList(od as api.WebfontList);
@@ -187,7 +187,7 @@ void main() {
   });
 
   unittest.group('resource-WebfontsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.WebfontsApi(mock).webfonts;
       var arg_sort = 'foo';
@@ -238,11 +238,8 @@ void main() {
         var resp = convert.json.encode(buildWebfontList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(sort: arg_sort, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWebfontList(response as api.WebfontList);
-      })));
+      final response = await res.list(sort: arg_sort, $fields: arg_$fields);
+      checkWebfontList(response as api.WebfontList);
     });
   });
 }

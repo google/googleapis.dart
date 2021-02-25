@@ -1595,7 +1595,7 @@ void checkUpdateMetadataArguments(api.UpdateMetadataArguments o) {
 
 void main() {
   unittest.group('obj-schema-ClaimDeviceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClaimDeviceRequest();
       var od = api.ClaimDeviceRequest.fromJson(o.toJson());
       checkClaimDeviceRequest(od as api.ClaimDeviceRequest);
@@ -1603,7 +1603,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClaimDeviceResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClaimDeviceResponse();
       var od = api.ClaimDeviceResponse.fromJson(o.toJson());
       checkClaimDeviceResponse(od as api.ClaimDeviceResponse);
@@ -1611,7 +1611,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClaimDevicesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClaimDevicesRequest();
       var od = api.ClaimDevicesRequest.fromJson(o.toJson());
       checkClaimDevicesRequest(od as api.ClaimDevicesRequest);
@@ -1619,7 +1619,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Company', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCompany();
       var od = api.Company.fromJson(o.toJson());
       checkCompany(od as api.Company);
@@ -1627,7 +1627,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Configuration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConfiguration();
       var od = api.Configuration.fromJson(o.toJson());
       checkConfiguration(od as api.Configuration);
@@ -1635,7 +1635,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateCustomerRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateCustomerRequest();
       var od = api.CreateCustomerRequest.fromJson(o.toJson());
       checkCreateCustomerRequest(od as api.CreateCustomerRequest);
@@ -1643,7 +1643,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomerApplyConfigurationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomerApplyConfigurationRequest();
       var od = api.CustomerApplyConfigurationRequest.fromJson(o.toJson());
       checkCustomerApplyConfigurationRequest(
@@ -1652,7 +1652,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomerListConfigurationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomerListConfigurationsResponse();
       var od = api.CustomerListConfigurationsResponse.fromJson(o.toJson());
       checkCustomerListConfigurationsResponse(
@@ -1661,7 +1661,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomerListCustomersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomerListCustomersResponse();
       var od = api.CustomerListCustomersResponse.fromJson(o.toJson());
       checkCustomerListCustomersResponse(
@@ -1670,7 +1670,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomerListDevicesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomerListDevicesResponse();
       var od = api.CustomerListDevicesResponse.fromJson(o.toJson());
       checkCustomerListDevicesResponse(od as api.CustomerListDevicesResponse);
@@ -1678,7 +1678,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomerListDpcsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomerListDpcsResponse();
       var od = api.CustomerListDpcsResponse.fromJson(o.toJson());
       checkCustomerListDpcsResponse(od as api.CustomerListDpcsResponse);
@@ -1686,7 +1686,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomerRemoveConfigurationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomerRemoveConfigurationRequest();
       var od = api.CustomerRemoveConfigurationRequest.fromJson(o.toJson());
       checkCustomerRemoveConfigurationRequest(
@@ -1695,7 +1695,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomerUnclaimDeviceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomerUnclaimDeviceRequest();
       var od = api.CustomerUnclaimDeviceRequest.fromJson(o.toJson());
       checkCustomerUnclaimDeviceRequest(od as api.CustomerUnclaimDeviceRequest);
@@ -1703,7 +1703,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Device', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDevice();
       var od = api.Device.fromJson(o.toJson());
       checkDevice(od as api.Device);
@@ -1711,7 +1711,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceClaim', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceClaim();
       var od = api.DeviceClaim.fromJson(o.toJson());
       checkDeviceClaim(od as api.DeviceClaim);
@@ -1719,7 +1719,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceIdentifier', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceIdentifier();
       var od = api.DeviceIdentifier.fromJson(o.toJson());
       checkDeviceIdentifier(od as api.DeviceIdentifier);
@@ -1727,7 +1727,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceMetadata();
       var od = api.DeviceMetadata.fromJson(o.toJson());
       checkDeviceMetadata(od as api.DeviceMetadata);
@@ -1735,7 +1735,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceReference();
       var od = api.DeviceReference.fromJson(o.toJson());
       checkDeviceReference(od as api.DeviceReference);
@@ -1743,7 +1743,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DevicesLongRunningOperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDevicesLongRunningOperationMetadata();
       var od = api.DevicesLongRunningOperationMetadata.fromJson(o.toJson());
       checkDevicesLongRunningOperationMetadata(
@@ -1752,7 +1752,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DevicesLongRunningOperationResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDevicesLongRunningOperationResponse();
       var od = api.DevicesLongRunningOperationResponse.fromJson(o.toJson());
       checkDevicesLongRunningOperationResponse(
@@ -1761,7 +1761,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Dpc', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDpc();
       var od = api.Dpc.fromJson(o.toJson());
       checkDpc(od as api.Dpc);
@@ -1769,7 +1769,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1777,7 +1777,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FindDevicesByDeviceIdentifierRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFindDevicesByDeviceIdentifierRequest();
       var od = api.FindDevicesByDeviceIdentifierRequest.fromJson(o.toJson());
       checkFindDevicesByDeviceIdentifierRequest(
@@ -1786,7 +1786,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FindDevicesByDeviceIdentifierResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFindDevicesByDeviceIdentifierResponse();
       var od = api.FindDevicesByDeviceIdentifierResponse.fromJson(o.toJson());
       checkFindDevicesByDeviceIdentifierResponse(
@@ -1795,7 +1795,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FindDevicesByOwnerRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFindDevicesByOwnerRequest();
       var od = api.FindDevicesByOwnerRequest.fromJson(o.toJson());
       checkFindDevicesByOwnerRequest(od as api.FindDevicesByOwnerRequest);
@@ -1803,7 +1803,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FindDevicesByOwnerResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFindDevicesByOwnerResponse();
       var od = api.FindDevicesByOwnerResponse.fromJson(o.toJson());
       checkFindDevicesByOwnerResponse(od as api.FindDevicesByOwnerResponse);
@@ -1811,7 +1811,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCustomersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCustomersResponse();
       var od = api.ListCustomersResponse.fromJson(o.toJson());
       checkListCustomersResponse(od as api.ListCustomersResponse);
@@ -1819,7 +1819,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListVendorCustomersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListVendorCustomersResponse();
       var od = api.ListVendorCustomersResponse.fromJson(o.toJson());
       checkListVendorCustomersResponse(od as api.ListVendorCustomersResponse);
@@ -1827,7 +1827,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListVendorsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListVendorsResponse();
       var od = api.ListVendorsResponse.fromJson(o.toJson());
       checkListVendorsResponse(od as api.ListVendorsResponse);
@@ -1835,7 +1835,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -1843,7 +1843,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationPerDevice', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationPerDevice();
       var od = api.OperationPerDevice.fromJson(o.toJson());
       checkOperationPerDevice(od as api.OperationPerDevice);
@@ -1851,7 +1851,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PartnerClaim', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPartnerClaim();
       var od = api.PartnerClaim.fromJson(o.toJson());
       checkPartnerClaim(od as api.PartnerClaim);
@@ -1859,7 +1859,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PartnerUnclaim', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPartnerUnclaim();
       var od = api.PartnerUnclaim.fromJson(o.toJson());
       checkPartnerUnclaim(od as api.PartnerUnclaim);
@@ -1867,7 +1867,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PerDeviceStatusInBatch', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPerDeviceStatusInBatch();
       var od = api.PerDeviceStatusInBatch.fromJson(o.toJson());
       checkPerDeviceStatusInBatch(od as api.PerDeviceStatusInBatch);
@@ -1875,7 +1875,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -1883,7 +1883,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UnclaimDeviceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUnclaimDeviceRequest();
       var od = api.UnclaimDeviceRequest.fromJson(o.toJson());
       checkUnclaimDeviceRequest(od as api.UnclaimDeviceRequest);
@@ -1891,7 +1891,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UnclaimDevicesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUnclaimDevicesRequest();
       var od = api.UnclaimDevicesRequest.fromJson(o.toJson());
       checkUnclaimDevicesRequest(od as api.UnclaimDevicesRequest);
@@ -1899,7 +1899,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateDeviceMetadataInBatchRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateDeviceMetadataInBatchRequest();
       var od = api.UpdateDeviceMetadataInBatchRequest.fromJson(o.toJson());
       checkUpdateDeviceMetadataInBatchRequest(
@@ -1908,7 +1908,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateDeviceMetadataRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateDeviceMetadataRequest();
       var od = api.UpdateDeviceMetadataRequest.fromJson(o.toJson());
       checkUpdateDeviceMetadataRequest(od as api.UpdateDeviceMetadataRequest);
@@ -1916,7 +1916,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateMetadataArguments', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateMetadataArguments();
       var od = api.UpdateMetadataArguments.fromJson(o.toJson());
       checkUpdateMetadataArguments(od as api.UpdateMetadataArguments);
@@ -1924,7 +1924,7 @@ void main() {
   });
 
   unittest.group('resource-CustomersResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).customers;
       var arg_pageSize = 42;
@@ -1980,20 +1980,17 @@ void main() {
         var resp = convert.json.encode(buildCustomerListCustomersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomerListCustomersResponse(
-            response as api.CustomerListCustomersResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkCustomerListCustomersResponse(
+          response as api.CustomerListCustomersResponse);
     });
   });
 
   unittest.group('resource-CustomersConfigurationsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.AndroidProvisioningPartnerApi(mock).customers.configurations;
@@ -2047,14 +2044,12 @@ void main() {
         var resp = convert.json.encode(buildConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkConfiguration(response as api.Configuration);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkConfiguration(response as api.Configuration);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.AndroidProvisioningPartnerApi(mock).customers.configurations;
@@ -2103,14 +2098,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.AndroidProvisioningPartnerApi(mock).customers.configurations;
@@ -2159,14 +2151,11 @@ void main() {
         var resp = convert.json.encode(buildConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkConfiguration(response as api.Configuration);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkConfiguration(response as api.Configuration);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.AndroidProvisioningPartnerApi(mock).customers.configurations;
@@ -2216,15 +2205,12 @@ void main() {
             convert.json.encode(buildCustomerListConfigurationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomerListConfigurationsResponse(
-            response as api.CustomerListConfigurationsResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkCustomerListConfigurationsResponse(
+          response as api.CustomerListConfigurationsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res =
           api.AndroidProvisioningPartnerApi(mock).customers.configurations;
@@ -2283,17 +2269,14 @@ void main() {
         var resp = convert.json.encode(buildConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkConfiguration(response as api.Configuration);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkConfiguration(response as api.Configuration);
     });
   });
 
   unittest.group('resource-CustomersDevicesResource', () {
-    unittest.test('method--applyConfiguration', () {
+    unittest.test('method--applyConfiguration', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).customers.devices;
       var arg_request = buildCustomerApplyConfigurationRequest();
@@ -2347,14 +2330,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .applyConfiguration(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.applyConfiguration(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).customers.devices;
       var arg_name = 'foo';
@@ -2402,14 +2383,11 @@ void main() {
         var resp = convert.json.encode(buildDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDevice(response as api.Device);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkDevice(response as api.Device);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).customers.devices;
       var arg_parent = 'foo';
@@ -2467,18 +2445,15 @@ void main() {
         var resp = convert.json.encode(buildCustomerListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomerListDevicesResponse(
-            response as api.CustomerListDevicesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkCustomerListDevicesResponse(
+          response as api.CustomerListDevicesResponse);
     });
 
-    unittest.test('method--removeConfiguration', () {
+    unittest.test('method--removeConfiguration', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).customers.devices;
       var arg_request = buildCustomerRemoveConfigurationRequest();
@@ -2532,14 +2507,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .removeConfiguration(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.removeConfiguration(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--unclaim', () {
+    unittest.test('method--unclaim', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).customers.devices;
       var arg_request = buildCustomerUnclaimDeviceRequest();
@@ -2593,16 +2566,14 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .unclaim(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.unclaim(arg_request, arg_parent, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 
   unittest.group('resource-CustomersDpcsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).customers.dpcs;
       var arg_parent = 'foo';
@@ -2650,16 +2621,13 @@ void main() {
         var resp = convert.json.encode(buildCustomerListDpcsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomerListDpcsResponse(response as api.CustomerListDpcsResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkCustomerListDpcsResponse(response as api.CustomerListDpcsResponse);
     });
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).operations;
       var arg_name = 'foo';
@@ -2707,16 +2675,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-PartnersCustomersResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).partners.customers;
       var arg_request = buildCreateCustomerRequest();
@@ -2769,14 +2734,12 @@ void main() {
         var resp = convert.json.encode(buildCompany());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCompany(response as api.Company);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkCompany(response as api.Company);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).partners.customers;
       var arg_partnerId = 'foo';
@@ -2834,19 +2797,16 @@ void main() {
         var resp = convert.json.encode(buildListCustomersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_partnerId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCustomersResponse(response as api.ListCustomersResponse);
-      })));
+      final response = await res.list(arg_partnerId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListCustomersResponse(response as api.ListCustomersResponse);
     });
   });
 
   unittest.group('resource-PartnersDevicesResource', () {
-    unittest.test('method--claim', () {
+    unittest.test('method--claim', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
       var arg_request = buildClaimDeviceRequest();
@@ -2899,14 +2859,12 @@ void main() {
         var resp = convert.json.encode(buildClaimDeviceResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .claim(arg_request, arg_partnerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkClaimDeviceResponse(response as api.ClaimDeviceResponse);
-      })));
+      final response =
+          await res.claim(arg_request, arg_partnerId, $fields: arg_$fields);
+      checkClaimDeviceResponse(response as api.ClaimDeviceResponse);
     });
 
-    unittest.test('method--claimAsync', () {
+    unittest.test('method--claimAsync', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
       var arg_request = buildClaimDevicesRequest();
@@ -2959,14 +2917,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .claimAsync(arg_request, arg_partnerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.claimAsync(arg_request, arg_partnerId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--findByIdentifier', () {
+    unittest.test('method--findByIdentifier', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
       var arg_request = buildFindDevicesByDeviceIdentifierRequest();
@@ -3021,15 +2977,13 @@ void main() {
             convert.json.encode(buildFindDevicesByDeviceIdentifierResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .findByIdentifier(arg_request, arg_partnerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFindDevicesByDeviceIdentifierResponse(
-            response as api.FindDevicesByDeviceIdentifierResponse);
-      })));
+      final response = await res.findByIdentifier(arg_request, arg_partnerId,
+          $fields: arg_$fields);
+      checkFindDevicesByDeviceIdentifierResponse(
+          response as api.FindDevicesByDeviceIdentifierResponse);
     });
 
-    unittest.test('method--findByOwner', () {
+    unittest.test('method--findByOwner', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
       var arg_request = buildFindDevicesByOwnerRequest();
@@ -3082,15 +3036,13 @@ void main() {
         var resp = convert.json.encode(buildFindDevicesByOwnerResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .findByOwner(arg_request, arg_partnerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFindDevicesByOwnerResponse(
-            response as api.FindDevicesByOwnerResponse);
-      })));
+      final response = await res.findByOwner(arg_request, arg_partnerId,
+          $fields: arg_$fields);
+      checkFindDevicesByOwnerResponse(
+          response as api.FindDevicesByOwnerResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
       var arg_name = 'foo';
@@ -3138,14 +3090,11 @@ void main() {
         var resp = convert.json.encode(buildDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDevice(response as api.Device);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkDevice(response as api.Device);
     });
 
-    unittest.test('method--metadata', () {
+    unittest.test('method--metadata', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
       var arg_request = buildUpdateDeviceMetadataRequest();
@@ -3200,15 +3149,13 @@ void main() {
         var resp = convert.json.encode(buildDeviceMetadata());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .metadata(arg_request, arg_metadataOwnerId, arg_deviceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDeviceMetadata(response as api.DeviceMetadata);
-      })));
+      final response = await res.metadata(
+          arg_request, arg_metadataOwnerId, arg_deviceId,
+          $fields: arg_$fields);
+      checkDeviceMetadata(response as api.DeviceMetadata);
     });
 
-    unittest.test('method--unclaim', () {
+    unittest.test('method--unclaim', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
       var arg_request = buildUnclaimDeviceRequest();
@@ -3261,14 +3208,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .unclaim(arg_request, arg_partnerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.unclaim(arg_request, arg_partnerId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--unclaimAsync', () {
+    unittest.test('method--unclaimAsync', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
       var arg_request = buildUnclaimDevicesRequest();
@@ -3321,14 +3266,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .unclaimAsync(arg_request, arg_partnerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.unclaimAsync(arg_request, arg_partnerId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--updateMetadataAsync', () {
+    unittest.test('method--updateMetadataAsync', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).partners.devices;
       var arg_request = buildUpdateDeviceMetadataInBatchRequest();
@@ -3382,16 +3325,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateMetadataAsync(arg_request, arg_partnerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.updateMetadataAsync(arg_request, arg_partnerId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-PartnersVendorsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidProvisioningPartnerApi(mock).partners.vendors;
       var arg_parent = 'foo';
@@ -3449,19 +3390,16 @@ void main() {
         var resp = convert.json.encode(buildListVendorsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListVendorsResponse(response as api.ListVendorsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListVendorsResponse(response as api.ListVendorsResponse);
     });
   });
 
   unittest.group('resource-PartnersVendorsCustomersResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.AndroidProvisioningPartnerApi(mock).partners.vendors.customers;
@@ -3520,15 +3458,12 @@ void main() {
         var resp = convert.json.encode(buildListVendorCustomersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListVendorCustomersResponse(
-            response as api.ListVendorCustomersResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListVendorCustomersResponse(
+          response as api.ListVendorCustomersResponse);
     });
   });
 }

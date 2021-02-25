@@ -344,7 +344,7 @@ void checkTrafficStats(api.TrafficStats o) {
 
 void main() {
   unittest.group('obj-schema-DeliveryError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeliveryError();
       var od = api.DeliveryError.fromJson(o.toJson());
       checkDeliveryError(od as api.DeliveryError);
@@ -352,7 +352,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Domain', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDomain();
       var od = api.Domain.fromJson(o.toJson());
       checkDomain(od as api.Domain);
@@ -360,7 +360,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FeedbackLoop', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFeedbackLoop();
       var od = api.FeedbackLoop.fromJson(o.toJson());
       checkFeedbackLoop(od as api.FeedbackLoop);
@@ -368,7 +368,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IpReputation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIpReputation();
       var od = api.IpReputation.fromJson(o.toJson());
       checkIpReputation(od as api.IpReputation);
@@ -376,7 +376,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDomainsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDomainsResponse();
       var od = api.ListDomainsResponse.fromJson(o.toJson());
       checkListDomainsResponse(od as api.ListDomainsResponse);
@@ -384,7 +384,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTrafficStatsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTrafficStatsResponse();
       var od = api.ListTrafficStatsResponse.fromJson(o.toJson());
       checkListTrafficStatsResponse(od as api.ListTrafficStatsResponse);
@@ -392,7 +392,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TrafficStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTrafficStats();
       var od = api.TrafficStats.fromJson(o.toJson());
       checkTrafficStats(od as api.TrafficStats);
@@ -400,7 +400,7 @@ void main() {
   });
 
   unittest.group('resource-DomainsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.PostmasterToolsApi(mock).domains;
       var arg_name = 'foo';
@@ -448,14 +448,11 @@ void main() {
         var resp = convert.json.encode(buildDomain());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDomain(response as api.Domain);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkDomain(response as api.Domain);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.PostmasterToolsApi(mock).domains;
       var arg_pageSize = 42;
@@ -511,19 +508,16 @@ void main() {
         var resp = convert.json.encode(buildListDomainsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDomainsResponse(response as api.ListDomainsResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListDomainsResponse(response as api.ListDomainsResponse);
     });
   });
 
   unittest.group('resource-DomainsTrafficStatsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.PostmasterToolsApi(mock).domains.trafficStats;
       var arg_name = 'foo';
@@ -571,14 +565,11 @@ void main() {
         var resp = convert.json.encode(buildTrafficStats());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTrafficStats(response as api.TrafficStats);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkTrafficStats(response as api.TrafficStats);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.PostmasterToolsApi(mock).domains.trafficStats;
       var arg_parent = 'foo';
@@ -666,20 +657,17 @@ void main() {
         var resp = convert.json.encode(buildListTrafficStatsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              endDate_day: arg_endDate_day,
-              endDate_month: arg_endDate_month,
-              endDate_year: arg_endDate_year,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              startDate_day: arg_startDate_day,
-              startDate_month: arg_startDate_month,
-              startDate_year: arg_startDate_year,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTrafficStatsResponse(response as api.ListTrafficStatsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          endDate_day: arg_endDate_day,
+          endDate_month: arg_endDate_month,
+          endDate_year: arg_endDate_year,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          startDate_day: arg_startDate_day,
+          startDate_month: arg_startDate_month,
+          startDate_year: arg_startDate_year,
+          $fields: arg_$fields);
+      checkListTrafficStatsResponse(response as api.ListTrafficStatsResponse);
     });
   });
 }

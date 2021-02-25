@@ -61,7 +61,7 @@ void checkCustomApp(api.CustomApp o) {
 
 void main() {
   unittest.group('obj-schema-CustomApp', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomApp();
       var od = api.CustomApp.fromJson(o.toJson());
       checkCustomApp(od as api.CustomApp);
@@ -69,7 +69,7 @@ void main() {
   });
 
   unittest.group('resource-AccountsCustomAppsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -138,11 +138,9 @@ void main() {
         var resp = convert.json.encode(buildCustomApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_account, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomApp(response as api.CustomApp);
-      })));
+      final response =
+          await res.create(arg_request, arg_account, $fields: arg_$fields);
+      checkCustomApp(response as api.CustomApp);
     });
   });
 }

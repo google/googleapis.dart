@@ -1906,7 +1906,7 @@ void checkUnnamed3655(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-AutoForwarding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAutoForwarding();
       var od = api.AutoForwarding.fromJson(o.toJson());
       checkAutoForwarding(od as api.AutoForwarding);
@@ -1914,7 +1914,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchDeleteMessagesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchDeleteMessagesRequest();
       var od = api.BatchDeleteMessagesRequest.fromJson(o.toJson());
       checkBatchDeleteMessagesRequest(od as api.BatchDeleteMessagesRequest);
@@ -1922,7 +1922,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchModifyMessagesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchModifyMessagesRequest();
       var od = api.BatchModifyMessagesRequest.fromJson(o.toJson());
       checkBatchModifyMessagesRequest(od as api.BatchModifyMessagesRequest);
@@ -1930,7 +1930,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Delegate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDelegate();
       var od = api.Delegate.fromJson(o.toJson());
       checkDelegate(od as api.Delegate);
@@ -1938,7 +1938,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Draft', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDraft();
       var od = api.Draft.fromJson(o.toJson());
       checkDraft(od as api.Draft);
@@ -1946,7 +1946,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Filter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilter();
       var od = api.Filter.fromJson(o.toJson());
       checkFilter(od as api.Filter);
@@ -1954,7 +1954,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FilterAction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilterAction();
       var od = api.FilterAction.fromJson(o.toJson());
       checkFilterAction(od as api.FilterAction);
@@ -1962,7 +1962,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FilterCriteria', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilterCriteria();
       var od = api.FilterCriteria.fromJson(o.toJson());
       checkFilterCriteria(od as api.FilterCriteria);
@@ -1970,7 +1970,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ForwardingAddress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildForwardingAddress();
       var od = api.ForwardingAddress.fromJson(o.toJson());
       checkForwardingAddress(od as api.ForwardingAddress);
@@ -1978,7 +1978,7 @@ void main() {
   });
 
   unittest.group('obj-schema-History', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHistory();
       var od = api.History.fromJson(o.toJson());
       checkHistory(od as api.History);
@@ -1986,7 +1986,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HistoryLabelAdded', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHistoryLabelAdded();
       var od = api.HistoryLabelAdded.fromJson(o.toJson());
       checkHistoryLabelAdded(od as api.HistoryLabelAdded);
@@ -1994,7 +1994,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HistoryLabelRemoved', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHistoryLabelRemoved();
       var od = api.HistoryLabelRemoved.fromJson(o.toJson());
       checkHistoryLabelRemoved(od as api.HistoryLabelRemoved);
@@ -2002,7 +2002,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HistoryMessageAdded', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHistoryMessageAdded();
       var od = api.HistoryMessageAdded.fromJson(o.toJson());
       checkHistoryMessageAdded(od as api.HistoryMessageAdded);
@@ -2010,7 +2010,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HistoryMessageDeleted', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHistoryMessageDeleted();
       var od = api.HistoryMessageDeleted.fromJson(o.toJson());
       checkHistoryMessageDeleted(od as api.HistoryMessageDeleted);
@@ -2018,7 +2018,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImapSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImapSettings();
       var od = api.ImapSettings.fromJson(o.toJson());
       checkImapSettings(od as api.ImapSettings);
@@ -2026,7 +2026,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Label', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLabel();
       var od = api.Label.fromJson(o.toJson());
       checkLabel(od as api.Label);
@@ -2034,7 +2034,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LabelColor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLabelColor();
       var od = api.LabelColor.fromJson(o.toJson());
       checkLabelColor(od as api.LabelColor);
@@ -2042,7 +2042,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LanguageSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLanguageSettings();
       var od = api.LanguageSettings.fromJson(o.toJson());
       checkLanguageSettings(od as api.LanguageSettings);
@@ -2050,7 +2050,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDelegatesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDelegatesResponse();
       var od = api.ListDelegatesResponse.fromJson(o.toJson());
       checkListDelegatesResponse(od as api.ListDelegatesResponse);
@@ -2058,7 +2058,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDraftsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDraftsResponse();
       var od = api.ListDraftsResponse.fromJson(o.toJson());
       checkListDraftsResponse(od as api.ListDraftsResponse);
@@ -2066,7 +2066,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListFiltersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListFiltersResponse();
       var od = api.ListFiltersResponse.fromJson(o.toJson());
       checkListFiltersResponse(od as api.ListFiltersResponse);
@@ -2074,7 +2074,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListForwardingAddressesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListForwardingAddressesResponse();
       var od = api.ListForwardingAddressesResponse.fromJson(o.toJson());
       checkListForwardingAddressesResponse(
@@ -2083,7 +2083,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListHistoryResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListHistoryResponse();
       var od = api.ListHistoryResponse.fromJson(o.toJson());
       checkListHistoryResponse(od as api.ListHistoryResponse);
@@ -2091,7 +2091,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLabelsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLabelsResponse();
       var od = api.ListLabelsResponse.fromJson(o.toJson());
       checkListLabelsResponse(od as api.ListLabelsResponse);
@@ -2099,7 +2099,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListMessagesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListMessagesResponse();
       var od = api.ListMessagesResponse.fromJson(o.toJson());
       checkListMessagesResponse(od as api.ListMessagesResponse);
@@ -2107,7 +2107,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListSendAsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListSendAsResponse();
       var od = api.ListSendAsResponse.fromJson(o.toJson());
       checkListSendAsResponse(od as api.ListSendAsResponse);
@@ -2115,7 +2115,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListSmimeInfoResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListSmimeInfoResponse();
       var od = api.ListSmimeInfoResponse.fromJson(o.toJson());
       checkListSmimeInfoResponse(od as api.ListSmimeInfoResponse);
@@ -2123,7 +2123,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListThreadsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListThreadsResponse();
       var od = api.ListThreadsResponse.fromJson(o.toJson());
       checkListThreadsResponse(od as api.ListThreadsResponse);
@@ -2131,7 +2131,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Message', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMessage();
       var od = api.Message.fromJson(o.toJson());
       checkMessage(od as api.Message);
@@ -2139,7 +2139,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MessagePart', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMessagePart();
       var od = api.MessagePart.fromJson(o.toJson());
       checkMessagePart(od as api.MessagePart);
@@ -2147,7 +2147,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MessagePartBody', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMessagePartBody();
       var od = api.MessagePartBody.fromJson(o.toJson());
       checkMessagePartBody(od as api.MessagePartBody);
@@ -2155,7 +2155,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MessagePartHeader', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMessagePartHeader();
       var od = api.MessagePartHeader.fromJson(o.toJson());
       checkMessagePartHeader(od as api.MessagePartHeader);
@@ -2163,7 +2163,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ModifyMessageRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildModifyMessageRequest();
       var od = api.ModifyMessageRequest.fromJson(o.toJson());
       checkModifyMessageRequest(od as api.ModifyMessageRequest);
@@ -2171,7 +2171,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ModifyThreadRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildModifyThreadRequest();
       var od = api.ModifyThreadRequest.fromJson(o.toJson());
       checkModifyThreadRequest(od as api.ModifyThreadRequest);
@@ -2179,7 +2179,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PopSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPopSettings();
       var od = api.PopSettings.fromJson(o.toJson());
       checkPopSettings(od as api.PopSettings);
@@ -2187,7 +2187,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Profile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProfile();
       var od = api.Profile.fromJson(o.toJson());
       checkProfile(od as api.Profile);
@@ -2195,7 +2195,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SendAs', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSendAs();
       var od = api.SendAs.fromJson(o.toJson());
       checkSendAs(od as api.SendAs);
@@ -2203,7 +2203,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SmimeInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSmimeInfo();
       var od = api.SmimeInfo.fromJson(o.toJson());
       checkSmimeInfo(od as api.SmimeInfo);
@@ -2211,7 +2211,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SmtpMsa', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSmtpMsa();
       var od = api.SmtpMsa.fromJson(o.toJson());
       checkSmtpMsa(od as api.SmtpMsa);
@@ -2219,7 +2219,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Thread', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildThread();
       var od = api.Thread.fromJson(o.toJson());
       checkThread(od as api.Thread);
@@ -2227,7 +2227,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VacationSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVacationSettings();
       var od = api.VacationSettings.fromJson(o.toJson());
       checkVacationSettings(od as api.VacationSettings);
@@ -2235,7 +2235,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WatchRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWatchRequest();
       var od = api.WatchRequest.fromJson(o.toJson());
       checkWatchRequest(od as api.WatchRequest);
@@ -2243,7 +2243,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WatchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWatchResponse();
       var od = api.WatchResponse.fromJson(o.toJson());
       checkWatchResponse(od as api.WatchResponse);
@@ -2251,7 +2251,7 @@ void main() {
   });
 
   unittest.group('resource-UsersResource', () {
-    unittest.test('method--getProfile', () {
+    unittest.test('method--getProfile', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users;
       var arg_userId = 'foo';
@@ -2312,14 +2312,11 @@ void main() {
         var resp = convert.json.encode(buildProfile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getProfile(arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProfile(response as api.Profile);
-      })));
+      final response = await res.getProfile(arg_userId, $fields: arg_$fields);
+      checkProfile(response as api.Profile);
     });
 
-    unittest.test('method--stop', () {
+    unittest.test('method--stop', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users;
       var arg_userId = 'foo';
@@ -2380,12 +2377,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .stop(arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.stop(arg_userId, $fields: arg_$fields);
     });
 
-    unittest.test('method--watch', () {
+    unittest.test('method--watch', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users;
       var arg_request = buildWatchRequest();
@@ -2451,16 +2446,14 @@ void main() {
         var resp = convert.json.encode(buildWatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .watch(arg_request, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWatchResponse(response as api.WatchResponse);
-      })));
+      final response =
+          await res.watch(arg_request, arg_userId, $fields: arg_$fields);
+      checkWatchResponse(response as api.WatchResponse);
     });
   });
 
   unittest.group('resource-UsersDraftsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -2529,14 +2522,12 @@ void main() {
         var resp = convert.json.encode(buildDraft());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDraft(response as api.Draft);
-      })));
+      final response =
+          await res.create(arg_request, arg_userId, $fields: arg_$fields);
+      checkDraft(response as api.Draft);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.drafts;
       var arg_userId = 'foo';
@@ -2604,12 +2595,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_userId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_userId, arg_id, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.drafts;
       var arg_userId = 'foo';
@@ -2682,14 +2671,12 @@ void main() {
         var resp = convert.json.encode(buildDraft());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userId, arg_id, format: arg_format, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDraft(response as api.Draft);
-      })));
+      final response = await res.get(arg_userId, arg_id,
+          format: arg_format, $fields: arg_$fields);
+      checkDraft(response as api.Draft);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.drafts;
       var arg_userId = 'foo';
@@ -2770,19 +2757,16 @@ void main() {
         var resp = convert.json.encode(buildListDraftsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userId,
-              includeSpamTrash: arg_includeSpamTrash,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              q: arg_q,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDraftsResponse(response as api.ListDraftsResponse);
-      })));
+      final response = await res.list(arg_userId,
+          includeSpamTrash: arg_includeSpamTrash,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          q: arg_q,
+          $fields: arg_$fields);
+      checkListDraftsResponse(response as api.ListDraftsResponse);
     });
 
-    unittest.test('method--send', () {
+    unittest.test('method--send', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -2851,14 +2835,12 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .send(arg_request, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response =
+          await res.send(arg_request, arg_userId, $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -2934,16 +2916,14 @@ void main() {
         var resp = convert.json.encode(buildDraft());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_userId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDraft(response as api.Draft);
-      })));
+      final response = await res.update(arg_request, arg_userId, arg_id,
+          $fields: arg_$fields);
+      checkDraft(response as api.Draft);
     });
   });
 
   unittest.group('resource-UsersHistoryResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.history;
       var arg_userId = 'foo';
@@ -3029,22 +3009,19 @@ void main() {
         var resp = convert.json.encode(buildListHistoryResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userId,
-              historyTypes: arg_historyTypes,
-              labelId: arg_labelId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              startHistoryId: arg_startHistoryId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListHistoryResponse(response as api.ListHistoryResponse);
-      })));
+      final response = await res.list(arg_userId,
+          historyTypes: arg_historyTypes,
+          labelId: arg_labelId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          startHistoryId: arg_startHistoryId,
+          $fields: arg_$fields);
+      checkListHistoryResponse(response as api.ListHistoryResponse);
     });
   });
 
   unittest.group('resource-UsersLabelsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.labels;
       var arg_request = buildLabel();
@@ -3110,14 +3087,12 @@ void main() {
         var resp = convert.json.encode(buildLabel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLabel(response as api.Label);
-      })));
+      final response =
+          await res.create(arg_request, arg_userId, $fields: arg_$fields);
+      checkLabel(response as api.Label);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.labels;
       var arg_userId = 'foo';
@@ -3185,12 +3160,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_userId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_userId, arg_id, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.labels;
       var arg_userId = 'foo';
@@ -3258,14 +3231,11 @@ void main() {
         var resp = convert.json.encode(buildLabel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLabel(response as api.Label);
-      })));
+      final response = await res.get(arg_userId, arg_id, $fields: arg_$fields);
+      checkLabel(response as api.Label);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.labels;
       var arg_userId = 'foo';
@@ -3326,14 +3296,11 @@ void main() {
         var resp = convert.json.encode(buildListLabelsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLabelsResponse(response as api.ListLabelsResponse);
-      })));
+      final response = await res.list(arg_userId, $fields: arg_$fields);
+      checkListLabelsResponse(response as api.ListLabelsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.labels;
       var arg_request = buildLabel();
@@ -3406,14 +3373,12 @@ void main() {
         var resp = convert.json.encode(buildLabel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_userId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLabel(response as api.Label);
-      })));
+      final response = await res.patch(arg_request, arg_userId, arg_id,
+          $fields: arg_$fields);
+      checkLabel(response as api.Label);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.labels;
       var arg_request = buildLabel();
@@ -3486,16 +3451,14 @@ void main() {
         var resp = convert.json.encode(buildLabel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_userId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLabel(response as api.Label);
-      })));
+      final response = await res.update(arg_request, arg_userId, arg_id,
+          $fields: arg_$fields);
+      checkLabel(response as api.Label);
     });
   });
 
   unittest.group('resource-UsersMessagesResource', () {
-    unittest.test('method--batchDelete', () {
+    unittest.test('method--batchDelete', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.messages;
       var arg_request = buildBatchDeleteMessagesRequest();
@@ -3561,12 +3524,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchDelete(arg_request, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.batchDelete(arg_request, arg_userId, $fields: arg_$fields);
     });
 
-    unittest.test('method--batchModify', () {
+    unittest.test('method--batchModify', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.messages;
       var arg_request = buildBatchModifyMessagesRequest();
@@ -3632,12 +3593,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchModify(arg_request, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.batchModify(arg_request, arg_userId, $fields: arg_$fields);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.messages;
       var arg_userId = 'foo';
@@ -3705,12 +3664,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_userId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_userId, arg_id, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.messages;
       var arg_userId = 'foo';
@@ -3788,17 +3745,14 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userId, arg_id,
-              format: arg_format,
-              metadataHeaders: arg_metadataHeaders,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response = await res.get(arg_userId, arg_id,
+          format: arg_format,
+          metadataHeaders: arg_metadataHeaders,
+          $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
 
-    unittest.test('method--import', () {
+    unittest.test('method--import', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -3887,19 +3841,16 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .import(arg_request, arg_userId,
-              deleted: arg_deleted,
-              internalDateSource: arg_internalDateSource,
-              neverMarkSpam: arg_neverMarkSpam,
-              processForCalendar: arg_processForCalendar,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response = await res.import(arg_request, arg_userId,
+          deleted: arg_deleted,
+          internalDateSource: arg_internalDateSource,
+          neverMarkSpam: arg_neverMarkSpam,
+          processForCalendar: arg_processForCalendar,
+          $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -3978,17 +3929,14 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_userId,
-              deleted: arg_deleted,
-              internalDateSource: arg_internalDateSource,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response = await res.insert(arg_request, arg_userId,
+          deleted: arg_deleted,
+          internalDateSource: arg_internalDateSource,
+          $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.messages;
       var arg_userId = 'foo';
@@ -4074,20 +4022,17 @@ void main() {
         var resp = convert.json.encode(buildListMessagesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userId,
-              includeSpamTrash: arg_includeSpamTrash,
-              labelIds: arg_labelIds,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              q: arg_q,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListMessagesResponse(response as api.ListMessagesResponse);
-      })));
+      final response = await res.list(arg_userId,
+          includeSpamTrash: arg_includeSpamTrash,
+          labelIds: arg_labelIds,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          q: arg_q,
+          $fields: arg_$fields);
+      checkListMessagesResponse(response as api.ListMessagesResponse);
     });
 
-    unittest.test('method--modify', () {
+    unittest.test('method--modify', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.messages;
       var arg_request = buildModifyMessageRequest();
@@ -4168,14 +4113,12 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .modify(arg_request, arg_userId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response = await res.modify(arg_request, arg_userId, arg_id,
+          $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
 
-    unittest.test('method--send', () {
+    unittest.test('method--send', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -4244,14 +4187,12 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .send(arg_request, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response =
+          await res.send(arg_request, arg_userId, $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
 
-    unittest.test('method--trash', () {
+    unittest.test('method--trash', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.messages;
       var arg_userId = 'foo';
@@ -4327,14 +4268,12 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .trash(arg_userId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response =
+          await res.trash(arg_userId, arg_id, $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
 
-    unittest.test('method--untrash', () {
+    unittest.test('method--untrash', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.messages;
       var arg_userId = 'foo';
@@ -4410,16 +4349,14 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .untrash(arg_userId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response =
+          await res.untrash(arg_userId, arg_id, $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
   });
 
   unittest.group('resource-UsersMessagesAttachmentsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.messages.attachments;
       var arg_userId = 'foo';
@@ -4502,16 +4439,14 @@ void main() {
         var resp = convert.json.encode(buildMessagePartBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userId, arg_messageId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessagePartBody(response as api.MessagePartBody);
-      })));
+      final response = await res.get(arg_userId, arg_messageId, arg_id,
+          $fields: arg_$fields);
+      checkMessagePartBody(response as api.MessagePartBody);
     });
   });
 
   unittest.group('resource-UsersSettingsResource', () {
-    unittest.test('method--getAutoForwarding', () {
+    unittest.test('method--getAutoForwarding', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings;
       var arg_userId = 'foo';
@@ -4572,14 +4507,12 @@ void main() {
         var resp = convert.json.encode(buildAutoForwarding());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getAutoForwarding(arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAutoForwarding(response as api.AutoForwarding);
-      })));
+      final response =
+          await res.getAutoForwarding(arg_userId, $fields: arg_$fields);
+      checkAutoForwarding(response as api.AutoForwarding);
     });
 
-    unittest.test('method--getImap', () {
+    unittest.test('method--getImap', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings;
       var arg_userId = 'foo';
@@ -4640,14 +4573,11 @@ void main() {
         var resp = convert.json.encode(buildImapSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getImap(arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkImapSettings(response as api.ImapSettings);
-      })));
+      final response = await res.getImap(arg_userId, $fields: arg_$fields);
+      checkImapSettings(response as api.ImapSettings);
     });
 
-    unittest.test('method--getLanguage', () {
+    unittest.test('method--getLanguage', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings;
       var arg_userId = 'foo';
@@ -4708,14 +4638,11 @@ void main() {
         var resp = convert.json.encode(buildLanguageSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getLanguage(arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLanguageSettings(response as api.LanguageSettings);
-      })));
+      final response = await res.getLanguage(arg_userId, $fields: arg_$fields);
+      checkLanguageSettings(response as api.LanguageSettings);
     });
 
-    unittest.test('method--getPop', () {
+    unittest.test('method--getPop', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings;
       var arg_userId = 'foo';
@@ -4776,14 +4703,11 @@ void main() {
         var resp = convert.json.encode(buildPopSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getPop(arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPopSettings(response as api.PopSettings);
-      })));
+      final response = await res.getPop(arg_userId, $fields: arg_$fields);
+      checkPopSettings(response as api.PopSettings);
     });
 
-    unittest.test('method--getVacation', () {
+    unittest.test('method--getVacation', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings;
       var arg_userId = 'foo';
@@ -4844,14 +4768,11 @@ void main() {
         var resp = convert.json.encode(buildVacationSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getVacation(arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVacationSettings(response as api.VacationSettings);
-      })));
+      final response = await res.getVacation(arg_userId, $fields: arg_$fields);
+      checkVacationSettings(response as api.VacationSettings);
     });
 
-    unittest.test('method--updateAutoForwarding', () {
+    unittest.test('method--updateAutoForwarding', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings;
       var arg_request = buildAutoForwarding();
@@ -4917,14 +4838,12 @@ void main() {
         var resp = convert.json.encode(buildAutoForwarding());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateAutoForwarding(arg_request, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAutoForwarding(response as api.AutoForwarding);
-      })));
+      final response = await res.updateAutoForwarding(arg_request, arg_userId,
+          $fields: arg_$fields);
+      checkAutoForwarding(response as api.AutoForwarding);
     });
 
-    unittest.test('method--updateImap', () {
+    unittest.test('method--updateImap', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings;
       var arg_request = buildImapSettings();
@@ -4990,14 +4909,12 @@ void main() {
         var resp = convert.json.encode(buildImapSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateImap(arg_request, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkImapSettings(response as api.ImapSettings);
-      })));
+      final response =
+          await res.updateImap(arg_request, arg_userId, $fields: arg_$fields);
+      checkImapSettings(response as api.ImapSettings);
     });
 
-    unittest.test('method--updateLanguage', () {
+    unittest.test('method--updateLanguage', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings;
       var arg_request = buildLanguageSettings();
@@ -5063,14 +4980,12 @@ void main() {
         var resp = convert.json.encode(buildLanguageSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateLanguage(arg_request, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLanguageSettings(response as api.LanguageSettings);
-      })));
+      final response = await res.updateLanguage(arg_request, arg_userId,
+          $fields: arg_$fields);
+      checkLanguageSettings(response as api.LanguageSettings);
     });
 
-    unittest.test('method--updatePop', () {
+    unittest.test('method--updatePop', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings;
       var arg_request = buildPopSettings();
@@ -5136,14 +5051,12 @@ void main() {
         var resp = convert.json.encode(buildPopSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updatePop(arg_request, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPopSettings(response as api.PopSettings);
-      })));
+      final response =
+          await res.updatePop(arg_request, arg_userId, $fields: arg_$fields);
+      checkPopSettings(response as api.PopSettings);
     });
 
-    unittest.test('method--updateVacation', () {
+    unittest.test('method--updateVacation', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings;
       var arg_request = buildVacationSettings();
@@ -5209,16 +5122,14 @@ void main() {
         var resp = convert.json.encode(buildVacationSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateVacation(arg_request, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVacationSettings(response as api.VacationSettings);
-      })));
+      final response = await res.updateVacation(arg_request, arg_userId,
+          $fields: arg_$fields);
+      checkVacationSettings(response as api.VacationSettings);
     });
   });
 
   unittest.group('resource-UsersSettingsDelegatesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.delegates;
       var arg_request = buildDelegate();
@@ -5284,14 +5195,12 @@ void main() {
         var resp = convert.json.encode(buildDelegate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDelegate(response as api.Delegate);
-      })));
+      final response =
+          await res.create(arg_request, arg_userId, $fields: arg_$fields);
+      checkDelegate(response as api.Delegate);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.delegates;
       var arg_userId = 'foo';
@@ -5359,12 +5268,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_userId, arg_delegateEmail, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_userId, arg_delegateEmail, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.delegates;
       var arg_userId = 'foo';
@@ -5432,14 +5339,12 @@ void main() {
         var resp = convert.json.encode(buildDelegate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userId, arg_delegateEmail, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDelegate(response as api.Delegate);
-      })));
+      final response =
+          await res.get(arg_userId, arg_delegateEmail, $fields: arg_$fields);
+      checkDelegate(response as api.Delegate);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.delegates;
       var arg_userId = 'foo';
@@ -5500,16 +5405,13 @@ void main() {
         var resp = convert.json.encode(buildListDelegatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDelegatesResponse(response as api.ListDelegatesResponse);
-      })));
+      final response = await res.list(arg_userId, $fields: arg_$fields);
+      checkListDelegatesResponse(response as api.ListDelegatesResponse);
     });
   });
 
   unittest.group('resource-UsersSettingsFiltersResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.filters;
       var arg_request = buildFilter();
@@ -5575,14 +5477,12 @@ void main() {
         var resp = convert.json.encode(buildFilter());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFilter(response as api.Filter);
-      })));
+      final response =
+          await res.create(arg_request, arg_userId, $fields: arg_$fields);
+      checkFilter(response as api.Filter);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.filters;
       var arg_userId = 'foo';
@@ -5650,12 +5550,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_userId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_userId, arg_id, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.filters;
       var arg_userId = 'foo';
@@ -5723,14 +5621,11 @@ void main() {
         var resp = convert.json.encode(buildFilter());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFilter(response as api.Filter);
-      })));
+      final response = await res.get(arg_userId, arg_id, $fields: arg_$fields);
+      checkFilter(response as api.Filter);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.filters;
       var arg_userId = 'foo';
@@ -5791,16 +5686,13 @@ void main() {
         var resp = convert.json.encode(buildListFiltersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListFiltersResponse(response as api.ListFiltersResponse);
-      })));
+      final response = await res.list(arg_userId, $fields: arg_$fields);
+      checkListFiltersResponse(response as api.ListFiltersResponse);
     });
   });
 
   unittest.group('resource-UsersSettingsForwardingAddressesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.forwardingAddresses;
       var arg_request = buildForwardingAddress();
@@ -5866,14 +5758,12 @@ void main() {
         var resp = convert.json.encode(buildForwardingAddress());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkForwardingAddress(response as api.ForwardingAddress);
-      })));
+      final response =
+          await res.create(arg_request, arg_userId, $fields: arg_$fields);
+      checkForwardingAddress(response as api.ForwardingAddress);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.forwardingAddresses;
       var arg_userId = 'foo';
@@ -5941,12 +5831,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_userId, arg_forwardingEmail, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_userId, arg_forwardingEmail, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.forwardingAddresses;
       var arg_userId = 'foo';
@@ -6014,14 +5902,12 @@ void main() {
         var resp = convert.json.encode(buildForwardingAddress());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userId, arg_forwardingEmail, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkForwardingAddress(response as api.ForwardingAddress);
-      })));
+      final response =
+          await res.get(arg_userId, arg_forwardingEmail, $fields: arg_$fields);
+      checkForwardingAddress(response as api.ForwardingAddress);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.forwardingAddresses;
       var arg_userId = 'foo';
@@ -6082,17 +5968,14 @@ void main() {
         var resp = convert.json.encode(buildListForwardingAddressesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListForwardingAddressesResponse(
-            response as api.ListForwardingAddressesResponse);
-      })));
+      final response = await res.list(arg_userId, $fields: arg_$fields);
+      checkListForwardingAddressesResponse(
+          response as api.ListForwardingAddressesResponse);
     });
   });
 
   unittest.group('resource-UsersSettingsSendAsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.sendAs;
       var arg_request = buildSendAs();
@@ -6158,14 +6041,12 @@ void main() {
         var resp = convert.json.encode(buildSendAs());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSendAs(response as api.SendAs);
-      })));
+      final response =
+          await res.create(arg_request, arg_userId, $fields: arg_$fields);
+      checkSendAs(response as api.SendAs);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.sendAs;
       var arg_userId = 'foo';
@@ -6233,12 +6114,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_userId, arg_sendAsEmail, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_userId, arg_sendAsEmail, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.sendAs;
       var arg_userId = 'foo';
@@ -6306,14 +6185,12 @@ void main() {
         var resp = convert.json.encode(buildSendAs());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userId, arg_sendAsEmail, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSendAs(response as api.SendAs);
-      })));
+      final response =
+          await res.get(arg_userId, arg_sendAsEmail, $fields: arg_$fields);
+      checkSendAs(response as api.SendAs);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.sendAs;
       var arg_userId = 'foo';
@@ -6374,14 +6251,11 @@ void main() {
         var resp = convert.json.encode(buildListSendAsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSendAsResponse(response as api.ListSendAsResponse);
-      })));
+      final response = await res.list(arg_userId, $fields: arg_$fields);
+      checkListSendAsResponse(response as api.ListSendAsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.sendAs;
       var arg_request = buildSendAs();
@@ -6454,14 +6328,12 @@ void main() {
         var resp = convert.json.encode(buildSendAs());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_userId, arg_sendAsEmail, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSendAs(response as api.SendAs);
-      })));
+      final response = await res.patch(arg_request, arg_userId, arg_sendAsEmail,
+          $fields: arg_$fields);
+      checkSendAs(response as api.SendAs);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.sendAs;
       var arg_request = buildSendAs();
@@ -6534,15 +6406,13 @@ void main() {
         var resp = convert.json.encode(buildSendAs());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_userId, arg_sendAsEmail,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSendAs(response as api.SendAs);
-      })));
+      final response = await res.update(
+          arg_request, arg_userId, arg_sendAsEmail,
+          $fields: arg_$fields);
+      checkSendAs(response as api.SendAs);
     });
 
-    unittest.test('method--verify', () {
+    unittest.test('method--verify', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.sendAs;
       var arg_userId = 'foo';
@@ -6618,14 +6488,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .verify(arg_userId, arg_sendAsEmail, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.verify(arg_userId, arg_sendAsEmail, $fields: arg_$fields);
     });
   });
 
   unittest.group('resource-UsersSettingsSendAsSmimeInfoResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
       var arg_userId = 'foo';
@@ -6708,12 +6576,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_userId, arg_sendAsEmail, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_userId, arg_sendAsEmail, arg_id,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
       var arg_userId = 'foo';
@@ -6796,14 +6663,12 @@ void main() {
         var resp = convert.json.encode(buildSmimeInfo());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userId, arg_sendAsEmail, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSmimeInfo(response as api.SmimeInfo);
-      })));
+      final response = await res.get(arg_userId, arg_sendAsEmail, arg_id,
+          $fields: arg_$fields);
+      checkSmimeInfo(response as api.SmimeInfo);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
       var arg_request = buildSmimeInfo();
@@ -6884,15 +6749,13 @@ void main() {
         var resp = convert.json.encode(buildSmimeInfo());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_userId, arg_sendAsEmail,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSmimeInfo(response as api.SmimeInfo);
-      })));
+      final response = await res.insert(
+          arg_request, arg_userId, arg_sendAsEmail,
+          $fields: arg_$fields);
+      checkSmimeInfo(response as api.SmimeInfo);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
       var arg_userId = 'foo';
@@ -6968,14 +6831,12 @@ void main() {
         var resp = convert.json.encode(buildListSmimeInfoResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userId, arg_sendAsEmail, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSmimeInfoResponse(response as api.ListSmimeInfoResponse);
-      })));
+      final response =
+          await res.list(arg_userId, arg_sendAsEmail, $fields: arg_$fields);
+      checkListSmimeInfoResponse(response as api.ListSmimeInfoResponse);
     });
 
-    unittest.test('method--setDefault', () {
+    unittest.test('method--setDefault', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.settings.sendAs.smimeInfo;
       var arg_userId = 'foo';
@@ -7066,14 +6927,13 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setDefault(arg_userId, arg_sendAsEmail, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.setDefault(arg_userId, arg_sendAsEmail, arg_id,
+          $fields: arg_$fields);
     });
   });
 
   unittest.group('resource-UsersThreadsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.threads;
       var arg_userId = 'foo';
@@ -7141,12 +7001,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_userId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_userId, arg_id, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.threads;
       var arg_userId = 'foo';
@@ -7224,17 +7082,14 @@ void main() {
         var resp = convert.json.encode(buildThread());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userId, arg_id,
-              format: arg_format,
-              metadataHeaders: arg_metadataHeaders,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkThread(response as api.Thread);
-      })));
+      final response = await res.get(arg_userId, arg_id,
+          format: arg_format,
+          metadataHeaders: arg_metadataHeaders,
+          $fields: arg_$fields);
+      checkThread(response as api.Thread);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.threads;
       var arg_userId = 'foo';
@@ -7320,20 +7175,17 @@ void main() {
         var resp = convert.json.encode(buildListThreadsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userId,
-              includeSpamTrash: arg_includeSpamTrash,
-              labelIds: arg_labelIds,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              q: arg_q,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListThreadsResponse(response as api.ListThreadsResponse);
-      })));
+      final response = await res.list(arg_userId,
+          includeSpamTrash: arg_includeSpamTrash,
+          labelIds: arg_labelIds,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          q: arg_q,
+          $fields: arg_$fields);
+      checkListThreadsResponse(response as api.ListThreadsResponse);
     });
 
-    unittest.test('method--modify', () {
+    unittest.test('method--modify', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.threads;
       var arg_request = buildModifyThreadRequest();
@@ -7414,14 +7266,12 @@ void main() {
         var resp = convert.json.encode(buildThread());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .modify(arg_request, arg_userId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkThread(response as api.Thread);
-      })));
+      final response = await res.modify(arg_request, arg_userId, arg_id,
+          $fields: arg_$fields);
+      checkThread(response as api.Thread);
     });
 
-    unittest.test('method--trash', () {
+    unittest.test('method--trash', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.threads;
       var arg_userId = 'foo';
@@ -7497,14 +7347,12 @@ void main() {
         var resp = convert.json.encode(buildThread());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .trash(arg_userId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkThread(response as api.Thread);
-      })));
+      final response =
+          await res.trash(arg_userId, arg_id, $fields: arg_$fields);
+      checkThread(response as api.Thread);
     });
 
-    unittest.test('method--untrash', () {
+    unittest.test('method--untrash', () async {
       var mock = HttpServerMock();
       var res = api.GmailApi(mock).users.threads;
       var arg_userId = 'foo';
@@ -7580,11 +7428,9 @@ void main() {
         var resp = convert.json.encode(buildThread());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .untrash(arg_userId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkThread(response as api.Thread);
-      })));
+      final response =
+          await res.untrash(arg_userId, arg_id, $fields: arg_$fields);
+      checkThread(response as api.Thread);
     });
   });
 }

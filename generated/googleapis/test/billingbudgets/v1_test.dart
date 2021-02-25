@@ -531,7 +531,7 @@ void checkGoogleTypeMoney(api.GoogleTypeMoney o) {
 
 void main() {
   unittest.group('obj-schema-GoogleCloudBillingBudgetsV1Budget', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudBillingBudgetsV1Budget();
       var od = api.GoogleCloudBillingBudgetsV1Budget.fromJson(o.toJson());
       checkGoogleCloudBillingBudgetsV1Budget(
@@ -540,7 +540,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudBillingBudgetsV1BudgetAmount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudBillingBudgetsV1BudgetAmount();
       var od = api.GoogleCloudBillingBudgetsV1BudgetAmount.fromJson(o.toJson());
       checkGoogleCloudBillingBudgetsV1BudgetAmount(
@@ -549,7 +549,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudBillingBudgetsV1CustomPeriod', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudBillingBudgetsV1CustomPeriod();
       var od = api.GoogleCloudBillingBudgetsV1CustomPeriod.fromJson(o.toJson());
       checkGoogleCloudBillingBudgetsV1CustomPeriod(
@@ -558,7 +558,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudBillingBudgetsV1Filter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudBillingBudgetsV1Filter();
       var od = api.GoogleCloudBillingBudgetsV1Filter.fromJson(o.toJson());
       checkGoogleCloudBillingBudgetsV1Filter(
@@ -567,7 +567,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudBillingBudgetsV1LastPeriodAmount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudBillingBudgetsV1LastPeriodAmount();
       var od =
           api.GoogleCloudBillingBudgetsV1LastPeriodAmount.fromJson(o.toJson());
@@ -578,7 +578,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudBillingBudgetsV1ListBudgetsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudBillingBudgetsV1ListBudgetsResponse();
       var od = api.GoogleCloudBillingBudgetsV1ListBudgetsResponse.fromJson(
           o.toJson());
@@ -588,7 +588,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudBillingBudgetsV1NotificationsRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudBillingBudgetsV1NotificationsRule();
       var od =
           api.GoogleCloudBillingBudgetsV1NotificationsRule.fromJson(o.toJson());
@@ -598,7 +598,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudBillingBudgetsV1ThresholdRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudBillingBudgetsV1ThresholdRule();
       var od =
           api.GoogleCloudBillingBudgetsV1ThresholdRule.fromJson(o.toJson());
@@ -608,7 +608,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
@@ -616,7 +616,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypeDate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeDate();
       var od = api.GoogleTypeDate.fromJson(o.toJson());
       checkGoogleTypeDate(od as api.GoogleTypeDate);
@@ -624,7 +624,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypeMoney', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeMoney();
       var od = api.GoogleTypeMoney.fromJson(o.toJson());
       checkGoogleTypeMoney(od as api.GoogleTypeMoney);
@@ -632,7 +632,7 @@ void main() {
   });
 
   unittest.group('resource-BillingAccountsBudgetsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudBillingBudgetApi(mock).billingAccounts.budgets;
       var arg_request = buildGoogleCloudBillingBudgetsV1Budget();
@@ -687,15 +687,13 @@ void main() {
             convert.json.encode(buildGoogleCloudBillingBudgetsV1Budget());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudBillingBudgetsV1Budget(
-            response as api.GoogleCloudBillingBudgetsV1Budget);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudBillingBudgetsV1Budget(
+          response as api.GoogleCloudBillingBudgetsV1Budget);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudBillingBudgetApi(mock).billingAccounts.budgets;
       var arg_name = 'foo';
@@ -743,14 +741,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudBillingBudgetApi(mock).billingAccounts.budgets;
       var arg_name = 'foo';
@@ -799,15 +794,12 @@ void main() {
             convert.json.encode(buildGoogleCloudBillingBudgetsV1Budget());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudBillingBudgetsV1Budget(
-            response as api.GoogleCloudBillingBudgetsV1Budget);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudBillingBudgetsV1Budget(
+          response as api.GoogleCloudBillingBudgetsV1Budget);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudBillingBudgetApi(mock).billingAccounts.budgets;
       var arg_parent = 'foo';
@@ -866,18 +858,15 @@ void main() {
             .encode(buildGoogleCloudBillingBudgetsV1ListBudgetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudBillingBudgetsV1ListBudgetsResponse(
-            response as api.GoogleCloudBillingBudgetsV1ListBudgetsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudBillingBudgetsV1ListBudgetsResponse(
+          response as api.GoogleCloudBillingBudgetsV1ListBudgetsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudBillingBudgetApi(mock).billingAccounts.budgets;
       var arg_request = buildGoogleCloudBillingBudgetsV1Budget();
@@ -937,13 +926,10 @@ void main() {
             convert.json.encode(buildGoogleCloudBillingBudgetsV1Budget());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudBillingBudgetsV1Budget(
-            response as api.GoogleCloudBillingBudgetsV1Budget);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleCloudBillingBudgetsV1Budget(
+          response as api.GoogleCloudBillingBudgetsV1Budget);
     });
   });
 }

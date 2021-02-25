@@ -153,7 +153,7 @@ void checkVerifyChallengeResponseResult(api.VerifyChallengeResponseResult o) {
 
 void main() {
   unittest.group('obj-schema-Challenge', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChallenge();
       var od = api.Challenge.fromJson(o.toJson());
       checkChallenge(od as api.Challenge);
@@ -161,7 +161,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -169,7 +169,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SignedData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSignedData();
       var od = api.SignedData.fromJson(o.toJson());
       checkSignedData(od as api.SignedData);
@@ -177,7 +177,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VerifyChallengeResponseRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVerifyChallengeResponseRequest();
       var od = api.VerifyChallengeResponseRequest.fromJson(o.toJson());
       checkVerifyChallengeResponseRequest(
@@ -186,7 +186,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VerifyChallengeResponseResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVerifyChallengeResponseResult();
       var od = api.VerifyChallengeResponseResult.fromJson(o.toJson());
       checkVerifyChallengeResponseResult(
@@ -195,7 +195,7 @@ void main() {
   });
 
   unittest.group('resource-ChallengeResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.VerifiedaccessApi(mock).challenge;
       var arg_request = buildEmpty();
@@ -246,14 +246,11 @@ void main() {
         var resp = convert.json.encode(buildChallenge());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChallenge(response as api.Challenge);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkChallenge(response as api.Challenge);
     });
 
-    unittest.test('method--verify', () {
+    unittest.test('method--verify', () async {
       var mock = HttpServerMock();
       var res = api.VerifiedaccessApi(mock).challenge;
       var arg_request = buildVerifyChallengeResponseRequest();
@@ -305,12 +302,9 @@ void main() {
         var resp = convert.json.encode(buildVerifyChallengeResponseResult());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .verify(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVerifyChallengeResponseResult(
-            response as api.VerifyChallengeResponseResult);
-      })));
+      final response = await res.verify(arg_request, $fields: arg_$fields);
+      checkVerifyChallengeResponseResult(
+          response as api.VerifyChallengeResponseResult);
     });
   });
 }

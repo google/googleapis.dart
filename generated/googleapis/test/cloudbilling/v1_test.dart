@@ -944,7 +944,7 @@ void checkTierRate(api.TierRate o) {
 
 void main() {
   unittest.group('obj-schema-AggregationInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAggregationInfo();
       var od = api.AggregationInfo.fromJson(o.toJson());
       checkAggregationInfo(od as api.AggregationInfo);
@@ -952,7 +952,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
       checkAuditConfig(od as api.AuditConfig);
@@ -960,7 +960,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
       checkAuditLogConfig(od as api.AuditLogConfig);
@@ -968,7 +968,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BillingAccount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBillingAccount();
       var od = api.BillingAccount.fromJson(o.toJson());
       checkBillingAccount(od as api.BillingAccount);
@@ -976,7 +976,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -984,7 +984,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Category', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCategory();
       var od = api.Category.fromJson(o.toJson());
       checkCategory(od as api.Category);
@@ -992,7 +992,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -1000,7 +1000,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GeoTaxonomy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGeoTaxonomy();
       var od = api.GeoTaxonomy.fromJson(o.toJson());
       checkGeoTaxonomy(od as api.GeoTaxonomy);
@@ -1008,7 +1008,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListBillingAccountsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListBillingAccountsResponse();
       var od = api.ListBillingAccountsResponse.fromJson(o.toJson());
       checkListBillingAccountsResponse(od as api.ListBillingAccountsResponse);
@@ -1016,7 +1016,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListProjectBillingInfoResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListProjectBillingInfoResponse();
       var od = api.ListProjectBillingInfoResponse.fromJson(o.toJson());
       checkListProjectBillingInfoResponse(
@@ -1025,7 +1025,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListServicesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListServicesResponse();
       var od = api.ListServicesResponse.fromJson(o.toJson());
       checkListServicesResponse(od as api.ListServicesResponse);
@@ -1033,7 +1033,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListSkusResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListSkusResponse();
       var od = api.ListSkusResponse.fromJson(o.toJson());
       checkListSkusResponse(od as api.ListSkusResponse);
@@ -1041,7 +1041,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Money', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMoney();
       var od = api.Money.fromJson(o.toJson());
       checkMoney(od as api.Money);
@@ -1049,7 +1049,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -1057,7 +1057,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PricingExpression', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPricingExpression();
       var od = api.PricingExpression.fromJson(o.toJson());
       checkPricingExpression(od as api.PricingExpression);
@@ -1065,7 +1065,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PricingInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPricingInfo();
       var od = api.PricingInfo.fromJson(o.toJson());
       checkPricingInfo(od as api.PricingInfo);
@@ -1073,7 +1073,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProjectBillingInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProjectBillingInfo();
       var od = api.ProjectBillingInfo.fromJson(o.toJson());
       checkProjectBillingInfo(od as api.ProjectBillingInfo);
@@ -1081,7 +1081,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Service', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildService();
       var od = api.Service.fromJson(o.toJson());
       checkService(od as api.Service);
@@ -1089,7 +1089,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -1097,7 +1097,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Sku', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSku();
       var od = api.Sku.fromJson(o.toJson());
       checkSku(od as api.Sku);
@@ -1105,7 +1105,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -1113,7 +1113,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -1121,7 +1121,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TierRate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTierRate();
       var od = api.TierRate.fromJson(o.toJson());
       checkTierRate(od as api.TierRate);
@@ -1129,7 +1129,7 @@ void main() {
   });
 
   unittest.group('resource-BillingAccountsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudbillingApi(mock).billingAccounts;
       var arg_request = buildBillingAccount();
@@ -1180,14 +1180,11 @@ void main() {
         var resp = convert.json.encode(buildBillingAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBillingAccount(response as api.BillingAccount);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkBillingAccount(response as api.BillingAccount);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudbillingApi(mock).billingAccounts;
       var arg_name = 'foo';
@@ -1235,14 +1232,11 @@ void main() {
         var resp = convert.json.encode(buildBillingAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBillingAccount(response as api.BillingAccount);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkBillingAccount(response as api.BillingAccount);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudbillingApi(mock).billingAccounts;
       var arg_resource = 'foo';
@@ -1295,17 +1289,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudbillingApi(mock).billingAccounts;
       var arg_filter = 'foo';
@@ -1366,19 +1356,16 @@ void main() {
         var resp = convert.json.encode(buildListBillingAccountsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListBillingAccountsResponse(
-            response as api.ListBillingAccountsResponse);
-      })));
+      final response = await res.list(
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListBillingAccountsResponse(
+          response as api.ListBillingAccountsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudbillingApi(mock).billingAccounts;
       var arg_request = buildBillingAccount();
@@ -1436,15 +1423,12 @@ void main() {
         var resp = convert.json.encode(buildBillingAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBillingAccount(response as api.BillingAccount);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkBillingAccount(response as api.BillingAccount);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudbillingApi(mock).billingAccounts;
       var arg_request = buildSetIamPolicyRequest();
@@ -1497,14 +1481,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CloudbillingApi(mock).billingAccounts;
       var arg_request = buildTestIamPermissionsRequest();
@@ -1557,17 +1539,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-BillingAccountsProjectsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudbillingApi(mock).billingAccounts.projects;
       var arg_name = 'foo';
@@ -1625,20 +1605,17 @@ void main() {
         var resp = convert.json.encode(buildListProjectBillingInfoResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListProjectBillingInfoResponse(
-            response as api.ListProjectBillingInfoResponse);
-      })));
+      final response = await res.list(arg_name,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListProjectBillingInfoResponse(
+          response as api.ListProjectBillingInfoResponse);
     });
   });
 
   unittest.group('resource-ProjectsResource', () {
-    unittest.test('method--getBillingInfo', () {
+    unittest.test('method--getBillingInfo', () async {
       var mock = HttpServerMock();
       var res = api.CloudbillingApi(mock).projects;
       var arg_name = 'foo';
@@ -1686,14 +1663,11 @@ void main() {
         var resp = convert.json.encode(buildProjectBillingInfo());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getBillingInfo(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProjectBillingInfo(response as api.ProjectBillingInfo);
-      })));
+      final response = await res.getBillingInfo(arg_name, $fields: arg_$fields);
+      checkProjectBillingInfo(response as api.ProjectBillingInfo);
     });
 
-    unittest.test('method--updateBillingInfo', () {
+    unittest.test('method--updateBillingInfo', () async {
       var mock = HttpServerMock();
       var res = api.CloudbillingApi(mock).projects;
       var arg_request = buildProjectBillingInfo();
@@ -1746,16 +1720,14 @@ void main() {
         var resp = convert.json.encode(buildProjectBillingInfo());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateBillingInfo(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProjectBillingInfo(response as api.ProjectBillingInfo);
-      })));
+      final response = await res.updateBillingInfo(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkProjectBillingInfo(response as api.ProjectBillingInfo);
     });
   });
 
   unittest.group('resource-ServicesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudbillingApi(mock).services;
       var arg_pageSize = 42;
@@ -1811,19 +1783,16 @@ void main() {
         var resp = convert.json.encode(buildListServicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListServicesResponse(response as api.ListServicesResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListServicesResponse(response as api.ListServicesResponse);
     });
   });
 
   unittest.group('resource-ServicesSkusResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudbillingApi(mock).services.skus;
       var arg_parent = 'foo';
@@ -1896,17 +1865,14 @@ void main() {
         var resp = convert.json.encode(buildListSkusResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              currencyCode: arg_currencyCode,
-              endTime: arg_endTime,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              startTime: arg_startTime,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSkusResponse(response as api.ListSkusResponse);
-      })));
+      final response = await res.list(arg_parent,
+          currencyCode: arg_currencyCode,
+          endTime: arg_endTime,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          startTime: arg_startTime,
+          $fields: arg_$fields);
+      checkListSkusResponse(response as api.ListSkusResponse);
     });
   });
 }

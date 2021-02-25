@@ -535,7 +535,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
 void main() {
   unittest.group('obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1Claim',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1Claim();
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1Claim.fromJson(
           o.toJson());
@@ -546,7 +546,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor();
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor.fromJson(
           o.toJson());
@@ -557,7 +557,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating();
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating.fromJson(
           o.toJson());
@@ -568,7 +568,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview();
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview.fromJson(
           o.toJson());
@@ -580,7 +580,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor();
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor
           .fromJson(o.toJson());
@@ -592,7 +592,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup();
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup
           .fromJson(o.toJson());
@@ -604,7 +604,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage();
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
@@ -617,7 +617,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse();
       var od =
@@ -632,7 +632,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse();
       var od =
@@ -646,7 +646,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1Publisher',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1Publisher();
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1Publisher.fromJson(
           o.toJson());
@@ -656,7 +656,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
@@ -664,7 +664,7 @@ void main() {
   });
 
   unittest.group('resource-ClaimsResource', () {
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.FactCheckToolsApi(mock).claims;
       var arg_languageCode = 'foo';
@@ -746,26 +746,23 @@ void main() {
             buildGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(
-              languageCode: arg_languageCode,
-              maxAgeDays: arg_maxAgeDays,
-              offset: arg_offset,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              query: arg_query,
-              reviewPublisherSiteFilter: arg_reviewPublisherSiteFilter,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse(
-            response as api
-                .GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse);
-      })));
+      final response = await res.search(
+          languageCode: arg_languageCode,
+          maxAgeDays: arg_maxAgeDays,
+          offset: arg_offset,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          query: arg_query,
+          reviewPublisherSiteFilter: arg_reviewPublisherSiteFilter,
+          $fields: arg_$fields);
+      checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse(
+          response as api
+              .GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse);
     });
   });
 
   unittest.group('resource-PagesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.FactCheckToolsApi(mock).pages;
       var arg_request =
@@ -821,16 +818,13 @@ void main() {
             buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(
-            response as api
-                .GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(
+          response as api
+              .GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.FactCheckToolsApi(mock).pages;
       var arg_name = 'foo';
@@ -878,14 +872,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.FactCheckToolsApi(mock).pages;
       var arg_name = 'foo';
@@ -934,16 +925,13 @@ void main() {
             buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(
-            response as api
-                .GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(
+          response as api
+              .GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.FactCheckToolsApi(mock).pages;
       var arg_offset = 42;
@@ -1015,22 +1003,19 @@ void main() {
             buildGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              offset: arg_offset,
-              organization: arg_organization,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              url: arg_url,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse(
-            response as api
-                .GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse);
-      })));
+      final response = await res.list(
+          offset: arg_offset,
+          organization: arg_organization,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          url: arg_url,
+          $fields: arg_$fields);
+      checkGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse(
+          response as api
+              .GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.FactCheckToolsApi(mock).pages;
       var arg_request =
@@ -1088,13 +1073,11 @@ void main() {
             buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(
-            response as api
-                .GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(
+          response as api
+              .GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage);
     });
   });
 }

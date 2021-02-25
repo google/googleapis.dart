@@ -4098,7 +4098,7 @@ void checkYarnApplication(api.YarnApplication o) {
 
 void main() {
   unittest.group('obj-schema-AcceleratorConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAcceleratorConfig();
       var od = api.AcceleratorConfig.fromJson(o.toJson());
       checkAcceleratorConfig(od as api.AcceleratorConfig);
@@ -4106,7 +4106,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AutoscalingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAutoscalingConfig();
       var od = api.AutoscalingConfig.fromJson(o.toJson());
       checkAutoscalingConfig(od as api.AutoscalingConfig);
@@ -4114,7 +4114,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AutoscalingPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAutoscalingPolicy();
       var od = api.AutoscalingPolicy.fromJson(o.toJson());
       checkAutoscalingPolicy(od as api.AutoscalingPolicy);
@@ -4122,7 +4122,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BasicAutoscalingAlgorithm', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBasicAutoscalingAlgorithm();
       var od = api.BasicAutoscalingAlgorithm.fromJson(o.toJson());
       checkBasicAutoscalingAlgorithm(od as api.BasicAutoscalingAlgorithm);
@@ -4130,7 +4130,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BasicYarnAutoscalingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBasicYarnAutoscalingConfig();
       var od = api.BasicYarnAutoscalingConfig.fromJson(o.toJson());
       checkBasicYarnAutoscalingConfig(od as api.BasicYarnAutoscalingConfig);
@@ -4138,7 +4138,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -4146,7 +4146,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CancelJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCancelJobRequest();
       var od = api.CancelJobRequest.fromJson(o.toJson());
       checkCancelJobRequest(od as api.CancelJobRequest);
@@ -4154,7 +4154,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Cluster', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCluster();
       var od = api.Cluster.fromJson(o.toJson());
       checkCluster(od as api.Cluster);
@@ -4162,7 +4162,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClusterConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClusterConfig();
       var od = api.ClusterConfig.fromJson(o.toJson());
       checkClusterConfig(od as api.ClusterConfig);
@@ -4170,7 +4170,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClusterMetrics', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClusterMetrics();
       var od = api.ClusterMetrics.fromJson(o.toJson());
       checkClusterMetrics(od as api.ClusterMetrics);
@@ -4178,7 +4178,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClusterOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClusterOperation();
       var od = api.ClusterOperation.fromJson(o.toJson());
       checkClusterOperation(od as api.ClusterOperation);
@@ -4186,7 +4186,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClusterOperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClusterOperationMetadata();
       var od = api.ClusterOperationMetadata.fromJson(o.toJson());
       checkClusterOperationMetadata(od as api.ClusterOperationMetadata);
@@ -4194,7 +4194,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClusterOperationStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClusterOperationStatus();
       var od = api.ClusterOperationStatus.fromJson(o.toJson());
       checkClusterOperationStatus(od as api.ClusterOperationStatus);
@@ -4202,7 +4202,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClusterSelector', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClusterSelector();
       var od = api.ClusterSelector.fromJson(o.toJson());
       checkClusterSelector(od as api.ClusterSelector);
@@ -4210,7 +4210,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClusterStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClusterStatus();
       var od = api.ClusterStatus.fromJson(o.toJson());
       checkClusterStatus(od as api.ClusterStatus);
@@ -4218,7 +4218,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DiagnoseClusterRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDiagnoseClusterRequest();
       var od = api.DiagnoseClusterRequest.fromJson(o.toJson());
       checkDiagnoseClusterRequest(od as api.DiagnoseClusterRequest);
@@ -4226,7 +4226,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DiagnoseClusterResults', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDiagnoseClusterResults();
       var od = api.DiagnoseClusterResults.fromJson(o.toJson());
       checkDiagnoseClusterResults(od as api.DiagnoseClusterResults);
@@ -4234,7 +4234,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DiskConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDiskConfig();
       var od = api.DiskConfig.fromJson(o.toJson());
       checkDiskConfig(od as api.DiskConfig);
@@ -4242,7 +4242,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -4250,7 +4250,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EncryptionConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEncryptionConfig();
       var od = api.EncryptionConfig.fromJson(o.toJson());
       checkEncryptionConfig(od as api.EncryptionConfig);
@@ -4258,7 +4258,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EndpointConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEndpointConfig();
       var od = api.EndpointConfig.fromJson(o.toJson());
       checkEndpointConfig(od as api.EndpointConfig);
@@ -4266,7 +4266,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -4274,7 +4274,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GceClusterConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGceClusterConfig();
       var od = api.GceClusterConfig.fromJson(o.toJson());
       checkGceClusterConfig(od as api.GceClusterConfig);
@@ -4282,7 +4282,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetIamPolicyRequest();
       var od = api.GetIamPolicyRequest.fromJson(o.toJson());
       checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
@@ -4290,7 +4290,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetPolicyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetPolicyOptions();
       var od = api.GetPolicyOptions.fromJson(o.toJson());
       checkGetPolicyOptions(od as api.GetPolicyOptions);
@@ -4298,7 +4298,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HadoopJob', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHadoopJob();
       var od = api.HadoopJob.fromJson(o.toJson());
       checkHadoopJob(od as api.HadoopJob);
@@ -4306,7 +4306,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HiveJob', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHiveJob();
       var od = api.HiveJob.fromJson(o.toJson());
       checkHiveJob(od as api.HiveJob);
@@ -4314,7 +4314,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InjectCredentialsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInjectCredentialsRequest();
       var od = api.InjectCredentialsRequest.fromJson(o.toJson());
       checkInjectCredentialsRequest(od as api.InjectCredentialsRequest);
@@ -4322,7 +4322,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstanceGroupAutoscalingPolicyConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstanceGroupAutoscalingPolicyConfig();
       var od = api.InstanceGroupAutoscalingPolicyConfig.fromJson(o.toJson());
       checkInstanceGroupAutoscalingPolicyConfig(
@@ -4331,7 +4331,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstanceGroupConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstanceGroupConfig();
       var od = api.InstanceGroupConfig.fromJson(o.toJson());
       checkInstanceGroupConfig(od as api.InstanceGroupConfig);
@@ -4339,7 +4339,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstanceReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstanceReference();
       var od = api.InstanceReference.fromJson(o.toJson());
       checkInstanceReference(od as api.InstanceReference);
@@ -4347,7 +4347,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstantiateWorkflowTemplateRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstantiateWorkflowTemplateRequest();
       var od = api.InstantiateWorkflowTemplateRequest.fromJson(o.toJson());
       checkInstantiateWorkflowTemplateRequest(
@@ -4356,7 +4356,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Job', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJob();
       var od = api.Job.fromJson(o.toJson());
       checkJob(od as api.Job);
@@ -4364,7 +4364,7 @@ void main() {
   });
 
   unittest.group('obj-schema-JobMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJobMetadata();
       var od = api.JobMetadata.fromJson(o.toJson());
       checkJobMetadata(od as api.JobMetadata);
@@ -4372,7 +4372,7 @@ void main() {
   });
 
   unittest.group('obj-schema-JobPlacement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJobPlacement();
       var od = api.JobPlacement.fromJson(o.toJson());
       checkJobPlacement(od as api.JobPlacement);
@@ -4380,7 +4380,7 @@ void main() {
   });
 
   unittest.group('obj-schema-JobReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJobReference();
       var od = api.JobReference.fromJson(o.toJson());
       checkJobReference(od as api.JobReference);
@@ -4388,7 +4388,7 @@ void main() {
   });
 
   unittest.group('obj-schema-JobScheduling', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJobScheduling();
       var od = api.JobScheduling.fromJson(o.toJson());
       checkJobScheduling(od as api.JobScheduling);
@@ -4396,7 +4396,7 @@ void main() {
   });
 
   unittest.group('obj-schema-JobStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJobStatus();
       var od = api.JobStatus.fromJson(o.toJson());
       checkJobStatus(od as api.JobStatus);
@@ -4404,7 +4404,7 @@ void main() {
   });
 
   unittest.group('obj-schema-KerberosConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildKerberosConfig();
       var od = api.KerberosConfig.fromJson(o.toJson());
       checkKerberosConfig(od as api.KerberosConfig);
@@ -4412,7 +4412,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LifecycleConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLifecycleConfig();
       var od = api.LifecycleConfig.fromJson(o.toJson());
       checkLifecycleConfig(od as api.LifecycleConfig);
@@ -4420,7 +4420,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAutoscalingPoliciesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAutoscalingPoliciesResponse();
       var od = api.ListAutoscalingPoliciesResponse.fromJson(o.toJson());
       checkListAutoscalingPoliciesResponse(
@@ -4429,7 +4429,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListClustersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListClustersResponse();
       var od = api.ListClustersResponse.fromJson(o.toJson());
       checkListClustersResponse(od as api.ListClustersResponse);
@@ -4437,7 +4437,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListJobsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListJobsResponse();
       var od = api.ListJobsResponse.fromJson(o.toJson());
       checkListJobsResponse(od as api.ListJobsResponse);
@@ -4445,7 +4445,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -4453,7 +4453,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListWorkflowTemplatesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListWorkflowTemplatesResponse();
       var od = api.ListWorkflowTemplatesResponse.fromJson(o.toJson());
       checkListWorkflowTemplatesResponse(
@@ -4462,7 +4462,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LoggingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLoggingConfig();
       var od = api.LoggingConfig.fromJson(o.toJson());
       checkLoggingConfig(od as api.LoggingConfig);
@@ -4470,7 +4470,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedCluster', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedCluster();
       var od = api.ManagedCluster.fromJson(o.toJson());
       checkManagedCluster(od as api.ManagedCluster);
@@ -4478,7 +4478,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedGroupConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedGroupConfig();
       var od = api.ManagedGroupConfig.fromJson(o.toJson());
       checkManagedGroupConfig(od as api.ManagedGroupConfig);
@@ -4486,7 +4486,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetastoreConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetastoreConfig();
       var od = api.MetastoreConfig.fromJson(o.toJson());
       checkMetastoreConfig(od as api.MetastoreConfig);
@@ -4494,7 +4494,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NodeGroupAffinity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNodeGroupAffinity();
       var od = api.NodeGroupAffinity.fromJson(o.toJson());
       checkNodeGroupAffinity(od as api.NodeGroupAffinity);
@@ -4502,7 +4502,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NodeInitializationAction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNodeInitializationAction();
       var od = api.NodeInitializationAction.fromJson(o.toJson());
       checkNodeInitializationAction(od as api.NodeInitializationAction);
@@ -4510,7 +4510,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -4518,7 +4518,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderedJob', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderedJob();
       var od = api.OrderedJob.fromJson(o.toJson());
       checkOrderedJob(od as api.OrderedJob);
@@ -4526,7 +4526,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ParameterValidation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildParameterValidation();
       var od = api.ParameterValidation.fromJson(o.toJson());
       checkParameterValidation(od as api.ParameterValidation);
@@ -4534,7 +4534,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PigJob', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPigJob();
       var od = api.PigJob.fromJson(o.toJson());
       checkPigJob(od as api.PigJob);
@@ -4542,7 +4542,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -4550,7 +4550,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PrestoJob', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPrestoJob();
       var od = api.PrestoJob.fromJson(o.toJson());
       checkPrestoJob(od as api.PrestoJob);
@@ -4558,7 +4558,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PySparkJob', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPySparkJob();
       var od = api.PySparkJob.fromJson(o.toJson());
       checkPySparkJob(od as api.PySparkJob);
@@ -4566,7 +4566,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryList();
       var od = api.QueryList.fromJson(o.toJson());
       checkQueryList(od as api.QueryList);
@@ -4574,7 +4574,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RegexValidation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRegexValidation();
       var od = api.RegexValidation.fromJson(o.toJson());
       checkRegexValidation(od as api.RegexValidation);
@@ -4582,7 +4582,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReservationAffinity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReservationAffinity();
       var od = api.ReservationAffinity.fromJson(o.toJson());
       checkReservationAffinity(od as api.ReservationAffinity);
@@ -4590,7 +4590,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SecurityConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSecurityConfig();
       var od = api.SecurityConfig.fromJson(o.toJson());
       checkSecurityConfig(od as api.SecurityConfig);
@@ -4598,7 +4598,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -4606,7 +4606,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShieldedInstanceConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShieldedInstanceConfig();
       var od = api.ShieldedInstanceConfig.fromJson(o.toJson());
       checkShieldedInstanceConfig(od as api.ShieldedInstanceConfig);
@@ -4614,7 +4614,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SoftwareConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSoftwareConfig();
       var od = api.SoftwareConfig.fromJson(o.toJson());
       checkSoftwareConfig(od as api.SoftwareConfig);
@@ -4622,7 +4622,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SparkJob', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSparkJob();
       var od = api.SparkJob.fromJson(o.toJson());
       checkSparkJob(od as api.SparkJob);
@@ -4630,7 +4630,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SparkRJob', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSparkRJob();
       var od = api.SparkRJob.fromJson(o.toJson());
       checkSparkRJob(od as api.SparkRJob);
@@ -4638,7 +4638,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SparkSqlJob', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSparkSqlJob();
       var od = api.SparkSqlJob.fromJson(o.toJson());
       checkSparkSqlJob(od as api.SparkSqlJob);
@@ -4646,7 +4646,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StartClusterRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStartClusterRequest();
       var od = api.StartClusterRequest.fromJson(o.toJson());
       checkStartClusterRequest(od as api.StartClusterRequest);
@@ -4654,7 +4654,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -4662,7 +4662,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StopClusterRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStopClusterRequest();
       var od = api.StopClusterRequest.fromJson(o.toJson());
       checkStopClusterRequest(od as api.StopClusterRequest);
@@ -4670,7 +4670,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SubmitJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubmitJobRequest();
       var od = api.SubmitJobRequest.fromJson(o.toJson());
       checkSubmitJobRequest(od as api.SubmitJobRequest);
@@ -4678,7 +4678,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TemplateParameter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTemplateParameter();
       var od = api.TemplateParameter.fromJson(o.toJson());
       checkTemplateParameter(od as api.TemplateParameter);
@@ -4686,7 +4686,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -4694,7 +4694,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -4702,7 +4702,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ValueValidation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildValueValidation();
       var od = api.ValueValidation.fromJson(o.toJson());
       checkValueValidation(od as api.ValueValidation);
@@ -4710,7 +4710,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WorkflowGraph', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWorkflowGraph();
       var od = api.WorkflowGraph.fromJson(o.toJson());
       checkWorkflowGraph(od as api.WorkflowGraph);
@@ -4718,7 +4718,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WorkflowMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWorkflowMetadata();
       var od = api.WorkflowMetadata.fromJson(o.toJson());
       checkWorkflowMetadata(od as api.WorkflowMetadata);
@@ -4726,7 +4726,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WorkflowNode', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWorkflowNode();
       var od = api.WorkflowNode.fromJson(o.toJson());
       checkWorkflowNode(od as api.WorkflowNode);
@@ -4734,7 +4734,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WorkflowTemplate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWorkflowTemplate();
       var od = api.WorkflowTemplate.fromJson(o.toJson());
       checkWorkflowTemplate(od as api.WorkflowTemplate);
@@ -4742,7 +4742,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WorkflowTemplatePlacement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWorkflowTemplatePlacement();
       var od = api.WorkflowTemplatePlacement.fromJson(o.toJson());
       checkWorkflowTemplatePlacement(od as api.WorkflowTemplatePlacement);
@@ -4750,7 +4750,7 @@ void main() {
   });
 
   unittest.group('obj-schema-YarnApplication', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildYarnApplication();
       var od = api.YarnApplication.fromJson(o.toJson());
       checkYarnApplication(od as api.YarnApplication);
@@ -4758,7 +4758,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsAutoscalingPoliciesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.autoscalingPolicies;
       var arg_request = buildAutoscalingPolicy();
@@ -4811,14 +4811,12 @@ void main() {
         var resp = convert.json.encode(buildAutoscalingPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAutoscalingPolicy(response as api.AutoscalingPolicy);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkAutoscalingPolicy(response as api.AutoscalingPolicy);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.autoscalingPolicies;
       var arg_name = 'foo';
@@ -4866,14 +4864,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.autoscalingPolicies;
       var arg_name = 'foo';
@@ -4921,14 +4916,11 @@ void main() {
         var resp = convert.json.encode(buildAutoscalingPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAutoscalingPolicy(response as api.AutoscalingPolicy);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkAutoscalingPolicy(response as api.AutoscalingPolicy);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.autoscalingPolicies;
       var arg_request = buildGetIamPolicyRequest();
@@ -4981,14 +4973,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.autoscalingPolicies;
       var arg_parent = 'foo';
@@ -5046,18 +5036,15 @@ void main() {
         var resp = convert.json.encode(buildListAutoscalingPoliciesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAutoscalingPoliciesResponse(
-            response as api.ListAutoscalingPoliciesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAutoscalingPoliciesResponse(
+          response as api.ListAutoscalingPoliciesResponse);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.autoscalingPolicies;
       var arg_request = buildSetIamPolicyRequest();
@@ -5110,14 +5097,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.autoscalingPolicies;
       var arg_request = buildTestIamPermissionsRequest();
@@ -5170,15 +5155,13 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.autoscalingPolicies;
       var arg_request = buildAutoscalingPolicy();
@@ -5231,16 +5214,14 @@ void main() {
         var resp = convert.json.encode(buildAutoscalingPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAutoscalingPolicy(response as api.AutoscalingPolicy);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkAutoscalingPolicy(response as api.AutoscalingPolicy);
     });
   });
 
   unittest.group('resource-ProjectsLocationsWorkflowTemplatesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_request = buildWorkflowTemplate();
@@ -5293,14 +5274,12 @@ void main() {
         var resp = convert.json.encode(buildWorkflowTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWorkflowTemplate(response as api.WorkflowTemplate);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkWorkflowTemplate(response as api.WorkflowTemplate);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_name = 'foo';
@@ -5353,14 +5332,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, version: arg_version, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name,
+          version: arg_version, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_name = 'foo';
@@ -5413,14 +5390,12 @@ void main() {
         var resp = convert.json.encode(buildWorkflowTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, version: arg_version, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWorkflowTemplate(response as api.WorkflowTemplate);
-      })));
+      final response =
+          await res.get(arg_name, version: arg_version, $fields: arg_$fields);
+      checkWorkflowTemplate(response as api.WorkflowTemplate);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_request = buildGetIamPolicyRequest();
@@ -5473,14 +5448,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--instantiate', () {
+    unittest.test('method--instantiate', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_request = buildInstantiateWorkflowTemplateRequest();
@@ -5534,14 +5507,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .instantiate(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.instantiate(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--instantiateInline', () {
+    unittest.test('method--instantiateInline', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_request = buildWorkflowTemplate();
@@ -5599,15 +5570,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .instantiateInline(arg_request, arg_parent,
-              requestId: arg_requestId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.instantiateInline(arg_request, arg_parent,
+          requestId: arg_requestId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_parent = 'foo';
@@ -5665,18 +5633,15 @@ void main() {
         var resp = convert.json.encode(buildListWorkflowTemplatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListWorkflowTemplatesResponse(
-            response as api.ListWorkflowTemplatesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListWorkflowTemplatesResponse(
+          response as api.ListWorkflowTemplatesResponse);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_request = buildSetIamPolicyRequest();
@@ -5729,14 +5694,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_request = buildTestIamPermissionsRequest();
@@ -5789,15 +5752,13 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.locations.workflowTemplates;
       var arg_request = buildWorkflowTemplate();
@@ -5850,16 +5811,14 @@ void main() {
         var resp = convert.json.encode(buildWorkflowTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWorkflowTemplate(response as api.WorkflowTemplate);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkWorkflowTemplate(response as api.WorkflowTemplate);
     });
   });
 
   unittest.group('resource-ProjectsRegionsAutoscalingPoliciesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.autoscalingPolicies;
       var arg_request = buildAutoscalingPolicy();
@@ -5912,14 +5871,12 @@ void main() {
         var resp = convert.json.encode(buildAutoscalingPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAutoscalingPolicy(response as api.AutoscalingPolicy);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkAutoscalingPolicy(response as api.AutoscalingPolicy);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.autoscalingPolicies;
       var arg_name = 'foo';
@@ -5967,14 +5924,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.autoscalingPolicies;
       var arg_name = 'foo';
@@ -6022,14 +5976,11 @@ void main() {
         var resp = convert.json.encode(buildAutoscalingPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAutoscalingPolicy(response as api.AutoscalingPolicy);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkAutoscalingPolicy(response as api.AutoscalingPolicy);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.autoscalingPolicies;
       var arg_request = buildGetIamPolicyRequest();
@@ -6082,14 +6033,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.autoscalingPolicies;
       var arg_parent = 'foo';
@@ -6147,18 +6096,15 @@ void main() {
         var resp = convert.json.encode(buildListAutoscalingPoliciesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAutoscalingPoliciesResponse(
-            response as api.ListAutoscalingPoliciesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAutoscalingPoliciesResponse(
+          response as api.ListAutoscalingPoliciesResponse);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.autoscalingPolicies;
       var arg_request = buildSetIamPolicyRequest();
@@ -6211,14 +6157,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.autoscalingPolicies;
       var arg_request = buildTestIamPermissionsRequest();
@@ -6271,15 +6215,13 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.autoscalingPolicies;
       var arg_request = buildAutoscalingPolicy();
@@ -6332,16 +6274,14 @@ void main() {
         var resp = convert.json.encode(buildAutoscalingPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAutoscalingPolicy(response as api.AutoscalingPolicy);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkAutoscalingPolicy(response as api.AutoscalingPolicy);
     });
   });
 
   unittest.group('resource-ProjectsRegionsClustersResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_request = buildCluster();
@@ -6427,15 +6367,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_projectId, arg_region,
-              requestId: arg_requestId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_projectId, arg_region,
+          requestId: arg_requestId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_projectId = 'foo';
@@ -6528,17 +6465,15 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_projectId, arg_region, arg_clusterName,
-              clusterUuid: arg_clusterUuid,
-              requestId: arg_requestId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(
+          arg_projectId, arg_region, arg_clusterName,
+          clusterUuid: arg_clusterUuid,
+          requestId: arg_requestId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--diagnose', () {
+    unittest.test('method--diagnose', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_request = buildDiagnoseClusterRequest();
@@ -6634,15 +6569,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .diagnose(arg_request, arg_projectId, arg_region, arg_clusterName,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.diagnose(
+          arg_request, arg_projectId, arg_region, arg_clusterName,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_projectId = 'foo';
@@ -6725,14 +6658,12 @@ void main() {
         var resp = convert.json.encode(buildCluster());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_projectId, arg_region, arg_clusterName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCluster(response as api.Cluster);
-      })));
+      final response = await res.get(arg_projectId, arg_region, arg_clusterName,
+          $fields: arg_$fields);
+      checkCluster(response as api.Cluster);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_request = buildGetIamPolicyRequest();
@@ -6785,14 +6716,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--injectCredentials', () {
+    unittest.test('method--injectCredentials', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_request = buildInjectCredentialsRequest();
@@ -6847,15 +6776,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .injectCredentials(arg_request, arg_project, arg_region, arg_cluster,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.injectCredentials(
+          arg_request, arg_project, arg_region, arg_cluster,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_projectId = 'foo';
@@ -6946,18 +6873,15 @@ void main() {
         var resp = convert.json.encode(buildListClustersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_projectId, arg_region,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListClustersResponse(response as api.ListClustersResponse);
-      })));
+      final response = await res.list(arg_projectId, arg_region,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListClustersResponse(response as api.ListClustersResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_request = buildCluster();
@@ -7060,18 +6984,16 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_projectId, arg_region, arg_clusterName,
-              gracefulDecommissionTimeout: arg_gracefulDecommissionTimeout,
-              requestId: arg_requestId,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(
+          arg_request, arg_projectId, arg_region, arg_clusterName,
+          gracefulDecommissionTimeout: arg_gracefulDecommissionTimeout,
+          requestId: arg_requestId,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_request = buildSetIamPolicyRequest();
@@ -7124,14 +7046,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--start', () {
+    unittest.test('method--start', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_request = buildStartClusterRequest();
@@ -7227,15 +7147,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .start(arg_request, arg_projectId, arg_region, arg_clusterName,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.start(
+          arg_request, arg_projectId, arg_region, arg_clusterName,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--stop', () {
+    unittest.test('method--stop', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_request = buildStopClusterRequest();
@@ -7331,15 +7249,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .stop(arg_request, arg_projectId, arg_region, arg_clusterName,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.stop(
+          arg_request, arg_projectId, arg_region, arg_clusterName,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.clusters;
       var arg_request = buildTestIamPermissionsRequest();
@@ -7392,17 +7308,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsRegionsJobsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_request = buildCancelJobRequest();
@@ -7498,15 +7412,13 @@ void main() {
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_projectId, arg_region, arg_jobId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJob(response as api.Job);
-      })));
+      final response = await res.cancel(
+          arg_request, arg_projectId, arg_region, arg_jobId,
+          $fields: arg_$fields);
+      checkJob(response as api.Job);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_projectId = 'foo';
@@ -7589,14 +7501,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_projectId, arg_region, arg_jobId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_projectId, arg_region, arg_jobId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_projectId = 'foo';
@@ -7679,14 +7589,12 @@ void main() {
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_projectId, arg_region, arg_jobId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJob(response as api.Job);
-      })));
+      final response = await res.get(arg_projectId, arg_region, arg_jobId,
+          $fields: arg_$fields);
+      checkJob(response as api.Job);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_request = buildGetIamPolicyRequest();
@@ -7739,14 +7647,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_projectId = 'foo';
@@ -7847,20 +7753,17 @@ void main() {
         var resp = convert.json.encode(buildListJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_projectId, arg_region,
-              clusterName: arg_clusterName,
-              filter: arg_filter,
-              jobStateMatcher: arg_jobStateMatcher,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListJobsResponse(response as api.ListJobsResponse);
-      })));
+      final response = await res.list(arg_projectId, arg_region,
+          clusterName: arg_clusterName,
+          filter: arg_filter,
+          jobStateMatcher: arg_jobStateMatcher,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListJobsResponse(response as api.ListJobsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_request = buildJob();
@@ -7952,15 +7855,13 @@ void main() {
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_projectId, arg_region, arg_jobId,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJob(response as api.Job);
-      })));
+      final response = await res.patch(
+          arg_request, arg_projectId, arg_region, arg_jobId,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkJob(response as api.Job);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_request = buildSetIamPolicyRequest();
@@ -8013,14 +7914,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--submit', () {
+    unittest.test('method--submit', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_request = buildSubmitJobRequest();
@@ -8101,14 +8000,12 @@ void main() {
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .submit(arg_request, arg_projectId, arg_region, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJob(response as api.Job);
-      })));
+      final response = await res.submit(arg_request, arg_projectId, arg_region,
+          $fields: arg_$fields);
+      checkJob(response as api.Job);
     });
 
-    unittest.test('method--submitAsOperation', () {
+    unittest.test('method--submitAsOperation', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_request = buildSubmitJobRequest();
@@ -8189,15 +8086,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .submitAsOperation(arg_request, arg_projectId, arg_region,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.submitAsOperation(
+          arg_request, arg_projectId, arg_region,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.jobs;
       var arg_request = buildTestIamPermissionsRequest();
@@ -8250,17 +8145,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsRegionsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.operations;
       var arg_name = 'foo';
@@ -8308,14 +8201,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.cancel(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.operations;
       var arg_name = 'foo';
@@ -8363,14 +8253,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.operations;
       var arg_name = 'foo';
@@ -8418,14 +8305,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.operations;
       var arg_request = buildGetIamPolicyRequest();
@@ -8478,14 +8362,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.operations;
       var arg_name = 'foo';
@@ -8548,18 +8430,15 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.operations;
       var arg_request = buildSetIamPolicyRequest();
@@ -8612,14 +8491,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.operations;
       var arg_request = buildTestIamPermissionsRequest();
@@ -8672,17 +8549,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsRegionsWorkflowTemplatesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_request = buildWorkflowTemplate();
@@ -8735,14 +8610,12 @@ void main() {
         var resp = convert.json.encode(buildWorkflowTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWorkflowTemplate(response as api.WorkflowTemplate);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkWorkflowTemplate(response as api.WorkflowTemplate);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_name = 'foo';
@@ -8795,14 +8668,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, version: arg_version, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name,
+          version: arg_version, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_name = 'foo';
@@ -8855,14 +8726,12 @@ void main() {
         var resp = convert.json.encode(buildWorkflowTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, version: arg_version, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWorkflowTemplate(response as api.WorkflowTemplate);
-      })));
+      final response =
+          await res.get(arg_name, version: arg_version, $fields: arg_$fields);
+      checkWorkflowTemplate(response as api.WorkflowTemplate);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_request = buildGetIamPolicyRequest();
@@ -8915,14 +8784,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--instantiate', () {
+    unittest.test('method--instantiate', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_request = buildInstantiateWorkflowTemplateRequest();
@@ -8976,14 +8843,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .instantiate(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.instantiate(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--instantiateInline', () {
+    unittest.test('method--instantiateInline', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_request = buildWorkflowTemplate();
@@ -9041,15 +8906,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .instantiateInline(arg_request, arg_parent,
-              requestId: arg_requestId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.instantiateInline(arg_request, arg_parent,
+          requestId: arg_requestId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_parent = 'foo';
@@ -9107,18 +8969,15 @@ void main() {
         var resp = convert.json.encode(buildListWorkflowTemplatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListWorkflowTemplatesResponse(
-            response as api.ListWorkflowTemplatesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListWorkflowTemplatesResponse(
+          response as api.ListWorkflowTemplatesResponse);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_request = buildSetIamPolicyRequest();
@@ -9171,14 +9030,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_request = buildTestIamPermissionsRequest();
@@ -9231,15 +9088,13 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DataprocApi(mock).projects.regions.workflowTemplates;
       var arg_request = buildWorkflowTemplate();
@@ -9292,11 +9147,9 @@ void main() {
         var resp = convert.json.encode(buildWorkflowTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWorkflowTemplate(response as api.WorkflowTemplate);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkWorkflowTemplate(response as api.WorkflowTemplate);
     });
   });
 }

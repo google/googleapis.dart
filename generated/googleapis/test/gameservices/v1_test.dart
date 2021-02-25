@@ -2651,7 +2651,7 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
 
 void main() {
   unittest.group('obj-schema-AuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
       checkAuditConfig(od as api.AuditConfig);
@@ -2659,7 +2659,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
       checkAuditLogConfig(od as api.AuditLogConfig);
@@ -2667,7 +2667,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuthorizationLoggingOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuthorizationLoggingOptions();
       var od = api.AuthorizationLoggingOptions.fromJson(o.toJson());
       checkAuthorizationLoggingOptions(od as api.AuthorizationLoggingOptions);
@@ -2675,7 +2675,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -2683,7 +2683,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od as api.CancelOperationRequest);
@@ -2691,7 +2691,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CloudAuditOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCloudAuditOptions();
       var od = api.CloudAuditOptions.fromJson(o.toJson());
       checkCloudAuditOptions(od as api.CloudAuditOptions);
@@ -2699,7 +2699,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Condition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCondition();
       var od = api.Condition.fromJson(o.toJson());
       checkCondition(od as api.Condition);
@@ -2707,7 +2707,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CounterOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCounterOptions();
       var od = api.CounterOptions.fromJson(o.toJson());
       checkCounterOptions(od as api.CounterOptions);
@@ -2715,7 +2715,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomField', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomField();
       var od = api.CustomField.fromJson(o.toJson());
       checkCustomField(od as api.CustomField);
@@ -2723,7 +2723,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DataAccessOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDataAccessOptions();
       var od = api.DataAccessOptions.fromJson(o.toJson());
       checkDataAccessOptions(od as api.DataAccessOptions);
@@ -2731,7 +2731,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeployedClusterState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeployedClusterState();
       var od = api.DeployedClusterState.fromJson(o.toJson());
       checkDeployedClusterState(od as api.DeployedClusterState);
@@ -2739,7 +2739,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeployedFleet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeployedFleet();
       var od = api.DeployedFleet.fromJson(o.toJson());
       checkDeployedFleet(od as api.DeployedFleet);
@@ -2747,7 +2747,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeployedFleetAutoscaler', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeployedFleetAutoscaler();
       var od = api.DeployedFleetAutoscaler.fromJson(o.toJson());
       checkDeployedFleetAutoscaler(od as api.DeployedFleetAutoscaler);
@@ -2755,7 +2755,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeployedFleetDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeployedFleetDetails();
       var od = api.DeployedFleetDetails.fromJson(o.toJson());
       checkDeployedFleetDetails(od as api.DeployedFleetDetails);
@@ -2763,7 +2763,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeployedFleetStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeployedFleetStatus();
       var od = api.DeployedFleetStatus.fromJson(o.toJson());
       checkDeployedFleetStatus(od as api.DeployedFleetStatus);
@@ -2771,7 +2771,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -2779,7 +2779,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -2787,7 +2787,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FetchDeploymentStateRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFetchDeploymentStateRequest();
       var od = api.FetchDeploymentStateRequest.fromJson(o.toJson());
       checkFetchDeploymentStateRequest(od as api.FetchDeploymentStateRequest);
@@ -2795,7 +2795,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FetchDeploymentStateResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFetchDeploymentStateResponse();
       var od = api.FetchDeploymentStateResponse.fromJson(o.toJson());
       checkFetchDeploymentStateResponse(od as api.FetchDeploymentStateResponse);
@@ -2803,7 +2803,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FleetConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFleetConfig();
       var od = api.FleetConfig.fromJson(o.toJson());
       checkFleetConfig(od as api.FleetConfig);
@@ -2811,7 +2811,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GameServerCluster', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGameServerCluster();
       var od = api.GameServerCluster.fromJson(o.toJson());
       checkGameServerCluster(od as api.GameServerCluster);
@@ -2819,7 +2819,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GameServerClusterConnectionInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGameServerClusterConnectionInfo();
       var od = api.GameServerClusterConnectionInfo.fromJson(o.toJson());
       checkGameServerClusterConnectionInfo(
@@ -2828,7 +2828,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GameServerConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGameServerConfig();
       var od = api.GameServerConfig.fromJson(o.toJson());
       checkGameServerConfig(od as api.GameServerConfig);
@@ -2836,7 +2836,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GameServerConfigOverride', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGameServerConfigOverride();
       var od = api.GameServerConfigOverride.fromJson(o.toJson());
       checkGameServerConfigOverride(od as api.GameServerConfigOverride);
@@ -2844,7 +2844,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GameServerDeployment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGameServerDeployment();
       var od = api.GameServerDeployment.fromJson(o.toJson());
       checkGameServerDeployment(od as api.GameServerDeployment);
@@ -2852,7 +2852,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GameServerDeploymentRollout', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGameServerDeploymentRollout();
       var od = api.GameServerDeploymentRollout.fromJson(o.toJson());
       checkGameServerDeploymentRollout(od as api.GameServerDeploymentRollout);
@@ -2860,7 +2860,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GkeClusterReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGkeClusterReference();
       var od = api.GkeClusterReference.fromJson(o.toJson());
       checkGkeClusterReference(od as api.GkeClusterReference);
@@ -2868,7 +2868,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LabelSelector', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLabelSelector();
       var od = api.LabelSelector.fromJson(o.toJson());
       checkLabelSelector(od as api.LabelSelector);
@@ -2876,7 +2876,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListGameServerClustersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListGameServerClustersResponse();
       var od = api.ListGameServerClustersResponse.fromJson(o.toJson());
       checkListGameServerClustersResponse(
@@ -2885,7 +2885,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListGameServerConfigsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListGameServerConfigsResponse();
       var od = api.ListGameServerConfigsResponse.fromJson(o.toJson());
       checkListGameServerConfigsResponse(
@@ -2894,7 +2894,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListGameServerDeploymentsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListGameServerDeploymentsResponse();
       var od = api.ListGameServerDeploymentsResponse.fromJson(o.toJson());
       checkListGameServerDeploymentsResponse(
@@ -2903,7 +2903,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -2911,7 +2911,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -2919,7 +2919,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListRealmsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListRealmsResponse();
       var od = api.ListRealmsResponse.fromJson(o.toJson());
       checkListRealmsResponse(od as api.ListRealmsResponse);
@@ -2927,7 +2927,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -2935,7 +2935,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLogConfig();
       var od = api.LogConfig.fromJson(o.toJson());
       checkLogConfig(od as api.LogConfig);
@@ -2943,7 +2943,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -2951,7 +2951,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
       checkOperationMetadata(od as api.OperationMetadata);
@@ -2959,7 +2959,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationStatus();
       var od = api.OperationStatus.fromJson(o.toJson());
       checkOperationStatus(od as api.OperationStatus);
@@ -2967,7 +2967,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -2975,7 +2975,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PreviewCreateGameServerClusterResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPreviewCreateGameServerClusterResponse();
       var od = api.PreviewCreateGameServerClusterResponse.fromJson(o.toJson());
       checkPreviewCreateGameServerClusterResponse(
@@ -2984,7 +2984,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PreviewDeleteGameServerClusterResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPreviewDeleteGameServerClusterResponse();
       var od = api.PreviewDeleteGameServerClusterResponse.fromJson(o.toJson());
       checkPreviewDeleteGameServerClusterResponse(
@@ -2993,7 +2993,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PreviewGameServerDeploymentRolloutResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPreviewGameServerDeploymentRolloutResponse();
       var od =
           api.PreviewGameServerDeploymentRolloutResponse.fromJson(o.toJson());
@@ -3003,7 +3003,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PreviewRealmUpdateResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPreviewRealmUpdateResponse();
       var od = api.PreviewRealmUpdateResponse.fromJson(o.toJson());
       checkPreviewRealmUpdateResponse(od as api.PreviewRealmUpdateResponse);
@@ -3011,7 +3011,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PreviewUpdateGameServerClusterResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPreviewUpdateGameServerClusterResponse();
       var od = api.PreviewUpdateGameServerClusterResponse.fromJson(o.toJson());
       checkPreviewUpdateGameServerClusterResponse(
@@ -3020,7 +3020,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Realm', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRealm();
       var od = api.Realm.fromJson(o.toJson());
       checkRealm(od as api.Realm);
@@ -3028,7 +3028,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RealmSelector', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRealmSelector();
       var od = api.RealmSelector.fromJson(o.toJson());
       checkRealmSelector(od as api.RealmSelector);
@@ -3036,7 +3036,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Rule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRule();
       var od = api.Rule.fromJson(o.toJson());
       checkRule(od as api.Rule);
@@ -3044,7 +3044,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScalingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScalingConfig();
       var od = api.ScalingConfig.fromJson(o.toJson());
       checkScalingConfig(od as api.ScalingConfig);
@@ -3052,7 +3052,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Schedule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSchedule();
       var od = api.Schedule.fromJson(o.toJson());
       checkSchedule(od as api.Schedule);
@@ -3060,7 +3060,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -3068,7 +3068,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SpecSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSpecSource();
       var od = api.SpecSource.fromJson(o.toJson());
       checkSpecSource(od as api.SpecSource);
@@ -3076,7 +3076,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -3084,7 +3084,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TargetDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTargetDetails();
       var od = api.TargetDetails.fromJson(o.toJson());
       checkTargetDetails(od as api.TargetDetails);
@@ -3092,7 +3092,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TargetFleet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTargetFleet();
       var od = api.TargetFleet.fromJson(o.toJson());
       checkTargetFleet(od as api.TargetFleet);
@@ -3100,7 +3100,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TargetFleetAutoscaler', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTargetFleetAutoscaler();
       var od = api.TargetFleetAutoscaler.fromJson(o.toJson());
       checkTargetFleetAutoscaler(od as api.TargetFleetAutoscaler);
@@ -3108,7 +3108,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TargetFleetDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTargetFleetDetails();
       var od = api.TargetFleetDetails.fromJson(o.toJson());
       checkTargetFleetDetails(od as api.TargetFleetDetails);
@@ -3116,7 +3116,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TargetState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTargetState();
       var od = api.TargetState.fromJson(o.toJson());
       checkTargetState(od as api.TargetState);
@@ -3124,7 +3124,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -3132,7 +3132,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -3140,7 +3140,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -3188,14 +3188,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -3263,21 +3260,18 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              includeUnrevealedLocations: arg_includeUnrevealedLocations,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          includeUnrevealedLocations: arg_includeUnrevealedLocations,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsGameServerDeploymentsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.GameServicesApi(mock).projects.locations.gameServerDeployments;
@@ -3336,15 +3330,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              deploymentId: arg_deploymentId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          deploymentId: arg_deploymentId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.GameServicesApi(mock).projects.locations.gameServerDeployments;
@@ -3393,14 +3384,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--fetchDeploymentState', () {
+    unittest.test('method--fetchDeploymentState', () async {
       var mock = HttpServerMock();
       var res =
           api.GameServicesApi(mock).projects.locations.gameServerDeployments;
@@ -3455,15 +3443,13 @@ void main() {
         var resp = convert.json.encode(buildFetchDeploymentStateResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .fetchDeploymentState(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFetchDeploymentStateResponse(
-            response as api.FetchDeploymentStateResponse);
-      })));
+      final response = await res.fetchDeploymentState(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkFetchDeploymentStateResponse(
+          response as api.FetchDeploymentStateResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.GameServicesApi(mock).projects.locations.gameServerDeployments;
@@ -3512,14 +3498,11 @@ void main() {
         var resp = convert.json.encode(buildGameServerDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGameServerDeployment(response as api.GameServerDeployment);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGameServerDeployment(response as api.GameServerDeployment);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res =
           api.GameServicesApi(mock).projects.locations.gameServerDeployments;
@@ -3573,17 +3556,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--getRollout', () {
+    unittest.test('method--getRollout', () async {
       var mock = HttpServerMock();
       var res =
           api.GameServicesApi(mock).projects.locations.gameServerDeployments;
@@ -3632,15 +3611,12 @@ void main() {
         var resp = convert.json.encode(buildGameServerDeploymentRollout());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getRollout(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGameServerDeploymentRollout(
-            response as api.GameServerDeploymentRollout);
-      })));
+      final response = await res.getRollout(arg_name, $fields: arg_$fields);
+      checkGameServerDeploymentRollout(
+          response as api.GameServerDeploymentRollout);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.GameServicesApi(mock).projects.locations.gameServerDeployments;
@@ -3710,20 +3686,17 @@ void main() {
             convert.json.encode(buildListGameServerDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListGameServerDeploymentsResponse(
-            response as api.ListGameServerDeploymentsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListGameServerDeploymentsResponse(
+          response as api.ListGameServerDeploymentsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res =
           api.GameServicesApi(mock).projects.locations.gameServerDeployments;
@@ -3782,15 +3755,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--previewRollout', () {
+    unittest.test('method--previewRollout', () async {
       var mock = HttpServerMock();
       var res =
           api.GameServicesApi(mock).projects.locations.gameServerDeployments;
@@ -3856,18 +3826,15 @@ void main() {
             .encode(buildPreviewGameServerDeploymentRolloutResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .previewRollout(arg_request, arg_name,
-              previewTime: arg_previewTime,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPreviewGameServerDeploymentRolloutResponse(
-            response as api.PreviewGameServerDeploymentRolloutResponse);
-      })));
+      final response = await res.previewRollout(arg_request, arg_name,
+          previewTime: arg_previewTime,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkPreviewGameServerDeploymentRolloutResponse(
+          response as api.PreviewGameServerDeploymentRolloutResponse);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res =
           api.GameServicesApi(mock).projects.locations.gameServerDeployments;
@@ -3921,14 +3888,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res =
           api.GameServicesApi(mock).projects.locations.gameServerDeployments;
@@ -3982,15 +3947,13 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
 
-    unittest.test('method--updateRollout', () {
+    unittest.test('method--updateRollout', () async {
       var mock = HttpServerMock();
       var res =
           api.GameServicesApi(mock).projects.locations.gameServerDeployments;
@@ -4050,18 +4013,15 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateRollout(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.updateRollout(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsGameServerDeploymentsConfigsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock)
           .projects
@@ -4123,15 +4083,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              configId: arg_configId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          configId: arg_configId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock)
           .projects
@@ -4183,14 +4140,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock)
           .projects
@@ -4242,14 +4196,11 @@ void main() {
         var resp = convert.json.encode(buildGameServerConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGameServerConfig(response as api.GameServerConfig);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGameServerConfig(response as api.GameServerConfig);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock)
           .projects
@@ -4321,22 +4272,19 @@ void main() {
         var resp = convert.json.encode(buildListGameServerConfigsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListGameServerConfigsResponse(
-            response as api.ListGameServerConfigsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListGameServerConfigsResponse(
+          response as api.ListGameServerConfigsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock).projects.locations.operations;
       var arg_request = buildCancelOperationRequest();
@@ -4389,14 +4337,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -4444,14 +4390,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -4499,14 +4442,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -4569,20 +4509,17 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsRealmsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock).projects.locations.realms;
       var arg_request = buildRealm();
@@ -4640,15 +4577,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              realmId: arg_realmId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          realmId: arg_realmId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock).projects.locations.realms;
       var arg_name = 'foo';
@@ -4696,14 +4630,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock).projects.locations.realms;
       var arg_name = 'foo';
@@ -4751,14 +4682,11 @@ void main() {
         var resp = convert.json.encode(buildRealm());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRealm(response as api.Realm);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkRealm(response as api.Realm);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock).projects.locations.realms;
       var arg_parent = 'foo';
@@ -4826,19 +4754,16 @@ void main() {
         var resp = convert.json.encode(buildListRealmsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListRealmsResponse(response as api.ListRealmsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListRealmsResponse(response as api.ListRealmsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock).projects.locations.realms;
       var arg_request = buildRealm();
@@ -4896,15 +4821,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--previewUpdate', () {
+    unittest.test('method--previewUpdate', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock).projects.locations.realms;
       var arg_request = buildRealm();
@@ -4967,21 +4889,18 @@ void main() {
         var resp = convert.json.encode(buildPreviewRealmUpdateResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .previewUpdate(arg_request, arg_name,
-              previewTime: arg_previewTime,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPreviewRealmUpdateResponse(
-            response as api.PreviewRealmUpdateResponse);
-      })));
+      final response = await res.previewUpdate(arg_request, arg_name,
+          previewTime: arg_previewTime,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkPreviewRealmUpdateResponse(
+          response as api.PreviewRealmUpdateResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsRealmsGameServerClustersResource',
       () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock)
           .projects
@@ -5043,16 +4962,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              gameServerClusterId: arg_gameServerClusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          gameServerClusterId: arg_gameServerClusterId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock)
           .projects
@@ -5104,14 +5019,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock)
           .projects
@@ -5163,14 +5075,11 @@ void main() {
         var resp = convert.json.encode(buildGameServerCluster());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGameServerCluster(response as api.GameServerCluster);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGameServerCluster(response as api.GameServerCluster);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock)
           .projects
@@ -5242,20 +5151,17 @@ void main() {
         var resp = convert.json.encode(buildListGameServerClustersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListGameServerClustersResponse(
-            response as api.ListGameServerClustersResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListGameServerClustersResponse(
+          response as api.ListGameServerClustersResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock)
           .projects
@@ -5317,15 +5223,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--previewCreate', () {
+    unittest.test('method--previewCreate', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock)
           .projects
@@ -5393,18 +5296,15 @@ void main() {
             convert.json.encode(buildPreviewCreateGameServerClusterResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .previewCreate(arg_request, arg_parent,
-              gameServerClusterId: arg_gameServerClusterId,
-              previewTime: arg_previewTime,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPreviewCreateGameServerClusterResponse(
-            response as api.PreviewCreateGameServerClusterResponse);
-      })));
+      final response = await res.previewCreate(arg_request, arg_parent,
+          gameServerClusterId: arg_gameServerClusterId,
+          previewTime: arg_previewTime,
+          $fields: arg_$fields);
+      checkPreviewCreateGameServerClusterResponse(
+          response as api.PreviewCreateGameServerClusterResponse);
     });
 
-    unittest.test('method--previewDelete', () {
+    unittest.test('method--previewDelete', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock)
           .projects
@@ -5462,16 +5362,13 @@ void main() {
             convert.json.encode(buildPreviewDeleteGameServerClusterResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .previewDelete(arg_name,
-              previewTime: arg_previewTime, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPreviewDeleteGameServerClusterResponse(
-            response as api.PreviewDeleteGameServerClusterResponse);
-      })));
+      final response = await res.previewDelete(arg_name,
+          previewTime: arg_previewTime, $fields: arg_$fields);
+      checkPreviewDeleteGameServerClusterResponse(
+          response as api.PreviewDeleteGameServerClusterResponse);
     });
 
-    unittest.test('method--previewUpdate', () {
+    unittest.test('method--previewUpdate', () async {
       var mock = HttpServerMock();
       var res = api.GameServicesApi(mock)
           .projects
@@ -5539,15 +5436,12 @@ void main() {
             convert.json.encode(buildPreviewUpdateGameServerClusterResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .previewUpdate(arg_request, arg_name,
-              previewTime: arg_previewTime,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPreviewUpdateGameServerClusterResponse(
-            response as api.PreviewUpdateGameServerClusterResponse);
-      })));
+      final response = await res.previewUpdate(arg_request, arg_name,
+          previewTime: arg_previewTime,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkPreviewUpdateGameServerClusterResponse(
+          response as api.PreviewUpdateGameServerClusterResponse);
     });
   });
 }

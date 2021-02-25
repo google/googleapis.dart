@@ -1027,7 +1027,7 @@ void checkWebServerNetworkAccessControl(api.WebServerNetworkAccessControl o) {
 
 void main() {
   unittest.group('obj-schema-AllowedIpRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAllowedIpRange();
       var od = api.AllowedIpRange.fromJson(o.toJson());
       checkAllowedIpRange(od as api.AllowedIpRange);
@@ -1035,7 +1035,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatabaseConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatabaseConfig();
       var od = api.DatabaseConfig.fromJson(o.toJson());
       checkDatabaseConfig(od as api.DatabaseConfig);
@@ -1043,7 +1043,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Date', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
       checkDate(od as api.Date);
@@ -1051,7 +1051,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1059,7 +1059,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EncryptionConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEncryptionConfig();
       var od = api.EncryptionConfig.fromJson(o.toJson());
       checkEncryptionConfig(od as api.EncryptionConfig);
@@ -1067,7 +1067,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Environment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnvironment();
       var od = api.Environment.fromJson(o.toJson());
       checkEnvironment(od as api.Environment);
@@ -1075,7 +1075,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnvironmentConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnvironmentConfig();
       var od = api.EnvironmentConfig.fromJson(o.toJson());
       checkEnvironmentConfig(od as api.EnvironmentConfig);
@@ -1083,7 +1083,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IPAllocationPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIPAllocationPolicy();
       var od = api.IPAllocationPolicy.fromJson(o.toJson());
       checkIPAllocationPolicy(od as api.IPAllocationPolicy);
@@ -1091,7 +1091,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImageVersion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImageVersion();
       var od = api.ImageVersion.fromJson(o.toJson());
       checkImageVersion(od as api.ImageVersion);
@@ -1099,7 +1099,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListEnvironmentsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListEnvironmentsResponse();
       var od = api.ListEnvironmentsResponse.fromJson(o.toJson());
       checkListEnvironmentsResponse(od as api.ListEnvironmentsResponse);
@@ -1107,7 +1107,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListImageVersionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListImageVersionsResponse();
       var od = api.ListImageVersionsResponse.fromJson(o.toJson());
       checkListImageVersionsResponse(od as api.ListImageVersionsResponse);
@@ -1115,7 +1115,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -1123,7 +1123,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NodeConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNodeConfig();
       var od = api.NodeConfig.fromJson(o.toJson());
       checkNodeConfig(od as api.NodeConfig);
@@ -1131,7 +1131,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -1139,7 +1139,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
       checkOperationMetadata(od as api.OperationMetadata);
@@ -1147,7 +1147,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PrivateClusterConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPrivateClusterConfig();
       var od = api.PrivateClusterConfig.fromJson(o.toJson());
       checkPrivateClusterConfig(od as api.PrivateClusterConfig);
@@ -1155,7 +1155,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PrivateEnvironmentConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPrivateEnvironmentConfig();
       var od = api.PrivateEnvironmentConfig.fromJson(o.toJson());
       checkPrivateEnvironmentConfig(od as api.PrivateEnvironmentConfig);
@@ -1163,7 +1163,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SoftwareConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSoftwareConfig();
       var od = api.SoftwareConfig.fromJson(o.toJson());
       checkSoftwareConfig(od as api.SoftwareConfig);
@@ -1171,7 +1171,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -1179,7 +1179,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebServerConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebServerConfig();
       var od = api.WebServerConfig.fromJson(o.toJson());
       checkWebServerConfig(od as api.WebServerConfig);
@@ -1187,7 +1187,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebServerNetworkAccessControl', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebServerNetworkAccessControl();
       var od = api.WebServerNetworkAccessControl.fromJson(o.toJson());
       checkWebServerNetworkAccessControl(
@@ -1196,7 +1196,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsEnvironmentsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudComposerApi(mock).projects.locations.environments;
       var arg_request = buildEnvironment();
@@ -1249,14 +1249,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudComposerApi(mock).projects.locations.environments;
       var arg_name = 'foo';
@@ -1304,14 +1302,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudComposerApi(mock).projects.locations.environments;
       var arg_name = 'foo';
@@ -1359,14 +1354,11 @@ void main() {
         var resp = convert.json.encode(buildEnvironment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEnvironment(response as api.Environment);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkEnvironment(response as api.Environment);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudComposerApi(mock).projects.locations.environments;
       var arg_parent = 'foo';
@@ -1424,17 +1416,14 @@ void main() {
         var resp = convert.json.encode(buildListEnvironmentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListEnvironmentsResponse(response as api.ListEnvironmentsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListEnvironmentsResponse(response as api.ListEnvironmentsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudComposerApi(mock).projects.locations.environments;
       var arg_request = buildEnvironment();
@@ -1492,17 +1481,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsImageVersionsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudComposerApi(mock).projects.locations.imageVersions;
       var arg_parent = 'foo';
@@ -1565,21 +1551,17 @@ void main() {
         var resp = convert.json.encode(buildListImageVersionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              includePastReleases: arg_includePastReleases,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListImageVersionsResponse(
-            response as api.ListImageVersionsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          includePastReleases: arg_includePastReleases,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListImageVersionsResponse(response as api.ListImageVersionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudComposerApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -1627,14 +1609,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudComposerApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -1682,14 +1661,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudComposerApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -1752,15 +1728,12 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 }

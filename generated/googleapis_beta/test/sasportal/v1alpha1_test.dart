@@ -1466,7 +1466,7 @@ void checkSasPortalValidateInstallerResponse(
 
 void main() {
   unittest.group('obj-schema-SasPortalAssignment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalAssignment();
       var od = api.SasPortalAssignment.fromJson(o.toJson());
       checkSasPortalAssignment(od as api.SasPortalAssignment);
@@ -1474,7 +1474,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalCreateSignedDeviceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalCreateSignedDeviceRequest();
       var od = api.SasPortalCreateSignedDeviceRequest.fromJson(o.toJson());
       checkSasPortalCreateSignedDeviceRequest(
@@ -1483,7 +1483,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalCustomer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalCustomer();
       var od = api.SasPortalCustomer.fromJson(o.toJson());
       checkSasPortalCustomer(od as api.SasPortalCustomer);
@@ -1491,7 +1491,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalDeployment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalDeployment();
       var od = api.SasPortalDeployment.fromJson(o.toJson());
       checkSasPortalDeployment(od as api.SasPortalDeployment);
@@ -1499,7 +1499,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalDevice', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalDevice();
       var od = api.SasPortalDevice.fromJson(o.toJson());
       checkSasPortalDevice(od as api.SasPortalDevice);
@@ -1507,7 +1507,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalDeviceAirInterface', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalDeviceAirInterface();
       var od = api.SasPortalDeviceAirInterface.fromJson(o.toJson());
       checkSasPortalDeviceAirInterface(od as api.SasPortalDeviceAirInterface);
@@ -1515,7 +1515,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalDeviceConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalDeviceConfig();
       var od = api.SasPortalDeviceConfig.fromJson(o.toJson());
       checkSasPortalDeviceConfig(od as api.SasPortalDeviceConfig);
@@ -1523,7 +1523,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalDeviceGrant', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalDeviceGrant();
       var od = api.SasPortalDeviceGrant.fromJson(o.toJson());
       checkSasPortalDeviceGrant(od as api.SasPortalDeviceGrant);
@@ -1531,7 +1531,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalDeviceMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalDeviceMetadata();
       var od = api.SasPortalDeviceMetadata.fromJson(o.toJson());
       checkSasPortalDeviceMetadata(od as api.SasPortalDeviceMetadata);
@@ -1539,7 +1539,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalDeviceModel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalDeviceModel();
       var od = api.SasPortalDeviceModel.fromJson(o.toJson());
       checkSasPortalDeviceModel(od as api.SasPortalDeviceModel);
@@ -1547,7 +1547,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalDpaMoveList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalDpaMoveList();
       var od = api.SasPortalDpaMoveList.fromJson(o.toJson());
       checkSasPortalDpaMoveList(od as api.SasPortalDpaMoveList);
@@ -1555,7 +1555,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalEmpty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalEmpty();
       var od = api.SasPortalEmpty.fromJson(o.toJson());
       checkSasPortalEmpty(od as api.SasPortalEmpty);
@@ -1563,7 +1563,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalFrequencyRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalFrequencyRange();
       var od = api.SasPortalFrequencyRange.fromJson(o.toJson());
       checkSasPortalFrequencyRange(od as api.SasPortalFrequencyRange);
@@ -1571,7 +1571,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalGenerateSecretRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalGenerateSecretRequest();
       var od = api.SasPortalGenerateSecretRequest.fromJson(o.toJson());
       checkSasPortalGenerateSecretRequest(
@@ -1580,7 +1580,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalGenerateSecretResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalGenerateSecretResponse();
       var od = api.SasPortalGenerateSecretResponse.fromJson(o.toJson());
       checkSasPortalGenerateSecretResponse(
@@ -1589,7 +1589,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalGetPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalGetPolicyRequest();
       var od = api.SasPortalGetPolicyRequest.fromJson(o.toJson());
       checkSasPortalGetPolicyRequest(od as api.SasPortalGetPolicyRequest);
@@ -1597,7 +1597,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalInstallationParams', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalInstallationParams();
       var od = api.SasPortalInstallationParams.fromJson(o.toJson());
       checkSasPortalInstallationParams(od as api.SasPortalInstallationParams);
@@ -1605,7 +1605,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalListCustomersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalListCustomersResponse();
       var od = api.SasPortalListCustomersResponse.fromJson(o.toJson());
       checkSasPortalListCustomersResponse(
@@ -1614,7 +1614,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalListDeploymentsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalListDeploymentsResponse();
       var od = api.SasPortalListDeploymentsResponse.fromJson(o.toJson());
       checkSasPortalListDeploymentsResponse(
@@ -1623,7 +1623,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalListDevicesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalListDevicesResponse();
       var od = api.SasPortalListDevicesResponse.fromJson(o.toJson());
       checkSasPortalListDevicesResponse(od as api.SasPortalListDevicesResponse);
@@ -1631,7 +1631,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalListNodesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalListNodesResponse();
       var od = api.SasPortalListNodesResponse.fromJson(o.toJson());
       checkSasPortalListNodesResponse(od as api.SasPortalListNodesResponse);
@@ -1639,7 +1639,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalMoveDeploymentRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalMoveDeploymentRequest();
       var od = api.SasPortalMoveDeploymentRequest.fromJson(o.toJson());
       checkSasPortalMoveDeploymentRequest(
@@ -1648,7 +1648,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalMoveDeviceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalMoveDeviceRequest();
       var od = api.SasPortalMoveDeviceRequest.fromJson(o.toJson());
       checkSasPortalMoveDeviceRequest(od as api.SasPortalMoveDeviceRequest);
@@ -1656,7 +1656,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalMoveNodeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalMoveNodeRequest();
       var od = api.SasPortalMoveNodeRequest.fromJson(o.toJson());
       checkSasPortalMoveNodeRequest(od as api.SasPortalMoveNodeRequest);
@@ -1664,7 +1664,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalNode', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalNode();
       var od = api.SasPortalNode.fromJson(o.toJson());
       checkSasPortalNode(od as api.SasPortalNode);
@@ -1672,7 +1672,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalOperation();
       var od = api.SasPortalOperation.fromJson(o.toJson());
       checkSasPortalOperation(od as api.SasPortalOperation);
@@ -1680,7 +1680,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalPolicy();
       var od = api.SasPortalPolicy.fromJson(o.toJson());
       checkSasPortalPolicy(od as api.SasPortalPolicy);
@@ -1688,7 +1688,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalSetPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalSetPolicyRequest();
       var od = api.SasPortalSetPolicyRequest.fromJson(o.toJson());
       checkSasPortalSetPolicyRequest(od as api.SasPortalSetPolicyRequest);
@@ -1696,7 +1696,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalSignDeviceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalSignDeviceRequest();
       var od = api.SasPortalSignDeviceRequest.fromJson(o.toJson());
       checkSasPortalSignDeviceRequest(od as api.SasPortalSignDeviceRequest);
@@ -1704,7 +1704,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalStatus();
       var od = api.SasPortalStatus.fromJson(o.toJson());
       checkSasPortalStatus(od as api.SasPortalStatus);
@@ -1712,7 +1712,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalTestPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalTestPermissionsRequest();
       var od = api.SasPortalTestPermissionsRequest.fromJson(o.toJson());
       checkSasPortalTestPermissionsRequest(
@@ -1721,7 +1721,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalTestPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalTestPermissionsResponse();
       var od = api.SasPortalTestPermissionsResponse.fromJson(o.toJson());
       checkSasPortalTestPermissionsResponse(
@@ -1730,7 +1730,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalUpdateSignedDeviceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalUpdateSignedDeviceRequest();
       var od = api.SasPortalUpdateSignedDeviceRequest.fromJson(o.toJson());
       checkSasPortalUpdateSignedDeviceRequest(
@@ -1739,7 +1739,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalValidateInstallerRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalValidateInstallerRequest();
       var od = api.SasPortalValidateInstallerRequest.fromJson(o.toJson());
       checkSasPortalValidateInstallerRequest(
@@ -1748,7 +1748,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SasPortalValidateInstallerResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSasPortalValidateInstallerResponse();
       var od = api.SasPortalValidateInstallerResponse.fromJson(o.toJson());
       checkSasPortalValidateInstallerResponse(
@@ -1757,7 +1757,7 @@ void main() {
   });
 
   unittest.group('resource-CustomersResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers;
       var arg_name = 'foo';
@@ -1805,14 +1805,11 @@ void main() {
         var resp = convert.json.encode(buildSasPortalCustomer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalCustomer(response as api.SasPortalCustomer);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSasPortalCustomer(response as api.SasPortalCustomer);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers;
       var arg_pageSize = 42;
@@ -1868,18 +1865,15 @@ void main() {
         var resp = convert.json.encode(buildSasPortalListCustomersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalListCustomersResponse(
-            response as api.SasPortalListCustomersResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSasPortalListCustomersResponse(
+          response as api.SasPortalListCustomersResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers;
       var arg_request = buildSasPortalCustomer();
@@ -1937,17 +1931,14 @@ void main() {
         var resp = convert.json.encode(buildSasPortalCustomer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalCustomer(response as api.SasPortalCustomer);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkSasPortalCustomer(response as api.SasPortalCustomer);
     });
   });
 
   unittest.group('resource-CustomersDeploymentsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.deployments;
       var arg_request = buildSasPortalDeployment();
@@ -2000,14 +1991,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDeployment(response as api.SasPortalDeployment);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalDeployment(response as api.SasPortalDeployment);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.deployments;
       var arg_name = 'foo';
@@ -2055,14 +2044,11 @@ void main() {
         var resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalEmpty(response as api.SasPortalEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkSasPortalEmpty(response as api.SasPortalEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.deployments;
       var arg_name = 'foo';
@@ -2110,14 +2096,11 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDeployment(response as api.SasPortalDeployment);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSasPortalDeployment(response as api.SasPortalDeployment);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.deployments;
       var arg_parent = 'foo';
@@ -2180,19 +2163,16 @@ void main() {
         var resp = convert.json.encode(buildSasPortalListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalListDeploymentsResponse(
-            response as api.SasPortalListDeploymentsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSasPortalListDeploymentsResponse(
+          response as api.SasPortalListDeploymentsResponse);
     });
 
-    unittest.test('method--move', () {
+    unittest.test('method--move', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.deployments;
       var arg_request = buildSasPortalMoveDeploymentRequest();
@@ -2246,14 +2226,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .move(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalOperation(response as api.SasPortalOperation);
-      })));
+      final response =
+          await res.move(arg_request, arg_name, $fields: arg_$fields);
+      checkSasPortalOperation(response as api.SasPortalOperation);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.deployments;
       var arg_request = buildSasPortalDeployment();
@@ -2311,17 +2289,14 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDeployment(response as api.SasPortalDeployment);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkSasPortalDeployment(response as api.SasPortalDeployment);
     });
   });
 
   unittest.group('resource-CustomersDeploymentsDevicesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.deployments.devices;
       var arg_request = buildSasPortalDevice();
@@ -2374,14 +2349,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
 
-    unittest.test('method--createSigned', () {
+    unittest.test('method--createSigned', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.deployments.devices;
       var arg_request = buildSasPortalCreateSignedDeviceRequest();
@@ -2435,14 +2408,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createSigned(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response =
+          await res.createSigned(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.deployments.devices;
       var arg_parent = 'foo';
@@ -2505,21 +2476,18 @@ void main() {
         var resp = convert.json.encode(buildSasPortalListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalListDevicesResponse(
-            response as api.SasPortalListDevicesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSasPortalListDevicesResponse(
+          response as api.SasPortalListDevicesResponse);
     });
   });
 
   unittest.group('resource-CustomersDevicesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.devices;
       var arg_request = buildSasPortalDevice();
@@ -2572,14 +2540,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
 
-    unittest.test('method--createSigned', () {
+    unittest.test('method--createSigned', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.devices;
       var arg_request = buildSasPortalCreateSignedDeviceRequest();
@@ -2633,14 +2599,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createSigned(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response =
+          await res.createSigned(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.devices;
       var arg_name = 'foo';
@@ -2688,14 +2652,11 @@ void main() {
         var resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalEmpty(response as api.SasPortalEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkSasPortalEmpty(response as api.SasPortalEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.devices;
       var arg_name = 'foo';
@@ -2743,14 +2704,11 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.devices;
       var arg_parent = 'foo';
@@ -2813,19 +2771,16 @@ void main() {
         var resp = convert.json.encode(buildSasPortalListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalListDevicesResponse(
-            response as api.SasPortalListDevicesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSasPortalListDevicesResponse(
+          response as api.SasPortalListDevicesResponse);
     });
 
-    unittest.test('method--move', () {
+    unittest.test('method--move', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.devices;
       var arg_request = buildSasPortalMoveDeviceRequest();
@@ -2878,14 +2833,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .move(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalOperation(response as api.SasPortalOperation);
-      })));
+      final response =
+          await res.move(arg_request, arg_name, $fields: arg_$fields);
+      checkSasPortalOperation(response as api.SasPortalOperation);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.devices;
       var arg_request = buildSasPortalDevice();
@@ -2943,15 +2896,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
 
-    unittest.test('method--signDevice', () {
+    unittest.test('method--signDevice', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.devices;
       var arg_request = buildSasPortalSignDeviceRequest();
@@ -3004,14 +2954,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .signDevice(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalEmpty(response as api.SasPortalEmpty);
-      })));
+      final response =
+          await res.signDevice(arg_request, arg_name, $fields: arg_$fields);
+      checkSasPortalEmpty(response as api.SasPortalEmpty);
     });
 
-    unittest.test('method--updateSigned', () {
+    unittest.test('method--updateSigned', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.devices;
       var arg_request = buildSasPortalUpdateSignedDeviceRequest();
@@ -3065,16 +3013,14 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateSigned(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response =
+          await res.updateSigned(arg_request, arg_name, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
   });
 
   unittest.group('resource-CustomersNodesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.nodes;
       var arg_request = buildSasPortalNode();
@@ -3127,14 +3073,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalNode(response as api.SasPortalNode);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalNode(response as api.SasPortalNode);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.nodes;
       var arg_name = 'foo';
@@ -3182,14 +3126,11 @@ void main() {
         var resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalEmpty(response as api.SasPortalEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkSasPortalEmpty(response as api.SasPortalEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.nodes;
       var arg_name = 'foo';
@@ -3237,14 +3178,11 @@ void main() {
         var resp = convert.json.encode(buildSasPortalNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalNode(response as api.SasPortalNode);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSasPortalNode(response as api.SasPortalNode);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.nodes;
       var arg_parent = 'foo';
@@ -3307,19 +3245,16 @@ void main() {
         var resp = convert.json.encode(buildSasPortalListNodesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalListNodesResponse(
-            response as api.SasPortalListNodesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSasPortalListNodesResponse(
+          response as api.SasPortalListNodesResponse);
     });
 
-    unittest.test('method--move', () {
+    unittest.test('method--move', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.nodes;
       var arg_request = buildSasPortalMoveNodeRequest();
@@ -3372,14 +3307,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .move(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalOperation(response as api.SasPortalOperation);
-      })));
+      final response =
+          await res.move(arg_request, arg_name, $fields: arg_$fields);
+      checkSasPortalOperation(response as api.SasPortalOperation);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.nodes;
       var arg_request = buildSasPortalNode();
@@ -3437,17 +3370,14 @@ void main() {
         var resp = convert.json.encode(buildSasPortalNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalNode(response as api.SasPortalNode);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkSasPortalNode(response as api.SasPortalNode);
     });
   });
 
   unittest.group('resource-CustomersNodesDeploymentsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.nodes.deployments;
       var arg_request = buildSasPortalDeployment();
@@ -3500,14 +3430,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDeployment(response as api.SasPortalDeployment);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalDeployment(response as api.SasPortalDeployment);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.nodes.deployments;
       var arg_parent = 'foo';
@@ -3570,21 +3498,18 @@ void main() {
         var resp = convert.json.encode(buildSasPortalListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalListDeploymentsResponse(
-            response as api.SasPortalListDeploymentsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSasPortalListDeploymentsResponse(
+          response as api.SasPortalListDeploymentsResponse);
     });
   });
 
   unittest.group('resource-CustomersNodesDevicesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.nodes.devices;
       var arg_request = buildSasPortalDevice();
@@ -3637,14 +3562,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
 
-    unittest.test('method--createSigned', () {
+    unittest.test('method--createSigned', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.nodes.devices;
       var arg_request = buildSasPortalCreateSignedDeviceRequest();
@@ -3698,14 +3621,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createSigned(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response =
+          await res.createSigned(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.nodes.devices;
       var arg_parent = 'foo';
@@ -3768,21 +3689,18 @@ void main() {
         var resp = convert.json.encode(buildSasPortalListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalListDevicesResponse(
-            response as api.SasPortalListDevicesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSasPortalListDevicesResponse(
+          response as api.SasPortalListDevicesResponse);
     });
   });
 
   unittest.group('resource-CustomersNodesNodesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.nodes.nodes;
       var arg_request = buildSasPortalNode();
@@ -3835,14 +3753,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalNode(response as api.SasPortalNode);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalNode(response as api.SasPortalNode);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).customers.nodes.nodes;
       var arg_parent = 'foo';
@@ -3905,21 +3821,18 @@ void main() {
         var resp = convert.json.encode(buildSasPortalListNodesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalListNodesResponse(
-            response as api.SasPortalListNodesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSasPortalListNodesResponse(
+          response as api.SasPortalListNodesResponse);
     });
   });
 
   unittest.group('resource-DeploymentsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).deployments;
       var arg_name = 'foo';
@@ -3967,16 +3880,13 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDeployment(response as api.SasPortalDeployment);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSasPortalDeployment(response as api.SasPortalDeployment);
     });
   });
 
   unittest.group('resource-DeploymentsDevicesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).deployments.devices;
       var arg_name = 'foo';
@@ -4024,14 +3934,11 @@ void main() {
         var resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalEmpty(response as api.SasPortalEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkSasPortalEmpty(response as api.SasPortalEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).deployments.devices;
       var arg_name = 'foo';
@@ -4079,14 +3986,11 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
 
-    unittest.test('method--move', () {
+    unittest.test('method--move', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).deployments.devices;
       var arg_request = buildSasPortalMoveDeviceRequest();
@@ -4139,14 +4043,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .move(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalOperation(response as api.SasPortalOperation);
-      })));
+      final response =
+          await res.move(arg_request, arg_name, $fields: arg_$fields);
+      checkSasPortalOperation(response as api.SasPortalOperation);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).deployments.devices;
       var arg_request = buildSasPortalDevice();
@@ -4204,15 +4106,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
 
-    unittest.test('method--signDevice', () {
+    unittest.test('method--signDevice', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).deployments.devices;
       var arg_request = buildSasPortalSignDeviceRequest();
@@ -4265,14 +4164,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .signDevice(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalEmpty(response as api.SasPortalEmpty);
-      })));
+      final response =
+          await res.signDevice(arg_request, arg_name, $fields: arg_$fields);
+      checkSasPortalEmpty(response as api.SasPortalEmpty);
     });
 
-    unittest.test('method--updateSigned', () {
+    unittest.test('method--updateSigned', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).deployments.devices;
       var arg_request = buildSasPortalUpdateSignedDeviceRequest();
@@ -4326,16 +4223,14 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateSigned(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response =
+          await res.updateSigned(arg_request, arg_name, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
   });
 
   unittest.group('resource-InstallerResource', () {
-    unittest.test('method--generateSecret', () {
+    unittest.test('method--generateSecret', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).installer;
       var arg_request = buildSasPortalGenerateSecretRequest();
@@ -4387,15 +4282,13 @@ void main() {
         var resp = convert.json.encode(buildSasPortalGenerateSecretResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .generateSecret(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalGenerateSecretResponse(
-            response as api.SasPortalGenerateSecretResponse);
-      })));
+      final response =
+          await res.generateSecret(arg_request, $fields: arg_$fields);
+      checkSasPortalGenerateSecretResponse(
+          response as api.SasPortalGenerateSecretResponse);
     });
 
-    unittest.test('method--validate', () {
+    unittest.test('method--validate', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).installer;
       var arg_request = buildSasPortalValidateInstallerRequest();
@@ -4448,17 +4341,14 @@ void main() {
             convert.json.encode(buildSasPortalValidateInstallerResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .validate(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalValidateInstallerResponse(
-            response as api.SasPortalValidateInstallerResponse);
-      })));
+      final response = await res.validate(arg_request, $fields: arg_$fields);
+      checkSasPortalValidateInstallerResponse(
+          response as api.SasPortalValidateInstallerResponse);
     });
   });
 
   unittest.group('resource-NodesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes;
       var arg_name = 'foo';
@@ -4506,16 +4396,13 @@ void main() {
         var resp = convert.json.encode(buildSasPortalNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalNode(response as api.SasPortalNode);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSasPortalNode(response as api.SasPortalNode);
     });
   });
 
   unittest.group('resource-NodesDeploymentsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.deployments;
       var arg_name = 'foo';
@@ -4563,14 +4450,11 @@ void main() {
         var resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalEmpty(response as api.SasPortalEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkSasPortalEmpty(response as api.SasPortalEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.deployments;
       var arg_name = 'foo';
@@ -4618,14 +4502,11 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDeployment(response as api.SasPortalDeployment);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSasPortalDeployment(response as api.SasPortalDeployment);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.deployments;
       var arg_parent = 'foo';
@@ -4688,19 +4569,16 @@ void main() {
         var resp = convert.json.encode(buildSasPortalListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalListDeploymentsResponse(
-            response as api.SasPortalListDeploymentsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSasPortalListDeploymentsResponse(
+          response as api.SasPortalListDeploymentsResponse);
     });
 
-    unittest.test('method--move', () {
+    unittest.test('method--move', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.deployments;
       var arg_request = buildSasPortalMoveDeploymentRequest();
@@ -4754,14 +4632,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .move(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalOperation(response as api.SasPortalOperation);
-      })));
+      final response =
+          await res.move(arg_request, arg_name, $fields: arg_$fields);
+      checkSasPortalOperation(response as api.SasPortalOperation);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.deployments;
       var arg_request = buildSasPortalDeployment();
@@ -4819,17 +4695,14 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDeployment(response as api.SasPortalDeployment);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkSasPortalDeployment(response as api.SasPortalDeployment);
     });
   });
 
   unittest.group('resource-NodesDeploymentsDevicesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.deployments.devices;
       var arg_request = buildSasPortalDevice();
@@ -4882,14 +4755,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
 
-    unittest.test('method--createSigned', () {
+    unittest.test('method--createSigned', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.deployments.devices;
       var arg_request = buildSasPortalCreateSignedDeviceRequest();
@@ -4943,14 +4814,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createSigned(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response =
+          await res.createSigned(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.deployments.devices;
       var arg_parent = 'foo';
@@ -5013,21 +4882,18 @@ void main() {
         var resp = convert.json.encode(buildSasPortalListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalListDevicesResponse(
-            response as api.SasPortalListDevicesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSasPortalListDevicesResponse(
+          response as api.SasPortalListDevicesResponse);
     });
   });
 
   unittest.group('resource-NodesDevicesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.devices;
       var arg_request = buildSasPortalDevice();
@@ -5080,14 +4946,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
 
-    unittest.test('method--createSigned', () {
+    unittest.test('method--createSigned', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.devices;
       var arg_request = buildSasPortalCreateSignedDeviceRequest();
@@ -5141,14 +5005,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createSigned(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response =
+          await res.createSigned(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.devices;
       var arg_name = 'foo';
@@ -5196,14 +5058,11 @@ void main() {
         var resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalEmpty(response as api.SasPortalEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkSasPortalEmpty(response as api.SasPortalEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.devices;
       var arg_name = 'foo';
@@ -5251,14 +5110,11 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.devices;
       var arg_parent = 'foo';
@@ -5321,19 +5177,16 @@ void main() {
         var resp = convert.json.encode(buildSasPortalListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalListDevicesResponse(
-            response as api.SasPortalListDevicesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSasPortalListDevicesResponse(
+          response as api.SasPortalListDevicesResponse);
     });
 
-    unittest.test('method--move', () {
+    unittest.test('method--move', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.devices;
       var arg_request = buildSasPortalMoveDeviceRequest();
@@ -5386,14 +5239,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .move(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalOperation(response as api.SasPortalOperation);
-      })));
+      final response =
+          await res.move(arg_request, arg_name, $fields: arg_$fields);
+      checkSasPortalOperation(response as api.SasPortalOperation);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.devices;
       var arg_request = buildSasPortalDevice();
@@ -5451,15 +5302,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
 
-    unittest.test('method--signDevice', () {
+    unittest.test('method--signDevice', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.devices;
       var arg_request = buildSasPortalSignDeviceRequest();
@@ -5512,14 +5360,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .signDevice(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalEmpty(response as api.SasPortalEmpty);
-      })));
+      final response =
+          await res.signDevice(arg_request, arg_name, $fields: arg_$fields);
+      checkSasPortalEmpty(response as api.SasPortalEmpty);
     });
 
-    unittest.test('method--updateSigned', () {
+    unittest.test('method--updateSigned', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.devices;
       var arg_request = buildSasPortalUpdateSignedDeviceRequest();
@@ -5573,16 +5419,14 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateSigned(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response =
+          await res.updateSigned(arg_request, arg_name, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
   });
 
   unittest.group('resource-NodesNodesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.nodes;
       var arg_request = buildSasPortalNode();
@@ -5635,14 +5479,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalNode(response as api.SasPortalNode);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalNode(response as api.SasPortalNode);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.nodes;
       var arg_name = 'foo';
@@ -5690,14 +5532,11 @@ void main() {
         var resp = convert.json.encode(buildSasPortalEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalEmpty(response as api.SasPortalEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkSasPortalEmpty(response as api.SasPortalEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.nodes;
       var arg_name = 'foo';
@@ -5745,14 +5584,11 @@ void main() {
         var resp = convert.json.encode(buildSasPortalNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalNode(response as api.SasPortalNode);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSasPortalNode(response as api.SasPortalNode);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.nodes;
       var arg_parent = 'foo';
@@ -5815,19 +5651,16 @@ void main() {
         var resp = convert.json.encode(buildSasPortalListNodesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalListNodesResponse(
-            response as api.SasPortalListNodesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSasPortalListNodesResponse(
+          response as api.SasPortalListNodesResponse);
     });
 
-    unittest.test('method--move', () {
+    unittest.test('method--move', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.nodes;
       var arg_request = buildSasPortalMoveNodeRequest();
@@ -5880,14 +5713,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .move(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalOperation(response as api.SasPortalOperation);
-      })));
+      final response =
+          await res.move(arg_request, arg_name, $fields: arg_$fields);
+      checkSasPortalOperation(response as api.SasPortalOperation);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.nodes;
       var arg_request = buildSasPortalNode();
@@ -5945,17 +5776,14 @@ void main() {
         var resp = convert.json.encode(buildSasPortalNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalNode(response as api.SasPortalNode);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkSasPortalNode(response as api.SasPortalNode);
     });
   });
 
   unittest.group('resource-NodesNodesDeploymentsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.nodes.deployments;
       var arg_request = buildSasPortalDeployment();
@@ -6008,14 +5836,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDeployment(response as api.SasPortalDeployment);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalDeployment(response as api.SasPortalDeployment);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.nodes.deployments;
       var arg_parent = 'foo';
@@ -6078,21 +5904,18 @@ void main() {
         var resp = convert.json.encode(buildSasPortalListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalListDeploymentsResponse(
-            response as api.SasPortalListDeploymentsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSasPortalListDeploymentsResponse(
+          response as api.SasPortalListDeploymentsResponse);
     });
   });
 
   unittest.group('resource-NodesNodesDevicesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.nodes.devices;
       var arg_request = buildSasPortalDevice();
@@ -6145,14 +5968,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
 
-    unittest.test('method--createSigned', () {
+    unittest.test('method--createSigned', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.nodes.devices;
       var arg_request = buildSasPortalCreateSignedDeviceRequest();
@@ -6206,14 +6027,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createSigned(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response as api.SasPortalDevice);
-      })));
+      final response =
+          await res.createSigned(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalDevice(response as api.SasPortalDevice);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.nodes.devices;
       var arg_parent = 'foo';
@@ -6276,21 +6095,18 @@ void main() {
         var resp = convert.json.encode(buildSasPortalListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalListDevicesResponse(
-            response as api.SasPortalListDevicesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSasPortalListDevicesResponse(
+          response as api.SasPortalListDevicesResponse);
     });
   });
 
   unittest.group('resource-NodesNodesNodesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.nodes.nodes;
       var arg_request = buildSasPortalNode();
@@ -6343,14 +6159,12 @@ void main() {
         var resp = convert.json.encode(buildSasPortalNode());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalNode(response as api.SasPortalNode);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkSasPortalNode(response as api.SasPortalNode);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).nodes.nodes.nodes;
       var arg_parent = 'foo';
@@ -6413,21 +6227,18 @@ void main() {
         var resp = convert.json.encode(buildSasPortalListNodesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalListNodesResponse(
-            response as api.SasPortalListNodesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSasPortalListNodesResponse(
+          response as api.SasPortalListNodesResponse);
     });
   });
 
   unittest.group('resource-PoliciesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).policies;
       var arg_request = buildSasPortalGetPolicyRequest();
@@ -6478,14 +6289,11 @@ void main() {
         var resp = convert.json.encode(buildSasPortalPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalPolicy(response as api.SasPortalPolicy);
-      })));
+      final response = await res.get(arg_request, $fields: arg_$fields);
+      checkSasPortalPolicy(response as api.SasPortalPolicy);
     });
 
-    unittest.test('method--set', () {
+    unittest.test('method--set', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).policies;
       var arg_request = buildSasPortalSetPolicyRequest();
@@ -6536,14 +6344,11 @@ void main() {
         var resp = convert.json.encode(buildSasPortalPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .set(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalPolicy(response as api.SasPortalPolicy);
-      })));
+      final response = await res.set(arg_request, $fields: arg_$fields);
+      checkSasPortalPolicy(response as api.SasPortalPolicy);
     });
 
-    unittest.test('method--test', () {
+    unittest.test('method--test', () async {
       var mock = HttpServerMock();
       var res = api.SasportalApi(mock).policies;
       var arg_request = buildSasPortalTestPermissionsRequest();
@@ -6595,12 +6400,9 @@ void main() {
         var resp = convert.json.encode(buildSasPortalTestPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .test(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSasPortalTestPermissionsResponse(
-            response as api.SasPortalTestPermissionsResponse);
-      })));
+      final response = await res.test(arg_request, $fields: arg_$fields);
+      checkSasPortalTestPermissionsResponse(
+          response as api.SasPortalTestPermissionsResponse);
     });
   });
 }

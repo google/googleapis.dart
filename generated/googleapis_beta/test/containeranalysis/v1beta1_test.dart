@@ -3283,7 +3283,7 @@ void checkWindowsDetail(api.WindowsDetail o) {
 
 void main() {
   unittest.group('obj-schema-AliasContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAliasContext();
       var od = api.AliasContext.fromJson(o.toJson());
       checkAliasContext(od as api.AliasContext);
@@ -3291,7 +3291,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Artifact', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildArtifact();
       var od = api.Artifact.fromJson(o.toJson());
       checkArtifact(od as api.Artifact);
@@ -3299,7 +3299,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ArtifactHashes', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildArtifactHashes();
       var od = api.ArtifactHashes.fromJson(o.toJson());
       checkArtifactHashes(od as api.ArtifactHashes);
@@ -3307,7 +3307,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ArtifactRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildArtifactRule();
       var od = api.ArtifactRule.fromJson(o.toJson());
       checkArtifactRule(od as api.ArtifactRule);
@@ -3315,7 +3315,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Attestation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAttestation();
       var od = api.Attestation.fromJson(o.toJson());
       checkAttestation(od as api.Attestation);
@@ -3323,7 +3323,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Authority', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuthority();
       var od = api.Authority.fromJson(o.toJson());
       checkAuthority(od as api.Authority);
@@ -3331,7 +3331,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Basis', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBasis();
       var od = api.Basis.fromJson(o.toJson());
       checkBasis(od as api.Basis);
@@ -3339,7 +3339,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchCreateNotesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchCreateNotesRequest();
       var od = api.BatchCreateNotesRequest.fromJson(o.toJson());
       checkBatchCreateNotesRequest(od as api.BatchCreateNotesRequest);
@@ -3347,7 +3347,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchCreateNotesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchCreateNotesResponse();
       var od = api.BatchCreateNotesResponse.fromJson(o.toJson());
       checkBatchCreateNotesResponse(od as api.BatchCreateNotesResponse);
@@ -3355,7 +3355,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchCreateOccurrencesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchCreateOccurrencesRequest();
       var od = api.BatchCreateOccurrencesRequest.fromJson(o.toJson());
       checkBatchCreateOccurrencesRequest(
@@ -3364,7 +3364,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchCreateOccurrencesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchCreateOccurrencesResponse();
       var od = api.BatchCreateOccurrencesResponse.fromJson(o.toJson());
       checkBatchCreateOccurrencesResponse(
@@ -3373,7 +3373,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -3381,7 +3381,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Build', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuild();
       var od = api.Build.fromJson(o.toJson());
       checkBuild(od as api.Build);
@@ -3389,7 +3389,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildProvenance', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildProvenance();
       var od = api.BuildProvenance.fromJson(o.toJson());
       checkBuildProvenance(od as api.BuildProvenance);
@@ -3397,7 +3397,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildSignature', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildSignature();
       var od = api.BuildSignature.fromJson(o.toJson());
       checkBuildSignature(od as api.BuildSignature);
@@ -3405,7 +3405,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ByProducts', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildByProducts();
       var od = api.ByProducts.fromJson(o.toJson());
       checkByProducts(od as api.ByProducts);
@@ -3413,7 +3413,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CVSSv3', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCVSSv3();
       var od = api.CVSSv3.fromJson(o.toJson());
       checkCVSSv3(od as api.CVSSv3);
@@ -3421,7 +3421,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CloudRepoSourceContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCloudRepoSourceContext();
       var od = api.CloudRepoSourceContext.fromJson(o.toJson());
       checkCloudRepoSourceContext(od as api.CloudRepoSourceContext);
@@ -3429,7 +3429,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Command', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCommand();
       var od = api.Command.fromJson(o.toJson());
       checkCommand(od as api.Command);
@@ -3437,7 +3437,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Deployable', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeployable();
       var od = api.Deployable.fromJson(o.toJson());
       checkDeployable(od as api.Deployable);
@@ -3445,7 +3445,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Deployment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeployment();
       var od = api.Deployment.fromJson(o.toJson());
       checkDeployment(od as api.Deployment);
@@ -3453,7 +3453,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Derived', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDerived();
       var od = api.Derived.fromJson(o.toJson());
       checkDerived(od as api.Derived);
@@ -3461,7 +3461,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Detail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDetail();
       var od = api.Detail.fromJson(o.toJson());
       checkDetail(od as api.Detail);
@@ -3469,7 +3469,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Details', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDetails();
       var od = api.Details.fromJson(o.toJson());
       checkDetails(od as api.Details);
@@ -3477,7 +3477,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Discovered', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDiscovered();
       var od = api.Discovered.fromJson(o.toJson());
       checkDiscovered(od as api.Discovered);
@@ -3485,7 +3485,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Discovery', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDiscovery();
       var od = api.Discovery.fromJson(o.toJson());
       checkDiscovery(od as api.Discovery);
@@ -3493,7 +3493,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Distribution', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDistribution();
       var od = api.Distribution.fromJson(o.toJson());
       checkDistribution(od as api.Distribution);
@@ -3501,7 +3501,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -3509,7 +3509,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Environment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnvironment();
       var od = api.Environment.fromJson(o.toJson());
       checkEnvironment(od as api.Environment);
@@ -3517,7 +3517,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -3525,7 +3525,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FileHashes', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFileHashes();
       var od = api.FileHashes.fromJson(o.toJson());
       checkFileHashes(od as api.FileHashes);
@@ -3533,7 +3533,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Fingerprint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFingerprint();
       var od = api.Fingerprint.fromJson(o.toJson());
       checkFingerprint(od as api.Fingerprint);
@@ -3541,7 +3541,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FixableTotalByDigest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFixableTotalByDigest();
       var od = api.FixableTotalByDigest.fromJson(o.toJson());
       checkFixableTotalByDigest(od as api.FixableTotalByDigest);
@@ -3549,7 +3549,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GenericSignedAttestation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGenericSignedAttestation();
       var od = api.GenericSignedAttestation.fromJson(o.toJson());
       checkGenericSignedAttestation(od as api.GenericSignedAttestation);
@@ -3557,7 +3557,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GerritSourceContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGerritSourceContext();
       var od = api.GerritSourceContext.fromJson(o.toJson());
       checkGerritSourceContext(od as api.GerritSourceContext);
@@ -3565,7 +3565,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetIamPolicyRequest();
       var od = api.GetIamPolicyRequest.fromJson(o.toJson());
       checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
@@ -3573,7 +3573,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetPolicyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetPolicyOptions();
       var od = api.GetPolicyOptions.fromJson(o.toJson());
       checkGetPolicyOptions(od as api.GetPolicyOptions);
@@ -3581,7 +3581,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GitSourceContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGitSourceContext();
       var od = api.GitSourceContext.fromJson(o.toJson());
       checkGitSourceContext(od as api.GitSourceContext);
@@ -3591,7 +3591,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleDevtoolsContaineranalysisV1alpha1OperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsContaineranalysisV1alpha1OperationMetadata();
       var od =
           api.GoogleDevtoolsContaineranalysisV1alpha1OperationMetadata.fromJson(
@@ -3602,7 +3602,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GrafeasV1beta1BuildDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGrafeasV1beta1BuildDetails();
       var od = api.GrafeasV1beta1BuildDetails.fromJson(o.toJson());
       checkGrafeasV1beta1BuildDetails(od as api.GrafeasV1beta1BuildDetails);
@@ -3610,7 +3610,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GrafeasV1beta1DeploymentDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGrafeasV1beta1DeploymentDetails();
       var od = api.GrafeasV1beta1DeploymentDetails.fromJson(o.toJson());
       checkGrafeasV1beta1DeploymentDetails(
@@ -3619,7 +3619,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GrafeasV1beta1DiscoveryDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGrafeasV1beta1DiscoveryDetails();
       var od = api.GrafeasV1beta1DiscoveryDetails.fromJson(o.toJson());
       checkGrafeasV1beta1DiscoveryDetails(
@@ -3628,7 +3628,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GrafeasV1beta1ImageDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGrafeasV1beta1ImageDetails();
       var od = api.GrafeasV1beta1ImageDetails.fromJson(o.toJson());
       checkGrafeasV1beta1ImageDetails(od as api.GrafeasV1beta1ImageDetails);
@@ -3636,7 +3636,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GrafeasV1beta1IntotoArtifact', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGrafeasV1beta1IntotoArtifact();
       var od = api.GrafeasV1beta1IntotoArtifact.fromJson(o.toJson());
       checkGrafeasV1beta1IntotoArtifact(od as api.GrafeasV1beta1IntotoArtifact);
@@ -3644,7 +3644,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GrafeasV1beta1IntotoDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGrafeasV1beta1IntotoDetails();
       var od = api.GrafeasV1beta1IntotoDetails.fromJson(o.toJson());
       checkGrafeasV1beta1IntotoDetails(od as api.GrafeasV1beta1IntotoDetails);
@@ -3652,7 +3652,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GrafeasV1beta1IntotoSignature', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGrafeasV1beta1IntotoSignature();
       var od = api.GrafeasV1beta1IntotoSignature.fromJson(o.toJson());
       checkGrafeasV1beta1IntotoSignature(
@@ -3661,7 +3661,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GrafeasV1beta1PackageDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGrafeasV1beta1PackageDetails();
       var od = api.GrafeasV1beta1PackageDetails.fromJson(o.toJson());
       checkGrafeasV1beta1PackageDetails(od as api.GrafeasV1beta1PackageDetails);
@@ -3669,7 +3669,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GrafeasV1beta1VulnerabilityDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGrafeasV1beta1VulnerabilityDetails();
       var od = api.GrafeasV1beta1VulnerabilityDetails.fromJson(o.toJson());
       checkGrafeasV1beta1VulnerabilityDetails(
@@ -3678,7 +3678,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Hash', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHash();
       var od = api.Hash.fromJson(o.toJson());
       checkHash(od as api.Hash);
@@ -3686,7 +3686,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Hint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHint();
       var od = api.Hint.fromJson(o.toJson());
       checkHint(od as api.Hint);
@@ -3694,7 +3694,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InToto', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInToto();
       var od = api.InToto.fromJson(o.toJson());
       checkInToto(od as api.InToto);
@@ -3702,7 +3702,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Installation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstallation();
       var od = api.Installation.fromJson(o.toJson());
       checkInstallation(od as api.Installation);
@@ -3710,7 +3710,7 @@ void main() {
   });
 
   unittest.group('obj-schema-KnowledgeBase', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildKnowledgeBase();
       var od = api.KnowledgeBase.fromJson(o.toJson());
       checkKnowledgeBase(od as api.KnowledgeBase);
@@ -3718,7 +3718,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Layer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLayer();
       var od = api.Layer.fromJson(o.toJson());
       checkLayer(od as api.Layer);
@@ -3726,7 +3726,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Link', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLink();
       var od = api.Link.fromJson(o.toJson());
       checkLink(od as api.Link);
@@ -3734,7 +3734,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListNoteOccurrencesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListNoteOccurrencesResponse();
       var od = api.ListNoteOccurrencesResponse.fromJson(o.toJson());
       checkListNoteOccurrencesResponse(od as api.ListNoteOccurrencesResponse);
@@ -3742,7 +3742,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListNotesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListNotesResponse();
       var od = api.ListNotesResponse.fromJson(o.toJson());
       checkListNotesResponse(od as api.ListNotesResponse);
@@ -3750,7 +3750,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOccurrencesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOccurrencesResponse();
       var od = api.ListOccurrencesResponse.fromJson(o.toJson());
       checkListOccurrencesResponse(od as api.ListOccurrencesResponse);
@@ -3758,7 +3758,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListScanConfigsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListScanConfigsResponse();
       var od = api.ListScanConfigsResponse.fromJson(o.toJson());
       checkListScanConfigsResponse(od as api.ListScanConfigsResponse);
@@ -3766,7 +3766,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -3774,7 +3774,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Note', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNote();
       var od = api.Note.fromJson(o.toJson());
       checkNote(od as api.Note);
@@ -3782,7 +3782,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Occurrence', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOccurrence();
       var od = api.Occurrence.fromJson(o.toJson());
       checkOccurrence(od as api.Occurrence);
@@ -3790,7 +3790,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Package', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPackage();
       var od = api.Package.fromJson(o.toJson());
       checkPackage(od as api.Package);
@@ -3798,7 +3798,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PackageIssue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPackageIssue();
       var od = api.PackageIssue.fromJson(o.toJson());
       checkPackageIssue(od as api.PackageIssue);
@@ -3806,7 +3806,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PgpSignedAttestation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPgpSignedAttestation();
       var od = api.PgpSignedAttestation.fromJson(o.toJson());
       checkPgpSignedAttestation(od as api.PgpSignedAttestation);
@@ -3814,7 +3814,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -3822,7 +3822,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProjectRepoId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProjectRepoId();
       var od = api.ProjectRepoId.fromJson(o.toJson());
       checkProjectRepoId(od as api.ProjectRepoId);
@@ -3830,7 +3830,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RelatedUrl', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRelatedUrl();
       var od = api.RelatedUrl.fromJson(o.toJson());
       checkRelatedUrl(od as api.RelatedUrl);
@@ -3838,7 +3838,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RepoId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepoId();
       var od = api.RepoId.fromJson(o.toJson());
       checkRepoId(od as api.RepoId);
@@ -3846,7 +3846,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Resource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResource();
       var od = api.Resource.fromJson(o.toJson());
       checkResource(od as api.Resource);
@@ -3854,7 +3854,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScanConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScanConfig();
       var od = api.ScanConfig.fromJson(o.toJson());
       checkScanConfig(od as api.ScanConfig);
@@ -3862,7 +3862,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -3870,7 +3870,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Signature', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSignature();
       var od = api.Signature.fromJson(o.toJson());
       checkSignature(od as api.Signature);
@@ -3878,7 +3878,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SigningKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSigningKey();
       var od = api.SigningKey.fromJson(o.toJson());
       checkSigningKey(od as api.SigningKey);
@@ -3886,7 +3886,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Source', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSource();
       var od = api.Source.fromJson(o.toJson());
       checkSource(od as api.Source);
@@ -3894,7 +3894,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SourceContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSourceContext();
       var od = api.SourceContext.fromJson(o.toJson());
       checkSourceContext(od as api.SourceContext);
@@ -3902,7 +3902,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -3910,7 +3910,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -3918,7 +3918,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -3926,7 +3926,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Version', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVersion();
       var od = api.Version.fromJson(o.toJson());
       checkVersion(od as api.Version);
@@ -3934,7 +3934,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Vulnerability', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVulnerability();
       var od = api.Vulnerability.fromJson(o.toJson());
       checkVulnerability(od as api.Vulnerability);
@@ -3942,7 +3942,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VulnerabilityLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVulnerabilityLocation();
       var od = api.VulnerabilityLocation.fromJson(o.toJson());
       checkVulnerabilityLocation(od as api.VulnerabilityLocation);
@@ -3950,7 +3950,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VulnerabilityOccurrencesSummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVulnerabilityOccurrencesSummary();
       var od = api.VulnerabilityOccurrencesSummary.fromJson(o.toJson());
       checkVulnerabilityOccurrencesSummary(
@@ -3959,7 +3959,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WindowsDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWindowsDetail();
       var od = api.WindowsDetail.fromJson(o.toJson());
       checkWindowsDetail(od as api.WindowsDetail);
@@ -3967,7 +3967,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsNotesResource', () {
-    unittest.test('method--batchCreate', () {
+    unittest.test('method--batchCreate', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.notes;
       var arg_request = buildBatchCreateNotesRequest();
@@ -4020,14 +4020,12 @@ void main() {
         var resp = convert.json.encode(buildBatchCreateNotesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchCreate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchCreateNotesResponse(response as api.BatchCreateNotesResponse);
-      })));
+      final response =
+          await res.batchCreate(arg_request, arg_parent, $fields: arg_$fields);
+      checkBatchCreateNotesResponse(response as api.BatchCreateNotesResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.notes;
       var arg_request = buildNote();
@@ -4085,15 +4083,12 @@ void main() {
         var resp = convert.json.encode(buildNote());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              noteId: arg_noteId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNote(response as api.Note);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          noteId: arg_noteId, $fields: arg_$fields);
+      checkNote(response as api.Note);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.notes;
       var arg_name = 'foo';
@@ -4141,14 +4136,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.notes;
       var arg_name = 'foo';
@@ -4196,14 +4188,11 @@ void main() {
         var resp = convert.json.encode(buildNote());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNote(response as api.Note);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkNote(response as api.Note);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.notes;
       var arg_request = buildGetIamPolicyRequest();
@@ -4256,14 +4245,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.notes;
       var arg_parent = 'foo';
@@ -4326,18 +4313,15 @@ void main() {
         var resp = convert.json.encode(buildListNotesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListNotesResponse(response as api.ListNotesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListNotesResponse(response as api.ListNotesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.notes;
       var arg_request = buildNote();
@@ -4395,15 +4379,12 @@ void main() {
         var resp = convert.json.encode(buildNote());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNote(response as api.Note);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkNote(response as api.Note);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.notes;
       var arg_request = buildSetIamPolicyRequest();
@@ -4456,14 +4437,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.notes;
       var arg_request = buildTestIamPermissionsRequest();
@@ -4516,17 +4495,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsNotesOccurrencesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.notes.occurrences;
       var arg_name = 'foo';
@@ -4589,21 +4566,18 @@ void main() {
         var resp = convert.json.encode(buildListNoteOccurrencesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListNoteOccurrencesResponse(
-            response as api.ListNoteOccurrencesResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListNoteOccurrencesResponse(
+          response as api.ListNoteOccurrencesResponse);
     });
   });
 
   unittest.group('resource-ProjectsOccurrencesResource', () {
-    unittest.test('method--batchCreate', () {
+    unittest.test('method--batchCreate', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.occurrences;
       var arg_request = buildBatchCreateOccurrencesRequest();
@@ -4657,15 +4631,13 @@ void main() {
         var resp = convert.json.encode(buildBatchCreateOccurrencesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchCreate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchCreateOccurrencesResponse(
-            response as api.BatchCreateOccurrencesResponse);
-      })));
+      final response =
+          await res.batchCreate(arg_request, arg_parent, $fields: arg_$fields);
+      checkBatchCreateOccurrencesResponse(
+          response as api.BatchCreateOccurrencesResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.occurrences;
       var arg_request = buildOccurrence();
@@ -4718,14 +4690,12 @@ void main() {
         var resp = convert.json.encode(buildOccurrence());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOccurrence(response as api.Occurrence);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkOccurrence(response as api.Occurrence);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.occurrences;
       var arg_name = 'foo';
@@ -4773,14 +4743,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.occurrences;
       var arg_name = 'foo';
@@ -4828,14 +4795,11 @@ void main() {
         var resp = convert.json.encode(buildOccurrence());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOccurrence(response as api.Occurrence);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOccurrence(response as api.Occurrence);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.occurrences;
       var arg_request = buildGetIamPolicyRequest();
@@ -4888,14 +4852,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--getNotes', () {
+    unittest.test('method--getNotes', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.occurrences;
       var arg_name = 'foo';
@@ -4943,14 +4905,11 @@ void main() {
         var resp = convert.json.encode(buildNote());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getNotes(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNote(response as api.Note);
-      })));
+      final response = await res.getNotes(arg_name, $fields: arg_$fields);
+      checkNote(response as api.Note);
     });
 
-    unittest.test('method--getVulnerabilitySummary', () {
+    unittest.test('method--getVulnerabilitySummary', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.occurrences;
       var arg_parent = 'foo';
@@ -5003,16 +4962,13 @@ void main() {
         var resp = convert.json.encode(buildVulnerabilityOccurrencesSummary());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getVulnerabilitySummary(arg_parent,
-              filter: arg_filter, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVulnerabilityOccurrencesSummary(
-            response as api.VulnerabilityOccurrencesSummary);
-      })));
+      final response = await res.getVulnerabilitySummary(arg_parent,
+          filter: arg_filter, $fields: arg_$fields);
+      checkVulnerabilityOccurrencesSummary(
+          response as api.VulnerabilityOccurrencesSummary);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.occurrences;
       var arg_parent = 'foo';
@@ -5075,18 +5031,15 @@ void main() {
         var resp = convert.json.encode(buildListOccurrencesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOccurrencesResponse(response as api.ListOccurrencesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOccurrencesResponse(response as api.ListOccurrencesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.occurrences;
       var arg_request = buildOccurrence();
@@ -5144,15 +5097,12 @@ void main() {
         var resp = convert.json.encode(buildOccurrence());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOccurrence(response as api.Occurrence);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOccurrence(response as api.Occurrence);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.occurrences;
       var arg_request = buildSetIamPolicyRequest();
@@ -5205,14 +5155,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.occurrences;
       var arg_request = buildTestIamPermissionsRequest();
@@ -5265,17 +5213,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsScanConfigsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.scanConfigs;
       var arg_name = 'foo';
@@ -5323,14 +5269,11 @@ void main() {
         var resp = convert.json.encode(buildScanConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkScanConfig(response as api.ScanConfig);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkScanConfig(response as api.ScanConfig);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.scanConfigs;
       var arg_parent = 'foo';
@@ -5393,18 +5336,15 @@ void main() {
         var resp = convert.json.encode(buildListScanConfigsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListScanConfigsResponse(response as api.ListScanConfigsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListScanConfigsResponse(response as api.ListScanConfigsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ContainerAnalysisApi(mock).projects.scanConfigs;
       var arg_request = buildScanConfig();
@@ -5457,11 +5397,9 @@ void main() {
         var resp = convert.json.encode(buildScanConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkScanConfig(response as api.ScanConfig);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkScanConfig(response as api.ScanConfig);
     });
   });
 }

@@ -471,7 +471,7 @@ void checkLocalizedStringBundle(api.LocalizedStringBundle o) {
 
 void main() {
   unittest.group('obj-schema-AchievementConfiguration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAchievementConfiguration();
       var od = api.AchievementConfiguration.fromJson(o.toJson());
       checkAchievementConfiguration(od as api.AchievementConfiguration);
@@ -479,7 +479,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AchievementConfigurationDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAchievementConfigurationDetail();
       var od = api.AchievementConfigurationDetail.fromJson(o.toJson());
       checkAchievementConfigurationDetail(
@@ -488,7 +488,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AchievementConfigurationListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAchievementConfigurationListResponse();
       var od = api.AchievementConfigurationListResponse.fromJson(o.toJson());
       checkAchievementConfigurationListResponse(
@@ -497,7 +497,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GamesNumberAffixConfiguration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGamesNumberAffixConfiguration();
       var od = api.GamesNumberAffixConfiguration.fromJson(o.toJson());
       checkGamesNumberAffixConfiguration(
@@ -506,7 +506,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GamesNumberFormatConfiguration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGamesNumberFormatConfiguration();
       var od = api.GamesNumberFormatConfiguration.fromJson(o.toJson());
       checkGamesNumberFormatConfiguration(
@@ -515,7 +515,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImageConfiguration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImageConfiguration();
       var od = api.ImageConfiguration.fromJson(o.toJson());
       checkImageConfiguration(od as api.ImageConfiguration);
@@ -523,7 +523,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LeaderboardConfiguration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLeaderboardConfiguration();
       var od = api.LeaderboardConfiguration.fromJson(o.toJson());
       checkLeaderboardConfiguration(od as api.LeaderboardConfiguration);
@@ -531,7 +531,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LeaderboardConfigurationDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLeaderboardConfigurationDetail();
       var od = api.LeaderboardConfigurationDetail.fromJson(o.toJson());
       checkLeaderboardConfigurationDetail(
@@ -540,7 +540,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LeaderboardConfigurationListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLeaderboardConfigurationListResponse();
       var od = api.LeaderboardConfigurationListResponse.fromJson(o.toJson());
       checkLeaderboardConfigurationListResponse(
@@ -549,7 +549,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LocalizedString', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocalizedString();
       var od = api.LocalizedString.fromJson(o.toJson());
       checkLocalizedString(od as api.LocalizedString);
@@ -557,7 +557,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LocalizedStringBundle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocalizedStringBundle();
       var od = api.LocalizedStringBundle.fromJson(o.toJson());
       checkLocalizedStringBundle(od as api.LocalizedStringBundle);
@@ -565,7 +565,7 @@ void main() {
   });
 
   unittest.group('resource-AchievementConfigurationsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_achievementId = 'foo';
@@ -618,12 +618,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_achievementId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_achievementId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_achievementId = 'foo';
@@ -676,14 +674,11 @@ void main() {
         var resp = convert.json.encode(buildAchievementConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_achievementId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAchievementConfiguration(response as api.AchievementConfiguration);
-      })));
+      final response = await res.get(arg_achievementId, $fields: arg_$fields);
+      checkAchievementConfiguration(response as api.AchievementConfiguration);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_request = buildAchievementConfiguration();
@@ -749,14 +744,12 @@ void main() {
         var resp = convert.json.encode(buildAchievementConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_applicationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAchievementConfiguration(response as api.AchievementConfiguration);
-      })));
+      final response = await res.insert(arg_request, arg_applicationId,
+          $fields: arg_$fields);
+      checkAchievementConfiguration(response as api.AchievementConfiguration);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_applicationId = 'foo';
@@ -828,18 +821,15 @@ void main() {
             convert.json.encode(buildAchievementConfigurationListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_applicationId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAchievementConfigurationListResponse(
-            response as api.AchievementConfigurationListResponse);
-      })));
+      final response = await res.list(arg_applicationId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkAchievementConfigurationListResponse(
+          response as api.AchievementConfigurationListResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.GamesConfigurationApi(mock).achievementConfigurations;
       var arg_request = buildAchievementConfiguration();
@@ -897,16 +887,14 @@ void main() {
         var resp = convert.json.encode(buildAchievementConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_achievementId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAchievementConfiguration(response as api.AchievementConfiguration);
-      })));
+      final response = await res.update(arg_request, arg_achievementId,
+          $fields: arg_$fields);
+      checkAchievementConfiguration(response as api.AchievementConfiguration);
     });
   });
 
   unittest.group('resource-ImageConfigurationsResource', () {
-    unittest.test('method--upload', () {
+    unittest.test('method--upload', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -977,16 +965,14 @@ void main() {
         var resp = convert.json.encode(buildImageConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .upload(arg_resourceId, arg_imageType, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkImageConfiguration(response as api.ImageConfiguration);
-      })));
+      final response =
+          await res.upload(arg_resourceId, arg_imageType, $fields: arg_$fields);
+      checkImageConfiguration(response as api.ImageConfiguration);
     });
   });
 
   unittest.group('resource-LeaderboardConfigurationsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_leaderboardId = 'foo';
@@ -1039,12 +1025,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_leaderboardId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_leaderboardId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_leaderboardId = 'foo';
@@ -1097,14 +1081,11 @@ void main() {
         var resp = convert.json.encode(buildLeaderboardConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_leaderboardId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLeaderboardConfiguration(response as api.LeaderboardConfiguration);
-      })));
+      final response = await res.get(arg_leaderboardId, $fields: arg_$fields);
+      checkLeaderboardConfiguration(response as api.LeaderboardConfiguration);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_request = buildLeaderboardConfiguration();
@@ -1170,14 +1151,12 @@ void main() {
         var resp = convert.json.encode(buildLeaderboardConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_applicationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLeaderboardConfiguration(response as api.LeaderboardConfiguration);
-      })));
+      final response = await res.insert(arg_request, arg_applicationId,
+          $fields: arg_$fields);
+      checkLeaderboardConfiguration(response as api.LeaderboardConfiguration);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_applicationId = 'foo';
@@ -1249,18 +1228,15 @@ void main() {
             convert.json.encode(buildLeaderboardConfigurationListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_applicationId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLeaderboardConfigurationListResponse(
-            response as api.LeaderboardConfigurationListResponse);
-      })));
+      final response = await res.list(arg_applicationId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkLeaderboardConfigurationListResponse(
+          response as api.LeaderboardConfigurationListResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.GamesConfigurationApi(mock).leaderboardConfigurations;
       var arg_request = buildLeaderboardConfiguration();
@@ -1318,11 +1294,9 @@ void main() {
         var resp = convert.json.encode(buildLeaderboardConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_leaderboardId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLeaderboardConfiguration(response as api.LeaderboardConfiguration);
-      })));
+      final response = await res.update(arg_request, arg_leaderboardId,
+          $fields: arg_$fields);
+      checkLeaderboardConfiguration(response as api.LeaderboardConfiguration);
     });
   });
 }

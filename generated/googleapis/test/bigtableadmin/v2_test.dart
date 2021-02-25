@@ -2247,7 +2247,7 @@ void checkUpdateInstanceMetadata(api.UpdateInstanceMetadata o) {
 
 void main() {
   unittest.group('obj-schema-AppProfile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppProfile();
       var od = api.AppProfile.fromJson(o.toJson());
       checkAppProfile(od as api.AppProfile);
@@ -2255,7 +2255,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
       checkAuditConfig(od as api.AuditConfig);
@@ -2263,7 +2263,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
       checkAuditLogConfig(od as api.AuditLogConfig);
@@ -2271,7 +2271,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Backup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBackup();
       var od = api.Backup.fromJson(o.toJson());
       checkBackup(od as api.Backup);
@@ -2279,7 +2279,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BackupInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBackupInfo();
       var od = api.BackupInfo.fromJson(o.toJson());
       checkBackupInfo(od as api.BackupInfo);
@@ -2287,7 +2287,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -2295,7 +2295,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CheckConsistencyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCheckConsistencyRequest();
       var od = api.CheckConsistencyRequest.fromJson(o.toJson());
       checkCheckConsistencyRequest(od as api.CheckConsistencyRequest);
@@ -2303,7 +2303,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CheckConsistencyResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCheckConsistencyResponse();
       var od = api.CheckConsistencyResponse.fromJson(o.toJson());
       checkCheckConsistencyResponse(od as api.CheckConsistencyResponse);
@@ -2311,7 +2311,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Cluster', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCluster();
       var od = api.Cluster.fromJson(o.toJson());
       checkCluster(od as api.Cluster);
@@ -2319,7 +2319,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClusterState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClusterState();
       var od = api.ClusterState.fromJson(o.toJson());
       checkClusterState(od as api.ClusterState);
@@ -2327,7 +2327,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ColumnFamily', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildColumnFamily();
       var od = api.ColumnFamily.fromJson(o.toJson());
       checkColumnFamily(od as api.ColumnFamily);
@@ -2335,7 +2335,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateBackupMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateBackupMetadata();
       var od = api.CreateBackupMetadata.fromJson(o.toJson());
       checkCreateBackupMetadata(od as api.CreateBackupMetadata);
@@ -2343,7 +2343,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateClusterMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateClusterMetadata();
       var od = api.CreateClusterMetadata.fromJson(o.toJson());
       checkCreateClusterMetadata(od as api.CreateClusterMetadata);
@@ -2351,7 +2351,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateClusterRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateClusterRequest();
       var od = api.CreateClusterRequest.fromJson(o.toJson());
       checkCreateClusterRequest(od as api.CreateClusterRequest);
@@ -2359,7 +2359,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateInstanceMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateInstanceMetadata();
       var od = api.CreateInstanceMetadata.fromJson(o.toJson());
       checkCreateInstanceMetadata(od as api.CreateInstanceMetadata);
@@ -2367,7 +2367,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateInstanceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateInstanceRequest();
       var od = api.CreateInstanceRequest.fromJson(o.toJson());
       checkCreateInstanceRequest(od as api.CreateInstanceRequest);
@@ -2375,7 +2375,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateTableRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateTableRequest();
       var od = api.CreateTableRequest.fromJson(o.toJson());
       checkCreateTableRequest(od as api.CreateTableRequest);
@@ -2383,7 +2383,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DropRowRangeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDropRowRangeRequest();
       var od = api.DropRowRangeRequest.fromJson(o.toJson());
       checkDropRowRangeRequest(od as api.DropRowRangeRequest);
@@ -2391,7 +2391,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -2399,7 +2399,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -2407,7 +2407,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FailureTrace', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFailureTrace();
       var od = api.FailureTrace.fromJson(o.toJson());
       checkFailureTrace(od as api.FailureTrace);
@@ -2415,7 +2415,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Frame', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFrame();
       var od = api.Frame.fromJson(o.toJson());
       checkFrame(od as api.Frame);
@@ -2423,7 +2423,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GcRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGcRule();
       var od = api.GcRule.fromJson(o.toJson());
       checkGcRule(od as api.GcRule);
@@ -2431,7 +2431,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GenerateConsistencyTokenRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGenerateConsistencyTokenRequest();
       var od = api.GenerateConsistencyTokenRequest.fromJson(o.toJson());
       checkGenerateConsistencyTokenRequest(
@@ -2440,7 +2440,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GenerateConsistencyTokenResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGenerateConsistencyTokenResponse();
       var od = api.GenerateConsistencyTokenResponse.fromJson(o.toJson());
       checkGenerateConsistencyTokenResponse(
@@ -2449,7 +2449,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetIamPolicyRequest();
       var od = api.GetIamPolicyRequest.fromJson(o.toJson());
       checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
@@ -2457,7 +2457,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetPolicyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetPolicyOptions();
       var od = api.GetPolicyOptions.fromJson(o.toJson());
       checkGetPolicyOptions(od as api.GetPolicyOptions);
@@ -2465,7 +2465,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Instance', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstance();
       var od = api.Instance.fromJson(o.toJson());
       checkInstance(od as api.Instance);
@@ -2473,7 +2473,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Intersection', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIntersection();
       var od = api.Intersection.fromJson(o.toJson());
       checkIntersection(od as api.Intersection);
@@ -2481,7 +2481,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAppProfilesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAppProfilesResponse();
       var od = api.ListAppProfilesResponse.fromJson(o.toJson());
       checkListAppProfilesResponse(od as api.ListAppProfilesResponse);
@@ -2489,7 +2489,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListBackupsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListBackupsResponse();
       var od = api.ListBackupsResponse.fromJson(o.toJson());
       checkListBackupsResponse(od as api.ListBackupsResponse);
@@ -2497,7 +2497,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListClustersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListClustersResponse();
       var od = api.ListClustersResponse.fromJson(o.toJson());
       checkListClustersResponse(od as api.ListClustersResponse);
@@ -2505,7 +2505,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListInstancesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListInstancesResponse();
       var od = api.ListInstancesResponse.fromJson(o.toJson());
       checkListInstancesResponse(od as api.ListInstancesResponse);
@@ -2513,7 +2513,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -2521,7 +2521,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -2529,7 +2529,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTablesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTablesResponse();
       var od = api.ListTablesResponse.fromJson(o.toJson());
       checkListTablesResponse(od as api.ListTablesResponse);
@@ -2537,7 +2537,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -2545,7 +2545,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Modification', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildModification();
       var od = api.Modification.fromJson(o.toJson());
       checkModification(od as api.Modification);
@@ -2553,7 +2553,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ModifyColumnFamiliesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildModifyColumnFamiliesRequest();
       var od = api.ModifyColumnFamiliesRequest.fromJson(o.toJson());
       checkModifyColumnFamiliesRequest(od as api.ModifyColumnFamiliesRequest);
@@ -2561,7 +2561,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MultiClusterRoutingUseAny', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMultiClusterRoutingUseAny();
       var od = api.MultiClusterRoutingUseAny.fromJson(o.toJson());
       checkMultiClusterRoutingUseAny(od as api.MultiClusterRoutingUseAny);
@@ -2569,7 +2569,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -2577,7 +2577,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationProgress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationProgress();
       var od = api.OperationProgress.fromJson(o.toJson());
       checkOperationProgress(od as api.OperationProgress);
@@ -2585,7 +2585,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OptimizeRestoredTableMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOptimizeRestoredTableMetadata();
       var od = api.OptimizeRestoredTableMetadata.fromJson(o.toJson());
       checkOptimizeRestoredTableMetadata(
@@ -2594,7 +2594,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PartialUpdateInstanceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPartialUpdateInstanceRequest();
       var od = api.PartialUpdateInstanceRequest.fromJson(o.toJson());
       checkPartialUpdateInstanceRequest(od as api.PartialUpdateInstanceRequest);
@@ -2602,7 +2602,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -2610,7 +2610,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestoreInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestoreInfo();
       var od = api.RestoreInfo.fromJson(o.toJson());
       checkRestoreInfo(od as api.RestoreInfo);
@@ -2618,7 +2618,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestoreTableMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestoreTableMetadata();
       var od = api.RestoreTableMetadata.fromJson(o.toJson());
       checkRestoreTableMetadata(od as api.RestoreTableMetadata);
@@ -2626,7 +2626,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestoreTableRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestoreTableRequest();
       var od = api.RestoreTableRequest.fromJson(o.toJson());
       checkRestoreTableRequest(od as api.RestoreTableRequest);
@@ -2634,7 +2634,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -2642,7 +2642,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SingleClusterRouting', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSingleClusterRouting();
       var od = api.SingleClusterRouting.fromJson(o.toJson());
       checkSingleClusterRouting(od as api.SingleClusterRouting);
@@ -2650,7 +2650,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Split', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSplit();
       var od = api.Split.fromJson(o.toJson());
       checkSplit(od as api.Split);
@@ -2658,7 +2658,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -2666,7 +2666,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Table', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTable();
       var od = api.Table.fromJson(o.toJson());
       checkTable(od as api.Table);
@@ -2674,7 +2674,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TableProgress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTableProgress();
       var od = api.TableProgress.fromJson(o.toJson());
       checkTableProgress(od as api.TableProgress);
@@ -2682,7 +2682,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -2690,7 +2690,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -2698,7 +2698,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Union', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUnion();
       var od = api.Union.fromJson(o.toJson());
       checkUnion(od as api.Union);
@@ -2706,7 +2706,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateAppProfileMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateAppProfileMetadata();
       var od = api.UpdateAppProfileMetadata.fromJson(o.toJson());
       checkUpdateAppProfileMetadata(od as api.UpdateAppProfileMetadata);
@@ -2714,7 +2714,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateClusterMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateClusterMetadata();
       var od = api.UpdateClusterMetadata.fromJson(o.toJson());
       checkUpdateClusterMetadata(od as api.UpdateClusterMetadata);
@@ -2722,7 +2722,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateInstanceMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateInstanceMetadata();
       var od = api.UpdateInstanceMetadata.fromJson(o.toJson());
       checkUpdateInstanceMetadata(od as api.UpdateInstanceMetadata);
@@ -2730,7 +2730,7 @@ void main() {
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).operations;
       var arg_name = 'foo';
@@ -2778,14 +2778,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.cancel(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).operations;
       var arg_name = 'foo';
@@ -2833,14 +2830,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).operations;
       var arg_name = 'foo';
@@ -2888,16 +2882,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-OperationsProjectsOperationsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).operations.projects.operations;
       var arg_name = 'foo';
@@ -2960,20 +2951,17 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsInstancesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances;
       var arg_request = buildCreateInstanceRequest();
@@ -3026,14 +3014,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances;
       var arg_name = 'foo';
@@ -3081,14 +3067,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances;
       var arg_name = 'foo';
@@ -3136,14 +3119,11 @@ void main() {
         var resp = convert.json.encode(buildInstance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInstance(response as api.Instance);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkInstance(response as api.Instance);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances;
       var arg_request = buildGetIamPolicyRequest();
@@ -3196,14 +3176,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances;
       var arg_parent = 'foo';
@@ -3256,14 +3234,12 @@ void main() {
         var resp = convert.json.encode(buildListInstancesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, pageToken: arg_pageToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListInstancesResponse(response as api.ListInstancesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageToken: arg_pageToken, $fields: arg_$fields);
+      checkListInstancesResponse(response as api.ListInstancesResponse);
     });
 
-    unittest.test('method--partialUpdateInstance', () {
+    unittest.test('method--partialUpdateInstance', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances;
       var arg_request = buildInstance();
@@ -3321,15 +3297,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .partialUpdateInstance(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.partialUpdateInstance(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances;
       var arg_request = buildSetIamPolicyRequest();
@@ -3382,14 +3355,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances;
       var arg_request = buildTestIamPermissionsRequest();
@@ -3442,15 +3413,13 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances;
       var arg_request = buildInstance();
@@ -3503,16 +3472,14 @@ void main() {
         var resp = convert.json.encode(buildInstance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInstance(response as api.Instance);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkInstance(response as api.Instance);
     });
   });
 
   unittest.group('resource-ProjectsInstancesAppProfilesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.appProfiles;
       var arg_request = buildAppProfile();
@@ -3575,17 +3542,14 @@ void main() {
         var resp = convert.json.encode(buildAppProfile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              appProfileId: arg_appProfileId,
-              ignoreWarnings: arg_ignoreWarnings,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAppProfile(response as api.AppProfile);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          appProfileId: arg_appProfileId,
+          ignoreWarnings: arg_ignoreWarnings,
+          $fields: arg_$fields);
+      checkAppProfile(response as api.AppProfile);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.appProfiles;
       var arg_name = 'foo';
@@ -3638,15 +3602,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name,
-              ignoreWarnings: arg_ignoreWarnings, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name,
+          ignoreWarnings: arg_ignoreWarnings, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.appProfiles;
       var arg_name = 'foo';
@@ -3694,14 +3655,11 @@ void main() {
         var resp = convert.json.encode(buildAppProfile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAppProfile(response as api.AppProfile);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkAppProfile(response as api.AppProfile);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.appProfiles;
       var arg_parent = 'foo';
@@ -3759,17 +3717,14 @@ void main() {
         var resp = convert.json.encode(buildListAppProfilesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAppProfilesResponse(response as api.ListAppProfilesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAppProfilesResponse(response as api.ListAppProfilesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.appProfiles;
       var arg_request = buildAppProfile();
@@ -3832,19 +3787,16 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              ignoreWarnings: arg_ignoreWarnings,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          ignoreWarnings: arg_ignoreWarnings,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsInstancesClustersResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.clusters;
       var arg_request = buildCluster();
@@ -3902,15 +3854,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              clusterId: arg_clusterId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          clusterId: arg_clusterId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.clusters;
       var arg_name = 'foo';
@@ -3958,14 +3907,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.clusters;
       var arg_name = 'foo';
@@ -4013,14 +3959,11 @@ void main() {
         var resp = convert.json.encode(buildCluster());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCluster(response as api.Cluster);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkCluster(response as api.Cluster);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.clusters;
       var arg_parent = 'foo';
@@ -4073,14 +4016,12 @@ void main() {
         var resp = convert.json.encode(buildListClustersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, pageToken: arg_pageToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListClustersResponse(response as api.ListClustersResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageToken: arg_pageToken, $fields: arg_$fields);
+      checkListClustersResponse(response as api.ListClustersResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.clusters;
       var arg_request = buildCluster();
@@ -4133,16 +4074,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsInstancesClustersBackupsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.clusters.backups;
       var arg_request = buildBackup();
@@ -4200,15 +4139,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              backupId: arg_backupId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          backupId: arg_backupId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.clusters.backups;
       var arg_name = 'foo';
@@ -4256,14 +4192,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.clusters.backups;
       var arg_name = 'foo';
@@ -4311,14 +4244,11 @@ void main() {
         var resp = convert.json.encode(buildBackup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBackup(response as api.Backup);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkBackup(response as api.Backup);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.clusters.backups;
       var arg_request = buildGetIamPolicyRequest();
@@ -4371,14 +4301,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.clusters.backups;
       var arg_parent = 'foo';
@@ -4446,19 +4374,16 @@ void main() {
         var resp = convert.json.encode(buildListBackupsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListBackupsResponse(response as api.ListBackupsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListBackupsResponse(response as api.ListBackupsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.clusters.backups;
       var arg_request = buildBackup();
@@ -4516,15 +4441,12 @@ void main() {
         var resp = convert.json.encode(buildBackup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBackup(response as api.Backup);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkBackup(response as api.Backup);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.clusters.backups;
       var arg_request = buildSetIamPolicyRequest();
@@ -4577,14 +4499,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.clusters.backups;
       var arg_request = buildTestIamPermissionsRequest();
@@ -4637,17 +4557,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsInstancesTablesResource', () {
-    unittest.test('method--checkConsistency', () {
+    unittest.test('method--checkConsistency', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_request = buildCheckConsistencyRequest();
@@ -4700,14 +4618,12 @@ void main() {
         var resp = convert.json.encode(buildCheckConsistencyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .checkConsistency(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCheckConsistencyResponse(response as api.CheckConsistencyResponse);
-      })));
+      final response = await res.checkConsistency(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkCheckConsistencyResponse(response as api.CheckConsistencyResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_request = buildCreateTableRequest();
@@ -4760,14 +4676,12 @@ void main() {
         var resp = convert.json.encode(buildTable());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTable(response as api.Table);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkTable(response as api.Table);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_name = 'foo';
@@ -4815,14 +4729,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--dropRowRange', () {
+    unittest.test('method--dropRowRange', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_request = buildDropRowRangeRequest();
@@ -4875,14 +4786,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .dropRowRange(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.dropRowRange(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--generateConsistencyToken', () {
+    unittest.test('method--generateConsistencyToken', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_request = buildGenerateConsistencyTokenRequest();
@@ -4936,15 +4845,13 @@ void main() {
         var resp = convert.json.encode(buildGenerateConsistencyTokenResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .generateConsistencyToken(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGenerateConsistencyTokenResponse(
-            response as api.GenerateConsistencyTokenResponse);
-      })));
+      final response = await res.generateConsistencyToken(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkGenerateConsistencyTokenResponse(
+          response as api.GenerateConsistencyTokenResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_name = 'foo';
@@ -4997,14 +4904,12 @@ void main() {
         var resp = convert.json.encode(buildTable());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, view: arg_view, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTable(response as api.Table);
-      })));
+      final response =
+          await res.get(arg_name, view: arg_view, $fields: arg_$fields);
+      checkTable(response as api.Table);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_request = buildGetIamPolicyRequest();
@@ -5057,14 +4962,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_parent = 'foo';
@@ -5127,18 +5030,15 @@ void main() {
         var resp = convert.json.encode(buildListTablesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTablesResponse(response as api.ListTablesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListTablesResponse(response as api.ListTablesResponse);
     });
 
-    unittest.test('method--modifyColumnFamilies', () {
+    unittest.test('method--modifyColumnFamilies', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_request = buildModifyColumnFamiliesRequest();
@@ -5192,14 +5092,12 @@ void main() {
         var resp = convert.json.encode(buildTable());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .modifyColumnFamilies(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTable(response as api.Table);
-      })));
+      final response = await res.modifyColumnFamilies(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkTable(response as api.Table);
     });
 
-    unittest.test('method--restore', () {
+    unittest.test('method--restore', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_request = buildRestoreTableRequest();
@@ -5252,14 +5150,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .restore(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.restore(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_request = buildSetIamPolicyRequest();
@@ -5312,14 +5208,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.instances.tables;
       var arg_request = buildTestIamPermissionsRequest();
@@ -5372,17 +5266,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -5430,14 +5322,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BigtableAdminApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -5500,15 +5389,12 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 }

@@ -2084,7 +2084,7 @@ void checkUnnamed4478(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-Acl', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAcl();
       var od = api.Acl.fromJson(o.toJson());
       checkAcl(od as api.Acl);
@@ -2092,7 +2092,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AclRuleScope', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAclRuleScope();
       var od = api.AclRuleScope.fromJson(o.toJson());
       checkAclRuleScope(od as api.AclRuleScope);
@@ -2100,7 +2100,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AclRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAclRule();
       var od = api.AclRule.fromJson(o.toJson());
       checkAclRule(od as api.AclRule);
@@ -2108,7 +2108,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Calendar', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCalendar();
       var od = api.Calendar.fromJson(o.toJson());
       checkCalendar(od as api.Calendar);
@@ -2116,7 +2116,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CalendarList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCalendarList();
       var od = api.CalendarList.fromJson(o.toJson());
       checkCalendarList(od as api.CalendarList);
@@ -2124,7 +2124,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CalendarListEntryNotificationSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCalendarListEntryNotificationSettings();
       var od = api.CalendarListEntryNotificationSettings.fromJson(o.toJson());
       checkCalendarListEntryNotificationSettings(
@@ -2133,7 +2133,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CalendarListEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCalendarListEntry();
       var od = api.CalendarListEntry.fromJson(o.toJson());
       checkCalendarListEntry(od as api.CalendarListEntry);
@@ -2141,7 +2141,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CalendarNotification', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCalendarNotification();
       var od = api.CalendarNotification.fromJson(o.toJson());
       checkCalendarNotification(od as api.CalendarNotification);
@@ -2149,7 +2149,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Channel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChannel();
       var od = api.Channel.fromJson(o.toJson());
       checkChannel(od as api.Channel);
@@ -2157,7 +2157,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ColorDefinition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildColorDefinition();
       var od = api.ColorDefinition.fromJson(o.toJson());
       checkColorDefinition(od as api.ColorDefinition);
@@ -2165,7 +2165,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Colors', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildColors();
       var od = api.Colors.fromJson(o.toJson());
       checkColors(od as api.Colors);
@@ -2173,7 +2173,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConferenceData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConferenceData();
       var od = api.ConferenceData.fromJson(o.toJson());
       checkConferenceData(od as api.ConferenceData);
@@ -2181,7 +2181,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConferenceParameters', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConferenceParameters();
       var od = api.ConferenceParameters.fromJson(o.toJson());
       checkConferenceParameters(od as api.ConferenceParameters);
@@ -2189,7 +2189,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConferenceParametersAddOnParameters', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConferenceParametersAddOnParameters();
       var od = api.ConferenceParametersAddOnParameters.fromJson(o.toJson());
       checkConferenceParametersAddOnParameters(
@@ -2198,7 +2198,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConferenceProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConferenceProperties();
       var od = api.ConferenceProperties.fromJson(o.toJson());
       checkConferenceProperties(od as api.ConferenceProperties);
@@ -2206,7 +2206,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConferenceRequestStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConferenceRequestStatus();
       var od = api.ConferenceRequestStatus.fromJson(o.toJson());
       checkConferenceRequestStatus(od as api.ConferenceRequestStatus);
@@ -2214,7 +2214,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConferenceSolution', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConferenceSolution();
       var od = api.ConferenceSolution.fromJson(o.toJson());
       checkConferenceSolution(od as api.ConferenceSolution);
@@ -2222,7 +2222,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConferenceSolutionKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConferenceSolutionKey();
       var od = api.ConferenceSolutionKey.fromJson(o.toJson());
       checkConferenceSolutionKey(od as api.ConferenceSolutionKey);
@@ -2230,7 +2230,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateConferenceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateConferenceRequest();
       var od = api.CreateConferenceRequest.fromJson(o.toJson());
       checkCreateConferenceRequest(od as api.CreateConferenceRequest);
@@ -2238,7 +2238,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EntryPoint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntryPoint();
       var od = api.EntryPoint.fromJson(o.toJson());
       checkEntryPoint(od as api.EntryPoint);
@@ -2246,7 +2246,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Error', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildError();
       var od = api.Error.fromJson(o.toJson());
       checkError(od as api.Error);
@@ -2254,7 +2254,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventCreator', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventCreator();
       var od = api.EventCreator.fromJson(o.toJson());
       checkEventCreator(od as api.EventCreator);
@@ -2262,7 +2262,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventExtendedProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventExtendedProperties();
       var od = api.EventExtendedProperties.fromJson(o.toJson());
       checkEventExtendedProperties(od as api.EventExtendedProperties);
@@ -2270,7 +2270,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventGadget', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventGadget();
       var od = api.EventGadget.fromJson(o.toJson());
       checkEventGadget(od as api.EventGadget);
@@ -2278,7 +2278,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventOrganizer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventOrganizer();
       var od = api.EventOrganizer.fromJson(o.toJson());
       checkEventOrganizer(od as api.EventOrganizer);
@@ -2286,7 +2286,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventReminders', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventReminders();
       var od = api.EventReminders.fromJson(o.toJson());
       checkEventReminders(od as api.EventReminders);
@@ -2294,7 +2294,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventSource();
       var od = api.EventSource.fromJson(o.toJson());
       checkEventSource(od as api.EventSource);
@@ -2302,7 +2302,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Event', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEvent();
       var od = api.Event.fromJson(o.toJson());
       checkEvent(od as api.Event);
@@ -2310,7 +2310,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventAttachment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventAttachment();
       var od = api.EventAttachment.fromJson(o.toJson());
       checkEventAttachment(od as api.EventAttachment);
@@ -2318,7 +2318,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventAttendee', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventAttendee();
       var od = api.EventAttendee.fromJson(o.toJson());
       checkEventAttendee(od as api.EventAttendee);
@@ -2326,7 +2326,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventDateTime', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventDateTime();
       var od = api.EventDateTime.fromJson(o.toJson());
       checkEventDateTime(od as api.EventDateTime);
@@ -2334,7 +2334,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventReminder', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventReminder();
       var od = api.EventReminder.fromJson(o.toJson());
       checkEventReminder(od as api.EventReminder);
@@ -2342,7 +2342,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Events', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEvents();
       var od = api.Events.fromJson(o.toJson());
       checkEvents(od as api.Events);
@@ -2350,7 +2350,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FreeBusyCalendar', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFreeBusyCalendar();
       var od = api.FreeBusyCalendar.fromJson(o.toJson());
       checkFreeBusyCalendar(od as api.FreeBusyCalendar);
@@ -2358,7 +2358,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FreeBusyGroup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFreeBusyGroup();
       var od = api.FreeBusyGroup.fromJson(o.toJson());
       checkFreeBusyGroup(od as api.FreeBusyGroup);
@@ -2366,7 +2366,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FreeBusyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFreeBusyRequest();
       var od = api.FreeBusyRequest.fromJson(o.toJson());
       checkFreeBusyRequest(od as api.FreeBusyRequest);
@@ -2374,7 +2374,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FreeBusyRequestItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFreeBusyRequestItem();
       var od = api.FreeBusyRequestItem.fromJson(o.toJson());
       checkFreeBusyRequestItem(od as api.FreeBusyRequestItem);
@@ -2382,7 +2382,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FreeBusyResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFreeBusyResponse();
       var od = api.FreeBusyResponse.fromJson(o.toJson());
       checkFreeBusyResponse(od as api.FreeBusyResponse);
@@ -2390,7 +2390,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Setting', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetting();
       var od = api.Setting.fromJson(o.toJson());
       checkSetting(od as api.Setting);
@@ -2398,7 +2398,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Settings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSettings();
       var od = api.Settings.fromJson(o.toJson());
       checkSettings(od as api.Settings);
@@ -2406,7 +2406,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimePeriod', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimePeriod();
       var od = api.TimePeriod.fromJson(o.toJson());
       checkTimePeriod(od as api.TimePeriod);
@@ -2414,7 +2414,7 @@ void main() {
   });
 
   unittest.group('resource-AclResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).acl;
       var arg_calendarId = 'foo';
@@ -2487,12 +2487,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_calendarId, arg_ruleId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_calendarId, arg_ruleId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).acl;
       var arg_calendarId = 'foo';
@@ -2565,14 +2563,12 @@ void main() {
         var resp = convert.json.encode(buildAclRule());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_calendarId, arg_ruleId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAclRule(response as api.AclRule);
-      })));
+      final response =
+          await res.get(arg_calendarId, arg_ruleId, $fields: arg_$fields);
+      checkAclRule(response as api.AclRule);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).acl;
       var arg_request = buildAclRule();
@@ -2648,15 +2644,12 @@ void main() {
         var resp = convert.json.encode(buildAclRule());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_calendarId,
-              sendNotifications: arg_sendNotifications, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAclRule(response as api.AclRule);
-      })));
+      final response = await res.insert(arg_request, arg_calendarId,
+          sendNotifications: arg_sendNotifications, $fields: arg_$fields);
+      checkAclRule(response as api.AclRule);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).acl;
       var arg_calendarId = 'foo';
@@ -2742,19 +2735,16 @@ void main() {
         var resp = convert.json.encode(buildAcl());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_calendarId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              showDeleted: arg_showDeleted,
-              syncToken: arg_syncToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAcl(response as api.Acl);
-      })));
+      final response = await res.list(arg_calendarId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          showDeleted: arg_showDeleted,
+          syncToken: arg_syncToken,
+          $fields: arg_$fields);
+      checkAcl(response as api.Acl);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).acl;
       var arg_request = buildAclRule();
@@ -2837,15 +2827,12 @@ void main() {
         var resp = convert.json.encode(buildAclRule());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_calendarId, arg_ruleId,
-              sendNotifications: arg_sendNotifications, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAclRule(response as api.AclRule);
-      })));
+      final response = await res.patch(arg_request, arg_calendarId, arg_ruleId,
+          sendNotifications: arg_sendNotifications, $fields: arg_$fields);
+      checkAclRule(response as api.AclRule);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).acl;
       var arg_request = buildAclRule();
@@ -2928,15 +2915,12 @@ void main() {
         var resp = convert.json.encode(buildAclRule());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_calendarId, arg_ruleId,
-              sendNotifications: arg_sendNotifications, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAclRule(response as api.AclRule);
-      })));
+      final response = await res.update(arg_request, arg_calendarId, arg_ruleId,
+          sendNotifications: arg_sendNotifications, $fields: arg_$fields);
+      checkAclRule(response as api.AclRule);
     });
 
-    unittest.test('method--watch', () {
+    unittest.test('method--watch', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).acl;
       var arg_request = buildChannel();
@@ -3027,21 +3011,18 @@ void main() {
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .watch(arg_request, arg_calendarId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              showDeleted: arg_showDeleted,
-              syncToken: arg_syncToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChannel(response as api.Channel);
-      })));
+      final response = await res.watch(arg_request, arg_calendarId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          showDeleted: arg_showDeleted,
+          syncToken: arg_syncToken,
+          $fields: arg_$fields);
+      checkChannel(response as api.Channel);
     });
   });
 
   unittest.group('resource-CalendarListResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).calendarList;
       var arg_calendarId = 'foo';
@@ -3099,12 +3080,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_calendarId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_calendarId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).calendarList;
       var arg_calendarId = 'foo';
@@ -3162,14 +3141,11 @@ void main() {
         var resp = convert.json.encode(buildCalendarListEntry());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_calendarId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCalendarListEntry(response as api.CalendarListEntry);
-      })));
+      final response = await res.get(arg_calendarId, $fields: arg_$fields);
+      checkCalendarListEntry(response as api.CalendarListEntry);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).calendarList;
       var arg_request = buildCalendarListEntry();
@@ -3230,15 +3206,12 @@ void main() {
         var resp = convert.json.encode(buildCalendarListEntry());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request,
-              colorRgbFormat: arg_colorRgbFormat, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCalendarListEntry(response as api.CalendarListEntry);
-      })));
+      final response = await res.insert(arg_request,
+          colorRgbFormat: arg_colorRgbFormat, $fields: arg_$fields);
+      checkCalendarListEntry(response as api.CalendarListEntry);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).calendarList;
       var arg_maxResults = 42;
@@ -3319,21 +3292,18 @@ void main() {
         var resp = convert.json.encode(buildCalendarList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              maxResults: arg_maxResults,
-              minAccessRole: arg_minAccessRole,
-              pageToken: arg_pageToken,
-              showDeleted: arg_showDeleted,
-              showHidden: arg_showHidden,
-              syncToken: arg_syncToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCalendarList(response as api.CalendarList);
-      })));
+      final response = await res.list(
+          maxResults: arg_maxResults,
+          minAccessRole: arg_minAccessRole,
+          pageToken: arg_pageToken,
+          showDeleted: arg_showDeleted,
+          showHidden: arg_showHidden,
+          syncToken: arg_syncToken,
+          $fields: arg_$fields);
+      checkCalendarList(response as api.CalendarList);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).calendarList;
       var arg_request = buildCalendarListEntry();
@@ -3401,15 +3371,12 @@ void main() {
         var resp = convert.json.encode(buildCalendarListEntry());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_calendarId,
-              colorRgbFormat: arg_colorRgbFormat, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCalendarListEntry(response as api.CalendarListEntry);
-      })));
+      final response = await res.patch(arg_request, arg_calendarId,
+          colorRgbFormat: arg_colorRgbFormat, $fields: arg_$fields);
+      checkCalendarListEntry(response as api.CalendarListEntry);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).calendarList;
       var arg_request = buildCalendarListEntry();
@@ -3477,15 +3444,12 @@ void main() {
         var resp = convert.json.encode(buildCalendarListEntry());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_calendarId,
-              colorRgbFormat: arg_colorRgbFormat, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCalendarListEntry(response as api.CalendarListEntry);
-      })));
+      final response = await res.update(arg_request, arg_calendarId,
+          colorRgbFormat: arg_colorRgbFormat, $fields: arg_$fields);
+      checkCalendarListEntry(response as api.CalendarListEntry);
     });
 
-    unittest.test('method--watch', () {
+    unittest.test('method--watch', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).calendarList;
       var arg_request = buildChannel();
@@ -3571,23 +3535,20 @@ void main() {
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .watch(arg_request,
-              maxResults: arg_maxResults,
-              minAccessRole: arg_minAccessRole,
-              pageToken: arg_pageToken,
-              showDeleted: arg_showDeleted,
-              showHidden: arg_showHidden,
-              syncToken: arg_syncToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChannel(response as api.Channel);
-      })));
+      final response = await res.watch(arg_request,
+          maxResults: arg_maxResults,
+          minAccessRole: arg_minAccessRole,
+          pageToken: arg_pageToken,
+          showDeleted: arg_showDeleted,
+          showHidden: arg_showHidden,
+          syncToken: arg_syncToken,
+          $fields: arg_$fields);
+      checkChannel(response as api.Channel);
     });
   });
 
   unittest.group('resource-CalendarsResource', () {
-    unittest.test('method--clear', () {
+    unittest.test('method--clear', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).calendars;
       var arg_calendarId = 'foo';
@@ -3653,12 +3614,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .clear(arg_calendarId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.clear(arg_calendarId, $fields: arg_$fields);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).calendars;
       var arg_calendarId = 'foo';
@@ -3716,12 +3675,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_calendarId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_calendarId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).calendars;
       var arg_calendarId = 'foo';
@@ -3779,14 +3736,11 @@ void main() {
         var resp = convert.json.encode(buildCalendar());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_calendarId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCalendar(response as api.Calendar);
-      })));
+      final response = await res.get(arg_calendarId, $fields: arg_$fields);
+      checkCalendar(response as api.Calendar);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).calendars;
       var arg_request = buildCalendar();
@@ -3842,14 +3796,11 @@ void main() {
         var resp = convert.json.encode(buildCalendar());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCalendar(response as api.Calendar);
-      })));
+      final response = await res.insert(arg_request, $fields: arg_$fields);
+      checkCalendar(response as api.Calendar);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).calendars;
       var arg_request = buildCalendar();
@@ -3912,14 +3863,12 @@ void main() {
         var resp = convert.json.encode(buildCalendar());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_calendarId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCalendar(response as api.Calendar);
-      })));
+      final response =
+          await res.patch(arg_request, arg_calendarId, $fields: arg_$fields);
+      checkCalendar(response as api.Calendar);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).calendars;
       var arg_request = buildCalendar();
@@ -3982,16 +3931,14 @@ void main() {
         var resp = convert.json.encode(buildCalendar());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_calendarId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCalendar(response as api.Calendar);
-      })));
+      final response =
+          await res.update(arg_request, arg_calendarId, $fields: arg_$fields);
+      checkCalendar(response as api.Calendar);
     });
   });
 
   unittest.group('resource-ChannelsResource', () {
-    unittest.test('method--stop', () {
+    unittest.test('method--stop', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).channels;
       var arg_request = buildChannel();
@@ -4047,14 +3994,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .stop(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.stop(arg_request, $fields: arg_$fields);
     });
   });
 
   unittest.group('resource-ColorsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).colors;
       var arg_$fields = 'foo';
@@ -4105,14 +4050,13 @@ void main() {
         var resp = convert.json.encode(buildColors());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkColors(response as api.Colors);
-      })));
+      final response = await res.get($fields: arg_$fields);
+      checkColors(response as api.Colors);
     });
   });
 
   unittest.group('resource-EventsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).events;
       var arg_calendarId = 'foo';
@@ -4195,15 +4139,13 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_calendarId, arg_eventId,
-              sendNotifications: arg_sendNotifications,
-              sendUpdates: arg_sendUpdates,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_calendarId, arg_eventId,
+          sendNotifications: arg_sendNotifications,
+          sendUpdates: arg_sendUpdates,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).events;
       var arg_calendarId = 'foo';
@@ -4291,18 +4233,15 @@ void main() {
         var resp = convert.json.encode(buildEvent());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_calendarId, arg_eventId,
-              alwaysIncludeEmail: arg_alwaysIncludeEmail,
-              maxAttendees: arg_maxAttendees,
-              timeZone: arg_timeZone,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEvent(response as api.Event);
-      })));
+      final response = await res.get(arg_calendarId, arg_eventId,
+          alwaysIncludeEmail: arg_alwaysIncludeEmail,
+          maxAttendees: arg_maxAttendees,
+          timeZone: arg_timeZone,
+          $fields: arg_$fields);
+      checkEvent(response as api.Event);
     });
 
-    unittest.test('method--import', () {
+    unittest.test('method--import', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).events;
       var arg_request = buildEvent();
@@ -4383,17 +4322,14 @@ void main() {
         var resp = convert.json.encode(buildEvent());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .import(arg_request, arg_calendarId,
-              conferenceDataVersion: arg_conferenceDataVersion,
-              supportsAttachments: arg_supportsAttachments,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEvent(response as api.Event);
-      })));
+      final response = await res.import(arg_request, arg_calendarId,
+          conferenceDataVersion: arg_conferenceDataVersion,
+          supportsAttachments: arg_supportsAttachments,
+          $fields: arg_$fields);
+      checkEvent(response as api.Event);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).events;
       var arg_request = buildEvent();
@@ -4489,20 +4425,17 @@ void main() {
         var resp = convert.json.encode(buildEvent());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_calendarId,
-              conferenceDataVersion: arg_conferenceDataVersion,
-              maxAttendees: arg_maxAttendees,
-              sendNotifications: arg_sendNotifications,
-              sendUpdates: arg_sendUpdates,
-              supportsAttachments: arg_supportsAttachments,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEvent(response as api.Event);
-      })));
+      final response = await res.insert(arg_request, arg_calendarId,
+          conferenceDataVersion: arg_conferenceDataVersion,
+          maxAttendees: arg_maxAttendees,
+          sendNotifications: arg_sendNotifications,
+          sendUpdates: arg_sendUpdates,
+          supportsAttachments: arg_supportsAttachments,
+          $fields: arg_$fields);
+      checkEvent(response as api.Event);
     });
 
-    unittest.test('method--instances', () {
+    unittest.test('method--instances', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).events;
       var arg_calendarId = 'foo';
@@ -4628,24 +4561,21 @@ void main() {
         var resp = convert.json.encode(buildEvents());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .instances(arg_calendarId, arg_eventId,
-              alwaysIncludeEmail: arg_alwaysIncludeEmail,
-              maxAttendees: arg_maxAttendees,
-              maxResults: arg_maxResults,
-              originalStart: arg_originalStart,
-              pageToken: arg_pageToken,
-              showDeleted: arg_showDeleted,
-              timeMax: arg_timeMax,
-              timeMin: arg_timeMin,
-              timeZone: arg_timeZone,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEvents(response as api.Events);
-      })));
+      final response = await res.instances(arg_calendarId, arg_eventId,
+          alwaysIncludeEmail: arg_alwaysIncludeEmail,
+          maxAttendees: arg_maxAttendees,
+          maxResults: arg_maxResults,
+          originalStart: arg_originalStart,
+          pageToken: arg_pageToken,
+          showDeleted: arg_showDeleted,
+          timeMax: arg_timeMax,
+          timeMin: arg_timeMin,
+          timeZone: arg_timeZone,
+          $fields: arg_$fields);
+      checkEvents(response as api.Events);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).events;
       var arg_calendarId = 'foo';
@@ -4796,32 +4726,29 @@ void main() {
         var resp = convert.json.encode(buildEvents());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_calendarId,
-              alwaysIncludeEmail: arg_alwaysIncludeEmail,
-              iCalUID: arg_iCalUID,
-              maxAttendees: arg_maxAttendees,
-              maxResults: arg_maxResults,
-              orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
-              privateExtendedProperty: arg_privateExtendedProperty,
-              q: arg_q,
-              sharedExtendedProperty: arg_sharedExtendedProperty,
-              showDeleted: arg_showDeleted,
-              showHiddenInvitations: arg_showHiddenInvitations,
-              singleEvents: arg_singleEvents,
-              syncToken: arg_syncToken,
-              timeMax: arg_timeMax,
-              timeMin: arg_timeMin,
-              timeZone: arg_timeZone,
-              updatedMin: arg_updatedMin,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEvents(response as api.Events);
-      })));
+      final response = await res.list(arg_calendarId,
+          alwaysIncludeEmail: arg_alwaysIncludeEmail,
+          iCalUID: arg_iCalUID,
+          maxAttendees: arg_maxAttendees,
+          maxResults: arg_maxResults,
+          orderBy: arg_orderBy,
+          pageToken: arg_pageToken,
+          privateExtendedProperty: arg_privateExtendedProperty,
+          q: arg_q,
+          sharedExtendedProperty: arg_sharedExtendedProperty,
+          showDeleted: arg_showDeleted,
+          showHiddenInvitations: arg_showHiddenInvitations,
+          singleEvents: arg_singleEvents,
+          syncToken: arg_syncToken,
+          timeMax: arg_timeMax,
+          timeMin: arg_timeMin,
+          timeZone: arg_timeZone,
+          updatedMin: arg_updatedMin,
+          $fields: arg_$fields);
+      checkEvents(response as api.Events);
     });
 
-    unittest.test('method--move', () {
+    unittest.test('method--move', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).events;
       var arg_calendarId = 'foo';
@@ -4917,17 +4844,15 @@ void main() {
         var resp = convert.json.encode(buildEvent());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .move(arg_calendarId, arg_eventId, arg_destination,
-              sendNotifications: arg_sendNotifications,
-              sendUpdates: arg_sendUpdates,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEvent(response as api.Event);
-      })));
+      final response = await res.move(
+          arg_calendarId, arg_eventId, arg_destination,
+          sendNotifications: arg_sendNotifications,
+          sendUpdates: arg_sendUpdates,
+          $fields: arg_$fields);
+      checkEvent(response as api.Event);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).events;
       var arg_request = buildEvent();
@@ -5035,21 +4960,18 @@ void main() {
         var resp = convert.json.encode(buildEvent());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_calendarId, arg_eventId,
-              alwaysIncludeEmail: arg_alwaysIncludeEmail,
-              conferenceDataVersion: arg_conferenceDataVersion,
-              maxAttendees: arg_maxAttendees,
-              sendNotifications: arg_sendNotifications,
-              sendUpdates: arg_sendUpdates,
-              supportsAttachments: arg_supportsAttachments,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEvent(response as api.Event);
-      })));
+      final response = await res.patch(arg_request, arg_calendarId, arg_eventId,
+          alwaysIncludeEmail: arg_alwaysIncludeEmail,
+          conferenceDataVersion: arg_conferenceDataVersion,
+          maxAttendees: arg_maxAttendees,
+          sendNotifications: arg_sendNotifications,
+          sendUpdates: arg_sendUpdates,
+          supportsAttachments: arg_supportsAttachments,
+          $fields: arg_$fields);
+      checkEvent(response as api.Event);
     });
 
-    unittest.test('method--quickAdd', () {
+    unittest.test('method--quickAdd', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).events;
       var arg_calendarId = 'foo';
@@ -5130,17 +5052,14 @@ void main() {
         var resp = convert.json.encode(buildEvent());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .quickAdd(arg_calendarId, arg_text,
-              sendNotifications: arg_sendNotifications,
-              sendUpdates: arg_sendUpdates,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEvent(response as api.Event);
-      })));
+      final response = await res.quickAdd(arg_calendarId, arg_text,
+          sendNotifications: arg_sendNotifications,
+          sendUpdates: arg_sendUpdates,
+          $fields: arg_$fields);
+      checkEvent(response as api.Event);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).events;
       var arg_request = buildEvent();
@@ -5248,21 +5167,19 @@ void main() {
         var resp = convert.json.encode(buildEvent());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_calendarId, arg_eventId,
-              alwaysIncludeEmail: arg_alwaysIncludeEmail,
-              conferenceDataVersion: arg_conferenceDataVersion,
-              maxAttendees: arg_maxAttendees,
-              sendNotifications: arg_sendNotifications,
-              sendUpdates: arg_sendUpdates,
-              supportsAttachments: arg_supportsAttachments,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEvent(response as api.Event);
-      })));
+      final response = await res.update(
+          arg_request, arg_calendarId, arg_eventId,
+          alwaysIncludeEmail: arg_alwaysIncludeEmail,
+          conferenceDataVersion: arg_conferenceDataVersion,
+          maxAttendees: arg_maxAttendees,
+          sendNotifications: arg_sendNotifications,
+          sendUpdates: arg_sendUpdates,
+          supportsAttachments: arg_supportsAttachments,
+          $fields: arg_$fields);
+      checkEvent(response as api.Event);
     });
 
-    unittest.test('method--watch', () {
+    unittest.test('method--watch', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).events;
       var arg_request = buildChannel();
@@ -5418,34 +5335,31 @@ void main() {
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .watch(arg_request, arg_calendarId,
-              alwaysIncludeEmail: arg_alwaysIncludeEmail,
-              iCalUID: arg_iCalUID,
-              maxAttendees: arg_maxAttendees,
-              maxResults: arg_maxResults,
-              orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
-              privateExtendedProperty: arg_privateExtendedProperty,
-              q: arg_q,
-              sharedExtendedProperty: arg_sharedExtendedProperty,
-              showDeleted: arg_showDeleted,
-              showHiddenInvitations: arg_showHiddenInvitations,
-              singleEvents: arg_singleEvents,
-              syncToken: arg_syncToken,
-              timeMax: arg_timeMax,
-              timeMin: arg_timeMin,
-              timeZone: arg_timeZone,
-              updatedMin: arg_updatedMin,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChannel(response as api.Channel);
-      })));
+      final response = await res.watch(arg_request, arg_calendarId,
+          alwaysIncludeEmail: arg_alwaysIncludeEmail,
+          iCalUID: arg_iCalUID,
+          maxAttendees: arg_maxAttendees,
+          maxResults: arg_maxResults,
+          orderBy: arg_orderBy,
+          pageToken: arg_pageToken,
+          privateExtendedProperty: arg_privateExtendedProperty,
+          q: arg_q,
+          sharedExtendedProperty: arg_sharedExtendedProperty,
+          showDeleted: arg_showDeleted,
+          showHiddenInvitations: arg_showHiddenInvitations,
+          singleEvents: arg_singleEvents,
+          syncToken: arg_syncToken,
+          timeMax: arg_timeMax,
+          timeMin: arg_timeMin,
+          timeZone: arg_timeZone,
+          updatedMin: arg_updatedMin,
+          $fields: arg_$fields);
+      checkChannel(response as api.Channel);
     });
   });
 
   unittest.group('resource-FreebusyResource', () {
-    unittest.test('method--query', () {
+    unittest.test('method--query', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).freebusy;
       var arg_request = buildFreeBusyRequest();
@@ -5501,16 +5415,13 @@ void main() {
         var resp = convert.json.encode(buildFreeBusyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .query(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFreeBusyResponse(response as api.FreeBusyResponse);
-      })));
+      final response = await res.query(arg_request, $fields: arg_$fields);
+      checkFreeBusyResponse(response as api.FreeBusyResponse);
     });
   });
 
   unittest.group('resource-SettingsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).settings;
       var arg_setting = 'foo';
@@ -5568,14 +5479,11 @@ void main() {
         var resp = convert.json.encode(buildSetting());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_setting, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSetting(response as api.Setting);
-      })));
+      final response = await res.get(arg_setting, $fields: arg_$fields);
+      checkSetting(response as api.Setting);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).settings;
       var arg_maxResults = 42;
@@ -5641,18 +5549,15 @@ void main() {
         var resp = convert.json.encode(buildSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              syncToken: arg_syncToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSettings(response as api.Settings);
-      })));
+      final response = await res.list(
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          syncToken: arg_syncToken,
+          $fields: arg_$fields);
+      checkSettings(response as api.Settings);
     });
 
-    unittest.test('method--watch', () {
+    unittest.test('method--watch', () async {
       var mock = HttpServerMock();
       var res = api.CalendarApi(mock).settings;
       var arg_request = buildChannel();
@@ -5723,15 +5628,12 @@ void main() {
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .watch(arg_request,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              syncToken: arg_syncToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChannel(response as api.Channel);
-      })));
+      final response = await res.watch(arg_request,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          syncToken: arg_syncToken,
+          $fields: arg_$fields);
+      checkChannel(response as api.Channel);
     });
   });
 }

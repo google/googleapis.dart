@@ -777,7 +777,7 @@ void checkStatus(api.Status o) {
 
 void main() {
   unittest.group('obj-schema-AppEngineHttpTarget', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppEngineHttpTarget();
       var od = api.AppEngineHttpTarget.fromJson(o.toJson());
       checkAppEngineHttpTarget(od as api.AppEngineHttpTarget);
@@ -785,7 +785,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AppEngineRouting', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppEngineRouting();
       var od = api.AppEngineRouting.fromJson(o.toJson());
       checkAppEngineRouting(od as api.AppEngineRouting);
@@ -793,7 +793,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -801,7 +801,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HttpTarget', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHttpTarget();
       var od = api.HttpTarget.fromJson(o.toJson());
       checkHttpTarget(od as api.HttpTarget);
@@ -809,7 +809,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Job', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJob();
       var od = api.Job.fromJson(o.toJson());
       checkJob(od as api.Job);
@@ -817,7 +817,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListJobsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListJobsResponse();
       var od = api.ListJobsResponse.fromJson(o.toJson());
       checkListJobsResponse(od as api.ListJobsResponse);
@@ -825,7 +825,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -833,7 +833,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -841,7 +841,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OAuthToken', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOAuthToken();
       var od = api.OAuthToken.fromJson(o.toJson());
       checkOAuthToken(od as api.OAuthToken);
@@ -849,7 +849,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OidcToken', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOidcToken();
       var od = api.OidcToken.fromJson(o.toJson());
       checkOidcToken(od as api.OidcToken);
@@ -857,7 +857,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PauseJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPauseJobRequest();
       var od = api.PauseJobRequest.fromJson(o.toJson());
       checkPauseJobRequest(od as api.PauseJobRequest);
@@ -865,7 +865,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PubsubMessage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPubsubMessage();
       var od = api.PubsubMessage.fromJson(o.toJson());
       checkPubsubMessage(od as api.PubsubMessage);
@@ -873,7 +873,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PubsubTarget', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPubsubTarget();
       var od = api.PubsubTarget.fromJson(o.toJson());
       checkPubsubTarget(od as api.PubsubTarget);
@@ -881,7 +881,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResumeJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResumeJobRequest();
       var od = api.ResumeJobRequest.fromJson(o.toJson());
       checkResumeJobRequest(od as api.ResumeJobRequest);
@@ -889,7 +889,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RetryConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRetryConfig();
       var od = api.RetryConfig.fromJson(o.toJson());
       checkRetryConfig(od as api.RetryConfig);
@@ -897,7 +897,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RunJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRunJobRequest();
       var od = api.RunJobRequest.fromJson(o.toJson());
       checkRunJobRequest(od as api.RunJobRequest);
@@ -905,7 +905,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -913,7 +913,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudSchedulerApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -961,14 +961,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudSchedulerApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -1031,20 +1028,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsJobsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudSchedulerApi(mock).projects.locations.jobs;
       var arg_request = buildJob();
@@ -1096,14 +1090,12 @@ void main() {
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJob(response as api.Job);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkJob(response as api.Job);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudSchedulerApi(mock).projects.locations.jobs;
       var arg_name = 'foo';
@@ -1151,14 +1143,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudSchedulerApi(mock).projects.locations.jobs;
       var arg_name = 'foo';
@@ -1206,14 +1195,11 @@ void main() {
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJob(response as api.Job);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkJob(response as api.Job);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudSchedulerApi(mock).projects.locations.jobs;
       var arg_parent = 'foo';
@@ -1271,17 +1257,14 @@ void main() {
         var resp = convert.json.encode(buildListJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListJobsResponse(response as api.ListJobsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListJobsResponse(response as api.ListJobsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudSchedulerApi(mock).projects.locations.jobs;
       var arg_request = buildJob();
@@ -1338,15 +1321,12 @@ void main() {
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJob(response as api.Job);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkJob(response as api.Job);
     });
 
-    unittest.test('method--pause', () {
+    unittest.test('method--pause', () async {
       var mock = HttpServerMock();
       var res = api.CloudSchedulerApi(mock).projects.locations.jobs;
       var arg_request = buildPauseJobRequest();
@@ -1399,14 +1379,12 @@ void main() {
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .pause(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJob(response as api.Job);
-      })));
+      final response =
+          await res.pause(arg_request, arg_name, $fields: arg_$fields);
+      checkJob(response as api.Job);
     });
 
-    unittest.test('method--resume', () {
+    unittest.test('method--resume', () async {
       var mock = HttpServerMock();
       var res = api.CloudSchedulerApi(mock).projects.locations.jobs;
       var arg_request = buildResumeJobRequest();
@@ -1459,14 +1437,12 @@ void main() {
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resume(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJob(response as api.Job);
-      })));
+      final response =
+          await res.resume(arg_request, arg_name, $fields: arg_$fields);
+      checkJob(response as api.Job);
     });
 
-    unittest.test('method--run', () {
+    unittest.test('method--run', () async {
       var mock = HttpServerMock();
       var res = api.CloudSchedulerApi(mock).projects.locations.jobs;
       var arg_request = buildRunJobRequest();
@@ -1519,11 +1495,9 @@ void main() {
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .run(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJob(response as api.Job);
-      })));
+      final response =
+          await res.run(arg_request, arg_name, $fields: arg_$fields);
+      checkJob(response as api.Job);
     });
   });
 }

@@ -2075,7 +2075,7 @@ void checkVmImage(api.VmImage o) {
 
 void main() {
   unittest.group('obj-schema-AcceleratorConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAcceleratorConfig();
       var od = api.AcceleratorConfig.fromJson(o.toJson());
       checkAcceleratorConfig(od as api.AcceleratorConfig);
@@ -2083,7 +2083,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -2091,7 +2091,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od as api.CancelOperationRequest);
@@ -2099,7 +2099,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ContainerImage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContainerImage();
       var od = api.ContainerImage.fromJson(o.toJson());
       checkContainerImage(od as api.ContainerImage);
@@ -2107,7 +2107,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Disk', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDisk();
       var od = api.Disk.fromJson(o.toJson());
       checkDisk(od as api.Disk);
@@ -2115,7 +2115,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -2123,7 +2123,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Environment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnvironment();
       var od = api.Environment.fromJson(o.toJson());
       checkEnvironment(od as api.Environment);
@@ -2131,7 +2131,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Execution', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExecution();
       var od = api.Execution.fromJson(o.toJson());
       checkExecution(od as api.Execution);
@@ -2139,7 +2139,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExecutionTemplate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExecutionTemplate();
       var od = api.ExecutionTemplate.fromJson(o.toJson());
       checkExecutionTemplate(od as api.ExecutionTemplate);
@@ -2147,7 +2147,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -2155,7 +2155,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetInstanceHealthResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetInstanceHealthResponse();
       var od = api.GetInstanceHealthResponse.fromJson(o.toJson());
       checkGetInstanceHealthResponse(od as api.GetInstanceHealthResponse);
@@ -2163,7 +2163,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GuestOsFeature', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGuestOsFeature();
       var od = api.GuestOsFeature.fromJson(o.toJson());
       checkGuestOsFeature(od as api.GuestOsFeature);
@@ -2171,7 +2171,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Instance', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstance();
       var od = api.Instance.fromJson(o.toJson());
       checkInstance(od as api.Instance);
@@ -2179,7 +2179,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IsInstanceUpgradeableResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIsInstanceUpgradeableResponse();
       var od = api.IsInstanceUpgradeableResponse.fromJson(o.toJson());
       checkIsInstanceUpgradeableResponse(
@@ -2188,7 +2188,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListEnvironmentsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListEnvironmentsResponse();
       var od = api.ListEnvironmentsResponse.fromJson(o.toJson());
       checkListEnvironmentsResponse(od as api.ListEnvironmentsResponse);
@@ -2196,7 +2196,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListExecutionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListExecutionsResponse();
       var od = api.ListExecutionsResponse.fromJson(o.toJson());
       checkListExecutionsResponse(od as api.ListExecutionsResponse);
@@ -2204,7 +2204,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListInstancesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListInstancesResponse();
       var od = api.ListInstancesResponse.fromJson(o.toJson());
       checkListInstancesResponse(od as api.ListInstancesResponse);
@@ -2212,7 +2212,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -2220,7 +2220,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -2228,7 +2228,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListSchedulesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListSchedulesResponse();
       var od = api.ListSchedulesResponse.fromJson(o.toJson());
       checkListSchedulesResponse(od as api.ListSchedulesResponse);
@@ -2236,7 +2236,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -2244,7 +2244,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -2252,7 +2252,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
       checkOperationMetadata(od as api.OperationMetadata);
@@ -2260,7 +2260,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -2268,7 +2268,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RegisterInstanceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRegisterInstanceRequest();
       var od = api.RegisterInstanceRequest.fromJson(o.toJson());
       checkRegisterInstanceRequest(od as api.RegisterInstanceRequest);
@@ -2276,7 +2276,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportInstanceInfoRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportInstanceInfoRequest();
       var od = api.ReportInstanceInfoRequest.fromJson(o.toJson());
       checkReportInstanceInfoRequest(od as api.ReportInstanceInfoRequest);
@@ -2284,7 +2284,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResetInstanceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResetInstanceRequest();
       var od = api.ResetInstanceRequest.fromJson(o.toJson());
       checkResetInstanceRequest(od as api.ResetInstanceRequest);
@@ -2292,7 +2292,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Schedule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSchedule();
       var od = api.Schedule.fromJson(o.toJson());
       checkSchedule(od as api.Schedule);
@@ -2300,7 +2300,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SchedulerAcceleratorConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSchedulerAcceleratorConfig();
       var od = api.SchedulerAcceleratorConfig.fromJson(o.toJson());
       checkSchedulerAcceleratorConfig(od as api.SchedulerAcceleratorConfig);
@@ -2308,7 +2308,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -2316,7 +2316,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetInstanceAcceleratorRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetInstanceAcceleratorRequest();
       var od = api.SetInstanceAcceleratorRequest.fromJson(o.toJson());
       checkSetInstanceAcceleratorRequest(
@@ -2325,7 +2325,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetInstanceLabelsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetInstanceLabelsRequest();
       var od = api.SetInstanceLabelsRequest.fromJson(o.toJson());
       checkSetInstanceLabelsRequest(od as api.SetInstanceLabelsRequest);
@@ -2333,7 +2333,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetInstanceMachineTypeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetInstanceMachineTypeRequest();
       var od = api.SetInstanceMachineTypeRequest.fromJson(o.toJson());
       checkSetInstanceMachineTypeRequest(
@@ -2342,7 +2342,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShieldedInstanceConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShieldedInstanceConfig();
       var od = api.ShieldedInstanceConfig.fromJson(o.toJson());
       checkShieldedInstanceConfig(od as api.ShieldedInstanceConfig);
@@ -2350,7 +2350,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StartInstanceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStartInstanceRequest();
       var od = api.StartInstanceRequest.fromJson(o.toJson());
       checkStartInstanceRequest(od as api.StartInstanceRequest);
@@ -2358,7 +2358,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -2366,7 +2366,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StopInstanceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStopInstanceRequest();
       var od = api.StopInstanceRequest.fromJson(o.toJson());
       checkStopInstanceRequest(od as api.StopInstanceRequest);
@@ -2374,7 +2374,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -2382,7 +2382,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -2390,7 +2390,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TriggerScheduleRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTriggerScheduleRequest();
       var od = api.TriggerScheduleRequest.fromJson(o.toJson());
       checkTriggerScheduleRequest(od as api.TriggerScheduleRequest);
@@ -2398,7 +2398,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpgradeHistoryEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpgradeHistoryEntry();
       var od = api.UpgradeHistoryEntry.fromJson(o.toJson());
       checkUpgradeHistoryEntry(od as api.UpgradeHistoryEntry);
@@ -2406,7 +2406,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpgradeInstanceInternalRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpgradeInstanceInternalRequest();
       var od = api.UpgradeInstanceInternalRequest.fromJson(o.toJson());
       checkUpgradeInstanceInternalRequest(
@@ -2415,7 +2415,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpgradeInstanceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpgradeInstanceRequest();
       var od = api.UpgradeInstanceRequest.fromJson(o.toJson());
       checkUpgradeInstanceRequest(od as api.UpgradeInstanceRequest);
@@ -2423,7 +2423,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VmImage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVmImage();
       var od = api.VmImage.fromJson(o.toJson());
       checkVmImage(od as api.VmImage);
@@ -2431,7 +2431,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -2479,14 +2479,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -2549,20 +2546,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsEnvironmentsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.AIPlatformNotebooksApi(mock).projects.locations.environments;
@@ -2621,15 +2615,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              environmentId: arg_environmentId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          environmentId: arg_environmentId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.AIPlatformNotebooksApi(mock).projects.locations.environments;
@@ -2678,14 +2669,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.AIPlatformNotebooksApi(mock).projects.locations.environments;
@@ -2734,14 +2722,11 @@ void main() {
         var resp = convert.json.encode(buildEnvironment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEnvironment(response as api.Environment);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkEnvironment(response as api.Environment);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.AIPlatformNotebooksApi(mock).projects.locations.environments;
@@ -2800,19 +2785,16 @@ void main() {
         var resp = convert.json.encode(buildListEnvironmentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListEnvironmentsResponse(response as api.ListEnvironmentsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListEnvironmentsResponse(response as api.ListEnvironmentsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsExecutionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.executions;
       var arg_request = buildExecution();
@@ -2870,15 +2852,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              executionId: arg_executionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          executionId: arg_executionId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.executions;
       var arg_name = 'foo';
@@ -2926,14 +2905,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.executions;
       var arg_name = 'foo';
@@ -2981,14 +2957,11 @@ void main() {
         var resp = convert.json.encode(buildExecution());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkExecution(response as api.Execution);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkExecution(response as api.Execution);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.executions;
       var arg_parent = 'foo';
@@ -3056,21 +3029,18 @@ void main() {
         var resp = convert.json.encode(buildListExecutionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListExecutionsResponse(response as api.ListExecutionsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListExecutionsResponse(response as api.ListExecutionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsInstancesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_request = buildInstance();
@@ -3128,15 +3098,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              instanceId: arg_instanceId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          instanceId: arg_instanceId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_name = 'foo';
@@ -3184,14 +3151,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_name = 'foo';
@@ -3239,14 +3203,11 @@ void main() {
         var resp = convert.json.encode(buildInstance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInstance(response as api.Instance);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkInstance(response as api.Instance);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_resource = 'foo';
@@ -3299,17 +3260,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--getInstanceHealth', () {
+    unittest.test('method--getInstanceHealth', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_name = 'foo';
@@ -3357,15 +3314,12 @@ void main() {
         var resp = convert.json.encode(buildGetInstanceHealthResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getInstanceHealth(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetInstanceHealthResponse(
-            response as api.GetInstanceHealthResponse);
-      })));
+      final response =
+          await res.getInstanceHealth(arg_name, $fields: arg_$fields);
+      checkGetInstanceHealthResponse(response as api.GetInstanceHealthResponse);
     });
 
-    unittest.test('method--isUpgradeable', () {
+    unittest.test('method--isUpgradeable', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_notebookInstance = 'foo';
@@ -3413,15 +3367,13 @@ void main() {
         var resp = convert.json.encode(buildIsInstanceUpgradeableResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .isUpgradeable(arg_notebookInstance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkIsInstanceUpgradeableResponse(
-            response as api.IsInstanceUpgradeableResponse);
-      })));
+      final response =
+          await res.isUpgradeable(arg_notebookInstance, $fields: arg_$fields);
+      checkIsInstanceUpgradeableResponse(
+          response as api.IsInstanceUpgradeableResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_parent = 'foo';
@@ -3479,17 +3431,14 @@ void main() {
         var resp = convert.json.encode(buildListInstancesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListInstancesResponse(response as api.ListInstancesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListInstancesResponse(response as api.ListInstancesResponse);
     });
 
-    unittest.test('method--register', () {
+    unittest.test('method--register', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_request = buildRegisterInstanceRequest();
@@ -3542,14 +3491,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .register(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.register(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--report', () {
+    unittest.test('method--report', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_request = buildReportInstanceInfoRequest();
@@ -3602,14 +3549,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .report(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.report(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--reset', () {
+    unittest.test('method--reset', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_request = buildResetInstanceRequest();
@@ -3662,14 +3607,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reset(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.reset(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setAccelerator', () {
+    unittest.test('method--setAccelerator', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_request = buildSetInstanceAcceleratorRequest();
@@ -3723,14 +3666,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setAccelerator(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.setAccelerator(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_request = buildSetIamPolicyRequest();
@@ -3783,14 +3724,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--setLabels', () {
+    unittest.test('method--setLabels', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_request = buildSetInstanceLabelsRequest();
@@ -3843,14 +3782,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setLabels(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.setLabels(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setMachineType', () {
+    unittest.test('method--setMachineType', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_request = buildSetInstanceMachineTypeRequest();
@@ -3904,14 +3841,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setMachineType(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.setMachineType(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--start', () {
+    unittest.test('method--start', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_request = buildStartInstanceRequest();
@@ -3964,14 +3899,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .start(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.start(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--stop', () {
+    unittest.test('method--stop', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_request = buildStopInstanceRequest();
@@ -4024,14 +3957,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .stop(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.stop(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_request = buildTestIamPermissionsRequest();
@@ -4084,15 +4015,13 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
 
-    unittest.test('method--upgrade', () {
+    unittest.test('method--upgrade', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_request = buildUpgradeInstanceRequest();
@@ -4145,14 +4074,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .upgrade(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.upgrade(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--upgradeInternal', () {
+    unittest.test('method--upgradeInternal', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.instances;
       var arg_request = buildUpgradeInstanceInternalRequest();
@@ -4206,16 +4133,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .upgradeInternal(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.upgradeInternal(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.operations;
       var arg_request = buildCancelOperationRequest();
@@ -4268,14 +4193,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -4323,14 +4246,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -4378,14 +4298,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -4448,20 +4365,17 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsSchedulesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.schedules;
       var arg_request = buildSchedule();
@@ -4519,15 +4433,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              scheduleId: arg_scheduleId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          scheduleId: arg_scheduleId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.schedules;
       var arg_name = 'foo';
@@ -4575,14 +4486,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.schedules;
       var arg_name = 'foo';
@@ -4630,14 +4538,11 @@ void main() {
         var resp = convert.json.encode(buildSchedule());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSchedule(response as api.Schedule);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSchedule(response as api.Schedule);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.schedules;
       var arg_parent = 'foo';
@@ -4705,19 +4610,16 @@ void main() {
         var resp = convert.json.encode(buildListSchedulesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSchedulesResponse(response as api.ListSchedulesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListSchedulesResponse(response as api.ListSchedulesResponse);
     });
 
-    unittest.test('method--trigger', () {
+    unittest.test('method--trigger', () async {
       var mock = HttpServerMock();
       var res = api.AIPlatformNotebooksApi(mock).projects.locations.schedules;
       var arg_request = buildTriggerScheduleRequest();
@@ -4770,11 +4672,9 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .trigger(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.trigger(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 }

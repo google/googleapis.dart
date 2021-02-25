@@ -15567,7 +15567,7 @@ void checkUnnamed4409(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-Account', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccount();
       var od = api.Account.fromJson(o.toJson());
       checkAccount(od as api.Account);
@@ -15575,7 +15575,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountAddress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountAddress();
       var od = api.AccountAddress.fromJson(o.toJson());
       checkAccountAddress(od as api.AccountAddress);
@@ -15583,7 +15583,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountAdsLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountAdsLink();
       var od = api.AccountAdsLink.fromJson(o.toJson());
       checkAccountAdsLink(od as api.AccountAdsLink);
@@ -15591,7 +15591,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountBusinessInformation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountBusinessInformation();
       var od = api.AccountBusinessInformation.fromJson(o.toJson());
       checkAccountBusinessInformation(od as api.AccountBusinessInformation);
@@ -15599,7 +15599,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountCustomerService', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountCustomerService();
       var od = api.AccountCustomerService.fromJson(o.toJson());
       checkAccountCustomerService(od as api.AccountCustomerService);
@@ -15607,7 +15607,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountGoogleMyBusinessLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountGoogleMyBusinessLink();
       var od = api.AccountGoogleMyBusinessLink.fromJson(o.toJson());
       checkAccountGoogleMyBusinessLink(od as api.AccountGoogleMyBusinessLink);
@@ -15615,7 +15615,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountIdentifier', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountIdentifier();
       var od = api.AccountIdentifier.fromJson(o.toJson());
       checkAccountIdentifier(od as api.AccountIdentifier);
@@ -15623,7 +15623,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountLabel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountLabel();
       var od = api.AccountLabel.fromJson(o.toJson());
       checkAccountLabel(od as api.AccountLabel);
@@ -15631,7 +15631,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountReturnCarrier', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountReturnCarrier();
       var od = api.AccountReturnCarrier.fromJson(o.toJson());
       checkAccountReturnCarrier(od as api.AccountReturnCarrier);
@@ -15639,7 +15639,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountStatus();
       var od = api.AccountStatus.fromJson(o.toJson());
       checkAccountStatus(od as api.AccountStatus);
@@ -15647,7 +15647,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountStatusAccountLevelIssue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountStatusAccountLevelIssue();
       var od = api.AccountStatusAccountLevelIssue.fromJson(o.toJson());
       checkAccountStatusAccountLevelIssue(
@@ -15656,7 +15656,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountStatusItemLevelIssue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountStatusItemLevelIssue();
       var od = api.AccountStatusItemLevelIssue.fromJson(o.toJson());
       checkAccountStatusItemLevelIssue(od as api.AccountStatusItemLevelIssue);
@@ -15664,7 +15664,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountStatusProducts', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountStatusProducts();
       var od = api.AccountStatusProducts.fromJson(o.toJson());
       checkAccountStatusProducts(od as api.AccountStatusProducts);
@@ -15672,7 +15672,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountStatusStatistics', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountStatusStatistics();
       var od = api.AccountStatusStatistics.fromJson(o.toJson());
       checkAccountStatusStatistics(od as api.AccountStatusStatistics);
@@ -15680,7 +15680,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountTax', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountTax();
       var od = api.AccountTax.fromJson(o.toJson());
       checkAccountTax(od as api.AccountTax);
@@ -15688,7 +15688,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountTaxTaxRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountTaxTaxRule();
       var od = api.AccountTaxTaxRule.fromJson(o.toJson());
       checkAccountTaxTaxRule(od as api.AccountTaxTaxRule);
@@ -15696,7 +15696,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountUser', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountUser();
       var od = api.AccountUser.fromJson(o.toJson());
       checkAccountUser(od as api.AccountUser);
@@ -15704,7 +15704,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountYouTubeChannelLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountYouTubeChannelLink();
       var od = api.AccountYouTubeChannelLink.fromJson(o.toJson());
       checkAccountYouTubeChannelLink(od as api.AccountYouTubeChannelLink);
@@ -15712,7 +15712,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountsAuthInfoResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountsAuthInfoResponse();
       var od = api.AccountsAuthInfoResponse.fromJson(o.toJson());
       checkAccountsAuthInfoResponse(od as api.AccountsAuthInfoResponse);
@@ -15720,7 +15720,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountsClaimWebsiteResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountsClaimWebsiteResponse();
       var od = api.AccountsClaimWebsiteResponse.fromJson(o.toJson());
       checkAccountsClaimWebsiteResponse(od as api.AccountsClaimWebsiteResponse);
@@ -15728,7 +15728,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountsCustomBatchRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountsCustomBatchRequest();
       var od = api.AccountsCustomBatchRequest.fromJson(o.toJson());
       checkAccountsCustomBatchRequest(od as api.AccountsCustomBatchRequest);
@@ -15736,7 +15736,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountsCustomBatchRequestEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountsCustomBatchRequestEntry();
       var od = api.AccountsCustomBatchRequestEntry.fromJson(o.toJson());
       checkAccountsCustomBatchRequestEntry(
@@ -15745,7 +15745,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountsCustomBatchRequestEntryLinkRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountsCustomBatchRequestEntryLinkRequest();
       var od =
           api.AccountsCustomBatchRequestEntryLinkRequest.fromJson(o.toJson());
@@ -15755,7 +15755,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountsCustomBatchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountsCustomBatchResponse();
       var od = api.AccountsCustomBatchResponse.fromJson(o.toJson());
       checkAccountsCustomBatchResponse(od as api.AccountsCustomBatchResponse);
@@ -15763,7 +15763,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountsCustomBatchResponseEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountsCustomBatchResponseEntry();
       var od = api.AccountsCustomBatchResponseEntry.fromJson(o.toJson());
       checkAccountsCustomBatchResponseEntry(
@@ -15772,7 +15772,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountsLinkRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountsLinkRequest();
       var od = api.AccountsLinkRequest.fromJson(o.toJson());
       checkAccountsLinkRequest(od as api.AccountsLinkRequest);
@@ -15780,7 +15780,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountsLinkResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountsLinkResponse();
       var od = api.AccountsLinkResponse.fromJson(o.toJson());
       checkAccountsLinkResponse(od as api.AccountsLinkResponse);
@@ -15788,7 +15788,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountsListLinksResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountsListLinksResponse();
       var od = api.AccountsListLinksResponse.fromJson(o.toJson());
       checkAccountsListLinksResponse(od as api.AccountsListLinksResponse);
@@ -15796,7 +15796,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountsListResponse();
       var od = api.AccountsListResponse.fromJson(o.toJson());
       checkAccountsListResponse(od as api.AccountsListResponse);
@@ -15804,7 +15804,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountsUpdateLabelsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountsUpdateLabelsRequest();
       var od = api.AccountsUpdateLabelsRequest.fromJson(o.toJson());
       checkAccountsUpdateLabelsRequest(od as api.AccountsUpdateLabelsRequest);
@@ -15812,7 +15812,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountsUpdateLabelsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountsUpdateLabelsResponse();
       var od = api.AccountsUpdateLabelsResponse.fromJson(o.toJson());
       checkAccountsUpdateLabelsResponse(od as api.AccountsUpdateLabelsResponse);
@@ -15820,7 +15820,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountstatusesCustomBatchRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountstatusesCustomBatchRequest();
       var od = api.AccountstatusesCustomBatchRequest.fromJson(o.toJson());
       checkAccountstatusesCustomBatchRequest(
@@ -15829,7 +15829,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountstatusesCustomBatchRequestEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountstatusesCustomBatchRequestEntry();
       var od = api.AccountstatusesCustomBatchRequestEntry.fromJson(o.toJson());
       checkAccountstatusesCustomBatchRequestEntry(
@@ -15838,7 +15838,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountstatusesCustomBatchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountstatusesCustomBatchResponse();
       var od = api.AccountstatusesCustomBatchResponse.fromJson(o.toJson());
       checkAccountstatusesCustomBatchResponse(
@@ -15847,7 +15847,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountstatusesCustomBatchResponseEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountstatusesCustomBatchResponseEntry();
       var od = api.AccountstatusesCustomBatchResponseEntry.fromJson(o.toJson());
       checkAccountstatusesCustomBatchResponseEntry(
@@ -15856,7 +15856,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountstatusesListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountstatusesListResponse();
       var od = api.AccountstatusesListResponse.fromJson(o.toJson());
       checkAccountstatusesListResponse(od as api.AccountstatusesListResponse);
@@ -15864,7 +15864,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccounttaxCustomBatchRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccounttaxCustomBatchRequest();
       var od = api.AccounttaxCustomBatchRequest.fromJson(o.toJson());
       checkAccounttaxCustomBatchRequest(od as api.AccounttaxCustomBatchRequest);
@@ -15872,7 +15872,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccounttaxCustomBatchRequestEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccounttaxCustomBatchRequestEntry();
       var od = api.AccounttaxCustomBatchRequestEntry.fromJson(o.toJson());
       checkAccounttaxCustomBatchRequestEntry(
@@ -15881,7 +15881,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccounttaxCustomBatchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccounttaxCustomBatchResponse();
       var od = api.AccounttaxCustomBatchResponse.fromJson(o.toJson());
       checkAccounttaxCustomBatchResponse(
@@ -15890,7 +15890,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccounttaxCustomBatchResponseEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccounttaxCustomBatchResponseEntry();
       var od = api.AccounttaxCustomBatchResponseEntry.fromJson(o.toJson());
       checkAccounttaxCustomBatchResponseEntry(
@@ -15899,7 +15899,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccounttaxListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccounttaxListResponse();
       var od = api.AccounttaxListResponse.fromJson(o.toJson());
       checkAccounttaxListResponse(od as api.AccounttaxListResponse);
@@ -15907,7 +15907,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Amount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAmount();
       var od = api.Amount.fromJson(o.toJson());
       checkAmount(od as api.Amount);
@@ -15915,7 +15915,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BusinessDayConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBusinessDayConfig();
       var od = api.BusinessDayConfig.fromJson(o.toJson());
       checkBusinessDayConfig(od as api.BusinessDayConfig);
@@ -15923,7 +15923,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuyOnGoogleProgramStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuyOnGoogleProgramStatus();
       var od = api.BuyOnGoogleProgramStatus.fromJson(o.toJson());
       checkBuyOnGoogleProgramStatus(od as api.BuyOnGoogleProgramStatus);
@@ -15931,7 +15931,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CarrierRate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCarrierRate();
       var od = api.CarrierRate.fromJson(o.toJson());
       checkCarrierRate(od as api.CarrierRate);
@@ -15939,7 +15939,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CarriersCarrier', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCarriersCarrier();
       var od = api.CarriersCarrier.fromJson(o.toJson());
       checkCarriersCarrier(od as api.CarriersCarrier);
@@ -15947,7 +15947,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Collection', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCollection();
       var od = api.Collection.fromJson(o.toJson());
       checkCollection(od as api.Collection);
@@ -15955,7 +15955,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CollectionFeaturedProduct', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCollectionFeaturedProduct();
       var od = api.CollectionFeaturedProduct.fromJson(o.toJson());
       checkCollectionFeaturedProduct(od as api.CollectionFeaturedProduct);
@@ -15963,7 +15963,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CollectionStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCollectionStatus();
       var od = api.CollectionStatus.fromJson(o.toJson());
       checkCollectionStatus(od as api.CollectionStatus);
@@ -15971,7 +15971,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CollectionStatusDestinationStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCollectionStatusDestinationStatus();
       var od = api.CollectionStatusDestinationStatus.fromJson(o.toJson());
       checkCollectionStatusDestinationStatus(
@@ -15980,7 +15980,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CollectionStatusItemLevelIssue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCollectionStatusItemLevelIssue();
       var od = api.CollectionStatusItemLevelIssue.fromJson(o.toJson());
       checkCollectionStatusItemLevelIssue(
@@ -15989,7 +15989,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Css', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCss();
       var od = api.Css.fromJson(o.toJson());
       checkCss(od as api.Css);
@@ -15997,7 +15997,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomAttribute', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomAttribute();
       var od = api.CustomAttribute.fromJson(o.toJson());
       checkCustomAttribute(od as api.CustomAttribute);
@@ -16005,7 +16005,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomerReturnReason', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomerReturnReason();
       var od = api.CustomerReturnReason.fromJson(o.toJson());
       checkCustomerReturnReason(od as api.CustomerReturnReason);
@@ -16013,7 +16013,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CutoffTime', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCutoffTime();
       var od = api.CutoffTime.fromJson(o.toJson());
       checkCutoffTime(od as api.CutoffTime);
@@ -16021,7 +16021,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Datafeed', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatafeed();
       var od = api.Datafeed.fromJson(o.toJson());
       checkDatafeed(od as api.Datafeed);
@@ -16029,7 +16029,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatafeedFetchSchedule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatafeedFetchSchedule();
       var od = api.DatafeedFetchSchedule.fromJson(o.toJson());
       checkDatafeedFetchSchedule(od as api.DatafeedFetchSchedule);
@@ -16037,7 +16037,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatafeedFormat', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatafeedFormat();
       var od = api.DatafeedFormat.fromJson(o.toJson());
       checkDatafeedFormat(od as api.DatafeedFormat);
@@ -16045,7 +16045,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatafeedStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatafeedStatus();
       var od = api.DatafeedStatus.fromJson(o.toJson());
       checkDatafeedStatus(od as api.DatafeedStatus);
@@ -16053,7 +16053,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatafeedStatusError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatafeedStatusError();
       var od = api.DatafeedStatusError.fromJson(o.toJson());
       checkDatafeedStatusError(od as api.DatafeedStatusError);
@@ -16061,7 +16061,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatafeedStatusExample', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatafeedStatusExample();
       var od = api.DatafeedStatusExample.fromJson(o.toJson());
       checkDatafeedStatusExample(od as api.DatafeedStatusExample);
@@ -16069,7 +16069,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatafeedTarget', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatafeedTarget();
       var od = api.DatafeedTarget.fromJson(o.toJson());
       checkDatafeedTarget(od as api.DatafeedTarget);
@@ -16077,7 +16077,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatafeedsCustomBatchRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatafeedsCustomBatchRequest();
       var od = api.DatafeedsCustomBatchRequest.fromJson(o.toJson());
       checkDatafeedsCustomBatchRequest(od as api.DatafeedsCustomBatchRequest);
@@ -16085,7 +16085,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatafeedsCustomBatchRequestEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatafeedsCustomBatchRequestEntry();
       var od = api.DatafeedsCustomBatchRequestEntry.fromJson(o.toJson());
       checkDatafeedsCustomBatchRequestEntry(
@@ -16094,7 +16094,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatafeedsCustomBatchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatafeedsCustomBatchResponse();
       var od = api.DatafeedsCustomBatchResponse.fromJson(o.toJson());
       checkDatafeedsCustomBatchResponse(od as api.DatafeedsCustomBatchResponse);
@@ -16102,7 +16102,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatafeedsCustomBatchResponseEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatafeedsCustomBatchResponseEntry();
       var od = api.DatafeedsCustomBatchResponseEntry.fromJson(o.toJson());
       checkDatafeedsCustomBatchResponseEntry(
@@ -16111,7 +16111,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatafeedsFetchNowResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatafeedsFetchNowResponse();
       var od = api.DatafeedsFetchNowResponse.fromJson(o.toJson());
       checkDatafeedsFetchNowResponse(od as api.DatafeedsFetchNowResponse);
@@ -16119,7 +16119,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatafeedsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatafeedsListResponse();
       var od = api.DatafeedsListResponse.fromJson(o.toJson());
       checkDatafeedsListResponse(od as api.DatafeedsListResponse);
@@ -16127,7 +16127,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatafeedstatusesCustomBatchRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatafeedstatusesCustomBatchRequest();
       var od = api.DatafeedstatusesCustomBatchRequest.fromJson(o.toJson());
       checkDatafeedstatusesCustomBatchRequest(
@@ -16136,7 +16136,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatafeedstatusesCustomBatchRequestEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatafeedstatusesCustomBatchRequestEntry();
       var od = api.DatafeedstatusesCustomBatchRequestEntry.fromJson(o.toJson());
       checkDatafeedstatusesCustomBatchRequestEntry(
@@ -16145,7 +16145,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatafeedstatusesCustomBatchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatafeedstatusesCustomBatchResponse();
       var od = api.DatafeedstatusesCustomBatchResponse.fromJson(o.toJson());
       checkDatafeedstatusesCustomBatchResponse(
@@ -16154,7 +16154,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatafeedstatusesCustomBatchResponseEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatafeedstatusesCustomBatchResponseEntry();
       var od =
           api.DatafeedstatusesCustomBatchResponseEntry.fromJson(o.toJson());
@@ -16164,7 +16164,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatafeedstatusesListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatafeedstatusesListResponse();
       var od = api.DatafeedstatusesListResponse.fromJson(o.toJson());
       checkDatafeedstatusesListResponse(od as api.DatafeedstatusesListResponse);
@@ -16172,7 +16172,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Date', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
       checkDate(od as api.Date);
@@ -16180,7 +16180,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DateTime', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDateTime();
       var od = api.DateTime.fromJson(o.toJson());
       checkDateTime(od as api.DateTime);
@@ -16188,7 +16188,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeliveryTime', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeliveryTime();
       var od = api.DeliveryTime.fromJson(o.toJson());
       checkDeliveryTime(od as api.DeliveryTime);
@@ -16196,7 +16196,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Error', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildError();
       var od = api.Error.fromJson(o.toJson());
       checkError(od as api.Error);
@@ -16204,7 +16204,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Errors', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildErrors();
       var od = api.Errors.fromJson(o.toJson());
       checkErrors(od as api.Errors);
@@ -16212,7 +16212,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GmbAccounts', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGmbAccounts();
       var od = api.GmbAccounts.fromJson(o.toJson());
       checkGmbAccounts(od as api.GmbAccounts);
@@ -16220,7 +16220,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GmbAccountsGmbAccount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGmbAccountsGmbAccount();
       var od = api.GmbAccountsGmbAccount.fromJson(o.toJson());
       checkGmbAccountsGmbAccount(od as api.GmbAccountsGmbAccount);
@@ -16228,7 +16228,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Headers', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHeaders();
       var od = api.Headers.fromJson(o.toJson());
       checkHeaders(od as api.Headers);
@@ -16236,7 +16236,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HolidayCutoff', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHolidayCutoff();
       var od = api.HolidayCutoff.fromJson(o.toJson());
       checkHolidayCutoff(od as api.HolidayCutoff);
@@ -16244,7 +16244,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HolidaysHoliday', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHolidaysHoliday();
       var od = api.HolidaysHoliday.fromJson(o.toJson());
       checkHolidaysHoliday(od as api.HolidaysHoliday);
@@ -16252,7 +16252,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InapplicabilityDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInapplicabilityDetails();
       var od = api.InapplicabilityDetails.fromJson(o.toJson());
       checkInapplicabilityDetails(od as api.InapplicabilityDetails);
@@ -16260,7 +16260,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Installment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstallment();
       var od = api.Installment.fromJson(o.toJson());
       checkInstallment(od as api.Installment);
@@ -16268,7 +16268,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InvoiceSummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInvoiceSummary();
       var od = api.InvoiceSummary.fromJson(o.toJson());
       checkInvoiceSummary(od as api.InvoiceSummary);
@@ -16276,7 +16276,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InvoiceSummaryAdditionalChargeSummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInvoiceSummaryAdditionalChargeSummary();
       var od = api.InvoiceSummaryAdditionalChargeSummary.fromJson(o.toJson());
       checkInvoiceSummaryAdditionalChargeSummary(
@@ -16285,7 +16285,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LabelIds', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLabelIds();
       var od = api.LabelIds.fromJson(o.toJson());
       checkLabelIds(od as api.LabelIds);
@@ -16293,7 +16293,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LiaAboutPageSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLiaAboutPageSettings();
       var od = api.LiaAboutPageSettings.fromJson(o.toJson());
       checkLiaAboutPageSettings(od as api.LiaAboutPageSettings);
@@ -16301,7 +16301,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LiaCountrySettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLiaCountrySettings();
       var od = api.LiaCountrySettings.fromJson(o.toJson());
       checkLiaCountrySettings(od as api.LiaCountrySettings);
@@ -16309,7 +16309,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LiaInventorySettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLiaInventorySettings();
       var od = api.LiaInventorySettings.fromJson(o.toJson());
       checkLiaInventorySettings(od as api.LiaInventorySettings);
@@ -16317,7 +16317,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LiaOnDisplayToOrderSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLiaOnDisplayToOrderSettings();
       var od = api.LiaOnDisplayToOrderSettings.fromJson(o.toJson());
       checkLiaOnDisplayToOrderSettings(od as api.LiaOnDisplayToOrderSettings);
@@ -16325,7 +16325,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LiaPosDataProvider', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLiaPosDataProvider();
       var od = api.LiaPosDataProvider.fromJson(o.toJson());
       checkLiaPosDataProvider(od as api.LiaPosDataProvider);
@@ -16333,7 +16333,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LiaSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLiaSettings();
       var od = api.LiaSettings.fromJson(o.toJson());
       checkLiaSettings(od as api.LiaSettings);
@@ -16341,7 +16341,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LiasettingsCustomBatchRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLiasettingsCustomBatchRequest();
       var od = api.LiasettingsCustomBatchRequest.fromJson(o.toJson());
       checkLiasettingsCustomBatchRequest(
@@ -16350,7 +16350,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LiasettingsCustomBatchRequestEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLiasettingsCustomBatchRequestEntry();
       var od = api.LiasettingsCustomBatchRequestEntry.fromJson(o.toJson());
       checkLiasettingsCustomBatchRequestEntry(
@@ -16359,7 +16359,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LiasettingsCustomBatchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLiasettingsCustomBatchResponse();
       var od = api.LiasettingsCustomBatchResponse.fromJson(o.toJson());
       checkLiasettingsCustomBatchResponse(
@@ -16368,7 +16368,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LiasettingsCustomBatchResponseEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLiasettingsCustomBatchResponseEntry();
       var od = api.LiasettingsCustomBatchResponseEntry.fromJson(o.toJson());
       checkLiasettingsCustomBatchResponseEntry(
@@ -16377,7 +16377,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LiasettingsGetAccessibleGmbAccountsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLiasettingsGetAccessibleGmbAccountsResponse();
       var od =
           api.LiasettingsGetAccessibleGmbAccountsResponse.fromJson(o.toJson());
@@ -16387,7 +16387,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LiasettingsListPosDataProvidersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLiasettingsListPosDataProvidersResponse();
       var od = api.LiasettingsListPosDataProvidersResponse.fromJson(o.toJson());
       checkLiasettingsListPosDataProvidersResponse(
@@ -16396,7 +16396,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LiasettingsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLiasettingsListResponse();
       var od = api.LiasettingsListResponse.fromJson(o.toJson());
       checkLiasettingsListResponse(od as api.LiasettingsListResponse);
@@ -16404,7 +16404,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LiasettingsRequestGmbAccessResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLiasettingsRequestGmbAccessResponse();
       var od = api.LiasettingsRequestGmbAccessResponse.fromJson(o.toJson());
       checkLiasettingsRequestGmbAccessResponse(
@@ -16414,7 +16414,7 @@ void main() {
 
   unittest.group('obj-schema-LiasettingsRequestInventoryVerificationResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLiasettingsRequestInventoryVerificationResponse();
       var od = api.LiasettingsRequestInventoryVerificationResponse.fromJson(
           o.toJson());
@@ -16425,7 +16425,7 @@ void main() {
 
   unittest.group(
       'obj-schema-LiasettingsSetInventoryVerificationContactResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLiasettingsSetInventoryVerificationContactResponse();
       var od = api.LiasettingsSetInventoryVerificationContactResponse.fromJson(
           o.toJson());
@@ -16435,7 +16435,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LiasettingsSetPosDataProviderResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLiasettingsSetPosDataProviderResponse();
       var od = api.LiasettingsSetPosDataProviderResponse.fromJson(o.toJson());
       checkLiasettingsSetPosDataProviderResponse(
@@ -16444,7 +16444,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LinkService', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLinkService();
       var od = api.LinkService.fromJson(o.toJson());
       checkLinkService(od as api.LinkService);
@@ -16452,7 +16452,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LinkedAccount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLinkedAccount();
       var od = api.LinkedAccount.fromJson(o.toJson());
       checkLinkedAccount(od as api.LinkedAccount);
@@ -16460,7 +16460,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAccountLabelsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAccountLabelsResponse();
       var od = api.ListAccountLabelsResponse.fromJson(o.toJson());
       checkListAccountLabelsResponse(od as api.ListAccountLabelsResponse);
@@ -16468,7 +16468,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAccountReturnCarrierResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAccountReturnCarrierResponse();
       var od = api.ListAccountReturnCarrierResponse.fromJson(o.toJson());
       checkListAccountReturnCarrierResponse(
@@ -16477,7 +16477,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCollectionStatusesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCollectionStatusesResponse();
       var od = api.ListCollectionStatusesResponse.fromJson(o.toJson());
       checkListCollectionStatusesResponse(
@@ -16486,7 +16486,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCollectionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCollectionsResponse();
       var od = api.ListCollectionsResponse.fromJson(o.toJson());
       checkListCollectionsResponse(od as api.ListCollectionsResponse);
@@ -16494,7 +16494,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCssesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCssesResponse();
       var od = api.ListCssesResponse.fromJson(o.toJson());
       checkListCssesResponse(od as api.ListCssesResponse);
@@ -16502,7 +16502,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListRegionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListRegionsResponse();
       var od = api.ListRegionsResponse.fromJson(o.toJson());
       checkListRegionsResponse(od as api.ListRegionsResponse);
@@ -16510,7 +16510,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListRepricingProductReportsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListRepricingProductReportsResponse();
       var od = api.ListRepricingProductReportsResponse.fromJson(o.toJson());
       checkListRepricingProductReportsResponse(
@@ -16519,7 +16519,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListRepricingRuleReportsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListRepricingRuleReportsResponse();
       var od = api.ListRepricingRuleReportsResponse.fromJson(o.toJson());
       checkListRepricingRuleReportsResponse(
@@ -16528,7 +16528,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListRepricingRulesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListRepricingRulesResponse();
       var od = api.ListRepricingRulesResponse.fromJson(o.toJson());
       checkListRepricingRulesResponse(od as api.ListRepricingRulesResponse);
@@ -16536,7 +16536,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListReturnPolicyOnlineResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListReturnPolicyOnlineResponse();
       var od = api.ListReturnPolicyOnlineResponse.fromJson(o.toJson());
       checkListReturnPolicyOnlineResponse(
@@ -16545,7 +16545,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LocalInventory', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocalInventory();
       var od = api.LocalInventory.fromJson(o.toJson());
       checkLocalInventory(od as api.LocalInventory);
@@ -16553,7 +16553,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LocalinventoryCustomBatchRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocalinventoryCustomBatchRequest();
       var od = api.LocalinventoryCustomBatchRequest.fromJson(o.toJson());
       checkLocalinventoryCustomBatchRequest(
@@ -16562,7 +16562,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LocalinventoryCustomBatchRequestEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocalinventoryCustomBatchRequestEntry();
       var od = api.LocalinventoryCustomBatchRequestEntry.fromJson(o.toJson());
       checkLocalinventoryCustomBatchRequestEntry(
@@ -16571,7 +16571,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LocalinventoryCustomBatchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocalinventoryCustomBatchResponse();
       var od = api.LocalinventoryCustomBatchResponse.fromJson(o.toJson());
       checkLocalinventoryCustomBatchResponse(
@@ -16580,7 +16580,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LocalinventoryCustomBatchResponseEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocalinventoryCustomBatchResponseEntry();
       var od = api.LocalinventoryCustomBatchResponseEntry.fromJson(o.toJson());
       checkLocalinventoryCustomBatchResponseEntry(
@@ -16589,7 +16589,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LocationIdSet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocationIdSet();
       var od = api.LocationIdSet.fromJson(o.toJson());
       checkLocationIdSet(od as api.LocationIdSet);
@@ -16597,7 +16597,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LoyaltyPoints', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLoyaltyPoints();
       var od = api.LoyaltyPoints.fromJson(o.toJson());
       checkLoyaltyPoints(od as api.LoyaltyPoints);
@@ -16605,7 +16605,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MerchantOrderReturn', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMerchantOrderReturn();
       var od = api.MerchantOrderReturn.fromJson(o.toJson());
       checkMerchantOrderReturn(od as api.MerchantOrderReturn);
@@ -16613,7 +16613,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MerchantOrderReturnItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMerchantOrderReturnItem();
       var od = api.MerchantOrderReturnItem.fromJson(o.toJson());
       checkMerchantOrderReturnItem(od as api.MerchantOrderReturnItem);
@@ -16621,7 +16621,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MerchantRejectionReason', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMerchantRejectionReason();
       var od = api.MerchantRejectionReason.fromJson(o.toJson());
       checkMerchantRejectionReason(od as api.MerchantRejectionReason);
@@ -16629,7 +16629,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Metrics', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetrics();
       var od = api.Metrics.fromJson(o.toJson());
       checkMetrics(od as api.Metrics);
@@ -16637,7 +16637,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MinimumOrderValueTable', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMinimumOrderValueTable();
       var od = api.MinimumOrderValueTable.fromJson(o.toJson());
       checkMinimumOrderValueTable(od as api.MinimumOrderValueTable);
@@ -16645,7 +16645,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MinimumOrderValueTableStoreCodeSetWithMov', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMinimumOrderValueTableStoreCodeSetWithMov();
       var od =
           api.MinimumOrderValueTableStoreCodeSetWithMov.fromJson(o.toJson());
@@ -16655,7 +16655,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MonetaryAmount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMonetaryAmount();
       var od = api.MonetaryAmount.fromJson(o.toJson());
       checkMonetaryAmount(od as api.MonetaryAmount);
@@ -16663,7 +16663,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OnboardBuyOnGoogleProgramRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOnboardBuyOnGoogleProgramRequest();
       var od = api.OnboardBuyOnGoogleProgramRequest.fromJson(o.toJson());
       checkOnboardBuyOnGoogleProgramRequest(
@@ -16672,7 +16672,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Order', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrder();
       var od = api.Order.fromJson(o.toJson());
       checkOrder(od as api.Order);
@@ -16680,7 +16680,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderAddress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderAddress();
       var od = api.OrderAddress.fromJson(o.toJson());
       checkOrderAddress(od as api.OrderAddress);
@@ -16688,7 +16688,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderCancellation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderCancellation();
       var od = api.OrderCancellation.fromJson(o.toJson());
       checkOrderCancellation(od as api.OrderCancellation);
@@ -16696,7 +16696,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderCustomer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderCustomer();
       var od = api.OrderCustomer.fromJson(o.toJson());
       checkOrderCustomer(od as api.OrderCustomer);
@@ -16704,7 +16704,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderCustomerLoyaltyInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderCustomerLoyaltyInfo();
       var od = api.OrderCustomerLoyaltyInfo.fromJson(o.toJson());
       checkOrderCustomerLoyaltyInfo(od as api.OrderCustomerLoyaltyInfo);
@@ -16712,7 +16712,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderCustomerMarketingRightsInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderCustomerMarketingRightsInfo();
       var od = api.OrderCustomerMarketingRightsInfo.fromJson(o.toJson());
       checkOrderCustomerMarketingRightsInfo(
@@ -16721,7 +16721,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderDeliveryDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderDeliveryDetails();
       var od = api.OrderDeliveryDetails.fromJson(o.toJson());
       checkOrderDeliveryDetails(od as api.OrderDeliveryDetails);
@@ -16729,7 +16729,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderLineItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderLineItem();
       var od = api.OrderLineItem.fromJson(o.toJson());
       checkOrderLineItem(od as api.OrderLineItem);
@@ -16737,7 +16737,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderLineItemAdjustment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderLineItemAdjustment();
       var od = api.OrderLineItemAdjustment.fromJson(o.toJson());
       checkOrderLineItemAdjustment(od as api.OrderLineItemAdjustment);
@@ -16745,7 +16745,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderLineItemProduct', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderLineItemProduct();
       var od = api.OrderLineItemProduct.fromJson(o.toJson());
       checkOrderLineItemProduct(od as api.OrderLineItemProduct);
@@ -16753,7 +16753,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderLineItemProductFee', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderLineItemProductFee();
       var od = api.OrderLineItemProductFee.fromJson(o.toJson());
       checkOrderLineItemProductFee(od as api.OrderLineItemProductFee);
@@ -16761,7 +16761,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderLineItemProductVariantAttribute', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderLineItemProductVariantAttribute();
       var od = api.OrderLineItemProductVariantAttribute.fromJson(o.toJson());
       checkOrderLineItemProductVariantAttribute(
@@ -16770,7 +16770,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderLineItemReturnInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderLineItemReturnInfo();
       var od = api.OrderLineItemReturnInfo.fromJson(o.toJson());
       checkOrderLineItemReturnInfo(od as api.OrderLineItemReturnInfo);
@@ -16778,7 +16778,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderLineItemShippingDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderLineItemShippingDetails();
       var od = api.OrderLineItemShippingDetails.fromJson(o.toJson());
       checkOrderLineItemShippingDetails(od as api.OrderLineItemShippingDetails);
@@ -16786,7 +16786,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderLineItemShippingDetailsMethod', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderLineItemShippingDetailsMethod();
       var od = api.OrderLineItemShippingDetailsMethod.fromJson(o.toJson());
       checkOrderLineItemShippingDetailsMethod(
@@ -16795,7 +16795,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderMerchantProvidedAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderMerchantProvidedAnnotation();
       var od = api.OrderMerchantProvidedAnnotation.fromJson(o.toJson());
       checkOrderMerchantProvidedAnnotation(
@@ -16804,7 +16804,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderOrderAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderOrderAnnotation();
       var od = api.OrderOrderAnnotation.fromJson(o.toJson());
       checkOrderOrderAnnotation(od as api.OrderOrderAnnotation);
@@ -16812,7 +16812,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderPickupDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderPickupDetails();
       var od = api.OrderPickupDetails.fromJson(o.toJson());
       checkOrderPickupDetails(od as api.OrderPickupDetails);
@@ -16820,7 +16820,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderPickupDetailsCollector', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderPickupDetailsCollector();
       var od = api.OrderPickupDetailsCollector.fromJson(o.toJson());
       checkOrderPickupDetailsCollector(od as api.OrderPickupDetailsCollector);
@@ -16828,7 +16828,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderPromotion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderPromotion();
       var od = api.OrderPromotion.fromJson(o.toJson());
       checkOrderPromotion(od as api.OrderPromotion);
@@ -16836,7 +16836,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderPromotionItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderPromotionItem();
       var od = api.OrderPromotionItem.fromJson(o.toJson());
       checkOrderPromotionItem(od as api.OrderPromotionItem);
@@ -16844,7 +16844,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderRefund', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderRefund();
       var od = api.OrderRefund.fromJson(o.toJson());
       checkOrderRefund(od as api.OrderRefund);
@@ -16852,7 +16852,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderReportDisbursement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderReportDisbursement();
       var od = api.OrderReportDisbursement.fromJson(o.toJson());
       checkOrderReportDisbursement(od as api.OrderReportDisbursement);
@@ -16860,7 +16860,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderReportTransaction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderReportTransaction();
       var od = api.OrderReportTransaction.fromJson(o.toJson());
       checkOrderReportTransaction(od as api.OrderReportTransaction);
@@ -16868,7 +16868,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderReturn', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderReturn();
       var od = api.OrderReturn.fromJson(o.toJson());
       checkOrderReturn(od as api.OrderReturn);
@@ -16876,7 +16876,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderShipment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderShipment();
       var od = api.OrderShipment.fromJson(o.toJson());
       checkOrderShipment(od as api.OrderShipment);
@@ -16884,7 +16884,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderShipmentLineItemShipment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderShipmentLineItemShipment();
       var od = api.OrderShipmentLineItemShipment.fromJson(o.toJson());
       checkOrderShipmentLineItemShipment(
@@ -16893,7 +16893,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderShipmentScheduledDeliveryDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderShipmentScheduledDeliveryDetails();
       var od = api.OrderShipmentScheduledDeliveryDetails.fromJson(o.toJson());
       checkOrderShipmentScheduledDeliveryDetails(
@@ -16902,7 +16902,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderTrackingSignal', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderTrackingSignal();
       var od = api.OrderTrackingSignal.fromJson(o.toJson());
       checkOrderTrackingSignal(od as api.OrderTrackingSignal);
@@ -16910,7 +16910,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderTrackingSignalLineItemDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderTrackingSignalLineItemDetails();
       var od = api.OrderTrackingSignalLineItemDetails.fromJson(o.toJson());
       checkOrderTrackingSignalLineItemDetails(
@@ -16919,7 +16919,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderTrackingSignalShipmentLineItemMapping', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderTrackingSignalShipmentLineItemMapping();
       var od =
           api.OrderTrackingSignalShipmentLineItemMapping.fromJson(o.toJson());
@@ -16929,7 +16929,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderTrackingSignalShippingInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderTrackingSignalShippingInfo();
       var od = api.OrderTrackingSignalShippingInfo.fromJson(o.toJson());
       checkOrderTrackingSignalShippingInfo(
@@ -16938,7 +16938,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderinvoicesCreateChargeInvoiceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderinvoicesCreateChargeInvoiceRequest();
       var od = api.OrderinvoicesCreateChargeInvoiceRequest.fromJson(o.toJson());
       checkOrderinvoicesCreateChargeInvoiceRequest(
@@ -16947,7 +16947,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderinvoicesCreateChargeInvoiceResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderinvoicesCreateChargeInvoiceResponse();
       var od =
           api.OrderinvoicesCreateChargeInvoiceResponse.fromJson(o.toJson());
@@ -16957,7 +16957,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderinvoicesCreateRefundInvoiceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderinvoicesCreateRefundInvoiceRequest();
       var od = api.OrderinvoicesCreateRefundInvoiceRequest.fromJson(o.toJson());
       checkOrderinvoicesCreateRefundInvoiceRequest(
@@ -16966,7 +16966,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderinvoicesCreateRefundInvoiceResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderinvoicesCreateRefundInvoiceResponse();
       var od =
           api.OrderinvoicesCreateRefundInvoiceResponse.fromJson(o.toJson());
@@ -16978,7 +16978,7 @@ void main() {
   unittest.group(
       'obj-schema-OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildOrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption();
       var od =
@@ -16993,7 +16993,7 @@ void main() {
   unittest.group(
       'obj-schema-OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildOrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption();
       var od =
@@ -17006,7 +17006,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderreportsListDisbursementsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderreportsListDisbursementsResponse();
       var od = api.OrderreportsListDisbursementsResponse.fromJson(o.toJson());
       checkOrderreportsListDisbursementsResponse(
@@ -17015,7 +17015,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderreportsListTransactionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderreportsListTransactionsResponse();
       var od = api.OrderreportsListTransactionsResponse.fromJson(o.toJson());
       checkOrderreportsListTransactionsResponse(
@@ -17024,7 +17024,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderreturnsAcknowledgeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderreturnsAcknowledgeRequest();
       var od = api.OrderreturnsAcknowledgeRequest.fromJson(o.toJson());
       checkOrderreturnsAcknowledgeRequest(
@@ -17033,7 +17033,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderreturnsAcknowledgeResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderreturnsAcknowledgeResponse();
       var od = api.OrderreturnsAcknowledgeResponse.fromJson(o.toJson());
       checkOrderreturnsAcknowledgeResponse(
@@ -17042,7 +17042,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderreturnsCreateOrderReturnRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderreturnsCreateOrderReturnRequest();
       var od = api.OrderreturnsCreateOrderReturnRequest.fromJson(o.toJson());
       checkOrderreturnsCreateOrderReturnRequest(
@@ -17051,7 +17051,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderreturnsCreateOrderReturnResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderreturnsCreateOrderReturnResponse();
       var od = api.OrderreturnsCreateOrderReturnResponse.fromJson(o.toJson());
       checkOrderreturnsCreateOrderReturnResponse(
@@ -17060,7 +17060,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderreturnsLineItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderreturnsLineItem();
       var od = api.OrderreturnsLineItem.fromJson(o.toJson());
       checkOrderreturnsLineItem(od as api.OrderreturnsLineItem);
@@ -17068,7 +17068,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderreturnsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderreturnsListResponse();
       var od = api.OrderreturnsListResponse.fromJson(o.toJson());
       checkOrderreturnsListResponse(od as api.OrderreturnsListResponse);
@@ -17076,7 +17076,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderreturnsPartialRefund', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderreturnsPartialRefund();
       var od = api.OrderreturnsPartialRefund.fromJson(o.toJson());
       checkOrderreturnsPartialRefund(od as api.OrderreturnsPartialRefund);
@@ -17084,7 +17084,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderreturnsProcessRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderreturnsProcessRequest();
       var od = api.OrderreturnsProcessRequest.fromJson(o.toJson());
       checkOrderreturnsProcessRequest(od as api.OrderreturnsProcessRequest);
@@ -17092,7 +17092,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderreturnsProcessResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderreturnsProcessResponse();
       var od = api.OrderreturnsProcessResponse.fromJson(o.toJson());
       checkOrderreturnsProcessResponse(od as api.OrderreturnsProcessResponse);
@@ -17100,7 +17100,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderreturnsRefundOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderreturnsRefundOperation();
       var od = api.OrderreturnsRefundOperation.fromJson(o.toJson());
       checkOrderreturnsRefundOperation(od as api.OrderreturnsRefundOperation);
@@ -17108,7 +17108,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderreturnsRejectOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderreturnsRejectOperation();
       var od = api.OrderreturnsRejectOperation.fromJson(o.toJson());
       checkOrderreturnsRejectOperation(od as api.OrderreturnsRejectOperation);
@@ -17116,7 +17116,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderreturnsReturnItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderreturnsReturnItem();
       var od = api.OrderreturnsReturnItem.fromJson(o.toJson());
       checkOrderreturnsReturnItem(od as api.OrderreturnsReturnItem);
@@ -17124,7 +17124,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersAcknowledgeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersAcknowledgeRequest();
       var od = api.OrdersAcknowledgeRequest.fromJson(o.toJson());
       checkOrdersAcknowledgeRequest(od as api.OrdersAcknowledgeRequest);
@@ -17132,7 +17132,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersAcknowledgeResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersAcknowledgeResponse();
       var od = api.OrdersAcknowledgeResponse.fromJson(o.toJson());
       checkOrdersAcknowledgeResponse(od as api.OrdersAcknowledgeResponse);
@@ -17140,7 +17140,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersAdvanceTestOrderResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersAdvanceTestOrderResponse();
       var od = api.OrdersAdvanceTestOrderResponse.fromJson(o.toJson());
       checkOrdersAdvanceTestOrderResponse(
@@ -17149,7 +17149,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersCancelLineItemRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersCancelLineItemRequest();
       var od = api.OrdersCancelLineItemRequest.fromJson(o.toJson());
       checkOrdersCancelLineItemRequest(od as api.OrdersCancelLineItemRequest);
@@ -17157,7 +17157,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersCancelLineItemResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersCancelLineItemResponse();
       var od = api.OrdersCancelLineItemResponse.fromJson(o.toJson());
       checkOrdersCancelLineItemResponse(od as api.OrdersCancelLineItemResponse);
@@ -17165,7 +17165,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersCancelRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersCancelRequest();
       var od = api.OrdersCancelRequest.fromJson(o.toJson());
       checkOrdersCancelRequest(od as api.OrdersCancelRequest);
@@ -17173,7 +17173,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersCancelResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersCancelResponse();
       var od = api.OrdersCancelResponse.fromJson(o.toJson());
       checkOrdersCancelResponse(od as api.OrdersCancelResponse);
@@ -17181,7 +17181,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersCancelTestOrderByCustomerRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersCancelTestOrderByCustomerRequest();
       var od = api.OrdersCancelTestOrderByCustomerRequest.fromJson(o.toJson());
       checkOrdersCancelTestOrderByCustomerRequest(
@@ -17190,7 +17190,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersCancelTestOrderByCustomerResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersCancelTestOrderByCustomerResponse();
       var od = api.OrdersCancelTestOrderByCustomerResponse.fromJson(o.toJson());
       checkOrdersCancelTestOrderByCustomerResponse(
@@ -17199,7 +17199,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersCreateTestOrderRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersCreateTestOrderRequest();
       var od = api.OrdersCreateTestOrderRequest.fromJson(o.toJson());
       checkOrdersCreateTestOrderRequest(od as api.OrdersCreateTestOrderRequest);
@@ -17207,7 +17207,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersCreateTestOrderResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersCreateTestOrderResponse();
       var od = api.OrdersCreateTestOrderResponse.fromJson(o.toJson());
       checkOrdersCreateTestOrderResponse(
@@ -17216,7 +17216,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersCreateTestReturnRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersCreateTestReturnRequest();
       var od = api.OrdersCreateTestReturnRequest.fromJson(o.toJson());
       checkOrdersCreateTestReturnRequest(
@@ -17225,7 +17225,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersCreateTestReturnResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersCreateTestReturnResponse();
       var od = api.OrdersCreateTestReturnResponse.fromJson(o.toJson());
       checkOrdersCreateTestReturnResponse(
@@ -17235,7 +17235,7 @@ void main() {
 
   unittest.group(
       'obj-schema-OrdersCustomBatchRequestEntryCreateTestReturnReturnItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersCustomBatchRequestEntryCreateTestReturnReturnItem();
       var od =
           api.OrdersCustomBatchRequestEntryCreateTestReturnReturnItem.fromJson(
@@ -17246,7 +17246,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersCustomBatchRequestEntryRefundItemItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersCustomBatchRequestEntryRefundItemItem();
       var od =
           api.OrdersCustomBatchRequestEntryRefundItemItem.fromJson(o.toJson());
@@ -17257,7 +17257,7 @@ void main() {
 
   unittest.group('obj-schema-OrdersCustomBatchRequestEntryRefundItemShipping',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersCustomBatchRequestEntryRefundItemShipping();
       var od = api.OrdersCustomBatchRequestEntryRefundItemShipping.fromJson(
           o.toJson());
@@ -17268,7 +17268,7 @@ void main() {
 
   unittest.group(
       'obj-schema-OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersCustomBatchRequestEntryShipLineItemsShipmentInfo();
       var od =
           api.OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo.fromJson(
@@ -17281,7 +17281,7 @@ void main() {
   unittest.group(
       'obj-schema-OrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildOrdersCustomBatchRequestEntryUpdateShipmentScheduledDeliveryDetails();
       var od =
@@ -17294,7 +17294,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersGetByMerchantOrderIdResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersGetByMerchantOrderIdResponse();
       var od = api.OrdersGetByMerchantOrderIdResponse.fromJson(o.toJson());
       checkOrdersGetByMerchantOrderIdResponse(
@@ -17303,7 +17303,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersGetTestOrderTemplateResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersGetTestOrderTemplateResponse();
       var od = api.OrdersGetTestOrderTemplateResponse.fromJson(o.toJson());
       checkOrdersGetTestOrderTemplateResponse(
@@ -17312,7 +17312,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersInStoreRefundLineItemRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersInStoreRefundLineItemRequest();
       var od = api.OrdersInStoreRefundLineItemRequest.fromJson(o.toJson());
       checkOrdersInStoreRefundLineItemRequest(
@@ -17321,7 +17321,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersInStoreRefundLineItemResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersInStoreRefundLineItemResponse();
       var od = api.OrdersInStoreRefundLineItemResponse.fromJson(o.toJson());
       checkOrdersInStoreRefundLineItemResponse(
@@ -17330,7 +17330,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersListResponse();
       var od = api.OrdersListResponse.fromJson(o.toJson());
       checkOrdersListResponse(od as api.OrdersListResponse);
@@ -17338,7 +17338,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersRefundItemRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersRefundItemRequest();
       var od = api.OrdersRefundItemRequest.fromJson(o.toJson());
       checkOrdersRefundItemRequest(od as api.OrdersRefundItemRequest);
@@ -17346,7 +17346,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersRefundItemResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersRefundItemResponse();
       var od = api.OrdersRefundItemResponse.fromJson(o.toJson());
       checkOrdersRefundItemResponse(od as api.OrdersRefundItemResponse);
@@ -17354,7 +17354,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersRefundOrderRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersRefundOrderRequest();
       var od = api.OrdersRefundOrderRequest.fromJson(o.toJson());
       checkOrdersRefundOrderRequest(od as api.OrdersRefundOrderRequest);
@@ -17362,7 +17362,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersRefundOrderResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersRefundOrderResponse();
       var od = api.OrdersRefundOrderResponse.fromJson(o.toJson());
       checkOrdersRefundOrderResponse(od as api.OrdersRefundOrderResponse);
@@ -17370,7 +17370,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersRejectReturnLineItemRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersRejectReturnLineItemRequest();
       var od = api.OrdersRejectReturnLineItemRequest.fromJson(o.toJson());
       checkOrdersRejectReturnLineItemRequest(
@@ -17379,7 +17379,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersRejectReturnLineItemResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersRejectReturnLineItemResponse();
       var od = api.OrdersRejectReturnLineItemResponse.fromJson(o.toJson());
       checkOrdersRejectReturnLineItemResponse(
@@ -17388,7 +17388,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersReturnRefundLineItemRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersReturnRefundLineItemRequest();
       var od = api.OrdersReturnRefundLineItemRequest.fromJson(o.toJson());
       checkOrdersReturnRefundLineItemRequest(
@@ -17397,7 +17397,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersReturnRefundLineItemResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersReturnRefundLineItemResponse();
       var od = api.OrdersReturnRefundLineItemResponse.fromJson(o.toJson());
       checkOrdersReturnRefundLineItemResponse(
@@ -17406,7 +17406,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersSetLineItemMetadataRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersSetLineItemMetadataRequest();
       var od = api.OrdersSetLineItemMetadataRequest.fromJson(o.toJson());
       checkOrdersSetLineItemMetadataRequest(
@@ -17415,7 +17415,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersSetLineItemMetadataResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersSetLineItemMetadataResponse();
       var od = api.OrdersSetLineItemMetadataResponse.fromJson(o.toJson());
       checkOrdersSetLineItemMetadataResponse(
@@ -17424,7 +17424,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersShipLineItemsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersShipLineItemsRequest();
       var od = api.OrdersShipLineItemsRequest.fromJson(o.toJson());
       checkOrdersShipLineItemsRequest(od as api.OrdersShipLineItemsRequest);
@@ -17432,7 +17432,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersShipLineItemsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersShipLineItemsResponse();
       var od = api.OrdersShipLineItemsResponse.fromJson(o.toJson());
       checkOrdersShipLineItemsResponse(od as api.OrdersShipLineItemsResponse);
@@ -17440,7 +17440,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersUpdateLineItemShippingDetailsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersUpdateLineItemShippingDetailsRequest();
       var od =
           api.OrdersUpdateLineItemShippingDetailsRequest.fromJson(o.toJson());
@@ -17450,7 +17450,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersUpdateLineItemShippingDetailsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersUpdateLineItemShippingDetailsResponse();
       var od =
           api.OrdersUpdateLineItemShippingDetailsResponse.fromJson(o.toJson());
@@ -17460,7 +17460,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersUpdateMerchantOrderIdRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersUpdateMerchantOrderIdRequest();
       var od = api.OrdersUpdateMerchantOrderIdRequest.fromJson(o.toJson());
       checkOrdersUpdateMerchantOrderIdRequest(
@@ -17469,7 +17469,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersUpdateMerchantOrderIdResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersUpdateMerchantOrderIdResponse();
       var od = api.OrdersUpdateMerchantOrderIdResponse.fromJson(o.toJson());
       checkOrdersUpdateMerchantOrderIdResponse(
@@ -17478,7 +17478,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersUpdateShipmentRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersUpdateShipmentRequest();
       var od = api.OrdersUpdateShipmentRequest.fromJson(o.toJson());
       checkOrdersUpdateShipmentRequest(od as api.OrdersUpdateShipmentRequest);
@@ -17486,7 +17486,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrdersUpdateShipmentResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrdersUpdateShipmentResponse();
       var od = api.OrdersUpdateShipmentResponse.fromJson(o.toJson());
       checkOrdersUpdateShipmentResponse(od as api.OrdersUpdateShipmentResponse);
@@ -17494,7 +17494,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PickupCarrierService', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPickupCarrierService();
       var od = api.PickupCarrierService.fromJson(o.toJson());
       checkPickupCarrierService(od as api.PickupCarrierService);
@@ -17502,7 +17502,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PickupServicesPickupService', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPickupServicesPickupService();
       var od = api.PickupServicesPickupService.fromJson(o.toJson());
       checkPickupServicesPickupService(od as api.PickupServicesPickupService);
@@ -17510,7 +17510,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PosCustomBatchRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPosCustomBatchRequest();
       var od = api.PosCustomBatchRequest.fromJson(o.toJson());
       checkPosCustomBatchRequest(od as api.PosCustomBatchRequest);
@@ -17518,7 +17518,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PosCustomBatchRequestEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPosCustomBatchRequestEntry();
       var od = api.PosCustomBatchRequestEntry.fromJson(o.toJson());
       checkPosCustomBatchRequestEntry(od as api.PosCustomBatchRequestEntry);
@@ -17526,7 +17526,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PosCustomBatchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPosCustomBatchResponse();
       var od = api.PosCustomBatchResponse.fromJson(o.toJson());
       checkPosCustomBatchResponse(od as api.PosCustomBatchResponse);
@@ -17534,7 +17534,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PosCustomBatchResponseEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPosCustomBatchResponseEntry();
       var od = api.PosCustomBatchResponseEntry.fromJson(o.toJson());
       checkPosCustomBatchResponseEntry(od as api.PosCustomBatchResponseEntry);
@@ -17542,7 +17542,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PosDataProviders', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPosDataProviders();
       var od = api.PosDataProviders.fromJson(o.toJson());
       checkPosDataProviders(od as api.PosDataProviders);
@@ -17550,7 +17550,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PosDataProvidersPosDataProvider', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPosDataProvidersPosDataProvider();
       var od = api.PosDataProvidersPosDataProvider.fromJson(o.toJson());
       checkPosDataProvidersPosDataProvider(
@@ -17559,7 +17559,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PosInventory', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPosInventory();
       var od = api.PosInventory.fromJson(o.toJson());
       checkPosInventory(od as api.PosInventory);
@@ -17567,7 +17567,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PosInventoryRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPosInventoryRequest();
       var od = api.PosInventoryRequest.fromJson(o.toJson());
       checkPosInventoryRequest(od as api.PosInventoryRequest);
@@ -17575,7 +17575,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PosInventoryResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPosInventoryResponse();
       var od = api.PosInventoryResponse.fromJson(o.toJson());
       checkPosInventoryResponse(od as api.PosInventoryResponse);
@@ -17583,7 +17583,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PosListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPosListResponse();
       var od = api.PosListResponse.fromJson(o.toJson());
       checkPosListResponse(od as api.PosListResponse);
@@ -17591,7 +17591,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PosSale', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPosSale();
       var od = api.PosSale.fromJson(o.toJson());
       checkPosSale(od as api.PosSale);
@@ -17599,7 +17599,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PosSaleRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPosSaleRequest();
       var od = api.PosSaleRequest.fromJson(o.toJson());
       checkPosSaleRequest(od as api.PosSaleRequest);
@@ -17607,7 +17607,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PosSaleResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPosSaleResponse();
       var od = api.PosSaleResponse.fromJson(o.toJson());
       checkPosSaleResponse(od as api.PosSaleResponse);
@@ -17615,7 +17615,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PosStore', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPosStore();
       var od = api.PosStore.fromJson(o.toJson());
       checkPosStore(od as api.PosStore);
@@ -17623,7 +17623,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PostalCodeGroup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPostalCodeGroup();
       var od = api.PostalCodeGroup.fromJson(o.toJson());
       checkPostalCodeGroup(od as api.PostalCodeGroup);
@@ -17631,7 +17631,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PostalCodeRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPostalCodeRange();
       var od = api.PostalCodeRange.fromJson(o.toJson());
       checkPostalCodeRange(od as api.PostalCodeRange);
@@ -17639,7 +17639,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Price', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPrice();
       var od = api.Price.fromJson(o.toJson());
       checkPrice(od as api.Price);
@@ -17647,7 +17647,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PriceAmount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPriceAmount();
       var od = api.PriceAmount.fromJson(o.toJson());
       checkPriceAmount(od as api.PriceAmount);
@@ -17655,7 +17655,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Product', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProduct();
       var od = api.Product.fromJson(o.toJson());
       checkProduct(od as api.Product);
@@ -17663,7 +17663,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductAmount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductAmount();
       var od = api.ProductAmount.fromJson(o.toJson());
       checkProductAmount(od as api.ProductAmount);
@@ -17671,7 +17671,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductProductDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductProductDetail();
       var od = api.ProductProductDetail.fromJson(o.toJson());
       checkProductProductDetail(od as api.ProductProductDetail);
@@ -17679,7 +17679,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductShipping', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductShipping();
       var od = api.ProductShipping.fromJson(o.toJson());
       checkProductShipping(od as api.ProductShipping);
@@ -17687,7 +17687,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductShippingDimension', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductShippingDimension();
       var od = api.ProductShippingDimension.fromJson(o.toJson());
       checkProductShippingDimension(od as api.ProductShippingDimension);
@@ -17695,7 +17695,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductShippingWeight', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductShippingWeight();
       var od = api.ProductShippingWeight.fromJson(o.toJson());
       checkProductShippingWeight(od as api.ProductShippingWeight);
@@ -17703,7 +17703,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductStatus();
       var od = api.ProductStatus.fromJson(o.toJson());
       checkProductStatus(od as api.ProductStatus);
@@ -17711,7 +17711,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductStatusDestinationStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductStatusDestinationStatus();
       var od = api.ProductStatusDestinationStatus.fromJson(o.toJson());
       checkProductStatusDestinationStatus(
@@ -17720,7 +17720,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductStatusItemLevelIssue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductStatusItemLevelIssue();
       var od = api.ProductStatusItemLevelIssue.fromJson(o.toJson());
       checkProductStatusItemLevelIssue(od as api.ProductStatusItemLevelIssue);
@@ -17728,7 +17728,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductSubscriptionCost', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductSubscriptionCost();
       var od = api.ProductSubscriptionCost.fromJson(o.toJson());
       checkProductSubscriptionCost(od as api.ProductSubscriptionCost);
@@ -17736,7 +17736,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductTax', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductTax();
       var od = api.ProductTax.fromJson(o.toJson());
       checkProductTax(od as api.ProductTax);
@@ -17744,7 +17744,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductUnitPricingBaseMeasure', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductUnitPricingBaseMeasure();
       var od = api.ProductUnitPricingBaseMeasure.fromJson(o.toJson());
       checkProductUnitPricingBaseMeasure(
@@ -17753,7 +17753,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductUnitPricingMeasure', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductUnitPricingMeasure();
       var od = api.ProductUnitPricingMeasure.fromJson(o.toJson());
       checkProductUnitPricingMeasure(od as api.ProductUnitPricingMeasure);
@@ -17761,7 +17761,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductsCustomBatchRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductsCustomBatchRequest();
       var od = api.ProductsCustomBatchRequest.fromJson(o.toJson());
       checkProductsCustomBatchRequest(od as api.ProductsCustomBatchRequest);
@@ -17769,7 +17769,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductsCustomBatchRequestEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductsCustomBatchRequestEntry();
       var od = api.ProductsCustomBatchRequestEntry.fromJson(o.toJson());
       checkProductsCustomBatchRequestEntry(
@@ -17778,7 +17778,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductsCustomBatchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductsCustomBatchResponse();
       var od = api.ProductsCustomBatchResponse.fromJson(o.toJson());
       checkProductsCustomBatchResponse(od as api.ProductsCustomBatchResponse);
@@ -17786,7 +17786,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductsCustomBatchResponseEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductsCustomBatchResponseEntry();
       var od = api.ProductsCustomBatchResponseEntry.fromJson(o.toJson());
       checkProductsCustomBatchResponseEntry(
@@ -17795,7 +17795,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductsListResponse();
       var od = api.ProductsListResponse.fromJson(o.toJson());
       checkProductsListResponse(od as api.ProductsListResponse);
@@ -17803,7 +17803,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductstatusesCustomBatchRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductstatusesCustomBatchRequest();
       var od = api.ProductstatusesCustomBatchRequest.fromJson(o.toJson());
       checkProductstatusesCustomBatchRequest(
@@ -17812,7 +17812,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductstatusesCustomBatchRequestEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductstatusesCustomBatchRequestEntry();
       var od = api.ProductstatusesCustomBatchRequestEntry.fromJson(o.toJson());
       checkProductstatusesCustomBatchRequestEntry(
@@ -17821,7 +17821,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductstatusesCustomBatchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductstatusesCustomBatchResponse();
       var od = api.ProductstatusesCustomBatchResponse.fromJson(o.toJson());
       checkProductstatusesCustomBatchResponse(
@@ -17830,7 +17830,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductstatusesCustomBatchResponseEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductstatusesCustomBatchResponseEntry();
       var od = api.ProductstatusesCustomBatchResponseEntry.fromJson(o.toJson());
       checkProductstatusesCustomBatchResponseEntry(
@@ -17839,7 +17839,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductstatusesListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductstatusesListResponse();
       var od = api.ProductstatusesListResponse.fromJson(o.toJson());
       checkProductstatusesListResponse(od as api.ProductstatusesListResponse);
@@ -17847,7 +17847,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PubsubNotificationSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPubsubNotificationSettings();
       var od = api.PubsubNotificationSettings.fromJson(o.toJson());
       checkPubsubNotificationSettings(od as api.PubsubNotificationSettings);
@@ -17855,7 +17855,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RateGroup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRateGroup();
       var od = api.RateGroup.fromJson(o.toJson());
       checkRateGroup(od as api.RateGroup);
@@ -17863,7 +17863,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RefundReason', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRefundReason();
       var od = api.RefundReason.fromJson(o.toJson());
       checkRefundReason(od as api.RefundReason);
@@ -17871,7 +17871,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Region', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRegion();
       var od = api.Region.fromJson(o.toJson());
       checkRegion(od as api.Region);
@@ -17879,7 +17879,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RegionGeoTargetArea', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRegionGeoTargetArea();
       var od = api.RegionGeoTargetArea.fromJson(o.toJson());
       checkRegionGeoTargetArea(od as api.RegionGeoTargetArea);
@@ -17887,7 +17887,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RegionPostalCodeArea', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRegionPostalCodeArea();
       var od = api.RegionPostalCodeArea.fromJson(o.toJson());
       checkRegionPostalCodeArea(od as api.RegionPostalCodeArea);
@@ -17895,7 +17895,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RegionPostalCodeAreaPostalCodeRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRegionPostalCodeAreaPostalCodeRange();
       var od = api.RegionPostalCodeAreaPostalCodeRange.fromJson(o.toJson());
       checkRegionPostalCodeAreaPostalCodeRange(
@@ -17904,7 +17904,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RegionalInventory', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRegionalInventory();
       var od = api.RegionalInventory.fromJson(o.toJson());
       checkRegionalInventory(od as api.RegionalInventory);
@@ -17912,7 +17912,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RegionalinventoryCustomBatchRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRegionalinventoryCustomBatchRequest();
       var od = api.RegionalinventoryCustomBatchRequest.fromJson(o.toJson());
       checkRegionalinventoryCustomBatchRequest(
@@ -17921,7 +17921,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RegionalinventoryCustomBatchRequestEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRegionalinventoryCustomBatchRequestEntry();
       var od =
           api.RegionalinventoryCustomBatchRequestEntry.fromJson(o.toJson());
@@ -17931,7 +17931,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RegionalinventoryCustomBatchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRegionalinventoryCustomBatchResponse();
       var od = api.RegionalinventoryCustomBatchResponse.fromJson(o.toJson());
       checkRegionalinventoryCustomBatchResponse(
@@ -17940,7 +17940,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RegionalinventoryCustomBatchResponseEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRegionalinventoryCustomBatchResponseEntry();
       var od =
           api.RegionalinventoryCustomBatchResponseEntry.fromJson(o.toJson());
@@ -17950,7 +17950,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportRow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportRow();
       var od = api.ReportRow.fromJson(o.toJson());
       checkReportRow(od as api.ReportRow);
@@ -17958,7 +17958,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RepricingProductReport', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepricingProductReport();
       var od = api.RepricingProductReport.fromJson(o.toJson());
       checkRepricingProductReport(od as api.RepricingProductReport);
@@ -17967,7 +17967,7 @@ void main() {
 
   unittest.group('obj-schema-RepricingProductReportBuyboxWinningProductStats',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepricingProductReportBuyboxWinningProductStats();
       var od = api.RepricingProductReportBuyboxWinningProductStats.fromJson(
           o.toJson());
@@ -17977,7 +17977,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RepricingRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepricingRule();
       var od = api.RepricingRule.fromJson(o.toJson());
       checkRepricingRule(od as api.RepricingRule);
@@ -17985,7 +17985,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RepricingRuleCostOfGoodsSaleRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepricingRuleCostOfGoodsSaleRule();
       var od = api.RepricingRuleCostOfGoodsSaleRule.fromJson(o.toJson());
       checkRepricingRuleCostOfGoodsSaleRule(
@@ -17994,7 +17994,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RepricingRuleEffectiveTime', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepricingRuleEffectiveTime();
       var od = api.RepricingRuleEffectiveTime.fromJson(o.toJson());
       checkRepricingRuleEffectiveTime(od as api.RepricingRuleEffectiveTime);
@@ -18002,7 +18002,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RepricingRuleEffectiveTimeFixedTimePeriod', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepricingRuleEffectiveTimeFixedTimePeriod();
       var od =
           api.RepricingRuleEffectiveTimeFixedTimePeriod.fromJson(o.toJson());
@@ -18012,7 +18012,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RepricingRuleEligibleOfferMatcher', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepricingRuleEligibleOfferMatcher();
       var od = api.RepricingRuleEligibleOfferMatcher.fromJson(o.toJson());
       checkRepricingRuleEligibleOfferMatcher(
@@ -18022,7 +18022,7 @@ void main() {
 
   unittest.group('obj-schema-RepricingRuleEligibleOfferMatcherStringMatcher',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepricingRuleEligibleOfferMatcherStringMatcher();
       var od = api.RepricingRuleEligibleOfferMatcherStringMatcher.fromJson(
           o.toJson());
@@ -18032,7 +18032,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RepricingRuleReport', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepricingRuleReport();
       var od = api.RepricingRuleReport.fromJson(o.toJson());
       checkRepricingRuleReport(od as api.RepricingRuleReport);
@@ -18040,7 +18040,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RepricingRuleReportBuyboxWinningRuleStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepricingRuleReportBuyboxWinningRuleStats();
       var od =
           api.RepricingRuleReportBuyboxWinningRuleStats.fromJson(o.toJson());
@@ -18050,7 +18050,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RepricingRuleRestriction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepricingRuleRestriction();
       var od = api.RepricingRuleRestriction.fromJson(o.toJson());
       checkRepricingRuleRestriction(od as api.RepricingRuleRestriction);
@@ -18058,7 +18058,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RepricingRuleRestrictionBoundary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepricingRuleRestrictionBoundary();
       var od = api.RepricingRuleRestrictionBoundary.fromJson(o.toJson());
       checkRepricingRuleRestrictionBoundary(
@@ -18067,7 +18067,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RepricingRuleStatsBasedRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepricingRuleStatsBasedRule();
       var od = api.RepricingRuleStatsBasedRule.fromJson(o.toJson());
       checkRepricingRuleStatsBasedRule(od as api.RepricingRuleStatsBasedRule);
@@ -18075,7 +18075,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnAddress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnAddress();
       var od = api.ReturnAddress.fromJson(o.toJson());
       checkReturnAddress(od as api.ReturnAddress);
@@ -18083,7 +18083,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnAddressAddress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnAddressAddress();
       var od = api.ReturnAddressAddress.fromJson(o.toJson());
       checkReturnAddressAddress(od as api.ReturnAddressAddress);
@@ -18091,7 +18091,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnPolicy();
       var od = api.ReturnPolicy.fromJson(o.toJson());
       checkReturnPolicy(od as api.ReturnPolicy);
@@ -18099,7 +18099,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnPolicyOnline', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnPolicyOnline();
       var od = api.ReturnPolicyOnline.fromJson(o.toJson());
       checkReturnPolicyOnline(od as api.ReturnPolicyOnline);
@@ -18107,7 +18107,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnPolicyOnlinePolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnPolicyOnlinePolicy();
       var od = api.ReturnPolicyOnlinePolicy.fromJson(o.toJson());
       checkReturnPolicyOnlinePolicy(od as api.ReturnPolicyOnlinePolicy);
@@ -18115,7 +18115,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnPolicyOnlineRestockingFee', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnPolicyOnlineRestockingFee();
       var od = api.ReturnPolicyOnlineRestockingFee.fromJson(o.toJson());
       checkReturnPolicyOnlineRestockingFee(
@@ -18124,7 +18124,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnPolicyOnlineReturnReasonCategoryInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnPolicyOnlineReturnReasonCategoryInfo();
       var od =
           api.ReturnPolicyOnlineReturnReasonCategoryInfo.fromJson(o.toJson());
@@ -18134,7 +18134,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnPolicyOnlineReturnShippingFee', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnPolicyOnlineReturnShippingFee();
       var od = api.ReturnPolicyOnlineReturnShippingFee.fromJson(o.toJson());
       checkReturnPolicyOnlineReturnShippingFee(
@@ -18143,7 +18143,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnPolicyPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnPolicyPolicy();
       var od = api.ReturnPolicyPolicy.fromJson(o.toJson());
       checkReturnPolicyPolicy(od as api.ReturnPolicyPolicy);
@@ -18151,7 +18151,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnPolicySeasonalOverride', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnPolicySeasonalOverride();
       var od = api.ReturnPolicySeasonalOverride.fromJson(o.toJson());
       checkReturnPolicySeasonalOverride(od as api.ReturnPolicySeasonalOverride);
@@ -18159,7 +18159,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnPricingInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnPricingInfo();
       var od = api.ReturnPricingInfo.fromJson(o.toJson());
       checkReturnPricingInfo(od as api.ReturnPricingInfo);
@@ -18167,7 +18167,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnShipment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnShipment();
       var od = api.ReturnShipment.fromJson(o.toJson());
       checkReturnShipment(od as api.ReturnShipment);
@@ -18175,7 +18175,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnaddressCustomBatchRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnaddressCustomBatchRequest();
       var od = api.ReturnaddressCustomBatchRequest.fromJson(o.toJson());
       checkReturnaddressCustomBatchRequest(
@@ -18184,7 +18184,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnaddressCustomBatchRequestEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnaddressCustomBatchRequestEntry();
       var od = api.ReturnaddressCustomBatchRequestEntry.fromJson(o.toJson());
       checkReturnaddressCustomBatchRequestEntry(
@@ -18193,7 +18193,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnaddressCustomBatchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnaddressCustomBatchResponse();
       var od = api.ReturnaddressCustomBatchResponse.fromJson(o.toJson());
       checkReturnaddressCustomBatchResponse(
@@ -18202,7 +18202,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnaddressCustomBatchResponseEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnaddressCustomBatchResponseEntry();
       var od = api.ReturnaddressCustomBatchResponseEntry.fromJson(o.toJson());
       checkReturnaddressCustomBatchResponseEntry(
@@ -18211,7 +18211,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnaddressListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnaddressListResponse();
       var od = api.ReturnaddressListResponse.fromJson(o.toJson());
       checkReturnaddressListResponse(od as api.ReturnaddressListResponse);
@@ -18219,7 +18219,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnpolicyCustomBatchRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnpolicyCustomBatchRequest();
       var od = api.ReturnpolicyCustomBatchRequest.fromJson(o.toJson());
       checkReturnpolicyCustomBatchRequest(
@@ -18228,7 +18228,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnpolicyCustomBatchRequestEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnpolicyCustomBatchRequestEntry();
       var od = api.ReturnpolicyCustomBatchRequestEntry.fromJson(o.toJson());
       checkReturnpolicyCustomBatchRequestEntry(
@@ -18237,7 +18237,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnpolicyCustomBatchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnpolicyCustomBatchResponse();
       var od = api.ReturnpolicyCustomBatchResponse.fromJson(o.toJson());
       checkReturnpolicyCustomBatchResponse(
@@ -18246,7 +18246,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnpolicyCustomBatchResponseEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnpolicyCustomBatchResponseEntry();
       var od = api.ReturnpolicyCustomBatchResponseEntry.fromJson(o.toJson());
       checkReturnpolicyCustomBatchResponseEntry(
@@ -18255,7 +18255,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReturnpolicyListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReturnpolicyListResponse();
       var od = api.ReturnpolicyListResponse.fromJson(o.toJson());
       checkReturnpolicyListResponse(od as api.ReturnpolicyListResponse);
@@ -18263,7 +18263,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Row', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRow();
       var od = api.Row.fromJson(o.toJson());
       checkRow(od as api.Row);
@@ -18271,7 +18271,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchRequest();
       var od = api.SearchRequest.fromJson(o.toJson());
       checkSearchRequest(od as api.SearchRequest);
@@ -18279,7 +18279,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchResponse();
       var od = api.SearchResponse.fromJson(o.toJson());
       checkSearchResponse(od as api.SearchResponse);
@@ -18287,7 +18287,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Segments', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSegments();
       var od = api.Segments.fromJson(o.toJson());
       checkSegments(od as api.Segments);
@@ -18295,7 +18295,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Service', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildService();
       var od = api.Service.fromJson(o.toJson());
       checkService(od as api.Service);
@@ -18303,7 +18303,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SettlementReport', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSettlementReport();
       var od = api.SettlementReport.fromJson(o.toJson());
       checkSettlementReport(od as api.SettlementReport);
@@ -18311,7 +18311,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SettlementTransaction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSettlementTransaction();
       var od = api.SettlementTransaction.fromJson(o.toJson());
       checkSettlementTransaction(od as api.SettlementTransaction);
@@ -18319,7 +18319,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SettlementTransactionAmount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSettlementTransactionAmount();
       var od = api.SettlementTransactionAmount.fromJson(o.toJson());
       checkSettlementTransactionAmount(od as api.SettlementTransactionAmount);
@@ -18327,7 +18327,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SettlementTransactionAmountCommission', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSettlementTransactionAmountCommission();
       var od = api.SettlementTransactionAmountCommission.fromJson(o.toJson());
       checkSettlementTransactionAmountCommission(
@@ -18336,7 +18336,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SettlementTransactionIdentifiers', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSettlementTransactionIdentifiers();
       var od = api.SettlementTransactionIdentifiers.fromJson(o.toJson());
       checkSettlementTransactionIdentifiers(
@@ -18345,7 +18345,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SettlementTransactionTransaction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSettlementTransactionTransaction();
       var od = api.SettlementTransactionTransaction.fromJson(o.toJson());
       checkSettlementTransactionTransaction(
@@ -18354,7 +18354,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SettlementreportsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSettlementreportsListResponse();
       var od = api.SettlementreportsListResponse.fromJson(o.toJson());
       checkSettlementreportsListResponse(
@@ -18363,7 +18363,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SettlementtransactionsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSettlementtransactionsListResponse();
       var od = api.SettlementtransactionsListResponse.fromJson(o.toJson());
       checkSettlementtransactionsListResponse(
@@ -18372,7 +18372,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShipmentInvoice', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShipmentInvoice();
       var od = api.ShipmentInvoice.fromJson(o.toJson());
       checkShipmentInvoice(od as api.ShipmentInvoice);
@@ -18380,7 +18380,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShipmentInvoiceLineItemInvoice', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShipmentInvoiceLineItemInvoice();
       var od = api.ShipmentInvoiceLineItemInvoice.fromJson(o.toJson());
       checkShipmentInvoiceLineItemInvoice(
@@ -18389,7 +18389,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShipmentTrackingInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShipmentTrackingInfo();
       var od = api.ShipmentTrackingInfo.fromJson(o.toJson());
       checkShipmentTrackingInfo(od as api.ShipmentTrackingInfo);
@@ -18397,7 +18397,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShippingSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShippingSettings();
       var od = api.ShippingSettings.fromJson(o.toJson());
       checkShippingSettings(od as api.ShippingSettings);
@@ -18405,7 +18405,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShippingsettingsCustomBatchRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShippingsettingsCustomBatchRequest();
       var od = api.ShippingsettingsCustomBatchRequest.fromJson(o.toJson());
       checkShippingsettingsCustomBatchRequest(
@@ -18414,7 +18414,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShippingsettingsCustomBatchRequestEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShippingsettingsCustomBatchRequestEntry();
       var od = api.ShippingsettingsCustomBatchRequestEntry.fromJson(o.toJson());
       checkShippingsettingsCustomBatchRequestEntry(
@@ -18423,7 +18423,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShippingsettingsCustomBatchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShippingsettingsCustomBatchResponse();
       var od = api.ShippingsettingsCustomBatchResponse.fromJson(o.toJson());
       checkShippingsettingsCustomBatchResponse(
@@ -18432,7 +18432,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShippingsettingsCustomBatchResponseEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShippingsettingsCustomBatchResponseEntry();
       var od =
           api.ShippingsettingsCustomBatchResponseEntry.fromJson(o.toJson());
@@ -18442,7 +18442,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShippingsettingsGetSupportedCarriersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShippingsettingsGetSupportedCarriersResponse();
       var od =
           api.ShippingsettingsGetSupportedCarriersResponse.fromJson(o.toJson());
@@ -18452,7 +18452,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShippingsettingsGetSupportedHolidaysResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShippingsettingsGetSupportedHolidaysResponse();
       var od =
           api.ShippingsettingsGetSupportedHolidaysResponse.fromJson(o.toJson());
@@ -18463,7 +18463,7 @@ void main() {
 
   unittest.group(
       'obj-schema-ShippingsettingsGetSupportedPickupServicesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShippingsettingsGetSupportedPickupServicesResponse();
       var od = api.ShippingsettingsGetSupportedPickupServicesResponse.fromJson(
           o.toJson());
@@ -18473,7 +18473,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShippingsettingsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShippingsettingsListResponse();
       var od = api.ShippingsettingsListResponse.fromJson(o.toJson());
       checkShippingsettingsListResponse(od as api.ShippingsettingsListResponse);
@@ -18481,7 +18481,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Table', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTable();
       var od = api.Table.fromJson(o.toJson());
       checkTable(od as api.Table);
@@ -18489,7 +18489,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestOrder', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestOrder();
       var od = api.TestOrder.fromJson(o.toJson());
       checkTestOrder(od as api.TestOrder);
@@ -18497,7 +18497,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestOrderAddress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestOrderAddress();
       var od = api.TestOrderAddress.fromJson(o.toJson());
       checkTestOrderAddress(od as api.TestOrderAddress);
@@ -18505,7 +18505,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestOrderDeliveryDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestOrderDeliveryDetails();
       var od = api.TestOrderDeliveryDetails.fromJson(o.toJson());
       checkTestOrderDeliveryDetails(od as api.TestOrderDeliveryDetails);
@@ -18513,7 +18513,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestOrderLineItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestOrderLineItem();
       var od = api.TestOrderLineItem.fromJson(o.toJson());
       checkTestOrderLineItem(od as api.TestOrderLineItem);
@@ -18521,7 +18521,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestOrderLineItemProduct', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestOrderLineItemProduct();
       var od = api.TestOrderLineItemProduct.fromJson(o.toJson());
       checkTestOrderLineItemProduct(od as api.TestOrderLineItemProduct);
@@ -18529,7 +18529,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestOrderPickupDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestOrderPickupDetails();
       var od = api.TestOrderPickupDetails.fromJson(o.toJson());
       checkTestOrderPickupDetails(od as api.TestOrderPickupDetails);
@@ -18537,7 +18537,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestOrderPickupDetailsPickupPerson', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestOrderPickupDetailsPickupPerson();
       var od = api.TestOrderPickupDetailsPickupPerson.fromJson(o.toJson());
       checkTestOrderPickupDetailsPickupPerson(
@@ -18546,7 +18546,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimeZone', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimeZone();
       var od = api.TimeZone.fromJson(o.toJson());
       checkTimeZone(od as api.TimeZone);
@@ -18554,7 +18554,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TransitTable', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTransitTable();
       var od = api.TransitTable.fromJson(o.toJson());
       checkTransitTable(od as api.TransitTable);
@@ -18562,7 +18562,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TransitTableTransitTimeRow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTransitTableTransitTimeRow();
       var od = api.TransitTableTransitTimeRow.fromJson(o.toJson());
       checkTransitTableTransitTimeRow(od as api.TransitTableTransitTimeRow);
@@ -18570,7 +18570,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TransitTableTransitTimeRowTransitTimeValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTransitTableTransitTimeRowTransitTimeValue();
       var od =
           api.TransitTableTransitTimeRowTransitTimeValue.fromJson(o.toJson());
@@ -18580,7 +18580,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UnitInvoice', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUnitInvoice();
       var od = api.UnitInvoice.fromJson(o.toJson());
       checkUnitInvoice(od as api.UnitInvoice);
@@ -18588,7 +18588,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UnitInvoiceAdditionalCharge', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUnitInvoiceAdditionalCharge();
       var od = api.UnitInvoiceAdditionalCharge.fromJson(o.toJson());
       checkUnitInvoiceAdditionalCharge(od as api.UnitInvoiceAdditionalCharge);
@@ -18596,7 +18596,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UnitInvoiceTaxLine', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUnitInvoiceTaxLine();
       var od = api.UnitInvoiceTaxLine.fromJson(o.toJson());
       checkUnitInvoiceTaxLine(od as api.UnitInvoiceTaxLine);
@@ -18604,7 +18604,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Value', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildValue();
       var od = api.Value.fromJson(o.toJson());
       checkValue(od as api.Value);
@@ -18612,7 +18612,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Weight', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWeight();
       var od = api.Weight.fromJson(o.toJson());
       checkWeight(od as api.Weight);
@@ -18620,7 +18620,7 @@ void main() {
   });
 
   unittest.group('resource-AccountsResource', () {
-    unittest.test('method--authinfo', () {
+    unittest.test('method--authinfo', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts;
       var arg_$fields = 'foo';
@@ -18666,14 +18666,11 @@ void main() {
         var resp = convert.json.encode(buildAccountsAuthInfoResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .authinfo($fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountsAuthInfoResponse(response as api.AccountsAuthInfoResponse);
-      })));
+      final response = await res.authinfo($fields: arg_$fields);
+      checkAccountsAuthInfoResponse(response as api.AccountsAuthInfoResponse);
     });
 
-    unittest.test('method--claimwebsite', () {
+    unittest.test('method--claimwebsite', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts;
       var arg_merchantId = 'foo';
@@ -18754,16 +18751,13 @@ void main() {
         var resp = convert.json.encode(buildAccountsClaimWebsiteResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .claimwebsite(arg_merchantId, arg_accountId,
-              overwrite: arg_overwrite, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountsClaimWebsiteResponse(
-            response as api.AccountsClaimWebsiteResponse);
-      })));
+      final response = await res.claimwebsite(arg_merchantId, arg_accountId,
+          overwrite: arg_overwrite, $fields: arg_$fields);
+      checkAccountsClaimWebsiteResponse(
+          response as api.AccountsClaimWebsiteResponse);
     });
 
-    unittest.test('method--custombatch', () {
+    unittest.test('method--custombatch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts;
       var arg_request = buildAccountsCustomBatchRequest();
@@ -18814,15 +18808,12 @@ void main() {
         var resp = convert.json.encode(buildAccountsCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .custombatch(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountsCustomBatchResponse(
-            response as api.AccountsCustomBatchResponse);
-      })));
+      final response = await res.custombatch(arg_request, $fields: arg_$fields);
+      checkAccountsCustomBatchResponse(
+          response as api.AccountsCustomBatchResponse);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts;
       var arg_merchantId = 'foo';
@@ -18895,13 +18886,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_merchantId, arg_accountId,
-              force: arg_force, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_merchantId, arg_accountId,
+          force: arg_force, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts;
       var arg_merchantId = 'foo';
@@ -18974,15 +18963,12 @@ void main() {
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_accountId,
-              view: arg_view, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccount(response as api.Account);
-      })));
+      final response = await res.get(arg_merchantId, arg_accountId,
+          view: arg_view, $fields: arg_$fields);
+      checkAccount(response as api.Account);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts;
       var arg_request = buildAccount();
@@ -19048,14 +19034,12 @@ void main() {
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_merchantId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccount(response as api.Account);
-      })));
+      final response =
+          await res.insert(arg_request, arg_merchantId, $fields: arg_$fields);
+      checkAccount(response as api.Account);
     });
 
-    unittest.test('method--link', () {
+    unittest.test('method--link', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts;
       var arg_request = buildAccountsLinkRequest();
@@ -19136,15 +19120,13 @@ void main() {
         var resp = convert.json.encode(buildAccountsLinkResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .link(arg_request, arg_merchantId, arg_accountId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountsLinkResponse(response as api.AccountsLinkResponse);
-      })));
+      final response = await res.link(
+          arg_request, arg_merchantId, arg_accountId,
+          $fields: arg_$fields);
+      checkAccountsLinkResponse(response as api.AccountsLinkResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts;
       var arg_merchantId = 'foo';
@@ -19225,19 +19207,16 @@ void main() {
         var resp = convert.json.encode(buildAccountsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId,
-              label: arg_label,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountsListResponse(response as api.AccountsListResponse);
-      })));
+      final response = await res.list(arg_merchantId,
+          label: arg_label,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkAccountsListResponse(response as api.AccountsListResponse);
     });
 
-    unittest.test('method--listlinks', () {
+    unittest.test('method--listlinks', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts;
       var arg_merchantId = 'foo';
@@ -19323,18 +19302,14 @@ void main() {
         var resp = convert.json.encode(buildAccountsListLinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listlinks(arg_merchantId, arg_accountId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountsListLinksResponse(
-            response as api.AccountsListLinksResponse);
-      })));
+      final response = await res.listlinks(arg_merchantId, arg_accountId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkAccountsListLinksResponse(response as api.AccountsListLinksResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts;
       var arg_request = buildAccount();
@@ -19407,15 +19382,13 @@ void main() {
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_merchantId, arg_accountId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccount(response as api.Account);
-      })));
+      final response = await res.update(
+          arg_request, arg_merchantId, arg_accountId,
+          $fields: arg_$fields);
+      checkAccount(response as api.Account);
     });
 
-    unittest.test('method--updatelabels', () {
+    unittest.test('method--updatelabels', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts;
       var arg_request = buildAccountsUpdateLabelsRequest();
@@ -19497,18 +19470,16 @@ void main() {
         var resp = convert.json.encode(buildAccountsUpdateLabelsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updatelabels(arg_request, arg_merchantId, arg_accountId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountsUpdateLabelsResponse(
-            response as api.AccountsUpdateLabelsResponse);
-      })));
+      final response = await res.updatelabels(
+          arg_request, arg_merchantId, arg_accountId,
+          $fields: arg_$fields);
+      checkAccountsUpdateLabelsResponse(
+          response as api.AccountsUpdateLabelsResponse);
     });
   });
 
   unittest.group('resource-AccountsLabelsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts.labels;
       var arg_request = buildAccountLabel();
@@ -19574,14 +19545,12 @@ void main() {
         var resp = convert.json.encode(buildAccountLabel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_accountId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountLabel(response as api.AccountLabel);
-      })));
+      final response =
+          await res.create(arg_request, arg_accountId, $fields: arg_$fields);
+      checkAccountLabel(response as api.AccountLabel);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts.labels;
       var arg_accountId = 'foo';
@@ -19649,12 +19618,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_accountId, arg_labelId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_accountId, arg_labelId, $fields: arg_$fields);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts.labels;
       var arg_accountId = 'foo';
@@ -19725,18 +19692,14 @@ void main() {
         var resp = convert.json.encode(buildListAccountLabelsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAccountLabelsResponse(
-            response as api.ListAccountLabelsResponse);
-      })));
+      final response = await res.list(arg_accountId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAccountLabelsResponse(response as api.ListAccountLabelsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts.labels;
       var arg_request = buildAccountLabel();
@@ -19809,16 +19772,14 @@ void main() {
         var resp = convert.json.encode(buildAccountLabel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_accountId, arg_labelId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountLabel(response as api.AccountLabel);
-      })));
+      final response = await res.patch(arg_request, arg_accountId, arg_labelId,
+          $fields: arg_$fields);
+      checkAccountLabel(response as api.AccountLabel);
     });
   });
 
   unittest.group('resource-AccountsReturncarrierResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts.returncarrier;
       var arg_request = buildAccountReturnCarrier();
@@ -19884,14 +19845,12 @@ void main() {
         var resp = convert.json.encode(buildAccountReturnCarrier());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_accountId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountReturnCarrier(response as api.AccountReturnCarrier);
-      })));
+      final response =
+          await res.create(arg_request, arg_accountId, $fields: arg_$fields);
+      checkAccountReturnCarrier(response as api.AccountReturnCarrier);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts.returncarrier;
       var arg_accountId = 'foo';
@@ -19959,12 +19918,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_accountId, arg_carrierAccountId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_accountId, arg_carrierAccountId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts.returncarrier;
       var arg_accountId = 'foo';
@@ -20025,15 +19983,12 @@ void main() {
         var resp = convert.json.encode(buildListAccountReturnCarrierResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAccountReturnCarrierResponse(
-            response as api.ListAccountReturnCarrierResponse);
-      })));
+      final response = await res.list(arg_accountId, $fields: arg_$fields);
+      checkListAccountReturnCarrierResponse(
+          response as api.ListAccountReturnCarrierResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounts.returncarrier;
       var arg_request = buildAccountReturnCarrier();
@@ -20106,17 +20061,15 @@ void main() {
         var resp = convert.json.encode(buildAccountReturnCarrier());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_accountId, arg_carrierAccountId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountReturnCarrier(response as api.AccountReturnCarrier);
-      })));
+      final response = await res.patch(
+          arg_request, arg_accountId, arg_carrierAccountId,
+          $fields: arg_$fields);
+      checkAccountReturnCarrier(response as api.AccountReturnCarrier);
     });
   });
 
   unittest.group('resource-AccountstatusesResource', () {
-    unittest.test('method--custombatch', () {
+    unittest.test('method--custombatch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accountstatuses;
       var arg_request = buildAccountstatusesCustomBatchRequest();
@@ -20169,15 +20122,12 @@ void main() {
             convert.json.encode(buildAccountstatusesCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .custombatch(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountstatusesCustomBatchResponse(
-            response as api.AccountstatusesCustomBatchResponse);
-      })));
+      final response = await res.custombatch(arg_request, $fields: arg_$fields);
+      checkAccountstatusesCustomBatchResponse(
+          response as api.AccountstatusesCustomBatchResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accountstatuses;
       var arg_merchantId = 'foo';
@@ -20250,15 +20200,12 @@ void main() {
         var resp = convert.json.encode(buildAccountStatus());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_accountId,
-              destinations: arg_destinations, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountStatus(response as api.AccountStatus);
-      })));
+      final response = await res.get(arg_merchantId, arg_accountId,
+          destinations: arg_destinations, $fields: arg_$fields);
+      checkAccountStatus(response as api.AccountStatus);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accountstatuses;
       var arg_merchantId = 'foo';
@@ -20334,21 +20281,18 @@ void main() {
         var resp = convert.json.encode(buildAccountstatusesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId,
-              destinations: arg_destinations,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountstatusesListResponse(
-            response as api.AccountstatusesListResponse);
-      })));
+      final response = await res.list(arg_merchantId,
+          destinations: arg_destinations,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkAccountstatusesListResponse(
+          response as api.AccountstatusesListResponse);
     });
   });
 
   unittest.group('resource-AccounttaxResource', () {
-    unittest.test('method--custombatch', () {
+    unittest.test('method--custombatch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounttax;
       var arg_request = buildAccounttaxCustomBatchRequest();
@@ -20400,15 +20344,12 @@ void main() {
         var resp = convert.json.encode(buildAccounttaxCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .custombatch(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccounttaxCustomBatchResponse(
-            response as api.AccounttaxCustomBatchResponse);
-      })));
+      final response = await res.custombatch(arg_request, $fields: arg_$fields);
+      checkAccounttaxCustomBatchResponse(
+          response as api.AccounttaxCustomBatchResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounttax;
       var arg_merchantId = 'foo';
@@ -20476,14 +20417,12 @@ void main() {
         var resp = convert.json.encode(buildAccountTax());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_accountId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountTax(response as api.AccountTax);
-      })));
+      final response =
+          await res.get(arg_merchantId, arg_accountId, $fields: arg_$fields);
+      checkAccountTax(response as api.AccountTax);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounttax;
       var arg_merchantId = 'foo';
@@ -20554,17 +20493,14 @@ void main() {
         var resp = convert.json.encode(buildAccounttaxListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccounttaxListResponse(response as api.AccounttaxListResponse);
-      })));
+      final response = await res.list(arg_merchantId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkAccounttaxListResponse(response as api.AccounttaxListResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).accounttax;
       var arg_request = buildAccountTax();
@@ -20637,17 +20573,15 @@ void main() {
         var resp = convert.json.encode(buildAccountTax());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_merchantId, arg_accountId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccountTax(response as api.AccountTax);
-      })));
+      final response = await res.update(
+          arg_request, arg_merchantId, arg_accountId,
+          $fields: arg_$fields);
+      checkAccountTax(response as api.AccountTax);
     });
   });
 
   unittest.group('resource-BuyongoogleprogramsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).buyongoogleprograms;
       var arg_merchantId = 'foo';
@@ -20715,14 +20649,12 @@ void main() {
         var resp = convert.json.encode(buildBuyOnGoogleProgramStatus());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_regionCode, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBuyOnGoogleProgramStatus(response as api.BuyOnGoogleProgramStatus);
-      })));
+      final response =
+          await res.get(arg_merchantId, arg_regionCode, $fields: arg_$fields);
+      checkBuyOnGoogleProgramStatus(response as api.BuyOnGoogleProgramStatus);
     });
 
-    unittest.test('method--onboard', () {
+    unittest.test('method--onboard', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).buyongoogleprograms;
       var arg_request = buildOnboardBuyOnGoogleProgramRequest();
@@ -20804,15 +20736,13 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .onboard(arg_request, arg_merchantId, arg_regionCode,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.onboard(arg_request, arg_merchantId, arg_regionCode,
+          $fields: arg_$fields);
     });
   });
 
   unittest.group('resource-CollectionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).collections;
       var arg_request = buildCollection();
@@ -20878,14 +20808,12 @@ void main() {
         var resp = convert.json.encode(buildCollection());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_merchantId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCollection(response as api.Collection);
-      })));
+      final response =
+          await res.create(arg_request, arg_merchantId, $fields: arg_$fields);
+      checkCollection(response as api.Collection);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).collections;
       var arg_merchantId = 'foo';
@@ -20953,12 +20881,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_merchantId, arg_collectionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_merchantId, arg_collectionId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).collections;
       var arg_merchantId = 'foo';
@@ -21026,14 +20952,12 @@ void main() {
         var resp = convert.json.encode(buildCollection());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_collectionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCollection(response as api.Collection);
-      })));
+      final response =
+          await res.get(arg_merchantId, arg_collectionId, $fields: arg_$fields);
+      checkCollection(response as api.Collection);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).collections;
       var arg_merchantId = 'foo';
@@ -21104,19 +21028,16 @@ void main() {
         var resp = convert.json.encode(buildListCollectionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCollectionsResponse(response as api.ListCollectionsResponse);
-      })));
+      final response = await res.list(arg_merchantId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListCollectionsResponse(response as api.ListCollectionsResponse);
     });
   });
 
   unittest.group('resource-CollectionstatusesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).collectionstatuses;
       var arg_merchantId = 'foo';
@@ -21184,14 +21105,12 @@ void main() {
         var resp = convert.json.encode(buildCollectionStatus());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_collectionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCollectionStatus(response as api.CollectionStatus);
-      })));
+      final response =
+          await res.get(arg_merchantId, arg_collectionId, $fields: arg_$fields);
+      checkCollectionStatus(response as api.CollectionStatus);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).collectionstatuses;
       var arg_merchantId = 'foo';
@@ -21262,20 +21181,17 @@ void main() {
         var resp = convert.json.encode(buildListCollectionStatusesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCollectionStatusesResponse(
-            response as api.ListCollectionStatusesResponse);
-      })));
+      final response = await res.list(arg_merchantId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListCollectionStatusesResponse(
+          response as api.ListCollectionStatusesResponse);
     });
   });
 
   unittest.group('resource-CssesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).csses;
       var arg_cssGroupId = 'foo';
@@ -21343,14 +21259,12 @@ void main() {
         var resp = convert.json.encode(buildCss());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_cssGroupId, arg_cssDomainId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCss(response as api.Css);
-      })));
+      final response =
+          await res.get(arg_cssGroupId, arg_cssDomainId, $fields: arg_$fields);
+      checkCss(response as api.Css);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).csses;
       var arg_cssGroupId = 'foo';
@@ -21421,17 +21335,14 @@ void main() {
         var resp = convert.json.encode(buildListCssesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_cssGroupId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCssesResponse(response as api.ListCssesResponse);
-      })));
+      final response = await res.list(arg_cssGroupId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListCssesResponse(response as api.ListCssesResponse);
     });
 
-    unittest.test('method--updatelabels', () {
+    unittest.test('method--updatelabels', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).csses;
       var arg_request = buildLabelIds();
@@ -21512,17 +21423,15 @@ void main() {
         var resp = convert.json.encode(buildCss());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updatelabels(arg_request, arg_cssGroupId, arg_cssDomainId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCss(response as api.Css);
-      })));
+      final response = await res.updatelabels(
+          arg_request, arg_cssGroupId, arg_cssDomainId,
+          $fields: arg_$fields);
+      checkCss(response as api.Css);
     });
   });
 
   unittest.group('resource-DatafeedsResource', () {
-    unittest.test('method--custombatch', () {
+    unittest.test('method--custombatch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).datafeeds;
       var arg_request = buildDatafeedsCustomBatchRequest();
@@ -21574,15 +21483,12 @@ void main() {
         var resp = convert.json.encode(buildDatafeedsCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .custombatch(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDatafeedsCustomBatchResponse(
-            response as api.DatafeedsCustomBatchResponse);
-      })));
+      final response = await res.custombatch(arg_request, $fields: arg_$fields);
+      checkDatafeedsCustomBatchResponse(
+          response as api.DatafeedsCustomBatchResponse);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).datafeeds;
       var arg_merchantId = 'foo';
@@ -21650,12 +21556,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_merchantId, arg_datafeedId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_merchantId, arg_datafeedId, $fields: arg_$fields);
     });
 
-    unittest.test('method--fetchnow', () {
+    unittest.test('method--fetchnow', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).datafeeds;
       var arg_merchantId = 'foo';
@@ -21731,15 +21635,12 @@ void main() {
         var resp = convert.json.encode(buildDatafeedsFetchNowResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .fetchnow(arg_merchantId, arg_datafeedId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDatafeedsFetchNowResponse(
-            response as api.DatafeedsFetchNowResponse);
-      })));
+      final response = await res.fetchnow(arg_merchantId, arg_datafeedId,
+          $fields: arg_$fields);
+      checkDatafeedsFetchNowResponse(response as api.DatafeedsFetchNowResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).datafeeds;
       var arg_merchantId = 'foo';
@@ -21807,14 +21708,12 @@ void main() {
         var resp = convert.json.encode(buildDatafeed());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_datafeedId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDatafeed(response as api.Datafeed);
-      })));
+      final response =
+          await res.get(arg_merchantId, arg_datafeedId, $fields: arg_$fields);
+      checkDatafeed(response as api.Datafeed);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).datafeeds;
       var arg_request = buildDatafeed();
@@ -21880,14 +21779,12 @@ void main() {
         var resp = convert.json.encode(buildDatafeed());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_merchantId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDatafeed(response as api.Datafeed);
-      })));
+      final response =
+          await res.insert(arg_request, arg_merchantId, $fields: arg_$fields);
+      checkDatafeed(response as api.Datafeed);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).datafeeds;
       var arg_merchantId = 'foo';
@@ -21958,17 +21855,14 @@ void main() {
         var resp = convert.json.encode(buildDatafeedsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDatafeedsListResponse(response as api.DatafeedsListResponse);
-      })));
+      final response = await res.list(arg_merchantId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkDatafeedsListResponse(response as api.DatafeedsListResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).datafeeds;
       var arg_request = buildDatafeed();
@@ -22041,17 +21935,15 @@ void main() {
         var resp = convert.json.encode(buildDatafeed());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_merchantId, arg_datafeedId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDatafeed(response as api.Datafeed);
-      })));
+      final response = await res.update(
+          arg_request, arg_merchantId, arg_datafeedId,
+          $fields: arg_$fields);
+      checkDatafeed(response as api.Datafeed);
     });
   });
 
   unittest.group('resource-DatafeedstatusesResource', () {
-    unittest.test('method--custombatch', () {
+    unittest.test('method--custombatch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).datafeedstatuses;
       var arg_request = buildDatafeedstatusesCustomBatchRequest();
@@ -22104,15 +21996,12 @@ void main() {
             convert.json.encode(buildDatafeedstatusesCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .custombatch(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDatafeedstatusesCustomBatchResponse(
-            response as api.DatafeedstatusesCustomBatchResponse);
-      })));
+      final response = await res.custombatch(arg_request, $fields: arg_$fields);
+      checkDatafeedstatusesCustomBatchResponse(
+          response as api.DatafeedstatusesCustomBatchResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).datafeedstatuses;
       var arg_merchantId = 'foo';
@@ -22190,17 +22079,12 @@ void main() {
         var resp = convert.json.encode(buildDatafeedStatus());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_datafeedId,
-              country: arg_country,
-              language: arg_language,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDatafeedStatus(response as api.DatafeedStatus);
-      })));
+      final response = await res.get(arg_merchantId, arg_datafeedId,
+          country: arg_country, language: arg_language, $fields: arg_$fields);
+      checkDatafeedStatus(response as api.DatafeedStatus);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).datafeedstatuses;
       var arg_merchantId = 'foo';
@@ -22271,20 +22155,17 @@ void main() {
         var resp = convert.json.encode(buildDatafeedstatusesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDatafeedstatusesListResponse(
-            response as api.DatafeedstatusesListResponse);
-      })));
+      final response = await res.list(arg_merchantId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkDatafeedstatusesListResponse(
+          response as api.DatafeedstatusesListResponse);
     });
   });
 
   unittest.group('resource-LiasettingsResource', () {
-    unittest.test('method--custombatch', () {
+    unittest.test('method--custombatch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).liasettings;
       var arg_request = buildLiasettingsCustomBatchRequest();
@@ -22336,15 +22217,12 @@ void main() {
         var resp = convert.json.encode(buildLiasettingsCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .custombatch(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLiasettingsCustomBatchResponse(
-            response as api.LiasettingsCustomBatchResponse);
-      })));
+      final response = await res.custombatch(arg_request, $fields: arg_$fields);
+      checkLiasettingsCustomBatchResponse(
+          response as api.LiasettingsCustomBatchResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).liasettings;
       var arg_merchantId = 'foo';
@@ -22412,14 +22290,12 @@ void main() {
         var resp = convert.json.encode(buildLiaSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_accountId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLiaSettings(response as api.LiaSettings);
-      })));
+      final response =
+          await res.get(arg_merchantId, arg_accountId, $fields: arg_$fields);
+      checkLiaSettings(response as api.LiaSettings);
     });
 
-    unittest.test('method--getaccessiblegmbaccounts', () {
+    unittest.test('method--getaccessiblegmbaccounts', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).liasettings;
       var arg_merchantId = 'foo';
@@ -22496,16 +22372,14 @@ void main() {
             .encode(buildLiasettingsGetAccessibleGmbAccountsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getaccessiblegmbaccounts(arg_merchantId, arg_accountId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLiasettingsGetAccessibleGmbAccountsResponse(
-            response as api.LiasettingsGetAccessibleGmbAccountsResponse);
-      })));
+      final response = await res.getaccessiblegmbaccounts(
+          arg_merchantId, arg_accountId,
+          $fields: arg_$fields);
+      checkLiasettingsGetAccessibleGmbAccountsResponse(
+          response as api.LiasettingsGetAccessibleGmbAccountsResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).liasettings;
       var arg_merchantId = 'foo';
@@ -22576,17 +22450,14 @@ void main() {
         var resp = convert.json.encode(buildLiasettingsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLiasettingsListResponse(response as api.LiasettingsListResponse);
-      })));
+      final response = await res.list(arg_merchantId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkLiasettingsListResponse(response as api.LiasettingsListResponse);
     });
 
-    unittest.test('method--listposdataproviders', () {
+    unittest.test('method--listposdataproviders', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).liasettings;
       var arg_$fields = 'foo';
@@ -22633,15 +22504,12 @@ void main() {
             convert.json.encode(buildLiasettingsListPosDataProvidersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listposdataproviders($fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLiasettingsListPosDataProvidersResponse(
-            response as api.LiasettingsListPosDataProvidersResponse);
-      })));
+      final response = await res.listposdataproviders($fields: arg_$fields);
+      checkLiasettingsListPosDataProvidersResponse(
+          response as api.LiasettingsListPosDataProvidersResponse);
     });
 
-    unittest.test('method--requestgmbaccess', () {
+    unittest.test('method--requestgmbaccess', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).liasettings;
       var arg_merchantId = 'foo';
@@ -22723,16 +22591,14 @@ void main() {
             convert.json.encode(buildLiasettingsRequestGmbAccessResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .requestgmbaccess(arg_merchantId, arg_accountId, arg_gmbEmail,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLiasettingsRequestGmbAccessResponse(
-            response as api.LiasettingsRequestGmbAccessResponse);
-      })));
+      final response = await res.requestgmbaccess(
+          arg_merchantId, arg_accountId, arg_gmbEmail,
+          $fields: arg_$fields);
+      checkLiasettingsRequestGmbAccessResponse(
+          response as api.LiasettingsRequestGmbAccessResponse);
     });
 
-    unittest.test('method--requestinventoryverification', () {
+    unittest.test('method--requestinventoryverification', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).liasettings;
       var arg_merchantId = 'foo';
@@ -22816,17 +22682,14 @@ void main() {
             .encode(buildLiasettingsRequestInventoryVerificationResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .requestinventoryverification(
-              arg_merchantId, arg_accountId, arg_country,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLiasettingsRequestInventoryVerificationResponse(
-            response as api.LiasettingsRequestInventoryVerificationResponse);
-      })));
+      final response = await res.requestinventoryverification(
+          arg_merchantId, arg_accountId, arg_country,
+          $fields: arg_$fields);
+      checkLiasettingsRequestInventoryVerificationResponse(
+          response as api.LiasettingsRequestInventoryVerificationResponse);
     });
 
-    unittest.test('method--setinventoryverificationcontact', () {
+    unittest.test('method--setinventoryverificationcontact', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).liasettings;
       var arg_merchantId = 'foo';
@@ -22923,17 +22786,19 @@ void main() {
             .encode(buildLiasettingsSetInventoryVerificationContactResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setinventoryverificationcontact(arg_merchantId, arg_accountId,
-              arg_country, arg_language, arg_contactName, arg_contactEmail,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLiasettingsSetInventoryVerificationContactResponse(
-            response as api.LiasettingsSetInventoryVerificationContactResponse);
-      })));
+      final response = await res.setinventoryverificationcontact(
+          arg_merchantId,
+          arg_accountId,
+          arg_country,
+          arg_language,
+          arg_contactName,
+          arg_contactEmail,
+          $fields: arg_$fields);
+      checkLiasettingsSetInventoryVerificationContactResponse(
+          response as api.LiasettingsSetInventoryVerificationContactResponse);
     });
 
-    unittest.test('method--setposdataprovider', () {
+    unittest.test('method--setposdataprovider', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).liasettings;
       var arg_merchantId = 'foo';
@@ -23025,18 +22890,16 @@ void main() {
             convert.json.encode(buildLiasettingsSetPosDataProviderResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setposdataprovider(arg_merchantId, arg_accountId, arg_country,
-              posDataProviderId: arg_posDataProviderId,
-              posExternalAccountId: arg_posExternalAccountId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLiasettingsSetPosDataProviderResponse(
-            response as api.LiasettingsSetPosDataProviderResponse);
-      })));
+      final response = await res.setposdataprovider(
+          arg_merchantId, arg_accountId, arg_country,
+          posDataProviderId: arg_posDataProviderId,
+          posExternalAccountId: arg_posExternalAccountId,
+          $fields: arg_$fields);
+      checkLiasettingsSetPosDataProviderResponse(
+          response as api.LiasettingsSetPosDataProviderResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).liasettings;
       var arg_request = buildLiaSettings();
@@ -23109,17 +22972,15 @@ void main() {
         var resp = convert.json.encode(buildLiaSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_merchantId, arg_accountId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLiaSettings(response as api.LiaSettings);
-      })));
+      final response = await res.update(
+          arg_request, arg_merchantId, arg_accountId,
+          $fields: arg_$fields);
+      checkLiaSettings(response as api.LiaSettings);
     });
   });
 
   unittest.group('resource-LocalinventoryResource', () {
-    unittest.test('method--custombatch', () {
+    unittest.test('method--custombatch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).localinventory;
       var arg_request = buildLocalinventoryCustomBatchRequest();
@@ -23172,15 +23033,12 @@ void main() {
             convert.json.encode(buildLocalinventoryCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .custombatch(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocalinventoryCustomBatchResponse(
-            response as api.LocalinventoryCustomBatchResponse);
-      })));
+      final response = await res.custombatch(arg_request, $fields: arg_$fields);
+      checkLocalinventoryCustomBatchResponse(
+          response as api.LocalinventoryCustomBatchResponse);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).localinventory;
       var arg_request = buildLocalInventory();
@@ -23261,17 +23119,15 @@ void main() {
         var resp = convert.json.encode(buildLocalInventory());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_merchantId, arg_productId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocalInventory(response as api.LocalInventory);
-      })));
+      final response = await res.insert(
+          arg_request, arg_merchantId, arg_productId,
+          $fields: arg_$fields);
+      checkLocalInventory(response as api.LocalInventory);
     });
   });
 
   unittest.group('resource-OrderinvoicesResource', () {
-    unittest.test('method--createchargeinvoice', () {
+    unittest.test('method--createchargeinvoice', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orderinvoices;
       var arg_request = buildOrderinvoicesCreateChargeInvoiceRequest();
@@ -23354,16 +23210,14 @@ void main() {
             .encode(buildOrderinvoicesCreateChargeInvoiceResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createchargeinvoice(arg_request, arg_merchantId, arg_orderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrderinvoicesCreateChargeInvoiceResponse(
-            response as api.OrderinvoicesCreateChargeInvoiceResponse);
-      })));
+      final response = await res.createchargeinvoice(
+          arg_request, arg_merchantId, arg_orderId,
+          $fields: arg_$fields);
+      checkOrderinvoicesCreateChargeInvoiceResponse(
+          response as api.OrderinvoicesCreateChargeInvoiceResponse);
     });
 
-    unittest.test('method--createrefundinvoice', () {
+    unittest.test('method--createrefundinvoice', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orderinvoices;
       var arg_request = buildOrderinvoicesCreateRefundInvoiceRequest();
@@ -23446,18 +23300,16 @@ void main() {
             .encode(buildOrderinvoicesCreateRefundInvoiceResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createrefundinvoice(arg_request, arg_merchantId, arg_orderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrderinvoicesCreateRefundInvoiceResponse(
-            response as api.OrderinvoicesCreateRefundInvoiceResponse);
-      })));
+      final response = await res.createrefundinvoice(
+          arg_request, arg_merchantId, arg_orderId,
+          $fields: arg_$fields);
+      checkOrderinvoicesCreateRefundInvoiceResponse(
+          response as api.OrderinvoicesCreateRefundInvoiceResponse);
     });
   });
 
   unittest.group('resource-OrderreportsResource', () {
-    unittest.test('method--listdisbursements', () {
+    unittest.test('method--listdisbursements', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orderreports;
       var arg_merchantId = 'foo';
@@ -23539,20 +23391,17 @@ void main() {
             convert.json.encode(buildOrderreportsListDisbursementsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listdisbursements(arg_merchantId,
-              disbursementEndDate: arg_disbursementEndDate,
-              disbursementStartDate: arg_disbursementStartDate,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrderreportsListDisbursementsResponse(
-            response as api.OrderreportsListDisbursementsResponse);
-      })));
+      final response = await res.listdisbursements(arg_merchantId,
+          disbursementEndDate: arg_disbursementEndDate,
+          disbursementStartDate: arg_disbursementStartDate,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkOrderreportsListDisbursementsResponse(
+          response as api.OrderreportsListDisbursementsResponse);
     });
 
-    unittest.test('method--listtransactions', () {
+    unittest.test('method--listtransactions', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orderreports;
       var arg_merchantId = 'foo';
@@ -23649,22 +23498,20 @@ void main() {
             convert.json.encode(buildOrderreportsListTransactionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listtransactions(arg_merchantId, arg_disbursementId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              transactionEndDate: arg_transactionEndDate,
-              transactionStartDate: arg_transactionStartDate,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrderreportsListTransactionsResponse(
-            response as api.OrderreportsListTransactionsResponse);
-      })));
+      final response = await res.listtransactions(
+          arg_merchantId, arg_disbursementId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          transactionEndDate: arg_transactionEndDate,
+          transactionStartDate: arg_transactionStartDate,
+          $fields: arg_$fields);
+      checkOrderreportsListTransactionsResponse(
+          response as api.OrderreportsListTransactionsResponse);
     });
   });
 
   unittest.group('resource-OrderreturnsResource', () {
-    unittest.test('method--acknowledge', () {
+    unittest.test('method--acknowledge', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orderreturns;
       var arg_request = buildOrderreturnsAcknowledgeRequest();
@@ -23746,16 +23593,14 @@ void main() {
         var resp = convert.json.encode(buildOrderreturnsAcknowledgeResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .acknowledge(arg_request, arg_merchantId, arg_returnId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrderreturnsAcknowledgeResponse(
-            response as api.OrderreturnsAcknowledgeResponse);
-      })));
+      final response = await res.acknowledge(
+          arg_request, arg_merchantId, arg_returnId,
+          $fields: arg_$fields);
+      checkOrderreturnsAcknowledgeResponse(
+          response as api.OrderreturnsAcknowledgeResponse);
     });
 
-    unittest.test('method--createorderreturn', () {
+    unittest.test('method--createorderreturn', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orderreturns;
       var arg_request = buildOrderreturnsCreateOrderReturnRequest();
@@ -23823,15 +23668,13 @@ void main() {
             convert.json.encode(buildOrderreturnsCreateOrderReturnResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createorderreturn(arg_request, arg_merchantId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrderreturnsCreateOrderReturnResponse(
-            response as api.OrderreturnsCreateOrderReturnResponse);
-      })));
+      final response = await res.createorderreturn(arg_request, arg_merchantId,
+          $fields: arg_$fields);
+      checkOrderreturnsCreateOrderReturnResponse(
+          response as api.OrderreturnsCreateOrderReturnResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orderreturns;
       var arg_merchantId = 'foo';
@@ -23899,14 +23742,12 @@ void main() {
         var resp = convert.json.encode(buildMerchantOrderReturn());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_returnId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMerchantOrderReturn(response as api.MerchantOrderReturn);
-      })));
+      final response =
+          await res.get(arg_merchantId, arg_returnId, $fields: arg_$fields);
+      checkMerchantOrderReturn(response as api.MerchantOrderReturn);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orderreturns;
       var arg_merchantId = 'foo';
@@ -24022,26 +23863,23 @@ void main() {
         var resp = convert.json.encode(buildOrderreturnsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId,
-              acknowledged: arg_acknowledged,
-              createdEndDate: arg_createdEndDate,
-              createdStartDate: arg_createdStartDate,
-              googleOrderIds: arg_googleOrderIds,
-              maxResults: arg_maxResults,
-              orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
-              shipmentStates: arg_shipmentStates,
-              shipmentStatus: arg_shipmentStatus,
-              shipmentTrackingNumbers: arg_shipmentTrackingNumbers,
-              shipmentTypes: arg_shipmentTypes,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrderreturnsListResponse(response as api.OrderreturnsListResponse);
-      })));
+      final response = await res.list(arg_merchantId,
+          acknowledged: arg_acknowledged,
+          createdEndDate: arg_createdEndDate,
+          createdStartDate: arg_createdStartDate,
+          googleOrderIds: arg_googleOrderIds,
+          maxResults: arg_maxResults,
+          orderBy: arg_orderBy,
+          pageToken: arg_pageToken,
+          shipmentStates: arg_shipmentStates,
+          shipmentStatus: arg_shipmentStatus,
+          shipmentTrackingNumbers: arg_shipmentTrackingNumbers,
+          shipmentTypes: arg_shipmentTypes,
+          $fields: arg_$fields);
+      checkOrderreturnsListResponse(response as api.OrderreturnsListResponse);
     });
 
-    unittest.test('method--process', () {
+    unittest.test('method--process', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orderreturns;
       var arg_request = buildOrderreturnsProcessRequest();
@@ -24122,18 +23960,16 @@ void main() {
         var resp = convert.json.encode(buildOrderreturnsProcessResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .process(arg_request, arg_merchantId, arg_returnId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrderreturnsProcessResponse(
-            response as api.OrderreturnsProcessResponse);
-      })));
+      final response = await res.process(
+          arg_request, arg_merchantId, arg_returnId,
+          $fields: arg_$fields);
+      checkOrderreturnsProcessResponse(
+          response as api.OrderreturnsProcessResponse);
     });
   });
 
   unittest.group('resource-OrdersResource', () {
-    unittest.test('method--acknowledge', () {
+    unittest.test('method--acknowledge', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersAcknowledgeRequest();
@@ -24214,16 +24050,13 @@ void main() {
         var resp = convert.json.encode(buildOrdersAcknowledgeResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .acknowledge(arg_request, arg_merchantId, arg_orderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersAcknowledgeResponse(
-            response as api.OrdersAcknowledgeResponse);
-      })));
+      final response = await res.acknowledge(
+          arg_request, arg_merchantId, arg_orderId,
+          $fields: arg_$fields);
+      checkOrdersAcknowledgeResponse(response as api.OrdersAcknowledgeResponse);
     });
 
-    unittest.test('method--advancetestorder', () {
+    unittest.test('method--advancetestorder', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_merchantId = 'foo';
@@ -24299,15 +24132,13 @@ void main() {
         var resp = convert.json.encode(buildOrdersAdvanceTestOrderResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .advancetestorder(arg_merchantId, arg_orderId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersAdvanceTestOrderResponse(
-            response as api.OrdersAdvanceTestOrderResponse);
-      })));
+      final response = await res.advancetestorder(arg_merchantId, arg_orderId,
+          $fields: arg_$fields);
+      checkOrdersAdvanceTestOrderResponse(
+          response as api.OrdersAdvanceTestOrderResponse);
     });
 
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersCancelRequest();
@@ -24388,15 +24219,13 @@ void main() {
         var resp = convert.json.encode(buildOrdersCancelResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_merchantId, arg_orderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersCancelResponse(response as api.OrdersCancelResponse);
-      })));
+      final response = await res.cancel(
+          arg_request, arg_merchantId, arg_orderId,
+          $fields: arg_$fields);
+      checkOrdersCancelResponse(response as api.OrdersCancelResponse);
     });
 
-    unittest.test('method--cancellineitem', () {
+    unittest.test('method--cancellineitem', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersCancelLineItemRequest();
@@ -24478,16 +24307,14 @@ void main() {
         var resp = convert.json.encode(buildOrdersCancelLineItemResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancellineitem(arg_request, arg_merchantId, arg_orderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersCancelLineItemResponse(
-            response as api.OrdersCancelLineItemResponse);
-      })));
+      final response = await res.cancellineitem(
+          arg_request, arg_merchantId, arg_orderId,
+          $fields: arg_$fields);
+      checkOrdersCancelLineItemResponse(
+          response as api.OrdersCancelLineItemResponse);
     });
 
-    unittest.test('method--canceltestorderbycustomer', () {
+    unittest.test('method--canceltestorderbycustomer', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersCancelTestOrderByCustomerRequest();
@@ -24570,16 +24397,14 @@ void main() {
             convert.json.encode(buildOrdersCancelTestOrderByCustomerResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .canceltestorderbycustomer(arg_request, arg_merchantId, arg_orderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersCancelTestOrderByCustomerResponse(
-            response as api.OrdersCancelTestOrderByCustomerResponse);
-      })));
+      final response = await res.canceltestorderbycustomer(
+          arg_request, arg_merchantId, arg_orderId,
+          $fields: arg_$fields);
+      checkOrdersCancelTestOrderByCustomerResponse(
+          response as api.OrdersCancelTestOrderByCustomerResponse);
     });
 
-    unittest.test('method--createtestorder', () {
+    unittest.test('method--createtestorder', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersCreateTestOrderRequest();
@@ -24646,15 +24471,13 @@ void main() {
         var resp = convert.json.encode(buildOrdersCreateTestOrderResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createtestorder(arg_request, arg_merchantId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersCreateTestOrderResponse(
-            response as api.OrdersCreateTestOrderResponse);
-      })));
+      final response = await res.createtestorder(arg_request, arg_merchantId,
+          $fields: arg_$fields);
+      checkOrdersCreateTestOrderResponse(
+          response as api.OrdersCreateTestOrderResponse);
     });
 
-    unittest.test('method--createtestreturn', () {
+    unittest.test('method--createtestreturn', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersCreateTestReturnRequest();
@@ -24736,16 +24559,14 @@ void main() {
         var resp = convert.json.encode(buildOrdersCreateTestReturnResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createtestreturn(arg_request, arg_merchantId, arg_orderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersCreateTestReturnResponse(
-            response as api.OrdersCreateTestReturnResponse);
-      })));
+      final response = await res.createtestreturn(
+          arg_request, arg_merchantId, arg_orderId,
+          $fields: arg_$fields);
+      checkOrdersCreateTestReturnResponse(
+          response as api.OrdersCreateTestReturnResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_merchantId = 'foo';
@@ -24813,14 +24634,12 @@ void main() {
         var resp = convert.json.encode(buildOrder());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_orderId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrder(response as api.Order);
-      })));
+      final response =
+          await res.get(arg_merchantId, arg_orderId, $fields: arg_$fields);
+      checkOrder(response as api.Order);
     });
 
-    unittest.test('method--getbymerchantorderid', () {
+    unittest.test('method--getbymerchantorderid', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_merchantId = 'foo';
@@ -24889,16 +24708,14 @@ void main() {
             convert.json.encode(buildOrdersGetByMerchantOrderIdResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getbymerchantorderid(arg_merchantId, arg_merchantOrderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersGetByMerchantOrderIdResponse(
-            response as api.OrdersGetByMerchantOrderIdResponse);
-      })));
+      final response = await res.getbymerchantorderid(
+          arg_merchantId, arg_merchantOrderId,
+          $fields: arg_$fields);
+      checkOrdersGetByMerchantOrderIdResponse(
+          response as api.OrdersGetByMerchantOrderIdResponse);
     });
 
-    unittest.test('method--gettestordertemplate', () {
+    unittest.test('method--gettestordertemplate', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_merchantId = 'foo';
@@ -24972,16 +24789,14 @@ void main() {
             convert.json.encode(buildOrdersGetTestOrderTemplateResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .gettestordertemplate(arg_merchantId, arg_templateName,
-              country: arg_country, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersGetTestOrderTemplateResponse(
-            response as api.OrdersGetTestOrderTemplateResponse);
-      })));
+      final response = await res.gettestordertemplate(
+          arg_merchantId, arg_templateName,
+          country: arg_country, $fields: arg_$fields);
+      checkOrdersGetTestOrderTemplateResponse(
+          response as api.OrdersGetTestOrderTemplateResponse);
     });
 
-    unittest.test('method--instorerefundlineitem', () {
+    unittest.test('method--instorerefundlineitem', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersInStoreRefundLineItemRequest();
@@ -25064,16 +24879,14 @@ void main() {
             convert.json.encode(buildOrdersInStoreRefundLineItemResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .instorerefundlineitem(arg_request, arg_merchantId, arg_orderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersInStoreRefundLineItemResponse(
-            response as api.OrdersInStoreRefundLineItemResponse);
-      })));
+      final response = await res.instorerefundlineitem(
+          arg_request, arg_merchantId, arg_orderId,
+          $fields: arg_$fields);
+      checkOrdersInStoreRefundLineItemResponse(
+          response as api.OrdersInStoreRefundLineItemResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_merchantId = 'foo';
@@ -25169,22 +24982,19 @@ void main() {
         var resp = convert.json.encode(buildOrdersListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId,
-              acknowledged: arg_acknowledged,
-              maxResults: arg_maxResults,
-              orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
-              placedDateEnd: arg_placedDateEnd,
-              placedDateStart: arg_placedDateStart,
-              statuses: arg_statuses,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersListResponse(response as api.OrdersListResponse);
-      })));
+      final response = await res.list(arg_merchantId,
+          acknowledged: arg_acknowledged,
+          maxResults: arg_maxResults,
+          orderBy: arg_orderBy,
+          pageToken: arg_pageToken,
+          placedDateEnd: arg_placedDateEnd,
+          placedDateStart: arg_placedDateStart,
+          statuses: arg_statuses,
+          $fields: arg_$fields);
+      checkOrdersListResponse(response as api.OrdersListResponse);
     });
 
-    unittest.test('method--refunditem', () {
+    unittest.test('method--refunditem', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersRefundItemRequest();
@@ -25265,15 +25075,13 @@ void main() {
         var resp = convert.json.encode(buildOrdersRefundItemResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .refunditem(arg_request, arg_merchantId, arg_orderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersRefundItemResponse(response as api.OrdersRefundItemResponse);
-      })));
+      final response = await res.refunditem(
+          arg_request, arg_merchantId, arg_orderId,
+          $fields: arg_$fields);
+      checkOrdersRefundItemResponse(response as api.OrdersRefundItemResponse);
     });
 
-    unittest.test('method--refundorder', () {
+    unittest.test('method--refundorder', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersRefundOrderRequest();
@@ -25354,16 +25162,13 @@ void main() {
         var resp = convert.json.encode(buildOrdersRefundOrderResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .refundorder(arg_request, arg_merchantId, arg_orderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersRefundOrderResponse(
-            response as api.OrdersRefundOrderResponse);
-      })));
+      final response = await res.refundorder(
+          arg_request, arg_merchantId, arg_orderId,
+          $fields: arg_$fields);
+      checkOrdersRefundOrderResponse(response as api.OrdersRefundOrderResponse);
     });
 
-    unittest.test('method--rejectreturnlineitem', () {
+    unittest.test('method--rejectreturnlineitem', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersRejectReturnLineItemRequest();
@@ -25446,16 +25251,14 @@ void main() {
             convert.json.encode(buildOrdersRejectReturnLineItemResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .rejectreturnlineitem(arg_request, arg_merchantId, arg_orderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersRejectReturnLineItemResponse(
-            response as api.OrdersRejectReturnLineItemResponse);
-      })));
+      final response = await res.rejectreturnlineitem(
+          arg_request, arg_merchantId, arg_orderId,
+          $fields: arg_$fields);
+      checkOrdersRejectReturnLineItemResponse(
+          response as api.OrdersRejectReturnLineItemResponse);
     });
 
-    unittest.test('method--returnrefundlineitem', () {
+    unittest.test('method--returnrefundlineitem', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersReturnRefundLineItemRequest();
@@ -25538,16 +25341,14 @@ void main() {
             convert.json.encode(buildOrdersReturnRefundLineItemResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .returnrefundlineitem(arg_request, arg_merchantId, arg_orderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersReturnRefundLineItemResponse(
-            response as api.OrdersReturnRefundLineItemResponse);
-      })));
+      final response = await res.returnrefundlineitem(
+          arg_request, arg_merchantId, arg_orderId,
+          $fields: arg_$fields);
+      checkOrdersReturnRefundLineItemResponse(
+          response as api.OrdersReturnRefundLineItemResponse);
     });
 
-    unittest.test('method--setlineitemmetadata', () {
+    unittest.test('method--setlineitemmetadata', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersSetLineItemMetadataRequest();
@@ -25630,16 +25431,14 @@ void main() {
             convert.json.encode(buildOrdersSetLineItemMetadataResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setlineitemmetadata(arg_request, arg_merchantId, arg_orderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersSetLineItemMetadataResponse(
-            response as api.OrdersSetLineItemMetadataResponse);
-      })));
+      final response = await res.setlineitemmetadata(
+          arg_request, arg_merchantId, arg_orderId,
+          $fields: arg_$fields);
+      checkOrdersSetLineItemMetadataResponse(
+          response as api.OrdersSetLineItemMetadataResponse);
     });
 
-    unittest.test('method--shiplineitems', () {
+    unittest.test('method--shiplineitems', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersShipLineItemsRequest();
@@ -25720,16 +25519,14 @@ void main() {
         var resp = convert.json.encode(buildOrdersShipLineItemsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .shiplineitems(arg_request, arg_merchantId, arg_orderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersShipLineItemsResponse(
-            response as api.OrdersShipLineItemsResponse);
-      })));
+      final response = await res.shiplineitems(
+          arg_request, arg_merchantId, arg_orderId,
+          $fields: arg_$fields);
+      checkOrdersShipLineItemsResponse(
+          response as api.OrdersShipLineItemsResponse);
     });
 
-    unittest.test('method--updatelineitemshippingdetails', () {
+    unittest.test('method--updatelineitemshippingdetails', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersUpdateLineItemShippingDetailsRequest();
@@ -25812,17 +25609,14 @@ void main() {
             .encode(buildOrdersUpdateLineItemShippingDetailsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updatelineitemshippingdetails(
-              arg_request, arg_merchantId, arg_orderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersUpdateLineItemShippingDetailsResponse(
-            response as api.OrdersUpdateLineItemShippingDetailsResponse);
-      })));
+      final response = await res.updatelineitemshippingdetails(
+          arg_request, arg_merchantId, arg_orderId,
+          $fields: arg_$fields);
+      checkOrdersUpdateLineItemShippingDetailsResponse(
+          response as api.OrdersUpdateLineItemShippingDetailsResponse);
     });
 
-    unittest.test('method--updatemerchantorderid', () {
+    unittest.test('method--updatemerchantorderid', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersUpdateMerchantOrderIdRequest();
@@ -25905,16 +25699,14 @@ void main() {
             convert.json.encode(buildOrdersUpdateMerchantOrderIdResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updatemerchantorderid(arg_request, arg_merchantId, arg_orderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersUpdateMerchantOrderIdResponse(
-            response as api.OrdersUpdateMerchantOrderIdResponse);
-      })));
+      final response = await res.updatemerchantorderid(
+          arg_request, arg_merchantId, arg_orderId,
+          $fields: arg_$fields);
+      checkOrdersUpdateMerchantOrderIdResponse(
+          response as api.OrdersUpdateMerchantOrderIdResponse);
     });
 
-    unittest.test('method--updateshipment', () {
+    unittest.test('method--updateshipment', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).orders;
       var arg_request = buildOrdersUpdateShipmentRequest();
@@ -25996,18 +25788,16 @@ void main() {
         var resp = convert.json.encode(buildOrdersUpdateShipmentResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateshipment(arg_request, arg_merchantId, arg_orderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrdersUpdateShipmentResponse(
-            response as api.OrdersUpdateShipmentResponse);
-      })));
+      final response = await res.updateshipment(
+          arg_request, arg_merchantId, arg_orderId,
+          $fields: arg_$fields);
+      checkOrdersUpdateShipmentResponse(
+          response as api.OrdersUpdateShipmentResponse);
     });
   });
 
   unittest.group('resource-OrdertrackingsignalsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).ordertrackingsignals;
       var arg_request = buildOrderTrackingSignal();
@@ -26073,16 +25863,14 @@ void main() {
         var resp = convert.json.encode(buildOrderTrackingSignal());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_merchantId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrderTrackingSignal(response as api.OrderTrackingSignal);
-      })));
+      final response =
+          await res.create(arg_request, arg_merchantId, $fields: arg_$fields);
+      checkOrderTrackingSignal(response as api.OrderTrackingSignal);
     });
   });
 
   unittest.group('resource-PosResource', () {
-    unittest.test('method--custombatch', () {
+    unittest.test('method--custombatch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).pos;
       var arg_request = buildPosCustomBatchRequest();
@@ -26133,14 +25921,11 @@ void main() {
         var resp = convert.json.encode(buildPosCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .custombatch(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPosCustomBatchResponse(response as api.PosCustomBatchResponse);
-      })));
+      final response = await res.custombatch(arg_request, $fields: arg_$fields);
+      checkPosCustomBatchResponse(response as api.PosCustomBatchResponse);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).pos;
       var arg_merchantId = 'foo';
@@ -26223,13 +26008,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_merchantId, arg_targetMerchantId, arg_storeCode,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_merchantId, arg_targetMerchantId, arg_storeCode,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).pos;
       var arg_merchantId = 'foo';
@@ -26312,15 +26095,13 @@ void main() {
         var resp = convert.json.encode(buildPosStore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_targetMerchantId, arg_storeCode,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPosStore(response as api.PosStore);
-      })));
+      final response = await res.get(
+          arg_merchantId, arg_targetMerchantId, arg_storeCode,
+          $fields: arg_$fields);
+      checkPosStore(response as api.PosStore);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).pos;
       var arg_request = buildPosStore();
@@ -26401,15 +26182,13 @@ void main() {
         var resp = convert.json.encode(buildPosStore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_merchantId, arg_targetMerchantId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPosStore(response as api.PosStore);
-      })));
+      final response = await res.insert(
+          arg_request, arg_merchantId, arg_targetMerchantId,
+          $fields: arg_$fields);
+      checkPosStore(response as api.PosStore);
     });
 
-    unittest.test('method--inventory', () {
+    unittest.test('method--inventory', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).pos;
       var arg_request = buildPosInventoryRequest();
@@ -26490,15 +26269,13 @@ void main() {
         var resp = convert.json.encode(buildPosInventoryResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .inventory(arg_request, arg_merchantId, arg_targetMerchantId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPosInventoryResponse(response as api.PosInventoryResponse);
-      })));
+      final response = await res.inventory(
+          arg_request, arg_merchantId, arg_targetMerchantId,
+          $fields: arg_$fields);
+      checkPosInventoryResponse(response as api.PosInventoryResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).pos;
       var arg_merchantId = 'foo';
@@ -26574,14 +26351,12 @@ void main() {
         var resp = convert.json.encode(buildPosListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId, arg_targetMerchantId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPosListResponse(response as api.PosListResponse);
-      })));
+      final response = await res.list(arg_merchantId, arg_targetMerchantId,
+          $fields: arg_$fields);
+      checkPosListResponse(response as api.PosListResponse);
     });
 
-    unittest.test('method--sale', () {
+    unittest.test('method--sale', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).pos;
       var arg_request = buildPosSaleRequest();
@@ -26662,17 +26437,15 @@ void main() {
         var resp = convert.json.encode(buildPosSaleResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .sale(arg_request, arg_merchantId, arg_targetMerchantId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPosSaleResponse(response as api.PosSaleResponse);
-      })));
+      final response = await res.sale(
+          arg_request, arg_merchantId, arg_targetMerchantId,
+          $fields: arg_$fields);
+      checkPosSaleResponse(response as api.PosSaleResponse);
     });
   });
 
   unittest.group('resource-ProductsResource', () {
-    unittest.test('method--custombatch', () {
+    unittest.test('method--custombatch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).products;
       var arg_request = buildProductsCustomBatchRequest();
@@ -26723,15 +26496,12 @@ void main() {
         var resp = convert.json.encode(buildProductsCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .custombatch(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProductsCustomBatchResponse(
-            response as api.ProductsCustomBatchResponse);
-      })));
+      final response = await res.custombatch(arg_request, $fields: arg_$fields);
+      checkProductsCustomBatchResponse(
+          response as api.ProductsCustomBatchResponse);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).products;
       var arg_merchantId = 'foo';
@@ -26804,13 +26574,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_merchantId, arg_productId,
-              feedId: arg_feedId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_merchantId, arg_productId,
+          feedId: arg_feedId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).products;
       var arg_merchantId = 'foo';
@@ -26878,14 +26646,12 @@ void main() {
         var resp = convert.json.encode(buildProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_productId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProduct(response as api.Product);
-      })));
+      final response =
+          await res.get(arg_merchantId, arg_productId, $fields: arg_$fields);
+      checkProduct(response as api.Product);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).products;
       var arg_request = buildProduct();
@@ -26956,15 +26722,12 @@ void main() {
         var resp = convert.json.encode(buildProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_merchantId,
-              feedId: arg_feedId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProduct(response as api.Product);
-      })));
+      final response = await res.insert(arg_request, arg_merchantId,
+          feedId: arg_feedId, $fields: arg_$fields);
+      checkProduct(response as api.Product);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).products;
       var arg_merchantId = 'foo';
@@ -27035,19 +26798,16 @@ void main() {
         var resp = convert.json.encode(buildProductsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProductsListResponse(response as api.ProductsListResponse);
-      })));
+      final response = await res.list(arg_merchantId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkProductsListResponse(response as api.ProductsListResponse);
     });
   });
 
   unittest.group('resource-ProductstatusesResource', () {
-    unittest.test('method--custombatch', () {
+    unittest.test('method--custombatch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).productstatuses;
       var arg_request = buildProductstatusesCustomBatchRequest();
@@ -27100,15 +26860,12 @@ void main() {
             convert.json.encode(buildProductstatusesCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .custombatch(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProductstatusesCustomBatchResponse(
-            response as api.ProductstatusesCustomBatchResponse);
-      })));
+      final response = await res.custombatch(arg_request, $fields: arg_$fields);
+      checkProductstatusesCustomBatchResponse(
+          response as api.ProductstatusesCustomBatchResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).productstatuses;
       var arg_merchantId = 'foo';
@@ -27181,15 +26938,12 @@ void main() {
         var resp = convert.json.encode(buildProductStatus());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_productId,
-              destinations: arg_destinations, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProductStatus(response as api.ProductStatus);
-      })));
+      final response = await res.get(arg_merchantId, arg_productId,
+          destinations: arg_destinations, $fields: arg_$fields);
+      checkProductStatus(response as api.ProductStatus);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).productstatuses;
       var arg_merchantId = 'foo';
@@ -27265,21 +27019,18 @@ void main() {
         var resp = convert.json.encode(buildProductstatusesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId,
-              destinations: arg_destinations,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProductstatusesListResponse(
-            response as api.ProductstatusesListResponse);
-      })));
+      final response = await res.list(arg_merchantId,
+          destinations: arg_destinations,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkProductstatusesListResponse(
+          response as api.ProductstatusesListResponse);
     });
   });
 
   unittest.group('resource-ProductstatusesRepricingreportsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).productstatuses.repricingreports;
       var arg_merchantId = 'foo';
@@ -27381,23 +27132,20 @@ void main() {
             convert.json.encode(buildListRepricingProductReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId, arg_productId,
-              endDate: arg_endDate,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              ruleId: arg_ruleId,
-              startDate: arg_startDate,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListRepricingProductReportsResponse(
-            response as api.ListRepricingProductReportsResponse);
-      })));
+      final response = await res.list(arg_merchantId, arg_productId,
+          endDate: arg_endDate,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          ruleId: arg_ruleId,
+          startDate: arg_startDate,
+          $fields: arg_$fields);
+      checkListRepricingProductReportsResponse(
+          response as api.ListRepricingProductReportsResponse);
     });
   });
 
   unittest.group('resource-PubsubnotificationsettingsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).pubsubnotificationsettings;
       var arg_merchantId = 'foo';
@@ -27458,15 +27206,12 @@ void main() {
         var resp = convert.json.encode(buildPubsubNotificationSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPubsubNotificationSettings(
-            response as api.PubsubNotificationSettings);
-      })));
+      final response = await res.get(arg_merchantId, $fields: arg_$fields);
+      checkPubsubNotificationSettings(
+          response as api.PubsubNotificationSettings);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).pubsubnotificationsettings;
       var arg_request = buildPubsubNotificationSettings();
@@ -27532,17 +27277,15 @@ void main() {
         var resp = convert.json.encode(buildPubsubNotificationSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_merchantId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPubsubNotificationSettings(
-            response as api.PubsubNotificationSettings);
-      })));
+      final response =
+          await res.update(arg_request, arg_merchantId, $fields: arg_$fields);
+      checkPubsubNotificationSettings(
+          response as api.PubsubNotificationSettings);
     });
   });
 
   unittest.group('resource-RegionalinventoryResource', () {
-    unittest.test('method--custombatch', () {
+    unittest.test('method--custombatch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).regionalinventory;
       var arg_request = buildRegionalinventoryCustomBatchRequest();
@@ -27595,15 +27338,12 @@ void main() {
             convert.json.encode(buildRegionalinventoryCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .custombatch(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRegionalinventoryCustomBatchResponse(
-            response as api.RegionalinventoryCustomBatchResponse);
-      })));
+      final response = await res.custombatch(arg_request, $fields: arg_$fields);
+      checkRegionalinventoryCustomBatchResponse(
+          response as api.RegionalinventoryCustomBatchResponse);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).regionalinventory;
       var arg_request = buildRegionalInventory();
@@ -27684,17 +27424,15 @@ void main() {
         var resp = convert.json.encode(buildRegionalInventory());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_merchantId, arg_productId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRegionalInventory(response as api.RegionalInventory);
-      })));
+      final response = await res.insert(
+          arg_request, arg_merchantId, arg_productId,
+          $fields: arg_$fields);
+      checkRegionalInventory(response as api.RegionalInventory);
     });
   });
 
   unittest.group('resource-RegionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).regions;
       var arg_request = buildRegion();
@@ -27765,15 +27503,12 @@ void main() {
         var resp = convert.json.encode(buildRegion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_merchantId,
-              regionId: arg_regionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRegion(response as api.Region);
-      })));
+      final response = await res.create(arg_request, arg_merchantId,
+          regionId: arg_regionId, $fields: arg_$fields);
+      checkRegion(response as api.Region);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).regions;
       var arg_merchantId = 'foo';
@@ -27841,12 +27576,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_merchantId, arg_regionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_merchantId, arg_regionId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).regions;
       var arg_merchantId = 'foo';
@@ -27914,14 +27647,12 @@ void main() {
         var resp = convert.json.encode(buildRegion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_regionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRegion(response as api.Region);
-      })));
+      final response =
+          await res.get(arg_merchantId, arg_regionId, $fields: arg_$fields);
+      checkRegion(response as api.Region);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).regions;
       var arg_merchantId = 'foo';
@@ -27992,17 +27723,14 @@ void main() {
         var resp = convert.json.encode(buildListRegionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListRegionsResponse(response as api.ListRegionsResponse);
-      })));
+      final response = await res.list(arg_merchantId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListRegionsResponse(response as api.ListRegionsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).regions;
       var arg_request = buildRegion();
@@ -28080,17 +27808,15 @@ void main() {
         var resp = convert.json.encode(buildRegion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_merchantId, arg_regionId,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRegion(response as api.Region);
-      })));
+      final response = await res.patch(
+          arg_request, arg_merchantId, arg_regionId,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkRegion(response as api.Region);
     });
   });
 
   unittest.group('resource-ReportsResource', () {
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).reports;
       var arg_request = buildSearchRequest();
@@ -28156,16 +27882,14 @@ void main() {
         var resp = convert.json.encode(buildSearchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(arg_request, arg_merchantId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchResponse(response as api.SearchResponse);
-      })));
+      final response =
+          await res.search(arg_request, arg_merchantId, $fields: arg_$fields);
+      checkSearchResponse(response as api.SearchResponse);
     });
   });
 
   unittest.group('resource-RepricingrulesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).repricingrules;
       var arg_request = buildRepricingRule();
@@ -28236,15 +27960,12 @@ void main() {
         var resp = convert.json.encode(buildRepricingRule());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_merchantId,
-              ruleId: arg_ruleId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRepricingRule(response as api.RepricingRule);
-      })));
+      final response = await res.create(arg_request, arg_merchantId,
+          ruleId: arg_ruleId, $fields: arg_$fields);
+      checkRepricingRule(response as api.RepricingRule);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).repricingrules;
       var arg_merchantId = 'foo';
@@ -28312,12 +28033,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_merchantId, arg_ruleId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_merchantId, arg_ruleId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).repricingrules;
       var arg_merchantId = 'foo';
@@ -28385,14 +28104,12 @@ void main() {
         var resp = convert.json.encode(buildRepricingRule());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_ruleId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRepricingRule(response as api.RepricingRule);
-      })));
+      final response =
+          await res.get(arg_merchantId, arg_ruleId, $fields: arg_$fields);
+      checkRepricingRule(response as api.RepricingRule);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).repricingrules;
       var arg_merchantId = 'foo';
@@ -28473,20 +28190,17 @@ void main() {
         var resp = convert.json.encode(buildListRepricingRulesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId,
-              countryCode: arg_countryCode,
-              languageCode: arg_languageCode,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListRepricingRulesResponse(
-            response as api.ListRepricingRulesResponse);
-      })));
+      final response = await res.list(arg_merchantId,
+          countryCode: arg_countryCode,
+          languageCode: arg_languageCode,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListRepricingRulesResponse(
+          response as api.ListRepricingRulesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).repricingrules;
       var arg_request = buildRepricingRule();
@@ -28559,16 +28273,14 @@ void main() {
         var resp = convert.json.encode(buildRepricingRule());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_merchantId, arg_ruleId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRepricingRule(response as api.RepricingRule);
-      })));
+      final response = await res.patch(arg_request, arg_merchantId, arg_ruleId,
+          $fields: arg_$fields);
+      checkRepricingRule(response as api.RepricingRule);
     });
   });
 
   unittest.group('resource-RepricingrulesRepricingreportsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).repricingrules.repricingreports;
       var arg_merchantId = 'foo';
@@ -28664,22 +28376,19 @@ void main() {
         var resp = convert.json.encode(buildListRepricingRuleReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId, arg_ruleId,
-              endDate: arg_endDate,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              startDate: arg_startDate,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListRepricingRuleReportsResponse(
-            response as api.ListRepricingRuleReportsResponse);
-      })));
+      final response = await res.list(arg_merchantId, arg_ruleId,
+          endDate: arg_endDate,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          startDate: arg_startDate,
+          $fields: arg_$fields);
+      checkListRepricingRuleReportsResponse(
+          response as api.ListRepricingRuleReportsResponse);
     });
   });
 
   unittest.group('resource-ReturnaddressResource', () {
-    unittest.test('method--custombatch', () {
+    unittest.test('method--custombatch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).returnaddress;
       var arg_request = buildReturnaddressCustomBatchRequest();
@@ -28731,15 +28440,12 @@ void main() {
         var resp = convert.json.encode(buildReturnaddressCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .custombatch(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReturnaddressCustomBatchResponse(
-            response as api.ReturnaddressCustomBatchResponse);
-      })));
+      final response = await res.custombatch(arg_request, $fields: arg_$fields);
+      checkReturnaddressCustomBatchResponse(
+          response as api.ReturnaddressCustomBatchResponse);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).returnaddress;
       var arg_merchantId = 'foo';
@@ -28807,12 +28513,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_merchantId, arg_returnAddressId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_merchantId, arg_returnAddressId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).returnaddress;
       var arg_merchantId = 'foo';
@@ -28880,14 +28585,12 @@ void main() {
         var resp = convert.json.encode(buildReturnAddress());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_returnAddressId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReturnAddress(response as api.ReturnAddress);
-      })));
+      final response = await res.get(arg_merchantId, arg_returnAddressId,
+          $fields: arg_$fields);
+      checkReturnAddress(response as api.ReturnAddress);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).returnaddress;
       var arg_request = buildReturnAddress();
@@ -28953,14 +28656,12 @@ void main() {
         var resp = convert.json.encode(buildReturnAddress());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_merchantId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReturnAddress(response as api.ReturnAddress);
-      })));
+      final response =
+          await res.insert(arg_request, arg_merchantId, $fields: arg_$fields);
+      checkReturnAddress(response as api.ReturnAddress);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).returnaddress;
       var arg_merchantId = 'foo';
@@ -29036,21 +28737,17 @@ void main() {
         var resp = convert.json.encode(buildReturnaddressListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId,
-              country: arg_country,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReturnaddressListResponse(
-            response as api.ReturnaddressListResponse);
-      })));
+      final response = await res.list(arg_merchantId,
+          country: arg_country,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkReturnaddressListResponse(response as api.ReturnaddressListResponse);
     });
   });
 
   unittest.group('resource-ReturnpolicyResource', () {
-    unittest.test('method--custombatch', () {
+    unittest.test('method--custombatch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).returnpolicy;
       var arg_request = buildReturnpolicyCustomBatchRequest();
@@ -29102,15 +28799,12 @@ void main() {
         var resp = convert.json.encode(buildReturnpolicyCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .custombatch(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReturnpolicyCustomBatchResponse(
-            response as api.ReturnpolicyCustomBatchResponse);
-      })));
+      final response = await res.custombatch(arg_request, $fields: arg_$fields);
+      checkReturnpolicyCustomBatchResponse(
+          response as api.ReturnpolicyCustomBatchResponse);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).returnpolicy;
       var arg_merchantId = 'foo';
@@ -29178,12 +28872,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_merchantId, arg_returnPolicyId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_merchantId, arg_returnPolicyId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).returnpolicy;
       var arg_merchantId = 'foo';
@@ -29251,14 +28944,12 @@ void main() {
         var resp = convert.json.encode(buildReturnPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_returnPolicyId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReturnPolicy(response as api.ReturnPolicy);
-      })));
+      final response = await res.get(arg_merchantId, arg_returnPolicyId,
+          $fields: arg_$fields);
+      checkReturnPolicy(response as api.ReturnPolicy);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).returnpolicy;
       var arg_request = buildReturnPolicy();
@@ -29324,14 +29015,12 @@ void main() {
         var resp = convert.json.encode(buildReturnPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_merchantId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReturnPolicy(response as api.ReturnPolicy);
-      })));
+      final response =
+          await res.insert(arg_request, arg_merchantId, $fields: arg_$fields);
+      checkReturnPolicy(response as api.ReturnPolicy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).returnpolicy;
       var arg_merchantId = 'foo';
@@ -29392,16 +29081,13 @@ void main() {
         var resp = convert.json.encode(buildReturnpolicyListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReturnpolicyListResponse(response as api.ReturnpolicyListResponse);
-      })));
+      final response = await res.list(arg_merchantId, $fields: arg_$fields);
+      checkReturnpolicyListResponse(response as api.ReturnpolicyListResponse);
     });
   });
 
   unittest.group('resource-ReturnpolicyonlineResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).returnpolicyonline;
       var arg_request = buildReturnPolicyOnline();
@@ -29467,14 +29153,12 @@ void main() {
         var resp = convert.json.encode(buildReturnPolicyOnline());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_merchantId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReturnPolicyOnline(response as api.ReturnPolicyOnline);
-      })));
+      final response =
+          await res.create(arg_request, arg_merchantId, $fields: arg_$fields);
+      checkReturnPolicyOnline(response as api.ReturnPolicyOnline);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).returnpolicyonline;
       var arg_merchantId = 'foo';
@@ -29542,12 +29226,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_merchantId, arg_returnPolicyId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_merchantId, arg_returnPolicyId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).returnpolicyonline;
       var arg_merchantId = 'foo';
@@ -29615,14 +29298,12 @@ void main() {
         var resp = convert.json.encode(buildReturnPolicyOnline());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_returnPolicyId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReturnPolicyOnline(response as api.ReturnPolicyOnline);
-      })));
+      final response = await res.get(arg_merchantId, arg_returnPolicyId,
+          $fields: arg_$fields);
+      checkReturnPolicyOnline(response as api.ReturnPolicyOnline);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).returnpolicyonline;
       var arg_merchantId = 'foo';
@@ -29683,15 +29364,12 @@ void main() {
         var resp = convert.json.encode(buildListReturnPolicyOnlineResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListReturnPolicyOnlineResponse(
-            response as api.ListReturnPolicyOnlineResponse);
-      })));
+      final response = await res.list(arg_merchantId, $fields: arg_$fields);
+      checkListReturnPolicyOnlineResponse(
+          response as api.ListReturnPolicyOnlineResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).returnpolicyonline;
       var arg_request = buildReturnPolicyOnline();
@@ -29764,17 +29442,15 @@ void main() {
         var resp = convert.json.encode(buildReturnPolicyOnline());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_merchantId, arg_returnPolicyId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReturnPolicyOnline(response as api.ReturnPolicyOnline);
-      })));
+      final response = await res.patch(
+          arg_request, arg_merchantId, arg_returnPolicyId,
+          $fields: arg_$fields);
+      checkReturnPolicyOnline(response as api.ReturnPolicyOnline);
     });
   });
 
   unittest.group('resource-SettlementreportsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).settlementreports;
       var arg_merchantId = 'foo';
@@ -29842,14 +29518,12 @@ void main() {
         var resp = convert.json.encode(buildSettlementReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_settlementId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSettlementReport(response as api.SettlementReport);
-      })));
+      final response =
+          await res.get(arg_merchantId, arg_settlementId, $fields: arg_$fields);
+      checkSettlementReport(response as api.SettlementReport);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).settlementreports;
       var arg_merchantId = 'foo';
@@ -29930,22 +29604,19 @@ void main() {
         var resp = convert.json.encode(buildSettlementreportsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              transferEndDate: arg_transferEndDate,
-              transferStartDate: arg_transferStartDate,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSettlementreportsListResponse(
-            response as api.SettlementreportsListResponse);
-      })));
+      final response = await res.list(arg_merchantId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          transferEndDate: arg_transferEndDate,
+          transferStartDate: arg_transferStartDate,
+          $fields: arg_$fields);
+      checkSettlementreportsListResponse(
+          response as api.SettlementreportsListResponse);
     });
   });
 
   unittest.group('resource-SettlementtransactionsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).settlementtransactions;
       var arg_merchantId = 'foo';
@@ -30037,21 +29708,18 @@ void main() {
             convert.json.encode(buildSettlementtransactionsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId, arg_settlementId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              transactionIds: arg_transactionIds,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSettlementtransactionsListResponse(
-            response as api.SettlementtransactionsListResponse);
-      })));
+      final response = await res.list(arg_merchantId, arg_settlementId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          transactionIds: arg_transactionIds,
+          $fields: arg_$fields);
+      checkSettlementtransactionsListResponse(
+          response as api.SettlementtransactionsListResponse);
     });
   });
 
   unittest.group('resource-ShippingsettingsResource', () {
-    unittest.test('method--custombatch', () {
+    unittest.test('method--custombatch', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).shippingsettings;
       var arg_request = buildShippingsettingsCustomBatchRequest();
@@ -30104,15 +29772,12 @@ void main() {
             convert.json.encode(buildShippingsettingsCustomBatchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .custombatch(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkShippingsettingsCustomBatchResponse(
-            response as api.ShippingsettingsCustomBatchResponse);
-      })));
+      final response = await res.custombatch(arg_request, $fields: arg_$fields);
+      checkShippingsettingsCustomBatchResponse(
+          response as api.ShippingsettingsCustomBatchResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).shippingsettings;
       var arg_merchantId = 'foo';
@@ -30180,14 +29845,12 @@ void main() {
         var resp = convert.json.encode(buildShippingSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_merchantId, arg_accountId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkShippingSettings(response as api.ShippingSettings);
-      })));
+      final response =
+          await res.get(arg_merchantId, arg_accountId, $fields: arg_$fields);
+      checkShippingSettings(response as api.ShippingSettings);
     });
 
-    unittest.test('method--getsupportedcarriers', () {
+    unittest.test('method--getsupportedcarriers', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).shippingsettings;
       var arg_merchantId = 'foo';
@@ -30249,15 +29912,13 @@ void main() {
             .encode(buildShippingsettingsGetSupportedCarriersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getsupportedcarriers(arg_merchantId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkShippingsettingsGetSupportedCarriersResponse(
-            response as api.ShippingsettingsGetSupportedCarriersResponse);
-      })));
+      final response =
+          await res.getsupportedcarriers(arg_merchantId, $fields: arg_$fields);
+      checkShippingsettingsGetSupportedCarriersResponse(
+          response as api.ShippingsettingsGetSupportedCarriersResponse);
     });
 
-    unittest.test('method--getsupportedholidays', () {
+    unittest.test('method--getsupportedholidays', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).shippingsettings;
       var arg_merchantId = 'foo';
@@ -30319,15 +29980,13 @@ void main() {
             .encode(buildShippingsettingsGetSupportedHolidaysResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getsupportedholidays(arg_merchantId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkShippingsettingsGetSupportedHolidaysResponse(
-            response as api.ShippingsettingsGetSupportedHolidaysResponse);
-      })));
+      final response =
+          await res.getsupportedholidays(arg_merchantId, $fields: arg_$fields);
+      checkShippingsettingsGetSupportedHolidaysResponse(
+          response as api.ShippingsettingsGetSupportedHolidaysResponse);
     });
 
-    unittest.test('method--getsupportedpickupservices', () {
+    unittest.test('method--getsupportedpickupservices', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).shippingsettings;
       var arg_merchantId = 'foo';
@@ -30389,15 +30048,13 @@ void main() {
             .encode(buildShippingsettingsGetSupportedPickupServicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getsupportedpickupservices(arg_merchantId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkShippingsettingsGetSupportedPickupServicesResponse(
-            response as api.ShippingsettingsGetSupportedPickupServicesResponse);
-      })));
+      final response = await res.getsupportedpickupservices(arg_merchantId,
+          $fields: arg_$fields);
+      checkShippingsettingsGetSupportedPickupServicesResponse(
+          response as api.ShippingsettingsGetSupportedPickupServicesResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).shippingsettings;
       var arg_merchantId = 'foo';
@@ -30468,18 +30125,15 @@ void main() {
         var resp = convert.json.encode(buildShippingsettingsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_merchantId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkShippingsettingsListResponse(
-            response as api.ShippingsettingsListResponse);
-      })));
+      final response = await res.list(arg_merchantId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkShippingsettingsListResponse(
+          response as api.ShippingsettingsListResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ShoppingContentApi(mock).shippingsettings;
       var arg_request = buildShippingSettings();
@@ -30552,12 +30206,10 @@ void main() {
         var resp = convert.json.encode(buildShippingSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_merchantId, arg_accountId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkShippingSettings(response as api.ShippingSettings);
-      })));
+      final response = await res.update(
+          arg_request, arg_merchantId, arg_accountId,
+          $fields: arg_$fields);
+      checkShippingSettings(response as api.ShippingSettings);
     });
   });
 }

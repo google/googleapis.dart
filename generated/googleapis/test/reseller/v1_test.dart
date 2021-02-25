@@ -576,7 +576,7 @@ void checkSubscriptions(api.Subscriptions o) {
 
 void main() {
   unittest.group('obj-schema-Address', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddress();
       var od = api.Address.fromJson(o.toJson());
       checkAddress(od as api.Address);
@@ -584,7 +584,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChangePlanRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChangePlanRequest();
       var od = api.ChangePlanRequest.fromJson(o.toJson());
       checkChangePlanRequest(od as api.ChangePlanRequest);
@@ -592,7 +592,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Customer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomer();
       var od = api.Customer.fromJson(o.toJson());
       checkCustomer(od as api.Customer);
@@ -600,7 +600,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RenewalSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRenewalSettings();
       var od = api.RenewalSettings.fromJson(o.toJson());
       checkRenewalSettings(od as api.RenewalSettings);
@@ -608,7 +608,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResellernotifyGetwatchdetailsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResellernotifyGetwatchdetailsResponse();
       var od = api.ResellernotifyGetwatchdetailsResponse.fromJson(o.toJson());
       checkResellernotifyGetwatchdetailsResponse(
@@ -617,7 +617,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResellernotifyResource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResellernotifyResource();
       var od = api.ResellernotifyResource.fromJson(o.toJson());
       checkResellernotifyResource(od as api.ResellernotifyResource);
@@ -625,7 +625,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Seats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSeats();
       var od = api.Seats.fromJson(o.toJson());
       checkSeats(od as api.Seats);
@@ -633,7 +633,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SubscriptionPlanCommitmentInterval', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubscriptionPlanCommitmentInterval();
       var od = api.SubscriptionPlanCommitmentInterval.fromJson(o.toJson());
       checkSubscriptionPlanCommitmentInterval(
@@ -642,7 +642,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SubscriptionPlan', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubscriptionPlan();
       var od = api.SubscriptionPlan.fromJson(o.toJson());
       checkSubscriptionPlan(od as api.SubscriptionPlan);
@@ -650,7 +650,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SubscriptionTransferInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubscriptionTransferInfo();
       var od = api.SubscriptionTransferInfo.fromJson(o.toJson());
       checkSubscriptionTransferInfo(od as api.SubscriptionTransferInfo);
@@ -658,7 +658,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SubscriptionTrialSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubscriptionTrialSettings();
       var od = api.SubscriptionTrialSettings.fromJson(o.toJson());
       checkSubscriptionTrialSettings(od as api.SubscriptionTrialSettings);
@@ -666,7 +666,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Subscription', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubscription();
       var od = api.Subscription.fromJson(o.toJson());
       checkSubscription(od as api.Subscription);
@@ -674,7 +674,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Subscriptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubscriptions();
       var od = api.Subscriptions.fromJson(o.toJson());
       checkSubscriptions(od as api.Subscriptions);
@@ -682,7 +682,7 @@ void main() {
   });
 
   unittest.group('resource-CustomersResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).customers;
       var arg_customerId = 'foo';
@@ -735,14 +735,11 @@ void main() {
         var resp = convert.json.encode(buildCustomer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_customerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomer(response as api.Customer);
-      })));
+      final response = await res.get(arg_customerId, $fields: arg_$fields);
+      checkCustomer(response as api.Customer);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).customers;
       var arg_request = buildCustomer();
@@ -798,15 +795,12 @@ void main() {
         var resp = convert.json.encode(buildCustomer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request,
-              customerAuthToken: arg_customerAuthToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomer(response as api.Customer);
-      })));
+      final response = await res.insert(arg_request,
+          customerAuthToken: arg_customerAuthToken, $fields: arg_$fields);
+      checkCustomer(response as api.Customer);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).customers;
       var arg_request = buildCustomer();
@@ -864,14 +858,12 @@ void main() {
         var resp = convert.json.encode(buildCustomer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_customerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomer(response as api.Customer);
-      })));
+      final response =
+          await res.patch(arg_request, arg_customerId, $fields: arg_$fields);
+      checkCustomer(response as api.Customer);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).customers;
       var arg_request = buildCustomer();
@@ -929,16 +921,14 @@ void main() {
         var resp = convert.json.encode(buildCustomer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_customerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomer(response as api.Customer);
-      })));
+      final response =
+          await res.update(arg_request, arg_customerId, $fields: arg_$fields);
+      checkCustomer(response as api.Customer);
     });
   });
 
   unittest.group('resource-ResellernotifyResource_1', () {
-    unittest.test('method--getwatchdetails', () {
+    unittest.test('method--getwatchdetails', () async {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).resellernotify;
       var arg_$fields = 'foo';
@@ -985,15 +975,12 @@ void main() {
             convert.json.encode(buildResellernotifyGetwatchdetailsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getwatchdetails($fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkResellernotifyGetwatchdetailsResponse(
-            response as api.ResellernotifyGetwatchdetailsResponse);
-      })));
+      final response = await res.getwatchdetails($fields: arg_$fields);
+      checkResellernotifyGetwatchdetailsResponse(
+          response as api.ResellernotifyGetwatchdetailsResponse);
     });
 
-    unittest.test('method--register', () {
+    unittest.test('method--register', () async {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).resellernotify;
       var arg_serviceAccountEmailAddress = 'foo';
@@ -1044,16 +1031,13 @@ void main() {
         var resp = convert.json.encode(buildResellernotifyResource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .register(
-              serviceAccountEmailAddress: arg_serviceAccountEmailAddress,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkResellernotifyResource(response as api.ResellernotifyResource);
-      })));
+      final response = await res.register(
+          serviceAccountEmailAddress: arg_serviceAccountEmailAddress,
+          $fields: arg_$fields);
+      checkResellernotifyResource(response as api.ResellernotifyResource);
     });
 
-    unittest.test('method--unregister', () {
+    unittest.test('method--unregister', () async {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).resellernotify;
       var arg_serviceAccountEmailAddress = 'foo';
@@ -1104,18 +1088,15 @@ void main() {
         var resp = convert.json.encode(buildResellernotifyResource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .unregister(
-              serviceAccountEmailAddress: arg_serviceAccountEmailAddress,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkResellernotifyResource(response as api.ResellernotifyResource);
-      })));
+      final response = await res.unregister(
+          serviceAccountEmailAddress: arg_serviceAccountEmailAddress,
+          $fields: arg_$fields);
+      checkResellernotifyResource(response as api.ResellernotifyResource);
     });
   });
 
   unittest.group('resource-SubscriptionsResource', () {
-    unittest.test('method--activate', () {
+    unittest.test('method--activate', () async {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).subscriptions;
       var arg_customerId = 'foo';
@@ -1191,14 +1172,12 @@ void main() {
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .activate(arg_customerId, arg_subscriptionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSubscription(response as api.Subscription);
-      })));
+      final response = await res.activate(arg_customerId, arg_subscriptionId,
+          $fields: arg_$fields);
+      checkSubscription(response as api.Subscription);
     });
 
-    unittest.test('method--changePlan', () {
+    unittest.test('method--changePlan', () async {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).subscriptions;
       var arg_request = buildChangePlanRequest();
@@ -1279,15 +1258,13 @@ void main() {
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .changePlan(arg_request, arg_customerId, arg_subscriptionId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSubscription(response as api.Subscription);
-      })));
+      final response = await res.changePlan(
+          arg_request, arg_customerId, arg_subscriptionId,
+          $fields: arg_$fields);
+      checkSubscription(response as api.Subscription);
     });
 
-    unittest.test('method--changeRenewalSettings', () {
+    unittest.test('method--changeRenewalSettings', () async {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).subscriptions;
       var arg_request = buildRenewalSettings();
@@ -1368,16 +1345,13 @@ void main() {
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .changeRenewalSettings(
-              arg_request, arg_customerId, arg_subscriptionId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSubscription(response as api.Subscription);
-      })));
+      final response = await res.changeRenewalSettings(
+          arg_request, arg_customerId, arg_subscriptionId,
+          $fields: arg_$fields);
+      checkSubscription(response as api.Subscription);
     });
 
-    unittest.test('method--changeSeats', () {
+    unittest.test('method--changeSeats', () async {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).subscriptions;
       var arg_request = buildSeats();
@@ -1458,15 +1432,13 @@ void main() {
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .changeSeats(arg_request, arg_customerId, arg_subscriptionId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSubscription(response as api.Subscription);
-      })));
+      final response = await res.changeSeats(
+          arg_request, arg_customerId, arg_subscriptionId,
+          $fields: arg_$fields);
+      checkSubscription(response as api.Subscription);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).subscriptions;
       var arg_customerId = 'foo';
@@ -1539,13 +1511,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_customerId, arg_subscriptionId, arg_deletionType,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_customerId, arg_subscriptionId, arg_deletionType,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).subscriptions;
       var arg_customerId = 'foo';
@@ -1613,14 +1583,12 @@ void main() {
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_customerId, arg_subscriptionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSubscription(response as api.Subscription);
-      })));
+      final response = await res.get(arg_customerId, arg_subscriptionId,
+          $fields: arg_$fields);
+      checkSubscription(response as api.Subscription);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).subscriptions;
       var arg_request = buildSubscription();
@@ -1691,15 +1659,12 @@ void main() {
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_customerId,
-              customerAuthToken: arg_customerAuthToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSubscription(response as api.Subscription);
-      })));
+      final response = await res.insert(arg_request, arg_customerId,
+          customerAuthToken: arg_customerAuthToken, $fields: arg_$fields);
+      checkSubscription(response as api.Subscription);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).subscriptions;
       var arg_customerAuthToken = 'foo';
@@ -1770,20 +1735,17 @@ void main() {
         var resp = convert.json.encode(buildSubscriptions());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              customerAuthToken: arg_customerAuthToken,
-              customerId: arg_customerId,
-              customerNamePrefix: arg_customerNamePrefix,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSubscriptions(response as api.Subscriptions);
-      })));
+      final response = await res.list(
+          customerAuthToken: arg_customerAuthToken,
+          customerId: arg_customerId,
+          customerNamePrefix: arg_customerNamePrefix,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSubscriptions(response as api.Subscriptions);
     });
 
-    unittest.test('method--startPaidService', () {
+    unittest.test('method--startPaidService', () async {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).subscriptions;
       var arg_customerId = 'foo';
@@ -1859,15 +1821,13 @@ void main() {
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .startPaidService(arg_customerId, arg_subscriptionId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSubscription(response as api.Subscription);
-      })));
+      final response = await res.startPaidService(
+          arg_customerId, arg_subscriptionId,
+          $fields: arg_$fields);
+      checkSubscription(response as api.Subscription);
     });
 
-    unittest.test('method--suspend', () {
+    unittest.test('method--suspend', () async {
       var mock = HttpServerMock();
       var res = api.ResellerApi(mock).subscriptions;
       var arg_customerId = 'foo';
@@ -1943,11 +1903,9 @@ void main() {
         var resp = convert.json.encode(buildSubscription());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .suspend(arg_customerId, arg_subscriptionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSubscription(response as api.Subscription);
-      })));
+      final response = await res.suspend(arg_customerId, arg_subscriptionId,
+          $fields: arg_$fields);
+      checkSubscription(response as api.Subscription);
     });
   });
 }

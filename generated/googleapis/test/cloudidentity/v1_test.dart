@@ -2066,7 +2066,7 @@ void checkUserInvitation(api.UserInvitation o) {
 
 void main() {
   unittest.group('obj-schema-CheckTransitiveMembershipResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCheckTransitiveMembershipResponse();
       var od = api.CheckTransitiveMembershipResponse.fromJson(o.toJson());
       checkCheckTransitiveMembershipResponse(
@@ -2075,7 +2075,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DynamicGroupMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDynamicGroupMetadata();
       var od = api.DynamicGroupMetadata.fromJson(o.toJson());
       checkDynamicGroupMetadata(od as api.DynamicGroupMetadata);
@@ -2083,7 +2083,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DynamicGroupQuery', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDynamicGroupQuery();
       var od = api.DynamicGroupQuery.fromJson(o.toJson());
       checkDynamicGroupQuery(od as api.DynamicGroupQuery);
@@ -2091,7 +2091,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DynamicGroupStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDynamicGroupStatus();
       var od = api.DynamicGroupStatus.fromJson(o.toJson());
       checkDynamicGroupStatus(od as api.DynamicGroupStatus);
@@ -2099,7 +2099,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EntityKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntityKey();
       var od = api.EntityKey.fromJson(o.toJson());
       checkEntityKey(od as api.EntityKey);
@@ -2107,7 +2107,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExpiryDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpiryDetail();
       var od = api.ExpiryDetail.fromJson(o.toJson());
       checkExpiryDetail(od as api.ExpiryDetail);
@@ -2115,7 +2115,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetMembershipGraphResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetMembershipGraphResponse();
       var od = api.GetMembershipGraphResponse.fromJson(o.toJson());
       checkGetMembershipGraphResponse(od as api.GetMembershipGraphResponse);
@@ -2124,7 +2124,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleAppsCloudidentityDevicesV1AndroidAttributes',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1AndroidAttributes();
       var od = api.GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(
           o.toJson());
@@ -2136,7 +2136,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest();
       var od =
           api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest.fromJson(
@@ -2149,7 +2149,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse();
       var od = api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse
           .fromJson(o.toJson());
@@ -2160,7 +2160,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest();
       var od =
           api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest.fromJson(
@@ -2172,7 +2172,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse();
       var od =
           api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse.fromJson(
@@ -2184,7 +2184,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest();
       var od =
           api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest.fromJson(
@@ -2197,7 +2197,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse();
       var od =
           api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse.fromJson(
@@ -2210,7 +2210,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest();
       var od = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
@@ -2223,7 +2223,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse();
       var od = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse
@@ -2234,7 +2234,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAppsCloudidentityDevicesV1ClientState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1ClientState();
       var od =
           api.GoogleAppsCloudidentityDevicesV1ClientState.fromJson(o.toJson());
@@ -2245,7 +2245,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1CustomAttributeValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1CustomAttributeValue();
       var od =
           api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(
@@ -2256,7 +2256,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAppsCloudidentityDevicesV1Device', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1Device();
       var od = api.GoogleAppsCloudidentityDevicesV1Device.fromJson(o.toJson());
       checkGoogleAppsCloudidentityDevicesV1Device(
@@ -2265,7 +2265,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAppsCloudidentityDevicesV1DeviceUser', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1DeviceUser();
       var od =
           api.GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(o.toJson());
@@ -2277,7 +2277,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1ListClientStatesResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1ListClientStatesResponse();
       var od =
           api.GoogleAppsCloudidentityDevicesV1ListClientStatesResponse.fromJson(
@@ -2289,7 +2289,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse();
       var od =
           api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse.fromJson(
@@ -2301,7 +2301,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1ListDevicesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1ListDevicesResponse();
       var od = api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(
           o.toJson());
@@ -2313,7 +2313,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse();
       var od = api.GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
@@ -2325,7 +2325,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleAppsCloudidentityDevicesV1WipeDeviceRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceRequest();
       var od = api.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.fromJson(
           o.toJson());
@@ -2336,7 +2336,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1WipeDeviceResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceResponse();
       var od = api.GoogleAppsCloudidentityDevicesV1WipeDeviceResponse.fromJson(
           o.toJson());
@@ -2347,7 +2347,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest();
       var od =
           api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.fromJson(
@@ -2359,7 +2359,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse();
       var od =
           api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse.fromJson(
@@ -2370,7 +2370,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Group', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroup();
       var od = api.Group.fromJson(o.toJson());
       checkGroup(od as api.Group);
@@ -2378,7 +2378,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GroupRelation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroupRelation();
       var od = api.GroupRelation.fromJson(o.toJson());
       checkGroupRelation(od as api.GroupRelation);
@@ -2386,7 +2386,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListGroupsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListGroupsResponse();
       var od = api.ListGroupsResponse.fromJson(o.toJson());
       checkListGroupsResponse(od as api.ListGroupsResponse);
@@ -2394,7 +2394,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListMembershipsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListMembershipsResponse();
       var od = api.ListMembershipsResponse.fromJson(o.toJson());
       checkListMembershipsResponse(od as api.ListMembershipsResponse);
@@ -2402,7 +2402,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LookupGroupNameResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLookupGroupNameResponse();
       var od = api.LookupGroupNameResponse.fromJson(o.toJson());
       checkLookupGroupNameResponse(od as api.LookupGroupNameResponse);
@@ -2410,7 +2410,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LookupMembershipNameResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLookupMembershipNameResponse();
       var od = api.LookupMembershipNameResponse.fromJson(o.toJson());
       checkLookupMembershipNameResponse(od as api.LookupMembershipNameResponse);
@@ -2418,7 +2418,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MemberRelation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMemberRelation();
       var od = api.MemberRelation.fromJson(o.toJson());
       checkMemberRelation(od as api.MemberRelation);
@@ -2426,7 +2426,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Membership', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMembership();
       var od = api.Membership.fromJson(o.toJson());
       checkMembership(od as api.Membership);
@@ -2434,7 +2434,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MembershipAdjacencyList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMembershipAdjacencyList();
       var od = api.MembershipAdjacencyList.fromJson(o.toJson());
       checkMembershipAdjacencyList(od as api.MembershipAdjacencyList);
@@ -2442,7 +2442,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MembershipRole', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMembershipRole();
       var od = api.MembershipRole.fromJson(o.toJson());
       checkMembershipRole(od as api.MembershipRole);
@@ -2450,7 +2450,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ModifyMembershipRolesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildModifyMembershipRolesRequest();
       var od = api.ModifyMembershipRolesRequest.fromJson(o.toJson());
       checkModifyMembershipRolesRequest(od as api.ModifyMembershipRolesRequest);
@@ -2458,7 +2458,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ModifyMembershipRolesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildModifyMembershipRolesResponse();
       var od = api.ModifyMembershipRolesResponse.fromJson(o.toJson());
       checkModifyMembershipRolesResponse(
@@ -2467,7 +2467,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -2475,7 +2475,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchGroupsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchGroupsResponse();
       var od = api.SearchGroupsResponse.fromJson(o.toJson());
       checkSearchGroupsResponse(od as api.SearchGroupsResponse);
@@ -2483,7 +2483,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchTransitiveGroupsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchTransitiveGroupsResponse();
       var od = api.SearchTransitiveGroupsResponse.fromJson(o.toJson());
       checkSearchTransitiveGroupsResponse(
@@ -2492,7 +2492,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchTransitiveMembershipsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchTransitiveMembershipsResponse();
       var od = api.SearchTransitiveMembershipsResponse.fromJson(o.toJson());
       checkSearchTransitiveMembershipsResponse(
@@ -2501,7 +2501,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -2509,7 +2509,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TransitiveMembershipRole', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTransitiveMembershipRole();
       var od = api.TransitiveMembershipRole.fromJson(o.toJson());
       checkTransitiveMembershipRole(od as api.TransitiveMembershipRole);
@@ -2517,7 +2517,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateMembershipRolesParams', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateMembershipRolesParams();
       var od = api.UpdateMembershipRolesParams.fromJson(o.toJson());
       checkUpdateMembershipRolesParams(od as api.UpdateMembershipRolesParams);
@@ -2525,7 +2525,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserInvitation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserInvitation();
       var od = api.UserInvitation.fromJson(o.toJson());
       checkUserInvitation(od as api.UserInvitation);
@@ -2533,7 +2533,7 @@ void main() {
   });
 
   unittest.group('resource-DevicesResource', () {
-    unittest.test('method--cancelWipe', () {
+    unittest.test('method--cancelWipe', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices;
       var arg_request =
@@ -2588,14 +2588,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancelWipe(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.cancelWipe(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices;
       var arg_request = buildGoogleAppsCloudidentityDevicesV1Device();
@@ -2652,14 +2650,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, customer: arg_customer, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request,
+          customer: arg_customer, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices;
       var arg_name = 'foo';
@@ -2712,14 +2708,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, customer: arg_customer, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name,
+          customer: arg_customer, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices;
       var arg_name = 'foo';
@@ -2773,15 +2767,13 @@ void main() {
             convert.json.encode(buildGoogleAppsCloudidentityDevicesV1Device());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, customer: arg_customer, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAppsCloudidentityDevicesV1Device(
-            response as api.GoogleAppsCloudidentityDevicesV1Device);
-      })));
+      final response =
+          await res.get(arg_name, customer: arg_customer, $fields: arg_$fields);
+      checkGoogleAppsCloudidentityDevicesV1Device(
+          response as api.GoogleAppsCloudidentityDevicesV1Device);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices;
       var arg_customer = 'foo';
@@ -2858,22 +2850,19 @@ void main() {
             .encode(buildGoogleAppsCloudidentityDevicesV1ListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              customer: arg_customer,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAppsCloudidentityDevicesV1ListDevicesResponse(response
-            as api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse);
-      })));
+      final response = await res.list(
+          customer: arg_customer,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkGoogleAppsCloudidentityDevicesV1ListDevicesResponse(
+          response as api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse);
     });
 
-    unittest.test('method--wipe', () {
+    unittest.test('method--wipe', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices;
       var arg_request =
@@ -2929,16 +2918,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .wipe(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.wipe(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-DevicesDeviceUsersResource', () {
-    unittest.test('method--approve', () {
+    unittest.test('method--approve', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices.deviceUsers;
       var arg_request =
@@ -2993,14 +2980,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .approve(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.approve(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--block', () {
+    unittest.test('method--block', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices.deviceUsers;
       var arg_request =
@@ -3056,14 +3041,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .block(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.block(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--cancelWipe', () {
+    unittest.test('method--cancelWipe', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices.deviceUsers;
       var arg_request =
@@ -3119,14 +3102,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancelWipe(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.cancelWipe(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices.deviceUsers;
       var arg_name = 'foo';
@@ -3179,14 +3160,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, customer: arg_customer, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name,
+          customer: arg_customer, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices.deviceUsers;
       var arg_name = 'foo';
@@ -3240,15 +3219,13 @@ void main() {
             .encode(buildGoogleAppsCloudidentityDevicesV1DeviceUser());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, customer: arg_customer, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAppsCloudidentityDevicesV1DeviceUser(
-            response as api.GoogleAppsCloudidentityDevicesV1DeviceUser);
-      })));
+      final response =
+          await res.get(arg_name, customer: arg_customer, $fields: arg_$fields);
+      checkGoogleAppsCloudidentityDevicesV1DeviceUser(
+          response as api.GoogleAppsCloudidentityDevicesV1DeviceUser);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices.deviceUsers;
       var arg_parent = 'foo';
@@ -3322,21 +3299,18 @@ void main() {
             buildGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              customer: arg_customer,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse(response
-            as api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse);
-      })));
+      final response = await res.list(arg_parent,
+          customer: arg_customer,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse(response
+          as api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse);
     });
 
-    unittest.test('method--lookup', () {
+    unittest.test('method--lookup', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices.deviceUsers;
       var arg_parent = 'foo';
@@ -3410,22 +3384,19 @@ void main() {
             buildGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .lookup(arg_parent,
-              androidId: arg_androidId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              rawResourceId: arg_rawResourceId,
-              userId: arg_userId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse(
-            response as api
-                .GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse);
-      })));
+      final response = await res.lookup(arg_parent,
+          androidId: arg_androidId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          rawResourceId: arg_rawResourceId,
+          userId: arg_userId,
+          $fields: arg_$fields);
+      checkGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse(
+          response as api
+              .GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse);
     });
 
-    unittest.test('method--wipe', () {
+    unittest.test('method--wipe', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices.deviceUsers;
       var arg_request =
@@ -3481,16 +3452,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .wipe(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.wipe(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-DevicesDeviceUsersClientStatesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices.deviceUsers.clientStates;
       var arg_name = 'foo';
@@ -3544,15 +3513,13 @@ void main() {
             .encode(buildGoogleAppsCloudidentityDevicesV1ClientState());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, customer: arg_customer, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAppsCloudidentityDevicesV1ClientState(
-            response as api.GoogleAppsCloudidentityDevicesV1ClientState);
-      })));
+      final response =
+          await res.get(arg_name, customer: arg_customer, $fields: arg_$fields);
+      checkGoogleAppsCloudidentityDevicesV1ClientState(
+          response as api.GoogleAppsCloudidentityDevicesV1ClientState);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices.deviceUsers.clientStates;
       var arg_parent = 'foo';
@@ -3621,20 +3588,17 @@ void main() {
             buildGoogleAppsCloudidentityDevicesV1ListClientStatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              customer: arg_customer,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAppsCloudidentityDevicesV1ListClientStatesResponse(response
-            as api.GoogleAppsCloudidentityDevicesV1ListClientStatesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          customer: arg_customer,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleAppsCloudidentityDevicesV1ListClientStatesResponse(response
+          as api.GoogleAppsCloudidentityDevicesV1ListClientStatesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).devices.deviceUsers.clientStates;
       var arg_request = buildGoogleAppsCloudidentityDevicesV1ClientState();
@@ -3698,19 +3662,16 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              customer: arg_customer,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          customer: arg_customer,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-GroupsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups;
       var arg_request = buildGroup();
@@ -3766,15 +3727,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request,
-              initialGroupConfig: arg_initialGroupConfig, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request,
+          initialGroupConfig: arg_initialGroupConfig, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups;
       var arg_name = 'foo';
@@ -3822,14 +3780,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups;
       var arg_name = 'foo';
@@ -3877,14 +3832,11 @@ void main() {
         var resp = convert.json.encode(buildGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroup(response as api.Group);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGroup(response as api.Group);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups;
       var arg_pageSize = 42;
@@ -3950,19 +3902,16 @@ void main() {
         var resp = convert.json.encode(buildListGroupsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              parent: arg_parent,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListGroupsResponse(response as api.ListGroupsResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          parent: arg_parent,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListGroupsResponse(response as api.ListGroupsResponse);
     });
 
-    unittest.test('method--lookup', () {
+    unittest.test('method--lookup', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups;
       var arg_groupKey_id = 'foo';
@@ -4018,17 +3967,14 @@ void main() {
         var resp = convert.json.encode(buildLookupGroupNameResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .lookup(
-              groupKey_id: arg_groupKey_id,
-              groupKey_namespace: arg_groupKey_namespace,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLookupGroupNameResponse(response as api.LookupGroupNameResponse);
-      })));
+      final response = await res.lookup(
+          groupKey_id: arg_groupKey_id,
+          groupKey_namespace: arg_groupKey_namespace,
+          $fields: arg_$fields);
+      checkLookupGroupNameResponse(response as api.LookupGroupNameResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups;
       var arg_request = buildGroup();
@@ -4086,15 +4032,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups;
       var arg_pageSize = 42;
@@ -4160,21 +4103,18 @@ void main() {
         var resp = convert.json.encode(buildSearchGroupsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              query: arg_query,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchGroupsResponse(response as api.SearchGroupsResponse);
-      })));
+      final response = await res.search(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          query: arg_query,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkSearchGroupsResponse(response as api.SearchGroupsResponse);
     });
   });
 
   unittest.group('resource-GroupsMembershipsResource', () {
-    unittest.test('method--checkTransitiveMembership', () {
+    unittest.test('method--checkTransitiveMembership', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups.memberships;
       var arg_parent = 'foo';
@@ -4228,16 +4168,13 @@ void main() {
             convert.json.encode(buildCheckTransitiveMembershipResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .checkTransitiveMembership(arg_parent,
-              query: arg_query, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCheckTransitiveMembershipResponse(
-            response as api.CheckTransitiveMembershipResponse);
-      })));
+      final response = await res.checkTransitiveMembership(arg_parent,
+          query: arg_query, $fields: arg_$fields);
+      checkCheckTransitiveMembershipResponse(
+          response as api.CheckTransitiveMembershipResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups.memberships;
       var arg_request = buildMembership();
@@ -4290,14 +4227,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups.memberships;
       var arg_name = 'foo';
@@ -4345,14 +4280,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups.memberships;
       var arg_name = 'foo';
@@ -4400,14 +4332,11 @@ void main() {
         var resp = convert.json.encode(buildMembership());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMembership(response as api.Membership);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkMembership(response as api.Membership);
     });
 
-    unittest.test('method--getMembershipGraph', () {
+    unittest.test('method--getMembershipGraph', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups.memberships;
       var arg_parent = 'foo';
@@ -4460,15 +4389,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getMembershipGraph(arg_parent,
-              query: arg_query, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.getMembershipGraph(arg_parent,
+          query: arg_query, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups.memberships;
       var arg_parent = 'foo';
@@ -4531,18 +4457,15 @@ void main() {
         var resp = convert.json.encode(buildListMembershipsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListMembershipsResponse(response as api.ListMembershipsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListMembershipsResponse(response as api.ListMembershipsResponse);
     });
 
-    unittest.test('method--lookup', () {
+    unittest.test('method--lookup', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups.memberships;
       var arg_parent = 'foo';
@@ -4600,18 +4523,15 @@ void main() {
         var resp = convert.json.encode(buildLookupMembershipNameResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .lookup(arg_parent,
-              memberKey_id: arg_memberKey_id,
-              memberKey_namespace: arg_memberKey_namespace,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLookupMembershipNameResponse(
-            response as api.LookupMembershipNameResponse);
-      })));
+      final response = await res.lookup(arg_parent,
+          memberKey_id: arg_memberKey_id,
+          memberKey_namespace: arg_memberKey_namespace,
+          $fields: arg_$fields);
+      checkLookupMembershipNameResponse(
+          response as api.LookupMembershipNameResponse);
     });
 
-    unittest.test('method--modifyMembershipRoles', () {
+    unittest.test('method--modifyMembershipRoles', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups.memberships;
       var arg_request = buildModifyMembershipRolesRequest();
@@ -4665,15 +4585,13 @@ void main() {
         var resp = convert.json.encode(buildModifyMembershipRolesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .modifyMembershipRoles(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkModifyMembershipRolesResponse(
-            response as api.ModifyMembershipRolesResponse);
-      })));
+      final response = await res.modifyMembershipRoles(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkModifyMembershipRolesResponse(
+          response as api.ModifyMembershipRolesResponse);
     });
 
-    unittest.test('method--searchTransitiveGroups', () {
+    unittest.test('method--searchTransitiveGroups', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups.memberships;
       var arg_parent = 'foo';
@@ -4736,19 +4654,16 @@ void main() {
         var resp = convert.json.encode(buildSearchTransitiveGroupsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchTransitiveGroups(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              query: arg_query,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchTransitiveGroupsResponse(
-            response as api.SearchTransitiveGroupsResponse);
-      })));
+      final response = await res.searchTransitiveGroups(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          query: arg_query,
+          $fields: arg_$fields);
+      checkSearchTransitiveGroupsResponse(
+          response as api.SearchTransitiveGroupsResponse);
     });
 
-    unittest.test('method--searchTransitiveMemberships', () {
+    unittest.test('method--searchTransitiveMemberships', () async {
       var mock = HttpServerMock();
       var res = api.CloudIdentityApi(mock).groups.memberships;
       var arg_parent = 'foo';
@@ -4807,15 +4722,12 @@ void main() {
             convert.json.encode(buildSearchTransitiveMembershipsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchTransitiveMemberships(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchTransitiveMembershipsResponse(
-            response as api.SearchTransitiveMembershipsResponse);
-      })));
+      final response = await res.searchTransitiveMemberships(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSearchTransitiveMembershipsResponse(
+          response as api.SearchTransitiveMembershipsResponse);
     });
   });
 }

@@ -895,7 +895,7 @@ void checkUnnamed1535(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-Area', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildArea();
       var od = api.Area.fromJson(o.toJson());
       checkArea(od as api.Area);
@@ -903,7 +903,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BasemapZOrder', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBasemapZOrder();
       var od = api.BasemapZOrder.fromJson(o.toJson());
       checkBasemapZOrder(od as api.BasemapZOrder);
@@ -911,7 +911,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExtrudedArea', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExtrudedArea();
       var od = api.ExtrudedArea.fromJson(o.toJson());
       checkExtrudedArea(od as api.ExtrudedArea);
@@ -919,7 +919,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Feature', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFeature();
       var od = api.Feature.fromJson(o.toJson());
       checkFeature(od as api.Feature);
@@ -927,7 +927,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FeatureTile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFeatureTile();
       var od = api.FeatureTile.fromJson(o.toJson());
       checkFeatureTile(od as api.FeatureTile);
@@ -935,7 +935,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FirstDerivativeElevationGrid', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFirstDerivativeElevationGrid();
       var od = api.FirstDerivativeElevationGrid.fromJson(o.toJson());
       checkFirstDerivativeElevationGrid(od as api.FirstDerivativeElevationGrid);
@@ -943,7 +943,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Geometry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGeometry();
       var od = api.Geometry.fromJson(o.toJson());
       checkGeometry(od as api.Geometry);
@@ -951,7 +951,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Line', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLine();
       var od = api.Line.fromJson(o.toJson());
       checkLine(od as api.Line);
@@ -959,7 +959,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ModeledVolume', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildModeledVolume();
       var od = api.ModeledVolume.fromJson(o.toJson());
       checkModeledVolume(od as api.ModeledVolume);
@@ -967,7 +967,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProviderInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProviderInfo();
       var od = api.ProviderInfo.fromJson(o.toJson());
       checkProviderInfo(od as api.ProviderInfo);
@@ -975,7 +975,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Relation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRelation();
       var od = api.Relation.fromJson(o.toJson());
       checkRelation(od as api.Relation);
@@ -983,7 +983,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RoadInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRoadInfo();
       var od = api.RoadInfo.fromJson(o.toJson());
       checkRoadInfo(od as api.RoadInfo);
@@ -991,7 +991,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Row', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRow();
       var od = api.Row.fromJson(o.toJson());
       checkRow(od as api.Row);
@@ -999,7 +999,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SecondDerivativeElevationGrid', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSecondDerivativeElevationGrid();
       var od = api.SecondDerivativeElevationGrid.fromJson(o.toJson());
       checkSecondDerivativeElevationGrid(
@@ -1008,7 +1008,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SegmentInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSegmentInfo();
       var od = api.SegmentInfo.fromJson(o.toJson());
       checkSegmentInfo(od as api.SegmentInfo);
@@ -1016,7 +1016,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TerrainTile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTerrainTile();
       var od = api.TerrainTile.fromJson(o.toJson());
       checkTerrainTile(od as api.TerrainTile);
@@ -1024,7 +1024,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TileCoordinates', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTileCoordinates();
       var od = api.TileCoordinates.fromJson(o.toJson());
       checkTileCoordinates(od as api.TileCoordinates);
@@ -1032,7 +1032,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TriangleStrip', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTriangleStrip();
       var od = api.TriangleStrip.fromJson(o.toJson());
       checkTriangleStrip(od as api.TriangleStrip);
@@ -1040,7 +1040,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Vertex2DList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVertex2DList();
       var od = api.Vertex2DList.fromJson(o.toJson());
       checkVertex2DList(od as api.Vertex2DList);
@@ -1048,7 +1048,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Vertex3DList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVertex3DList();
       var od = api.Vertex3DList.fromJson(o.toJson());
       checkVertex3DList(od as api.Vertex3DList);
@@ -1056,7 +1056,7 @@ void main() {
   });
 
   unittest.group('resource-FeaturetilesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SemanticTileApi(mock).featuretiles;
       var arg_name = 'foo';
@@ -1189,35 +1189,31 @@ void main() {
         var resp = convert.json.encode(buildFeatureTile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name,
-              alwaysIncludeBuildingFootprints:
-                  arg_alwaysIncludeBuildingFootprints,
-              clientInfo_apiClient: arg_clientInfo_apiClient,
-              clientInfo_applicationId: arg_clientInfo_applicationId,
-              clientInfo_applicationVersion: arg_clientInfo_applicationVersion,
-              clientInfo_deviceModel: arg_clientInfo_deviceModel,
-              clientInfo_operatingSystem: arg_clientInfo_operatingSystem,
-              clientInfo_platform: arg_clientInfo_platform,
-              clientInfo_userId: arg_clientInfo_userId,
-              clientTileVersionId: arg_clientTileVersionId,
-              enableDetailedHighwayTypes: arg_enableDetailedHighwayTypes,
-              enableFeatureNames: arg_enableFeatureNames,
-              enableModeledVolumes: arg_enableModeledVolumes,
-              enablePoliticalFeatures: arg_enablePoliticalFeatures,
-              enablePrivateRoads: arg_enablePrivateRoads,
-              enableUnclippedBuildings: arg_enableUnclippedBuildings,
-              languageCode: arg_languageCode,
-              regionCode: arg_regionCode,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFeatureTile(response as api.FeatureTile);
-      })));
+      final response = await res.get(arg_name,
+          alwaysIncludeBuildingFootprints: arg_alwaysIncludeBuildingFootprints,
+          clientInfo_apiClient: arg_clientInfo_apiClient,
+          clientInfo_applicationId: arg_clientInfo_applicationId,
+          clientInfo_applicationVersion: arg_clientInfo_applicationVersion,
+          clientInfo_deviceModel: arg_clientInfo_deviceModel,
+          clientInfo_operatingSystem: arg_clientInfo_operatingSystem,
+          clientInfo_platform: arg_clientInfo_platform,
+          clientInfo_userId: arg_clientInfo_userId,
+          clientTileVersionId: arg_clientTileVersionId,
+          enableDetailedHighwayTypes: arg_enableDetailedHighwayTypes,
+          enableFeatureNames: arg_enableFeatureNames,
+          enableModeledVolumes: arg_enableModeledVolumes,
+          enablePoliticalFeatures: arg_enablePoliticalFeatures,
+          enablePrivateRoads: arg_enablePrivateRoads,
+          enableUnclippedBuildings: arg_enableUnclippedBuildings,
+          languageCode: arg_languageCode,
+          regionCode: arg_regionCode,
+          $fields: arg_$fields);
+      checkFeatureTile(response as api.FeatureTile);
     });
   });
 
   unittest.group('resource-TerraintilesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SemanticTileApi(mock).terraintiles;
       var arg_name = 'foo';
@@ -1320,23 +1316,20 @@ void main() {
         var resp = convert.json.encode(buildTerrainTile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name,
-              altitudePrecisionCentimeters: arg_altitudePrecisionCentimeters,
-              clientInfo_apiClient: arg_clientInfo_apiClient,
-              clientInfo_applicationId: arg_clientInfo_applicationId,
-              clientInfo_applicationVersion: arg_clientInfo_applicationVersion,
-              clientInfo_deviceModel: arg_clientInfo_deviceModel,
-              clientInfo_operatingSystem: arg_clientInfo_operatingSystem,
-              clientInfo_platform: arg_clientInfo_platform,
-              clientInfo_userId: arg_clientInfo_userId,
-              maxElevationResolutionCells: arg_maxElevationResolutionCells,
-              minElevationResolutionCells: arg_minElevationResolutionCells,
-              terrainFormats: arg_terrainFormats,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTerrainTile(response as api.TerrainTile);
-      })));
+      final response = await res.get(arg_name,
+          altitudePrecisionCentimeters: arg_altitudePrecisionCentimeters,
+          clientInfo_apiClient: arg_clientInfo_apiClient,
+          clientInfo_applicationId: arg_clientInfo_applicationId,
+          clientInfo_applicationVersion: arg_clientInfo_applicationVersion,
+          clientInfo_deviceModel: arg_clientInfo_deviceModel,
+          clientInfo_operatingSystem: arg_clientInfo_operatingSystem,
+          clientInfo_platform: arg_clientInfo_platform,
+          clientInfo_userId: arg_clientInfo_userId,
+          maxElevationResolutionCells: arg_maxElevationResolutionCells,
+          minElevationResolutionCells: arg_minElevationResolutionCells,
+          terrainFormats: arg_terrainFormats,
+          $fields: arg_$fields);
+      checkTerrainTile(response as api.TerrainTile);
     });
   });
 }

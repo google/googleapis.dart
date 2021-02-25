@@ -1648,7 +1648,7 @@ void checkWorkerReleasedEvent(api.WorkerReleasedEvent o) {
 
 void main() {
   unittest.group('obj-schema-Accelerator', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccelerator();
       var od = api.Accelerator.fromJson(o.toJson());
       checkAccelerator(od as api.Accelerator);
@@ -1656,7 +1656,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Action', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAction();
       var od = api.Action.fromJson(o.toJson());
       checkAction(od as api.Action);
@@ -1664,7 +1664,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od as api.CancelOperationRequest);
@@ -1672,7 +1672,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ContainerKilledEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContainerKilledEvent();
       var od = api.ContainerKilledEvent.fromJson(o.toJson());
       checkContainerKilledEvent(od as api.ContainerKilledEvent);
@@ -1680,7 +1680,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ContainerStartedEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContainerStartedEvent();
       var od = api.ContainerStartedEvent.fromJson(o.toJson());
       checkContainerStartedEvent(od as api.ContainerStartedEvent);
@@ -1688,7 +1688,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ContainerStoppedEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContainerStoppedEvent();
       var od = api.ContainerStoppedEvent.fromJson(o.toJson());
       checkContainerStoppedEvent(od as api.ContainerStoppedEvent);
@@ -1696,7 +1696,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DelayedEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDelayedEvent();
       var od = api.DelayedEvent.fromJson(o.toJson());
       checkDelayedEvent(od as api.DelayedEvent);
@@ -1704,7 +1704,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Disk', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDisk();
       var od = api.Disk.fromJson(o.toJson());
       checkDisk(od as api.Disk);
@@ -1712,7 +1712,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1720,7 +1720,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Event', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEvent();
       var od = api.Event.fromJson(o.toJson());
       checkEvent(od as api.Event);
@@ -1728,7 +1728,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExistingDisk', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExistingDisk();
       var od = api.ExistingDisk.fromJson(o.toJson());
       checkExistingDisk(od as api.ExistingDisk);
@@ -1736,7 +1736,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FailedEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFailedEvent();
       var od = api.FailedEvent.fromJson(o.toJson());
       checkFailedEvent(od as api.FailedEvent);
@@ -1744,7 +1744,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -1752,7 +1752,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -1760,7 +1760,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -1768,7 +1768,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Metadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetadata();
       var od = api.Metadata.fromJson(o.toJson());
       checkMetadata(od as api.Metadata);
@@ -1776,7 +1776,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Mount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMount();
       var od = api.Mount.fromJson(o.toJson());
       checkMount(od as api.Mount);
@@ -1784,7 +1784,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NFSMount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNFSMount();
       var od = api.NFSMount.fromJson(o.toJson());
       checkNFSMount(od as api.NFSMount);
@@ -1792,7 +1792,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Network', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNetwork();
       var od = api.Network.fromJson(o.toJson());
       checkNetwork(od as api.Network);
@@ -1800,7 +1800,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -1808,7 +1808,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PersistentDisk', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPersistentDisk();
       var od = api.PersistentDisk.fromJson(o.toJson());
       checkPersistentDisk(od as api.PersistentDisk);
@@ -1816,7 +1816,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Pipeline', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPipeline();
       var od = api.Pipeline.fromJson(o.toJson());
       checkPipeline(od as api.Pipeline);
@@ -1824,7 +1824,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PullStartedEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPullStartedEvent();
       var od = api.PullStartedEvent.fromJson(o.toJson());
       checkPullStartedEvent(od as api.PullStartedEvent);
@@ -1832,7 +1832,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PullStoppedEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPullStoppedEvent();
       var od = api.PullStoppedEvent.fromJson(o.toJson());
       checkPullStoppedEvent(od as api.PullStoppedEvent);
@@ -1840,7 +1840,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Resources', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResources();
       var od = api.Resources.fromJson(o.toJson());
       checkResources(od as api.Resources);
@@ -1848,7 +1848,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RunPipelineRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRunPipelineRequest();
       var od = api.RunPipelineRequest.fromJson(o.toJson());
       checkRunPipelineRequest(od as api.RunPipelineRequest);
@@ -1856,7 +1856,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RunPipelineResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRunPipelineResponse();
       var od = api.RunPipelineResponse.fromJson(o.toJson());
       checkRunPipelineResponse(od as api.RunPipelineResponse);
@@ -1864,7 +1864,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Secret', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSecret();
       var od = api.Secret.fromJson(o.toJson());
       checkSecret(od as api.Secret);
@@ -1872,7 +1872,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ServiceAccount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildServiceAccount();
       var od = api.ServiceAccount.fromJson(o.toJson());
       checkServiceAccount(od as api.ServiceAccount);
@@ -1880,7 +1880,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -1888,7 +1888,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UnexpectedExitStatusEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUnexpectedExitStatusEvent();
       var od = api.UnexpectedExitStatusEvent.fromJson(o.toJson());
       checkUnexpectedExitStatusEvent(od as api.UnexpectedExitStatusEvent);
@@ -1896,7 +1896,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VirtualMachine', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVirtualMachine();
       var od = api.VirtualMachine.fromJson(o.toJson());
       checkVirtualMachine(od as api.VirtualMachine);
@@ -1904,7 +1904,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Volume', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolume();
       var od = api.Volume.fromJson(o.toJson());
       checkVolume(od as api.Volume);
@@ -1912,7 +1912,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WorkerAssignedEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWorkerAssignedEvent();
       var od = api.WorkerAssignedEvent.fromJson(o.toJson());
       checkWorkerAssignedEvent(od as api.WorkerAssignedEvent);
@@ -1920,7 +1920,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WorkerReleasedEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWorkerReleasedEvent();
       var od = api.WorkerReleasedEvent.fromJson(o.toJson());
       checkWorkerReleasedEvent(od as api.WorkerReleasedEvent);
@@ -1928,7 +1928,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudLifeSciencesApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -1976,14 +1976,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudLifeSciencesApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -2046,20 +2043,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.CloudLifeSciencesApi(mock).projects.locations.operations;
       var arg_request = buildCancelOperationRequest();
@@ -2112,14 +2106,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudLifeSciencesApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -2167,14 +2159,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudLifeSciencesApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -2237,20 +2226,17 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsPipelinesResource', () {
-    unittest.test('method--run', () {
+    unittest.test('method--run', () async {
       var mock = HttpServerMock();
       var res = api.CloudLifeSciencesApi(mock).projects.locations.pipelines;
       var arg_request = buildRunPipelineRequest();
@@ -2303,11 +2289,9 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .run(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.run(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 }

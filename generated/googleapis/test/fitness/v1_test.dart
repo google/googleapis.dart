@@ -979,7 +979,7 @@ void checkUnnamed1484(core.List<core.int> o) {
 
 void main() {
   unittest.group('obj-schema-AggregateBucket', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAggregateBucket();
       var od = api.AggregateBucket.fromJson(o.toJson());
       checkAggregateBucket(od as api.AggregateBucket);
@@ -987,7 +987,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AggregateBy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAggregateBy();
       var od = api.AggregateBy.fromJson(o.toJson());
       checkAggregateBy(od as api.AggregateBy);
@@ -995,7 +995,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AggregateRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAggregateRequest();
       var od = api.AggregateRequest.fromJson(o.toJson());
       checkAggregateRequest(od as api.AggregateRequest);
@@ -1003,7 +1003,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AggregateResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAggregateResponse();
       var od = api.AggregateResponse.fromJson(o.toJson());
       checkAggregateResponse(od as api.AggregateResponse);
@@ -1011,7 +1011,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Application', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplication();
       var od = api.Application.fromJson(o.toJson());
       checkApplication(od as api.Application);
@@ -1019,7 +1019,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketByActivity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketByActivity();
       var od = api.BucketByActivity.fromJson(o.toJson());
       checkBucketByActivity(od as api.BucketByActivity);
@@ -1027,7 +1027,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketBySession', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketBySession();
       var od = api.BucketBySession.fromJson(o.toJson());
       checkBucketBySession(od as api.BucketBySession);
@@ -1035,7 +1035,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketByTime', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketByTime();
       var od = api.BucketByTime.fromJson(o.toJson());
       checkBucketByTime(od as api.BucketByTime);
@@ -1043,7 +1043,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketByTimePeriod', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketByTimePeriod();
       var od = api.BucketByTimePeriod.fromJson(o.toJson());
       checkBucketByTimePeriod(od as api.BucketByTimePeriod);
@@ -1051,7 +1051,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DataPoint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDataPoint();
       var od = api.DataPoint.fromJson(o.toJson());
       checkDataPoint(od as api.DataPoint);
@@ -1059,7 +1059,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DataSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDataSource();
       var od = api.DataSource.fromJson(o.toJson());
       checkDataSource(od as api.DataSource);
@@ -1067,7 +1067,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DataType', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDataType();
       var od = api.DataType.fromJson(o.toJson());
       checkDataType(od as api.DataType);
@@ -1075,7 +1075,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DataTypeField', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDataTypeField();
       var od = api.DataTypeField.fromJson(o.toJson());
       checkDataTypeField(od as api.DataTypeField);
@@ -1083,7 +1083,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Dataset', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDataset();
       var od = api.Dataset.fromJson(o.toJson());
       checkDataset(od as api.Dataset);
@@ -1091,7 +1091,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Device', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDevice();
       var od = api.Device.fromJson(o.toJson());
       checkDevice(od as api.Device);
@@ -1099,7 +1099,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDataPointChangesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDataPointChangesResponse();
       var od = api.ListDataPointChangesResponse.fromJson(o.toJson());
       checkListDataPointChangesResponse(od as api.ListDataPointChangesResponse);
@@ -1107,7 +1107,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDataSourcesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDataSourcesResponse();
       var od = api.ListDataSourcesResponse.fromJson(o.toJson());
       checkListDataSourcesResponse(od as api.ListDataSourcesResponse);
@@ -1115,7 +1115,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListSessionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListSessionsResponse();
       var od = api.ListSessionsResponse.fromJson(o.toJson());
       checkListSessionsResponse(od as api.ListSessionsResponse);
@@ -1123,7 +1123,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MapValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMapValue();
       var od = api.MapValue.fromJson(o.toJson());
       checkMapValue(od as api.MapValue);
@@ -1131,7 +1131,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Session', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSession();
       var od = api.Session.fromJson(o.toJson());
       checkSession(od as api.Session);
@@ -1139,7 +1139,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Value', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildValue();
       var od = api.Value.fromJson(o.toJson());
       checkValue(od as api.Value);
@@ -1147,7 +1147,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ValueMapValEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildValueMapValEntry();
       var od = api.ValueMapValEntry.fromJson(o.toJson());
       checkValueMapValEntry(od as api.ValueMapValEntry);
@@ -1155,7 +1155,7 @@ void main() {
   });
 
   unittest.group('resource-UsersDataSourcesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.FitnessApi(mock).users.dataSources;
       var arg_request = buildDataSource();
@@ -1202,14 +1202,12 @@ void main() {
         var resp = convert.json.encode(buildDataSource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDataSource(response as api.DataSource);
-      })));
+      final response =
+          await res.create(arg_request, arg_userId, $fields: arg_$fields);
+      checkDataSource(response as api.DataSource);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.FitnessApi(mock).users.dataSources;
       var arg_userId = 'foo';
@@ -1252,14 +1250,12 @@ void main() {
         var resp = convert.json.encode(buildDataSource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_userId, arg_dataSourceId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDataSource(response as api.DataSource);
-      })));
+      final response =
+          await res.delete(arg_userId, arg_dataSourceId, $fields: arg_$fields);
+      checkDataSource(response as api.DataSource);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.FitnessApi(mock).users.dataSources;
       var arg_userId = 'foo';
@@ -1302,14 +1298,12 @@ void main() {
         var resp = convert.json.encode(buildDataSource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userId, arg_dataSourceId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDataSource(response as api.DataSource);
-      })));
+      final response =
+          await res.get(arg_userId, arg_dataSourceId, $fields: arg_$fields);
+      checkDataSource(response as api.DataSource);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.FitnessApi(mock).users.dataSources;
       var arg_userId = 'foo';
@@ -1356,15 +1350,12 @@ void main() {
         var resp = convert.json.encode(buildListDataSourcesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userId,
-              dataTypeName: arg_dataTypeName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDataSourcesResponse(response as api.ListDataSourcesResponse);
-      })));
+      final response = await res.list(arg_userId,
+          dataTypeName: arg_dataTypeName, $fields: arg_$fields);
+      checkListDataSourcesResponse(response as api.ListDataSourcesResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.FitnessApi(mock).users.dataSources;
       var arg_request = buildDataSource();
@@ -1412,17 +1403,15 @@ void main() {
         var resp = convert.json.encode(buildDataSource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_userId, arg_dataSourceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDataSource(response as api.DataSource);
-      })));
+      final response = await res.update(
+          arg_request, arg_userId, arg_dataSourceId,
+          $fields: arg_$fields);
+      checkDataSource(response as api.DataSource);
     });
   });
 
   unittest.group('resource-UsersDataSourcesDataPointChangesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.FitnessApi(mock).users.dataSources.dataPointChanges;
       var arg_userId = 'foo';
@@ -1475,18 +1464,15 @@ void main() {
         var resp = convert.json.encode(buildListDataPointChangesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userId, arg_dataSourceId,
-              limit: arg_limit, pageToken: arg_pageToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDataPointChangesResponse(
-            response as api.ListDataPointChangesResponse);
-      })));
+      final response = await res.list(arg_userId, arg_dataSourceId,
+          limit: arg_limit, pageToken: arg_pageToken, $fields: arg_$fields);
+      checkListDataPointChangesResponse(
+          response as api.ListDataPointChangesResponse);
     });
   });
 
   unittest.group('resource-UsersDataSourcesDatasetsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.FitnessApi(mock).users.dataSources.datasets;
       var arg_userId = 'foo';
@@ -1540,15 +1526,13 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_userId, arg_dataSourceId, arg_datasetId,
-              currentTimeMillis: arg_currentTimeMillis,
-              modifiedTimeMillis: arg_modifiedTimeMillis,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_userId, arg_dataSourceId, arg_datasetId,
+          currentTimeMillis: arg_currentTimeMillis,
+          modifiedTimeMillis: arg_modifiedTimeMillis,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.FitnessApi(mock).users.dataSources.datasets;
       var arg_userId = 'foo';
@@ -1602,15 +1586,13 @@ void main() {
         var resp = convert.json.encode(buildDataset());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userId, arg_dataSourceId, arg_datasetId,
-              limit: arg_limit, pageToken: arg_pageToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDataset(response as api.Dataset);
-      })));
+      final response = await res.get(
+          arg_userId, arg_dataSourceId, arg_datasetId,
+          limit: arg_limit, pageToken: arg_pageToken, $fields: arg_$fields);
+      checkDataset(response as api.Dataset);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.FitnessApi(mock).users.dataSources.datasets;
       var arg_request = buildDataset();
@@ -1664,17 +1646,15 @@ void main() {
         var resp = convert.json.encode(buildDataset());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_userId, arg_dataSourceId, arg_datasetId,
-              currentTimeMillis: arg_currentTimeMillis, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDataset(response as api.Dataset);
-      })));
+      final response = await res.patch(
+          arg_request, arg_userId, arg_dataSourceId, arg_datasetId,
+          currentTimeMillis: arg_currentTimeMillis, $fields: arg_$fields);
+      checkDataset(response as api.Dataset);
     });
   });
 
   unittest.group('resource-UsersDatasetResource', () {
-    unittest.test('method--aggregate', () {
+    unittest.test('method--aggregate', () async {
       var mock = HttpServerMock();
       var res = api.FitnessApi(mock).users.dataset;
       var arg_request = buildAggregateRequest();
@@ -1721,16 +1701,14 @@ void main() {
         var resp = convert.json.encode(buildAggregateResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .aggregate(arg_request, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAggregateResponse(response as api.AggregateResponse);
-      })));
+      final response =
+          await res.aggregate(arg_request, arg_userId, $fields: arg_$fields);
+      checkAggregateResponse(response as api.AggregateResponse);
     });
   });
 
   unittest.group('resource-UsersSessionsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.FitnessApi(mock).users.sessions;
       var arg_userId = 'foo';
@@ -1778,13 +1756,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_userId, arg_sessionId,
-              currentTimeMillis: arg_currentTimeMillis, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_userId, arg_sessionId,
+          currentTimeMillis: arg_currentTimeMillis, $fields: arg_$fields);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.FitnessApi(mock).users.sessions;
       var arg_userId = 'foo';
@@ -1851,20 +1827,17 @@ void main() {
         var resp = convert.json.encode(buildListSessionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userId,
-              activityType: arg_activityType,
-              endTime: arg_endTime,
-              includeDeleted: arg_includeDeleted,
-              pageToken: arg_pageToken,
-              startTime: arg_startTime,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSessionsResponse(response as api.ListSessionsResponse);
-      })));
+      final response = await res.list(arg_userId,
+          activityType: arg_activityType,
+          endTime: arg_endTime,
+          includeDeleted: arg_includeDeleted,
+          pageToken: arg_pageToken,
+          startTime: arg_startTime,
+          $fields: arg_$fields);
+      checkListSessionsResponse(response as api.ListSessionsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.FitnessApi(mock).users.sessions;
       var arg_request = buildSession();
@@ -1917,12 +1890,9 @@ void main() {
         var resp = convert.json.encode(buildSession());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_userId, arg_sessionId,
-              currentTimeMillis: arg_currentTimeMillis, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSession(response as api.Session);
-      })));
+      final response = await res.update(arg_request, arg_userId, arg_sessionId,
+          currentTimeMillis: arg_currentTimeMillis, $fields: arg_$fields);
+      checkSession(response as api.Session);
     });
   });
 }

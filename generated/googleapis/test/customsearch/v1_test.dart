@@ -1233,7 +1233,7 @@ void checkSearch(api.Search o) {
 
 void main() {
   unittest.group('obj-schema-PromotionBodyLines', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPromotionBodyLines();
       var od = api.PromotionBodyLines.fromJson(o.toJson());
       checkPromotionBodyLines(od as api.PromotionBodyLines);
@@ -1241,7 +1241,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PromotionImage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPromotionImage();
       var od = api.PromotionImage.fromJson(o.toJson());
       checkPromotionImage(od as api.PromotionImage);
@@ -1249,7 +1249,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Promotion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPromotion();
       var od = api.Promotion.fromJson(o.toJson());
       checkPromotion(od as api.Promotion);
@@ -1257,7 +1257,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResultImage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResultImage();
       var od = api.ResultImage.fromJson(o.toJson());
       checkResultImage(od as api.ResultImage);
@@ -1265,7 +1265,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResultLabels', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResultLabels();
       var od = api.ResultLabels.fromJson(o.toJson());
       checkResultLabels(od as api.ResultLabels);
@@ -1273,7 +1273,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Result', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResult();
       var od = api.Result.fromJson(o.toJson());
       checkResult(od as api.Result);
@@ -1281,7 +1281,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchQueriesNextPage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchQueriesNextPage();
       var od = api.SearchQueriesNextPage.fromJson(o.toJson());
       checkSearchQueriesNextPage(od as api.SearchQueriesNextPage);
@@ -1289,7 +1289,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchQueriesPreviousPage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchQueriesPreviousPage();
       var od = api.SearchQueriesPreviousPage.fromJson(o.toJson());
       checkSearchQueriesPreviousPage(od as api.SearchQueriesPreviousPage);
@@ -1297,7 +1297,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchQueriesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchQueriesRequest();
       var od = api.SearchQueriesRequest.fromJson(o.toJson());
       checkSearchQueriesRequest(od as api.SearchQueriesRequest);
@@ -1305,7 +1305,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchQueries', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchQueries();
       var od = api.SearchQueries.fromJson(o.toJson());
       checkSearchQueries(od as api.SearchQueries);
@@ -1313,7 +1313,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchSearchInformation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchSearchInformation();
       var od = api.SearchSearchInformation.fromJson(o.toJson());
       checkSearchSearchInformation(od as api.SearchSearchInformation);
@@ -1321,7 +1321,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchSpelling', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchSpelling();
       var od = api.SearchSpelling.fromJson(o.toJson());
       checkSearchSpelling(od as api.SearchSpelling);
@@ -1329,7 +1329,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchUrl', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchUrl();
       var od = api.SearchUrl.fromJson(o.toJson());
       checkSearchUrl(od as api.SearchUrl);
@@ -1337,7 +1337,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Search', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearch();
       var od = api.Search.fromJson(o.toJson());
       checkSearch(od as api.Search);
@@ -1345,7 +1345,7 @@ void main() {
   });
 
   unittest.group('resource-CseResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CustomSearchApi(mock).cse;
       var arg_c2coff = 'foo';
@@ -1546,48 +1546,45 @@ void main() {
         var resp = convert.json.encode(buildSearch());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              c2coff: arg_c2coff,
-              cr: arg_cr,
-              cx: arg_cx,
-              dateRestrict: arg_dateRestrict,
-              exactTerms: arg_exactTerms,
-              excludeTerms: arg_excludeTerms,
-              fileType: arg_fileType,
-              filter: arg_filter,
-              gl: arg_gl,
-              googlehost: arg_googlehost,
-              highRange: arg_highRange,
-              hl: arg_hl,
-              hq: arg_hq,
-              imgColorType: arg_imgColorType,
-              imgDominantColor: arg_imgDominantColor,
-              imgSize: arg_imgSize,
-              imgType: arg_imgType,
-              linkSite: arg_linkSite,
-              lowRange: arg_lowRange,
-              lr: arg_lr,
-              num: arg_num,
-              orTerms: arg_orTerms,
-              q: arg_q,
-              relatedSite: arg_relatedSite,
-              rights: arg_rights,
-              safe: arg_safe,
-              searchType: arg_searchType,
-              siteSearch: arg_siteSearch,
-              siteSearchFilter: arg_siteSearchFilter,
-              sort: arg_sort,
-              start: arg_start,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearch(response as api.Search);
-      })));
+      final response = await res.list(
+          c2coff: arg_c2coff,
+          cr: arg_cr,
+          cx: arg_cx,
+          dateRestrict: arg_dateRestrict,
+          exactTerms: arg_exactTerms,
+          excludeTerms: arg_excludeTerms,
+          fileType: arg_fileType,
+          filter: arg_filter,
+          gl: arg_gl,
+          googlehost: arg_googlehost,
+          highRange: arg_highRange,
+          hl: arg_hl,
+          hq: arg_hq,
+          imgColorType: arg_imgColorType,
+          imgDominantColor: arg_imgDominantColor,
+          imgSize: arg_imgSize,
+          imgType: arg_imgType,
+          linkSite: arg_linkSite,
+          lowRange: arg_lowRange,
+          lr: arg_lr,
+          num: arg_num,
+          orTerms: arg_orTerms,
+          q: arg_q,
+          relatedSite: arg_relatedSite,
+          rights: arg_rights,
+          safe: arg_safe,
+          searchType: arg_searchType,
+          siteSearch: arg_siteSearch,
+          siteSearchFilter: arg_siteSearchFilter,
+          sort: arg_sort,
+          start: arg_start,
+          $fields: arg_$fields);
+      checkSearch(response as api.Search);
     });
   });
 
   unittest.group('resource-CseSiterestrictResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CustomSearchApi(mock).cse.siterestrict;
       var arg_c2coff = 'foo';
@@ -1788,43 +1785,40 @@ void main() {
         var resp = convert.json.encode(buildSearch());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              c2coff: arg_c2coff,
-              cr: arg_cr,
-              cx: arg_cx,
-              dateRestrict: arg_dateRestrict,
-              exactTerms: arg_exactTerms,
-              excludeTerms: arg_excludeTerms,
-              fileType: arg_fileType,
-              filter: arg_filter,
-              gl: arg_gl,
-              googlehost: arg_googlehost,
-              highRange: arg_highRange,
-              hl: arg_hl,
-              hq: arg_hq,
-              imgColorType: arg_imgColorType,
-              imgDominantColor: arg_imgDominantColor,
-              imgSize: arg_imgSize,
-              imgType: arg_imgType,
-              linkSite: arg_linkSite,
-              lowRange: arg_lowRange,
-              lr: arg_lr,
-              num: arg_num,
-              orTerms: arg_orTerms,
-              q: arg_q,
-              relatedSite: arg_relatedSite,
-              rights: arg_rights,
-              safe: arg_safe,
-              searchType: arg_searchType,
-              siteSearch: arg_siteSearch,
-              siteSearchFilter: arg_siteSearchFilter,
-              sort: arg_sort,
-              start: arg_start,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearch(response as api.Search);
-      })));
+      final response = await res.list(
+          c2coff: arg_c2coff,
+          cr: arg_cr,
+          cx: arg_cx,
+          dateRestrict: arg_dateRestrict,
+          exactTerms: arg_exactTerms,
+          excludeTerms: arg_excludeTerms,
+          fileType: arg_fileType,
+          filter: arg_filter,
+          gl: arg_gl,
+          googlehost: arg_googlehost,
+          highRange: arg_highRange,
+          hl: arg_hl,
+          hq: arg_hq,
+          imgColorType: arg_imgColorType,
+          imgDominantColor: arg_imgDominantColor,
+          imgSize: arg_imgSize,
+          imgType: arg_imgType,
+          linkSite: arg_linkSite,
+          lowRange: arg_lowRange,
+          lr: arg_lr,
+          num: arg_num,
+          orTerms: arg_orTerms,
+          q: arg_q,
+          relatedSite: arg_relatedSite,
+          rights: arg_rights,
+          safe: arg_safe,
+          searchType: arg_searchType,
+          siteSearch: arg_siteSearch,
+          siteSearchFilter: arg_siteSearchFilter,
+          sort: arg_sort,
+          start: arg_start,
+          $fields: arg_$fields);
+      checkSearch(response as api.Search);
     });
   });
 }

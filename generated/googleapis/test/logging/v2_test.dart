@@ -2310,7 +2310,7 @@ void checkUnnamed2085(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-BigQueryOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBigQueryOptions();
       var od = api.BigQueryOptions.fromJson(o.toJson());
       checkBigQueryOptions(od as api.BigQueryOptions);
@@ -2318,7 +2318,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketOptions();
       var od = api.BucketOptions.fromJson(o.toJson());
       checkBucketOptions(od as api.BucketOptions);
@@ -2326,7 +2326,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CmekSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCmekSettings();
       var od = api.CmekSettings.fromJson(o.toJson());
       checkCmekSettings(od as api.CmekSettings);
@@ -2334,7 +2334,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -2342,7 +2342,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Explicit', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExplicit();
       var od = api.Explicit.fromJson(o.toJson());
       checkExplicit(od as api.Explicit);
@@ -2350,7 +2350,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Exponential', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExponential();
       var od = api.Exponential.fromJson(o.toJson());
       checkExponential(od as api.Exponential);
@@ -2358,7 +2358,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HttpRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHttpRequest();
       var od = api.HttpRequest.fromJson(o.toJson());
       checkHttpRequest(od as api.HttpRequest);
@@ -2366,7 +2366,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LabelDescriptor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLabelDescriptor();
       var od = api.LabelDescriptor.fromJson(o.toJson());
       checkLabelDescriptor(od as api.LabelDescriptor);
@@ -2374,7 +2374,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Linear', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLinear();
       var od = api.Linear.fromJson(o.toJson());
       checkLinear(od as api.Linear);
@@ -2382,7 +2382,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListBucketsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListBucketsResponse();
       var od = api.ListBucketsResponse.fromJson(o.toJson());
       checkListBucketsResponse(od as api.ListBucketsResponse);
@@ -2390,7 +2390,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListExclusionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListExclusionsResponse();
       var od = api.ListExclusionsResponse.fromJson(o.toJson());
       checkListExclusionsResponse(od as api.ListExclusionsResponse);
@@ -2398,7 +2398,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -2406,7 +2406,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLogEntriesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLogEntriesRequest();
       var od = api.ListLogEntriesRequest.fromJson(o.toJson());
       checkListLogEntriesRequest(od as api.ListLogEntriesRequest);
@@ -2414,7 +2414,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLogEntriesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLogEntriesResponse();
       var od = api.ListLogEntriesResponse.fromJson(o.toJson());
       checkListLogEntriesResponse(od as api.ListLogEntriesResponse);
@@ -2422,7 +2422,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLogMetricsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLogMetricsResponse();
       var od = api.ListLogMetricsResponse.fromJson(o.toJson());
       checkListLogMetricsResponse(od as api.ListLogMetricsResponse);
@@ -2430,7 +2430,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLogsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLogsResponse();
       var od = api.ListLogsResponse.fromJson(o.toJson());
       checkListLogsResponse(od as api.ListLogsResponse);
@@ -2438,7 +2438,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListMonitoredResourceDescriptorsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListMonitoredResourceDescriptorsResponse();
       var od =
           api.ListMonitoredResourceDescriptorsResponse.fromJson(o.toJson());
@@ -2448,7 +2448,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListSinksResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListSinksResponse();
       var od = api.ListSinksResponse.fromJson(o.toJson());
       checkListSinksResponse(od as api.ListSinksResponse);
@@ -2456,7 +2456,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListViewsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListViewsResponse();
       var od = api.ListViewsResponse.fromJson(o.toJson());
       checkListViewsResponse(od as api.ListViewsResponse);
@@ -2464,7 +2464,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -2472,7 +2472,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LogBucket', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLogBucket();
       var od = api.LogBucket.fromJson(o.toJson());
       checkLogBucket(od as api.LogBucket);
@@ -2480,7 +2480,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LogEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLogEntry();
       var od = api.LogEntry.fromJson(o.toJson());
       checkLogEntry(od as api.LogEntry);
@@ -2488,7 +2488,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LogEntryOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLogEntryOperation();
       var od = api.LogEntryOperation.fromJson(o.toJson());
       checkLogEntryOperation(od as api.LogEntryOperation);
@@ -2496,7 +2496,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LogEntrySourceLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLogEntrySourceLocation();
       var od = api.LogEntrySourceLocation.fromJson(o.toJson());
       checkLogEntrySourceLocation(od as api.LogEntrySourceLocation);
@@ -2504,7 +2504,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LogExclusion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLogExclusion();
       var od = api.LogExclusion.fromJson(o.toJson());
       checkLogExclusion(od as api.LogExclusion);
@@ -2512,7 +2512,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LogLine', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLogLine();
       var od = api.LogLine.fromJson(o.toJson());
       checkLogLine(od as api.LogLine);
@@ -2520,7 +2520,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LogMetric', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLogMetric();
       var od = api.LogMetric.fromJson(o.toJson());
       checkLogMetric(od as api.LogMetric);
@@ -2528,7 +2528,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LogSink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLogSink();
       var od = api.LogSink.fromJson(o.toJson());
       checkLogSink(od as api.LogSink);
@@ -2536,7 +2536,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LogView', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLogView();
       var od = api.LogView.fromJson(o.toJson());
       checkLogView(od as api.LogView);
@@ -2544,7 +2544,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricDescriptor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricDescriptor();
       var od = api.MetricDescriptor.fromJson(o.toJson());
       checkMetricDescriptor(od as api.MetricDescriptor);
@@ -2552,7 +2552,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricDescriptorMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricDescriptorMetadata();
       var od = api.MetricDescriptorMetadata.fromJson(o.toJson());
       checkMetricDescriptorMetadata(od as api.MetricDescriptorMetadata);
@@ -2560,7 +2560,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MonitoredResource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMonitoredResource();
       var od = api.MonitoredResource.fromJson(o.toJson());
       checkMonitoredResource(od as api.MonitoredResource);
@@ -2568,7 +2568,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MonitoredResourceDescriptor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMonitoredResourceDescriptor();
       var od = api.MonitoredResourceDescriptor.fromJson(o.toJson());
       checkMonitoredResourceDescriptor(od as api.MonitoredResourceDescriptor);
@@ -2576,7 +2576,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MonitoredResourceMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMonitoredResourceMetadata();
       var od = api.MonitoredResourceMetadata.fromJson(o.toJson());
       checkMonitoredResourceMetadata(od as api.MonitoredResourceMetadata);
@@ -2584,7 +2584,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RequestLog', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRequestLog();
       var od = api.RequestLog.fromJson(o.toJson());
       checkRequestLog(od as api.RequestLog);
@@ -2592,7 +2592,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SourceLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSourceLocation();
       var od = api.SourceLocation.fromJson(o.toJson());
       checkSourceLocation(od as api.SourceLocation);
@@ -2600,7 +2600,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SourceReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSourceReference();
       var od = api.SourceReference.fromJson(o.toJson());
       checkSourceReference(od as api.SourceReference);
@@ -2608,7 +2608,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuppressionInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuppressionInfo();
       var od = api.SuppressionInfo.fromJson(o.toJson());
       checkSuppressionInfo(od as api.SuppressionInfo);
@@ -2616,7 +2616,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TailLogEntriesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTailLogEntriesRequest();
       var od = api.TailLogEntriesRequest.fromJson(o.toJson());
       checkTailLogEntriesRequest(od as api.TailLogEntriesRequest);
@@ -2624,7 +2624,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TailLogEntriesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTailLogEntriesResponse();
       var od = api.TailLogEntriesResponse.fromJson(o.toJson());
       checkTailLogEntriesResponse(od as api.TailLogEntriesResponse);
@@ -2632,7 +2632,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UndeleteBucketRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUndeleteBucketRequest();
       var od = api.UndeleteBucketRequest.fromJson(o.toJson());
       checkUndeleteBucketRequest(od as api.UndeleteBucketRequest);
@@ -2640,7 +2640,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WriteLogEntriesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWriteLogEntriesRequest();
       var od = api.WriteLogEntriesRequest.fromJson(o.toJson());
       checkWriteLogEntriesRequest(od as api.WriteLogEntriesRequest);
@@ -2648,7 +2648,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WriteLogEntriesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWriteLogEntriesResponse();
       var od = api.WriteLogEntriesResponse.fromJson(o.toJson());
       checkWriteLogEntriesResponse(od as api.WriteLogEntriesResponse);
@@ -2656,7 +2656,7 @@ void main() {
   });
 
   unittest.group('resource-BillingAccountsBucketsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.buckets;
       var arg_name = 'foo';
@@ -2704,16 +2704,13 @@ void main() {
         var resp = convert.json.encode(buildLogBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response as api.LogBucket);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLogBucket(response as api.LogBucket);
     });
   });
 
   unittest.group('resource-BillingAccountsBucketsViewsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.buckets.views;
       var arg_name = 'foo';
@@ -2761,16 +2758,13 @@ void main() {
         var resp = convert.json.encode(buildLogView());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogView(response as api.LogView);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLogView(response as api.LogView);
     });
   });
 
   unittest.group('resource-BillingAccountsExclusionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.exclusions;
       var arg_request = buildLogExclusion();
@@ -2823,14 +2817,12 @@ void main() {
         var resp = convert.json.encode(buildLogExclusion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response as api.LogExclusion);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkLogExclusion(response as api.LogExclusion);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.exclusions;
       var arg_name = 'foo';
@@ -2878,14 +2870,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.exclusions;
       var arg_name = 'foo';
@@ -2933,14 +2922,11 @@ void main() {
         var resp = convert.json.encode(buildLogExclusion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response as api.LogExclusion);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLogExclusion(response as api.LogExclusion);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.exclusions;
       var arg_parent = 'foo';
@@ -2998,17 +2984,14 @@ void main() {
         var resp = convert.json.encode(buildListExclusionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListExclusionsResponse(response as api.ListExclusionsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListExclusionsResponse(response as api.ListExclusionsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.exclusions;
       var arg_request = buildLogExclusion();
@@ -3066,17 +3049,14 @@ void main() {
         var resp = convert.json.encode(buildLogExclusion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response as api.LogExclusion);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkLogExclusion(response as api.LogExclusion);
     });
   });
 
   unittest.group('resource-BillingAccountsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.locations;
       var arg_name = 'foo';
@@ -3124,14 +3104,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.locations;
       var arg_name = 'foo';
@@ -3194,20 +3171,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-BillingAccountsLocationsBucketsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.locations.buckets;
       var arg_request = buildLogBucket();
@@ -3265,15 +3239,12 @@ void main() {
         var resp = convert.json.encode(buildLogBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              bucketId: arg_bucketId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response as api.LogBucket);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          bucketId: arg_bucketId, $fields: arg_$fields);
+      checkLogBucket(response as api.LogBucket);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.locations.buckets;
       var arg_name = 'foo';
@@ -3321,14 +3292,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.locations.buckets;
       var arg_parent = 'foo';
@@ -3386,17 +3354,14 @@ void main() {
         var resp = convert.json.encode(buildListBucketsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListBucketsResponse(response as api.ListBucketsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListBucketsResponse(response as api.ListBucketsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.locations.buckets;
       var arg_request = buildLogBucket();
@@ -3454,15 +3419,12 @@ void main() {
         var resp = convert.json.encode(buildLogBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response as api.LogBucket);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkLogBucket(response as api.LogBucket);
     });
 
-    unittest.test('method--undelete', () {
+    unittest.test('method--undelete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.locations.buckets;
       var arg_request = buildUndeleteBucketRequest();
@@ -3515,16 +3477,14 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .undelete(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.undelete(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 
   unittest.group('resource-BillingAccountsLocationsBucketsViewsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.locations.buckets.views;
       var arg_request = buildLogView();
@@ -3582,15 +3542,12 @@ void main() {
         var resp = convert.json.encode(buildLogView());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              viewId: arg_viewId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogView(response as api.LogView);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          viewId: arg_viewId, $fields: arg_$fields);
+      checkLogView(response as api.LogView);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.locations.buckets.views;
       var arg_name = 'foo';
@@ -3638,14 +3595,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.locations.buckets.views;
       var arg_parent = 'foo';
@@ -3703,17 +3657,14 @@ void main() {
         var resp = convert.json.encode(buildListViewsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListViewsResponse(response as api.ListViewsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListViewsResponse(response as api.ListViewsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.locations.buckets.views;
       var arg_request = buildLogView();
@@ -3771,17 +3722,14 @@ void main() {
         var resp = convert.json.encode(buildLogView());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogView(response as api.LogView);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkLogView(response as api.LogView);
     });
   });
 
   unittest.group('resource-BillingAccountsLogsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.logs;
       var arg_logName = 'foo';
@@ -3829,14 +3777,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_logName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_logName, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.logs;
       var arg_parent = 'foo';
@@ -3899,20 +3844,17 @@ void main() {
         var resp = convert.json.encode(buildListLogsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              resourceNames: arg_resourceNames,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLogsResponse(response as api.ListLogsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          resourceNames: arg_resourceNames,
+          $fields: arg_$fields);
+      checkListLogsResponse(response as api.ListLogsResponse);
     });
   });
 
   unittest.group('resource-BillingAccountsSinksResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.sinks;
       var arg_request = buildLogSink();
@@ -3970,16 +3912,12 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              uniqueWriterIdentity: arg_uniqueWriterIdentity,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity, $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.sinks;
       var arg_sinkName = 'foo';
@@ -4027,14 +3965,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_sinkName, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.sinks;
       var arg_sinkName = 'foo';
@@ -4082,14 +4017,11 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.get(arg_sinkName, $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.sinks;
       var arg_parent = 'foo';
@@ -4147,17 +4079,14 @@ void main() {
         var resp = convert.json.encode(buildListSinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSinksResponse(response as api.ListSinksResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListSinksResponse(response as api.ListSinksResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.sinks;
       var arg_request = buildLogSink();
@@ -4220,17 +4149,14 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_sinkName,
-              uniqueWriterIdentity: arg_uniqueWriterIdentity,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.patch(arg_request, arg_sinkName,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).billingAccounts.sinks;
       var arg_request = buildLogSink();
@@ -4293,19 +4219,16 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_sinkName,
-              uniqueWriterIdentity: arg_uniqueWriterIdentity,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.update(arg_request, arg_sinkName,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
   });
 
   unittest.group('resource-EntriesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).entries;
       var arg_request = buildListLogEntriesRequest();
@@ -4356,14 +4279,11 @@ void main() {
         var resp = convert.json.encode(buildListLogEntriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLogEntriesResponse(response as api.ListLogEntriesResponse);
-      })));
+      final response = await res.list(arg_request, $fields: arg_$fields);
+      checkListLogEntriesResponse(response as api.ListLogEntriesResponse);
     });
 
-    unittest.test('method--tail', () {
+    unittest.test('method--tail', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).entries;
       var arg_request = buildTailLogEntriesRequest();
@@ -4414,14 +4334,11 @@ void main() {
         var resp = convert.json.encode(buildTailLogEntriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .tail(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTailLogEntriesResponse(response as api.TailLogEntriesResponse);
-      })));
+      final response = await res.tail(arg_request, $fields: arg_$fields);
+      checkTailLogEntriesResponse(response as api.TailLogEntriesResponse);
     });
 
-    unittest.test('method--write', () {
+    unittest.test('method--write', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).entries;
       var arg_request = buildWriteLogEntriesRequest();
@@ -4472,16 +4389,13 @@ void main() {
         var resp = convert.json.encode(buildWriteLogEntriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .write(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWriteLogEntriesResponse(response as api.WriteLogEntriesResponse);
-      })));
+      final response = await res.write(arg_request, $fields: arg_$fields);
+      checkWriteLogEntriesResponse(response as api.WriteLogEntriesResponse);
     });
   });
 
   unittest.group('resource-ExclusionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).exclusions;
       var arg_request = buildLogExclusion();
@@ -4534,14 +4448,12 @@ void main() {
         var resp = convert.json.encode(buildLogExclusion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response as api.LogExclusion);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkLogExclusion(response as api.LogExclusion);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).exclusions;
       var arg_name = 'foo';
@@ -4589,14 +4501,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).exclusions;
       var arg_name = 'foo';
@@ -4644,14 +4553,11 @@ void main() {
         var resp = convert.json.encode(buildLogExclusion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response as api.LogExclusion);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLogExclusion(response as api.LogExclusion);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).exclusions;
       var arg_parent = 'foo';
@@ -4709,17 +4615,14 @@ void main() {
         var resp = convert.json.encode(buildListExclusionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListExclusionsResponse(response as api.ListExclusionsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListExclusionsResponse(response as api.ListExclusionsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).exclusions;
       var arg_request = buildLogExclusion();
@@ -4777,17 +4680,14 @@ void main() {
         var resp = convert.json.encode(buildLogExclusion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response as api.LogExclusion);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkLogExclusion(response as api.LogExclusion);
     });
   });
 
   unittest.group('resource-FoldersExclusionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.exclusions;
       var arg_request = buildLogExclusion();
@@ -4840,14 +4740,12 @@ void main() {
         var resp = convert.json.encode(buildLogExclusion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response as api.LogExclusion);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkLogExclusion(response as api.LogExclusion);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.exclusions;
       var arg_name = 'foo';
@@ -4895,14 +4793,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.exclusions;
       var arg_name = 'foo';
@@ -4950,14 +4845,11 @@ void main() {
         var resp = convert.json.encode(buildLogExclusion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response as api.LogExclusion);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLogExclusion(response as api.LogExclusion);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.exclusions;
       var arg_parent = 'foo';
@@ -5015,17 +4907,14 @@ void main() {
         var resp = convert.json.encode(buildListExclusionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListExclusionsResponse(response as api.ListExclusionsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListExclusionsResponse(response as api.ListExclusionsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.exclusions;
       var arg_request = buildLogExclusion();
@@ -5083,17 +4972,14 @@ void main() {
         var resp = convert.json.encode(buildLogExclusion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response as api.LogExclusion);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkLogExclusion(response as api.LogExclusion);
     });
   });
 
   unittest.group('resource-FoldersLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.locations;
       var arg_name = 'foo';
@@ -5141,14 +5027,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.locations;
       var arg_name = 'foo';
@@ -5211,20 +5094,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-FoldersLocationsBucketsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.locations.buckets;
       var arg_request = buildLogBucket();
@@ -5282,15 +5162,12 @@ void main() {
         var resp = convert.json.encode(buildLogBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              bucketId: arg_bucketId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response as api.LogBucket);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          bucketId: arg_bucketId, $fields: arg_$fields);
+      checkLogBucket(response as api.LogBucket);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.locations.buckets;
       var arg_name = 'foo';
@@ -5338,14 +5215,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.locations.buckets;
       var arg_name = 'foo';
@@ -5393,14 +5267,11 @@ void main() {
         var resp = convert.json.encode(buildLogBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response as api.LogBucket);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLogBucket(response as api.LogBucket);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.locations.buckets;
       var arg_parent = 'foo';
@@ -5458,17 +5329,14 @@ void main() {
         var resp = convert.json.encode(buildListBucketsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListBucketsResponse(response as api.ListBucketsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListBucketsResponse(response as api.ListBucketsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.locations.buckets;
       var arg_request = buildLogBucket();
@@ -5526,15 +5394,12 @@ void main() {
         var resp = convert.json.encode(buildLogBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response as api.LogBucket);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkLogBucket(response as api.LogBucket);
     });
 
-    unittest.test('method--undelete', () {
+    unittest.test('method--undelete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.locations.buckets;
       var arg_request = buildUndeleteBucketRequest();
@@ -5587,16 +5452,14 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .undelete(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.undelete(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 
   unittest.group('resource-FoldersLocationsBucketsViewsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.locations.buckets.views;
       var arg_request = buildLogView();
@@ -5654,15 +5517,12 @@ void main() {
         var resp = convert.json.encode(buildLogView());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              viewId: arg_viewId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogView(response as api.LogView);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          viewId: arg_viewId, $fields: arg_$fields);
+      checkLogView(response as api.LogView);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.locations.buckets.views;
       var arg_name = 'foo';
@@ -5710,14 +5570,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.locations.buckets.views;
       var arg_name = 'foo';
@@ -5765,14 +5622,11 @@ void main() {
         var resp = convert.json.encode(buildLogView());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogView(response as api.LogView);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLogView(response as api.LogView);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.locations.buckets.views;
       var arg_parent = 'foo';
@@ -5830,17 +5684,14 @@ void main() {
         var resp = convert.json.encode(buildListViewsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListViewsResponse(response as api.ListViewsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListViewsResponse(response as api.ListViewsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.locations.buckets.views;
       var arg_request = buildLogView();
@@ -5898,17 +5749,14 @@ void main() {
         var resp = convert.json.encode(buildLogView());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogView(response as api.LogView);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkLogView(response as api.LogView);
     });
   });
 
   unittest.group('resource-FoldersLogsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.logs;
       var arg_logName = 'foo';
@@ -5956,14 +5804,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_logName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_logName, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.logs;
       var arg_parent = 'foo';
@@ -6026,20 +5871,17 @@ void main() {
         var resp = convert.json.encode(buildListLogsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              resourceNames: arg_resourceNames,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLogsResponse(response as api.ListLogsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          resourceNames: arg_resourceNames,
+          $fields: arg_$fields);
+      checkListLogsResponse(response as api.ListLogsResponse);
     });
   });
 
   unittest.group('resource-FoldersSinksResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.sinks;
       var arg_request = buildLogSink();
@@ -6097,16 +5939,12 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              uniqueWriterIdentity: arg_uniqueWriterIdentity,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity, $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.sinks;
       var arg_sinkName = 'foo';
@@ -6154,14 +5992,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_sinkName, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.sinks;
       var arg_sinkName = 'foo';
@@ -6209,14 +6044,11 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.get(arg_sinkName, $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.sinks;
       var arg_parent = 'foo';
@@ -6274,17 +6106,14 @@ void main() {
         var resp = convert.json.encode(buildListSinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSinksResponse(response as api.ListSinksResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListSinksResponse(response as api.ListSinksResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.sinks;
       var arg_request = buildLogSink();
@@ -6347,17 +6176,14 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_sinkName,
-              uniqueWriterIdentity: arg_uniqueWriterIdentity,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.patch(arg_request, arg_sinkName,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).folders.sinks;
       var arg_request = buildLogSink();
@@ -6420,19 +6246,16 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_sinkName,
-              uniqueWriterIdentity: arg_uniqueWriterIdentity,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.update(arg_request, arg_sinkName,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
   });
 
   unittest.group('resource-LocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).locations;
       var arg_name = 'foo';
@@ -6480,14 +6303,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).locations;
       var arg_name = 'foo';
@@ -6550,20 +6370,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-LocationsBucketsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).locations.buckets;
       var arg_request = buildLogBucket();
@@ -6621,15 +6438,12 @@ void main() {
         var resp = convert.json.encode(buildLogBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              bucketId: arg_bucketId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response as api.LogBucket);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          bucketId: arg_bucketId, $fields: arg_$fields);
+      checkLogBucket(response as api.LogBucket);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).locations.buckets;
       var arg_name = 'foo';
@@ -6677,14 +6491,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).locations.buckets;
       var arg_name = 'foo';
@@ -6732,14 +6543,11 @@ void main() {
         var resp = convert.json.encode(buildLogBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response as api.LogBucket);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLogBucket(response as api.LogBucket);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).locations.buckets;
       var arg_parent = 'foo';
@@ -6797,17 +6605,14 @@ void main() {
         var resp = convert.json.encode(buildListBucketsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListBucketsResponse(response as api.ListBucketsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListBucketsResponse(response as api.ListBucketsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).locations.buckets;
       var arg_request = buildLogBucket();
@@ -6865,15 +6670,12 @@ void main() {
         var resp = convert.json.encode(buildLogBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response as api.LogBucket);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkLogBucket(response as api.LogBucket);
     });
 
-    unittest.test('method--undelete', () {
+    unittest.test('method--undelete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).locations.buckets;
       var arg_request = buildUndeleteBucketRequest();
@@ -6926,16 +6728,14 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .undelete(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.undelete(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 
   unittest.group('resource-LocationsBucketsViewsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).locations.buckets.views;
       var arg_request = buildLogView();
@@ -6993,15 +6793,12 @@ void main() {
         var resp = convert.json.encode(buildLogView());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              viewId: arg_viewId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogView(response as api.LogView);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          viewId: arg_viewId, $fields: arg_$fields);
+      checkLogView(response as api.LogView);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).locations.buckets.views;
       var arg_name = 'foo';
@@ -7049,14 +6846,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).locations.buckets.views;
       var arg_name = 'foo';
@@ -7104,14 +6898,11 @@ void main() {
         var resp = convert.json.encode(buildLogView());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogView(response as api.LogView);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLogView(response as api.LogView);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).locations.buckets.views;
       var arg_parent = 'foo';
@@ -7169,17 +6960,14 @@ void main() {
         var resp = convert.json.encode(buildListViewsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListViewsResponse(response as api.ListViewsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListViewsResponse(response as api.ListViewsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).locations.buckets.views;
       var arg_request = buildLogView();
@@ -7237,17 +7025,14 @@ void main() {
         var resp = convert.json.encode(buildLogView());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogView(response as api.LogView);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkLogView(response as api.LogView);
     });
   });
 
   unittest.group('resource-LogsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).logs;
       var arg_logName = 'foo';
@@ -7295,14 +7080,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_logName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_logName, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).logs;
       var arg_parent = 'foo';
@@ -7365,20 +7147,17 @@ void main() {
         var resp = convert.json.encode(buildListLogsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              resourceNames: arg_resourceNames,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLogsResponse(response as api.ListLogsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          resourceNames: arg_resourceNames,
+          $fields: arg_$fields);
+      checkListLogsResponse(response as api.ListLogsResponse);
     });
   });
 
   unittest.group('resource-MonitoredResourceDescriptorsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).monitoredResourceDescriptors;
       var arg_pageSize = 42;
@@ -7435,20 +7214,17 @@ void main() {
             .encode(buildListMonitoredResourceDescriptorsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListMonitoredResourceDescriptorsResponse(
-            response as api.ListMonitoredResourceDescriptorsResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListMonitoredResourceDescriptorsResponse(
+          response as api.ListMonitoredResourceDescriptorsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsResource', () {
-    unittest.test('method--getCmekSettings', () {
+    unittest.test('method--getCmekSettings', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations;
       var arg_name = 'foo';
@@ -7496,14 +7272,12 @@ void main() {
         var resp = convert.json.encode(buildCmekSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getCmekSettings(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCmekSettings(response as api.CmekSettings);
-      })));
+      final response =
+          await res.getCmekSettings(arg_name, $fields: arg_$fields);
+      checkCmekSettings(response as api.CmekSettings);
     });
 
-    unittest.test('method--updateCmekSettings', () {
+    unittest.test('method--updateCmekSettings', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations;
       var arg_request = buildCmekSettings();
@@ -7561,17 +7335,14 @@ void main() {
         var resp = convert.json.encode(buildCmekSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateCmekSettings(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCmekSettings(response as api.CmekSettings);
-      })));
+      final response = await res.updateCmekSettings(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkCmekSettings(response as api.CmekSettings);
     });
   });
 
   unittest.group('resource-OrganizationsExclusionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.exclusions;
       var arg_request = buildLogExclusion();
@@ -7624,14 +7395,12 @@ void main() {
         var resp = convert.json.encode(buildLogExclusion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response as api.LogExclusion);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkLogExclusion(response as api.LogExclusion);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.exclusions;
       var arg_name = 'foo';
@@ -7679,14 +7448,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.exclusions;
       var arg_name = 'foo';
@@ -7734,14 +7500,11 @@ void main() {
         var resp = convert.json.encode(buildLogExclusion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response as api.LogExclusion);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLogExclusion(response as api.LogExclusion);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.exclusions;
       var arg_parent = 'foo';
@@ -7799,17 +7562,14 @@ void main() {
         var resp = convert.json.encode(buildListExclusionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListExclusionsResponse(response as api.ListExclusionsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListExclusionsResponse(response as api.ListExclusionsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.exclusions;
       var arg_request = buildLogExclusion();
@@ -7867,17 +7627,14 @@ void main() {
         var resp = convert.json.encode(buildLogExclusion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response as api.LogExclusion);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkLogExclusion(response as api.LogExclusion);
     });
   });
 
   unittest.group('resource-OrganizationsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.locations;
       var arg_name = 'foo';
@@ -7925,14 +7682,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.locations;
       var arg_name = 'foo';
@@ -7995,20 +7749,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsLocationsBucketsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.locations.buckets;
       var arg_request = buildLogBucket();
@@ -8066,15 +7817,12 @@ void main() {
         var resp = convert.json.encode(buildLogBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              bucketId: arg_bucketId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response as api.LogBucket);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          bucketId: arg_bucketId, $fields: arg_$fields);
+      checkLogBucket(response as api.LogBucket);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.locations.buckets;
       var arg_name = 'foo';
@@ -8122,14 +7870,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.locations.buckets;
       var arg_name = 'foo';
@@ -8177,14 +7922,11 @@ void main() {
         var resp = convert.json.encode(buildLogBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response as api.LogBucket);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLogBucket(response as api.LogBucket);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.locations.buckets;
       var arg_parent = 'foo';
@@ -8242,17 +7984,14 @@ void main() {
         var resp = convert.json.encode(buildListBucketsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListBucketsResponse(response as api.ListBucketsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListBucketsResponse(response as api.ListBucketsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.locations.buckets;
       var arg_request = buildLogBucket();
@@ -8310,15 +8049,12 @@ void main() {
         var resp = convert.json.encode(buildLogBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response as api.LogBucket);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkLogBucket(response as api.LogBucket);
     });
 
-    unittest.test('method--undelete', () {
+    unittest.test('method--undelete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.locations.buckets;
       var arg_request = buildUndeleteBucketRequest();
@@ -8371,16 +8107,14 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .undelete(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.undelete(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 
   unittest.group('resource-OrganizationsLocationsBucketsViewsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.locations.buckets.views;
       var arg_request = buildLogView();
@@ -8438,15 +8172,12 @@ void main() {
         var resp = convert.json.encode(buildLogView());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              viewId: arg_viewId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogView(response as api.LogView);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          viewId: arg_viewId, $fields: arg_$fields);
+      checkLogView(response as api.LogView);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.locations.buckets.views;
       var arg_name = 'foo';
@@ -8494,14 +8225,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.locations.buckets.views;
       var arg_name = 'foo';
@@ -8549,14 +8277,11 @@ void main() {
         var resp = convert.json.encode(buildLogView());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogView(response as api.LogView);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLogView(response as api.LogView);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.locations.buckets.views;
       var arg_parent = 'foo';
@@ -8614,17 +8339,14 @@ void main() {
         var resp = convert.json.encode(buildListViewsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListViewsResponse(response as api.ListViewsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListViewsResponse(response as api.ListViewsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.locations.buckets.views;
       var arg_request = buildLogView();
@@ -8682,17 +8404,14 @@ void main() {
         var resp = convert.json.encode(buildLogView());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogView(response as api.LogView);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkLogView(response as api.LogView);
     });
   });
 
   unittest.group('resource-OrganizationsLogsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.logs;
       var arg_logName = 'foo';
@@ -8740,14 +8459,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_logName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_logName, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.logs;
       var arg_parent = 'foo';
@@ -8810,20 +8526,17 @@ void main() {
         var resp = convert.json.encode(buildListLogsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              resourceNames: arg_resourceNames,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLogsResponse(response as api.ListLogsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          resourceNames: arg_resourceNames,
+          $fields: arg_$fields);
+      checkListLogsResponse(response as api.ListLogsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsSinksResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.sinks;
       var arg_request = buildLogSink();
@@ -8881,16 +8594,12 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              uniqueWriterIdentity: arg_uniqueWriterIdentity,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity, $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.sinks;
       var arg_sinkName = 'foo';
@@ -8938,14 +8647,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_sinkName, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.sinks;
       var arg_sinkName = 'foo';
@@ -8993,14 +8699,11 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.get(arg_sinkName, $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.sinks;
       var arg_parent = 'foo';
@@ -9058,17 +8761,14 @@ void main() {
         var resp = convert.json.encode(buildListSinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSinksResponse(response as api.ListSinksResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListSinksResponse(response as api.ListSinksResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.sinks;
       var arg_request = buildLogSink();
@@ -9131,17 +8831,14 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_sinkName,
-              uniqueWriterIdentity: arg_uniqueWriterIdentity,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.patch(arg_request, arg_sinkName,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).organizations.sinks;
       var arg_request = buildLogSink();
@@ -9204,19 +8901,16 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_sinkName,
-              uniqueWriterIdentity: arg_uniqueWriterIdentity,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.update(arg_request, arg_sinkName,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
   });
 
   unittest.group('resource-ProjectsExclusionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.exclusions;
       var arg_request = buildLogExclusion();
@@ -9269,14 +8963,12 @@ void main() {
         var resp = convert.json.encode(buildLogExclusion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response as api.LogExclusion);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkLogExclusion(response as api.LogExclusion);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.exclusions;
       var arg_name = 'foo';
@@ -9324,14 +9016,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.exclusions;
       var arg_name = 'foo';
@@ -9379,14 +9068,11 @@ void main() {
         var resp = convert.json.encode(buildLogExclusion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response as api.LogExclusion);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLogExclusion(response as api.LogExclusion);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.exclusions;
       var arg_parent = 'foo';
@@ -9444,17 +9130,14 @@ void main() {
         var resp = convert.json.encode(buildListExclusionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListExclusionsResponse(response as api.ListExclusionsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListExclusionsResponse(response as api.ListExclusionsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.exclusions;
       var arg_request = buildLogExclusion();
@@ -9512,17 +9195,14 @@ void main() {
         var resp = convert.json.encode(buildLogExclusion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response as api.LogExclusion);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkLogExclusion(response as api.LogExclusion);
     });
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -9570,14 +9250,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -9640,20 +9317,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsBucketsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.locations.buckets;
       var arg_request = buildLogBucket();
@@ -9711,15 +9385,12 @@ void main() {
         var resp = convert.json.encode(buildLogBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              bucketId: arg_bucketId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response as api.LogBucket);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          bucketId: arg_bucketId, $fields: arg_$fields);
+      checkLogBucket(response as api.LogBucket);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.locations.buckets;
       var arg_name = 'foo';
@@ -9767,14 +9438,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.locations.buckets;
       var arg_name = 'foo';
@@ -9822,14 +9490,11 @@ void main() {
         var resp = convert.json.encode(buildLogBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response as api.LogBucket);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLogBucket(response as api.LogBucket);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.locations.buckets;
       var arg_parent = 'foo';
@@ -9887,17 +9552,14 @@ void main() {
         var resp = convert.json.encode(buildListBucketsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListBucketsResponse(response as api.ListBucketsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListBucketsResponse(response as api.ListBucketsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.locations.buckets;
       var arg_request = buildLogBucket();
@@ -9955,15 +9617,12 @@ void main() {
         var resp = convert.json.encode(buildLogBucket());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response as api.LogBucket);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkLogBucket(response as api.LogBucket);
     });
 
-    unittest.test('method--undelete', () {
+    unittest.test('method--undelete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.locations.buckets;
       var arg_request = buildUndeleteBucketRequest();
@@ -10016,16 +9675,14 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .undelete(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.undelete(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 
   unittest.group('resource-ProjectsLocationsBucketsViewsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.locations.buckets.views;
       var arg_request = buildLogView();
@@ -10083,15 +9740,12 @@ void main() {
         var resp = convert.json.encode(buildLogView());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              viewId: arg_viewId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogView(response as api.LogView);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          viewId: arg_viewId, $fields: arg_$fields);
+      checkLogView(response as api.LogView);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.locations.buckets.views;
       var arg_name = 'foo';
@@ -10139,14 +9793,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.locations.buckets.views;
       var arg_name = 'foo';
@@ -10194,14 +9845,11 @@ void main() {
         var resp = convert.json.encode(buildLogView());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogView(response as api.LogView);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLogView(response as api.LogView);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.locations.buckets.views;
       var arg_parent = 'foo';
@@ -10259,17 +9907,14 @@ void main() {
         var resp = convert.json.encode(buildListViewsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListViewsResponse(response as api.ListViewsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListViewsResponse(response as api.ListViewsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.locations.buckets.views;
       var arg_request = buildLogView();
@@ -10327,17 +9972,14 @@ void main() {
         var resp = convert.json.encode(buildLogView());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogView(response as api.LogView);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkLogView(response as api.LogView);
     });
   });
 
   unittest.group('resource-ProjectsLogsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.logs;
       var arg_logName = 'foo';
@@ -10385,14 +10027,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_logName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_logName, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.logs;
       var arg_parent = 'foo';
@@ -10455,20 +10094,17 @@ void main() {
         var resp = convert.json.encode(buildListLogsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              resourceNames: arg_resourceNames,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLogsResponse(response as api.ListLogsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          resourceNames: arg_resourceNames,
+          $fields: arg_$fields);
+      checkListLogsResponse(response as api.ListLogsResponse);
     });
   });
 
   unittest.group('resource-ProjectsMetricsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.metrics;
       var arg_request = buildLogMetric();
@@ -10521,14 +10157,12 @@ void main() {
         var resp = convert.json.encode(buildLogMetric());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogMetric(response as api.LogMetric);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkLogMetric(response as api.LogMetric);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.metrics;
       var arg_metricName = 'foo';
@@ -10576,14 +10210,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_metricName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_metricName, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.metrics;
       var arg_metricName = 'foo';
@@ -10631,14 +10262,11 @@ void main() {
         var resp = convert.json.encode(buildLogMetric());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_metricName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogMetric(response as api.LogMetric);
-      })));
+      final response = await res.get(arg_metricName, $fields: arg_$fields);
+      checkLogMetric(response as api.LogMetric);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.metrics;
       var arg_parent = 'foo';
@@ -10696,17 +10324,14 @@ void main() {
         var resp = convert.json.encode(buildListLogMetricsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLogMetricsResponse(response as api.ListLogMetricsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLogMetricsResponse(response as api.ListLogMetricsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.metrics;
       var arg_request = buildLogMetric();
@@ -10759,16 +10384,14 @@ void main() {
         var resp = convert.json.encode(buildLogMetric());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_metricName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogMetric(response as api.LogMetric);
-      })));
+      final response =
+          await res.update(arg_request, arg_metricName, $fields: arg_$fields);
+      checkLogMetric(response as api.LogMetric);
     });
   });
 
   unittest.group('resource-ProjectsSinksResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.sinks;
       var arg_request = buildLogSink();
@@ -10826,16 +10449,12 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              uniqueWriterIdentity: arg_uniqueWriterIdentity,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity, $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.sinks;
       var arg_sinkName = 'foo';
@@ -10883,14 +10502,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_sinkName, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.sinks;
       var arg_sinkName = 'foo';
@@ -10938,14 +10554,11 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.get(arg_sinkName, $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.sinks;
       var arg_parent = 'foo';
@@ -11003,17 +10616,14 @@ void main() {
         var resp = convert.json.encode(buildListSinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSinksResponse(response as api.ListSinksResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListSinksResponse(response as api.ListSinksResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.sinks;
       var arg_request = buildLogSink();
@@ -11076,17 +10686,14 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_sinkName,
-              uniqueWriterIdentity: arg_uniqueWriterIdentity,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.patch(arg_request, arg_sinkName,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).projects.sinks;
       var arg_request = buildLogSink();
@@ -11149,19 +10756,16 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_sinkName,
-              uniqueWriterIdentity: arg_uniqueWriterIdentity,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.update(arg_request, arg_sinkName,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
   });
 
   unittest.group('resource-SinksResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).sinks;
       var arg_request = buildLogSink();
@@ -11219,16 +10823,12 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              uniqueWriterIdentity: arg_uniqueWriterIdentity,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity, $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).sinks;
       var arg_sinkName = 'foo';
@@ -11276,14 +10876,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_sinkName, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).sinks;
       var arg_sinkName = 'foo';
@@ -11331,14 +10928,11 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_sinkName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.get(arg_sinkName, $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).sinks;
       var arg_parent = 'foo';
@@ -11396,17 +10990,14 @@ void main() {
         var resp = convert.json.encode(buildListSinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSinksResponse(response as api.ListSinksResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListSinksResponse(response as api.ListSinksResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).sinks;
       var arg_request = buildLogSink();
@@ -11469,19 +11060,16 @@ void main() {
         var resp = convert.json.encode(buildLogSink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_sinkName,
-              uniqueWriterIdentity: arg_uniqueWriterIdentity,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLogSink(response as api.LogSink);
-      })));
+      final response = await res.update(arg_request, arg_sinkName,
+          uniqueWriterIdentity: arg_uniqueWriterIdentity,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkLogSink(response as api.LogSink);
     });
   });
 
   unittest.group('resource-V2Resource', () {
-    unittest.test('method--getCmekSettings', () {
+    unittest.test('method--getCmekSettings', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).v2;
       var arg_name = 'foo';
@@ -11529,14 +11117,12 @@ void main() {
         var resp = convert.json.encode(buildCmekSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getCmekSettings(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCmekSettings(response as api.CmekSettings);
-      })));
+      final response =
+          await res.getCmekSettings(arg_name, $fields: arg_$fields);
+      checkCmekSettings(response as api.CmekSettings);
     });
 
-    unittest.test('method--updateCmekSettings', () {
+    unittest.test('method--updateCmekSettings', () async {
       var mock = HttpServerMock();
       var res = api.LoggingApi(mock).v2;
       var arg_request = buildCmekSettings();
@@ -11594,12 +11180,9 @@ void main() {
         var resp = convert.json.encode(buildCmekSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateCmekSettings(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCmekSettings(response as api.CmekSettings);
-      })));
+      final response = await res.updateCmekSettings(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkCmekSettings(response as api.CmekSettings);
     });
   });
 }

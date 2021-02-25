@@ -183,7 +183,7 @@ void checkBatchGetAmpUrlsResponse(api.BatchGetAmpUrlsResponse o) {
 
 void main() {
   unittest.group('obj-schema-AmpUrl', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAmpUrl();
       var od = api.AmpUrl.fromJson(o.toJson());
       checkAmpUrl(od as api.AmpUrl);
@@ -191,7 +191,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AmpUrlError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAmpUrlError();
       var od = api.AmpUrlError.fromJson(o.toJson());
       checkAmpUrlError(od as api.AmpUrlError);
@@ -199,7 +199,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchGetAmpUrlsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchGetAmpUrlsRequest();
       var od = api.BatchGetAmpUrlsRequest.fromJson(o.toJson());
       checkBatchGetAmpUrlsRequest(od as api.BatchGetAmpUrlsRequest);
@@ -207,7 +207,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchGetAmpUrlsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchGetAmpUrlsResponse();
       var od = api.BatchGetAmpUrlsResponse.fromJson(o.toJson());
       checkBatchGetAmpUrlsResponse(od as api.BatchGetAmpUrlsResponse);
@@ -215,7 +215,7 @@ void main() {
   });
 
   unittest.group('resource-AmpUrlsResource', () {
-    unittest.test('method--batchGet', () {
+    unittest.test('method--batchGet', () async {
       var mock = HttpServerMock();
       var res = api.AcceleratedmobilepageurlApi(mock).ampUrls;
       var arg_request = buildBatchGetAmpUrlsRequest();
@@ -266,11 +266,8 @@ void main() {
         var resp = convert.json.encode(buildBatchGetAmpUrlsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchGet(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchGetAmpUrlsResponse(response as api.BatchGetAmpUrlsResponse);
-      })));
+      final response = await res.batchGet(arg_request, $fields: arg_$fields);
+      checkBatchGetAmpUrlsResponse(response as api.BatchGetAmpUrlsResponse);
     });
   });
 }

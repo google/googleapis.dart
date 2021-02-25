@@ -327,7 +327,7 @@ void checkSignJwtResponse(api.SignJwtResponse o) {
 
 void main() {
   unittest.group('obj-schema-GenerateAccessTokenRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGenerateAccessTokenRequest();
       var od = api.GenerateAccessTokenRequest.fromJson(o.toJson());
       checkGenerateAccessTokenRequest(od as api.GenerateAccessTokenRequest);
@@ -335,7 +335,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GenerateAccessTokenResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGenerateAccessTokenResponse();
       var od = api.GenerateAccessTokenResponse.fromJson(o.toJson());
       checkGenerateAccessTokenResponse(od as api.GenerateAccessTokenResponse);
@@ -343,7 +343,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GenerateIdTokenRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGenerateIdTokenRequest();
       var od = api.GenerateIdTokenRequest.fromJson(o.toJson());
       checkGenerateIdTokenRequest(od as api.GenerateIdTokenRequest);
@@ -351,7 +351,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GenerateIdTokenResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGenerateIdTokenResponse();
       var od = api.GenerateIdTokenResponse.fromJson(o.toJson());
       checkGenerateIdTokenResponse(od as api.GenerateIdTokenResponse);
@@ -359,7 +359,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SignBlobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSignBlobRequest();
       var od = api.SignBlobRequest.fromJson(o.toJson());
       checkSignBlobRequest(od as api.SignBlobRequest);
@@ -367,7 +367,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SignBlobResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSignBlobResponse();
       var od = api.SignBlobResponse.fromJson(o.toJson());
       checkSignBlobResponse(od as api.SignBlobResponse);
@@ -375,7 +375,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SignJwtRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSignJwtRequest();
       var od = api.SignJwtRequest.fromJson(o.toJson());
       checkSignJwtRequest(od as api.SignJwtRequest);
@@ -383,7 +383,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SignJwtResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSignJwtResponse();
       var od = api.SignJwtResponse.fromJson(o.toJson());
       checkSignJwtResponse(od as api.SignJwtResponse);
@@ -391,7 +391,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsServiceAccountsResource', () {
-    unittest.test('method--generateAccessToken', () {
+    unittest.test('method--generateAccessToken', () async {
       var mock = HttpServerMock();
       var res = api.IAMCredentialsApi(mock).projects.serviceAccounts;
       var arg_request = buildGenerateAccessTokenRequest();
@@ -444,15 +444,13 @@ void main() {
         var resp = convert.json.encode(buildGenerateAccessTokenResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .generateAccessToken(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGenerateAccessTokenResponse(
-            response as api.GenerateAccessTokenResponse);
-      })));
+      final response = await res.generateAccessToken(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkGenerateAccessTokenResponse(
+          response as api.GenerateAccessTokenResponse);
     });
 
-    unittest.test('method--generateIdToken', () {
+    unittest.test('method--generateIdToken', () async {
       var mock = HttpServerMock();
       var res = api.IAMCredentialsApi(mock).projects.serviceAccounts;
       var arg_request = buildGenerateIdTokenRequest();
@@ -505,14 +503,12 @@ void main() {
         var resp = convert.json.encode(buildGenerateIdTokenResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .generateIdToken(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGenerateIdTokenResponse(response as api.GenerateIdTokenResponse);
-      })));
+      final response = await res.generateIdToken(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkGenerateIdTokenResponse(response as api.GenerateIdTokenResponse);
     });
 
-    unittest.test('method--signBlob', () {
+    unittest.test('method--signBlob', () async {
       var mock = HttpServerMock();
       var res = api.IAMCredentialsApi(mock).projects.serviceAccounts;
       var arg_request = buildSignBlobRequest();
@@ -565,14 +561,12 @@ void main() {
         var resp = convert.json.encode(buildSignBlobResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .signBlob(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSignBlobResponse(response as api.SignBlobResponse);
-      })));
+      final response =
+          await res.signBlob(arg_request, arg_name, $fields: arg_$fields);
+      checkSignBlobResponse(response as api.SignBlobResponse);
     });
 
-    unittest.test('method--signJwt', () {
+    unittest.test('method--signJwt', () async {
       var mock = HttpServerMock();
       var res = api.IAMCredentialsApi(mock).projects.serviceAccounts;
       var arg_request = buildSignJwtRequest();
@@ -625,11 +619,9 @@ void main() {
         var resp = convert.json.encode(buildSignJwtResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .signJwt(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSignJwtResponse(response as api.SignJwtResponse);
-      })));
+      final response =
+          await res.signJwt(arg_request, arg_name, $fields: arg_$fields);
+      checkSignJwtResponse(response as api.SignJwtResponse);
     });
   });
 }

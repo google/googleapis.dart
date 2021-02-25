@@ -1777,7 +1777,7 @@ void checkUpdateTagValueMetadata(api.UpdateTagValueMetadata o) {
 
 void main() {
   unittest.group('obj-schema-Ancestor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAncestor();
       var od = api.Ancestor.fromJson(o.toJson());
       checkAncestor(od as api.Ancestor);
@@ -1785,7 +1785,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
       checkAuditConfig(od as api.AuditConfig);
@@ -1793,7 +1793,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
       checkAuditLogConfig(od as api.AuditLogConfig);
@@ -1801,7 +1801,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -1809,7 +1809,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BooleanConstraint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBooleanConstraint();
       var od = api.BooleanConstraint.fromJson(o.toJson());
       checkBooleanConstraint(od as api.BooleanConstraint);
@@ -1817,7 +1817,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BooleanPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBooleanPolicy();
       var od = api.BooleanPolicy.fromJson(o.toJson());
       checkBooleanPolicy(od as api.BooleanPolicy);
@@ -1825,7 +1825,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClearOrgPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClearOrgPolicyRequest();
       var od = api.ClearOrgPolicyRequest.fromJson(o.toJson());
       checkClearOrgPolicyRequest(od as api.ClearOrgPolicyRequest);
@@ -1835,7 +1835,7 @@ void main() {
   unittest.group(
       'obj-schema-CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildCloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation();
       var od =
@@ -1850,7 +1850,7 @@ void main() {
   unittest.group(
       'obj-schema-CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildCloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation();
       var od =
@@ -1863,7 +1863,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Constraint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConstraint();
       var od = api.Constraint.fromJson(o.toJson());
       checkConstraint(od as api.Constraint);
@@ -1871,7 +1871,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateTagKeyMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateTagKeyMetadata();
       var od = api.CreateTagKeyMetadata.fromJson(o.toJson());
       checkCreateTagKeyMetadata(od as api.CreateTagKeyMetadata);
@@ -1879,7 +1879,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateTagValueMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateTagValueMetadata();
       var od = api.CreateTagValueMetadata.fromJson(o.toJson());
       checkCreateTagValueMetadata(od as api.CreateTagValueMetadata);
@@ -1887,7 +1887,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteTagKeyMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteTagKeyMetadata();
       var od = api.DeleteTagKeyMetadata.fromJson(o.toJson());
       checkDeleteTagKeyMetadata(od as api.DeleteTagKeyMetadata);
@@ -1895,7 +1895,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteTagValueMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteTagValueMetadata();
       var od = api.DeleteTagValueMetadata.fromJson(o.toJson());
       checkDeleteTagValueMetadata(od as api.DeleteTagValueMetadata);
@@ -1903,7 +1903,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1911,7 +1911,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -1919,7 +1919,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FolderOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFolderOperation();
       var od = api.FolderOperation.fromJson(o.toJson());
       checkFolderOperation(od as api.FolderOperation);
@@ -1927,7 +1927,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FolderOperationError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFolderOperationError();
       var od = api.FolderOperationError.fromJson(o.toJson());
       checkFolderOperationError(od as api.FolderOperationError);
@@ -1935,7 +1935,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetAncestryRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetAncestryRequest();
       var od = api.GetAncestryRequest.fromJson(o.toJson());
       checkGetAncestryRequest(od as api.GetAncestryRequest);
@@ -1943,7 +1943,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetAncestryResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetAncestryResponse();
       var od = api.GetAncestryResponse.fromJson(o.toJson());
       checkGetAncestryResponse(od as api.GetAncestryResponse);
@@ -1951,7 +1951,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetEffectiveOrgPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetEffectiveOrgPolicyRequest();
       var od = api.GetEffectiveOrgPolicyRequest.fromJson(o.toJson());
       checkGetEffectiveOrgPolicyRequest(od as api.GetEffectiveOrgPolicyRequest);
@@ -1959,7 +1959,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetIamPolicyRequest();
       var od = api.GetIamPolicyRequest.fromJson(o.toJson());
       checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
@@ -1967,7 +1967,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetOrgPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetOrgPolicyRequest();
       var od = api.GetOrgPolicyRequest.fromJson(o.toJson());
       checkGetOrgPolicyRequest(od as api.GetOrgPolicyRequest);
@@ -1975,7 +1975,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetPolicyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetPolicyOptions();
       var od = api.GetPolicyOptions.fromJson(o.toJson());
       checkGetPolicyOptions(od as api.GetPolicyOptions);
@@ -1983,7 +1983,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Lien', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLien();
       var od = api.Lien.fromJson(o.toJson());
       checkLien(od as api.Lien);
@@ -1991,7 +1991,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAvailableOrgPolicyConstraintsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAvailableOrgPolicyConstraintsRequest();
       var od =
           api.ListAvailableOrgPolicyConstraintsRequest.fromJson(o.toJson());
@@ -2001,7 +2001,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAvailableOrgPolicyConstraintsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAvailableOrgPolicyConstraintsResponse();
       var od =
           api.ListAvailableOrgPolicyConstraintsResponse.fromJson(o.toJson());
@@ -2011,7 +2011,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListConstraint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListConstraint();
       var od = api.ListConstraint.fromJson(o.toJson());
       checkListConstraint(od as api.ListConstraint);
@@ -2019,7 +2019,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLiensResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLiensResponse();
       var od = api.ListLiensResponse.fromJson(o.toJson());
       checkListLiensResponse(od as api.ListLiensResponse);
@@ -2027,7 +2027,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOrgPoliciesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOrgPoliciesRequest();
       var od = api.ListOrgPoliciesRequest.fromJson(o.toJson());
       checkListOrgPoliciesRequest(od as api.ListOrgPoliciesRequest);
@@ -2035,7 +2035,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOrgPoliciesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOrgPoliciesResponse();
       var od = api.ListOrgPoliciesResponse.fromJson(o.toJson());
       checkListOrgPoliciesResponse(od as api.ListOrgPoliciesResponse);
@@ -2043,7 +2043,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListPolicy();
       var od = api.ListPolicy.fromJson(o.toJson());
       checkListPolicy(od as api.ListPolicy);
@@ -2051,7 +2051,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListProjectsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListProjectsResponse();
       var od = api.ListProjectsResponse.fromJson(o.toJson());
       checkListProjectsResponse(od as api.ListProjectsResponse);
@@ -2059,7 +2059,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -2067,7 +2067,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrgPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrgPolicy();
       var od = api.OrgPolicy.fromJson(o.toJson());
       checkOrgPolicy(od as api.OrgPolicy);
@@ -2075,7 +2075,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Organization', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrganization();
       var od = api.Organization.fromJson(o.toJson());
       checkOrganization(od as api.Organization);
@@ -2083,7 +2083,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrganizationOwner', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrganizationOwner();
       var od = api.OrganizationOwner.fromJson(o.toJson());
       checkOrganizationOwner(od as api.OrganizationOwner);
@@ -2091,7 +2091,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -2099,7 +2099,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Project', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProject();
       var od = api.Project.fromJson(o.toJson());
       checkProject(od as api.Project);
@@ -2107,7 +2107,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProjectCreationStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProjectCreationStatus();
       var od = api.ProjectCreationStatus.fromJson(o.toJson());
       checkProjectCreationStatus(od as api.ProjectCreationStatus);
@@ -2115,7 +2115,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResourceId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResourceId();
       var od = api.ResourceId.fromJson(o.toJson());
       checkResourceId(od as api.ResourceId);
@@ -2123,7 +2123,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestoreDefault', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestoreDefault();
       var od = api.RestoreDefault.fromJson(o.toJson());
       checkRestoreDefault(od as api.RestoreDefault);
@@ -2131,7 +2131,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchOrganizationsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchOrganizationsRequest();
       var od = api.SearchOrganizationsRequest.fromJson(o.toJson());
       checkSearchOrganizationsRequest(od as api.SearchOrganizationsRequest);
@@ -2139,7 +2139,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchOrganizationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchOrganizationsResponse();
       var od = api.SearchOrganizationsResponse.fromJson(o.toJson());
       checkSearchOrganizationsResponse(od as api.SearchOrganizationsResponse);
@@ -2147,7 +2147,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -2155,7 +2155,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetOrgPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetOrgPolicyRequest();
       var od = api.SetOrgPolicyRequest.fromJson(o.toJson());
       checkSetOrgPolicyRequest(od as api.SetOrgPolicyRequest);
@@ -2163,7 +2163,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -2171,7 +2171,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -2179,7 +2179,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -2187,7 +2187,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UndeleteProjectRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUndeleteProjectRequest();
       var od = api.UndeleteProjectRequest.fromJson(o.toJson());
       checkUndeleteProjectRequest(od as api.UndeleteProjectRequest);
@@ -2195,7 +2195,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateTagKeyMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateTagKeyMetadata();
       var od = api.UpdateTagKeyMetadata.fromJson(o.toJson());
       checkUpdateTagKeyMetadata(od as api.UpdateTagKeyMetadata);
@@ -2203,7 +2203,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateTagValueMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateTagValueMetadata();
       var od = api.UpdateTagValueMetadata.fromJson(o.toJson());
       checkUpdateTagValueMetadata(od as api.UpdateTagValueMetadata);
@@ -2211,7 +2211,7 @@ void main() {
   });
 
   unittest.group('resource-FoldersResource', () {
-    unittest.test('method--clearOrgPolicy', () {
+    unittest.test('method--clearOrgPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildClearOrgPolicyRequest();
@@ -2264,14 +2264,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .clearOrgPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.clearOrgPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--getEffectiveOrgPolicy', () {
+    unittest.test('method--getEffectiveOrgPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildGetEffectiveOrgPolicyRequest();
@@ -2325,15 +2323,13 @@ void main() {
         var resp = convert.json.encode(buildOrgPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getEffectiveOrgPolicy(arg_request, arg_resource,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrgPolicy(response as api.OrgPolicy);
-      })));
+      final response = await res.getEffectiveOrgPolicy(
+          arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkOrgPolicy(response as api.OrgPolicy);
     });
 
-    unittest.test('method--getOrgPolicy', () {
+    unittest.test('method--getOrgPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildGetOrgPolicyRequest();
@@ -2386,14 +2382,12 @@ void main() {
         var resp = convert.json.encode(buildOrgPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getOrgPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrgPolicy(response as api.OrgPolicy);
-      })));
+      final response = await res.getOrgPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkOrgPolicy(response as api.OrgPolicy);
     });
 
-    unittest.test('method--listAvailableOrgPolicyConstraints', () {
+    unittest.test('method--listAvailableOrgPolicyConstraints', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildListAvailableOrgPolicyConstraintsRequest();
@@ -2448,16 +2442,14 @@ void main() {
             .encode(buildListAvailableOrgPolicyConstraintsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listAvailableOrgPolicyConstraints(arg_request, arg_resource,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAvailableOrgPolicyConstraintsResponse(
-            response as api.ListAvailableOrgPolicyConstraintsResponse);
-      })));
+      final response = await res.listAvailableOrgPolicyConstraints(
+          arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkListAvailableOrgPolicyConstraintsResponse(
+          response as api.ListAvailableOrgPolicyConstraintsResponse);
     });
 
-    unittest.test('method--listOrgPolicies', () {
+    unittest.test('method--listOrgPolicies', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildListOrgPoliciesRequest();
@@ -2510,14 +2502,12 @@ void main() {
         var resp = convert.json.encode(buildListOrgPoliciesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listOrgPolicies(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOrgPoliciesResponse(response as api.ListOrgPoliciesResponse);
-      })));
+      final response = await res.listOrgPolicies(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkListOrgPoliciesResponse(response as api.ListOrgPoliciesResponse);
     });
 
-    unittest.test('method--setOrgPolicy', () {
+    unittest.test('method--setOrgPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildSetOrgPolicyRequest();
@@ -2570,16 +2560,14 @@ void main() {
         var resp = convert.json.encode(buildOrgPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setOrgPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrgPolicy(response as api.OrgPolicy);
-      })));
+      final response = await res.setOrgPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkOrgPolicy(response as api.OrgPolicy);
     });
   });
 
   unittest.group('resource-LiensResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).liens;
       var arg_request = buildLien();
@@ -2630,14 +2618,11 @@ void main() {
         var resp = convert.json.encode(buildLien());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLien(response as api.Lien);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkLien(response as api.Lien);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).liens;
       var arg_name = 'foo';
@@ -2685,14 +2670,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).liens;
       var arg_name = 'foo';
@@ -2740,14 +2722,11 @@ void main() {
         var resp = convert.json.encode(buildLien());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLien(response as api.Lien);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLien(response as api.Lien);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).liens;
       var arg_pageSize = 42;
@@ -2808,20 +2787,17 @@ void main() {
         var resp = convert.json.encode(buildListLiensResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              parent: arg_parent,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLiensResponse(response as api.ListLiensResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          parent: arg_parent,
+          $fields: arg_$fields);
+      checkListLiensResponse(response as api.ListLiensResponse);
     });
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).operations;
       var arg_name = 'foo';
@@ -2869,16 +2845,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-OrganizationsResource', () {
-    unittest.test('method--clearOrgPolicy', () {
+    unittest.test('method--clearOrgPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).organizations;
       var arg_request = buildClearOrgPolicyRequest();
@@ -2931,14 +2904,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .clearOrgPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.clearOrgPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).organizations;
       var arg_name = 'foo';
@@ -2986,14 +2957,11 @@ void main() {
         var resp = convert.json.encode(buildOrganization());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrganization(response as api.Organization);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOrganization(response as api.Organization);
     });
 
-    unittest.test('method--getEffectiveOrgPolicy', () {
+    unittest.test('method--getEffectiveOrgPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).organizations;
       var arg_request = buildGetEffectiveOrgPolicyRequest();
@@ -3047,15 +3015,13 @@ void main() {
         var resp = convert.json.encode(buildOrgPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getEffectiveOrgPolicy(arg_request, arg_resource,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrgPolicy(response as api.OrgPolicy);
-      })));
+      final response = await res.getEffectiveOrgPolicy(
+          arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkOrgPolicy(response as api.OrgPolicy);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).organizations;
       var arg_request = buildGetIamPolicyRequest();
@@ -3108,14 +3074,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--getOrgPolicy', () {
+    unittest.test('method--getOrgPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).organizations;
       var arg_request = buildGetOrgPolicyRequest();
@@ -3168,14 +3132,12 @@ void main() {
         var resp = convert.json.encode(buildOrgPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getOrgPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrgPolicy(response as api.OrgPolicy);
-      })));
+      final response = await res.getOrgPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkOrgPolicy(response as api.OrgPolicy);
     });
 
-    unittest.test('method--listAvailableOrgPolicyConstraints', () {
+    unittest.test('method--listAvailableOrgPolicyConstraints', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).organizations;
       var arg_request = buildListAvailableOrgPolicyConstraintsRequest();
@@ -3230,16 +3192,14 @@ void main() {
             .encode(buildListAvailableOrgPolicyConstraintsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listAvailableOrgPolicyConstraints(arg_request, arg_resource,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAvailableOrgPolicyConstraintsResponse(
-            response as api.ListAvailableOrgPolicyConstraintsResponse);
-      })));
+      final response = await res.listAvailableOrgPolicyConstraints(
+          arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkListAvailableOrgPolicyConstraintsResponse(
+          response as api.ListAvailableOrgPolicyConstraintsResponse);
     });
 
-    unittest.test('method--listOrgPolicies', () {
+    unittest.test('method--listOrgPolicies', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).organizations;
       var arg_request = buildListOrgPoliciesRequest();
@@ -3292,14 +3252,12 @@ void main() {
         var resp = convert.json.encode(buildListOrgPoliciesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listOrgPolicies(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOrgPoliciesResponse(response as api.ListOrgPoliciesResponse);
-      })));
+      final response = await res.listOrgPolicies(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkListOrgPoliciesResponse(response as api.ListOrgPoliciesResponse);
     });
 
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).organizations;
       var arg_request = buildSearchOrganizationsRequest();
@@ -3350,15 +3308,12 @@ void main() {
         var resp = convert.json.encode(buildSearchOrganizationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchOrganizationsResponse(
-            response as api.SearchOrganizationsResponse);
-      })));
+      final response = await res.search(arg_request, $fields: arg_$fields);
+      checkSearchOrganizationsResponse(
+          response as api.SearchOrganizationsResponse);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).organizations;
       var arg_request = buildSetIamPolicyRequest();
@@ -3411,14 +3366,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--setOrgPolicy', () {
+    unittest.test('method--setOrgPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).organizations;
       var arg_request = buildSetOrgPolicyRequest();
@@ -3471,14 +3424,12 @@ void main() {
         var resp = convert.json.encode(buildOrgPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setOrgPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrgPolicy(response as api.OrgPolicy);
-      })));
+      final response = await res.setOrgPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkOrgPolicy(response as api.OrgPolicy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).organizations;
       var arg_request = buildTestIamPermissionsRequest();
@@ -3531,17 +3482,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsResource', () {
-    unittest.test('method--clearOrgPolicy', () {
+    unittest.test('method--clearOrgPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).projects;
       var arg_request = buildClearOrgPolicyRequest();
@@ -3594,14 +3543,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .clearOrgPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.clearOrgPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).projects;
       var arg_request = buildProject();
@@ -3652,14 +3599,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).projects;
       var arg_projectId = 'foo';
@@ -3712,14 +3656,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_projectId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).projects;
       var arg_projectId = 'foo';
@@ -3772,14 +3713,11 @@ void main() {
         var resp = convert.json.encode(buildProject());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProject(response as api.Project);
-      })));
+      final response = await res.get(arg_projectId, $fields: arg_$fields);
+      checkProject(response as api.Project);
     });
 
-    unittest.test('method--getAncestry', () {
+    unittest.test('method--getAncestry', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).projects;
       var arg_request = buildGetAncestryRequest();
@@ -3845,14 +3783,12 @@ void main() {
         var resp = convert.json.encode(buildGetAncestryResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getAncestry(arg_request, arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetAncestryResponse(response as api.GetAncestryResponse);
-      })));
+      final response = await res.getAncestry(arg_request, arg_projectId,
+          $fields: arg_$fields);
+      checkGetAncestryResponse(response as api.GetAncestryResponse);
     });
 
-    unittest.test('method--getEffectiveOrgPolicy', () {
+    unittest.test('method--getEffectiveOrgPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).projects;
       var arg_request = buildGetEffectiveOrgPolicyRequest();
@@ -3906,15 +3842,13 @@ void main() {
         var resp = convert.json.encode(buildOrgPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getEffectiveOrgPolicy(arg_request, arg_resource,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrgPolicy(response as api.OrgPolicy);
-      })));
+      final response = await res.getEffectiveOrgPolicy(
+          arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkOrgPolicy(response as api.OrgPolicy);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).projects;
       var arg_request = buildGetIamPolicyRequest();
@@ -3980,14 +3914,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--getOrgPolicy', () {
+    unittest.test('method--getOrgPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).projects;
       var arg_request = buildGetOrgPolicyRequest();
@@ -4040,14 +3972,12 @@ void main() {
         var resp = convert.json.encode(buildOrgPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getOrgPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrgPolicy(response as api.OrgPolicy);
-      })));
+      final response = await res.getOrgPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkOrgPolicy(response as api.OrgPolicy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).projects;
       var arg_filter = 'foo';
@@ -4108,18 +4038,15 @@ void main() {
         var resp = convert.json.encode(buildListProjectsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListProjectsResponse(response as api.ListProjectsResponse);
-      })));
+      final response = await res.list(
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListProjectsResponse(response as api.ListProjectsResponse);
     });
 
-    unittest.test('method--listAvailableOrgPolicyConstraints', () {
+    unittest.test('method--listAvailableOrgPolicyConstraints', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).projects;
       var arg_request = buildListAvailableOrgPolicyConstraintsRequest();
@@ -4174,16 +4101,14 @@ void main() {
             .encode(buildListAvailableOrgPolicyConstraintsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listAvailableOrgPolicyConstraints(arg_request, arg_resource,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAvailableOrgPolicyConstraintsResponse(
-            response as api.ListAvailableOrgPolicyConstraintsResponse);
-      })));
+      final response = await res.listAvailableOrgPolicyConstraints(
+          arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkListAvailableOrgPolicyConstraintsResponse(
+          response as api.ListAvailableOrgPolicyConstraintsResponse);
     });
 
-    unittest.test('method--listOrgPolicies', () {
+    unittest.test('method--listOrgPolicies', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).projects;
       var arg_request = buildListOrgPoliciesRequest();
@@ -4236,14 +4161,12 @@ void main() {
         var resp = convert.json.encode(buildListOrgPoliciesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listOrgPolicies(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOrgPoliciesResponse(response as api.ListOrgPoliciesResponse);
-      })));
+      final response = await res.listOrgPolicies(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkListOrgPoliciesResponse(response as api.ListOrgPoliciesResponse);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).projects;
       var arg_request = buildSetIamPolicyRequest();
@@ -4309,14 +4232,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--setOrgPolicy', () {
+    unittest.test('method--setOrgPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).projects;
       var arg_request = buildSetOrgPolicyRequest();
@@ -4369,14 +4290,12 @@ void main() {
         var resp = convert.json.encode(buildOrgPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setOrgPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrgPolicy(response as api.OrgPolicy);
-      })));
+      final response = await res.setOrgPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkOrgPolicy(response as api.OrgPolicy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).projects;
       var arg_request = buildTestIamPermissionsRequest();
@@ -4442,15 +4361,13 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
 
-    unittest.test('method--undelete', () {
+    unittest.test('method--undelete', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).projects;
       var arg_request = buildUndeleteProjectRequest();
@@ -4516,14 +4433,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .undelete(arg_request, arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.undelete(arg_request, arg_projectId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).projects;
       var arg_request = buildProject();
@@ -4581,11 +4496,9 @@ void main() {
         var resp = convert.json.encode(buildProject());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProject(response as api.Project);
-      })));
+      final response =
+          await res.update(arg_request, arg_projectId, $fields: arg_$fields);
+      checkProject(response as api.Project);
     });
   });
 }

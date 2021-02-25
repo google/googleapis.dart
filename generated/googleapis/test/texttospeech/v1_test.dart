@@ -281,7 +281,7 @@ void checkVoiceSelectionParams(api.VoiceSelectionParams o) {
 
 void main() {
   unittest.group('obj-schema-AudioConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAudioConfig();
       var od = api.AudioConfig.fromJson(o.toJson());
       checkAudioConfig(od as api.AudioConfig);
@@ -289,7 +289,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListVoicesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListVoicesResponse();
       var od = api.ListVoicesResponse.fromJson(o.toJson());
       checkListVoicesResponse(od as api.ListVoicesResponse);
@@ -297,7 +297,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SynthesisInput', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSynthesisInput();
       var od = api.SynthesisInput.fromJson(o.toJson());
       checkSynthesisInput(od as api.SynthesisInput);
@@ -305,7 +305,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SynthesizeSpeechRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSynthesizeSpeechRequest();
       var od = api.SynthesizeSpeechRequest.fromJson(o.toJson());
       checkSynthesizeSpeechRequest(od as api.SynthesizeSpeechRequest);
@@ -313,7 +313,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SynthesizeSpeechResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSynthesizeSpeechResponse();
       var od = api.SynthesizeSpeechResponse.fromJson(o.toJson());
       checkSynthesizeSpeechResponse(od as api.SynthesizeSpeechResponse);
@@ -321,7 +321,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Voice', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVoice();
       var od = api.Voice.fromJson(o.toJson());
       checkVoice(od as api.Voice);
@@ -329,7 +329,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VoiceSelectionParams', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVoiceSelectionParams();
       var od = api.VoiceSelectionParams.fromJson(o.toJson());
       checkVoiceSelectionParams(od as api.VoiceSelectionParams);
@@ -337,7 +337,7 @@ void main() {
   });
 
   unittest.group('resource-TextResource', () {
-    unittest.test('method--synthesize', () {
+    unittest.test('method--synthesize', () async {
       var mock = HttpServerMock();
       var res = api.TexttospeechApi(mock).text;
       var arg_request = buildSynthesizeSpeechRequest();
@@ -388,16 +388,13 @@ void main() {
         var resp = convert.json.encode(buildSynthesizeSpeechResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .synthesize(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSynthesizeSpeechResponse(response as api.SynthesizeSpeechResponse);
-      })));
+      final response = await res.synthesize(arg_request, $fields: arg_$fields);
+      checkSynthesizeSpeechResponse(response as api.SynthesizeSpeechResponse);
     });
   });
 
   unittest.group('resource-VoicesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TexttospeechApi(mock).voices;
       var arg_languageCode = 'foo';
@@ -448,11 +445,9 @@ void main() {
         var resp = convert.json.encode(buildListVoicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(languageCode: arg_languageCode, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListVoicesResponse(response as api.ListVoicesResponse);
-      })));
+      final response =
+          await res.list(languageCode: arg_languageCode, $fields: arg_$fields);
+      checkListVoicesResponse(response as api.ListVoicesResponse);
     });
   });
 }

@@ -769,7 +769,7 @@ void checkStatus(api.Status o) {
 
 void main() {
   unittest.group('obj-schema-Assignment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAssignment();
       var od = api.Assignment.fromJson(o.toJson());
       checkAssignment(od as api.Assignment);
@@ -777,7 +777,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BiReservation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBiReservation();
       var od = api.BiReservation.fromJson(o.toJson());
       checkBiReservation(od as api.BiReservation);
@@ -785,7 +785,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CapacityCommitment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCapacityCommitment();
       var od = api.CapacityCommitment.fromJson(o.toJson());
       checkCapacityCommitment(od as api.CapacityCommitment);
@@ -793,7 +793,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateSlotPoolMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateSlotPoolMetadata();
       var od = api.CreateSlotPoolMetadata.fromJson(o.toJson());
       checkCreateSlotPoolMetadata(od as api.CreateSlotPoolMetadata);
@@ -801,7 +801,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -809,7 +809,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAssignmentsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAssignmentsResponse();
       var od = api.ListAssignmentsResponse.fromJson(o.toJson());
       checkListAssignmentsResponse(od as api.ListAssignmentsResponse);
@@ -817,7 +817,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCapacityCommitmentsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCapacityCommitmentsResponse();
       var od = api.ListCapacityCommitmentsResponse.fromJson(o.toJson());
       checkListCapacityCommitmentsResponse(
@@ -826,7 +826,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -834,7 +834,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListReservationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListReservationsResponse();
       var od = api.ListReservationsResponse.fromJson(o.toJson());
       checkListReservationsResponse(od as api.ListReservationsResponse);
@@ -842,7 +842,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MergeCapacityCommitmentsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMergeCapacityCommitmentsRequest();
       var od = api.MergeCapacityCommitmentsRequest.fromJson(o.toJson());
       checkMergeCapacityCommitmentsRequest(
@@ -851,7 +851,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MoveAssignmentRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMoveAssignmentRequest();
       var od = api.MoveAssignmentRequest.fromJson(o.toJson());
       checkMoveAssignmentRequest(od as api.MoveAssignmentRequest);
@@ -859,7 +859,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -867,7 +867,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Reservation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReservation();
       var od = api.Reservation.fromJson(o.toJson());
       checkReservation(od as api.Reservation);
@@ -875,7 +875,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchAllAssignmentsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchAllAssignmentsResponse();
       var od = api.SearchAllAssignmentsResponse.fromJson(o.toJson());
       checkSearchAllAssignmentsResponse(od as api.SearchAllAssignmentsResponse);
@@ -883,7 +883,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchAssignmentsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchAssignmentsResponse();
       var od = api.SearchAssignmentsResponse.fromJson(o.toJson());
       checkSearchAssignmentsResponse(od as api.SearchAssignmentsResponse);
@@ -891,7 +891,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SplitCapacityCommitmentRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSplitCapacityCommitmentRequest();
       var od = api.SplitCapacityCommitmentRequest.fromJson(o.toJson());
       checkSplitCapacityCommitmentRequest(
@@ -900,7 +900,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SplitCapacityCommitmentResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSplitCapacityCommitmentResponse();
       var od = api.SplitCapacityCommitmentResponse.fromJson(o.toJson());
       checkSplitCapacityCommitmentResponse(
@@ -909,7 +909,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -917,7 +917,7 @@ void main() {
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock).operations;
       var arg_name = 'foo';
@@ -965,14 +965,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock).operations;
       var arg_name = 'foo';
@@ -1035,20 +1032,17 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--getBiReservation', () {
+    unittest.test('method--getBiReservation', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -1096,14 +1090,12 @@ void main() {
         var resp = convert.json.encode(buildBiReservation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getBiReservation(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBiReservation(response as api.BiReservation);
-      })));
+      final response =
+          await res.getBiReservation(arg_name, $fields: arg_$fields);
+      checkBiReservation(response as api.BiReservation);
     });
 
-    unittest.test('method--searchAllAssignments', () {
+    unittest.test('method--searchAllAssignments', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock).projects.locations;
       var arg_parent = 'foo';
@@ -1166,19 +1158,16 @@ void main() {
         var resp = convert.json.encode(buildSearchAllAssignmentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchAllAssignments(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              query: arg_query,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchAllAssignmentsResponse(
-            response as api.SearchAllAssignmentsResponse);
-      })));
+      final response = await res.searchAllAssignments(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          query: arg_query,
+          $fields: arg_$fields);
+      checkSearchAllAssignmentsResponse(
+          response as api.SearchAllAssignmentsResponse);
     });
 
-    unittest.test('method--searchAssignments', () {
+    unittest.test('method--searchAssignments', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock).projects.locations;
       var arg_parent = 'foo';
@@ -1241,19 +1230,15 @@ void main() {
         var resp = convert.json.encode(buildSearchAssignmentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchAssignments(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              query: arg_query,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchAssignmentsResponse(
-            response as api.SearchAssignmentsResponse);
-      })));
+      final response = await res.searchAssignments(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          query: arg_query,
+          $fields: arg_$fields);
+      checkSearchAssignmentsResponse(response as api.SearchAssignmentsResponse);
     });
 
-    unittest.test('method--updateBiReservation', () {
+    unittest.test('method--updateBiReservation', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock).projects.locations;
       var arg_request = buildBiReservation();
@@ -1311,17 +1296,14 @@ void main() {
         var resp = convert.json.encode(buildBiReservation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateBiReservation(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBiReservation(response as api.BiReservation);
-      })));
+      final response = await res.updateBiReservation(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkBiReservation(response as api.BiReservation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsCapacityCommitmentsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock)
           .projects
@@ -1382,17 +1364,13 @@ void main() {
         var resp = convert.json.encode(buildCapacityCommitment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              enforceSingleAdminProjectPerOrg:
-                  arg_enforceSingleAdminProjectPerOrg,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCapacityCommitment(response as api.CapacityCommitment);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          enforceSingleAdminProjectPerOrg: arg_enforceSingleAdminProjectPerOrg,
+          $fields: arg_$fields);
+      checkCapacityCommitment(response as api.CapacityCommitment);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock)
           .projects
@@ -1443,14 +1421,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock)
           .projects
@@ -1501,14 +1476,11 @@ void main() {
         var resp = convert.json.encode(buildCapacityCommitment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCapacityCommitment(response as api.CapacityCommitment);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkCapacityCommitment(response as api.CapacityCommitment);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock)
           .projects
@@ -1569,18 +1541,15 @@ void main() {
         var resp = convert.json.encode(buildListCapacityCommitmentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCapacityCommitmentsResponse(
-            response as api.ListCapacityCommitmentsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListCapacityCommitmentsResponse(
+          response as api.ListCapacityCommitmentsResponse);
     });
 
-    unittest.test('method--merge', () {
+    unittest.test('method--merge', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock)
           .projects
@@ -1637,14 +1606,12 @@ void main() {
         var resp = convert.json.encode(buildCapacityCommitment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .merge(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCapacityCommitment(response as api.CapacityCommitment);
-      })));
+      final response =
+          await res.merge(arg_request, arg_parent, $fields: arg_$fields);
+      checkCapacityCommitment(response as api.CapacityCommitment);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock)
           .projects
@@ -1705,15 +1672,12 @@ void main() {
         var resp = convert.json.encode(buildCapacityCommitment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCapacityCommitment(response as api.CapacityCommitment);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkCapacityCommitment(response as api.CapacityCommitment);
     });
 
-    unittest.test('method--split', () {
+    unittest.test('method--split', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock)
           .projects
@@ -1770,17 +1734,15 @@ void main() {
         var resp = convert.json.encode(buildSplitCapacityCommitmentResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .split(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSplitCapacityCommitmentResponse(
-            response as api.SplitCapacityCommitmentResponse);
-      })));
+      final response =
+          await res.split(arg_request, arg_name, $fields: arg_$fields);
+      checkSplitCapacityCommitmentResponse(
+          response as api.SplitCapacityCommitmentResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsReservationsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.BigQueryReservationApi(mock).projects.locations.reservations;
@@ -1839,15 +1801,12 @@ void main() {
         var resp = convert.json.encode(buildReservation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              reservationId: arg_reservationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReservation(response as api.Reservation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          reservationId: arg_reservationId, $fields: arg_$fields);
+      checkReservation(response as api.Reservation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.BigQueryReservationApi(mock).projects.locations.reservations;
@@ -1896,14 +1855,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.BigQueryReservationApi(mock).projects.locations.reservations;
@@ -1952,14 +1908,11 @@ void main() {
         var resp = convert.json.encode(buildReservation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReservation(response as api.Reservation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkReservation(response as api.Reservation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.BigQueryReservationApi(mock).projects.locations.reservations;
@@ -2018,17 +1971,14 @@ void main() {
         var resp = convert.json.encode(buildListReservationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListReservationsResponse(response as api.ListReservationsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListReservationsResponse(response as api.ListReservationsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res =
           api.BigQueryReservationApi(mock).projects.locations.reservations;
@@ -2087,18 +2037,15 @@ void main() {
         var resp = convert.json.encode(buildReservation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReservation(response as api.Reservation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkReservation(response as api.Reservation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsReservationsAssignmentsResource',
       () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock)
           .projects
@@ -2155,14 +2102,12 @@ void main() {
         var resp = convert.json.encode(buildAssignment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAssignment(response as api.Assignment);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkAssignment(response as api.Assignment);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock)
           .projects
@@ -2214,14 +2159,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock)
           .projects
@@ -2283,17 +2225,14 @@ void main() {
         var resp = convert.json.encode(buildListAssignmentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAssignmentsResponse(response as api.ListAssignmentsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAssignmentsResponse(response as api.ListAssignmentsResponse);
     });
 
-    unittest.test('method--move', () {
+    unittest.test('method--move', () async {
       var mock = HttpServerMock();
       var res = api.BigQueryReservationApi(mock)
           .projects
@@ -2350,11 +2289,9 @@ void main() {
         var resp = convert.json.encode(buildAssignment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .move(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAssignment(response as api.Assignment);
-      })));
+      final response =
+          await res.move(arg_request, arg_name, $fields: arg_$fields);
+      checkAssignment(response as api.Assignment);
     });
   });
 }

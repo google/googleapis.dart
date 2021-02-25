@@ -987,7 +987,7 @@ void checkGoogleTypeMoney(api.GoogleTypeMoney o) {
 
 void main() {
   unittest.group('obj-schema-GoogleCloudRecommenderV1CostProjection', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommenderV1CostProjection();
       var od = api.GoogleCloudRecommenderV1CostProjection.fromJson(o.toJson());
       checkGoogleCloudRecommenderV1CostProjection(
@@ -996,7 +996,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRecommenderV1Impact', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommenderV1Impact();
       var od = api.GoogleCloudRecommenderV1Impact.fromJson(o.toJson());
       checkGoogleCloudRecommenderV1Impact(
@@ -1005,7 +1005,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRecommenderV1Insight', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommenderV1Insight();
       var od = api.GoogleCloudRecommenderV1Insight.fromJson(o.toJson());
       checkGoogleCloudRecommenderV1Insight(
@@ -1015,7 +1015,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudRecommenderV1InsightRecommendationReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommenderV1InsightRecommendationReference();
       var od =
           api.GoogleCloudRecommenderV1InsightRecommendationReference.fromJson(
@@ -1026,7 +1026,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRecommenderV1InsightStateInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommenderV1InsightStateInfo();
       var od =
           api.GoogleCloudRecommenderV1InsightStateInfo.fromJson(o.toJson());
@@ -1036,7 +1036,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRecommenderV1ListInsightsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommenderV1ListInsightsResponse();
       var od =
           api.GoogleCloudRecommenderV1ListInsightsResponse.fromJson(o.toJson());
@@ -1047,7 +1047,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudRecommenderV1ListRecommendationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommenderV1ListRecommendationsResponse();
       var od = api.GoogleCloudRecommenderV1ListRecommendationsResponse.fromJson(
           o.toJson());
@@ -1058,7 +1058,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudRecommenderV1MarkInsightAcceptedRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommenderV1MarkInsightAcceptedRequest();
       var od = api.GoogleCloudRecommenderV1MarkInsightAcceptedRequest.fromJson(
           o.toJson());
@@ -1070,7 +1070,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommenderV1MarkRecommendationClaimedRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommenderV1MarkRecommendationClaimedRequest();
       var od =
           api.GoogleCloudRecommenderV1MarkRecommendationClaimedRequest.fromJson(
@@ -1082,7 +1082,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudRecommenderV1MarkRecommendationFailedRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommenderV1MarkRecommendationFailedRequest();
       var od =
           api.GoogleCloudRecommenderV1MarkRecommendationFailedRequest.fromJson(
@@ -1095,7 +1095,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommenderV1MarkRecommendationSucceededRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommenderV1MarkRecommendationSucceededRequest();
       var od = api.GoogleCloudRecommenderV1MarkRecommendationSucceededRequest
           .fromJson(o.toJson());
@@ -1105,7 +1105,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRecommenderV1Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommenderV1Operation();
       var od = api.GoogleCloudRecommenderV1Operation.fromJson(o.toJson());
       checkGoogleCloudRecommenderV1Operation(
@@ -1114,7 +1114,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRecommenderV1OperationGroup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommenderV1OperationGroup();
       var od = api.GoogleCloudRecommenderV1OperationGroup.fromJson(o.toJson());
       checkGoogleCloudRecommenderV1OperationGroup(
@@ -1123,7 +1123,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRecommenderV1Recommendation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommenderV1Recommendation();
       var od = api.GoogleCloudRecommenderV1Recommendation.fromJson(o.toJson());
       checkGoogleCloudRecommenderV1Recommendation(
@@ -1133,7 +1133,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRecommenderV1RecommendationContent',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommenderV1RecommendationContent();
       var od = api.GoogleCloudRecommenderV1RecommendationContent.fromJson(
           o.toJson());
@@ -1144,7 +1144,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudRecommenderV1RecommendationInsightReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommenderV1RecommendationInsightReference();
       var od =
           api.GoogleCloudRecommenderV1RecommendationInsightReference.fromJson(
@@ -1156,7 +1156,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRecommenderV1RecommendationStateInfo',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommenderV1RecommendationStateInfo();
       var od = api.GoogleCloudRecommenderV1RecommendationStateInfo.fromJson(
           o.toJson());
@@ -1166,7 +1166,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRecommenderV1ValueMatcher', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommenderV1ValueMatcher();
       var od = api.GoogleCloudRecommenderV1ValueMatcher.fromJson(o.toJson());
       checkGoogleCloudRecommenderV1ValueMatcher(
@@ -1175,7 +1175,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypeMoney', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeMoney();
       var od = api.GoogleTypeMoney.fromJson(o.toJson());
       checkGoogleTypeMoney(od as api.GoogleTypeMoney);
@@ -1184,7 +1184,7 @@ void main() {
 
   unittest.group(
       'resource-BillingAccountsLocationsInsightTypesInsightsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .billingAccounts
@@ -1236,15 +1236,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudRecommenderV1Insight());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Insight(
-            response as api.GoogleCloudRecommenderV1Insight);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Insight(
+          response as api.GoogleCloudRecommenderV1Insight);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .billingAccounts
@@ -1312,19 +1309,16 @@ void main() {
             .encode(buildGoogleCloudRecommenderV1ListInsightsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1ListInsightsResponse(
-            response as api.GoogleCloudRecommenderV1ListInsightsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1ListInsightsResponse(
+          response as api.GoogleCloudRecommenderV1ListInsightsResponse);
     });
 
-    unittest.test('method--markAccepted', () {
+    unittest.test('method--markAccepted', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .billingAccounts
@@ -1384,19 +1378,17 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudRecommenderV1Insight());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .markAccepted(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Insight(
-            response as api.GoogleCloudRecommenderV1Insight);
-      })));
+      final response =
+          await res.markAccepted(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Insight(
+          response as api.GoogleCloudRecommenderV1Insight);
     });
   });
 
   unittest.group(
       'resource-BillingAccountsLocationsRecommendersRecommendationsResource',
       () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .billingAccounts
@@ -1449,15 +1441,12 @@ void main() {
             convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Recommendation(
-            response as api.GoogleCloudRecommenderV1Recommendation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .billingAccounts
@@ -1525,19 +1514,16 @@ void main() {
             .encode(buildGoogleCloudRecommenderV1ListRecommendationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1ListRecommendationsResponse(response
-            as api.GoogleCloudRecommenderV1ListRecommendationsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1ListRecommendationsResponse(
+          response as api.GoogleCloudRecommenderV1ListRecommendationsResponse);
     });
 
-    unittest.test('method--markClaimed', () {
+    unittest.test('method--markClaimed', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .billingAccounts
@@ -1597,15 +1583,13 @@ void main() {
             convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .markClaimed(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Recommendation(
-            response as api.GoogleCloudRecommenderV1Recommendation);
-      })));
+      final response =
+          await res.markClaimed(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
     });
 
-    unittest.test('method--markFailed', () {
+    unittest.test('method--markFailed', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .billingAccounts
@@ -1665,15 +1649,13 @@ void main() {
             convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .markFailed(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Recommendation(
-            response as api.GoogleCloudRecommenderV1Recommendation);
-      })));
+      final response =
+          await res.markFailed(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
     });
 
-    unittest.test('method--markSucceeded', () {
+    unittest.test('method--markSucceeded', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .billingAccounts
@@ -1733,17 +1715,15 @@ void main() {
             convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .markSucceeded(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Recommendation(
-            response as api.GoogleCloudRecommenderV1Recommendation);
-      })));
+      final response =
+          await res.markSucceeded(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
     });
   });
 
   unittest.group('resource-FoldersLocationsInsightTypesInsightsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.RecommenderApi(mock).folders.locations.insightTypes.insights;
@@ -1792,15 +1772,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudRecommenderV1Insight());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Insight(
-            response as api.GoogleCloudRecommenderV1Insight);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Insight(
+          response as api.GoogleCloudRecommenderV1Insight);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.RecommenderApi(mock).folders.locations.insightTypes.insights;
@@ -1865,19 +1842,16 @@ void main() {
             .encode(buildGoogleCloudRecommenderV1ListInsightsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1ListInsightsResponse(
-            response as api.GoogleCloudRecommenderV1ListInsightsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1ListInsightsResponse(
+          response as api.GoogleCloudRecommenderV1ListInsightsResponse);
     });
 
-    unittest.test('method--markAccepted', () {
+    unittest.test('method--markAccepted', () async {
       var mock = HttpServerMock();
       var res =
           api.RecommenderApi(mock).folders.locations.insightTypes.insights;
@@ -1934,18 +1908,16 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudRecommenderV1Insight());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .markAccepted(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Insight(
-            response as api.GoogleCloudRecommenderV1Insight);
-      })));
+      final response =
+          await res.markAccepted(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Insight(
+          response as api.GoogleCloudRecommenderV1Insight);
     });
   });
 
   unittest.group('resource-FoldersLocationsRecommendersRecommendationsResource',
       () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .folders
@@ -1998,15 +1970,12 @@ void main() {
             convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Recommendation(
-            response as api.GoogleCloudRecommenderV1Recommendation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .folders
@@ -2074,19 +2043,16 @@ void main() {
             .encode(buildGoogleCloudRecommenderV1ListRecommendationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1ListRecommendationsResponse(response
-            as api.GoogleCloudRecommenderV1ListRecommendationsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1ListRecommendationsResponse(
+          response as api.GoogleCloudRecommenderV1ListRecommendationsResponse);
     });
 
-    unittest.test('method--markClaimed', () {
+    unittest.test('method--markClaimed', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .folders
@@ -2146,15 +2112,13 @@ void main() {
             convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .markClaimed(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Recommendation(
-            response as api.GoogleCloudRecommenderV1Recommendation);
-      })));
+      final response =
+          await res.markClaimed(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
     });
 
-    unittest.test('method--markFailed', () {
+    unittest.test('method--markFailed', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .folders
@@ -2214,15 +2178,13 @@ void main() {
             convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .markFailed(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Recommendation(
-            response as api.GoogleCloudRecommenderV1Recommendation);
-      })));
+      final response =
+          await res.markFailed(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
     });
 
-    unittest.test('method--markSucceeded', () {
+    unittest.test('method--markSucceeded', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .folders
@@ -2282,18 +2244,16 @@ void main() {
             convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .markSucceeded(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Recommendation(
-            response as api.GoogleCloudRecommenderV1Recommendation);
-      })));
+      final response =
+          await res.markSucceeded(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
     });
   });
 
   unittest.group('resource-OrganizationsLocationsInsightTypesInsightsResource',
       () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .organizations
@@ -2345,15 +2305,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudRecommenderV1Insight());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Insight(
-            response as api.GoogleCloudRecommenderV1Insight);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Insight(
+          response as api.GoogleCloudRecommenderV1Insight);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .organizations
@@ -2421,19 +2378,16 @@ void main() {
             .encode(buildGoogleCloudRecommenderV1ListInsightsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1ListInsightsResponse(
-            response as api.GoogleCloudRecommenderV1ListInsightsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1ListInsightsResponse(
+          response as api.GoogleCloudRecommenderV1ListInsightsResponse);
     });
 
-    unittest.test('method--markAccepted', () {
+    unittest.test('method--markAccepted', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .organizations
@@ -2493,18 +2447,16 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudRecommenderV1Insight());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .markAccepted(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Insight(
-            response as api.GoogleCloudRecommenderV1Insight);
-      })));
+      final response =
+          await res.markAccepted(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Insight(
+          response as api.GoogleCloudRecommenderV1Insight);
     });
   });
 
   unittest.group(
       'resource-OrganizationsLocationsRecommendersRecommendationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .organizations
@@ -2557,15 +2509,12 @@ void main() {
             convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Recommendation(
-            response as api.GoogleCloudRecommenderV1Recommendation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .organizations
@@ -2633,19 +2582,16 @@ void main() {
             .encode(buildGoogleCloudRecommenderV1ListRecommendationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1ListRecommendationsResponse(response
-            as api.GoogleCloudRecommenderV1ListRecommendationsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1ListRecommendationsResponse(
+          response as api.GoogleCloudRecommenderV1ListRecommendationsResponse);
     });
 
-    unittest.test('method--markClaimed', () {
+    unittest.test('method--markClaimed', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .organizations
@@ -2705,15 +2651,13 @@ void main() {
             convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .markClaimed(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Recommendation(
-            response as api.GoogleCloudRecommenderV1Recommendation);
-      })));
+      final response =
+          await res.markClaimed(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
     });
 
-    unittest.test('method--markFailed', () {
+    unittest.test('method--markFailed', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .organizations
@@ -2773,15 +2717,13 @@ void main() {
             convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .markFailed(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Recommendation(
-            response as api.GoogleCloudRecommenderV1Recommendation);
-      })));
+      final response =
+          await res.markFailed(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
     });
 
-    unittest.test('method--markSucceeded', () {
+    unittest.test('method--markSucceeded', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .organizations
@@ -2841,17 +2783,15 @@ void main() {
             convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .markSucceeded(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Recommendation(
-            response as api.GoogleCloudRecommenderV1Recommendation);
-      })));
+      final response =
+          await res.markSucceeded(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsInsightTypesInsightsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.RecommenderApi(mock).projects.locations.insightTypes.insights;
@@ -2900,15 +2840,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudRecommenderV1Insight());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Insight(
-            response as api.GoogleCloudRecommenderV1Insight);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Insight(
+          response as api.GoogleCloudRecommenderV1Insight);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.RecommenderApi(mock).projects.locations.insightTypes.insights;
@@ -2973,19 +2910,16 @@ void main() {
             .encode(buildGoogleCloudRecommenderV1ListInsightsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1ListInsightsResponse(
-            response as api.GoogleCloudRecommenderV1ListInsightsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1ListInsightsResponse(
+          response as api.GoogleCloudRecommenderV1ListInsightsResponse);
     });
 
-    unittest.test('method--markAccepted', () {
+    unittest.test('method--markAccepted', () async {
       var mock = HttpServerMock();
       var res =
           api.RecommenderApi(mock).projects.locations.insightTypes.insights;
@@ -3042,18 +2976,16 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudRecommenderV1Insight());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .markAccepted(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Insight(
-            response as api.GoogleCloudRecommenderV1Insight);
-      })));
+      final response =
+          await res.markAccepted(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Insight(
+          response as api.GoogleCloudRecommenderV1Insight);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsRecommendersRecommendationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .projects
@@ -3106,15 +3038,12 @@ void main() {
             convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Recommendation(
-            response as api.GoogleCloudRecommenderV1Recommendation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .projects
@@ -3182,19 +3111,16 @@ void main() {
             .encode(buildGoogleCloudRecommenderV1ListRecommendationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1ListRecommendationsResponse(response
-            as api.GoogleCloudRecommenderV1ListRecommendationsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1ListRecommendationsResponse(
+          response as api.GoogleCloudRecommenderV1ListRecommendationsResponse);
     });
 
-    unittest.test('method--markClaimed', () {
+    unittest.test('method--markClaimed', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .projects
@@ -3254,15 +3180,13 @@ void main() {
             convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .markClaimed(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Recommendation(
-            response as api.GoogleCloudRecommenderV1Recommendation);
-      })));
+      final response =
+          await res.markClaimed(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
     });
 
-    unittest.test('method--markFailed', () {
+    unittest.test('method--markFailed', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .projects
@@ -3322,15 +3246,13 @@ void main() {
             convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .markFailed(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Recommendation(
-            response as api.GoogleCloudRecommenderV1Recommendation);
-      })));
+      final response =
+          await res.markFailed(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
     });
 
-    unittest.test('method--markSucceeded', () {
+    unittest.test('method--markSucceeded', () async {
       var mock = HttpServerMock();
       var res = api.RecommenderApi(mock)
           .projects
@@ -3390,12 +3312,10 @@ void main() {
             convert.json.encode(buildGoogleCloudRecommenderV1Recommendation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .markSucceeded(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommenderV1Recommendation(
-            response as api.GoogleCloudRecommenderV1Recommendation);
-      })));
+      final response =
+          await res.markSucceeded(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommenderV1Recommendation(
+          response as api.GoogleCloudRecommenderV1Recommendation);
     });
   });
 }

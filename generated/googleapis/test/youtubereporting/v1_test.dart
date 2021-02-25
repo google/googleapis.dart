@@ -770,7 +770,7 @@ void checkReportType(api.ReportType o) {
 
 void main() {
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -778,7 +778,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GdataBlobstore2Info', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGdataBlobstore2Info();
       var od = api.GdataBlobstore2Info.fromJson(o.toJson());
       checkGdataBlobstore2Info(od as api.GdataBlobstore2Info);
@@ -786,7 +786,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GdataCompositeMedia', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGdataCompositeMedia();
       var od = api.GdataCompositeMedia.fromJson(o.toJson());
       checkGdataCompositeMedia(od as api.GdataCompositeMedia);
@@ -794,7 +794,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GdataContentTypeInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGdataContentTypeInfo();
       var od = api.GdataContentTypeInfo.fromJson(o.toJson());
       checkGdataContentTypeInfo(od as api.GdataContentTypeInfo);
@@ -802,7 +802,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GdataDiffChecksumsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGdataDiffChecksumsResponse();
       var od = api.GdataDiffChecksumsResponse.fromJson(o.toJson());
       checkGdataDiffChecksumsResponse(od as api.GdataDiffChecksumsResponse);
@@ -810,7 +810,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GdataDiffDownloadResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGdataDiffDownloadResponse();
       var od = api.GdataDiffDownloadResponse.fromJson(o.toJson());
       checkGdataDiffDownloadResponse(od as api.GdataDiffDownloadResponse);
@@ -818,7 +818,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GdataDiffUploadRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGdataDiffUploadRequest();
       var od = api.GdataDiffUploadRequest.fromJson(o.toJson());
       checkGdataDiffUploadRequest(od as api.GdataDiffUploadRequest);
@@ -826,7 +826,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GdataDiffUploadResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGdataDiffUploadResponse();
       var od = api.GdataDiffUploadResponse.fromJson(o.toJson());
       checkGdataDiffUploadResponse(od as api.GdataDiffUploadResponse);
@@ -834,7 +834,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GdataDiffVersionResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGdataDiffVersionResponse();
       var od = api.GdataDiffVersionResponse.fromJson(o.toJson());
       checkGdataDiffVersionResponse(od as api.GdataDiffVersionResponse);
@@ -842,7 +842,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GdataDownloadParameters', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGdataDownloadParameters();
       var od = api.GdataDownloadParameters.fromJson(o.toJson());
       checkGdataDownloadParameters(od as api.GdataDownloadParameters);
@@ -850,7 +850,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GdataMedia', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGdataMedia();
       var od = api.GdataMedia.fromJson(o.toJson());
       checkGdataMedia(od as api.GdataMedia);
@@ -858,7 +858,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GdataObjectId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGdataObjectId();
       var od = api.GdataObjectId.fromJson(o.toJson());
       checkGdataObjectId(od as api.GdataObjectId);
@@ -866,7 +866,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Job', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJob();
       var od = api.Job.fromJson(o.toJson());
       checkJob(od as api.Job);
@@ -874,7 +874,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListJobsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListJobsResponse();
       var od = api.ListJobsResponse.fromJson(o.toJson());
       checkListJobsResponse(od as api.ListJobsResponse);
@@ -882,7 +882,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListReportTypesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListReportTypesResponse();
       var od = api.ListReportTypesResponse.fromJson(o.toJson());
       checkListReportTypesResponse(od as api.ListReportTypesResponse);
@@ -890,7 +890,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListReportsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListReportsResponse();
       var od = api.ListReportsResponse.fromJson(o.toJson());
       checkListReportsResponse(od as api.ListReportsResponse);
@@ -898,7 +898,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Report', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReport();
       var od = api.Report.fromJson(o.toJson());
       checkReport(od as api.Report);
@@ -906,7 +906,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportType', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportType();
       var od = api.ReportType.fromJson(o.toJson());
       checkReportType(od as api.ReportType);
@@ -914,7 +914,7 @@ void main() {
   });
 
   unittest.group('resource-JobsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.YouTubeReportingApi(mock).jobs;
       var arg_request = buildJob();
@@ -969,16 +969,13 @@ void main() {
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJob(response as api.Job);
-      })));
+      final response = await res.create(arg_request,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          $fields: arg_$fields);
+      checkJob(response as api.Job);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.YouTubeReportingApi(mock).jobs;
       var arg_jobId = 'foo';
@@ -1036,16 +1033,13 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_jobId,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_jobId,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.YouTubeReportingApi(mock).jobs;
       var arg_jobId = 'foo';
@@ -1103,16 +1097,13 @@ void main() {
         var resp = convert.json.encode(buildJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_jobId,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkJob(response as api.Job);
-      })));
+      final response = await res.get(arg_jobId,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          $fields: arg_$fields);
+      checkJob(response as api.Job);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.YouTubeReportingApi(mock).jobs;
       var arg_includeSystemManaged = true;
@@ -1178,21 +1169,18 @@ void main() {
         var resp = convert.json.encode(buildListJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              includeSystemManaged: arg_includeSystemManaged,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListJobsResponse(response as api.ListJobsResponse);
-      })));
+      final response = await res.list(
+          includeSystemManaged: arg_includeSystemManaged,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListJobsResponse(response as api.ListJobsResponse);
     });
   });
 
   unittest.group('resource-JobsReportsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.YouTubeReportingApi(mock).jobs.reports;
       var arg_jobId = 'foo';
@@ -1265,16 +1253,13 @@ void main() {
         var resp = convert.json.encode(buildReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_jobId, arg_reportId,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReport(response as api.Report);
-      })));
+      final response = await res.get(arg_jobId, arg_reportId,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          $fields: arg_$fields);
+      checkReport(response as api.Report);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.YouTubeReportingApi(mock).jobs.reports;
       var arg_jobId = 'foo';
@@ -1365,23 +1350,20 @@ void main() {
         var resp = convert.json.encode(buildListReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_jobId,
-              createdAfter: arg_createdAfter,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              startTimeAtOrAfter: arg_startTimeAtOrAfter,
-              startTimeBefore: arg_startTimeBefore,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListReportsResponse(response as api.ListReportsResponse);
-      })));
+      final response = await res.list(arg_jobId,
+          createdAfter: arg_createdAfter,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          startTimeAtOrAfter: arg_startTimeAtOrAfter,
+          startTimeBefore: arg_startTimeBefore,
+          $fields: arg_$fields);
+      checkListReportsResponse(response as api.ListReportsResponse);
     });
   });
 
   unittest.group('resource-MediaResource', () {
-    unittest.test('method--download', () {
+    unittest.test('method--download', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -1432,16 +1414,14 @@ void main() {
         var resp = convert.json.encode(buildGdataMedia());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .download(arg_resourceName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGdataMedia(response as api.GdataMedia);
-      })));
+      final response =
+          await res.download(arg_resourceName, $fields: arg_$fields);
+      checkGdataMedia(response as api.GdataMedia);
     });
   });
 
   unittest.group('resource-ReportTypesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.YouTubeReportingApi(mock).reportTypes;
       var arg_includeSystemManaged = true;
@@ -1507,16 +1487,13 @@ void main() {
         var resp = convert.json.encode(buildListReportTypesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              includeSystemManaged: arg_includeSystemManaged,
-              onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListReportTypesResponse(response as api.ListReportTypesResponse);
-      })));
+      final response = await res.list(
+          includeSystemManaged: arg_includeSystemManaged,
+          onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListReportTypesResponse(response as api.ListReportTypesResponse);
     });
   });
 }

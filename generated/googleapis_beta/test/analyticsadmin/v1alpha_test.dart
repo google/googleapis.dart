@@ -1558,7 +1558,7 @@ void checkUnnamed7426(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaAccount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaAccount();
       var od = api.GoogleAnalyticsAdminV1alphaAccount.fromJson(o.toJson());
       checkGoogleAnalyticsAdminV1alphaAccount(
@@ -1567,7 +1567,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaAccountSummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaAccountSummary();
       var od =
           api.GoogleAnalyticsAdminV1alphaAccountSummary.fromJson(o.toJson());
@@ -1578,7 +1578,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaAndroidAppDataStream',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaAndroidAppDataStream();
       var od = api.GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
           o.toJson());
@@ -1588,7 +1588,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaAuditUserLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaAuditUserLink();
       var od =
           api.GoogleAnalyticsAdminV1alphaAuditUserLink.fromJson(o.toJson());
@@ -1599,7 +1599,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaAuditUserLinksRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaAuditUserLinksRequest();
       var od = api.GoogleAnalyticsAdminV1alphaAuditUserLinksRequest.fromJson(
           o.toJson());
@@ -1610,7 +1610,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaAuditUserLinksResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaAuditUserLinksResponse();
       var od = api.GoogleAnalyticsAdminV1alphaAuditUserLinksResponse.fromJson(
           o.toJson());
@@ -1621,7 +1621,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest();
       var od =
           api.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest.fromJson(
@@ -1633,7 +1633,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse();
       var od =
           api.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse.fromJson(
@@ -1645,7 +1645,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest();
       var od =
           api.GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest.fromJson(
@@ -1657,7 +1657,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse();
       var od =
           api.GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse.fromJson(
@@ -1669,7 +1669,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest();
       var od =
           api.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest.fromJson(
@@ -1681,7 +1681,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse();
       var od =
           api.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse.fromJson(
@@ -1693,7 +1693,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaCreateUserLinkRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaCreateUserLinkRequest();
       var od = api.GoogleAnalyticsAdminV1alphaCreateUserLinkRequest.fromJson(
           o.toJson());
@@ -1704,7 +1704,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaDataSharingSettings',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaDataSharingSettings();
       var od = api.GoogleAnalyticsAdminV1alphaDataSharingSettings.fromJson(
           o.toJson());
@@ -1715,7 +1715,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaDeleteUserLinkRequest();
       var od = api.GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest.fromJson(
           o.toJson());
@@ -1726,7 +1726,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings();
       var od =
           api.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
@@ -1737,7 +1737,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaFirebaseLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaFirebaseLink();
       var od = api.GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(o.toJson());
       checkGoogleAnalyticsAdminV1alphaFirebaseLink(
@@ -1746,7 +1746,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaGlobalSiteTag', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaGlobalSiteTag();
       var od =
           api.GoogleAnalyticsAdminV1alphaGlobalSiteTag.fromJson(o.toJson());
@@ -1756,7 +1756,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaGoogleAdsLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaGoogleAdsLink();
       var od =
           api.GoogleAnalyticsAdminV1alphaGoogleAdsLink.fromJson(o.toJson());
@@ -1766,7 +1766,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaIosAppDataStream', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaIosAppDataStream();
       var od =
           api.GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(o.toJson());
@@ -1777,7 +1777,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAnalyticsAdminV1alphaListAccountSummariesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaListAccountSummariesResponse();
       var od =
           api.GoogleAnalyticsAdminV1alphaListAccountSummariesResponse.fromJson(
@@ -1789,7 +1789,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaListAccountsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaListAccountsResponse();
       var od = api.GoogleAnalyticsAdminV1alphaListAccountsResponse.fromJson(
           o.toJson());
@@ -1801,7 +1801,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse();
       var od = api.GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse
@@ -1813,7 +1813,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse();
       var od =
           api.GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse.fromJson(
@@ -1825,7 +1825,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse();
       var od =
           api.GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse.fromJson(
@@ -1838,7 +1838,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse();
       var od =
           api.GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse.fromJson(
@@ -1850,7 +1850,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaListPropertiesResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaListPropertiesResponse();
       var od = api.GoogleAnalyticsAdminV1alphaListPropertiesResponse.fromJson(
           o.toJson());
@@ -1861,7 +1861,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaListUserLinksResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaListUserLinksResponse();
       var od = api.GoogleAnalyticsAdminV1alphaListUserLinksResponse.fromJson(
           o.toJson());
@@ -1872,7 +1872,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaListWebDataStreamsResponse();
       var od =
           api.GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse.fromJson(
@@ -1883,7 +1883,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaProperty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaProperty();
       var od = api.GoogleAnalyticsAdminV1alphaProperty.fromJson(o.toJson());
       checkGoogleAnalyticsAdminV1alphaProperty(
@@ -1892,7 +1892,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaPropertySummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaPropertySummary();
       var od =
           api.GoogleAnalyticsAdminV1alphaPropertySummary.fromJson(o.toJson());
@@ -1904,7 +1904,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest();
       var od =
           api.GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest.fromJson(
@@ -1917,7 +1917,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse();
       var od = api.GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse
           .fromJson(o.toJson());
@@ -1928,7 +1928,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaUpdateUserLinkRequest();
       var od = api.GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest.fromJson(
           o.toJson());
@@ -1938,7 +1938,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaUserLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaUserLink();
       var od = api.GoogleAnalyticsAdminV1alphaUserLink.fromJson(o.toJson());
       checkGoogleAnalyticsAdminV1alphaUserLink(
@@ -1947,7 +1947,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaWebDataStream', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaWebDataStream();
       var od =
           api.GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(o.toJson());
@@ -1957,7 +1957,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
@@ -1965,7 +1965,7 @@ void main() {
   });
 
   unittest.group('resource-AccountSummariesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).accountSummaries;
       var arg_pageSize = 42;
@@ -2022,20 +2022,17 @@ void main() {
             buildGoogleAnalyticsAdminV1alphaListAccountSummariesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaListAccountSummariesResponse(response
-            as api.GoogleAnalyticsAdminV1alphaListAccountSummariesResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaListAccountSummariesResponse(response
+          as api.GoogleAnalyticsAdminV1alphaListAccountSummariesResponse);
     });
   });
 
   unittest.group('resource-AccountsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).accounts;
       var arg_name = 'foo';
@@ -2083,14 +2080,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).accounts;
       var arg_name = 'foo';
@@ -2139,15 +2133,12 @@ void main() {
             convert.json.encode(buildGoogleAnalyticsAdminV1alphaAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaAccount(
-            response as api.GoogleAnalyticsAdminV1alphaAccount);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaAccount(
+          response as api.GoogleAnalyticsAdminV1alphaAccount);
     });
 
-    unittest.test('method--getDataSharingSettings', () {
+    unittest.test('method--getDataSharingSettings', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).accounts;
       var arg_name = 'foo';
@@ -2196,15 +2187,13 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaDataSharingSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getDataSharingSettings(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaDataSharingSettings(
-            response as api.GoogleAnalyticsAdminV1alphaDataSharingSettings);
-      })));
+      final response =
+          await res.getDataSharingSettings(arg_name, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaDataSharingSettings(
+          response as api.GoogleAnalyticsAdminV1alphaDataSharingSettings);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).accounts;
       var arg_pageSize = 42;
@@ -2266,19 +2255,16 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaListAccountsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              showDeleted: arg_showDeleted,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaListAccountsResponse(
-            response as api.GoogleAnalyticsAdminV1alphaListAccountsResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          showDeleted: arg_showDeleted,
+          $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaListAccountsResponse(
+          response as api.GoogleAnalyticsAdminV1alphaListAccountsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).accounts;
       var arg_request = buildGoogleAnalyticsAdminV1alphaAccount();
@@ -2338,16 +2324,13 @@ void main() {
             convert.json.encode(buildGoogleAnalyticsAdminV1alphaAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaAccount(
-            response as api.GoogleAnalyticsAdminV1alphaAccount);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaAccount(
+          response as api.GoogleAnalyticsAdminV1alphaAccount);
     });
 
-    unittest.test('method--provisionAccountTicket', () {
+    unittest.test('method--provisionAccountTicket', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).accounts;
       var arg_request =
@@ -2401,17 +2384,15 @@ void main() {
             buildGoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .provisionAccountTicket(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse(response
-            as api.GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse);
-      })));
+      final response =
+          await res.provisionAccountTicket(arg_request, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse(response
+          as api.GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse);
     });
   });
 
   unittest.group('resource-AccountsUserLinksResource', () {
-    unittest.test('method--audit', () {
+    unittest.test('method--audit', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).accounts.userLinks;
       var arg_request = buildGoogleAnalyticsAdminV1alphaAuditUserLinksRequest();
@@ -2466,15 +2447,13 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaAuditUserLinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .audit(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaAuditUserLinksResponse(
-            response as api.GoogleAnalyticsAdminV1alphaAuditUserLinksResponse);
-      })));
+      final response =
+          await res.audit(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaAuditUserLinksResponse(
+          response as api.GoogleAnalyticsAdminV1alphaAuditUserLinksResponse);
     });
 
-    unittest.test('method--batchCreate', () {
+    unittest.test('method--batchCreate', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).accounts.userLinks;
       var arg_request =
@@ -2531,15 +2510,13 @@ void main() {
             buildGoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchCreate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse(response
-            as api.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse);
-      })));
+      final response =
+          await res.batchCreate(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse(response
+          as api.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse);
     });
 
-    unittest.test('method--batchDelete', () {
+    unittest.test('method--batchDelete', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).accounts.userLinks;
       var arg_request =
@@ -2595,14 +2572,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchDelete(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response =
+          await res.batchDelete(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--batchGet', () {
+    unittest.test('method--batchGet', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).accounts.userLinks;
       var arg_parent = 'foo';
@@ -2656,15 +2631,13 @@ void main() {
             buildGoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchGet(arg_parent, names: arg_names, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse(response
-            as api.GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse);
-      })));
+      final response = await res.batchGet(arg_parent,
+          names: arg_names, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse(
+          response as api.GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse);
     });
 
-    unittest.test('method--batchUpdate', () {
+    unittest.test('method--batchUpdate', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).accounts.userLinks;
       var arg_request =
@@ -2721,15 +2694,13 @@ void main() {
             buildGoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchUpdate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse(response
-            as api.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse);
-      })));
+      final response =
+          await res.batchUpdate(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse(response
+          as api.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).accounts.userLinks;
       var arg_request = buildGoogleAnalyticsAdminV1alphaUserLink();
@@ -2789,16 +2760,13 @@ void main() {
             convert.json.encode(buildGoogleAnalyticsAdminV1alphaUserLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              notifyNewUser: arg_notifyNewUser, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaUserLink(
-            response as api.GoogleAnalyticsAdminV1alphaUserLink);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          notifyNewUser: arg_notifyNewUser, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaUserLink(
+          response as api.GoogleAnalyticsAdminV1alphaUserLink);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).accounts.userLinks;
       var arg_name = 'foo';
@@ -2846,14 +2814,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).accounts.userLinks;
       var arg_name = 'foo';
@@ -2902,15 +2867,12 @@ void main() {
             convert.json.encode(buildGoogleAnalyticsAdminV1alphaUserLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaUserLink(
-            response as api.GoogleAnalyticsAdminV1alphaUserLink);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaUserLink(
+          response as api.GoogleAnalyticsAdminV1alphaUserLink);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).accounts.userLinks;
       var arg_parent = 'foo';
@@ -2969,18 +2931,15 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaListUserLinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaListUserLinksResponse(
-            response as api.GoogleAnalyticsAdminV1alphaListUserLinksResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaListUserLinksResponse(
+          response as api.GoogleAnalyticsAdminV1alphaListUserLinksResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).accounts.userLinks;
       var arg_request = buildGoogleAnalyticsAdminV1alphaUserLink();
@@ -3035,17 +2994,15 @@ void main() {
             convert.json.encode(buildGoogleAnalyticsAdminV1alphaUserLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaUserLink(
-            response as api.GoogleAnalyticsAdminV1alphaUserLink);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaUserLink(
+          response as api.GoogleAnalyticsAdminV1alphaUserLink);
     });
   });
 
   unittest.group('resource-PropertiesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties;
       var arg_request = buildGoogleAnalyticsAdminV1alphaProperty();
@@ -3098,15 +3055,12 @@ void main() {
             convert.json.encode(buildGoogleAnalyticsAdminV1alphaProperty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaProperty(
-            response as api.GoogleAnalyticsAdminV1alphaProperty);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaProperty(
+          response as api.GoogleAnalyticsAdminV1alphaProperty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties;
       var arg_name = 'foo';
@@ -3154,14 +3108,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties;
       var arg_name = 'foo';
@@ -3210,15 +3161,12 @@ void main() {
             convert.json.encode(buildGoogleAnalyticsAdminV1alphaProperty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaProperty(
-            response as api.GoogleAnalyticsAdminV1alphaProperty);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaProperty(
+          response as api.GoogleAnalyticsAdminV1alphaProperty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties;
       var arg_filter = 'foo';
@@ -3285,20 +3233,17 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaListPropertiesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              showDeleted: arg_showDeleted,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaListPropertiesResponse(
-            response as api.GoogleAnalyticsAdminV1alphaListPropertiesResponse);
-      })));
+      final response = await res.list(
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          showDeleted: arg_showDeleted,
+          $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaListPropertiesResponse(
+          response as api.GoogleAnalyticsAdminV1alphaListPropertiesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties;
       var arg_request = buildGoogleAnalyticsAdminV1alphaProperty();
@@ -3358,18 +3303,15 @@ void main() {
             convert.json.encode(buildGoogleAnalyticsAdminV1alphaProperty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaProperty(
-            response as api.GoogleAnalyticsAdminV1alphaProperty);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaProperty(
+          response as api.GoogleAnalyticsAdminV1alphaProperty);
     });
   });
 
   unittest.group('resource-PropertiesAndroidAppDataStreamsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.GoogleAnalyticsAdminApi(mock).properties.androidAppDataStreams;
@@ -3425,15 +3367,13 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaAndroidAppDataStream());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaAndroidAppDataStream(
-            response as api.GoogleAnalyticsAdminV1alphaAndroidAppDataStream);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaAndroidAppDataStream(
+          response as api.GoogleAnalyticsAdminV1alphaAndroidAppDataStream);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.GoogleAnalyticsAdminApi(mock).properties.androidAppDataStreams;
@@ -3482,14 +3422,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.GoogleAnalyticsAdminApi(mock).properties.androidAppDataStreams;
@@ -3539,15 +3476,12 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaAndroidAppDataStream());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaAndroidAppDataStream(
-            response as api.GoogleAnalyticsAdminV1alphaAndroidAppDataStream);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaAndroidAppDataStream(
+          response as api.GoogleAnalyticsAdminV1alphaAndroidAppDataStream);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.GoogleAnalyticsAdminApi(mock).properties.androidAppDataStreams;
@@ -3607,19 +3541,15 @@ void main() {
             buildGoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse(
-            response as api
-                .GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse(response
+          as api.GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res =
           api.GoogleAnalyticsAdminApi(mock).properties.androidAppDataStreams;
@@ -3680,18 +3610,15 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaAndroidAppDataStream());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaAndroidAppDataStream(
-            response as api.GoogleAnalyticsAdminV1alphaAndroidAppDataStream);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaAndroidAppDataStream(
+          response as api.GoogleAnalyticsAdminV1alphaAndroidAppDataStream);
     });
   });
 
   unittest.group('resource-PropertiesFirebaseLinksResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.firebaseLinks;
       var arg_request = buildGoogleAnalyticsAdminV1alphaFirebaseLink();
@@ -3746,15 +3673,13 @@ void main() {
             convert.json.encode(buildGoogleAnalyticsAdminV1alphaFirebaseLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaFirebaseLink(
-            response as api.GoogleAnalyticsAdminV1alphaFirebaseLink);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaFirebaseLink(
+          response as api.GoogleAnalyticsAdminV1alphaFirebaseLink);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.firebaseLinks;
       var arg_name = 'foo';
@@ -3802,14 +3727,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.firebaseLinks;
       var arg_parent = 'foo';
@@ -3868,18 +3790,15 @@ void main() {
             buildGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse(response
-            as api.GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse(
+          response as api.GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.firebaseLinks;
       var arg_request = buildGoogleAnalyticsAdminV1alphaFirebaseLink();
@@ -3939,18 +3858,15 @@ void main() {
             convert.json.encode(buildGoogleAnalyticsAdminV1alphaFirebaseLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaFirebaseLink(
-            response as api.GoogleAnalyticsAdminV1alphaFirebaseLink);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaFirebaseLink(
+          response as api.GoogleAnalyticsAdminV1alphaFirebaseLink);
     });
   });
 
   unittest.group('resource-PropertiesGoogleAdsLinksResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.googleAdsLinks;
       var arg_request = buildGoogleAnalyticsAdminV1alphaGoogleAdsLink();
@@ -4005,15 +3921,13 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaGoogleAdsLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaGoogleAdsLink(
-            response as api.GoogleAnalyticsAdminV1alphaGoogleAdsLink);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaGoogleAdsLink(
+          response as api.GoogleAnalyticsAdminV1alphaGoogleAdsLink);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.googleAdsLinks;
       var arg_name = 'foo';
@@ -4061,14 +3975,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.googleAdsLinks;
       var arg_parent = 'foo';
@@ -4127,18 +4038,15 @@ void main() {
             buildGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse(response
-            as api.GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse(response
+          as api.GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.googleAdsLinks;
       var arg_request = buildGoogleAnalyticsAdminV1alphaGoogleAdsLink();
@@ -4198,18 +4106,15 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaGoogleAdsLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaGoogleAdsLink(
-            response as api.GoogleAnalyticsAdminV1alphaGoogleAdsLink);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaGoogleAdsLink(
+          response as api.GoogleAnalyticsAdminV1alphaGoogleAdsLink);
     });
   });
 
   unittest.group('resource-PropertiesIosAppDataStreamsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.iosAppDataStreams;
       var arg_request = buildGoogleAnalyticsAdminV1alphaIosAppDataStream();
@@ -4264,15 +4169,13 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaIosAppDataStream());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaIosAppDataStream(
-            response as api.GoogleAnalyticsAdminV1alphaIosAppDataStream);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaIosAppDataStream(
+          response as api.GoogleAnalyticsAdminV1alphaIosAppDataStream);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.iosAppDataStreams;
       var arg_name = 'foo';
@@ -4320,14 +4223,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.iosAppDataStreams;
       var arg_name = 'foo';
@@ -4376,15 +4276,12 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaIosAppDataStream());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaIosAppDataStream(
-            response as api.GoogleAnalyticsAdminV1alphaIosAppDataStream);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaIosAppDataStream(
+          response as api.GoogleAnalyticsAdminV1alphaIosAppDataStream);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.iosAppDataStreams;
       var arg_parent = 'foo';
@@ -4443,18 +4340,15 @@ void main() {
             buildGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse(response
-            as api.GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse(response
+          as api.GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.iosAppDataStreams;
       var arg_request = buildGoogleAnalyticsAdminV1alphaIosAppDataStream();
@@ -4514,18 +4408,15 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaIosAppDataStream());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaIosAppDataStream(
-            response as api.GoogleAnalyticsAdminV1alphaIosAppDataStream);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaIosAppDataStream(
+          response as api.GoogleAnalyticsAdminV1alphaIosAppDataStream);
     });
   });
 
   unittest.group('resource-PropertiesUserLinksResource', () {
-    unittest.test('method--audit', () {
+    unittest.test('method--audit', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.userLinks;
       var arg_request = buildGoogleAnalyticsAdminV1alphaAuditUserLinksRequest();
@@ -4580,15 +4471,13 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaAuditUserLinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .audit(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaAuditUserLinksResponse(
-            response as api.GoogleAnalyticsAdminV1alphaAuditUserLinksResponse);
-      })));
+      final response =
+          await res.audit(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaAuditUserLinksResponse(
+          response as api.GoogleAnalyticsAdminV1alphaAuditUserLinksResponse);
     });
 
-    unittest.test('method--batchCreate', () {
+    unittest.test('method--batchCreate', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.userLinks;
       var arg_request =
@@ -4645,15 +4534,13 @@ void main() {
             buildGoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchCreate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse(response
-            as api.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse);
-      })));
+      final response =
+          await res.batchCreate(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse(response
+          as api.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse);
     });
 
-    unittest.test('method--batchDelete', () {
+    unittest.test('method--batchDelete', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.userLinks;
       var arg_request =
@@ -4709,14 +4596,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchDelete(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response =
+          await res.batchDelete(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--batchGet', () {
+    unittest.test('method--batchGet', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.userLinks;
       var arg_parent = 'foo';
@@ -4770,15 +4655,13 @@ void main() {
             buildGoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchGet(arg_parent, names: arg_names, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse(response
-            as api.GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse);
-      })));
+      final response = await res.batchGet(arg_parent,
+          names: arg_names, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse(
+          response as api.GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse);
     });
 
-    unittest.test('method--batchUpdate', () {
+    unittest.test('method--batchUpdate', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.userLinks;
       var arg_request =
@@ -4835,15 +4718,13 @@ void main() {
             buildGoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchUpdate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse(response
-            as api.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse);
-      })));
+      final response =
+          await res.batchUpdate(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse(response
+          as api.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.userLinks;
       var arg_request = buildGoogleAnalyticsAdminV1alphaUserLink();
@@ -4903,16 +4784,13 @@ void main() {
             convert.json.encode(buildGoogleAnalyticsAdminV1alphaUserLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              notifyNewUser: arg_notifyNewUser, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaUserLink(
-            response as api.GoogleAnalyticsAdminV1alphaUserLink);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          notifyNewUser: arg_notifyNewUser, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaUserLink(
+          response as api.GoogleAnalyticsAdminV1alphaUserLink);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.userLinks;
       var arg_name = 'foo';
@@ -4960,14 +4838,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.userLinks;
       var arg_name = 'foo';
@@ -5016,15 +4891,12 @@ void main() {
             convert.json.encode(buildGoogleAnalyticsAdminV1alphaUserLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaUserLink(
-            response as api.GoogleAnalyticsAdminV1alphaUserLink);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaUserLink(
+          response as api.GoogleAnalyticsAdminV1alphaUserLink);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.userLinks;
       var arg_parent = 'foo';
@@ -5083,18 +4955,15 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaListUserLinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaListUserLinksResponse(
-            response as api.GoogleAnalyticsAdminV1alphaListUserLinksResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaListUserLinksResponse(
+          response as api.GoogleAnalyticsAdminV1alphaListUserLinksResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.userLinks;
       var arg_request = buildGoogleAnalyticsAdminV1alphaUserLink();
@@ -5149,17 +5018,15 @@ void main() {
             convert.json.encode(buildGoogleAnalyticsAdminV1alphaUserLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaUserLink(
-            response as api.GoogleAnalyticsAdminV1alphaUserLink);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaUserLink(
+          response as api.GoogleAnalyticsAdminV1alphaUserLink);
     });
   });
 
   unittest.group('resource-PropertiesWebDataStreamsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.webDataStreams;
       var arg_request = buildGoogleAnalyticsAdminV1alphaWebDataStream();
@@ -5214,15 +5081,13 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaWebDataStream());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaWebDataStream(
-            response as api.GoogleAnalyticsAdminV1alphaWebDataStream);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaWebDataStream(
+          response as api.GoogleAnalyticsAdminV1alphaWebDataStream);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.webDataStreams;
       var arg_name = 'foo';
@@ -5270,14 +5135,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.webDataStreams;
       var arg_name = 'foo';
@@ -5326,15 +5188,12 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaWebDataStream());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaWebDataStream(
-            response as api.GoogleAnalyticsAdminV1alphaWebDataStream);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaWebDataStream(
+          response as api.GoogleAnalyticsAdminV1alphaWebDataStream);
     });
 
-    unittest.test('method--getEnhancedMeasurementSettings', () {
+    unittest.test('method--getEnhancedMeasurementSettings', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.webDataStreams;
       var arg_name = 'foo';
@@ -5383,15 +5242,13 @@ void main() {
             buildGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getEnhancedMeasurementSettings(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings(response
-            as api.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings);
-      })));
+      final response = await res.getEnhancedMeasurementSettings(arg_name,
+          $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings(response
+          as api.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings);
     });
 
-    unittest.test('method--getGlobalSiteTag', () {
+    unittest.test('method--getGlobalSiteTag', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.webDataStreams;
       var arg_name = 'foo';
@@ -5440,15 +5297,13 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaGlobalSiteTag());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getGlobalSiteTag(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaGlobalSiteTag(
-            response as api.GoogleAnalyticsAdminV1alphaGlobalSiteTag);
-      })));
+      final response =
+          await res.getGlobalSiteTag(arg_name, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaGlobalSiteTag(
+          response as api.GoogleAnalyticsAdminV1alphaGlobalSiteTag);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.webDataStreams;
       var arg_parent = 'foo';
@@ -5507,18 +5362,15 @@ void main() {
             buildGoogleAnalyticsAdminV1alphaListWebDataStreamsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaListWebDataStreamsResponse(response
-            as api.GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaListWebDataStreamsResponse(response
+          as api.GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.webDataStreams;
       var arg_request = buildGoogleAnalyticsAdminV1alphaWebDataStream();
@@ -5578,16 +5430,13 @@ void main() {
             .encode(buildGoogleAnalyticsAdminV1alphaWebDataStream());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaWebDataStream(
-            response as api.GoogleAnalyticsAdminV1alphaWebDataStream);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaWebDataStream(
+          response as api.GoogleAnalyticsAdminV1alphaWebDataStream);
     });
 
-    unittest.test('method--updateEnhancedMeasurementSettings', () {
+    unittest.test('method--updateEnhancedMeasurementSettings', () async {
       var mock = HttpServerMock();
       var res = api.GoogleAnalyticsAdminApi(mock).properties.webDataStreams;
       var arg_request =
@@ -5649,13 +5498,11 @@ void main() {
             buildGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateEnhancedMeasurementSettings(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings(response
-            as api.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings);
-      })));
+      final response = await res.updateEnhancedMeasurementSettings(
+          arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings(response
+          as api.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings);
     });
   });
 }

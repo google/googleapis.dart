@@ -8527,7 +8527,7 @@ void checkGoogleTypeExpr(api.GoogleTypeExpr o) {
 
 void main() {
   unittest.group('obj-schema-GoogleApiHttpBody', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiHttpBody();
       var od = api.GoogleApiHttpBody.fromJson(o.toJson());
       checkGoogleApiHttpBody(od as api.GoogleApiHttpBody);
@@ -8535,7 +8535,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Access', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Access();
       var od = api.GoogleCloudApigeeV1Access.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Access(od as api.GoogleCloudApigeeV1Access);
@@ -8543,7 +8543,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1AccessGet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1AccessGet();
       var od = api.GoogleCloudApigeeV1AccessGet.fromJson(o.toJson());
       checkGoogleCloudApigeeV1AccessGet(od as api.GoogleCloudApigeeV1AccessGet);
@@ -8551,7 +8551,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1AccessRemove', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1AccessRemove();
       var od = api.GoogleCloudApigeeV1AccessRemove.fromJson(o.toJson());
       checkGoogleCloudApigeeV1AccessRemove(
@@ -8560,7 +8560,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1AccessSet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1AccessSet();
       var od = api.GoogleCloudApigeeV1AccessSet.fromJson(o.toJson());
       checkGoogleCloudApigeeV1AccessSet(od as api.GoogleCloudApigeeV1AccessSet);
@@ -8568,7 +8568,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ActivateNatAddressRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ActivateNatAddressRequest();
       var od =
           api.GoogleCloudApigeeV1ActivateNatAddressRequest.fromJson(o.toJson());
@@ -8578,7 +8578,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Alias', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Alias();
       var od = api.GoogleCloudApigeeV1Alias.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Alias(od as api.GoogleCloudApigeeV1Alias);
@@ -8586,7 +8586,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1AliasRevisionConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1AliasRevisionConfig();
       var od = api.GoogleCloudApigeeV1AliasRevisionConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1AliasRevisionConfig(
@@ -8595,7 +8595,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiCategory', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ApiCategory();
       var od = api.GoogleCloudApigeeV1ApiCategory.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ApiCategory(
@@ -8604,7 +8604,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiCategoryData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ApiCategoryData();
       var od = api.GoogleCloudApigeeV1ApiCategoryData.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ApiCategoryData(
@@ -8613,7 +8613,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiProduct', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ApiProduct();
       var od = api.GoogleCloudApigeeV1ApiProduct.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ApiProduct(
@@ -8622,7 +8622,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiProductRef', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ApiProductRef();
       var od = api.GoogleCloudApigeeV1ApiProductRef.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ApiProductRef(
@@ -8631,7 +8631,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiProxy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ApiProxy();
       var od = api.GoogleCloudApigeeV1ApiProxy.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ApiProxy(od as api.GoogleCloudApigeeV1ApiProxy);
@@ -8639,7 +8639,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiProxyRevision', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ApiProxyRevision();
       var od = api.GoogleCloudApigeeV1ApiProxyRevision.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ApiProxyRevision(
@@ -8648,7 +8648,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiResponseWrapper', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ApiResponseWrapper();
       var od = api.GoogleCloudApigeeV1ApiResponseWrapper.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ApiResponseWrapper(
@@ -8657,7 +8657,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1App', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1App();
       var od = api.GoogleCloudApigeeV1App.fromJson(o.toJson());
       checkGoogleCloudApigeeV1App(od as api.GoogleCloudApigeeV1App);
@@ -8665,7 +8665,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1AsyncQuery', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1AsyncQuery();
       var od = api.GoogleCloudApigeeV1AsyncQuery.fromJson(o.toJson());
       checkGoogleCloudApigeeV1AsyncQuery(
@@ -8674,7 +8674,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1AsyncQueryResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1AsyncQueryResult();
       var od = api.GoogleCloudApigeeV1AsyncQueryResult.fromJson(o.toJson());
       checkGoogleCloudApigeeV1AsyncQueryResult(
@@ -8683,7 +8683,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1AsyncQueryResultView', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1AsyncQueryResultView();
       var od = api.GoogleCloudApigeeV1AsyncQueryResultView.fromJson(o.toJson());
       checkGoogleCloudApigeeV1AsyncQueryResultView(
@@ -8692,7 +8692,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Attribute', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Attribute();
       var od = api.GoogleCloudApigeeV1Attribute.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Attribute(od as api.GoogleCloudApigeeV1Attribute);
@@ -8700,7 +8700,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Attributes', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Attributes();
       var od = api.GoogleCloudApigeeV1Attributes.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Attributes(
@@ -8709,7 +8709,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1CanaryEvaluation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1CanaryEvaluation();
       var od = api.GoogleCloudApigeeV1CanaryEvaluation.fromJson(o.toJson());
       checkGoogleCloudApigeeV1CanaryEvaluation(
@@ -8719,7 +8719,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudApigeeV1CanaryEvaluationMetricLabels',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1CanaryEvaluationMetricLabels();
       var od = api.GoogleCloudApigeeV1CanaryEvaluationMetricLabels.fromJson(
           o.toJson());
@@ -8729,7 +8729,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1CertInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1CertInfo();
       var od = api.GoogleCloudApigeeV1CertInfo.fromJson(o.toJson());
       checkGoogleCloudApigeeV1CertInfo(od as api.GoogleCloudApigeeV1CertInfo);
@@ -8737,7 +8737,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Certificate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Certificate();
       var od = api.GoogleCloudApigeeV1Certificate.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Certificate(
@@ -8746,7 +8746,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1CommonNameConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1CommonNameConfig();
       var od = api.GoogleCloudApigeeV1CommonNameConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1CommonNameConfig(
@@ -8755,7 +8755,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ConfigVersion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ConfigVersion();
       var od = api.GoogleCloudApigeeV1ConfigVersion.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ConfigVersion(
@@ -8764,7 +8764,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Credential', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Credential();
       var od = api.GoogleCloudApigeeV1Credential.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Credential(
@@ -8773,7 +8773,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1CustomReport', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1CustomReport();
       var od = api.GoogleCloudApigeeV1CustomReport.fromJson(o.toJson());
       checkGoogleCloudApigeeV1CustomReport(
@@ -8782,7 +8782,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1CustomReportMetric', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1CustomReportMetric();
       var od = api.GoogleCloudApigeeV1CustomReportMetric.fromJson(o.toJson());
       checkGoogleCloudApigeeV1CustomReportMetric(
@@ -8791,7 +8791,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DataCollector', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DataCollector();
       var od = api.GoogleCloudApigeeV1DataCollector.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DataCollector(
@@ -8800,7 +8800,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DataCollectorConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DataCollectorConfig();
       var od = api.GoogleCloudApigeeV1DataCollectorConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DataCollectorConfig(
@@ -8809,7 +8809,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Datastore', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Datastore();
       var od = api.GoogleCloudApigeeV1Datastore.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Datastore(od as api.GoogleCloudApigeeV1Datastore);
@@ -8817,7 +8817,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DatastoreConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DatastoreConfig();
       var od = api.GoogleCloudApigeeV1DatastoreConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DatastoreConfig(
@@ -8826,7 +8826,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DateRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DateRange();
       var od = api.GoogleCloudApigeeV1DateRange.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DateRange(od as api.GoogleCloudApigeeV1DateRange);
@@ -8834,7 +8834,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DebugMask', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DebugMask();
       var od = api.GoogleCloudApigeeV1DebugMask.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DebugMask(od as api.GoogleCloudApigeeV1DebugMask);
@@ -8842,7 +8842,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DebugSession', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DebugSession();
       var od = api.GoogleCloudApigeeV1DebugSession.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DebugSession(
@@ -8851,7 +8851,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DebugSessionTransaction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DebugSessionTransaction();
       var od =
           api.GoogleCloudApigeeV1DebugSessionTransaction.fromJson(o.toJson());
@@ -8862,7 +8862,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DeleteCustomReportResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DeleteCustomReportResponse();
       var od = api.GoogleCloudApigeeV1DeleteCustomReportResponse.fromJson(
           o.toJson());
@@ -8872,7 +8872,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Deployment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Deployment();
       var od = api.GoogleCloudApigeeV1Deployment.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Deployment(
@@ -8881,7 +8881,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DeploymentChangeReport', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DeploymentChangeReport();
       var od =
           api.GoogleCloudApigeeV1DeploymentChangeReport.fromJson(o.toJson());
@@ -8892,7 +8892,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudApigeeV1DeploymentChangeReportRoutingChange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DeploymentChangeReportRoutingChange();
       var od =
           api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange.fromJson(
@@ -8905,7 +8905,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict();
       var od =
           api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict.fromJson(
@@ -8918,7 +8918,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment();
       var od = api.GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment
           .fromJson(o.toJson());
@@ -8928,7 +8928,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DeploymentConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DeploymentConfig();
       var od = api.GoogleCloudApigeeV1DeploymentConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DeploymentConfig(
@@ -8937,7 +8937,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Developer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Developer();
       var od = api.GoogleCloudApigeeV1Developer.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Developer(od as api.GoogleCloudApigeeV1Developer);
@@ -8945,7 +8945,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DeveloperApp', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DeveloperApp();
       var od = api.GoogleCloudApigeeV1DeveloperApp.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DeveloperApp(
@@ -8954,7 +8954,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DeveloperAppKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DeveloperAppKey();
       var od = api.GoogleCloudApigeeV1DeveloperAppKey.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DeveloperAppKey(
@@ -8963,7 +8963,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1DimensionMetric', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DimensionMetric();
       var od = api.GoogleCloudApigeeV1DimensionMetric.fromJson(o.toJson());
       checkGoogleCloudApigeeV1DimensionMetric(
@@ -8972,7 +8972,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1EntityMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1EntityMetadata();
       var od = api.GoogleCloudApigeeV1EntityMetadata.fromJson(o.toJson());
       checkGoogleCloudApigeeV1EntityMetadata(
@@ -8981,7 +8981,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Environment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Environment();
       var od = api.GoogleCloudApigeeV1Environment.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Environment(
@@ -8990,7 +8990,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1EnvironmentConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1EnvironmentConfig();
       var od = api.GoogleCloudApigeeV1EnvironmentConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1EnvironmentConfig(
@@ -8999,7 +8999,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1EnvironmentGroup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1EnvironmentGroup();
       var od = api.GoogleCloudApigeeV1EnvironmentGroup.fromJson(o.toJson());
       checkGoogleCloudApigeeV1EnvironmentGroup(
@@ -9009,7 +9009,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudApigeeV1EnvironmentGroupAttachment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1EnvironmentGroupAttachment();
       var od = api.GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(
           o.toJson());
@@ -9019,7 +9019,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1EnvironmentGroupConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1EnvironmentGroupConfig();
       var od =
           api.GoogleCloudApigeeV1EnvironmentGroupConfig.fromJson(o.toJson());
@@ -9029,7 +9029,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Export', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Export();
       var od = api.GoogleCloudApigeeV1Export.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Export(od as api.GoogleCloudApigeeV1Export);
@@ -9037,7 +9037,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ExportRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ExportRequest();
       var od = api.GoogleCloudApigeeV1ExportRequest.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ExportRequest(
@@ -9046,7 +9046,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1FlowHook', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1FlowHook();
       var od = api.GoogleCloudApigeeV1FlowHook.fromJson(o.toJson());
       checkGoogleCloudApigeeV1FlowHook(od as api.GoogleCloudApigeeV1FlowHook);
@@ -9054,7 +9054,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1FlowHookConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1FlowHookConfig();
       var od = api.GoogleCloudApigeeV1FlowHookConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1FlowHookConfig(
@@ -9064,7 +9064,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudApigeeV1GetSyncAuthorizationRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1GetSyncAuthorizationRequest();
       var od = api.GoogleCloudApigeeV1GetSyncAuthorizationRequest.fromJson(
           o.toJson());
@@ -9074,7 +9074,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1IngressConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1IngressConfig();
       var od = api.GoogleCloudApigeeV1IngressConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1IngressConfig(
@@ -9083,7 +9083,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Instance', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Instance();
       var od = api.GoogleCloudApigeeV1Instance.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Instance(od as api.GoogleCloudApigeeV1Instance);
@@ -9091,7 +9091,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1InstanceAttachment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1InstanceAttachment();
       var od = api.GoogleCloudApigeeV1InstanceAttachment.fromJson(o.toJson());
       checkGoogleCloudApigeeV1InstanceAttachment(
@@ -9100,7 +9100,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1InstanceDeploymentStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1InstanceDeploymentStatus();
       var od =
           api.GoogleCloudApigeeV1InstanceDeploymentStatus.fromJson(o.toJson());
@@ -9112,7 +9112,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision();
       var od = api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision
@@ -9125,7 +9125,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute();
       var od =
           api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute.fromJson(
@@ -9136,7 +9136,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1KeyAliasReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1KeyAliasReference();
       var od = api.GoogleCloudApigeeV1KeyAliasReference.fromJson(o.toJson());
       checkGoogleCloudApigeeV1KeyAliasReference(
@@ -9145,7 +9145,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1KeyValueMap', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1KeyValueMap();
       var od = api.GoogleCloudApigeeV1KeyValueMap.fromJson(o.toJson());
       checkGoogleCloudApigeeV1KeyValueMap(
@@ -9154,7 +9154,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Keystore', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Keystore();
       var od = api.GoogleCloudApigeeV1Keystore.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Keystore(od as api.GoogleCloudApigeeV1Keystore);
@@ -9162,7 +9162,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1KeystoreConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1KeystoreConfig();
       var od = api.GoogleCloudApigeeV1KeystoreConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1KeystoreConfig(
@@ -9171,7 +9171,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListApiCategoriesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListApiCategoriesResponse();
       var od =
           api.GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(o.toJson());
@@ -9181,7 +9181,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListApiProductsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListApiProductsResponse();
       var od =
           api.GoogleCloudApigeeV1ListApiProductsResponse.fromJson(o.toJson());
@@ -9191,7 +9191,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListApiProxiesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListApiProxiesResponse();
       var od =
           api.GoogleCloudApigeeV1ListApiProxiesResponse.fromJson(o.toJson());
@@ -9201,7 +9201,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListAppsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListAppsResponse();
       var od = api.GoogleCloudApigeeV1ListAppsResponse.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ListAppsResponse(
@@ -9210,7 +9210,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListAsyncQueriesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListAsyncQueriesResponse();
       var od =
           api.GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(o.toJson());
@@ -9220,7 +9220,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListCustomReportsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListCustomReportsResponse();
       var od =
           api.GoogleCloudApigeeV1ListCustomReportsResponse.fromJson(o.toJson());
@@ -9231,7 +9231,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListDataCollectorsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListDataCollectorsResponse();
       var od = api.GoogleCloudApigeeV1ListDataCollectorsResponse.fromJson(
           o.toJson());
@@ -9241,7 +9241,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListDatastoresResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListDatastoresResponse();
       var od =
           api.GoogleCloudApigeeV1ListDatastoresResponse.fromJson(o.toJson());
@@ -9251,7 +9251,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListDebugSessionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListDebugSessionsResponse();
       var od =
           api.GoogleCloudApigeeV1ListDebugSessionsResponse.fromJson(o.toJson());
@@ -9261,7 +9261,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListDeploymentsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListDeploymentsResponse();
       var od =
           api.GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(o.toJson());
@@ -9271,7 +9271,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListDeveloperAppsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListDeveloperAppsResponse();
       var od =
           api.GoogleCloudApigeeV1ListDeveloperAppsResponse.fromJson(o.toJson());
@@ -9283,7 +9283,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse();
       var od = api.GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse
           .fromJson(o.toJson());
@@ -9294,7 +9294,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListEnvironmentGroupsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListEnvironmentGroupsResponse();
       var od = api.GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(
           o.toJson());
@@ -9305,7 +9305,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudApigeeV1ListEnvironmentResourcesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListEnvironmentResourcesResponse();
       var od = api.GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(
           o.toJson());
@@ -9315,7 +9315,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListExportsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListExportsResponse();
       var od = api.GoogleCloudApigeeV1ListExportsResponse.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ListExportsResponse(
@@ -9324,7 +9324,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListHybridIssuersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListHybridIssuersResponse();
       var od =
           api.GoogleCloudApigeeV1ListHybridIssuersResponse.fromJson(o.toJson());
@@ -9335,7 +9335,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudApigeeV1ListInstanceAttachmentsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListInstanceAttachmentsResponse();
       var od = api.GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(
           o.toJson());
@@ -9345,7 +9345,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListInstancesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListInstancesResponse();
       var od =
           api.GoogleCloudApigeeV1ListInstancesResponse.fromJson(o.toJson());
@@ -9355,7 +9355,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListNatAddressesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListNatAddressesResponse();
       var od =
           api.GoogleCloudApigeeV1ListNatAddressesResponse.fromJson(o.toJson());
@@ -9365,7 +9365,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListOfDevelopersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListOfDevelopersResponse();
       var od =
           api.GoogleCloudApigeeV1ListOfDevelopersResponse.fromJson(o.toJson());
@@ -9375,7 +9375,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListOrganizationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListOrganizationsResponse();
       var od =
           api.GoogleCloudApigeeV1ListOrganizationsResponse.fromJson(o.toJson());
@@ -9385,7 +9385,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ListSharedFlowsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListSharedFlowsResponse();
       var od =
           api.GoogleCloudApigeeV1ListSharedFlowsResponse.fromJson(o.toJson());
@@ -9395,7 +9395,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Metadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Metadata();
       var od = api.GoogleCloudApigeeV1Metadata.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Metadata(od as api.GoogleCloudApigeeV1Metadata);
@@ -9403,7 +9403,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Metric', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Metric();
       var od = api.GoogleCloudApigeeV1Metric.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Metric(od as api.GoogleCloudApigeeV1Metric);
@@ -9411,7 +9411,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1NatAddress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1NatAddress();
       var od = api.GoogleCloudApigeeV1NatAddress.fromJson(o.toJson());
       checkGoogleCloudApigeeV1NatAddress(
@@ -9420,7 +9420,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Operation();
       var od = api.GoogleCloudApigeeV1Operation.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Operation(od as api.GoogleCloudApigeeV1Operation);
@@ -9428,7 +9428,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1OperationConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1OperationConfig();
       var od = api.GoogleCloudApigeeV1OperationConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1OperationConfig(
@@ -9437,7 +9437,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1OperationGroup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1OperationGroup();
       var od = api.GoogleCloudApigeeV1OperationGroup.fromJson(o.toJson());
       checkGoogleCloudApigeeV1OperationGroup(
@@ -9446,7 +9446,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1OperationMetadata();
       var od = api.GoogleCloudApigeeV1OperationMetadata.fromJson(o.toJson());
       checkGoogleCloudApigeeV1OperationMetadata(
@@ -9455,7 +9455,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1OptimizedStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1OptimizedStats();
       var od = api.GoogleCloudApigeeV1OptimizedStats.fromJson(o.toJson());
       checkGoogleCloudApigeeV1OptimizedStats(
@@ -9464,7 +9464,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1OptimizedStatsNode', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1OptimizedStatsNode();
       var od = api.GoogleCloudApigeeV1OptimizedStatsNode.fromJson(o.toJson());
       checkGoogleCloudApigeeV1OptimizedStatsNode(
@@ -9473,7 +9473,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1OptimizedStatsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1OptimizedStatsResponse();
       var od =
           api.GoogleCloudApigeeV1OptimizedStatsResponse.fromJson(o.toJson());
@@ -9483,7 +9483,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Organization', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Organization();
       var od = api.GoogleCloudApigeeV1Organization.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Organization(
@@ -9493,7 +9493,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudApigeeV1OrganizationProjectMapping',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1OrganizationProjectMapping();
       var od = api.GoogleCloudApigeeV1OrganizationProjectMapping.fromJson(
           o.toJson());
@@ -9503,7 +9503,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1PodStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1PodStatus();
       var od = api.GoogleCloudApigeeV1PodStatus.fromJson(o.toJson());
       checkGoogleCloudApigeeV1PodStatus(od as api.GoogleCloudApigeeV1PodStatus);
@@ -9511,7 +9511,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Point', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Point();
       var od = api.GoogleCloudApigeeV1Point.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Point(od as api.GoogleCloudApigeeV1Point);
@@ -9519,7 +9519,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Properties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Properties();
       var od = api.GoogleCloudApigeeV1Properties.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Properties(
@@ -9528,7 +9528,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Property', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Property();
       var od = api.GoogleCloudApigeeV1Property.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Property(od as api.GoogleCloudApigeeV1Property);
@@ -9537,7 +9537,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ProvisionOrganizationRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ProvisionOrganizationRequest();
       var od = api.GoogleCloudApigeeV1ProvisionOrganizationRequest.fromJson(
           o.toJson());
@@ -9547,7 +9547,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Query', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Query();
       var od = api.GoogleCloudApigeeV1Query.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Query(od as api.GoogleCloudApigeeV1Query);
@@ -9555,7 +9555,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1QueryMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1QueryMetadata();
       var od = api.GoogleCloudApigeeV1QueryMetadata.fromJson(o.toJson());
       checkGoogleCloudApigeeV1QueryMetadata(
@@ -9564,7 +9564,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1QueryMetric', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1QueryMetric();
       var od = api.GoogleCloudApigeeV1QueryMetric.fromJson(o.toJson());
       checkGoogleCloudApigeeV1QueryMetric(
@@ -9573,7 +9573,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Quota', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Quota();
       var od = api.GoogleCloudApigeeV1Quota.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Quota(od as api.GoogleCloudApigeeV1Quota);
@@ -9581,7 +9581,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Reference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Reference();
       var od = api.GoogleCloudApigeeV1Reference.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Reference(od as api.GoogleCloudApigeeV1Reference);
@@ -9589,7 +9589,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ReferenceConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ReferenceConfig();
       var od = api.GoogleCloudApigeeV1ReferenceConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ReferenceConfig(
@@ -9599,7 +9599,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ReportInstanceStatusRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ReportInstanceStatusRequest();
       var od = api.GoogleCloudApigeeV1ReportInstanceStatusRequest.fromJson(
           o.toJson());
@@ -9610,7 +9610,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ReportInstanceStatusResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ReportInstanceStatusResponse();
       var od = api.GoogleCloudApigeeV1ReportInstanceStatusResponse.fromJson(
           o.toJson());
@@ -9620,7 +9620,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ReportProperty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ReportProperty();
       var od = api.GoogleCloudApigeeV1ReportProperty.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ReportProperty(
@@ -9629,7 +9629,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ResourceConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ResourceConfig();
       var od = api.GoogleCloudApigeeV1ResourceConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ResourceConfig(
@@ -9638,7 +9638,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ResourceFile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ResourceFile();
       var od = api.GoogleCloudApigeeV1ResourceFile.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ResourceFile(
@@ -9647,7 +9647,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ResourceFiles', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ResourceFiles();
       var od = api.GoogleCloudApigeeV1ResourceFiles.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ResourceFiles(
@@ -9656,7 +9656,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ResourceStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ResourceStatus();
       var od = api.GoogleCloudApigeeV1ResourceStatus.fromJson(o.toJson());
       checkGoogleCloudApigeeV1ResourceStatus(
@@ -9665,7 +9665,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Result', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Result();
       var od = api.GoogleCloudApigeeV1Result.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Result(od as api.GoogleCloudApigeeV1Result);
@@ -9673,7 +9673,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1RevisionStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1RevisionStatus();
       var od = api.GoogleCloudApigeeV1RevisionStatus.fromJson(o.toJson());
       checkGoogleCloudApigeeV1RevisionStatus(
@@ -9682,7 +9682,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1RoutingRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1RoutingRule();
       var od = api.GoogleCloudApigeeV1RoutingRule.fromJson(o.toJson());
       checkGoogleCloudApigeeV1RoutingRule(
@@ -9691,7 +9691,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1RuntimeTraceConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1RuntimeTraceConfig();
       var od = api.GoogleCloudApigeeV1RuntimeTraceConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1RuntimeTraceConfig(
@@ -9701,7 +9701,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudApigeeV1RuntimeTraceConfigOverride',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1RuntimeTraceConfigOverride();
       var od = api.GoogleCloudApigeeV1RuntimeTraceConfigOverride.fromJson(
           o.toJson());
@@ -9712,7 +9712,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudApigeeV1RuntimeTraceSamplingConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1RuntimeTraceSamplingConfig();
       var od = api.GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(
           o.toJson());
@@ -9722,7 +9722,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Schema', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Schema();
       var od = api.GoogleCloudApigeeV1Schema.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Schema(od as api.GoogleCloudApigeeV1Schema);
@@ -9730,7 +9730,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1SchemaSchemaElement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1SchemaSchemaElement();
       var od = api.GoogleCloudApigeeV1SchemaSchemaElement.fromJson(o.toJson());
       checkGoogleCloudApigeeV1SchemaSchemaElement(
@@ -9739,7 +9739,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1SchemaSchemaProperty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1SchemaSchemaProperty();
       var od = api.GoogleCloudApigeeV1SchemaSchemaProperty.fromJson(o.toJson());
       checkGoogleCloudApigeeV1SchemaSchemaProperty(
@@ -9748,7 +9748,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1ServiceIssuersMapping', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ServiceIssuersMapping();
       var od =
           api.GoogleCloudApigeeV1ServiceIssuersMapping.fromJson(o.toJson());
@@ -9758,7 +9758,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Session', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Session();
       var od = api.GoogleCloudApigeeV1Session.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Session(od as api.GoogleCloudApigeeV1Session);
@@ -9766,7 +9766,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1SharedFlow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1SharedFlow();
       var od = api.GoogleCloudApigeeV1SharedFlow.fromJson(o.toJson());
       checkGoogleCloudApigeeV1SharedFlow(
@@ -9775,7 +9775,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1SharedFlowRevision', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1SharedFlowRevision();
       var od = api.GoogleCloudApigeeV1SharedFlowRevision.fromJson(o.toJson());
       checkGoogleCloudApigeeV1SharedFlowRevision(
@@ -9784,7 +9784,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Stats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Stats();
       var od = api.GoogleCloudApigeeV1Stats.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Stats(od as api.GoogleCloudApigeeV1Stats);
@@ -9792,7 +9792,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1StatsEnvironmentStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1StatsEnvironmentStats();
       var od =
           api.GoogleCloudApigeeV1StatsEnvironmentStats.fromJson(o.toJson());
@@ -9802,7 +9802,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1StatsHostStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1StatsHostStats();
       var od = api.GoogleCloudApigeeV1StatsHostStats.fromJson(o.toJson());
       checkGoogleCloudApigeeV1StatsHostStats(
@@ -9811,7 +9811,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1Subscription', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Subscription();
       var od = api.GoogleCloudApigeeV1Subscription.fromJson(o.toJson());
       checkGoogleCloudApigeeV1Subscription(
@@ -9820,7 +9820,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1SyncAuthorization', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1SyncAuthorization();
       var od = api.GoogleCloudApigeeV1SyncAuthorization.fromJson(o.toJson());
       checkGoogleCloudApigeeV1SyncAuthorization(
@@ -9829,7 +9829,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1TargetServer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1TargetServer();
       var od = api.GoogleCloudApigeeV1TargetServer.fromJson(o.toJson());
       checkGoogleCloudApigeeV1TargetServer(
@@ -9838,7 +9838,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1TargetServerConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1TargetServerConfig();
       var od = api.GoogleCloudApigeeV1TargetServerConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1TargetServerConfig(
@@ -9847,7 +9847,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1TestDatastoreResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1TestDatastoreResponse();
       var od =
           api.GoogleCloudApigeeV1TestDatastoreResponse.fromJson(o.toJson());
@@ -9857,7 +9857,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1TlsInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1TlsInfo();
       var od = api.GoogleCloudApigeeV1TlsInfo.fromJson(o.toJson());
       checkGoogleCloudApigeeV1TlsInfo(od as api.GoogleCloudApigeeV1TlsInfo);
@@ -9865,7 +9865,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1TlsInfoCommonName', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1TlsInfoCommonName();
       var od = api.GoogleCloudApigeeV1TlsInfoCommonName.fromJson(o.toJson());
       checkGoogleCloudApigeeV1TlsInfoCommonName(
@@ -9874,7 +9874,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1TlsInfoConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1TlsInfoConfig();
       var od = api.GoogleCloudApigeeV1TlsInfoConfig.fromJson(o.toJson());
       checkGoogleCloudApigeeV1TlsInfoConfig(
@@ -9883,7 +9883,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudApigeeV1UpdateError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1UpdateError();
       var od = api.GoogleCloudApigeeV1UpdateError.fromJson(o.toJson());
       checkGoogleCloudApigeeV1UpdateError(
@@ -9892,7 +9892,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1AuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1AuditConfig();
       var od = api.GoogleIamV1AuditConfig.fromJson(o.toJson());
       checkGoogleIamV1AuditConfig(od as api.GoogleIamV1AuditConfig);
@@ -9900,7 +9900,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1AuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1AuditLogConfig();
       var od = api.GoogleIamV1AuditLogConfig.fromJson(o.toJson());
       checkGoogleIamV1AuditLogConfig(od as api.GoogleIamV1AuditLogConfig);
@@ -9908,7 +9908,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1Binding();
       var od = api.GoogleIamV1Binding.fromJson(o.toJson());
       checkGoogleIamV1Binding(od as api.GoogleIamV1Binding);
@@ -9916,7 +9916,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1Policy();
       var od = api.GoogleIamV1Policy.fromJson(o.toJson());
       checkGoogleIamV1Policy(od as api.GoogleIamV1Policy);
@@ -9924,7 +9924,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1SetIamPolicyRequest();
       var od = api.GoogleIamV1SetIamPolicyRequest.fromJson(o.toJson());
       checkGoogleIamV1SetIamPolicyRequest(
@@ -9933,7 +9933,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1TestIamPermissionsRequest();
       var od = api.GoogleIamV1TestIamPermissionsRequest.fromJson(o.toJson());
       checkGoogleIamV1TestIamPermissionsRequest(
@@ -9942,7 +9942,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1TestIamPermissionsResponse();
       var od = api.GoogleIamV1TestIamPermissionsResponse.fromJson(o.toJson());
       checkGoogleIamV1TestIamPermissionsResponse(
@@ -9951,7 +9951,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
       var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
       checkGoogleLongrunningListOperationsResponse(
@@ -9960,7 +9960,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
@@ -9968,7 +9968,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
@@ -9976,7 +9976,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleRpcPreconditionFailure', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcPreconditionFailure();
       var od = api.GoogleRpcPreconditionFailure.fromJson(o.toJson());
       checkGoogleRpcPreconditionFailure(od as api.GoogleRpcPreconditionFailure);
@@ -9984,7 +9984,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleRpcPreconditionFailureViolation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcPreconditionFailureViolation();
       var od = api.GoogleRpcPreconditionFailureViolation.fromJson(o.toJson());
       checkGoogleRpcPreconditionFailureViolation(
@@ -9993,7 +9993,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleRpcStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
       var od = api.GoogleRpcStatus.fromJson(o.toJson());
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
@@ -10001,7 +10001,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypeExpr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeExpr();
       var od = api.GoogleTypeExpr.fromJson(o.toJson());
       checkGoogleTypeExpr(od as api.GoogleTypeExpr);
@@ -10009,7 +10009,7 @@ void main() {
   });
 
   unittest.group('resource-HybridIssuersResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).hybrid.issuers;
       var arg_name = 'foo';
@@ -10058,17 +10058,14 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListHybridIssuersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListHybridIssuersResponse(
-            response as api.GoogleCloudApigeeV1ListHybridIssuersResponse);
-      })));
+      final response = await res.list(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListHybridIssuersResponse(
+          response as api.GoogleCloudApigeeV1ListHybridIssuersResponse);
     });
   });
 
   unittest.group('resource-OrganizationsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations;
       var arg_request = buildGoogleCloudApigeeV1Organization();
@@ -10125,15 +10122,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, parent: arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.create(arg_request,
+          parent: arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations;
       var arg_name = 'foo';
@@ -10181,15 +10176,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations;
       var arg_name = 'foo';
@@ -10237,15 +10229,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Organization());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Organization(
-            response as api.GoogleCloudApigeeV1Organization);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Organization(
+          response as api.GoogleCloudApigeeV1Organization);
     });
 
-    unittest.test('method--getDeployedIngressConfig', () {
+    unittest.test('method--getDeployedIngressConfig', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations;
       var arg_name = 'foo';
@@ -10298,16 +10287,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1IngressConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getDeployedIngressConfig(arg_name,
-              view: arg_view, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1IngressConfig(
-            response as api.GoogleCloudApigeeV1IngressConfig);
-      })));
+      final response = await res.getDeployedIngressConfig(arg_name,
+          view: arg_view, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1IngressConfig(
+          response as api.GoogleCloudApigeeV1IngressConfig);
     });
 
-    unittest.test('method--getSyncAuthorization', () {
+    unittest.test('method--getSyncAuthorization', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations;
       var arg_request = buildGoogleCloudApigeeV1GetSyncAuthorizationRequest();
@@ -10362,15 +10348,13 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1SyncAuthorization());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getSyncAuthorization(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1SyncAuthorization(
-            response as api.GoogleCloudApigeeV1SyncAuthorization);
-      })));
+      final response = await res.getSyncAuthorization(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1SyncAuthorization(
+          response as api.GoogleCloudApigeeV1SyncAuthorization);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations;
       var arg_parent = 'foo';
@@ -10419,15 +10403,12 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListOrganizationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListOrganizationsResponse(
-            response as api.GoogleCloudApigeeV1ListOrganizationsResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListOrganizationsResponse(
+          response as api.GoogleCloudApigeeV1ListOrganizationsResponse);
     });
 
-    unittest.test('method--setSyncAuthorization', () {
+    unittest.test('method--setSyncAuthorization', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations;
       var arg_request = buildGoogleCloudApigeeV1SyncAuthorization();
@@ -10482,15 +10463,13 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1SyncAuthorization());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setSyncAuthorization(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1SyncAuthorization(
-            response as api.GoogleCloudApigeeV1SyncAuthorization);
-      })));
+      final response = await res.setSyncAuthorization(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1SyncAuthorization(
+          response as api.GoogleCloudApigeeV1SyncAuthorization);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations;
       var arg_request = buildGoogleCloudApigeeV1Organization();
@@ -10544,17 +10523,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Organization());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Organization(
-            response as api.GoogleCloudApigeeV1Organization);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Organization(
+          response as api.GoogleCloudApigeeV1Organization);
     });
   });
 
   unittest.group('resource-OrganizationsAnalyticsDatastoresResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.analytics.datastores;
       var arg_request = buildGoogleCloudApigeeV1Datastore();
@@ -10608,15 +10585,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Datastore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Datastore(
-            response as api.GoogleCloudApigeeV1Datastore);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Datastore(
+          response as api.GoogleCloudApigeeV1Datastore);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.analytics.datastores;
       var arg_name = 'foo';
@@ -10664,14 +10639,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.analytics.datastores;
       var arg_name = 'foo';
@@ -10719,15 +10691,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Datastore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Datastore(
-            response as api.GoogleCloudApigeeV1Datastore);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Datastore(
+          response as api.GoogleCloudApigeeV1Datastore);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.analytics.datastores;
       var arg_parent = 'foo';
@@ -10781,15 +10750,13 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListDatastoresResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, targetType: arg_targetType, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListDatastoresResponse(
-            response as api.GoogleCloudApigeeV1ListDatastoresResponse);
-      })));
+      final response = await res.list(arg_parent,
+          targetType: arg_targetType, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListDatastoresResponse(
+          response as api.GoogleCloudApigeeV1ListDatastoresResponse);
     });
 
-    unittest.test('method--test', () {
+    unittest.test('method--test', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.analytics.datastores;
       var arg_request = buildGoogleCloudApigeeV1Datastore();
@@ -10844,15 +10811,13 @@ void main() {
             .encode(buildGoogleCloudApigeeV1TestDatastoreResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .test(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1TestDatastoreResponse(
-            response as api.GoogleCloudApigeeV1TestDatastoreResponse);
-      })));
+      final response =
+          await res.test(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1TestDatastoreResponse(
+          response as api.GoogleCloudApigeeV1TestDatastoreResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.analytics.datastores;
       var arg_request = buildGoogleCloudApigeeV1Datastore();
@@ -10906,17 +10871,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Datastore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Datastore(
-            response as api.GoogleCloudApigeeV1Datastore);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Datastore(
+          response as api.GoogleCloudApigeeV1Datastore);
     });
   });
 
   unittest.group('resource-OrganizationsApiproductsResource', () {
-    unittest.test('method--attributes', () {
+    unittest.test('method--attributes', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apiproducts;
       var arg_request = buildGoogleCloudApigeeV1Attributes();
@@ -10970,15 +10933,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .attributes(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Attributes(
-            response as api.GoogleCloudApigeeV1Attributes);
-      })));
+      final response =
+          await res.attributes(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Attributes(
+          response as api.GoogleCloudApigeeV1Attributes);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apiproducts;
       var arg_request = buildGoogleCloudApigeeV1ApiProduct();
@@ -11032,15 +10993,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ApiProduct(
-            response as api.GoogleCloudApigeeV1ApiProduct);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ApiProduct(
+          response as api.GoogleCloudApigeeV1ApiProduct);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apiproducts;
       var arg_name = 'foo';
@@ -11088,15 +11047,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ApiProduct(
-            response as api.GoogleCloudApigeeV1ApiProduct);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ApiProduct(
+          response as api.GoogleCloudApigeeV1ApiProduct);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apiproducts;
       var arg_name = 'foo';
@@ -11144,15 +11100,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ApiProduct(
-            response as api.GoogleCloudApigeeV1ApiProduct);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ApiProduct(
+          response as api.GoogleCloudApigeeV1ApiProduct);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apiproducts;
       var arg_parent = 'foo';
@@ -11226,21 +11179,18 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListApiProductsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              attributename: arg_attributename,
-              attributevalue: arg_attributevalue,
-              count: arg_count,
-              expand: arg_expand,
-              startKey: arg_startKey,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListApiProductsResponse(
-            response as api.GoogleCloudApigeeV1ListApiProductsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          attributename: arg_attributename,
+          attributevalue: arg_attributevalue,
+          count: arg_count,
+          expand: arg_expand,
+          startKey: arg_startKey,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListApiProductsResponse(
+          response as api.GoogleCloudApigeeV1ListApiProductsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apiproducts;
       var arg_request = buildGoogleCloudApigeeV1ApiProduct();
@@ -11294,17 +11244,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ApiProduct(
-            response as api.GoogleCloudApigeeV1ApiProduct);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ApiProduct(
+          response as api.GoogleCloudApigeeV1ApiProduct);
     });
   });
 
   unittest.group('resource-OrganizationsApiproductsAttributesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
       var arg_name = 'foo';
@@ -11352,15 +11300,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Attribute(
-            response as api.GoogleCloudApigeeV1Attribute);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Attribute(
+          response as api.GoogleCloudApigeeV1Attribute);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
       var arg_name = 'foo';
@@ -11408,15 +11353,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Attribute(
-            response as api.GoogleCloudApigeeV1Attribute);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Attribute(
+          response as api.GoogleCloudApigeeV1Attribute);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
       var arg_parent = 'foo';
@@ -11464,15 +11406,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Attributes(
-            response as api.GoogleCloudApigeeV1Attributes);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Attributes(
+          response as api.GoogleCloudApigeeV1Attributes);
     });
 
-    unittest.test('method--updateApiProductAttribute', () {
+    unittest.test('method--updateApiProductAttribute', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apiproducts.attributes_1;
       var arg_request = buildGoogleCloudApigeeV1Attribute();
@@ -11526,18 +11465,16 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateApiProductAttribute(arg_request, arg_name,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Attribute(
-            response as api.GoogleCloudApigeeV1Attribute);
-      })));
+      final response = await res.updateApiProductAttribute(
+          arg_request, arg_name,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Attribute(
+          response as api.GoogleCloudApigeeV1Attribute);
     });
   });
 
   unittest.group('resource-OrganizationsApisResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apis;
       var arg_request = buildGoogleApiHttpBody();
@@ -11606,19 +11543,16 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1ApiProxyRevision());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              action: arg_action,
-              name: arg_name,
-              validate: arg_validate,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ApiProxyRevision(
-            response as api.GoogleCloudApigeeV1ApiProxyRevision);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          action: arg_action,
+          name: arg_name,
+          validate: arg_validate,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ApiProxyRevision(
+          response as api.GoogleCloudApigeeV1ApiProxyRevision);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apis;
       var arg_name = 'foo';
@@ -11666,15 +11600,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProxy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ApiProxy(
-            response as api.GoogleCloudApigeeV1ApiProxy);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ApiProxy(
+          response as api.GoogleCloudApigeeV1ApiProxy);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apis;
       var arg_name = 'foo';
@@ -11722,15 +11653,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiProxy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ApiProxy(
-            response as api.GoogleCloudApigeeV1ApiProxy);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ApiProxy(
+          response as api.GoogleCloudApigeeV1ApiProxy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apis;
       var arg_parent = 'foo';
@@ -11789,20 +11717,17 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListApiProxiesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              includeMetaData: arg_includeMetaData,
-              includeRevisions: arg_includeRevisions,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListApiProxiesResponse(
-            response as api.GoogleCloudApigeeV1ListApiProxiesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          includeMetaData: arg_includeMetaData,
+          includeRevisions: arg_includeRevisions,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListApiProxiesResponse(
+          response as api.GoogleCloudApigeeV1ListApiProxiesResponse);
     });
   });
 
   unittest.group('resource-OrganizationsApisDeploymentsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apis.deployments;
       var arg_parent = 'foo';
@@ -11851,17 +11776,14 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListDeploymentsResponse(
-            response as api.GoogleCloudApigeeV1ListDeploymentsResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListDeploymentsResponse(
+          response as api.GoogleCloudApigeeV1ListDeploymentsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsApisKeyvaluemapsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apis.keyvaluemaps;
       var arg_request = buildGoogleCloudApigeeV1KeyValueMap();
@@ -11915,15 +11837,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1KeyValueMap(
-            response as api.GoogleCloudApigeeV1KeyValueMap);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1KeyValueMap(
+          response as api.GoogleCloudApigeeV1KeyValueMap);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apis.keyvaluemaps;
       var arg_name = 'foo';
@@ -11971,17 +11891,14 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1KeyValueMap(
-            response as api.GoogleCloudApigeeV1KeyValueMap);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1KeyValueMap(
+          response as api.GoogleCloudApigeeV1KeyValueMap);
     });
   });
 
   unittest.group('resource-OrganizationsApisRevisionsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apis.revisions;
       var arg_name = 'foo';
@@ -12030,15 +11947,12 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1ApiProxyRevision());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ApiProxyRevision(
-            response as api.GoogleCloudApigeeV1ApiProxyRevision);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ApiProxyRevision(
+          response as api.GoogleCloudApigeeV1ApiProxyRevision);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apis.revisions;
       var arg_name = 'foo';
@@ -12091,14 +12005,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, format: arg_format, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
-      })));
+      final response =
+          await res.get(arg_name, format: arg_format, $fields: arg_$fields);
+      checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
     });
 
-    unittest.test('method--updateApiProxyRevision', () {
+    unittest.test('method--updateApiProxyRevision', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apis.revisions;
       var arg_request = buildGoogleApiHttpBody();
@@ -12157,18 +12069,15 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1ApiProxyRevision());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateApiProxyRevision(arg_request, arg_name,
-              validate: arg_validate, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ApiProxyRevision(
-            response as api.GoogleCloudApigeeV1ApiProxyRevision);
-      })));
+      final response = await res.updateApiProxyRevision(arg_request, arg_name,
+          validate: arg_validate, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ApiProxyRevision(
+          response as api.GoogleCloudApigeeV1ApiProxyRevision);
     });
   });
 
   unittest.group('resource-OrganizationsApisRevisionsDeploymentsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apis.revisions.deployments;
       var arg_parent = 'foo';
@@ -12217,17 +12126,14 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListDeploymentsResponse(
-            response as api.GoogleCloudApigeeV1ListDeploymentsResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListDeploymentsResponse(
+          response as api.GoogleCloudApigeeV1ListDeploymentsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsAppsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apps;
       var arg_name = 'foo';
@@ -12275,14 +12181,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1App());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1App(response as api.GoogleCloudApigeeV1App);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1App(response as api.GoogleCloudApigeeV1App);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.apps;
       var arg_parent = 'foo';
@@ -12376,27 +12279,24 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1ListAppsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              apiProduct: arg_apiProduct,
-              apptype: arg_apptype,
-              expand: arg_expand,
-              ids: arg_ids,
-              includeCred: arg_includeCred,
-              keyStatus: arg_keyStatus,
-              rows: arg_rows,
-              startKey: arg_startKey,
-              status: arg_status,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListAppsResponse(
-            response as api.GoogleCloudApigeeV1ListAppsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          apiProduct: arg_apiProduct,
+          apptype: arg_apptype,
+          expand: arg_expand,
+          ids: arg_ids,
+          includeCred: arg_includeCred,
+          keyStatus: arg_keyStatus,
+          rows: arg_rows,
+          startKey: arg_startKey,
+          status: arg_status,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListAppsResponse(
+          response as api.GoogleCloudApigeeV1ListAppsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsDatacollectorsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.datacollectors;
       var arg_request = buildGoogleCloudApigeeV1DataCollector();
@@ -12455,16 +12355,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DataCollector());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              dataCollectorId: arg_dataCollectorId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DataCollector(
-            response as api.GoogleCloudApigeeV1DataCollector);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          dataCollectorId: arg_dataCollectorId, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DataCollector(
+          response as api.GoogleCloudApigeeV1DataCollector);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.datacollectors;
       var arg_name = 'foo';
@@ -12512,14 +12409,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.datacollectors;
       var arg_name = 'foo';
@@ -12567,15 +12461,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DataCollector());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DataCollector(
-            response as api.GoogleCloudApigeeV1DataCollector);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DataCollector(
+          response as api.GoogleCloudApigeeV1DataCollector);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.datacollectors;
       var arg_parent = 'foo';
@@ -12634,18 +12525,15 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListDataCollectorsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListDataCollectorsResponse(
-            response as api.GoogleCloudApigeeV1ListDataCollectorsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListDataCollectorsResponse(
+          response as api.GoogleCloudApigeeV1ListDataCollectorsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.datacollectors;
       var arg_request = buildGoogleCloudApigeeV1DataCollector();
@@ -12704,18 +12592,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DataCollector());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DataCollector(
-            response as api.GoogleCloudApigeeV1DataCollector);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DataCollector(
+          response as api.GoogleCloudApigeeV1DataCollector);
     });
   });
 
   unittest.group('resource-OrganizationsDeploymentsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.deployments;
       var arg_parent = 'foo';
@@ -12769,17 +12654,15 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, sharedFlows: arg_sharedFlows, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListDeploymentsResponse(
-            response as api.GoogleCloudApigeeV1ListDeploymentsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          sharedFlows: arg_sharedFlows, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListDeploymentsResponse(
+          response as api.GoogleCloudApigeeV1ListDeploymentsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsDevelopersResource', () {
-    unittest.test('method--attributes', () {
+    unittest.test('method--attributes', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers;
       var arg_request = buildGoogleCloudApigeeV1Attributes();
@@ -12833,15 +12716,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .attributes(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Attributes(
-            response as api.GoogleCloudApigeeV1Attributes);
-      })));
+      final response =
+          await res.attributes(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Attributes(
+          response as api.GoogleCloudApigeeV1Attributes);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers;
       var arg_request = buildGoogleCloudApigeeV1Developer();
@@ -12895,15 +12776,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Developer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Developer(
-            response as api.GoogleCloudApigeeV1Developer);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Developer(
+          response as api.GoogleCloudApigeeV1Developer);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers;
       var arg_name = 'foo';
@@ -12951,15 +12830,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Developer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Developer(
-            response as api.GoogleCloudApigeeV1Developer);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Developer(
+          response as api.GoogleCloudApigeeV1Developer);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers;
       var arg_name = 'foo';
@@ -13012,15 +12888,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Developer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, action: arg_action, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Developer(
-            response as api.GoogleCloudApigeeV1Developer);
-      })));
+      final response =
+          await res.get(arg_name, action: arg_action, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Developer(
+          response as api.GoogleCloudApigeeV1Developer);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers;
       var arg_parent = 'foo';
@@ -13099,22 +12973,19 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListOfDevelopersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              app: arg_app,
-              count: arg_count,
-              expand: arg_expand,
-              ids: arg_ids,
-              includeCompany: arg_includeCompany,
-              startKey: arg_startKey,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListOfDevelopersResponse(
-            response as api.GoogleCloudApigeeV1ListOfDevelopersResponse);
-      })));
+      final response = await res.list(arg_parent,
+          app: arg_app,
+          count: arg_count,
+          expand: arg_expand,
+          ids: arg_ids,
+          includeCompany: arg_includeCompany,
+          startKey: arg_startKey,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListOfDevelopersResponse(
+          response as api.GoogleCloudApigeeV1ListOfDevelopersResponse);
     });
 
-    unittest.test('method--setDeveloperStatus', () {
+    unittest.test('method--setDeveloperStatus', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers;
       var arg_name = 'foo';
@@ -13167,15 +13038,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setDeveloperStatus(arg_name,
-              action: arg_action, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.setDeveloperStatus(arg_name,
+          action: arg_action, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers;
       var arg_request = buildGoogleCloudApigeeV1Developer();
@@ -13229,17 +13097,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Developer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Developer(
-            response as api.GoogleCloudApigeeV1Developer);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Developer(
+          response as api.GoogleCloudApigeeV1Developer);
     });
   });
 
   unittest.group('resource-OrganizationsDevelopersAppsResource', () {
-    unittest.test('method--attributes', () {
+    unittest.test('method--attributes', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps;
       var arg_request = buildGoogleCloudApigeeV1Attributes();
@@ -13293,15 +13159,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .attributes(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Attributes(
-            response as api.GoogleCloudApigeeV1Attributes);
-      })));
+      final response =
+          await res.attributes(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Attributes(
+          response as api.GoogleCloudApigeeV1Attributes);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps;
       var arg_request = buildGoogleCloudApigeeV1DeveloperApp();
@@ -13355,15 +13219,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DeveloperApp(
-            response as api.GoogleCloudApigeeV1DeveloperApp);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DeveloperApp(
+          response as api.GoogleCloudApigeeV1DeveloperApp);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps;
       var arg_name = 'foo';
@@ -13411,15 +13273,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DeveloperApp(
-            response as api.GoogleCloudApigeeV1DeveloperApp);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DeveloperApp(
+          response as api.GoogleCloudApigeeV1DeveloperApp);
     });
 
-    unittest.test('method--generateKeyPairOrUpdateDeveloperAppStatus', () {
+    unittest.test('method--generateKeyPairOrUpdateDeveloperAppStatus',
+        () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps;
       var arg_request = buildGoogleCloudApigeeV1DeveloperApp();
@@ -13478,16 +13338,14 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .generateKeyPairOrUpdateDeveloperAppStatus(arg_request, arg_name,
-              action: arg_action, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DeveloperApp(
-            response as api.GoogleCloudApigeeV1DeveloperApp);
-      })));
+      final response = await res.generateKeyPairOrUpdateDeveloperAppStatus(
+          arg_request, arg_name,
+          action: arg_action, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DeveloperApp(
+          response as api.GoogleCloudApigeeV1DeveloperApp);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps;
       var arg_name = 'foo';
@@ -13545,16 +13403,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name,
-              entity: arg_entity, query: arg_query, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DeveloperApp(
-            response as api.GoogleCloudApigeeV1DeveloperApp);
-      })));
+      final response = await res.get(arg_name,
+          entity: arg_entity, query: arg_query, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DeveloperApp(
+          response as api.GoogleCloudApigeeV1DeveloperApp);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps;
       var arg_parent = 'foo';
@@ -13623,20 +13478,17 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListDeveloperAppsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              count: arg_count,
-              expand: arg_expand,
-              shallowExpand: arg_shallowExpand,
-              startKey: arg_startKey,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListDeveloperAppsResponse(
-            response as api.GoogleCloudApigeeV1ListDeveloperAppsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          count: arg_count,
+          expand: arg_expand,
+          shallowExpand: arg_shallowExpand,
+          startKey: arg_startKey,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListDeveloperAppsResponse(
+          response as api.GoogleCloudApigeeV1ListDeveloperAppsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps;
       var arg_request = buildGoogleCloudApigeeV1DeveloperApp();
@@ -13690,17 +13542,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DeveloperApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DeveloperApp(
-            response as api.GoogleCloudApigeeV1DeveloperApp);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DeveloperApp(
+          response as api.GoogleCloudApigeeV1DeveloperApp);
     });
   });
 
   unittest.group('resource-OrganizationsDevelopersAppsAttributesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
       var arg_name = 'foo';
@@ -13748,15 +13598,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Attribute(
-            response as api.GoogleCloudApigeeV1Attribute);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Attribute(
+          response as api.GoogleCloudApigeeV1Attribute);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
       var arg_name = 'foo';
@@ -13804,15 +13651,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Attribute(
-            response as api.GoogleCloudApigeeV1Attribute);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Attribute(
+          response as api.GoogleCloudApigeeV1Attribute);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
       var arg_parent = 'foo';
@@ -13860,15 +13704,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Attributes(
-            response as api.GoogleCloudApigeeV1Attributes);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Attributes(
+          response as api.GoogleCloudApigeeV1Attributes);
     });
 
-    unittest.test('method--updateDeveloperAppAttribute', () {
+    unittest.test('method--updateDeveloperAppAttribute', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps.attributes_1;
       var arg_request = buildGoogleCloudApigeeV1Attribute();
@@ -13922,18 +13763,16 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateDeveloperAppAttribute(arg_request, arg_name,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Attribute(
-            response as api.GoogleCloudApigeeV1Attribute);
-      })));
+      final response = await res.updateDeveloperAppAttribute(
+          arg_request, arg_name,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Attribute(
+          response as api.GoogleCloudApigeeV1Attribute);
     });
   });
 
   unittest.group('resource-OrganizationsDevelopersAppsKeysResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps.keys;
       var arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
@@ -13988,15 +13827,13 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DeveloperAppKey(
-            response as api.GoogleCloudApigeeV1DeveloperAppKey);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DeveloperAppKey(
+          response as api.GoogleCloudApigeeV1DeveloperAppKey);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps.keys;
       var arg_name = 'foo';
@@ -14045,15 +13882,12 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DeveloperAppKey(
-            response as api.GoogleCloudApigeeV1DeveloperAppKey);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DeveloperAppKey(
+          response as api.GoogleCloudApigeeV1DeveloperAppKey);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps.keys;
       var arg_name = 'foo';
@@ -14102,15 +13936,12 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DeveloperAppKey(
-            response as api.GoogleCloudApigeeV1DeveloperAppKey);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DeveloperAppKey(
+          response as api.GoogleCloudApigeeV1DeveloperAppKey);
     });
 
-    unittest.test('method--replaceDeveloperAppKey', () {
+    unittest.test('method--replaceDeveloperAppKey', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps.keys;
       var arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
@@ -14165,15 +13996,13 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .replaceDeveloperAppKey(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DeveloperAppKey(
-            response as api.GoogleCloudApigeeV1DeveloperAppKey);
-      })));
+      final response = await res.replaceDeveloperAppKey(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DeveloperAppKey(
+          response as api.GoogleCloudApigeeV1DeveloperAppKey);
     });
 
-    unittest.test('method--updateDeveloperAppKey', () {
+    unittest.test('method--updateDeveloperAppKey', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps.keys;
       var arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
@@ -14233,19 +14062,16 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateDeveloperAppKey(arg_request, arg_name,
-              action: arg_action, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DeveloperAppKey(
-            response as api.GoogleCloudApigeeV1DeveloperAppKey);
-      })));
+      final response = await res.updateDeveloperAppKey(arg_request, arg_name,
+          action: arg_action, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DeveloperAppKey(
+          response as api.GoogleCloudApigeeV1DeveloperAppKey);
     });
   });
 
   unittest.group('resource-OrganizationsDevelopersAppsKeysApiproductsResource',
       () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.ApigeeApi(mock).organizations.developers.apps.keys.apiproducts;
@@ -14295,15 +14121,12 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DeveloperAppKey(
-            response as api.GoogleCloudApigeeV1DeveloperAppKey);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DeveloperAppKey(
+          response as api.GoogleCloudApigeeV1DeveloperAppKey);
     });
 
-    unittest.test('method--updateDeveloperAppKeyApiProduct', () {
+    unittest.test('method--updateDeveloperAppKeyApiProduct', () async {
       var mock = HttpServerMock();
       var res =
           api.ApigeeApi(mock).organizations.developers.apps.keys.apiproducts;
@@ -14357,17 +14180,14 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateDeveloperAppKeyApiProduct(arg_name,
-              action: arg_action, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.updateDeveloperAppKeyApiProduct(arg_name,
+          action: arg_action, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
   });
 
   unittest.group('resource-OrganizationsDevelopersAppsKeysCreateResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.apps.keys.create_1;
       var arg_request = buildGoogleCloudApigeeV1DeveloperAppKey();
@@ -14422,17 +14242,15 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1DeveloperAppKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DeveloperAppKey(
-            response as api.GoogleCloudApigeeV1DeveloperAppKey);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DeveloperAppKey(
+          response as api.GoogleCloudApigeeV1DeveloperAppKey);
     });
   });
 
   unittest.group('resource-OrganizationsDevelopersAttributesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.attributes_1;
       var arg_name = 'foo';
@@ -14480,15 +14298,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Attribute(
-            response as api.GoogleCloudApigeeV1Attribute);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Attribute(
+          response as api.GoogleCloudApigeeV1Attribute);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.attributes_1;
       var arg_name = 'foo';
@@ -14536,15 +14351,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Attribute(
-            response as api.GoogleCloudApigeeV1Attribute);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Attribute(
+          response as api.GoogleCloudApigeeV1Attribute);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.attributes_1;
       var arg_parent = 'foo';
@@ -14592,15 +14404,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attributes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Attributes(
-            response as api.GoogleCloudApigeeV1Attributes);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Attributes(
+          response as api.GoogleCloudApigeeV1Attributes);
     });
 
-    unittest.test('method--updateDeveloperAttribute', () {
+    unittest.test('method--updateDeveloperAttribute', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.developers.attributes_1;
       var arg_request = buildGoogleCloudApigeeV1Attribute();
@@ -14654,17 +14463,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Attribute());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateDeveloperAttribute(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Attribute(
-            response as api.GoogleCloudApigeeV1Attribute);
-      })));
+      final response = await res.updateDeveloperAttribute(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Attribute(
+          response as api.GoogleCloudApigeeV1Attribute);
     });
   });
 
   unittest.group('resource-OrganizationsEnvgroupsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.envgroups;
       var arg_request = buildGoogleCloudApigeeV1EnvironmentGroup();
@@ -14723,15 +14530,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, name: arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          name: arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.envgroups;
       var arg_name = 'foo';
@@ -14779,15 +14584,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.envgroups;
       var arg_name = 'foo';
@@ -14836,15 +14638,12 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1EnvironmentGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1EnvironmentGroup(
-            response as api.GoogleCloudApigeeV1EnvironmentGroup);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1EnvironmentGroup(
+          response as api.GoogleCloudApigeeV1EnvironmentGroup);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.envgroups;
       var arg_parent = 'foo';
@@ -14903,18 +14702,15 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListEnvironmentGroupsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListEnvironmentGroupsResponse(
-            response as api.GoogleCloudApigeeV1ListEnvironmentGroupsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListEnvironmentGroupsResponse(
+          response as api.GoogleCloudApigeeV1ListEnvironmentGroupsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.envgroups;
       var arg_request = buildGoogleCloudApigeeV1EnvironmentGroup();
@@ -14973,18 +14769,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 
   unittest.group('resource-OrganizationsEnvgroupsAttachmentsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.envgroups.attachments;
       var arg_request = buildGoogleCloudApigeeV1EnvironmentGroupAttachment();
@@ -15038,15 +14831,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.envgroups.attachments;
       var arg_name = 'foo';
@@ -15094,15 +14885,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.envgroups.attachments;
       var arg_name = 'foo';
@@ -15151,15 +14939,12 @@ void main() {
             .encode(buildGoogleCloudApigeeV1EnvironmentGroupAttachment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1EnvironmentGroupAttachment(
-            response as api.GoogleCloudApigeeV1EnvironmentGroupAttachment);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1EnvironmentGroupAttachment(
+          response as api.GoogleCloudApigeeV1EnvironmentGroupAttachment);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.envgroups.attachments;
       var arg_parent = 'foo';
@@ -15218,20 +15003,17 @@ void main() {
             buildGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse(response
-            as api.GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse(response
+          as api.GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsEnvironmentsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleCloudApigeeV1Environment();
@@ -15290,15 +15072,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, name: arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          name: arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments;
       var arg_name = 'foo';
@@ -15346,15 +15126,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments;
       var arg_name = 'foo';
@@ -15402,15 +15179,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Environment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Environment(
-            response as api.GoogleCloudApigeeV1Environment);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Environment(
+          response as api.GoogleCloudApigeeV1Environment);
     });
 
-    unittest.test('method--getDebugmask', () {
+    unittest.test('method--getDebugmask', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments;
       var arg_name = 'foo';
@@ -15458,15 +15232,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DebugMask());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getDebugmask(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DebugMask(
-            response as api.GoogleCloudApigeeV1DebugMask);
-      })));
+      final response = await res.getDebugmask(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DebugMask(
+          response as api.GoogleCloudApigeeV1DebugMask);
     });
 
-    unittest.test('method--getDeployedConfig', () {
+    unittest.test('method--getDeployedConfig', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments;
       var arg_name = 'foo';
@@ -15515,15 +15286,13 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1EnvironmentConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getDeployedConfig(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1EnvironmentConfig(
-            response as api.GoogleCloudApigeeV1EnvironmentConfig);
-      })));
+      final response =
+          await res.getDeployedConfig(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1EnvironmentConfig(
+          response as api.GoogleCloudApigeeV1EnvironmentConfig);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments;
       var arg_resource = 'foo';
@@ -15576,17 +15345,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleIamV1Policy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleIamV1SetIamPolicyRequest();
@@ -15640,14 +15405,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleIamV1Policy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
     });
 
-    unittest.test('method--subscribe', () {
+    unittest.test('method--subscribe', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments;
       var arg_parent = 'foo';
@@ -15695,15 +15458,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Subscription());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .subscribe(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Subscription(
-            response as api.GoogleCloudApigeeV1Subscription);
-      })));
+      final response = await res.subscribe(arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Subscription(
+          response as api.GoogleCloudApigeeV1Subscription);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleIamV1TestIamPermissionsRequest();
@@ -15758,15 +15518,13 @@ void main() {
             convert.json.encode(buildGoogleIamV1TestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleIamV1TestIamPermissionsResponse(
-            response as api.GoogleIamV1TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkGoogleIamV1TestIamPermissionsResponse(
+          response as api.GoogleIamV1TestIamPermissionsResponse);
     });
 
-    unittest.test('method--unsubscribe', () {
+    unittest.test('method--unsubscribe', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleCloudApigeeV1Subscription();
@@ -15820,14 +15578,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .unsubscribe(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response =
+          await res.unsubscribe(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleCloudApigeeV1Environment();
@@ -15881,15 +15637,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Environment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Environment(
-            response as api.GoogleCloudApigeeV1Environment);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Environment(
+          response as api.GoogleCloudApigeeV1Environment);
     });
 
-    unittest.test('method--updateDebugmask', () {
+    unittest.test('method--updateDebugmask', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleCloudApigeeV1DebugMask();
@@ -15953,18 +15707,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DebugMask());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateDebugmask(arg_request, arg_name,
-              replaceRepeatedFields: arg_replaceRepeatedFields,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DebugMask(
-            response as api.GoogleCloudApigeeV1DebugMask);
-      })));
+      final response = await res.updateDebugmask(arg_request, arg_name,
+          replaceRepeatedFields: arg_replaceRepeatedFields,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DebugMask(
+          response as api.GoogleCloudApigeeV1DebugMask);
     });
 
-    unittest.test('method--updateEnvironment', () {
+    unittest.test('method--updateEnvironment', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments;
       var arg_request = buildGoogleCloudApigeeV1Environment();
@@ -16018,18 +15769,16 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Environment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateEnvironment(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Environment(
-            response as api.GoogleCloudApigeeV1Environment);
-      })));
+      final response = await res.updateEnvironment(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Environment(
+          response as api.GoogleCloudApigeeV1Environment);
     });
   });
 
   unittest.group('resource-OrganizationsEnvironmentsAnalyticsAdminResource',
       () {
-    unittest.test('method--getSchemav2', () {
+    unittest.test('method--getSchemav2', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.analytics.admin;
       var arg_name = 'foo';
@@ -16082,18 +15831,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Schema());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getSchemav2(arg_name, type: arg_type, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Schema(
-            response as api.GoogleCloudApigeeV1Schema);
-      })));
+      final response =
+          await res.getSchemav2(arg_name, type: arg_type, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Schema(response as api.GoogleCloudApigeeV1Schema);
     });
   });
 
   unittest.group('resource-OrganizationsEnvironmentsAnalyticsExportsResource',
       () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.ApigeeApi(mock).organizations.environments.analytics.exports;
@@ -16148,15 +15894,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Export());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Export(
-            response as api.GoogleCloudApigeeV1Export);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Export(response as api.GoogleCloudApigeeV1Export);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.ApigeeApi(mock).organizations.environments.analytics.exports;
@@ -16205,15 +15948,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Export());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Export(
-            response as api.GoogleCloudApigeeV1Export);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Export(response as api.GoogleCloudApigeeV1Export);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.ApigeeApi(mock).organizations.environments.analytics.exports;
@@ -16263,18 +16002,15 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1ListExportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListExportsResponse(
-            response as api.GoogleCloudApigeeV1ListExportsResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListExportsResponse(
+          response as api.GoogleCloudApigeeV1ListExportsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsEnvironmentsApisDeploymentsResource',
       () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.apis.deployments;
       var arg_parent = 'foo';
@@ -16323,17 +16059,14 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListDeploymentsResponse(
-            response as api.GoogleCloudApigeeV1ListDeploymentsResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListDeploymentsResponse(
+          response as api.GoogleCloudApigeeV1ListDeploymentsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsEnvironmentsApisRevisionsResource', () {
-    unittest.test('method--deploy', () {
+    unittest.test('method--deploy', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.apis.revisions;
       var arg_name = 'foo';
@@ -16391,18 +16124,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Deployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deploy(arg_name,
-              override: arg_override,
-              sequencedRollout: arg_sequencedRollout,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Deployment(
-            response as api.GoogleCloudApigeeV1Deployment);
-      })));
+      final response = await res.deploy(arg_name,
+          override: arg_override,
+          sequencedRollout: arg_sequencedRollout,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Deployment(
+          response as api.GoogleCloudApigeeV1Deployment);
     });
 
-    unittest.test('method--getDeployments', () {
+    unittest.test('method--getDeployments', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.apis.revisions;
       var arg_name = 'foo';
@@ -16450,15 +16180,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Deployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getDeployments(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Deployment(
-            response as api.GoogleCloudApigeeV1Deployment);
-      })));
+      final response = await res.getDeployments(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Deployment(
+          response as api.GoogleCloudApigeeV1Deployment);
     });
 
-    unittest.test('method--undeploy', () {
+    unittest.test('method--undeploy', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.apis.revisions;
       var arg_name = 'foo';
@@ -16511,19 +16238,16 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .undeploy(arg_name,
-              sequencedRollout: arg_sequencedRollout, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.undeploy(arg_name,
+          sequencedRollout: arg_sequencedRollout, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
   });
 
   unittest.group(
       'resource-OrganizationsEnvironmentsApisRevisionsDebugsessionsResource',
       () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock)
           .organizations
@@ -16587,16 +16311,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DebugSession());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              timeout: arg_timeout, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DebugSession(
-            response as api.GoogleCloudApigeeV1DebugSession);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          timeout: arg_timeout, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DebugSession(
+          response as api.GoogleCloudApigeeV1DebugSession);
     });
 
-    unittest.test('method--deleteData', () {
+    unittest.test('method--deleteData', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock)
           .organizations
@@ -16649,14 +16370,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deleteData(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.deleteData(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock)
           .organizations
@@ -16709,15 +16427,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1DebugSession());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DebugSession(
-            response as api.GoogleCloudApigeeV1DebugSession);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DebugSession(
+          response as api.GoogleCloudApigeeV1DebugSession);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock)
           .organizations
@@ -16781,22 +16496,19 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListDebugSessionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListDebugSessionsResponse(
-            response as api.GoogleCloudApigeeV1ListDebugSessionsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListDebugSessionsResponse(
+          response as api.GoogleCloudApigeeV1ListDebugSessionsResponse);
     });
   });
 
   unittest.group(
       'resource-OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResource',
       () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock)
           .organizations
@@ -16851,18 +16563,15 @@ void main() {
             .encode(buildGoogleCloudApigeeV1DebugSessionTransaction());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DebugSessionTransaction(
-            response as api.GoogleCloudApigeeV1DebugSessionTransaction);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DebugSessionTransaction(
+          response as api.GoogleCloudApigeeV1DebugSessionTransaction);
     });
   });
 
   unittest.group(
       'resource-OrganizationsEnvironmentsApisRevisionsDeploymentsResource', () {
-    unittest.test('method--generateDeployChangeReport', () {
+    unittest.test('method--generateDeployChangeReport', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock)
           .organizations
@@ -16921,16 +16630,13 @@ void main() {
             .encode(buildGoogleCloudApigeeV1DeploymentChangeReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .generateDeployChangeReport(arg_name,
-              override: arg_override, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DeploymentChangeReport(
-            response as api.GoogleCloudApigeeV1DeploymentChangeReport);
-      })));
+      final response = await res.generateDeployChangeReport(arg_name,
+          override: arg_override, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DeploymentChangeReport(
+          response as api.GoogleCloudApigeeV1DeploymentChangeReport);
     });
 
-    unittest.test('method--generateUndeployChangeReport', () {
+    unittest.test('method--generateUndeployChangeReport', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock)
           .organizations
@@ -16984,17 +16690,15 @@ void main() {
             .encode(buildGoogleCloudApigeeV1DeploymentChangeReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .generateUndeployChangeReport(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DeploymentChangeReport(
-            response as api.GoogleCloudApigeeV1DeploymentChangeReport);
-      })));
+      final response = await res.generateUndeployChangeReport(arg_name,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DeploymentChangeReport(
+          response as api.GoogleCloudApigeeV1DeploymentChangeReport);
     });
   });
 
   unittest.group('resource-OrganizationsEnvironmentsCachesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.caches;
       var arg_name = 'foo';
@@ -17042,16 +16746,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
   });
 
   unittest.group('resource-OrganizationsEnvironmentsDeploymentsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.deployments;
       var arg_parent = 'foo';
@@ -17105,17 +16806,15 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, sharedFlows: arg_sharedFlows, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListDeploymentsResponse(
-            response as api.GoogleCloudApigeeV1ListDeploymentsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          sharedFlows: arg_sharedFlows, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListDeploymentsResponse(
+          response as api.GoogleCloudApigeeV1ListDeploymentsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsEnvironmentsFlowhooksResource', () {
-    unittest.test('method--attachSharedFlowToFlowHook', () {
+    unittest.test('method--attachSharedFlowToFlowHook', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.flowhooks;
       var arg_request = buildGoogleCloudApigeeV1FlowHook();
@@ -17169,16 +16868,14 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1FlowHook());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .attachSharedFlowToFlowHook(arg_request, arg_name,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1FlowHook(
-            response as api.GoogleCloudApigeeV1FlowHook);
-      })));
+      final response = await res.attachSharedFlowToFlowHook(
+          arg_request, arg_name,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1FlowHook(
+          response as api.GoogleCloudApigeeV1FlowHook);
     });
 
-    unittest.test('method--detachSharedFlowFromFlowHook', () {
+    unittest.test('method--detachSharedFlowFromFlowHook', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.flowhooks;
       var arg_name = 'foo';
@@ -17226,15 +16923,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1FlowHook());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .detachSharedFlowFromFlowHook(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1FlowHook(
-            response as api.GoogleCloudApigeeV1FlowHook);
-      })));
+      final response = await res.detachSharedFlowFromFlowHook(arg_name,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1FlowHook(
+          response as api.GoogleCloudApigeeV1FlowHook);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.flowhooks;
       var arg_name = 'foo';
@@ -17282,17 +16977,14 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1FlowHook());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1FlowHook(
-            response as api.GoogleCloudApigeeV1FlowHook);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1FlowHook(
+          response as api.GoogleCloudApigeeV1FlowHook);
     });
   });
 
   unittest.group('resource-OrganizationsEnvironmentsKeystoresResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.keystores;
       var arg_request = buildGoogleCloudApigeeV1Keystore();
@@ -17351,15 +17043,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Keystore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, name: arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Keystore(
-            response as api.GoogleCloudApigeeV1Keystore);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          name: arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Keystore(
+          response as api.GoogleCloudApigeeV1Keystore);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.keystores;
       var arg_name = 'foo';
@@ -17407,15 +17097,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Keystore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Keystore(
-            response as api.GoogleCloudApigeeV1Keystore);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Keystore(
+          response as api.GoogleCloudApigeeV1Keystore);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.keystores;
       var arg_name = 'foo';
@@ -17463,18 +17150,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Keystore());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Keystore(
-            response as api.GoogleCloudApigeeV1Keystore);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Keystore(
+          response as api.GoogleCloudApigeeV1Keystore);
     });
   });
 
   unittest.group('resource-OrganizationsEnvironmentsKeystoresAliasesResource',
       () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
@@ -17553,20 +17237,17 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Alias());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              P_password: arg_P_password,
-              alias: arg_alias,
-              format: arg_format,
-              ignoreExpiryValidation: arg_ignoreExpiryValidation,
-              ignoreNewlineValidation: arg_ignoreNewlineValidation,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Alias(response as api.GoogleCloudApigeeV1Alias);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          P_password: arg_P_password,
+          alias: arg_alias,
+          format: arg_format,
+          ignoreExpiryValidation: arg_ignoreExpiryValidation,
+          ignoreNewlineValidation: arg_ignoreNewlineValidation,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Alias(response as api.GoogleCloudApigeeV1Alias);
     });
 
-    unittest.test('method--csr', () {
+    unittest.test('method--csr', () async {
       var mock = HttpServerMock();
       var res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
@@ -17615,14 +17296,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .csr(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
-      })));
+      final response = await res.csr(arg_name, $fields: arg_$fields);
+      checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
@@ -17671,14 +17349,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Alias());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Alias(response as api.GoogleCloudApigeeV1Alias);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Alias(response as api.GoogleCloudApigeeV1Alias);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
@@ -17727,14 +17402,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Alias());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Alias(response as api.GoogleCloudApigeeV1Alias);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Alias(response as api.GoogleCloudApigeeV1Alias);
     });
 
-    unittest.test('method--getCertificate', () {
+    unittest.test('method--getCertificate', () async {
       var mock = HttpServerMock();
       var res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
@@ -17783,14 +17455,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getCertificate(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
-      })));
+      final response = await res.getCertificate(arg_name, $fields: arg_$fields);
+      checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res =
           api.ApigeeApi(mock).organizations.environments.keystores.aliases;
@@ -17854,19 +17523,16 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Alias());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name,
-              ignoreExpiryValidation: arg_ignoreExpiryValidation,
-              ignoreNewlineValidation: arg_ignoreNewlineValidation,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Alias(response as api.GoogleCloudApigeeV1Alias);
-      })));
+      final response = await res.update(arg_request, arg_name,
+          ignoreExpiryValidation: arg_ignoreExpiryValidation,
+          ignoreNewlineValidation: arg_ignoreNewlineValidation,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Alias(response as api.GoogleCloudApigeeV1Alias);
     });
   });
 
   unittest.group('resource-OrganizationsEnvironmentsKeyvaluemapsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.keyvaluemaps;
       var arg_request = buildGoogleCloudApigeeV1KeyValueMap();
@@ -17920,15 +17586,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1KeyValueMap(
-            response as api.GoogleCloudApigeeV1KeyValueMap);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1KeyValueMap(
+          response as api.GoogleCloudApigeeV1KeyValueMap);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.keyvaluemaps;
       var arg_name = 'foo';
@@ -17976,18 +17640,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1KeyValueMap(
-            response as api.GoogleCloudApigeeV1KeyValueMap);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1KeyValueMap(
+          response as api.GoogleCloudApigeeV1KeyValueMap);
     });
   });
 
   unittest.group('resource-OrganizationsEnvironmentsOptimizedStatsResource',
       () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.optimizedStats;
       var arg_name = 'foo';
@@ -18111,33 +17772,30 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1OptimizedStats());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name,
-              accuracy: arg_accuracy,
-              aggTable: arg_aggTable,
-              filter: arg_filter,
-              limit: arg_limit,
-              offset: arg_offset,
-              realtime: arg_realtime,
-              select: arg_select,
-              sonar: arg_sonar,
-              sort: arg_sort,
-              sortby: arg_sortby,
-              timeRange: arg_timeRange,
-              timeUnit: arg_timeUnit,
-              topk: arg_topk,
-              tsAscending: arg_tsAscending,
-              tzo: arg_tzo,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1OptimizedStats(
-            response as api.GoogleCloudApigeeV1OptimizedStats);
-      })));
+      final response = await res.get(arg_name,
+          accuracy: arg_accuracy,
+          aggTable: arg_aggTable,
+          filter: arg_filter,
+          limit: arg_limit,
+          offset: arg_offset,
+          realtime: arg_realtime,
+          select: arg_select,
+          sonar: arg_sonar,
+          sort: arg_sort,
+          sortby: arg_sortby,
+          timeRange: arg_timeRange,
+          timeUnit: arg_timeUnit,
+          topk: arg_topk,
+          tsAscending: arg_tsAscending,
+          tzo: arg_tzo,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1OptimizedStats(
+          response as api.GoogleCloudApigeeV1OptimizedStats);
     });
   });
 
   unittest.group('resource-OrganizationsEnvironmentsQueriesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.queries;
       var arg_request = buildGoogleCloudApigeeV1Query();
@@ -18190,15 +17848,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1AsyncQuery());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1AsyncQuery(
-            response as api.GoogleCloudApigeeV1AsyncQuery);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1AsyncQuery(
+          response as api.GoogleCloudApigeeV1AsyncQuery);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.queries;
       var arg_name = 'foo';
@@ -18246,15 +17902,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1AsyncQuery());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1AsyncQuery(
-            response as api.GoogleCloudApigeeV1AsyncQuery);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1AsyncQuery(
+          response as api.GoogleCloudApigeeV1AsyncQuery);
     });
 
-    unittest.test('method--getResult', () {
+    unittest.test('method--getResult', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.queries;
       var arg_name = 'foo';
@@ -18302,14 +17955,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getResult(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
-      })));
+      final response = await res.getResult(arg_name, $fields: arg_$fields);
+      checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.queries;
       var arg_parent = 'foo';
@@ -18388,24 +18038,21 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListAsyncQueriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              dataset: arg_dataset,
-              from: arg_from,
-              inclQueriesWithoutReport: arg_inclQueriesWithoutReport,
-              status: arg_status,
-              submittedBy: arg_submittedBy,
-              to: arg_to,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListAsyncQueriesResponse(
-            response as api.GoogleCloudApigeeV1ListAsyncQueriesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          dataset: arg_dataset,
+          from: arg_from,
+          inclQueriesWithoutReport: arg_inclQueriesWithoutReport,
+          status: arg_status,
+          submittedBy: arg_submittedBy,
+          to: arg_to,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListAsyncQueriesResponse(
+          response as api.GoogleCloudApigeeV1ListAsyncQueriesResponse);
     });
   });
 
   unittest.group('resource-OrganizationsEnvironmentsReferencesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.references;
       var arg_request = buildGoogleCloudApigeeV1Reference();
@@ -18459,15 +18106,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Reference());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Reference(
-            response as api.GoogleCloudApigeeV1Reference);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Reference(
+          response as api.GoogleCloudApigeeV1Reference);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.references;
       var arg_name = 'foo';
@@ -18515,15 +18160,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Reference());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Reference(
-            response as api.GoogleCloudApigeeV1Reference);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Reference(
+          response as api.GoogleCloudApigeeV1Reference);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.references;
       var arg_name = 'foo';
@@ -18571,15 +18213,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Reference());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Reference(
-            response as api.GoogleCloudApigeeV1Reference);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Reference(
+          response as api.GoogleCloudApigeeV1Reference);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.references;
       var arg_request = buildGoogleCloudApigeeV1Reference();
@@ -18633,17 +18272,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Reference());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Reference(
-            response as api.GoogleCloudApigeeV1Reference);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Reference(
+          response as api.GoogleCloudApigeeV1Reference);
     });
   });
 
   unittest.group('resource-OrganizationsEnvironmentsResourcefilesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
       var arg_request = buildGoogleApiHttpBody();
@@ -18706,16 +18343,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ResourceFile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              name: arg_name, type: arg_type, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ResourceFile(
-            response as api.GoogleCloudApigeeV1ResourceFile);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          name: arg_name, type: arg_type, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ResourceFile(
+          response as api.GoogleCloudApigeeV1ResourceFile);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
       var arg_parent = 'foo';
@@ -18765,15 +18399,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ResourceFile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_parent, arg_type, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ResourceFile(
-            response as api.GoogleCloudApigeeV1ResourceFile);
-      })));
+      final response = await res.delete(arg_parent, arg_type, arg_name,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ResourceFile(
+          response as api.GoogleCloudApigeeV1ResourceFile);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
       var arg_parent = 'foo';
@@ -18823,14 +18455,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_parent, arg_type, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
-      })));
+      final response =
+          await res.get(arg_parent, arg_type, arg_name, $fields: arg_$fields);
+      checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
       var arg_parent = 'foo';
@@ -18884,15 +18514,13 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListEnvironmentResourcesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, type: arg_type, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListEnvironmentResourcesResponse(response
-            as api.GoogleCloudApigeeV1ListEnvironmentResourcesResponse);
-      })));
+      final response =
+          await res.list(arg_parent, type: arg_type, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListEnvironmentResourcesResponse(
+          response as api.GoogleCloudApigeeV1ListEnvironmentResourcesResponse);
     });
 
-    unittest.test('method--listEnvironmentResources', () {
+    unittest.test('method--listEnvironmentResources', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
       var arg_parent = 'foo';
@@ -18942,15 +18570,13 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListEnvironmentResourcesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listEnvironmentResources(arg_parent, arg_type, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListEnvironmentResourcesResponse(response
-            as api.GoogleCloudApigeeV1ListEnvironmentResourcesResponse);
-      })));
+      final response = await res.listEnvironmentResources(arg_parent, arg_type,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListEnvironmentResourcesResponse(
+          response as api.GoogleCloudApigeeV1ListEnvironmentResourcesResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.resourcefiles;
       var arg_request = buildGoogleApiHttpBody();
@@ -19005,19 +18631,17 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ResourceFile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_parent, arg_type, arg_name,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ResourceFile(
-            response as api.GoogleCloudApigeeV1ResourceFile);
-      })));
+      final response = await res.update(
+          arg_request, arg_parent, arg_type, arg_name,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ResourceFile(
+          response as api.GoogleCloudApigeeV1ResourceFile);
     });
   });
 
   unittest.group(
       'resource-OrganizationsEnvironmentsSharedflowsDeploymentsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock)
           .organizations
@@ -19070,18 +18694,15 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListDeploymentsResponse(
-            response as api.GoogleCloudApigeeV1ListDeploymentsResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListDeploymentsResponse(
+          response as api.GoogleCloudApigeeV1ListDeploymentsResponse);
     });
   });
 
   unittest.group(
       'resource-OrganizationsEnvironmentsSharedflowsRevisionsResource', () {
-    unittest.test('method--deploy', () {
+    unittest.test('method--deploy', () async {
       var mock = HttpServerMock();
       var res =
           api.ApigeeApi(mock).organizations.environments.sharedflows.revisions;
@@ -19135,15 +18756,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Deployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deploy(arg_name, override: arg_override, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Deployment(
-            response as api.GoogleCloudApigeeV1Deployment);
-      })));
+      final response = await res.deploy(arg_name,
+          override: arg_override, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Deployment(
+          response as api.GoogleCloudApigeeV1Deployment);
     });
 
-    unittest.test('method--getDeployments', () {
+    unittest.test('method--getDeployments', () async {
       var mock = HttpServerMock();
       var res =
           api.ApigeeApi(mock).organizations.environments.sharedflows.revisions;
@@ -19192,15 +18811,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Deployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getDeployments(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Deployment(
-            response as api.GoogleCloudApigeeV1Deployment);
-      })));
+      final response = await res.getDeployments(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Deployment(
+          response as api.GoogleCloudApigeeV1Deployment);
     });
 
-    unittest.test('method--undeploy', () {
+    unittest.test('method--undeploy', () async {
       var mock = HttpServerMock();
       var res =
           api.ApigeeApi(mock).organizations.environments.sharedflows.revisions;
@@ -19249,16 +18865,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .undeploy(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.undeploy(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
   });
 
   unittest.group('resource-OrganizationsEnvironmentsStatsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.stats;
       var arg_name = 'foo';
@@ -19381,32 +18994,29 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Stats());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name,
-              accuracy: arg_accuracy,
-              aggTable: arg_aggTable,
-              filter: arg_filter,
-              limit: arg_limit,
-              offset: arg_offset,
-              realtime: arg_realtime,
-              select: arg_select,
-              sonar: arg_sonar,
-              sort: arg_sort,
-              sortby: arg_sortby,
-              timeRange: arg_timeRange,
-              timeUnit: arg_timeUnit,
-              topk: arg_topk,
-              tsAscending: arg_tsAscending,
-              tzo: arg_tzo,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Stats(response as api.GoogleCloudApigeeV1Stats);
-      })));
+      final response = await res.get(arg_name,
+          accuracy: arg_accuracy,
+          aggTable: arg_aggTable,
+          filter: arg_filter,
+          limit: arg_limit,
+          offset: arg_offset,
+          realtime: arg_realtime,
+          select: arg_select,
+          sonar: arg_sonar,
+          sort: arg_sort,
+          sortby: arg_sortby,
+          timeRange: arg_timeRange,
+          timeUnit: arg_timeUnit,
+          topk: arg_topk,
+          tsAscending: arg_tsAscending,
+          tzo: arg_tzo,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Stats(response as api.GoogleCloudApigeeV1Stats);
     });
   });
 
   unittest.group('resource-OrganizationsEnvironmentsTargetserversResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.targetservers;
       var arg_request = buildGoogleCloudApigeeV1TargetServer();
@@ -19465,15 +19075,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1TargetServer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, name: arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1TargetServer(
-            response as api.GoogleCloudApigeeV1TargetServer);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          name: arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1TargetServer(
+          response as api.GoogleCloudApigeeV1TargetServer);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.targetservers;
       var arg_name = 'foo';
@@ -19521,15 +19129,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1TargetServer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1TargetServer(
-            response as api.GoogleCloudApigeeV1TargetServer);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1TargetServer(
+          response as api.GoogleCloudApigeeV1TargetServer);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.targetservers;
       var arg_name = 'foo';
@@ -19577,15 +19182,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1TargetServer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1TargetServer(
-            response as api.GoogleCloudApigeeV1TargetServer);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1TargetServer(
+          response as api.GoogleCloudApigeeV1TargetServer);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.environments.targetservers;
       var arg_request = buildGoogleCloudApigeeV1TargetServer();
@@ -19639,17 +19241,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1TargetServer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1TargetServer(
-            response as api.GoogleCloudApigeeV1TargetServer);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1TargetServer(
+          response as api.GoogleCloudApigeeV1TargetServer);
     });
   });
 
   unittest.group('resource-OrganizationsHostQueriesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.hostQueries;
       var arg_request = buildGoogleCloudApigeeV1Query();
@@ -19702,15 +19302,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1AsyncQuery());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1AsyncQuery(
-            response as api.GoogleCloudApigeeV1AsyncQuery);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1AsyncQuery(
+          response as api.GoogleCloudApigeeV1AsyncQuery);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.hostQueries;
       var arg_name = 'foo';
@@ -19758,15 +19356,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1AsyncQuery());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1AsyncQuery(
-            response as api.GoogleCloudApigeeV1AsyncQuery);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1AsyncQuery(
+          response as api.GoogleCloudApigeeV1AsyncQuery);
     });
 
-    unittest.test('method--getResult', () {
+    unittest.test('method--getResult', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.hostQueries;
       var arg_name = 'foo';
@@ -19814,14 +19409,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getResult(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
-      })));
+      final response = await res.getResult(arg_name, $fields: arg_$fields);
+      checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
     });
 
-    unittest.test('method--getResultView', () {
+    unittest.test('method--getResultView', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.hostQueries;
       var arg_name = 'foo';
@@ -19870,15 +19462,12 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1AsyncQueryResultView());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getResultView(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1AsyncQueryResultView(
-            response as api.GoogleCloudApigeeV1AsyncQueryResultView);
-      })));
+      final response = await res.getResultView(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1AsyncQueryResultView(
+          response as api.GoogleCloudApigeeV1AsyncQueryResultView);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.hostQueries;
       var arg_parent = 'foo';
@@ -19962,25 +19551,22 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListAsyncQueriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              dataset: arg_dataset,
-              envgroupHostname: arg_envgroupHostname,
-              from: arg_from,
-              inclQueriesWithoutReport: arg_inclQueriesWithoutReport,
-              status: arg_status,
-              submittedBy: arg_submittedBy,
-              to: arg_to,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListAsyncQueriesResponse(
-            response as api.GoogleCloudApigeeV1ListAsyncQueriesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          dataset: arg_dataset,
+          envgroupHostname: arg_envgroupHostname,
+          from: arg_from,
+          inclQueriesWithoutReport: arg_inclQueriesWithoutReport,
+          status: arg_status,
+          submittedBy: arg_submittedBy,
+          to: arg_to,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListAsyncQueriesResponse(
+          response as api.GoogleCloudApigeeV1ListAsyncQueriesResponse);
     });
   });
 
   unittest.group('resource-OrganizationsHostStatsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.hostStats;
       var arg_name = 'foo';
@@ -20098,31 +19684,28 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Stats());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name,
-              accuracy: arg_accuracy,
-              envgroupHostname: arg_envgroupHostname,
-              filter: arg_filter,
-              limit: arg_limit,
-              offset: arg_offset,
-              realtime: arg_realtime,
-              select: arg_select,
-              sort: arg_sort,
-              sortby: arg_sortby,
-              timeRange: arg_timeRange,
-              timeUnit: arg_timeUnit,
-              topk: arg_topk,
-              tsAscending: arg_tsAscending,
-              tzo: arg_tzo,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Stats(response as api.GoogleCloudApigeeV1Stats);
-      })));
+      final response = await res.get(arg_name,
+          accuracy: arg_accuracy,
+          envgroupHostname: arg_envgroupHostname,
+          filter: arg_filter,
+          limit: arg_limit,
+          offset: arg_offset,
+          realtime: arg_realtime,
+          select: arg_select,
+          sort: arg_sort,
+          sortby: arg_sortby,
+          timeRange: arg_timeRange,
+          timeUnit: arg_timeUnit,
+          topk: arg_topk,
+          tsAscending: arg_tsAscending,
+          tzo: arg_tzo,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Stats(response as api.GoogleCloudApigeeV1Stats);
     });
   });
 
   unittest.group('resource-OrganizationsInstancesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.instances;
       var arg_request = buildGoogleCloudApigeeV1Instance();
@@ -20176,15 +19759,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.instances;
       var arg_name = 'foo';
@@ -20232,15 +19813,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.instances;
       var arg_name = 'foo';
@@ -20288,15 +19866,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1Instance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1Instance(
-            response as api.GoogleCloudApigeeV1Instance);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1Instance(
+          response as api.GoogleCloudApigeeV1Instance);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.instances;
       var arg_parent = 'foo';
@@ -20355,18 +19930,15 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListInstancesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListInstancesResponse(
-            response as api.GoogleCloudApigeeV1ListInstancesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListInstancesResponse(
+          response as api.GoogleCloudApigeeV1ListInstancesResponse);
     });
 
-    unittest.test('method--reportStatus', () {
+    unittest.test('method--reportStatus', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.instances;
       var arg_request = buildGoogleCloudApigeeV1ReportInstanceStatusRequest();
@@ -20421,17 +19993,15 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ReportInstanceStatusResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reportStatus(arg_request, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ReportInstanceStatusResponse(
-            response as api.GoogleCloudApigeeV1ReportInstanceStatusResponse);
-      })));
+      final response = await res.reportStatus(arg_request, arg_instance,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ReportInstanceStatusResponse(
+          response as api.GoogleCloudApigeeV1ReportInstanceStatusResponse);
     });
   });
 
   unittest.group('resource-OrganizationsInstancesAttachmentsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.instances.attachments;
       var arg_request = buildGoogleCloudApigeeV1InstanceAttachment();
@@ -20485,15 +20055,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.instances.attachments;
       var arg_name = 'foo';
@@ -20541,15 +20109,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.instances.attachments;
       var arg_name = 'foo';
@@ -20598,15 +20163,12 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1InstanceAttachment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1InstanceAttachment(
-            response as api.GoogleCloudApigeeV1InstanceAttachment);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1InstanceAttachment(
+          response as api.GoogleCloudApigeeV1InstanceAttachment);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.instances.attachments;
       var arg_parent = 'foo';
@@ -20665,21 +20227,18 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListInstanceAttachmentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListInstanceAttachmentsResponse(
-            response as api.GoogleCloudApigeeV1ListInstanceAttachmentsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListInstanceAttachmentsResponse(
+          response as api.GoogleCloudApigeeV1ListInstanceAttachmentsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsInstancesCanaryevaluationsResource',
       () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.instances.canaryevaluations;
       var arg_request = buildGoogleCloudApigeeV1CanaryEvaluation();
@@ -20733,15 +20292,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.instances.canaryevaluations;
       var arg_name = 'foo';
@@ -20790,17 +20347,14 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1CanaryEvaluation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1CanaryEvaluation(
-            response as api.GoogleCloudApigeeV1CanaryEvaluation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1CanaryEvaluation(
+          response as api.GoogleCloudApigeeV1CanaryEvaluation);
     });
   });
 
   unittest.group('resource-OrganizationsInstancesNatAddressesResource', () {
-    unittest.test('method--activate', () {
+    unittest.test('method--activate', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.instances.natAddresses;
       var arg_request = buildGoogleCloudApigeeV1ActivateNatAddressRequest();
@@ -20854,15 +20408,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .activate(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.activate(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.instances.natAddresses;
       var arg_request = buildGoogleCloudApigeeV1NatAddress();
@@ -20916,15 +20468,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.instances.natAddresses;
       var arg_name = 'foo';
@@ -20972,15 +20522,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.instances.natAddresses;
       var arg_name = 'foo';
@@ -21028,15 +20575,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1NatAddress());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1NatAddress(
-            response as api.GoogleCloudApigeeV1NatAddress);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1NatAddress(
+          response as api.GoogleCloudApigeeV1NatAddress);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.instances.natAddresses;
       var arg_parent = 'foo';
@@ -21095,20 +20639,17 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListNatAddressesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListNatAddressesResponse(
-            response as api.GoogleCloudApigeeV1ListNatAddressesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListNatAddressesResponse(
+          response as api.GoogleCloudApigeeV1ListNatAddressesResponse);
     });
   });
 
   unittest.group('resource-OrganizationsKeyvaluemapsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.keyvaluemaps;
       var arg_request = buildGoogleCloudApigeeV1KeyValueMap();
@@ -21162,15 +20703,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1KeyValueMap(
-            response as api.GoogleCloudApigeeV1KeyValueMap);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1KeyValueMap(
+          response as api.GoogleCloudApigeeV1KeyValueMap);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.keyvaluemaps;
       var arg_name = 'foo';
@@ -21218,17 +20757,14 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1KeyValueMap());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1KeyValueMap(
-            response as api.GoogleCloudApigeeV1KeyValueMap);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1KeyValueMap(
+          response as api.GoogleCloudApigeeV1KeyValueMap);
     });
   });
 
   unittest.group('resource-OrganizationsOperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.operations;
       var arg_name = 'foo';
@@ -21276,15 +20812,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.operations;
       var arg_name = 'foo';
@@ -21348,21 +20881,18 @@ void main() {
             convert.json.encode(buildGoogleLongrunningListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningListOperationsResponse(
-            response as api.GoogleLongrunningListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleLongrunningListOperationsResponse(
+          response as api.GoogleLongrunningListOperationsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsOptimizedHostStatsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.optimizedHostStats;
       var arg_name = 'foo';
@@ -21481,32 +21011,29 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1OptimizedStats());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name,
-              accuracy: arg_accuracy,
-              envgroupHostname: arg_envgroupHostname,
-              filter: arg_filter,
-              limit: arg_limit,
-              offset: arg_offset,
-              realtime: arg_realtime,
-              select: arg_select,
-              sort: arg_sort,
-              sortby: arg_sortby,
-              timeRange: arg_timeRange,
-              timeUnit: arg_timeUnit,
-              topk: arg_topk,
-              tsAscending: arg_tsAscending,
-              tzo: arg_tzo,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1OptimizedStats(
-            response as api.GoogleCloudApigeeV1OptimizedStats);
-      })));
+      final response = await res.get(arg_name,
+          accuracy: arg_accuracy,
+          envgroupHostname: arg_envgroupHostname,
+          filter: arg_filter,
+          limit: arg_limit,
+          offset: arg_offset,
+          realtime: arg_realtime,
+          select: arg_select,
+          sort: arg_sort,
+          sortby: arg_sortby,
+          timeRange: arg_timeRange,
+          timeUnit: arg_timeUnit,
+          topk: arg_topk,
+          tsAscending: arg_tsAscending,
+          tzo: arg_tzo,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1OptimizedStats(
+          response as api.GoogleCloudApigeeV1OptimizedStats);
     });
   });
 
   unittest.group('resource-OrganizationsReportsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.reports;
       var arg_request = buildGoogleCloudApigeeV1CustomReport();
@@ -21560,15 +21087,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1CustomReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1CustomReport(
-            response as api.GoogleCloudApigeeV1CustomReport);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1CustomReport(
+          response as api.GoogleCloudApigeeV1CustomReport);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.reports;
       var arg_name = 'foo';
@@ -21617,15 +21142,12 @@ void main() {
             .encode(buildGoogleCloudApigeeV1DeleteCustomReportResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1DeleteCustomReportResponse(
-            response as api.GoogleCloudApigeeV1DeleteCustomReportResponse);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1DeleteCustomReportResponse(
+          response as api.GoogleCloudApigeeV1DeleteCustomReportResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.reports;
       var arg_name = 'foo';
@@ -21673,15 +21195,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1CustomReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1CustomReport(
-            response as api.GoogleCloudApigeeV1CustomReport);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1CustomReport(
+          response as api.GoogleCloudApigeeV1CustomReport);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.reports;
       var arg_parent = 'foo';
@@ -21735,15 +21254,13 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListCustomReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, expand: arg_expand, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListCustomReportsResponse(
-            response as api.GoogleCloudApigeeV1ListCustomReportsResponse);
-      })));
+      final response =
+          await res.list(arg_parent, expand: arg_expand, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListCustomReportsResponse(
+          response as api.GoogleCloudApigeeV1ListCustomReportsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.reports;
       var arg_request = buildGoogleCloudApigeeV1CustomReport();
@@ -21797,17 +21314,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1CustomReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1CustomReport(
-            response as api.GoogleCloudApigeeV1CustomReport);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1CustomReport(
+          response as api.GoogleCloudApigeeV1CustomReport);
     });
   });
 
   unittest.group('resource-OrganizationsSharedflowsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.sharedflows;
       var arg_request = buildGoogleApiHttpBody();
@@ -21871,16 +21386,13 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1SharedFlowRevision());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              action: arg_action, name: arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1SharedFlowRevision(
-            response as api.GoogleCloudApigeeV1SharedFlowRevision);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          action: arg_action, name: arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1SharedFlowRevision(
+          response as api.GoogleCloudApigeeV1SharedFlowRevision);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.sharedflows;
       var arg_name = 'foo';
@@ -21928,15 +21440,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1SharedFlow());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1SharedFlow(
-            response as api.GoogleCloudApigeeV1SharedFlow);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1SharedFlow(
+          response as api.GoogleCloudApigeeV1SharedFlow);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.sharedflows;
       var arg_name = 'foo';
@@ -21984,15 +21493,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1SharedFlow());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1SharedFlow(
-            response as api.GoogleCloudApigeeV1SharedFlow);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1SharedFlow(
+          response as api.GoogleCloudApigeeV1SharedFlow);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.sharedflows;
       var arg_parent = 'foo';
@@ -22051,20 +21557,17 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListSharedFlowsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              includeMetaData: arg_includeMetaData,
-              includeRevisions: arg_includeRevisions,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListSharedFlowsResponse(
-            response as api.GoogleCloudApigeeV1ListSharedFlowsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          includeMetaData: arg_includeMetaData,
+          includeRevisions: arg_includeRevisions,
+          $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListSharedFlowsResponse(
+          response as api.GoogleCloudApigeeV1ListSharedFlowsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsSharedflowsDeploymentsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.sharedflows.deployments;
       var arg_parent = 'foo';
@@ -22113,17 +21616,14 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListDeploymentsResponse(
-            response as api.GoogleCloudApigeeV1ListDeploymentsResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListDeploymentsResponse(
+          response as api.GoogleCloudApigeeV1ListDeploymentsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsSharedflowsRevisionsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.sharedflows.revisions;
       var arg_name = 'foo';
@@ -22172,15 +21672,12 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1SharedFlowRevision());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1SharedFlowRevision(
-            response as api.GoogleCloudApigeeV1SharedFlowRevision);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1SharedFlowRevision(
+          response as api.GoogleCloudApigeeV1SharedFlowRevision);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.sharedflows.revisions;
       var arg_name = 'foo';
@@ -22233,14 +21730,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, format: arg_format, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
-      })));
+      final response =
+          await res.get(arg_name, format: arg_format, $fields: arg_$fields);
+      checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
     });
 
-    unittest.test('method--updateSharedFlowRevision', () {
+    unittest.test('method--updateSharedFlowRevision', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.sharedflows.revisions;
       var arg_request = buildGoogleApiHttpBody();
@@ -22299,19 +21794,16 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1SharedFlowRevision());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateSharedFlowRevision(arg_request, arg_name,
-              validate: arg_validate, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1SharedFlowRevision(
-            response as api.GoogleCloudApigeeV1SharedFlowRevision);
-      })));
+      final response = await res.updateSharedFlowRevision(arg_request, arg_name,
+          validate: arg_validate, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1SharedFlowRevision(
+          response as api.GoogleCloudApigeeV1SharedFlowRevision);
     });
   });
 
   unittest.group(
       'resource-OrganizationsSharedflowsRevisionsDeploymentsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.ApigeeApi(mock).organizations.sharedflows.revisions.deployments;
@@ -22361,17 +21853,14 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListDeploymentsResponse(
-            response as api.GoogleCloudApigeeV1ListDeploymentsResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListDeploymentsResponse(
+          response as api.GoogleCloudApigeeV1ListDeploymentsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsSitesApicategoriesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.sites.apicategories;
       var arg_request = buildGoogleCloudApigeeV1ApiCategoryData();
@@ -22425,15 +21914,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiCategory());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ApiCategory(
-            response as api.GoogleCloudApigeeV1ApiCategory);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ApiCategory(
+          response as api.GoogleCloudApigeeV1ApiCategory);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.sites.apicategories;
       var arg_name = 'foo';
@@ -22482,15 +21969,12 @@ void main() {
             convert.json.encode(buildGoogleCloudApigeeV1ApiResponseWrapper());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ApiResponseWrapper(
-            response as api.GoogleCloudApigeeV1ApiResponseWrapper);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ApiResponseWrapper(
+          response as api.GoogleCloudApigeeV1ApiResponseWrapper);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.sites.apicategories;
       var arg_name = 'foo';
@@ -22538,15 +22022,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiCategory());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ApiCategory(
-            response as api.GoogleCloudApigeeV1ApiCategory);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ApiCategory(
+          response as api.GoogleCloudApigeeV1ApiCategory);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.sites.apicategories;
       var arg_parent = 'foo';
@@ -22595,15 +22076,12 @@ void main() {
             .encode(buildGoogleCloudApigeeV1ListApiCategoriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ListApiCategoriesResponse(
-            response as api.GoogleCloudApigeeV1ListApiCategoriesResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ListApiCategoriesResponse(
+          response as api.GoogleCloudApigeeV1ListApiCategoriesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).organizations.sites.apicategories;
       var arg_request = buildGoogleCloudApigeeV1ApiCategoryData();
@@ -22657,17 +22135,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudApigeeV1ApiCategory());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudApigeeV1ApiCategory(
-            response as api.GoogleCloudApigeeV1ApiCategory);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudApigeeV1ApiCategory(
+          response as api.GoogleCloudApigeeV1ApiCategory);
     });
   });
 
   unittest.group('resource-ProjectsResource', () {
-    unittest.test('method--provisionOrganization', () {
+    unittest.test('method--provisionOrganization', () async {
       var mock = HttpServerMock();
       var res = api.ApigeeApi(mock).projects;
       var arg_request = buildGoogleCloudApigeeV1ProvisionOrganizationRequest();
@@ -22721,12 +22197,10 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .provisionOrganization(arg_request, arg_project, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.provisionOrganization(arg_request, arg_project,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 }

@@ -7537,7 +7537,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1CreateInstructionMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1CreateInstructionMetadata();
       var od =
           api.GoogleCloudDatalabelingV1alpha1CreateInstructionMetadata.fromJson(
@@ -7550,7 +7550,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata();
       var od = api.GoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata
           .fromJson(o.toJson());
@@ -7562,7 +7562,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1ExportDataOperationResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1ExportDataOperationResponse();
       var od = api.GoogleCloudDatalabelingV1alpha1ExportDataOperationResponse
           .fromJson(o.toJson());
@@ -7573,7 +7573,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1alpha1GcsDestination',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1GcsDestination();
       var od = api.GoogleCloudDatalabelingV1alpha1GcsDestination.fromJson(
           o.toJson());
@@ -7584,7 +7584,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1GcsFolderDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1GcsFolderDestination();
       var od = api.GoogleCloudDatalabelingV1alpha1GcsFolderDestination.fromJson(
           o.toJson());
@@ -7595,7 +7595,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig();
       var od =
           api.GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig.fromJson(
@@ -7608,7 +7608,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata();
       var od = api.GoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata
           .fromJson(o.toJson());
@@ -7620,7 +7620,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1ImportDataOperationResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1ImportDataOperationResponse();
       var od = api.GoogleCloudDatalabelingV1alpha1ImportDataOperationResponse
           .fromJson(o.toJson());
@@ -7632,7 +7632,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1LabelImageBoundingBoxOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelImageBoundingBoxOperationMetadata();
       var od =
@@ -7647,7 +7647,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1LabelImageBoundingPolyOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelImageBoundingPolyOperationMetadata();
       var od =
@@ -7662,7 +7662,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1LabelImageClassificationOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelImageClassificationOperationMetadata();
       var od =
@@ -7677,7 +7677,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1LabelImageOrientedBoundingBoxOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelImageOrientedBoundingBoxOperationMetadata();
       var od =
@@ -7692,7 +7692,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1LabelImagePolylineOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelImagePolylineOperationMetadata();
       var od =
@@ -7707,7 +7707,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata();
       var od =
@@ -7721,7 +7721,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1LabelOperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1LabelOperationMetadata();
       var od =
           api.GoogleCloudDatalabelingV1alpha1LabelOperationMetadata.fromJson(
@@ -7732,7 +7732,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1alpha1LabelStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1LabelStats();
       var od =
           api.GoogleCloudDatalabelingV1alpha1LabelStats.fromJson(o.toJson());
@@ -7744,7 +7744,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadata();
       var od =
@@ -7759,7 +7759,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1LabelTextEntityExtractionOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelTextEntityExtractionOperationMetadata();
       var od =
@@ -7774,7 +7774,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1LabelVideoClassificationOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelVideoClassificationOperationMetadata();
       var od =
@@ -7789,7 +7789,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1LabelVideoEventOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelVideoEventOperationMetadata();
       var od =
@@ -7804,7 +7804,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1LabelVideoObjectDetectionOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelVideoObjectDetectionOperationMetadata();
       var od =
@@ -7819,7 +7819,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1alpha1LabelVideoObjectTrackingOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelVideoObjectTrackingOperationMetadata();
       var od =
@@ -7832,7 +7832,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1alpha1OutputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1OutputConfig();
       var od =
           api.GoogleCloudDatalabelingV1alpha1OutputConfig.fromJson(o.toJson());
@@ -7843,7 +7843,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1AnnotatedDataset',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1AnnotatedDataset();
       var od = api.GoogleCloudDatalabelingV1beta1AnnotatedDataset.fromJson(
           o.toJson());
@@ -7854,7 +7854,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata();
       var od =
           api.GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata.fromJson(
@@ -7865,7 +7865,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1Annotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1Annotation();
       var od =
           api.GoogleCloudDatalabelingV1beta1Annotation.fromJson(o.toJson());
@@ -7876,7 +7876,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1AnnotationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1AnnotationMetadata();
       var od = api.GoogleCloudDatalabelingV1beta1AnnotationMetadata.fromJson(
           o.toJson());
@@ -7886,7 +7886,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1AnnotationSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1AnnotationSpec();
       var od =
           api.GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(o.toJson());
@@ -7897,7 +7897,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1AnnotationSpecSet',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1AnnotationSpecSet();
       var od = api.GoogleCloudDatalabelingV1beta1AnnotationSpecSet.fromJson(
           o.toJson());
@@ -7908,7 +7908,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig();
       var od =
           api.GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig.fromJson(
@@ -7920,7 +7920,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1AnnotationValue',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1AnnotationValue();
       var od = api.GoogleCloudDatalabelingV1beta1AnnotationValue.fromJson(
           o.toJson());
@@ -7930,7 +7930,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1Attempt', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1Attempt();
       var od = api.GoogleCloudDatalabelingV1beta1Attempt.fromJson(o.toJson());
       checkGoogleCloudDatalabelingV1beta1Attempt(
@@ -7939,7 +7939,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1BigQuerySource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1BigQuerySource();
       var od =
           api.GoogleCloudDatalabelingV1beta1BigQuerySource.fromJson(o.toJson());
@@ -7951,7 +7951,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions();
       var od = api.GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions
           .fromJson(o.toJson());
@@ -7961,7 +7961,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1BoundingPoly', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1BoundingPoly();
       var od =
           api.GoogleCloudDatalabelingV1beta1BoundingPoly.fromJson(o.toJson());
@@ -7972,7 +7972,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1BoundingPolyConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1BoundingPolyConfig();
       var od = api.GoogleCloudDatalabelingV1beta1BoundingPolyConfig.fromJson(
           o.toJson());
@@ -7983,7 +7983,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ClassificationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ClassificationMetadata();
       var od =
           api.GoogleCloudDatalabelingV1beta1ClassificationMetadata.fromJson(
@@ -7995,7 +7995,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ClassificationMetrics', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ClassificationMetrics();
       var od = api.GoogleCloudDatalabelingV1beta1ClassificationMetrics.fromJson(
           o.toJson());
@@ -8006,7 +8006,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry();
       var od =
           api.GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry.fromJson(
@@ -8018,7 +8018,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1ConfusionMatrix',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ConfusionMatrix();
       var od = api.GoogleCloudDatalabelingV1beta1ConfusionMatrix.fromJson(
           o.toJson());
@@ -8029,7 +8029,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ConfusionMatrixEntry();
       var od = api.GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry.fromJson(
           o.toJson());
@@ -8041,7 +8041,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest();
       var od = api.GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest
@@ -8053,7 +8053,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1CreateDatasetRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1CreateDatasetRequest();
       var od = api.GoogleCloudDatalabelingV1beta1CreateDatasetRequest.fromJson(
           o.toJson());
@@ -8065,7 +8065,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest();
       var od =
           api.GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest.fromJson(
@@ -8077,7 +8077,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1CreateInstructionMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1CreateInstructionMetadata();
       var od =
           api.GoogleCloudDatalabelingV1beta1CreateInstructionMetadata.fromJson(
@@ -8089,7 +8089,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1CreateInstructionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1CreateInstructionRequest();
       var od =
           api.GoogleCloudDatalabelingV1beta1CreateInstructionRequest.fromJson(
@@ -8100,7 +8100,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1CsvInstruction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1CsvInstruction();
       var od =
           api.GoogleCloudDatalabelingV1beta1CsvInstruction.fromJson(o.toJson());
@@ -8110,7 +8110,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1DataItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1DataItem();
       var od = api.GoogleCloudDatalabelingV1beta1DataItem.fromJson(o.toJson());
       checkGoogleCloudDatalabelingV1beta1DataItem(
@@ -8119,7 +8119,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1Dataset', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1Dataset();
       var od = api.GoogleCloudDatalabelingV1beta1Dataset.fromJson(o.toJson());
       checkGoogleCloudDatalabelingV1beta1Dataset(
@@ -8128,7 +8128,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1Evaluation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1Evaluation();
       var od =
           api.GoogleCloudDatalabelingV1beta1Evaluation.fromJson(o.toJson());
@@ -8139,7 +8139,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1EvaluationConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1EvaluationConfig();
       var od = api.GoogleCloudDatalabelingV1beta1EvaluationConfig.fromJson(
           o.toJson());
@@ -8149,7 +8149,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1EvaluationJob', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1EvaluationJob();
       var od =
           api.GoogleCloudDatalabelingV1beta1EvaluationJob.fromJson(o.toJson());
@@ -8160,7 +8160,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig();
       var od =
           api.GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig.fromJson(
@@ -8172,7 +8172,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1EvaluationJobConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1EvaluationJobConfig();
       var od = api.GoogleCloudDatalabelingV1beta1EvaluationJobConfig.fromJson(
           o.toJson());
@@ -8183,7 +8183,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1EvaluationMetrics',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1EvaluationMetrics();
       var od = api.GoogleCloudDatalabelingV1beta1EvaluationMetrics.fromJson(
           o.toJson());
@@ -8193,7 +8193,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1EventConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1EventConfig();
       var od =
           api.GoogleCloudDatalabelingV1beta1EventConfig.fromJson(o.toJson());
@@ -8203,7 +8203,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1Example', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1Example();
       var od = api.GoogleCloudDatalabelingV1beta1Example.fromJson(o.toJson());
       checkGoogleCloudDatalabelingV1beta1Example(
@@ -8213,7 +8213,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1ExampleComparison',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ExampleComparison();
       var od = api.GoogleCloudDatalabelingV1beta1ExampleComparison.fromJson(
           o.toJson());
@@ -8225,7 +8225,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ExportDataOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ExportDataOperationMetadata();
       var od = api.GoogleCloudDatalabelingV1beta1ExportDataOperationMetadata
           .fromJson(o.toJson());
@@ -8237,7 +8237,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ExportDataOperationResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ExportDataOperationResponse();
       var od = api.GoogleCloudDatalabelingV1beta1ExportDataOperationResponse
           .fromJson(o.toJson());
@@ -8248,7 +8248,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1ExportDataRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ExportDataRequest();
       var od = api.GoogleCloudDatalabelingV1beta1ExportDataRequest.fromJson(
           o.toJson());
@@ -8259,7 +8259,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1FeedbackMessage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1FeedbackMessage();
       var od = api.GoogleCloudDatalabelingV1beta1FeedbackMessage.fromJson(
           o.toJson());
@@ -8269,7 +8269,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1FeedbackThread', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1FeedbackThread();
       var od =
           api.GoogleCloudDatalabelingV1beta1FeedbackThread.fromJson(o.toJson());
@@ -8280,7 +8280,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1FeedbackThreadMetadata();
       var od =
           api.GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata.fromJson(
@@ -8291,7 +8291,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1GcsDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1GcsDestination();
       var od =
           api.GoogleCloudDatalabelingV1beta1GcsDestination.fromJson(o.toJson());
@@ -8302,7 +8302,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1GcsFolderDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1GcsFolderDestination();
       var od = api.GoogleCloudDatalabelingV1beta1GcsFolderDestination.fromJson(
           o.toJson());
@@ -8312,7 +8312,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1GcsSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1GcsSource();
       var od = api.GoogleCloudDatalabelingV1beta1GcsSource.fromJson(o.toJson());
       checkGoogleCloudDatalabelingV1beta1GcsSource(
@@ -8322,7 +8322,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1HumanAnnotationConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1HumanAnnotationConfig();
       var od = api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig.fromJson(
           o.toJson());
@@ -8334,7 +8334,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation();
       var od = api.GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation
           .fromJson(o.toJson());
@@ -8346,7 +8346,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1ImageClassificationAnnotation();
       var od = api.GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation
@@ -8358,7 +8358,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ImageClassificationConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ImageClassificationConfig();
       var od =
           api.GoogleCloudDatalabelingV1beta1ImageClassificationConfig.fromJson(
@@ -8369,7 +8369,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1ImagePayload', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ImagePayload();
       var od =
           api.GoogleCloudDatalabelingV1beta1ImagePayload.fromJson(o.toJson());
@@ -8380,7 +8380,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ImagePolylineAnnotation();
       var od =
           api.GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation.fromJson(
@@ -8393,7 +8393,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation();
       var od = api.GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation
           .fromJson(o.toJson());
@@ -8405,7 +8405,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ImportDataOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ImportDataOperationMetadata();
       var od = api.GoogleCloudDatalabelingV1beta1ImportDataOperationMetadata
           .fromJson(o.toJson());
@@ -8417,7 +8417,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ImportDataOperationResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ImportDataOperationResponse();
       var od = api.GoogleCloudDatalabelingV1beta1ImportDataOperationResponse
           .fromJson(o.toJson());
@@ -8428,7 +8428,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1ImportDataRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ImportDataRequest();
       var od = api.GoogleCloudDatalabelingV1beta1ImportDataRequest.fromJson(
           o.toJson());
@@ -8438,7 +8438,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1InputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1InputConfig();
       var od =
           api.GoogleCloudDatalabelingV1beta1InputConfig.fromJson(o.toJson());
@@ -8448,7 +8448,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1Instruction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1Instruction();
       var od =
           api.GoogleCloudDatalabelingV1beta1Instruction.fromJson(o.toJson());
@@ -8460,7 +8460,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1LabelImageBoundingBoxOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelImageBoundingBoxOperationMetadata();
       var od =
@@ -8475,7 +8475,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1LabelImageBoundingPolyOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelImageBoundingPolyOperationMetadata();
       var od =
@@ -8490,7 +8490,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1LabelImageClassificationOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelImageClassificationOperationMetadata();
       var od =
@@ -8505,7 +8505,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1LabelImageOrientedBoundingBoxOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelImageOrientedBoundingBoxOperationMetadata();
       var od =
@@ -8520,7 +8520,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1LabelImagePolylineOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelImagePolylineOperationMetadata();
       var od =
@@ -8534,7 +8534,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1LabelImageRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1LabelImageRequest();
       var od = api.GoogleCloudDatalabelingV1beta1LabelImageRequest.fromJson(
           o.toJson());
@@ -8546,7 +8546,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata();
       var od =
@@ -8560,7 +8560,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1LabelOperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1LabelOperationMetadata();
       var od =
           api.GoogleCloudDatalabelingV1beta1LabelOperationMetadata.fromJson(
@@ -8571,7 +8571,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1LabelStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1LabelStats();
       var od =
           api.GoogleCloudDatalabelingV1beta1LabelStats.fromJson(o.toJson());
@@ -8583,7 +8583,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata();
       var od =
@@ -8598,7 +8598,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1LabelTextEntityExtractionOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelTextEntityExtractionOperationMetadata();
       var od =
@@ -8612,7 +8612,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1LabelTextRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1LabelTextRequest();
       var od = api.GoogleCloudDatalabelingV1beta1LabelTextRequest.fromJson(
           o.toJson());
@@ -8624,7 +8624,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1LabelVideoClassificationOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelVideoClassificationOperationMetadata();
       var od =
@@ -8639,7 +8639,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1LabelVideoEventOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelVideoEventOperationMetadata();
       var od =
@@ -8654,7 +8654,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1LabelVideoObjectDetectionOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelVideoObjectDetectionOperationMetadata();
       var od =
@@ -8669,7 +8669,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1LabelVideoObjectTrackingOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelVideoObjectTrackingOperationMetadata();
       var od =
@@ -8683,7 +8683,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1LabelVideoRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1LabelVideoRequest();
       var od = api.GoogleCloudDatalabelingV1beta1LabelVideoRequest.fromJson(
           o.toJson());
@@ -8695,7 +8695,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse();
       var od = api.GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse
@@ -8708,7 +8708,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse();
       var od = api.GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse
@@ -8720,7 +8720,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ListDataItemsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ListDataItemsResponse();
       var od = api.GoogleCloudDatalabelingV1beta1ListDataItemsResponse.fromJson(
           o.toJson());
@@ -8731,7 +8731,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ListDatasetsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ListDatasetsResponse();
       var od = api.GoogleCloudDatalabelingV1beta1ListDatasetsResponse.fromJson(
           o.toJson());
@@ -8743,7 +8743,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse();
       var od =
           api.GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse.fromJson(
@@ -8755,7 +8755,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ListExamplesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ListExamplesResponse();
       var od = api.GoogleCloudDatalabelingV1beta1ListExamplesResponse.fromJson(
           o.toJson());
@@ -8767,7 +8767,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse();
       var od = api.GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse
           .fromJson(o.toJson());
@@ -8779,7 +8779,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse();
       var od = api.GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse
           .fromJson(o.toJson());
@@ -8790,7 +8790,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ListInstructionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ListInstructionsResponse();
       var od =
           api.GoogleCloudDatalabelingV1beta1ListInstructionsResponse.fromJson(
@@ -8802,7 +8802,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly();
       var od =
           api.GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly.fromJson(
@@ -8814,7 +8814,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1NormalizedPolyline',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1NormalizedPolyline();
       var od = api.GoogleCloudDatalabelingV1beta1NormalizedPolyline.fromJson(
           o.toJson());
@@ -8825,7 +8825,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1NormalizedVertex',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1NormalizedVertex();
       var od = api.GoogleCloudDatalabelingV1beta1NormalizedVertex.fromJson(
           o.toJson());
@@ -8836,7 +8836,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ObjectDetectionConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ObjectDetectionConfig();
       var od = api.GoogleCloudDatalabelingV1beta1ObjectDetectionConfig.fromJson(
           o.toJson());
@@ -8847,7 +8847,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ObjectDetectionMetrics();
       var od =
           api.GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics.fromJson(
@@ -8859,7 +8859,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ObjectTrackingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ObjectTrackingConfig();
       var od = api.GoogleCloudDatalabelingV1beta1ObjectTrackingConfig.fromJson(
           o.toJson());
@@ -8870,7 +8870,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1ObjectTrackingFrame',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ObjectTrackingFrame();
       var od = api.GoogleCloudDatalabelingV1beta1ObjectTrackingFrame.fromJson(
           o.toJson());
@@ -8881,7 +8881,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata();
       var od =
           api.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata.fromJson(
@@ -8893,7 +8893,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1OperatorMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1OperatorMetadata();
       var od = api.GoogleCloudDatalabelingV1beta1OperatorMetadata.fromJson(
           o.toJson());
@@ -8903,7 +8903,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1OutputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1OutputConfig();
       var od =
           api.GoogleCloudDatalabelingV1beta1OutputConfig.fromJson(o.toJson());
@@ -8914,7 +8914,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest();
       var od =
           api.GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest.fromJson(
@@ -8925,7 +8925,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1PdfInstruction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1PdfInstruction();
       var od =
           api.GoogleCloudDatalabelingV1beta1PdfInstruction.fromJson(o.toJson());
@@ -8935,7 +8935,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1Polyline', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1Polyline();
       var od = api.GoogleCloudDatalabelingV1beta1Polyline.fromJson(o.toJson());
       checkGoogleCloudDatalabelingV1beta1Polyline(
@@ -8944,7 +8944,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1PolylineConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1PolylineConfig();
       var od =
           api.GoogleCloudDatalabelingV1beta1PolylineConfig.fromJson(o.toJson());
@@ -8954,7 +8954,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1PrCurve', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1PrCurve();
       var od = api.GoogleCloudDatalabelingV1beta1PrCurve.fromJson(o.toJson());
       checkGoogleCloudDatalabelingV1beta1PrCurve(
@@ -8964,7 +8964,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata();
       var od =
           api.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata.fromJson(
@@ -8977,7 +8977,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest();
       var od =
           api.GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest.fromJson(
@@ -8988,7 +8988,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1Row', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1Row();
       var od = api.GoogleCloudDatalabelingV1beta1Row.fromJson(o.toJson());
       checkGoogleCloudDatalabelingV1beta1Row(
@@ -8998,7 +8998,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1SearchEvaluationsResponse();
       var od =
           api.GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse.fromJson(
@@ -9011,7 +9011,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest();
       var od = api.GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest
@@ -9024,7 +9024,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse();
       var od =
@@ -9038,7 +9038,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1SegmentationConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1SegmentationConfig();
       var od = api.GoogleCloudDatalabelingV1beta1SegmentationConfig.fromJson(
           o.toJson());
@@ -9049,7 +9049,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1SentimentConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1SentimentConfig();
       var od = api.GoogleCloudDatalabelingV1beta1SentimentConfig.fromJson(
           o.toJson());
@@ -9060,7 +9060,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1SequentialSegment',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1SequentialSegment();
       var od = api.GoogleCloudDatalabelingV1beta1SequentialSegment.fromJson(
           o.toJson());
@@ -9072,7 +9072,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1TextClassificationAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1TextClassificationAnnotation();
       var od = api.GoogleCloudDatalabelingV1beta1TextClassificationAnnotation
           .fromJson(o.toJson());
@@ -9083,7 +9083,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1TextClassificationConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1TextClassificationConfig();
       var od =
           api.GoogleCloudDatalabelingV1beta1TextClassificationConfig.fromJson(
@@ -9096,7 +9096,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation();
       var od = api.GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation
@@ -9109,7 +9109,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1TextEntityExtractionConfig();
       var od =
           api.GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig.fromJson(
@@ -9120,7 +9120,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1TextMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1TextMetadata();
       var od =
           api.GoogleCloudDatalabelingV1beta1TextMetadata.fromJson(o.toJson());
@@ -9130,7 +9130,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1TextPayload', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1TextPayload();
       var od =
           api.GoogleCloudDatalabelingV1beta1TextPayload.fromJson(o.toJson());
@@ -9140,7 +9140,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1TimeSegment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1TimeSegment();
       var od =
           api.GoogleCloudDatalabelingV1beta1TimeSegment.fromJson(o.toJson());
@@ -9150,7 +9150,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1Vertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1Vertex();
       var od = api.GoogleCloudDatalabelingV1beta1Vertex.fromJson(o.toJson());
       checkGoogleCloudDatalabelingV1beta1Vertex(
@@ -9161,7 +9161,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1VideoClassificationAnnotation();
       var od = api.GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation
@@ -9173,7 +9173,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1VideoClassificationConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1VideoClassificationConfig();
       var od =
           api.GoogleCloudDatalabelingV1beta1VideoClassificationConfig.fromJson(
@@ -9185,7 +9185,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1VideoEventAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1VideoEventAnnotation();
       var od = api.GoogleCloudDatalabelingV1beta1VideoEventAnnotation.fromJson(
           o.toJson());
@@ -9197,7 +9197,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation();
       var od = api.GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation
@@ -9208,7 +9208,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1VideoPayload', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1VideoPayload();
       var od =
           api.GoogleCloudDatalabelingV1beta1VideoPayload.fromJson(o.toJson());
@@ -9218,7 +9218,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1VideoThumbnail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1VideoThumbnail();
       var od =
           api.GoogleCloudDatalabelingV1beta1VideoThumbnail.fromJson(o.toJson());
@@ -9230,7 +9230,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata();
       var od = api.GoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata
           .fromJson(o.toJson());
@@ -9242,7 +9242,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata();
       var od = api.GoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata
@@ -9255,7 +9255,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1ExportDataOperationResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1ExportDataOperationResponse();
       var od = api.GoogleCloudDatalabelingV1p1alpha1ExportDataOperationResponse
@@ -9267,7 +9267,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1p1alpha1GcsDestination',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p1alpha1GcsDestination();
       var od = api.GoogleCloudDatalabelingV1p1alpha1GcsDestination.fromJson(
           o.toJson());
@@ -9278,7 +9278,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1GcsFolderDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p1alpha1GcsFolderDestination();
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1GcsFolderDestination.fromJson(
@@ -9291,7 +9291,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1GenerateAnalysisReportOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1GenerateAnalysisReportOperationMetadata();
       var od =
@@ -9305,7 +9305,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig();
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig.fromJson(
@@ -9318,7 +9318,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata();
       var od = api.GoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata
@@ -9331,7 +9331,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse();
       var od = api.GoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse
@@ -9344,7 +9344,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingBoxOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelImageBoundingBoxOperationMetadata();
       var od =
@@ -9359,7 +9359,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingPolyOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelImageBoundingPolyOperationMetadata();
       var od =
@@ -9374,7 +9374,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1LabelImageClassificationOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelImageClassificationOperationMetadata();
       var od =
@@ -9389,7 +9389,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1LabelImageOrientedBoundingBoxOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelImageOrientedBoundingBoxOperationMetadata();
       var od =
@@ -9404,7 +9404,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1LabelImagePolylineOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelImagePolylineOperationMetadata();
       var od =
@@ -9419,7 +9419,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata();
       var od =
@@ -9433,7 +9433,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata();
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata.fromJson(
@@ -9444,7 +9444,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1p1alpha1LabelStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p1alpha1LabelStats();
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1LabelStats.fromJson(o.toJson());
@@ -9456,7 +9456,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetadata();
       var od =
@@ -9471,7 +9471,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1LabelTextEntityExtractionOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelTextEntityExtractionOperationMetadata();
       var od =
@@ -9486,7 +9486,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1LabelVideoClassificationOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelVideoClassificationOperationMetadata();
       var od =
@@ -9501,7 +9501,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1LabelVideoEventOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelVideoEventOperationMetadata();
       var od =
@@ -9516,7 +9516,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1LabelVideoObjectDetectionOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelVideoObjectDetectionOperationMetadata();
       var od =
@@ -9531,7 +9531,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1LabelVideoObjectTrackingOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelVideoObjectTrackingOperationMetadata();
       var od =
@@ -9545,7 +9545,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1p1alpha1OutputConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p1alpha1OutputConfig();
       var od = api.GoogleCloudDatalabelingV1p1alpha1OutputConfig.fromJson(
           o.toJson());
@@ -9557,7 +9557,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata();
       var od = api.GoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata
           .fromJson(o.toJson());
@@ -9569,7 +9569,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata();
       var od = api.GoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata
@@ -9582,7 +9582,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1ExportDataOperationResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1ExportDataOperationResponse();
       var od = api.GoogleCloudDatalabelingV1p2alpha1ExportDataOperationResponse
@@ -9594,7 +9594,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1p2alpha1GcsDestination',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p2alpha1GcsDestination();
       var od = api.GoogleCloudDatalabelingV1p2alpha1GcsDestination.fromJson(
           o.toJson());
@@ -9605,7 +9605,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1GcsFolderDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p2alpha1GcsFolderDestination();
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1GcsFolderDestination.fromJson(
@@ -9617,7 +9617,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig();
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig.fromJson(
@@ -9630,7 +9630,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata();
       var od = api.GoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata
@@ -9643,7 +9643,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse();
       var od = api.GoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse
@@ -9656,7 +9656,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingBoxOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelImageBoundingBoxOperationMetadata();
       var od =
@@ -9671,7 +9671,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingPolyOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelImageBoundingPolyOperationMetadata();
       var od =
@@ -9686,7 +9686,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1LabelImageClassificationOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelImageClassificationOperationMetadata();
       var od =
@@ -9701,7 +9701,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1LabelImageOrientedBoundingBoxOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelImageOrientedBoundingBoxOperationMetadata();
       var od =
@@ -9716,7 +9716,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1LabelImagePolylineOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelImagePolylineOperationMetadata();
       var od =
@@ -9731,7 +9731,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata();
       var od =
@@ -9745,7 +9745,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata();
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata.fromJson(
@@ -9756,7 +9756,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1p2alpha1LabelStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p2alpha1LabelStats();
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1LabelStats.fromJson(o.toJson());
@@ -9768,7 +9768,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetadata();
       var od =
@@ -9783,7 +9783,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1LabelTextEntityExtractionOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelTextEntityExtractionOperationMetadata();
       var od =
@@ -9798,7 +9798,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1LabelVideoClassificationOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelVideoClassificationOperationMetadata();
       var od =
@@ -9813,7 +9813,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1LabelVideoEventOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelVideoEventOperationMetadata();
       var od =
@@ -9828,7 +9828,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1LabelVideoObjectDetectionOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelVideoObjectDetectionOperationMetadata();
       var od =
@@ -9843,7 +9843,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1LabelVideoObjectTrackingOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelVideoObjectTrackingOperationMetadata();
       var od =
@@ -9857,7 +9857,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatalabelingV1p2alpha1OutputConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p2alpha1OutputConfig();
       var od = api.GoogleCloudDatalabelingV1p2alpha1OutputConfig.fromJson(
           o.toJson());
@@ -9867,7 +9867,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
       var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
       checkGoogleLongrunningListOperationsResponse(
@@ -9876,7 +9876,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
@@ -9884,7 +9884,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
@@ -9892,7 +9892,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleRpcStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
       var od = api.GoogleRpcStatus.fromJson(o.toJson());
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
@@ -9900,7 +9900,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsAnnotationSpecSetsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.annotationSpecSets;
       var arg_request =
@@ -9958,15 +9958,13 @@ void main() {
             .encode(buildGoogleCloudDatalabelingV1beta1AnnotationSpecSet());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1AnnotationSpecSet(
-            response as api.GoogleCloudDatalabelingV1beta1AnnotationSpecSet);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1AnnotationSpecSet(
+          response as api.GoogleCloudDatalabelingV1beta1AnnotationSpecSet);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.annotationSpecSets;
       var arg_name = 'foo';
@@ -10014,14 +10012,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.annotationSpecSets;
       var arg_name = 'foo';
@@ -10070,15 +10065,12 @@ void main() {
             .encode(buildGoogleCloudDatalabelingV1beta1AnnotationSpecSet());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1AnnotationSpecSet(
-            response as api.GoogleCloudDatalabelingV1beta1AnnotationSpecSet);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1AnnotationSpecSet(
+          response as api.GoogleCloudDatalabelingV1beta1AnnotationSpecSet);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.annotationSpecSets;
       var arg_parent = 'foo';
@@ -10142,22 +10134,18 @@ void main() {
             buildGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse(
-            response as api
-                .GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse(response
+          as api.GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse);
     });
   });
 
   unittest.group('resource-ProjectsDatasetsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.datasets;
       var arg_request =
@@ -10214,15 +10202,13 @@ void main() {
             convert.json.encode(buildGoogleCloudDatalabelingV1beta1Dataset());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1Dataset(
-            response as api.GoogleCloudDatalabelingV1beta1Dataset);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1Dataset(
+          response as api.GoogleCloudDatalabelingV1beta1Dataset);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.datasets;
       var arg_name = 'foo';
@@ -10270,14 +10256,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--exportData', () {
+    unittest.test('method--exportData', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.datasets;
       var arg_request = buildGoogleCloudDatalabelingV1beta1ExportDataRequest();
@@ -10331,15 +10314,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .exportData(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.exportData(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.datasets;
       var arg_name = 'foo';
@@ -10388,15 +10369,12 @@ void main() {
             convert.json.encode(buildGoogleCloudDatalabelingV1beta1Dataset());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1Dataset(
-            response as api.GoogleCloudDatalabelingV1beta1Dataset);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1Dataset(
+          response as api.GoogleCloudDatalabelingV1beta1Dataset);
     });
 
-    unittest.test('method--importData', () {
+    unittest.test('method--importData', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.datasets;
       var arg_request = buildGoogleCloudDatalabelingV1beta1ImportDataRequest();
@@ -10450,15 +10428,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .importData(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.importData(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.datasets;
       var arg_parent = 'foo';
@@ -10522,21 +10498,18 @@ void main() {
             .encode(buildGoogleCloudDatalabelingV1beta1ListDatasetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1ListDatasetsResponse(
-            response as api.GoogleCloudDatalabelingV1beta1ListDatasetsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1ListDatasetsResponse(
+          response as api.GoogleCloudDatalabelingV1beta1ListDatasetsResponse);
     });
   });
 
   unittest.group('resource-ProjectsDatasetsAnnotatedDatasetsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.datasets.annotatedDatasets;
       var arg_name = 'foo';
@@ -10584,14 +10557,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.datasets.annotatedDatasets;
       var arg_name = 'foo';
@@ -10640,15 +10610,12 @@ void main() {
             .encode(buildGoogleCloudDatalabelingV1beta1AnnotatedDataset());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1AnnotatedDataset(
-            response as api.GoogleCloudDatalabelingV1beta1AnnotatedDataset);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1AnnotatedDataset(
+          response as api.GoogleCloudDatalabelingV1beta1AnnotatedDataset);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.datasets.annotatedDatasets;
       var arg_parent = 'foo';
@@ -10712,23 +10679,19 @@ void main() {
             buildGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse(
-            response as api
-                .GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse(response
+          as api.GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse);
     });
   });
 
   unittest.group('resource-ProjectsDatasetsAnnotatedDatasetsDataItemsResource',
       () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock)
           .projects
@@ -10781,15 +10744,12 @@ void main() {
             convert.json.encode(buildGoogleCloudDatalabelingV1beta1DataItem());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1DataItem(
-            response as api.GoogleCloudDatalabelingV1beta1DataItem);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1DataItem(
+          response as api.GoogleCloudDatalabelingV1beta1DataItem);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock)
           .projects
@@ -10857,22 +10817,19 @@ void main() {
             .encode(buildGoogleCloudDatalabelingV1beta1ListDataItemsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1ListDataItemsResponse(response
-            as api.GoogleCloudDatalabelingV1beta1ListDataItemsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1ListDataItemsResponse(
+          response as api.GoogleCloudDatalabelingV1beta1ListDataItemsResponse);
     });
   });
 
   unittest.group('resource-ProjectsDatasetsAnnotatedDatasetsExamplesResource',
       () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock)
           .projects
@@ -10930,15 +10887,13 @@ void main() {
             convert.json.encode(buildGoogleCloudDatalabelingV1beta1Example());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, filter: arg_filter, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1Example(
-            response as api.GoogleCloudDatalabelingV1beta1Example);
-      })));
+      final response =
+          await res.get(arg_name, filter: arg_filter, $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1Example(
+          response as api.GoogleCloudDatalabelingV1beta1Example);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock)
           .projects
@@ -11006,22 +10961,19 @@ void main() {
             .encode(buildGoogleCloudDatalabelingV1beta1ListExamplesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1ListExamplesResponse(
-            response as api.GoogleCloudDatalabelingV1beta1ListExamplesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1ListExamplesResponse(
+          response as api.GoogleCloudDatalabelingV1beta1ListExamplesResponse);
     });
   });
 
   unittest.group(
       'resource-ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock)
           .projects
@@ -11073,14 +11025,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock)
           .projects
@@ -11133,15 +11082,12 @@ void main() {
             .encode(buildGoogleCloudDatalabelingV1beta1FeedbackThread());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1FeedbackThread(
-            response as api.GoogleCloudDatalabelingV1beta1FeedbackThread);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1FeedbackThread(
+          response as api.GoogleCloudDatalabelingV1beta1FeedbackThread);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock)
           .projects
@@ -11204,22 +11150,19 @@ void main() {
             buildGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse(response
-            as api.GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse(response
+          as api.GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse);
     });
   });
 
   unittest.group(
       'resource-ProjectsDatasetsAnnotatedDatasetsFeedbackThreadsFeedbackMessagesResource',
       () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock)
           .projects
@@ -11278,15 +11221,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock)
           .projects
@@ -11339,14 +11280,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock)
           .projects
@@ -11400,15 +11338,12 @@ void main() {
             .encode(buildGoogleCloudDatalabelingV1beta1FeedbackMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1FeedbackMessage(
-            response as api.GoogleCloudDatalabelingV1beta1FeedbackMessage);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1FeedbackMessage(
+          response as api.GoogleCloudDatalabelingV1beta1FeedbackMessage);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock)
           .projects
@@ -11472,20 +11407,17 @@ void main() {
             buildGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse(response
-            as api.GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse(response
+          as api.GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse);
     });
   });
 
   unittest.group('resource-ProjectsDatasetsDataItemsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.datasets.dataItems;
       var arg_name = 'foo';
@@ -11534,15 +11466,12 @@ void main() {
             convert.json.encode(buildGoogleCloudDatalabelingV1beta1DataItem());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1DataItem(
-            response as api.GoogleCloudDatalabelingV1beta1DataItem);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1DataItem(
+          response as api.GoogleCloudDatalabelingV1beta1DataItem);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.datasets.dataItems;
       var arg_parent = 'foo';
@@ -11606,21 +11535,18 @@ void main() {
             .encode(buildGoogleCloudDatalabelingV1beta1ListDataItemsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1ListDataItemsResponse(response
-            as api.GoogleCloudDatalabelingV1beta1ListDataItemsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1ListDataItemsResponse(
+          response as api.GoogleCloudDatalabelingV1beta1ListDataItemsResponse);
     });
   });
 
   unittest.group('resource-ProjectsDatasetsEvaluationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.datasets.evaluations;
       var arg_name = 'foo';
@@ -11669,18 +11595,15 @@ void main() {
             .encode(buildGoogleCloudDatalabelingV1beta1Evaluation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1Evaluation(
-            response as api.GoogleCloudDatalabelingV1beta1Evaluation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1Evaluation(
+          response as api.GoogleCloudDatalabelingV1beta1Evaluation);
     });
   });
 
   unittest.group(
       'resource-ProjectsDatasetsEvaluationsExampleComparisonsResource', () {
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock)
           .projects
@@ -11742,18 +11665,16 @@ void main() {
             buildGoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse(
-            response as api
-                .GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse);
-      })));
+      final response =
+          await res.search(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse(
+          response as api
+              .GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse);
     });
   });
 
   unittest.group('resource-ProjectsDatasetsImageResource', () {
-    unittest.test('method--label', () {
+    unittest.test('method--label', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.datasets.image;
       var arg_request = buildGoogleCloudDatalabelingV1beta1LabelImageRequest();
@@ -11807,17 +11728,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .label(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.label(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 
   unittest.group('resource-ProjectsDatasetsTextResource', () {
-    unittest.test('method--label', () {
+    unittest.test('method--label', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.datasets.text;
       var arg_request = buildGoogleCloudDatalabelingV1beta1LabelTextRequest();
@@ -11871,17 +11790,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .label(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.label(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 
   unittest.group('resource-ProjectsDatasetsVideoResource', () {
-    unittest.test('method--label', () {
+    unittest.test('method--label', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.datasets.video;
       var arg_request = buildGoogleCloudDatalabelingV1beta1LabelVideoRequest();
@@ -11935,17 +11852,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .label(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.label(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 
   unittest.group('resource-ProjectsEvaluationJobsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.evaluationJobs;
       var arg_request =
@@ -12001,15 +11916,13 @@ void main() {
             .encode(buildGoogleCloudDatalabelingV1beta1EvaluationJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1EvaluationJob(
-            response as api.GoogleCloudDatalabelingV1beta1EvaluationJob);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1EvaluationJob(
+          response as api.GoogleCloudDatalabelingV1beta1EvaluationJob);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.evaluationJobs;
       var arg_name = 'foo';
@@ -12057,14 +11970,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.evaluationJobs;
       var arg_name = 'foo';
@@ -12113,15 +12023,12 @@ void main() {
             .encode(buildGoogleCloudDatalabelingV1beta1EvaluationJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1EvaluationJob(
-            response as api.GoogleCloudDatalabelingV1beta1EvaluationJob);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1EvaluationJob(
+          response as api.GoogleCloudDatalabelingV1beta1EvaluationJob);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.evaluationJobs;
       var arg_parent = 'foo';
@@ -12185,19 +12092,16 @@ void main() {
             buildGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse(response
-            as api.GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse(response
+          as api.GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.evaluationJobs;
       var arg_request = buildGoogleCloudDatalabelingV1beta1EvaluationJob();
@@ -12257,16 +12161,13 @@ void main() {
             .encode(buildGoogleCloudDatalabelingV1beta1EvaluationJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1EvaluationJob(
-            response as api.GoogleCloudDatalabelingV1beta1EvaluationJob);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1EvaluationJob(
+          response as api.GoogleCloudDatalabelingV1beta1EvaluationJob);
     });
 
-    unittest.test('method--pause', () {
+    unittest.test('method--pause', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.evaluationJobs;
       var arg_request =
@@ -12321,14 +12222,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .pause(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response =
+          await res.pause(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--resume', () {
+    unittest.test('method--resume', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.evaluationJobs;
       var arg_request =
@@ -12383,16 +12282,14 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resume(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response =
+          await res.resume(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
   });
 
   unittest.group('resource-ProjectsEvaluationsResource', () {
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.evaluations;
       var arg_parent = 'foo';
@@ -12456,21 +12353,18 @@ void main() {
             buildGoogleCloudDatalabelingV1beta1SearchEvaluationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1SearchEvaluationsResponse(response
-            as api.GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse);
-      })));
+      final response = await res.search(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1SearchEvaluationsResponse(response
+          as api.GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsInstructionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.instructions;
       var arg_request =
@@ -12526,15 +12420,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.instructions;
       var arg_name = 'foo';
@@ -12582,14 +12474,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.instructions;
       var arg_name = 'foo';
@@ -12638,15 +12527,12 @@ void main() {
             .encode(buildGoogleCloudDatalabelingV1beta1Instruction());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1Instruction(
-            response as api.GoogleCloudDatalabelingV1beta1Instruction);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1Instruction(
+          response as api.GoogleCloudDatalabelingV1beta1Instruction);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.instructions;
       var arg_parent = 'foo';
@@ -12710,21 +12596,18 @@ void main() {
             buildGoogleCloudDatalabelingV1beta1ListInstructionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatalabelingV1beta1ListInstructionsResponse(response
-            as api.GoogleCloudDatalabelingV1beta1ListInstructionsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudDatalabelingV1beta1ListInstructionsResponse(response
+          as api.GoogleCloudDatalabelingV1beta1ListInstructionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.operations;
       var arg_name = 'foo';
@@ -12772,14 +12655,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.cancel(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.operations;
       var arg_name = 'foo';
@@ -12827,14 +12707,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.operations;
       var arg_name = 'foo';
@@ -12882,15 +12759,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataLabelingApi(mock).projects.operations;
       var arg_name = 'foo';
@@ -12954,16 +12828,13 @@ void main() {
             convert.json.encode(buildGoogleLongrunningListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningListOperationsResponse(
-            response as api.GoogleLongrunningListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleLongrunningListOperationsResponse(
+          response as api.GoogleLongrunningListOperationsResponse);
     });
   });
 }

@@ -226,7 +226,7 @@ void checkSshPublicKey(api.SshPublicKey o) {
 
 void main() {
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -234,7 +234,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImportSshPublicKeyResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImportSshPublicKeyResponse();
       var od = api.ImportSshPublicKeyResponse.fromJson(o.toJson());
       checkImportSshPublicKeyResponse(od as api.ImportSshPublicKeyResponse);
@@ -242,7 +242,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LoginProfile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLoginProfile();
       var od = api.LoginProfile.fromJson(o.toJson());
       checkLoginProfile(od as api.LoginProfile);
@@ -250,7 +250,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PosixAccount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPosixAccount();
       var od = api.PosixAccount.fromJson(o.toJson());
       checkPosixAccount(od as api.PosixAccount);
@@ -258,7 +258,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SshPublicKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSshPublicKey();
       var od = api.SshPublicKey.fromJson(o.toJson());
       checkSshPublicKey(od as api.SshPublicKey);
@@ -266,7 +266,7 @@ void main() {
   });
 
   unittest.group('resource-UsersResource', () {
-    unittest.test('method--getLoginProfile', () {
+    unittest.test('method--getLoginProfile', () async {
       var mock = HttpServerMock();
       var res = api.CloudOSLoginApi(mock).users;
       var arg_name = 'foo';
@@ -324,17 +324,14 @@ void main() {
         var resp = convert.json.encode(buildLoginProfile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getLoginProfile(arg_name,
-              projectId: arg_projectId,
-              systemId: arg_systemId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLoginProfile(response as api.LoginProfile);
-      })));
+      final response = await res.getLoginProfile(arg_name,
+          projectId: arg_projectId,
+          systemId: arg_systemId,
+          $fields: arg_$fields);
+      checkLoginProfile(response as api.LoginProfile);
     });
 
-    unittest.test('method--importSshPublicKey', () {
+    unittest.test('method--importSshPublicKey', () async {
       var mock = HttpServerMock();
       var res = api.CloudOSLoginApi(mock).users;
       var arg_request = buildSshPublicKey();
@@ -392,18 +389,15 @@ void main() {
         var resp = convert.json.encode(buildImportSshPublicKeyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .importSshPublicKey(arg_request, arg_parent,
-              projectId: arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkImportSshPublicKeyResponse(
-            response as api.ImportSshPublicKeyResponse);
-      })));
+      final response = await res.importSshPublicKey(arg_request, arg_parent,
+          projectId: arg_projectId, $fields: arg_$fields);
+      checkImportSshPublicKeyResponse(
+          response as api.ImportSshPublicKeyResponse);
     });
   });
 
   unittest.group('resource-UsersProjectsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudOSLoginApi(mock).users.projects;
       var arg_name = 'foo';
@@ -451,16 +445,13 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 
   unittest.group('resource-UsersSshPublicKeysResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudOSLoginApi(mock).users.sshPublicKeys;
       var arg_name = 'foo';
@@ -508,14 +499,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudOSLoginApi(mock).users.sshPublicKeys;
       var arg_name = 'foo';
@@ -563,14 +551,11 @@ void main() {
         var resp = convert.json.encode(buildSshPublicKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSshPublicKey(response as api.SshPublicKey);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSshPublicKey(response as api.SshPublicKey);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudOSLoginApi(mock).users.sshPublicKeys;
       var arg_request = buildSshPublicKey();
@@ -628,12 +613,9 @@ void main() {
         var resp = convert.json.encode(buildSshPublicKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSshPublicKey(response as api.SshPublicKey);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkSshPublicKey(response as api.SshPublicKey);
     });
   });
 }

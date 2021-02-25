@@ -228,7 +228,7 @@ void checkSiteVerificationWebResourceResource(
 void main() {
   unittest.group('obj-schema-SiteVerificationWebResourceGettokenRequestSite',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSiteVerificationWebResourceGettokenRequestSite();
       var od = api.SiteVerificationWebResourceGettokenRequestSite.fromJson(
           o.toJson());
@@ -238,7 +238,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SiteVerificationWebResourceGettokenRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSiteVerificationWebResourceGettokenRequest();
       var od =
           api.SiteVerificationWebResourceGettokenRequest.fromJson(o.toJson());
@@ -248,7 +248,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SiteVerificationWebResourceGettokenResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSiteVerificationWebResourceGettokenResponse();
       var od =
           api.SiteVerificationWebResourceGettokenResponse.fromJson(o.toJson());
@@ -258,7 +258,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SiteVerificationWebResourceListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSiteVerificationWebResourceListResponse();
       var od = api.SiteVerificationWebResourceListResponse.fromJson(o.toJson());
       checkSiteVerificationWebResourceListResponse(
@@ -267,7 +267,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SiteVerificationWebResourceResourceSite', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSiteVerificationWebResourceResourceSite();
       var od = api.SiteVerificationWebResourceResourceSite.fromJson(o.toJson());
       checkSiteVerificationWebResourceResourceSite(
@@ -276,7 +276,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SiteVerificationWebResourceResource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSiteVerificationWebResourceResource();
       var od = api.SiteVerificationWebResourceResource.fromJson(o.toJson());
       checkSiteVerificationWebResourceResource(
@@ -285,7 +285,7 @@ void main() {
   });
 
   unittest.group('resource-WebResourceResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.SiteVerificationApi(mock).webResource;
       var arg_id = 'foo';
@@ -343,12 +343,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_id, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SiteVerificationApi(mock).webResource;
       var arg_id = 'foo';
@@ -407,15 +405,12 @@ void main() {
             convert.json.encode(buildSiteVerificationWebResourceResource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSiteVerificationWebResourceResource(
-            response as api.SiteVerificationWebResourceResource);
-      })));
+      final response = await res.get(arg_id, $fields: arg_$fields);
+      checkSiteVerificationWebResourceResource(
+          response as api.SiteVerificationWebResourceResource);
     });
 
-    unittest.test('method--getToken', () {
+    unittest.test('method--getToken', () async {
       var mock = HttpServerMock();
       var res = api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceGettokenRequest();
@@ -473,15 +468,12 @@ void main() {
             .encode(buildSiteVerificationWebResourceGettokenResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getToken(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSiteVerificationWebResourceGettokenResponse(
-            response as api.SiteVerificationWebResourceGettokenResponse);
-      })));
+      final response = await res.getToken(arg_request, $fields: arg_$fields);
+      checkSiteVerificationWebResourceGettokenResponse(
+          response as api.SiteVerificationWebResourceGettokenResponse);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceResource();
@@ -544,15 +536,13 @@ void main() {
             convert.json.encode(buildSiteVerificationWebResourceResource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_verificationMethod, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSiteVerificationWebResourceResource(
-            response as api.SiteVerificationWebResourceResource);
-      })));
+      final response = await res.insert(arg_request, arg_verificationMethod,
+          $fields: arg_$fields);
+      checkSiteVerificationWebResourceResource(
+          response as api.SiteVerificationWebResourceResource);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SiteVerificationApi(mock).webResource;
       var arg_$fields = 'foo';
@@ -604,13 +594,12 @@ void main() {
             convert.json.encode(buildSiteVerificationWebResourceListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkSiteVerificationWebResourceListResponse(
-            response as api.SiteVerificationWebResourceListResponse);
-      })));
+      final response = await res.list($fields: arg_$fields);
+      checkSiteVerificationWebResourceListResponse(
+          response as api.SiteVerificationWebResourceListResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceResource();
@@ -675,15 +664,13 @@ void main() {
             convert.json.encode(buildSiteVerificationWebResourceResource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSiteVerificationWebResourceResource(
-            response as api.SiteVerificationWebResourceResource);
-      })));
+      final response =
+          await res.patch(arg_request, arg_id, $fields: arg_$fields);
+      checkSiteVerificationWebResourceResource(
+          response as api.SiteVerificationWebResourceResource);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.SiteVerificationApi(mock).webResource;
       var arg_request = buildSiteVerificationWebResourceResource();
@@ -748,12 +735,10 @@ void main() {
             convert.json.encode(buildSiteVerificationWebResourceResource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSiteVerificationWebResourceResource(
-            response as api.SiteVerificationWebResourceResource);
-      })));
+      final response =
+          await res.update(arg_request, arg_id, $fields: arg_$fields);
+      checkSiteVerificationWebResourceResource(
+          response as api.SiteVerificationWebResourceResource);
     });
   });
 }

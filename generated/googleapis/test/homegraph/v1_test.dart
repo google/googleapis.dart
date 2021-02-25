@@ -935,7 +935,7 @@ void checkSyncResponsePayload(api.SyncResponsePayload o) {
 
 void main() {
   unittest.group('obj-schema-AgentDeviceId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAgentDeviceId();
       var od = api.AgentDeviceId.fromJson(o.toJson());
       checkAgentDeviceId(od as api.AgentDeviceId);
@@ -943,7 +943,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AgentOtherDeviceId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAgentOtherDeviceId();
       var od = api.AgentOtherDeviceId.fromJson(o.toJson());
       checkAgentOtherDeviceId(od as api.AgentOtherDeviceId);
@@ -951,7 +951,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Device', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDevice();
       var od = api.Device.fromJson(o.toJson());
       checkDevice(od as api.Device);
@@ -959,7 +959,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceInfo();
       var od = api.DeviceInfo.fromJson(o.toJson());
       checkDeviceInfo(od as api.DeviceInfo);
@@ -967,7 +967,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceNames', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceNames();
       var od = api.DeviceNames.fromJson(o.toJson());
       checkDeviceNames(od as api.DeviceNames);
@@ -975,7 +975,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -983,7 +983,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NonLocalTrait', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNonLocalTrait();
       var od = api.NonLocalTrait.fromJson(o.toJson());
       checkNonLocalTrait(od as api.NonLocalTrait);
@@ -991,7 +991,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryRequest();
       var od = api.QueryRequest.fromJson(o.toJson());
       checkQueryRequest(od as api.QueryRequest);
@@ -999,7 +999,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryRequestInput', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryRequestInput();
       var od = api.QueryRequestInput.fromJson(o.toJson());
       checkQueryRequestInput(od as api.QueryRequestInput);
@@ -1007,7 +1007,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryRequestPayload', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryRequestPayload();
       var od = api.QueryRequestPayload.fromJson(o.toJson());
       checkQueryRequestPayload(od as api.QueryRequestPayload);
@@ -1015,7 +1015,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryResponse();
       var od = api.QueryResponse.fromJson(o.toJson());
       checkQueryResponse(od as api.QueryResponse);
@@ -1023,7 +1023,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryResponsePayload', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryResponsePayload();
       var od = api.QueryResponsePayload.fromJson(o.toJson());
       checkQueryResponsePayload(od as api.QueryResponsePayload);
@@ -1031,7 +1031,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportStateAndNotificationDevice', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportStateAndNotificationDevice();
       var od = api.ReportStateAndNotificationDevice.fromJson(o.toJson());
       checkReportStateAndNotificationDevice(
@@ -1040,7 +1040,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportStateAndNotificationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportStateAndNotificationRequest();
       var od = api.ReportStateAndNotificationRequest.fromJson(o.toJson());
       checkReportStateAndNotificationRequest(
@@ -1049,7 +1049,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportStateAndNotificationResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportStateAndNotificationResponse();
       var od = api.ReportStateAndNotificationResponse.fromJson(o.toJson());
       checkReportStateAndNotificationResponse(
@@ -1058,7 +1058,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RequestSyncDevicesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRequestSyncDevicesRequest();
       var od = api.RequestSyncDevicesRequest.fromJson(o.toJson());
       checkRequestSyncDevicesRequest(od as api.RequestSyncDevicesRequest);
@@ -1066,7 +1066,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RequestSyncDevicesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRequestSyncDevicesResponse();
       var od = api.RequestSyncDevicesResponse.fromJson(o.toJson());
       checkRequestSyncDevicesResponse(od as api.RequestSyncDevicesResponse);
@@ -1074,7 +1074,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StateAndNotificationPayload', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStateAndNotificationPayload();
       var od = api.StateAndNotificationPayload.fromJson(o.toJson());
       checkStateAndNotificationPayload(od as api.StateAndNotificationPayload);
@@ -1082,7 +1082,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SyncRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSyncRequest();
       var od = api.SyncRequest.fromJson(o.toJson());
       checkSyncRequest(od as api.SyncRequest);
@@ -1090,7 +1090,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SyncResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSyncResponse();
       var od = api.SyncResponse.fromJson(o.toJson());
       checkSyncResponse(od as api.SyncResponse);
@@ -1098,7 +1098,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SyncResponsePayload', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSyncResponsePayload();
       var od = api.SyncResponsePayload.fromJson(o.toJson());
       checkSyncResponsePayload(od as api.SyncResponsePayload);
@@ -1106,7 +1106,7 @@ void main() {
   });
 
   unittest.group('resource-AgentUsersResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.HomeGraphServiceApi(mock).agentUsers;
       var arg_agentUserId = 'foo';
@@ -1159,17 +1159,14 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_agentUserId,
-              requestId: arg_requestId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_agentUserId,
+          requestId: arg_requestId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 
   unittest.group('resource-DevicesResource', () {
-    unittest.test('method--query', () {
+    unittest.test('method--query', () async {
       var mock = HttpServerMock();
       var res = api.HomeGraphServiceApi(mock).devices;
       var arg_request = buildQueryRequest();
@@ -1220,14 +1217,11 @@ void main() {
         var resp = convert.json.encode(buildQueryResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .query(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkQueryResponse(response as api.QueryResponse);
-      })));
+      final response = await res.query(arg_request, $fields: arg_$fields);
+      checkQueryResponse(response as api.QueryResponse);
     });
 
-    unittest.test('method--reportStateAndNotification', () {
+    unittest.test('method--reportStateAndNotification', () async {
       var mock = HttpServerMock();
       var res = api.HomeGraphServiceApi(mock).devices;
       var arg_request = buildReportStateAndNotificationRequest();
@@ -1280,15 +1274,13 @@ void main() {
             convert.json.encode(buildReportStateAndNotificationResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reportStateAndNotification(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReportStateAndNotificationResponse(
-            response as api.ReportStateAndNotificationResponse);
-      })));
+      final response = await res.reportStateAndNotification(arg_request,
+          $fields: arg_$fields);
+      checkReportStateAndNotificationResponse(
+          response as api.ReportStateAndNotificationResponse);
     });
 
-    unittest.test('method--requestSync', () {
+    unittest.test('method--requestSync', () async {
       var mock = HttpServerMock();
       var res = api.HomeGraphServiceApi(mock).devices;
       var arg_request = buildRequestSyncDevicesRequest();
@@ -1339,15 +1331,12 @@ void main() {
         var resp = convert.json.encode(buildRequestSyncDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .requestSync(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRequestSyncDevicesResponse(
-            response as api.RequestSyncDevicesResponse);
-      })));
+      final response = await res.requestSync(arg_request, $fields: arg_$fields);
+      checkRequestSyncDevicesResponse(
+          response as api.RequestSyncDevicesResponse);
     });
 
-    unittest.test('method--sync', () {
+    unittest.test('method--sync', () async {
       var mock = HttpServerMock();
       var res = api.HomeGraphServiceApi(mock).devices;
       var arg_request = buildSyncRequest();
@@ -1398,11 +1387,8 @@ void main() {
         var resp = convert.json.encode(buildSyncResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .sync(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSyncResponse(response as api.SyncResponse);
-      })));
+      final response = await res.sync(arg_request, $fields: arg_$fields);
+      checkSyncResponse(response as api.SyncResponse);
     });
   });
 }

@@ -1052,7 +1052,7 @@ void checkUpdateTagValueMetadata(api.UpdateTagValueMetadata o) {
 
 void main() {
   unittest.group('obj-schema-AuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
       checkAuditConfig(od as api.AuditConfig);
@@ -1060,7 +1060,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
       checkAuditLogConfig(od as api.AuditLogConfig);
@@ -1068,7 +1068,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -1078,7 +1078,7 @@ void main() {
   unittest.group(
       'obj-schema-CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildCloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation();
       var od =
@@ -1093,7 +1093,7 @@ void main() {
   unittest.group(
       'obj-schema-CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildCloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation();
       var od =
@@ -1106,7 +1106,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateTagKeyMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateTagKeyMetadata();
       var od = api.CreateTagKeyMetadata.fromJson(o.toJson());
       checkCreateTagKeyMetadata(od as api.CreateTagKeyMetadata);
@@ -1114,7 +1114,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateTagValueMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateTagValueMetadata();
       var od = api.CreateTagValueMetadata.fromJson(o.toJson());
       checkCreateTagValueMetadata(od as api.CreateTagValueMetadata);
@@ -1122,7 +1122,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteTagKeyMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteTagKeyMetadata();
       var od = api.DeleteTagKeyMetadata.fromJson(o.toJson());
       checkDeleteTagKeyMetadata(od as api.DeleteTagKeyMetadata);
@@ -1130,7 +1130,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteTagValueMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteTagValueMetadata();
       var od = api.DeleteTagValueMetadata.fromJson(o.toJson());
       checkDeleteTagValueMetadata(od as api.DeleteTagValueMetadata);
@@ -1138,7 +1138,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -1146,7 +1146,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Folder', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFolder();
       var od = api.Folder.fromJson(o.toJson());
       checkFolder(od as api.Folder);
@@ -1154,7 +1154,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FolderOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFolderOperation();
       var od = api.FolderOperation.fromJson(o.toJson());
       checkFolderOperation(od as api.FolderOperation);
@@ -1162,7 +1162,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FolderOperationError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFolderOperationError();
       var od = api.FolderOperationError.fromJson(o.toJson());
       checkFolderOperationError(od as api.FolderOperationError);
@@ -1170,7 +1170,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetIamPolicyRequest();
       var od = api.GetIamPolicyRequest.fromJson(o.toJson());
       checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
@@ -1178,7 +1178,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetPolicyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetPolicyOptions();
       var od = api.GetPolicyOptions.fromJson(o.toJson());
       checkGetPolicyOptions(od as api.GetPolicyOptions);
@@ -1186,7 +1186,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListFoldersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListFoldersResponse();
       var od = api.ListFoldersResponse.fromJson(o.toJson());
       checkListFoldersResponse(od as api.ListFoldersResponse);
@@ -1194,7 +1194,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MoveFolderRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMoveFolderRequest();
       var od = api.MoveFolderRequest.fromJson(o.toJson());
       checkMoveFolderRequest(od as api.MoveFolderRequest);
@@ -1202,7 +1202,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -1210,7 +1210,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -1218,7 +1218,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProjectCreationStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProjectCreationStatus();
       var od = api.ProjectCreationStatus.fromJson(o.toJson());
       checkProjectCreationStatus(od as api.ProjectCreationStatus);
@@ -1226,7 +1226,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchFoldersRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchFoldersRequest();
       var od = api.SearchFoldersRequest.fromJson(o.toJson());
       checkSearchFoldersRequest(od as api.SearchFoldersRequest);
@@ -1234,7 +1234,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchFoldersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchFoldersResponse();
       var od = api.SearchFoldersResponse.fromJson(o.toJson());
       checkSearchFoldersResponse(od as api.SearchFoldersResponse);
@@ -1242,7 +1242,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -1250,7 +1250,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -1258,7 +1258,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -1266,7 +1266,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -1274,7 +1274,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UndeleteFolderRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUndeleteFolderRequest();
       var od = api.UndeleteFolderRequest.fromJson(o.toJson());
       checkUndeleteFolderRequest(od as api.UndeleteFolderRequest);
@@ -1282,7 +1282,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateTagKeyMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateTagKeyMetadata();
       var od = api.UpdateTagKeyMetadata.fromJson(o.toJson());
       checkUpdateTagKeyMetadata(od as api.UpdateTagKeyMetadata);
@@ -1290,7 +1290,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateTagValueMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateTagValueMetadata();
       var od = api.UpdateTagValueMetadata.fromJson(o.toJson());
       checkUpdateTagValueMetadata(od as api.UpdateTagValueMetadata);
@@ -1298,7 +1298,7 @@ void main() {
   });
 
   unittest.group('resource-FoldersResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildFolder();
@@ -1354,14 +1354,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, parent: arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request,
+          parent: arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).folders;
       var arg_name = 'foo';
@@ -1409,14 +1407,11 @@ void main() {
         var resp = convert.json.encode(buildFolder());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFolder(response as api.Folder);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkFolder(response as api.Folder);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).folders;
       var arg_name = 'foo';
@@ -1464,14 +1459,11 @@ void main() {
         var resp = convert.json.encode(buildFolder());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFolder(response as api.Folder);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkFolder(response as api.Folder);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildGetIamPolicyRequest();
@@ -1524,14 +1516,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).folders;
       var arg_pageSize = 42;
@@ -1597,19 +1587,16 @@ void main() {
         var resp = convert.json.encode(buildListFoldersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              parent: arg_parent,
-              showDeleted: arg_showDeleted,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListFoldersResponse(response as api.ListFoldersResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          parent: arg_parent,
+          showDeleted: arg_showDeleted,
+          $fields: arg_$fields);
+      checkListFoldersResponse(response as api.ListFoldersResponse);
     });
 
-    unittest.test('method--move', () {
+    unittest.test('method--move', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildMoveFolderRequest();
@@ -1662,14 +1649,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .move(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.move(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildFolder();
@@ -1727,15 +1712,12 @@ void main() {
         var resp = convert.json.encode(buildFolder());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFolder(response as api.Folder);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkFolder(response as api.Folder);
     });
 
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildSearchFoldersRequest();
@@ -1786,14 +1768,11 @@ void main() {
         var resp = convert.json.encode(buildSearchFoldersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchFoldersResponse(response as api.SearchFoldersResponse);
-      })));
+      final response = await res.search(arg_request, $fields: arg_$fields);
+      checkSearchFoldersResponse(response as api.SearchFoldersResponse);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildSetIamPolicyRequest();
@@ -1846,14 +1825,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildTestIamPermissionsRequest();
@@ -1906,15 +1883,13 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
 
-    unittest.test('method--undelete', () {
+    unittest.test('method--undelete', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).folders;
       var arg_request = buildUndeleteFolderRequest();
@@ -1967,16 +1942,14 @@ void main() {
         var resp = convert.json.encode(buildFolder());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .undelete(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFolder(response as api.Folder);
-      })));
+      final response =
+          await res.undelete(arg_request, arg_name, $fields: arg_$fields);
+      checkFolder(response as api.Folder);
     });
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudResourceManagerApi(mock).operations;
       var arg_name = 'foo';
@@ -2024,11 +1997,8 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 }

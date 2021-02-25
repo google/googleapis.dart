@@ -1132,7 +1132,7 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
 
 void main() {
   unittest.group('obj-schema-AppEngineHttpRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppEngineHttpRequest();
       var od = api.AppEngineHttpRequest.fromJson(o.toJson());
       checkAppEngineHttpRequest(od as api.AppEngineHttpRequest);
@@ -1140,7 +1140,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AppEngineRouting', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppEngineRouting();
       var od = api.AppEngineRouting.fromJson(o.toJson());
       checkAppEngineRouting(od as api.AppEngineRouting);
@@ -1148,7 +1148,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Attempt', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAttempt();
       var od = api.Attempt.fromJson(o.toJson());
       checkAttempt(od as api.Attempt);
@@ -1156,7 +1156,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -1164,7 +1164,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateTaskRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateTaskRequest();
       var od = api.CreateTaskRequest.fromJson(o.toJson());
       checkCreateTaskRequest(od as api.CreateTaskRequest);
@@ -1172,7 +1172,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1180,7 +1180,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -1188,7 +1188,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetIamPolicyRequest();
       var od = api.GetIamPolicyRequest.fromJson(o.toJson());
       checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
@@ -1196,7 +1196,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetPolicyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetPolicyOptions();
       var od = api.GetPolicyOptions.fromJson(o.toJson());
       checkGetPolicyOptions(od as api.GetPolicyOptions);
@@ -1204,7 +1204,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HttpRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHttpRequest();
       var od = api.HttpRequest.fromJson(o.toJson());
       checkHttpRequest(od as api.HttpRequest);
@@ -1212,7 +1212,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -1220,7 +1220,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListQueuesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListQueuesResponse();
       var od = api.ListQueuesResponse.fromJson(o.toJson());
       checkListQueuesResponse(od as api.ListQueuesResponse);
@@ -1228,7 +1228,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTasksResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTasksResponse();
       var od = api.ListTasksResponse.fromJson(o.toJson());
       checkListTasksResponse(od as api.ListTasksResponse);
@@ -1236,7 +1236,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -1244,7 +1244,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OAuthToken', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOAuthToken();
       var od = api.OAuthToken.fromJson(o.toJson());
       checkOAuthToken(od as api.OAuthToken);
@@ -1252,7 +1252,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OidcToken', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOidcToken();
       var od = api.OidcToken.fromJson(o.toJson());
       checkOidcToken(od as api.OidcToken);
@@ -1260,7 +1260,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PauseQueueRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPauseQueueRequest();
       var od = api.PauseQueueRequest.fromJson(o.toJson());
       checkPauseQueueRequest(od as api.PauseQueueRequest);
@@ -1268,7 +1268,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -1276,7 +1276,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PurgeQueueRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPurgeQueueRequest();
       var od = api.PurgeQueueRequest.fromJson(o.toJson());
       checkPurgeQueueRequest(od as api.PurgeQueueRequest);
@@ -1284,7 +1284,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Queue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueue();
       var od = api.Queue.fromJson(o.toJson());
       checkQueue(od as api.Queue);
@@ -1292,7 +1292,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RateLimits', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRateLimits();
       var od = api.RateLimits.fromJson(o.toJson());
       checkRateLimits(od as api.RateLimits);
@@ -1300,7 +1300,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResumeQueueRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResumeQueueRequest();
       var od = api.ResumeQueueRequest.fromJson(o.toJson());
       checkResumeQueueRequest(od as api.ResumeQueueRequest);
@@ -1308,7 +1308,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RetryConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRetryConfig();
       var od = api.RetryConfig.fromJson(o.toJson());
       checkRetryConfig(od as api.RetryConfig);
@@ -1316,7 +1316,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RunTaskRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRunTaskRequest();
       var od = api.RunTaskRequest.fromJson(o.toJson());
       checkRunTaskRequest(od as api.RunTaskRequest);
@@ -1324,7 +1324,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -1332,7 +1332,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StackdriverLoggingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStackdriverLoggingConfig();
       var od = api.StackdriverLoggingConfig.fromJson(o.toJson());
       checkStackdriverLoggingConfig(od as api.StackdriverLoggingConfig);
@@ -1340,7 +1340,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -1348,7 +1348,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Task', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTask();
       var od = api.Task.fromJson(o.toJson());
       checkTask(od as api.Task);
@@ -1356,7 +1356,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -1364,7 +1364,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -1372,7 +1372,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -1420,14 +1420,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -1490,20 +1487,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsQueuesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_request = buildQueue();
@@ -1556,14 +1550,12 @@ void main() {
         var resp = convert.json.encode(buildQueue());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkQueue(response as api.Queue);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkQueue(response as api.Queue);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_name = 'foo';
@@ -1611,14 +1603,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_name = 'foo';
@@ -1666,14 +1655,11 @@ void main() {
         var resp = convert.json.encode(buildQueue());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkQueue(response as api.Queue);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkQueue(response as api.Queue);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_request = buildGetIamPolicyRequest();
@@ -1726,14 +1712,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_parent = 'foo';
@@ -1796,18 +1780,15 @@ void main() {
         var resp = convert.json.encode(buildListQueuesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListQueuesResponse(response as api.ListQueuesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListQueuesResponse(response as api.ListQueuesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_request = buildQueue();
@@ -1865,15 +1846,12 @@ void main() {
         var resp = convert.json.encode(buildQueue());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkQueue(response as api.Queue);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkQueue(response as api.Queue);
     });
 
-    unittest.test('method--pause', () {
+    unittest.test('method--pause', () async {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_request = buildPauseQueueRequest();
@@ -1926,14 +1904,12 @@ void main() {
         var resp = convert.json.encode(buildQueue());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .pause(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkQueue(response as api.Queue);
-      })));
+      final response =
+          await res.pause(arg_request, arg_name, $fields: arg_$fields);
+      checkQueue(response as api.Queue);
     });
 
-    unittest.test('method--purge', () {
+    unittest.test('method--purge', () async {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_request = buildPurgeQueueRequest();
@@ -1986,14 +1962,12 @@ void main() {
         var resp = convert.json.encode(buildQueue());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .purge(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkQueue(response as api.Queue);
-      })));
+      final response =
+          await res.purge(arg_request, arg_name, $fields: arg_$fields);
+      checkQueue(response as api.Queue);
     });
 
-    unittest.test('method--resume', () {
+    unittest.test('method--resume', () async {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_request = buildResumeQueueRequest();
@@ -2046,14 +2020,12 @@ void main() {
         var resp = convert.json.encode(buildQueue());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resume(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkQueue(response as api.Queue);
-      })));
+      final response =
+          await res.resume(arg_request, arg_name, $fields: arg_$fields);
+      checkQueue(response as api.Queue);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_request = buildSetIamPolicyRequest();
@@ -2106,14 +2078,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations.queues;
       var arg_request = buildTestIamPermissionsRequest();
@@ -2166,17 +2136,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsQueuesTasksResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations.queues.tasks;
       var arg_request = buildCreateTaskRequest();
@@ -2229,14 +2197,12 @@ void main() {
         var resp = convert.json.encode(buildTask());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTask(response as api.Task);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkTask(response as api.Task);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations.queues.tasks;
       var arg_name = 'foo';
@@ -2284,14 +2250,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations.queues.tasks;
       var arg_name = 'foo';
@@ -2344,14 +2307,12 @@ void main() {
         var resp = convert.json.encode(buildTask());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, responseView: arg_responseView, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTask(response as api.Task);
-      })));
+      final response = await res.get(arg_name,
+          responseView: arg_responseView, $fields: arg_$fields);
+      checkTask(response as api.Task);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations.queues.tasks;
       var arg_parent = 'foo';
@@ -2414,18 +2375,15 @@ void main() {
         var resp = convert.json.encode(buildListTasksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              responseView: arg_responseView,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTasksResponse(response as api.ListTasksResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          responseView: arg_responseView,
+          $fields: arg_$fields);
+      checkListTasksResponse(response as api.ListTasksResponse);
     });
 
-    unittest.test('method--run', () {
+    unittest.test('method--run', () async {
       var mock = HttpServerMock();
       var res = api.CloudTasksApi(mock).projects.locations.queues.tasks;
       var arg_request = buildRunTaskRequest();
@@ -2478,11 +2436,9 @@ void main() {
         var resp = convert.json.encode(buildTask());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .run(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTask(response as api.Task);
-      })));
+      final response =
+          await res.run(arg_request, arg_name, $fields: arg_$fields);
+      checkTask(response as api.Task);
     });
   });
 }

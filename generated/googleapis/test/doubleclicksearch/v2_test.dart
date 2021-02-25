@@ -1005,7 +1005,7 @@ void checkUpdateAvailabilityResponse(api.UpdateAvailabilityResponse o) {
 
 void main() {
   unittest.group('obj-schema-Availability', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAvailability();
       var od = api.Availability.fromJson(o.toJson());
       checkAvailability(od as api.Availability);
@@ -1013,7 +1013,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Conversion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConversion();
       var od = api.Conversion.fromJson(o.toJson());
       checkConversion(od as api.Conversion);
@@ -1021,7 +1021,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConversionList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConversionList();
       var od = api.ConversionList.fromJson(o.toJson());
       checkConversionList(od as api.ConversionList);
@@ -1029,7 +1029,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomDimension', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomDimension();
       var od = api.CustomDimension.fromJson(o.toJson());
       checkCustomDimension(od as api.CustomDimension);
@@ -1037,7 +1037,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomMetric', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomMetric();
       var od = api.CustomMetric.fromJson(o.toJson());
       checkCustomMetric(od as api.CustomMetric);
@@ -1045,7 +1045,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportFiles', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportFiles();
       var od = api.ReportFiles.fromJson(o.toJson());
       checkReportFiles(od as api.ReportFiles);
@@ -1053,7 +1053,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Report', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReport();
       var od = api.Report.fromJson(o.toJson());
       checkReport(od as api.Report);
@@ -1061,7 +1061,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportApiColumnSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportApiColumnSpec();
       var od = api.ReportApiColumnSpec.fromJson(o.toJson());
       checkReportApiColumnSpec(od as api.ReportApiColumnSpec);
@@ -1069,7 +1069,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportRequestFilters', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportRequestFilters();
       var od = api.ReportRequestFilters.fromJson(o.toJson());
       checkReportRequestFilters(od as api.ReportRequestFilters);
@@ -1077,7 +1077,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportRequestOrderBy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportRequestOrderBy();
       var od = api.ReportRequestOrderBy.fromJson(o.toJson());
       checkReportRequestOrderBy(od as api.ReportRequestOrderBy);
@@ -1085,7 +1085,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportRequestReportScope', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportRequestReportScope();
       var od = api.ReportRequestReportScope.fromJson(o.toJson());
       checkReportRequestReportScope(od as api.ReportRequestReportScope);
@@ -1093,7 +1093,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportRequestTimeRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportRequestTimeRange();
       var od = api.ReportRequestTimeRange.fromJson(o.toJson());
       checkReportRequestTimeRange(od as api.ReportRequestTimeRange);
@@ -1101,7 +1101,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportRequest();
       var od = api.ReportRequest.fromJson(o.toJson());
       checkReportRequest(od as api.ReportRequest);
@@ -1109,7 +1109,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportRow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportRow();
       var od = api.ReportRow.fromJson(o.toJson());
       checkReportRow(od as api.ReportRow);
@@ -1117,7 +1117,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SavedColumn', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSavedColumn();
       var od = api.SavedColumn.fromJson(o.toJson());
       checkSavedColumn(od as api.SavedColumn);
@@ -1125,7 +1125,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SavedColumnList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSavedColumnList();
       var od = api.SavedColumnList.fromJson(o.toJson());
       checkSavedColumnList(od as api.SavedColumnList);
@@ -1133,7 +1133,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateAvailabilityRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateAvailabilityRequest();
       var od = api.UpdateAvailabilityRequest.fromJson(o.toJson());
       checkUpdateAvailabilityRequest(od as api.UpdateAvailabilityRequest);
@@ -1141,7 +1141,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateAvailabilityResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateAvailabilityResponse();
       var od = api.UpdateAvailabilityResponse.fromJson(o.toJson());
       checkUpdateAvailabilityResponse(od as api.UpdateAvailabilityResponse);
@@ -1149,7 +1149,7 @@ void main() {
   });
 
   unittest.group('resource-ConversionResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DoubleclicksearchApi(mock).conversion;
       var arg_agencyId = 'foo';
@@ -1280,20 +1280,23 @@ void main() {
         var resp = convert.json.encode(buildConversionList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_agencyId, arg_advertiserId, arg_engineAccountId, arg_endDate,
-              arg_rowCount, arg_startDate, arg_startRow,
-              adGroupId: arg_adGroupId,
-              adId: arg_adId,
-              campaignId: arg_campaignId,
-              criterionId: arg_criterionId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkConversionList(response as api.ConversionList);
-      })));
+      final response = await res.get(
+          arg_agencyId,
+          arg_advertiserId,
+          arg_engineAccountId,
+          arg_endDate,
+          arg_rowCount,
+          arg_startDate,
+          arg_startRow,
+          adGroupId: arg_adGroupId,
+          adId: arg_adId,
+          campaignId: arg_campaignId,
+          criterionId: arg_criterionId,
+          $fields: arg_$fields);
+      checkConversionList(response as api.ConversionList);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DoubleclicksearchApi(mock).conversion;
       var arg_request = buildConversionList();
@@ -1344,14 +1347,11 @@ void main() {
         var resp = convert.json.encode(buildConversionList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkConversionList(response as api.ConversionList);
-      })));
+      final response = await res.insert(arg_request, $fields: arg_$fields);
+      checkConversionList(response as api.ConversionList);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DoubleclicksearchApi(mock).conversion;
       var arg_request = buildConversionList();
@@ -1402,14 +1402,11 @@ void main() {
         var resp = convert.json.encode(buildConversionList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkConversionList(response as api.ConversionList);
-      })));
+      final response = await res.update(arg_request, $fields: arg_$fields);
+      checkConversionList(response as api.ConversionList);
     });
 
-    unittest.test('method--updateAvailability', () {
+    unittest.test('method--updateAvailability', () async {
       var mock = HttpServerMock();
       var res = api.DoubleclicksearchApi(mock).conversion;
       var arg_request = buildUpdateAvailabilityRequest();
@@ -1460,17 +1457,15 @@ void main() {
         var resp = convert.json.encode(buildUpdateAvailabilityResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateAvailability(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUpdateAvailabilityResponse(
-            response as api.UpdateAvailabilityResponse);
-      })));
+      final response =
+          await res.updateAvailability(arg_request, $fields: arg_$fields);
+      checkUpdateAvailabilityResponse(
+          response as api.UpdateAvailabilityResponse);
     });
   });
 
   unittest.group('resource-ReportsResource', () {
-    unittest.test('method--generate', () {
+    unittest.test('method--generate', () async {
       var mock = HttpServerMock();
       var res = api.DoubleclicksearchApi(mock).reports;
       var arg_request_1 = buildReportRequest();
@@ -1521,14 +1516,11 @@ void main() {
         var resp = convert.json.encode(buildReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .generate(arg_request_1, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReport(response as api.Report);
-      })));
+      final response = await res.generate(arg_request_1, $fields: arg_$fields);
+      checkReport(response as api.Report);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DoubleclicksearchApi(mock).reports;
       var arg_reportId = 'foo';
@@ -1581,14 +1573,11 @@ void main() {
         var resp = convert.json.encode(buildReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_reportId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReport(response as api.Report);
-      })));
+      final response = await res.get(arg_reportId, $fields: arg_$fields);
+      checkReport(response as api.Report);
     });
 
-    unittest.test('method--getFile', () {
+    unittest.test('method--getFile', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -1659,12 +1648,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getFile(arg_reportId, arg_reportFragment, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.getFile(arg_reportId, arg_reportFragment, $fields: arg_$fields);
     });
 
-    unittest.test('method--request', () {
+    unittest.test('method--request', () async {
       var mock = HttpServerMock();
       var res = api.DoubleclicksearchApi(mock).reports;
       var arg_request_1 = buildReportRequest();
@@ -1715,16 +1702,13 @@ void main() {
         var resp = convert.json.encode(buildReport());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .request(arg_request_1, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReport(response as api.Report);
-      })));
+      final response = await res.request(arg_request_1, $fields: arg_$fields);
+      checkReport(response as api.Report);
     });
   });
 
   unittest.group('resource-SavedColumnsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DoubleclicksearchApi(mock).savedColumns;
       var arg_agencyId = 'foo';
@@ -1800,11 +1784,9 @@ void main() {
         var resp = convert.json.encode(buildSavedColumnList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_agencyId, arg_advertiserId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSavedColumnList(response as api.SavedColumnList);
-      })));
+      final response =
+          await res.list(arg_agencyId, arg_advertiserId, $fields: arg_$fields);
+      checkSavedColumnList(response as api.SavedColumnList);
     });
   });
 }

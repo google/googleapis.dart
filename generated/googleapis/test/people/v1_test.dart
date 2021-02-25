@@ -3185,7 +3185,7 @@ void checkUnnamed5485(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-Address', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddress();
       var od = api.Address.fromJson(o.toJson());
       checkAddress(od as api.Address);
@@ -3193,7 +3193,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AgeRangeType', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAgeRangeType();
       var od = api.AgeRangeType.fromJson(o.toJson());
       checkAgeRangeType(od as api.AgeRangeType);
@@ -3201,7 +3201,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchGetContactGroupsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchGetContactGroupsResponse();
       var od = api.BatchGetContactGroupsResponse.fromJson(o.toJson());
       checkBatchGetContactGroupsResponse(
@@ -3210,7 +3210,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Biography', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBiography();
       var od = api.Biography.fromJson(o.toJson());
       checkBiography(od as api.Biography);
@@ -3218,7 +3218,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Birthday', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBirthday();
       var od = api.Birthday.fromJson(o.toJson());
       checkBirthday(od as api.Birthday);
@@ -3226,7 +3226,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BraggingRights', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBraggingRights();
       var od = api.BraggingRights.fromJson(o.toJson());
       checkBraggingRights(od as api.BraggingRights);
@@ -3234,7 +3234,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CalendarUrl', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCalendarUrl();
       var od = api.CalendarUrl.fromJson(o.toJson());
       checkCalendarUrl(od as api.CalendarUrl);
@@ -3242,7 +3242,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClientData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClientData();
       var od = api.ClientData.fromJson(o.toJson());
       checkClientData(od as api.ClientData);
@@ -3250,7 +3250,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ContactGroup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContactGroup();
       var od = api.ContactGroup.fromJson(o.toJson());
       checkContactGroup(od as api.ContactGroup);
@@ -3258,7 +3258,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ContactGroupMembership', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContactGroupMembership();
       var od = api.ContactGroupMembership.fromJson(o.toJson());
       checkContactGroupMembership(od as api.ContactGroupMembership);
@@ -3266,7 +3266,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ContactGroupMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContactGroupMetadata();
       var od = api.ContactGroupMetadata.fromJson(o.toJson());
       checkContactGroupMetadata(od as api.ContactGroupMetadata);
@@ -3274,7 +3274,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ContactGroupResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContactGroupResponse();
       var od = api.ContactGroupResponse.fromJson(o.toJson());
       checkContactGroupResponse(od as api.ContactGroupResponse);
@@ -3282,7 +3282,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CopyOtherContactToMyContactsGroupRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCopyOtherContactToMyContactsGroupRequest();
       var od =
           api.CopyOtherContactToMyContactsGroupRequest.fromJson(o.toJson());
@@ -3292,7 +3292,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CoverPhoto', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCoverPhoto();
       var od = api.CoverPhoto.fromJson(o.toJson());
       checkCoverPhoto(od as api.CoverPhoto);
@@ -3300,7 +3300,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateContactGroupRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateContactGroupRequest();
       var od = api.CreateContactGroupRequest.fromJson(o.toJson());
       checkCreateContactGroupRequest(od as api.CreateContactGroupRequest);
@@ -3308,7 +3308,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Date', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
       checkDate(od as api.Date);
@@ -3316,7 +3316,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteContactPhotoResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteContactPhotoResponse();
       var od = api.DeleteContactPhotoResponse.fromJson(o.toJson());
       checkDeleteContactPhotoResponse(od as api.DeleteContactPhotoResponse);
@@ -3324,7 +3324,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DomainMembership', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDomainMembership();
       var od = api.DomainMembership.fromJson(o.toJson());
       checkDomainMembership(od as api.DomainMembership);
@@ -3332,7 +3332,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EmailAddress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmailAddress();
       var od = api.EmailAddress.fromJson(o.toJson());
       checkEmailAddress(od as api.EmailAddress);
@@ -3340,7 +3340,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -3348,7 +3348,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Event', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEvent();
       var od = api.Event.fromJson(o.toJson());
       checkEvent(od as api.Event);
@@ -3356,7 +3356,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExternalId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExternalId();
       var od = api.ExternalId.fromJson(o.toJson());
       checkExternalId(od as api.ExternalId);
@@ -3364,7 +3364,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FieldMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFieldMetadata();
       var od = api.FieldMetadata.fromJson(o.toJson());
       checkFieldMetadata(od as api.FieldMetadata);
@@ -3372,7 +3372,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FileAs', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFileAs();
       var od = api.FileAs.fromJson(o.toJson());
       checkFileAs(od as api.FileAs);
@@ -3380,7 +3380,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Gender', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGender();
       var od = api.Gender.fromJson(o.toJson());
       checkGender(od as api.Gender);
@@ -3388,7 +3388,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetPeopleResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetPeopleResponse();
       var od = api.GetPeopleResponse.fromJson(o.toJson());
       checkGetPeopleResponse(od as api.GetPeopleResponse);
@@ -3396,7 +3396,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GroupClientData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroupClientData();
       var od = api.GroupClientData.fromJson(o.toJson());
       checkGroupClientData(od as api.GroupClientData);
@@ -3404,7 +3404,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImClient', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImClient();
       var od = api.ImClient.fromJson(o.toJson());
       checkImClient(od as api.ImClient);
@@ -3412,7 +3412,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Interest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInterest();
       var od = api.Interest.fromJson(o.toJson());
       checkInterest(od as api.Interest);
@@ -3420,7 +3420,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListConnectionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListConnectionsResponse();
       var od = api.ListConnectionsResponse.fromJson(o.toJson());
       checkListConnectionsResponse(od as api.ListConnectionsResponse);
@@ -3428,7 +3428,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListContactGroupsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListContactGroupsResponse();
       var od = api.ListContactGroupsResponse.fromJson(o.toJson());
       checkListContactGroupsResponse(od as api.ListContactGroupsResponse);
@@ -3436,7 +3436,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDirectoryPeopleResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDirectoryPeopleResponse();
       var od = api.ListDirectoryPeopleResponse.fromJson(o.toJson());
       checkListDirectoryPeopleResponse(od as api.ListDirectoryPeopleResponse);
@@ -3444,7 +3444,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOtherContactsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOtherContactsResponse();
       var od = api.ListOtherContactsResponse.fromJson(o.toJson());
       checkListOtherContactsResponse(od as api.ListOtherContactsResponse);
@@ -3452,7 +3452,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Locale', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocale();
       var od = api.Locale.fromJson(o.toJson());
       checkLocale(od as api.Locale);
@@ -3460,7 +3460,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -3468,7 +3468,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Membership', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMembership();
       var od = api.Membership.fromJson(o.toJson());
       checkMembership(od as api.Membership);
@@ -3476,7 +3476,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MiscKeyword', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMiscKeyword();
       var od = api.MiscKeyword.fromJson(o.toJson());
       checkMiscKeyword(od as api.MiscKeyword);
@@ -3484,7 +3484,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ModifyContactGroupMembersRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildModifyContactGroupMembersRequest();
       var od = api.ModifyContactGroupMembersRequest.fromJson(o.toJson());
       checkModifyContactGroupMembersRequest(
@@ -3493,7 +3493,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ModifyContactGroupMembersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildModifyContactGroupMembersResponse();
       var od = api.ModifyContactGroupMembersResponse.fromJson(o.toJson());
       checkModifyContactGroupMembersResponse(
@@ -3502,7 +3502,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Name', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildName();
       var od = api.Name.fromJson(o.toJson());
       checkName(od as api.Name);
@@ -3510,7 +3510,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Nickname', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNickname();
       var od = api.Nickname.fromJson(o.toJson());
       checkNickname(od as api.Nickname);
@@ -3518,7 +3518,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Occupation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOccupation();
       var od = api.Occupation.fromJson(o.toJson());
       checkOccupation(od as api.Occupation);
@@ -3526,7 +3526,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Organization', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrganization();
       var od = api.Organization.fromJson(o.toJson());
       checkOrganization(od as api.Organization);
@@ -3534,7 +3534,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Person', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPerson();
       var od = api.Person.fromJson(o.toJson());
       checkPerson(od as api.Person);
@@ -3542,7 +3542,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PersonMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPersonMetadata();
       var od = api.PersonMetadata.fromJson(o.toJson());
       checkPersonMetadata(od as api.PersonMetadata);
@@ -3550,7 +3550,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PersonResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPersonResponse();
       var od = api.PersonResponse.fromJson(o.toJson());
       checkPersonResponse(od as api.PersonResponse);
@@ -3558,7 +3558,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PhoneNumber', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPhoneNumber();
       var od = api.PhoneNumber.fromJson(o.toJson());
       checkPhoneNumber(od as api.PhoneNumber);
@@ -3566,7 +3566,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Photo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPhoto();
       var od = api.Photo.fromJson(o.toJson());
       checkPhoto(od as api.Photo);
@@ -3574,7 +3574,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProfileMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProfileMetadata();
       var od = api.ProfileMetadata.fromJson(o.toJson());
       checkProfileMetadata(od as api.ProfileMetadata);
@@ -3582,7 +3582,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Relation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRelation();
       var od = api.Relation.fromJson(o.toJson());
       checkRelation(od as api.Relation);
@@ -3590,7 +3590,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RelationshipInterest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRelationshipInterest();
       var od = api.RelationshipInterest.fromJson(o.toJson());
       checkRelationshipInterest(od as api.RelationshipInterest);
@@ -3598,7 +3598,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RelationshipStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRelationshipStatus();
       var od = api.RelationshipStatus.fromJson(o.toJson());
       checkRelationshipStatus(od as api.RelationshipStatus);
@@ -3606,7 +3606,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Residence', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResidence();
       var od = api.Residence.fromJson(o.toJson());
       checkResidence(od as api.Residence);
@@ -3614,7 +3614,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchDirectoryPeopleResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchDirectoryPeopleResponse();
       var od = api.SearchDirectoryPeopleResponse.fromJson(o.toJson());
       checkSearchDirectoryPeopleResponse(
@@ -3623,7 +3623,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchResponse();
       var od = api.SearchResponse.fromJson(o.toJson());
       checkSearchResponse(od as api.SearchResponse);
@@ -3631,7 +3631,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchResult();
       var od = api.SearchResult.fromJson(o.toJson());
       checkSearchResult(od as api.SearchResult);
@@ -3639,7 +3639,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SipAddress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSipAddress();
       var od = api.SipAddress.fromJson(o.toJson());
       checkSipAddress(od as api.SipAddress);
@@ -3647,7 +3647,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Skill', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSkill();
       var od = api.Skill.fromJson(o.toJson());
       checkSkill(od as api.Skill);
@@ -3655,7 +3655,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Source', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSource();
       var od = api.Source.fromJson(o.toJson());
       checkSource(od as api.Source);
@@ -3663,7 +3663,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -3671,7 +3671,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Tagline', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTagline();
       var od = api.Tagline.fromJson(o.toJson());
       checkTagline(od as api.Tagline);
@@ -3679,7 +3679,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateContactGroupRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateContactGroupRequest();
       var od = api.UpdateContactGroupRequest.fromJson(o.toJson());
       checkUpdateContactGroupRequest(od as api.UpdateContactGroupRequest);
@@ -3687,7 +3687,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateContactPhotoRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateContactPhotoRequest();
       var od = api.UpdateContactPhotoRequest.fromJson(o.toJson());
       checkUpdateContactPhotoRequest(od as api.UpdateContactPhotoRequest);
@@ -3695,7 +3695,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateContactPhotoResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateContactPhotoResponse();
       var od = api.UpdateContactPhotoResponse.fromJson(o.toJson());
       checkUpdateContactPhotoResponse(od as api.UpdateContactPhotoResponse);
@@ -3703,7 +3703,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Url', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUrl();
       var od = api.Url.fromJson(o.toJson());
       checkUrl(od as api.Url);
@@ -3711,7 +3711,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserDefined', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserDefined();
       var od = api.UserDefined.fromJson(o.toJson());
       checkUserDefined(od as api.UserDefined);
@@ -3719,7 +3719,7 @@ void main() {
   });
 
   unittest.group('resource-ContactGroupsResource', () {
-    unittest.test('method--batchGet', () {
+    unittest.test('method--batchGet', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).contactGroups;
       var arg_groupFields = 'foo';
@@ -3780,19 +3780,16 @@ void main() {
         var resp = convert.json.encode(buildBatchGetContactGroupsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchGet(
-              groupFields: arg_groupFields,
-              maxMembers: arg_maxMembers,
-              resourceNames: arg_resourceNames,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchGetContactGroupsResponse(
-            response as api.BatchGetContactGroupsResponse);
-      })));
+      final response = await res.batchGet(
+          groupFields: arg_groupFields,
+          maxMembers: arg_maxMembers,
+          resourceNames: arg_resourceNames,
+          $fields: arg_$fields);
+      checkBatchGetContactGroupsResponse(
+          response as api.BatchGetContactGroupsResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).contactGroups;
       var arg_request = buildCreateContactGroupRequest();
@@ -3843,14 +3840,11 @@ void main() {
         var resp = convert.json.encode(buildContactGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkContactGroup(response as api.ContactGroup);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkContactGroup(response as api.ContactGroup);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).contactGroups;
       var arg_resourceName = 'foo';
@@ -3903,15 +3897,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_resourceName,
-              deleteContacts: arg_deleteContacts, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_resourceName,
+          deleteContacts: arg_deleteContacts, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).contactGroups;
       var arg_resourceName = 'foo';
@@ -3969,17 +3960,14 @@ void main() {
         var resp = convert.json.encode(buildContactGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_resourceName,
-              groupFields: arg_groupFields,
-              maxMembers: arg_maxMembers,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkContactGroup(response as api.ContactGroup);
-      })));
+      final response = await res.get(arg_resourceName,
+          groupFields: arg_groupFields,
+          maxMembers: arg_maxMembers,
+          $fields: arg_$fields);
+      checkContactGroup(response as api.ContactGroup);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).contactGroups;
       var arg_groupFields = 'foo';
@@ -4045,20 +4033,16 @@ void main() {
         var resp = convert.json.encode(buildListContactGroupsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              groupFields: arg_groupFields,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              syncToken: arg_syncToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListContactGroupsResponse(
-            response as api.ListContactGroupsResponse);
-      })));
+      final response = await res.list(
+          groupFields: arg_groupFields,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          syncToken: arg_syncToken,
+          $fields: arg_$fields);
+      checkListContactGroupsResponse(response as api.ListContactGroupsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).contactGroups;
       var arg_request = buildUpdateContactGroupRequest();
@@ -4111,16 +4095,14 @@ void main() {
         var resp = convert.json.encode(buildContactGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_resourceName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkContactGroup(response as api.ContactGroup);
-      })));
+      final response =
+          await res.update(arg_request, arg_resourceName, $fields: arg_$fields);
+      checkContactGroup(response as api.ContactGroup);
     });
   });
 
   unittest.group('resource-ContactGroupsMembersResource', () {
-    unittest.test('method--modify', () {
+    unittest.test('method--modify', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).contactGroups.members;
       var arg_request = buildModifyContactGroupMembersRequest();
@@ -4175,17 +4157,15 @@ void main() {
             convert.json.encode(buildModifyContactGroupMembersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .modify(arg_request, arg_resourceName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkModifyContactGroupMembersResponse(
-            response as api.ModifyContactGroupMembersResponse);
-      })));
+      final response =
+          await res.modify(arg_request, arg_resourceName, $fields: arg_$fields);
+      checkModifyContactGroupMembersResponse(
+          response as api.ModifyContactGroupMembersResponse);
     });
   });
 
   unittest.group('resource-OtherContactsResource', () {
-    unittest.test('method--copyOtherContactToMyContactsGroup', () {
+    unittest.test('method--copyOtherContactToMyContactsGroup', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).otherContacts;
       var arg_request = buildCopyOtherContactToMyContactsGroupRequest();
@@ -4239,15 +4219,13 @@ void main() {
         var resp = convert.json.encode(buildPerson());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .copyOtherContactToMyContactsGroup(arg_request, arg_resourceName,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPerson(response as api.Person);
-      })));
+      final response = await res.copyOtherContactToMyContactsGroup(
+          arg_request, arg_resourceName,
+          $fields: arg_$fields);
+      checkPerson(response as api.Person);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).otherContacts;
       var arg_pageSize = 42;
@@ -4318,21 +4296,17 @@ void main() {
         var resp = convert.json.encode(buildListOtherContactsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              readMask: arg_readMask,
-              requestSyncToken: arg_requestSyncToken,
-              syncToken: arg_syncToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOtherContactsResponse(
-            response as api.ListOtherContactsResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          readMask: arg_readMask,
+          requestSyncToken: arg_requestSyncToken,
+          syncToken: arg_syncToken,
+          $fields: arg_$fields);
+      checkListOtherContactsResponse(response as api.ListOtherContactsResponse);
     });
 
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).otherContacts;
       var arg_pageSize = 42;
@@ -4393,20 +4367,17 @@ void main() {
         var resp = convert.json.encode(buildSearchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(
-              pageSize: arg_pageSize,
-              query: arg_query,
-              readMask: arg_readMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchResponse(response as api.SearchResponse);
-      })));
+      final response = await res.search(
+          pageSize: arg_pageSize,
+          query: arg_query,
+          readMask: arg_readMask,
+          $fields: arg_$fields);
+      checkSearchResponse(response as api.SearchResponse);
     });
   });
 
   unittest.group('resource-PeopleResource', () {
-    unittest.test('method--createContact', () {
+    unittest.test('method--createContact', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).people;
       var arg_request = buildPerson();
@@ -4467,17 +4438,14 @@ void main() {
         var resp = convert.json.encode(buildPerson());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createContact(arg_request,
-              personFields: arg_personFields,
-              sources: arg_sources,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPerson(response as api.Person);
-      })));
+      final response = await res.createContact(arg_request,
+          personFields: arg_personFields,
+          sources: arg_sources,
+          $fields: arg_$fields);
+      checkPerson(response as api.Person);
     });
 
-    unittest.test('method--deleteContact', () {
+    unittest.test('method--deleteContact', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).people;
       var arg_resourceName = 'foo';
@@ -4525,14 +4493,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deleteContact(arg_resourceName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.deleteContact(arg_resourceName, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--deleteContactPhoto', () {
+    unittest.test('method--deleteContactPhoto', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).people;
       var arg_resourceName = 'foo';
@@ -4590,18 +4556,15 @@ void main() {
         var resp = convert.json.encode(buildDeleteContactPhotoResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deleteContactPhoto(arg_resourceName,
-              personFields: arg_personFields,
-              sources: arg_sources,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDeleteContactPhotoResponse(
-            response as api.DeleteContactPhotoResponse);
-      })));
+      final response = await res.deleteContactPhoto(arg_resourceName,
+          personFields: arg_personFields,
+          sources: arg_sources,
+          $fields: arg_$fields);
+      checkDeleteContactPhotoResponse(
+          response as api.DeleteContactPhotoResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).people;
       var arg_resourceName = 'foo';
@@ -4664,18 +4627,15 @@ void main() {
         var resp = convert.json.encode(buildPerson());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_resourceName,
-              personFields: arg_personFields,
-              requestMask_includeField: arg_requestMask_includeField,
-              sources: arg_sources,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPerson(response as api.Person);
-      })));
+      final response = await res.get(arg_resourceName,
+          personFields: arg_personFields,
+          requestMask_includeField: arg_requestMask_includeField,
+          sources: arg_sources,
+          $fields: arg_$fields);
+      checkPerson(response as api.Person);
     });
 
-    unittest.test('method--getBatchGet', () {
+    unittest.test('method--getBatchGet', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).people;
       var arg_personFields = 'foo';
@@ -4741,19 +4701,16 @@ void main() {
         var resp = convert.json.encode(buildGetPeopleResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getBatchGet(
-              personFields: arg_personFields,
-              requestMask_includeField: arg_requestMask_includeField,
-              resourceNames: arg_resourceNames,
-              sources: arg_sources,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetPeopleResponse(response as api.GetPeopleResponse);
-      })));
+      final response = await res.getBatchGet(
+          personFields: arg_personFields,
+          requestMask_includeField: arg_requestMask_includeField,
+          resourceNames: arg_resourceNames,
+          sources: arg_sources,
+          $fields: arg_$fields);
+      checkGetPeopleResponse(response as api.GetPeopleResponse);
     });
 
-    unittest.test('method--listDirectoryPeople', () {
+    unittest.test('method--listDirectoryPeople', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).people;
       var arg_mergeSources = buildUnnamed5480();
@@ -4834,23 +4791,20 @@ void main() {
         var resp = convert.json.encode(buildListDirectoryPeopleResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listDirectoryPeople(
-              mergeSources: arg_mergeSources,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              readMask: arg_readMask,
-              requestSyncToken: arg_requestSyncToken,
-              sources: arg_sources,
-              syncToken: arg_syncToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDirectoryPeopleResponse(
-            response as api.ListDirectoryPeopleResponse);
-      })));
+      final response = await res.listDirectoryPeople(
+          mergeSources: arg_mergeSources,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          readMask: arg_readMask,
+          requestSyncToken: arg_requestSyncToken,
+          sources: arg_sources,
+          syncToken: arg_syncToken,
+          $fields: arg_$fields);
+      checkListDirectoryPeopleResponse(
+          response as api.ListDirectoryPeopleResponse);
     });
 
-    unittest.test('method--searchContacts', () {
+    unittest.test('method--searchContacts', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).people;
       var arg_pageSize = 42;
@@ -4911,18 +4865,15 @@ void main() {
         var resp = convert.json.encode(buildSearchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchContacts(
-              pageSize: arg_pageSize,
-              query: arg_query,
-              readMask: arg_readMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchResponse(response as api.SearchResponse);
-      })));
+      final response = await res.searchContacts(
+          pageSize: arg_pageSize,
+          query: arg_query,
+          readMask: arg_readMask,
+          $fields: arg_$fields);
+      checkSearchResponse(response as api.SearchResponse);
     });
 
-    unittest.test('method--searchDirectoryPeople', () {
+    unittest.test('method--searchDirectoryPeople', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).people;
       var arg_mergeSources = buildUnnamed5482();
@@ -4998,22 +4949,19 @@ void main() {
         var resp = convert.json.encode(buildSearchDirectoryPeopleResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchDirectoryPeople(
-              mergeSources: arg_mergeSources,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              query: arg_query,
-              readMask: arg_readMask,
-              sources: arg_sources,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchDirectoryPeopleResponse(
-            response as api.SearchDirectoryPeopleResponse);
-      })));
+      final response = await res.searchDirectoryPeople(
+          mergeSources: arg_mergeSources,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          query: arg_query,
+          readMask: arg_readMask,
+          sources: arg_sources,
+          $fields: arg_$fields);
+      checkSearchDirectoryPeopleResponse(
+          response as api.SearchDirectoryPeopleResponse);
     });
 
-    unittest.test('method--updateContact', () {
+    unittest.test('method--updateContact', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).people;
       var arg_request = buildPerson();
@@ -5081,18 +5029,15 @@ void main() {
         var resp = convert.json.encode(buildPerson());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateContact(arg_request, arg_resourceName,
-              personFields: arg_personFields,
-              sources: arg_sources,
-              updatePersonFields: arg_updatePersonFields,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPerson(response as api.Person);
-      })));
+      final response = await res.updateContact(arg_request, arg_resourceName,
+          personFields: arg_personFields,
+          sources: arg_sources,
+          updatePersonFields: arg_updatePersonFields,
+          $fields: arg_$fields);
+      checkPerson(response as api.Person);
     });
 
-    unittest.test('method--updateContactPhoto', () {
+    unittest.test('method--updateContactPhoto', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).people;
       var arg_request = buildUpdateContactPhotoRequest();
@@ -5145,18 +5090,16 @@ void main() {
         var resp = convert.json.encode(buildUpdateContactPhotoResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateContactPhoto(arg_request, arg_resourceName,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUpdateContactPhotoResponse(
-            response as api.UpdateContactPhotoResponse);
-      })));
+      final response = await res.updateContactPhoto(
+          arg_request, arg_resourceName,
+          $fields: arg_$fields);
+      checkUpdateContactPhotoResponse(
+          response as api.UpdateContactPhotoResponse);
     });
   });
 
   unittest.group('resource-PeopleConnectionsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.PeopleServiceApi(mock).people.connections;
       var arg_resourceName = 'foo';
@@ -5244,20 +5187,17 @@ void main() {
         var resp = convert.json.encode(buildListConnectionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_resourceName,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              personFields: arg_personFields,
-              requestMask_includeField: arg_requestMask_includeField,
-              requestSyncToken: arg_requestSyncToken,
-              sortOrder: arg_sortOrder,
-              sources: arg_sources,
-              syncToken: arg_syncToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListConnectionsResponse(response as api.ListConnectionsResponse);
-      })));
+      final response = await res.list(arg_resourceName,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          personFields: arg_personFields,
+          requestMask_includeField: arg_requestMask_includeField,
+          requestSyncToken: arg_requestSyncToken,
+          sortOrder: arg_sortOrder,
+          sources: arg_sources,
+          syncToken: arg_syncToken,
+          $fields: arg_$fields);
+      checkListConnectionsResponse(response as api.ListConnectionsResponse);
     });
   });
 }

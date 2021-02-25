@@ -1757,7 +1757,7 @@ void checkVpcPeeringConnectivity(api.VpcPeeringConnectivity o) {
 
 void main() {
   unittest.group('obj-schema-AuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
       checkAuditConfig(od as api.AuditConfig);
@@ -1765,7 +1765,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
       checkAuditLogConfig(od as api.AuditLogConfig);
@@ -1773,7 +1773,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -1781,7 +1781,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od as api.CancelOperationRequest);
@@ -1789,7 +1789,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CloudSqlConnectionProfile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCloudSqlConnectionProfile();
       var od = api.CloudSqlConnectionProfile.fromJson(o.toJson());
       checkCloudSqlConnectionProfile(od as api.CloudSqlConnectionProfile);
@@ -1797,7 +1797,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CloudSqlSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCloudSqlSettings();
       var od = api.CloudSqlSettings.fromJson(o.toJson());
       checkCloudSqlSettings(od as api.CloudSqlSettings);
@@ -1805,7 +1805,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConnectionProfile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConnectionProfile();
       var od = api.ConnectionProfile.fromJson(o.toJson());
       checkConnectionProfile(od as api.ConnectionProfile);
@@ -1813,7 +1813,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatabaseType', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatabaseType();
       var od = api.DatabaseType.fromJson(o.toJson());
       checkDatabaseType(od as api.DatabaseType);
@@ -1821,7 +1821,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1829,7 +1829,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -1837,7 +1837,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GenerateSshScriptRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGenerateSshScriptRequest();
       var od = api.GenerateSshScriptRequest.fromJson(o.toJson());
       checkGenerateSshScriptRequest(od as api.GenerateSshScriptRequest);
@@ -1845,7 +1845,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudClouddmsV1beta1OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudClouddmsV1beta1OperationMetadata();
       var od =
           api.GoogleCloudClouddmsV1beta1OperationMetadata.fromJson(o.toJson());
@@ -1855,7 +1855,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListConnectionProfilesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListConnectionProfilesResponse();
       var od = api.ListConnectionProfilesResponse.fromJson(o.toJson());
       checkListConnectionProfilesResponse(
@@ -1864,7 +1864,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -1872,7 +1872,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListMigrationJobsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListMigrationJobsResponse();
       var od = api.ListMigrationJobsResponse.fromJson(o.toJson());
       checkListMigrationJobsResponse(od as api.ListMigrationJobsResponse);
@@ -1880,7 +1880,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -1888,7 +1888,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -1896,7 +1896,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MigrationJob', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMigrationJob();
       var od = api.MigrationJob.fromJson(o.toJson());
       checkMigrationJob(od as api.MigrationJob);
@@ -1904,7 +1904,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MigrationJobVerificationError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMigrationJobVerificationError();
       var od = api.MigrationJobVerificationError.fromJson(o.toJson());
       checkMigrationJobVerificationError(
@@ -1913,7 +1913,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MySqlConnectionProfile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMySqlConnectionProfile();
       var od = api.MySqlConnectionProfile.fromJson(o.toJson());
       checkMySqlConnectionProfile(od as api.MySqlConnectionProfile);
@@ -1921,7 +1921,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -1929,7 +1929,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -1937,7 +1937,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PromoteMigrationJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPromoteMigrationJobRequest();
       var od = api.PromoteMigrationJobRequest.fromJson(o.toJson());
       checkPromoteMigrationJobRequest(od as api.PromoteMigrationJobRequest);
@@ -1945,7 +1945,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestartMigrationJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestartMigrationJobRequest();
       var od = api.RestartMigrationJobRequest.fromJson(o.toJson());
       checkRestartMigrationJobRequest(od as api.RestartMigrationJobRequest);
@@ -1953,7 +1953,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResumeMigrationJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResumeMigrationJobRequest();
       var od = api.ResumeMigrationJobRequest.fromJson(o.toJson());
       checkResumeMigrationJobRequest(od as api.ResumeMigrationJobRequest);
@@ -1961,7 +1961,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReverseSshConnectivity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReverseSshConnectivity();
       var od = api.ReverseSshConnectivity.fromJson(o.toJson());
       checkReverseSshConnectivity(od as api.ReverseSshConnectivity);
@@ -1969,7 +1969,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -1977,7 +1977,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SqlAclEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSqlAclEntry();
       var od = api.SqlAclEntry.fromJson(o.toJson());
       checkSqlAclEntry(od as api.SqlAclEntry);
@@ -1985,7 +1985,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SqlIpConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSqlIpConfig();
       var od = api.SqlIpConfig.fromJson(o.toJson());
       checkSqlIpConfig(od as api.SqlIpConfig);
@@ -1993,7 +1993,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SshScript', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSshScript();
       var od = api.SshScript.fromJson(o.toJson());
       checkSshScript(od as api.SshScript);
@@ -2001,7 +2001,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SslConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSslConfig();
       var od = api.SslConfig.fromJson(o.toJson());
       checkSslConfig(od as api.SslConfig);
@@ -2009,7 +2009,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StartMigrationJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStartMigrationJobRequest();
       var od = api.StartMigrationJobRequest.fromJson(o.toJson());
       checkStartMigrationJobRequest(od as api.StartMigrationJobRequest);
@@ -2017,7 +2017,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StaticIpConnectivity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStaticIpConnectivity();
       var od = api.StaticIpConnectivity.fromJson(o.toJson());
       checkStaticIpConnectivity(od as api.StaticIpConnectivity);
@@ -2025,7 +2025,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -2033,7 +2033,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StopMigrationJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStopMigrationJobRequest();
       var od = api.StopMigrationJobRequest.fromJson(o.toJson());
       checkStopMigrationJobRequest(od as api.StopMigrationJobRequest);
@@ -2041,7 +2041,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -2049,7 +2049,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -2057,7 +2057,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VerifyMigrationJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVerifyMigrationJobRequest();
       var od = api.VerifyMigrationJobRequest.fromJson(o.toJson());
       checkVerifyMigrationJobRequest(od as api.VerifyMigrationJobRequest);
@@ -2065,7 +2065,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VmCreationConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVmCreationConfig();
       var od = api.VmCreationConfig.fromJson(o.toJson());
       checkVmCreationConfig(od as api.VmCreationConfig);
@@ -2073,7 +2073,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VmSelectionConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVmSelectionConfig();
       var od = api.VmSelectionConfig.fromJson(o.toJson());
       checkVmSelectionConfig(od as api.VmSelectionConfig);
@@ -2081,7 +2081,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VpcPeeringConnectivity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVpcPeeringConnectivity();
       var od = api.VpcPeeringConnectivity.fromJson(o.toJson());
       checkVpcPeeringConnectivity(od as api.VpcPeeringConnectivity);
@@ -2089,7 +2089,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -2137,14 +2137,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -2207,20 +2204,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsConnectionProfilesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -2286,17 +2280,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              connectionProfileId: arg_connectionProfileId,
-              requestId: arg_requestId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          connectionProfileId: arg_connectionProfileId,
+          requestId: arg_requestId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -2357,15 +2348,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name,
-              force: arg_force, requestId: arg_requestId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name,
+          force: arg_force, requestId: arg_requestId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -2416,14 +2404,11 @@ void main() {
         var resp = convert.json.encode(buildConnectionProfile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkConnectionProfile(response as api.ConnectionProfile);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkConnectionProfile(response as api.ConnectionProfile);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -2479,17 +2464,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -2560,20 +2541,17 @@ void main() {
         var resp = convert.json.encode(buildListConnectionProfilesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListConnectionProfilesResponse(
-            response as api.ListConnectionProfilesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListConnectionProfilesResponse(
+          response as api.ListConnectionProfilesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -2639,17 +2617,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              requestId: arg_requestId,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          requestId: arg_requestId,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -2705,14 +2680,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -2768,17 +2741,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsMigrationJobsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -2844,17 +2815,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              migrationJobId: arg_migrationJobId,
-              requestId: arg_requestId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          migrationJobId: arg_migrationJobId,
+          requestId: arg_requestId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -2915,15 +2883,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name,
-              force: arg_force, requestId: arg_requestId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name,
+          force: arg_force, requestId: arg_requestId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--generateSshScript', () {
+    unittest.test('method--generateSshScript', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -2979,15 +2944,13 @@ void main() {
         var resp = convert.json.encode(buildSshScript());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .generateSshScript(arg_request, arg_migrationJob,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSshScript(response as api.SshScript);
-      })));
+      final response = await res.generateSshScript(
+          arg_request, arg_migrationJob,
+          $fields: arg_$fields);
+      checkSshScript(response as api.SshScript);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -3038,14 +3001,11 @@ void main() {
         var resp = convert.json.encode(buildMigrationJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMigrationJob(response as api.MigrationJob);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkMigrationJob(response as api.MigrationJob);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -3101,17 +3061,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -3182,20 +3138,16 @@ void main() {
         var resp = convert.json.encode(buildListMigrationJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListMigrationJobsResponse(
-            response as api.ListMigrationJobsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListMigrationJobsResponse(response as api.ListMigrationJobsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -3261,17 +3213,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              requestId: arg_requestId,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          requestId: arg_requestId,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--promote', () {
+    unittest.test('method--promote', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -3327,14 +3276,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .promote(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.promote(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--restart', () {
+    unittest.test('method--restart', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -3390,14 +3337,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .restart(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.restart(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--resume', () {
+    unittest.test('method--resume', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -3453,14 +3398,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resume(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.resume(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -3516,14 +3459,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--start', () {
+    unittest.test('method--start', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -3579,14 +3520,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .start(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.start(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--stop', () {
+    unittest.test('method--stop', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -3642,14 +3581,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .stop(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.stop(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -3705,15 +3642,13 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
 
-    unittest.test('method--verify', () {
+    unittest.test('method--verify', () async {
       var mock = HttpServerMock();
       var res = api.DatabaseMigrationServiceApi(mock)
           .projects
@@ -3769,16 +3704,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .verify(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.verify(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res =
           api.DatabaseMigrationServiceApi(mock).projects.locations.operations;
@@ -3832,14 +3765,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.DatabaseMigrationServiceApi(mock).projects.locations.operations;
@@ -3888,14 +3819,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.DatabaseMigrationServiceApi(mock).projects.locations.operations;
@@ -3944,14 +3872,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.DatabaseMigrationServiceApi(mock).projects.locations.operations;
@@ -4015,15 +3940,12 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 }

@@ -1286,7 +1286,7 @@ void checkUnnamed2877(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-BindDeviceToGatewayRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBindDeviceToGatewayRequest();
       var od = api.BindDeviceToGatewayRequest.fromJson(o.toJson());
       checkBindDeviceToGatewayRequest(od as api.BindDeviceToGatewayRequest);
@@ -1294,7 +1294,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BindDeviceToGatewayResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBindDeviceToGatewayResponse();
       var od = api.BindDeviceToGatewayResponse.fromJson(o.toJson());
       checkBindDeviceToGatewayResponse(od as api.BindDeviceToGatewayResponse);
@@ -1302,7 +1302,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -1310,7 +1310,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Device', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDevice();
       var od = api.Device.fromJson(o.toJson());
       checkDevice(od as api.Device);
@@ -1318,7 +1318,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceConfig();
       var od = api.DeviceConfig.fromJson(o.toJson());
       checkDeviceConfig(od as api.DeviceConfig);
@@ -1326,7 +1326,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceCredential', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceCredential();
       var od = api.DeviceCredential.fromJson(o.toJson());
       checkDeviceCredential(od as api.DeviceCredential);
@@ -1334,7 +1334,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceRegistry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceRegistry();
       var od = api.DeviceRegistry.fromJson(o.toJson());
       checkDeviceRegistry(od as api.DeviceRegistry);
@@ -1342,7 +1342,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceState();
       var od = api.DeviceState.fromJson(o.toJson());
       checkDeviceState(od as api.DeviceState);
@@ -1350,7 +1350,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1358,7 +1358,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventNotificationConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventNotificationConfig();
       var od = api.EventNotificationConfig.fromJson(o.toJson());
       checkEventNotificationConfig(od as api.EventNotificationConfig);
@@ -1366,7 +1366,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -1374,7 +1374,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GatewayConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGatewayConfig();
       var od = api.GatewayConfig.fromJson(o.toJson());
       checkGatewayConfig(od as api.GatewayConfig);
@@ -1382,7 +1382,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetIamPolicyRequest();
       var od = api.GetIamPolicyRequest.fromJson(o.toJson());
       checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
@@ -1390,7 +1390,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetPolicyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetPolicyOptions();
       var od = api.GetPolicyOptions.fromJson(o.toJson());
       checkGetPolicyOptions(od as api.GetPolicyOptions);
@@ -1398,7 +1398,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HttpConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHttpConfig();
       var od = api.HttpConfig.fromJson(o.toJson());
       checkHttpConfig(od as api.HttpConfig);
@@ -1406,7 +1406,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDeviceConfigVersionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDeviceConfigVersionsResponse();
       var od = api.ListDeviceConfigVersionsResponse.fromJson(o.toJson());
       checkListDeviceConfigVersionsResponse(
@@ -1415,7 +1415,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDeviceRegistriesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDeviceRegistriesResponse();
       var od = api.ListDeviceRegistriesResponse.fromJson(o.toJson());
       checkListDeviceRegistriesResponse(od as api.ListDeviceRegistriesResponse);
@@ -1423,7 +1423,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDeviceStatesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDeviceStatesResponse();
       var od = api.ListDeviceStatesResponse.fromJson(o.toJson());
       checkListDeviceStatesResponse(od as api.ListDeviceStatesResponse);
@@ -1431,7 +1431,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDevicesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDevicesResponse();
       var od = api.ListDevicesResponse.fromJson(o.toJson());
       checkListDevicesResponse(od as api.ListDevicesResponse);
@@ -1439,7 +1439,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ModifyCloudToDeviceConfigRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildModifyCloudToDeviceConfigRequest();
       var od = api.ModifyCloudToDeviceConfigRequest.fromJson(o.toJson());
       checkModifyCloudToDeviceConfigRequest(
@@ -1448,7 +1448,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MqttConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMqttConfig();
       var od = api.MqttConfig.fromJson(o.toJson());
       checkMqttConfig(od as api.MqttConfig);
@@ -1456,7 +1456,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -1464,7 +1464,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PublicKeyCertificate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPublicKeyCertificate();
       var od = api.PublicKeyCertificate.fromJson(o.toJson());
       checkPublicKeyCertificate(od as api.PublicKeyCertificate);
@@ -1472,7 +1472,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PublicKeyCredential', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPublicKeyCredential();
       var od = api.PublicKeyCredential.fromJson(o.toJson());
       checkPublicKeyCredential(od as api.PublicKeyCredential);
@@ -1480,7 +1480,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RegistryCredential', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRegistryCredential();
       var od = api.RegistryCredential.fromJson(o.toJson());
       checkRegistryCredential(od as api.RegistryCredential);
@@ -1488,7 +1488,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SendCommandToDeviceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSendCommandToDeviceRequest();
       var od = api.SendCommandToDeviceRequest.fromJson(o.toJson());
       checkSendCommandToDeviceRequest(od as api.SendCommandToDeviceRequest);
@@ -1496,7 +1496,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SendCommandToDeviceResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSendCommandToDeviceResponse();
       var od = api.SendCommandToDeviceResponse.fromJson(o.toJson());
       checkSendCommandToDeviceResponse(od as api.SendCommandToDeviceResponse);
@@ -1504,7 +1504,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -1512,7 +1512,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StateNotificationConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStateNotificationConfig();
       var od = api.StateNotificationConfig.fromJson(o.toJson());
       checkStateNotificationConfig(od as api.StateNotificationConfig);
@@ -1520,7 +1520,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -1528,7 +1528,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -1536,7 +1536,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -1544,7 +1544,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UnbindDeviceFromGatewayRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUnbindDeviceFromGatewayRequest();
       var od = api.UnbindDeviceFromGatewayRequest.fromJson(o.toJson());
       checkUnbindDeviceFromGatewayRequest(
@@ -1553,7 +1553,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UnbindDeviceFromGatewayResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUnbindDeviceFromGatewayResponse();
       var od = api.UnbindDeviceFromGatewayResponse.fromJson(o.toJson());
       checkUnbindDeviceFromGatewayResponse(
@@ -1562,7 +1562,7 @@ void main() {
   });
 
   unittest.group('obj-schema-X509CertificateDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildX509CertificateDetails();
       var od = api.X509CertificateDetails.fromJson(o.toJson());
       checkX509CertificateDetails(od as api.X509CertificateDetails);
@@ -1570,7 +1570,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsRegistriesResource', () {
-    unittest.test('method--bindDeviceToGateway', () {
+    unittest.test('method--bindDeviceToGateway', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries;
       var arg_request = buildBindDeviceToGatewayRequest();
@@ -1623,15 +1623,13 @@ void main() {
         var resp = convert.json.encode(buildBindDeviceToGatewayResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .bindDeviceToGateway(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBindDeviceToGatewayResponse(
-            response as api.BindDeviceToGatewayResponse);
-      })));
+      final response = await res.bindDeviceToGateway(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkBindDeviceToGatewayResponse(
+          response as api.BindDeviceToGatewayResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries;
       var arg_request = buildDeviceRegistry();
@@ -1684,14 +1682,12 @@ void main() {
         var resp = convert.json.encode(buildDeviceRegistry());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDeviceRegistry(response as api.DeviceRegistry);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkDeviceRegistry(response as api.DeviceRegistry);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries;
       var arg_name = 'foo';
@@ -1739,14 +1735,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries;
       var arg_name = 'foo';
@@ -1794,14 +1787,11 @@ void main() {
         var resp = convert.json.encode(buildDeviceRegistry());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDeviceRegistry(response as api.DeviceRegistry);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkDeviceRegistry(response as api.DeviceRegistry);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries;
       var arg_request = buildGetIamPolicyRequest();
@@ -1854,14 +1844,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries;
       var arg_parent = 'foo';
@@ -1919,18 +1907,15 @@ void main() {
         var resp = convert.json.encode(buildListDeviceRegistriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDeviceRegistriesResponse(
-            response as api.ListDeviceRegistriesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListDeviceRegistriesResponse(
+          response as api.ListDeviceRegistriesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries;
       var arg_request = buildDeviceRegistry();
@@ -1988,15 +1973,12 @@ void main() {
         var resp = convert.json.encode(buildDeviceRegistry());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDeviceRegistry(response as api.DeviceRegistry);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkDeviceRegistry(response as api.DeviceRegistry);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries;
       var arg_request = buildSetIamPolicyRequest();
@@ -2049,14 +2031,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries;
       var arg_request = buildTestIamPermissionsRequest();
@@ -2109,15 +2089,13 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
 
-    unittest.test('method--unbindDeviceFromGateway', () {
+    unittest.test('method--unbindDeviceFromGateway', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries;
       var arg_request = buildUnbindDeviceFromGatewayRequest();
@@ -2171,18 +2149,16 @@ void main() {
         var resp = convert.json.encode(buildUnbindDeviceFromGatewayResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .unbindDeviceFromGateway(arg_request, arg_parent,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUnbindDeviceFromGatewayResponse(
-            response as api.UnbindDeviceFromGatewayResponse);
-      })));
+      final response = await res.unbindDeviceFromGateway(
+          arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkUnbindDeviceFromGatewayResponse(
+          response as api.UnbindDeviceFromGatewayResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsRegistriesDevicesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries.devices;
       var arg_request = buildDevice();
@@ -2235,14 +2211,12 @@ void main() {
         var resp = convert.json.encode(buildDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDevice(response as api.Device);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkDevice(response as api.Device);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries.devices;
       var arg_name = 'foo';
@@ -2290,14 +2264,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries.devices;
       var arg_name = 'foo';
@@ -2350,14 +2321,12 @@ void main() {
         var resp = convert.json.encode(buildDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, fieldMask: arg_fieldMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDevice(response as api.Device);
-      })));
+      final response = await res.get(arg_name,
+          fieldMask: arg_fieldMask, $fields: arg_$fields);
+      checkDevice(response as api.Device);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries.devices;
       var arg_parent = 'foo';
@@ -2445,26 +2414,22 @@ void main() {
         var resp = convert.json.encode(buildListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              deviceIds: arg_deviceIds,
-              deviceNumIds: arg_deviceNumIds,
-              fieldMask: arg_fieldMask,
-              gatewayListOptions_associationsDeviceId:
-                  arg_gatewayListOptions_associationsDeviceId,
-              gatewayListOptions_associationsGatewayId:
-                  arg_gatewayListOptions_associationsGatewayId,
-              gatewayListOptions_gatewayType:
-                  arg_gatewayListOptions_gatewayType,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDevicesResponse(response as api.ListDevicesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          deviceIds: arg_deviceIds,
+          deviceNumIds: arg_deviceNumIds,
+          fieldMask: arg_fieldMask,
+          gatewayListOptions_associationsDeviceId:
+              arg_gatewayListOptions_associationsDeviceId,
+          gatewayListOptions_associationsGatewayId:
+              arg_gatewayListOptions_associationsGatewayId,
+          gatewayListOptions_gatewayType: arg_gatewayListOptions_gatewayType,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListDevicesResponse(response as api.ListDevicesResponse);
     });
 
-    unittest.test('method--modifyCloudToDeviceConfig', () {
+    unittest.test('method--modifyCloudToDeviceConfig', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries.devices;
       var arg_request = buildModifyCloudToDeviceConfigRequest();
@@ -2518,15 +2483,13 @@ void main() {
         var resp = convert.json.encode(buildDeviceConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .modifyCloudToDeviceConfig(arg_request, arg_name,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDeviceConfig(response as api.DeviceConfig);
-      })));
+      final response = await res.modifyCloudToDeviceConfig(
+          arg_request, arg_name,
+          $fields: arg_$fields);
+      checkDeviceConfig(response as api.DeviceConfig);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries.devices;
       var arg_request = buildDevice();
@@ -2584,15 +2547,12 @@ void main() {
         var resp = convert.json.encode(buildDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDevice(response as api.Device);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkDevice(response as api.Device);
     });
 
-    unittest.test('method--sendCommandToDevice', () {
+    unittest.test('method--sendCommandToDevice', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries.devices;
       var arg_request = buildSendCommandToDeviceRequest();
@@ -2645,18 +2605,16 @@ void main() {
         var resp = convert.json.encode(buildSendCommandToDeviceResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .sendCommandToDevice(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSendCommandToDeviceResponse(
-            response as api.SendCommandToDeviceResponse);
-      })));
+      final response = await res.sendCommandToDevice(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkSendCommandToDeviceResponse(
+          response as api.SendCommandToDeviceResponse);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsRegistriesDevicesConfigVersionsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock)
           .projects
@@ -2714,18 +2672,16 @@ void main() {
         var resp = convert.json.encode(buildListDeviceConfigVersionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name, numVersions: arg_numVersions, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDeviceConfigVersionsResponse(
-            response as api.ListDeviceConfigVersionsResponse);
-      })));
+      final response = await res.list(arg_name,
+          numVersions: arg_numVersions, $fields: arg_$fields);
+      checkListDeviceConfigVersionsResponse(
+          response as api.ListDeviceConfigVersionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsRegistriesDevicesStatesResource',
       () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudIotApi(mock).projects.locations.registries.devices.states;
@@ -2779,16 +2735,14 @@ void main() {
         var resp = convert.json.encode(buildListDeviceStatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name, numStates: arg_numStates, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDeviceStatesResponse(response as api.ListDeviceStatesResponse);
-      })));
+      final response = await res.list(arg_name,
+          numStates: arg_numStates, $fields: arg_$fields);
+      checkListDeviceStatesResponse(response as api.ListDeviceStatesResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsRegistriesGroupsResource', () {
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries.groups;
       var arg_request = buildGetIamPolicyRequest();
@@ -2841,14 +2795,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries.groups;
       var arg_request = buildSetIamPolicyRequest();
@@ -2901,14 +2853,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CloudIotApi(mock).projects.locations.registries.groups;
       var arg_request = buildTestIamPermissionsRequest();
@@ -2961,18 +2911,16 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsRegistriesGroupsDevicesResource',
       () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudIotApi(mock).projects.locations.registries.groups.devices;
@@ -3061,23 +3009,19 @@ void main() {
         var resp = convert.json.encode(buildListDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              deviceIds: arg_deviceIds,
-              deviceNumIds: arg_deviceNumIds,
-              fieldMask: arg_fieldMask,
-              gatewayListOptions_associationsDeviceId:
-                  arg_gatewayListOptions_associationsDeviceId,
-              gatewayListOptions_associationsGatewayId:
-                  arg_gatewayListOptions_associationsGatewayId,
-              gatewayListOptions_gatewayType:
-                  arg_gatewayListOptions_gatewayType,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDevicesResponse(response as api.ListDevicesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          deviceIds: arg_deviceIds,
+          deviceNumIds: arg_deviceNumIds,
+          fieldMask: arg_fieldMask,
+          gatewayListOptions_associationsDeviceId:
+              arg_gatewayListOptions_associationsDeviceId,
+          gatewayListOptions_associationsGatewayId:
+              arg_gatewayListOptions_associationsGatewayId,
+          gatewayListOptions_gatewayType: arg_gatewayListOptions_gatewayType,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListDevicesResponse(response as api.ListDevicesResponse);
     });
   });
 }

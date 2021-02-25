@@ -2223,7 +2223,7 @@ void checkUserActivitySession(api.UserActivitySession o) {
 
 void main() {
   unittest.group('obj-schema-Activity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildActivity();
       var od = api.Activity.fromJson(o.toJson());
       checkActivity(od as api.Activity);
@@ -2231,7 +2231,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Cohort', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCohort();
       var od = api.Cohort.fromJson(o.toJson());
       checkCohort(od as api.Cohort);
@@ -2239,7 +2239,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CohortGroup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCohortGroup();
       var od = api.CohortGroup.fromJson(o.toJson());
       checkCohortGroup(od as api.CohortGroup);
@@ -2247,7 +2247,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ColumnHeader', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildColumnHeader();
       var od = api.ColumnHeader.fromJson(o.toJson());
       checkColumnHeader(od as api.ColumnHeader);
@@ -2255,7 +2255,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomDimension', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomDimension();
       var od = api.CustomDimension.fromJson(o.toJson());
       checkCustomDimension(od as api.CustomDimension);
@@ -2263,7 +2263,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DateRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDateRange();
       var od = api.DateRange.fromJson(o.toJson());
       checkDateRange(od as api.DateRange);
@@ -2271,7 +2271,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DateRangeValues', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDateRangeValues();
       var od = api.DateRangeValues.fromJson(o.toJson());
       checkDateRangeValues(od as api.DateRangeValues);
@@ -2279,7 +2279,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Dimension', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDimension();
       var od = api.Dimension.fromJson(o.toJson());
       checkDimension(od as api.Dimension);
@@ -2287,7 +2287,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DimensionFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDimensionFilter();
       var od = api.DimensionFilter.fromJson(o.toJson());
       checkDimensionFilter(od as api.DimensionFilter);
@@ -2295,7 +2295,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DimensionFilterClause', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDimensionFilterClause();
       var od = api.DimensionFilterClause.fromJson(o.toJson());
       checkDimensionFilterClause(od as api.DimensionFilterClause);
@@ -2303,7 +2303,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DynamicSegment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDynamicSegment();
       var od = api.DynamicSegment.fromJson(o.toJson());
       checkDynamicSegment(od as api.DynamicSegment);
@@ -2311,7 +2311,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EcommerceData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEcommerceData();
       var od = api.EcommerceData.fromJson(o.toJson());
       checkEcommerceData(od as api.EcommerceData);
@@ -2319,7 +2319,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventData();
       var od = api.EventData.fromJson(o.toJson());
       checkEventData(od as api.EventData);
@@ -2327,7 +2327,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetReportsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetReportsRequest();
       var od = api.GetReportsRequest.fromJson(o.toJson());
       checkGetReportsRequest(od as api.GetReportsRequest);
@@ -2335,7 +2335,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetReportsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetReportsResponse();
       var od = api.GetReportsResponse.fromJson(o.toJson());
       checkGetReportsResponse(od as api.GetReportsResponse);
@@ -2343,7 +2343,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoalData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoalData();
       var od = api.GoalData.fromJson(o.toJson());
       checkGoalData(od as api.GoalData);
@@ -2351,7 +2351,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoalSetData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoalSetData();
       var od = api.GoalSetData.fromJson(o.toJson());
       checkGoalSetData(od as api.GoalSetData);
@@ -2359,7 +2359,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Metric', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetric();
       var od = api.Metric.fromJson(o.toJson());
       checkMetric(od as api.Metric);
@@ -2367,7 +2367,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricFilter();
       var od = api.MetricFilter.fromJson(o.toJson());
       checkMetricFilter(od as api.MetricFilter);
@@ -2375,7 +2375,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricFilterClause', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricFilterClause();
       var od = api.MetricFilterClause.fromJson(o.toJson());
       checkMetricFilterClause(od as api.MetricFilterClause);
@@ -2383,7 +2383,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricHeader', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricHeader();
       var od = api.MetricHeader.fromJson(o.toJson());
       checkMetricHeader(od as api.MetricHeader);
@@ -2391,7 +2391,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricHeaderEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricHeaderEntry();
       var od = api.MetricHeaderEntry.fromJson(o.toJson());
       checkMetricHeaderEntry(od as api.MetricHeaderEntry);
@@ -2399,7 +2399,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrFiltersForSegment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrFiltersForSegment();
       var od = api.OrFiltersForSegment.fromJson(o.toJson());
       checkOrFiltersForSegment(od as api.OrFiltersForSegment);
@@ -2407,7 +2407,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderBy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderBy();
       var od = api.OrderBy.fromJson(o.toJson());
       checkOrderBy(od as api.OrderBy);
@@ -2415,7 +2415,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PageviewData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPageviewData();
       var od = api.PageviewData.fromJson(o.toJson());
       checkPageviewData(od as api.PageviewData);
@@ -2423,7 +2423,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Pivot', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPivot();
       var od = api.Pivot.fromJson(o.toJson());
       checkPivot(od as api.Pivot);
@@ -2431,7 +2431,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PivotHeader', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPivotHeader();
       var od = api.PivotHeader.fromJson(o.toJson());
       checkPivotHeader(od as api.PivotHeader);
@@ -2439,7 +2439,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PivotHeaderEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPivotHeaderEntry();
       var od = api.PivotHeaderEntry.fromJson(o.toJson());
       checkPivotHeaderEntry(od as api.PivotHeaderEntry);
@@ -2447,7 +2447,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PivotValueRegion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPivotValueRegion();
       var od = api.PivotValueRegion.fromJson(o.toJson());
       checkPivotValueRegion(od as api.PivotValueRegion);
@@ -2455,7 +2455,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductData();
       var od = api.ProductData.fromJson(o.toJson());
       checkProductData(od as api.ProductData);
@@ -2463,7 +2463,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Report', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReport();
       var od = api.Report.fromJson(o.toJson());
       checkReport(od as api.Report);
@@ -2471,7 +2471,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportData();
       var od = api.ReportData.fromJson(o.toJson());
       checkReportData(od as api.ReportData);
@@ -2479,7 +2479,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportRequest();
       var od = api.ReportRequest.fromJson(o.toJson());
       checkReportRequest(od as api.ReportRequest);
@@ -2487,7 +2487,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportRow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportRow();
       var od = api.ReportRow.fromJson(o.toJson());
       checkReportRow(od as api.ReportRow);
@@ -2495,7 +2495,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResourceQuotasRemaining', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResourceQuotasRemaining();
       var od = api.ResourceQuotasRemaining.fromJson(o.toJson());
       checkResourceQuotasRemaining(od as api.ResourceQuotasRemaining);
@@ -2503,7 +2503,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScreenviewData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScreenviewData();
       var od = api.ScreenviewData.fromJson(o.toJson());
       checkScreenviewData(od as api.ScreenviewData);
@@ -2511,7 +2511,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchUserActivityRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchUserActivityRequest();
       var od = api.SearchUserActivityRequest.fromJson(o.toJson());
       checkSearchUserActivityRequest(od as api.SearchUserActivityRequest);
@@ -2519,7 +2519,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchUserActivityResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchUserActivityResponse();
       var od = api.SearchUserActivityResponse.fromJson(o.toJson());
       checkSearchUserActivityResponse(od as api.SearchUserActivityResponse);
@@ -2527,7 +2527,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Segment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSegment();
       var od = api.Segment.fromJson(o.toJson());
       checkSegment(od as api.Segment);
@@ -2535,7 +2535,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SegmentDefinition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSegmentDefinition();
       var od = api.SegmentDefinition.fromJson(o.toJson());
       checkSegmentDefinition(od as api.SegmentDefinition);
@@ -2543,7 +2543,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SegmentDimensionFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSegmentDimensionFilter();
       var od = api.SegmentDimensionFilter.fromJson(o.toJson());
       checkSegmentDimensionFilter(od as api.SegmentDimensionFilter);
@@ -2551,7 +2551,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SegmentFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSegmentFilter();
       var od = api.SegmentFilter.fromJson(o.toJson());
       checkSegmentFilter(od as api.SegmentFilter);
@@ -2559,7 +2559,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SegmentFilterClause', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSegmentFilterClause();
       var od = api.SegmentFilterClause.fromJson(o.toJson());
       checkSegmentFilterClause(od as api.SegmentFilterClause);
@@ -2567,7 +2567,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SegmentMetricFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSegmentMetricFilter();
       var od = api.SegmentMetricFilter.fromJson(o.toJson());
       checkSegmentMetricFilter(od as api.SegmentMetricFilter);
@@ -2575,7 +2575,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SegmentSequenceStep', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSegmentSequenceStep();
       var od = api.SegmentSequenceStep.fromJson(o.toJson());
       checkSegmentSequenceStep(od as api.SegmentSequenceStep);
@@ -2583,7 +2583,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SequenceSegment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSequenceSegment();
       var od = api.SequenceSegment.fromJson(o.toJson());
       checkSequenceSegment(od as api.SequenceSegment);
@@ -2591,7 +2591,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SimpleSegment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSimpleSegment();
       var od = api.SimpleSegment.fromJson(o.toJson());
       checkSimpleSegment(od as api.SimpleSegment);
@@ -2599,7 +2599,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TransactionData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTransactionData();
       var od = api.TransactionData.fromJson(o.toJson());
       checkTransactionData(od as api.TransactionData);
@@ -2607,7 +2607,7 @@ void main() {
   });
 
   unittest.group('obj-schema-User', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
       checkUser(od as api.User);
@@ -2615,7 +2615,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserActivitySession', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserActivitySession();
       var od = api.UserActivitySession.fromJson(o.toJson());
       checkUserActivitySession(od as api.UserActivitySession);
@@ -2623,7 +2623,7 @@ void main() {
   });
 
   unittest.group('resource-ReportsResource', () {
-    unittest.test('method--batchGet', () {
+    unittest.test('method--batchGet', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsReportingApi(mock).reports;
       var arg_request = buildGetReportsRequest();
@@ -2674,16 +2674,13 @@ void main() {
         var resp = convert.json.encode(buildGetReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchGet(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetReportsResponse(response as api.GetReportsResponse);
-      })));
+      final response = await res.batchGet(arg_request, $fields: arg_$fields);
+      checkGetReportsResponse(response as api.GetReportsResponse);
     });
   });
 
   unittest.group('resource-UserActivityResource', () {
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsReportingApi(mock).userActivity;
       var arg_request = buildSearchUserActivityRequest();
@@ -2734,12 +2731,9 @@ void main() {
         var resp = convert.json.encode(buildSearchUserActivityResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchUserActivityResponse(
-            response as api.SearchUserActivityResponse);
-      })));
+      final response = await res.search(arg_request, $fields: arg_$fields);
+      checkSearchUserActivityResponse(
+          response as api.SearchUserActivityResponse);
     });
   });
 }

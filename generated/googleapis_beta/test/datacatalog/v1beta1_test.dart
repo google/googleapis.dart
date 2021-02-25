@@ -1956,7 +1956,7 @@ void checkUnnamed6921(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -1964,7 +1964,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1972,7 +1972,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -1980,7 +1980,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetIamPolicyRequest();
       var od = api.GetIamPolicyRequest.fromJson(o.toJson());
       checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
@@ -1988,7 +1988,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetPolicyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetPolicyOptions();
       var od = api.GetPolicyOptions.fromJson(o.toJson());
       checkGetPolicyOptions(od as api.GetPolicyOptions);
@@ -1997,7 +1997,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec();
       var od =
           api.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec.fromJson(
@@ -2009,7 +2009,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1BigQueryTableSpec',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1BigQueryTableSpec();
       var od = api.GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromJson(
           o.toJson());
@@ -2019,7 +2019,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1ColumnSchema', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ColumnSchema();
       var od =
           api.GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(o.toJson());
@@ -2029,7 +2029,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1Entry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1Entry();
       var od = api.GoogleCloudDatacatalogV1beta1Entry.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1Entry(
@@ -2038,7 +2038,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1EntryGroup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1EntryGroup();
       var od = api.GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1EntryGroup(
@@ -2048,7 +2048,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse();
       var od =
           api.GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse.fromJson(
@@ -2059,7 +2059,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1FieldType', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1FieldType();
       var od = api.GoogleCloudDatacatalogV1beta1FieldType.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1FieldType(
@@ -2069,7 +2069,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1FieldTypeEnumType',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1FieldTypeEnumType();
       var od = api.GoogleCloudDatacatalogV1beta1FieldTypeEnumType.fromJson(
           o.toJson());
@@ -2080,7 +2080,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue();
       var od =
           api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue.fromJson(
@@ -2091,7 +2091,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1GcsFileSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1GcsFileSpec();
       var od =
           api.GoogleCloudDatacatalogV1beta1GcsFileSpec.fromJson(o.toJson());
@@ -2101,7 +2101,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1GcsFilesetSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1GcsFilesetSpec();
       var od =
           api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromJson(o.toJson());
@@ -2112,7 +2112,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest();
       var od =
           api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest.fromJson(
@@ -2124,7 +2124,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse();
       var od =
           api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse.fromJson(
@@ -2135,7 +2135,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1InlineSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1InlineSource();
       var od =
           api.GoogleCloudDatacatalogV1beta1InlineSource.fromJson(o.toJson());
@@ -2146,7 +2146,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1ListEntriesResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ListEntriesResponse();
       var od = api.GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(
           o.toJson());
@@ -2157,7 +2157,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse();
       var od =
           api.GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse.fromJson(
@@ -2169,7 +2169,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse();
       var od = api.GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(
           o.toJson());
@@ -2180,7 +2180,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1ListTagsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ListTagsResponse();
       var od = api.GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(
           o.toJson());
@@ -2191,7 +2191,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse();
       var od = api.GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(
           o.toJson());
@@ -2201,7 +2201,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1PolicyTag', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1PolicyTag();
       var od = api.GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1PolicyTag(
@@ -2212,7 +2212,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest();
       var od =
@@ -2227,7 +2227,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest();
       var od = api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest
           .fromJson(o.toJson());
@@ -2237,7 +2237,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1Schema', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1Schema();
       var od = api.GoogleCloudDatacatalogV1beta1Schema.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1Schema(
@@ -2247,7 +2247,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1SearchCatalogRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1SearchCatalogRequest();
       var od = api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest.fromJson(
           o.toJson());
@@ -2258,7 +2258,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope();
       var od =
           api.GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope.fromJson(
@@ -2270,7 +2270,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudDatacatalogV1beta1SearchCatalogResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1SearchCatalogResponse();
       var od = api.GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(
           o.toJson());
@@ -2281,7 +2281,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1SearchCatalogResult',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1SearchCatalogResult();
       var od = api.GoogleCloudDatacatalogV1beta1SearchCatalogResult.fromJson(
           o.toJson());
@@ -2292,7 +2292,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1SerializedPolicyTag',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag();
       var od = api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(
           o.toJson());
@@ -2303,7 +2303,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1SerializedTaxonomy',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy();
       var od = api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(
           o.toJson());
@@ -2314,7 +2314,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1SystemTimestamps',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1SystemTimestamps();
       var od = api.GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
           o.toJson());
@@ -2324,7 +2324,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1TableSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1TableSpec();
       var od = api.GoogleCloudDatacatalogV1beta1TableSpec.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1TableSpec(
@@ -2333,7 +2333,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1Tag', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1Tag();
       var od = api.GoogleCloudDatacatalogV1beta1Tag.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1Tag(
@@ -2342,7 +2342,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1TagField', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1TagField();
       var od = api.GoogleCloudDatacatalogV1beta1TagField.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1TagField(
@@ -2352,7 +2352,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1TagFieldEnumValue',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1TagFieldEnumValue();
       var od = api.GoogleCloudDatacatalogV1beta1TagFieldEnumValue.fromJson(
           o.toJson());
@@ -2362,7 +2362,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1TagTemplate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1TagTemplate();
       var od =
           api.GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(o.toJson());
@@ -2373,7 +2373,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1TagTemplateField',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
       var od = api.GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
           o.toJson());
@@ -2383,7 +2383,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1Taxonomy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1Taxonomy();
       var od = api.GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1Taxonomy(
@@ -2392,7 +2392,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1ViewSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ViewSpec();
       var od = api.GoogleCloudDatacatalogV1beta1ViewSpec.fromJson(o.toJson());
       checkGoogleCloudDatacatalogV1beta1ViewSpec(
@@ -2401,7 +2401,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -2409,7 +2409,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -2417,7 +2417,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -2425,7 +2425,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -2433,7 +2433,7 @@ void main() {
   });
 
   unittest.group('resource-CatalogResource', () {
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).catalog;
       var arg_request =
@@ -2488,17 +2488,14 @@ void main() {
             .encode(buildGoogleCloudDatacatalogV1beta1SearchCatalogResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1SearchCatalogResponse(
-            response as api.GoogleCloudDatacatalogV1beta1SearchCatalogResponse);
-      })));
+      final response = await res.search(arg_request, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1SearchCatalogResponse(
+          response as api.GoogleCloudDatacatalogV1beta1SearchCatalogResponse);
     });
   });
 
   unittest.group('resource-EntriesResource', () {
-    unittest.test('method--lookup', () {
+    unittest.test('method--lookup', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).entries;
       var arg_linkedResource = 'foo';
@@ -2555,20 +2552,17 @@ void main() {
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Entry());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .lookup(
-              linkedResource: arg_linkedResource,
-              sqlResource: arg_sqlResource,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1Entry(
-            response as api.GoogleCloudDatacatalogV1beta1Entry);
-      })));
+      final response = await res.lookup(
+          linkedResource: arg_linkedResource,
+          sqlResource: arg_sqlResource,
+          $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1Entry(
+          response as api.GoogleCloudDatacatalogV1beta1Entry);
     });
   });
 
   unittest.group('resource-ProjectsLocationsEntryGroupsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups;
       var arg_request = buildGoogleCloudDatacatalogV1beta1EntryGroup();
@@ -2628,16 +2622,13 @@ void main() {
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1EntryGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              entryGroupId: arg_entryGroupId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1EntryGroup(
-            response as api.GoogleCloudDatacatalogV1beta1EntryGroup);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          entryGroupId: arg_entryGroupId, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1EntryGroup(
+          response as api.GoogleCloudDatacatalogV1beta1EntryGroup);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups;
       var arg_name = 'foo';
@@ -2690,14 +2681,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, force: arg_force, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.delete(arg_name, force: arg_force, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups;
       var arg_name = 'foo';
@@ -2751,15 +2740,13 @@ void main() {
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1EntryGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, readMask: arg_readMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1EntryGroup(
-            response as api.GoogleCloudDatacatalogV1beta1EntryGroup);
-      })));
+      final response =
+          await res.get(arg_name, readMask: arg_readMask, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1EntryGroup(
+          response as api.GoogleCloudDatacatalogV1beta1EntryGroup);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups;
       var arg_request = buildGetIamPolicyRequest();
@@ -2812,14 +2799,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups;
       var arg_parent = 'foo';
@@ -2878,18 +2863,15 @@ void main() {
             buildGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse(response
-            as api.GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse(
+          response as api.GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups;
       var arg_request = buildGoogleCloudDatacatalogV1beta1EntryGroup();
@@ -2949,16 +2931,13 @@ void main() {
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1EntryGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1EntryGroup(
-            response as api.GoogleCloudDatacatalogV1beta1EntryGroup);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1EntryGroup(
+          response as api.GoogleCloudDatacatalogV1beta1EntryGroup);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups;
       var arg_request = buildSetIamPolicyRequest();
@@ -3011,14 +2990,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups;
       var arg_request = buildTestIamPermissionsRequest();
@@ -3071,17 +3048,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsEntryGroupsEntriesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Entry();
@@ -3141,16 +3116,13 @@ void main() {
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Entry());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              entryId: arg_entryId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1Entry(
-            response as api.GoogleCloudDatacatalogV1beta1Entry);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          entryId: arg_entryId, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1Entry(
+          response as api.GoogleCloudDatacatalogV1beta1Entry);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_name = 'foo';
@@ -3198,14 +3170,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_name = 'foo';
@@ -3254,15 +3223,12 @@ void main() {
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Entry());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1Entry(
-            response as api.GoogleCloudDatacatalogV1beta1Entry);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1Entry(
+          response as api.GoogleCloudDatacatalogV1beta1Entry);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_request = buildGetIamPolicyRequest();
@@ -3315,14 +3281,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_parent = 'foo';
@@ -3386,19 +3350,16 @@ void main() {
             .encode(buildGoogleCloudDatacatalogV1beta1ListEntriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              readMask: arg_readMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1ListEntriesResponse(
-            response as api.GoogleCloudDatacatalogV1beta1ListEntriesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          readMask: arg_readMask,
+          $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1ListEntriesResponse(
+          response as api.GoogleCloudDatacatalogV1beta1ListEntriesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Entry();
@@ -3458,16 +3419,13 @@ void main() {
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Entry());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1Entry(
-            response as api.GoogleCloudDatacatalogV1beta1Entry);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1Entry(
+          response as api.GoogleCloudDatacatalogV1beta1Entry);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups.entries;
       var arg_request = buildTestIamPermissionsRequest();
@@ -3520,18 +3478,16 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsEntryGroupsEntriesTagsResource',
       () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.DataCatalogApi(mock).projects.locations.entryGroups.entries.tags;
@@ -3586,15 +3542,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudDatacatalogV1beta1Tag());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1Tag(
-            response as api.GoogleCloudDatacatalogV1beta1Tag);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1Tag(
+          response as api.GoogleCloudDatacatalogV1beta1Tag);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.DataCatalogApi(mock).projects.locations.entryGroups.entries.tags;
@@ -3643,14 +3597,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.DataCatalogApi(mock).projects.locations.entryGroups.entries.tags;
@@ -3710,18 +3661,15 @@ void main() {
             .encode(buildGoogleCloudDatacatalogV1beta1ListTagsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1ListTagsResponse(
-            response as api.GoogleCloudDatacatalogV1beta1ListTagsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1ListTagsResponse(
+          response as api.GoogleCloudDatacatalogV1beta1ListTagsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res =
           api.DataCatalogApi(mock).projects.locations.entryGroups.entries.tags;
@@ -3781,18 +3729,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudDatacatalogV1beta1Tag());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1Tag(
-            response as api.GoogleCloudDatacatalogV1beta1Tag);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1Tag(
+          response as api.GoogleCloudDatacatalogV1beta1Tag);
     });
   });
 
   unittest.group('resource-ProjectsLocationsEntryGroupsTagsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups.tags;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Tag();
@@ -3846,15 +3791,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudDatacatalogV1beta1Tag());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1Tag(
-            response as api.GoogleCloudDatacatalogV1beta1Tag);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1Tag(
+          response as api.GoogleCloudDatacatalogV1beta1Tag);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups.tags;
       var arg_name = 'foo';
@@ -3902,14 +3845,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups.tags;
       var arg_parent = 'foo';
@@ -3968,18 +3908,15 @@ void main() {
             .encode(buildGoogleCloudDatacatalogV1beta1ListTagsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1ListTagsResponse(
-            response as api.GoogleCloudDatacatalogV1beta1ListTagsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1ListTagsResponse(
+          response as api.GoogleCloudDatacatalogV1beta1ListTagsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.entryGroups.tags;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Tag();
@@ -4038,18 +3975,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudDatacatalogV1beta1Tag());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1Tag(
-            response as api.GoogleCloudDatacatalogV1beta1Tag);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1Tag(
+          response as api.GoogleCloudDatacatalogV1beta1Tag);
     });
   });
 
   unittest.group('resource-ProjectsLocationsTagTemplatesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
       var arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplate();
@@ -4109,16 +4043,13 @@ void main() {
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              tagTemplateId: arg_tagTemplateId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1TagTemplate(
-            response as api.GoogleCloudDatacatalogV1beta1TagTemplate);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          tagTemplateId: arg_tagTemplateId, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1TagTemplate(
+          response as api.GoogleCloudDatacatalogV1beta1TagTemplate);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
       var arg_name = 'foo';
@@ -4171,14 +4102,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, force: arg_force, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.delete(arg_name, force: arg_force, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
       var arg_name = 'foo';
@@ -4227,15 +4156,12 @@ void main() {
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1TagTemplate(
-            response as api.GoogleCloudDatacatalogV1beta1TagTemplate);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1TagTemplate(
+          response as api.GoogleCloudDatacatalogV1beta1TagTemplate);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
       var arg_request = buildGetIamPolicyRequest();
@@ -4288,14 +4214,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
       var arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplate();
@@ -4355,16 +4279,13 @@ void main() {
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1TagTemplate(
-            response as api.GoogleCloudDatacatalogV1beta1TagTemplate);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1TagTemplate(
+          response as api.GoogleCloudDatacatalogV1beta1TagTemplate);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
       var arg_request = buildSetIamPolicyRequest();
@@ -4417,14 +4338,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.tagTemplates;
       var arg_request = buildTestIamPermissionsRequest();
@@ -4477,17 +4396,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsTagTemplatesFieldsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.tagTemplates.fields;
       var arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
@@ -4547,16 +4464,13 @@ void main() {
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplateField());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              tagTemplateFieldId: arg_tagTemplateFieldId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1TagTemplateField(
-            response as api.GoogleCloudDatacatalogV1beta1TagTemplateField);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          tagTemplateFieldId: arg_tagTemplateFieldId, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1TagTemplateField(
+          response as api.GoogleCloudDatacatalogV1beta1TagTemplateField);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.tagTemplates.fields;
       var arg_name = 'foo';
@@ -4609,14 +4523,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, force: arg_force, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.delete(arg_name, force: arg_force, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.tagTemplates.fields;
       var arg_request = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
@@ -4676,16 +4588,13 @@ void main() {
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplateField());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1TagTemplateField(
-            response as api.GoogleCloudDatacatalogV1beta1TagTemplateField);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1TagTemplateField(
+          response as api.GoogleCloudDatacatalogV1beta1TagTemplateField);
     });
 
-    unittest.test('method--rename', () {
+    unittest.test('method--rename', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.tagTemplates.fields;
       var arg_request =
@@ -4741,18 +4650,16 @@ void main() {
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplateField());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .rename(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1TagTemplateField(
-            response as api.GoogleCloudDatacatalogV1beta1TagTemplateField);
-      })));
+      final response =
+          await res.rename(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1TagTemplateField(
+          response as api.GoogleCloudDatacatalogV1beta1TagTemplateField);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsTagTemplatesFieldsEnumValuesResource', () {
-    unittest.test('method--rename', () {
+    unittest.test('method--rename', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock)
           .projects
@@ -4815,17 +4722,15 @@ void main() {
             .encode(buildGoogleCloudDatacatalogV1beta1TagTemplateField());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .rename(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1TagTemplateField(
-            response as api.GoogleCloudDatacatalogV1beta1TagTemplateField);
-      })));
+      final response =
+          await res.rename(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1TagTemplateField(
+          response as api.GoogleCloudDatacatalogV1beta1TagTemplateField);
     });
   });
 
   unittest.group('resource-ProjectsLocationsTaxonomiesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Taxonomy();
@@ -4880,15 +4785,13 @@ void main() {
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Taxonomy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1Taxonomy(
-            response as api.GoogleCloudDatacatalogV1beta1Taxonomy);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1Taxonomy(
+          response as api.GoogleCloudDatacatalogV1beta1Taxonomy);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
       var arg_name = 'foo';
@@ -4936,14 +4839,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--export', () {
+    unittest.test('method--export', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
       var arg_parent = 'foo';
@@ -5002,18 +4902,15 @@ void main() {
             buildGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .export(arg_parent,
-              serializedTaxonomies: arg_serializedTaxonomies,
-              taxonomies: arg_taxonomies,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse(response
-            as api.GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse);
-      })));
+      final response = await res.export(arg_parent,
+          serializedTaxonomies: arg_serializedTaxonomies,
+          taxonomies: arg_taxonomies,
+          $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse(response
+          as api.GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
       var arg_name = 'foo';
@@ -5062,15 +4959,12 @@ void main() {
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Taxonomy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1Taxonomy(
-            response as api.GoogleCloudDatacatalogV1beta1Taxonomy);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1Taxonomy(
+          response as api.GoogleCloudDatacatalogV1beta1Taxonomy);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
       var arg_request = buildGetIamPolicyRequest();
@@ -5123,14 +5017,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--import', () {
+    unittest.test('method--import', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
       var arg_request =
@@ -5187,15 +5079,13 @@ void main() {
             buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .import(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse(response
-            as api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse);
-      })));
+      final response =
+          await res.import(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse(response
+          as api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
       var arg_parent = 'foo';
@@ -5254,18 +5144,15 @@ void main() {
             .encode(buildGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse(response
-            as api.GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse(
+          response as api.GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
       var arg_request = buildGoogleCloudDatacatalogV1beta1Taxonomy();
@@ -5325,16 +5212,13 @@ void main() {
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1Taxonomy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1Taxonomy(
-            response as api.GoogleCloudDatacatalogV1beta1Taxonomy);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1Taxonomy(
+          response as api.GoogleCloudDatacatalogV1beta1Taxonomy);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
       var arg_request = buildSetIamPolicyRequest();
@@ -5387,14 +5271,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.DataCatalogApi(mock).projects.locations.taxonomies;
       var arg_request = buildTestIamPermissionsRequest();
@@ -5447,17 +5329,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsTaxonomiesPolicyTagsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
@@ -5513,15 +5393,13 @@ void main() {
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1PolicyTag());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1PolicyTag(
-            response as api.GoogleCloudDatacatalogV1beta1PolicyTag);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1PolicyTag(
+          response as api.GoogleCloudDatacatalogV1beta1PolicyTag);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
@@ -5570,14 +5448,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
@@ -5627,15 +5502,12 @@ void main() {
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1PolicyTag());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1PolicyTag(
-            response as api.GoogleCloudDatacatalogV1beta1PolicyTag);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1PolicyTag(
+          response as api.GoogleCloudDatacatalogV1beta1PolicyTag);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res =
           api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
@@ -5689,14 +5561,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
@@ -5756,18 +5626,15 @@ void main() {
             .encode(buildGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse(response
-            as api.GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse(
+          response as api.GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res =
           api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
@@ -5828,16 +5695,13 @@ void main() {
             convert.json.encode(buildGoogleCloudDatacatalogV1beta1PolicyTag());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudDatacatalogV1beta1PolicyTag(
-            response as api.GoogleCloudDatacatalogV1beta1PolicyTag);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleCloudDatacatalogV1beta1PolicyTag(
+          response as api.GoogleCloudDatacatalogV1beta1PolicyTag);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res =
           api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
@@ -5891,14 +5755,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res =
           api.DataCatalogApi(mock).projects.locations.taxonomies.policyTags;
@@ -5952,12 +5814,10 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 }

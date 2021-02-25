@@ -190,7 +190,7 @@ void checkUnnamed82(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-SearchResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchResponse();
       var od = api.SearchResponse.fromJson(o.toJson());
       checkSearchResponse(od as api.SearchResponse);
@@ -198,7 +198,7 @@ void main() {
   });
 
   unittest.group('resource-EntitiesResource', () {
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.KgsearchApi(mock).entities;
       var arg_ids = buildUnnamed80();
@@ -279,19 +279,16 @@ void main() {
         var resp = convert.json.encode(buildSearchResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(
-              ids: arg_ids,
-              indent: arg_indent,
-              languages: arg_languages,
-              limit: arg_limit,
-              prefix: arg_prefix,
-              query: arg_query,
-              types: arg_types,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchResponse(response as api.SearchResponse);
-      })));
+      final response = await res.search(
+          ids: arg_ids,
+          indent: arg_indent,
+          languages: arg_languages,
+          limit: arg_limit,
+          prefix: arg_prefix,
+          query: arg_query,
+          types: arg_types,
+          $fields: arg_$fields);
+      checkSearchResponse(response as api.SearchResponse);
     });
   });
 }

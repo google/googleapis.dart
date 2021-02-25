@@ -56,7 +56,7 @@ void checkGroups(api.Groups o) {
 
 void main() {
   unittest.group('obj-schema-Groups', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroups();
       var od = api.Groups.fromJson(o.toJson());
       checkGroups(od as api.Groups);
@@ -64,7 +64,7 @@ void main() {
   });
 
   unittest.group('resource-ArchiveResource', () {
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -128,11 +128,8 @@ void main() {
         var resp = convert.json.encode(buildGroups());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_groupId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroups(response as api.Groups);
-      })));
+      final response = await res.insert(arg_groupId, $fields: arg_$fields);
+      checkGroups(response as api.Groups);
     });
   });
 }

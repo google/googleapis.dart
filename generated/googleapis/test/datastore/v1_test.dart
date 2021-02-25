@@ -2284,7 +2284,7 @@ void checkValue(api.Value o) {
 
 void main() {
   unittest.group('obj-schema-AllocateIdsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAllocateIdsRequest();
       var od = api.AllocateIdsRequest.fromJson(o.toJson());
       checkAllocateIdsRequest(od as api.AllocateIdsRequest);
@@ -2292,7 +2292,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AllocateIdsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAllocateIdsResponse();
       var od = api.AllocateIdsResponse.fromJson(o.toJson());
       checkAllocateIdsResponse(od as api.AllocateIdsResponse);
@@ -2300,7 +2300,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ArrayValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildArrayValue();
       var od = api.ArrayValue.fromJson(o.toJson());
       checkArrayValue(od as api.ArrayValue);
@@ -2308,7 +2308,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BeginTransactionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBeginTransactionRequest();
       var od = api.BeginTransactionRequest.fromJson(o.toJson());
       checkBeginTransactionRequest(od as api.BeginTransactionRequest);
@@ -2316,7 +2316,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BeginTransactionResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBeginTransactionResponse();
       var od = api.BeginTransactionResponse.fromJson(o.toJson());
       checkBeginTransactionResponse(od as api.BeginTransactionResponse);
@@ -2324,7 +2324,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CommitRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCommitRequest();
       var od = api.CommitRequest.fromJson(o.toJson());
       checkCommitRequest(od as api.CommitRequest);
@@ -2332,7 +2332,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CommitResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCommitResponse();
       var od = api.CommitResponse.fromJson(o.toJson());
       checkCommitResponse(od as api.CommitResponse);
@@ -2340,7 +2340,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CompositeFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCompositeFilter();
       var od = api.CompositeFilter.fromJson(o.toJson());
       checkCompositeFilter(od as api.CompositeFilter);
@@ -2348,7 +2348,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -2356,7 +2356,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Entity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntity();
       var od = api.Entity.fromJson(o.toJson());
       checkEntity(od as api.Entity);
@@ -2364,7 +2364,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EntityResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntityResult();
       var od = api.EntityResult.fromJson(o.toJson());
       checkEntityResult(od as api.EntityResult);
@@ -2372,7 +2372,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Filter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilter();
       var od = api.Filter.fromJson(o.toJson());
       checkFilter(od as api.Filter);
@@ -2380,7 +2380,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDatastoreAdminV1CommonMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDatastoreAdminV1CommonMetadata();
       var od = api.GoogleDatastoreAdminV1CommonMetadata.fromJson(o.toJson());
       checkGoogleDatastoreAdminV1CommonMetadata(
@@ -2389,7 +2389,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDatastoreAdminV1EntityFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDatastoreAdminV1EntityFilter();
       var od = api.GoogleDatastoreAdminV1EntityFilter.fromJson(o.toJson());
       checkGoogleDatastoreAdminV1EntityFilter(
@@ -2398,7 +2398,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDatastoreAdminV1ExportEntitiesMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDatastoreAdminV1ExportEntitiesMetadata();
       var od =
           api.GoogleDatastoreAdminV1ExportEntitiesMetadata.fromJson(o.toJson());
@@ -2408,7 +2408,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDatastoreAdminV1ExportEntitiesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDatastoreAdminV1ExportEntitiesRequest();
       var od =
           api.GoogleDatastoreAdminV1ExportEntitiesRequest.fromJson(o.toJson());
@@ -2418,7 +2418,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDatastoreAdminV1ExportEntitiesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDatastoreAdminV1ExportEntitiesResponse();
       var od =
           api.GoogleDatastoreAdminV1ExportEntitiesResponse.fromJson(o.toJson());
@@ -2428,7 +2428,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDatastoreAdminV1ImportEntitiesMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDatastoreAdminV1ImportEntitiesMetadata();
       var od =
           api.GoogleDatastoreAdminV1ImportEntitiesMetadata.fromJson(o.toJson());
@@ -2438,7 +2438,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDatastoreAdminV1ImportEntitiesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDatastoreAdminV1ImportEntitiesRequest();
       var od =
           api.GoogleDatastoreAdminV1ImportEntitiesRequest.fromJson(o.toJson());
@@ -2448,7 +2448,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDatastoreAdminV1Index', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDatastoreAdminV1Index();
       var od = api.GoogleDatastoreAdminV1Index.fromJson(o.toJson());
       checkGoogleDatastoreAdminV1Index(od as api.GoogleDatastoreAdminV1Index);
@@ -2456,7 +2456,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDatastoreAdminV1IndexOperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDatastoreAdminV1IndexOperationMetadata();
       var od =
           api.GoogleDatastoreAdminV1IndexOperationMetadata.fromJson(o.toJson());
@@ -2466,7 +2466,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDatastoreAdminV1IndexedProperty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDatastoreAdminV1IndexedProperty();
       var od = api.GoogleDatastoreAdminV1IndexedProperty.fromJson(o.toJson());
       checkGoogleDatastoreAdminV1IndexedProperty(
@@ -2475,7 +2475,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDatastoreAdminV1ListIndexesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDatastoreAdminV1ListIndexesResponse();
       var od =
           api.GoogleDatastoreAdminV1ListIndexesResponse.fromJson(o.toJson());
@@ -2485,7 +2485,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDatastoreAdminV1Progress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDatastoreAdminV1Progress();
       var od = api.GoogleDatastoreAdminV1Progress.fromJson(o.toJson());
       checkGoogleDatastoreAdminV1Progress(
@@ -2494,7 +2494,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDatastoreAdminV1beta1CommonMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDatastoreAdminV1beta1CommonMetadata();
       var od =
           api.GoogleDatastoreAdminV1beta1CommonMetadata.fromJson(o.toJson());
@@ -2504,7 +2504,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDatastoreAdminV1beta1EntityFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDatastoreAdminV1beta1EntityFilter();
       var od = api.GoogleDatastoreAdminV1beta1EntityFilter.fromJson(o.toJson());
       checkGoogleDatastoreAdminV1beta1EntityFilter(
@@ -2514,7 +2514,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleDatastoreAdminV1beta1ExportEntitiesMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDatastoreAdminV1beta1ExportEntitiesMetadata();
       var od = api.GoogleDatastoreAdminV1beta1ExportEntitiesMetadata.fromJson(
           o.toJson());
@@ -2525,7 +2525,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleDatastoreAdminV1beta1ExportEntitiesResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDatastoreAdminV1beta1ExportEntitiesResponse();
       var od = api.GoogleDatastoreAdminV1beta1ExportEntitiesResponse.fromJson(
           o.toJson());
@@ -2536,7 +2536,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleDatastoreAdminV1beta1ImportEntitiesMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDatastoreAdminV1beta1ImportEntitiesMetadata();
       var od = api.GoogleDatastoreAdminV1beta1ImportEntitiesMetadata.fromJson(
           o.toJson());
@@ -2546,7 +2546,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleDatastoreAdminV1beta1Progress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleDatastoreAdminV1beta1Progress();
       var od = api.GoogleDatastoreAdminV1beta1Progress.fromJson(o.toJson());
       checkGoogleDatastoreAdminV1beta1Progress(
@@ -2555,7 +2555,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
       var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
       checkGoogleLongrunningListOperationsResponse(
@@ -2564,7 +2564,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
@@ -2572,7 +2572,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GqlQuery', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGqlQuery();
       var od = api.GqlQuery.fromJson(o.toJson());
       checkGqlQuery(od as api.GqlQuery);
@@ -2580,7 +2580,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GqlQueryParameter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGqlQueryParameter();
       var od = api.GqlQueryParameter.fromJson(o.toJson());
       checkGqlQueryParameter(od as api.GqlQueryParameter);
@@ -2588,7 +2588,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Key', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildKey();
       var od = api.Key.fromJson(o.toJson());
       checkKey(od as api.Key);
@@ -2596,7 +2596,7 @@ void main() {
   });
 
   unittest.group('obj-schema-KindExpression', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildKindExpression();
       var od = api.KindExpression.fromJson(o.toJson());
       checkKindExpression(od as api.KindExpression);
@@ -2604,7 +2604,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LatLng', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLatLng();
       var od = api.LatLng.fromJson(o.toJson());
       checkLatLng(od as api.LatLng);
@@ -2612,7 +2612,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LookupRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLookupRequest();
       var od = api.LookupRequest.fromJson(o.toJson());
       checkLookupRequest(od as api.LookupRequest);
@@ -2620,7 +2620,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LookupResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLookupResponse();
       var od = api.LookupResponse.fromJson(o.toJson());
       checkLookupResponse(od as api.LookupResponse);
@@ -2628,7 +2628,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Mutation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMutation();
       var od = api.Mutation.fromJson(o.toJson());
       checkMutation(od as api.Mutation);
@@ -2636,7 +2636,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MutationResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMutationResult();
       var od = api.MutationResult.fromJson(o.toJson());
       checkMutationResult(od as api.MutationResult);
@@ -2644,7 +2644,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PartitionId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPartitionId();
       var od = api.PartitionId.fromJson(o.toJson());
       checkPartitionId(od as api.PartitionId);
@@ -2652,7 +2652,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PathElement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPathElement();
       var od = api.PathElement.fromJson(o.toJson());
       checkPathElement(od as api.PathElement);
@@ -2660,7 +2660,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Projection', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProjection();
       var od = api.Projection.fromJson(o.toJson());
       checkProjection(od as api.Projection);
@@ -2668,7 +2668,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PropertyFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPropertyFilter();
       var od = api.PropertyFilter.fromJson(o.toJson());
       checkPropertyFilter(od as api.PropertyFilter);
@@ -2676,7 +2676,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PropertyOrder', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPropertyOrder();
       var od = api.PropertyOrder.fromJson(o.toJson());
       checkPropertyOrder(od as api.PropertyOrder);
@@ -2684,7 +2684,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PropertyReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPropertyReference();
       var od = api.PropertyReference.fromJson(o.toJson());
       checkPropertyReference(od as api.PropertyReference);
@@ -2692,7 +2692,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Query', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQuery();
       var od = api.Query.fromJson(o.toJson());
       checkQuery(od as api.Query);
@@ -2700,7 +2700,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryResultBatch', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryResultBatch();
       var od = api.QueryResultBatch.fromJson(o.toJson());
       checkQueryResultBatch(od as api.QueryResultBatch);
@@ -2708,7 +2708,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReadOnly', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReadOnly();
       var od = api.ReadOnly.fromJson(o.toJson());
       checkReadOnly(od as api.ReadOnly);
@@ -2716,7 +2716,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReadOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReadOptions();
       var od = api.ReadOptions.fromJson(o.toJson());
       checkReadOptions(od as api.ReadOptions);
@@ -2724,7 +2724,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReadWrite', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReadWrite();
       var od = api.ReadWrite.fromJson(o.toJson());
       checkReadWrite(od as api.ReadWrite);
@@ -2732,7 +2732,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReserveIdsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReserveIdsRequest();
       var od = api.ReserveIdsRequest.fromJson(o.toJson());
       checkReserveIdsRequest(od as api.ReserveIdsRequest);
@@ -2740,7 +2740,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReserveIdsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReserveIdsResponse();
       var od = api.ReserveIdsResponse.fromJson(o.toJson());
       checkReserveIdsResponse(od as api.ReserveIdsResponse);
@@ -2748,7 +2748,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RollbackRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRollbackRequest();
       var od = api.RollbackRequest.fromJson(o.toJson());
       checkRollbackRequest(od as api.RollbackRequest);
@@ -2756,7 +2756,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RollbackResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRollbackResponse();
       var od = api.RollbackResponse.fromJson(o.toJson());
       checkRollbackResponse(od as api.RollbackResponse);
@@ -2764,7 +2764,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RunQueryRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRunQueryRequest();
       var od = api.RunQueryRequest.fromJson(o.toJson());
       checkRunQueryRequest(od as api.RunQueryRequest);
@@ -2772,7 +2772,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RunQueryResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRunQueryResponse();
       var od = api.RunQueryResponse.fromJson(o.toJson());
       checkRunQueryResponse(od as api.RunQueryResponse);
@@ -2780,7 +2780,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -2788,7 +2788,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TransactionOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTransactionOptions();
       var od = api.TransactionOptions.fromJson(o.toJson());
       checkTransactionOptions(od as api.TransactionOptions);
@@ -2796,7 +2796,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Value', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildValue();
       var od = api.Value.fromJson(o.toJson());
       checkValue(od as api.Value);
@@ -2804,7 +2804,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsResource', () {
-    unittest.test('method--allocateIds', () {
+    unittest.test('method--allocateIds', () async {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects;
       var arg_request = buildAllocateIdsRequest();
@@ -2870,14 +2870,12 @@ void main() {
         var resp = convert.json.encode(buildAllocateIdsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .allocateIds(arg_request, arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAllocateIdsResponse(response as api.AllocateIdsResponse);
-      })));
+      final response = await res.allocateIds(arg_request, arg_projectId,
+          $fields: arg_$fields);
+      checkAllocateIdsResponse(response as api.AllocateIdsResponse);
     });
 
-    unittest.test('method--beginTransaction', () {
+    unittest.test('method--beginTransaction', () async {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects;
       var arg_request = buildBeginTransactionRequest();
@@ -2943,14 +2941,12 @@ void main() {
         var resp = convert.json.encode(buildBeginTransactionResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .beginTransaction(arg_request, arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBeginTransactionResponse(response as api.BeginTransactionResponse);
-      })));
+      final response = await res.beginTransaction(arg_request, arg_projectId,
+          $fields: arg_$fields);
+      checkBeginTransactionResponse(response as api.BeginTransactionResponse);
     });
 
-    unittest.test('method--commit', () {
+    unittest.test('method--commit', () async {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects;
       var arg_request = buildCommitRequest();
@@ -3016,14 +3012,12 @@ void main() {
         var resp = convert.json.encode(buildCommitResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .commit(arg_request, arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCommitResponse(response as api.CommitResponse);
-      })));
+      final response =
+          await res.commit(arg_request, arg_projectId, $fields: arg_$fields);
+      checkCommitResponse(response as api.CommitResponse);
     });
 
-    unittest.test('method--export', () {
+    unittest.test('method--export', () async {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects;
       var arg_request = buildGoogleDatastoreAdminV1ExportEntitiesRequest();
@@ -3090,15 +3084,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .export(arg_request, arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.export(arg_request, arg_projectId, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--import', () {
+    unittest.test('method--import', () async {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects;
       var arg_request = buildGoogleDatastoreAdminV1ImportEntitiesRequest();
@@ -3165,15 +3157,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .import(arg_request, arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.import(arg_request, arg_projectId, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--lookup', () {
+    unittest.test('method--lookup', () async {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects;
       var arg_request = buildLookupRequest();
@@ -3239,14 +3229,12 @@ void main() {
         var resp = convert.json.encode(buildLookupResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .lookup(arg_request, arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLookupResponse(response as api.LookupResponse);
-      })));
+      final response =
+          await res.lookup(arg_request, arg_projectId, $fields: arg_$fields);
+      checkLookupResponse(response as api.LookupResponse);
     });
 
-    unittest.test('method--reserveIds', () {
+    unittest.test('method--reserveIds', () async {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects;
       var arg_request = buildReserveIdsRequest();
@@ -3312,14 +3300,12 @@ void main() {
         var resp = convert.json.encode(buildReserveIdsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reserveIds(arg_request, arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReserveIdsResponse(response as api.ReserveIdsResponse);
-      })));
+      final response = await res.reserveIds(arg_request, arg_projectId,
+          $fields: arg_$fields);
+      checkReserveIdsResponse(response as api.ReserveIdsResponse);
     });
 
-    unittest.test('method--rollback', () {
+    unittest.test('method--rollback', () async {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects;
       var arg_request = buildRollbackRequest();
@@ -3385,14 +3371,12 @@ void main() {
         var resp = convert.json.encode(buildRollbackResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .rollback(arg_request, arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRollbackResponse(response as api.RollbackResponse);
-      })));
+      final response =
+          await res.rollback(arg_request, arg_projectId, $fields: arg_$fields);
+      checkRollbackResponse(response as api.RollbackResponse);
     });
 
-    unittest.test('method--runQuery', () {
+    unittest.test('method--runQuery', () async {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects;
       var arg_request = buildRunQueryRequest();
@@ -3458,16 +3442,14 @@ void main() {
         var resp = convert.json.encode(buildRunQueryResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .runQuery(arg_request, arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRunQueryResponse(response as api.RunQueryResponse);
-      })));
+      final response =
+          await res.runQuery(arg_request, arg_projectId, $fields: arg_$fields);
+      checkRunQueryResponse(response as api.RunQueryResponse);
     });
   });
 
   unittest.group('resource-ProjectsIndexesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects.indexes;
       var arg_request = buildGoogleDatastoreAdminV1Index();
@@ -3534,15 +3516,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_projectId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.create(arg_request, arg_projectId, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects.indexes;
       var arg_projectId = 'foo';
@@ -3610,15 +3590,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_projectId, arg_indexId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.delete(arg_projectId, arg_indexId, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects.indexes;
       var arg_projectId = 'foo';
@@ -3686,15 +3664,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleDatastoreAdminV1Index());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_projectId, arg_indexId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleDatastoreAdminV1Index(
-            response as api.GoogleDatastoreAdminV1Index);
-      })));
+      final response =
+          await res.get(arg_projectId, arg_indexId, $fields: arg_$fields);
+      checkGoogleDatastoreAdminV1Index(
+          response as api.GoogleDatastoreAdminV1Index);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects.indexes;
       var arg_projectId = 'foo';
@@ -3771,21 +3747,18 @@ void main() {
             .encode(buildGoogleDatastoreAdminV1ListIndexesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_projectId,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleDatastoreAdminV1ListIndexesResponse(
-            response as api.GoogleDatastoreAdminV1ListIndexesResponse);
-      })));
+      final response = await res.list(arg_projectId,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleDatastoreAdminV1ListIndexesResponse(
+          response as api.GoogleDatastoreAdminV1ListIndexesResponse);
     });
   });
 
   unittest.group('resource-ProjectsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects.operations;
       var arg_name = 'foo';
@@ -3833,14 +3806,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.cancel(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects.operations;
       var arg_name = 'foo';
@@ -3888,14 +3858,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects.operations;
       var arg_name = 'foo';
@@ -3943,15 +3910,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DatastoreApi(mock).projects.operations;
       var arg_name = 'foo';
@@ -4015,16 +3979,13 @@ void main() {
             convert.json.encode(buildGoogleLongrunningListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningListOperationsResponse(
-            response as api.GoogleLongrunningListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleLongrunningListOperationsResponse(
+          response as api.GoogleLongrunningListOperationsResponse);
     });
   });
 }

@@ -580,7 +580,7 @@ void checkUnnamed7457(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-DeleteEventsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteEventsResponse();
       var od = api.DeleteEventsResponse.fromJson(o.toJson());
       checkDeleteEventsResponse(od as api.DeleteEventsResponse);
@@ -588,7 +588,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ErrorContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildErrorContext();
       var od = api.ErrorContext.fromJson(o.toJson());
       checkErrorContext(od as api.ErrorContext);
@@ -596,7 +596,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ErrorEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildErrorEvent();
       var od = api.ErrorEvent.fromJson(o.toJson());
       checkErrorEvent(od as api.ErrorEvent);
@@ -604,7 +604,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ErrorGroup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildErrorGroup();
       var od = api.ErrorGroup.fromJson(o.toJson());
       checkErrorGroup(od as api.ErrorGroup);
@@ -612,7 +612,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ErrorGroupStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildErrorGroupStats();
       var od = api.ErrorGroupStats.fromJson(o.toJson());
       checkErrorGroupStats(od as api.ErrorGroupStats);
@@ -620,7 +620,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HttpRequestContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHttpRequestContext();
       var od = api.HttpRequestContext.fromJson(o.toJson());
       checkHttpRequestContext(od as api.HttpRequestContext);
@@ -628,7 +628,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListEventsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListEventsResponse();
       var od = api.ListEventsResponse.fromJson(o.toJson());
       checkListEventsResponse(od as api.ListEventsResponse);
@@ -636,7 +636,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListGroupStatsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListGroupStatsResponse();
       var od = api.ListGroupStatsResponse.fromJson(o.toJson());
       checkListGroupStatsResponse(od as api.ListGroupStatsResponse);
@@ -644,7 +644,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportErrorEventResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportErrorEventResponse();
       var od = api.ReportErrorEventResponse.fromJson(o.toJson());
       checkReportErrorEventResponse(od as api.ReportErrorEventResponse);
@@ -652,7 +652,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportedErrorEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportedErrorEvent();
       var od = api.ReportedErrorEvent.fromJson(o.toJson());
       checkReportedErrorEvent(od as api.ReportedErrorEvent);
@@ -660,7 +660,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ServiceContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildServiceContext();
       var od = api.ServiceContext.fromJson(o.toJson());
       checkServiceContext(od as api.ServiceContext);
@@ -668,7 +668,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SourceLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSourceLocation();
       var od = api.SourceLocation.fromJson(o.toJson());
       checkSourceLocation(od as api.SourceLocation);
@@ -676,7 +676,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SourceReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSourceReference();
       var od = api.SourceReference.fromJson(o.toJson());
       checkSourceReference(od as api.SourceReference);
@@ -684,7 +684,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimedCount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimedCount();
       var od = api.TimedCount.fromJson(o.toJson());
       checkTimedCount(od as api.TimedCount);
@@ -692,7 +692,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TrackingIssue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTrackingIssue();
       var od = api.TrackingIssue.fromJson(o.toJson());
       checkTrackingIssue(od as api.TrackingIssue);
@@ -700,7 +700,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsResource', () {
-    unittest.test('method--deleteEvents', () {
+    unittest.test('method--deleteEvents', () async {
       var mock = HttpServerMock();
       var res = api.ClouderrorreportingApi(mock).projects;
       var arg_projectName = 'foo';
@@ -748,16 +748,14 @@ void main() {
         var resp = convert.json.encode(buildDeleteEventsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deleteEvents(arg_projectName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDeleteEventsResponse(response as api.DeleteEventsResponse);
-      })));
+      final response =
+          await res.deleteEvents(arg_projectName, $fields: arg_$fields);
+      checkDeleteEventsResponse(response as api.DeleteEventsResponse);
     });
   });
 
   unittest.group('resource-ProjectsEventsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ClouderrorreportingApi(mock).projects.events;
       var arg_projectName = 'foo';
@@ -840,22 +838,19 @@ void main() {
         var resp = convert.json.encode(buildListEventsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_projectName,
-              groupId: arg_groupId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              serviceFilter_resourceType: arg_serviceFilter_resourceType,
-              serviceFilter_service: arg_serviceFilter_service,
-              serviceFilter_version: arg_serviceFilter_version,
-              timeRange_period: arg_timeRange_period,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListEventsResponse(response as api.ListEventsResponse);
-      })));
+      final response = await res.list(arg_projectName,
+          groupId: arg_groupId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          serviceFilter_resourceType: arg_serviceFilter_resourceType,
+          serviceFilter_service: arg_serviceFilter_service,
+          serviceFilter_version: arg_serviceFilter_version,
+          timeRange_period: arg_timeRange_period,
+          $fields: arg_$fields);
+      checkListEventsResponse(response as api.ListEventsResponse);
     });
 
-    unittest.test('method--report', () {
+    unittest.test('method--report', () async {
       var mock = HttpServerMock();
       var res = api.ClouderrorreportingApi(mock).projects.events;
       var arg_request = buildReportedErrorEvent();
@@ -908,16 +903,14 @@ void main() {
         var resp = convert.json.encode(buildReportErrorEventResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .report(arg_request, arg_projectName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReportErrorEventResponse(response as api.ReportErrorEventResponse);
-      })));
+      final response =
+          await res.report(arg_request, arg_projectName, $fields: arg_$fields);
+      checkReportErrorEventResponse(response as api.ReportErrorEventResponse);
     });
   });
 
   unittest.group('resource-ProjectsGroupStatsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ClouderrorreportingApi(mock).projects.groupStats;
       var arg_projectName = 'foo';
@@ -1020,28 +1013,25 @@ void main() {
         var resp = convert.json.encode(buildListGroupStatsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_projectName,
-              alignment: arg_alignment,
-              alignmentTime: arg_alignmentTime,
-              groupId: arg_groupId,
-              order: arg_order,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              serviceFilter_resourceType: arg_serviceFilter_resourceType,
-              serviceFilter_service: arg_serviceFilter_service,
-              serviceFilter_version: arg_serviceFilter_version,
-              timeRange_period: arg_timeRange_period,
-              timedCountDuration: arg_timedCountDuration,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListGroupStatsResponse(response as api.ListGroupStatsResponse);
-      })));
+      final response = await res.list(arg_projectName,
+          alignment: arg_alignment,
+          alignmentTime: arg_alignmentTime,
+          groupId: arg_groupId,
+          order: arg_order,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          serviceFilter_resourceType: arg_serviceFilter_resourceType,
+          serviceFilter_service: arg_serviceFilter_service,
+          serviceFilter_version: arg_serviceFilter_version,
+          timeRange_period: arg_timeRange_period,
+          timedCountDuration: arg_timedCountDuration,
+          $fields: arg_$fields);
+      checkListGroupStatsResponse(response as api.ListGroupStatsResponse);
     });
   });
 
   unittest.group('resource-ProjectsGroupsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ClouderrorreportingApi(mock).projects.groups;
       var arg_groupName = 'foo';
@@ -1089,14 +1079,11 @@ void main() {
         var resp = convert.json.encode(buildErrorGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_groupName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkErrorGroup(response as api.ErrorGroup);
-      })));
+      final response = await res.get(arg_groupName, $fields: arg_$fields);
+      checkErrorGroup(response as api.ErrorGroup);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ClouderrorreportingApi(mock).projects.groups;
       var arg_request = buildErrorGroup();
@@ -1149,11 +1136,9 @@ void main() {
         var resp = convert.json.encode(buildErrorGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkErrorGroup(response as api.ErrorGroup);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkErrorGroup(response as api.ErrorGroup);
     });
   });
 }

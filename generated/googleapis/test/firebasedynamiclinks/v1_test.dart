@@ -971,7 +971,7 @@ void checkSuffix(api.Suffix o) {
 
 void main() {
   unittest.group('obj-schema-AnalyticsInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnalyticsInfo();
       var od = api.AnalyticsInfo.fromJson(o.toJson());
       checkAnalyticsInfo(od as api.AnalyticsInfo);
@@ -979,7 +979,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AndroidInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAndroidInfo();
       var od = api.AndroidInfo.fromJson(o.toJson());
       checkAndroidInfo(od as api.AndroidInfo);
@@ -987,7 +987,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateManagedShortLinkRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateManagedShortLinkRequest();
       var od = api.CreateManagedShortLinkRequest.fromJson(o.toJson());
       checkCreateManagedShortLinkRequest(
@@ -996,7 +996,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateManagedShortLinkResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateManagedShortLinkResponse();
       var od = api.CreateManagedShortLinkResponse.fromJson(o.toJson());
       checkCreateManagedShortLinkResponse(
@@ -1005,7 +1005,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateShortDynamicLinkRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateShortDynamicLinkRequest();
       var od = api.CreateShortDynamicLinkRequest.fromJson(o.toJson());
       checkCreateShortDynamicLinkRequest(
@@ -1014,7 +1014,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateShortDynamicLinkResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateShortDynamicLinkResponse();
       var od = api.CreateShortDynamicLinkResponse.fromJson(o.toJson());
       checkCreateShortDynamicLinkResponse(
@@ -1023,7 +1023,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DesktopInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDesktopInfo();
       var od = api.DesktopInfo.fromJson(o.toJson());
       checkDesktopInfo(od as api.DesktopInfo);
@@ -1031,7 +1031,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceInfo();
       var od = api.DeviceInfo.fromJson(o.toJson());
       checkDeviceInfo(od as api.DeviceInfo);
@@ -1039,7 +1039,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DynamicLinkEventStat', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDynamicLinkEventStat();
       var od = api.DynamicLinkEventStat.fromJson(o.toJson());
       checkDynamicLinkEventStat(od as api.DynamicLinkEventStat);
@@ -1047,7 +1047,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DynamicLinkInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDynamicLinkInfo();
       var od = api.DynamicLinkInfo.fromJson(o.toJson());
       checkDynamicLinkInfo(od as api.DynamicLinkInfo);
@@ -1055,7 +1055,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DynamicLinkStats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDynamicLinkStats();
       var od = api.DynamicLinkStats.fromJson(o.toJson());
       checkDynamicLinkStats(od as api.DynamicLinkStats);
@@ -1063,7 +1063,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DynamicLinkWarning', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDynamicLinkWarning();
       var od = api.DynamicLinkWarning.fromJson(o.toJson());
       checkDynamicLinkWarning(od as api.DynamicLinkWarning);
@@ -1071,7 +1071,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetIosPostInstallAttributionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetIosPostInstallAttributionRequest();
       var od = api.GetIosPostInstallAttributionRequest.fromJson(o.toJson());
       checkGetIosPostInstallAttributionRequest(
@@ -1080,7 +1080,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetIosPostInstallAttributionResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetIosPostInstallAttributionResponse();
       var od = api.GetIosPostInstallAttributionResponse.fromJson(o.toJson());
       checkGetIosPostInstallAttributionResponse(
@@ -1089,7 +1089,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetIosReopenAttributionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetIosReopenAttributionRequest();
       var od = api.GetIosReopenAttributionRequest.fromJson(o.toJson());
       checkGetIosReopenAttributionRequest(
@@ -1098,7 +1098,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetIosReopenAttributionResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetIosReopenAttributionResponse();
       var od = api.GetIosReopenAttributionResponse.fromJson(o.toJson());
       checkGetIosReopenAttributionResponse(
@@ -1107,7 +1107,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GooglePlayAnalytics', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGooglePlayAnalytics();
       var od = api.GooglePlayAnalytics.fromJson(o.toJson());
       checkGooglePlayAnalytics(od as api.GooglePlayAnalytics);
@@ -1115,7 +1115,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ITunesConnectAnalytics', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildITunesConnectAnalytics();
       var od = api.ITunesConnectAnalytics.fromJson(o.toJson());
       checkITunesConnectAnalytics(od as api.ITunesConnectAnalytics);
@@ -1123,7 +1123,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IosInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIosInfo();
       var od = api.IosInfo.fromJson(o.toJson());
       checkIosInfo(od as api.IosInfo);
@@ -1131,7 +1131,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedShortLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedShortLink();
       var od = api.ManagedShortLink.fromJson(o.toJson());
       checkManagedShortLink(od as api.ManagedShortLink);
@@ -1139,7 +1139,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NavigationInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNavigationInfo();
       var od = api.NavigationInfo.fromJson(o.toJson());
       checkNavigationInfo(od as api.NavigationInfo);
@@ -1147,7 +1147,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SocialMetaTagInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSocialMetaTagInfo();
       var od = api.SocialMetaTagInfo.fromJson(o.toJson());
       checkSocialMetaTagInfo(od as api.SocialMetaTagInfo);
@@ -1155,7 +1155,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Suffix', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuffix();
       var od = api.Suffix.fromJson(o.toJson());
       checkSuffix(od as api.Suffix);
@@ -1163,7 +1163,7 @@ void main() {
   });
 
   unittest.group('resource-ManagedShortLinksResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseDynamicLinksApi(mock).managedShortLinks;
       var arg_request = buildCreateManagedShortLinkRequest();
@@ -1215,17 +1215,14 @@ void main() {
         var resp = convert.json.encode(buildCreateManagedShortLinkResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCreateManagedShortLinkResponse(
-            response as api.CreateManagedShortLinkResponse);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkCreateManagedShortLinkResponse(
+          response as api.CreateManagedShortLinkResponse);
     });
   });
 
   unittest.group('resource-ShortLinksResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseDynamicLinksApi(mock).shortLinks;
       var arg_request = buildCreateShortDynamicLinkRequest();
@@ -1277,17 +1274,14 @@ void main() {
         var resp = convert.json.encode(buildCreateShortDynamicLinkResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCreateShortDynamicLinkResponse(
-            response as api.CreateShortDynamicLinkResponse);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkCreateShortDynamicLinkResponse(
+          response as api.CreateShortDynamicLinkResponse);
     });
   });
 
   unittest.group('resource-V1Resource', () {
-    unittest.test('method--getLinkStats', () {
+    unittest.test('method--getLinkStats', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseDynamicLinksApi(mock).v1;
       var arg_dynamicLink = 'foo';
@@ -1358,17 +1352,14 @@ void main() {
         var resp = convert.json.encode(buildDynamicLinkStats());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getLinkStats(arg_dynamicLink,
-              durationDays: arg_durationDays,
-              sdkVersion: arg_sdkVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDynamicLinkStats(response as api.DynamicLinkStats);
-      })));
+      final response = await res.getLinkStats(arg_dynamicLink,
+          durationDays: arg_durationDays,
+          sdkVersion: arg_sdkVersion,
+          $fields: arg_$fields);
+      checkDynamicLinkStats(response as api.DynamicLinkStats);
     });
 
-    unittest.test('method--installAttribution', () {
+    unittest.test('method--installAttribution', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseDynamicLinksApi(mock).v1;
       var arg_request = buildGetIosPostInstallAttributionRequest();
@@ -1421,15 +1412,13 @@ void main() {
             convert.json.encode(buildGetIosPostInstallAttributionResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .installAttribution(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetIosPostInstallAttributionResponse(
-            response as api.GetIosPostInstallAttributionResponse);
-      })));
+      final response =
+          await res.installAttribution(arg_request, $fields: arg_$fields);
+      checkGetIosPostInstallAttributionResponse(
+          response as api.GetIosPostInstallAttributionResponse);
     });
 
-    unittest.test('method--reopenAttribution', () {
+    unittest.test('method--reopenAttribution', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseDynamicLinksApi(mock).v1;
       var arg_request = buildGetIosReopenAttributionRequest();
@@ -1481,12 +1470,10 @@ void main() {
         var resp = convert.json.encode(buildGetIosReopenAttributionResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reopenAttribution(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetIosReopenAttributionResponse(
-            response as api.GetIosReopenAttributionResponse);
-      })));
+      final response =
+          await res.reopenAttribution(arg_request, $fields: arg_$fields);
+      checkGetIosReopenAttributionResponse(
+          response as api.GetIosReopenAttributionResponse);
     });
   });
 }

@@ -1019,7 +1019,7 @@ void checkVisitedExpression(api.VisitedExpression o) {
 
 void main() {
   unittest.group('obj-schema-Arg', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildArg();
       var od = api.Arg.fromJson(o.toJson());
       checkArg(od as api.Arg);
@@ -1027,7 +1027,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1035,7 +1035,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExpressionReport', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpressionReport();
       var od = api.ExpressionReport.fromJson(o.toJson());
       checkExpressionReport(od as api.ExpressionReport);
@@ -1043,7 +1043,7 @@ void main() {
   });
 
   unittest.group('obj-schema-File', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFile();
       var od = api.File.fromJson(o.toJson());
       checkFile(od as api.File);
@@ -1051,7 +1051,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FunctionCall', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFunctionCall();
       var od = api.FunctionCall.fromJson(o.toJson());
       checkFunctionCall(od as api.FunctionCall);
@@ -1059,7 +1059,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FunctionMock', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFunctionMock();
       var od = api.FunctionMock.fromJson(o.toJson());
       checkFunctionMock(od as api.FunctionMock);
@@ -1067,7 +1067,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetReleaseExecutableResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetReleaseExecutableResponse();
       var od = api.GetReleaseExecutableResponse.fromJson(o.toJson());
       checkGetReleaseExecutableResponse(od as api.GetReleaseExecutableResponse);
@@ -1075,7 +1075,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Issue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIssue();
       var od = api.Issue.fromJson(o.toJson());
       checkIssue(od as api.Issue);
@@ -1083,7 +1083,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListReleasesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListReleasesResponse();
       var od = api.ListReleasesResponse.fromJson(o.toJson());
       checkListReleasesResponse(od as api.ListReleasesResponse);
@@ -1091,7 +1091,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListRulesetsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListRulesetsResponse();
       var od = api.ListRulesetsResponse.fromJson(o.toJson());
       checkListRulesetsResponse(od as api.ListRulesetsResponse);
@@ -1099,7 +1099,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Metadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetadata();
       var od = api.Metadata.fromJson(o.toJson());
       checkMetadata(od as api.Metadata);
@@ -1107,7 +1107,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Release', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRelease();
       var od = api.Release.fromJson(o.toJson());
       checkRelease(od as api.Release);
@@ -1115,7 +1115,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Result', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResult();
       var od = api.Result.fromJson(o.toJson());
       checkResult(od as api.Result);
@@ -1123,7 +1123,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Ruleset', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRuleset();
       var od = api.Ruleset.fromJson(o.toJson());
       checkRuleset(od as api.Ruleset);
@@ -1131,7 +1131,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Source', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSource();
       var od = api.Source.fromJson(o.toJson());
       checkSource(od as api.Source);
@@ -1139,7 +1139,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SourcePosition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSourcePosition();
       var od = api.SourcePosition.fromJson(o.toJson());
       checkSourcePosition(od as api.SourcePosition);
@@ -1147,7 +1147,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestCase', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestCase();
       var od = api.TestCase.fromJson(o.toJson());
       checkTestCase(od as api.TestCase);
@@ -1155,7 +1155,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestResult();
       var od = api.TestResult.fromJson(o.toJson());
       checkTestResult(od as api.TestResult);
@@ -1163,7 +1163,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestRulesetRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestRulesetRequest();
       var od = api.TestRulesetRequest.fromJson(o.toJson());
       checkTestRulesetRequest(od as api.TestRulesetRequest);
@@ -1171,7 +1171,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestRulesetResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestRulesetResponse();
       var od = api.TestRulesetResponse.fromJson(o.toJson());
       checkTestRulesetResponse(od as api.TestRulesetResponse);
@@ -1179,7 +1179,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestSuite', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestSuite();
       var od = api.TestSuite.fromJson(o.toJson());
       checkTestSuite(od as api.TestSuite);
@@ -1187,7 +1187,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateReleaseRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateReleaseRequest();
       var od = api.UpdateReleaseRequest.fromJson(o.toJson());
       checkUpdateReleaseRequest(od as api.UpdateReleaseRequest);
@@ -1195,7 +1195,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ValueCount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildValueCount();
       var od = api.ValueCount.fromJson(o.toJson());
       checkValueCount(od as api.ValueCount);
@@ -1203,7 +1203,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VisitedExpression', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVisitedExpression();
       var od = api.VisitedExpression.fromJson(o.toJson());
       checkVisitedExpression(od as api.VisitedExpression);
@@ -1211,7 +1211,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsResource', () {
-    unittest.test('method--test', () {
+    unittest.test('method--test', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseRulesApi(mock).projects;
       var arg_request = buildTestRulesetRequest();
@@ -1264,16 +1264,14 @@ void main() {
         var resp = convert.json.encode(buildTestRulesetResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .test(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestRulesetResponse(response as api.TestRulesetResponse);
-      })));
+      final response =
+          await res.test(arg_request, arg_name, $fields: arg_$fields);
+      checkTestRulesetResponse(response as api.TestRulesetResponse);
     });
   });
 
   unittest.group('resource-ProjectsReleasesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseRulesApi(mock).projects.releases;
       var arg_request = buildRelease();
@@ -1326,14 +1324,12 @@ void main() {
         var resp = convert.json.encode(buildRelease());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRelease(response as api.Release);
-      })));
+      final response =
+          await res.create(arg_request, arg_name, $fields: arg_$fields);
+      checkRelease(response as api.Release);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseRulesApi(mock).projects.releases;
       var arg_name = 'foo';
@@ -1381,14 +1377,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseRulesApi(mock).projects.releases;
       var arg_name = 'foo';
@@ -1436,14 +1429,11 @@ void main() {
         var resp = convert.json.encode(buildRelease());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRelease(response as api.Release);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkRelease(response as api.Release);
     });
 
-    unittest.test('method--getExecutable', () {
+    unittest.test('method--getExecutable', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseRulesApi(mock).projects.releases;
       var arg_name = 'foo';
@@ -1496,16 +1486,13 @@ void main() {
         var resp = convert.json.encode(buildGetReleaseExecutableResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getExecutable(arg_name,
-              executableVersion: arg_executableVersion, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetReleaseExecutableResponse(
-            response as api.GetReleaseExecutableResponse);
-      })));
+      final response = await res.getExecutable(arg_name,
+          executableVersion: arg_executableVersion, $fields: arg_$fields);
+      checkGetReleaseExecutableResponse(
+          response as api.GetReleaseExecutableResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseRulesApi(mock).projects.releases;
       var arg_name = 'foo';
@@ -1568,18 +1555,15 @@ void main() {
         var resp = convert.json.encode(buildListReleasesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListReleasesResponse(response as api.ListReleasesResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListReleasesResponse(response as api.ListReleasesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseRulesApi(mock).projects.releases;
       var arg_request = buildUpdateReleaseRequest();
@@ -1632,16 +1616,14 @@ void main() {
         var resp = convert.json.encode(buildRelease());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRelease(response as api.Release);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkRelease(response as api.Release);
     });
   });
 
   unittest.group('resource-ProjectsRulesetsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseRulesApi(mock).projects.rulesets;
       var arg_request = buildRuleset();
@@ -1694,14 +1676,12 @@ void main() {
         var resp = convert.json.encode(buildRuleset());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRuleset(response as api.Ruleset);
-      })));
+      final response =
+          await res.create(arg_request, arg_name, $fields: arg_$fields);
+      checkRuleset(response as api.Ruleset);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseRulesApi(mock).projects.rulesets;
       var arg_name = 'foo';
@@ -1749,14 +1729,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseRulesApi(mock).projects.rulesets;
       var arg_name = 'foo';
@@ -1804,14 +1781,11 @@ void main() {
         var resp = convert.json.encode(buildRuleset());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRuleset(response as api.Ruleset);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkRuleset(response as api.Ruleset);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.FirebaseRulesApi(mock).projects.rulesets;
       var arg_name = 'foo';
@@ -1874,15 +1848,12 @@ void main() {
         var resp = convert.json.encode(buildListRulesetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListRulesetsResponse(response as api.ListRulesetsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListRulesetsResponse(response as api.ListRulesetsResponse);
     });
   });
 }

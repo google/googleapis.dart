@@ -934,7 +934,7 @@ void checkToken(api.Token o) {
 
 void main() {
   unittest.group('obj-schema-AnalyzeEntitiesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnalyzeEntitiesRequest();
       var od = api.AnalyzeEntitiesRequest.fromJson(o.toJson());
       checkAnalyzeEntitiesRequest(od as api.AnalyzeEntitiesRequest);
@@ -942,7 +942,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnalyzeEntitiesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnalyzeEntitiesResponse();
       var od = api.AnalyzeEntitiesResponse.fromJson(o.toJson());
       checkAnalyzeEntitiesResponse(od as api.AnalyzeEntitiesResponse);
@@ -950,7 +950,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnalyzeEntitySentimentRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnalyzeEntitySentimentRequest();
       var od = api.AnalyzeEntitySentimentRequest.fromJson(o.toJson());
       checkAnalyzeEntitySentimentRequest(
@@ -959,7 +959,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnalyzeEntitySentimentResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnalyzeEntitySentimentResponse();
       var od = api.AnalyzeEntitySentimentResponse.fromJson(o.toJson());
       checkAnalyzeEntitySentimentResponse(
@@ -968,7 +968,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnalyzeSentimentRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnalyzeSentimentRequest();
       var od = api.AnalyzeSentimentRequest.fromJson(o.toJson());
       checkAnalyzeSentimentRequest(od as api.AnalyzeSentimentRequest);
@@ -976,7 +976,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnalyzeSentimentResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnalyzeSentimentResponse();
       var od = api.AnalyzeSentimentResponse.fromJson(o.toJson());
       checkAnalyzeSentimentResponse(od as api.AnalyzeSentimentResponse);
@@ -984,7 +984,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnalyzeSyntaxRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnalyzeSyntaxRequest();
       var od = api.AnalyzeSyntaxRequest.fromJson(o.toJson());
       checkAnalyzeSyntaxRequest(od as api.AnalyzeSyntaxRequest);
@@ -992,7 +992,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnalyzeSyntaxResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnalyzeSyntaxResponse();
       var od = api.AnalyzeSyntaxResponse.fromJson(o.toJson());
       checkAnalyzeSyntaxResponse(od as api.AnalyzeSyntaxResponse);
@@ -1000,7 +1000,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnnotateTextRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnnotateTextRequest();
       var od = api.AnnotateTextRequest.fromJson(o.toJson());
       checkAnnotateTextRequest(od as api.AnnotateTextRequest);
@@ -1008,7 +1008,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnnotateTextResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnnotateTextResponse();
       var od = api.AnnotateTextResponse.fromJson(o.toJson());
       checkAnnotateTextResponse(od as api.AnnotateTextResponse);
@@ -1016,7 +1016,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClassificationCategory', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClassificationCategory();
       var od = api.ClassificationCategory.fromJson(o.toJson());
       checkClassificationCategory(od as api.ClassificationCategory);
@@ -1024,7 +1024,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClassifyTextRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClassifyTextRequest();
       var od = api.ClassifyTextRequest.fromJson(o.toJson());
       checkClassifyTextRequest(od as api.ClassifyTextRequest);
@@ -1032,7 +1032,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClassifyTextResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClassifyTextResponse();
       var od = api.ClassifyTextResponse.fromJson(o.toJson());
       checkClassifyTextResponse(od as api.ClassifyTextResponse);
@@ -1040,7 +1040,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DependencyEdge', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDependencyEdge();
       var od = api.DependencyEdge.fromJson(o.toJson());
       checkDependencyEdge(od as api.DependencyEdge);
@@ -1048,7 +1048,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Document', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDocument();
       var od = api.Document.fromJson(o.toJson());
       checkDocument(od as api.Document);
@@ -1056,7 +1056,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Entity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntity();
       var od = api.Entity.fromJson(o.toJson());
       checkEntity(od as api.Entity);
@@ -1064,7 +1064,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EntityMention', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntityMention();
       var od = api.EntityMention.fromJson(o.toJson());
       checkEntityMention(od as api.EntityMention);
@@ -1072,7 +1072,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Features', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFeatures();
       var od = api.Features.fromJson(o.toJson());
       checkFeatures(od as api.Features);
@@ -1080,7 +1080,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PartOfSpeech', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPartOfSpeech();
       var od = api.PartOfSpeech.fromJson(o.toJson());
       checkPartOfSpeech(od as api.PartOfSpeech);
@@ -1088,7 +1088,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Sentence', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSentence();
       var od = api.Sentence.fromJson(o.toJson());
       checkSentence(od as api.Sentence);
@@ -1096,7 +1096,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Sentiment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSentiment();
       var od = api.Sentiment.fromJson(o.toJson());
       checkSentiment(od as api.Sentiment);
@@ -1104,7 +1104,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -1112,7 +1112,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TextSpan', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTextSpan();
       var od = api.TextSpan.fromJson(o.toJson());
       checkTextSpan(od as api.TextSpan);
@@ -1120,7 +1120,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Token', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildToken();
       var od = api.Token.fromJson(o.toJson());
       checkToken(od as api.Token);
@@ -1128,7 +1128,7 @@ void main() {
   });
 
   unittest.group('resource-DocumentsResource', () {
-    unittest.test('method--analyzeEntities', () {
+    unittest.test('method--analyzeEntities', () async {
       var mock = HttpServerMock();
       var res = api.CloudNaturalLanguageApi(mock).documents;
       var arg_request = buildAnalyzeEntitiesRequest();
@@ -1179,14 +1179,12 @@ void main() {
         var resp = convert.json.encode(buildAnalyzeEntitiesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .analyzeEntities(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAnalyzeEntitiesResponse(response as api.AnalyzeEntitiesResponse);
-      })));
+      final response =
+          await res.analyzeEntities(arg_request, $fields: arg_$fields);
+      checkAnalyzeEntitiesResponse(response as api.AnalyzeEntitiesResponse);
     });
 
-    unittest.test('method--analyzeEntitySentiment', () {
+    unittest.test('method--analyzeEntitySentiment', () async {
       var mock = HttpServerMock();
       var res = api.CloudNaturalLanguageApi(mock).documents;
       var arg_request = buildAnalyzeEntitySentimentRequest();
@@ -1238,15 +1236,13 @@ void main() {
         var resp = convert.json.encode(buildAnalyzeEntitySentimentResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .analyzeEntitySentiment(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAnalyzeEntitySentimentResponse(
-            response as api.AnalyzeEntitySentimentResponse);
-      })));
+      final response =
+          await res.analyzeEntitySentiment(arg_request, $fields: arg_$fields);
+      checkAnalyzeEntitySentimentResponse(
+          response as api.AnalyzeEntitySentimentResponse);
     });
 
-    unittest.test('method--analyzeSentiment', () {
+    unittest.test('method--analyzeSentiment', () async {
       var mock = HttpServerMock();
       var res = api.CloudNaturalLanguageApi(mock).documents;
       var arg_request = buildAnalyzeSentimentRequest();
@@ -1297,14 +1293,12 @@ void main() {
         var resp = convert.json.encode(buildAnalyzeSentimentResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .analyzeSentiment(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAnalyzeSentimentResponse(response as api.AnalyzeSentimentResponse);
-      })));
+      final response =
+          await res.analyzeSentiment(arg_request, $fields: arg_$fields);
+      checkAnalyzeSentimentResponse(response as api.AnalyzeSentimentResponse);
     });
 
-    unittest.test('method--analyzeSyntax', () {
+    unittest.test('method--analyzeSyntax', () async {
       var mock = HttpServerMock();
       var res = api.CloudNaturalLanguageApi(mock).documents;
       var arg_request = buildAnalyzeSyntaxRequest();
@@ -1355,14 +1349,12 @@ void main() {
         var resp = convert.json.encode(buildAnalyzeSyntaxResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .analyzeSyntax(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAnalyzeSyntaxResponse(response as api.AnalyzeSyntaxResponse);
-      })));
+      final response =
+          await res.analyzeSyntax(arg_request, $fields: arg_$fields);
+      checkAnalyzeSyntaxResponse(response as api.AnalyzeSyntaxResponse);
     });
 
-    unittest.test('method--annotateText', () {
+    unittest.test('method--annotateText', () async {
       var mock = HttpServerMock();
       var res = api.CloudNaturalLanguageApi(mock).documents;
       var arg_request = buildAnnotateTextRequest();
@@ -1413,14 +1405,12 @@ void main() {
         var resp = convert.json.encode(buildAnnotateTextResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .annotateText(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAnnotateTextResponse(response as api.AnnotateTextResponse);
-      })));
+      final response =
+          await res.annotateText(arg_request, $fields: arg_$fields);
+      checkAnnotateTextResponse(response as api.AnnotateTextResponse);
     });
 
-    unittest.test('method--classifyText', () {
+    unittest.test('method--classifyText', () async {
       var mock = HttpServerMock();
       var res = api.CloudNaturalLanguageApi(mock).documents;
       var arg_request = buildClassifyTextRequest();
@@ -1471,11 +1461,9 @@ void main() {
         var resp = convert.json.encode(buildClassifyTextResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .classifyText(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkClassifyTextResponse(response as api.ClassifyTextResponse);
-      })));
+      final response =
+          await res.classifyText(arg_request, $fields: arg_$fields);
+      checkClassifyTextResponse(response as api.ClassifyTextResponse);
     });
   });
 }

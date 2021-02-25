@@ -3233,7 +3233,7 @@ void checkWebAppsListResponse(api.WebAppsListResponse o) {
 
 void main() {
   unittest.group('obj-schema-Administrator', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdministrator();
       var od = api.Administrator.fromJson(o.toJson());
       checkAdministrator(od as api.Administrator);
@@ -3241,7 +3241,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AdministratorWebToken', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdministratorWebToken();
       var od = api.AdministratorWebToken.fromJson(o.toJson());
       checkAdministratorWebToken(od as api.AdministratorWebToken);
@@ -3249,7 +3249,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AdministratorWebTokenSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdministratorWebTokenSpec();
       var od = api.AdministratorWebTokenSpec.fromJson(o.toJson());
       checkAdministratorWebTokenSpec(od as api.AdministratorWebTokenSpec);
@@ -3258,7 +3258,7 @@ void main() {
 
   unittest.group('obj-schema-AdministratorWebTokenSpecManagedConfigurations',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdministratorWebTokenSpecManagedConfigurations();
       var od = api.AdministratorWebTokenSpecManagedConfigurations.fromJson(
           o.toJson());
@@ -3268,7 +3268,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AdministratorWebTokenSpecPlaySearch', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdministratorWebTokenSpecPlaySearch();
       var od = api.AdministratorWebTokenSpecPlaySearch.fromJson(o.toJson());
       checkAdministratorWebTokenSpecPlaySearch(
@@ -3277,7 +3277,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AdministratorWebTokenSpecPrivateApps', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdministratorWebTokenSpecPrivateApps();
       var od = api.AdministratorWebTokenSpecPrivateApps.fromJson(o.toJson());
       checkAdministratorWebTokenSpecPrivateApps(
@@ -3286,7 +3286,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AdministratorWebTokenSpecStoreBuilder', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdministratorWebTokenSpecStoreBuilder();
       var od = api.AdministratorWebTokenSpecStoreBuilder.fromJson(o.toJson());
       checkAdministratorWebTokenSpecStoreBuilder(
@@ -3295,7 +3295,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AdministratorWebTokenSpecWebApps', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdministratorWebTokenSpecWebApps();
       var od = api.AdministratorWebTokenSpecWebApps.fromJson(o.toJson());
       checkAdministratorWebTokenSpecWebApps(
@@ -3304,7 +3304,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AppRestrictionsSchema', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppRestrictionsSchema();
       var od = api.AppRestrictionsSchema.fromJson(o.toJson());
       checkAppRestrictionsSchema(od as api.AppRestrictionsSchema);
@@ -3312,7 +3312,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AppRestrictionsSchemaChangeEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppRestrictionsSchemaChangeEvent();
       var od = api.AppRestrictionsSchemaChangeEvent.fromJson(o.toJson());
       checkAppRestrictionsSchemaChangeEvent(
@@ -3321,7 +3321,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AppRestrictionsSchemaRestriction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppRestrictionsSchemaRestriction();
       var od = api.AppRestrictionsSchemaRestriction.fromJson(o.toJson());
       checkAppRestrictionsSchemaRestriction(
@@ -3331,7 +3331,7 @@ void main() {
 
   unittest.group('obj-schema-AppRestrictionsSchemaRestrictionRestrictionValue',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppRestrictionsSchemaRestrictionRestrictionValue();
       var od = api.AppRestrictionsSchemaRestrictionRestrictionValue.fromJson(
           o.toJson());
@@ -3341,7 +3341,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AppState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppState();
       var od = api.AppState.fromJson(o.toJson());
       checkAppState(od as api.AppState);
@@ -3349,7 +3349,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AppUpdateEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppUpdateEvent();
       var od = api.AppUpdateEvent.fromJson(o.toJson());
       checkAppUpdateEvent(od as api.AppUpdateEvent);
@@ -3357,7 +3357,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AppVersion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppVersion();
       var od = api.AppVersion.fromJson(o.toJson());
       checkAppVersion(od as api.AppVersion);
@@ -3365,7 +3365,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApprovalUrlInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApprovalUrlInfo();
       var od = api.ApprovalUrlInfo.fromJson(o.toJson());
       checkApprovalUrlInfo(od as api.ApprovalUrlInfo);
@@ -3373,7 +3373,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuthenticationToken', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuthenticationToken();
       var od = api.AuthenticationToken.fromJson(o.toJson());
       checkAuthenticationToken(od as api.AuthenticationToken);
@@ -3381,7 +3381,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AutoInstallConstraint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAutoInstallConstraint();
       var od = api.AutoInstallConstraint.fromJson(o.toJson());
       checkAutoInstallConstraint(od as api.AutoInstallConstraint);
@@ -3389,7 +3389,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AutoInstallPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAutoInstallPolicy();
       var od = api.AutoInstallPolicy.fromJson(o.toJson());
       checkAutoInstallPolicy(od as api.AutoInstallPolicy);
@@ -3397,7 +3397,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConfigurationVariables', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConfigurationVariables();
       var od = api.ConfigurationVariables.fromJson(o.toJson());
       checkConfigurationVariables(od as api.ConfigurationVariables);
@@ -3405,7 +3405,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Device', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDevice();
       var od = api.Device.fromJson(o.toJson());
       checkDevice(od as api.Device);
@@ -3413,7 +3413,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceReport', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceReport();
       var od = api.DeviceReport.fromJson(o.toJson());
       checkDeviceReport(od as api.DeviceReport);
@@ -3421,7 +3421,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceReportUpdateEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceReportUpdateEvent();
       var od = api.DeviceReportUpdateEvent.fromJson(o.toJson());
       checkDeviceReportUpdateEvent(od as api.DeviceReportUpdateEvent);
@@ -3429,7 +3429,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceState();
       var od = api.DeviceState.fromJson(o.toJson());
       checkDeviceState(od as api.DeviceState);
@@ -3437,7 +3437,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DevicesListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDevicesListResponse();
       var od = api.DevicesListResponse.fromJson(o.toJson());
       checkDevicesListResponse(od as api.DevicesListResponse);
@@ -3445,7 +3445,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Enterprise', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnterprise();
       var od = api.Enterprise.fromJson(o.toJson());
       checkEnterprise(od as api.Enterprise);
@@ -3453,7 +3453,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnterpriseAccount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnterpriseAccount();
       var od = api.EnterpriseAccount.fromJson(o.toJson());
       checkEnterpriseAccount(od as api.EnterpriseAccount);
@@ -3461,7 +3461,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnterprisesListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnterprisesListResponse();
       var od = api.EnterprisesListResponse.fromJson(o.toJson());
       checkEnterprisesListResponse(od as api.EnterprisesListResponse);
@@ -3469,7 +3469,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnterprisesSendTestPushNotificationResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnterprisesSendTestPushNotificationResponse();
       var od =
           api.EnterprisesSendTestPushNotificationResponse.fromJson(o.toJson());
@@ -3479,7 +3479,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Entitlement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntitlement();
       var od = api.Entitlement.fromJson(o.toJson());
       checkEntitlement(od as api.Entitlement);
@@ -3487,7 +3487,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EntitlementsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntitlementsListResponse();
       var od = api.EntitlementsListResponse.fromJson(o.toJson());
       checkEntitlementsListResponse(od as api.EntitlementsListResponse);
@@ -3495,7 +3495,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GroupLicense', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroupLicense();
       var od = api.GroupLicense.fromJson(o.toJson());
       checkGroupLicense(od as api.GroupLicense);
@@ -3503,7 +3503,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GroupLicenseUsersListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroupLicenseUsersListResponse();
       var od = api.GroupLicenseUsersListResponse.fromJson(o.toJson());
       checkGroupLicenseUsersListResponse(
@@ -3512,7 +3512,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GroupLicensesListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroupLicensesListResponse();
       var od = api.GroupLicensesListResponse.fromJson(o.toJson());
       checkGroupLicensesListResponse(od as api.GroupLicensesListResponse);
@@ -3520,7 +3520,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Install', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstall();
       var od = api.Install.fromJson(o.toJson());
       checkInstall(od as api.Install);
@@ -3528,7 +3528,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstallFailureEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstallFailureEvent();
       var od = api.InstallFailureEvent.fromJson(o.toJson());
       checkInstallFailureEvent(od as api.InstallFailureEvent);
@@ -3536,7 +3536,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstallsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstallsListResponse();
       var od = api.InstallsListResponse.fromJson(o.toJson());
       checkInstallsListResponse(od as api.InstallsListResponse);
@@ -3544,7 +3544,7 @@ void main() {
   });
 
   unittest.group('obj-schema-KeyedAppState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildKeyedAppState();
       var od = api.KeyedAppState.fromJson(o.toJson());
       checkKeyedAppState(od as api.KeyedAppState);
@@ -3552,7 +3552,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LocalizedText', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocalizedText();
       var od = api.LocalizedText.fromJson(o.toJson());
       checkLocalizedText(od as api.LocalizedText);
@@ -3560,7 +3560,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MaintenanceWindow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMaintenanceWindow();
       var od = api.MaintenanceWindow.fromJson(o.toJson());
       checkMaintenanceWindow(od as api.MaintenanceWindow);
@@ -3568,7 +3568,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedConfiguration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedConfiguration();
       var od = api.ManagedConfiguration.fromJson(o.toJson());
       checkManagedConfiguration(od as api.ManagedConfiguration);
@@ -3576,7 +3576,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedConfigurationsForDeviceListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedConfigurationsForDeviceListResponse();
       var od =
           api.ManagedConfigurationsForDeviceListResponse.fromJson(o.toJson());
@@ -3586,7 +3586,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedConfigurationsForUserListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedConfigurationsForUserListResponse();
       var od =
           api.ManagedConfigurationsForUserListResponse.fromJson(o.toJson());
@@ -3596,7 +3596,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedConfigurationsSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedConfigurationsSettings();
       var od = api.ManagedConfigurationsSettings.fromJson(o.toJson());
       checkManagedConfigurationsSettings(
@@ -3605,7 +3605,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedConfigurationsSettingsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedConfigurationsSettingsListResponse();
       var od =
           api.ManagedConfigurationsSettingsListResponse.fromJson(o.toJson());
@@ -3615,7 +3615,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedProperty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedProperty();
       var od = api.ManagedProperty.fromJson(o.toJson());
       checkManagedProperty(od as api.ManagedProperty);
@@ -3623,7 +3623,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedPropertyBundle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedPropertyBundle();
       var od = api.ManagedPropertyBundle.fromJson(o.toJson());
       checkManagedPropertyBundle(od as api.ManagedPropertyBundle);
@@ -3631,7 +3631,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NewDeviceEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNewDeviceEvent();
       var od = api.NewDeviceEvent.fromJson(o.toJson());
       checkNewDeviceEvent(od as api.NewDeviceEvent);
@@ -3639,7 +3639,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NewPermissionsEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNewPermissionsEvent();
       var od = api.NewPermissionsEvent.fromJson(o.toJson());
       checkNewPermissionsEvent(od as api.NewPermissionsEvent);
@@ -3647,7 +3647,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Notification', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNotification();
       var od = api.Notification.fromJson(o.toJson());
       checkNotification(od as api.Notification);
@@ -3655,7 +3655,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NotificationSet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNotificationSet();
       var od = api.NotificationSet.fromJson(o.toJson());
       checkNotificationSet(od as api.NotificationSet);
@@ -3663,7 +3663,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PageInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPageInfo();
       var od = api.PageInfo.fromJson(o.toJson());
       checkPageInfo(od as api.PageInfo);
@@ -3671,7 +3671,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Permission', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPermission();
       var od = api.Permission.fromJson(o.toJson());
       checkPermission(od as api.Permission);
@@ -3679,7 +3679,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -3687,7 +3687,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Product', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProduct();
       var od = api.Product.fromJson(o.toJson());
       checkProduct(od as api.Product);
@@ -3695,7 +3695,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductApprovalEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductApprovalEvent();
       var od = api.ProductApprovalEvent.fromJson(o.toJson());
       checkProductApprovalEvent(od as api.ProductApprovalEvent);
@@ -3703,7 +3703,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductAvailabilityChangeEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductAvailabilityChangeEvent();
       var od = api.ProductAvailabilityChangeEvent.fromJson(o.toJson());
       checkProductAvailabilityChangeEvent(
@@ -3712,7 +3712,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductPermission', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductPermission();
       var od = api.ProductPermission.fromJson(o.toJson());
       checkProductPermission(od as api.ProductPermission);
@@ -3720,7 +3720,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductPermissions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductPermissions();
       var od = api.ProductPermissions.fromJson(o.toJson());
       checkProductPermissions(od as api.ProductPermissions);
@@ -3728,7 +3728,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductPolicy();
       var od = api.ProductPolicy.fromJson(o.toJson());
       checkProductPolicy(od as api.ProductPolicy);
@@ -3736,7 +3736,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductSet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductSet();
       var od = api.ProductSet.fromJson(o.toJson());
       checkProductSet(od as api.ProductSet);
@@ -3744,7 +3744,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductSigningCertificate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductSigningCertificate();
       var od = api.ProductSigningCertificate.fromJson(o.toJson());
       checkProductSigningCertificate(od as api.ProductSigningCertificate);
@@ -3752,7 +3752,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductVisibility', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductVisibility();
       var od = api.ProductVisibility.fromJson(o.toJson());
       checkProductVisibility(od as api.ProductVisibility);
@@ -3760,7 +3760,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductsApproveRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductsApproveRequest();
       var od = api.ProductsApproveRequest.fromJson(o.toJson());
       checkProductsApproveRequest(od as api.ProductsApproveRequest);
@@ -3768,7 +3768,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductsGenerateApprovalUrlResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductsGenerateApprovalUrlResponse();
       var od = api.ProductsGenerateApprovalUrlResponse.fromJson(o.toJson());
       checkProductsGenerateApprovalUrlResponse(
@@ -3777,7 +3777,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductsListResponse();
       var od = api.ProductsListResponse.fromJson(o.toJson());
       checkProductsListResponse(od as api.ProductsListResponse);
@@ -3785,7 +3785,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ServiceAccount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildServiceAccount();
       var od = api.ServiceAccount.fromJson(o.toJson());
       checkServiceAccount(od as api.ServiceAccount);
@@ -3793,7 +3793,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ServiceAccountKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildServiceAccountKey();
       var od = api.ServiceAccountKey.fromJson(o.toJson());
       checkServiceAccountKey(od as api.ServiceAccountKey);
@@ -3801,7 +3801,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ServiceAccountKeysListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildServiceAccountKeysListResponse();
       var od = api.ServiceAccountKeysListResponse.fromJson(o.toJson());
       checkServiceAccountKeysListResponse(
@@ -3810,7 +3810,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SignupInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSignupInfo();
       var od = api.SignupInfo.fromJson(o.toJson());
       checkSignupInfo(od as api.SignupInfo);
@@ -3818,7 +3818,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StoreCluster', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStoreCluster();
       var od = api.StoreCluster.fromJson(o.toJson());
       checkStoreCluster(od as api.StoreCluster);
@@ -3826,7 +3826,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StoreLayout', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStoreLayout();
       var od = api.StoreLayout.fromJson(o.toJson());
       checkStoreLayout(od as api.StoreLayout);
@@ -3834,7 +3834,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StoreLayoutClustersListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStoreLayoutClustersListResponse();
       var od = api.StoreLayoutClustersListResponse.fromJson(o.toJson());
       checkStoreLayoutClustersListResponse(
@@ -3843,7 +3843,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StoreLayoutPagesListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStoreLayoutPagesListResponse();
       var od = api.StoreLayoutPagesListResponse.fromJson(o.toJson());
       checkStoreLayoutPagesListResponse(od as api.StoreLayoutPagesListResponse);
@@ -3851,7 +3851,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StorePage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStorePage();
       var od = api.StorePage.fromJson(o.toJson());
       checkStorePage(od as api.StorePage);
@@ -3859,7 +3859,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TokenPagination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTokenPagination();
       var od = api.TokenPagination.fromJson(o.toJson());
       checkTokenPagination(od as api.TokenPagination);
@@ -3867,7 +3867,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TrackInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTrackInfo();
       var od = api.TrackInfo.fromJson(o.toJson());
       checkTrackInfo(od as api.TrackInfo);
@@ -3875,7 +3875,7 @@ void main() {
   });
 
   unittest.group('obj-schema-User', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
       checkUser(od as api.User);
@@ -3883,7 +3883,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsersListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsersListResponse();
       var od = api.UsersListResponse.fromJson(o.toJson());
       checkUsersListResponse(od as api.UsersListResponse);
@@ -3891,7 +3891,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VariableSet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVariableSet();
       var od = api.VariableSet.fromJson(o.toJson());
       checkVariableSet(od as api.VariableSet);
@@ -3899,7 +3899,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebApp', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebApp();
       var od = api.WebApp.fromJson(o.toJson());
       checkWebApp(od as api.WebApp);
@@ -3907,7 +3907,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebAppIcon', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebAppIcon();
       var od = api.WebAppIcon.fromJson(o.toJson());
       checkWebAppIcon(od as api.WebAppIcon);
@@ -3915,7 +3915,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebAppsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebAppsListResponse();
       var od = api.WebAppsListResponse.fromJson(o.toJson());
       checkWebAppsListResponse(od as api.WebAppsListResponse);
@@ -3923,7 +3923,7 @@ void main() {
   });
 
   unittest.group('resource-DevicesResource', () {
-    unittest.test('method--forceReportUpload', () {
+    unittest.test('method--forceReportUpload', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).devices;
       var arg_enterpriseId = 'foo';
@@ -4014,13 +4014,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .forceReportUpload(arg_enterpriseId, arg_userId, arg_deviceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.forceReportUpload(arg_enterpriseId, arg_userId, arg_deviceId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).devices;
       var arg_enterpriseId = 'foo';
@@ -4103,14 +4101,12 @@ void main() {
         var resp = convert.json.encode(buildDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_enterpriseId, arg_userId, arg_deviceId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDevice(response as api.Device);
-      })));
+      final response = await res.get(arg_enterpriseId, arg_userId, arg_deviceId,
+          $fields: arg_$fields);
+      checkDevice(response as api.Device);
     });
 
-    unittest.test('method--getState', () {
+    unittest.test('method--getState', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).devices;
       var arg_enterpriseId = 'foo';
@@ -4201,15 +4197,13 @@ void main() {
         var resp = convert.json.encode(buildDeviceState());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getState(arg_enterpriseId, arg_userId, arg_deviceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDeviceState(response as api.DeviceState);
-      })));
+      final response = await res.getState(
+          arg_enterpriseId, arg_userId, arg_deviceId,
+          $fields: arg_$fields);
+      checkDeviceState(response as api.DeviceState);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).devices;
       var arg_enterpriseId = 'foo';
@@ -4285,14 +4279,12 @@ void main() {
         var resp = convert.json.encode(buildDevicesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_enterpriseId, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDevicesListResponse(response as api.DevicesListResponse);
-      })));
+      final response =
+          await res.list(arg_enterpriseId, arg_userId, $fields: arg_$fields);
+      checkDevicesListResponse(response as api.DevicesListResponse);
     });
 
-    unittest.test('method--setState', () {
+    unittest.test('method--setState', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).devices;
       var arg_request = buildDeviceState();
@@ -4388,15 +4380,13 @@ void main() {
         var resp = convert.json.encode(buildDeviceState());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setState(arg_request, arg_enterpriseId, arg_userId, arg_deviceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDeviceState(response as api.DeviceState);
-      })));
+      final response = await res.setState(
+          arg_request, arg_enterpriseId, arg_userId, arg_deviceId,
+          $fields: arg_$fields);
+      checkDeviceState(response as api.DeviceState);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).devices;
       var arg_request = buildDevice();
@@ -4489,17 +4479,15 @@ void main() {
         var resp = convert.json.encode(buildDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_enterpriseId, arg_userId, arg_deviceId,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDevice(response as api.Device);
-      })));
+      final response = await res.update(
+          arg_request, arg_enterpriseId, arg_userId, arg_deviceId,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkDevice(response as api.Device);
     });
   });
 
   unittest.group('resource-EnterprisesResource', () {
-    unittest.test('method--acknowledgeNotificationSet', () {
+    unittest.test('method--acknowledgeNotificationSet', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).enterprises;
       var arg_notificationSetId = 'foo';
@@ -4551,13 +4539,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .acknowledgeNotificationSet(
-              notificationSetId: arg_notificationSetId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.acknowledgeNotificationSet(
+          notificationSetId: arg_notificationSetId, $fields: arg_$fields);
     });
 
-    unittest.test('method--completeSignup', () {
+    unittest.test('method--completeSignup', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).enterprises;
       var arg_completionToken = 'foo';
@@ -4613,17 +4599,14 @@ void main() {
         var resp = convert.json.encode(buildEnterprise());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .completeSignup(
-              completionToken: arg_completionToken,
-              enterpriseToken: arg_enterpriseToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEnterprise(response as api.Enterprise);
-      })));
+      final response = await res.completeSignup(
+          completionToken: arg_completionToken,
+          enterpriseToken: arg_enterpriseToken,
+          $fields: arg_$fields);
+      checkEnterprise(response as api.Enterprise);
     });
 
-    unittest.test('method--createWebToken', () {
+    unittest.test('method--createWebToken', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).enterprises;
       var arg_request = buildAdministratorWebTokenSpec();
@@ -4689,14 +4672,12 @@ void main() {
         var resp = convert.json.encode(buildAdministratorWebToken());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createWebToken(arg_request, arg_enterpriseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAdministratorWebToken(response as api.AdministratorWebToken);
-      })));
+      final response = await res.createWebToken(arg_request, arg_enterpriseId,
+          $fields: arg_$fields);
+      checkAdministratorWebToken(response as api.AdministratorWebToken);
     });
 
-    unittest.test('method--enroll', () {
+    unittest.test('method--enroll', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).enterprises;
       var arg_request = buildEnterprise();
@@ -4752,14 +4733,12 @@ void main() {
         var resp = convert.json.encode(buildEnterprise());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .enroll(arg_request, arg_token, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEnterprise(response as api.Enterprise);
-      })));
+      final response =
+          await res.enroll(arg_request, arg_token, $fields: arg_$fields);
+      checkEnterprise(response as api.Enterprise);
     });
 
-    unittest.test('method--generateSignupUrl', () {
+    unittest.test('method--generateSignupUrl', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).enterprises;
       var arg_callbackUrl = 'foo';
@@ -4810,14 +4789,12 @@ void main() {
         var resp = convert.json.encode(buildSignupInfo());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .generateSignupUrl(callbackUrl: arg_callbackUrl, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSignupInfo(response as api.SignupInfo);
-      })));
+      final response = await res.generateSignupUrl(
+          callbackUrl: arg_callbackUrl, $fields: arg_$fields);
+      checkSignupInfo(response as api.SignupInfo);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).enterprises;
       var arg_enterpriseId = 'foo';
@@ -4870,14 +4847,11 @@ void main() {
         var resp = convert.json.encode(buildEnterprise());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_enterpriseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEnterprise(response as api.Enterprise);
-      })));
+      final response = await res.get(arg_enterpriseId, $fields: arg_$fields);
+      checkEnterprise(response as api.Enterprise);
     });
 
-    unittest.test('method--getServiceAccount', () {
+    unittest.test('method--getServiceAccount', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).enterprises;
       var arg_enterpriseId = 'foo';
@@ -4943,15 +4917,12 @@ void main() {
         var resp = convert.json.encode(buildServiceAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getServiceAccount(arg_enterpriseId,
-              keyType: arg_keyType, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkServiceAccount(response as api.ServiceAccount);
-      })));
+      final response = await res.getServiceAccount(arg_enterpriseId,
+          keyType: arg_keyType, $fields: arg_$fields);
+      checkServiceAccount(response as api.ServiceAccount);
     });
 
-    unittest.test('method--getStoreLayout', () {
+    unittest.test('method--getStoreLayout', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).enterprises;
       var arg_enterpriseId = 'foo';
@@ -5012,14 +4983,12 @@ void main() {
         var resp = convert.json.encode(buildStoreLayout());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getStoreLayout(arg_enterpriseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStoreLayout(response as api.StoreLayout);
-      })));
+      final response =
+          await res.getStoreLayout(arg_enterpriseId, $fields: arg_$fields);
+      checkStoreLayout(response as api.StoreLayout);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).enterprises;
       var arg_domain = 'foo';
@@ -5070,14 +5039,11 @@ void main() {
         var resp = convert.json.encode(buildEnterprisesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_domain, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEnterprisesListResponse(response as api.EnterprisesListResponse);
-      })));
+      final response = await res.list(arg_domain, $fields: arg_$fields);
+      checkEnterprisesListResponse(response as api.EnterprisesListResponse);
     });
 
-    unittest.test('method--pullNotificationSet', () {
+    unittest.test('method--pullNotificationSet', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).enterprises;
       var arg_requestMode = 'foo';
@@ -5129,15 +5095,12 @@ void main() {
         var resp = convert.json.encode(buildNotificationSet());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .pullNotificationSet(
-              requestMode: arg_requestMode, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNotificationSet(response as api.NotificationSet);
-      })));
+      final response = await res.pullNotificationSet(
+          requestMode: arg_requestMode, $fields: arg_$fields);
+      checkNotificationSet(response as api.NotificationSet);
     });
 
-    unittest.test('method--sendTestPushNotification', () {
+    unittest.test('method--sendTestPushNotification', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).enterprises;
       var arg_enterpriseId = 'foo';
@@ -5199,15 +5162,13 @@ void main() {
             .encode(buildEnterprisesSendTestPushNotificationResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .sendTestPushNotification(arg_enterpriseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEnterprisesSendTestPushNotificationResponse(
-            response as api.EnterprisesSendTestPushNotificationResponse);
-      })));
+      final response = await res.sendTestPushNotification(arg_enterpriseId,
+          $fields: arg_$fields);
+      checkEnterprisesSendTestPushNotificationResponse(
+          response as api.EnterprisesSendTestPushNotificationResponse);
     });
 
-    unittest.test('method--setAccount', () {
+    unittest.test('method--setAccount', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).enterprises;
       var arg_request = buildEnterpriseAccount();
@@ -5273,14 +5234,12 @@ void main() {
         var resp = convert.json.encode(buildEnterpriseAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setAccount(arg_request, arg_enterpriseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEnterpriseAccount(response as api.EnterpriseAccount);
-      })));
+      final response = await res.setAccount(arg_request, arg_enterpriseId,
+          $fields: arg_$fields);
+      checkEnterpriseAccount(response as api.EnterpriseAccount);
     });
 
-    unittest.test('method--setStoreLayout', () {
+    unittest.test('method--setStoreLayout', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).enterprises;
       var arg_request = buildStoreLayout();
@@ -5346,14 +5305,12 @@ void main() {
         var resp = convert.json.encode(buildStoreLayout());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setStoreLayout(arg_request, arg_enterpriseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStoreLayout(response as api.StoreLayout);
-      })));
+      final response = await res.setStoreLayout(arg_request, arg_enterpriseId,
+          $fields: arg_$fields);
+      checkStoreLayout(response as api.StoreLayout);
     });
 
-    unittest.test('method--unenroll', () {
+    unittest.test('method--unenroll', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).enterprises;
       var arg_enterpriseId = 'foo';
@@ -5414,14 +5371,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .unenroll(arg_enterpriseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.unenroll(arg_enterpriseId, $fields: arg_$fields);
     });
   });
 
   unittest.group('resource-EntitlementsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).entitlements;
       var arg_enterpriseId = 'foo';
@@ -5504,13 +5459,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_enterpriseId, arg_userId, arg_entitlementId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_enterpriseId, arg_userId, arg_entitlementId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).entitlements;
       var arg_enterpriseId = 'foo';
@@ -5593,15 +5546,13 @@ void main() {
         var resp = convert.json.encode(buildEntitlement());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_enterpriseId, arg_userId, arg_entitlementId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEntitlement(response as api.Entitlement);
-      })));
+      final response = await res.get(
+          arg_enterpriseId, arg_userId, arg_entitlementId,
+          $fields: arg_$fields);
+      checkEntitlement(response as api.Entitlement);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).entitlements;
       var arg_enterpriseId = 'foo';
@@ -5677,14 +5628,12 @@ void main() {
         var resp = convert.json.encode(buildEntitlementsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_enterpriseId, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEntitlementsListResponse(response as api.EntitlementsListResponse);
-      })));
+      final response =
+          await res.list(arg_enterpriseId, arg_userId, $fields: arg_$fields);
+      checkEntitlementsListResponse(response as api.EntitlementsListResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).entitlements;
       var arg_request = buildEntitlement();
@@ -5777,17 +5726,15 @@ void main() {
         var resp = convert.json.encode(buildEntitlement());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_enterpriseId, arg_userId, arg_entitlementId,
-              install: arg_install, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEntitlement(response as api.Entitlement);
-      })));
+      final response = await res.update(
+          arg_request, arg_enterpriseId, arg_userId, arg_entitlementId,
+          install: arg_install, $fields: arg_$fields);
+      checkEntitlement(response as api.Entitlement);
     });
   });
 
   unittest.group('resource-GrouplicensesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).grouplicenses;
       var arg_enterpriseId = 'foo';
@@ -5855,14 +5802,12 @@ void main() {
         var resp = convert.json.encode(buildGroupLicense());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_enterpriseId, arg_groupLicenseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroupLicense(response as api.GroupLicense);
-      })));
+      final response = await res.get(arg_enterpriseId, arg_groupLicenseId,
+          $fields: arg_$fields);
+      checkGroupLicense(response as api.GroupLicense);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).grouplicenses;
       var arg_enterpriseId = 'foo';
@@ -5923,17 +5868,13 @@ void main() {
         var resp = convert.json.encode(buildGroupLicensesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_enterpriseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroupLicensesListResponse(
-            response as api.GroupLicensesListResponse);
-      })));
+      final response = await res.list(arg_enterpriseId, $fields: arg_$fields);
+      checkGroupLicensesListResponse(response as api.GroupLicensesListResponse);
     });
   });
 
   unittest.group('resource-GrouplicenseusersResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).grouplicenseusers;
       var arg_enterpriseId = 'foo';
@@ -6009,17 +5950,15 @@ void main() {
         var resp = convert.json.encode(buildGroupLicenseUsersListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_enterpriseId, arg_groupLicenseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroupLicenseUsersListResponse(
-            response as api.GroupLicenseUsersListResponse);
-      })));
+      final response = await res.list(arg_enterpriseId, arg_groupLicenseId,
+          $fields: arg_$fields);
+      checkGroupLicenseUsersListResponse(
+          response as api.GroupLicenseUsersListResponse);
     });
   });
 
   unittest.group('resource-InstallsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).installs;
       var arg_enterpriseId = 'foo';
@@ -6117,13 +6056,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_enterpriseId, arg_userId, arg_deviceId, arg_installId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(
+          arg_enterpriseId, arg_userId, arg_deviceId, arg_installId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).installs;
       var arg_enterpriseId = 'foo';
@@ -6221,15 +6159,13 @@ void main() {
         var resp = convert.json.encode(buildInstall());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_enterpriseId, arg_userId, arg_deviceId, arg_installId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInstall(response as api.Install);
-      })));
+      final response = await res.get(
+          arg_enterpriseId, arg_userId, arg_deviceId, arg_installId,
+          $fields: arg_$fields);
+      checkInstall(response as api.Install);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).installs;
       var arg_enterpriseId = 'foo';
@@ -6320,15 +6256,13 @@ void main() {
         var resp = convert.json.encode(buildInstallsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_enterpriseId, arg_userId, arg_deviceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInstallsListResponse(response as api.InstallsListResponse);
-      })));
+      final response = await res.list(
+          arg_enterpriseId, arg_userId, arg_deviceId,
+          $fields: arg_$fields);
+      checkInstallsListResponse(response as api.InstallsListResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).installs;
       var arg_request = buildInstall();
@@ -6431,18 +6365,15 @@ void main() {
         var resp = convert.json.encode(buildInstall());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_enterpriseId, arg_userId, arg_deviceId,
-              arg_installId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInstall(response as api.Install);
-      })));
+      final response = await res.update(arg_request, arg_enterpriseId,
+          arg_userId, arg_deviceId, arg_installId,
+          $fields: arg_$fields);
+      checkInstall(response as api.Install);
     });
   });
 
   unittest.group('resource-ManagedconfigurationsfordeviceResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).managedconfigurationsfordevice;
       var arg_enterpriseId = 'foo';
@@ -6540,14 +6471,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_enterpriseId, arg_userId, arg_deviceId,
-              arg_managedConfigurationForDeviceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_enterpriseId, arg_userId, arg_deviceId,
+          arg_managedConfigurationForDeviceId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).managedconfigurationsfordevice;
       var arg_enterpriseId = 'foo';
@@ -6645,16 +6574,13 @@ void main() {
         var resp = convert.json.encode(buildManagedConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_enterpriseId, arg_userId, arg_deviceId,
-              arg_managedConfigurationForDeviceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkManagedConfiguration(response as api.ManagedConfiguration);
-      })));
+      final response = await res.get(arg_enterpriseId, arg_userId, arg_deviceId,
+          arg_managedConfigurationForDeviceId,
+          $fields: arg_$fields);
+      checkManagedConfiguration(response as api.ManagedConfiguration);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).managedconfigurationsfordevice;
       var arg_enterpriseId = 'foo';
@@ -6746,16 +6672,14 @@ void main() {
             .encode(buildManagedConfigurationsForDeviceListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_enterpriseId, arg_userId, arg_deviceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkManagedConfigurationsForDeviceListResponse(
-            response as api.ManagedConfigurationsForDeviceListResponse);
-      })));
+      final response = await res.list(
+          arg_enterpriseId, arg_userId, arg_deviceId,
+          $fields: arg_$fields);
+      checkManagedConfigurationsForDeviceListResponse(
+          response as api.ManagedConfigurationsForDeviceListResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).managedconfigurationsfordevice;
       var arg_request = buildManagedConfiguration();
@@ -6858,18 +6782,15 @@ void main() {
         var resp = convert.json.encode(buildManagedConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_enterpriseId, arg_userId, arg_deviceId,
-              arg_managedConfigurationForDeviceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkManagedConfiguration(response as api.ManagedConfiguration);
-      })));
+      final response = await res.update(arg_request, arg_enterpriseId,
+          arg_userId, arg_deviceId, arg_managedConfigurationForDeviceId,
+          $fields: arg_$fields);
+      checkManagedConfiguration(response as api.ManagedConfiguration);
     });
   });
 
   unittest.group('resource-ManagedconfigurationsforuserResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).managedconfigurationsforuser;
       var arg_enterpriseId = 'foo';
@@ -6952,14 +6873,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(
-              arg_enterpriseId, arg_userId, arg_managedConfigurationForUserId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(
+          arg_enterpriseId, arg_userId, arg_managedConfigurationForUserId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).managedconfigurationsforuser;
       var arg_enterpriseId = 'foo';
@@ -7042,15 +6961,13 @@ void main() {
         var resp = convert.json.encode(buildManagedConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_enterpriseId, arg_userId, arg_managedConfigurationForUserId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkManagedConfiguration(response as api.ManagedConfiguration);
-      })));
+      final response = await res.get(
+          arg_enterpriseId, arg_userId, arg_managedConfigurationForUserId,
+          $fields: arg_$fields);
+      checkManagedConfiguration(response as api.ManagedConfiguration);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).managedconfigurationsforuser;
       var arg_enterpriseId = 'foo';
@@ -7127,15 +7044,13 @@ void main() {
             .encode(buildManagedConfigurationsForUserListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_enterpriseId, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkManagedConfigurationsForUserListResponse(
-            response as api.ManagedConfigurationsForUserListResponse);
-      })));
+      final response =
+          await res.list(arg_enterpriseId, arg_userId, $fields: arg_$fields);
+      checkManagedConfigurationsForUserListResponse(
+          response as api.ManagedConfigurationsForUserListResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).managedconfigurationsforuser;
       var arg_request = buildManagedConfiguration();
@@ -7223,18 +7138,15 @@ void main() {
         var resp = convert.json.encode(buildManagedConfiguration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_enterpriseId, arg_userId,
-              arg_managedConfigurationForUserId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkManagedConfiguration(response as api.ManagedConfiguration);
-      })));
+      final response = await res.update(arg_request, arg_enterpriseId,
+          arg_userId, arg_managedConfigurationForUserId,
+          $fields: arg_$fields);
+      checkManagedConfiguration(response as api.ManagedConfiguration);
     });
   });
 
   unittest.group('resource-ManagedconfigurationssettingsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).managedconfigurationssettings;
       var arg_enterpriseId = 'foo';
@@ -7311,17 +7223,15 @@ void main() {
             .encode(buildManagedConfigurationsSettingsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_enterpriseId, arg_productId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkManagedConfigurationsSettingsListResponse(
-            response as api.ManagedConfigurationsSettingsListResponse);
-      })));
+      final response =
+          await res.list(arg_enterpriseId, arg_productId, $fields: arg_$fields);
+      checkManagedConfigurationsSettingsListResponse(
+          response as api.ManagedConfigurationsSettingsListResponse);
     });
   });
 
   unittest.group('resource-PermissionsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).permissions;
       var arg_permissionId = 'foo';
@@ -7379,16 +7289,14 @@ void main() {
         var resp = convert.json.encode(buildPermission());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_permissionId, language: arg_language, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPermission(response as api.Permission);
-      })));
+      final response = await res.get(arg_permissionId,
+          language: arg_language, $fields: arg_$fields);
+      checkPermission(response as api.Permission);
     });
   });
 
   unittest.group('resource-ProductsResource', () {
-    unittest.test('method--approve', () {
+    unittest.test('method--approve', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).products;
       var arg_request = buildProductsApproveRequest();
@@ -7469,13 +7377,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .approve(arg_request, arg_enterpriseId, arg_productId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.approve(arg_request, arg_enterpriseId, arg_productId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--generateApprovalUrl', () {
+    unittest.test('method--generateApprovalUrl', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).products;
       var arg_enterpriseId = 'foo';
@@ -7557,16 +7463,14 @@ void main() {
             convert.json.encode(buildProductsGenerateApprovalUrlResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .generateApprovalUrl(arg_enterpriseId, arg_productId,
-              languageCode: arg_languageCode, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProductsGenerateApprovalUrlResponse(
-            response as api.ProductsGenerateApprovalUrlResponse);
-      })));
+      final response = await res.generateApprovalUrl(
+          arg_enterpriseId, arg_productId,
+          languageCode: arg_languageCode, $fields: arg_$fields);
+      checkProductsGenerateApprovalUrlResponse(
+          response as api.ProductsGenerateApprovalUrlResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).products;
       var arg_enterpriseId = 'foo';
@@ -7639,15 +7543,12 @@ void main() {
         var resp = convert.json.encode(buildProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_enterpriseId, arg_productId,
-              language: arg_language, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProduct(response as api.Product);
-      })));
+      final response = await res.get(arg_enterpriseId, arg_productId,
+          language: arg_language, $fields: arg_$fields);
+      checkProduct(response as api.Product);
     });
 
-    unittest.test('method--getAppRestrictionsSchema', () {
+    unittest.test('method--getAppRestrictionsSchema', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).products;
       var arg_enterpriseId = 'foo';
@@ -7728,15 +7629,13 @@ void main() {
         var resp = convert.json.encode(buildAppRestrictionsSchema());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getAppRestrictionsSchema(arg_enterpriseId, arg_productId,
-              language: arg_language, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAppRestrictionsSchema(response as api.AppRestrictionsSchema);
-      })));
+      final response = await res.getAppRestrictionsSchema(
+          arg_enterpriseId, arg_productId,
+          language: arg_language, $fields: arg_$fields);
+      checkAppRestrictionsSchema(response as api.AppRestrictionsSchema);
     });
 
-    unittest.test('method--getPermissions', () {
+    unittest.test('method--getPermissions', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).products;
       var arg_enterpriseId = 'foo';
@@ -7812,14 +7711,12 @@ void main() {
         var resp = convert.json.encode(buildProductPermissions());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getPermissions(arg_enterpriseId, arg_productId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProductPermissions(response as api.ProductPermissions);
-      })));
+      final response = await res.getPermissions(arg_enterpriseId, arg_productId,
+          $fields: arg_$fields);
+      checkProductPermissions(response as api.ProductPermissions);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).products;
       var arg_enterpriseId = 'foo';
@@ -7905,20 +7802,17 @@ void main() {
         var resp = convert.json.encode(buildProductsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_enterpriseId,
-              approved: arg_approved,
-              language: arg_language,
-              maxResults: arg_maxResults,
-              query: arg_query,
-              token: arg_token,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProductsListResponse(response as api.ProductsListResponse);
-      })));
+      final response = await res.list(arg_enterpriseId,
+          approved: arg_approved,
+          language: arg_language,
+          maxResults: arg_maxResults,
+          query: arg_query,
+          token: arg_token,
+          $fields: arg_$fields);
+      checkProductsListResponse(response as api.ProductsListResponse);
     });
 
-    unittest.test('method--unapprove', () {
+    unittest.test('method--unapprove', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).products;
       var arg_enterpriseId = 'foo';
@@ -7994,14 +7888,13 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .unapprove(arg_enterpriseId, arg_productId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.unapprove(arg_enterpriseId, arg_productId,
+          $fields: arg_$fields);
     });
   });
 
   unittest.group('resource-ServiceaccountkeysResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).serviceaccountkeys;
       var arg_enterpriseId = 'foo';
@@ -8069,12 +7962,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_enterpriseId, arg_keyId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_enterpriseId, arg_keyId, $fields: arg_$fields);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).serviceaccountkeys;
       var arg_request = buildServiceAccountKey();
@@ -8140,14 +8031,12 @@ void main() {
         var resp = convert.json.encode(buildServiceAccountKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_enterpriseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkServiceAccountKey(response as api.ServiceAccountKey);
-      })));
+      final response =
+          await res.insert(arg_request, arg_enterpriseId, $fields: arg_$fields);
+      checkServiceAccountKey(response as api.ServiceAccountKey);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).serviceaccountkeys;
       var arg_enterpriseId = 'foo';
@@ -8208,17 +8097,14 @@ void main() {
         var resp = convert.json.encode(buildServiceAccountKeysListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_enterpriseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkServiceAccountKeysListResponse(
-            response as api.ServiceAccountKeysListResponse);
-      })));
+      final response = await res.list(arg_enterpriseId, $fields: arg_$fields);
+      checkServiceAccountKeysListResponse(
+          response as api.ServiceAccountKeysListResponse);
     });
   });
 
   unittest.group('resource-StorelayoutclustersResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).storelayoutclusters;
       var arg_enterpriseId = 'foo';
@@ -8301,13 +8187,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_enterpriseId, arg_pageId, arg_clusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_enterpriseId, arg_pageId, arg_clusterId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).storelayoutclusters;
       var arg_enterpriseId = 'foo';
@@ -8390,15 +8274,13 @@ void main() {
         var resp = convert.json.encode(buildStoreCluster());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_enterpriseId, arg_pageId, arg_clusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStoreCluster(response as api.StoreCluster);
-      })));
+      final response = await res.get(
+          arg_enterpriseId, arg_pageId, arg_clusterId,
+          $fields: arg_$fields);
+      checkStoreCluster(response as api.StoreCluster);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).storelayoutclusters;
       var arg_request = buildStoreCluster();
@@ -8479,15 +8361,13 @@ void main() {
         var resp = convert.json.encode(buildStoreCluster());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_enterpriseId, arg_pageId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStoreCluster(response as api.StoreCluster);
-      })));
+      final response = await res.insert(
+          arg_request, arg_enterpriseId, arg_pageId,
+          $fields: arg_$fields);
+      checkStoreCluster(response as api.StoreCluster);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).storelayoutclusters;
       var arg_enterpriseId = 'foo';
@@ -8563,15 +8443,13 @@ void main() {
         var resp = convert.json.encode(buildStoreLayoutClustersListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_enterpriseId, arg_pageId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStoreLayoutClustersListResponse(
-            response as api.StoreLayoutClustersListResponse);
-      })));
+      final response =
+          await res.list(arg_enterpriseId, arg_pageId, $fields: arg_$fields);
+      checkStoreLayoutClustersListResponse(
+          response as api.StoreLayoutClustersListResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).storelayoutclusters;
       var arg_request = buildStoreCluster();
@@ -8659,17 +8537,15 @@ void main() {
         var resp = convert.json.encode(buildStoreCluster());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_enterpriseId, arg_pageId, arg_clusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStoreCluster(response as api.StoreCluster);
-      })));
+      final response = await res.update(
+          arg_request, arg_enterpriseId, arg_pageId, arg_clusterId,
+          $fields: arg_$fields);
+      checkStoreCluster(response as api.StoreCluster);
     });
   });
 
   unittest.group('resource-StorelayoutpagesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).storelayoutpages;
       var arg_enterpriseId = 'foo';
@@ -8737,12 +8613,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_enterpriseId, arg_pageId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_enterpriseId, arg_pageId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).storelayoutpages;
       var arg_enterpriseId = 'foo';
@@ -8810,14 +8684,12 @@ void main() {
         var resp = convert.json.encode(buildStorePage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_enterpriseId, arg_pageId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStorePage(response as api.StorePage);
-      })));
+      final response =
+          await res.get(arg_enterpriseId, arg_pageId, $fields: arg_$fields);
+      checkStorePage(response as api.StorePage);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).storelayoutpages;
       var arg_request = buildStorePage();
@@ -8883,14 +8755,12 @@ void main() {
         var resp = convert.json.encode(buildStorePage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_enterpriseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStorePage(response as api.StorePage);
-      })));
+      final response =
+          await res.insert(arg_request, arg_enterpriseId, $fields: arg_$fields);
+      checkStorePage(response as api.StorePage);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).storelayoutpages;
       var arg_enterpriseId = 'foo';
@@ -8951,15 +8821,12 @@ void main() {
         var resp = convert.json.encode(buildStoreLayoutPagesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_enterpriseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStoreLayoutPagesListResponse(
-            response as api.StoreLayoutPagesListResponse);
-      })));
+      final response = await res.list(arg_enterpriseId, $fields: arg_$fields);
+      checkStoreLayoutPagesListResponse(
+          response as api.StoreLayoutPagesListResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).storelayoutpages;
       var arg_request = buildStorePage();
@@ -9032,17 +8899,15 @@ void main() {
         var resp = convert.json.encode(buildStorePage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_enterpriseId, arg_pageId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStorePage(response as api.StorePage);
-      })));
+      final response = await res.update(
+          arg_request, arg_enterpriseId, arg_pageId,
+          $fields: arg_$fields);
+      checkStorePage(response as api.StorePage);
     });
   });
 
   unittest.group('resource-UsersResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).users;
       var arg_enterpriseId = 'foo';
@@ -9110,12 +8975,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_enterpriseId, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_enterpriseId, arg_userId, $fields: arg_$fields);
     });
 
-    unittest.test('method--generateAuthenticationToken', () {
+    unittest.test('method--generateAuthenticationToken', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).users;
       var arg_enterpriseId = 'foo';
@@ -9191,15 +9054,13 @@ void main() {
         var resp = convert.json.encode(buildAuthenticationToken());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .generateAuthenticationToken(arg_enterpriseId, arg_userId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAuthenticationToken(response as api.AuthenticationToken);
-      })));
+      final response = await res.generateAuthenticationToken(
+          arg_enterpriseId, arg_userId,
+          $fields: arg_$fields);
+      checkAuthenticationToken(response as api.AuthenticationToken);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).users;
       var arg_enterpriseId = 'foo';
@@ -9267,14 +9128,12 @@ void main() {
         var resp = convert.json.encode(buildUser());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_enterpriseId, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUser(response as api.User);
-      })));
+      final response =
+          await res.get(arg_enterpriseId, arg_userId, $fields: arg_$fields);
+      checkUser(response as api.User);
     });
 
-    unittest.test('method--getAvailableProductSet', () {
+    unittest.test('method--getAvailableProductSet', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).users;
       var arg_enterpriseId = 'foo';
@@ -9350,15 +9209,13 @@ void main() {
         var resp = convert.json.encode(buildProductSet());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getAvailableProductSet(arg_enterpriseId, arg_userId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProductSet(response as api.ProductSet);
-      })));
+      final response = await res.getAvailableProductSet(
+          arg_enterpriseId, arg_userId,
+          $fields: arg_$fields);
+      checkProductSet(response as api.ProductSet);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).users;
       var arg_request = buildUser();
@@ -9424,14 +9281,12 @@ void main() {
         var resp = convert.json.encode(buildUser());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_enterpriseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUser(response as api.User);
-      })));
+      final response =
+          await res.insert(arg_request, arg_enterpriseId, $fields: arg_$fields);
+      checkUser(response as api.User);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).users;
       var arg_enterpriseId = 'foo';
@@ -9497,14 +9352,12 @@ void main() {
         var resp = convert.json.encode(buildUsersListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_enterpriseId, arg_email, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUsersListResponse(response as api.UsersListResponse);
-      })));
+      final response =
+          await res.list(arg_enterpriseId, arg_email, $fields: arg_$fields);
+      checkUsersListResponse(response as api.UsersListResponse);
     });
 
-    unittest.test('method--revokeDeviceAccess', () {
+    unittest.test('method--revokeDeviceAccess', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).users;
       var arg_enterpriseId = 'foo';
@@ -9580,13 +9433,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .revokeDeviceAccess(arg_enterpriseId, arg_userId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.revokeDeviceAccess(arg_enterpriseId, arg_userId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--setAvailableProductSet', () {
+    unittest.test('method--setAvailableProductSet', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).users;
       var arg_request = buildProductSet();
@@ -9667,15 +9518,13 @@ void main() {
         var resp = convert.json.encode(buildProductSet());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setAvailableProductSet(arg_request, arg_enterpriseId, arg_userId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProductSet(response as api.ProductSet);
-      })));
+      final response = await res.setAvailableProductSet(
+          arg_request, arg_enterpriseId, arg_userId,
+          $fields: arg_$fields);
+      checkProductSet(response as api.ProductSet);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).users;
       var arg_request = buildUser();
@@ -9748,17 +9597,15 @@ void main() {
         var resp = convert.json.encode(buildUser());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_enterpriseId, arg_userId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUser(response as api.User);
-      })));
+      final response = await res.update(
+          arg_request, arg_enterpriseId, arg_userId,
+          $fields: arg_$fields);
+      checkUser(response as api.User);
     });
   });
 
   unittest.group('resource-WebappsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).webapps;
       var arg_enterpriseId = 'foo';
@@ -9826,12 +9673,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_enterpriseId, arg_webAppId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_enterpriseId, arg_webAppId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).webapps;
       var arg_enterpriseId = 'foo';
@@ -9899,14 +9744,12 @@ void main() {
         var resp = convert.json.encode(buildWebApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_enterpriseId, arg_webAppId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWebApp(response as api.WebApp);
-      })));
+      final response =
+          await res.get(arg_enterpriseId, arg_webAppId, $fields: arg_$fields);
+      checkWebApp(response as api.WebApp);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).webapps;
       var arg_request = buildWebApp();
@@ -9972,14 +9815,12 @@ void main() {
         var resp = convert.json.encode(buildWebApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_enterpriseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWebApp(response as api.WebApp);
-      })));
+      final response =
+          await res.insert(arg_request, arg_enterpriseId, $fields: arg_$fields);
+      checkWebApp(response as api.WebApp);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).webapps;
       var arg_enterpriseId = 'foo';
@@ -10040,14 +9881,11 @@ void main() {
         var resp = convert.json.encode(buildWebAppsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_enterpriseId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWebAppsListResponse(response as api.WebAppsListResponse);
-      })));
+      final response = await res.list(arg_enterpriseId, $fields: arg_$fields);
+      checkWebAppsListResponse(response as api.WebAppsListResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AndroidEnterpriseApi(mock).webapps;
       var arg_request = buildWebApp();
@@ -10120,12 +9958,10 @@ void main() {
         var resp = convert.json.encode(buildWebApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_enterpriseId, arg_webAppId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWebApp(response as api.WebApp);
-      })));
+      final response = await res.update(
+          arg_request, arg_enterpriseId, arg_webAppId,
+          $fields: arg_$fields);
+      checkWebApp(response as api.WebApp);
     });
   });
 }

@@ -3964,7 +3964,7 @@ void checkV1ServiceAccount(api.V1ServiceAccount o) {
 
 void main() {
   unittest.group('obj-schema-AddTenantProjectRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddTenantProjectRequest();
       var od = api.AddTenantProjectRequest.fromJson(o.toJson());
       checkAddTenantProjectRequest(od as api.AddTenantProjectRequest);
@@ -3972,7 +3972,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Api', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApi();
       var od = api.Api.fromJson(o.toJson());
       checkApi(od as api.Api);
@@ -3980,7 +3980,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApplyTenantProjectConfigRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplyTenantProjectConfigRequest();
       var od = api.ApplyTenantProjectConfigRequest.fromJson(o.toJson());
       checkApplyTenantProjectConfigRequest(
@@ -3989,7 +3989,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AttachTenantProjectRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAttachTenantProjectRequest();
       var od = api.AttachTenantProjectRequest.fromJson(o.toJson());
       checkAttachTenantProjectRequest(od as api.AttachTenantProjectRequest);
@@ -3997,7 +3997,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuthProvider', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuthProvider();
       var od = api.AuthProvider.fromJson(o.toJson());
       checkAuthProvider(od as api.AuthProvider);
@@ -4005,7 +4005,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuthRequirement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuthRequirement();
       var od = api.AuthRequirement.fromJson(o.toJson());
       checkAuthRequirement(od as api.AuthRequirement);
@@ -4013,7 +4013,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Authentication', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuthentication();
       var od = api.Authentication.fromJson(o.toJson());
       checkAuthentication(od as api.Authentication);
@@ -4021,7 +4021,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuthenticationRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuthenticationRule();
       var od = api.AuthenticationRule.fromJson(o.toJson());
       checkAuthenticationRule(od as api.AuthenticationRule);
@@ -4029,7 +4029,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Backend', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBackend();
       var od = api.Backend.fromJson(o.toJson());
       checkBackend(od as api.Backend);
@@ -4037,7 +4037,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BackendRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBackendRule();
       var od = api.BackendRule.fromJson(o.toJson());
       checkBackendRule(od as api.BackendRule);
@@ -4045,7 +4045,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Billing', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBilling();
       var od = api.Billing.fromJson(o.toJson());
       checkBilling(od as api.Billing);
@@ -4053,7 +4053,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BillingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBillingConfig();
       var od = api.BillingConfig.fromJson(o.toJson());
       checkBillingConfig(od as api.BillingConfig);
@@ -4061,7 +4061,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BillingDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBillingDestination();
       var od = api.BillingDestination.fromJson(o.toJson());
       checkBillingDestination(od as api.BillingDestination);
@@ -4069,7 +4069,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od as api.CancelOperationRequest);
@@ -4077,7 +4077,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Context', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContext();
       var od = api.Context.fromJson(o.toJson());
       checkContext(od as api.Context);
@@ -4085,7 +4085,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ContextRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContextRule();
       var od = api.ContextRule.fromJson(o.toJson());
       checkContextRule(od as api.ContextRule);
@@ -4093,7 +4093,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Control', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildControl();
       var od = api.Control.fromJson(o.toJson());
       checkControl(od as api.Control);
@@ -4101,7 +4101,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateTenancyUnitRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateTenancyUnitRequest();
       var od = api.CreateTenancyUnitRequest.fromJson(o.toJson());
       checkCreateTenancyUnitRequest(od as api.CreateTenancyUnitRequest);
@@ -4109,7 +4109,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomError();
       var od = api.CustomError.fromJson(o.toJson());
       checkCustomError(od as api.CustomError);
@@ -4117,7 +4117,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomErrorRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomErrorRule();
       var od = api.CustomErrorRule.fromJson(o.toJson());
       checkCustomErrorRule(od as api.CustomErrorRule);
@@ -4125,7 +4125,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomHttpPattern', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomHttpPattern();
       var od = api.CustomHttpPattern.fromJson(o.toJson());
       checkCustomHttpPattern(od as api.CustomHttpPattern);
@@ -4133,7 +4133,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteTenantProjectRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteTenantProjectRequest();
       var od = api.DeleteTenantProjectRequest.fromJson(o.toJson());
       checkDeleteTenantProjectRequest(od as api.DeleteTenantProjectRequest);
@@ -4141,7 +4141,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Documentation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDocumentation();
       var od = api.Documentation.fromJson(o.toJson());
       checkDocumentation(od as api.Documentation);
@@ -4149,7 +4149,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DocumentationRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDocumentationRule();
       var od = api.DocumentationRule.fromJson(o.toJson());
       checkDocumentationRule(od as api.DocumentationRule);
@@ -4157,7 +4157,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -4165,7 +4165,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Endpoint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEndpoint();
       var od = api.Endpoint.fromJson(o.toJson());
       checkEndpoint(od as api.Endpoint);
@@ -4173,7 +4173,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Enum', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnum();
       var od = api.Enum.fromJson(o.toJson());
       checkEnum(od as api.Enum);
@@ -4181,7 +4181,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnumValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnumValue();
       var od = api.EnumValue.fromJson(o.toJson());
       checkEnumValue(od as api.EnumValue);
@@ -4189,7 +4189,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Field', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildField();
       var od = api.Field.fromJson(o.toJson());
       checkField(od as api.Field);
@@ -4197,7 +4197,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Http', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHttp();
       var od = api.Http.fromJson(o.toJson());
       checkHttp(od as api.Http);
@@ -4205,7 +4205,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HttpRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHttpRule();
       var od = api.HttpRule.fromJson(o.toJson());
       checkHttpRule(od as api.HttpRule);
@@ -4213,7 +4213,7 @@ void main() {
   });
 
   unittest.group('obj-schema-JwtLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJwtLocation();
       var od = api.JwtLocation.fromJson(o.toJson());
       checkJwtLocation(od as api.JwtLocation);
@@ -4221,7 +4221,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LabelDescriptor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLabelDescriptor();
       var od = api.LabelDescriptor.fromJson(o.toJson());
       checkLabelDescriptor(od as api.LabelDescriptor);
@@ -4229,7 +4229,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -4237,7 +4237,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTenancyUnitsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTenancyUnitsResponse();
       var od = api.ListTenancyUnitsResponse.fromJson(o.toJson());
       checkListTenancyUnitsResponse(od as api.ListTenancyUnitsResponse);
@@ -4245,7 +4245,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LogDescriptor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLogDescriptor();
       var od = api.LogDescriptor.fromJson(o.toJson());
       checkLogDescriptor(od as api.LogDescriptor);
@@ -4253,7 +4253,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Logging', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLogging();
       var od = api.Logging.fromJson(o.toJson());
       checkLogging(od as api.Logging);
@@ -4261,7 +4261,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LoggingDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLoggingDestination();
       var od = api.LoggingDestination.fromJson(o.toJson());
       checkLoggingDestination(od as api.LoggingDestination);
@@ -4269,7 +4269,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Method', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMethod();
       var od = api.Method.fromJson(o.toJson());
       checkMethod(od as api.Method);
@@ -4277,7 +4277,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricDescriptor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricDescriptor();
       var od = api.MetricDescriptor.fromJson(o.toJson());
       checkMetricDescriptor(od as api.MetricDescriptor);
@@ -4285,7 +4285,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricDescriptorMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricDescriptorMetadata();
       var od = api.MetricDescriptorMetadata.fromJson(o.toJson());
       checkMetricDescriptorMetadata(od as api.MetricDescriptorMetadata);
@@ -4293,7 +4293,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricRule();
       var od = api.MetricRule.fromJson(o.toJson());
       checkMetricRule(od as api.MetricRule);
@@ -4301,7 +4301,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Mixin', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMixin();
       var od = api.Mixin.fromJson(o.toJson());
       checkMixin(od as api.Mixin);
@@ -4309,7 +4309,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MonitoredResourceDescriptor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMonitoredResourceDescriptor();
       var od = api.MonitoredResourceDescriptor.fromJson(o.toJson());
       checkMonitoredResourceDescriptor(od as api.MonitoredResourceDescriptor);
@@ -4317,7 +4317,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Monitoring', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMonitoring();
       var od = api.Monitoring.fromJson(o.toJson());
       checkMonitoring(od as api.Monitoring);
@@ -4325,7 +4325,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MonitoringDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMonitoringDestination();
       var od = api.MonitoringDestination.fromJson(o.toJson());
       checkMonitoringDestination(od as api.MonitoringDestination);
@@ -4333,7 +4333,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OAuthRequirements', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOAuthRequirements();
       var od = api.OAuthRequirements.fromJson(o.toJson());
       checkOAuthRequirements(od as api.OAuthRequirements);
@@ -4341,7 +4341,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -4349,7 +4349,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Option', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOption();
       var od = api.Option.fromJson(o.toJson());
       checkOption(od as api.Option);
@@ -4357,7 +4357,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Page', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPage();
       var od = api.Page.fromJson(o.toJson());
       checkPage(od as api.Page);
@@ -4365,7 +4365,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PolicyBinding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicyBinding();
       var od = api.PolicyBinding.fromJson(o.toJson());
       checkPolicyBinding(od as api.PolicyBinding);
@@ -4373,7 +4373,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Quota', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQuota();
       var od = api.Quota.fromJson(o.toJson());
       checkQuota(od as api.Quota);
@@ -4381,7 +4381,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QuotaLimit', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQuotaLimit();
       var od = api.QuotaLimit.fromJson(o.toJson());
       checkQuotaLimit(od as api.QuotaLimit);
@@ -4389,7 +4389,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RemoveTenantProjectRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRemoveTenantProjectRequest();
       var od = api.RemoveTenantProjectRequest.fromJson(o.toJson());
       checkRemoveTenantProjectRequest(od as api.RemoveTenantProjectRequest);
@@ -4397,7 +4397,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchTenancyUnitsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchTenancyUnitsResponse();
       var od = api.SearchTenancyUnitsResponse.fromJson(o.toJson());
       checkSearchTenancyUnitsResponse(od as api.SearchTenancyUnitsResponse);
@@ -4405,7 +4405,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Service', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildService();
       var od = api.Service.fromJson(o.toJson());
       checkService(od as api.Service);
@@ -4413,7 +4413,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ServiceAccountConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildServiceAccountConfig();
       var od = api.ServiceAccountConfig.fromJson(o.toJson());
       checkServiceAccountConfig(od as api.ServiceAccountConfig);
@@ -4421,7 +4421,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SourceContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSourceContext();
       var od = api.SourceContext.fromJson(o.toJson());
       checkSourceContext(od as api.SourceContext);
@@ -4429,7 +4429,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SourceInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSourceInfo();
       var od = api.SourceInfo.fromJson(o.toJson());
       checkSourceInfo(od as api.SourceInfo);
@@ -4437,7 +4437,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -4445,7 +4445,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SystemParameter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSystemParameter();
       var od = api.SystemParameter.fromJson(o.toJson());
       checkSystemParameter(od as api.SystemParameter);
@@ -4453,7 +4453,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SystemParameterRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSystemParameterRule();
       var od = api.SystemParameterRule.fromJson(o.toJson());
       checkSystemParameterRule(od as api.SystemParameterRule);
@@ -4461,7 +4461,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SystemParameters', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSystemParameters();
       var od = api.SystemParameters.fromJson(o.toJson());
       checkSystemParameters(od as api.SystemParameters);
@@ -4469,7 +4469,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TenancyUnit', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTenancyUnit();
       var od = api.TenancyUnit.fromJson(o.toJson());
       checkTenancyUnit(od as api.TenancyUnit);
@@ -4477,7 +4477,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TenantProjectConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTenantProjectConfig();
       var od = api.TenantProjectConfig.fromJson(o.toJson());
       checkTenantProjectConfig(od as api.TenantProjectConfig);
@@ -4485,7 +4485,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TenantProjectPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTenantProjectPolicy();
       var od = api.TenantProjectPolicy.fromJson(o.toJson());
       checkTenantProjectPolicy(od as api.TenantProjectPolicy);
@@ -4493,7 +4493,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TenantResource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTenantResource();
       var od = api.TenantResource.fromJson(o.toJson());
       checkTenantResource(od as api.TenantResource);
@@ -4501,7 +4501,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Type', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildType();
       var od = api.Type.fromJson(o.toJson());
       checkType(od as api.Type);
@@ -4509,7 +4509,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UndeleteTenantProjectRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUndeleteTenantProjectRequest();
       var od = api.UndeleteTenantProjectRequest.fromJson(o.toJson());
       checkUndeleteTenantProjectRequest(od as api.UndeleteTenantProjectRequest);
@@ -4517,7 +4517,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Usage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsage();
       var od = api.Usage.fromJson(o.toJson());
       checkUsage(od as api.Usage);
@@ -4525,7 +4525,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsageRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsageRule();
       var od = api.UsageRule.fromJson(o.toJson());
       checkUsageRule(od as api.UsageRule);
@@ -4533,7 +4533,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1AddVisibilityLabelsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1AddVisibilityLabelsResponse();
       var od = api.V1AddVisibilityLabelsResponse.fromJson(o.toJson());
       checkV1AddVisibilityLabelsResponse(
@@ -4542,7 +4542,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1Beta1BatchCreateProducerOverridesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1Beta1BatchCreateProducerOverridesResponse();
       var od =
           api.V1Beta1BatchCreateProducerOverridesResponse.fromJson(o.toJson());
@@ -4552,7 +4552,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1Beta1DisableConsumerResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1Beta1DisableConsumerResponse();
       var od = api.V1Beta1DisableConsumerResponse.fromJson(o.toJson());
       checkV1Beta1DisableConsumerResponse(
@@ -4561,7 +4561,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1Beta1EnableConsumerResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1Beta1EnableConsumerResponse();
       var od = api.V1Beta1EnableConsumerResponse.fromJson(o.toJson());
       checkV1Beta1EnableConsumerResponse(
@@ -4570,7 +4570,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1Beta1GenerateServiceIdentityResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1Beta1GenerateServiceIdentityResponse();
       var od = api.V1Beta1GenerateServiceIdentityResponse.fromJson(o.toJson());
       checkV1Beta1GenerateServiceIdentityResponse(
@@ -4579,7 +4579,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1Beta1ImportProducerOverridesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1Beta1ImportProducerOverridesResponse();
       var od = api.V1Beta1ImportProducerOverridesResponse.fromJson(o.toJson());
       checkV1Beta1ImportProducerOverridesResponse(
@@ -4588,7 +4588,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1Beta1ImportProducerQuotaPoliciesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1Beta1ImportProducerQuotaPoliciesResponse();
       var od =
           api.V1Beta1ImportProducerQuotaPoliciesResponse.fromJson(o.toJson());
@@ -4598,7 +4598,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1Beta1ProducerQuotaPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1Beta1ProducerQuotaPolicy();
       var od = api.V1Beta1ProducerQuotaPolicy.fromJson(o.toJson());
       checkV1Beta1ProducerQuotaPolicy(od as api.V1Beta1ProducerQuotaPolicy);
@@ -4606,7 +4606,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1Beta1QuotaOverride', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1Beta1QuotaOverride();
       var od = api.V1Beta1QuotaOverride.fromJson(o.toJson());
       checkV1Beta1QuotaOverride(od as api.V1Beta1QuotaOverride);
@@ -4614,7 +4614,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1Beta1RefreshConsumerResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1Beta1RefreshConsumerResponse();
       var od = api.V1Beta1RefreshConsumerResponse.fromJson(o.toJson());
       checkV1Beta1RefreshConsumerResponse(
@@ -4623,7 +4623,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1Beta1ServiceIdentity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1Beta1ServiceIdentity();
       var od = api.V1Beta1ServiceIdentity.fromJson(o.toJson());
       checkV1Beta1ServiceIdentity(od as api.V1Beta1ServiceIdentity);
@@ -4631,7 +4631,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1DefaultIdentity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1DefaultIdentity();
       var od = api.V1DefaultIdentity.fromJson(o.toJson());
       checkV1DefaultIdentity(od as api.V1DefaultIdentity);
@@ -4639,7 +4639,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1DisableConsumerResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1DisableConsumerResponse();
       var od = api.V1DisableConsumerResponse.fromJson(o.toJson());
       checkV1DisableConsumerResponse(od as api.V1DisableConsumerResponse);
@@ -4647,7 +4647,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1EnableConsumerResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1EnableConsumerResponse();
       var od = api.V1EnableConsumerResponse.fromJson(o.toJson());
       checkV1EnableConsumerResponse(od as api.V1EnableConsumerResponse);
@@ -4655,7 +4655,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1GenerateDefaultIdentityResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1GenerateDefaultIdentityResponse();
       var od = api.V1GenerateDefaultIdentityResponse.fromJson(o.toJson());
       checkV1GenerateDefaultIdentityResponse(
@@ -4664,7 +4664,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1GenerateServiceAccountResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1GenerateServiceAccountResponse();
       var od = api.V1GenerateServiceAccountResponse.fromJson(o.toJson());
       checkV1GenerateServiceAccountResponse(
@@ -4673,7 +4673,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1RefreshConsumerResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1RefreshConsumerResponse();
       var od = api.V1RefreshConsumerResponse.fromJson(o.toJson());
       checkV1RefreshConsumerResponse(od as api.V1RefreshConsumerResponse);
@@ -4681,7 +4681,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1RemoveVisibilityLabelsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1RemoveVisibilityLabelsResponse();
       var od = api.V1RemoveVisibilityLabelsResponse.fromJson(o.toJson());
       checkV1RemoveVisibilityLabelsResponse(
@@ -4690,7 +4690,7 @@ void main() {
   });
 
   unittest.group('obj-schema-V1ServiceAccount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildV1ServiceAccount();
       var od = api.V1ServiceAccount.fromJson(o.toJson());
       checkV1ServiceAccount(od as api.V1ServiceAccount);
@@ -4698,7 +4698,7 @@ void main() {
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.ServiceConsumerManagementApi(mock).operations;
       var arg_request = buildCancelOperationRequest();
@@ -4751,14 +4751,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ServiceConsumerManagementApi(mock).operations;
       var arg_name = 'foo';
@@ -4806,14 +4804,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ServiceConsumerManagementApi(mock).operations;
       var arg_name = 'foo';
@@ -4861,14 +4856,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ServiceConsumerManagementApi(mock).operations;
       var arg_name = 'foo';
@@ -4931,20 +4923,17 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 
   unittest.group('resource-ServicesResource', () {
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.ServiceConsumerManagementApi(mock).services;
       var arg_parent = 'foo';
@@ -5007,21 +4996,18 @@ void main() {
         var resp = convert.json.encode(buildSearchTenancyUnitsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              query: arg_query,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchTenancyUnitsResponse(
-            response as api.SearchTenancyUnitsResponse);
-      })));
+      final response = await res.search(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          query: arg_query,
+          $fields: arg_$fields);
+      checkSearchTenancyUnitsResponse(
+          response as api.SearchTenancyUnitsResponse);
     });
   });
 
   unittest.group('resource-ServicesTenancyUnitsResource', () {
-    unittest.test('method--addProject', () {
+    unittest.test('method--addProject', () async {
       var mock = HttpServerMock();
       var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;
       var arg_request = buildAddTenantProjectRequest();
@@ -5074,14 +5060,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .addProject(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.addProject(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--applyProjectConfig', () {
+    unittest.test('method--applyProjectConfig', () async {
       var mock = HttpServerMock();
       var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;
       var arg_request = buildApplyTenantProjectConfigRequest();
@@ -5135,14 +5119,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .applyProjectConfig(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.applyProjectConfig(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--attachProject', () {
+    unittest.test('method--attachProject', () async {
       var mock = HttpServerMock();
       var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;
       var arg_request = buildAttachTenantProjectRequest();
@@ -5195,14 +5177,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .attachProject(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.attachProject(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;
       var arg_request = buildCreateTenancyUnitRequest();
@@ -5255,14 +5235,12 @@ void main() {
         var resp = convert.json.encode(buildTenancyUnit());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTenancyUnit(response as api.TenancyUnit);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkTenancyUnit(response as api.TenancyUnit);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;
       var arg_name = 'foo';
@@ -5310,14 +5288,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--deleteProject', () {
+    unittest.test('method--deleteProject', () async {
       var mock = HttpServerMock();
       var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;
       var arg_request = buildDeleteTenantProjectRequest();
@@ -5370,14 +5345,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deleteProject(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.deleteProject(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;
       var arg_parent = 'foo';
@@ -5440,18 +5413,15 @@ void main() {
         var resp = convert.json.encode(buildListTenancyUnitsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTenancyUnitsResponse(response as api.ListTenancyUnitsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListTenancyUnitsResponse(response as api.ListTenancyUnitsResponse);
     });
 
-    unittest.test('method--removeProject', () {
+    unittest.test('method--removeProject', () async {
       var mock = HttpServerMock();
       var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;
       var arg_request = buildRemoveTenantProjectRequest();
@@ -5504,14 +5474,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .removeProject(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.removeProject(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--undeleteProject', () {
+    unittest.test('method--undeleteProject', () async {
       var mock = HttpServerMock();
       var res = api.ServiceConsumerManagementApi(mock).services.tenancyUnits;
       var arg_request = buildUndeleteTenantProjectRequest();
@@ -5565,11 +5533,9 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .undeleteProject(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.undeleteProject(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 }

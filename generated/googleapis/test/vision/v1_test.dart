@@ -11910,7 +11910,7 @@ void checkWord(api.Word o) {
 
 void main() {
   unittest.group('obj-schema-AddProductToProductSetRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddProductToProductSetRequest();
       var od = api.AddProductToProductSetRequest.fromJson(o.toJson());
       checkAddProductToProductSetRequest(
@@ -11919,7 +11919,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnnotateFileRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnnotateFileRequest();
       var od = api.AnnotateFileRequest.fromJson(o.toJson());
       checkAnnotateFileRequest(od as api.AnnotateFileRequest);
@@ -11927,7 +11927,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnnotateFileResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnnotateFileResponse();
       var od = api.AnnotateFileResponse.fromJson(o.toJson());
       checkAnnotateFileResponse(od as api.AnnotateFileResponse);
@@ -11935,7 +11935,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnnotateImageRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnnotateImageRequest();
       var od = api.AnnotateImageRequest.fromJson(o.toJson());
       checkAnnotateImageRequest(od as api.AnnotateImageRequest);
@@ -11943,7 +11943,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnnotateImageResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnnotateImageResponse();
       var od = api.AnnotateImageResponse.fromJson(o.toJson());
       checkAnnotateImageResponse(od as api.AnnotateImageResponse);
@@ -11951,7 +11951,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AsyncAnnotateFileRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAsyncAnnotateFileRequest();
       var od = api.AsyncAnnotateFileRequest.fromJson(o.toJson());
       checkAsyncAnnotateFileRequest(od as api.AsyncAnnotateFileRequest);
@@ -11959,7 +11959,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AsyncAnnotateFileResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAsyncAnnotateFileResponse();
       var od = api.AsyncAnnotateFileResponse.fromJson(o.toJson());
       checkAsyncAnnotateFileResponse(od as api.AsyncAnnotateFileResponse);
@@ -11967,7 +11967,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AsyncBatchAnnotateFilesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAsyncBatchAnnotateFilesRequest();
       var od = api.AsyncBatchAnnotateFilesRequest.fromJson(o.toJson());
       checkAsyncBatchAnnotateFilesRequest(
@@ -11976,7 +11976,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AsyncBatchAnnotateFilesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAsyncBatchAnnotateFilesResponse();
       var od = api.AsyncBatchAnnotateFilesResponse.fromJson(o.toJson());
       checkAsyncBatchAnnotateFilesResponse(
@@ -11985,7 +11985,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AsyncBatchAnnotateImagesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAsyncBatchAnnotateImagesRequest();
       var od = api.AsyncBatchAnnotateImagesRequest.fromJson(o.toJson());
       checkAsyncBatchAnnotateImagesRequest(
@@ -11994,7 +11994,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AsyncBatchAnnotateImagesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAsyncBatchAnnotateImagesResponse();
       var od = api.AsyncBatchAnnotateImagesResponse.fromJson(o.toJson());
       checkAsyncBatchAnnotateImagesResponse(
@@ -12003,7 +12003,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchAnnotateFilesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchAnnotateFilesRequest();
       var od = api.BatchAnnotateFilesRequest.fromJson(o.toJson());
       checkBatchAnnotateFilesRequest(od as api.BatchAnnotateFilesRequest);
@@ -12011,7 +12011,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchAnnotateFilesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchAnnotateFilesResponse();
       var od = api.BatchAnnotateFilesResponse.fromJson(o.toJson());
       checkBatchAnnotateFilesResponse(od as api.BatchAnnotateFilesResponse);
@@ -12019,7 +12019,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchAnnotateImagesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchAnnotateImagesRequest();
       var od = api.BatchAnnotateImagesRequest.fromJson(o.toJson());
       checkBatchAnnotateImagesRequest(od as api.BatchAnnotateImagesRequest);
@@ -12027,7 +12027,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchAnnotateImagesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchAnnotateImagesResponse();
       var od = api.BatchAnnotateImagesResponse.fromJson(o.toJson());
       checkBatchAnnotateImagesResponse(od as api.BatchAnnotateImagesResponse);
@@ -12035,7 +12035,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchOperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchOperationMetadata();
       var od = api.BatchOperationMetadata.fromJson(o.toJson());
       checkBatchOperationMetadata(od as api.BatchOperationMetadata);
@@ -12043,7 +12043,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Block', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBlock();
       var od = api.Block.fromJson(o.toJson());
       checkBlock(od as api.Block);
@@ -12051,7 +12051,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BoundingPoly', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBoundingPoly();
       var od = api.BoundingPoly.fromJson(o.toJson());
       checkBoundingPoly(od as api.BoundingPoly);
@@ -12059,7 +12059,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od as api.CancelOperationRequest);
@@ -12067,7 +12067,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Color', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildColor();
       var od = api.Color.fromJson(o.toJson());
       checkColor(od as api.Color);
@@ -12075,7 +12075,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ColorInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildColorInfo();
       var od = api.ColorInfo.fromJson(o.toJson());
       checkColorInfo(od as api.ColorInfo);
@@ -12083,7 +12083,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CropHint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCropHint();
       var od = api.CropHint.fromJson(o.toJson());
       checkCropHint(od as api.CropHint);
@@ -12091,7 +12091,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CropHintsAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCropHintsAnnotation();
       var od = api.CropHintsAnnotation.fromJson(o.toJson());
       checkCropHintsAnnotation(od as api.CropHintsAnnotation);
@@ -12099,7 +12099,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CropHintsParams', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCropHintsParams();
       var od = api.CropHintsParams.fromJson(o.toJson());
       checkCropHintsParams(od as api.CropHintsParams);
@@ -12107,7 +12107,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DetectedBreak', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDetectedBreak();
       var od = api.DetectedBreak.fromJson(o.toJson());
       checkDetectedBreak(od as api.DetectedBreak);
@@ -12115,7 +12115,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DetectedLanguage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDetectedLanguage();
       var od = api.DetectedLanguage.fromJson(o.toJson());
       checkDetectedLanguage(od as api.DetectedLanguage);
@@ -12123,7 +12123,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DominantColorsAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDominantColorsAnnotation();
       var od = api.DominantColorsAnnotation.fromJson(o.toJson());
       checkDominantColorsAnnotation(od as api.DominantColorsAnnotation);
@@ -12131,7 +12131,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -12139,7 +12139,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EntityAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntityAnnotation();
       var od = api.EntityAnnotation.fromJson(o.toJson());
       checkEntityAnnotation(od as api.EntityAnnotation);
@@ -12147,7 +12147,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FaceAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFaceAnnotation();
       var od = api.FaceAnnotation.fromJson(o.toJson());
       checkFaceAnnotation(od as api.FaceAnnotation);
@@ -12155,7 +12155,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Feature', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFeature();
       var od = api.Feature.fromJson(o.toJson());
       checkFeature(od as api.Feature);
@@ -12163,7 +12163,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GcsDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGcsDestination();
       var od = api.GcsDestination.fromJson(o.toJson());
       checkGcsDestination(od as api.GcsDestination);
@@ -12171,7 +12171,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GcsSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGcsSource();
       var od = api.GcsSource.fromJson(o.toJson());
       checkGcsSource(od as api.GcsSource);
@@ -12180,7 +12180,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1AnnotateFileResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1AnnotateFileResponse();
       var od = api.GoogleCloudVisionV1p1beta1AnnotateFileResponse.fromJson(
           o.toJson());
@@ -12191,7 +12191,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1AnnotateImageResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1AnnotateImageResponse();
       var od = api.GoogleCloudVisionV1p1beta1AnnotateImageResponse.fromJson(
           o.toJson());
@@ -12202,7 +12202,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse();
       var od = api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse.fromJson(
           o.toJson());
@@ -12214,7 +12214,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse();
       var od = api.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse
           .fromJson(o.toJson());
@@ -12224,7 +12224,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Block', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1Block();
       var od = api.GoogleCloudVisionV1p1beta1Block.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1Block(
@@ -12233,7 +12233,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1BoundingPoly', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1BoundingPoly();
       var od = api.GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1BoundingPoly(
@@ -12242,7 +12242,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1ColorInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1ColorInfo();
       var od = api.GoogleCloudVisionV1p1beta1ColorInfo.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1ColorInfo(
@@ -12251,7 +12251,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1CropHint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1CropHint();
       var od = api.GoogleCloudVisionV1p1beta1CropHint.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1CropHint(
@@ -12261,7 +12261,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1CropHintsAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1CropHintsAnnotation();
       var od = api.GoogleCloudVisionV1p1beta1CropHintsAnnotation.fromJson(
           o.toJson());
@@ -12272,7 +12272,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p1beta1DominantColorsAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1DominantColorsAnnotation();
       var od = api.GoogleCloudVisionV1p1beta1DominantColorsAnnotation.fromJson(
           o.toJson());
@@ -12282,7 +12282,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1EntityAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1EntityAnnotation();
       var od =
           api.GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(o.toJson());
@@ -12292,7 +12292,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1FaceAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1FaceAnnotation();
       var od =
           api.GoogleCloudVisionV1p1beta1FaceAnnotation.fromJson(o.toJson());
@@ -12303,7 +12303,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1FaceAnnotationLandmark',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1FaceAnnotationLandmark();
       var od = api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark.fromJson(
           o.toJson());
@@ -12313,7 +12313,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1GcsDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1GcsDestination();
       var od =
           api.GoogleCloudVisionV1p1beta1GcsDestination.fromJson(o.toJson());
@@ -12323,7 +12323,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1GcsSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1GcsSource();
       var od = api.GoogleCloudVisionV1p1beta1GcsSource.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1GcsSource(
@@ -12333,7 +12333,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1ImageAnnotationContext',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1ImageAnnotationContext();
       var od = api.GoogleCloudVisionV1p1beta1ImageAnnotationContext.fromJson(
           o.toJson());
@@ -12343,7 +12343,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1ImageProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1ImageProperties();
       var od =
           api.GoogleCloudVisionV1p1beta1ImageProperties.fromJson(o.toJson());
@@ -12353,7 +12353,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1InputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1InputConfig();
       var od = api.GoogleCloudVisionV1p1beta1InputConfig.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1InputConfig(
@@ -12363,7 +12363,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation();
       var od = api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation.fromJson(
           o.toJson());
@@ -12373,7 +12373,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1LocationInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1LocationInfo();
       var od = api.GoogleCloudVisionV1p1beta1LocationInfo.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1LocationInfo(
@@ -12382,7 +12382,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1NormalizedVertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1NormalizedVertex();
       var od =
           api.GoogleCloudVisionV1p1beta1NormalizedVertex.fromJson(o.toJson());
@@ -12392,7 +12392,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1OperationMetadata();
       var od =
           api.GoogleCloudVisionV1p1beta1OperationMetadata.fromJson(o.toJson());
@@ -12402,7 +12402,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1OutputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1OutputConfig();
       var od = api.GoogleCloudVisionV1p1beta1OutputConfig.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1OutputConfig(
@@ -12411,7 +12411,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Page', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1Page();
       var od = api.GoogleCloudVisionV1p1beta1Page.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1Page(
@@ -12420,7 +12420,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Paragraph', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1Paragraph();
       var od = api.GoogleCloudVisionV1p1beta1Paragraph.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1Paragraph(
@@ -12429,7 +12429,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Position', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1Position();
       var od = api.GoogleCloudVisionV1p1beta1Position.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1Position(
@@ -12438,7 +12438,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Product', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1Product();
       var od = api.GoogleCloudVisionV1p1beta1Product.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1Product(
@@ -12447,7 +12447,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1ProductKeyValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1ProductKeyValue();
       var od =
           api.GoogleCloudVisionV1p1beta1ProductKeyValue.fromJson(o.toJson());
@@ -12458,7 +12458,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1ProductSearchResults',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1ProductSearchResults();
       var od = api.GoogleCloudVisionV1p1beta1ProductSearchResults.fromJson(
           o.toJson());
@@ -12470,7 +12470,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult();
       var od = api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult
@@ -12483,7 +12483,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation();
       var od =
@@ -12497,7 +12497,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p1beta1ProductSearchResultsResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1ProductSearchResultsResult();
       var od =
           api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult.fromJson(
@@ -12508,7 +12508,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Property', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1Property();
       var od = api.GoogleCloudVisionV1p1beta1Property.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1Property(
@@ -12518,7 +12518,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1SafeSearchAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1SafeSearchAnnotation();
       var od = api.GoogleCloudVisionV1p1beta1SafeSearchAnnotation.fromJson(
           o.toJson());
@@ -12528,7 +12528,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Symbol', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1Symbol();
       var od = api.GoogleCloudVisionV1p1beta1Symbol.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1Symbol(
@@ -12537,7 +12537,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1TextAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1TextAnnotation();
       var od =
           api.GoogleCloudVisionV1p1beta1TextAnnotation.fromJson(o.toJson());
@@ -12548,7 +12548,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak();
       var od =
           api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak.fromJson(
@@ -12561,7 +12561,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage();
       var od =
           api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage.fromJson(
@@ -12573,7 +12573,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p1beta1TextAnnotationTextProperty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1TextAnnotationTextProperty();
       var od =
           api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
@@ -12584,7 +12584,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Vertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1Vertex();
       var od = api.GoogleCloudVisionV1p1beta1Vertex.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1Vertex(
@@ -12593,7 +12593,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1WebDetection', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1WebDetection();
       var od = api.GoogleCloudVisionV1p1beta1WebDetection.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1WebDetection(
@@ -12603,7 +12603,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1WebDetectionWebEntity',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1WebDetectionWebEntity();
       var od = api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity.fromJson(
           o.toJson());
@@ -12614,7 +12614,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1WebDetectionWebImage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1WebDetectionWebImage();
       var od = api.GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
           o.toJson());
@@ -12625,7 +12625,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1WebDetectionWebLabel',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1WebDetectionWebLabel();
       var od = api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel.fromJson(
           o.toJson());
@@ -12636,7 +12636,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1WebDetectionWebPage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1WebDetectionWebPage();
       var od = api.GoogleCloudVisionV1p1beta1WebDetectionWebPage.fromJson(
           o.toJson());
@@ -12646,7 +12646,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Word', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1Word();
       var od = api.GoogleCloudVisionV1p1beta1Word.fromJson(o.toJson());
       checkGoogleCloudVisionV1p1beta1Word(
@@ -12656,7 +12656,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1AnnotateFileResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1AnnotateFileResponse();
       var od = api.GoogleCloudVisionV1p2beta1AnnotateFileResponse.fromJson(
           o.toJson());
@@ -12667,7 +12667,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1AnnotateImageResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1AnnotateImageResponse();
       var od = api.GoogleCloudVisionV1p2beta1AnnotateImageResponse.fromJson(
           o.toJson());
@@ -12678,7 +12678,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse();
       var od = api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse.fromJson(
           o.toJson());
@@ -12690,7 +12690,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse();
       var od = api.GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse
           .fromJson(o.toJson());
@@ -12700,7 +12700,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Block', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1Block();
       var od = api.GoogleCloudVisionV1p2beta1Block.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1Block(
@@ -12709,7 +12709,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1BoundingPoly', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1BoundingPoly();
       var od = api.GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1BoundingPoly(
@@ -12718,7 +12718,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1ColorInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1ColorInfo();
       var od = api.GoogleCloudVisionV1p2beta1ColorInfo.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1ColorInfo(
@@ -12727,7 +12727,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1CropHint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1CropHint();
       var od = api.GoogleCloudVisionV1p2beta1CropHint.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1CropHint(
@@ -12737,7 +12737,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1CropHintsAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1CropHintsAnnotation();
       var od = api.GoogleCloudVisionV1p2beta1CropHintsAnnotation.fromJson(
           o.toJson());
@@ -12748,7 +12748,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p2beta1DominantColorsAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1DominantColorsAnnotation();
       var od = api.GoogleCloudVisionV1p2beta1DominantColorsAnnotation.fromJson(
           o.toJson());
@@ -12758,7 +12758,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1EntityAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1EntityAnnotation();
       var od =
           api.GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(o.toJson());
@@ -12768,7 +12768,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1FaceAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1FaceAnnotation();
       var od =
           api.GoogleCloudVisionV1p2beta1FaceAnnotation.fromJson(o.toJson());
@@ -12779,7 +12779,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1FaceAnnotationLandmark',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1FaceAnnotationLandmark();
       var od = api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark.fromJson(
           o.toJson());
@@ -12789,7 +12789,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1GcsDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1GcsDestination();
       var od =
           api.GoogleCloudVisionV1p2beta1GcsDestination.fromJson(o.toJson());
@@ -12799,7 +12799,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1GcsSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1GcsSource();
       var od = api.GoogleCloudVisionV1p2beta1GcsSource.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1GcsSource(
@@ -12809,7 +12809,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1ImageAnnotationContext',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1ImageAnnotationContext();
       var od = api.GoogleCloudVisionV1p2beta1ImageAnnotationContext.fromJson(
           o.toJson());
@@ -12819,7 +12819,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1ImageProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1ImageProperties();
       var od =
           api.GoogleCloudVisionV1p2beta1ImageProperties.fromJson(o.toJson());
@@ -12829,7 +12829,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1InputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1InputConfig();
       var od = api.GoogleCloudVisionV1p2beta1InputConfig.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1InputConfig(
@@ -12839,7 +12839,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation();
       var od = api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation.fromJson(
           o.toJson());
@@ -12849,7 +12849,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1LocationInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1LocationInfo();
       var od = api.GoogleCloudVisionV1p2beta1LocationInfo.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1LocationInfo(
@@ -12858,7 +12858,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1NormalizedVertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1NormalizedVertex();
       var od =
           api.GoogleCloudVisionV1p2beta1NormalizedVertex.fromJson(o.toJson());
@@ -12868,7 +12868,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1OperationMetadata();
       var od =
           api.GoogleCloudVisionV1p2beta1OperationMetadata.fromJson(o.toJson());
@@ -12878,7 +12878,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1OutputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1OutputConfig();
       var od = api.GoogleCloudVisionV1p2beta1OutputConfig.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1OutputConfig(
@@ -12887,7 +12887,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Page', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1Page();
       var od = api.GoogleCloudVisionV1p2beta1Page.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1Page(
@@ -12896,7 +12896,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Paragraph', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1Paragraph();
       var od = api.GoogleCloudVisionV1p2beta1Paragraph.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1Paragraph(
@@ -12905,7 +12905,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Position', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1Position();
       var od = api.GoogleCloudVisionV1p2beta1Position.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1Position(
@@ -12914,7 +12914,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Product', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1Product();
       var od = api.GoogleCloudVisionV1p2beta1Product.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1Product(
@@ -12923,7 +12923,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1ProductKeyValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1ProductKeyValue();
       var od =
           api.GoogleCloudVisionV1p2beta1ProductKeyValue.fromJson(o.toJson());
@@ -12934,7 +12934,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1ProductSearchResults',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1ProductSearchResults();
       var od = api.GoogleCloudVisionV1p2beta1ProductSearchResults.fromJson(
           o.toJson());
@@ -12946,7 +12946,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult();
       var od = api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
@@ -12959,7 +12959,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation();
       var od =
@@ -12973,7 +12973,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p2beta1ProductSearchResultsResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1ProductSearchResultsResult();
       var od =
           api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult.fromJson(
@@ -12984,7 +12984,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Property', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1Property();
       var od = api.GoogleCloudVisionV1p2beta1Property.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1Property(
@@ -12994,7 +12994,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1SafeSearchAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1SafeSearchAnnotation();
       var od = api.GoogleCloudVisionV1p2beta1SafeSearchAnnotation.fromJson(
           o.toJson());
@@ -13004,7 +13004,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Symbol', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1Symbol();
       var od = api.GoogleCloudVisionV1p2beta1Symbol.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1Symbol(
@@ -13013,7 +13013,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1TextAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1TextAnnotation();
       var od =
           api.GoogleCloudVisionV1p2beta1TextAnnotation.fromJson(o.toJson());
@@ -13024,7 +13024,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak();
       var od =
           api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak.fromJson(
@@ -13037,7 +13037,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage();
       var od =
           api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage.fromJson(
@@ -13049,7 +13049,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p2beta1TextAnnotationTextProperty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1TextAnnotationTextProperty();
       var od =
           api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
@@ -13060,7 +13060,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Vertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1Vertex();
       var od = api.GoogleCloudVisionV1p2beta1Vertex.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1Vertex(
@@ -13069,7 +13069,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1WebDetection', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1WebDetection();
       var od = api.GoogleCloudVisionV1p2beta1WebDetection.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1WebDetection(
@@ -13079,7 +13079,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1WebDetectionWebEntity',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1WebDetectionWebEntity();
       var od = api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity.fromJson(
           o.toJson());
@@ -13090,7 +13090,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1WebDetectionWebImage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1WebDetectionWebImage();
       var od = api.GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
           o.toJson());
@@ -13101,7 +13101,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1WebDetectionWebLabel',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1WebDetectionWebLabel();
       var od = api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel.fromJson(
           o.toJson());
@@ -13112,7 +13112,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1WebDetectionWebPage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1WebDetectionWebPage();
       var od = api.GoogleCloudVisionV1p2beta1WebDetectionWebPage.fromJson(
           o.toJson());
@@ -13122,7 +13122,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Word', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1Word();
       var od = api.GoogleCloudVisionV1p2beta1Word.fromJson(o.toJson());
       checkGoogleCloudVisionV1p2beta1Word(
@@ -13132,7 +13132,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1AnnotateFileResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1AnnotateFileResponse();
       var od = api.GoogleCloudVisionV1p3beta1AnnotateFileResponse.fromJson(
           o.toJson());
@@ -13143,7 +13143,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1AnnotateImageResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1AnnotateImageResponse();
       var od = api.GoogleCloudVisionV1p3beta1AnnotateImageResponse.fromJson(
           o.toJson());
@@ -13154,7 +13154,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse();
       var od = api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse.fromJson(
           o.toJson());
@@ -13166,7 +13166,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse();
       var od = api.GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse
           .fromJson(o.toJson());
@@ -13177,7 +13177,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1BatchOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1BatchOperationMetadata();
       var od = api.GoogleCloudVisionV1p3beta1BatchOperationMetadata.fromJson(
           o.toJson());
@@ -13187,7 +13187,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Block', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1Block();
       var od = api.GoogleCloudVisionV1p3beta1Block.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1Block(
@@ -13196,7 +13196,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1BoundingPoly', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1BoundingPoly();
       var od = api.GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1BoundingPoly(
@@ -13205,7 +13205,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ColorInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1ColorInfo();
       var od = api.GoogleCloudVisionV1p3beta1ColorInfo.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1ColorInfo(
@@ -13214,7 +13214,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1CropHint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1CropHint();
       var od = api.GoogleCloudVisionV1p3beta1CropHint.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1CropHint(
@@ -13224,7 +13224,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1CropHintsAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1CropHintsAnnotation();
       var od = api.GoogleCloudVisionV1p3beta1CropHintsAnnotation.fromJson(
           o.toJson());
@@ -13235,7 +13235,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p3beta1DominantColorsAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1DominantColorsAnnotation();
       var od = api.GoogleCloudVisionV1p3beta1DominantColorsAnnotation.fromJson(
           o.toJson());
@@ -13245,7 +13245,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1EntityAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1EntityAnnotation();
       var od =
           api.GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(o.toJson());
@@ -13255,7 +13255,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1FaceAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1FaceAnnotation();
       var od =
           api.GoogleCloudVisionV1p3beta1FaceAnnotation.fromJson(o.toJson());
@@ -13266,7 +13266,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1FaceAnnotationLandmark',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1FaceAnnotationLandmark();
       var od = api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark.fromJson(
           o.toJson());
@@ -13276,7 +13276,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1GcsDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1GcsDestination();
       var od =
           api.GoogleCloudVisionV1p3beta1GcsDestination.fromJson(o.toJson());
@@ -13286,7 +13286,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1GcsSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1GcsSource();
       var od = api.GoogleCloudVisionV1p3beta1GcsSource.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1GcsSource(
@@ -13296,7 +13296,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ImageAnnotationContext',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1ImageAnnotationContext();
       var od = api.GoogleCloudVisionV1p3beta1ImageAnnotationContext.fromJson(
           o.toJson());
@@ -13306,7 +13306,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ImageProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1ImageProperties();
       var od =
           api.GoogleCloudVisionV1p3beta1ImageProperties.fromJson(o.toJson());
@@ -13317,7 +13317,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p3beta1ImportProductSetsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1ImportProductSetsResponse();
       var od = api.GoogleCloudVisionV1p3beta1ImportProductSetsResponse.fromJson(
           o.toJson());
@@ -13327,7 +13327,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1InputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1InputConfig();
       var od = api.GoogleCloudVisionV1p3beta1InputConfig.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1InputConfig(
@@ -13337,7 +13337,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation();
       var od = api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation.fromJson(
           o.toJson());
@@ -13347,7 +13347,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1LocationInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1LocationInfo();
       var od = api.GoogleCloudVisionV1p3beta1LocationInfo.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1LocationInfo(
@@ -13356,7 +13356,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1NormalizedVertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1NormalizedVertex();
       var od =
           api.GoogleCloudVisionV1p3beta1NormalizedVertex.fromJson(o.toJson());
@@ -13366,7 +13366,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1OperationMetadata();
       var od =
           api.GoogleCloudVisionV1p3beta1OperationMetadata.fromJson(o.toJson());
@@ -13376,7 +13376,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1OutputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1OutputConfig();
       var od = api.GoogleCloudVisionV1p3beta1OutputConfig.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1OutputConfig(
@@ -13385,7 +13385,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Page', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1Page();
       var od = api.GoogleCloudVisionV1p3beta1Page.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1Page(
@@ -13394,7 +13394,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Paragraph', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1Paragraph();
       var od = api.GoogleCloudVisionV1p3beta1Paragraph.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1Paragraph(
@@ -13403,7 +13403,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Position', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1Position();
       var od = api.GoogleCloudVisionV1p3beta1Position.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1Position(
@@ -13412,7 +13412,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Product', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1Product();
       var od = api.GoogleCloudVisionV1p3beta1Product.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1Product(
@@ -13421,7 +13421,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ProductKeyValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1ProductKeyValue();
       var od =
           api.GoogleCloudVisionV1p3beta1ProductKeyValue.fromJson(o.toJson());
@@ -13432,7 +13432,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ProductSearchResults',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1ProductSearchResults();
       var od = api.GoogleCloudVisionV1p3beta1ProductSearchResults.fromJson(
           o.toJson());
@@ -13444,7 +13444,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult();
       var od = api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
@@ -13457,7 +13457,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation();
       var od =
@@ -13471,7 +13471,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p3beta1ProductSearchResultsResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1ProductSearchResultsResult();
       var od =
           api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult.fromJson(
@@ -13482,7 +13482,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Property', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1Property();
       var od = api.GoogleCloudVisionV1p3beta1Property.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1Property(
@@ -13491,7 +13491,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ReferenceImage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1ReferenceImage();
       var od =
           api.GoogleCloudVisionV1p3beta1ReferenceImage.fromJson(o.toJson());
@@ -13502,7 +13502,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1SafeSearchAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1SafeSearchAnnotation();
       var od = api.GoogleCloudVisionV1p3beta1SafeSearchAnnotation.fromJson(
           o.toJson());
@@ -13512,7 +13512,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Symbol', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1Symbol();
       var od = api.GoogleCloudVisionV1p3beta1Symbol.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1Symbol(
@@ -13521,7 +13521,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1TextAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1TextAnnotation();
       var od =
           api.GoogleCloudVisionV1p3beta1TextAnnotation.fromJson(o.toJson());
@@ -13532,7 +13532,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak();
       var od =
           api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak.fromJson(
@@ -13545,7 +13545,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage();
       var od =
           api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage.fromJson(
@@ -13557,7 +13557,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p3beta1TextAnnotationTextProperty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1TextAnnotationTextProperty();
       var od =
           api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
@@ -13568,7 +13568,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Vertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1Vertex();
       var od = api.GoogleCloudVisionV1p3beta1Vertex.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1Vertex(
@@ -13577,7 +13577,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1WebDetection', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1WebDetection();
       var od = api.GoogleCloudVisionV1p3beta1WebDetection.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1WebDetection(
@@ -13587,7 +13587,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1WebDetectionWebEntity',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1WebDetectionWebEntity();
       var od = api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity.fromJson(
           o.toJson());
@@ -13598,7 +13598,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1WebDetectionWebImage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1WebDetectionWebImage();
       var od = api.GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
           o.toJson());
@@ -13609,7 +13609,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1WebDetectionWebLabel',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1WebDetectionWebLabel();
       var od = api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel.fromJson(
           o.toJson());
@@ -13620,7 +13620,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1WebDetectionWebPage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1WebDetectionWebPage();
       var od = api.GoogleCloudVisionV1p3beta1WebDetectionWebPage.fromJson(
           o.toJson());
@@ -13630,7 +13630,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Word', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1Word();
       var od = api.GoogleCloudVisionV1p3beta1Word.fromJson(o.toJson());
       checkGoogleCloudVisionV1p3beta1Word(
@@ -13640,7 +13640,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1AnnotateFileResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1AnnotateFileResponse();
       var od = api.GoogleCloudVisionV1p4beta1AnnotateFileResponse.fromJson(
           o.toJson());
@@ -13651,7 +13651,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1AnnotateImageResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1AnnotateImageResponse();
       var od = api.GoogleCloudVisionV1p4beta1AnnotateImageResponse.fromJson(
           o.toJson());
@@ -13662,7 +13662,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse();
       var od = api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse.fromJson(
           o.toJson());
@@ -13674,7 +13674,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse();
       var od = api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse
           .fromJson(o.toJson());
@@ -13686,7 +13686,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse();
       var od = api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse
           .fromJson(o.toJson());
@@ -13697,7 +13697,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse();
       var od =
           api.GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse.fromJson(
@@ -13709,7 +13709,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1BatchOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1BatchOperationMetadata();
       var od = api.GoogleCloudVisionV1p4beta1BatchOperationMetadata.fromJson(
           o.toJson());
@@ -13719,7 +13719,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Block', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Block();
       var od = api.GoogleCloudVisionV1p4beta1Block.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Block(
@@ -13728,7 +13728,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1BoundingPoly', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1BoundingPoly();
       var od = api.GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1BoundingPoly(
@@ -13737,7 +13737,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Celebrity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Celebrity();
       var od = api.GoogleCloudVisionV1p4beta1Celebrity.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Celebrity(
@@ -13746,7 +13746,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ColorInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1ColorInfo();
       var od = api.GoogleCloudVisionV1p4beta1ColorInfo.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1ColorInfo(
@@ -13755,7 +13755,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1CropHint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1CropHint();
       var od = api.GoogleCloudVisionV1p4beta1CropHint.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1CropHint(
@@ -13765,7 +13765,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1CropHintsAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1CropHintsAnnotation();
       var od = api.GoogleCloudVisionV1p4beta1CropHintsAnnotation.fromJson(
           o.toJson());
@@ -13776,7 +13776,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1DominantColorsAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1DominantColorsAnnotation();
       var od = api.GoogleCloudVisionV1p4beta1DominantColorsAnnotation.fromJson(
           o.toJson());
@@ -13786,7 +13786,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1EntityAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1EntityAnnotation();
       var od =
           api.GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(o.toJson());
@@ -13796,7 +13796,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1FaceAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1FaceAnnotation();
       var od =
           api.GoogleCloudVisionV1p4beta1FaceAnnotation.fromJson(o.toJson());
@@ -13807,7 +13807,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1FaceAnnotationLandmark',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1FaceAnnotationLandmark();
       var od = api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark.fromJson(
           o.toJson());
@@ -13818,7 +13818,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1FaceRecognitionResult',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1FaceRecognitionResult();
       var od = api.GoogleCloudVisionV1p4beta1FaceRecognitionResult.fromJson(
           o.toJson());
@@ -13828,7 +13828,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1GcsDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1GcsDestination();
       var od =
           api.GoogleCloudVisionV1p4beta1GcsDestination.fromJson(o.toJson());
@@ -13838,7 +13838,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1GcsSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1GcsSource();
       var od = api.GoogleCloudVisionV1p4beta1GcsSource.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1GcsSource(
@@ -13848,7 +13848,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ImageAnnotationContext',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1ImageAnnotationContext();
       var od = api.GoogleCloudVisionV1p4beta1ImageAnnotationContext.fromJson(
           o.toJson());
@@ -13858,7 +13858,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ImageProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1ImageProperties();
       var od =
           api.GoogleCloudVisionV1p4beta1ImageProperties.fromJson(o.toJson());
@@ -13869,7 +13869,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1ImportProductSetsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1ImportProductSetsResponse();
       var od = api.GoogleCloudVisionV1p4beta1ImportProductSetsResponse.fromJson(
           o.toJson());
@@ -13879,7 +13879,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1InputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1InputConfig();
       var od = api.GoogleCloudVisionV1p4beta1InputConfig.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1InputConfig(
@@ -13889,7 +13889,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation();
       var od = api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation.fromJson(
           o.toJson());
@@ -13899,7 +13899,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1LocationInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1LocationInfo();
       var od = api.GoogleCloudVisionV1p4beta1LocationInfo.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1LocationInfo(
@@ -13908,7 +13908,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1NormalizedVertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1NormalizedVertex();
       var od =
           api.GoogleCloudVisionV1p4beta1NormalizedVertex.fromJson(o.toJson());
@@ -13918,7 +13918,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1OperationMetadata();
       var od =
           api.GoogleCloudVisionV1p4beta1OperationMetadata.fromJson(o.toJson());
@@ -13928,7 +13928,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1OutputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1OutputConfig();
       var od = api.GoogleCloudVisionV1p4beta1OutputConfig.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1OutputConfig(
@@ -13937,7 +13937,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Page', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Page();
       var od = api.GoogleCloudVisionV1p4beta1Page.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Page(
@@ -13946,7 +13946,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Paragraph', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Paragraph();
       var od = api.GoogleCloudVisionV1p4beta1Paragraph.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Paragraph(
@@ -13955,7 +13955,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Position', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Position();
       var od = api.GoogleCloudVisionV1p4beta1Position.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Position(
@@ -13964,7 +13964,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Product', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Product();
       var od = api.GoogleCloudVisionV1p4beta1Product.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Product(
@@ -13973,7 +13973,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ProductKeyValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1ProductKeyValue();
       var od =
           api.GoogleCloudVisionV1p4beta1ProductKeyValue.fromJson(o.toJson());
@@ -13984,7 +13984,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ProductSearchResults',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1ProductSearchResults();
       var od = api.GoogleCloudVisionV1p4beta1ProductSearchResults.fromJson(
           o.toJson());
@@ -13996,7 +13996,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult();
       var od = api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult
@@ -14009,7 +14009,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation();
       var od =
@@ -14023,7 +14023,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1ProductSearchResultsResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1ProductSearchResultsResult();
       var od =
           api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult.fromJson(
@@ -14034,7 +14034,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Property', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Property();
       var od = api.GoogleCloudVisionV1p4beta1Property.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Property(
@@ -14043,7 +14043,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ReferenceImage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1ReferenceImage();
       var od =
           api.GoogleCloudVisionV1p4beta1ReferenceImage.fromJson(o.toJson());
@@ -14054,7 +14054,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1SafeSearchAnnotation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1SafeSearchAnnotation();
       var od = api.GoogleCloudVisionV1p4beta1SafeSearchAnnotation.fromJson(
           o.toJson());
@@ -14064,7 +14064,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Symbol', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Symbol();
       var od = api.GoogleCloudVisionV1p4beta1Symbol.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Symbol(
@@ -14073,7 +14073,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1TextAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1TextAnnotation();
       var od =
           api.GoogleCloudVisionV1p4beta1TextAnnotation.fromJson(o.toJson());
@@ -14084,7 +14084,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak();
       var od =
           api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak.fromJson(
@@ -14097,7 +14097,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage();
       var od =
           api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage.fromJson(
@@ -14109,7 +14109,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudVisionV1p4beta1TextAnnotationTextProperty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1TextAnnotationTextProperty();
       var od =
           api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
@@ -14120,7 +14120,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Vertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Vertex();
       var od = api.GoogleCloudVisionV1p4beta1Vertex.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Vertex(
@@ -14129,7 +14129,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1WebDetection', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1WebDetection();
       var od = api.GoogleCloudVisionV1p4beta1WebDetection.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1WebDetection(
@@ -14139,7 +14139,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1WebDetectionWebEntity',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1WebDetectionWebEntity();
       var od = api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity.fromJson(
           o.toJson());
@@ -14150,7 +14150,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1WebDetectionWebImage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1WebDetectionWebImage();
       var od = api.GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
           o.toJson());
@@ -14161,7 +14161,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1WebDetectionWebLabel',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1WebDetectionWebLabel();
       var od = api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel.fromJson(
           o.toJson());
@@ -14172,7 +14172,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1WebDetectionWebPage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1WebDetectionWebPage();
       var od = api.GoogleCloudVisionV1p4beta1WebDetectionWebPage.fromJson(
           o.toJson());
@@ -14182,7 +14182,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Word', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Word();
       var od = api.GoogleCloudVisionV1p4beta1Word.fromJson(o.toJson());
       checkGoogleCloudVisionV1p4beta1Word(
@@ -14191,7 +14191,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GroupedResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroupedResult();
       var od = api.GroupedResult.fromJson(o.toJson());
       checkGroupedResult(od as api.GroupedResult);
@@ -14199,7 +14199,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Image', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImage();
       var od = api.Image.fromJson(o.toJson());
       checkImage(od as api.Image);
@@ -14207,7 +14207,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImageAnnotationContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImageAnnotationContext();
       var od = api.ImageAnnotationContext.fromJson(o.toJson());
       checkImageAnnotationContext(od as api.ImageAnnotationContext);
@@ -14215,7 +14215,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImageContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImageContext();
       var od = api.ImageContext.fromJson(o.toJson());
       checkImageContext(od as api.ImageContext);
@@ -14223,7 +14223,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImageProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImageProperties();
       var od = api.ImageProperties.fromJson(o.toJson());
       checkImageProperties(od as api.ImageProperties);
@@ -14231,7 +14231,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImageSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImageSource();
       var od = api.ImageSource.fromJson(o.toJson());
       checkImageSource(od as api.ImageSource);
@@ -14239,7 +14239,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImportProductSetsGcsSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImportProductSetsGcsSource();
       var od = api.ImportProductSetsGcsSource.fromJson(o.toJson());
       checkImportProductSetsGcsSource(od as api.ImportProductSetsGcsSource);
@@ -14247,7 +14247,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImportProductSetsInputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImportProductSetsInputConfig();
       var od = api.ImportProductSetsInputConfig.fromJson(o.toJson());
       checkImportProductSetsInputConfig(od as api.ImportProductSetsInputConfig);
@@ -14255,7 +14255,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImportProductSetsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImportProductSetsRequest();
       var od = api.ImportProductSetsRequest.fromJson(o.toJson());
       checkImportProductSetsRequest(od as api.ImportProductSetsRequest);
@@ -14263,7 +14263,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImportProductSetsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImportProductSetsResponse();
       var od = api.ImportProductSetsResponse.fromJson(o.toJson());
       checkImportProductSetsResponse(od as api.ImportProductSetsResponse);
@@ -14271,7 +14271,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInputConfig();
       var od = api.InputConfig.fromJson(o.toJson());
       checkInputConfig(od as api.InputConfig);
@@ -14279,7 +14279,7 @@ void main() {
   });
 
   unittest.group('obj-schema-KeyValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildKeyValue();
       var od = api.KeyValue.fromJson(o.toJson());
       checkKeyValue(od as api.KeyValue);
@@ -14287,7 +14287,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Landmark', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLandmark();
       var od = api.Landmark.fromJson(o.toJson());
       checkLandmark(od as api.Landmark);
@@ -14295,7 +14295,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LatLng', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLatLng();
       var od = api.LatLng.fromJson(o.toJson());
       checkLatLng(od as api.LatLng);
@@ -14303,7 +14303,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LatLongRect', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLatLongRect();
       var od = api.LatLongRect.fromJson(o.toJson());
       checkLatLongRect(od as api.LatLongRect);
@@ -14311,7 +14311,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -14319,7 +14319,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListProductSetsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListProductSetsResponse();
       var od = api.ListProductSetsResponse.fromJson(o.toJson());
       checkListProductSetsResponse(od as api.ListProductSetsResponse);
@@ -14327,7 +14327,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListProductsInProductSetResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListProductsInProductSetResponse();
       var od = api.ListProductsInProductSetResponse.fromJson(o.toJson());
       checkListProductsInProductSetResponse(
@@ -14336,7 +14336,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListProductsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListProductsResponse();
       var od = api.ListProductsResponse.fromJson(o.toJson());
       checkListProductsResponse(od as api.ListProductsResponse);
@@ -14344,7 +14344,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListReferenceImagesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListReferenceImagesResponse();
       var od = api.ListReferenceImagesResponse.fromJson(o.toJson());
       checkListReferenceImagesResponse(od as api.ListReferenceImagesResponse);
@@ -14352,7 +14352,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LocalizedObjectAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocalizedObjectAnnotation();
       var od = api.LocalizedObjectAnnotation.fromJson(o.toJson());
       checkLocalizedObjectAnnotation(od as api.LocalizedObjectAnnotation);
@@ -14360,7 +14360,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LocationInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocationInfo();
       var od = api.LocationInfo.fromJson(o.toJson());
       checkLocationInfo(od as api.LocationInfo);
@@ -14368,7 +14368,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NormalizedVertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNormalizedVertex();
       var od = api.NormalizedVertex.fromJson(o.toJson());
       checkNormalizedVertex(od as api.NormalizedVertex);
@@ -14376,7 +14376,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ObjectAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildObjectAnnotation();
       var od = api.ObjectAnnotation.fromJson(o.toJson());
       checkObjectAnnotation(od as api.ObjectAnnotation);
@@ -14384,7 +14384,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -14392,7 +14392,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
       checkOperationMetadata(od as api.OperationMetadata);
@@ -14400,7 +14400,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OutputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOutputConfig();
       var od = api.OutputConfig.fromJson(o.toJson());
       checkOutputConfig(od as api.OutputConfig);
@@ -14408,7 +14408,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Page', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPage();
       var od = api.Page.fromJson(o.toJson());
       checkPage(od as api.Page);
@@ -14416,7 +14416,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Paragraph', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildParagraph();
       var od = api.Paragraph.fromJson(o.toJson());
       checkParagraph(od as api.Paragraph);
@@ -14424,7 +14424,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Position', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPosition();
       var od = api.Position.fromJson(o.toJson());
       checkPosition(od as api.Position);
@@ -14432,7 +14432,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Product', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProduct();
       var od = api.Product.fromJson(o.toJson());
       checkProduct(od as api.Product);
@@ -14440,7 +14440,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductSearchParams', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductSearchParams();
       var od = api.ProductSearchParams.fromJson(o.toJson());
       checkProductSearchParams(od as api.ProductSearchParams);
@@ -14448,7 +14448,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductSearchResults', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductSearchResults();
       var od = api.ProductSearchResults.fromJson(o.toJson());
       checkProductSearchResults(od as api.ProductSearchResults);
@@ -14456,7 +14456,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductSet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductSet();
       var od = api.ProductSet.fromJson(o.toJson());
       checkProductSet(od as api.ProductSet);
@@ -14464,7 +14464,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductSetPurgeConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductSetPurgeConfig();
       var od = api.ProductSetPurgeConfig.fromJson(o.toJson());
       checkProductSetPurgeConfig(od as api.ProductSetPurgeConfig);
@@ -14472,7 +14472,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Property', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProperty();
       var od = api.Property.fromJson(o.toJson());
       checkProperty(od as api.Property);
@@ -14480,7 +14480,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PurgeProductsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPurgeProductsRequest();
       var od = api.PurgeProductsRequest.fromJson(o.toJson());
       checkPurgeProductsRequest(od as api.PurgeProductsRequest);
@@ -14488,7 +14488,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReferenceImage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReferenceImage();
       var od = api.ReferenceImage.fromJson(o.toJson());
       checkReferenceImage(od as api.ReferenceImage);
@@ -14496,7 +14496,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RemoveProductFromProductSetRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRemoveProductFromProductSetRequest();
       var od = api.RemoveProductFromProductSetRequest.fromJson(o.toJson());
       checkRemoveProductFromProductSetRequest(
@@ -14505,7 +14505,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Result', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResult();
       var od = api.Result.fromJson(o.toJson());
       checkResult(od as api.Result);
@@ -14513,7 +14513,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SafeSearchAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSafeSearchAnnotation();
       var od = api.SafeSearchAnnotation.fromJson(o.toJson());
       checkSafeSearchAnnotation(od as api.SafeSearchAnnotation);
@@ -14521,7 +14521,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -14529,7 +14529,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Symbol', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSymbol();
       var od = api.Symbol.fromJson(o.toJson());
       checkSymbol(od as api.Symbol);
@@ -14537,7 +14537,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TextAnnotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTextAnnotation();
       var od = api.TextAnnotation.fromJson(o.toJson());
       checkTextAnnotation(od as api.TextAnnotation);
@@ -14545,7 +14545,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TextDetectionParams', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTextDetectionParams();
       var od = api.TextDetectionParams.fromJson(o.toJson());
       checkTextDetectionParams(od as api.TextDetectionParams);
@@ -14553,7 +14553,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TextProperty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTextProperty();
       var od = api.TextProperty.fromJson(o.toJson());
       checkTextProperty(od as api.TextProperty);
@@ -14561,7 +14561,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Vertex', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVertex();
       var od = api.Vertex.fromJson(o.toJson());
       checkVertex(od as api.Vertex);
@@ -14569,7 +14569,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebDetection', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebDetection();
       var od = api.WebDetection.fromJson(o.toJson());
       checkWebDetection(od as api.WebDetection);
@@ -14577,7 +14577,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebDetectionParams', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebDetectionParams();
       var od = api.WebDetectionParams.fromJson(o.toJson());
       checkWebDetectionParams(od as api.WebDetectionParams);
@@ -14585,7 +14585,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebEntity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebEntity();
       var od = api.WebEntity.fromJson(o.toJson());
       checkWebEntity(od as api.WebEntity);
@@ -14593,7 +14593,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebImage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebImage();
       var od = api.WebImage.fromJson(o.toJson());
       checkWebImage(od as api.WebImage);
@@ -14601,7 +14601,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebLabel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebLabel();
       var od = api.WebLabel.fromJson(o.toJson());
       checkWebLabel(od as api.WebLabel);
@@ -14609,7 +14609,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebPage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebPage();
       var od = api.WebPage.fromJson(o.toJson());
       checkWebPage(od as api.WebPage);
@@ -14617,7 +14617,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Word', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWord();
       var od = api.Word.fromJson(o.toJson());
       checkWord(od as api.Word);
@@ -14625,7 +14625,7 @@ void main() {
   });
 
   unittest.group('resource-FilesResource', () {
-    unittest.test('method--annotate', () {
+    unittest.test('method--annotate', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).files;
       var arg_request = buildBatchAnnotateFilesRequest();
@@ -14676,15 +14676,12 @@ void main() {
         var resp = convert.json.encode(buildBatchAnnotateFilesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .annotate(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchAnnotateFilesResponse(
-            response as api.BatchAnnotateFilesResponse);
-      })));
+      final response = await res.annotate(arg_request, $fields: arg_$fields);
+      checkBatchAnnotateFilesResponse(
+          response as api.BatchAnnotateFilesResponse);
     });
 
-    unittest.test('method--asyncBatchAnnotate', () {
+    unittest.test('method--asyncBatchAnnotate', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).files;
       var arg_request = buildAsyncBatchAnnotateFilesRequest();
@@ -14736,16 +14733,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .asyncBatchAnnotate(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.asyncBatchAnnotate(arg_request, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ImagesResource', () {
-    unittest.test('method--annotate', () {
+    unittest.test('method--annotate', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).images;
       var arg_request = buildBatchAnnotateImagesRequest();
@@ -14796,15 +14791,12 @@ void main() {
         var resp = convert.json.encode(buildBatchAnnotateImagesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .annotate(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchAnnotateImagesResponse(
-            response as api.BatchAnnotateImagesResponse);
-      })));
+      final response = await res.annotate(arg_request, $fields: arg_$fields);
+      checkBatchAnnotateImagesResponse(
+          response as api.BatchAnnotateImagesResponse);
     });
 
-    unittest.test('method--asyncBatchAnnotate', () {
+    unittest.test('method--asyncBatchAnnotate', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).images;
       var arg_request = buildAsyncBatchAnnotateImagesRequest();
@@ -14856,16 +14848,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .asyncBatchAnnotate(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.asyncBatchAnnotate(arg_request, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-LocationsOperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).locations.operations;
       var arg_name = 'foo';
@@ -14913,16 +14903,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).operations;
       var arg_request = buildCancelOperationRequest();
@@ -14975,14 +14962,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).operations;
       var arg_name = 'foo';
@@ -15030,14 +15015,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).operations;
       var arg_name = 'foo';
@@ -15085,14 +15067,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).operations;
       var arg_name = 'foo';
@@ -15155,20 +15134,17 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsFilesResource', () {
-    unittest.test('method--annotate', () {
+    unittest.test('method--annotate', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.files;
       var arg_request = buildBatchAnnotateFilesRequest();
@@ -15221,15 +15197,13 @@ void main() {
         var resp = convert.json.encode(buildBatchAnnotateFilesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .annotate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchAnnotateFilesResponse(
-            response as api.BatchAnnotateFilesResponse);
-      })));
+      final response =
+          await res.annotate(arg_request, arg_parent, $fields: arg_$fields);
+      checkBatchAnnotateFilesResponse(
+          response as api.BatchAnnotateFilesResponse);
     });
 
-    unittest.test('method--asyncBatchAnnotate', () {
+    unittest.test('method--asyncBatchAnnotate', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.files;
       var arg_request = buildAsyncBatchAnnotateFilesRequest();
@@ -15283,16 +15257,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .asyncBatchAnnotate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.asyncBatchAnnotate(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsImagesResource', () {
-    unittest.test('method--annotate', () {
+    unittest.test('method--annotate', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.images;
       var arg_request = buildBatchAnnotateImagesRequest();
@@ -15345,15 +15317,13 @@ void main() {
         var resp = convert.json.encode(buildBatchAnnotateImagesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .annotate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchAnnotateImagesResponse(
-            response as api.BatchAnnotateImagesResponse);
-      })));
+      final response =
+          await res.annotate(arg_request, arg_parent, $fields: arg_$fields);
+      checkBatchAnnotateImagesResponse(
+          response as api.BatchAnnotateImagesResponse);
     });
 
-    unittest.test('method--asyncBatchAnnotate', () {
+    unittest.test('method--asyncBatchAnnotate', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.images;
       var arg_request = buildAsyncBatchAnnotateImagesRequest();
@@ -15407,16 +15377,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .asyncBatchAnnotate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.asyncBatchAnnotate(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsFilesResource', () {
-    unittest.test('method--annotate', () {
+    unittest.test('method--annotate', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.files;
       var arg_request = buildBatchAnnotateFilesRequest();
@@ -15469,15 +15437,13 @@ void main() {
         var resp = convert.json.encode(buildBatchAnnotateFilesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .annotate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchAnnotateFilesResponse(
-            response as api.BatchAnnotateFilesResponse);
-      })));
+      final response =
+          await res.annotate(arg_request, arg_parent, $fields: arg_$fields);
+      checkBatchAnnotateFilesResponse(
+          response as api.BatchAnnotateFilesResponse);
     });
 
-    unittest.test('method--asyncBatchAnnotate', () {
+    unittest.test('method--asyncBatchAnnotate', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.files;
       var arg_request = buildAsyncBatchAnnotateFilesRequest();
@@ -15531,16 +15497,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .asyncBatchAnnotate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.asyncBatchAnnotate(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsImagesResource', () {
-    unittest.test('method--annotate', () {
+    unittest.test('method--annotate', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.images;
       var arg_request = buildBatchAnnotateImagesRequest();
@@ -15593,15 +15557,13 @@ void main() {
         var resp = convert.json.encode(buildBatchAnnotateImagesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .annotate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchAnnotateImagesResponse(
-            response as api.BatchAnnotateImagesResponse);
-      })));
+      final response =
+          await res.annotate(arg_request, arg_parent, $fields: arg_$fields);
+      checkBatchAnnotateImagesResponse(
+          response as api.BatchAnnotateImagesResponse);
     });
 
-    unittest.test('method--asyncBatchAnnotate', () {
+    unittest.test('method--asyncBatchAnnotate', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.images;
       var arg_request = buildAsyncBatchAnnotateImagesRequest();
@@ -15655,16 +15617,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .asyncBatchAnnotate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.asyncBatchAnnotate(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -15712,16 +15672,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsProductSetsResource', () {
-    unittest.test('method--addProduct', () {
+    unittest.test('method--addProduct', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.productSets;
       var arg_request = buildAddProductToProductSetRequest();
@@ -15775,14 +15732,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .addProduct(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.addProduct(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.productSets;
       var arg_request = buildProductSet();
@@ -15840,15 +15795,12 @@ void main() {
         var resp = convert.json.encode(buildProductSet());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              productSetId: arg_productSetId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProductSet(response as api.ProductSet);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          productSetId: arg_productSetId, $fields: arg_$fields);
+      checkProductSet(response as api.ProductSet);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.productSets;
       var arg_name = 'foo';
@@ -15896,14 +15848,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.productSets;
       var arg_name = 'foo';
@@ -15951,14 +15900,11 @@ void main() {
         var resp = convert.json.encode(buildProductSet());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProductSet(response as api.ProductSet);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkProductSet(response as api.ProductSet);
     });
 
-    unittest.test('method--import', () {
+    unittest.test('method--import', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.productSets;
       var arg_request = buildImportProductSetsRequest();
@@ -16011,14 +15957,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .import(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.import(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.productSets;
       var arg_parent = 'foo';
@@ -16076,17 +16020,14 @@ void main() {
         var resp = convert.json.encode(buildListProductSetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListProductSetsResponse(response as api.ListProductSetsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListProductSetsResponse(response as api.ListProductSetsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.productSets;
       var arg_request = buildProductSet();
@@ -16144,15 +16085,12 @@ void main() {
         var resp = convert.json.encode(buildProductSet());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProductSet(response as api.ProductSet);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkProductSet(response as api.ProductSet);
     });
 
-    unittest.test('method--removeProduct', () {
+    unittest.test('method--removeProduct', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.productSets;
       var arg_request = buildRemoveProductFromProductSetRequest();
@@ -16206,16 +16144,14 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .removeProduct(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.removeProduct(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 
   unittest.group('resource-ProjectsLocationsProductSetsProductsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.productSets.products;
       var arg_name = 'foo';
@@ -16273,20 +16209,17 @@ void main() {
         var resp = convert.json.encode(buildListProductsInProductSetResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListProductsInProductSetResponse(
-            response as api.ListProductsInProductSetResponse);
-      })));
+      final response = await res.list(arg_name,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListProductsInProductSetResponse(
+          response as api.ListProductsInProductSetResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsProductsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.products;
       var arg_request = buildProduct();
@@ -16344,15 +16277,12 @@ void main() {
         var resp = convert.json.encode(buildProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              productId: arg_productId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProduct(response as api.Product);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          productId: arg_productId, $fields: arg_$fields);
+      checkProduct(response as api.Product);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.products;
       var arg_name = 'foo';
@@ -16400,14 +16330,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.products;
       var arg_name = 'foo';
@@ -16455,14 +16382,11 @@ void main() {
         var resp = convert.json.encode(buildProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProduct(response as api.Product);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkProduct(response as api.Product);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.products;
       var arg_parent = 'foo';
@@ -16520,17 +16444,14 @@ void main() {
         var resp = convert.json.encode(buildListProductsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListProductsResponse(response as api.ListProductsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListProductsResponse(response as api.ListProductsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.products;
       var arg_request = buildProduct();
@@ -16588,15 +16509,12 @@ void main() {
         var resp = convert.json.encode(buildProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProduct(response as api.Product);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkProduct(response as api.Product);
     });
 
-    unittest.test('method--purge', () {
+    unittest.test('method--purge', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.products;
       var arg_request = buildPurgeProductsRequest();
@@ -16649,17 +16567,15 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .purge(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.purge(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsProductsReferenceImagesResource',
       () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.products.referenceImages;
       var arg_request = buildReferenceImage();
@@ -16717,15 +16633,12 @@ void main() {
         var resp = convert.json.encode(buildReferenceImage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              referenceImageId: arg_referenceImageId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReferenceImage(response as api.ReferenceImage);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          referenceImageId: arg_referenceImageId, $fields: arg_$fields);
+      checkReferenceImage(response as api.ReferenceImage);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.products.referenceImages;
       var arg_name = 'foo';
@@ -16773,14 +16686,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.products.referenceImages;
       var arg_name = 'foo';
@@ -16828,14 +16738,11 @@ void main() {
         var resp = convert.json.encode(buildReferenceImage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReferenceImage(response as api.ReferenceImage);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkReferenceImage(response as api.ReferenceImage);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.locations.products.referenceImages;
       var arg_parent = 'foo';
@@ -16893,20 +16800,17 @@ void main() {
         var resp = convert.json.encode(buildListReferenceImagesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListReferenceImagesResponse(
-            response as api.ListReferenceImagesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListReferenceImagesResponse(
+          response as api.ListReferenceImagesResponse);
     });
   });
 
   unittest.group('resource-ProjectsOperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.VisionApi(mock).projects.operations;
       var arg_name = 'foo';
@@ -16954,11 +16858,8 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 }

@@ -1164,7 +1164,7 @@ void checkGoogleSecuritySafebrowsingV4ThreatMatch(
 
 void main() {
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
@@ -1172,7 +1172,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleSecuritySafebrowsingV4Checksum', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4Checksum();
       var od = api.GoogleSecuritySafebrowsingV4Checksum.fromJson(o.toJson());
       checkGoogleSecuritySafebrowsingV4Checksum(
@@ -1181,7 +1181,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleSecuritySafebrowsingV4ClientInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4ClientInfo();
       var od = api.GoogleSecuritySafebrowsingV4ClientInfo.fromJson(o.toJson());
       checkGoogleSecuritySafebrowsingV4ClientInfo(
@@ -1192,7 +1192,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest();
       var od = api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest
           .fromJson(o.toJson());
@@ -1204,7 +1204,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest();
       var od =
@@ -1219,7 +1219,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequestConstraints();
       var od =
@@ -1234,7 +1234,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse();
       var od = api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse
           .fromJson(o.toJson());
@@ -1246,7 +1246,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateResponse();
       var od =
@@ -1260,7 +1260,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleSecuritySafebrowsingV4FindFullHashesRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4FindFullHashesRequest();
       var od = api.GoogleSecuritySafebrowsingV4FindFullHashesRequest.fromJson(
           o.toJson());
@@ -1271,7 +1271,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleSecuritySafebrowsingV4FindFullHashesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4FindFullHashesResponse();
       var od = api.GoogleSecuritySafebrowsingV4FindFullHashesResponse.fromJson(
           o.toJson());
@@ -1282,7 +1282,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleSecuritySafebrowsingV4FindThreatMatchesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4FindThreatMatchesRequest();
       var od =
           api.GoogleSecuritySafebrowsingV4FindThreatMatchesRequest.fromJson(
@@ -1294,7 +1294,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleSecuritySafebrowsingV4FindThreatMatchesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4FindThreatMatchesResponse();
       var od =
           api.GoogleSecuritySafebrowsingV4FindThreatMatchesResponse.fromJson(
@@ -1306,7 +1306,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleSecuritySafebrowsingV4ListThreatListsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4ListThreatListsResponse();
       var od = api.GoogleSecuritySafebrowsingV4ListThreatListsResponse.fromJson(
           o.toJson());
@@ -1316,7 +1316,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleSecuritySafebrowsingV4RawHashes', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4RawHashes();
       var od = api.GoogleSecuritySafebrowsingV4RawHashes.fromJson(o.toJson());
       checkGoogleSecuritySafebrowsingV4RawHashes(
@@ -1325,7 +1325,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleSecuritySafebrowsingV4RawIndices', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4RawIndices();
       var od = api.GoogleSecuritySafebrowsingV4RawIndices.fromJson(o.toJson());
       checkGoogleSecuritySafebrowsingV4RawIndices(
@@ -1335,7 +1335,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleSecuritySafebrowsingV4RiceDeltaEncoding',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4RiceDeltaEncoding();
       var od = api.GoogleSecuritySafebrowsingV4RiceDeltaEncoding.fromJson(
           o.toJson());
@@ -1345,7 +1345,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleSecuritySafebrowsingV4ThreatEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4ThreatEntry();
       var od = api.GoogleSecuritySafebrowsingV4ThreatEntry.fromJson(o.toJson());
       checkGoogleSecuritySafebrowsingV4ThreatEntry(
@@ -1355,7 +1355,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleSecuritySafebrowsingV4ThreatEntryMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4ThreatEntryMetadata();
       var od = api.GoogleSecuritySafebrowsingV4ThreatEntryMetadata.fromJson(
           o.toJson());
@@ -1367,7 +1367,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry();
       var od = api.GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry
@@ -1378,7 +1378,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleSecuritySafebrowsingV4ThreatEntrySet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4ThreatEntrySet();
       var od =
           api.GoogleSecuritySafebrowsingV4ThreatEntrySet.fromJson(o.toJson());
@@ -1388,7 +1388,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleSecuritySafebrowsingV4ThreatHit', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4ThreatHit();
       var od = api.GoogleSecuritySafebrowsingV4ThreatHit.fromJson(o.toJson());
       checkGoogleSecuritySafebrowsingV4ThreatHit(
@@ -1398,7 +1398,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleSecuritySafebrowsingV4ThreatHitThreatSource',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4ThreatHitThreatSource();
       var od = api.GoogleSecuritySafebrowsingV4ThreatHitThreatSource.fromJson(
           o.toJson());
@@ -1409,7 +1409,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleSecuritySafebrowsingV4ThreatHitUserInfo',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4ThreatHitUserInfo();
       var od = api.GoogleSecuritySafebrowsingV4ThreatHitUserInfo.fromJson(
           o.toJson());
@@ -1419,7 +1419,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleSecuritySafebrowsingV4ThreatInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4ThreatInfo();
       var od = api.GoogleSecuritySafebrowsingV4ThreatInfo.fromJson(o.toJson());
       checkGoogleSecuritySafebrowsingV4ThreatInfo(
@@ -1429,7 +1429,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleSecuritySafebrowsingV4ThreatListDescriptor',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4ThreatListDescriptor();
       var od = api.GoogleSecuritySafebrowsingV4ThreatListDescriptor.fromJson(
           o.toJson());
@@ -1439,7 +1439,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleSecuritySafebrowsingV4ThreatMatch', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleSecuritySafebrowsingV4ThreatMatch();
       var od = api.GoogleSecuritySafebrowsingV4ThreatMatch.fromJson(o.toJson());
       checkGoogleSecuritySafebrowsingV4ThreatMatch(
@@ -1448,7 +1448,7 @@ void main() {
   });
 
   unittest.group('resource-EncodedFullHashesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SafebrowsingApi(mock).encodedFullHashes;
       var arg_encodedRequest = 'foo';
@@ -1512,20 +1512,17 @@ void main() {
             .encode(buildGoogleSecuritySafebrowsingV4FindFullHashesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_encodedRequest,
-              clientId: arg_clientId,
-              clientVersion: arg_clientVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleSecuritySafebrowsingV4FindFullHashesResponse(
-            response as api.GoogleSecuritySafebrowsingV4FindFullHashesResponse);
-      })));
+      final response = await res.get(arg_encodedRequest,
+          clientId: arg_clientId,
+          clientVersion: arg_clientVersion,
+          $fields: arg_$fields);
+      checkGoogleSecuritySafebrowsingV4FindFullHashesResponse(
+          response as api.GoogleSecuritySafebrowsingV4FindFullHashesResponse);
     });
   });
 
   unittest.group('resource-EncodedUpdatesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SafebrowsingApi(mock).encodedUpdates;
       var arg_encodedRequest = 'foo';
@@ -1589,20 +1586,17 @@ void main() {
             buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_encodedRequest,
-              clientId: arg_clientId,
-              clientVersion: arg_clientVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse(response
-            as api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse);
-      })));
+      final response = await res.get(arg_encodedRequest,
+          clientId: arg_clientId,
+          clientVersion: arg_clientVersion,
+          $fields: arg_$fields);
+      checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse(response
+          as api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse);
     });
   });
 
   unittest.group('resource-FullHashesResource', () {
-    unittest.test('method--find', () {
+    unittest.test('method--find', () async {
       var mock = HttpServerMock();
       var res = api.SafebrowsingApi(mock).fullHashes;
       var arg_request =
@@ -1657,17 +1651,14 @@ void main() {
             .encode(buildGoogleSecuritySafebrowsingV4FindFullHashesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .find(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleSecuritySafebrowsingV4FindFullHashesResponse(
-            response as api.GoogleSecuritySafebrowsingV4FindFullHashesResponse);
-      })));
+      final response = await res.find(arg_request, $fields: arg_$fields);
+      checkGoogleSecuritySafebrowsingV4FindFullHashesResponse(
+          response as api.GoogleSecuritySafebrowsingV4FindFullHashesResponse);
     });
   });
 
   unittest.group('resource-ThreatHitsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.SafebrowsingApi(mock).threatHits;
       var arg_request = buildGoogleSecuritySafebrowsingV4ThreatHit();
@@ -1719,16 +1710,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
   });
 
   unittest.group('resource-ThreatListUpdatesResource', () {
-    unittest.test('method--fetch', () {
+    unittest.test('method--fetch', () async {
       var mock = HttpServerMock();
       var res = api.SafebrowsingApi(mock).threatListUpdates;
       var arg_request =
@@ -1782,17 +1770,14 @@ void main() {
             buildGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .fetch(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse(response
-            as api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse);
-      })));
+      final response = await res.fetch(arg_request, $fields: arg_$fields);
+      checkGoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse(response
+          as api.GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse);
     });
   });
 
   unittest.group('resource-ThreatListsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SafebrowsingApi(mock).threatLists;
       var arg_$fields = 'foo';
@@ -1839,15 +1824,14 @@ void main() {
             .encode(buildGoogleSecuritySafebrowsingV4ListThreatListsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkGoogleSecuritySafebrowsingV4ListThreatListsResponse(response
-            as api.GoogleSecuritySafebrowsingV4ListThreatListsResponse);
-      })));
+      final response = await res.list($fields: arg_$fields);
+      checkGoogleSecuritySafebrowsingV4ListThreatListsResponse(
+          response as api.GoogleSecuritySafebrowsingV4ListThreatListsResponse);
     });
   });
 
   unittest.group('resource-ThreatMatchesResource', () {
-    unittest.test('method--find', () {
+    unittest.test('method--find', () async {
       var mock = HttpServerMock();
       var res = api.SafebrowsingApi(mock).threatMatches;
       var arg_request =
@@ -1902,12 +1886,9 @@ void main() {
             buildGoogleSecuritySafebrowsingV4FindThreatMatchesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .find(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleSecuritySafebrowsingV4FindThreatMatchesResponse(response
-            as api.GoogleSecuritySafebrowsingV4FindThreatMatchesResponse);
-      })));
+      final response = await res.find(arg_request, $fields: arg_$fields);
+      checkGoogleSecuritySafebrowsingV4FindThreatMatchesResponse(response
+          as api.GoogleSecuritySafebrowsingV4FindThreatMatchesResponse);
     });
   });
 }

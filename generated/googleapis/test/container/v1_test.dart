@@ -4161,7 +4161,7 @@ void checkWorkloadMetadataConfig(api.WorkloadMetadataConfig o) {
 
 void main() {
   unittest.group('obj-schema-AcceleratorConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAcceleratorConfig();
       var od = api.AcceleratorConfig.fromJson(o.toJson());
       checkAcceleratorConfig(od as api.AcceleratorConfig);
@@ -4169,7 +4169,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AddonsConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddonsConfig();
       var od = api.AddonsConfig.fromJson(o.toJson());
       checkAddonsConfig(od as api.AddonsConfig);
@@ -4177,7 +4177,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuthenticatorGroupsConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuthenticatorGroupsConfig();
       var od = api.AuthenticatorGroupsConfig.fromJson(o.toJson());
       checkAuthenticatorGroupsConfig(od as api.AuthenticatorGroupsConfig);
@@ -4185,7 +4185,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AutoUpgradeOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAutoUpgradeOptions();
       var od = api.AutoUpgradeOptions.fromJson(o.toJson());
       checkAutoUpgradeOptions(od as api.AutoUpgradeOptions);
@@ -4193,7 +4193,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Autopilot', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAutopilot();
       var od = api.Autopilot.fromJson(o.toJson());
       checkAutopilot(od as api.Autopilot);
@@ -4201,7 +4201,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AutoprovisioningNodePoolDefaults', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAutoprovisioningNodePoolDefaults();
       var od = api.AutoprovisioningNodePoolDefaults.fromJson(o.toJson());
       checkAutoprovisioningNodePoolDefaults(
@@ -4210,7 +4210,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BigQueryDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBigQueryDestination();
       var od = api.BigQueryDestination.fromJson(o.toJson());
       checkBigQueryDestination(od as api.BigQueryDestination);
@@ -4218,7 +4218,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BinaryAuthorization', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinaryAuthorization();
       var od = api.BinaryAuthorization.fromJson(o.toJson());
       checkBinaryAuthorization(od as api.BinaryAuthorization);
@@ -4226,7 +4226,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od as api.CancelOperationRequest);
@@ -4234,7 +4234,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CidrBlock', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCidrBlock();
       var od = api.CidrBlock.fromJson(o.toJson());
       checkCidrBlock(od as api.CidrBlock);
@@ -4242,7 +4242,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClientCertificateConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClientCertificateConfig();
       var od = api.ClientCertificateConfig.fromJson(o.toJson());
       checkClientCertificateConfig(od as api.ClientCertificateConfig);
@@ -4250,7 +4250,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CloudRunConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCloudRunConfig();
       var od = api.CloudRunConfig.fromJson(o.toJson());
       checkCloudRunConfig(od as api.CloudRunConfig);
@@ -4258,7 +4258,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Cluster', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCluster();
       var od = api.Cluster.fromJson(o.toJson());
       checkCluster(od as api.Cluster);
@@ -4266,7 +4266,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClusterAutoscaling', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClusterAutoscaling();
       var od = api.ClusterAutoscaling.fromJson(o.toJson());
       checkClusterAutoscaling(od as api.ClusterAutoscaling);
@@ -4274,7 +4274,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClusterUpdate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClusterUpdate();
       var od = api.ClusterUpdate.fromJson(o.toJson());
       checkClusterUpdate(od as api.ClusterUpdate);
@@ -4282,7 +4282,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CompleteIPRotationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCompleteIPRotationRequest();
       var od = api.CompleteIPRotationRequest.fromJson(o.toJson());
       checkCompleteIPRotationRequest(od as api.CompleteIPRotationRequest);
@@ -4290,7 +4290,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConfigConnectorConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConfigConnectorConfig();
       var od = api.ConfigConnectorConfig.fromJson(o.toJson());
       checkConfigConnectorConfig(od as api.ConfigConnectorConfig);
@@ -4298,7 +4298,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConsumptionMeteringConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConsumptionMeteringConfig();
       var od = api.ConsumptionMeteringConfig.fromJson(o.toJson());
       checkConsumptionMeteringConfig(od as api.ConsumptionMeteringConfig);
@@ -4306,7 +4306,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateClusterRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateClusterRequest();
       var od = api.CreateClusterRequest.fromJson(o.toJson());
       checkCreateClusterRequest(od as api.CreateClusterRequest);
@@ -4314,7 +4314,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateNodePoolRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateNodePoolRequest();
       var od = api.CreateNodePoolRequest.fromJson(o.toJson());
       checkCreateNodePoolRequest(od as api.CreateNodePoolRequest);
@@ -4322,7 +4322,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DailyMaintenanceWindow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDailyMaintenanceWindow();
       var od = api.DailyMaintenanceWindow.fromJson(o.toJson());
       checkDailyMaintenanceWindow(od as api.DailyMaintenanceWindow);
@@ -4330,7 +4330,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatabaseEncryption', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatabaseEncryption();
       var od = api.DatabaseEncryption.fromJson(o.toJson());
       checkDatabaseEncryption(od as api.DatabaseEncryption);
@@ -4338,7 +4338,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DefaultSnatStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDefaultSnatStatus();
       var od = api.DefaultSnatStatus.fromJson(o.toJson());
       checkDefaultSnatStatus(od as api.DefaultSnatStatus);
@@ -4346,7 +4346,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DnsCacheConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDnsCacheConfig();
       var od = api.DnsCacheConfig.fromJson(o.toJson());
       checkDnsCacheConfig(od as api.DnsCacheConfig);
@@ -4354,7 +4354,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -4362,7 +4362,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GcePersistentDiskCsiDriverConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGcePersistentDiskCsiDriverConfig();
       var od = api.GcePersistentDiskCsiDriverConfig.fromJson(o.toJson());
       checkGcePersistentDiskCsiDriverConfig(
@@ -4371,7 +4371,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetJSONWebKeysResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetJSONWebKeysResponse();
       var od = api.GetJSONWebKeysResponse.fromJson(o.toJson());
       checkGetJSONWebKeysResponse(od as api.GetJSONWebKeysResponse);
@@ -4379,7 +4379,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetOpenIDConfigResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetOpenIDConfigResponse();
       var od = api.GetOpenIDConfigResponse.fromJson(o.toJson());
       checkGetOpenIDConfigResponse(od as api.GetOpenIDConfigResponse);
@@ -4387,7 +4387,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HorizontalPodAutoscaling', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHorizontalPodAutoscaling();
       var od = api.HorizontalPodAutoscaling.fromJson(o.toJson());
       checkHorizontalPodAutoscaling(od as api.HorizontalPodAutoscaling);
@@ -4395,7 +4395,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HttpCacheControlResponseHeader', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHttpCacheControlResponseHeader();
       var od = api.HttpCacheControlResponseHeader.fromJson(o.toJson());
       checkHttpCacheControlResponseHeader(
@@ -4404,7 +4404,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HttpLoadBalancing', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHttpLoadBalancing();
       var od = api.HttpLoadBalancing.fromJson(o.toJson());
       checkHttpLoadBalancing(od as api.HttpLoadBalancing);
@@ -4412,7 +4412,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IPAllocationPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIPAllocationPolicy();
       var od = api.IPAllocationPolicy.fromJson(o.toJson());
       checkIPAllocationPolicy(od as api.IPAllocationPolicy);
@@ -4420,7 +4420,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IntraNodeVisibilityConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIntraNodeVisibilityConfig();
       var od = api.IntraNodeVisibilityConfig.fromJson(o.toJson());
       checkIntraNodeVisibilityConfig(od as api.IntraNodeVisibilityConfig);
@@ -4428,7 +4428,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Jwk', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJwk();
       var od = api.Jwk.fromJson(o.toJson());
       checkJwk(od as api.Jwk);
@@ -4436,7 +4436,7 @@ void main() {
   });
 
   unittest.group('obj-schema-KubernetesDashboard', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildKubernetesDashboard();
       var od = api.KubernetesDashboard.fromJson(o.toJson());
       checkKubernetesDashboard(od as api.KubernetesDashboard);
@@ -4444,7 +4444,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LegacyAbac', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLegacyAbac();
       var od = api.LegacyAbac.fromJson(o.toJson());
       checkLegacyAbac(od as api.LegacyAbac);
@@ -4452,7 +4452,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LinuxNodeConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLinuxNodeConfig();
       var od = api.LinuxNodeConfig.fromJson(o.toJson());
       checkLinuxNodeConfig(od as api.LinuxNodeConfig);
@@ -4460,7 +4460,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListClustersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListClustersResponse();
       var od = api.ListClustersResponse.fromJson(o.toJson());
       checkListClustersResponse(od as api.ListClustersResponse);
@@ -4468,7 +4468,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListNodePoolsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListNodePoolsResponse();
       var od = api.ListNodePoolsResponse.fromJson(o.toJson());
       checkListNodePoolsResponse(od as api.ListNodePoolsResponse);
@@ -4476,7 +4476,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -4484,7 +4484,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListUsableSubnetworksResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListUsableSubnetworksResponse();
       var od = api.ListUsableSubnetworksResponse.fromJson(o.toJson());
       checkListUsableSubnetworksResponse(
@@ -4493,7 +4493,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MaintenancePolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMaintenancePolicy();
       var od = api.MaintenancePolicy.fromJson(o.toJson());
       checkMaintenancePolicy(od as api.MaintenancePolicy);
@@ -4501,7 +4501,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MaintenanceWindow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMaintenanceWindow();
       var od = api.MaintenanceWindow.fromJson(o.toJson());
       checkMaintenanceWindow(od as api.MaintenanceWindow);
@@ -4509,7 +4509,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MasterAuth', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMasterAuth();
       var od = api.MasterAuth.fromJson(o.toJson());
       checkMasterAuth(od as api.MasterAuth);
@@ -4517,7 +4517,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MasterAuthorizedNetworksConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMasterAuthorizedNetworksConfig();
       var od = api.MasterAuthorizedNetworksConfig.fromJson(o.toJson());
       checkMasterAuthorizedNetworksConfig(
@@ -4526,7 +4526,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MaxPodsConstraint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMaxPodsConstraint();
       var od = api.MaxPodsConstraint.fromJson(o.toJson());
       checkMaxPodsConstraint(od as api.MaxPodsConstraint);
@@ -4534,7 +4534,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Metric', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetric();
       var od = api.Metric.fromJson(o.toJson());
       checkMetric(od as api.Metric);
@@ -4542,7 +4542,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NetworkConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNetworkConfig();
       var od = api.NetworkConfig.fromJson(o.toJson());
       checkNetworkConfig(od as api.NetworkConfig);
@@ -4550,7 +4550,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NetworkPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNetworkPolicy();
       var od = api.NetworkPolicy.fromJson(o.toJson());
       checkNetworkPolicy(od as api.NetworkPolicy);
@@ -4558,7 +4558,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NetworkPolicyConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNetworkPolicyConfig();
       var od = api.NetworkPolicyConfig.fromJson(o.toJson());
       checkNetworkPolicyConfig(od as api.NetworkPolicyConfig);
@@ -4566,7 +4566,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NodeConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNodeConfig();
       var od = api.NodeConfig.fromJson(o.toJson());
       checkNodeConfig(od as api.NodeConfig);
@@ -4574,7 +4574,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NodeKubeletConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNodeKubeletConfig();
       var od = api.NodeKubeletConfig.fromJson(o.toJson());
       checkNodeKubeletConfig(od as api.NodeKubeletConfig);
@@ -4582,7 +4582,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NodeManagement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNodeManagement();
       var od = api.NodeManagement.fromJson(o.toJson());
       checkNodeManagement(od as api.NodeManagement);
@@ -4590,7 +4590,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NodePool', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNodePool();
       var od = api.NodePool.fromJson(o.toJson());
       checkNodePool(od as api.NodePool);
@@ -4598,7 +4598,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NodePoolAutoscaling', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNodePoolAutoscaling();
       var od = api.NodePoolAutoscaling.fromJson(o.toJson());
       checkNodePoolAutoscaling(od as api.NodePoolAutoscaling);
@@ -4606,7 +4606,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NodeTaint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNodeTaint();
       var od = api.NodeTaint.fromJson(o.toJson());
       checkNodeTaint(od as api.NodeTaint);
@@ -4614,7 +4614,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NotificationConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNotificationConfig();
       var od = api.NotificationConfig.fromJson(o.toJson());
       checkNotificationConfig(od as api.NotificationConfig);
@@ -4622,7 +4622,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -4630,7 +4630,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationProgress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationProgress();
       var od = api.OperationProgress.fromJson(o.toJson());
       checkOperationProgress(od as api.OperationProgress);
@@ -4638,7 +4638,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PrivateClusterConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPrivateClusterConfig();
       var od = api.PrivateClusterConfig.fromJson(o.toJson());
       checkPrivateClusterConfig(od as api.PrivateClusterConfig);
@@ -4646,7 +4646,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PrivateClusterMasterGlobalAccessConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPrivateClusterMasterGlobalAccessConfig();
       var od = api.PrivateClusterMasterGlobalAccessConfig.fromJson(o.toJson());
       checkPrivateClusterMasterGlobalAccessConfig(
@@ -4655,7 +4655,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PubSub', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPubSub();
       var od = api.PubSub.fromJson(o.toJson());
       checkPubSub(od as api.PubSub);
@@ -4663,7 +4663,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RecurringTimeWindow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRecurringTimeWindow();
       var od = api.RecurringTimeWindow.fromJson(o.toJson());
       checkRecurringTimeWindow(od as api.RecurringTimeWindow);
@@ -4671,7 +4671,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReleaseChannel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReleaseChannel();
       var od = api.ReleaseChannel.fromJson(o.toJson());
       checkReleaseChannel(od as api.ReleaseChannel);
@@ -4679,7 +4679,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReleaseChannelConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReleaseChannelConfig();
       var od = api.ReleaseChannelConfig.fromJson(o.toJson());
       checkReleaseChannelConfig(od as api.ReleaseChannelConfig);
@@ -4687,7 +4687,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReservationAffinity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReservationAffinity();
       var od = api.ReservationAffinity.fromJson(o.toJson());
       checkReservationAffinity(od as api.ReservationAffinity);
@@ -4695,7 +4695,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResourceLimit', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResourceLimit();
       var od = api.ResourceLimit.fromJson(o.toJson());
       checkResourceLimit(od as api.ResourceLimit);
@@ -4703,7 +4703,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResourceUsageExportConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResourceUsageExportConfig();
       var od = api.ResourceUsageExportConfig.fromJson(o.toJson());
       checkResourceUsageExportConfig(od as api.ResourceUsageExportConfig);
@@ -4711,7 +4711,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RollbackNodePoolUpgradeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRollbackNodePoolUpgradeRequest();
       var od = api.RollbackNodePoolUpgradeRequest.fromJson(o.toJson());
       checkRollbackNodePoolUpgradeRequest(
@@ -4720,7 +4720,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SandboxConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSandboxConfig();
       var od = api.SandboxConfig.fromJson(o.toJson());
       checkSandboxConfig(od as api.SandboxConfig);
@@ -4728,7 +4728,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ServerConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildServerConfig();
       var od = api.ServerConfig.fromJson(o.toJson());
       checkServerConfig(od as api.ServerConfig);
@@ -4736,7 +4736,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetAddonsConfigRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetAddonsConfigRequest();
       var od = api.SetAddonsConfigRequest.fromJson(o.toJson());
       checkSetAddonsConfigRequest(od as api.SetAddonsConfigRequest);
@@ -4744,7 +4744,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetLabelsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetLabelsRequest();
       var od = api.SetLabelsRequest.fromJson(o.toJson());
       checkSetLabelsRequest(od as api.SetLabelsRequest);
@@ -4752,7 +4752,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetLegacyAbacRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetLegacyAbacRequest();
       var od = api.SetLegacyAbacRequest.fromJson(o.toJson());
       checkSetLegacyAbacRequest(od as api.SetLegacyAbacRequest);
@@ -4760,7 +4760,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetLocationsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetLocationsRequest();
       var od = api.SetLocationsRequest.fromJson(o.toJson());
       checkSetLocationsRequest(od as api.SetLocationsRequest);
@@ -4768,7 +4768,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetLoggingServiceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetLoggingServiceRequest();
       var od = api.SetLoggingServiceRequest.fromJson(o.toJson());
       checkSetLoggingServiceRequest(od as api.SetLoggingServiceRequest);
@@ -4776,7 +4776,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetMaintenancePolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetMaintenancePolicyRequest();
       var od = api.SetMaintenancePolicyRequest.fromJson(o.toJson());
       checkSetMaintenancePolicyRequest(od as api.SetMaintenancePolicyRequest);
@@ -4784,7 +4784,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetMasterAuthRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetMasterAuthRequest();
       var od = api.SetMasterAuthRequest.fromJson(o.toJson());
       checkSetMasterAuthRequest(od as api.SetMasterAuthRequest);
@@ -4792,7 +4792,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetMonitoringServiceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetMonitoringServiceRequest();
       var od = api.SetMonitoringServiceRequest.fromJson(o.toJson());
       checkSetMonitoringServiceRequest(od as api.SetMonitoringServiceRequest);
@@ -4800,7 +4800,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetNetworkPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetNetworkPolicyRequest();
       var od = api.SetNetworkPolicyRequest.fromJson(o.toJson());
       checkSetNetworkPolicyRequest(od as api.SetNetworkPolicyRequest);
@@ -4808,7 +4808,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetNodePoolAutoscalingRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetNodePoolAutoscalingRequest();
       var od = api.SetNodePoolAutoscalingRequest.fromJson(o.toJson());
       checkSetNodePoolAutoscalingRequest(
@@ -4817,7 +4817,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetNodePoolManagementRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetNodePoolManagementRequest();
       var od = api.SetNodePoolManagementRequest.fromJson(o.toJson());
       checkSetNodePoolManagementRequest(od as api.SetNodePoolManagementRequest);
@@ -4825,7 +4825,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetNodePoolSizeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetNodePoolSizeRequest();
       var od = api.SetNodePoolSizeRequest.fromJson(o.toJson());
       checkSetNodePoolSizeRequest(od as api.SetNodePoolSizeRequest);
@@ -4833,7 +4833,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShieldedInstanceConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShieldedInstanceConfig();
       var od = api.ShieldedInstanceConfig.fromJson(o.toJson());
       checkShieldedInstanceConfig(od as api.ShieldedInstanceConfig);
@@ -4841,7 +4841,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ShieldedNodes', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildShieldedNodes();
       var od = api.ShieldedNodes.fromJson(o.toJson());
       checkShieldedNodes(od as api.ShieldedNodes);
@@ -4849,7 +4849,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StartIPRotationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStartIPRotationRequest();
       var od = api.StartIPRotationRequest.fromJson(o.toJson());
       checkStartIPRotationRequest(od as api.StartIPRotationRequest);
@@ -4857,7 +4857,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StatusCondition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatusCondition();
       var od = api.StatusCondition.fromJson(o.toJson());
       checkStatusCondition(od as api.StatusCondition);
@@ -4865,7 +4865,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimeWindow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimeWindow();
       var od = api.TimeWindow.fromJson(o.toJson());
       checkTimeWindow(od as api.TimeWindow);
@@ -4873,7 +4873,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateClusterRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateClusterRequest();
       var od = api.UpdateClusterRequest.fromJson(o.toJson());
       checkUpdateClusterRequest(od as api.UpdateClusterRequest);
@@ -4881,7 +4881,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateMasterRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateMasterRequest();
       var od = api.UpdateMasterRequest.fromJson(o.toJson());
       checkUpdateMasterRequest(od as api.UpdateMasterRequest);
@@ -4889,7 +4889,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateNodePoolRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateNodePoolRequest();
       var od = api.UpdateNodePoolRequest.fromJson(o.toJson());
       checkUpdateNodePoolRequest(od as api.UpdateNodePoolRequest);
@@ -4897,7 +4897,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpgradeEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpgradeEvent();
       var od = api.UpgradeEvent.fromJson(o.toJson());
       checkUpgradeEvent(od as api.UpgradeEvent);
@@ -4905,7 +4905,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpgradeSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpgradeSettings();
       var od = api.UpgradeSettings.fromJson(o.toJson());
       checkUpgradeSettings(od as api.UpgradeSettings);
@@ -4913,7 +4913,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsableSubnetwork', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsableSubnetwork();
       var od = api.UsableSubnetwork.fromJson(o.toJson());
       checkUsableSubnetwork(od as api.UsableSubnetwork);
@@ -4921,7 +4921,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsableSubnetworkSecondaryRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsableSubnetworkSecondaryRange();
       var od = api.UsableSubnetworkSecondaryRange.fromJson(o.toJson());
       checkUsableSubnetworkSecondaryRange(
@@ -4930,7 +4930,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VerticalPodAutoscaling', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVerticalPodAutoscaling();
       var od = api.VerticalPodAutoscaling.fromJson(o.toJson());
       checkVerticalPodAutoscaling(od as api.VerticalPodAutoscaling);
@@ -4938,7 +4938,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WorkloadIdentityConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWorkloadIdentityConfig();
       var od = api.WorkloadIdentityConfig.fromJson(o.toJson());
       checkWorkloadIdentityConfig(od as api.WorkloadIdentityConfig);
@@ -4946,7 +4946,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WorkloadMetadataConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWorkloadMetadataConfig();
       var od = api.WorkloadMetadataConfig.fromJson(o.toJson());
       checkWorkloadMetadataConfig(od as api.WorkloadMetadataConfig);
@@ -4954,7 +4954,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsAggregatedUsableSubnetworksResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.aggregated.usableSubnetworks;
       var arg_parent = 'foo';
@@ -5017,21 +5017,18 @@ void main() {
         var resp = convert.json.encode(buildListUsableSubnetworksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListUsableSubnetworksResponse(
-            response as api.ListUsableSubnetworksResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListUsableSubnetworksResponse(
+          response as api.ListUsableSubnetworksResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--getServerConfig', () {
+    unittest.test('method--getServerConfig', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -5089,17 +5086,14 @@ void main() {
         var resp = convert.json.encode(buildServerConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getServerConfig(arg_name,
-              projectId: arg_projectId, zone: arg_zone, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkServerConfig(response as api.ServerConfig);
-      })));
+      final response = await res.getServerConfig(arg_name,
+          projectId: arg_projectId, zone: arg_zone, $fields: arg_$fields);
+      checkServerConfig(response as api.ServerConfig);
     });
   });
 
   unittest.group('resource-ProjectsLocationsClustersResource', () {
-    unittest.test('method--completeIpRotation', () {
+    unittest.test('method--completeIpRotation', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildCompleteIPRotationRequest();
@@ -5152,14 +5146,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .completeIpRotation(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.completeIpRotation(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildCreateClusterRequest();
@@ -5212,14 +5204,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_name = 'foo';
@@ -5282,18 +5272,15 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name,
-              clusterId: arg_clusterId,
-              projectId: arg_projectId,
-              zone: arg_zone,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name,
+          clusterId: arg_clusterId,
+          projectId: arg_projectId,
+          zone: arg_zone,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_name = 'foo';
@@ -5356,18 +5343,15 @@ void main() {
         var resp = convert.json.encode(buildCluster());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name,
-              clusterId: arg_clusterId,
-              projectId: arg_projectId,
-              zone: arg_zone,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCluster(response as api.Cluster);
-      })));
+      final response = await res.get(arg_name,
+          clusterId: arg_clusterId,
+          projectId: arg_projectId,
+          zone: arg_zone,
+          $fields: arg_$fields);
+      checkCluster(response as api.Cluster);
     });
 
-    unittest.test('method--getJwks', () {
+    unittest.test('method--getJwks', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_parent = 'foo';
@@ -5415,14 +5399,11 @@ void main() {
         var resp = convert.json.encode(buildGetJSONWebKeysResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getJwks(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetJSONWebKeysResponse(response as api.GetJSONWebKeysResponse);
-      })));
+      final response = await res.getJwks(arg_parent, $fields: arg_$fields);
+      checkGetJSONWebKeysResponse(response as api.GetJSONWebKeysResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_parent = 'foo';
@@ -5480,15 +5461,12 @@ void main() {
         var resp = convert.json.encode(buildListClustersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              projectId: arg_projectId, zone: arg_zone, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListClustersResponse(response as api.ListClustersResponse);
-      })));
+      final response = await res.list(arg_parent,
+          projectId: arg_projectId, zone: arg_zone, $fields: arg_$fields);
+      checkListClustersResponse(response as api.ListClustersResponse);
     });
 
-    unittest.test('method--setAddons', () {
+    unittest.test('method--setAddons', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildSetAddonsConfigRequest();
@@ -5541,14 +5519,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setAddons(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.setAddons(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setLegacyAbac', () {
+    unittest.test('method--setLegacyAbac', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildSetLegacyAbacRequest();
@@ -5601,14 +5577,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setLegacyAbac(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.setLegacyAbac(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setLocations', () {
+    unittest.test('method--setLocations', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildSetLocationsRequest();
@@ -5661,14 +5635,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setLocations(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.setLocations(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setLogging', () {
+    unittest.test('method--setLogging', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildSetLoggingServiceRequest();
@@ -5721,14 +5693,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setLogging(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.setLogging(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setMaintenancePolicy', () {
+    unittest.test('method--setMaintenancePolicy', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildSetMaintenancePolicyRequest();
@@ -5782,14 +5752,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setMaintenancePolicy(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.setMaintenancePolicy(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setMasterAuth', () {
+    unittest.test('method--setMasterAuth', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildSetMasterAuthRequest();
@@ -5842,14 +5810,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setMasterAuth(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.setMasterAuth(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setMonitoring', () {
+    unittest.test('method--setMonitoring', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildSetMonitoringServiceRequest();
@@ -5903,14 +5869,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setMonitoring(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.setMonitoring(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setNetworkPolicy', () {
+    unittest.test('method--setNetworkPolicy', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildSetNetworkPolicyRequest();
@@ -5963,14 +5927,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setNetworkPolicy(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.setNetworkPolicy(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setResourceLabels', () {
+    unittest.test('method--setResourceLabels', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildSetLabelsRequest();
@@ -6023,14 +5985,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setResourceLabels(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.setResourceLabels(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--startIpRotation', () {
+    unittest.test('method--startIpRotation', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildStartIPRotationRequest();
@@ -6083,14 +6043,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .startIpRotation(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.startIpRotation(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildUpdateClusterRequest();
@@ -6143,14 +6101,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--updateMaster', () {
+    unittest.test('method--updateMaster', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters;
       var arg_request = buildUpdateMasterRequest();
@@ -6203,16 +6159,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateMaster(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.updateMaster(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsClustersNodePoolsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_request = buildCreateNodePoolRequest();
@@ -6265,14 +6219,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_name = 'foo';
@@ -6340,19 +6292,16 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name,
-              clusterId: arg_clusterId,
-              nodePoolId: arg_nodePoolId,
-              projectId: arg_projectId,
-              zone: arg_zone,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name,
+          clusterId: arg_clusterId,
+          nodePoolId: arg_nodePoolId,
+          projectId: arg_projectId,
+          zone: arg_zone,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_name = 'foo';
@@ -6420,19 +6369,16 @@ void main() {
         var resp = convert.json.encode(buildNodePool());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name,
-              clusterId: arg_clusterId,
-              nodePoolId: arg_nodePoolId,
-              projectId: arg_projectId,
-              zone: arg_zone,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNodePool(response as api.NodePool);
-      })));
+      final response = await res.get(arg_name,
+          clusterId: arg_clusterId,
+          nodePoolId: arg_nodePoolId,
+          projectId: arg_projectId,
+          zone: arg_zone,
+          $fields: arg_$fields);
+      checkNodePool(response as api.NodePool);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_parent = 'foo';
@@ -6495,18 +6441,15 @@ void main() {
         var resp = convert.json.encode(buildListNodePoolsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              clusterId: arg_clusterId,
-              projectId: arg_projectId,
-              zone: arg_zone,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListNodePoolsResponse(response as api.ListNodePoolsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          clusterId: arg_clusterId,
+          projectId: arg_projectId,
+          zone: arg_zone,
+          $fields: arg_$fields);
+      checkListNodePoolsResponse(response as api.ListNodePoolsResponse);
     });
 
-    unittest.test('method--rollback', () {
+    unittest.test('method--rollback', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_request = buildRollbackNodePoolUpgradeRequest();
@@ -6560,14 +6503,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .rollback(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.rollback(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setAutoscaling', () {
+    unittest.test('method--setAutoscaling', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_request = buildSetNodePoolAutoscalingRequest();
@@ -6621,14 +6562,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setAutoscaling(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.setAutoscaling(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setManagement', () {
+    unittest.test('method--setManagement', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_request = buildSetNodePoolManagementRequest();
@@ -6682,14 +6621,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setManagement(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.setManagement(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setSize', () {
+    unittest.test('method--setSize', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_request = buildSetNodePoolSizeRequest();
@@ -6742,14 +6679,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setSize(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.setSize(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters.nodePools;
       var arg_request = buildUpdateNodePoolRequest();
@@ -6802,16 +6737,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsClustersWellKnownResource', () {
-    unittest.test('method--getOpenidConfiguration', () {
+    unittest.test('method--getOpenidConfiguration', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.clusters.wellKnown;
       var arg_parent = 'foo';
@@ -6859,16 +6792,14 @@ void main() {
         var resp = convert.json.encode(buildGetOpenIDConfigResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getOpenidConfiguration(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetOpenIDConfigResponse(response as api.GetOpenIDConfigResponse);
-      })));
+      final response =
+          await res.getOpenidConfiguration(arg_parent, $fields: arg_$fields);
+      checkGetOpenIDConfigResponse(response as api.GetOpenIDConfigResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.operations;
       var arg_request = buildCancelOperationRequest();
@@ -6921,14 +6852,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -6991,18 +6920,15 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name,
-              operationId: arg_operationId,
-              projectId: arg_projectId,
-              zone: arg_zone,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name,
+          operationId: arg_operationId,
+          projectId: arg_projectId,
+          zone: arg_zone,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.locations.operations;
       var arg_parent = 'foo';
@@ -7060,17 +6986,14 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              projectId: arg_projectId, zone: arg_zone, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          projectId: arg_projectId, zone: arg_zone, $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsZonesResource', () {
-    unittest.test('method--getServerconfig', () {
+    unittest.test('method--getServerconfig', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones;
       var arg_projectId = 'foo';
@@ -7151,17 +7074,14 @@ void main() {
         var resp = convert.json.encode(buildServerConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getServerconfig(arg_projectId, arg_zone,
-              name: arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkServerConfig(response as api.ServerConfig);
-      })));
+      final response = await res.getServerconfig(arg_projectId, arg_zone,
+          name: arg_name, $fields: arg_$fields);
+      checkServerConfig(response as api.ServerConfig);
     });
   });
 
   unittest.group('resource-ProjectsZonesClustersResource', () {
-    unittest.test('method--addons', () {
+    unittest.test('method--addons', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildSetAddonsConfigRequest();
@@ -7257,15 +7177,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .addons(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.addons(
+          arg_request, arg_projectId, arg_zone, arg_clusterId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--completeIpRotation', () {
+    unittest.test('method--completeIpRotation', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildCompleteIPRotationRequest();
@@ -7361,16 +7279,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .completeIpRotation(
-              arg_request, arg_projectId, arg_zone, arg_clusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.completeIpRotation(
+          arg_request, arg_projectId, arg_zone, arg_clusterId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildCreateClusterRequest();
@@ -7451,14 +7366,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_projectId, arg_zone, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_projectId, arg_zone,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_projectId = 'foo';
@@ -7546,15 +7459,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_projectId, arg_zone, arg_clusterId,
-              name: arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_projectId, arg_zone, arg_clusterId,
+          name: arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_projectId = 'foo';
@@ -7642,15 +7552,12 @@ void main() {
         var resp = convert.json.encode(buildCluster());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_projectId, arg_zone, arg_clusterId,
-              name: arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCluster(response as api.Cluster);
-      })));
+      final response = await res.get(arg_projectId, arg_zone, arg_clusterId,
+          name: arg_name, $fields: arg_$fields);
+      checkCluster(response as api.Cluster);
     });
 
-    unittest.test('method--legacyAbac', () {
+    unittest.test('method--legacyAbac', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildSetLegacyAbacRequest();
@@ -7746,15 +7653,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .legacyAbac(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.legacyAbac(
+          arg_request, arg_projectId, arg_zone, arg_clusterId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_projectId = 'foo';
@@ -7835,15 +7740,12 @@ void main() {
         var resp = convert.json.encode(buildListClustersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_projectId, arg_zone,
-              parent: arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListClustersResponse(response as api.ListClustersResponse);
-      })));
+      final response = await res.list(arg_projectId, arg_zone,
+          parent: arg_parent, $fields: arg_$fields);
+      checkListClustersResponse(response as api.ListClustersResponse);
     });
 
-    unittest.test('method--locations', () {
+    unittest.test('method--locations', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildSetLocationsRequest();
@@ -7939,15 +7841,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .locations(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.locations(
+          arg_request, arg_projectId, arg_zone, arg_clusterId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--logging', () {
+    unittest.test('method--logging', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildSetLoggingServiceRequest();
@@ -8043,15 +7943,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .logging(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.logging(
+          arg_request, arg_projectId, arg_zone, arg_clusterId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--master', () {
+    unittest.test('method--master', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildUpdateMasterRequest();
@@ -8147,15 +8045,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .master(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.master(
+          arg_request, arg_projectId, arg_zone, arg_clusterId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--monitoring', () {
+    unittest.test('method--monitoring', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildSetMonitoringServiceRequest();
@@ -8252,15 +8148,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .monitoring(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.monitoring(
+          arg_request, arg_projectId, arg_zone, arg_clusterId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--resourceLabels', () {
+    unittest.test('method--resourceLabels', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildSetLabelsRequest();
@@ -8356,15 +8250,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resourceLabels(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.resourceLabels(
+          arg_request, arg_projectId, arg_zone, arg_clusterId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setMaintenancePolicy', () {
+    unittest.test('method--setMaintenancePolicy', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildSetMaintenancePolicyRequest();
@@ -8461,16 +8353,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setMaintenancePolicy(
-              arg_request, arg_projectId, arg_zone, arg_clusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.setMaintenancePolicy(
+          arg_request, arg_projectId, arg_zone, arg_clusterId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setMasterAuth', () {
+    unittest.test('method--setMasterAuth', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildSetMasterAuthRequest();
@@ -8566,15 +8455,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setMasterAuth(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.setMasterAuth(
+          arg_request, arg_projectId, arg_zone, arg_clusterId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setNetworkPolicy', () {
+    unittest.test('method--setNetworkPolicy', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildSetNetworkPolicyRequest();
@@ -8670,15 +8557,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setNetworkPolicy(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.setNetworkPolicy(
+          arg_request, arg_projectId, arg_zone, arg_clusterId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--startIpRotation', () {
+    unittest.test('method--startIpRotation', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildStartIPRotationRequest();
@@ -8774,15 +8659,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .startIpRotation(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.startIpRotation(
+          arg_request, arg_projectId, arg_zone, arg_clusterId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters;
       var arg_request = buildUpdateClusterRequest();
@@ -8870,17 +8753,15 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.update(
+          arg_request, arg_projectId, arg_zone, arg_clusterId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsZonesClustersNodePoolsResource', () {
-    unittest.test('method--autoscaling', () {
+    unittest.test('method--autoscaling', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
       var arg_request = buildSetNodePoolAutoscalingRequest();
@@ -8992,16 +8873,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .autoscaling(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              arg_nodePoolId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.autoscaling(
+          arg_request, arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
       var arg_request = buildCreateNodePoolRequest();
@@ -9097,15 +8975,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(
+          arg_request, arg_projectId, arg_zone, arg_clusterId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
       var arg_projectId = 'foo';
@@ -9208,15 +9084,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId,
-              name: arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(
+          arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId,
+          name: arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
       var arg_projectId = 'foo';
@@ -9319,15 +9193,13 @@ void main() {
         var resp = convert.json.encode(buildNodePool());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId,
-              name: arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNodePool(response as api.NodePool);
-      })));
+      final response = await res.get(
+          arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId,
+          name: arg_name, $fields: arg_$fields);
+      checkNodePool(response as api.NodePool);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
       var arg_projectId = 'foo';
@@ -9423,15 +9295,12 @@ void main() {
         var resp = convert.json.encode(buildListNodePoolsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_projectId, arg_zone, arg_clusterId,
-              parent: arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListNodePoolsResponse(response as api.ListNodePoolsResponse);
-      })));
+      final response = await res.list(arg_projectId, arg_zone, arg_clusterId,
+          parent: arg_parent, $fields: arg_$fields);
+      checkListNodePoolsResponse(response as api.ListNodePoolsResponse);
     });
 
-    unittest.test('method--rollback', () {
+    unittest.test('method--rollback', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
       var arg_request = buildRollbackNodePoolUpgradeRequest();
@@ -9543,16 +9412,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .rollback(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              arg_nodePoolId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.rollback(
+          arg_request, arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setManagement', () {
+    unittest.test('method--setManagement', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
       var arg_request = buildSetNodePoolManagementRequest();
@@ -9664,16 +9530,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setManagement(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              arg_nodePoolId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.setManagement(
+          arg_request, arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setSize', () {
+    unittest.test('method--setSize', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
       var arg_request = buildSetNodePoolSizeRequest();
@@ -9784,16 +9647,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setSize(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              arg_nodePoolId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.setSize(
+          arg_request, arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.clusters.nodePools;
       var arg_request = buildUpdateNodePoolRequest();
@@ -9904,18 +9764,15 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_projectId, arg_zone, arg_clusterId,
-              arg_nodePoolId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.update(
+          arg_request, arg_projectId, arg_zone, arg_clusterId, arg_nodePoolId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsZonesOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.operations;
       var arg_request = buildCancelOperationRequest();
@@ -10011,15 +9868,13 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_projectId, arg_zone, arg_operationId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.cancel(
+          arg_request, arg_projectId, arg_zone, arg_operationId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.operations;
       var arg_projectId = 'foo';
@@ -10107,15 +9962,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_projectId, arg_zone, arg_operationId,
-              name: arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_projectId, arg_zone, arg_operationId,
+          name: arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ContainerApi(mock).projects.zones.operations;
       var arg_projectId = 'foo';
@@ -10196,12 +10048,9 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_projectId, arg_zone,
-              parent: arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_projectId, arg_zone,
+          parent: arg_parent, $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 }

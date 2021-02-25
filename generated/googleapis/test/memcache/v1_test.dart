@@ -1828,7 +1828,7 @@ void checkZoneMetadata(api.ZoneMetadata o) {
 
 void main() {
   unittest.group('obj-schema-ApplyParametersRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplyParametersRequest();
       var od = api.ApplyParametersRequest.fromJson(o.toJson());
       checkApplyParametersRequest(od as api.ApplyParametersRequest);
@@ -1836,7 +1836,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od as api.CancelOperationRequest);
@@ -1844,7 +1844,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DailyCycle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDailyCycle();
       var od = api.DailyCycle.fromJson(o.toJson());
       checkDailyCycle(od as api.DailyCycle);
@@ -1852,7 +1852,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Date', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
       checkDate(od as api.Date);
@@ -1860,7 +1860,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DenyMaintenancePeriod', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDenyMaintenancePeriod();
       var od = api.DenyMaintenancePeriod.fromJson(o.toJson());
       checkDenyMaintenancePeriod(od as api.DenyMaintenancePeriod);
@@ -1868,7 +1868,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1876,7 +1876,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMemcacheV1OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMemcacheV1OperationMetadata();
       var od = api.GoogleCloudMemcacheV1OperationMetadata.fromJson(o.toJson());
       checkGoogleCloudMemcacheV1OperationMetadata(
@@ -1886,7 +1886,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudSaasacceleratorManagementProvidersV1Instance', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudSaasacceleratorManagementProvidersV1Instance();
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1Instance.fromJson(
@@ -1899,7 +1899,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule();
       var od =
@@ -1914,7 +1914,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings();
       var od =
@@ -1929,7 +1929,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata();
       var od =
@@ -1944,7 +1944,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource();
       var od =
@@ -1959,7 +1959,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility();
       var od = api.GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
@@ -1972,7 +1972,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion();
       var od = api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
@@ -1985,7 +1985,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata();
       var od = api.GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
           .fromJson(o.toJson());
@@ -1995,7 +1995,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Instance', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstance();
       var od = api.Instance.fromJson(o.toJson());
       checkInstance(od as api.Instance);
@@ -2003,7 +2003,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstanceMessage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstanceMessage();
       var od = api.InstanceMessage.fromJson(o.toJson());
       checkInstanceMessage(od as api.InstanceMessage);
@@ -2011,7 +2011,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListInstancesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListInstancesResponse();
       var od = api.ListInstancesResponse.fromJson(o.toJson());
       checkListInstancesResponse(od as api.ListInstancesResponse);
@@ -2019,7 +2019,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -2027,7 +2027,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -2035,7 +2035,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -2043,7 +2043,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LocationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocationMetadata();
       var od = api.LocationMetadata.fromJson(o.toJson());
       checkLocationMetadata(od as api.LocationMetadata);
@@ -2051,7 +2051,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MaintenancePolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMaintenancePolicy();
       var od = api.MaintenancePolicy.fromJson(o.toJson());
       checkMaintenancePolicy(od as api.MaintenancePolicy);
@@ -2059,7 +2059,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MaintenanceWindow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMaintenanceWindow();
       var od = api.MaintenanceWindow.fromJson(o.toJson());
       checkMaintenanceWindow(od as api.MaintenanceWindow);
@@ -2067,7 +2067,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MemcacheParameters', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMemcacheParameters();
       var od = api.MemcacheParameters.fromJson(o.toJson());
       checkMemcacheParameters(od as api.MemcacheParameters);
@@ -2075,7 +2075,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Node', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNode();
       var od = api.Node.fromJson(o.toJson());
       checkNode(od as api.Node);
@@ -2083,7 +2083,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NodeConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNodeConfig();
       var od = api.NodeConfig.fromJson(o.toJson());
       checkNodeConfig(od as api.NodeConfig);
@@ -2091,7 +2091,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -2099,7 +2099,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
       checkOperationMetadata(od as api.OperationMetadata);
@@ -2107,7 +2107,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Schedule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSchedule();
       var od = api.Schedule.fromJson(o.toJson());
       checkSchedule(od as api.Schedule);
@@ -2115,7 +2115,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -2123,7 +2123,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimeOfDay', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimeOfDay();
       var od = api.TimeOfDay.fromJson(o.toJson());
       checkTimeOfDay(od as api.TimeOfDay);
@@ -2131,7 +2131,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateParametersRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateParametersRequest();
       var od = api.UpdateParametersRequest.fromJson(o.toJson());
       checkUpdateParametersRequest(od as api.UpdateParametersRequest);
@@ -2139,7 +2139,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdatePolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdatePolicy();
       var od = api.UpdatePolicy.fromJson(o.toJson());
       checkUpdatePolicy(od as api.UpdatePolicy);
@@ -2147,7 +2147,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WeeklyCycle', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWeeklyCycle();
       var od = api.WeeklyCycle.fromJson(o.toJson());
       checkWeeklyCycle(od as api.WeeklyCycle);
@@ -2155,7 +2155,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ZoneMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildZoneMetadata();
       var od = api.ZoneMetadata.fromJson(o.toJson());
       checkZoneMetadata(od as api.ZoneMetadata);
@@ -2163,7 +2163,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudMemorystoreForMemcachedApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -2211,14 +2211,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudMemorystoreForMemcachedApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -2281,20 +2278,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsInstancesResource', () {
-    unittest.test('method--applyParameters', () {
+    unittest.test('method--applyParameters', () async {
       var mock = HttpServerMock();
       var res = api.CloudMemorystoreForMemcachedApi(mock)
           .projects
@@ -2350,14 +2344,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .applyParameters(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.applyParameters(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudMemorystoreForMemcachedApi(mock)
           .projects
@@ -2418,15 +2410,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              instanceId: arg_instanceId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          instanceId: arg_instanceId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudMemorystoreForMemcachedApi(mock)
           .projects
@@ -2477,14 +2466,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudMemorystoreForMemcachedApi(mock)
           .projects
@@ -2535,14 +2521,11 @@ void main() {
         var resp = convert.json.encode(buildInstance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInstance(response as api.Instance);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkInstance(response as api.Instance);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudMemorystoreForMemcachedApi(mock)
           .projects
@@ -2613,19 +2596,16 @@ void main() {
         var resp = convert.json.encode(buildListInstancesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListInstancesResponse(response as api.ListInstancesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListInstancesResponse(response as api.ListInstancesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudMemorystoreForMemcachedApi(mock)
           .projects
@@ -2686,15 +2666,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--updateParameters', () {
+    unittest.test('method--updateParameters', () async {
       var mock = HttpServerMock();
       var res = api.CloudMemorystoreForMemcachedApi(mock)
           .projects
@@ -2750,16 +2727,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateParameters(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.updateParameters(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.CloudMemorystoreForMemcachedApi(mock)
           .projects
@@ -2815,14 +2790,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudMemorystoreForMemcachedApi(mock)
           .projects
@@ -2873,14 +2846,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudMemorystoreForMemcachedApi(mock)
           .projects
@@ -2931,14 +2901,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudMemorystoreForMemcachedApi(mock)
           .projects
@@ -3004,15 +2971,12 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 }

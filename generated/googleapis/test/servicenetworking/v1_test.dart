@@ -4247,7 +4247,7 @@ void checkValidateConsumerConfigResponse(api.ValidateConsumerConfigResponse o) {
 
 void main() {
   unittest.group('obj-schema-AddDnsRecordSetMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddDnsRecordSetMetadata();
       var od = api.AddDnsRecordSetMetadata.fromJson(o.toJson());
       checkAddDnsRecordSetMetadata(od as api.AddDnsRecordSetMetadata);
@@ -4255,7 +4255,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AddDnsRecordSetRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddDnsRecordSetRequest();
       var od = api.AddDnsRecordSetRequest.fromJson(o.toJson());
       checkAddDnsRecordSetRequest(od as api.AddDnsRecordSetRequest);
@@ -4263,7 +4263,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AddDnsZoneMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddDnsZoneMetadata();
       var od = api.AddDnsZoneMetadata.fromJson(o.toJson());
       checkAddDnsZoneMetadata(od as api.AddDnsZoneMetadata);
@@ -4271,7 +4271,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AddDnsZoneRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddDnsZoneRequest();
       var od = api.AddDnsZoneRequest.fromJson(o.toJson());
       checkAddDnsZoneRequest(od as api.AddDnsZoneRequest);
@@ -4279,7 +4279,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AddDnsZoneResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddDnsZoneResponse();
       var od = api.AddDnsZoneResponse.fromJson(o.toJson());
       checkAddDnsZoneResponse(od as api.AddDnsZoneResponse);
@@ -4287,7 +4287,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AddRolesMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddRolesMetadata();
       var od = api.AddRolesMetadata.fromJson(o.toJson());
       checkAddRolesMetadata(od as api.AddRolesMetadata);
@@ -4295,7 +4295,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AddRolesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddRolesRequest();
       var od = api.AddRolesRequest.fromJson(o.toJson());
       checkAddRolesRequest(od as api.AddRolesRequest);
@@ -4303,7 +4303,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AddRolesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddRolesResponse();
       var od = api.AddRolesResponse.fromJson(o.toJson());
       checkAddRolesResponse(od as api.AddRolesResponse);
@@ -4311,7 +4311,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AddSubnetworkRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddSubnetworkRequest();
       var od = api.AddSubnetworkRequest.fromJson(o.toJson());
       checkAddSubnetworkRequest(od as api.AddSubnetworkRequest);
@@ -4319,7 +4319,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Api', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApi();
       var od = api.Api.fromJson(o.toJson());
       checkApi(od as api.Api);
@@ -4327,7 +4327,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuthProvider', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuthProvider();
       var od = api.AuthProvider.fromJson(o.toJson());
       checkAuthProvider(od as api.AuthProvider);
@@ -4335,7 +4335,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuthRequirement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuthRequirement();
       var od = api.AuthRequirement.fromJson(o.toJson());
       checkAuthRequirement(od as api.AuthRequirement);
@@ -4343,7 +4343,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Authentication', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuthentication();
       var od = api.Authentication.fromJson(o.toJson());
       checkAuthentication(od as api.Authentication);
@@ -4351,7 +4351,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuthenticationRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuthenticationRule();
       var od = api.AuthenticationRule.fromJson(o.toJson());
       checkAuthenticationRule(od as api.AuthenticationRule);
@@ -4359,7 +4359,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Backend', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBackend();
       var od = api.Backend.fromJson(o.toJson());
       checkBackend(od as api.Backend);
@@ -4367,7 +4367,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BackendRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBackendRule();
       var od = api.BackendRule.fromJson(o.toJson());
       checkBackendRule(od as api.BackendRule);
@@ -4375,7 +4375,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Billing', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBilling();
       var od = api.Billing.fromJson(o.toJson());
       checkBilling(od as api.Billing);
@@ -4383,7 +4383,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BillingDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBillingDestination();
       var od = api.BillingDestination.fromJson(o.toJson());
       checkBillingDestination(od as api.BillingDestination);
@@ -4391,7 +4391,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od as api.CancelOperationRequest);
@@ -4399,7 +4399,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Connection', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConnection();
       var od = api.Connection.fromJson(o.toJson());
       checkConnection(od as api.Connection);
@@ -4407,7 +4407,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConsumerConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConsumerConfig();
       var od = api.ConsumerConfig.fromJson(o.toJson());
       checkConsumerConfig(od as api.ConsumerConfig);
@@ -4415,7 +4415,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConsumerConfigMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConsumerConfigMetadata();
       var od = api.ConsumerConfigMetadata.fromJson(o.toJson());
       checkConsumerConfigMetadata(od as api.ConsumerConfigMetadata);
@@ -4423,7 +4423,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConsumerProject', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConsumerProject();
       var od = api.ConsumerProject.fromJson(o.toJson());
       checkConsumerProject(od as api.ConsumerProject);
@@ -4431,7 +4431,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Context', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContext();
       var od = api.Context.fromJson(o.toJson());
       checkContext(od as api.Context);
@@ -4439,7 +4439,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ContextRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContextRule();
       var od = api.ContextRule.fromJson(o.toJson());
       checkContextRule(od as api.ContextRule);
@@ -4447,7 +4447,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Control', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildControl();
       var od = api.Control.fromJson(o.toJson());
       checkControl(od as api.Control);
@@ -4455,7 +4455,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomError();
       var od = api.CustomError.fromJson(o.toJson());
       checkCustomError(od as api.CustomError);
@@ -4463,7 +4463,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomErrorRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomErrorRule();
       var od = api.CustomErrorRule.fromJson(o.toJson());
       checkCustomErrorRule(od as api.CustomErrorRule);
@@ -4471,7 +4471,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomHttpPattern', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomHttpPattern();
       var od = api.CustomHttpPattern.fromJson(o.toJson());
       checkCustomHttpPattern(od as api.CustomHttpPattern);
@@ -4479,7 +4479,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteConnectionMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteConnectionMetadata();
       var od = api.DeleteConnectionMetadata.fromJson(o.toJson());
       checkDeleteConnectionMetadata(od as api.DeleteConnectionMetadata);
@@ -4487,7 +4487,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeletePeeredDnsDomainMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeletePeeredDnsDomainMetadata();
       var od = api.DeletePeeredDnsDomainMetadata.fromJson(o.toJson());
       checkDeletePeeredDnsDomainMetadata(
@@ -4496,7 +4496,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DisableVpcServiceControlsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDisableVpcServiceControlsRequest();
       var od = api.DisableVpcServiceControlsRequest.fromJson(o.toJson());
       checkDisableVpcServiceControlsRequest(
@@ -4505,7 +4505,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DnsRecordSet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDnsRecordSet();
       var od = api.DnsRecordSet.fromJson(o.toJson());
       checkDnsRecordSet(od as api.DnsRecordSet);
@@ -4513,7 +4513,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DnsZone', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDnsZone();
       var od = api.DnsZone.fromJson(o.toJson());
       checkDnsZone(od as api.DnsZone);
@@ -4521,7 +4521,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Documentation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDocumentation();
       var od = api.Documentation.fromJson(o.toJson());
       checkDocumentation(od as api.Documentation);
@@ -4529,7 +4529,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DocumentationRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDocumentationRule();
       var od = api.DocumentationRule.fromJson(o.toJson());
       checkDocumentationRule(od as api.DocumentationRule);
@@ -4537,7 +4537,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -4545,7 +4545,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnableVpcServiceControlsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnableVpcServiceControlsRequest();
       var od = api.EnableVpcServiceControlsRequest.fromJson(o.toJson());
       checkEnableVpcServiceControlsRequest(
@@ -4554,7 +4554,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Endpoint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEndpoint();
       var od = api.Endpoint.fromJson(o.toJson());
       checkEndpoint(od as api.Endpoint);
@@ -4562,7 +4562,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Enum', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnum();
       var od = api.Enum.fromJson(o.toJson());
       checkEnum(od as api.Enum);
@@ -4570,7 +4570,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnumValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnumValue();
       var od = api.EnumValue.fromJson(o.toJson());
       checkEnumValue(od as api.EnumValue);
@@ -4578,7 +4578,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Field', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildField();
       var od = api.Field.fromJson(o.toJson());
       checkField(od as api.Field);
@@ -4588,7 +4588,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudServicenetworkingV1ConsumerConfigReservedRange',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudServicenetworkingV1ConsumerConfigReservedRange();
       var od = api.GoogleCloudServicenetworkingV1ConsumerConfigReservedRange
           .fromJson(o.toJson());
@@ -4598,7 +4598,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudServicenetworkingV1betaConnection', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudServicenetworkingV1betaConnection();
       var od =
           api.GoogleCloudServicenetworkingV1betaConnection.fromJson(o.toJson());
@@ -4608,7 +4608,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudServicenetworkingV1betaSubnetwork', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudServicenetworkingV1betaSubnetwork();
       var od =
           api.GoogleCloudServicenetworkingV1betaSubnetwork.fromJson(o.toJson());
@@ -4618,7 +4618,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Http', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHttp();
       var od = api.Http.fromJson(o.toJson());
       checkHttp(od as api.Http);
@@ -4626,7 +4626,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HttpRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHttpRule();
       var od = api.HttpRule.fromJson(o.toJson());
       checkHttpRule(od as api.HttpRule);
@@ -4634,7 +4634,7 @@ void main() {
   });
 
   unittest.group('obj-schema-JwtLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildJwtLocation();
       var od = api.JwtLocation.fromJson(o.toJson());
       checkJwtLocation(od as api.JwtLocation);
@@ -4642,7 +4642,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LabelDescriptor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLabelDescriptor();
       var od = api.LabelDescriptor.fromJson(o.toJson());
       checkLabelDescriptor(od as api.LabelDescriptor);
@@ -4650,7 +4650,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListConnectionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListConnectionsResponse();
       var od = api.ListConnectionsResponse.fromJson(o.toJson());
       checkListConnectionsResponse(od as api.ListConnectionsResponse);
@@ -4658,7 +4658,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -4666,7 +4666,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListPeeredDnsDomainsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListPeeredDnsDomainsResponse();
       var od = api.ListPeeredDnsDomainsResponse.fromJson(o.toJson());
       checkListPeeredDnsDomainsResponse(od as api.ListPeeredDnsDomainsResponse);
@@ -4674,7 +4674,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LogDescriptor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLogDescriptor();
       var od = api.LogDescriptor.fromJson(o.toJson());
       checkLogDescriptor(od as api.LogDescriptor);
@@ -4682,7 +4682,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Logging', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLogging();
       var od = api.Logging.fromJson(o.toJson());
       checkLogging(od as api.Logging);
@@ -4690,7 +4690,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LoggingDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLoggingDestination();
       var od = api.LoggingDestination.fromJson(o.toJson());
       checkLoggingDestination(od as api.LoggingDestination);
@@ -4698,7 +4698,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Method', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMethod();
       var od = api.Method.fromJson(o.toJson());
       checkMethod(od as api.Method);
@@ -4706,7 +4706,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricDescriptor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricDescriptor();
       var od = api.MetricDescriptor.fromJson(o.toJson());
       checkMetricDescriptor(od as api.MetricDescriptor);
@@ -4714,7 +4714,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricDescriptorMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricDescriptorMetadata();
       var od = api.MetricDescriptorMetadata.fromJson(o.toJson());
       checkMetricDescriptorMetadata(od as api.MetricDescriptorMetadata);
@@ -4722,7 +4722,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricRule();
       var od = api.MetricRule.fromJson(o.toJson());
       checkMetricRule(od as api.MetricRule);
@@ -4730,7 +4730,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Mixin', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMixin();
       var od = api.Mixin.fromJson(o.toJson());
       checkMixin(od as api.Mixin);
@@ -4738,7 +4738,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MonitoredResourceDescriptor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMonitoredResourceDescriptor();
       var od = api.MonitoredResourceDescriptor.fromJson(o.toJson());
       checkMonitoredResourceDescriptor(od as api.MonitoredResourceDescriptor);
@@ -4746,7 +4746,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Monitoring', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMonitoring();
       var od = api.Monitoring.fromJson(o.toJson());
       checkMonitoring(od as api.Monitoring);
@@ -4754,7 +4754,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MonitoringDestination', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMonitoringDestination();
       var od = api.MonitoringDestination.fromJson(o.toJson());
       checkMonitoringDestination(od as api.MonitoringDestination);
@@ -4762,7 +4762,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OAuthRequirements', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOAuthRequirements();
       var od = api.OAuthRequirements.fromJson(o.toJson());
       checkOAuthRequirements(od as api.OAuthRequirements);
@@ -4770,7 +4770,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -4778,7 +4778,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Option', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOption();
       var od = api.Option.fromJson(o.toJson());
       checkOption(od as api.Option);
@@ -4786,7 +4786,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Page', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPage();
       var od = api.Page.fromJson(o.toJson());
       checkPage(od as api.Page);
@@ -4794,7 +4794,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PeeredDnsDomain', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPeeredDnsDomain();
       var od = api.PeeredDnsDomain.fromJson(o.toJson());
       checkPeeredDnsDomain(od as api.PeeredDnsDomain);
@@ -4802,7 +4802,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PeeredDnsDomainMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPeeredDnsDomainMetadata();
       var od = api.PeeredDnsDomainMetadata.fromJson(o.toJson());
       checkPeeredDnsDomainMetadata(od as api.PeeredDnsDomainMetadata);
@@ -4810,7 +4810,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PolicyBinding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicyBinding();
       var od = api.PolicyBinding.fromJson(o.toJson());
       checkPolicyBinding(od as api.PolicyBinding);
@@ -4818,7 +4818,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Quota', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQuota();
       var od = api.Quota.fromJson(o.toJson());
       checkQuota(od as api.Quota);
@@ -4826,7 +4826,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QuotaLimit', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQuotaLimit();
       var od = api.QuotaLimit.fromJson(o.toJson());
       checkQuotaLimit(od as api.QuotaLimit);
@@ -4834,7 +4834,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Range', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRange();
       var od = api.Range.fromJson(o.toJson());
       checkRange(od as api.Range);
@@ -4842,7 +4842,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RangeReservation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRangeReservation();
       var od = api.RangeReservation.fromJson(o.toJson());
       checkRangeReservation(od as api.RangeReservation);
@@ -4850,7 +4850,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RemoveDnsRecordSetMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRemoveDnsRecordSetMetadata();
       var od = api.RemoveDnsRecordSetMetadata.fromJson(o.toJson());
       checkRemoveDnsRecordSetMetadata(od as api.RemoveDnsRecordSetMetadata);
@@ -4858,7 +4858,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RemoveDnsRecordSetRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRemoveDnsRecordSetRequest();
       var od = api.RemoveDnsRecordSetRequest.fromJson(o.toJson());
       checkRemoveDnsRecordSetRequest(od as api.RemoveDnsRecordSetRequest);
@@ -4866,7 +4866,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RemoveDnsRecordSetResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRemoveDnsRecordSetResponse();
       var od = api.RemoveDnsRecordSetResponse.fromJson(o.toJson());
       checkRemoveDnsRecordSetResponse(od as api.RemoveDnsRecordSetResponse);
@@ -4874,7 +4874,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RemoveDnsZoneMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRemoveDnsZoneMetadata();
       var od = api.RemoveDnsZoneMetadata.fromJson(o.toJson());
       checkRemoveDnsZoneMetadata(od as api.RemoveDnsZoneMetadata);
@@ -4882,7 +4882,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RemoveDnsZoneRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRemoveDnsZoneRequest();
       var od = api.RemoveDnsZoneRequest.fromJson(o.toJson());
       checkRemoveDnsZoneRequest(od as api.RemoveDnsZoneRequest);
@@ -4890,7 +4890,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RemoveDnsZoneResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRemoveDnsZoneResponse();
       var od = api.RemoveDnsZoneResponse.fromJson(o.toJson());
       checkRemoveDnsZoneResponse(od as api.RemoveDnsZoneResponse);
@@ -4898,7 +4898,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Route', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRoute();
       var od = api.Route.fromJson(o.toJson());
       checkRoute(od as api.Route);
@@ -4906,7 +4906,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchRangeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchRangeRequest();
       var od = api.SearchRangeRequest.fromJson(o.toJson());
       checkSearchRangeRequest(od as api.SearchRangeRequest);
@@ -4914,7 +4914,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SecondaryIpRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSecondaryIpRange();
       var od = api.SecondaryIpRange.fromJson(o.toJson());
       checkSecondaryIpRange(od as api.SecondaryIpRange);
@@ -4922,7 +4922,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SecondaryIpRangeSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSecondaryIpRangeSpec();
       var od = api.SecondaryIpRangeSpec.fromJson(o.toJson());
       checkSecondaryIpRangeSpec(od as api.SecondaryIpRangeSpec);
@@ -4930,7 +4930,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Service', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildService();
       var od = api.Service.fromJson(o.toJson());
       checkService(od as api.Service);
@@ -4938,7 +4938,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SourceContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSourceContext();
       var od = api.SourceContext.fromJson(o.toJson());
       checkSourceContext(od as api.SourceContext);
@@ -4946,7 +4946,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SourceInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSourceInfo();
       var od = api.SourceInfo.fromJson(o.toJson());
       checkSourceInfo(od as api.SourceInfo);
@@ -4954,7 +4954,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -4962,7 +4962,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Subnetwork', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubnetwork();
       var od = api.Subnetwork.fromJson(o.toJson());
       checkSubnetwork(od as api.Subnetwork);
@@ -4970,7 +4970,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SystemParameter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSystemParameter();
       var od = api.SystemParameter.fromJson(o.toJson());
       checkSystemParameter(od as api.SystemParameter);
@@ -4978,7 +4978,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SystemParameterRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSystemParameterRule();
       var od = api.SystemParameterRule.fromJson(o.toJson());
       checkSystemParameterRule(od as api.SystemParameterRule);
@@ -4986,7 +4986,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SystemParameters', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSystemParameters();
       var od = api.SystemParameters.fromJson(o.toJson());
       checkSystemParameters(od as api.SystemParameters);
@@ -4994,7 +4994,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Type', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildType();
       var od = api.Type.fromJson(o.toJson());
       checkType(od as api.Type);
@@ -5002,7 +5002,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateConsumerConfigRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateConsumerConfigRequest();
       var od = api.UpdateConsumerConfigRequest.fromJson(o.toJson());
       checkUpdateConsumerConfigRequest(od as api.UpdateConsumerConfigRequest);
@@ -5010,7 +5010,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateDnsRecordSetMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateDnsRecordSetMetadata();
       var od = api.UpdateDnsRecordSetMetadata.fromJson(o.toJson());
       checkUpdateDnsRecordSetMetadata(od as api.UpdateDnsRecordSetMetadata);
@@ -5018,7 +5018,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateDnsRecordSetRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateDnsRecordSetRequest();
       var od = api.UpdateDnsRecordSetRequest.fromJson(o.toJson());
       checkUpdateDnsRecordSetRequest(od as api.UpdateDnsRecordSetRequest);
@@ -5026,7 +5026,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Usage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsage();
       var od = api.Usage.fromJson(o.toJson());
       checkUsage(od as api.Usage);
@@ -5034,7 +5034,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsageRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsageRule();
       var od = api.UsageRule.fromJson(o.toJson());
       checkUsageRule(od as api.UsageRule);
@@ -5042,7 +5042,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ValidateConsumerConfigRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildValidateConsumerConfigRequest();
       var od = api.ValidateConsumerConfigRequest.fromJson(o.toJson());
       checkValidateConsumerConfigRequest(
@@ -5051,7 +5051,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ValidateConsumerConfigResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildValidateConsumerConfigResponse();
       var od = api.ValidateConsumerConfigResponse.fromJson(o.toJson());
       checkValidateConsumerConfigResponse(
@@ -5060,7 +5060,7 @@ void main() {
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).operations;
       var arg_request = buildCancelOperationRequest();
@@ -5113,14 +5113,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).operations;
       var arg_name = 'foo';
@@ -5168,14 +5166,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).operations;
       var arg_name = 'foo';
@@ -5223,14 +5218,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).operations;
       var arg_name = 'foo';
@@ -5293,20 +5285,17 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 
   unittest.group('resource-ServicesResource', () {
-    unittest.test('method--addSubnetwork', () {
+    unittest.test('method--addSubnetwork', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services;
       var arg_request = buildAddSubnetworkRequest();
@@ -5359,14 +5348,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .addSubnetwork(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.addSubnetwork(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--disableVpcServiceControls', () {
+    unittest.test('method--disableVpcServiceControls', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services;
       var arg_request = buildDisableVpcServiceControlsRequest();
@@ -5420,15 +5407,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .disableVpcServiceControls(arg_request, arg_parent,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.disableVpcServiceControls(
+          arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--enableVpcServiceControls', () {
+    unittest.test('method--enableVpcServiceControls', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services;
       var arg_request = buildEnableVpcServiceControlsRequest();
@@ -5482,15 +5467,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .enableVpcServiceControls(arg_request, arg_parent,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.enableVpcServiceControls(
+          arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--searchRange', () {
+    unittest.test('method--searchRange', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services;
       var arg_request = buildSearchRangeRequest();
@@ -5543,14 +5526,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .searchRange(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.searchRange(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--validate', () {
+    unittest.test('method--validate', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services;
       var arg_request = buildValidateConsumerConfigRequest();
@@ -5604,17 +5585,15 @@ void main() {
         var resp = convert.json.encode(buildValidateConsumerConfigResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .validate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkValidateConsumerConfigResponse(
-            response as api.ValidateConsumerConfigResponse);
-      })));
+      final response =
+          await res.validate(arg_request, arg_parent, $fields: arg_$fields);
+      checkValidateConsumerConfigResponse(
+          response as api.ValidateConsumerConfigResponse);
     });
   });
 
   unittest.group('resource-ServicesConnectionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services.connections;
       var arg_request = buildConnection();
@@ -5667,14 +5646,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services.connections;
       var arg_parent = 'foo';
@@ -5727,14 +5704,12 @@ void main() {
         var resp = convert.json.encode(buildListConnectionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, network: arg_network, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListConnectionsResponse(response as api.ListConnectionsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          network: arg_network, $fields: arg_$fields);
+      checkListConnectionsResponse(response as api.ListConnectionsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services.connections;
       var arg_request = buildConnection();
@@ -5797,19 +5772,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              force: arg_force,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          force: arg_force, updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ServicesDnsRecordSetsResource', () {
-    unittest.test('method--add', () {
+    unittest.test('method--add', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services.dnsRecordSets;
       var arg_request = buildAddDnsRecordSetRequest();
@@ -5862,14 +5832,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .add(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.add(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--remove', () {
+    unittest.test('method--remove', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services.dnsRecordSets;
       var arg_request = buildRemoveDnsRecordSetRequest();
@@ -5922,14 +5890,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .remove(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.remove(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services.dnsRecordSets;
       var arg_request = buildUpdateDnsRecordSetRequest();
@@ -5982,16 +5948,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.update(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ServicesDnsZonesResource', () {
-    unittest.test('method--add', () {
+    unittest.test('method--add', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services.dnsZones;
       var arg_request = buildAddDnsZoneRequest();
@@ -6044,14 +6008,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .add(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.add(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--remove', () {
+    unittest.test('method--remove', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services.dnsZones;
       var arg_request = buildRemoveDnsZoneRequest();
@@ -6104,16 +6066,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .remove(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.remove(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ServicesProjectsGlobalNetworksResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.ServiceNetworkingApi(mock).services.projects.global.networks;
@@ -6162,14 +6122,11 @@ void main() {
         var resp = convert.json.encode(buildConsumerConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkConsumerConfig(response as api.ConsumerConfig);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkConsumerConfig(response as api.ConsumerConfig);
     });
 
-    unittest.test('method--updateConsumerConfig', () {
+    unittest.test('method--updateConsumerConfig', () async {
       var mock = HttpServerMock();
       var res =
           api.ServiceNetworkingApi(mock).services.projects.global.networks;
@@ -6224,17 +6181,15 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateConsumerConfig(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.updateConsumerConfig(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group(
       'resource-ServicesProjectsGlobalNetworksPeeredDnsDomainsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock)
           .services
@@ -6292,14 +6247,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock)
           .services
@@ -6352,14 +6305,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock)
           .services
@@ -6412,17 +6362,14 @@ void main() {
         var resp = convert.json.encode(buildListPeeredDnsDomainsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListPeeredDnsDomainsResponse(
-            response as api.ListPeeredDnsDomainsResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkListPeeredDnsDomainsResponse(
+          response as api.ListPeeredDnsDomainsResponse);
     });
   });
 
   unittest.group('resource-ServicesRolesResource', () {
-    unittest.test('method--add', () {
+    unittest.test('method--add', () async {
       var mock = HttpServerMock();
       var res = api.ServiceNetworkingApi(mock).services.roles;
       var arg_request = buildAddRolesRequest();
@@ -6475,11 +6422,9 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .add(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.add(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 }

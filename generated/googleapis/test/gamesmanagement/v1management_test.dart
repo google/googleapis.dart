@@ -569,7 +569,7 @@ void checkScoresResetMultipleForAllRequest(
 
 void main() {
   unittest.group('obj-schema-AchievementResetAllResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAchievementResetAllResponse();
       var od = api.AchievementResetAllResponse.fromJson(o.toJson());
       checkAchievementResetAllResponse(od as api.AchievementResetAllResponse);
@@ -577,7 +577,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AchievementResetMultipleForAllRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAchievementResetMultipleForAllRequest();
       var od = api.AchievementResetMultipleForAllRequest.fromJson(o.toJson());
       checkAchievementResetMultipleForAllRequest(
@@ -586,7 +586,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AchievementResetResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAchievementResetResponse();
       var od = api.AchievementResetResponse.fromJson(o.toJson());
       checkAchievementResetResponse(od as api.AchievementResetResponse);
@@ -594,7 +594,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventsResetMultipleForAllRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventsResetMultipleForAllRequest();
       var od = api.EventsResetMultipleForAllRequest.fromJson(o.toJson());
       checkEventsResetMultipleForAllRequest(
@@ -603,7 +603,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GamesPlayerExperienceInfoResource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGamesPlayerExperienceInfoResource();
       var od = api.GamesPlayerExperienceInfoResource.fromJson(o.toJson());
       checkGamesPlayerExperienceInfoResource(
@@ -612,7 +612,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GamesPlayerLevelResource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGamesPlayerLevelResource();
       var od = api.GamesPlayerLevelResource.fromJson(o.toJson());
       checkGamesPlayerLevelResource(od as api.GamesPlayerLevelResource);
@@ -620,7 +620,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HiddenPlayer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHiddenPlayer();
       var od = api.HiddenPlayer.fromJson(o.toJson());
       checkHiddenPlayer(od as api.HiddenPlayer);
@@ -628,7 +628,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HiddenPlayerList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHiddenPlayerList();
       var od = api.HiddenPlayerList.fromJson(o.toJson());
       checkHiddenPlayerList(od as api.HiddenPlayerList);
@@ -636,7 +636,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PlayerName', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayerName();
       var od = api.PlayerName.fromJson(o.toJson());
       checkPlayerName(od as api.PlayerName);
@@ -644,7 +644,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Player', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayer();
       var od = api.Player.fromJson(o.toJson());
       checkPlayer(od as api.Player);
@@ -652,7 +652,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PlayerScoreResetAllResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayerScoreResetAllResponse();
       var od = api.PlayerScoreResetAllResponse.fromJson(o.toJson());
       checkPlayerScoreResetAllResponse(od as api.PlayerScoreResetAllResponse);
@@ -660,7 +660,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PlayerScoreResetResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayerScoreResetResponse();
       var od = api.PlayerScoreResetResponse.fromJson(o.toJson());
       checkPlayerScoreResetResponse(od as api.PlayerScoreResetResponse);
@@ -668,7 +668,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProfileSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProfileSettings();
       var od = api.ProfileSettings.fromJson(o.toJson());
       checkProfileSettings(od as api.ProfileSettings);
@@ -676,7 +676,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScoresResetMultipleForAllRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScoresResetMultipleForAllRequest();
       var od = api.ScoresResetMultipleForAllRequest.fromJson(o.toJson());
       checkScoresResetMultipleForAllRequest(
@@ -685,7 +685,7 @@ void main() {
   });
 
   unittest.group('resource-AchievementsResource', () {
-    unittest.test('method--reset', () {
+    unittest.test('method--reset', () async {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).achievements;
       var arg_achievementId = 'foo';
@@ -746,14 +746,11 @@ void main() {
         var resp = convert.json.encode(buildAchievementResetResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reset(arg_achievementId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAchievementResetResponse(response as api.AchievementResetResponse);
-      })));
+      final response = await res.reset(arg_achievementId, $fields: arg_$fields);
+      checkAchievementResetResponse(response as api.AchievementResetResponse);
     });
 
-    unittest.test('method--resetAll', () {
+    unittest.test('method--resetAll', () async {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).achievements;
       var arg_$fields = 'foo';
@@ -799,15 +796,12 @@ void main() {
         var resp = convert.json.encode(buildAchievementResetAllResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resetAll($fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAchievementResetAllResponse(
-            response as api.AchievementResetAllResponse);
-      })));
+      final response = await res.resetAll($fields: arg_$fields);
+      checkAchievementResetAllResponse(
+          response as api.AchievementResetAllResponse);
     });
 
-    unittest.test('method--resetAllForAllPlayers', () {
+    unittest.test('method--resetAllForAllPlayers', () async {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).achievements;
       var arg_$fields = 'foo';
@@ -854,12 +848,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resetAllForAllPlayers($fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.resetAllForAllPlayers($fields: arg_$fields);
     });
 
-    unittest.test('method--resetForAllPlayers', () {
+    unittest.test('method--resetForAllPlayers', () async {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).achievements;
       var arg_achievementId = 'foo';
@@ -920,12 +912,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resetForAllPlayers(arg_achievementId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.resetForAllPlayers(arg_achievementId, $fields: arg_$fields);
     });
 
-    unittest.test('method--resetMultipleForAllPlayers', () {
+    unittest.test('method--resetMultipleForAllPlayers', () async {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).achievements;
       var arg_request = buildAchievementResetMultipleForAllRequest();
@@ -978,14 +968,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resetMultipleForAllPlayers(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.resetMultipleForAllPlayers(arg_request, $fields: arg_$fields);
     });
   });
 
   unittest.group('resource-ApplicationsResource', () {
-    unittest.test('method--listHidden', () {
+    unittest.test('method--listHidden', () async {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).applications;
       var arg_applicationId = 'foo';
@@ -1056,19 +1044,16 @@ void main() {
         var resp = convert.json.encode(buildHiddenPlayerList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listHidden(arg_applicationId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHiddenPlayerList(response as api.HiddenPlayerList);
-      })));
+      final response = await res.listHidden(arg_applicationId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkHiddenPlayerList(response as api.HiddenPlayerList);
     });
   });
 
   unittest.group('resource-EventsResource', () {
-    unittest.test('method--reset', () {
+    unittest.test('method--reset', () async {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).events;
       var arg_eventId = 'foo';
@@ -1129,12 +1114,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reset(arg_eventId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.reset(arg_eventId, $fields: arg_$fields);
     });
 
-    unittest.test('method--resetAll', () {
+    unittest.test('method--resetAll', () async {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).events;
       var arg_$fields = 'foo';
@@ -1180,10 +1163,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.resetAll($fields: arg_$fields).then(unittest.expectAsync1((_) {}));
+      await res.resetAll($fields: arg_$fields);
     });
 
-    unittest.test('method--resetAllForAllPlayers', () {
+    unittest.test('method--resetAllForAllPlayers', () async {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).events;
       var arg_$fields = 'foo';
@@ -1229,12 +1212,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resetAllForAllPlayers($fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.resetAllForAllPlayers($fields: arg_$fields);
     });
 
-    unittest.test('method--resetForAllPlayers', () {
+    unittest.test('method--resetForAllPlayers', () async {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).events;
       var arg_eventId = 'foo';
@@ -1295,12 +1276,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resetForAllPlayers(arg_eventId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.resetForAllPlayers(arg_eventId, $fields: arg_$fields);
     });
 
-    unittest.test('method--resetMultipleForAllPlayers', () {
+    unittest.test('method--resetMultipleForAllPlayers', () async {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).events;
       var arg_request = buildEventsResetMultipleForAllRequest();
@@ -1353,14 +1332,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resetMultipleForAllPlayers(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.resetMultipleForAllPlayers(arg_request, $fields: arg_$fields);
     });
   });
 
   unittest.group('resource-PlayersResource', () {
-    unittest.test('method--hide', () {
+    unittest.test('method--hide', () async {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).players;
       var arg_applicationId = 'foo';
@@ -1428,12 +1405,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .hide(arg_applicationId, arg_playerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.hide(arg_applicationId, arg_playerId, $fields: arg_$fields);
     });
 
-    unittest.test('method--unhide', () {
+    unittest.test('method--unhide', () async {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).players;
       var arg_applicationId = 'foo';
@@ -1501,14 +1476,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .unhide(arg_applicationId, arg_playerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.unhide(arg_applicationId, arg_playerId, $fields: arg_$fields);
     });
   });
 
   unittest.group('resource-ScoresResource', () {
-    unittest.test('method--reset', () {
+    unittest.test('method--reset', () async {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).scores;
       var arg_leaderboardId = 'foo';
@@ -1569,14 +1542,11 @@ void main() {
         var resp = convert.json.encode(buildPlayerScoreResetResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reset(arg_leaderboardId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPlayerScoreResetResponse(response as api.PlayerScoreResetResponse);
-      })));
+      final response = await res.reset(arg_leaderboardId, $fields: arg_$fields);
+      checkPlayerScoreResetResponse(response as api.PlayerScoreResetResponse);
     });
 
-    unittest.test('method--resetAll', () {
+    unittest.test('method--resetAll', () async {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).scores;
       var arg_$fields = 'foo';
@@ -1622,15 +1592,12 @@ void main() {
         var resp = convert.json.encode(buildPlayerScoreResetAllResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resetAll($fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPlayerScoreResetAllResponse(
-            response as api.PlayerScoreResetAllResponse);
-      })));
+      final response = await res.resetAll($fields: arg_$fields);
+      checkPlayerScoreResetAllResponse(
+          response as api.PlayerScoreResetAllResponse);
     });
 
-    unittest.test('method--resetAllForAllPlayers', () {
+    unittest.test('method--resetAllForAllPlayers', () async {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).scores;
       var arg_$fields = 'foo';
@@ -1676,12 +1643,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resetAllForAllPlayers($fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.resetAllForAllPlayers($fields: arg_$fields);
     });
 
-    unittest.test('method--resetForAllPlayers', () {
+    unittest.test('method--resetForAllPlayers', () async {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).scores;
       var arg_leaderboardId = 'foo';
@@ -1742,12 +1707,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resetForAllPlayers(arg_leaderboardId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.resetForAllPlayers(arg_leaderboardId, $fields: arg_$fields);
     });
 
-    unittest.test('method--resetMultipleForAllPlayers', () {
+    unittest.test('method--resetMultipleForAllPlayers', () async {
       var mock = HttpServerMock();
       var res = api.GamesManagementApi(mock).scores;
       var arg_request = buildScoresResetMultipleForAllRequest();
@@ -1800,9 +1763,7 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resetMultipleForAllPlayers(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.resetMultipleForAllPlayers(arg_request, $fields: arg_$fields);
     });
   });
 }

@@ -4791,7 +4791,7 @@ void checkUnnamed6864(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-AnnotationClientVersionRanges', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnnotationClientVersionRanges();
       var od = api.AnnotationClientVersionRanges.fromJson(o.toJson());
       checkAnnotationClientVersionRanges(
@@ -4800,7 +4800,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnnotationCurrentVersionRanges', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnnotationCurrentVersionRanges();
       var od = api.AnnotationCurrentVersionRanges.fromJson(o.toJson());
       checkAnnotationCurrentVersionRanges(
@@ -4809,7 +4809,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnnotationLayerSummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnnotationLayerSummary();
       var od = api.AnnotationLayerSummary.fromJson(o.toJson());
       checkAnnotationLayerSummary(od as api.AnnotationLayerSummary);
@@ -4817,7 +4817,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Annotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnnotation();
       var od = api.Annotation.fromJson(o.toJson());
       checkAnnotation(od as api.Annotation);
@@ -4825,7 +4825,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Annotations', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnnotations();
       var od = api.Annotations.fromJson(o.toJson());
       checkAnnotations(od as api.Annotations);
@@ -4833,7 +4833,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnnotationsSummaryLayers', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnnotationsSummaryLayers();
       var od = api.AnnotationsSummaryLayers.fromJson(o.toJson());
       checkAnnotationsSummaryLayers(od as api.AnnotationsSummaryLayers);
@@ -4841,7 +4841,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AnnotationsSummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnnotationsSummary();
       var od = api.AnnotationsSummary.fromJson(o.toJson());
       checkAnnotationsSummary(od as api.AnnotationsSummary);
@@ -4849,7 +4849,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Annotationsdata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnnotationsdata();
       var od = api.Annotationsdata.fromJson(o.toJson());
       checkAnnotationsdata(od as api.Annotationsdata);
@@ -4857,7 +4857,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BooksAnnotationsRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBooksAnnotationsRange();
       var od = api.BooksAnnotationsRange.fromJson(o.toJson());
       checkBooksAnnotationsRange(od as api.BooksAnnotationsRange);
@@ -4865,7 +4865,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BooksCloudloadingResource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBooksCloudloadingResource();
       var od = api.BooksCloudloadingResource.fromJson(o.toJson());
       checkBooksCloudloadingResource(od as api.BooksCloudloadingResource);
@@ -4873,7 +4873,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BooksVolumesRecommendedRateResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBooksVolumesRecommendedRateResponse();
       var od = api.BooksVolumesRecommendedRateResponse.fromJson(o.toJson());
       checkBooksVolumesRecommendedRateResponse(
@@ -4882,7 +4882,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Bookshelf', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBookshelf();
       var od = api.Bookshelf.fromJson(o.toJson());
       checkBookshelf(od as api.Bookshelf);
@@ -4890,7 +4890,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Bookshelves', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBookshelves();
       var od = api.Bookshelves.fromJson(o.toJson());
       checkBookshelves(od as api.Bookshelves);
@@ -4898,7 +4898,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CategoryItems', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCategoryItems();
       var od = api.CategoryItems.fromJson(o.toJson());
       checkCategoryItems(od as api.CategoryItems);
@@ -4906,7 +4906,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Category', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCategory();
       var od = api.Category.fromJson(o.toJson());
       checkCategory(od as api.Category);
@@ -4914,7 +4914,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConcurrentAccessRestriction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConcurrentAccessRestriction();
       var od = api.ConcurrentAccessRestriction.fromJson(o.toJson());
       checkConcurrentAccessRestriction(od as api.ConcurrentAccessRestriction);
@@ -4922,7 +4922,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DictionaryAnnotationdata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictionaryAnnotationdata();
       var od = api.DictionaryAnnotationdata.fromJson(o.toJson());
       checkDictionaryAnnotationdata(od as api.DictionaryAnnotationdata);
@@ -4930,7 +4930,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DictlayerdataCommon', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictlayerdataCommon();
       var od = api.DictlayerdataCommon.fromJson(o.toJson());
       checkDictlayerdataCommon(od as api.DictlayerdataCommon);
@@ -4938,7 +4938,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DictlayerdataDictSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictlayerdataDictSource();
       var od = api.DictlayerdataDictSource.fromJson(o.toJson());
       checkDictlayerdataDictSource(od as api.DictlayerdataDictSource);
@@ -4946,7 +4946,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DictlayerdataDictWordsDerivativesSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictlayerdataDictWordsDerivativesSource();
       var od = api.DictlayerdataDictWordsDerivativesSource.fromJson(o.toJson());
       checkDictlayerdataDictWordsDerivativesSource(
@@ -4955,7 +4955,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DictlayerdataDictWordsDerivatives', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictlayerdataDictWordsDerivatives();
       var od = api.DictlayerdataDictWordsDerivatives.fromJson(o.toJson());
       checkDictlayerdataDictWordsDerivatives(
@@ -4964,7 +4964,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DictlayerdataDictWordsExamplesSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictlayerdataDictWordsExamplesSource();
       var od = api.DictlayerdataDictWordsExamplesSource.fromJson(o.toJson());
       checkDictlayerdataDictWordsExamplesSource(
@@ -4973,7 +4973,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DictlayerdataDictWordsExamples', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictlayerdataDictWordsExamples();
       var od = api.DictlayerdataDictWordsExamples.fromJson(o.toJson());
       checkDictlayerdataDictWordsExamples(
@@ -4982,7 +4982,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DictlayerdataDictWordsSensesConjugations', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictlayerdataDictWordsSensesConjugations();
       var od =
           api.DictlayerdataDictWordsSensesConjugations.fromJson(o.toJson());
@@ -4993,7 +4993,7 @@ void main() {
 
   unittest.group(
       'obj-schema-DictlayerdataDictWordsSensesDefinitionsExamplesSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictlayerdataDictWordsSensesDefinitionsExamplesSource();
       var od =
           api.DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(
@@ -5005,7 +5005,7 @@ void main() {
 
   unittest.group('obj-schema-DictlayerdataDictWordsSensesDefinitionsExamples',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictlayerdataDictWordsSensesDefinitionsExamples();
       var od = api.DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(
           o.toJson());
@@ -5015,7 +5015,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DictlayerdataDictWordsSensesDefinitions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictlayerdataDictWordsSensesDefinitions();
       var od = api.DictlayerdataDictWordsSensesDefinitions.fromJson(o.toJson());
       checkDictlayerdataDictWordsSensesDefinitions(
@@ -5024,7 +5024,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DictlayerdataDictWordsSensesSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictlayerdataDictWordsSensesSource();
       var od = api.DictlayerdataDictWordsSensesSource.fromJson(o.toJson());
       checkDictlayerdataDictWordsSensesSource(
@@ -5033,7 +5033,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DictlayerdataDictWordsSensesSynonymsSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictlayerdataDictWordsSensesSynonymsSource();
       var od =
           api.DictlayerdataDictWordsSensesSynonymsSource.fromJson(o.toJson());
@@ -5043,7 +5043,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DictlayerdataDictWordsSensesSynonyms', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictlayerdataDictWordsSensesSynonyms();
       var od = api.DictlayerdataDictWordsSensesSynonyms.fromJson(o.toJson());
       checkDictlayerdataDictWordsSensesSynonyms(
@@ -5052,7 +5052,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DictlayerdataDictWordsSenses', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictlayerdataDictWordsSenses();
       var od = api.DictlayerdataDictWordsSenses.fromJson(o.toJson());
       checkDictlayerdataDictWordsSenses(od as api.DictlayerdataDictWordsSenses);
@@ -5060,7 +5060,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DictlayerdataDictWordsSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictlayerdataDictWordsSource();
       var od = api.DictlayerdataDictWordsSource.fromJson(o.toJson());
       checkDictlayerdataDictWordsSource(od as api.DictlayerdataDictWordsSource);
@@ -5068,7 +5068,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DictlayerdataDictWords', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictlayerdataDictWords();
       var od = api.DictlayerdataDictWords.fromJson(o.toJson());
       checkDictlayerdataDictWords(od as api.DictlayerdataDictWords);
@@ -5076,7 +5076,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DictlayerdataDict', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictlayerdataDict();
       var od = api.DictlayerdataDict.fromJson(o.toJson());
       checkDictlayerdataDict(od as api.DictlayerdataDict);
@@ -5084,7 +5084,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Dictlayerdata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDictlayerdata();
       var od = api.Dictlayerdata.fromJson(o.toJson());
       checkDictlayerdata(od as api.Dictlayerdata);
@@ -5093,7 +5093,7 @@ void main() {
 
   unittest.group(
       'obj-schema-DiscoveryclustersClustersBannerWithContentContainer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDiscoveryclustersClustersBannerWithContentContainer();
       var od = api.DiscoveryclustersClustersBannerWithContentContainer.fromJson(
           o.toJson());
@@ -5103,7 +5103,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DiscoveryclustersClusters', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDiscoveryclustersClusters();
       var od = api.DiscoveryclustersClusters.fromJson(o.toJson());
       checkDiscoveryclustersClusters(od as api.DiscoveryclustersClusters);
@@ -5111,7 +5111,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Discoveryclusters', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDiscoveryclusters();
       var od = api.Discoveryclusters.fromJson(o.toJson());
       checkDiscoveryclusters(od as api.Discoveryclusters);
@@ -5119,7 +5119,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DownloadAccessRestriction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDownloadAccessRestriction();
       var od = api.DownloadAccessRestriction.fromJson(o.toJson());
       checkDownloadAccessRestriction(od as api.DownloadAccessRestriction);
@@ -5127,7 +5127,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DownloadAccesses', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDownloadAccesses();
       var od = api.DownloadAccesses.fromJson(o.toJson());
       checkDownloadAccesses(od as api.DownloadAccesses);
@@ -5135,7 +5135,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -5143,7 +5143,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FamilyInfoMembership', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFamilyInfoMembership();
       var od = api.FamilyInfoMembership.fromJson(o.toJson());
       checkFamilyInfoMembership(od as api.FamilyInfoMembership);
@@ -5151,7 +5151,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FamilyInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFamilyInfo();
       var od = api.FamilyInfo.fromJson(o.toJson());
       checkFamilyInfo(od as api.FamilyInfo);
@@ -5159,7 +5159,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GeoAnnotationdata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGeoAnnotationdata();
       var od = api.GeoAnnotationdata.fromJson(o.toJson());
       checkGeoAnnotationdata(od as api.GeoAnnotationdata);
@@ -5167,7 +5167,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GeolayerdataCommon', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGeolayerdataCommon();
       var od = api.GeolayerdataCommon.fromJson(o.toJson());
       checkGeolayerdataCommon(od as api.GeolayerdataCommon);
@@ -5175,7 +5175,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GeolayerdataGeoViewportHi', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGeolayerdataGeoViewportHi();
       var od = api.GeolayerdataGeoViewportHi.fromJson(o.toJson());
       checkGeolayerdataGeoViewportHi(od as api.GeolayerdataGeoViewportHi);
@@ -5183,7 +5183,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GeolayerdataGeoViewportLo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGeolayerdataGeoViewportLo();
       var od = api.GeolayerdataGeoViewportLo.fromJson(o.toJson());
       checkGeolayerdataGeoViewportLo(od as api.GeolayerdataGeoViewportLo);
@@ -5191,7 +5191,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GeolayerdataGeoViewport', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGeolayerdataGeoViewport();
       var od = api.GeolayerdataGeoViewport.fromJson(o.toJson());
       checkGeolayerdataGeoViewport(od as api.GeolayerdataGeoViewport);
@@ -5199,7 +5199,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GeolayerdataGeo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGeolayerdataGeo();
       var od = api.GeolayerdataGeo.fromJson(o.toJson());
       checkGeolayerdataGeo(od as api.GeolayerdataGeo);
@@ -5207,7 +5207,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Geolayerdata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGeolayerdata();
       var od = api.Geolayerdata.fromJson(o.toJson());
       checkGeolayerdata(od as api.Geolayerdata);
@@ -5215,7 +5215,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Layersummaries', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLayersummaries();
       var od = api.Layersummaries.fromJson(o.toJson());
       checkLayersummaries(od as api.Layersummaries);
@@ -5223,7 +5223,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Layersummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLayersummary();
       var od = api.Layersummary.fromJson(o.toJson());
       checkLayersummary(od as api.Layersummary);
@@ -5231,7 +5231,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetadataItems', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetadataItems();
       var od = api.MetadataItems.fromJson(o.toJson());
       checkMetadataItems(od as api.MetadataItems);
@@ -5239,7 +5239,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Metadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetadata();
       var od = api.Metadata.fromJson(o.toJson());
       checkMetadata(od as api.Metadata);
@@ -5247,7 +5247,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Notification', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNotification();
       var od = api.Notification.fromJson(o.toJson());
       checkNotification(od as api.Notification);
@@ -5255,7 +5255,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OffersItemsItems', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOffersItemsItems();
       var od = api.OffersItemsItems.fromJson(o.toJson());
       checkOffersItemsItems(od as api.OffersItemsItems);
@@ -5263,7 +5263,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OffersItems', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOffersItems();
       var od = api.OffersItems.fromJson(o.toJson());
       checkOffersItems(od as api.OffersItems);
@@ -5271,7 +5271,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Offers', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOffers();
       var od = api.Offers.fromJson(o.toJson());
       checkOffers(od as api.Offers);
@@ -5279,7 +5279,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReadingPosition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReadingPosition();
       var od = api.ReadingPosition.fromJson(o.toJson());
       checkReadingPosition(od as api.ReadingPosition);
@@ -5287,7 +5287,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RequestAccessData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRequestAccessData();
       var od = api.RequestAccessData.fromJson(o.toJson());
       checkRequestAccessData(od as api.RequestAccessData);
@@ -5295,7 +5295,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReviewAuthor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReviewAuthor();
       var od = api.ReviewAuthor.fromJson(o.toJson());
       checkReviewAuthor(od as api.ReviewAuthor);
@@ -5303,7 +5303,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReviewSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReviewSource();
       var od = api.ReviewSource.fromJson(o.toJson());
       checkReviewSource(od as api.ReviewSource);
@@ -5311,7 +5311,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Review', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReview();
       var od = api.Review.fromJson(o.toJson());
       checkReview(od as api.Review);
@@ -5321,7 +5321,7 @@ void main() {
   unittest.group(
       'obj-schema-SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildSeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo();
       var od = api.SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo
@@ -5334,7 +5334,7 @@ void main() {
   unittest.group(
       'obj-schema-SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo();
       var od =
           api.SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo.fromJson(
@@ -5345,7 +5345,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SeriesSeriesSeriesSubscriptionReleaseInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSeriesSeriesSeriesSubscriptionReleaseInfo();
       var od =
           api.SeriesSeriesSeriesSubscriptionReleaseInfo.fromJson(o.toJson());
@@ -5355,7 +5355,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SeriesSeries', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSeriesSeries();
       var od = api.SeriesSeries.fromJson(o.toJson());
       checkSeriesSeries(od as api.SeriesSeries);
@@ -5363,7 +5363,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Series', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSeries();
       var od = api.Series.fromJson(o.toJson());
       checkSeries(od as api.Series);
@@ -5371,7 +5371,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Seriesmembership', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSeriesmembership();
       var od = api.Seriesmembership.fromJson(o.toJson());
       checkSeriesmembership(od as api.Seriesmembership);
@@ -5379,7 +5379,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsersettingsNotesExport', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsersettingsNotesExport();
       var od = api.UsersettingsNotesExport.fromJson(o.toJson());
       checkUsersettingsNotesExport(od as api.UsersettingsNotesExport);
@@ -5387,7 +5387,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsersettingsNotificationMatchMyInterests', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsersettingsNotificationMatchMyInterests();
       var od =
           api.UsersettingsNotificationMatchMyInterests.fromJson(o.toJson());
@@ -5397,7 +5397,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsersettingsNotificationMoreFromAuthors', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsersettingsNotificationMoreFromAuthors();
       var od = api.UsersettingsNotificationMoreFromAuthors.fromJson(o.toJson());
       checkUsersettingsNotificationMoreFromAuthors(
@@ -5406,7 +5406,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsersettingsNotificationMoreFromSeries', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsersettingsNotificationMoreFromSeries();
       var od = api.UsersettingsNotificationMoreFromSeries.fromJson(o.toJson());
       checkUsersettingsNotificationMoreFromSeries(
@@ -5415,7 +5415,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsersettingsNotificationPriceDrop', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsersettingsNotificationPriceDrop();
       var od = api.UsersettingsNotificationPriceDrop.fromJson(o.toJson());
       checkUsersettingsNotificationPriceDrop(
@@ -5424,7 +5424,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsersettingsNotificationRewardExpirations', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsersettingsNotificationRewardExpirations();
       var od =
           api.UsersettingsNotificationRewardExpirations.fromJson(o.toJson());
@@ -5434,7 +5434,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsersettingsNotification', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsersettingsNotification();
       var od = api.UsersettingsNotification.fromJson(o.toJson());
       checkUsersettingsNotification(od as api.UsersettingsNotification);
@@ -5442,7 +5442,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Usersettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsersettings();
       var od = api.Usersettings.fromJson(o.toJson());
       checkUsersettings(od as api.Usersettings);
@@ -5450,7 +5450,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeAccessInfoEpub', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeAccessInfoEpub();
       var od = api.VolumeAccessInfoEpub.fromJson(o.toJson());
       checkVolumeAccessInfoEpub(od as api.VolumeAccessInfoEpub);
@@ -5458,7 +5458,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeAccessInfoPdf', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeAccessInfoPdf();
       var od = api.VolumeAccessInfoPdf.fromJson(o.toJson());
       checkVolumeAccessInfoPdf(od as api.VolumeAccessInfoPdf);
@@ -5466,7 +5466,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeAccessInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeAccessInfo();
       var od = api.VolumeAccessInfo.fromJson(o.toJson());
       checkVolumeAccessInfo(od as api.VolumeAccessInfo);
@@ -5474,7 +5474,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeLayerInfoLayers', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeLayerInfoLayers();
       var od = api.VolumeLayerInfoLayers.fromJson(o.toJson());
       checkVolumeLayerInfoLayers(od as api.VolumeLayerInfoLayers);
@@ -5482,7 +5482,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeLayerInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeLayerInfo();
       var od = api.VolumeLayerInfo.fromJson(o.toJson());
       checkVolumeLayerInfo(od as api.VolumeLayerInfo);
@@ -5490,7 +5490,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeRecommendedInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeRecommendedInfo();
       var od = api.VolumeRecommendedInfo.fromJson(o.toJson());
       checkVolumeRecommendedInfo(od as api.VolumeRecommendedInfo);
@@ -5498,7 +5498,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeSaleInfoListPrice', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeSaleInfoListPrice();
       var od = api.VolumeSaleInfoListPrice.fromJson(o.toJson());
       checkVolumeSaleInfoListPrice(od as api.VolumeSaleInfoListPrice);
@@ -5506,7 +5506,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeSaleInfoOffersListPrice', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeSaleInfoOffersListPrice();
       var od = api.VolumeSaleInfoOffersListPrice.fromJson(o.toJson());
       checkVolumeSaleInfoOffersListPrice(
@@ -5515,7 +5515,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeSaleInfoOffersRentalDuration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeSaleInfoOffersRentalDuration();
       var od = api.VolumeSaleInfoOffersRentalDuration.fromJson(o.toJson());
       checkVolumeSaleInfoOffersRentalDuration(
@@ -5524,7 +5524,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeSaleInfoOffersRetailPrice', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeSaleInfoOffersRetailPrice();
       var od = api.VolumeSaleInfoOffersRetailPrice.fromJson(o.toJson());
       checkVolumeSaleInfoOffersRetailPrice(
@@ -5533,7 +5533,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeSaleInfoOffers', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeSaleInfoOffers();
       var od = api.VolumeSaleInfoOffers.fromJson(o.toJson());
       checkVolumeSaleInfoOffers(od as api.VolumeSaleInfoOffers);
@@ -5541,7 +5541,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeSaleInfoRetailPrice', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeSaleInfoRetailPrice();
       var od = api.VolumeSaleInfoRetailPrice.fromJson(o.toJson());
       checkVolumeSaleInfoRetailPrice(od as api.VolumeSaleInfoRetailPrice);
@@ -5549,7 +5549,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeSaleInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeSaleInfo();
       var od = api.VolumeSaleInfo.fromJson(o.toJson());
       checkVolumeSaleInfo(od as api.VolumeSaleInfo);
@@ -5557,7 +5557,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeSearchInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeSearchInfo();
       var od = api.VolumeSearchInfo.fromJson(o.toJson());
       checkVolumeSearchInfo(od as api.VolumeSearchInfo);
@@ -5565,7 +5565,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeUserInfoCopy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeUserInfoCopy();
       var od = api.VolumeUserInfoCopy.fromJson(o.toJson());
       checkVolumeUserInfoCopy(od as api.VolumeUserInfoCopy);
@@ -5573,7 +5573,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeUserInfoFamilySharing', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeUserInfoFamilySharing();
       var od = api.VolumeUserInfoFamilySharing.fromJson(o.toJson());
       checkVolumeUserInfoFamilySharing(od as api.VolumeUserInfoFamilySharing);
@@ -5581,7 +5581,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeUserInfoRentalPeriod', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeUserInfoRentalPeriod();
       var od = api.VolumeUserInfoRentalPeriod.fromJson(o.toJson());
       checkVolumeUserInfoRentalPeriod(od as api.VolumeUserInfoRentalPeriod);
@@ -5589,7 +5589,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeUserInfoUserUploadedVolumeInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeUserInfoUserUploadedVolumeInfo();
       var od = api.VolumeUserInfoUserUploadedVolumeInfo.fromJson(o.toJson());
       checkVolumeUserInfoUserUploadedVolumeInfo(
@@ -5598,7 +5598,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeUserInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeUserInfo();
       var od = api.VolumeUserInfo.fromJson(o.toJson());
       checkVolumeUserInfo(od as api.VolumeUserInfo);
@@ -5606,7 +5606,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeVolumeInfoDimensions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeVolumeInfoDimensions();
       var od = api.VolumeVolumeInfoDimensions.fromJson(o.toJson());
       checkVolumeVolumeInfoDimensions(od as api.VolumeVolumeInfoDimensions);
@@ -5614,7 +5614,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeVolumeInfoImageLinks', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeVolumeInfoImageLinks();
       var od = api.VolumeVolumeInfoImageLinks.fromJson(o.toJson());
       checkVolumeVolumeInfoImageLinks(od as api.VolumeVolumeInfoImageLinks);
@@ -5622,7 +5622,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeVolumeInfoIndustryIdentifiers', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeVolumeInfoIndustryIdentifiers();
       var od = api.VolumeVolumeInfoIndustryIdentifiers.fromJson(o.toJson());
       checkVolumeVolumeInfoIndustryIdentifiers(
@@ -5631,7 +5631,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeVolumeInfoPanelizationSummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeVolumeInfoPanelizationSummary();
       var od = api.VolumeVolumeInfoPanelizationSummary.fromJson(o.toJson());
       checkVolumeVolumeInfoPanelizationSummary(
@@ -5640,7 +5640,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeVolumeInfoReadingModes', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeVolumeInfoReadingModes();
       var od = api.VolumeVolumeInfoReadingModes.fromJson(o.toJson());
       checkVolumeVolumeInfoReadingModes(od as api.VolumeVolumeInfoReadingModes);
@@ -5648,7 +5648,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeVolumeInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeVolumeInfo();
       var od = api.VolumeVolumeInfo.fromJson(o.toJson());
       checkVolumeVolumeInfo(od as api.VolumeVolumeInfo);
@@ -5656,7 +5656,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Volume', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolume();
       var od = api.Volume.fromJson(o.toJson());
       checkVolume(od as api.Volume);
@@ -5664,7 +5664,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Volume2', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolume2();
       var od = api.Volume2.fromJson(o.toJson());
       checkVolume2(od as api.Volume2);
@@ -5672,7 +5672,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeannotationContentRanges', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeannotationContentRanges();
       var od = api.VolumeannotationContentRanges.fromJson(o.toJson());
       checkVolumeannotationContentRanges(
@@ -5681,7 +5681,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Volumeannotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeannotation();
       var od = api.Volumeannotation.fromJson(o.toJson());
       checkVolumeannotation(od as api.Volumeannotation);
@@ -5689,7 +5689,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Volumeannotations', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeannotations();
       var od = api.Volumeannotations.fromJson(o.toJson());
       checkVolumeannotations(od as api.Volumeannotations);
@@ -5697,7 +5697,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Volumes', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumes();
       var od = api.Volumes.fromJson(o.toJson());
       checkVolumes(od as api.Volumes);
@@ -5705,7 +5705,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeseriesinfoVolumeSeriesIssue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeseriesinfoVolumeSeriesIssue();
       var od = api.VolumeseriesinfoVolumeSeriesIssue.fromJson(o.toJson());
       checkVolumeseriesinfoVolumeSeriesIssue(
@@ -5714,7 +5714,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VolumeseriesinfoVolumeSeries', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeseriesinfoVolumeSeries();
       var od = api.VolumeseriesinfoVolumeSeries.fromJson(o.toJson());
       checkVolumeseriesinfoVolumeSeries(od as api.VolumeseriesinfoVolumeSeries);
@@ -5722,7 +5722,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Volumeseriesinfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolumeseriesinfo();
       var od = api.Volumeseriesinfo.fromJson(o.toJson());
       checkVolumeseriesinfo(od as api.Volumeseriesinfo);
@@ -5730,7 +5730,7 @@ void main() {
   });
 
   unittest.group('resource-BookshelvesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).bookshelves;
       var arg_userId = 'foo';
@@ -5803,14 +5803,12 @@ void main() {
         var resp = convert.json.encode(buildBookshelf());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userId, arg_shelf, source: arg_source, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBookshelf(response as api.Bookshelf);
-      })));
+      final response = await res.get(arg_userId, arg_shelf,
+          source: arg_source, $fields: arg_$fields);
+      checkBookshelf(response as api.Bookshelf);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).bookshelves;
       var arg_userId = 'foo';
@@ -5876,16 +5874,14 @@ void main() {
         var resp = convert.json.encode(buildBookshelves());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userId, source: arg_source, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBookshelves(response as api.Bookshelves);
-      })));
+      final response =
+          await res.list(arg_userId, source: arg_source, $fields: arg_$fields);
+      checkBookshelves(response as api.Bookshelves);
     });
   });
 
   unittest.group('resource-BookshelvesVolumesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).bookshelves.volumes;
       var arg_userId = 'foo';
@@ -5981,21 +5977,18 @@ void main() {
         var resp = convert.json.encode(buildVolumes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userId, arg_shelf,
-              maxResults: arg_maxResults,
-              showPreorders: arg_showPreorders,
-              source: arg_source,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVolumes(response as api.Volumes);
-      })));
+      final response = await res.list(arg_userId, arg_shelf,
+          maxResults: arg_maxResults,
+          showPreorders: arg_showPreorders,
+          source: arg_source,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkVolumes(response as api.Volumes);
     });
   });
 
   unittest.group('resource-CloudloadingResource', () {
-    unittest.test('method--addBook', () {
+    unittest.test('method--addBook', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).cloudloading;
       var arg_driveDocumentId = 'foo';
@@ -6061,20 +6054,16 @@ void main() {
         var resp = convert.json.encode(buildBooksCloudloadingResource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .addBook(
-              driveDocumentId: arg_driveDocumentId,
-              mimeType: arg_mimeType,
-              name: arg_name,
-              uploadClientToken: arg_uploadClientToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBooksCloudloadingResource(
-            response as api.BooksCloudloadingResource);
-      })));
+      final response = await res.addBook(
+          driveDocumentId: arg_driveDocumentId,
+          mimeType: arg_mimeType,
+          name: arg_name,
+          uploadClientToken: arg_uploadClientToken,
+          $fields: arg_$fields);
+      checkBooksCloudloadingResource(response as api.BooksCloudloadingResource);
     });
 
-    unittest.test('method--deleteBook', () {
+    unittest.test('method--deleteBook', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).cloudloading;
       var arg_volumeId = 'foo';
@@ -6125,14 +6114,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deleteBook(arg_volumeId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.deleteBook(arg_volumeId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--updateBook', () {
+    unittest.test('method--updateBook', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).cloudloading;
       var arg_request = buildBooksCloudloadingResource();
@@ -6183,17 +6169,13 @@ void main() {
         var resp = convert.json.encode(buildBooksCloudloadingResource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateBook(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBooksCloudloadingResource(
-            response as api.BooksCloudloadingResource);
-      })));
+      final response = await res.updateBook(arg_request, $fields: arg_$fields);
+      checkBooksCloudloadingResource(response as api.BooksCloudloadingResource);
     });
   });
 
   unittest.group('resource-DictionaryResource', () {
-    unittest.test('method--listOfflineMetadata', () {
+    unittest.test('method--listOfflineMetadata', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).dictionary;
       var arg_cpksver = 'foo';
@@ -6244,16 +6226,14 @@ void main() {
         var resp = convert.json.encode(buildMetadata());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listOfflineMetadata(arg_cpksver, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMetadata(response as api.Metadata);
-      })));
+      final response =
+          await res.listOfflineMetadata(arg_cpksver, $fields: arg_$fields);
+      checkMetadata(response as api.Metadata);
     });
   });
 
   unittest.group('resource-FamilysharingResource', () {
-    unittest.test('method--getFamilyInfo', () {
+    unittest.test('method--getFamilyInfo', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).familysharing;
       var arg_source = 'foo';
@@ -6304,14 +6284,12 @@ void main() {
         var resp = convert.json.encode(buildFamilyInfo());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getFamilyInfo(source: arg_source, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFamilyInfo(response as api.FamilyInfo);
-      })));
+      final response =
+          await res.getFamilyInfo(source: arg_source, $fields: arg_$fields);
+      checkFamilyInfo(response as api.FamilyInfo);
     });
 
-    unittest.test('method--share', () {
+    unittest.test('method--share', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).familysharing;
       var arg_docId = 'foo';
@@ -6372,18 +6350,15 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .share(
-              docId: arg_docId,
-              source: arg_source,
-              volumeId: arg_volumeId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.share(
+          docId: arg_docId,
+          source: arg_source,
+          volumeId: arg_volumeId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--unshare', () {
+    unittest.test('method--unshare', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).familysharing;
       var arg_docId = 'foo';
@@ -6444,20 +6419,17 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .unshare(
-              docId: arg_docId,
-              source: arg_source,
-              volumeId: arg_volumeId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.unshare(
+          docId: arg_docId,
+          source: arg_source,
+          volumeId: arg_volumeId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 
   unittest.group('resource-LayersResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).layers;
       var arg_volumeId = 'foo';
@@ -6535,17 +6507,14 @@ void main() {
         var resp = convert.json.encode(buildLayersummary());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_volumeId, arg_summaryId,
-              contentVersion: arg_contentVersion,
-              source: arg_source,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLayersummary(response as api.Layersummary);
-      })));
+      final response = await res.get(arg_volumeId, arg_summaryId,
+          contentVersion: arg_contentVersion,
+          source: arg_source,
+          $fields: arg_$fields);
+      checkLayersummary(response as api.Layersummary);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).layers;
       var arg_volumeId = 'foo';
@@ -6626,21 +6595,18 @@ void main() {
         var resp = convert.json.encode(buildLayersummaries());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_volumeId,
-              contentVersion: arg_contentVersion,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              source: arg_source,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLayersummaries(response as api.Layersummaries);
-      })));
+      final response = await res.list(arg_volumeId,
+          contentVersion: arg_contentVersion,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          source: arg_source,
+          $fields: arg_$fields);
+      checkLayersummaries(response as api.Layersummaries);
     });
   });
 
   unittest.group('resource-LayersAnnotationDataResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).layers.annotationData;
       var arg_volumeId = 'foo';
@@ -6758,22 +6724,19 @@ void main() {
         var resp = convert.json.encode(buildDictionaryAnnotationdata());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_volumeId, arg_layerId, arg_annotationDataId,
-              arg_contentVersion,
-              allowWebDefinitions: arg_allowWebDefinitions,
-              h: arg_h,
-              locale: arg_locale,
-              scale: arg_scale,
-              source: arg_source,
-              w: arg_w,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDictionaryAnnotationdata(response as api.DictionaryAnnotationdata);
-      })));
+      final response = await res.get(
+          arg_volumeId, arg_layerId, arg_annotationDataId, arg_contentVersion,
+          allowWebDefinitions: arg_allowWebDefinitions,
+          h: arg_h,
+          locale: arg_locale,
+          scale: arg_scale,
+          source: arg_source,
+          w: arg_w,
+          $fields: arg_$fields);
+      checkDictionaryAnnotationdata(response as api.DictionaryAnnotationdata);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).layers.annotationData;
       var arg_volumeId = 'foo';
@@ -6904,27 +6867,25 @@ void main() {
         var resp = convert.json.encode(buildAnnotationsdata());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_volumeId, arg_layerId, arg_contentVersion,
-              annotationDataId: arg_annotationDataId,
-              h: arg_h,
-              locale: arg_locale,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              scale: arg_scale,
-              source: arg_source,
-              updatedMax: arg_updatedMax,
-              updatedMin: arg_updatedMin,
-              w: arg_w,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAnnotationsdata(response as api.Annotationsdata);
-      })));
+      final response = await res.list(
+          arg_volumeId, arg_layerId, arg_contentVersion,
+          annotationDataId: arg_annotationDataId,
+          h: arg_h,
+          locale: arg_locale,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          scale: arg_scale,
+          source: arg_source,
+          updatedMax: arg_updatedMax,
+          updatedMin: arg_updatedMin,
+          w: arg_w,
+          $fields: arg_$fields);
+      checkAnnotationsdata(response as api.Annotationsdata);
     });
   });
 
   unittest.group('resource-LayersVolumeAnnotationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).layers.volumeAnnotations;
       var arg_volumeId = 'foo';
@@ -7017,15 +6978,13 @@ void main() {
         var resp = convert.json.encode(buildVolumeannotation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_volumeId, arg_layerId, arg_annotationId,
-              locale: arg_locale, source: arg_source, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVolumeannotation(response as api.Volumeannotation);
-      })));
+      final response = await res.get(
+          arg_volumeId, arg_layerId, arg_annotationId,
+          locale: arg_locale, source: arg_source, $fields: arg_$fields);
+      checkVolumeannotation(response as api.Volumeannotation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).layers.volumeAnnotations;
       var arg_volumeId = 'foo';
@@ -7158,29 +7117,27 @@ void main() {
         var resp = convert.json.encode(buildVolumeannotations());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_volumeId, arg_layerId, arg_contentVersion,
-              endOffset: arg_endOffset,
-              endPosition: arg_endPosition,
-              locale: arg_locale,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              showDeleted: arg_showDeleted,
-              source: arg_source,
-              startOffset: arg_startOffset,
-              startPosition: arg_startPosition,
-              updatedMax: arg_updatedMax,
-              updatedMin: arg_updatedMin,
-              volumeAnnotationsVersion: arg_volumeAnnotationsVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVolumeannotations(response as api.Volumeannotations);
-      })));
+      final response = await res.list(
+          arg_volumeId, arg_layerId, arg_contentVersion,
+          endOffset: arg_endOffset,
+          endPosition: arg_endPosition,
+          locale: arg_locale,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          showDeleted: arg_showDeleted,
+          source: arg_source,
+          startOffset: arg_startOffset,
+          startPosition: arg_startPosition,
+          updatedMax: arg_updatedMax,
+          updatedMin: arg_updatedMin,
+          volumeAnnotationsVersion: arg_volumeAnnotationsVersion,
+          $fields: arg_$fields);
+      checkVolumeannotations(response as api.Volumeannotations);
     });
   });
 
   unittest.group('resource-MyconfigResource', () {
-    unittest.test('method--getUserSettings', () {
+    unittest.test('method--getUserSettings', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).myconfig;
       var arg_country = 'foo';
@@ -7231,14 +7188,12 @@ void main() {
         var resp = convert.json.encode(buildUsersettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getUserSettings(country: arg_country, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUsersettings(response as api.Usersettings);
-      })));
+      final response =
+          await res.getUserSettings(country: arg_country, $fields: arg_$fields);
+      checkUsersettings(response as api.Usersettings);
     });
 
-    unittest.test('method--releaseDownloadAccess', () {
+    unittest.test('method--releaseDownloadAccess', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).myconfig;
       var arg_cpksver = 'foo';
@@ -7304,15 +7259,13 @@ void main() {
         var resp = convert.json.encode(buildDownloadAccesses());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .releaseDownloadAccess(arg_cpksver, arg_volumeIds,
-              locale: arg_locale, source: arg_source, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDownloadAccesses(response as api.DownloadAccesses);
-      })));
+      final response = await res.releaseDownloadAccess(
+          arg_cpksver, arg_volumeIds,
+          locale: arg_locale, source: arg_source, $fields: arg_$fields);
+      checkDownloadAccesses(response as api.DownloadAccesses);
     });
 
-    unittest.test('method--requestAccess', () {
+    unittest.test('method--requestAccess', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).myconfig;
       var arg_cpksver = 'foo';
@@ -7388,17 +7341,15 @@ void main() {
         var resp = convert.json.encode(buildRequestAccessData());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .requestAccess(arg_cpksver, arg_nonce, arg_source, arg_volumeId,
-              licenseTypes: arg_licenseTypes,
-              locale: arg_locale,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRequestAccessData(response as api.RequestAccessData);
-      })));
+      final response = await res.requestAccess(
+          arg_cpksver, arg_nonce, arg_source, arg_volumeId,
+          licenseTypes: arg_licenseTypes,
+          locale: arg_locale,
+          $fields: arg_$fields);
+      checkRequestAccessData(response as api.RequestAccessData);
     });
 
-    unittest.test('method--syncVolumeLicenses', () {
+    unittest.test('method--syncVolumeLicenses', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).myconfig;
       var arg_cpksver = 'foo';
@@ -7484,20 +7435,18 @@ void main() {
         var resp = convert.json.encode(buildVolumes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .syncVolumeLicenses(arg_cpksver, arg_nonce, arg_source,
-              features: arg_features,
-              includeNonComicsSeries: arg_includeNonComicsSeries,
-              locale: arg_locale,
-              showPreorders: arg_showPreorders,
-              volumeIds: arg_volumeIds,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVolumes(response as api.Volumes);
-      })));
+      final response = await res.syncVolumeLicenses(
+          arg_cpksver, arg_nonce, arg_source,
+          features: arg_features,
+          includeNonComicsSeries: arg_includeNonComicsSeries,
+          locale: arg_locale,
+          showPreorders: arg_showPreorders,
+          volumeIds: arg_volumeIds,
+          $fields: arg_$fields);
+      checkVolumes(response as api.Volumes);
     });
 
-    unittest.test('method--updateUserSettings', () {
+    unittest.test('method--updateUserSettings', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).myconfig;
       var arg_request = buildUsersettings();
@@ -7548,16 +7497,14 @@ void main() {
         var resp = convert.json.encode(buildUsersettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateUserSettings(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUsersettings(response as api.Usersettings);
-      })));
+      final response =
+          await res.updateUserSettings(arg_request, $fields: arg_$fields);
+      checkUsersettings(response as api.Usersettings);
     });
   });
 
   unittest.group('resource-MylibraryAnnotationsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).mylibrary.annotations;
       var arg_annotationId = 'foo';
@@ -7615,14 +7562,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_annotationId, source: arg_source, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_annotationId,
+          source: arg_source, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).mylibrary.annotations;
       var arg_request = buildAnnotation();
@@ -7693,19 +7638,16 @@ void main() {
         var resp = convert.json.encode(buildAnnotation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request,
-              annotationId: arg_annotationId,
-              country: arg_country,
-              showOnlySummaryInResponse: arg_showOnlySummaryInResponse,
-              source: arg_source,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAnnotation(response as api.Annotation);
-      })));
+      final response = await res.insert(arg_request,
+          annotationId: arg_annotationId,
+          country: arg_country,
+          showOnlySummaryInResponse: arg_showOnlySummaryInResponse,
+          source: arg_source,
+          $fields: arg_$fields);
+      checkAnnotation(response as api.Annotation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).mylibrary.annotations;
       var arg_contentVersion = 'foo';
@@ -7801,25 +7743,22 @@ void main() {
         var resp = convert.json.encode(buildAnnotations());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              contentVersion: arg_contentVersion,
-              layerId: arg_layerId,
-              layerIds: arg_layerIds,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              showDeleted: arg_showDeleted,
-              source: arg_source,
-              updatedMax: arg_updatedMax,
-              updatedMin: arg_updatedMin,
-              volumeId: arg_volumeId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAnnotations(response as api.Annotations);
-      })));
+      final response = await res.list(
+          contentVersion: arg_contentVersion,
+          layerId: arg_layerId,
+          layerIds: arg_layerIds,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          showDeleted: arg_showDeleted,
+          source: arg_source,
+          updatedMax: arg_updatedMax,
+          updatedMin: arg_updatedMin,
+          volumeId: arg_volumeId,
+          $fields: arg_$fields);
+      checkAnnotations(response as api.Annotations);
     });
 
-    unittest.test('method--summary', () {
+    unittest.test('method--summary', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).mylibrary.annotations;
       var arg_layerIds = buildUnnamed6858();
@@ -7875,14 +7814,12 @@ void main() {
         var resp = convert.json.encode(buildAnnotationsSummary());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .summary(arg_layerIds, arg_volumeId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAnnotationsSummary(response as api.AnnotationsSummary);
-      })));
+      final response =
+          await res.summary(arg_layerIds, arg_volumeId, $fields: arg_$fields);
+      checkAnnotationsSummary(response as api.AnnotationsSummary);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).mylibrary.annotations;
       var arg_request = buildAnnotation();
@@ -7945,17 +7882,14 @@ void main() {
         var resp = convert.json.encode(buildAnnotation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_annotationId,
-              source: arg_source, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAnnotation(response as api.Annotation);
-      })));
+      final response = await res.update(arg_request, arg_annotationId,
+          source: arg_source, $fields: arg_$fields);
+      checkAnnotation(response as api.Annotation);
     });
   });
 
   unittest.group('resource-MylibraryBookshelvesResource', () {
-    unittest.test('method--addVolume', () {
+    unittest.test('method--addVolume', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).mylibrary.bookshelves;
       var arg_shelf = 'foo';
@@ -8031,15 +7965,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .addVolume(arg_shelf, arg_volumeId,
-              reason: arg_reason, source: arg_source, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.addVolume(arg_shelf, arg_volumeId,
+          reason: arg_reason, source: arg_source, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--clearVolumes', () {
+    unittest.test('method--clearVolumes', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).mylibrary.bookshelves;
       var arg_shelf = 'foo';
@@ -8105,14 +8036,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .clearVolumes(arg_shelf, source: arg_source, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.clearVolumes(arg_shelf,
+          source: arg_source, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).mylibrary.bookshelves;
       var arg_shelf = 'foo';
@@ -8170,14 +8099,12 @@ void main() {
         var resp = convert.json.encode(buildBookshelf());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_shelf, source: arg_source, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBookshelf(response as api.Bookshelf);
-      })));
+      final response =
+          await res.get(arg_shelf, source: arg_source, $fields: arg_$fields);
+      checkBookshelf(response as api.Bookshelf);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).mylibrary.bookshelves;
       var arg_source = 'foo';
@@ -8228,14 +8155,11 @@ void main() {
         var resp = convert.json.encode(buildBookshelves());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(source: arg_source, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBookshelves(response as api.Bookshelves);
-      })));
+      final response = await res.list(source: arg_source, $fields: arg_$fields);
+      checkBookshelves(response as api.Bookshelves);
     });
 
-    unittest.test('method--moveVolume', () {
+    unittest.test('method--moveVolume', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).mylibrary.bookshelves;
       var arg_shelf = 'foo';
@@ -8311,15 +8235,13 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .moveVolume(arg_shelf, arg_volumeId, arg_volumePosition,
-              source: arg_source, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.moveVolume(
+          arg_shelf, arg_volumeId, arg_volumePosition,
+          source: arg_source, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--removeVolume', () {
+    unittest.test('method--removeVolume', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).mylibrary.bookshelves;
       var arg_shelf = 'foo';
@@ -8395,17 +8317,14 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .removeVolume(arg_shelf, arg_volumeId,
-              reason: arg_reason, source: arg_source, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.removeVolume(arg_shelf, arg_volumeId,
+          reason: arg_reason, source: arg_source, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 
   unittest.group('resource-MylibraryBookshelvesVolumesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).mylibrary.bookshelves.volumes;
       var arg_shelf = 'foo';
@@ -8501,24 +8420,21 @@ void main() {
         var resp = convert.json.encode(buildVolumes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_shelf,
-              country: arg_country,
-              maxResults: arg_maxResults,
-              projection: arg_projection,
-              q: arg_q,
-              showPreorders: arg_showPreorders,
-              source: arg_source,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVolumes(response as api.Volumes);
-      })));
+      final response = await res.list(arg_shelf,
+          country: arg_country,
+          maxResults: arg_maxResults,
+          projection: arg_projection,
+          q: arg_q,
+          showPreorders: arg_showPreorders,
+          source: arg_source,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkVolumes(response as api.Volumes);
     });
   });
 
   unittest.group('resource-MylibraryReadingpositionsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).mylibrary.readingpositions;
       var arg_volumeId = 'foo';
@@ -8581,17 +8497,14 @@ void main() {
         var resp = convert.json.encode(buildReadingPosition());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_volumeId,
-              contentVersion: arg_contentVersion,
-              source: arg_source,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReadingPosition(response as api.ReadingPosition);
-      })));
+      final response = await res.get(arg_volumeId,
+          contentVersion: arg_contentVersion,
+          source: arg_source,
+          $fields: arg_$fields);
+      checkReadingPosition(response as api.ReadingPosition);
     });
 
-    unittest.test('method--setPosition', () {
+    unittest.test('method--setPosition', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).mylibrary.readingpositions;
       var arg_volumeId = 'foo';
@@ -8682,21 +8595,19 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setPosition(arg_volumeId, arg_position, arg_timestamp,
-              action: arg_action,
-              contentVersion: arg_contentVersion,
-              deviceCookie: arg_deviceCookie,
-              source: arg_source,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.setPosition(
+          arg_volumeId, arg_position, arg_timestamp,
+          action: arg_action,
+          contentVersion: arg_contentVersion,
+          deviceCookie: arg_deviceCookie,
+          source: arg_source,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 
   unittest.group('resource-NotificationResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).notification;
       var arg_notificationId = 'foo';
@@ -8757,17 +8668,14 @@ void main() {
         var resp = convert.json.encode(buildNotification());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_notificationId,
-              locale: arg_locale, source: arg_source, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNotification(response as api.Notification);
-      })));
+      final response = await res.get(arg_notificationId,
+          locale: arg_locale, source: arg_source, $fields: arg_$fields);
+      checkNotification(response as api.Notification);
     });
   });
 
   unittest.group('resource-OnboardingResource', () {
-    unittest.test('method--listCategories', () {
+    unittest.test('method--listCategories', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).onboarding;
       var arg_locale = 'foo';
@@ -8818,14 +8726,12 @@ void main() {
         var resp = convert.json.encode(buildCategory());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listCategories(locale: arg_locale, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCategory(response as api.Category);
-      })));
+      final response =
+          await res.listCategories(locale: arg_locale, $fields: arg_$fields);
+      checkCategory(response as api.Category);
     });
 
-    unittest.test('method--listCategoryVolumes', () {
+    unittest.test('method--listCategoryVolumes', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).onboarding;
       var arg_categoryId = buildUnnamed6859();
@@ -8896,22 +8802,19 @@ void main() {
         var resp = convert.json.encode(buildVolume2());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listCategoryVolumes(
-              categoryId: arg_categoryId,
-              locale: arg_locale,
-              maxAllowedMaturityRating: arg_maxAllowedMaturityRating,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVolume2(response as api.Volume2);
-      })));
+      final response = await res.listCategoryVolumes(
+          categoryId: arg_categoryId,
+          locale: arg_locale,
+          maxAllowedMaturityRating: arg_maxAllowedMaturityRating,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkVolume2(response as api.Volume2);
     });
   });
 
   unittest.group('resource-PersonalizedstreamResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).personalizedstream;
       var arg_locale = 'foo';
@@ -8972,20 +8875,17 @@ void main() {
         var resp = convert.json.encode(buildDiscoveryclusters());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(
-              locale: arg_locale,
-              maxAllowedMaturityRating: arg_maxAllowedMaturityRating,
-              source: arg_source,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDiscoveryclusters(response as api.Discoveryclusters);
-      })));
+      final response = await res.get(
+          locale: arg_locale,
+          maxAllowedMaturityRating: arg_maxAllowedMaturityRating,
+          source: arg_source,
+          $fields: arg_$fields);
+      checkDiscoveryclusters(response as api.Discoveryclusters);
     });
   });
 
   unittest.group('resource-PromoofferResource', () {
-    unittest.test('method--accept', () {
+    unittest.test('method--accept', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).promooffer;
       var arg_androidId = 'foo';
@@ -9071,23 +8971,20 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .accept(
-              androidId: arg_androidId,
-              device: arg_device,
-              manufacturer: arg_manufacturer,
-              model: arg_model,
-              offerId: arg_offerId,
-              product: arg_product,
-              serial: arg_serial,
-              volumeId: arg_volumeId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.accept(
+          androidId: arg_androidId,
+          device: arg_device,
+          manufacturer: arg_manufacturer,
+          model: arg_model,
+          offerId: arg_offerId,
+          product: arg_product,
+          serial: arg_serial,
+          volumeId: arg_volumeId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--dismiss', () {
+    unittest.test('method--dismiss', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).promooffer;
       var arg_androidId = 'foo';
@@ -9168,22 +9065,19 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .dismiss(
-              androidId: arg_androidId,
-              device: arg_device,
-              manufacturer: arg_manufacturer,
-              model: arg_model,
-              offerId: arg_offerId,
-              product: arg_product,
-              serial: arg_serial,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.dismiss(
+          androidId: arg_androidId,
+          device: arg_device,
+          manufacturer: arg_manufacturer,
+          model: arg_model,
+          offerId: arg_offerId,
+          product: arg_product,
+          serial: arg_serial,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).promooffer;
       var arg_androidId = 'foo';
@@ -9259,23 +9153,20 @@ void main() {
         var resp = convert.json.encode(buildOffers());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(
-              androidId: arg_androidId,
-              device: arg_device,
-              manufacturer: arg_manufacturer,
-              model: arg_model,
-              product: arg_product,
-              serial: arg_serial,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOffers(response as api.Offers);
-      })));
+      final response = await res.get(
+          androidId: arg_androidId,
+          device: arg_device,
+          manufacturer: arg_manufacturer,
+          model: arg_model,
+          product: arg_product,
+          serial: arg_serial,
+          $fields: arg_$fields);
+      checkOffers(response as api.Offers);
     });
   });
 
   unittest.group('resource-SeriesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).series;
       var arg_seriesId = buildUnnamed6860();
@@ -9326,16 +9217,13 @@ void main() {
         var resp = convert.json.encode(buildSeries());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_seriesId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSeries(response as api.Series);
-      })));
+      final response = await res.get(arg_seriesId, $fields: arg_$fields);
+      checkSeries(response as api.Series);
     });
   });
 
   unittest.group('resource-SeriesMembershipResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).series.membership;
       var arg_seriesId = 'foo';
@@ -9396,19 +9284,16 @@ void main() {
         var resp = convert.json.encode(buildSeriesmembership());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_seriesId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSeriesmembership(response as api.Seriesmembership);
-      })));
+      final response = await res.get(arg_seriesId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSeriesmembership(response as api.Seriesmembership);
     });
   });
 
   unittest.group('resource-VolumesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).volumes;
       var arg_volumeId = 'foo';
@@ -9491,21 +9376,18 @@ void main() {
         var resp = convert.json.encode(buildVolume());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_volumeId,
-              country: arg_country,
-              includeNonComicsSeries: arg_includeNonComicsSeries,
-              partner: arg_partner,
-              projection: arg_projection,
-              source: arg_source,
-              userLibraryConsistentRead: arg_userLibraryConsistentRead,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVolume(response as api.Volume);
-      })));
+      final response = await res.get(arg_volumeId,
+          country: arg_country,
+          includeNonComicsSeries: arg_includeNonComicsSeries,
+          partner: arg_partner,
+          projection: arg_projection,
+          source: arg_source,
+          userLibraryConsistentRead: arg_userLibraryConsistentRead,
+          $fields: arg_$fields);
+      checkVolume(response as api.Volume);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).volumes;
       var arg_q = 'foo';
@@ -9621,30 +9503,27 @@ void main() {
         var resp = convert.json.encode(buildVolumes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_q,
-              download: arg_download,
-              filter: arg_filter,
-              langRestrict: arg_langRestrict,
-              libraryRestrict: arg_libraryRestrict,
-              maxAllowedMaturityRating: arg_maxAllowedMaturityRating,
-              maxResults: arg_maxResults,
-              orderBy: arg_orderBy,
-              partner: arg_partner,
-              printType: arg_printType,
-              projection: arg_projection,
-              showPreorders: arg_showPreorders,
-              source: arg_source,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVolumes(response as api.Volumes);
-      })));
+      final response = await res.list(arg_q,
+          download: arg_download,
+          filter: arg_filter,
+          langRestrict: arg_langRestrict,
+          libraryRestrict: arg_libraryRestrict,
+          maxAllowedMaturityRating: arg_maxAllowedMaturityRating,
+          maxResults: arg_maxResults,
+          orderBy: arg_orderBy,
+          partner: arg_partner,
+          printType: arg_printType,
+          projection: arg_projection,
+          showPreorders: arg_showPreorders,
+          source: arg_source,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkVolumes(response as api.Volumes);
     });
   });
 
   unittest.group('resource-VolumesAssociatedResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).volumes.associated;
       var arg_volumeId = 'foo';
@@ -9725,21 +9604,18 @@ void main() {
         var resp = convert.json.encode(buildVolumes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_volumeId,
-              association: arg_association,
-              locale: arg_locale,
-              maxAllowedMaturityRating: arg_maxAllowedMaturityRating,
-              source: arg_source,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVolumes(response as api.Volumes);
-      })));
+      final response = await res.list(arg_volumeId,
+          association: arg_association,
+          locale: arg_locale,
+          maxAllowedMaturityRating: arg_maxAllowedMaturityRating,
+          source: arg_source,
+          $fields: arg_$fields);
+      checkVolumes(response as api.Volumes);
     });
   });
 
   unittest.group('resource-VolumesMybooksResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).volumes.mybooks;
       var arg_acquireMethod = buildUnnamed6861();
@@ -9820,24 +9696,21 @@ void main() {
         var resp = convert.json.encode(buildVolumes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              acquireMethod: arg_acquireMethod,
-              country: arg_country,
-              locale: arg_locale,
-              maxResults: arg_maxResults,
-              processingState: arg_processingState,
-              source: arg_source,
-              startIndex: arg_startIndex,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVolumes(response as api.Volumes);
-      })));
+      final response = await res.list(
+          acquireMethod: arg_acquireMethod,
+          country: arg_country,
+          locale: arg_locale,
+          maxResults: arg_maxResults,
+          processingState: arg_processingState,
+          source: arg_source,
+          startIndex: arg_startIndex,
+          $fields: arg_$fields);
+      checkVolumes(response as api.Volumes);
     });
   });
 
   unittest.group('resource-VolumesRecommendedResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).volumes.recommended;
       var arg_locale = 'foo';
@@ -9898,18 +9771,15 @@ void main() {
         var resp = convert.json.encode(buildVolumes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              locale: arg_locale,
-              maxAllowedMaturityRating: arg_maxAllowedMaturityRating,
-              source: arg_source,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVolumes(response as api.Volumes);
-      })));
+      final response = await res.list(
+          locale: arg_locale,
+          maxAllowedMaturityRating: arg_maxAllowedMaturityRating,
+          source: arg_source,
+          $fields: arg_$fields);
+      checkVolumes(response as api.Volumes);
     });
 
-    unittest.test('method--rate', () {
+    unittest.test('method--rate', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).volumes.recommended;
       var arg_rating = 'foo';
@@ -9976,18 +9846,15 @@ void main() {
             convert.json.encode(buildBooksVolumesRecommendedRateResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .rate(arg_rating, arg_volumeId,
-              locale: arg_locale, source: arg_source, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBooksVolumesRecommendedRateResponse(
-            response as api.BooksVolumesRecommendedRateResponse);
-      })));
+      final response = await res.rate(arg_rating, arg_volumeId,
+          locale: arg_locale, source: arg_source, $fields: arg_$fields);
+      checkBooksVolumesRecommendedRateResponse(
+          response as api.BooksVolumesRecommendedRateResponse);
     });
   });
 
   unittest.group('resource-VolumesUseruploadedResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.BooksApi(mock).volumes.useruploaded;
       var arg_locale = 'foo';
@@ -10063,18 +9930,15 @@ void main() {
         var resp = convert.json.encode(buildVolumes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              locale: arg_locale,
-              maxResults: arg_maxResults,
-              processingState: arg_processingState,
-              source: arg_source,
-              startIndex: arg_startIndex,
-              volumeId: arg_volumeId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVolumes(response as api.Volumes);
-      })));
+      final response = await res.list(
+          locale: arg_locale,
+          maxResults: arg_maxResults,
+          processingState: arg_processingState,
+          source: arg_source,
+          startIndex: arg_startIndex,
+          volumeId: arg_volumeId,
+          $fields: arg_$fields);
+      checkVolumes(response as api.Volumes);
     });
   });
 }

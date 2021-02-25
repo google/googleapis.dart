@@ -567,7 +567,7 @@ void checkToyResponse(api.ToyResponse o) {
 
 void main() {
   unittest.group('obj-schema-ListOfListOfString', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOfListOfString();
       var od = api.ListOfListOfString.fromJson(o.toJson());
       checkListOfListOfString(od as api.ListOfListOfString);
@@ -575,7 +575,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOfListOfToyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOfListOfToyRequest();
       var od = api.ListOfListOfToyRequest.fromJson(o.toJson());
       checkListOfListOfToyRequest(od as api.ListOfListOfToyRequest);
@@ -583,7 +583,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOfListOfint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOfListOfint();
       var od = api.ListOfListOfint.fromJson(o.toJson());
       checkListOfListOfint(od as api.ListOfListOfint);
@@ -591,7 +591,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOfMapOfListOfString', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOfMapOfListOfString();
       var od = api.ListOfMapOfListOfString.fromJson(o.toJson());
       checkListOfMapOfListOfString(od as api.ListOfMapOfListOfString);
@@ -599,7 +599,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOfMapOfListOfint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOfMapOfListOfint();
       var od = api.ListOfMapOfListOfint.fromJson(o.toJson());
       checkListOfMapOfListOfint(od as api.ListOfMapOfListOfint);
@@ -607,7 +607,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOfString', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOfString();
       var od = api.ListOfString.fromJson(o.toJson());
       checkListOfString(od as api.ListOfString);
@@ -615,7 +615,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOfToyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOfToyRequest();
       var od = api.ListOfToyRequest.fromJson(o.toJson());
       checkListOfToyRequest(od as api.ListOfToyRequest);
@@ -623,7 +623,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MapOfListOfMapOfbool', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMapOfListOfMapOfbool();
       var od = api.MapOfListOfMapOfbool.fromJson(o.toJson());
       checkMapOfListOfMapOfbool(od as api.MapOfListOfMapOfbool);
@@ -631,7 +631,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MapOfListOfMapOfint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMapOfListOfMapOfint();
       var od = api.MapOfListOfMapOfint.fromJson(o.toJson());
       checkMapOfListOfMapOfint(od as api.MapOfListOfMapOfint);
@@ -639,7 +639,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MapOfMapOfbool', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMapOfMapOfbool();
       var od = api.MapOfMapOfbool.fromJson(o.toJson());
       checkMapOfMapOfbool(od as api.MapOfMapOfbool);
@@ -647,7 +647,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MapOfMapOfint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMapOfMapOfint();
       var od = api.MapOfMapOfint.fromJson(o.toJson());
       checkMapOfMapOfint(od as api.MapOfMapOfint);
@@ -655,7 +655,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MapOfToyResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMapOfToyResponse();
       var od = api.MapOfToyResponse.fromJson(o.toJson());
       checkMapOfToyResponse(od as api.MapOfToyResponse);
@@ -663,7 +663,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MapOfint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMapOfint();
       var od = api.MapOfint.fromJson(o.toJson());
       checkMapOfint(od as api.MapOfint);
@@ -671,7 +671,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NestedResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNestedResponse();
       var od = api.NestedResponse.fromJson(o.toJson());
       checkNestedResponse(od as api.NestedResponse);
@@ -679,7 +679,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ToyAgeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildToyAgeRequest();
       var od = api.ToyAgeRequest.fromJson(o.toJson());
       checkToyAgeRequest(od as api.ToyAgeRequest);
@@ -687,7 +687,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ToyMapResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildToyMapResponse();
       var od = api.ToyMapResponse.fromJson(o.toJson());
       checkToyMapResponse(od as api.ToyMapResponse);
@@ -695,7 +695,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ToyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildToyRequest();
       var od = api.ToyRequest.fromJson(o.toJson());
       checkToyRequest(od as api.ToyRequest);
@@ -703,7 +703,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ToyResourceResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildToyResourceResponse();
       var od = api.ToyResourceResponse.fromJson(o.toJson());
       checkToyResourceResponse(od as api.ToyResourceResponse);
@@ -711,7 +711,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ToyResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildToyResponse();
       var od = api.ToyResponse.fromJson(o.toJson());
       checkToyResponse(od as api.ToyResponse);
@@ -719,7 +719,7 @@ void main() {
   });
 
   unittest.group('resource-ToyApi', () {
-    unittest.test('method--failing', () {
+    unittest.test('method--failing', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
       var arg_$fields = 'foo';
@@ -770,10 +770,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.failing($fields: arg_$fields).then(unittest.expectAsync1((_) {}));
+      await res.failing($fields: arg_$fields);
     });
 
-    unittest.test('method--hello', () {
+    unittest.test('method--hello', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
       var arg_$fields = 'foo';
@@ -824,12 +824,11 @@ void main() {
         var resp = convert.json.encode(buildToyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.hello($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkToyResponse(response as api.ToyResponse);
-      })));
+      final response = await res.hello($fields: arg_$fields);
+      checkToyResponse(response as api.ToyResponse);
     });
 
-    unittest.test('method--helloListOfClass', () {
+    unittest.test('method--helloListOfClass', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
       var arg_request = buildListOfToyRequest();
@@ -884,14 +883,12 @@ void main() {
         var resp = convert.json.encode(buildMapOfToyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .helloListOfClass(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMapOfToyResponse(response as api.MapOfToyResponse);
-      })));
+      final response =
+          await res.helloListOfClass(arg_request, $fields: arg_$fields);
+      checkMapOfToyResponse(response as api.MapOfToyResponse);
     });
 
-    unittest.test('method--helloListOfListOfClass', () {
+    unittest.test('method--helloListOfListOfClass', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
       var arg_request = buildListOfListOfToyRequest();
@@ -946,14 +943,12 @@ void main() {
         var resp = convert.json.encode(buildMapOfToyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .helloListOfListOfClass(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMapOfToyResponse(response as api.MapOfToyResponse);
-      })));
+      final response =
+          await res.helloListOfListOfClass(arg_request, $fields: arg_$fields);
+      checkMapOfToyResponse(response as api.MapOfToyResponse);
     });
 
-    unittest.test('method--helloMap', () {
+    unittest.test('method--helloMap', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
       var arg_request = buildMapOfint();
@@ -1009,14 +1004,11 @@ void main() {
         var resp = convert.json.encode(buildMapOfint());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .helloMap(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMapOfint(response as api.MapOfint);
-      })));
+      final response = await res.helloMap(arg_request, $fields: arg_$fields);
+      checkMapOfint(response as api.MapOfint);
     });
 
-    unittest.test('method--helloNameAge', () {
+    unittest.test('method--helloNameAge', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
       var arg_name = 'foo';
@@ -1089,14 +1081,12 @@ void main() {
         var resp = convert.json.encode(buildToyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .helloNameAge(arg_name, arg_age, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkToyResponse(response as api.ToyResponse);
-      })));
+      final response =
+          await res.helloNameAge(arg_name, arg_age, $fields: arg_$fields);
+      checkToyResponse(response as api.ToyResponse);
     });
 
-    unittest.test('method--helloNamePostAge', () {
+    unittest.test('method--helloNamePostAge', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
       var arg_request = buildToyAgeRequest();
@@ -1159,14 +1149,12 @@ void main() {
         var resp = convert.json.encode(buildToyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .helloNamePostAge(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkToyResponse(response as api.ToyResponse);
-      })));
+      final response = await res.helloNamePostAge(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkToyResponse(response as api.ToyResponse);
     });
 
-    unittest.test('method--helloNameQueryAgeFoo', () {
+    unittest.test('method--helloNameQueryAgeFoo', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
       var arg_foo = 'foo';
@@ -1234,15 +1222,12 @@ void main() {
         var resp = convert.json.encode(buildToyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .helloNameQueryAgeFoo(arg_foo, arg_name,
-              age: arg_age, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkToyResponse(response as api.ToyResponse);
-      })));
+      final response = await res.helloNameQueryAgeFoo(arg_foo, arg_name,
+          age: arg_age, $fields: arg_$fields);
+      checkToyResponse(response as api.ToyResponse);
     });
 
-    unittest.test('method--helloNestedListList', () {
+    unittest.test('method--helloNestedListList', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
       var arg_request = buildListOfListOfint();
@@ -1297,14 +1282,12 @@ void main() {
         var resp = convert.json.encode(buildListOfListOfString());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .helloNestedListList(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOfListOfString(response as api.ListOfListOfString);
-      })));
+      final response =
+          await res.helloNestedListList(arg_request, $fields: arg_$fields);
+      checkListOfListOfString(response as api.ListOfListOfString);
     });
 
-    unittest.test('method--helloNestedListMapList', () {
+    unittest.test('method--helloNestedListMapList', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
       var arg_request = buildListOfMapOfListOfint();
@@ -1359,14 +1342,12 @@ void main() {
         var resp = convert.json.encode(buildListOfMapOfListOfString());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .helloNestedListMapList(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOfMapOfListOfString(response as api.ListOfMapOfListOfString);
-      })));
+      final response =
+          await res.helloNestedListMapList(arg_request, $fields: arg_$fields);
+      checkListOfMapOfListOfString(response as api.ListOfMapOfListOfString);
     });
 
-    unittest.test('method--helloNestedMap', () {
+    unittest.test('method--helloNestedMap', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
       var arg_$fields = 'foo';
@@ -1417,14 +1398,11 @@ void main() {
         var resp = convert.json.encode(buildToyMapResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .helloNestedMap($fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkToyMapResponse(response as api.ToyMapResponse);
-      })));
+      final response = await res.helloNestedMap($fields: arg_$fields);
+      checkToyMapResponse(response as api.ToyMapResponse);
     });
 
-    unittest.test('method--helloNestedMapListMap', () {
+    unittest.test('method--helloNestedMapListMap', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
       var arg_request = buildMapOfListOfMapOfint();
@@ -1480,14 +1458,12 @@ void main() {
         var resp = convert.json.encode(buildMapOfListOfMapOfbool());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .helloNestedMapListMap(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMapOfListOfMapOfbool(response as api.MapOfListOfMapOfbool);
-      })));
+      final response =
+          await res.helloNestedMapListMap(arg_request, $fields: arg_$fields);
+      checkMapOfListOfMapOfbool(response as api.MapOfListOfMapOfbool);
     });
 
-    unittest.test('method--helloNestedMapMap', () {
+    unittest.test('method--helloNestedMapMap', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
       var arg_request = buildMapOfMapOfint();
@@ -1543,14 +1519,12 @@ void main() {
         var resp = convert.json.encode(buildMapOfMapOfbool());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .helloNestedMapMap(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMapOfMapOfbool(response as api.MapOfMapOfbool);
-      })));
+      final response =
+          await res.helloNestedMapMap(arg_request, $fields: arg_$fields);
+      checkMapOfMapOfbool(response as api.MapOfMapOfbool);
     });
 
-    unittest.test('method--helloPost', () {
+    unittest.test('method--helloPost', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
       var arg_request = buildToyRequest();
@@ -1606,14 +1580,11 @@ void main() {
         var resp = convert.json.encode(buildToyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .helloPost(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkToyResponse(response as api.ToyResponse);
-      })));
+      final response = await res.helloPost(arg_request, $fields: arg_$fields);
+      checkToyResponse(response as api.ToyResponse);
     });
 
-    unittest.test('method--helloReturnNull', () {
+    unittest.test('method--helloReturnNull', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
       var arg_$fields = 'foo';
@@ -1664,14 +1635,11 @@ void main() {
         var resp = convert.json.encode(buildToyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .helloReturnNull($fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkToyResponse(response as api.ToyResponse);
-      })));
+      final response = await res.helloReturnNull($fields: arg_$fields);
+      checkToyResponse(response as api.ToyResponse);
     });
 
-    unittest.test('method--helloVoid', () {
+    unittest.test('method--helloVoid', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
       var arg_$fields = 'foo';
@@ -1722,14 +1690,11 @@ void main() {
         var resp = convert.json.encode(buildToyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .helloVoid($fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkToyResponse(response as api.ToyResponse);
-      })));
+      final response = await res.helloVoid($fields: arg_$fields);
+      checkToyResponse(response as api.ToyResponse);
     });
 
-    unittest.test('method--noop', () {
+    unittest.test('method--noop', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
       var arg_$fields = 'foo';
@@ -1780,10 +1745,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.noop($fields: arg_$fields).then(unittest.expectAsync1((_) {}));
+      await res.noop($fields: arg_$fields);
     });
 
-    unittest.test('method--reverseList', () {
+    unittest.test('method--reverseList', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock);
       var arg_request = buildListOfString();
@@ -1838,16 +1803,13 @@ void main() {
         var resp = convert.json.encode(buildListOfString());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reverseList(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOfString(response as api.ListOfString);
-      })));
+      final response = await res.reverseList(arg_request, $fields: arg_$fields);
+      checkListOfString(response as api.ListOfString);
     });
   });
 
   unittest.group('resource-ComputeResource', () {
-    unittest.test('method--download', () {
+    unittest.test('method--download', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -1903,14 +1865,12 @@ void main() {
         var resp = convert.json.encode(buildToyResourceResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .download(arg_resourceName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkToyResourceResponse(response as api.ToyResourceResponse);
-      })));
+      final response =
+          await res.download(arg_resourceName, $fields: arg_$fields);
+      checkToyResourceResponse(response as api.ToyResourceResponse);
     });
 
-    unittest.test('method--export', () {
+    unittest.test('method--export', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -1984,12 +1944,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .export(arg_fileId, arg_mimeType, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.export(arg_fileId, arg_mimeType, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock).compute;
       var arg_resource = 'foo';
@@ -2062,16 +2020,14 @@ void main() {
         var resp = convert.json.encode(buildToyResourceResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_resource, arg_compute, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkToyResourceResponse(response as api.ToyResourceResponse);
-      })));
+      final response =
+          await res.get(arg_resource, arg_compute, $fields: arg_$fields);
+      checkToyResourceResponse(response as api.ToyResourceResponse);
     });
   });
 
   unittest.group('resource-StorageResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ToyApi(mock).storage;
       var arg_resource = 'foo';
@@ -2144,11 +2100,9 @@ void main() {
         var resp = convert.json.encode(buildToyResourceResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_resource, arg_storage, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkToyResourceResponse(response as api.ToyResourceResponse);
-      })));
+      final response =
+          await res.get(arg_resource, arg_storage, $fields: arg_$fields);
+      checkToyResourceResponse(response as api.ToyResourceResponse);
     });
   });
 }

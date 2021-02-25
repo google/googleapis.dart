@@ -326,7 +326,7 @@ void checkGoogleChromeManagementV1InstalledApp(
 
 void main() {
   unittest.group('obj-schema-GoogleChromeManagementV1BrowserVersion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleChromeManagementV1BrowserVersion();
       var od = api.GoogleChromeManagementV1BrowserVersion.fromJson(o.toJson());
       checkGoogleChromeManagementV1BrowserVersion(
@@ -336,7 +336,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleChromeManagementV1CountChromeVersionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleChromeManagementV1CountChromeVersionsResponse();
       var od = api.GoogleChromeManagementV1CountChromeVersionsResponse.fromJson(
           o.toJson());
@@ -347,7 +347,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleChromeManagementV1CountInstalledAppsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleChromeManagementV1CountInstalledAppsResponse();
       var od = api.GoogleChromeManagementV1CountInstalledAppsResponse.fromJson(
           o.toJson());
@@ -357,7 +357,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleChromeManagementV1Device', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleChromeManagementV1Device();
       var od = api.GoogleChromeManagementV1Device.fromJson(o.toJson());
       checkGoogleChromeManagementV1Device(
@@ -367,7 +367,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleChromeManagementV1FindInstalledAppDevicesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleChromeManagementV1FindInstalledAppDevicesResponse();
       var od =
           api.GoogleChromeManagementV1FindInstalledAppDevicesResponse.fromJson(
@@ -378,7 +378,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleChromeManagementV1InstalledApp', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleChromeManagementV1InstalledApp();
       var od = api.GoogleChromeManagementV1InstalledApp.fromJson(o.toJson());
       checkGoogleChromeManagementV1InstalledApp(
@@ -387,7 +387,7 @@ void main() {
   });
 
   unittest.group('resource-CustomersReportsResource', () {
-    unittest.test('method--countChromeVersions', () {
+    unittest.test('method--countChromeVersions', () async {
       var mock = HttpServerMock();
       var res = api.ChromeManagementApi(mock).customers.reports;
       var arg_customer = 'foo';
@@ -456,20 +456,17 @@ void main() {
             .encode(buildGoogleChromeManagementV1CountChromeVersionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .countChromeVersions(arg_customer,
-              filter: arg_filter,
-              orgUnitId: arg_orgUnitId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleChromeManagementV1CountChromeVersionsResponse(response
-            as api.GoogleChromeManagementV1CountChromeVersionsResponse);
-      })));
+      final response = await res.countChromeVersions(arg_customer,
+          filter: arg_filter,
+          orgUnitId: arg_orgUnitId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleChromeManagementV1CountChromeVersionsResponse(
+          response as api.GoogleChromeManagementV1CountChromeVersionsResponse);
     });
 
-    unittest.test('method--countInstalledApps', () {
+    unittest.test('method--countInstalledApps', () async {
       var mock = HttpServerMock();
       var res = api.ChromeManagementApi(mock).customers.reports;
       var arg_customer = 'foo';
@@ -543,21 +540,18 @@ void main() {
             .encode(buildGoogleChromeManagementV1CountInstalledAppsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .countInstalledApps(arg_customer,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              orgUnitId: arg_orgUnitId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleChromeManagementV1CountInstalledAppsResponse(
-            response as api.GoogleChromeManagementV1CountInstalledAppsResponse);
-      })));
+      final response = await res.countInstalledApps(arg_customer,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          orgUnitId: arg_orgUnitId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleChromeManagementV1CountInstalledAppsResponse(
+          response as api.GoogleChromeManagementV1CountInstalledAppsResponse);
     });
 
-    unittest.test('method--findInstalledAppDevices', () {
+    unittest.test('method--findInstalledAppDevices', () async {
       var mock = HttpServerMock();
       var res = api.ChromeManagementApi(mock).customers.reports;
       var arg_customer = 'foo';
@@ -641,20 +635,17 @@ void main() {
             buildGoogleChromeManagementV1FindInstalledAppDevicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .findInstalledAppDevices(arg_customer,
-              appId: arg_appId,
-              appType: arg_appType,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              orgUnitId: arg_orgUnitId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleChromeManagementV1FindInstalledAppDevicesResponse(response
-            as api.GoogleChromeManagementV1FindInstalledAppDevicesResponse);
-      })));
+      final response = await res.findInstalledAppDevices(arg_customer,
+          appId: arg_appId,
+          appType: arg_appType,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          orgUnitId: arg_orgUnitId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleChromeManagementV1FindInstalledAppDevicesResponse(response
+          as api.GoogleChromeManagementV1FindInstalledAppDevicesResponse);
     });
   });
 }

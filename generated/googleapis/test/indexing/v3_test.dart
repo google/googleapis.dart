@@ -107,7 +107,7 @@ void checkUrlNotificationMetadata(api.UrlNotificationMetadata o) {
 
 void main() {
   unittest.group('obj-schema-PublishUrlNotificationResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPublishUrlNotificationResponse();
       var od = api.PublishUrlNotificationResponse.fromJson(o.toJson());
       checkPublishUrlNotificationResponse(
@@ -116,7 +116,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UrlNotification', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUrlNotification();
       var od = api.UrlNotification.fromJson(o.toJson());
       checkUrlNotification(od as api.UrlNotification);
@@ -124,7 +124,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UrlNotificationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUrlNotificationMetadata();
       var od = api.UrlNotificationMetadata.fromJson(o.toJson());
       checkUrlNotificationMetadata(od as api.UrlNotificationMetadata);
@@ -132,7 +132,7 @@ void main() {
   });
 
   unittest.group('resource-UrlNotificationsResource', () {
-    unittest.test('method--getMetadata', () {
+    unittest.test('method--getMetadata', () async {
       var mock = HttpServerMock();
       var res = api.IndexingApi(mock).urlNotifications;
       var arg_url = 'foo';
@@ -183,14 +183,12 @@ void main() {
         var resp = convert.json.encode(buildUrlNotificationMetadata());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getMetadata(url: arg_url, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUrlNotificationMetadata(response as api.UrlNotificationMetadata);
-      })));
+      final response =
+          await res.getMetadata(url: arg_url, $fields: arg_$fields);
+      checkUrlNotificationMetadata(response as api.UrlNotificationMetadata);
     });
 
-    unittest.test('method--publish', () {
+    unittest.test('method--publish', () async {
       var mock = HttpServerMock();
       var res = api.IndexingApi(mock).urlNotifications;
       var arg_request = buildUrlNotification();
@@ -241,12 +239,9 @@ void main() {
         var resp = convert.json.encode(buildPublishUrlNotificationResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .publish(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPublishUrlNotificationResponse(
-            response as api.PublishUrlNotificationResponse);
-      })));
+      final response = await res.publish(arg_request, $fields: arg_$fields);
+      checkPublishUrlNotificationResponse(
+          response as api.PublishUrlNotificationResponse);
     });
   });
 }

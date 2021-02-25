@@ -174,7 +174,7 @@ void checkGoogleExampleLibraryagentV1Shelf(
 
 void main() {
   unittest.group('obj-schema-GoogleExampleLibraryagentV1Book', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleExampleLibraryagentV1Book();
       var od = api.GoogleExampleLibraryagentV1Book.fromJson(o.toJson());
       checkGoogleExampleLibraryagentV1Book(
@@ -183,7 +183,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleExampleLibraryagentV1ListBooksResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleExampleLibraryagentV1ListBooksResponse();
       var od =
           api.GoogleExampleLibraryagentV1ListBooksResponse.fromJson(o.toJson());
@@ -194,7 +194,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleExampleLibraryagentV1ListShelvesResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleExampleLibraryagentV1ListShelvesResponse();
       var od = api.GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(
           o.toJson());
@@ -204,7 +204,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleExampleLibraryagentV1Shelf', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleExampleLibraryagentV1Shelf();
       var od = api.GoogleExampleLibraryagentV1Shelf.fromJson(o.toJson());
       checkGoogleExampleLibraryagentV1Shelf(
@@ -213,7 +213,7 @@ void main() {
   });
 
   unittest.group('resource-ShelvesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LibraryagentApi(mock).shelves;
       var arg_name = 'foo';
@@ -261,15 +261,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleExampleLibraryagentV1Shelf());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleExampleLibraryagentV1Shelf(
-            response as api.GoogleExampleLibraryagentV1Shelf);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleExampleLibraryagentV1Shelf(
+          response as api.GoogleExampleLibraryagentV1Shelf);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LibraryagentApi(mock).shelves;
       var arg_pageSize = 42;
@@ -326,20 +323,17 @@ void main() {
             .encode(buildGoogleExampleLibraryagentV1ListShelvesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleExampleLibraryagentV1ListShelvesResponse(
-            response as api.GoogleExampleLibraryagentV1ListShelvesResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleExampleLibraryagentV1ListShelvesResponse(
+          response as api.GoogleExampleLibraryagentV1ListShelvesResponse);
     });
   });
 
   unittest.group('resource-ShelvesBooksResource', () {
-    unittest.test('method--borrow', () {
+    unittest.test('method--borrow', () async {
       var mock = HttpServerMock();
       var res = api.LibraryagentApi(mock).shelves.books;
       var arg_name = 'foo';
@@ -387,15 +381,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleExampleLibraryagentV1Book());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .borrow(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleExampleLibraryagentV1Book(
-            response as api.GoogleExampleLibraryagentV1Book);
-      })));
+      final response = await res.borrow(arg_name, $fields: arg_$fields);
+      checkGoogleExampleLibraryagentV1Book(
+          response as api.GoogleExampleLibraryagentV1Book);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LibraryagentApi(mock).shelves.books;
       var arg_name = 'foo';
@@ -443,15 +434,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleExampleLibraryagentV1Book());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleExampleLibraryagentV1Book(
-            response as api.GoogleExampleLibraryagentV1Book);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleExampleLibraryagentV1Book(
+          response as api.GoogleExampleLibraryagentV1Book);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.LibraryagentApi(mock).shelves.books;
       var arg_parent = 'foo';
@@ -510,18 +498,15 @@ void main() {
             .encode(buildGoogleExampleLibraryagentV1ListBooksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleExampleLibraryagentV1ListBooksResponse(
-            response as api.GoogleExampleLibraryagentV1ListBooksResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleExampleLibraryagentV1ListBooksResponse(
+          response as api.GoogleExampleLibraryagentV1ListBooksResponse);
     });
 
-    unittest.test('method--return_', () {
+    unittest.test('method--return_', () async {
       var mock = HttpServerMock();
       var res = api.LibraryagentApi(mock).shelves.books;
       var arg_name = 'foo';
@@ -569,12 +554,9 @@ void main() {
         var resp = convert.json.encode(buildGoogleExampleLibraryagentV1Book());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .return_(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleExampleLibraryagentV1Book(
-            response as api.GoogleExampleLibraryagentV1Book);
-      })));
+      final response = await res.return_(arg_name, $fields: arg_$fields);
+      checkGoogleExampleLibraryagentV1Book(
+          response as api.GoogleExampleLibraryagentV1Book);
     });
   });
 }

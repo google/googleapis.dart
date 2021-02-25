@@ -8808,7 +8808,7 @@ void checkViewabilityTargetingOptionDetails(
 
 void main() {
   unittest.group('obj-schema-ActivateManualTriggerRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildActivateManualTriggerRequest();
       var od = api.ActivateManualTriggerRequest.fromJson(o.toJson());
       checkActivateManualTriggerRequest(od as api.ActivateManualTriggerRequest);
@@ -8816,7 +8816,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ActiveViewVideoViewabilityMetricConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildActiveViewVideoViewabilityMetricConfig();
       var od = api.ActiveViewVideoViewabilityMetricConfig.fromJson(o.toJson());
       checkActiveViewVideoViewabilityMetricConfig(
@@ -8825,7 +8825,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Adloox', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdloox();
       var od = api.Adloox.fromJson(o.toJson());
       checkAdloox(od as api.Adloox);
@@ -8833,7 +8833,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Advertiser', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdvertiser();
       var od = api.Advertiser.fromJson(o.toJson());
       checkAdvertiser(od as api.Advertiser);
@@ -8841,7 +8841,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AdvertiserAdServerConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdvertiserAdServerConfig();
       var od = api.AdvertiserAdServerConfig.fromJson(o.toJson());
       checkAdvertiserAdServerConfig(od as api.AdvertiserAdServerConfig);
@@ -8849,7 +8849,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AdvertiserCreativeConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdvertiserCreativeConfig();
       var od = api.AdvertiserCreativeConfig.fromJson(o.toJson());
       checkAdvertiserCreativeConfig(od as api.AdvertiserCreativeConfig);
@@ -8857,7 +8857,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AdvertiserDataAccessConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdvertiserDataAccessConfig();
       var od = api.AdvertiserDataAccessConfig.fromJson(o.toJson());
       checkAdvertiserDataAccessConfig(od as api.AdvertiserDataAccessConfig);
@@ -8865,7 +8865,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AdvertiserGeneralConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdvertiserGeneralConfig();
       var od = api.AdvertiserGeneralConfig.fromJson(o.toJson());
       checkAdvertiserGeneralConfig(od as api.AdvertiserGeneralConfig);
@@ -8873,7 +8873,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AdvertiserSdfConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdvertiserSdfConfig();
       var od = api.AdvertiserSdfConfig.fromJson(o.toJson());
       checkAdvertiserSdfConfig(od as api.AdvertiserSdfConfig);
@@ -8881,7 +8881,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AdvertiserTargetingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdvertiserTargetingConfig();
       var od = api.AdvertiserTargetingConfig.fromJson(o.toJson());
       checkAdvertiserTargetingConfig(od as api.AdvertiserTargetingConfig);
@@ -8889,7 +8889,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AgeRangeAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAgeRangeAssignedTargetingOptionDetails();
       var od = api.AgeRangeAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkAgeRangeAssignedTargetingOptionDetails(
@@ -8898,7 +8898,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AgeRangeTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAgeRangeTargetingOptionDetails();
       var od = api.AgeRangeTargetingOptionDetails.fromJson(o.toJson());
       checkAgeRangeTargetingOptionDetails(
@@ -8907,7 +8907,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AppAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppAssignedTargetingOptionDetails();
       var od = api.AppAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkAppAssignedTargetingOptionDetails(
@@ -8916,7 +8916,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AppCategoryAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppCategoryAssignedTargetingOptionDetails();
       var od =
           api.AppCategoryAssignedTargetingOptionDetails.fromJson(o.toJson());
@@ -8926,7 +8926,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AppCategoryTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppCategoryTargetingOptionDetails();
       var od = api.AppCategoryTargetingOptionDetails.fromJson(o.toJson());
       checkAppCategoryTargetingOptionDetails(
@@ -8935,7 +8935,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Asset', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAsset();
       var od = api.Asset.fromJson(o.toJson());
       checkAsset(od as api.Asset);
@@ -8943,7 +8943,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AssetAssociation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAssetAssociation();
       var od = api.AssetAssociation.fromJson(o.toJson());
       checkAssetAssociation(od as api.AssetAssociation);
@@ -8951,7 +8951,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AssignedInventorySource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAssignedInventorySource();
       var od = api.AssignedInventorySource.fromJson(o.toJson());
       checkAssignedInventorySource(od as api.AssignedInventorySource);
@@ -8959,7 +8959,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AssignedLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAssignedLocation();
       var od = api.AssignedLocation.fromJson(o.toJson());
       checkAssignedLocation(od as api.AssignedLocation);
@@ -8967,7 +8967,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AssignedTargetingOption', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAssignedTargetingOption();
       var od = api.AssignedTargetingOption.fromJson(o.toJson());
       checkAssignedTargetingOption(od as api.AssignedTargetingOption);
@@ -8975,7 +8975,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AssignedUserRole', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAssignedUserRole();
       var od = api.AssignedUserRole.fromJson(o.toJson());
       checkAssignedUserRole(od as api.AssignedUserRole);
@@ -8983,7 +8983,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AudienceGroupAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAudienceGroupAssignedTargetingOptionDetails();
       var od =
           api.AudienceGroupAssignedTargetingOptionDetails.fromJson(o.toJson());
@@ -8993,7 +8993,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AudioVideoOffset', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAudioVideoOffset();
       var od = api.AudioVideoOffset.fromJson(o.toJson());
       checkAudioVideoOffset(od as api.AudioVideoOffset);
@@ -9001,7 +9001,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditAdvertiserResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditAdvertiserResponse();
       var od = api.AuditAdvertiserResponse.fromJson(o.toJson());
       checkAuditAdvertiserResponse(od as api.AuditAdvertiserResponse);
@@ -9010,7 +9010,7 @@ void main() {
 
   unittest.group(
       'obj-schema-AuthorizedSellerStatusAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuthorizedSellerStatusAssignedTargetingOptionDetails();
       var od =
           api.AuthorizedSellerStatusAssignedTargetingOptionDetails.fromJson(
@@ -9021,7 +9021,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuthorizedSellerStatusTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuthorizedSellerStatusTargetingOptionDetails();
       var od =
           api.AuthorizedSellerStatusTargetingOptionDetails.fromJson(o.toJson());
@@ -9031,7 +9031,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BiddingStrategy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBiddingStrategy();
       var od = api.BiddingStrategy.fromJson(o.toJson());
       checkBiddingStrategy(od as api.BiddingStrategy);
@@ -9039,7 +9039,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BrowserAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBrowserAssignedTargetingOptionDetails();
       var od = api.BrowserAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkBrowserAssignedTargetingOptionDetails(
@@ -9048,7 +9048,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BrowserTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBrowserTargetingOptionDetails();
       var od = api.BrowserTargetingOptionDetails.fromJson(o.toJson());
       checkBrowserTargetingOptionDetails(
@@ -9058,7 +9058,7 @@ void main() {
 
   unittest.group('obj-schema-BulkEditAdvertiserAssignedTargetingOptionsRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkEditAdvertiserAssignedTargetingOptionsRequest();
       var od = api.BulkEditAdvertiserAssignedTargetingOptionsRequest.fromJson(
           o.toJson());
@@ -9069,7 +9069,7 @@ void main() {
 
   unittest.group(
       'obj-schema-BulkEditAdvertiserAssignedTargetingOptionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkEditAdvertiserAssignedTargetingOptionsResponse();
       var od = api.BulkEditAdvertiserAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
@@ -9079,7 +9079,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BulkEditAssignedInventorySourcesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkEditAssignedInventorySourcesRequest();
       var od = api.BulkEditAssignedInventorySourcesRequest.fromJson(o.toJson());
       checkBulkEditAssignedInventorySourcesRequest(
@@ -9088,7 +9088,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BulkEditAssignedInventorySourcesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkEditAssignedInventorySourcesResponse();
       var od =
           api.BulkEditAssignedInventorySourcesResponse.fromJson(o.toJson());
@@ -9098,7 +9098,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BulkEditAssignedLocationsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkEditAssignedLocationsRequest();
       var od = api.BulkEditAssignedLocationsRequest.fromJson(o.toJson());
       checkBulkEditAssignedLocationsRequest(
@@ -9107,7 +9107,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BulkEditAssignedLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkEditAssignedLocationsResponse();
       var od = api.BulkEditAssignedLocationsResponse.fromJson(o.toJson());
       checkBulkEditAssignedLocationsResponse(
@@ -9116,7 +9116,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BulkEditAssignedUserRolesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkEditAssignedUserRolesRequest();
       var od = api.BulkEditAssignedUserRolesRequest.fromJson(o.toJson());
       checkBulkEditAssignedUserRolesRequest(
@@ -9125,7 +9125,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BulkEditAssignedUserRolesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkEditAssignedUserRolesResponse();
       var od = api.BulkEditAssignedUserRolesResponse.fromJson(o.toJson());
       checkBulkEditAssignedUserRolesResponse(
@@ -9135,7 +9135,7 @@ void main() {
 
   unittest.group('obj-schema-BulkEditLineItemAssignedTargetingOptionsRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkEditLineItemAssignedTargetingOptionsRequest();
       var od = api.BulkEditLineItemAssignedTargetingOptionsRequest.fromJson(
           o.toJson());
@@ -9146,7 +9146,7 @@ void main() {
 
   unittest.group('obj-schema-BulkEditLineItemAssignedTargetingOptionsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkEditLineItemAssignedTargetingOptionsResponse();
       var od = api.BulkEditLineItemAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
@@ -9156,7 +9156,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BulkEditNegativeKeywordsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkEditNegativeKeywordsRequest();
       var od = api.BulkEditNegativeKeywordsRequest.fromJson(o.toJson());
       checkBulkEditNegativeKeywordsRequest(
@@ -9165,7 +9165,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BulkEditNegativeKeywordsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkEditNegativeKeywordsResponse();
       var od = api.BulkEditNegativeKeywordsResponse.fromJson(o.toJson());
       checkBulkEditNegativeKeywordsResponse(
@@ -9175,7 +9175,7 @@ void main() {
 
   unittest.group('obj-schema-BulkEditPartnerAssignedTargetingOptionsRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkEditPartnerAssignedTargetingOptionsRequest();
       var od = api.BulkEditPartnerAssignedTargetingOptionsRequest.fromJson(
           o.toJson());
@@ -9186,7 +9186,7 @@ void main() {
 
   unittest.group('obj-schema-BulkEditPartnerAssignedTargetingOptionsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkEditPartnerAssignedTargetingOptionsResponse();
       var od = api.BulkEditPartnerAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
@@ -9196,7 +9196,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BulkEditSitesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkEditSitesRequest();
       var od = api.BulkEditSitesRequest.fromJson(o.toJson());
       checkBulkEditSitesRequest(od as api.BulkEditSitesRequest);
@@ -9204,7 +9204,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BulkEditSitesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkEditSitesResponse();
       var od = api.BulkEditSitesResponse.fromJson(o.toJson());
       checkBulkEditSitesResponse(od as api.BulkEditSitesResponse);
@@ -9213,7 +9213,7 @@ void main() {
 
   unittest.group(
       'obj-schema-BulkListAdvertiserAssignedTargetingOptionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkListAdvertiserAssignedTargetingOptionsResponse();
       var od = api.BulkListAdvertiserAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
@@ -9224,7 +9224,7 @@ void main() {
 
   unittest.group(
       'obj-schema-BulkListInsertionOrderAssignedTargetingOptionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkListInsertionOrderAssignedTargetingOptionsResponse();
       var od =
           api.BulkListInsertionOrderAssignedTargetingOptionsResponse.fromJson(
@@ -9236,7 +9236,7 @@ void main() {
 
   unittest.group('obj-schema-BulkListLineItemAssignedTargetingOptionsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBulkListLineItemAssignedTargetingOptionsResponse();
       var od = api.BulkListLineItemAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
@@ -9246,7 +9246,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Campaign', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCampaign();
       var od = api.Campaign.fromJson(o.toJson());
       checkCampaign(od as api.Campaign);
@@ -9254,7 +9254,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CampaignFlight', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCampaignFlight();
       var od = api.CampaignFlight.fromJson(o.toJson());
       checkCampaignFlight(od as api.CampaignFlight);
@@ -9262,7 +9262,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CampaignGoal', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCampaignGoal();
       var od = api.CampaignGoal.fromJson(o.toJson());
       checkCampaignGoal(od as api.CampaignGoal);
@@ -9270,7 +9270,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CarrierAndIspAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCarrierAndIspAssignedTargetingOptionDetails();
       var od =
           api.CarrierAndIspAssignedTargetingOptionDetails.fromJson(o.toJson());
@@ -9280,7 +9280,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CarrierAndIspTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCarrierAndIspTargetingOptionDetails();
       var od = api.CarrierAndIspTargetingOptionDetails.fromJson(o.toJson());
       checkCarrierAndIspTargetingOptionDetails(
@@ -9289,7 +9289,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CategoryAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCategoryAssignedTargetingOptionDetails();
       var od = api.CategoryAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkCategoryAssignedTargetingOptionDetails(
@@ -9298,7 +9298,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CategoryTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCategoryTargetingOptionDetails();
       var od = api.CategoryTargetingOptionDetails.fromJson(o.toJson());
       checkCategoryTargetingOptionDetails(
@@ -9307,7 +9307,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Channel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChannel();
       var od = api.Channel.fromJson(o.toJson());
       checkChannel(od as api.Channel);
@@ -9315,7 +9315,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChannelAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChannelAssignedTargetingOptionDetails();
       var od = api.ChannelAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkChannelAssignedTargetingOptionDetails(
@@ -9324,7 +9324,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CmHybridConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCmHybridConfig();
       var od = api.CmHybridConfig.fromJson(o.toJson());
       checkCmHybridConfig(od as api.CmHybridConfig);
@@ -9332,7 +9332,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CmTrackingAd', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCmTrackingAd();
       var od = api.CmTrackingAd.fromJson(o.toJson());
       checkCmTrackingAd(od as api.CmTrackingAd);
@@ -9340,7 +9340,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CombinedAudience', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCombinedAudience();
       var od = api.CombinedAudience.fromJson(o.toJson());
       checkCombinedAudience(od as api.CombinedAudience);
@@ -9348,7 +9348,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CombinedAudienceGroup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCombinedAudienceGroup();
       var od = api.CombinedAudienceGroup.fromJson(o.toJson());
       checkCombinedAudienceGroup(od as api.CombinedAudienceGroup);
@@ -9356,7 +9356,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CombinedAudienceTargetingSetting', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCombinedAudienceTargetingSetting();
       var od = api.CombinedAudienceTargetingSetting.fromJson(o.toJson());
       checkCombinedAudienceTargetingSetting(
@@ -9366,7 +9366,7 @@ void main() {
 
   unittest.group(
       'obj-schema-ContentInstreamPositionAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContentInstreamPositionAssignedTargetingOptionDetails();
       var od =
           api.ContentInstreamPositionAssignedTargetingOptionDetails.fromJson(
@@ -9378,7 +9378,7 @@ void main() {
 
   unittest.group('obj-schema-ContentInstreamPositionTargetingOptionDetails',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContentInstreamPositionTargetingOptionDetails();
       var od = api.ContentInstreamPositionTargetingOptionDetails.fromJson(
           o.toJson());
@@ -9389,7 +9389,7 @@ void main() {
 
   unittest.group(
       'obj-schema-ContentOutstreamPositionAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContentOutstreamPositionAssignedTargetingOptionDetails();
       var od =
           api.ContentOutstreamPositionAssignedTargetingOptionDetails.fromJson(
@@ -9401,7 +9401,7 @@ void main() {
 
   unittest.group('obj-schema-ContentOutstreamPositionTargetingOptionDetails',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContentOutstreamPositionTargetingOptionDetails();
       var od = api.ContentOutstreamPositionTargetingOptionDetails.fromJson(
           o.toJson());
@@ -9411,7 +9411,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConversionCountingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConversionCountingConfig();
       var od = api.ConversionCountingConfig.fromJson(o.toJson());
       checkConversionCountingConfig(od as api.ConversionCountingConfig);
@@ -9419,7 +9419,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CounterEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCounterEvent();
       var od = api.CounterEvent.fromJson(o.toJson());
       checkCounterEvent(od as api.CounterEvent);
@@ -9427,7 +9427,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateAssetRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateAssetRequest();
       var od = api.CreateAssetRequest.fromJson(o.toJson());
       checkCreateAssetRequest(od as api.CreateAssetRequest);
@@ -9435,7 +9435,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateAssetResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateAssetResponse();
       var od = api.CreateAssetResponse.fromJson(o.toJson());
       checkCreateAssetResponse(od as api.CreateAssetResponse);
@@ -9443,7 +9443,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateAssignedTargetingOptionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateAssignedTargetingOptionsRequest();
       var od = api.CreateAssignedTargetingOptionsRequest.fromJson(o.toJson());
       checkCreateAssignedTargetingOptionsRequest(
@@ -9452,7 +9452,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateSdfDownloadTaskRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateSdfDownloadTaskRequest();
       var od = api.CreateSdfDownloadTaskRequest.fromJson(o.toJson());
       checkCreateSdfDownloadTaskRequest(od as api.CreateSdfDownloadTaskRequest);
@@ -9460,7 +9460,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Creative', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreative();
       var od = api.Creative.fromJson(o.toJson());
       checkCreative(od as api.Creative);
@@ -9468,7 +9468,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreativeConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreativeConfig();
       var od = api.CreativeConfig.fromJson(o.toJson());
       checkCreativeConfig(od as api.CreativeConfig);
@@ -9476,7 +9476,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomBiddingAlgorithm', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomBiddingAlgorithm();
       var od = api.CustomBiddingAlgorithm.fromJson(o.toJson());
       checkCustomBiddingAlgorithm(od as api.CustomBiddingAlgorithm);
@@ -9484,7 +9484,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomList();
       var od = api.CustomList.fromJson(o.toJson());
       checkCustomList(od as api.CustomList);
@@ -9492,7 +9492,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomListGroup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomListGroup();
       var od = api.CustomListGroup.fromJson(o.toJson());
       checkCustomListGroup(od as api.CustomListGroup);
@@ -9500,7 +9500,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomListTargetingSetting', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomListTargetingSetting();
       var od = api.CustomListTargetingSetting.fromJson(o.toJson());
       checkCustomListTargetingSetting(od as api.CustomListTargetingSetting);
@@ -9508,7 +9508,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Date', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
       checkDate(od as api.Date);
@@ -9516,7 +9516,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DateRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDateRange();
       var od = api.DateRange.fromJson(o.toJson());
       checkDateRange(od as api.DateRange);
@@ -9524,7 +9524,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DayAndTimeAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDayAndTimeAssignedTargetingOptionDetails();
       var od =
           api.DayAndTimeAssignedTargetingOptionDetails.fromJson(o.toJson());
@@ -9534,7 +9534,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeactivateManualTriggerRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeactivateManualTriggerRequest();
       var od = api.DeactivateManualTriggerRequest.fromJson(o.toJson());
       checkDeactivateManualTriggerRequest(
@@ -9543,7 +9543,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteAssignedTargetingOptionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteAssignedTargetingOptionsRequest();
       var od = api.DeleteAssignedTargetingOptionsRequest.fromJson(o.toJson());
       checkDeleteAssignedTargetingOptionsRequest(
@@ -9553,7 +9553,7 @@ void main() {
 
   unittest.group('obj-schema-DeviceMakeModelAssignedTargetingOptionDetails',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceMakeModelAssignedTargetingOptionDetails();
       var od = api.DeviceMakeModelAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -9563,7 +9563,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceMakeModelTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceMakeModelTargetingOptionDetails();
       var od = api.DeviceMakeModelTargetingOptionDetails.fromJson(o.toJson());
       checkDeviceMakeModelTargetingOptionDetails(
@@ -9572,7 +9572,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceTypeAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceTypeAssignedTargetingOptionDetails();
       var od =
           api.DeviceTypeAssignedTargetingOptionDetails.fromJson(o.toJson());
@@ -9582,7 +9582,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceTypeTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceTypeTargetingOptionDetails();
       var od = api.DeviceTypeTargetingOptionDetails.fromJson(o.toJson());
       checkDeviceTypeTargetingOptionDetails(
@@ -9592,7 +9592,7 @@ void main() {
 
   unittest.group('obj-schema-DigitalContentLabelAssignedTargetingOptionDetails',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDigitalContentLabelAssignedTargetingOptionDetails();
       var od = api.DigitalContentLabelAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -9602,7 +9602,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DigitalContentLabelTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDigitalContentLabelTargetingOptionDetails();
       var od =
           api.DigitalContentLabelTargetingOptionDetails.fromJson(o.toJson());
@@ -9612,7 +9612,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Dimensions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDimensions();
       var od = api.Dimensions.fromJson(o.toJson());
       checkDimensions(od as api.Dimensions);
@@ -9620,7 +9620,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DoubleVerify', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDoubleVerify();
       var od = api.DoubleVerify.fromJson(o.toJson());
       checkDoubleVerify(od as api.DoubleVerify);
@@ -9628,7 +9628,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DoubleVerifyAppStarRating', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDoubleVerifyAppStarRating();
       var od = api.DoubleVerifyAppStarRating.fromJson(o.toJson());
       checkDoubleVerifyAppStarRating(od as api.DoubleVerifyAppStarRating);
@@ -9636,7 +9636,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DoubleVerifyBrandSafetyCategories', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDoubleVerifyBrandSafetyCategories();
       var od = api.DoubleVerifyBrandSafetyCategories.fromJson(o.toJson());
       checkDoubleVerifyBrandSafetyCategories(
@@ -9645,7 +9645,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DoubleVerifyDisplayViewability', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDoubleVerifyDisplayViewability();
       var od = api.DoubleVerifyDisplayViewability.fromJson(o.toJson());
       checkDoubleVerifyDisplayViewability(
@@ -9654,7 +9654,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DoubleVerifyFraudInvalidTraffic', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDoubleVerifyFraudInvalidTraffic();
       var od = api.DoubleVerifyFraudInvalidTraffic.fromJson(o.toJson());
       checkDoubleVerifyFraudInvalidTraffic(
@@ -9663,7 +9663,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DoubleVerifyVideoViewability', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDoubleVerifyVideoViewability();
       var od = api.DoubleVerifyVideoViewability.fromJson(o.toJson());
       checkDoubleVerifyVideoViewability(od as api.DoubleVerifyVideoViewability);
@@ -9671,7 +9671,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -9679,7 +9679,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnvironmentAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnvironmentAssignedTargetingOptionDetails();
       var od =
           api.EnvironmentAssignedTargetingOptionDetails.fromJson(o.toJson());
@@ -9689,7 +9689,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnvironmentTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnvironmentTargetingOptionDetails();
       var od = api.EnvironmentTargetingOptionDetails.fromJson(o.toJson());
       checkEnvironmentTargetingOptionDetails(
@@ -9698,7 +9698,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExchangeAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExchangeAssignedTargetingOptionDetails();
       var od = api.ExchangeAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkExchangeAssignedTargetingOptionDetails(
@@ -9707,7 +9707,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExchangeConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExchangeConfig();
       var od = api.ExchangeConfig.fromJson(o.toJson());
       checkExchangeConfig(od as api.ExchangeConfig);
@@ -9715,7 +9715,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExchangeConfigEnabledExchange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExchangeConfigEnabledExchange();
       var od = api.ExchangeConfigEnabledExchange.fromJson(o.toJson());
       checkExchangeConfigEnabledExchange(
@@ -9724,7 +9724,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExchangeReviewStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExchangeReviewStatus();
       var od = api.ExchangeReviewStatus.fromJson(o.toJson());
       checkExchangeReviewStatus(od as api.ExchangeReviewStatus);
@@ -9732,7 +9732,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExchangeTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExchangeTargetingOptionDetails();
       var od = api.ExchangeTargetingOptionDetails.fromJson(o.toJson());
       checkExchangeTargetingOptionDetails(
@@ -9741,7 +9741,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExitEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExitEvent();
       var od = api.ExitEvent.fromJson(o.toJson());
       checkExitEvent(od as api.ExitEvent);
@@ -9749,7 +9749,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FirstAndThirdPartyAudience', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFirstAndThirdPartyAudience();
       var od = api.FirstAndThirdPartyAudience.fromJson(o.toJson());
       checkFirstAndThirdPartyAudience(od as api.FirstAndThirdPartyAudience);
@@ -9757,7 +9757,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FirstAndThirdPartyAudienceGroup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFirstAndThirdPartyAudienceGroup();
       var od = api.FirstAndThirdPartyAudienceGroup.fromJson(o.toJson());
       checkFirstAndThirdPartyAudienceGroup(
@@ -9766,7 +9766,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FirstAndThirdPartyAudienceTargetingSetting', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFirstAndThirdPartyAudienceTargetingSetting();
       var od =
           api.FirstAndThirdPartyAudienceTargetingSetting.fromJson(o.toJson());
@@ -9776,7 +9776,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FixedBidStrategy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFixedBidStrategy();
       var od = api.FixedBidStrategy.fromJson(o.toJson());
       checkFixedBidStrategy(od as api.FixedBidStrategy);
@@ -9784,7 +9784,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FloodlightGroup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFloodlightGroup();
       var od = api.FloodlightGroup.fromJson(o.toJson());
       checkFloodlightGroup(od as api.FloodlightGroup);
@@ -9792,7 +9792,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FrequencyCap', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFrequencyCap();
       var od = api.FrequencyCap.fromJson(o.toJson());
       checkFrequencyCap(od as api.FrequencyCap);
@@ -9800,7 +9800,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GenderAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGenderAssignedTargetingOptionDetails();
       var od = api.GenderAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkGenderAssignedTargetingOptionDetails(
@@ -9809,7 +9809,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GenderTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGenderTargetingOptionDetails();
       var od = api.GenderTargetingOptionDetails.fromJson(o.toJson());
       checkGenderTargetingOptionDetails(od as api.GenderTargetingOptionDetails);
@@ -9817,7 +9817,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GeoRegionAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGeoRegionAssignedTargetingOptionDetails();
       var od = api.GeoRegionAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkGeoRegionAssignedTargetingOptionDetails(
@@ -9826,7 +9826,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GeoRegionSearchTerms', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGeoRegionSearchTerms();
       var od = api.GeoRegionSearchTerms.fromJson(o.toJson());
       checkGeoRegionSearchTerms(od as api.GeoRegionSearchTerms);
@@ -9834,7 +9834,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GeoRegionTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGeoRegionTargetingOptionDetails();
       var od = api.GeoRegionTargetingOptionDetails.fromJson(o.toJson());
       checkGeoRegionTargetingOptionDetails(
@@ -9843,7 +9843,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAudience', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAudience();
       var od = api.GoogleAudience.fromJson(o.toJson());
       checkGoogleAudience(od as api.GoogleAudience);
@@ -9851,7 +9851,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAudienceGroup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAudienceGroup();
       var od = api.GoogleAudienceGroup.fromJson(o.toJson());
       checkGoogleAudienceGroup(od as api.GoogleAudienceGroup);
@@ -9859,7 +9859,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAudienceTargetingSetting', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAudienceTargetingSetting();
       var od = api.GoogleAudienceTargetingSetting.fromJson(o.toJson());
       checkGoogleAudienceTargetingSetting(
@@ -9868,7 +9868,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleBytestreamMedia', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleBytestreamMedia();
       var od = api.GoogleBytestreamMedia.fromJson(o.toJson());
       checkGoogleBytestreamMedia(od as api.GoogleBytestreamMedia);
@@ -9877,7 +9877,7 @@ void main() {
 
   unittest.group('obj-schema-HouseholdIncomeAssignedTargetingOptionDetails',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHouseholdIncomeAssignedTargetingOptionDetails();
       var od = api.HouseholdIncomeAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -9887,7 +9887,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HouseholdIncomeTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHouseholdIncomeTargetingOptionDetails();
       var od = api.HouseholdIncomeTargetingOptionDetails.fromJson(o.toJson());
       checkHouseholdIncomeTargetingOptionDetails(
@@ -9896,7 +9896,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IdFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdFilter();
       var od = api.IdFilter.fromJson(o.toJson());
       checkIdFilter(od as api.IdFilter);
@@ -9904,7 +9904,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InsertionOrder', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInsertionOrder();
       var od = api.InsertionOrder.fromJson(o.toJson());
       checkInsertionOrder(od as api.InsertionOrder);
@@ -9912,7 +9912,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InsertionOrderBudget', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInsertionOrderBudget();
       var od = api.InsertionOrderBudget.fromJson(o.toJson());
       checkInsertionOrderBudget(od as api.InsertionOrderBudget);
@@ -9920,7 +9920,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InsertionOrderBudgetSegment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInsertionOrderBudgetSegment();
       var od = api.InsertionOrderBudgetSegment.fromJson(o.toJson());
       checkInsertionOrderBudgetSegment(od as api.InsertionOrderBudgetSegment);
@@ -9928,7 +9928,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IntegralAdScience', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIntegralAdScience();
       var od = api.IntegralAdScience.fromJson(o.toJson());
       checkIntegralAdScience(od as api.IntegralAdScience);
@@ -9936,7 +9936,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IntegrationDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIntegrationDetails();
       var od = api.IntegrationDetails.fromJson(o.toJson());
       checkIntegrationDetails(od as api.IntegrationDetails);
@@ -9944,7 +9944,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InventorySource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInventorySource();
       var od = api.InventorySource.fromJson(o.toJson());
       checkInventorySource(od as api.InventorySource);
@@ -9953,7 +9953,7 @@ void main() {
 
   unittest.group('obj-schema-InventorySourceAssignedTargetingOptionDetails',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInventorySourceAssignedTargetingOptionDetails();
       var od = api.InventorySourceAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -9963,7 +9963,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InventorySourceDisplayCreativeConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInventorySourceDisplayCreativeConfig();
       var od = api.InventorySourceDisplayCreativeConfig.fromJson(o.toJson());
       checkInventorySourceDisplayCreativeConfig(
@@ -9972,7 +9972,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InventorySourceFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInventorySourceFilter();
       var od = api.InventorySourceFilter.fromJson(o.toJson());
       checkInventorySourceFilter(od as api.InventorySourceFilter);
@@ -9980,7 +9980,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InventorySourceGroup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInventorySourceGroup();
       var od = api.InventorySourceGroup.fromJson(o.toJson());
       checkInventorySourceGroup(od as api.InventorySourceGroup);
@@ -9989,7 +9989,7 @@ void main() {
 
   unittest.group(
       'obj-schema-InventorySourceGroupAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInventorySourceGroupAssignedTargetingOptionDetails();
       var od = api.InventorySourceGroupAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -9999,7 +9999,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InventorySourceStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInventorySourceStatus();
       var od = api.InventorySourceStatus.fromJson(o.toJson());
       checkInventorySourceStatus(od as api.InventorySourceStatus);
@@ -10007,7 +10007,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InventorySourceVideoCreativeConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInventorySourceVideoCreativeConfig();
       var od = api.InventorySourceVideoCreativeConfig.fromJson(o.toJson());
       checkInventorySourceVideoCreativeConfig(
@@ -10016,7 +10016,7 @@ void main() {
   });
 
   unittest.group('obj-schema-KeywordAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildKeywordAssignedTargetingOptionDetails();
       var od = api.KeywordAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkKeywordAssignedTargetingOptionDetails(
@@ -10025,7 +10025,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LanguageAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLanguageAssignedTargetingOptionDetails();
       var od = api.LanguageAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkLanguageAssignedTargetingOptionDetails(
@@ -10034,7 +10034,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LanguageTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLanguageTargetingOptionDetails();
       var od = api.LanguageTargetingOptionDetails.fromJson(o.toJson());
       checkLanguageTargetingOptionDetails(
@@ -10043,7 +10043,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LineItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLineItem();
       var od = api.LineItem.fromJson(o.toJson());
       checkLineItem(od as api.LineItem);
@@ -10051,7 +10051,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LineItemBudget', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLineItemBudget();
       var od = api.LineItemBudget.fromJson(o.toJson());
       checkLineItemBudget(od as api.LineItemBudget);
@@ -10059,7 +10059,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LineItemFlight', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLineItemFlight();
       var od = api.LineItemFlight.fromJson(o.toJson());
       checkLineItemFlight(od as api.LineItemFlight);
@@ -10068,7 +10068,7 @@ void main() {
 
   unittest.group('obj-schema-ListAdvertiserAssignedTargetingOptionsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAdvertiserAssignedTargetingOptionsResponse();
       var od = api.ListAdvertiserAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
@@ -10078,7 +10078,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAdvertisersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAdvertisersResponse();
       var od = api.ListAdvertisersResponse.fromJson(o.toJson());
       checkListAdvertisersResponse(od as api.ListAdvertisersResponse);
@@ -10086,7 +10086,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAssignedInventorySourcesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAssignedInventorySourcesResponse();
       var od = api.ListAssignedInventorySourcesResponse.fromJson(o.toJson());
       checkListAssignedInventorySourcesResponse(
@@ -10095,7 +10095,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAssignedLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAssignedLocationsResponse();
       var od = api.ListAssignedLocationsResponse.fromJson(o.toJson());
       checkListAssignedLocationsResponse(
@@ -10104,7 +10104,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCampaignsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCampaignsResponse();
       var od = api.ListCampaignsResponse.fromJson(o.toJson());
       checkListCampaignsResponse(od as api.ListCampaignsResponse);
@@ -10112,7 +10112,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListChannelsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListChannelsResponse();
       var od = api.ListChannelsResponse.fromJson(o.toJson());
       checkListChannelsResponse(od as api.ListChannelsResponse);
@@ -10120,7 +10120,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCombinedAudiencesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCombinedAudiencesResponse();
       var od = api.ListCombinedAudiencesResponse.fromJson(o.toJson());
       checkListCombinedAudiencesResponse(
@@ -10129,7 +10129,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCreativesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCreativesResponse();
       var od = api.ListCreativesResponse.fromJson(o.toJson());
       checkListCreativesResponse(od as api.ListCreativesResponse);
@@ -10137,7 +10137,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCustomBiddingAlgorithmsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCustomBiddingAlgorithmsResponse();
       var od = api.ListCustomBiddingAlgorithmsResponse.fromJson(o.toJson());
       checkListCustomBiddingAlgorithmsResponse(
@@ -10146,7 +10146,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCustomListsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCustomListsResponse();
       var od = api.ListCustomListsResponse.fromJson(o.toJson());
       checkListCustomListsResponse(od as api.ListCustomListsResponse);
@@ -10154,7 +10154,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListFirstAndThirdPartyAudiencesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListFirstAndThirdPartyAudiencesResponse();
       var od = api.ListFirstAndThirdPartyAudiencesResponse.fromJson(o.toJson());
       checkListFirstAndThirdPartyAudiencesResponse(
@@ -10163,7 +10163,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListGoogleAudiencesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListGoogleAudiencesResponse();
       var od = api.ListGoogleAudiencesResponse.fromJson(o.toJson());
       checkListGoogleAudiencesResponse(od as api.ListGoogleAudiencesResponse);
@@ -10172,7 +10172,7 @@ void main() {
 
   unittest.group(
       'obj-schema-ListInsertionOrderAssignedTargetingOptionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListInsertionOrderAssignedTargetingOptionsResponse();
       var od = api.ListInsertionOrderAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
@@ -10182,7 +10182,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListInsertionOrdersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListInsertionOrdersResponse();
       var od = api.ListInsertionOrdersResponse.fromJson(o.toJson());
       checkListInsertionOrdersResponse(od as api.ListInsertionOrdersResponse);
@@ -10190,7 +10190,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListInventorySourceGroupsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListInventorySourceGroupsResponse();
       var od = api.ListInventorySourceGroupsResponse.fromJson(o.toJson());
       checkListInventorySourceGroupsResponse(
@@ -10199,7 +10199,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListInventorySourcesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListInventorySourcesResponse();
       var od = api.ListInventorySourcesResponse.fromJson(o.toJson());
       checkListInventorySourcesResponse(od as api.ListInventorySourcesResponse);
@@ -10207,7 +10207,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLineItemAssignedTargetingOptionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLineItemAssignedTargetingOptionsResponse();
       var od =
           api.ListLineItemAssignedTargetingOptionsResponse.fromJson(o.toJson());
@@ -10217,7 +10217,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLineItemsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLineItemsResponse();
       var od = api.ListLineItemsResponse.fromJson(o.toJson());
       checkListLineItemsResponse(od as api.ListLineItemsResponse);
@@ -10225,7 +10225,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationListsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationListsResponse();
       var od = api.ListLocationListsResponse.fromJson(o.toJson());
       checkListLocationListsResponse(od as api.ListLocationListsResponse);
@@ -10233,7 +10233,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListManualTriggersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListManualTriggersResponse();
       var od = api.ListManualTriggersResponse.fromJson(o.toJson());
       checkListManualTriggersResponse(od as api.ListManualTriggersResponse);
@@ -10241,7 +10241,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListNegativeKeywordListsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListNegativeKeywordListsResponse();
       var od = api.ListNegativeKeywordListsResponse.fromJson(o.toJson());
       checkListNegativeKeywordListsResponse(
@@ -10250,7 +10250,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListNegativeKeywordsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListNegativeKeywordsResponse();
       var od = api.ListNegativeKeywordsResponse.fromJson(o.toJson());
       checkListNegativeKeywordsResponse(od as api.ListNegativeKeywordsResponse);
@@ -10258,7 +10258,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListPartnerAssignedTargetingOptionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListPartnerAssignedTargetingOptionsResponse();
       var od =
           api.ListPartnerAssignedTargetingOptionsResponse.fromJson(o.toJson());
@@ -10268,7 +10268,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListPartnersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListPartnersResponse();
       var od = api.ListPartnersResponse.fromJson(o.toJson());
       checkListPartnersResponse(od as api.ListPartnersResponse);
@@ -10276,7 +10276,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListSitesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListSitesResponse();
       var od = api.ListSitesResponse.fromJson(o.toJson());
       checkListSitesResponse(od as api.ListSitesResponse);
@@ -10284,7 +10284,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTargetingOptionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTargetingOptionsResponse();
       var od = api.ListTargetingOptionsResponse.fromJson(o.toJson());
       checkListTargetingOptionsResponse(od as api.ListTargetingOptionsResponse);
@@ -10292,7 +10292,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListUsersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListUsersResponse();
       var od = api.ListUsersResponse.fromJson(o.toJson());
       checkListUsersResponse(od as api.ListUsersResponse);
@@ -10300,7 +10300,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LocationList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocationList();
       var od = api.LocationList.fromJson(o.toJson());
       checkLocationList(od as api.LocationList);
@@ -10308,7 +10308,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LookbackWindow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLookbackWindow();
       var od = api.LookbackWindow.fromJson(o.toJson());
       checkLookbackWindow(od as api.LookbackWindow);
@@ -10316,7 +10316,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManualTrigger', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManualTrigger();
       var od = api.ManualTrigger.fromJson(o.toJson());
       checkManualTrigger(od as api.ManualTrigger);
@@ -10324,7 +10324,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MaximizeSpendBidStrategy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMaximizeSpendBidStrategy();
       var od = api.MaximizeSpendBidStrategy.fromJson(o.toJson());
       checkMaximizeSpendBidStrategy(od as api.MaximizeSpendBidStrategy);
@@ -10332,7 +10332,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MeasurementConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMeasurementConfig();
       var od = api.MeasurementConfig.fromJson(o.toJson());
       checkMeasurementConfig(od as api.MeasurementConfig);
@@ -10340,7 +10340,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MobileApp', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMobileApp();
       var od = api.MobileApp.fromJson(o.toJson());
       checkMobileApp(od as api.MobileApp);
@@ -10348,7 +10348,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Money', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMoney();
       var od = api.Money.fromJson(o.toJson());
       checkMoney(od as api.Money);
@@ -10356,7 +10356,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NegativeKeyword', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNegativeKeyword();
       var od = api.NegativeKeyword.fromJson(o.toJson());
       checkNegativeKeyword(od as api.NegativeKeyword);
@@ -10364,7 +10364,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NegativeKeywordList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNegativeKeywordList();
       var od = api.NegativeKeywordList.fromJson(o.toJson());
       checkNegativeKeywordList(od as api.NegativeKeywordList);
@@ -10373,7 +10373,7 @@ void main() {
 
   unittest.group('obj-schema-NegativeKeywordListAssignedTargetingOptionDetails',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNegativeKeywordListAssignedTargetingOptionDetails();
       var od = api.NegativeKeywordListAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -10383,7 +10383,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ObaIcon', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildObaIcon();
       var od = api.ObaIcon.fromJson(o.toJson());
       checkObaIcon(od as api.ObaIcon);
@@ -10392,7 +10392,7 @@ void main() {
 
   unittest.group('obj-schema-OnScreenPositionAssignedTargetingOptionDetails',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOnScreenPositionAssignedTargetingOptionDetails();
       var od = api.OnScreenPositionAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -10402,7 +10402,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OnScreenPositionTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOnScreenPositionTargetingOptionDetails();
       var od = api.OnScreenPositionTargetingOptionDetails.fromJson(o.toJson());
       checkOnScreenPositionTargetingOptionDetails(
@@ -10412,7 +10412,7 @@ void main() {
 
   unittest.group('obj-schema-OperatingSystemAssignedTargetingOptionDetails',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperatingSystemAssignedTargetingOptionDetails();
       var od = api.OperatingSystemAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -10422,7 +10422,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperatingSystemTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperatingSystemTargetingOptionDetails();
       var od = api.OperatingSystemTargetingOptionDetails.fromJson(o.toJson());
       checkOperatingSystemTargetingOptionDetails(
@@ -10431,7 +10431,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -10439,7 +10439,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Pacing', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPacing();
       var od = api.Pacing.fromJson(o.toJson());
       checkPacing(od as api.Pacing);
@@ -10447,7 +10447,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ParentEntityFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildParentEntityFilter();
       var od = api.ParentEntityFilter.fromJson(o.toJson());
       checkParentEntityFilter(od as api.ParentEntityFilter);
@@ -10455,7 +10455,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ParentalStatusAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildParentalStatusAssignedTargetingOptionDetails();
       var od =
           api.ParentalStatusAssignedTargetingOptionDetails.fromJson(o.toJson());
@@ -10465,7 +10465,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ParentalStatusTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildParentalStatusTargetingOptionDetails();
       var od = api.ParentalStatusTargetingOptionDetails.fromJson(o.toJson());
       checkParentalStatusTargetingOptionDetails(
@@ -10474,7 +10474,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Partner', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPartner();
       var od = api.Partner.fromJson(o.toJson());
       checkPartner(od as api.Partner);
@@ -10482,7 +10482,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PartnerAdServerConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPartnerAdServerConfig();
       var od = api.PartnerAdServerConfig.fromJson(o.toJson());
       checkPartnerAdServerConfig(od as api.PartnerAdServerConfig);
@@ -10490,7 +10490,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PartnerCost', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPartnerCost();
       var od = api.PartnerCost.fromJson(o.toJson());
       checkPartnerCost(od as api.PartnerCost);
@@ -10498,7 +10498,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PartnerDataAccessConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPartnerDataAccessConfig();
       var od = api.PartnerDataAccessConfig.fromJson(o.toJson());
       checkPartnerDataAccessConfig(od as api.PartnerDataAccessConfig);
@@ -10506,7 +10506,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PartnerGeneralConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPartnerGeneralConfig();
       var od = api.PartnerGeneralConfig.fromJson(o.toJson());
       checkPartnerGeneralConfig(od as api.PartnerGeneralConfig);
@@ -10514,7 +10514,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PartnerRevenueModel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPartnerRevenueModel();
       var od = api.PartnerRevenueModel.fromJson(o.toJson());
       checkPartnerRevenueModel(od as api.PartnerRevenueModel);
@@ -10522,7 +10522,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PerformanceGoal', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPerformanceGoal();
       var od = api.PerformanceGoal.fromJson(o.toJson());
       checkPerformanceGoal(od as api.PerformanceGoal);
@@ -10530,7 +10530,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PerformanceGoalBidStrategy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPerformanceGoalBidStrategy();
       var od = api.PerformanceGoalBidStrategy.fromJson(o.toJson());
       checkPerformanceGoalBidStrategy(od as api.PerformanceGoalBidStrategy);
@@ -10539,7 +10539,7 @@ void main() {
 
   unittest.group(
       'obj-schema-ProximityLocationListAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProximityLocationListAssignedTargetingOptionDetails();
       var od = api.ProximityLocationListAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -10549,7 +10549,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PublisherReviewStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPublisherReviewStatus();
       var od = api.PublisherReviewStatus.fromJson(o.toJson());
       checkPublisherReviewStatus(od as api.PublisherReviewStatus);
@@ -10557,7 +10557,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RateDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRateDetails();
       var od = api.RateDetails.fromJson(o.toJson());
       checkRateDetails(od as api.RateDetails);
@@ -10566,7 +10566,7 @@ void main() {
 
   unittest.group(
       'obj-schema-RegionalLocationListAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRegionalLocationListAssignedTargetingOptionDetails();
       var od = api.RegionalLocationListAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -10576,7 +10576,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReviewStatusInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReviewStatusInfo();
       var od = api.ReviewStatusInfo.fromJson(o.toJson());
       checkReviewStatusInfo(od as api.ReviewStatusInfo);
@@ -10584,7 +10584,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SdfConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSdfConfig();
       var od = api.SdfConfig.fromJson(o.toJson());
       checkSdfConfig(od as api.SdfConfig);
@@ -10592,7 +10592,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SdfDownloadTask', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSdfDownloadTask();
       var od = api.SdfDownloadTask.fromJson(o.toJson());
       checkSdfDownloadTask(od as api.SdfDownloadTask);
@@ -10600,7 +10600,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SdfDownloadTaskMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSdfDownloadTaskMetadata();
       var od = api.SdfDownloadTaskMetadata.fromJson(o.toJson());
       checkSdfDownloadTaskMetadata(od as api.SdfDownloadTaskMetadata);
@@ -10608,7 +10608,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchTargetingOptionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchTargetingOptionsRequest();
       var od = api.SearchTargetingOptionsRequest.fromJson(o.toJson());
       checkSearchTargetingOptionsRequest(
@@ -10617,7 +10617,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchTargetingOptionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchTargetingOptionsResponse();
       var od = api.SearchTargetingOptionsResponse.fromJson(o.toJson());
       checkSearchTargetingOptionsResponse(
@@ -10627,7 +10627,7 @@ void main() {
 
   unittest.group('obj-schema-SensitiveCategoryAssignedTargetingOptionDetails',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSensitiveCategoryAssignedTargetingOptionDetails();
       var od = api.SensitiveCategoryAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -10637,7 +10637,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SensitiveCategoryTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSensitiveCategoryTargetingOptionDetails();
       var od = api.SensitiveCategoryTargetingOptionDetails.fromJson(o.toJson());
       checkSensitiveCategoryTargetingOptionDetails(
@@ -10646,7 +10646,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Site', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSite();
       var od = api.Site.fromJson(o.toJson());
       checkSite(od as api.Site);
@@ -10654,7 +10654,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -10662,7 +10662,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SubExchangeAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubExchangeAssignedTargetingOptionDetails();
       var od =
           api.SubExchangeAssignedTargetingOptionDetails.fromJson(o.toJson());
@@ -10672,7 +10672,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SubExchangeTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubExchangeTargetingOptionDetails();
       var od = api.SubExchangeTargetingOptionDetails.fromJson(o.toJson());
       checkSubExchangeTargetingOptionDetails(
@@ -10681,7 +10681,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TargetingExpansionConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTargetingExpansionConfig();
       var od = api.TargetingExpansionConfig.fromJson(o.toJson());
       checkTargetingExpansionConfig(od as api.TargetingExpansionConfig);
@@ -10689,7 +10689,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TargetingOption', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTargetingOption();
       var od = api.TargetingOption.fromJson(o.toJson());
       checkTargetingOption(od as api.TargetingOption);
@@ -10697,7 +10697,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ThirdPartyOnlyConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildThirdPartyOnlyConfig();
       var od = api.ThirdPartyOnlyConfig.fromJson(o.toJson());
       checkThirdPartyOnlyConfig(od as api.ThirdPartyOnlyConfig);
@@ -10705,7 +10705,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ThirdPartyUrl', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildThirdPartyUrl();
       var od = api.ThirdPartyUrl.fromJson(o.toJson());
       checkThirdPartyUrl(od as api.ThirdPartyUrl);
@@ -10714,7 +10714,7 @@ void main() {
 
   unittest.group('obj-schema-ThirdPartyVerifierAssignedTargetingOptionDetails',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildThirdPartyVerifierAssignedTargetingOptionDetails();
       var od = api.ThirdPartyVerifierAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -10724,7 +10724,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimeRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimeRange();
       var od = api.TimeRange.fromJson(o.toJson());
       checkTimeRange(od as api.TimeRange);
@@ -10732,7 +10732,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimerEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimerEvent();
       var od = api.TimerEvent.fromJson(o.toJson());
       checkTimerEvent(od as api.TimerEvent);
@@ -10740,7 +10740,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TrackingFloodlightActivityConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTrackingFloodlightActivityConfig();
       var od = api.TrackingFloodlightActivityConfig.fromJson(o.toJson());
       checkTrackingFloodlightActivityConfig(
@@ -10749,7 +10749,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Transcode', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTranscode();
       var od = api.Transcode.fromJson(o.toJson());
       checkTranscode(od as api.Transcode);
@@ -10757,7 +10757,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UniversalAdId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUniversalAdId();
       var od = api.UniversalAdId.fromJson(o.toJson());
       checkUniversalAdId(od as api.UniversalAdId);
@@ -10765,7 +10765,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UrlAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUrlAssignedTargetingOptionDetails();
       var od = api.UrlAssignedTargetingOptionDetails.fromJson(o.toJson());
       checkUrlAssignedTargetingOptionDetails(
@@ -10774,7 +10774,7 @@ void main() {
   });
 
   unittest.group('obj-schema-User', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
       checkUser(od as api.User);
@@ -10783,7 +10783,7 @@ void main() {
 
   unittest.group('obj-schema-UserRewardedContentAssignedTargetingOptionDetails',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserRewardedContentAssignedTargetingOptionDetails();
       var od = api.UserRewardedContentAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -10793,7 +10793,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserRewardedContentTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserRewardedContentTargetingOptionDetails();
       var od =
           api.UserRewardedContentTargetingOptionDetails.fromJson(o.toJson());
@@ -10804,7 +10804,7 @@ void main() {
 
   unittest.group('obj-schema-VideoPlayerSizeAssignedTargetingOptionDetails',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVideoPlayerSizeAssignedTargetingOptionDetails();
       var od = api.VideoPlayerSizeAssignedTargetingOptionDetails.fromJson(
           o.toJson());
@@ -10814,7 +10814,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VideoPlayerSizeTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVideoPlayerSizeTargetingOptionDetails();
       var od = api.VideoPlayerSizeTargetingOptionDetails.fromJson(o.toJson());
       checkVideoPlayerSizeTargetingOptionDetails(
@@ -10823,7 +10823,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ViewabilityAssignedTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildViewabilityAssignedTargetingOptionDetails();
       var od =
           api.ViewabilityAssignedTargetingOptionDetails.fromJson(o.toJson());
@@ -10833,7 +10833,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ViewabilityTargetingOptionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildViewabilityTargetingOptionDetails();
       var od = api.ViewabilityTargetingOptionDetails.fromJson(o.toJson());
       checkViewabilityTargetingOptionDetails(
@@ -10842,7 +10842,7 @@ void main() {
   });
 
   unittest.group('resource-AdvertisersResource', () {
-    unittest.test('method--audit', () {
+    unittest.test('method--audit', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers;
       var arg_advertiserId = 'foo';
@@ -10895,14 +10895,13 @@ void main() {
         var resp = convert.json.encode(buildAuditAdvertiserResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .audit(arg_advertiserId, readMask: arg_readMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAuditAdvertiserResponse(response as api.AuditAdvertiserResponse);
-      })));
+      final response = await res.audit(arg_advertiserId,
+          readMask: arg_readMask, $fields: arg_$fields);
+      checkAuditAdvertiserResponse(response as api.AuditAdvertiserResponse);
     });
 
-    unittest.test('method--bulkEditAdvertiserAssignedTargetingOptions', () {
+    unittest.test('method--bulkEditAdvertiserAssignedTargetingOptions',
+        () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers;
       var arg_request =
@@ -10959,17 +10958,15 @@ void main() {
             .encode(buildBulkEditAdvertiserAssignedTargetingOptionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .bulkEditAdvertiserAssignedTargetingOptions(
-              arg_request, arg_advertiserId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBulkEditAdvertiserAssignedTargetingOptionsResponse(
-            response as api.BulkEditAdvertiserAssignedTargetingOptionsResponse);
-      })));
+      final response = await res.bulkEditAdvertiserAssignedTargetingOptions(
+          arg_request, arg_advertiserId,
+          $fields: arg_$fields);
+      checkBulkEditAdvertiserAssignedTargetingOptionsResponse(
+          response as api.BulkEditAdvertiserAssignedTargetingOptionsResponse);
     });
 
-    unittest.test('method--bulkListAdvertiserAssignedTargetingOptions', () {
+    unittest.test('method--bulkListAdvertiserAssignedTargetingOptions',
+        () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers;
       var arg_advertiserId = 'foo';
@@ -11038,20 +11035,18 @@ void main() {
             .encode(buildBulkListAdvertiserAssignedTargetingOptionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .bulkListAdvertiserAssignedTargetingOptions(arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBulkListAdvertiserAssignedTargetingOptionsResponse(
-            response as api.BulkListAdvertiserAssignedTargetingOptionsResponse);
-      })));
+      final response = await res.bulkListAdvertiserAssignedTargetingOptions(
+          arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkBulkListAdvertiserAssignedTargetingOptionsResponse(
+          response as api.BulkListAdvertiserAssignedTargetingOptionsResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers;
       var arg_request = buildAdvertiser();
@@ -11102,14 +11097,11 @@ void main() {
         var resp = convert.json.encode(buildAdvertiser());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAdvertiser(response as api.Advertiser);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkAdvertiser(response as api.Advertiser);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers;
       var arg_advertiserId = 'foo';
@@ -11157,14 +11149,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_advertiserId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_advertiserId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers;
       var arg_advertiserId = 'foo';
@@ -11212,14 +11201,11 @@ void main() {
         var resp = convert.json.encode(buildAdvertiser());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_advertiserId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAdvertiser(response as api.Advertiser);
-      })));
+      final response = await res.get(arg_advertiserId, $fields: arg_$fields);
+      checkAdvertiser(response as api.Advertiser);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers;
       var arg_filter = 'foo';
@@ -11290,20 +11276,17 @@ void main() {
         var resp = convert.json.encode(buildListAdvertisersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAdvertisersResponse(response as api.ListAdvertisersResponse);
-      })));
+      final response = await res.list(
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkListAdvertisersResponse(response as api.ListAdvertisersResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers;
       var arg_request = buildAdvertiser();
@@ -11361,17 +11344,14 @@ void main() {
         var resp = convert.json.encode(buildAdvertiser());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_advertiserId,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAdvertiser(response as api.Advertiser);
-      })));
+      final response = await res.patch(arg_request, arg_advertiserId,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkAdvertiser(response as api.Advertiser);
     });
   });
 
   unittest.group('resource-AdvertisersAssetsResource', () {
-    unittest.test('method--upload', () {
+    unittest.test('method--upload', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -11427,16 +11407,14 @@ void main() {
         var resp = convert.json.encode(buildCreateAssetResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .upload(arg_request, arg_advertiserId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCreateAssetResponse(response as api.CreateAssetResponse);
-      })));
+      final response =
+          await res.upload(arg_request, arg_advertiserId, $fields: arg_$fields);
+      checkCreateAssetResponse(response as api.CreateAssetResponse);
     });
   });
 
   unittest.group('resource-AdvertisersCampaignsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.campaigns;
       var arg_request = buildCampaign();
@@ -11489,14 +11467,12 @@ void main() {
         var resp = convert.json.encode(buildCampaign());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_advertiserId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCampaign(response as api.Campaign);
-      })));
+      final response =
+          await res.create(arg_request, arg_advertiserId, $fields: arg_$fields);
+      checkCampaign(response as api.Campaign);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.campaigns;
       var arg_advertiserId = 'foo';
@@ -11545,14 +11521,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_advertiserId, arg_campaignId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_advertiserId, arg_campaignId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.campaigns;
       var arg_advertiserId = 'foo';
@@ -11601,14 +11575,12 @@ void main() {
         var resp = convert.json.encode(buildCampaign());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_advertiserId, arg_campaignId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCampaign(response as api.Campaign);
-      })));
+      final response =
+          await res.get(arg_advertiserId, arg_campaignId, $fields: arg_$fields);
+      checkCampaign(response as api.Campaign);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.campaigns;
       var arg_advertiserId = 'foo';
@@ -11676,19 +11648,16 @@ void main() {
         var resp = convert.json.encode(buildListCampaignsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCampaignsResponse(response as api.ListCampaignsResponse);
-      })));
+      final response = await res.list(arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListCampaignsResponse(response as api.ListCampaignsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.campaigns;
       var arg_request = buildCampaign();
@@ -11747,17 +11716,15 @@ void main() {
         var resp = convert.json.encode(buildCampaign());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_advertiserId, arg_campaignId,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCampaign(response as api.Campaign);
-      })));
+      final response = await res.patch(
+          arg_request, arg_advertiserId, arg_campaignId,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkCampaign(response as api.Campaign);
     });
   });
 
   unittest.group('resource-AdvertisersChannelsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.channels;
       var arg_request = buildChannel();
@@ -11815,15 +11782,12 @@ void main() {
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_advertiserId,
-              partnerId: arg_partnerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChannel(response as api.Channel);
-      })));
+      final response = await res.create(arg_request, arg_advertiserId,
+          partnerId: arg_partnerId, $fields: arg_$fields);
+      checkChannel(response as api.Channel);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.channels;
       var arg_advertiserId = 'foo';
@@ -11877,15 +11841,12 @@ void main() {
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_advertiserId, arg_channelId,
-              partnerId: arg_partnerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChannel(response as api.Channel);
-      })));
+      final response = await res.get(arg_advertiserId, arg_channelId,
+          partnerId: arg_partnerId, $fields: arg_$fields);
+      checkChannel(response as api.Channel);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.channels;
       var arg_advertiserId = 'foo';
@@ -11958,20 +11919,17 @@ void main() {
         var resp = convert.json.encode(buildListChannelsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListChannelsResponse(response as api.ListChannelsResponse);
-      })));
+      final response = await res.list(arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkListChannelsResponse(response as api.ListChannelsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.channels;
       var arg_request = buildChannel();
@@ -12035,19 +11993,17 @@ void main() {
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_advertiserId, arg_channelId,
-              partnerId: arg_partnerId,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChannel(response as api.Channel);
-      })));
+      final response = await res.patch(
+          arg_request, arg_advertiserId, arg_channelId,
+          partnerId: arg_partnerId,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkChannel(response as api.Channel);
     });
   });
 
   unittest.group('resource-AdvertisersChannelsSitesResource', () {
-    unittest.test('method--bulkEdit', () {
+    unittest.test('method--bulkEdit', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.channels.sites;
       var arg_request = buildBulkEditSitesRequest();
@@ -12115,15 +12071,13 @@ void main() {
         var resp = convert.json.encode(buildBulkEditSitesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .bulkEdit(arg_request, arg_advertiserId, arg_channelId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBulkEditSitesResponse(response as api.BulkEditSitesResponse);
-      })));
+      final response = await res.bulkEdit(
+          arg_request, arg_advertiserId, arg_channelId,
+          $fields: arg_$fields);
+      checkBulkEditSitesResponse(response as api.BulkEditSitesResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.channels.sites;
       var arg_request = buildSite();
@@ -12196,15 +12150,13 @@ void main() {
         var resp = convert.json.encode(buildSite());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_advertiserId, arg_channelId,
-              partnerId: arg_partnerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSite(response as api.Site);
-      })));
+      final response = await res.create(
+          arg_request, arg_advertiserId, arg_channelId,
+          partnerId: arg_partnerId, $fields: arg_$fields);
+      checkSite(response as api.Site);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.channels.sites;
       var arg_advertiserId = 'foo';
@@ -12273,15 +12225,13 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_advertiserId, arg_channelId, arg_urlOrAppId,
-              partnerId: arg_partnerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(
+          arg_advertiserId, arg_channelId, arg_urlOrAppId,
+          partnerId: arg_partnerId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.channels.sites;
       var arg_advertiserId = 'foo';
@@ -12355,22 +12305,19 @@ void main() {
         var resp = convert.json.encode(buildListSitesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_advertiserId, arg_channelId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSitesResponse(response as api.ListSitesResponse);
-      })));
+      final response = await res.list(arg_advertiserId, arg_channelId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkListSitesResponse(response as api.ListSitesResponse);
     });
   });
 
   unittest.group('resource-AdvertisersCreativesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.creatives;
       var arg_request = buildCreative();
@@ -12423,14 +12370,12 @@ void main() {
         var resp = convert.json.encode(buildCreative());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_advertiserId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCreative(response as api.Creative);
-      })));
+      final response =
+          await res.create(arg_request, arg_advertiserId, $fields: arg_$fields);
+      checkCreative(response as api.Creative);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.creatives;
       var arg_advertiserId = 'foo';
@@ -12479,14 +12424,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_advertiserId, arg_creativeId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_advertiserId, arg_creativeId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.creatives;
       var arg_advertiserId = 'foo';
@@ -12535,14 +12478,12 @@ void main() {
         var resp = convert.json.encode(buildCreative());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_advertiserId, arg_creativeId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCreative(response as api.Creative);
-      })));
+      final response =
+          await res.get(arg_advertiserId, arg_creativeId, $fields: arg_$fields);
+      checkCreative(response as api.Creative);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.creatives;
       var arg_advertiserId = 'foo';
@@ -12610,19 +12551,16 @@ void main() {
         var resp = convert.json.encode(buildListCreativesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCreativesResponse(response as api.ListCreativesResponse);
-      })));
+      final response = await res.list(arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListCreativesResponse(response as api.ListCreativesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.creatives;
       var arg_request = buildCreative();
@@ -12681,17 +12619,16 @@ void main() {
         var resp = convert.json.encode(buildCreative());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_advertiserId, arg_creativeId,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCreative(response as api.Creative);
-      })));
+      final response = await res.patch(
+          arg_request, arg_advertiserId, arg_creativeId,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkCreative(response as api.Creative);
     });
   });
 
   unittest.group('resource-AdvertisersInsertionOrdersResource', () {
-    unittest.test('method--bulkListInsertionOrderAssignedTargetingOptions', () {
+    unittest.test('method--bulkListInsertionOrderAssignedTargetingOptions',
+        () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.insertionOrders;
       var arg_advertiserId = 'foo';
@@ -12761,21 +12698,18 @@ void main() {
             buildBulkListInsertionOrderAssignedTargetingOptionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .bulkListInsertionOrderAssignedTargetingOptions(
-              arg_advertiserId, arg_insertionOrderId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBulkListInsertionOrderAssignedTargetingOptionsResponse(response
-            as api.BulkListInsertionOrderAssignedTargetingOptionsResponse);
-      })));
+      final response = await res.bulkListInsertionOrderAssignedTargetingOptions(
+          arg_advertiserId, arg_insertionOrderId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkBulkListInsertionOrderAssignedTargetingOptionsResponse(response
+          as api.BulkListInsertionOrderAssignedTargetingOptionsResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.insertionOrders;
       var arg_request = buildInsertionOrder();
@@ -12828,14 +12762,12 @@ void main() {
         var resp = convert.json.encode(buildInsertionOrder());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_advertiserId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInsertionOrder(response as api.InsertionOrder);
-      })));
+      final response =
+          await res.create(arg_request, arg_advertiserId, $fields: arg_$fields);
+      checkInsertionOrder(response as api.InsertionOrder);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.insertionOrders;
       var arg_advertiserId = 'foo';
@@ -12884,14 +12816,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_advertiserId, arg_insertionOrderId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_advertiserId, arg_insertionOrderId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.insertionOrders;
       var arg_advertiserId = 'foo';
@@ -12940,14 +12870,12 @@ void main() {
         var resp = convert.json.encode(buildInsertionOrder());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_advertiserId, arg_insertionOrderId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInsertionOrder(response as api.InsertionOrder);
-      })));
+      final response = await res.get(arg_advertiserId, arg_insertionOrderId,
+          $fields: arg_$fields);
+      checkInsertionOrder(response as api.InsertionOrder);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.insertionOrders;
       var arg_advertiserId = 'foo';
@@ -13015,20 +12943,17 @@ void main() {
         var resp = convert.json.encode(buildListInsertionOrdersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListInsertionOrdersResponse(
-            response as api.ListInsertionOrdersResponse);
-      })));
+      final response = await res.list(arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListInsertionOrdersResponse(
+          response as api.ListInsertionOrdersResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.insertionOrders;
       var arg_request = buildInsertionOrder();
@@ -13087,19 +13012,17 @@ void main() {
         var resp = convert.json.encode(buildInsertionOrder());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_advertiserId, arg_insertionOrderId,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInsertionOrder(response as api.InsertionOrder);
-      })));
+      final response = await res.patch(
+          arg_request, arg_advertiserId, arg_insertionOrderId,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkInsertionOrder(response as api.InsertionOrder);
     });
   });
 
   unittest.group(
       'resource-AdvertisersInsertionOrdersTargetingTypesAssignedTargetingOptionsResource',
       () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .advertisers
@@ -13154,16 +13077,13 @@ void main() {
         var resp = convert.json.encode(buildAssignedTargetingOption());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_advertiserId, arg_insertionOrderId, arg_targetingType,
-              arg_assignedTargetingOptionId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAssignedTargetingOption(response as api.AssignedTargetingOption);
-      })));
+      final response = await res.get(arg_advertiserId, arg_insertionOrderId,
+          arg_targetingType, arg_assignedTargetingOptionId,
+          $fields: arg_$fields);
+      checkAssignedTargetingOption(response as api.AssignedTargetingOption);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .advertisers
@@ -13238,22 +13158,20 @@ void main() {
             .encode(buildListInsertionOrderAssignedTargetingOptionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_advertiserId, arg_insertionOrderId, arg_targetingType,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListInsertionOrderAssignedTargetingOptionsResponse(
-            response as api.ListInsertionOrderAssignedTargetingOptionsResponse);
-      })));
+      final response = await res.list(
+          arg_advertiserId, arg_insertionOrderId, arg_targetingType,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListInsertionOrderAssignedTargetingOptionsResponse(
+          response as api.ListInsertionOrderAssignedTargetingOptionsResponse);
     });
   });
 
   unittest.group('resource-AdvertisersLineItemsResource', () {
-    unittest.test('method--bulkEditLineItemAssignedTargetingOptions', () {
+    unittest.test('method--bulkEditLineItemAssignedTargetingOptions', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.lineItems;
       var arg_request = buildBulkEditLineItemAssignedTargetingOptionsRequest();
@@ -13309,17 +13227,14 @@ void main() {
             .encode(buildBulkEditLineItemAssignedTargetingOptionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .bulkEditLineItemAssignedTargetingOptions(
-              arg_request, arg_advertiserId, arg_lineItemId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBulkEditLineItemAssignedTargetingOptionsResponse(
-            response as api.BulkEditLineItemAssignedTargetingOptionsResponse);
-      })));
+      final response = await res.bulkEditLineItemAssignedTargetingOptions(
+          arg_request, arg_advertiserId, arg_lineItemId,
+          $fields: arg_$fields);
+      checkBulkEditLineItemAssignedTargetingOptionsResponse(
+          response as api.BulkEditLineItemAssignedTargetingOptionsResponse);
     });
 
-    unittest.test('method--bulkListLineItemAssignedTargetingOptions', () {
+    unittest.test('method--bulkListLineItemAssignedTargetingOptions', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.lineItems;
       var arg_advertiserId = 'foo';
@@ -13389,21 +13304,18 @@ void main() {
             .encode(buildBulkListLineItemAssignedTargetingOptionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .bulkListLineItemAssignedTargetingOptions(
-              arg_advertiserId, arg_lineItemId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBulkListLineItemAssignedTargetingOptionsResponse(
-            response as api.BulkListLineItemAssignedTargetingOptionsResponse);
-      })));
+      final response = await res.bulkListLineItemAssignedTargetingOptions(
+          arg_advertiserId, arg_lineItemId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkBulkListLineItemAssignedTargetingOptionsResponse(
+          response as api.BulkListLineItemAssignedTargetingOptionsResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.lineItems;
       var arg_request = buildLineItem();
@@ -13456,14 +13368,12 @@ void main() {
         var resp = convert.json.encode(buildLineItem());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_advertiserId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLineItem(response as api.LineItem);
-      })));
+      final response =
+          await res.create(arg_request, arg_advertiserId, $fields: arg_$fields);
+      checkLineItem(response as api.LineItem);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.lineItems;
       var arg_advertiserId = 'foo';
@@ -13512,14 +13422,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_advertiserId, arg_lineItemId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_advertiserId, arg_lineItemId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.lineItems;
       var arg_advertiserId = 'foo';
@@ -13568,14 +13476,12 @@ void main() {
         var resp = convert.json.encode(buildLineItem());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_advertiserId, arg_lineItemId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLineItem(response as api.LineItem);
-      })));
+      final response =
+          await res.get(arg_advertiserId, arg_lineItemId, $fields: arg_$fields);
+      checkLineItem(response as api.LineItem);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.lineItems;
       var arg_advertiserId = 'foo';
@@ -13643,19 +13549,16 @@ void main() {
         var resp = convert.json.encode(buildListLineItemsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLineItemsResponse(response as api.ListLineItemsResponse);
-      })));
+      final response = await res.list(arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLineItemsResponse(response as api.ListLineItemsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.lineItems;
       var arg_request = buildLineItem();
@@ -13714,19 +13617,17 @@ void main() {
         var resp = convert.json.encode(buildLineItem());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_advertiserId, arg_lineItemId,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLineItem(response as api.LineItem);
-      })));
+      final response = await res.patch(
+          arg_request, arg_advertiserId, arg_lineItemId,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkLineItem(response as api.LineItem);
     });
   });
 
   unittest.group(
       'resource-AdvertisersLineItemsTargetingTypesAssignedTargetingOptionsResource',
       () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .advertisers
@@ -13785,16 +13686,13 @@ void main() {
         var resp = convert.json.encode(buildAssignedTargetingOption());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(
-              arg_request, arg_advertiserId, arg_lineItemId, arg_targetingType,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAssignedTargetingOption(response as api.AssignedTargetingOption);
-      })));
+      final response = await res.create(
+          arg_request, arg_advertiserId, arg_lineItemId, arg_targetingType,
+          $fields: arg_$fields);
+      checkAssignedTargetingOption(response as api.AssignedTargetingOption);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .advertisers
@@ -13849,16 +13747,13 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_advertiserId, arg_lineItemId, arg_targetingType,
-              arg_assignedTargetingOptionId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_advertiserId, arg_lineItemId,
+          arg_targetingType, arg_assignedTargetingOptionId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .advertisers
@@ -13913,16 +13808,13 @@ void main() {
         var resp = convert.json.encode(buildAssignedTargetingOption());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_advertiserId, arg_lineItemId, arg_targetingType,
-              arg_assignedTargetingOptionId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAssignedTargetingOption(response as api.AssignedTargetingOption);
-      })));
+      final response = await res.get(arg_advertiserId, arg_lineItemId,
+          arg_targetingType, arg_assignedTargetingOptionId,
+          $fields: arg_$fields);
+      checkAssignedTargetingOption(response as api.AssignedTargetingOption);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .advertisers
@@ -13997,22 +13889,20 @@ void main() {
             .encode(buildListLineItemAssignedTargetingOptionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_advertiserId, arg_lineItemId, arg_targetingType,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLineItemAssignedTargetingOptionsResponse(
-            response as api.ListLineItemAssignedTargetingOptionsResponse);
-      })));
+      final response = await res.list(
+          arg_advertiserId, arg_lineItemId, arg_targetingType,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLineItemAssignedTargetingOptionsResponse(
+          response as api.ListLineItemAssignedTargetingOptionsResponse);
     });
   });
 
   unittest.group('resource-AdvertisersLocationListsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.locationLists;
       var arg_request = buildLocationList();
@@ -14065,14 +13955,12 @@ void main() {
         var resp = convert.json.encode(buildLocationList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_advertiserId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocationList(response as api.LocationList);
-      })));
+      final response =
+          await res.create(arg_request, arg_advertiserId, $fields: arg_$fields);
+      checkLocationList(response as api.LocationList);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.locationLists;
       var arg_advertiserId = 'foo';
@@ -14121,14 +14009,12 @@ void main() {
         var resp = convert.json.encode(buildLocationList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_advertiserId, arg_locationListId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocationList(response as api.LocationList);
-      })));
+      final response = await res.get(arg_advertiserId, arg_locationListId,
+          $fields: arg_$fields);
+      checkLocationList(response as api.LocationList);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.locationLists;
       var arg_advertiserId = 'foo';
@@ -14196,20 +14082,16 @@ void main() {
         var resp = convert.json.encode(buildListLocationListsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationListsResponse(
-            response as api.ListLocationListsResponse);
-      })));
+      final response = await res.list(arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationListsResponse(response as api.ListLocationListsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.locationLists;
       var arg_request = buildLocationList();
@@ -14268,18 +14150,16 @@ void main() {
         var resp = convert.json.encode(buildLocationList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_advertiserId, arg_locationListId,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocationList(response as api.LocationList);
-      })));
+      final response = await res.patch(
+          arg_request, arg_advertiserId, arg_locationListId,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkLocationList(response as api.LocationList);
     });
   });
 
   unittest.group('resource-AdvertisersLocationListsAssignedLocationsResource',
       () {
-    unittest.test('method--bulkEdit', () {
+    unittest.test('method--bulkEdit', () async {
       var mock = HttpServerMock();
       var res =
           api.DisplayVideoApi(mock).advertisers.locationLists.assignedLocations;
@@ -14350,16 +14230,14 @@ void main() {
             convert.json.encode(buildBulkEditAssignedLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .bulkEdit(arg_request, arg_advertiserId, arg_locationListId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBulkEditAssignedLocationsResponse(
-            response as api.BulkEditAssignedLocationsResponse);
-      })));
+      final response = await res.bulkEdit(
+          arg_request, arg_advertiserId, arg_locationListId,
+          $fields: arg_$fields);
+      checkBulkEditAssignedLocationsResponse(
+          response as api.BulkEditAssignedLocationsResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.DisplayVideoApi(mock).advertisers.locationLists.assignedLocations;
@@ -14441,15 +14319,13 @@ void main() {
         var resp = convert.json.encode(buildAssignedLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_advertiserId, arg_locationListId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAssignedLocation(response as api.AssignedLocation);
-      })));
+      final response = await res.create(
+          arg_request, arg_advertiserId, arg_locationListId,
+          $fields: arg_$fields);
+      checkAssignedLocation(response as api.AssignedLocation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.DisplayVideoApi(mock).advertisers.locationLists.assignedLocations;
@@ -14528,15 +14404,13 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_advertiserId, arg_locationListId, arg_assignedLocationId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(
+          arg_advertiserId, arg_locationListId, arg_assignedLocationId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.DisplayVideoApi(mock).advertisers.locationLists.assignedLocations;
@@ -14633,22 +14507,19 @@ void main() {
         var resp = convert.json.encode(buildListAssignedLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_advertiserId, arg_locationListId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAssignedLocationsResponse(
-            response as api.ListAssignedLocationsResponse);
-      })));
+      final response = await res.list(arg_advertiserId, arg_locationListId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAssignedLocationsResponse(
+          response as api.ListAssignedLocationsResponse);
     });
   });
 
   unittest.group('resource-AdvertisersManualTriggersResource', () {
-    unittest.test('method--activate', () {
+    unittest.test('method--activate', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.manualTriggers;
       var arg_request = buildActivateManualTriggerRequest();
@@ -14703,15 +14574,13 @@ void main() {
         var resp = convert.json.encode(buildManualTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .activate(arg_request, arg_advertiserId, arg_triggerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkManualTrigger(response as api.ManualTrigger);
-      })));
+      final response = await res.activate(
+          arg_request, arg_advertiserId, arg_triggerId,
+          $fields: arg_$fields);
+      checkManualTrigger(response as api.ManualTrigger);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.manualTriggers;
       var arg_request = buildManualTrigger();
@@ -14764,14 +14633,12 @@ void main() {
         var resp = convert.json.encode(buildManualTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_advertiserId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkManualTrigger(response as api.ManualTrigger);
-      })));
+      final response =
+          await res.create(arg_request, arg_advertiserId, $fields: arg_$fields);
+      checkManualTrigger(response as api.ManualTrigger);
     });
 
-    unittest.test('method--deactivate', () {
+    unittest.test('method--deactivate', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.manualTriggers;
       var arg_request = buildDeactivateManualTriggerRequest();
@@ -14826,15 +14693,13 @@ void main() {
         var resp = convert.json.encode(buildManualTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deactivate(arg_request, arg_advertiserId, arg_triggerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkManualTrigger(response as api.ManualTrigger);
-      })));
+      final response = await res.deactivate(
+          arg_request, arg_advertiserId, arg_triggerId,
+          $fields: arg_$fields);
+      checkManualTrigger(response as api.ManualTrigger);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.manualTriggers;
       var arg_advertiserId = 'foo';
@@ -14883,14 +14748,12 @@ void main() {
         var resp = convert.json.encode(buildManualTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_advertiserId, arg_triggerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkManualTrigger(response as api.ManualTrigger);
-      })));
+      final response =
+          await res.get(arg_advertiserId, arg_triggerId, $fields: arg_$fields);
+      checkManualTrigger(response as api.ManualTrigger);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.manualTriggers;
       var arg_advertiserId = 'foo';
@@ -14958,20 +14821,17 @@ void main() {
         var resp = convert.json.encode(buildListManualTriggersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListManualTriggersResponse(
-            response as api.ListManualTriggersResponse);
-      })));
+      final response = await res.list(arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListManualTriggersResponse(
+          response as api.ListManualTriggersResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.manualTriggers;
       var arg_request = buildManualTrigger();
@@ -15030,17 +14890,15 @@ void main() {
         var resp = convert.json.encode(buildManualTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_advertiserId, arg_triggerId,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkManualTrigger(response as api.ManualTrigger);
-      })));
+      final response = await res.patch(
+          arg_request, arg_advertiserId, arg_triggerId,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkManualTrigger(response as api.ManualTrigger);
     });
   });
 
   unittest.group('resource-AdvertisersNegativeKeywordListsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.negativeKeywordLists;
       var arg_request = buildNegativeKeywordList();
@@ -15093,14 +14951,12 @@ void main() {
         var resp = convert.json.encode(buildNegativeKeywordList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_advertiserId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNegativeKeywordList(response as api.NegativeKeywordList);
-      })));
+      final response =
+          await res.create(arg_request, arg_advertiserId, $fields: arg_$fields);
+      checkNegativeKeywordList(response as api.NegativeKeywordList);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.negativeKeywordLists;
       var arg_advertiserId = 'foo';
@@ -15149,15 +15005,13 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_advertiserId, arg_negativeKeywordListId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(
+          arg_advertiserId, arg_negativeKeywordListId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.negativeKeywordLists;
       var arg_advertiserId = 'foo';
@@ -15206,15 +15060,13 @@ void main() {
         var resp = convert.json.encode(buildNegativeKeywordList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_advertiserId, arg_negativeKeywordListId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNegativeKeywordList(response as api.NegativeKeywordList);
-      })));
+      final response = await res.get(
+          arg_advertiserId, arg_negativeKeywordListId,
+          $fields: arg_$fields);
+      checkNegativeKeywordList(response as api.NegativeKeywordList);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.negativeKeywordLists;
       var arg_advertiserId = 'foo';
@@ -15272,18 +15124,15 @@ void main() {
         var resp = convert.json.encode(buildListNegativeKeywordListsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_advertiserId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListNegativeKeywordListsResponse(
-            response as api.ListNegativeKeywordListsResponse);
-      })));
+      final response = await res.list(arg_advertiserId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListNegativeKeywordListsResponse(
+          response as api.ListNegativeKeywordListsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).advertisers.negativeKeywordLists;
       var arg_request = buildNegativeKeywordList();
@@ -15342,18 +15191,16 @@ void main() {
         var resp = convert.json.encode(buildNegativeKeywordList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_advertiserId, arg_negativeKeywordListId,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNegativeKeywordList(response as api.NegativeKeywordList);
-      })));
+      final response = await res.patch(
+          arg_request, arg_advertiserId, arg_negativeKeywordListId,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkNegativeKeywordList(response as api.NegativeKeywordList);
     });
   });
 
   unittest.group(
       'resource-AdvertisersNegativeKeywordListsNegativeKeywordsResource', () {
-    unittest.test('method--bulkEdit', () {
+    unittest.test('method--bulkEdit', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .advertisers
@@ -15425,16 +15272,14 @@ void main() {
         var resp = convert.json.encode(buildBulkEditNegativeKeywordsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .bulkEdit(arg_request, arg_advertiserId, arg_negativeKeywordListId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBulkEditNegativeKeywordsResponse(
-            response as api.BulkEditNegativeKeywordsResponse);
-      })));
+      final response = await res.bulkEdit(
+          arg_request, arg_advertiserId, arg_negativeKeywordListId,
+          $fields: arg_$fields);
+      checkBulkEditNegativeKeywordsResponse(
+          response as api.BulkEditNegativeKeywordsResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .advertisers
@@ -15505,15 +15350,13 @@ void main() {
         var resp = convert.json.encode(buildNegativeKeyword());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_advertiserId, arg_negativeKeywordListId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNegativeKeyword(response as api.NegativeKeyword);
-      })));
+      final response = await res.create(
+          arg_request, arg_advertiserId, arg_negativeKeywordListId,
+          $fields: arg_$fields);
+      checkNegativeKeyword(response as api.NegativeKeyword);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .advertisers
@@ -15580,15 +15423,13 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_advertiserId, arg_negativeKeywordListId, arg_keywordValue,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(
+          arg_advertiserId, arg_negativeKeywordListId, arg_keywordValue,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .advertisers
@@ -15660,23 +15501,21 @@ void main() {
         var resp = convert.json.encode(buildListNegativeKeywordsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_advertiserId, arg_negativeKeywordListId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListNegativeKeywordsResponse(
-            response as api.ListNegativeKeywordsResponse);
-      })));
+      final response = await res.list(
+          arg_advertiserId, arg_negativeKeywordListId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListNegativeKeywordsResponse(
+          response as api.ListNegativeKeywordsResponse);
     });
   });
 
   unittest.group(
       'resource-AdvertisersTargetingTypesAssignedTargetingOptionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .advertisers
@@ -15733,15 +15572,13 @@ void main() {
         var resp = convert.json.encode(buildAssignedTargetingOption());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_advertiserId, arg_targetingType,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAssignedTargetingOption(response as api.AssignedTargetingOption);
-      })));
+      final response = await res.create(
+          arg_request, arg_advertiserId, arg_targetingType,
+          $fields: arg_$fields);
+      checkAssignedTargetingOption(response as api.AssignedTargetingOption);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .advertisers
@@ -15794,16 +15631,13 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_advertiserId, arg_targetingType,
-              arg_assignedTargetingOptionId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(
+          arg_advertiserId, arg_targetingType, arg_assignedTargetingOptionId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .advertisers
@@ -15856,16 +15690,13 @@ void main() {
         var resp = convert.json.encode(buildAssignedTargetingOption());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_advertiserId, arg_targetingType,
-              arg_assignedTargetingOptionId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAssignedTargetingOption(response as api.AssignedTargetingOption);
-      })));
+      final response = await res.get(
+          arg_advertiserId, arg_targetingType, arg_assignedTargetingOptionId,
+          $fields: arg_$fields);
+      checkAssignedTargetingOption(response as api.AssignedTargetingOption);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .advertisers
@@ -15938,22 +15769,19 @@ void main() {
             .encode(buildListAdvertiserAssignedTargetingOptionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_advertiserId, arg_targetingType,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAdvertiserAssignedTargetingOptionsResponse(
-            response as api.ListAdvertiserAssignedTargetingOptionsResponse);
-      })));
+      final response = await res.list(arg_advertiserId, arg_targetingType,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAdvertiserAssignedTargetingOptionsResponse(
+          response as api.ListAdvertiserAssignedTargetingOptionsResponse);
     });
   });
 
   unittest.group('resource-CombinedAudiencesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).combinedAudiences;
       var arg_combinedAudienceId = 'foo';
@@ -16011,17 +15839,14 @@ void main() {
         var resp = convert.json.encode(buildCombinedAudience());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_combinedAudienceId,
-              advertiserId: arg_advertiserId,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCombinedAudience(response as api.CombinedAudience);
-      })));
+      final response = await res.get(arg_combinedAudienceId,
+          advertiserId: arg_advertiserId,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkCombinedAudience(response as api.CombinedAudience);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).combinedAudiences;
       var arg_advertiserId = 'foo';
@@ -16097,24 +15922,21 @@ void main() {
         var resp = convert.json.encode(buildListCombinedAudiencesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              advertiserId: arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCombinedAudiencesResponse(
-            response as api.ListCombinedAudiencesResponse);
-      })));
+      final response = await res.list(
+          advertiserId: arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkListCombinedAudiencesResponse(
+          response as api.ListCombinedAudiencesResponse);
     });
   });
 
   unittest.group('resource-CustomBiddingAlgorithmsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).customBiddingAlgorithms;
       var arg_customBiddingAlgorithmId = 'foo';
@@ -16172,17 +15994,14 @@ void main() {
         var resp = convert.json.encode(buildCustomBiddingAlgorithm());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_customBiddingAlgorithmId,
-              advertiserId: arg_advertiserId,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomBiddingAlgorithm(response as api.CustomBiddingAlgorithm);
-      })));
+      final response = await res.get(arg_customBiddingAlgorithmId,
+          advertiserId: arg_advertiserId,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkCustomBiddingAlgorithm(response as api.CustomBiddingAlgorithm);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).customBiddingAlgorithms;
       var arg_advertiserId = 'foo';
@@ -16259,24 +16078,21 @@ void main() {
             convert.json.encode(buildListCustomBiddingAlgorithmsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              advertiserId: arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCustomBiddingAlgorithmsResponse(
-            response as api.ListCustomBiddingAlgorithmsResponse);
-      })));
+      final response = await res.list(
+          advertiserId: arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkListCustomBiddingAlgorithmsResponse(
+          response as api.ListCustomBiddingAlgorithmsResponse);
     });
   });
 
   unittest.group('resource-CustomListsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).customLists;
       var arg_customListId = 'foo';
@@ -16329,15 +16145,12 @@ void main() {
         var resp = convert.json.encode(buildCustomList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_customListId,
-              advertiserId: arg_advertiserId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomList(response as api.CustomList);
-      })));
+      final response = await res.get(arg_customListId,
+          advertiserId: arg_advertiserId, $fields: arg_$fields);
+      checkCustomList(response as api.CustomList);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).customLists;
       var arg_advertiserId = 'foo';
@@ -16408,22 +16221,19 @@ void main() {
         var resp = convert.json.encode(buildListCustomListsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              advertiserId: arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCustomListsResponse(response as api.ListCustomListsResponse);
-      })));
+      final response = await res.list(
+          advertiserId: arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListCustomListsResponse(response as api.ListCustomListsResponse);
     });
   });
 
   unittest.group('resource-FirstAndThirdPartyAudiencesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).firstAndThirdPartyAudiences;
       var arg_firstAndThirdPartyAudienceId = 'foo';
@@ -16481,18 +16291,15 @@ void main() {
         var resp = convert.json.encode(buildFirstAndThirdPartyAudience());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_firstAndThirdPartyAudienceId,
-              advertiserId: arg_advertiserId,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFirstAndThirdPartyAudience(
-            response as api.FirstAndThirdPartyAudience);
-      })));
+      final response = await res.get(arg_firstAndThirdPartyAudienceId,
+          advertiserId: arg_advertiserId,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkFirstAndThirdPartyAudience(
+          response as api.FirstAndThirdPartyAudience);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).firstAndThirdPartyAudiences;
       var arg_advertiserId = 'foo';
@@ -16569,24 +16376,21 @@ void main() {
             convert.json.encode(buildListFirstAndThirdPartyAudiencesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              advertiserId: arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListFirstAndThirdPartyAudiencesResponse(
-            response as api.ListFirstAndThirdPartyAudiencesResponse);
-      })));
+      final response = await res.list(
+          advertiserId: arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkListFirstAndThirdPartyAudiencesResponse(
+          response as api.ListFirstAndThirdPartyAudiencesResponse);
     });
   });
 
   unittest.group('resource-FloodlightGroupsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).floodlightGroups;
       var arg_floodlightGroupId = 'foo';
@@ -16639,15 +16443,12 @@ void main() {
         var resp = convert.json.encode(buildFloodlightGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_floodlightGroupId,
-              partnerId: arg_partnerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFloodlightGroup(response as api.FloodlightGroup);
-      })));
+      final response = await res.get(arg_floodlightGroupId,
+          partnerId: arg_partnerId, $fields: arg_$fields);
+      checkFloodlightGroup(response as api.FloodlightGroup);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).floodlightGroups;
       var arg_request = buildFloodlightGroup();
@@ -16715,19 +16516,16 @@ void main() {
         var resp = convert.json.encode(buildFloodlightGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_floodlightGroupId,
-              partnerId: arg_partnerId,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFloodlightGroup(response as api.FloodlightGroup);
-      })));
+      final response = await res.patch(arg_request, arg_floodlightGroupId,
+          partnerId: arg_partnerId,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkFloodlightGroup(response as api.FloodlightGroup);
     });
   });
 
   unittest.group('resource-GoogleAudiencesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).googleAudiences;
       var arg_googleAudienceId = 'foo';
@@ -16785,17 +16583,14 @@ void main() {
         var resp = convert.json.encode(buildGoogleAudience());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_googleAudienceId,
-              advertiserId: arg_advertiserId,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAudience(response as api.GoogleAudience);
-      })));
+      final response = await res.get(arg_googleAudienceId,
+          advertiserId: arg_advertiserId,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkGoogleAudience(response as api.GoogleAudience);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).googleAudiences;
       var arg_advertiserId = 'foo';
@@ -16871,24 +16666,21 @@ void main() {
         var resp = convert.json.encode(buildListGoogleAudiencesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              advertiserId: arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListGoogleAudiencesResponse(
-            response as api.ListGoogleAudiencesResponse);
-      })));
+      final response = await res.list(
+          advertiserId: arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkListGoogleAudiencesResponse(
+          response as api.ListGoogleAudiencesResponse);
     });
   });
 
   unittest.group('resource-InventorySourceGroupsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).inventorySourceGroups;
       var arg_request = buildInventorySourceGroup();
@@ -16949,17 +16741,14 @@ void main() {
         var resp = convert.json.encode(buildInventorySourceGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request,
-              advertiserId: arg_advertiserId,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInventorySourceGroup(response as api.InventorySourceGroup);
-      })));
+      final response = await res.create(arg_request,
+          advertiserId: arg_advertiserId,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkInventorySourceGroup(response as api.InventorySourceGroup);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).inventorySourceGroups;
       var arg_inventorySourceGroupId = 'foo';
@@ -17017,17 +16806,14 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_inventorySourceGroupId,
-              advertiserId: arg_advertiserId,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_inventorySourceGroupId,
+          advertiserId: arg_advertiserId,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).inventorySourceGroups;
       var arg_inventorySourceGroupId = 'foo';
@@ -17085,17 +16871,14 @@ void main() {
         var resp = convert.json.encode(buildInventorySourceGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_inventorySourceGroupId,
-              advertiserId: arg_advertiserId,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInventorySourceGroup(response as api.InventorySourceGroup);
-      })));
+      final response = await res.get(arg_inventorySourceGroupId,
+          advertiserId: arg_advertiserId,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkInventorySourceGroup(response as api.InventorySourceGroup);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).inventorySourceGroups;
       var arg_advertiserId = 'foo';
@@ -17172,22 +16955,19 @@ void main() {
             convert.json.encode(buildListInventorySourceGroupsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              advertiserId: arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListInventorySourceGroupsResponse(
-            response as api.ListInventorySourceGroupsResponse);
-      })));
+      final response = await res.list(
+          advertiserId: arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkListInventorySourceGroupsResponse(
+          response as api.ListInventorySourceGroupsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).inventorySourceGroups;
       var arg_request = buildInventorySourceGroup();
@@ -17260,21 +17040,18 @@ void main() {
         var resp = convert.json.encode(buildInventorySourceGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_inventorySourceGroupId,
-              advertiserId: arg_advertiserId,
-              partnerId: arg_partnerId,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInventorySourceGroup(response as api.InventorySourceGroup);
-      })));
+      final response = await res.patch(arg_request, arg_inventorySourceGroupId,
+          advertiserId: arg_advertiserId,
+          partnerId: arg_partnerId,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkInventorySourceGroup(response as api.InventorySourceGroup);
     });
   });
 
   unittest.group(
       'resource-InventorySourceGroupsAssignedInventorySourcesResource', () {
-    unittest.test('method--bulkEdit', () {
+    unittest.test('method--bulkEdit', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .inventorySourceGroups
@@ -17331,16 +17108,14 @@ void main() {
             .encode(buildBulkEditAssignedInventorySourcesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .bulkEdit(arg_request, arg_inventorySourceGroupId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBulkEditAssignedInventorySourcesResponse(
-            response as api.BulkEditAssignedInventorySourcesResponse);
-      })));
+      final response = await res.bulkEdit(
+          arg_request, arg_inventorySourceGroupId,
+          $fields: arg_$fields);
+      checkBulkEditAssignedInventorySourcesResponse(
+          response as api.BulkEditAssignedInventorySourcesResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .inventorySourceGroups
@@ -17405,17 +17180,14 @@ void main() {
         var resp = convert.json.encode(buildAssignedInventorySource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_inventorySourceGroupId,
-              advertiserId: arg_advertiserId,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAssignedInventorySource(response as api.AssignedInventorySource);
-      })));
+      final response = await res.create(arg_request, arg_inventorySourceGroupId,
+          advertiserId: arg_advertiserId,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkAssignedInventorySource(response as api.AssignedInventorySource);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .inventorySourceGroups
@@ -17476,17 +17248,15 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_inventorySourceGroupId, arg_assignedInventorySourceId,
-              advertiserId: arg_advertiserId,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(
+          arg_inventorySourceGroupId, arg_assignedInventorySourceId,
+          advertiserId: arg_advertiserId,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .inventorySourceGroups
@@ -17567,24 +17337,21 @@ void main() {
             convert.json.encode(buildListAssignedInventorySourcesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_inventorySourceGroupId,
-              advertiserId: arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAssignedInventorySourcesResponse(
-            response as api.ListAssignedInventorySourcesResponse);
-      })));
+      final response = await res.list(arg_inventorySourceGroupId,
+          advertiserId: arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkListAssignedInventorySourcesResponse(
+          response as api.ListAssignedInventorySourcesResponse);
     });
   });
 
   unittest.group('resource-InventorySourcesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).inventorySources;
       var arg_inventorySourceId = 'foo';
@@ -17637,15 +17404,12 @@ void main() {
         var resp = convert.json.encode(buildInventorySource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_inventorySourceId,
-              partnerId: arg_partnerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInventorySource(response as api.InventorySource);
-      })));
+      final response = await res.get(arg_inventorySourceId,
+          partnerId: arg_partnerId, $fields: arg_$fields);
+      checkInventorySource(response as api.InventorySource);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).inventorySources;
       var arg_advertiserId = 'foo';
@@ -17721,24 +17485,21 @@ void main() {
         var resp = convert.json.encode(buildListInventorySourcesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              advertiserId: arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              partnerId: arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListInventorySourcesResponse(
-            response as api.ListInventorySourcesResponse);
-      })));
+      final response = await res.list(
+          advertiserId: arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          partnerId: arg_partnerId,
+          $fields: arg_$fields);
+      checkListInventorySourcesResponse(
+          response as api.ListInventorySourcesResponse);
     });
   });
 
   unittest.group('resource-MediaResource', () {
-    unittest.test('method--download', () {
+    unittest.test('method--download', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -17789,16 +17550,14 @@ void main() {
         var resp = convert.json.encode(buildGoogleBytestreamMedia());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .download(arg_resourceName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleBytestreamMedia(response as api.GoogleBytestreamMedia);
-      })));
+      final response =
+          await res.download(arg_resourceName, $fields: arg_$fields);
+      checkGoogleBytestreamMedia(response as api.GoogleBytestreamMedia);
     });
   });
 
   unittest.group('resource-PartnersResource', () {
-    unittest.test('method--bulkEditPartnerAssignedTargetingOptions', () {
+    unittest.test('method--bulkEditPartnerAssignedTargetingOptions', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).partners;
       var arg_request = buildBulkEditPartnerAssignedTargetingOptionsRequest();
@@ -17853,16 +17612,14 @@ void main() {
             .encode(buildBulkEditPartnerAssignedTargetingOptionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .bulkEditPartnerAssignedTargetingOptions(arg_request, arg_partnerId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBulkEditPartnerAssignedTargetingOptionsResponse(
-            response as api.BulkEditPartnerAssignedTargetingOptionsResponse);
-      })));
+      final response = await res.bulkEditPartnerAssignedTargetingOptions(
+          arg_request, arg_partnerId,
+          $fields: arg_$fields);
+      checkBulkEditPartnerAssignedTargetingOptionsResponse(
+          response as api.BulkEditPartnerAssignedTargetingOptionsResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).partners;
       var arg_partnerId = 'foo';
@@ -17910,14 +17667,11 @@ void main() {
         var resp = convert.json.encode(buildPartner());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_partnerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPartner(response as api.Partner);
-      })));
+      final response = await res.get(arg_partnerId, $fields: arg_$fields);
+      checkPartner(response as api.Partner);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).partners;
       var arg_filter = 'foo';
@@ -17983,21 +17737,18 @@ void main() {
         var resp = convert.json.encode(buildListPartnersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListPartnersResponse(response as api.ListPartnersResponse);
-      })));
+      final response = await res.list(
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListPartnersResponse(response as api.ListPartnersResponse);
     });
   });
 
   unittest.group('resource-PartnersChannelsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).partners.channels;
       var arg_request = buildChannel();
@@ -18055,15 +17806,12 @@ void main() {
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_partnerId,
-              advertiserId: arg_advertiserId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChannel(response as api.Channel);
-      })));
+      final response = await res.create(arg_request, arg_partnerId,
+          advertiserId: arg_advertiserId, $fields: arg_$fields);
+      checkChannel(response as api.Channel);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).partners.channels;
       var arg_partnerId = 'foo';
@@ -18117,15 +17865,12 @@ void main() {
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_partnerId, arg_channelId,
-              advertiserId: arg_advertiserId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChannel(response as api.Channel);
-      })));
+      final response = await res.get(arg_partnerId, arg_channelId,
+          advertiserId: arg_advertiserId, $fields: arg_$fields);
+      checkChannel(response as api.Channel);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).partners.channels;
       var arg_partnerId = 'foo';
@@ -18198,20 +17943,17 @@ void main() {
         var resp = convert.json.encode(buildListChannelsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_partnerId,
-              advertiserId: arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListChannelsResponse(response as api.ListChannelsResponse);
-      })));
+      final response = await res.list(arg_partnerId,
+          advertiserId: arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListChannelsResponse(response as api.ListChannelsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).partners.channels;
       var arg_request = buildChannel();
@@ -18275,19 +18017,17 @@ void main() {
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_partnerId, arg_channelId,
-              advertiserId: arg_advertiserId,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChannel(response as api.Channel);
-      })));
+      final response = await res.patch(
+          arg_request, arg_partnerId, arg_channelId,
+          advertiserId: arg_advertiserId,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkChannel(response as api.Channel);
     });
   });
 
   unittest.group('resource-PartnersChannelsSitesResource', () {
-    unittest.test('method--bulkEdit', () {
+    unittest.test('method--bulkEdit', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).partners.channels.sites;
       var arg_request = buildBulkEditSitesRequest();
@@ -18355,15 +18095,13 @@ void main() {
         var resp = convert.json.encode(buildBulkEditSitesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .bulkEdit(arg_request, arg_partnerId, arg_channelId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBulkEditSitesResponse(response as api.BulkEditSitesResponse);
-      })));
+      final response = await res.bulkEdit(
+          arg_request, arg_partnerId, arg_channelId,
+          $fields: arg_$fields);
+      checkBulkEditSitesResponse(response as api.BulkEditSitesResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).partners.channels.sites;
       var arg_request = buildSite();
@@ -18436,15 +18174,13 @@ void main() {
         var resp = convert.json.encode(buildSite());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_partnerId, arg_channelId,
-              advertiserId: arg_advertiserId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSite(response as api.Site);
-      })));
+      final response = await res.create(
+          arg_request, arg_partnerId, arg_channelId,
+          advertiserId: arg_advertiserId, $fields: arg_$fields);
+      checkSite(response as api.Site);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).partners.channels.sites;
       var arg_partnerId = 'foo';
@@ -18513,15 +18249,13 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_partnerId, arg_channelId, arg_urlOrAppId,
-              advertiserId: arg_advertiserId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(
+          arg_partnerId, arg_channelId, arg_urlOrAppId,
+          advertiserId: arg_advertiserId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).partners.channels.sites;
       var arg_partnerId = 'foo';
@@ -18595,23 +18329,20 @@ void main() {
         var resp = convert.json.encode(buildListSitesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_partnerId, arg_channelId,
-              advertiserId: arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSitesResponse(response as api.ListSitesResponse);
-      })));
+      final response = await res.list(arg_partnerId, arg_channelId,
+          advertiserId: arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListSitesResponse(response as api.ListSitesResponse);
     });
   });
 
   unittest.group(
       'resource-PartnersTargetingTypesAssignedTargetingOptionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .partners
@@ -18668,15 +18399,13 @@ void main() {
         var resp = convert.json.encode(buildAssignedTargetingOption());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_partnerId, arg_targetingType,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAssignedTargetingOption(response as api.AssignedTargetingOption);
-      })));
+      final response = await res.create(
+          arg_request, arg_partnerId, arg_targetingType,
+          $fields: arg_$fields);
+      checkAssignedTargetingOption(response as api.AssignedTargetingOption);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .partners
@@ -18729,16 +18458,13 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(
-              arg_partnerId, arg_targetingType, arg_assignedTargetingOptionId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(
+          arg_partnerId, arg_targetingType, arg_assignedTargetingOptionId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .partners
@@ -18791,15 +18517,13 @@ void main() {
         var resp = convert.json.encode(buildAssignedTargetingOption());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_partnerId, arg_targetingType, arg_assignedTargetingOptionId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAssignedTargetingOption(response as api.AssignedTargetingOption);
-      })));
+      final response = await res.get(
+          arg_partnerId, arg_targetingType, arg_assignedTargetingOptionId,
+          $fields: arg_$fields);
+      checkAssignedTargetingOption(response as api.AssignedTargetingOption);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock)
           .partners
@@ -18872,22 +18596,19 @@ void main() {
             .encode(buildListPartnerAssignedTargetingOptionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_partnerId, arg_targetingType,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListPartnerAssignedTargetingOptionsResponse(
-            response as api.ListPartnerAssignedTargetingOptionsResponse);
-      })));
+      final response = await res.list(arg_partnerId, arg_targetingType,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListPartnerAssignedTargetingOptionsResponse(
+          response as api.ListPartnerAssignedTargetingOptionsResponse);
     });
   });
 
   unittest.group('resource-SdfdownloadtasksResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).sdfdownloadtasks;
       var arg_request = buildCreateSdfDownloadTaskRequest();
@@ -18939,16 +18660,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-SdfdownloadtasksOperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).sdfdownloadtasks.operations;
       var arg_name = 'foo';
@@ -18996,16 +18714,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-TargetingTypesTargetingOptionsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).targetingTypes.targetingOptions;
       var arg_targetingType = 'foo';
@@ -19059,15 +18774,12 @@ void main() {
         var resp = convert.json.encode(buildTargetingOption());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_targetingType, arg_targetingOptionId,
-              advertiserId: arg_advertiserId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTargetingOption(response as api.TargetingOption);
-      })));
+      final response = await res.get(arg_targetingType, arg_targetingOptionId,
+          advertiserId: arg_advertiserId, $fields: arg_$fields);
+      checkTargetingOption(response as api.TargetingOption);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).targetingTypes.targetingOptions;
       var arg_targetingType = 'foo';
@@ -19140,21 +18852,18 @@ void main() {
         var resp = convert.json.encode(buildListTargetingOptionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_targetingType,
-              advertiserId: arg_advertiserId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTargetingOptionsResponse(
-            response as api.ListTargetingOptionsResponse);
-      })));
+      final response = await res.list(arg_targetingType,
+          advertiserId: arg_advertiserId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListTargetingOptionsResponse(
+          response as api.ListTargetingOptionsResponse);
     });
 
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).targetingTypes.targetingOptions;
       var arg_request = buildSearchTargetingOptionsRequest();
@@ -19208,17 +18917,15 @@ void main() {
         var resp = convert.json.encode(buildSearchTargetingOptionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(arg_request, arg_targetingType, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchTargetingOptionsResponse(
-            response as api.SearchTargetingOptionsResponse);
-      })));
+      final response = await res.search(arg_request, arg_targetingType,
+          $fields: arg_$fields);
+      checkSearchTargetingOptionsResponse(
+          response as api.SearchTargetingOptionsResponse);
     });
   });
 
   unittest.group('resource-UsersResource', () {
-    unittest.test('method--bulkEditAssignedUserRoles', () {
+    unittest.test('method--bulkEditAssignedUserRoles', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).users;
       var arg_request = buildBulkEditAssignedUserRolesRequest();
@@ -19273,16 +18980,14 @@ void main() {
             convert.json.encode(buildBulkEditAssignedUserRolesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .bulkEditAssignedUserRoles(arg_request, arg_userId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBulkEditAssignedUserRolesResponse(
-            response as api.BulkEditAssignedUserRolesResponse);
-      })));
+      final response = await res.bulkEditAssignedUserRoles(
+          arg_request, arg_userId,
+          $fields: arg_$fields);
+      checkBulkEditAssignedUserRolesResponse(
+          response as api.BulkEditAssignedUserRolesResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).users;
       var arg_request = buildUser();
@@ -19333,14 +19038,11 @@ void main() {
         var resp = convert.json.encode(buildUser());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUser(response as api.User);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkUser(response as api.User);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).users;
       var arg_userId = 'foo';
@@ -19388,14 +19090,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_userId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).users;
       var arg_userId = 'foo';
@@ -19443,14 +19142,11 @@ void main() {
         var resp = convert.json.encode(buildUser());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUser(response as api.User);
-      })));
+      final response = await res.get(arg_userId, $fields: arg_$fields);
+      checkUser(response as api.User);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).users;
       var arg_filter = 'foo';
@@ -19516,19 +19212,16 @@ void main() {
         var resp = convert.json.encode(buildListUsersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListUsersResponse(response as api.ListUsersResponse);
-      })));
+      final response = await res.list(
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListUsersResponse(response as api.ListUsersResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DisplayVideoApi(mock).users;
       var arg_request = buildUser();
@@ -19586,12 +19279,9 @@ void main() {
         var resp = convert.json.encode(buildUser());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_userId,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUser(response as api.User);
-      })));
+      final response = await res.patch(arg_request, arg_userId,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkUser(response as api.User);
     });
   });
 }

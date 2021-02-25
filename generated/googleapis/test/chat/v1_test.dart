@@ -1138,7 +1138,7 @@ void checkWidgetMarkup(api.WidgetMarkup o) {
 
 void main() {
   unittest.group('obj-schema-ActionParameter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildActionParameter();
       var od = api.ActionParameter.fromJson(o.toJson());
       checkActionParameter(od as api.ActionParameter);
@@ -1146,7 +1146,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ActionResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildActionResponse();
       var od = api.ActionResponse.fromJson(o.toJson());
       checkActionResponse(od as api.ActionResponse);
@@ -1154,7 +1154,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Annotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnnotation();
       var od = api.Annotation.fromJson(o.toJson());
       checkAnnotation(od as api.Annotation);
@@ -1162,7 +1162,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Attachment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAttachment();
       var od = api.Attachment.fromJson(o.toJson());
       checkAttachment(od as api.Attachment);
@@ -1170,7 +1170,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AttachmentDataRef', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAttachmentDataRef();
       var od = api.AttachmentDataRef.fromJson(o.toJson());
       checkAttachmentDataRef(od as api.AttachmentDataRef);
@@ -1178,7 +1178,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Button', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildButton();
       var od = api.Button.fromJson(o.toJson());
       checkButton(od as api.Button);
@@ -1186,7 +1186,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Card', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCard();
       var od = api.Card.fromJson(o.toJson());
       checkCard(od as api.Card);
@@ -1194,7 +1194,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CardAction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCardAction();
       var od = api.CardAction.fromJson(o.toJson());
       checkCardAction(od as api.CardAction);
@@ -1202,7 +1202,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CardHeader', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCardHeader();
       var od = api.CardHeader.fromJson(o.toJson());
       checkCardHeader(od as api.CardHeader);
@@ -1210,7 +1210,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeprecatedEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeprecatedEvent();
       var od = api.DeprecatedEvent.fromJson(o.toJson());
       checkDeprecatedEvent(od as api.DeprecatedEvent);
@@ -1218,7 +1218,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DriveDataRef', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDriveDataRef();
       var od = api.DriveDataRef.fromJson(o.toJson());
       checkDriveDataRef(od as api.DriveDataRef);
@@ -1226,7 +1226,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1234,7 +1234,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FormAction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFormAction();
       var od = api.FormAction.fromJson(o.toJson());
       checkFormAction(od as api.FormAction);
@@ -1242,7 +1242,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Image', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImage();
       var od = api.Image.fromJson(o.toJson());
       checkImage(od as api.Image);
@@ -1250,7 +1250,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImageButton', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImageButton();
       var od = api.ImageButton.fromJson(o.toJson());
       checkImageButton(od as api.ImageButton);
@@ -1258,7 +1258,7 @@ void main() {
   });
 
   unittest.group('obj-schema-KeyValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildKeyValue();
       var od = api.KeyValue.fromJson(o.toJson());
       checkKeyValue(od as api.KeyValue);
@@ -1266,7 +1266,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListMembershipsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListMembershipsResponse();
       var od = api.ListMembershipsResponse.fromJson(o.toJson());
       checkListMembershipsResponse(od as api.ListMembershipsResponse);
@@ -1274,7 +1274,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListSpacesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListSpacesResponse();
       var od = api.ListSpacesResponse.fromJson(o.toJson());
       checkListSpacesResponse(od as api.ListSpacesResponse);
@@ -1282,7 +1282,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Media', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMedia();
       var od = api.Media.fromJson(o.toJson());
       checkMedia(od as api.Media);
@@ -1290,7 +1290,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Membership', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMembership();
       var od = api.Membership.fromJson(o.toJson());
       checkMembership(od as api.Membership);
@@ -1298,7 +1298,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Message', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMessage();
       var od = api.Message.fromJson(o.toJson());
       checkMessage(od as api.Message);
@@ -1306,7 +1306,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OnClick', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOnClick();
       var od = api.OnClick.fromJson(o.toJson());
       checkOnClick(od as api.OnClick);
@@ -1314,7 +1314,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OpenLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOpenLink();
       var od = api.OpenLink.fromJson(o.toJson());
       checkOpenLink(od as api.OpenLink);
@@ -1322,7 +1322,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Section', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSection();
       var od = api.Section.fromJson(o.toJson());
       checkSection(od as api.Section);
@@ -1330,7 +1330,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SlashCommand', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSlashCommand();
       var od = api.SlashCommand.fromJson(o.toJson());
       checkSlashCommand(od as api.SlashCommand);
@@ -1338,7 +1338,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SlashCommandMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSlashCommandMetadata();
       var od = api.SlashCommandMetadata.fromJson(o.toJson());
       checkSlashCommandMetadata(od as api.SlashCommandMetadata);
@@ -1346,7 +1346,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Space', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSpace();
       var od = api.Space.fromJson(o.toJson());
       checkSpace(od as api.Space);
@@ -1354,7 +1354,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TextButton', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTextButton();
       var od = api.TextButton.fromJson(o.toJson());
       checkTextButton(od as api.TextButton);
@@ -1362,7 +1362,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TextParagraph', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTextParagraph();
       var od = api.TextParagraph.fromJson(o.toJson());
       checkTextParagraph(od as api.TextParagraph);
@@ -1370,7 +1370,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Thread', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildThread();
       var od = api.Thread.fromJson(o.toJson());
       checkThread(od as api.Thread);
@@ -1378,7 +1378,7 @@ void main() {
   });
 
   unittest.group('obj-schema-User', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
       checkUser(od as api.User);
@@ -1386,7 +1386,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserMentionMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserMentionMetadata();
       var od = api.UserMentionMetadata.fromJson(o.toJson());
       checkUserMentionMetadata(od as api.UserMentionMetadata);
@@ -1394,7 +1394,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WidgetMarkup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWidgetMarkup();
       var od = api.WidgetMarkup.fromJson(o.toJson());
       checkWidgetMarkup(od as api.WidgetMarkup);
@@ -1402,7 +1402,7 @@ void main() {
   });
 
   unittest.group('resource-DmsResource', () {
-    unittest.test('method--messages', () {
+    unittest.test('method--messages', () async {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).dms;
       var arg_request = buildMessage();
@@ -1460,15 +1460,12 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .messages(arg_request, arg_parent,
-              threadKey: arg_threadKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response = await res.messages(arg_request, arg_parent,
+          threadKey: arg_threadKey, $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
 
-    unittest.test('method--webhooks', () {
+    unittest.test('method--webhooks', () async {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).dms;
       var arg_request = buildMessage();
@@ -1526,17 +1523,14 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .webhooks(arg_request, arg_parent,
-              threadKey: arg_threadKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response = await res.webhooks(arg_request, arg_parent,
+          threadKey: arg_threadKey, $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
   });
 
   unittest.group('resource-DmsConversationsResource', () {
-    unittest.test('method--messages', () {
+    unittest.test('method--messages', () async {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).dms.conversations;
       var arg_request = buildMessage();
@@ -1594,17 +1588,14 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .messages(arg_request, arg_parent,
-              threadKey: arg_threadKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response = await res.messages(arg_request, arg_parent,
+          threadKey: arg_threadKey, $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
   });
 
   unittest.group('resource-MediaResource', () {
-    unittest.test('method--download', () {
+    unittest.test('method--download', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -1655,16 +1646,14 @@ void main() {
         var resp = convert.json.encode(buildMedia());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .download(arg_resourceName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMedia(response as api.Media);
-      })));
+      final response =
+          await res.download(arg_resourceName, $fields: arg_$fields);
+      checkMedia(response as api.Media);
     });
   });
 
   unittest.group('resource-RoomsResource', () {
-    unittest.test('method--messages', () {
+    unittest.test('method--messages', () async {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).rooms;
       var arg_request = buildMessage();
@@ -1722,15 +1711,12 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .messages(arg_request, arg_parent,
-              threadKey: arg_threadKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response = await res.messages(arg_request, arg_parent,
+          threadKey: arg_threadKey, $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
 
-    unittest.test('method--webhooks', () {
+    unittest.test('method--webhooks', () async {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).rooms;
       var arg_request = buildMessage();
@@ -1788,17 +1774,14 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .webhooks(arg_request, arg_parent,
-              threadKey: arg_threadKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response = await res.webhooks(arg_request, arg_parent,
+          threadKey: arg_threadKey, $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
   });
 
   unittest.group('resource-RoomsConversationsResource', () {
-    unittest.test('method--messages', () {
+    unittest.test('method--messages', () async {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).rooms.conversations;
       var arg_request = buildMessage();
@@ -1856,17 +1839,14 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .messages(arg_request, arg_parent,
-              threadKey: arg_threadKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response = await res.messages(arg_request, arg_parent,
+          threadKey: arg_threadKey, $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
   });
 
   unittest.group('resource-SpacesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).spaces;
       var arg_name = 'foo';
@@ -1914,14 +1894,11 @@ void main() {
         var resp = convert.json.encode(buildSpace());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSpace(response as api.Space);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSpace(response as api.Space);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).spaces;
       var arg_pageSize = 42;
@@ -1977,17 +1954,14 @@ void main() {
         var resp = convert.json.encode(buildListSpacesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSpacesResponse(response as api.ListSpacesResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListSpacesResponse(response as api.ListSpacesResponse);
     });
 
-    unittest.test('method--webhooks', () {
+    unittest.test('method--webhooks', () async {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).spaces;
       var arg_request = buildMessage();
@@ -2045,17 +2019,14 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .webhooks(arg_request, arg_parent,
-              threadKey: arg_threadKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response = await res.webhooks(arg_request, arg_parent,
+          threadKey: arg_threadKey, $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
   });
 
   unittest.group('resource-SpacesMembersResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).spaces.members;
       var arg_name = 'foo';
@@ -2103,14 +2074,11 @@ void main() {
         var resp = convert.json.encode(buildMembership());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMembership(response as api.Membership);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkMembership(response as api.Membership);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).spaces.members;
       var arg_parent = 'foo';
@@ -2168,19 +2136,16 @@ void main() {
         var resp = convert.json.encode(buildListMembershipsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListMembershipsResponse(response as api.ListMembershipsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListMembershipsResponse(response as api.ListMembershipsResponse);
     });
   });
 
   unittest.group('resource-SpacesMessagesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).spaces.messages;
       var arg_request = buildMessage();
@@ -2238,15 +2203,12 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              threadKey: arg_threadKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          threadKey: arg_threadKey, $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).spaces.messages;
       var arg_name = 'foo';
@@ -2294,14 +2256,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).spaces.messages;
       var arg_name = 'foo';
@@ -2349,14 +2308,11 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).spaces.messages;
       var arg_request = buildMessage();
@@ -2414,17 +2370,14 @@ void main() {
         var resp = convert.json.encode(buildMessage());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMessage(response as api.Message);
-      })));
+      final response = await res.update(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkMessage(response as api.Message);
     });
   });
 
   unittest.group('resource-SpacesMessagesAttachmentsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.HangoutsChatApi(mock).spaces.messages.attachments;
       var arg_name = 'foo';
@@ -2472,11 +2425,8 @@ void main() {
         var resp = convert.json.encode(buildAttachment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAttachment(response as api.Attachment);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkAttachment(response as api.Attachment);
     });
   });
 }

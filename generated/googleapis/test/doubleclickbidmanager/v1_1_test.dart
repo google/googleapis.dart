@@ -1192,7 +1192,7 @@ void checkUploadStatus(api.UploadStatus o) {
 
 void main() {
   unittest.group('obj-schema-ChannelGrouping', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChannelGrouping();
       var od = api.ChannelGrouping.fromJson(o.toJson());
       checkChannelGrouping(od as api.ChannelGrouping);
@@ -1200,7 +1200,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DisjunctiveMatchStatement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDisjunctiveMatchStatement();
       var od = api.DisjunctiveMatchStatement.fromJson(o.toJson());
       checkDisjunctiveMatchStatement(od as api.DisjunctiveMatchStatement);
@@ -1208,7 +1208,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DownloadLineItemsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDownloadLineItemsRequest();
       var od = api.DownloadLineItemsRequest.fromJson(o.toJson());
       checkDownloadLineItemsRequest(od as api.DownloadLineItemsRequest);
@@ -1216,7 +1216,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DownloadLineItemsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDownloadLineItemsResponse();
       var od = api.DownloadLineItemsResponse.fromJson(o.toJson());
       checkDownloadLineItemsResponse(od as api.DownloadLineItemsResponse);
@@ -1224,7 +1224,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DownloadRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDownloadRequest();
       var od = api.DownloadRequest.fromJson(o.toJson());
       checkDownloadRequest(od as api.DownloadRequest);
@@ -1232,7 +1232,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DownloadResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDownloadResponse();
       var od = api.DownloadResponse.fromJson(o.toJson());
       checkDownloadResponse(od as api.DownloadResponse);
@@ -1240,7 +1240,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventFilter();
       var od = api.EventFilter.fromJson(o.toJson());
       checkEventFilter(od as api.EventFilter);
@@ -1248,7 +1248,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FilterPair', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilterPair();
       var od = api.FilterPair.fromJson(o.toJson());
       checkFilterPair(od as api.FilterPair);
@@ -1256,7 +1256,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListQueriesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListQueriesResponse();
       var od = api.ListQueriesResponse.fromJson(o.toJson());
       checkListQueriesResponse(od as api.ListQueriesResponse);
@@ -1264,7 +1264,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListReportsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListReportsResponse();
       var od = api.ListReportsResponse.fromJson(o.toJson());
       checkListReportsResponse(od as api.ListReportsResponse);
@@ -1272,7 +1272,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Options', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOptions();
       var od = api.Options.fromJson(o.toJson());
       checkOptions(od as api.Options);
@@ -1280,7 +1280,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Parameters', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildParameters();
       var od = api.Parameters.fromJson(o.toJson());
       checkParameters(od as api.Parameters);
@@ -1288,7 +1288,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PathFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPathFilter();
       var od = api.PathFilter.fromJson(o.toJson());
       checkPathFilter(od as api.PathFilter);
@@ -1296,7 +1296,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PathQueryOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPathQueryOptions();
       var od = api.PathQueryOptions.fromJson(o.toJson());
       checkPathQueryOptions(od as api.PathQueryOptions);
@@ -1304,7 +1304,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PathQueryOptionsFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPathQueryOptionsFilter();
       var od = api.PathQueryOptionsFilter.fromJson(o.toJson());
       checkPathQueryOptionsFilter(od as api.PathQueryOptionsFilter);
@@ -1312,7 +1312,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Query', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQuery();
       var od = api.Query.fromJson(o.toJson());
       checkQuery(od as api.Query);
@@ -1320,7 +1320,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryMetadata();
       var od = api.QueryMetadata.fromJson(o.toJson());
       checkQueryMetadata(od as api.QueryMetadata);
@@ -1328,7 +1328,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QuerySchedule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQuerySchedule();
       var od = api.QuerySchedule.fromJson(o.toJson());
       checkQuerySchedule(od as api.QuerySchedule);
@@ -1336,7 +1336,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Report', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReport();
       var od = api.Report.fromJson(o.toJson());
       checkReport(od as api.Report);
@@ -1344,7 +1344,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportFailure', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportFailure();
       var od = api.ReportFailure.fromJson(o.toJson());
       checkReportFailure(od as api.ReportFailure);
@@ -1352,7 +1352,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportKey();
       var od = api.ReportKey.fromJson(o.toJson());
       checkReportKey(od as api.ReportKey);
@@ -1360,7 +1360,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportMetadata();
       var od = api.ReportMetadata.fromJson(o.toJson());
       checkReportMetadata(od as api.ReportMetadata);
@@ -1368,7 +1368,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportStatus();
       var od = api.ReportStatus.fromJson(o.toJson());
       checkReportStatus(od as api.ReportStatus);
@@ -1376,7 +1376,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RowStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRowStatus();
       var od = api.RowStatus.fromJson(o.toJson());
       checkRowStatus(od as api.RowStatus);
@@ -1384,7 +1384,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Rule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRule();
       var od = api.Rule.fromJson(o.toJson());
       checkRule(od as api.Rule);
@@ -1392,7 +1392,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RunQueryRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRunQueryRequest();
       var od = api.RunQueryRequest.fromJson(o.toJson());
       checkRunQueryRequest(od as api.RunQueryRequest);
@@ -1400,7 +1400,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UploadLineItemsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUploadLineItemsRequest();
       var od = api.UploadLineItemsRequest.fromJson(o.toJson());
       checkUploadLineItemsRequest(od as api.UploadLineItemsRequest);
@@ -1408,7 +1408,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UploadLineItemsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUploadLineItemsResponse();
       var od = api.UploadLineItemsResponse.fromJson(o.toJson());
       checkUploadLineItemsResponse(od as api.UploadLineItemsResponse);
@@ -1416,7 +1416,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UploadStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUploadStatus();
       var od = api.UploadStatus.fromJson(o.toJson());
       checkUploadStatus(od as api.UploadStatus);
@@ -1424,7 +1424,7 @@ void main() {
   });
 
   unittest.group('resource-LineitemsResource', () {
-    unittest.test('method--downloadlineitems', () {
+    unittest.test('method--downloadlineitems', () async {
       var mock = HttpServerMock();
       var res = api.DoubleClickBidManagerApi(mock).lineitems;
       var arg_request = buildDownloadLineItemsRequest();
@@ -1480,15 +1480,12 @@ void main() {
         var resp = convert.json.encode(buildDownloadLineItemsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .downloadlineitems(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDownloadLineItemsResponse(
-            response as api.DownloadLineItemsResponse);
-      })));
+      final response =
+          await res.downloadlineitems(arg_request, $fields: arg_$fields);
+      checkDownloadLineItemsResponse(response as api.DownloadLineItemsResponse);
     });
 
-    unittest.test('method--uploadlineitems', () {
+    unittest.test('method--uploadlineitems', () async {
       var mock = HttpServerMock();
       var res = api.DoubleClickBidManagerApi(mock).lineitems;
       var arg_request = buildUploadLineItemsRequest();
@@ -1544,16 +1541,14 @@ void main() {
         var resp = convert.json.encode(buildUploadLineItemsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .uploadlineitems(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUploadLineItemsResponse(response as api.UploadLineItemsResponse);
-      })));
+      final response =
+          await res.uploadlineitems(arg_request, $fields: arg_$fields);
+      checkUploadLineItemsResponse(response as api.UploadLineItemsResponse);
     });
   });
 
   unittest.group('resource-QueriesResource', () {
-    unittest.test('method--createquery', () {
+    unittest.test('method--createquery', () async {
       var mock = HttpServerMock();
       var res = api.DoubleClickBidManagerApi(mock).queries;
       var arg_request = buildQuery();
@@ -1614,15 +1609,12 @@ void main() {
         var resp = convert.json.encode(buildQuery());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createquery(arg_request,
-              asynchronous: arg_asynchronous, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkQuery(response as api.Query);
-      })));
+      final response = await res.createquery(arg_request,
+          asynchronous: arg_asynchronous, $fields: arg_$fields);
+      checkQuery(response as api.Query);
     });
 
-    unittest.test('method--deletequery', () {
+    unittest.test('method--deletequery', () async {
       var mock = HttpServerMock();
       var res = api.DoubleClickBidManagerApi(mock).queries;
       var arg_queryId = 'foo';
@@ -1680,12 +1672,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deletequery(arg_queryId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.deletequery(arg_queryId, $fields: arg_$fields);
     });
 
-    unittest.test('method--getquery', () {
+    unittest.test('method--getquery', () async {
       var mock = HttpServerMock();
       var res = api.DoubleClickBidManagerApi(mock).queries;
       var arg_queryId = 'foo';
@@ -1743,14 +1733,11 @@ void main() {
         var resp = convert.json.encode(buildQuery());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getquery(arg_queryId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkQuery(response as api.Query);
-      })));
+      final response = await res.getquery(arg_queryId, $fields: arg_$fields);
+      checkQuery(response as api.Query);
     });
 
-    unittest.test('method--listqueries', () {
+    unittest.test('method--listqueries', () async {
       var mock = HttpServerMock();
       var res = api.DoubleClickBidManagerApi(mock).queries;
       var arg_pageSize = 42;
@@ -1811,17 +1798,14 @@ void main() {
         var resp = convert.json.encode(buildListQueriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listqueries(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListQueriesResponse(response as api.ListQueriesResponse);
-      })));
+      final response = await res.listqueries(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListQueriesResponse(response as api.ListQueriesResponse);
     });
 
-    unittest.test('method--runquery', () {
+    unittest.test('method--runquery', () async {
       var mock = HttpServerMock();
       var res = api.DoubleClickBidManagerApi(mock).queries;
       var arg_request = buildRunQueryRequest();
@@ -1889,15 +1873,13 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .runquery(arg_request, arg_queryId,
-              asynchronous: arg_asynchronous, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.runquery(arg_request, arg_queryId,
+          asynchronous: arg_asynchronous, $fields: arg_$fields);
     });
   });
 
   unittest.group('resource-ReportsResource', () {
-    unittest.test('method--listreports', () {
+    unittest.test('method--listreports', () async {
       var mock = HttpServerMock();
       var res = api.DoubleClickBidManagerApi(mock).reports;
       var arg_queryId = 'foo';
@@ -1973,19 +1955,16 @@ void main() {
         var resp = convert.json.encode(buildListReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listreports(arg_queryId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListReportsResponse(response as api.ListReportsResponse);
-      })));
+      final response = await res.listreports(arg_queryId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListReportsResponse(response as api.ListReportsResponse);
     });
   });
 
   unittest.group('resource-SdfResource', () {
-    unittest.test('method--download', () {
+    unittest.test('method--download', () async {
       var mock = HttpServerMock();
       var res = api.DoubleClickBidManagerApi(mock).sdf;
       var arg_request = buildDownloadRequest();
@@ -2041,11 +2020,8 @@ void main() {
         var resp = convert.json.encode(buildDownloadResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .download(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDownloadResponse(response as api.DownloadResponse);
-      })));
+      final response = await res.download(arg_request, $fields: arg_$fields);
+      checkDownloadResponse(response as api.DownloadResponse);
     });
   });
 }

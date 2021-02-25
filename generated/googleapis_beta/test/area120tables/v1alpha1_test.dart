@@ -691,7 +691,7 @@ void checkWorkspace(api.Workspace o) {
 
 void main() {
   unittest.group('obj-schema-BatchCreateRowsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchCreateRowsRequest();
       var od = api.BatchCreateRowsRequest.fromJson(o.toJson());
       checkBatchCreateRowsRequest(od as api.BatchCreateRowsRequest);
@@ -699,7 +699,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchCreateRowsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchCreateRowsResponse();
       var od = api.BatchCreateRowsResponse.fromJson(o.toJson());
       checkBatchCreateRowsResponse(od as api.BatchCreateRowsResponse);
@@ -707,7 +707,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchDeleteRowsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchDeleteRowsRequest();
       var od = api.BatchDeleteRowsRequest.fromJson(o.toJson());
       checkBatchDeleteRowsRequest(od as api.BatchDeleteRowsRequest);
@@ -715,7 +715,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchUpdateRowsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchUpdateRowsRequest();
       var od = api.BatchUpdateRowsRequest.fromJson(o.toJson());
       checkBatchUpdateRowsRequest(od as api.BatchUpdateRowsRequest);
@@ -723,7 +723,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchUpdateRowsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchUpdateRowsResponse();
       var od = api.BatchUpdateRowsResponse.fromJson(o.toJson());
       checkBatchUpdateRowsResponse(od as api.BatchUpdateRowsResponse);
@@ -731,7 +731,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ColumnDescription', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildColumnDescription();
       var od = api.ColumnDescription.fromJson(o.toJson());
       checkColumnDescription(od as api.ColumnDescription);
@@ -739,7 +739,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateRowRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateRowRequest();
       var od = api.CreateRowRequest.fromJson(o.toJson());
       checkCreateRowRequest(od as api.CreateRowRequest);
@@ -747,7 +747,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -755,7 +755,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LabeledItem', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLabeledItem();
       var od = api.LabeledItem.fromJson(o.toJson());
       checkLabeledItem(od as api.LabeledItem);
@@ -763,7 +763,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListRowsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListRowsResponse();
       var od = api.ListRowsResponse.fromJson(o.toJson());
       checkListRowsResponse(od as api.ListRowsResponse);
@@ -771,7 +771,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTablesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTablesResponse();
       var od = api.ListTablesResponse.fromJson(o.toJson());
       checkListTablesResponse(od as api.ListTablesResponse);
@@ -779,7 +779,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListWorkspacesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListWorkspacesResponse();
       var od = api.ListWorkspacesResponse.fromJson(o.toJson());
       checkListWorkspacesResponse(od as api.ListWorkspacesResponse);
@@ -787,7 +787,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LookupDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLookupDetails();
       var od = api.LookupDetails.fromJson(o.toJson());
       checkLookupDetails(od as api.LookupDetails);
@@ -795,7 +795,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RelationshipDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRelationshipDetails();
       var od = api.RelationshipDetails.fromJson(o.toJson());
       checkRelationshipDetails(od as api.RelationshipDetails);
@@ -803,7 +803,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Row', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRow();
       var od = api.Row.fromJson(o.toJson());
       checkRow(od as api.Row);
@@ -811,7 +811,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Table', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTable();
       var od = api.Table.fromJson(o.toJson());
       checkTable(od as api.Table);
@@ -819,7 +819,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateRowRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateRowRequest();
       var od = api.UpdateRowRequest.fromJson(o.toJson());
       checkUpdateRowRequest(od as api.UpdateRowRequest);
@@ -827,7 +827,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Workspace', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWorkspace();
       var od = api.Workspace.fromJson(o.toJson());
       checkWorkspace(od as api.Workspace);
@@ -835,7 +835,7 @@ void main() {
   });
 
   unittest.group('resource-TablesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.Area120TablesApi(mock).tables;
       var arg_name = 'foo';
@@ -883,14 +883,11 @@ void main() {
         var resp = convert.json.encode(buildTable());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTable(response as api.Table);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkTable(response as api.Table);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.Area120TablesApi(mock).tables;
       var arg_pageSize = 42;
@@ -946,19 +943,16 @@ void main() {
         var resp = convert.json.encode(buildListTablesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTablesResponse(response as api.ListTablesResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListTablesResponse(response as api.ListTablesResponse);
     });
   });
 
   unittest.group('resource-TablesRowsResource', () {
-    unittest.test('method--batchCreate', () {
+    unittest.test('method--batchCreate', () async {
       var mock = HttpServerMock();
       var res = api.Area120TablesApi(mock).tables.rows;
       var arg_request = buildBatchCreateRowsRequest();
@@ -1011,14 +1005,12 @@ void main() {
         var resp = convert.json.encode(buildBatchCreateRowsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchCreate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchCreateRowsResponse(response as api.BatchCreateRowsResponse);
-      })));
+      final response =
+          await res.batchCreate(arg_request, arg_parent, $fields: arg_$fields);
+      checkBatchCreateRowsResponse(response as api.BatchCreateRowsResponse);
     });
 
-    unittest.test('method--batchDelete', () {
+    unittest.test('method--batchDelete', () async {
       var mock = HttpServerMock();
       var res = api.Area120TablesApi(mock).tables.rows;
       var arg_request = buildBatchDeleteRowsRequest();
@@ -1071,14 +1063,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchDelete(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.batchDelete(arg_request, arg_parent, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--batchUpdate', () {
+    unittest.test('method--batchUpdate', () async {
       var mock = HttpServerMock();
       var res = api.Area120TablesApi(mock).tables.rows;
       var arg_request = buildBatchUpdateRowsRequest();
@@ -1131,14 +1121,12 @@ void main() {
         var resp = convert.json.encode(buildBatchUpdateRowsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchUpdate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchUpdateRowsResponse(response as api.BatchUpdateRowsResponse);
-      })));
+      final response =
+          await res.batchUpdate(arg_request, arg_parent, $fields: arg_$fields);
+      checkBatchUpdateRowsResponse(response as api.BatchUpdateRowsResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.Area120TablesApi(mock).tables.rows;
       var arg_request = buildRow();
@@ -1195,14 +1183,12 @@ void main() {
         var resp = convert.json.encode(buildRow());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, view: arg_view, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRow(response as api.Row);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          view: arg_view, $fields: arg_$fields);
+      checkRow(response as api.Row);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.Area120TablesApi(mock).tables.rows;
       var arg_name = 'foo';
@@ -1250,14 +1236,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.Area120TablesApi(mock).tables.rows;
       var arg_name = 'foo';
@@ -1310,14 +1293,12 @@ void main() {
         var resp = convert.json.encode(buildRow());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, view: arg_view, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRow(response as api.Row);
-      })));
+      final response =
+          await res.get(arg_name, view: arg_view, $fields: arg_$fields);
+      checkRow(response as api.Row);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.Area120TablesApi(mock).tables.rows;
       var arg_parent = 'foo';
@@ -1385,19 +1366,16 @@ void main() {
         var resp = convert.json.encode(buildListRowsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListRowsResponse(response as api.ListRowsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListRowsResponse(response as api.ListRowsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.Area120TablesApi(mock).tables.rows;
       var arg_request = buildRow();
@@ -1459,17 +1437,14 @@ void main() {
         var resp = convert.json.encode(buildRow());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, view: arg_view, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRow(response as api.Row);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, view: arg_view, $fields: arg_$fields);
+      checkRow(response as api.Row);
     });
   });
 
   unittest.group('resource-WorkspacesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.Area120TablesApi(mock).workspaces;
       var arg_name = 'foo';
@@ -1517,14 +1492,11 @@ void main() {
         var resp = convert.json.encode(buildWorkspace());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWorkspace(response as api.Workspace);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkWorkspace(response as api.Workspace);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.Area120TablesApi(mock).workspaces;
       var arg_pageSize = 42;
@@ -1580,14 +1552,11 @@ void main() {
         var resp = convert.json.encode(buildListWorkspacesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListWorkspacesResponse(response as api.ListWorkspacesResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListWorkspacesResponse(response as api.ListWorkspacesResponse);
     });
   });
 }

@@ -2014,7 +2014,7 @@ void checkStringFilter(api.StringFilter o) {
 
 void main() {
   unittest.group('obj-schema-BatchRunPivotReportsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchRunPivotReportsRequest();
       var od = api.BatchRunPivotReportsRequest.fromJson(o.toJson());
       checkBatchRunPivotReportsRequest(od as api.BatchRunPivotReportsRequest);
@@ -2022,7 +2022,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchRunPivotReportsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchRunPivotReportsResponse();
       var od = api.BatchRunPivotReportsResponse.fromJson(o.toJson());
       checkBatchRunPivotReportsResponse(od as api.BatchRunPivotReportsResponse);
@@ -2030,7 +2030,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchRunReportsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchRunReportsRequest();
       var od = api.BatchRunReportsRequest.fromJson(o.toJson());
       checkBatchRunReportsRequest(od as api.BatchRunReportsRequest);
@@ -2038,7 +2038,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchRunReportsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchRunReportsResponse();
       var od = api.BatchRunReportsResponse.fromJson(o.toJson());
       checkBatchRunReportsResponse(od as api.BatchRunReportsResponse);
@@ -2046,7 +2046,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BetweenFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBetweenFilter();
       var od = api.BetweenFilter.fromJson(o.toJson());
       checkBetweenFilter(od as api.BetweenFilter);
@@ -2054,7 +2054,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CaseExpression', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCaseExpression();
       var od = api.CaseExpression.fromJson(o.toJson());
       checkCaseExpression(od as api.CaseExpression);
@@ -2062,7 +2062,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Cohort', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCohort();
       var od = api.Cohort.fromJson(o.toJson());
       checkCohort(od as api.Cohort);
@@ -2070,7 +2070,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CohortReportSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCohortReportSettings();
       var od = api.CohortReportSettings.fromJson(o.toJson());
       checkCohortReportSettings(od as api.CohortReportSettings);
@@ -2078,7 +2078,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CohortSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCohortSpec();
       var od = api.CohortSpec.fromJson(o.toJson());
       checkCohortSpec(od as api.CohortSpec);
@@ -2086,7 +2086,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CohortsRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCohortsRange();
       var od = api.CohortsRange.fromJson(o.toJson());
       checkCohortsRange(od as api.CohortsRange);
@@ -2094,7 +2094,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ConcatenateExpression', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildConcatenateExpression();
       var od = api.ConcatenateExpression.fromJson(o.toJson());
       checkConcatenateExpression(od as api.ConcatenateExpression);
@@ -2102,7 +2102,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DateRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDateRange();
       var od = api.DateRange.fromJson(o.toJson());
       checkDateRange(od as api.DateRange);
@@ -2110,7 +2110,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Dimension', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDimension();
       var od = api.Dimension.fromJson(o.toJson());
       checkDimension(od as api.Dimension);
@@ -2118,7 +2118,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DimensionExpression', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDimensionExpression();
       var od = api.DimensionExpression.fromJson(o.toJson());
       checkDimensionExpression(od as api.DimensionExpression);
@@ -2126,7 +2126,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DimensionHeader', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDimensionHeader();
       var od = api.DimensionHeader.fromJson(o.toJson());
       checkDimensionHeader(od as api.DimensionHeader);
@@ -2134,7 +2134,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DimensionMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDimensionMetadata();
       var od = api.DimensionMetadata.fromJson(o.toJson());
       checkDimensionMetadata(od as api.DimensionMetadata);
@@ -2142,7 +2142,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DimensionOrderBy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDimensionOrderBy();
       var od = api.DimensionOrderBy.fromJson(o.toJson());
       checkDimensionOrderBy(od as api.DimensionOrderBy);
@@ -2150,7 +2150,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DimensionValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDimensionValue();
       var od = api.DimensionValue.fromJson(o.toJson());
       checkDimensionValue(od as api.DimensionValue);
@@ -2158,7 +2158,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Entity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntity();
       var od = api.Entity.fromJson(o.toJson());
       checkEntity(od as api.Entity);
@@ -2166,7 +2166,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Filter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilter();
       var od = api.Filter.fromJson(o.toJson());
       checkFilter(od as api.Filter);
@@ -2174,7 +2174,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FilterExpression', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilterExpression();
       var od = api.FilterExpression.fromJson(o.toJson());
       checkFilterExpression(od as api.FilterExpression);
@@ -2182,7 +2182,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FilterExpressionList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFilterExpressionList();
       var od = api.FilterExpressionList.fromJson(o.toJson());
       checkFilterExpressionList(od as api.FilterExpressionList);
@@ -2190,7 +2190,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InListFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInListFilter();
       var od = api.InListFilter.fromJson(o.toJson());
       checkInListFilter(od as api.InListFilter);
@@ -2198,7 +2198,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Metadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetadata();
       var od = api.Metadata.fromJson(o.toJson());
       checkMetadata(od as api.Metadata);
@@ -2206,7 +2206,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Metric', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetric();
       var od = api.Metric.fromJson(o.toJson());
       checkMetric(od as api.Metric);
@@ -2214,7 +2214,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricHeader', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricHeader();
       var od = api.MetricHeader.fromJson(o.toJson());
       checkMetricHeader(od as api.MetricHeader);
@@ -2222,7 +2222,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricMetadata();
       var od = api.MetricMetadata.fromJson(o.toJson());
       checkMetricMetadata(od as api.MetricMetadata);
@@ -2230,7 +2230,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricOrderBy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricOrderBy();
       var od = api.MetricOrderBy.fromJson(o.toJson());
       checkMetricOrderBy(od as api.MetricOrderBy);
@@ -2238,7 +2238,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricValue();
       var od = api.MetricValue.fromJson(o.toJson());
       checkMetricValue(od as api.MetricValue);
@@ -2246,7 +2246,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NumericFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNumericFilter();
       var od = api.NumericFilter.fromJson(o.toJson());
       checkNumericFilter(od as api.NumericFilter);
@@ -2254,7 +2254,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NumericValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNumericValue();
       var od = api.NumericValue.fromJson(o.toJson());
       checkNumericValue(od as api.NumericValue);
@@ -2262,7 +2262,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrderBy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrderBy();
       var od = api.OrderBy.fromJson(o.toJson());
       checkOrderBy(od as api.OrderBy);
@@ -2270,7 +2270,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Pivot', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPivot();
       var od = api.Pivot.fromJson(o.toJson());
       checkPivot(od as api.Pivot);
@@ -2278,7 +2278,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PivotDimensionHeader', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPivotDimensionHeader();
       var od = api.PivotDimensionHeader.fromJson(o.toJson());
       checkPivotDimensionHeader(od as api.PivotDimensionHeader);
@@ -2286,7 +2286,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PivotHeader', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPivotHeader();
       var od = api.PivotHeader.fromJson(o.toJson());
       checkPivotHeader(od as api.PivotHeader);
@@ -2294,7 +2294,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PivotOrderBy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPivotOrderBy();
       var od = api.PivotOrderBy.fromJson(o.toJson());
       checkPivotOrderBy(od as api.PivotOrderBy);
@@ -2302,7 +2302,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PivotSelection', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPivotSelection();
       var od = api.PivotSelection.fromJson(o.toJson());
       checkPivotSelection(od as api.PivotSelection);
@@ -2310,7 +2310,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PropertyQuota', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPropertyQuota();
       var od = api.PropertyQuota.fromJson(o.toJson());
       checkPropertyQuota(od as api.PropertyQuota);
@@ -2318,7 +2318,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QuotaStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQuotaStatus();
       var od = api.QuotaStatus.fromJson(o.toJson());
       checkQuotaStatus(od as api.QuotaStatus);
@@ -2326,7 +2326,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResponseMetaData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResponseMetaData();
       var od = api.ResponseMetaData.fromJson(o.toJson());
       checkResponseMetaData(od as api.ResponseMetaData);
@@ -2334,7 +2334,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Row', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRow();
       var od = api.Row.fromJson(o.toJson());
       checkRow(od as api.Row);
@@ -2342,7 +2342,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RunPivotReportRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRunPivotReportRequest();
       var od = api.RunPivotReportRequest.fromJson(o.toJson());
       checkRunPivotReportRequest(od as api.RunPivotReportRequest);
@@ -2350,7 +2350,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RunPivotReportResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRunPivotReportResponse();
       var od = api.RunPivotReportResponse.fromJson(o.toJson());
       checkRunPivotReportResponse(od as api.RunPivotReportResponse);
@@ -2358,7 +2358,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RunRealtimeReportRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRunRealtimeReportRequest();
       var od = api.RunRealtimeReportRequest.fromJson(o.toJson());
       checkRunRealtimeReportRequest(od as api.RunRealtimeReportRequest);
@@ -2366,7 +2366,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RunRealtimeReportResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRunRealtimeReportResponse();
       var od = api.RunRealtimeReportResponse.fromJson(o.toJson());
       checkRunRealtimeReportResponse(od as api.RunRealtimeReportResponse);
@@ -2374,7 +2374,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RunReportRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRunReportRequest();
       var od = api.RunReportRequest.fromJson(o.toJson());
       checkRunReportRequest(od as api.RunReportRequest);
@@ -2382,7 +2382,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RunReportResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRunReportResponse();
       var od = api.RunReportResponse.fromJson(o.toJson());
       checkRunReportResponse(od as api.RunReportResponse);
@@ -2390,7 +2390,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StringFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStringFilter();
       var od = api.StringFilter.fromJson(o.toJson());
       checkStringFilter(od as api.StringFilter);
@@ -2398,7 +2398,7 @@ void main() {
   });
 
   unittest.group('resource-PropertiesResource', () {
-    unittest.test('method--getMetadata', () {
+    unittest.test('method--getMetadata', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsDataApi(mock).properties;
       var arg_name = 'foo';
@@ -2446,14 +2446,11 @@ void main() {
         var resp = convert.json.encode(buildMetadata());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getMetadata(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMetadata(response as api.Metadata);
-      })));
+      final response = await res.getMetadata(arg_name, $fields: arg_$fields);
+      checkMetadata(response as api.Metadata);
     });
 
-    unittest.test('method--runRealtimeReport', () {
+    unittest.test('method--runRealtimeReport', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsDataApi(mock).properties;
       var arg_request = buildRunRealtimeReportRequest();
@@ -2506,17 +2503,14 @@ void main() {
         var resp = convert.json.encode(buildRunRealtimeReportResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .runRealtimeReport(arg_request, arg_property, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRunRealtimeReportResponse(
-            response as api.RunRealtimeReportResponse);
-      })));
+      final response = await res.runRealtimeReport(arg_request, arg_property,
+          $fields: arg_$fields);
+      checkRunRealtimeReportResponse(response as api.RunRealtimeReportResponse);
     });
   });
 
   unittest.group('resource-V1alphaResource', () {
-    unittest.test('method--batchRunPivotReports', () {
+    unittest.test('method--batchRunPivotReports', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsDataApi(mock).v1alpha;
       var arg_request = buildBatchRunPivotReportsRequest();
@@ -2568,15 +2562,13 @@ void main() {
         var resp = convert.json.encode(buildBatchRunPivotReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchRunPivotReports(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchRunPivotReportsResponse(
-            response as api.BatchRunPivotReportsResponse);
-      })));
+      final response =
+          await res.batchRunPivotReports(arg_request, $fields: arg_$fields);
+      checkBatchRunPivotReportsResponse(
+          response as api.BatchRunPivotReportsResponse);
     });
 
-    unittest.test('method--batchRunReports', () {
+    unittest.test('method--batchRunReports', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsDataApi(mock).v1alpha;
       var arg_request = buildBatchRunReportsRequest();
@@ -2627,14 +2619,12 @@ void main() {
         var resp = convert.json.encode(buildBatchRunReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchRunReports(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchRunReportsResponse(response as api.BatchRunReportsResponse);
-      })));
+      final response =
+          await res.batchRunReports(arg_request, $fields: arg_$fields);
+      checkBatchRunReportsResponse(response as api.BatchRunReportsResponse);
     });
 
-    unittest.test('method--runPivotReport', () {
+    unittest.test('method--runPivotReport', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsDataApi(mock).v1alpha;
       var arg_request = buildRunPivotReportRequest();
@@ -2685,14 +2675,12 @@ void main() {
         var resp = convert.json.encode(buildRunPivotReportResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .runPivotReport(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRunPivotReportResponse(response as api.RunPivotReportResponse);
-      })));
+      final response =
+          await res.runPivotReport(arg_request, $fields: arg_$fields);
+      checkRunPivotReportResponse(response as api.RunPivotReportResponse);
     });
 
-    unittest.test('method--runReport', () {
+    unittest.test('method--runReport', () async {
       var mock = HttpServerMock();
       var res = api.AnalyticsDataApi(mock).v1alpha;
       var arg_request = buildRunReportRequest();
@@ -2743,11 +2731,8 @@ void main() {
         var resp = convert.json.encode(buildRunReportResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .runReport(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRunReportResponse(response as api.RunReportResponse);
-      })));
+      final response = await res.runReport(arg_request, $fields: arg_$fields);
+      checkRunReportResponse(response as api.RunReportResponse);
     });
   });
 }

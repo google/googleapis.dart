@@ -3845,7 +3845,7 @@ void checkGoogleTypeExpr(api.GoogleTypeExpr o) {
 
 void main() {
   unittest.group('obj-schema-GoogleApiHttpBody', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiHttpBody();
       var od = api.GoogleApiHttpBody.fromJson(o.toJson());
       checkGoogleApiHttpBody(od as api.GoogleApiHttpBody);
@@ -3855,7 +3855,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig();
       var od =
@@ -3870,7 +3870,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig();
       var od =
@@ -3884,7 +3884,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudMlV1HyperparameterOutputHyperparameterMetric', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1HyperparameterOutputHyperparameterMetric();
       var od =
           api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(
@@ -3895,7 +3895,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1MeasurementMetric', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1MeasurementMetric();
       var od = api.GoogleCloudMlV1MeasurementMetric.fromJson(o.toJson());
       checkGoogleCloudMlV1MeasurementMetric(
@@ -3906,7 +3906,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec();
       var od = api.GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec
@@ -3919,7 +3919,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec();
       var od =
           api.GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec.fromJson(
@@ -3931,7 +3931,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec();
       var od =
           api.GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromJson(
@@ -3943,7 +3943,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec();
       var od =
           api.GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromJson(
@@ -3956,7 +3956,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec();
       var od =
@@ -3971,7 +3971,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec();
       var od =
@@ -3986,7 +3986,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec();
       var od =
@@ -3999,7 +3999,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1StudyConfigMetricSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1StudyConfigMetricSpec();
       var od = api.GoogleCloudMlV1StudyConfigMetricSpec.fromJson(o.toJson());
       checkGoogleCloudMlV1StudyConfigMetricSpec(
@@ -4008,7 +4008,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1StudyConfigParameterSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1StudyConfigParameterSpec();
       var od = api.GoogleCloudMlV1StudyConfigParameterSpec.fromJson(o.toJson());
       checkGoogleCloudMlV1StudyConfigParameterSpec(
@@ -4017,7 +4017,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1TrialParameter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1TrialParameter();
       var od = api.GoogleCloudMlV1TrialParameter.fromJson(o.toJson());
       checkGoogleCloudMlV1TrialParameter(
@@ -4026,7 +4026,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1AcceleratorConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1AcceleratorConfig();
       var od = api.GoogleCloudMlV1AcceleratorConfig.fromJson(o.toJson());
       checkGoogleCloudMlV1AcceleratorConfig(
@@ -4035,7 +4035,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1AddTrialMeasurementRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1AddTrialMeasurementRequest();
       var od =
           api.GoogleCloudMlV1AddTrialMeasurementRequest.fromJson(o.toJson());
@@ -4045,7 +4045,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1AutoScaling', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1AutoScaling();
       var od = api.GoogleCloudMlV1AutoScaling.fromJson(o.toJson());
       checkGoogleCloudMlV1AutoScaling(od as api.GoogleCloudMlV1AutoScaling);
@@ -4053,7 +4053,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1AutomatedStoppingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1AutomatedStoppingConfig();
       var od = api.GoogleCloudMlV1AutomatedStoppingConfig.fromJson(o.toJson());
       checkGoogleCloudMlV1AutomatedStoppingConfig(
@@ -4062,7 +4062,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1BuiltInAlgorithmOutput', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1BuiltInAlgorithmOutput();
       var od = api.GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(o.toJson());
       checkGoogleCloudMlV1BuiltInAlgorithmOutput(
@@ -4071,7 +4071,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1CancelJobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1CancelJobRequest();
       var od = api.GoogleCloudMlV1CancelJobRequest.fromJson(o.toJson());
       checkGoogleCloudMlV1CancelJobRequest(
@@ -4080,7 +4080,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1Capability', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Capability();
       var od = api.GoogleCloudMlV1Capability.fromJson(o.toJson());
       checkGoogleCloudMlV1Capability(od as api.GoogleCloudMlV1Capability);
@@ -4089,7 +4089,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata();
       var od =
           api.GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata.fromJson(
@@ -4101,7 +4101,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1CheckTrialEarlyStoppingStateRequest();
       var od = api.GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest.fromJson(
           o.toJson());
@@ -4112,7 +4112,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1CheckTrialEarlyStoppingStateResponse();
       var od = api.GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse.fromJson(
           o.toJson());
@@ -4122,7 +4122,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1CompleteTrialRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1CompleteTrialRequest();
       var od = api.GoogleCloudMlV1CompleteTrialRequest.fromJson(o.toJson());
       checkGoogleCloudMlV1CompleteTrialRequest(
@@ -4131,7 +4131,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1Config', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Config();
       var od = api.GoogleCloudMlV1Config.fromJson(o.toJson());
       checkGoogleCloudMlV1Config(od as api.GoogleCloudMlV1Config);
@@ -4139,7 +4139,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1ContainerPort', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ContainerPort();
       var od = api.GoogleCloudMlV1ContainerPort.fromJson(o.toJson());
       checkGoogleCloudMlV1ContainerPort(od as api.GoogleCloudMlV1ContainerPort);
@@ -4147,7 +4147,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1ContainerSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ContainerSpec();
       var od = api.GoogleCloudMlV1ContainerSpec.fromJson(o.toJson());
       checkGoogleCloudMlV1ContainerSpec(od as api.GoogleCloudMlV1ContainerSpec);
@@ -4155,7 +4155,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1DiskConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1DiskConfig();
       var od = api.GoogleCloudMlV1DiskConfig.fromJson(o.toJson());
       checkGoogleCloudMlV1DiskConfig(od as api.GoogleCloudMlV1DiskConfig);
@@ -4163,7 +4163,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1EncryptionConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1EncryptionConfig();
       var od = api.GoogleCloudMlV1EncryptionConfig.fromJson(o.toJson());
       checkGoogleCloudMlV1EncryptionConfig(
@@ -4172,7 +4172,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1EnvVar', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1EnvVar();
       var od = api.GoogleCloudMlV1EnvVar.fromJson(o.toJson());
       checkGoogleCloudMlV1EnvVar(od as api.GoogleCloudMlV1EnvVar);
@@ -4180,7 +4180,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1ExplainRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ExplainRequest();
       var od = api.GoogleCloudMlV1ExplainRequest.fromJson(o.toJson());
       checkGoogleCloudMlV1ExplainRequest(
@@ -4189,7 +4189,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1ExplanationConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ExplanationConfig();
       var od = api.GoogleCloudMlV1ExplanationConfig.fromJson(o.toJson());
       checkGoogleCloudMlV1ExplanationConfig(
@@ -4198,7 +4198,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1GetConfigResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1GetConfigResponse();
       var od = api.GoogleCloudMlV1GetConfigResponse.fromJson(o.toJson());
       checkGoogleCloudMlV1GetConfigResponse(
@@ -4207,7 +4207,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1HyperparameterOutput', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1HyperparameterOutput();
       var od = api.GoogleCloudMlV1HyperparameterOutput.fromJson(o.toJson());
       checkGoogleCloudMlV1HyperparameterOutput(
@@ -4216,7 +4216,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1HyperparameterSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1HyperparameterSpec();
       var od = api.GoogleCloudMlV1HyperparameterSpec.fromJson(o.toJson());
       checkGoogleCloudMlV1HyperparameterSpec(
@@ -4226,7 +4226,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudMlV1IntegratedGradientsAttribution',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1IntegratedGradientsAttribution();
       var od = api.GoogleCloudMlV1IntegratedGradientsAttribution.fromJson(
           o.toJson());
@@ -4236,7 +4236,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1Job', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Job();
       var od = api.GoogleCloudMlV1Job.fromJson(o.toJson());
       checkGoogleCloudMlV1Job(od as api.GoogleCloudMlV1Job);
@@ -4244,7 +4244,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1ListJobsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ListJobsResponse();
       var od = api.GoogleCloudMlV1ListJobsResponse.fromJson(o.toJson());
       checkGoogleCloudMlV1ListJobsResponse(
@@ -4253,7 +4253,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ListLocationsResponse();
       var od = api.GoogleCloudMlV1ListLocationsResponse.fromJson(o.toJson());
       checkGoogleCloudMlV1ListLocationsResponse(
@@ -4262,7 +4262,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1ListModelsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ListModelsResponse();
       var od = api.GoogleCloudMlV1ListModelsResponse.fromJson(o.toJson());
       checkGoogleCloudMlV1ListModelsResponse(
@@ -4271,7 +4271,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1ListOptimalTrialsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ListOptimalTrialsRequest();
       var od = api.GoogleCloudMlV1ListOptimalTrialsRequest.fromJson(o.toJson());
       checkGoogleCloudMlV1ListOptimalTrialsRequest(
@@ -4280,7 +4280,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1ListOptimalTrialsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ListOptimalTrialsResponse();
       var od =
           api.GoogleCloudMlV1ListOptimalTrialsResponse.fromJson(o.toJson());
@@ -4290,7 +4290,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1ListStudiesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ListStudiesResponse();
       var od = api.GoogleCloudMlV1ListStudiesResponse.fromJson(o.toJson());
       checkGoogleCloudMlV1ListStudiesResponse(
@@ -4299,7 +4299,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1ListTrialsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ListTrialsResponse();
       var od = api.GoogleCloudMlV1ListTrialsResponse.fromJson(o.toJson());
       checkGoogleCloudMlV1ListTrialsResponse(
@@ -4308,7 +4308,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1ListVersionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ListVersionsResponse();
       var od = api.GoogleCloudMlV1ListVersionsResponse.fromJson(o.toJson());
       checkGoogleCloudMlV1ListVersionsResponse(
@@ -4317,7 +4317,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Location();
       var od = api.GoogleCloudMlV1Location.fromJson(o.toJson());
       checkGoogleCloudMlV1Location(od as api.GoogleCloudMlV1Location);
@@ -4325,7 +4325,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1ManualScaling', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ManualScaling();
       var od = api.GoogleCloudMlV1ManualScaling.fromJson(o.toJson());
       checkGoogleCloudMlV1ManualScaling(od as api.GoogleCloudMlV1ManualScaling);
@@ -4333,7 +4333,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1Measurement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Measurement();
       var od = api.GoogleCloudMlV1Measurement.fromJson(o.toJson());
       checkGoogleCloudMlV1Measurement(od as api.GoogleCloudMlV1Measurement);
@@ -4341,7 +4341,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1MetricSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1MetricSpec();
       var od = api.GoogleCloudMlV1MetricSpec.fromJson(o.toJson());
       checkGoogleCloudMlV1MetricSpec(od as api.GoogleCloudMlV1MetricSpec);
@@ -4349,7 +4349,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1Model', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Model();
       var od = api.GoogleCloudMlV1Model.fromJson(o.toJson());
       checkGoogleCloudMlV1Model(od as api.GoogleCloudMlV1Model);
@@ -4357,7 +4357,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1OperationMetadata();
       var od = api.GoogleCloudMlV1OperationMetadata.fromJson(o.toJson());
       checkGoogleCloudMlV1OperationMetadata(
@@ -4366,7 +4366,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1ParameterSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ParameterSpec();
       var od = api.GoogleCloudMlV1ParameterSpec.fromJson(o.toJson());
       checkGoogleCloudMlV1ParameterSpec(od as api.GoogleCloudMlV1ParameterSpec);
@@ -4374,7 +4374,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1PredictRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1PredictRequest();
       var od = api.GoogleCloudMlV1PredictRequest.fromJson(o.toJson());
       checkGoogleCloudMlV1PredictRequest(
@@ -4383,7 +4383,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1PredictionInput', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1PredictionInput();
       var od = api.GoogleCloudMlV1PredictionInput.fromJson(o.toJson());
       checkGoogleCloudMlV1PredictionInput(
@@ -4392,7 +4392,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1PredictionOutput', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1PredictionOutput();
       var od = api.GoogleCloudMlV1PredictionOutput.fromJson(o.toJson());
       checkGoogleCloudMlV1PredictionOutput(
@@ -4401,7 +4401,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1ReplicaConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ReplicaConfig();
       var od = api.GoogleCloudMlV1ReplicaConfig.fromJson(o.toJson());
       checkGoogleCloudMlV1ReplicaConfig(od as api.GoogleCloudMlV1ReplicaConfig);
@@ -4409,7 +4409,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1RequestLoggingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1RequestLoggingConfig();
       var od = api.GoogleCloudMlV1RequestLoggingConfig.fromJson(o.toJson());
       checkGoogleCloudMlV1RequestLoggingConfig(
@@ -4418,7 +4418,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1RouteMap', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1RouteMap();
       var od = api.GoogleCloudMlV1RouteMap.fromJson(o.toJson());
       checkGoogleCloudMlV1RouteMap(od as api.GoogleCloudMlV1RouteMap);
@@ -4426,7 +4426,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1SampledShapleyAttribution', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1SampledShapleyAttribution();
       var od =
           api.GoogleCloudMlV1SampledShapleyAttribution.fromJson(o.toJson());
@@ -4436,7 +4436,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1Scheduling', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Scheduling();
       var od = api.GoogleCloudMlV1Scheduling.fromJson(o.toJson());
       checkGoogleCloudMlV1Scheduling(od as api.GoogleCloudMlV1Scheduling);
@@ -4444,7 +4444,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1SetDefaultVersionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1SetDefaultVersionRequest();
       var od = api.GoogleCloudMlV1SetDefaultVersionRequest.fromJson(o.toJson());
       checkGoogleCloudMlV1SetDefaultVersionRequest(
@@ -4453,7 +4453,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1StopTrialRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1StopTrialRequest();
       var od = api.GoogleCloudMlV1StopTrialRequest.fromJson(o.toJson());
       checkGoogleCloudMlV1StopTrialRequest(
@@ -4462,7 +4462,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1Study', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Study();
       var od = api.GoogleCloudMlV1Study.fromJson(o.toJson());
       checkGoogleCloudMlV1Study(od as api.GoogleCloudMlV1Study);
@@ -4470,7 +4470,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1StudyConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1StudyConfig();
       var od = api.GoogleCloudMlV1StudyConfig.fromJson(o.toJson());
       checkGoogleCloudMlV1StudyConfig(od as api.GoogleCloudMlV1StudyConfig);
@@ -4478,7 +4478,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1SuggestTrialsMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1SuggestTrialsMetadata();
       var od = api.GoogleCloudMlV1SuggestTrialsMetadata.fromJson(o.toJson());
       checkGoogleCloudMlV1SuggestTrialsMetadata(
@@ -4487,7 +4487,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1SuggestTrialsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1SuggestTrialsRequest();
       var od = api.GoogleCloudMlV1SuggestTrialsRequest.fromJson(o.toJson());
       checkGoogleCloudMlV1SuggestTrialsRequest(
@@ -4496,7 +4496,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1SuggestTrialsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1SuggestTrialsResponse();
       var od = api.GoogleCloudMlV1SuggestTrialsResponse.fromJson(o.toJson());
       checkGoogleCloudMlV1SuggestTrialsResponse(
@@ -4505,7 +4505,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1TrainingInput', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1TrainingInput();
       var od = api.GoogleCloudMlV1TrainingInput.fromJson(o.toJson());
       checkGoogleCloudMlV1TrainingInput(od as api.GoogleCloudMlV1TrainingInput);
@@ -4513,7 +4513,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1TrainingOutput', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1TrainingOutput();
       var od = api.GoogleCloudMlV1TrainingOutput.fromJson(o.toJson());
       checkGoogleCloudMlV1TrainingOutput(
@@ -4522,7 +4522,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1Trial', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Trial();
       var od = api.GoogleCloudMlV1Trial.fromJson(o.toJson());
       checkGoogleCloudMlV1Trial(od as api.GoogleCloudMlV1Trial);
@@ -4530,7 +4530,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1Version', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Version();
       var od = api.GoogleCloudMlV1Version.fromJson(o.toJson());
       checkGoogleCloudMlV1Version(od as api.GoogleCloudMlV1Version);
@@ -4538,7 +4538,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudMlV1XraiAttribution', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1XraiAttribution();
       var od = api.GoogleCloudMlV1XraiAttribution.fromJson(o.toJson());
       checkGoogleCloudMlV1XraiAttribution(
@@ -4547,7 +4547,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1AuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1AuditConfig();
       var od = api.GoogleIamV1AuditConfig.fromJson(o.toJson());
       checkGoogleIamV1AuditConfig(od as api.GoogleIamV1AuditConfig);
@@ -4555,7 +4555,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1AuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1AuditLogConfig();
       var od = api.GoogleIamV1AuditLogConfig.fromJson(o.toJson());
       checkGoogleIamV1AuditLogConfig(od as api.GoogleIamV1AuditLogConfig);
@@ -4563,7 +4563,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1Binding();
       var od = api.GoogleIamV1Binding.fromJson(o.toJson());
       checkGoogleIamV1Binding(od as api.GoogleIamV1Binding);
@@ -4571,7 +4571,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1Policy();
       var od = api.GoogleIamV1Policy.fromJson(o.toJson());
       checkGoogleIamV1Policy(od as api.GoogleIamV1Policy);
@@ -4579,7 +4579,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1SetIamPolicyRequest();
       var od = api.GoogleIamV1SetIamPolicyRequest.fromJson(o.toJson());
       checkGoogleIamV1SetIamPolicyRequest(
@@ -4588,7 +4588,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1TestIamPermissionsRequest();
       var od = api.GoogleIamV1TestIamPermissionsRequest.fromJson(o.toJson());
       checkGoogleIamV1TestIamPermissionsRequest(
@@ -4597,7 +4597,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1TestIamPermissionsResponse();
       var od = api.GoogleIamV1TestIamPermissionsResponse.fromJson(o.toJson());
       checkGoogleIamV1TestIamPermissionsResponse(
@@ -4606,7 +4606,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
       var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
       checkGoogleLongrunningListOperationsResponse(
@@ -4615,7 +4615,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
@@ -4623,7 +4623,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
@@ -4631,7 +4631,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleRpcStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
       var od = api.GoogleRpcStatus.fromJson(o.toJson());
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
@@ -4639,7 +4639,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypeExpr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeExpr();
       var od = api.GoogleTypeExpr.fromJson(o.toJson());
       checkGoogleTypeExpr(od as api.GoogleTypeExpr);
@@ -4647,7 +4647,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsResource', () {
-    unittest.test('method--explain', () {
+    unittest.test('method--explain', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects;
       var arg_request = buildGoogleCloudMlV1ExplainRequest();
@@ -4701,14 +4701,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .explain(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
-      })));
+      final response =
+          await res.explain(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
     });
 
-    unittest.test('method--getConfig', () {
+    unittest.test('method--getConfig', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects;
       var arg_name = 'foo';
@@ -4756,15 +4754,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudMlV1GetConfigResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getConfig(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1GetConfigResponse(
-            response as api.GoogleCloudMlV1GetConfigResponse);
-      })));
+      final response = await res.getConfig(arg_name, $fields: arg_$fields);
+      checkGoogleCloudMlV1GetConfigResponse(
+          response as api.GoogleCloudMlV1GetConfigResponse);
     });
 
-    unittest.test('method--predict', () {
+    unittest.test('method--predict', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects;
       var arg_request = buildGoogleCloudMlV1PredictRequest();
@@ -4818,16 +4813,14 @@ void main() {
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .predict(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
-      })));
+      final response =
+          await res.predict(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
     });
   });
 
   unittest.group('resource-ProjectsJobsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.jobs;
       var arg_request = buildGoogleCloudMlV1CancelJobRequest();
@@ -4881,14 +4874,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.jobs;
       var arg_request = buildGoogleCloudMlV1Job();
@@ -4941,14 +4932,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudMlV1Job());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1Job(response as api.GoogleCloudMlV1Job);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudMlV1Job(response as api.GoogleCloudMlV1Job);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.jobs;
       var arg_name = 'foo';
@@ -4996,14 +4985,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudMlV1Job());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1Job(response as api.GoogleCloudMlV1Job);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudMlV1Job(response as api.GoogleCloudMlV1Job);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.jobs;
       var arg_resource = 'foo';
@@ -5056,17 +5042,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleIamV1Policy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.jobs;
       var arg_parent = 'foo';
@@ -5129,19 +5111,16 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudMlV1ListJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1ListJobsResponse(
-            response as api.GoogleCloudMlV1ListJobsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudMlV1ListJobsResponse(
+          response as api.GoogleCloudMlV1ListJobsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.jobs;
       var arg_request = buildGoogleCloudMlV1Job();
@@ -5199,15 +5178,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudMlV1Job());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1Job(response as api.GoogleCloudMlV1Job);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleCloudMlV1Job(response as api.GoogleCloudMlV1Job);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.jobs;
       var arg_request = buildGoogleIamV1SetIamPolicyRequest();
@@ -5261,14 +5237,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleIamV1Policy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.jobs;
       var arg_request = buildGoogleIamV1TestIamPermissionsRequest();
@@ -5323,17 +5297,15 @@ void main() {
             convert.json.encode(buildGoogleIamV1TestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleIamV1TestIamPermissionsResponse(
-            response as api.GoogleIamV1TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkGoogleIamV1TestIamPermissionsResponse(
+          response as api.GoogleIamV1TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -5381,14 +5353,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudMlV1Location());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1Location(response as api.GoogleCloudMlV1Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudMlV1Location(response as api.GoogleCloudMlV1Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.locations;
       var arg_parent = 'foo';
@@ -5447,20 +5416,17 @@ void main() {
             convert.json.encode(buildGoogleCloudMlV1ListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1ListLocationsResponse(
-            response as api.GoogleCloudMlV1ListLocationsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudMlV1ListLocationsResponse(
+          response as api.GoogleCloudMlV1ListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudMachineLearningEngineApi(mock).projects.locations.operations;
@@ -5509,14 +5475,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.cancel(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudMachineLearningEngineApi(mock).projects.locations.operations;
@@ -5565,17 +5528,14 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsStudiesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudMachineLearningEngineApi(mock).projects.locations.studies;
@@ -5634,15 +5594,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudMlV1Study());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              studyId: arg_studyId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1Study(response as api.GoogleCloudMlV1Study);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          studyId: arg_studyId, $fields: arg_$fields);
+      checkGoogleCloudMlV1Study(response as api.GoogleCloudMlV1Study);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudMachineLearningEngineApi(mock).projects.locations.studies;
@@ -5691,14 +5648,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudMachineLearningEngineApi(mock).projects.locations.studies;
@@ -5747,14 +5701,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudMlV1Study());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1Study(response as api.GoogleCloudMlV1Study);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudMlV1Study(response as api.GoogleCloudMlV1Study);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudMachineLearningEngineApi(mock).projects.locations.studies;
@@ -5804,17 +5755,14 @@ void main() {
             convert.json.encode(buildGoogleCloudMlV1ListStudiesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1ListStudiesResponse(
-            response as api.GoogleCloudMlV1ListStudiesResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkGoogleCloudMlV1ListStudiesResponse(
+          response as api.GoogleCloudMlV1ListStudiesResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsStudiesTrialsResource', () {
-    unittest.test('method--addMeasurement', () {
+    unittest.test('method--addMeasurement', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock)
           .projects
@@ -5872,14 +5820,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudMlV1Trial());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .addMeasurement(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1Trial(response as api.GoogleCloudMlV1Trial);
-      })));
+      final response =
+          await res.addMeasurement(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudMlV1Trial(response as api.GoogleCloudMlV1Trial);
     });
 
-    unittest.test('method--checkEarlyStoppingState', () {
+    unittest.test('method--checkEarlyStoppingState', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock)
           .projects
@@ -5939,15 +5885,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .checkEarlyStoppingState(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.checkEarlyStoppingState(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--complete', () {
+    unittest.test('method--complete', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock)
           .projects
@@ -6005,14 +5949,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudMlV1Trial());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .complete(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1Trial(response as api.GoogleCloudMlV1Trial);
-      })));
+      final response =
+          await res.complete(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudMlV1Trial(response as api.GoogleCloudMlV1Trial);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock)
           .projects
@@ -6069,14 +6011,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudMlV1Trial());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1Trial(response as api.GoogleCloudMlV1Trial);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudMlV1Trial(response as api.GoogleCloudMlV1Trial);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock)
           .projects
@@ -6128,14 +6068,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock)
           .projects
@@ -6187,14 +6124,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudMlV1Trial());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1Trial(response as api.GoogleCloudMlV1Trial);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudMlV1Trial(response as api.GoogleCloudMlV1Trial);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock)
           .projects
@@ -6247,15 +6181,12 @@ void main() {
             convert.json.encode(buildGoogleCloudMlV1ListTrialsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1ListTrialsResponse(
-            response as api.GoogleCloudMlV1ListTrialsResponse);
-      })));
+      final response = await res.list(arg_parent, $fields: arg_$fields);
+      checkGoogleCloudMlV1ListTrialsResponse(
+          response as api.GoogleCloudMlV1ListTrialsResponse);
     });
 
-    unittest.test('method--listOptimalTrials', () {
+    unittest.test('method--listOptimalTrials', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock)
           .projects
@@ -6314,15 +6245,13 @@ void main() {
             .encode(buildGoogleCloudMlV1ListOptimalTrialsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listOptimalTrials(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1ListOptimalTrialsResponse(
-            response as api.GoogleCloudMlV1ListOptimalTrialsResponse);
-      })));
+      final response = await res.listOptimalTrials(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkGoogleCloudMlV1ListOptimalTrialsResponse(
+          response as api.GoogleCloudMlV1ListOptimalTrialsResponse);
     });
 
-    unittest.test('method--stop', () {
+    unittest.test('method--stop', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock)
           .projects
@@ -6380,14 +6309,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudMlV1Trial());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .stop(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1Trial(response as api.GoogleCloudMlV1Trial);
-      })));
+      final response =
+          await res.stop(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudMlV1Trial(response as api.GoogleCloudMlV1Trial);
     });
 
-    unittest.test('method--suggest', () {
+    unittest.test('method--suggest', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock)
           .projects
@@ -6445,17 +6372,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .suggest(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.suggest(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 
   unittest.group('resource-ProjectsModelsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.models;
       var arg_request = buildGoogleCloudMlV1Model();
@@ -6508,14 +6433,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudMlV1Model());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1Model(response as api.GoogleCloudMlV1Model);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudMlV1Model(response as api.GoogleCloudMlV1Model);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.models;
       var arg_name = 'foo';
@@ -6563,15 +6486,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.models;
       var arg_name = 'foo';
@@ -6619,14 +6539,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudMlV1Model());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1Model(response as api.GoogleCloudMlV1Model);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudMlV1Model(response as api.GoogleCloudMlV1Model);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.models;
       var arg_resource = 'foo';
@@ -6679,17 +6596,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleIamV1Policy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.models;
       var arg_parent = 'foo';
@@ -6753,19 +6666,16 @@ void main() {
             convert.json.encode(buildGoogleCloudMlV1ListModelsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1ListModelsResponse(
-            response as api.GoogleCloudMlV1ListModelsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudMlV1ListModelsResponse(
+          response as api.GoogleCloudMlV1ListModelsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.models;
       var arg_request = buildGoogleCloudMlV1Model();
@@ -6823,16 +6733,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.models;
       var arg_request = buildGoogleIamV1SetIamPolicyRequest();
@@ -6886,14 +6793,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleIamV1Policy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkGoogleIamV1Policy(response as api.GoogleIamV1Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.models;
       var arg_request = buildGoogleIamV1TestIamPermissionsRequest();
@@ -6948,17 +6853,15 @@ void main() {
             convert.json.encode(buildGoogleIamV1TestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleIamV1TestIamPermissionsResponse(
-            response as api.GoogleIamV1TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkGoogleIamV1TestIamPermissionsResponse(
+          response as api.GoogleIamV1TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsModelsVersionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudMachineLearningEngineApi(mock).projects.models.versions;
@@ -7012,15 +6915,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudMachineLearningEngineApi(mock).projects.models.versions;
@@ -7069,15 +6970,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudMachineLearningEngineApi(mock).projects.models.versions;
@@ -7126,14 +7024,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudMlV1Version());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1Version(response as api.GoogleCloudMlV1Version);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudMlV1Version(response as api.GoogleCloudMlV1Version);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudMachineLearningEngineApi(mock).projects.models.versions;
@@ -7198,19 +7093,16 @@ void main() {
             convert.json.encode(buildGoogleCloudMlV1ListVersionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1ListVersionsResponse(
-            response as api.GoogleCloudMlV1ListVersionsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudMlV1ListVersionsResponse(
+          response as api.GoogleCloudMlV1ListVersionsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudMachineLearningEngineApi(mock).projects.models.versions;
@@ -7269,16 +7161,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--setDefault', () {
+    unittest.test('method--setDefault', () async {
       var mock = HttpServerMock();
       var res =
           api.CloudMachineLearningEngineApi(mock).projects.models.versions;
@@ -7333,16 +7222,14 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudMlV1Version());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setDefault(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudMlV1Version(response as api.GoogleCloudMlV1Version);
-      })));
+      final response =
+          await res.setDefault(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudMlV1Version(response as api.GoogleCloudMlV1Version);
     });
   });
 
   unittest.group('resource-ProjectsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.operations;
       var arg_name = 'foo';
@@ -7390,14 +7277,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.cancel(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.operations;
       var arg_name = 'foo';
@@ -7445,15 +7329,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudMachineLearningEngineApi(mock).projects.operations;
       var arg_name = 'foo';
@@ -7517,16 +7398,13 @@ void main() {
             convert.json.encode(buildGoogleLongrunningListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningListOperationsResponse(
-            response as api.GoogleLongrunningListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleLongrunningListOperationsResponse(
+          response as api.GoogleLongrunningListOperationsResponse);
     });
   });
 }

@@ -4008,7 +4008,7 @@ void checkX509Extension(api.X509Extension o) {
 
 void main() {
   unittest.group('obj-schema-AccessUrls', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccessUrls();
       var od = api.AccessUrls.fromJson(o.toJson());
       checkAccessUrls(od as api.AccessUrls);
@@ -4016,7 +4016,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ActivateCertificateAuthorityRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildActivateCertificateAuthorityRequest();
       var od = api.ActivateCertificateAuthorityRequest.fromJson(o.toJson());
       checkActivateCertificateAuthorityRequest(
@@ -4025,7 +4025,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AllowedConfigList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAllowedConfigList();
       var od = api.AllowedConfigList.fromJson(o.toJson());
       checkAllowedConfigList(od as api.AllowedConfigList);
@@ -4033,7 +4033,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AllowedSubjectAltNames', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAllowedSubjectAltNames();
       var od = api.AllowedSubjectAltNames.fromJson(o.toJson());
       checkAllowedSubjectAltNames(od as api.AllowedSubjectAltNames);
@@ -4041,7 +4041,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
       checkAuditConfig(od as api.AuditConfig);
@@ -4049,7 +4049,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
       checkAuditLogConfig(od as api.AuditLogConfig);
@@ -4057,7 +4057,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BillingView', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBillingView();
       var od = api.BillingView.fromJson(o.toJson());
       checkBillingView(od as api.BillingView);
@@ -4065,7 +4065,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -4073,7 +4073,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CaOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCaOptions();
       var od = api.CaOptions.fromJson(o.toJson());
       checkCaOptions(od as api.CaOptions);
@@ -4081,7 +4081,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
       checkCancelOperationRequest(od as api.CancelOperationRequest);
@@ -4089,7 +4089,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Certificate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCertificate();
       var od = api.Certificate.fromJson(o.toJson());
       checkCertificate(od as api.Certificate);
@@ -4097,7 +4097,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CertificateAuthority', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCertificateAuthority();
       var od = api.CertificateAuthority.fromJson(o.toJson());
       checkCertificateAuthority(od as api.CertificateAuthority);
@@ -4105,7 +4105,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CertificateAuthorityPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCertificateAuthorityPolicy();
       var od = api.CertificateAuthorityPolicy.fromJson(o.toJson());
       checkCertificateAuthorityPolicy(od as api.CertificateAuthorityPolicy);
@@ -4113,7 +4113,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CertificateConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCertificateConfig();
       var od = api.CertificateConfig.fromJson(o.toJson());
       checkCertificateConfig(od as api.CertificateConfig);
@@ -4121,7 +4121,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CertificateDescription', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCertificateDescription();
       var od = api.CertificateDescription.fromJson(o.toJson());
       checkCertificateDescription(od as api.CertificateDescription);
@@ -4129,7 +4129,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CertificateFingerprint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCertificateFingerprint();
       var od = api.CertificateFingerprint.fromJson(o.toJson());
       checkCertificateFingerprint(od as api.CertificateFingerprint);
@@ -4137,7 +4137,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CertificateRevocationList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCertificateRevocationList();
       var od = api.CertificateRevocationList.fromJson(o.toJson());
       checkCertificateRevocationList(od as api.CertificateRevocationList);
@@ -4145,7 +4145,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DisableCertificateAuthorityRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDisableCertificateAuthorityRequest();
       var od = api.DisableCertificateAuthorityRequest.fromJson(o.toJson());
       checkDisableCertificateAuthorityRequest(
@@ -4154,7 +4154,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -4162,7 +4162,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnableCertificateAuthorityRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnableCertificateAuthorityRequest();
       var od = api.EnableCertificateAuthorityRequest.fromJson(o.toJson());
       checkEnableCertificateAuthorityRequest(
@@ -4171,7 +4171,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Exemplar', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExemplar();
       var od = api.Exemplar.fromJson(o.toJson());
       checkExemplar(od as api.Exemplar);
@@ -4179,7 +4179,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -4187,7 +4187,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExtendedKeyUsageOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExtendedKeyUsageOptions();
       var od = api.ExtendedKeyUsageOptions.fromJson(o.toJson());
       checkExtendedKeyUsageOptions(od as api.ExtendedKeyUsageOptions);
@@ -4195,7 +4195,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FetchCertificateAuthorityCsrResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFetchCertificateAuthorityCsrResponse();
       var od = api.FetchCertificateAuthorityCsrResponse.fromJson(o.toJson());
       checkFetchCertificateAuthorityCsrResponse(
@@ -4204,7 +4204,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleApiServicecontrolV1AttributeValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiServicecontrolV1AttributeValue();
       var od = api.GoogleApiServicecontrolV1AttributeValue.fromJson(o.toJson());
       checkGoogleApiServicecontrolV1AttributeValue(
@@ -4213,7 +4213,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleApiServicecontrolV1Attributes', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiServicecontrolV1Attributes();
       var od = api.GoogleApiServicecontrolV1Attributes.fromJson(o.toJson());
       checkGoogleApiServicecontrolV1Attributes(
@@ -4222,7 +4222,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleApiServicecontrolV1Distribution', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiServicecontrolV1Distribution();
       var od = api.GoogleApiServicecontrolV1Distribution.fromJson(o.toJson());
       checkGoogleApiServicecontrolV1Distribution(
@@ -4231,7 +4231,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleApiServicecontrolV1ExplicitBuckets', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiServicecontrolV1ExplicitBuckets();
       var od =
           api.GoogleApiServicecontrolV1ExplicitBuckets.fromJson(o.toJson());
@@ -4241,7 +4241,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleApiServicecontrolV1ExponentialBuckets', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiServicecontrolV1ExponentialBuckets();
       var od =
           api.GoogleApiServicecontrolV1ExponentialBuckets.fromJson(o.toJson());
@@ -4251,7 +4251,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleApiServicecontrolV1HttpRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiServicecontrolV1HttpRequest();
       var od = api.GoogleApiServicecontrolV1HttpRequest.fromJson(o.toJson());
       checkGoogleApiServicecontrolV1HttpRequest(
@@ -4260,7 +4260,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleApiServicecontrolV1LinearBuckets', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiServicecontrolV1LinearBuckets();
       var od = api.GoogleApiServicecontrolV1LinearBuckets.fromJson(o.toJson());
       checkGoogleApiServicecontrolV1LinearBuckets(
@@ -4269,7 +4269,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleApiServicecontrolV1LogEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiServicecontrolV1LogEntry();
       var od = api.GoogleApiServicecontrolV1LogEntry.fromJson(o.toJson());
       checkGoogleApiServicecontrolV1LogEntry(
@@ -4278,7 +4278,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleApiServicecontrolV1LogEntryOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiServicecontrolV1LogEntryOperation();
       var od =
           api.GoogleApiServicecontrolV1LogEntryOperation.fromJson(o.toJson());
@@ -4289,7 +4289,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleApiServicecontrolV1LogEntrySourceLocation',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiServicecontrolV1LogEntrySourceLocation();
       var od = api.GoogleApiServicecontrolV1LogEntrySourceLocation.fromJson(
           o.toJson());
@@ -4299,7 +4299,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleApiServicecontrolV1MetricValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiServicecontrolV1MetricValue();
       var od = api.GoogleApiServicecontrolV1MetricValue.fromJson(o.toJson());
       checkGoogleApiServicecontrolV1MetricValue(
@@ -4308,7 +4308,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleApiServicecontrolV1MetricValueSet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiServicecontrolV1MetricValueSet();
       var od = api.GoogleApiServicecontrolV1MetricValueSet.fromJson(o.toJson());
       checkGoogleApiServicecontrolV1MetricValueSet(
@@ -4317,7 +4317,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleApiServicecontrolV1Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiServicecontrolV1Operation();
       var od = api.GoogleApiServicecontrolV1Operation.fromJson(o.toJson());
       checkGoogleApiServicecontrolV1Operation(
@@ -4326,7 +4326,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleApiServicecontrolV1QuotaProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiServicecontrolV1QuotaProperties();
       var od =
           api.GoogleApiServicecontrolV1QuotaProperties.fromJson(o.toJson());
@@ -4336,7 +4336,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleApiServicecontrolV1ReportRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiServicecontrolV1ReportRequest();
       var od = api.GoogleApiServicecontrolV1ReportRequest.fromJson(o.toJson());
       checkGoogleApiServicecontrolV1ReportRequest(
@@ -4345,7 +4345,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleApiServicecontrolV1ResourceInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiServicecontrolV1ResourceInfo();
       var od = api.GoogleApiServicecontrolV1ResourceInfo.fromJson(o.toJson());
       checkGoogleApiServicecontrolV1ResourceInfo(
@@ -4354,7 +4354,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleApiServicecontrolV1TraceSpan', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiServicecontrolV1TraceSpan();
       var od = api.GoogleApiServicecontrolV1TraceSpan.fromJson(o.toJson());
       checkGoogleApiServicecontrolV1TraceSpan(
@@ -4363,7 +4363,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleApiServicecontrolV1TruncatableString', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiServicecontrolV1TruncatableString();
       var od =
           api.GoogleApiServicecontrolV1TruncatableString.fromJson(o.toJson());
@@ -4373,7 +4373,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IssuanceModes', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIssuanceModes();
       var od = api.IssuanceModes.fromJson(o.toJson());
       checkIssuanceModes(od as api.IssuanceModes);
@@ -4381,7 +4381,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IssuingOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIssuingOptions();
       var od = api.IssuingOptions.fromJson(o.toJson());
       checkIssuingOptions(od as api.IssuingOptions);
@@ -4389,7 +4389,7 @@ void main() {
   });
 
   unittest.group('obj-schema-KeyId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildKeyId();
       var od = api.KeyId.fromJson(o.toJson());
       checkKeyId(od as api.KeyId);
@@ -4397,7 +4397,7 @@ void main() {
   });
 
   unittest.group('obj-schema-KeyUsage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildKeyUsage();
       var od = api.KeyUsage.fromJson(o.toJson());
       checkKeyUsage(od as api.KeyUsage);
@@ -4405,7 +4405,7 @@ void main() {
   });
 
   unittest.group('obj-schema-KeyUsageOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildKeyUsageOptions();
       var od = api.KeyUsageOptions.fromJson(o.toJson());
       checkKeyUsageOptions(od as api.KeyUsageOptions);
@@ -4413,7 +4413,7 @@ void main() {
   });
 
   unittest.group('obj-schema-KeyVersionSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildKeyVersionSpec();
       var od = api.KeyVersionSpec.fromJson(o.toJson());
       checkKeyVersionSpec(od as api.KeyVersionSpec);
@@ -4421,7 +4421,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCertificateAuthoritiesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCertificateAuthoritiesResponse();
       var od = api.ListCertificateAuthoritiesResponse.fromJson(o.toJson());
       checkListCertificateAuthoritiesResponse(
@@ -4430,7 +4430,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCertificateRevocationListsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCertificateRevocationListsResponse();
       var od = api.ListCertificateRevocationListsResponse.fromJson(o.toJson());
       checkListCertificateRevocationListsResponse(
@@ -4439,7 +4439,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCertificatesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCertificatesResponse();
       var od = api.ListCertificatesResponse.fromJson(o.toJson());
       checkListCertificatesResponse(od as api.ListCertificatesResponse);
@@ -4447,7 +4447,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -4455,7 +4455,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -4463,7 +4463,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListReusableConfigsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListReusableConfigsResponse();
       var od = api.ListReusableConfigsResponse.fromJson(o.toJson());
       checkListReusableConfigsResponse(od as api.ListReusableConfigsResponse);
@@ -4471,7 +4471,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -4479,7 +4479,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Money', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMoney();
       var od = api.Money.fromJson(o.toJson());
       checkMoney(od as api.Money);
@@ -4487,7 +4487,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ObjectId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildObjectId();
       var od = api.ObjectId.fromJson(o.toJson());
       checkObjectId(od as api.ObjectId);
@@ -4495,7 +4495,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -4503,7 +4503,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
       checkOperationMetadata(od as api.OperationMetadata);
@@ -4511,7 +4511,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -4519,7 +4519,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PublicKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPublicKey();
       var od = api.PublicKey.fromJson(o.toJson());
       checkPublicKey(od as api.PublicKey);
@@ -4527,7 +4527,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestoreCertificateAuthorityRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestoreCertificateAuthorityRequest();
       var od = api.RestoreCertificateAuthorityRequest.fromJson(o.toJson());
       checkRestoreCertificateAuthorityRequest(
@@ -4536,7 +4536,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReusableConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReusableConfig();
       var od = api.ReusableConfig.fromJson(o.toJson());
       checkReusableConfig(od as api.ReusableConfig);
@@ -4544,7 +4544,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReusableConfigValues', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReusableConfigValues();
       var od = api.ReusableConfigValues.fromJson(o.toJson());
       checkReusableConfigValues(od as api.ReusableConfigValues);
@@ -4552,7 +4552,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReusableConfigWrapper', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReusableConfigWrapper();
       var od = api.ReusableConfigWrapper.fromJson(o.toJson());
       checkReusableConfigWrapper(od as api.ReusableConfigWrapper);
@@ -4560,7 +4560,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RevocationDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRevocationDetails();
       var od = api.RevocationDetails.fromJson(o.toJson());
       checkRevocationDetails(od as api.RevocationDetails);
@@ -4568,7 +4568,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RevokeCertificateRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRevokeCertificateRequest();
       var od = api.RevokeCertificateRequest.fromJson(o.toJson());
       checkRevokeCertificateRequest(od as api.RevokeCertificateRequest);
@@ -4576,7 +4576,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RevokedCertificate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRevokedCertificate();
       var od = api.RevokedCertificate.fromJson(o.toJson());
       checkRevokedCertificate(od as api.RevokedCertificate);
@@ -4584,7 +4584,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScheduleDeleteCertificateAuthorityRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScheduleDeleteCertificateAuthorityRequest();
       var od =
           api.ScheduleDeleteCertificateAuthorityRequest.fromJson(o.toJson());
@@ -4594,7 +4594,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -4602,7 +4602,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -4610,7 +4610,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Subject', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubject();
       var od = api.Subject.fromJson(o.toJson());
       checkSubject(od as api.Subject);
@@ -4618,7 +4618,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SubjectAltNames', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubjectAltNames();
       var od = api.SubjectAltNames.fromJson(o.toJson());
       checkSubjectAltNames(od as api.SubjectAltNames);
@@ -4626,7 +4626,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SubjectConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubjectConfig();
       var od = api.SubjectConfig.fromJson(o.toJson());
       checkSubjectConfig(od as api.SubjectConfig);
@@ -4634,7 +4634,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SubjectDescription', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubjectDescription();
       var od = api.SubjectDescription.fromJson(o.toJson());
       checkSubjectDescription(od as api.SubjectDescription);
@@ -4642,7 +4642,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SubordinateConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubordinateConfig();
       var od = api.SubordinateConfig.fromJson(o.toJson());
       checkSubordinateConfig(od as api.SubordinateConfig);
@@ -4650,7 +4650,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SubordinateConfigChain', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSubordinateConfigChain();
       var od = api.SubordinateConfigChain.fromJson(o.toJson());
       checkSubordinateConfigChain(od as api.SubordinateConfigChain);
@@ -4658,7 +4658,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -4666,7 +4666,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -4674,7 +4674,7 @@ void main() {
   });
 
   unittest.group('obj-schema-X509Extension', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildX509Extension();
       var od = api.X509Extension.fromJson(o.toJson());
       checkX509Extension(od as api.X509Extension);
@@ -4682,7 +4682,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -4730,14 +4730,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -4800,21 +4797,18 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsCertificateAuthoritiesResource',
       () {
-    unittest.test('method--activate', () {
+    unittest.test('method--activate', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -4871,14 +4865,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .activate(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.activate(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -4944,17 +4936,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              certificateAuthorityId: arg_certificateAuthorityId,
-              requestId: arg_requestId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          certificateAuthorityId: arg_certificateAuthorityId,
+          requestId: arg_requestId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--disable', () {
+    unittest.test('method--disable', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -5011,14 +5000,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .disable(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.disable(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--enable', () {
+    unittest.test('method--enable', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -5075,14 +5062,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .enable(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.enable(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--fetch', () {
+    unittest.test('method--fetch', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -5134,15 +5119,12 @@ void main() {
             convert.json.encode(buildFetchCertificateAuthorityCsrResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .fetch(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFetchCertificateAuthorityCsrResponse(
-            response as api.FetchCertificateAuthorityCsrResponse);
-      })));
+      final response = await res.fetch(arg_name, $fields: arg_$fields);
+      checkFetchCertificateAuthorityCsrResponse(
+          response as api.FetchCertificateAuthorityCsrResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -5193,14 +5175,11 @@ void main() {
         var resp = convert.json.encode(buildCertificateAuthority());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCertificateAuthority(response as api.CertificateAuthority);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkCertificateAuthority(response as api.CertificateAuthority);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -5256,17 +5235,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -5338,20 +5313,17 @@ void main() {
             convert.json.encode(buildListCertificateAuthoritiesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCertificateAuthoritiesResponse(
-            response as api.ListCertificateAuthoritiesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListCertificateAuthoritiesResponse(
+          response as api.ListCertificateAuthoritiesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -5417,17 +5389,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              requestId: arg_requestId,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          requestId: arg_requestId,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--restore', () {
+    unittest.test('method--restore', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -5484,14 +5453,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .restore(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.restore(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--scheduleDelete', () {
+    unittest.test('method--scheduleDelete', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -5548,14 +5515,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .scheduleDelete(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.scheduleDelete(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -5611,14 +5576,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -5674,19 +5637,17 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsCertificateAuthoritiesCertificateRevocationListsResource',
       () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -5738,15 +5699,11 @@ void main() {
         var resp = convert.json.encode(buildCertificateRevocationList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCertificateRevocationList(
-            response as api.CertificateRevocationList);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkCertificateRevocationList(response as api.CertificateRevocationList);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -5803,17 +5760,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -5886,20 +5839,17 @@ void main() {
             convert.json.encode(buildListCertificateRevocationListsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCertificateRevocationListsResponse(
-            response as api.ListCertificateRevocationListsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListCertificateRevocationListsResponse(
+          response as api.ListCertificateRevocationListsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -5966,17 +5916,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              requestId: arg_requestId,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          requestId: arg_requestId,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -6033,14 +5980,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -6097,19 +6042,17 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsCertificateAuthoritiesCertificatesResource',
       () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -6176,17 +6119,14 @@ void main() {
         var resp = convert.json.encode(buildCertificate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              certificateId: arg_certificateId,
-              requestId: arg_requestId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCertificate(response as api.Certificate);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          certificateId: arg_certificateId,
+          requestId: arg_requestId,
+          $fields: arg_$fields);
+      checkCertificate(response as api.Certificate);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -6238,14 +6178,11 @@ void main() {
         var resp = convert.json.encode(buildCertificate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCertificate(response as api.Certificate);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkCertificate(response as api.Certificate);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -6317,19 +6254,16 @@ void main() {
         var resp = convert.json.encode(buildListCertificatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCertificatesResponse(response as api.ListCertificatesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListCertificatesResponse(response as api.ListCertificatesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -6396,17 +6330,14 @@ void main() {
         var resp = convert.json.encode(buildCertificate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              requestId: arg_requestId,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCertificate(response as api.Certificate);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          requestId: arg_requestId,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkCertificate(response as api.Certificate);
     });
 
-    unittest.test('method--revoke', () {
+    unittest.test('method--revoke', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -6463,16 +6394,14 @@ void main() {
         var resp = convert.json.encode(buildCertificate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .revoke(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCertificate(response as api.Certificate);
-      })));
+      final response =
+          await res.revoke(arg_request, arg_name, $fields: arg_$fields);
+      checkCertificate(response as api.Certificate);
     });
   });
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -6528,14 +6457,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -6586,14 +6513,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -6644,14 +6568,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -6717,20 +6638,17 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsReusableConfigsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -6781,14 +6699,11 @@ void main() {
         var resp = convert.json.encode(buildReusableConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkReusableConfig(response as api.ReusableConfig);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkReusableConfig(response as api.ReusableConfig);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -6844,17 +6759,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -6925,20 +6836,17 @@ void main() {
         var resp = convert.json.encode(buildListReusableConfigsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListReusableConfigsResponse(
-            response as api.ListReusableConfigsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListReusableConfigsResponse(
+          response as api.ListReusableConfigsResponse);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -6994,14 +6902,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CertificateAuthorityServiceApi(mock)
           .projects
@@ -7057,12 +6963,10 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 }

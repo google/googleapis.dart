@@ -518,7 +518,7 @@ void checkGoogleTypeExpr(api.GoogleTypeExpr o) {
 
 void main() {
   unittest.group('obj-schema-GoogleCloudPolicytroubleshooterV1AccessTuple', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicytroubleshooterV1AccessTuple();
       var od =
           api.GoogleCloudPolicytroubleshooterV1AccessTuple.fromJson(o.toJson());
@@ -529,7 +529,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudPolicytroubleshooterV1BindingExplanation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicytroubleshooterV1BindingExplanation();
       var od = api.GoogleCloudPolicytroubleshooterV1BindingExplanation.fromJson(
           o.toJson());
@@ -541,7 +541,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership();
       var od =
@@ -555,7 +555,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudPolicytroubleshooterV1ExplainedPolicy',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicytroubleshooterV1ExplainedPolicy();
       var od = api.GoogleCloudPolicytroubleshooterV1ExplainedPolicy.fromJson(
           o.toJson());
@@ -567,7 +567,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest();
       var od = api.GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest
@@ -580,7 +580,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse();
       var od =
@@ -593,7 +593,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1AuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1AuditConfig();
       var od = api.GoogleIamV1AuditConfig.fromJson(o.toJson());
       checkGoogleIamV1AuditConfig(od as api.GoogleIamV1AuditConfig);
@@ -601,7 +601,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1AuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1AuditLogConfig();
       var od = api.GoogleIamV1AuditLogConfig.fromJson(o.toJson());
       checkGoogleIamV1AuditLogConfig(od as api.GoogleIamV1AuditLogConfig);
@@ -609,7 +609,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1Binding();
       var od = api.GoogleIamV1Binding.fromJson(o.toJson());
       checkGoogleIamV1Binding(od as api.GoogleIamV1Binding);
@@ -617,7 +617,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIamV1Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1Policy();
       var od = api.GoogleIamV1Policy.fromJson(o.toJson());
       checkGoogleIamV1Policy(od as api.GoogleIamV1Policy);
@@ -625,7 +625,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypeExpr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeExpr();
       var od = api.GoogleTypeExpr.fromJson(o.toJson());
       checkGoogleTypeExpr(od as api.GoogleTypeExpr);
@@ -633,7 +633,7 @@ void main() {
   });
 
   unittest.group('resource-IamResource', () {
-    unittest.test('method--troubleshoot', () {
+    unittest.test('method--troubleshoot', () async {
       var mock = HttpServerMock();
       var res = api.PolicyTroubleshooterApi(mock).iam;
       var arg_request =
@@ -689,13 +689,11 @@ void main() {
             buildGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .troubleshoot(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse(
-            response as api
-                .GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse);
-      })));
+      final response =
+          await res.troubleshoot(arg_request, $fields: arg_$fields);
+      checkGoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse(
+          response as api
+              .GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse);
     });
   });
 }

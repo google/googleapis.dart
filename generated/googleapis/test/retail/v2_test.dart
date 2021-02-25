@@ -3232,7 +3232,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
 
 void main() {
   unittest.group('obj-schema-GoogleApiHttpBody', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiHttpBody();
       var od = api.GoogleApiHttpBody.fromJson(o.toJson());
       checkGoogleApiHttpBody(od as api.GoogleApiHttpBody);
@@ -3240,7 +3240,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailLoggingErrorContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailLoggingErrorContext();
       var od = api.GoogleCloudRetailLoggingErrorContext.fromJson(o.toJson());
       checkGoogleCloudRetailLoggingErrorContext(
@@ -3249,7 +3249,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailLoggingErrorLog', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailLoggingErrorLog();
       var od = api.GoogleCloudRetailLoggingErrorLog.fromJson(o.toJson());
       checkGoogleCloudRetailLoggingErrorLog(
@@ -3258,7 +3258,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailLoggingHttpRequestContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailLoggingHttpRequestContext();
       var od =
           api.GoogleCloudRetailLoggingHttpRequestContext.fromJson(o.toJson());
@@ -3268,7 +3268,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailLoggingImportErrorContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailLoggingImportErrorContext();
       var od =
           api.GoogleCloudRetailLoggingImportErrorContext.fromJson(o.toJson());
@@ -3278,7 +3278,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailLoggingServiceContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailLoggingServiceContext();
       var od = api.GoogleCloudRetailLoggingServiceContext.fromJson(o.toJson());
       checkGoogleCloudRetailLoggingServiceContext(
@@ -3287,7 +3287,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailLoggingSourceLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailLoggingSourceLocation();
       var od = api.GoogleCloudRetailLoggingSourceLocation.fromJson(o.toJson());
       checkGoogleCloudRetailLoggingSourceLocation(
@@ -3296,7 +3296,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2BigQuerySource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2BigQuerySource();
       var od = api.GoogleCloudRetailV2BigQuerySource.fromJson(o.toJson());
       checkGoogleCloudRetailV2BigQuerySource(
@@ -3305,7 +3305,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2Catalog', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2Catalog();
       var od = api.GoogleCloudRetailV2Catalog.fromJson(o.toJson());
       checkGoogleCloudRetailV2Catalog(od as api.GoogleCloudRetailV2Catalog);
@@ -3313,7 +3313,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2CustomAttribute', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2CustomAttribute();
       var od = api.GoogleCloudRetailV2CustomAttribute.fromJson(o.toJson());
       checkGoogleCloudRetailV2CustomAttribute(
@@ -3322,7 +3322,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2GcsSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2GcsSource();
       var od = api.GoogleCloudRetailV2GcsSource.fromJson(o.toJson());
       checkGoogleCloudRetailV2GcsSource(od as api.GoogleCloudRetailV2GcsSource);
@@ -3330,7 +3330,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2Image', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2Image();
       var od = api.GoogleCloudRetailV2Image.fromJson(o.toJson());
       checkGoogleCloudRetailV2Image(od as api.GoogleCloudRetailV2Image);
@@ -3338,7 +3338,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2ImportErrorsConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2ImportErrorsConfig();
       var od = api.GoogleCloudRetailV2ImportErrorsConfig.fromJson(o.toJson());
       checkGoogleCloudRetailV2ImportErrorsConfig(
@@ -3347,7 +3347,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2ImportMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2ImportMetadata();
       var od = api.GoogleCloudRetailV2ImportMetadata.fromJson(o.toJson());
       checkGoogleCloudRetailV2ImportMetadata(
@@ -3356,7 +3356,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2ImportProductsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2ImportProductsRequest();
       var od =
           api.GoogleCloudRetailV2ImportProductsRequest.fromJson(o.toJson());
@@ -3366,7 +3366,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2ImportProductsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2ImportProductsResponse();
       var od =
           api.GoogleCloudRetailV2ImportProductsResponse.fromJson(o.toJson());
@@ -3376,7 +3376,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2ImportUserEventsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2ImportUserEventsRequest();
       var od =
           api.GoogleCloudRetailV2ImportUserEventsRequest.fromJson(o.toJson());
@@ -3386,7 +3386,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2ImportUserEventsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2ImportUserEventsResponse();
       var od =
           api.GoogleCloudRetailV2ImportUserEventsResponse.fromJson(o.toJson());
@@ -3396,7 +3396,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2ListCatalogsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2ListCatalogsResponse();
       var od = api.GoogleCloudRetailV2ListCatalogsResponse.fromJson(o.toJson());
       checkGoogleCloudRetailV2ListCatalogsResponse(
@@ -3405,7 +3405,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2PredictRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2PredictRequest();
       var od = api.GoogleCloudRetailV2PredictRequest.fromJson(o.toJson());
       checkGoogleCloudRetailV2PredictRequest(
@@ -3414,7 +3414,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2PredictResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2PredictResponse();
       var od = api.GoogleCloudRetailV2PredictResponse.fromJson(o.toJson());
       checkGoogleCloudRetailV2PredictResponse(
@@ -3424,7 +3424,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudRetailV2PredictResponsePredictionResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2PredictResponsePredictionResult();
       var od = api.GoogleCloudRetailV2PredictResponsePredictionResult.fromJson(
           o.toJson());
@@ -3434,7 +3434,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2PriceInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2PriceInfo();
       var od = api.GoogleCloudRetailV2PriceInfo.fromJson(o.toJson());
       checkGoogleCloudRetailV2PriceInfo(od as api.GoogleCloudRetailV2PriceInfo);
@@ -3442,7 +3442,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2Product', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2Product();
       var od = api.GoogleCloudRetailV2Product.fromJson(o.toJson());
       checkGoogleCloudRetailV2Product(od as api.GoogleCloudRetailV2Product);
@@ -3450,7 +3450,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2ProductDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2ProductDetail();
       var od = api.GoogleCloudRetailV2ProductDetail.fromJson(o.toJson());
       checkGoogleCloudRetailV2ProductDetail(
@@ -3459,7 +3459,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2ProductInlineSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2ProductInlineSource();
       var od = api.GoogleCloudRetailV2ProductInlineSource.fromJson(o.toJson());
       checkGoogleCloudRetailV2ProductInlineSource(
@@ -3468,7 +3468,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2ProductInputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2ProductInputConfig();
       var od = api.GoogleCloudRetailV2ProductInputConfig.fromJson(o.toJson());
       checkGoogleCloudRetailV2ProductInputConfig(
@@ -3477,7 +3477,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2ProductLevelConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2ProductLevelConfig();
       var od = api.GoogleCloudRetailV2ProductLevelConfig.fromJson(o.toJson());
       checkGoogleCloudRetailV2ProductLevelConfig(
@@ -3486,7 +3486,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2PurchaseTransaction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2PurchaseTransaction();
       var od = api.GoogleCloudRetailV2PurchaseTransaction.fromJson(o.toJson());
       checkGoogleCloudRetailV2PurchaseTransaction(
@@ -3495,7 +3495,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2PurgeMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2PurgeMetadata();
       var od = api.GoogleCloudRetailV2PurgeMetadata.fromJson(o.toJson());
       checkGoogleCloudRetailV2PurgeMetadata(
@@ -3504,7 +3504,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2PurgeUserEventsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2PurgeUserEventsRequest();
       var od =
           api.GoogleCloudRetailV2PurgeUserEventsRequest.fromJson(o.toJson());
@@ -3514,7 +3514,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2PurgeUserEventsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2PurgeUserEventsResponse();
       var od =
           api.GoogleCloudRetailV2PurgeUserEventsResponse.fromJson(o.toJson());
@@ -3524,7 +3524,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2RejoinUserEventsMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2RejoinUserEventsMetadata();
       var od =
           api.GoogleCloudRetailV2RejoinUserEventsMetadata.fromJson(o.toJson());
@@ -3534,7 +3534,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2RejoinUserEventsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2RejoinUserEventsRequest();
       var od =
           api.GoogleCloudRetailV2RejoinUserEventsRequest.fromJson(o.toJson());
@@ -3544,7 +3544,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2RejoinUserEventsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2RejoinUserEventsResponse();
       var od =
           api.GoogleCloudRetailV2RejoinUserEventsResponse.fromJson(o.toJson());
@@ -3554,7 +3554,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2UserEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2UserEvent();
       var od = api.GoogleCloudRetailV2UserEvent.fromJson(o.toJson());
       checkGoogleCloudRetailV2UserEvent(od as api.GoogleCloudRetailV2UserEvent);
@@ -3562,7 +3562,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2UserEventImportSummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2UserEventImportSummary();
       var od =
           api.GoogleCloudRetailV2UserEventImportSummary.fromJson(o.toJson());
@@ -3572,7 +3572,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2UserEventInlineSource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2UserEventInlineSource();
       var od =
           api.GoogleCloudRetailV2UserEventInlineSource.fromJson(o.toJson());
@@ -3582,7 +3582,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2UserEventInputConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2UserEventInputConfig();
       var od = api.GoogleCloudRetailV2UserEventInputConfig.fromJson(o.toJson());
       checkGoogleCloudRetailV2UserEventInputConfig(
@@ -3591,7 +3591,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2UserInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2UserInfo();
       var od = api.GoogleCloudRetailV2UserInfo.fromJson(o.toJson());
       checkGoogleCloudRetailV2UserInfo(od as api.GoogleCloudRetailV2UserInfo);
@@ -3599,7 +3599,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2alphaExportErrorsConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2alphaExportErrorsConfig();
       var od =
           api.GoogleCloudRetailV2alphaExportErrorsConfig.fromJson(o.toJson());
@@ -3609,7 +3609,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2alphaExportMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2alphaExportMetadata();
       var od = api.GoogleCloudRetailV2alphaExportMetadata.fromJson(o.toJson());
       checkGoogleCloudRetailV2alphaExportMetadata(
@@ -3619,7 +3619,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2alphaExportProductsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2alphaExportProductsResponse();
       var od = api.GoogleCloudRetailV2alphaExportProductsResponse.fromJson(
           o.toJson());
@@ -3630,7 +3630,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2alphaExportUserEventsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2alphaExportUserEventsResponse();
       var od = api.GoogleCloudRetailV2alphaExportUserEventsResponse.fromJson(
           o.toJson());
@@ -3640,7 +3640,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2alphaImportErrorsConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2alphaImportErrorsConfig();
       var od =
           api.GoogleCloudRetailV2alphaImportErrorsConfig.fromJson(o.toJson());
@@ -3650,7 +3650,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2alphaImportMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2alphaImportMetadata();
       var od = api.GoogleCloudRetailV2alphaImportMetadata.fromJson(o.toJson());
       checkGoogleCloudRetailV2alphaImportMetadata(
@@ -3660,7 +3660,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2alphaImportProductsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2alphaImportProductsResponse();
       var od = api.GoogleCloudRetailV2alphaImportProductsResponse.fromJson(
           o.toJson());
@@ -3671,7 +3671,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2alphaImportUserEventsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2alphaImportUserEventsResponse();
       var od = api.GoogleCloudRetailV2alphaImportUserEventsResponse.fromJson(
           o.toJson());
@@ -3681,7 +3681,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2alphaPurgeMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2alphaPurgeMetadata();
       var od = api.GoogleCloudRetailV2alphaPurgeMetadata.fromJson(o.toJson());
       checkGoogleCloudRetailV2alphaPurgeMetadata(
@@ -3691,7 +3691,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2alphaPurgeUserEventsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2alphaPurgeUserEventsResponse();
       var od = api.GoogleCloudRetailV2alphaPurgeUserEventsResponse.fromJson(
           o.toJson());
@@ -3702,7 +3702,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2alphaRejoinUserEventsMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2alphaRejoinUserEventsMetadata();
       var od = api.GoogleCloudRetailV2alphaRejoinUserEventsMetadata.fromJson(
           o.toJson());
@@ -3713,7 +3713,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2alphaRejoinUserEventsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2alphaRejoinUserEventsResponse();
       var od = api.GoogleCloudRetailV2alphaRejoinUserEventsResponse.fromJson(
           o.toJson());
@@ -3724,7 +3724,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2alphaUserEventImportSummary',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2alphaUserEventImportSummary();
       var od = api.GoogleCloudRetailV2alphaUserEventImportSummary.fromJson(
           o.toJson());
@@ -3734,7 +3734,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2betaExportErrorsConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2betaExportErrorsConfig();
       var od =
           api.GoogleCloudRetailV2betaExportErrorsConfig.fromJson(o.toJson());
@@ -3744,7 +3744,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2betaExportMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2betaExportMetadata();
       var od = api.GoogleCloudRetailV2betaExportMetadata.fromJson(o.toJson());
       checkGoogleCloudRetailV2betaExportMetadata(
@@ -3754,7 +3754,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2betaExportProductsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2betaExportProductsResponse();
       var od = api.GoogleCloudRetailV2betaExportProductsResponse.fromJson(
           o.toJson());
@@ -3765,7 +3765,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2betaExportUserEventsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2betaExportUserEventsResponse();
       var od = api.GoogleCloudRetailV2betaExportUserEventsResponse.fromJson(
           o.toJson());
@@ -3775,7 +3775,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2betaImportErrorsConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2betaImportErrorsConfig();
       var od =
           api.GoogleCloudRetailV2betaImportErrorsConfig.fromJson(o.toJson());
@@ -3785,7 +3785,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2betaImportMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2betaImportMetadata();
       var od = api.GoogleCloudRetailV2betaImportMetadata.fromJson(o.toJson());
       checkGoogleCloudRetailV2betaImportMetadata(
@@ -3795,7 +3795,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2betaImportProductsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2betaImportProductsResponse();
       var od = api.GoogleCloudRetailV2betaImportProductsResponse.fromJson(
           o.toJson());
@@ -3806,7 +3806,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2betaImportUserEventsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2betaImportUserEventsResponse();
       var od = api.GoogleCloudRetailV2betaImportUserEventsResponse.fromJson(
           o.toJson());
@@ -3816,7 +3816,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2betaPurgeMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2betaPurgeMetadata();
       var od = api.GoogleCloudRetailV2betaPurgeMetadata.fromJson(o.toJson());
       checkGoogleCloudRetailV2betaPurgeMetadata(
@@ -3826,7 +3826,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2betaPurgeUserEventsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2betaPurgeUserEventsResponse();
       var od = api.GoogleCloudRetailV2betaPurgeUserEventsResponse.fromJson(
           o.toJson());
@@ -3837,7 +3837,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2betaRejoinUserEventsMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2betaRejoinUserEventsMetadata();
       var od = api.GoogleCloudRetailV2betaRejoinUserEventsMetadata.fromJson(
           o.toJson());
@@ -3848,7 +3848,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2betaRejoinUserEventsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2betaRejoinUserEventsResponse();
       var od = api.GoogleCloudRetailV2betaRejoinUserEventsResponse.fromJson(
           o.toJson());
@@ -3859,7 +3859,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2betaUserEventImportSummary',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2betaUserEventImportSummary();
       var od = api.GoogleCloudRetailV2betaUserEventImportSummary.fromJson(
           o.toJson());
@@ -3869,7 +3869,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2mainExportErrorsConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2mainExportErrorsConfig();
       var od =
           api.GoogleCloudRetailV2mainExportErrorsConfig.fromJson(o.toJson());
@@ -3879,7 +3879,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2mainExportMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2mainExportMetadata();
       var od = api.GoogleCloudRetailV2mainExportMetadata.fromJson(o.toJson());
       checkGoogleCloudRetailV2mainExportMetadata(
@@ -3889,7 +3889,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2mainExportProductsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2mainExportProductsResponse();
       var od = api.GoogleCloudRetailV2mainExportProductsResponse.fromJson(
           o.toJson());
@@ -3900,7 +3900,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2mainExportUserEventsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2mainExportUserEventsResponse();
       var od = api.GoogleCloudRetailV2mainExportUserEventsResponse.fromJson(
           o.toJson());
@@ -3910,7 +3910,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2mainImportErrorsConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2mainImportErrorsConfig();
       var od =
           api.GoogleCloudRetailV2mainImportErrorsConfig.fromJson(o.toJson());
@@ -3920,7 +3920,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2mainImportMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2mainImportMetadata();
       var od = api.GoogleCloudRetailV2mainImportMetadata.fromJson(o.toJson());
       checkGoogleCloudRetailV2mainImportMetadata(
@@ -3930,7 +3930,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2mainImportProductsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2mainImportProductsResponse();
       var od = api.GoogleCloudRetailV2mainImportProductsResponse.fromJson(
           o.toJson());
@@ -3941,7 +3941,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2mainImportUserEventsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2mainImportUserEventsResponse();
       var od = api.GoogleCloudRetailV2mainImportUserEventsResponse.fromJson(
           o.toJson());
@@ -3951,7 +3951,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRetailV2mainPurgeMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2mainPurgeMetadata();
       var od = api.GoogleCloudRetailV2mainPurgeMetadata.fromJson(o.toJson());
       checkGoogleCloudRetailV2mainPurgeMetadata(
@@ -3961,7 +3961,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2mainPurgeUserEventsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2mainPurgeUserEventsResponse();
       var od = api.GoogleCloudRetailV2mainPurgeUserEventsResponse.fromJson(
           o.toJson());
@@ -3972,7 +3972,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2mainRejoinUserEventsMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2mainRejoinUserEventsMetadata();
       var od = api.GoogleCloudRetailV2mainRejoinUserEventsMetadata.fromJson(
           o.toJson());
@@ -3983,7 +3983,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2mainRejoinUserEventsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2mainRejoinUserEventsResponse();
       var od = api.GoogleCloudRetailV2mainRejoinUserEventsResponse.fromJson(
           o.toJson());
@@ -3994,7 +3994,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRetailV2mainUserEventImportSummary',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRetailV2mainUserEventImportSummary();
       var od = api.GoogleCloudRetailV2mainUserEventImportSummary.fromJson(
           o.toJson());
@@ -4004,7 +4004,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
       var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
       checkGoogleLongrunningListOperationsResponse(
@@ -4013,7 +4013,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
@@ -4021,7 +4021,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
@@ -4029,7 +4029,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleRpcStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
       var od = api.GoogleRpcStatus.fromJson(o.toJson());
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
@@ -4037,7 +4037,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsCatalogsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudRetailApi(mock).projects.locations.catalogs;
       var arg_parent = 'foo';
@@ -4096,18 +4096,15 @@ void main() {
             convert.json.encode(buildGoogleCloudRetailV2ListCatalogsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRetailV2ListCatalogsResponse(
-            response as api.GoogleCloudRetailV2ListCatalogsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudRetailV2ListCatalogsResponse(
+          response as api.GoogleCloudRetailV2ListCatalogsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudRetailApi(mock).projects.locations.catalogs;
       var arg_request = buildGoogleCloudRetailV2Catalog();
@@ -4165,19 +4162,16 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudRetailV2Catalog());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRetailV2Catalog(
-            response as api.GoogleCloudRetailV2Catalog);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleCloudRetailV2Catalog(
+          response as api.GoogleCloudRetailV2Catalog);
     });
   });
 
   unittest.group('resource-ProjectsLocationsCatalogsBranchesOperationsResource',
       () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudRetailApi(mock)
           .projects
@@ -4230,18 +4224,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 
   unittest.group('resource-ProjectsLocationsCatalogsBranchesProductsResource',
       () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudRetailApi(mock)
           .projects
@@ -4304,16 +4295,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudRetailV2Product());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              productId: arg_productId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRetailV2Product(
-            response as api.GoogleCloudRetailV2Product);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          productId: arg_productId, $fields: arg_$fields);
+      checkGoogleCloudRetailV2Product(
+          response as api.GoogleCloudRetailV2Product);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudRetailApi(mock)
           .projects
@@ -4366,14 +4354,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudRetailApi(mock)
           .projects
@@ -4426,15 +4411,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudRetailV2Product());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRetailV2Product(
-            response as api.GoogleCloudRetailV2Product);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudRetailV2Product(
+          response as api.GoogleCloudRetailV2Product);
     });
 
-    unittest.test('method--import', () {
+    unittest.test('method--import', () async {
       var mock = HttpServerMock();
       var res = api.CloudRetailApi(mock)
           .projects
@@ -4493,15 +4475,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .import(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.import(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudRetailApi(mock)
           .projects
@@ -4569,20 +4549,17 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudRetailV2Product());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              allowMissing: arg_allowMissing,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRetailV2Product(
-            response as api.GoogleCloudRetailV2Product);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          allowMissing: arg_allowMissing,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkGoogleCloudRetailV2Product(
+          response as api.GoogleCloudRetailV2Product);
     });
   });
 
   unittest.group('resource-ProjectsLocationsCatalogsOperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudRetailApi(mock).projects.locations.catalogs.operations;
       var arg_name = 'foo';
@@ -4630,15 +4607,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudRetailApi(mock).projects.locations.catalogs.operations;
       var arg_name = 'foo';
@@ -4702,21 +4676,18 @@ void main() {
             convert.json.encode(buildGoogleLongrunningListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningListOperationsResponse(
-            response as api.GoogleLongrunningListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleLongrunningListOperationsResponse(
+          response as api.GoogleLongrunningListOperationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsCatalogsPlacementsResource', () {
-    unittest.test('method--predict', () {
+    unittest.test('method--predict', () async {
       var mock = HttpServerMock();
       var res = api.CloudRetailApi(mock).projects.locations.catalogs.placements;
       var arg_request = buildGoogleCloudRetailV2PredictRequest();
@@ -4771,17 +4742,15 @@ void main() {
             convert.json.encode(buildGoogleCloudRetailV2PredictResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .predict(arg_request, arg_placement, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRetailV2PredictResponse(
-            response as api.GoogleCloudRetailV2PredictResponse);
-      })));
+      final response =
+          await res.predict(arg_request, arg_placement, $fields: arg_$fields);
+      checkGoogleCloudRetailV2PredictResponse(
+          response as api.GoogleCloudRetailV2PredictResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsCatalogsUserEventsResource', () {
-    unittest.test('method--collect', () {
+    unittest.test('method--collect', () async {
       var mock = HttpServerMock();
       var res = api.CloudRetailApi(mock).projects.locations.catalogs.userEvents;
       var arg_parent = 'foo';
@@ -4844,18 +4813,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .collect(arg_parent,
-              ets: arg_ets,
-              uri: arg_uri,
-              userEvent: arg_userEvent,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
-      })));
+      final response = await res.collect(arg_parent,
+          ets: arg_ets,
+          uri: arg_uri,
+          userEvent: arg_userEvent,
+          $fields: arg_$fields);
+      checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
     });
 
-    unittest.test('method--import', () {
+    unittest.test('method--import', () async {
       var mock = HttpServerMock();
       var res = api.CloudRetailApi(mock).projects.locations.catalogs.userEvents;
       var arg_request = buildGoogleCloudRetailV2ImportUserEventsRequest();
@@ -4909,15 +4875,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .import(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.import(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--purge', () {
+    unittest.test('method--purge', () async {
       var mock = HttpServerMock();
       var res = api.CloudRetailApi(mock).projects.locations.catalogs.userEvents;
       var arg_request = buildGoogleCloudRetailV2PurgeUserEventsRequest();
@@ -4971,15 +4935,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .purge(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.purge(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--rejoin', () {
+    unittest.test('method--rejoin', () async {
       var mock = HttpServerMock();
       var res = api.CloudRetailApi(mock).projects.locations.catalogs.userEvents;
       var arg_request = buildGoogleCloudRetailV2RejoinUserEventsRequest();
@@ -5033,15 +4995,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .rejoin(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.rejoin(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--write', () {
+    unittest.test('method--write', () async {
       var mock = HttpServerMock();
       var res = api.CloudRetailApi(mock).projects.locations.catalogs.userEvents;
       var arg_request = buildGoogleCloudRetailV2UserEvent();
@@ -5095,17 +5055,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudRetailV2UserEvent());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .write(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRetailV2UserEvent(
-            response as api.GoogleCloudRetailV2UserEvent);
-      })));
+      final response =
+          await res.write(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudRetailV2UserEvent(
+          response as api.GoogleCloudRetailV2UserEvent);
     });
   });
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudRetailApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -5153,15 +5111,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudRetailApi(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -5225,16 +5180,13 @@ void main() {
             convert.json.encode(buildGoogleLongrunningListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningListOperationsResponse(
-            response as api.GoogleLongrunningListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleLongrunningListOperationsResponse(
+          response as api.GoogleLongrunningListOperationsResponse);
     });
   });
 }

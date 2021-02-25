@@ -170,7 +170,7 @@ void checkLicenseAssignmentList(api.LicenseAssignmentList o) {
 
 void main() {
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -178,7 +178,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LicenseAssignment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLicenseAssignment();
       var od = api.LicenseAssignment.fromJson(o.toJson());
       checkLicenseAssignment(od as api.LicenseAssignment);
@@ -186,7 +186,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LicenseAssignmentInsert', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLicenseAssignmentInsert();
       var od = api.LicenseAssignmentInsert.fromJson(o.toJson());
       checkLicenseAssignmentInsert(od as api.LicenseAssignmentInsert);
@@ -194,7 +194,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LicenseAssignmentList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLicenseAssignmentList();
       var od = api.LicenseAssignmentList.fromJson(o.toJson());
       checkLicenseAssignmentList(od as api.LicenseAssignmentList);
@@ -202,7 +202,7 @@ void main() {
   });
 
   unittest.group('resource-LicenseAssignmentsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.LicensingApi(mock).licenseAssignments;
       var arg_productId = 'foo';
@@ -285,14 +285,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_productId, arg_skuId, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_productId, arg_skuId, arg_userId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.LicensingApi(mock).licenseAssignments;
       var arg_productId = 'foo';
@@ -375,14 +373,12 @@ void main() {
         var resp = convert.json.encode(buildLicenseAssignment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_productId, arg_skuId, arg_userId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLicenseAssignment(response as api.LicenseAssignment);
-      })));
+      final response = await res.get(arg_productId, arg_skuId, arg_userId,
+          $fields: arg_$fields);
+      checkLicenseAssignment(response as api.LicenseAssignment);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.LicensingApi(mock).licenseAssignments;
       var arg_request = buildLicenseAssignmentInsert();
@@ -463,14 +459,12 @@ void main() {
         var resp = convert.json.encode(buildLicenseAssignment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_productId, arg_skuId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLicenseAssignment(response as api.LicenseAssignment);
-      })));
+      final response = await res.insert(arg_request, arg_productId, arg_skuId,
+          $fields: arg_$fields);
+      checkLicenseAssignment(response as api.LicenseAssignment);
     });
 
-    unittest.test('method--listForProduct', () {
+    unittest.test('method--listForProduct', () async {
       var mock = HttpServerMock();
       var res = api.LicensingApi(mock).licenseAssignments;
       var arg_productId = 'foo';
@@ -546,17 +540,14 @@ void main() {
         var resp = convert.json.encode(buildLicenseAssignmentList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listForProduct(arg_productId, arg_customerId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLicenseAssignmentList(response as api.LicenseAssignmentList);
-      })));
+      final response = await res.listForProduct(arg_productId, arg_customerId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkLicenseAssignmentList(response as api.LicenseAssignmentList);
     });
 
-    unittest.test('method--listForProductAndSku', () {
+    unittest.test('method--listForProductAndSku', () async {
       var mock = HttpServerMock();
       var res = api.LicensingApi(mock).licenseAssignments;
       var arg_productId = 'foo';
@@ -647,17 +638,15 @@ void main() {
         var resp = convert.json.encode(buildLicenseAssignmentList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listForProductAndSku(arg_productId, arg_skuId, arg_customerId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLicenseAssignmentList(response as api.LicenseAssignmentList);
-      })));
+      final response = await res.listForProductAndSku(
+          arg_productId, arg_skuId, arg_customerId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkLicenseAssignmentList(response as api.LicenseAssignmentList);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.LicensingApi(mock).licenseAssignments;
       var arg_request = buildLicenseAssignment();
@@ -745,15 +734,13 @@ void main() {
         var resp = convert.json.encode(buildLicenseAssignment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_productId, arg_skuId, arg_userId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLicenseAssignment(response as api.LicenseAssignment);
-      })));
+      final response = await res.patch(
+          arg_request, arg_productId, arg_skuId, arg_userId,
+          $fields: arg_$fields);
+      checkLicenseAssignment(response as api.LicenseAssignment);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.LicensingApi(mock).licenseAssignments;
       var arg_request = buildLicenseAssignment();
@@ -841,12 +828,10 @@ void main() {
         var resp = convert.json.encode(buildLicenseAssignment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_productId, arg_skuId, arg_userId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLicenseAssignment(response as api.LicenseAssignment);
-      })));
+      final response = await res.update(
+          arg_request, arg_productId, arg_skuId, arg_userId,
+          $fields: arg_$fields);
+      checkLicenseAssignment(response as api.LicenseAssignment);
     });
   });
 }

@@ -4783,7 +4783,7 @@ void checkVerificationCodes(api.VerificationCodes o) {
 
 void main() {
   unittest.group('obj-schema-Alias', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAlias();
       var od = api.Alias.fromJson(o.toJson());
       checkAlias(od as api.Alias);
@@ -4791,7 +4791,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Aliases', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAliases();
       var od = api.Aliases.fromJson(o.toJson());
       checkAliases(od as api.Aliases);
@@ -4799,7 +4799,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Asp', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAsp();
       var od = api.Asp.fromJson(o.toJson());
       checkAsp(od as api.Asp);
@@ -4807,7 +4807,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Asps', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAsps();
       var od = api.Asps.fromJson(o.toJson());
       checkAsps(od as api.Asps);
@@ -4815,7 +4815,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Building', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuilding();
       var od = api.Building.fromJson(o.toJson());
       checkBuilding(od as api.Building);
@@ -4823,7 +4823,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildingAddress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildingAddress();
       var od = api.BuildingAddress.fromJson(o.toJson());
       checkBuildingAddress(od as api.BuildingAddress);
@@ -4831,7 +4831,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildingCoordinates', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildingCoordinates();
       var od = api.BuildingCoordinates.fromJson(o.toJson());
       checkBuildingCoordinates(od as api.BuildingCoordinates);
@@ -4839,7 +4839,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Buildings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildings();
       var od = api.Buildings.fromJson(o.toJson());
       checkBuildings(od as api.Buildings);
@@ -4847,7 +4847,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CalendarResource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCalendarResource();
       var od = api.CalendarResource.fromJson(o.toJson());
       checkCalendarResource(od as api.CalendarResource);
@@ -4855,7 +4855,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CalendarResources', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCalendarResources();
       var od = api.CalendarResources.fromJson(o.toJson());
       checkCalendarResources(od as api.CalendarResources);
@@ -4863,7 +4863,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Channel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChannel();
       var od = api.Channel.fromJson(o.toJson());
       checkChannel(od as api.Channel);
@@ -4871,7 +4871,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChromeOsDeviceActiveTimeRanges', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChromeOsDeviceActiveTimeRanges();
       var od = api.ChromeOsDeviceActiveTimeRanges.fromJson(o.toJson());
       checkChromeOsDeviceActiveTimeRanges(
@@ -4881,7 +4881,7 @@ void main() {
 
   unittest.group('obj-schema-ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChromeOsDeviceCpuStatusReportsCpuTemperatureInfo();
       var od = api.ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo.fromJson(
           o.toJson());
@@ -4891,7 +4891,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChromeOsDeviceCpuStatusReports', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChromeOsDeviceCpuStatusReports();
       var od = api.ChromeOsDeviceCpuStatusReports.fromJson(o.toJson());
       checkChromeOsDeviceCpuStatusReports(
@@ -4900,7 +4900,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChromeOsDeviceDeviceFiles', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChromeOsDeviceDeviceFiles();
       var od = api.ChromeOsDeviceDeviceFiles.fromJson(o.toJson());
       checkChromeOsDeviceDeviceFiles(od as api.ChromeOsDeviceDeviceFiles);
@@ -4908,7 +4908,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChromeOsDeviceDiskVolumeReportsVolumeInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChromeOsDeviceDiskVolumeReportsVolumeInfo();
       var od =
           api.ChromeOsDeviceDiskVolumeReportsVolumeInfo.fromJson(o.toJson());
@@ -4918,7 +4918,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChromeOsDeviceDiskVolumeReports', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChromeOsDeviceDiskVolumeReports();
       var od = api.ChromeOsDeviceDiskVolumeReports.fromJson(o.toJson());
       checkChromeOsDeviceDiskVolumeReports(
@@ -4927,7 +4927,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChromeOsDeviceLastKnownNetwork', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChromeOsDeviceLastKnownNetwork();
       var od = api.ChromeOsDeviceLastKnownNetwork.fromJson(o.toJson());
       checkChromeOsDeviceLastKnownNetwork(
@@ -4936,7 +4936,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChromeOsDeviceSystemRamFreeReports', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChromeOsDeviceSystemRamFreeReports();
       var od = api.ChromeOsDeviceSystemRamFreeReports.fromJson(o.toJson());
       checkChromeOsDeviceSystemRamFreeReports(
@@ -4945,7 +4945,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChromeOsDeviceTpmVersionInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChromeOsDeviceTpmVersionInfo();
       var od = api.ChromeOsDeviceTpmVersionInfo.fromJson(o.toJson());
       checkChromeOsDeviceTpmVersionInfo(od as api.ChromeOsDeviceTpmVersionInfo);
@@ -4953,7 +4953,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChromeOsDevice', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChromeOsDevice();
       var od = api.ChromeOsDevice.fromJson(o.toJson());
       checkChromeOsDevice(od as api.ChromeOsDevice);
@@ -4961,7 +4961,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChromeOsDeviceAction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChromeOsDeviceAction();
       var od = api.ChromeOsDeviceAction.fromJson(o.toJson());
       checkChromeOsDeviceAction(od as api.ChromeOsDeviceAction);
@@ -4969,7 +4969,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChromeOsDevices', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChromeOsDevices();
       var od = api.ChromeOsDevices.fromJson(o.toJson());
       checkChromeOsDevices(od as api.ChromeOsDevices);
@@ -4977,7 +4977,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChromeOsMoveDevicesToOu', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChromeOsMoveDevicesToOu();
       var od = api.ChromeOsMoveDevicesToOu.fromJson(o.toJson());
       checkChromeOsMoveDevicesToOu(od as api.ChromeOsMoveDevicesToOu);
@@ -4985,7 +4985,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Customer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomer();
       var od = api.Customer.fromJson(o.toJson());
       checkCustomer(od as api.Customer);
@@ -4993,7 +4993,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomerPostalAddress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomerPostalAddress();
       var od = api.CustomerPostalAddress.fromJson(o.toJson());
       checkCustomerPostalAddress(od as api.CustomerPostalAddress);
@@ -5001,7 +5001,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DirectoryChromeosdevicesCommand', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDirectoryChromeosdevicesCommand();
       var od = api.DirectoryChromeosdevicesCommand.fromJson(o.toJson());
       checkDirectoryChromeosdevicesCommand(
@@ -5010,7 +5010,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DirectoryChromeosdevicesCommandResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDirectoryChromeosdevicesCommandResult();
       var od = api.DirectoryChromeosdevicesCommandResult.fromJson(o.toJson());
       checkDirectoryChromeosdevicesCommandResult(
@@ -5019,7 +5019,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DirectoryChromeosdevicesIssueCommandRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDirectoryChromeosdevicesIssueCommandRequest();
       var od =
           api.DirectoryChromeosdevicesIssueCommandRequest.fromJson(o.toJson());
@@ -5029,7 +5029,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DirectoryChromeosdevicesIssueCommandResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDirectoryChromeosdevicesIssueCommandResponse();
       var od =
           api.DirectoryChromeosdevicesIssueCommandResponse.fromJson(o.toJson());
@@ -5039,7 +5039,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DomainAlias', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDomainAlias();
       var od = api.DomainAlias.fromJson(o.toJson());
       checkDomainAlias(od as api.DomainAlias);
@@ -5047,7 +5047,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DomainAliases', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDomainAliases();
       var od = api.DomainAliases.fromJson(o.toJson());
       checkDomainAliases(od as api.DomainAliases);
@@ -5055,7 +5055,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Domains', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDomains();
       var od = api.Domains.fromJson(o.toJson());
       checkDomains(od as api.Domains);
@@ -5063,7 +5063,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Domains2', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDomains2();
       var od = api.Domains2.fromJson(o.toJson());
       checkDomains2(od as api.Domains2);
@@ -5071,7 +5071,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Feature', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFeature();
       var od = api.Feature.fromJson(o.toJson());
       checkFeature(od as api.Feature);
@@ -5079,7 +5079,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FeatureInstance', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFeatureInstance();
       var od = api.FeatureInstance.fromJson(o.toJson());
       checkFeatureInstance(od as api.FeatureInstance);
@@ -5087,7 +5087,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FeatureRename', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFeatureRename();
       var od = api.FeatureRename.fromJson(o.toJson());
       checkFeatureRename(od as api.FeatureRename);
@@ -5095,7 +5095,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Features', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFeatures();
       var od = api.Features.fromJson(o.toJson());
       checkFeatures(od as api.Features);
@@ -5103,7 +5103,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Group', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroup();
       var od = api.Group.fromJson(o.toJson());
       checkGroup(od as api.Group);
@@ -5111,7 +5111,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Groups', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroups();
       var od = api.Groups.fromJson(o.toJson());
       checkGroups(od as api.Groups);
@@ -5119,7 +5119,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Member', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMember();
       var od = api.Member.fromJson(o.toJson());
       checkMember(od as api.Member);
@@ -5127,7 +5127,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Members', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMembers();
       var od = api.Members.fromJson(o.toJson());
       checkMembers(od as api.Members);
@@ -5135,7 +5135,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MembersHasMember', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMembersHasMember();
       var od = api.MembersHasMember.fromJson(o.toJson());
       checkMembersHasMember(od as api.MembersHasMember);
@@ -5143,7 +5143,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MobileDeviceApplications', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMobileDeviceApplications();
       var od = api.MobileDeviceApplications.fromJson(o.toJson());
       checkMobileDeviceApplications(od as api.MobileDeviceApplications);
@@ -5151,7 +5151,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MobileDevice', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMobileDevice();
       var od = api.MobileDevice.fromJson(o.toJson());
       checkMobileDevice(od as api.MobileDevice);
@@ -5159,7 +5159,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MobileDeviceAction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMobileDeviceAction();
       var od = api.MobileDeviceAction.fromJson(o.toJson());
       checkMobileDeviceAction(od as api.MobileDeviceAction);
@@ -5167,7 +5167,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MobileDevices', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMobileDevices();
       var od = api.MobileDevices.fromJson(o.toJson());
       checkMobileDevices(od as api.MobileDevices);
@@ -5175,7 +5175,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrgUnit', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrgUnit();
       var od = api.OrgUnit.fromJson(o.toJson());
       checkOrgUnit(od as api.OrgUnit);
@@ -5183,7 +5183,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrgUnits', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrgUnits();
       var od = api.OrgUnits.fromJson(o.toJson());
       checkOrgUnits(od as api.OrgUnits);
@@ -5191,7 +5191,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Privilege', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPrivilege();
       var od = api.Privilege.fromJson(o.toJson());
       checkPrivilege(od as api.Privilege);
@@ -5199,7 +5199,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Privileges', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPrivileges();
       var od = api.Privileges.fromJson(o.toJson());
       checkPrivileges(od as api.Privileges);
@@ -5207,7 +5207,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RecentUsers', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRecentUsers();
       var od = api.RecentUsers.fromJson(o.toJson());
       checkRecentUsers(od as api.RecentUsers);
@@ -5215,7 +5215,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RoleRolePrivileges', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRoleRolePrivileges();
       var od = api.RoleRolePrivileges.fromJson(o.toJson());
       checkRoleRolePrivileges(od as api.RoleRolePrivileges);
@@ -5223,7 +5223,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Role', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRole();
       var od = api.Role.fromJson(o.toJson());
       checkRole(od as api.Role);
@@ -5231,7 +5231,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RoleAssignment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRoleAssignment();
       var od = api.RoleAssignment.fromJson(o.toJson());
       checkRoleAssignment(od as api.RoleAssignment);
@@ -5239,7 +5239,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RoleAssignments', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRoleAssignments();
       var od = api.RoleAssignments.fromJson(o.toJson());
       checkRoleAssignments(od as api.RoleAssignments);
@@ -5247,7 +5247,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Roles', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRoles();
       var od = api.Roles.fromJson(o.toJson());
       checkRoles(od as api.Roles);
@@ -5255,7 +5255,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Schema', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSchema();
       var od = api.Schema.fromJson(o.toJson());
       checkSchema(od as api.Schema);
@@ -5263,7 +5263,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SchemaFieldSpecNumericIndexingSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSchemaFieldSpecNumericIndexingSpec();
       var od = api.SchemaFieldSpecNumericIndexingSpec.fromJson(o.toJson());
       checkSchemaFieldSpecNumericIndexingSpec(
@@ -5272,7 +5272,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SchemaFieldSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSchemaFieldSpec();
       var od = api.SchemaFieldSpec.fromJson(o.toJson());
       checkSchemaFieldSpec(od as api.SchemaFieldSpec);
@@ -5280,7 +5280,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Schemas', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSchemas();
       var od = api.Schemas.fromJson(o.toJson());
       checkSchemas(od as api.Schemas);
@@ -5288,7 +5288,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Token', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildToken();
       var od = api.Token.fromJson(o.toJson());
       checkToken(od as api.Token);
@@ -5296,7 +5296,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Tokens', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTokens();
       var od = api.Tokens.fromJson(o.toJson());
       checkTokens(od as api.Tokens);
@@ -5304,7 +5304,7 @@ void main() {
   });
 
   unittest.group('obj-schema-User', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
       checkUser(od as api.User);
@@ -5312,7 +5312,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserAbout', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserAbout();
       var od = api.UserAbout.fromJson(o.toJson());
       checkUserAbout(od as api.UserAbout);
@@ -5320,7 +5320,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserAddress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserAddress();
       var od = api.UserAddress.fromJson(o.toJson());
       checkUserAddress(od as api.UserAddress);
@@ -5328,7 +5328,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserCustomProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserCustomProperties();
       var od = api.UserCustomProperties.fromJson(o.toJson());
       checkUserCustomProperties(od as api.UserCustomProperties);
@@ -5336,7 +5336,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserEmail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserEmail();
       var od = api.UserEmail.fromJson(o.toJson());
       checkUserEmail(od as api.UserEmail);
@@ -5344,7 +5344,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserExternalId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserExternalId();
       var od = api.UserExternalId.fromJson(o.toJson());
       checkUserExternalId(od as api.UserExternalId);
@@ -5352,7 +5352,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserGender', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserGender();
       var od = api.UserGender.fromJson(o.toJson());
       checkUserGender(od as api.UserGender);
@@ -5360,7 +5360,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserIm', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserIm();
       var od = api.UserIm.fromJson(o.toJson());
       checkUserIm(od as api.UserIm);
@@ -5368,7 +5368,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserKeyword', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserKeyword();
       var od = api.UserKeyword.fromJson(o.toJson());
       checkUserKeyword(od as api.UserKeyword);
@@ -5376,7 +5376,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserLanguage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserLanguage();
       var od = api.UserLanguage.fromJson(o.toJson());
       checkUserLanguage(od as api.UserLanguage);
@@ -5384,7 +5384,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserLocation();
       var od = api.UserLocation.fromJson(o.toJson());
       checkUserLocation(od as api.UserLocation);
@@ -5392,7 +5392,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserMakeAdmin', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserMakeAdmin();
       var od = api.UserMakeAdmin.fromJson(o.toJson());
       checkUserMakeAdmin(od as api.UserMakeAdmin);
@@ -5400,7 +5400,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserName', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserName();
       var od = api.UserName.fromJson(o.toJson());
       checkUserName(od as api.UserName);
@@ -5408,7 +5408,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserOrganization', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserOrganization();
       var od = api.UserOrganization.fromJson(o.toJson());
       checkUserOrganization(od as api.UserOrganization);
@@ -5416,7 +5416,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserPhone', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserPhone();
       var od = api.UserPhone.fromJson(o.toJson());
       checkUserPhone(od as api.UserPhone);
@@ -5424,7 +5424,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserPhoto', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserPhoto();
       var od = api.UserPhoto.fromJson(o.toJson());
       checkUserPhoto(od as api.UserPhoto);
@@ -5432,7 +5432,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserPosixAccount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserPosixAccount();
       var od = api.UserPosixAccount.fromJson(o.toJson());
       checkUserPosixAccount(od as api.UserPosixAccount);
@@ -5440,7 +5440,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserRelation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserRelation();
       var od = api.UserRelation.fromJson(o.toJson());
       checkUserRelation(od as api.UserRelation);
@@ -5448,7 +5448,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserSshPublicKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserSshPublicKey();
       var od = api.UserSshPublicKey.fromJson(o.toJson());
       checkUserSshPublicKey(od as api.UserSshPublicKey);
@@ -5456,7 +5456,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserUndelete', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserUndelete();
       var od = api.UserUndelete.fromJson(o.toJson());
       checkUserUndelete(od as api.UserUndelete);
@@ -5464,7 +5464,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserWebsite', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserWebsite();
       var od = api.UserWebsite.fromJson(o.toJson());
       checkUserWebsite(od as api.UserWebsite);
@@ -5472,7 +5472,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Users', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsers();
       var od = api.Users.fromJson(o.toJson());
       checkUsers(od as api.Users);
@@ -5480,7 +5480,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VerificationCode', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVerificationCode();
       var od = api.VerificationCode.fromJson(o.toJson());
       checkVerificationCode(od as api.VerificationCode);
@@ -5488,7 +5488,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VerificationCodes', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVerificationCodes();
       var od = api.VerificationCodes.fromJson(o.toJson());
       checkVerificationCodes(od as api.VerificationCodes);
@@ -5496,7 +5496,7 @@ void main() {
   });
 
   unittest.group('resource-AspsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).asps;
       var arg_userKey = 'foo';
@@ -5564,12 +5564,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_userKey, arg_codeId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_userKey, arg_codeId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).asps;
       var arg_userKey = 'foo';
@@ -5637,14 +5635,12 @@ void main() {
         var resp = convert.json.encode(buildAsp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userKey, arg_codeId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAsp(response as api.Asp);
-      })));
+      final response =
+          await res.get(arg_userKey, arg_codeId, $fields: arg_$fields);
+      checkAsp(response as api.Asp);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).asps;
       var arg_userKey = 'foo';
@@ -5705,16 +5701,13 @@ void main() {
         var resp = convert.json.encode(buildAsps());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAsps(response as api.Asps);
-      })));
+      final response = await res.list(arg_userKey, $fields: arg_$fields);
+      checkAsps(response as api.Asps);
     });
   });
 
   unittest.group('resource-ChannelsResource', () {
-    unittest.test('method--stop', () {
+    unittest.test('method--stop', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).channels;
       var arg_request = buildChannel();
@@ -5765,14 +5758,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .stop(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.stop(arg_request, $fields: arg_$fields);
     });
   });
 
   unittest.group('resource-ChromeosdevicesResource', () {
-    unittest.test('method--action', () {
+    unittest.test('method--action', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).chromeosdevices;
       var arg_request = buildChromeOsDeviceAction();
@@ -5853,13 +5844,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .action(arg_request, arg_customerId, arg_resourceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.action(arg_request, arg_customerId, arg_resourceId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).chromeosdevices;
       var arg_customerId = 'foo';
@@ -5932,15 +5921,12 @@ void main() {
         var resp = convert.json.encode(buildChromeOsDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_customerId, arg_deviceId,
-              projection: arg_projection, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChromeOsDevice(response as api.ChromeOsDevice);
-      })));
+      final response = await res.get(arg_customerId, arg_deviceId,
+          projection: arg_projection, $fields: arg_$fields);
+      checkChromeOsDevice(response as api.ChromeOsDevice);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).chromeosdevices;
       var arg_customerId = 'foo';
@@ -6036,22 +6022,19 @@ void main() {
         var resp = convert.json.encode(buildChromeOsDevices());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_customerId,
-              maxResults: arg_maxResults,
-              orderBy: arg_orderBy,
-              orgUnitPath: arg_orgUnitPath,
-              pageToken: arg_pageToken,
-              projection: arg_projection,
-              query: arg_query,
-              sortOrder: arg_sortOrder,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChromeOsDevices(response as api.ChromeOsDevices);
-      })));
+      final response = await res.list(arg_customerId,
+          maxResults: arg_maxResults,
+          orderBy: arg_orderBy,
+          orgUnitPath: arg_orgUnitPath,
+          pageToken: arg_pageToken,
+          projection: arg_projection,
+          query: arg_query,
+          sortOrder: arg_sortOrder,
+          $fields: arg_$fields);
+      checkChromeOsDevices(response as api.ChromeOsDevices);
     });
 
-    unittest.test('method--moveDevicesToOu', () {
+    unittest.test('method--moveDevicesToOu', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).chromeosdevices;
       var arg_request = buildChromeOsMoveDevicesToOu();
@@ -6122,13 +6105,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .moveDevicesToOu(arg_request, arg_customerId, arg_orgUnitPath,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.moveDevicesToOu(arg_request, arg_customerId, arg_orgUnitPath,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).chromeosdevices;
       var arg_request = buildChromeOsDevice();
@@ -6206,15 +6187,13 @@ void main() {
         var resp = convert.json.encode(buildChromeOsDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_customerId, arg_deviceId,
-              projection: arg_projection, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChromeOsDevice(response as api.ChromeOsDevice);
-      })));
+      final response = await res.patch(
+          arg_request, arg_customerId, arg_deviceId,
+          projection: arg_projection, $fields: arg_$fields);
+      checkChromeOsDevice(response as api.ChromeOsDevice);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).chromeosdevices;
       var arg_request = buildChromeOsDevice();
@@ -6292,17 +6271,15 @@ void main() {
         var resp = convert.json.encode(buildChromeOsDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_customerId, arg_deviceId,
-              projection: arg_projection, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChromeOsDevice(response as api.ChromeOsDevice);
-      })));
+      final response = await res.update(
+          arg_request, arg_customerId, arg_deviceId,
+          projection: arg_projection, $fields: arg_$fields);
+      checkChromeOsDevice(response as api.ChromeOsDevice);
     });
   });
 
   unittest.group('resource-CustomerDevicesChromeosResource', () {
-    unittest.test('method--issueCommand', () {
+    unittest.test('method--issueCommand', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).customer.devices.chromeos;
       var arg_request = buildDirectoryChromeosdevicesIssueCommandRequest();
@@ -6385,18 +6362,16 @@ void main() {
             .encode(buildDirectoryChromeosdevicesIssueCommandResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .issueCommand(arg_request, arg_customerId, arg_deviceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDirectoryChromeosdevicesIssueCommandResponse(
-            response as api.DirectoryChromeosdevicesIssueCommandResponse);
-      })));
+      final response = await res.issueCommand(
+          arg_request, arg_customerId, arg_deviceId,
+          $fields: arg_$fields);
+      checkDirectoryChromeosdevicesIssueCommandResponse(
+          response as api.DirectoryChromeosdevicesIssueCommandResponse);
     });
   });
 
   unittest.group('resource-CustomerDevicesChromeosCommandsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).customer.devices.chromeos.commands;
       var arg_customerId = 'foo';
@@ -6479,18 +6454,16 @@ void main() {
         var resp = convert.json.encode(buildDirectoryChromeosdevicesCommand());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_customerId, arg_deviceId, arg_commandId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDirectoryChromeosdevicesCommand(
-            response as api.DirectoryChromeosdevicesCommand);
-      })));
+      final response = await res.get(
+          arg_customerId, arg_deviceId, arg_commandId,
+          $fields: arg_$fields);
+      checkDirectoryChromeosdevicesCommand(
+          response as api.DirectoryChromeosdevicesCommand);
     });
   });
 
   unittest.group('resource-CustomersResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).customers;
       var arg_customerKey = 'foo';
@@ -6543,14 +6516,11 @@ void main() {
         var resp = convert.json.encode(buildCustomer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_customerKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomer(response as api.Customer);
-      })));
+      final response = await res.get(arg_customerKey, $fields: arg_$fields);
+      checkCustomer(response as api.Customer);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).customers;
       var arg_request = buildCustomer();
@@ -6608,14 +6578,12 @@ void main() {
         var resp = convert.json.encode(buildCustomer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_customerKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomer(response as api.Customer);
-      })));
+      final response =
+          await res.patch(arg_request, arg_customerKey, $fields: arg_$fields);
+      checkCustomer(response as api.Customer);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).customers;
       var arg_request = buildCustomer();
@@ -6673,16 +6641,14 @@ void main() {
         var resp = convert.json.encode(buildCustomer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_customerKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomer(response as api.Customer);
-      })));
+      final response =
+          await res.update(arg_request, arg_customerKey, $fields: arg_$fields);
+      checkCustomer(response as api.Customer);
     });
   });
 
   unittest.group('resource-DomainAliasesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).domainAliases;
       var arg_customer = 'foo';
@@ -6750,12 +6716,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_customer, arg_domainAliasName, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_customer, arg_domainAliasName, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).domainAliases;
       var arg_customer = 'foo';
@@ -6823,14 +6787,12 @@ void main() {
         var resp = convert.json.encode(buildDomainAlias());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_customer, arg_domainAliasName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDomainAlias(response as api.DomainAlias);
-      })));
+      final response = await res.get(arg_customer, arg_domainAliasName,
+          $fields: arg_$fields);
+      checkDomainAlias(response as api.DomainAlias);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).domainAliases;
       var arg_request = buildDomainAlias();
@@ -6896,14 +6858,12 @@ void main() {
         var resp = convert.json.encode(buildDomainAlias());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_customer, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDomainAlias(response as api.DomainAlias);
-      })));
+      final response =
+          await res.insert(arg_request, arg_customer, $fields: arg_$fields);
+      checkDomainAlias(response as api.DomainAlias);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).domainAliases;
       var arg_customer = 'foo';
@@ -6969,17 +6929,14 @@ void main() {
         var resp = convert.json.encode(buildDomainAliases());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_customer,
-              parentDomainName: arg_parentDomainName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDomainAliases(response as api.DomainAliases);
-      })));
+      final response = await res.list(arg_customer,
+          parentDomainName: arg_parentDomainName, $fields: arg_$fields);
+      checkDomainAliases(response as api.DomainAliases);
     });
   });
 
   unittest.group('resource-DomainsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).domains;
       var arg_customer = 'foo';
@@ -7047,12 +7004,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_customer, arg_domainName, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_customer, arg_domainName, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).domains;
       var arg_customer = 'foo';
@@ -7120,14 +7075,12 @@ void main() {
         var resp = convert.json.encode(buildDomains());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_customer, arg_domainName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDomains(response as api.Domains);
-      })));
+      final response =
+          await res.get(arg_customer, arg_domainName, $fields: arg_$fields);
+      checkDomains(response as api.Domains);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).domains;
       var arg_request = buildDomains();
@@ -7193,14 +7146,12 @@ void main() {
         var resp = convert.json.encode(buildDomains());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_customer, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDomains(response as api.Domains);
-      })));
+      final response =
+          await res.insert(arg_request, arg_customer, $fields: arg_$fields);
+      checkDomains(response as api.Domains);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).domains;
       var arg_customer = 'foo';
@@ -7261,16 +7212,13 @@ void main() {
         var resp = convert.json.encode(buildDomains2());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_customer, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDomains2(response as api.Domains2);
-      })));
+      final response = await res.list(arg_customer, $fields: arg_$fields);
+      checkDomains2(response as api.Domains2);
     });
   });
 
   unittest.group('resource-GroupsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).groups;
       var arg_groupKey = 'foo';
@@ -7323,12 +7271,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_groupKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_groupKey, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).groups;
       var arg_groupKey = 'foo';
@@ -7381,14 +7327,11 @@ void main() {
         var resp = convert.json.encode(buildGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_groupKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroup(response as api.Group);
-      })));
+      final response = await res.get(arg_groupKey, $fields: arg_$fields);
+      checkGroup(response as api.Group);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).groups;
       var arg_request = buildGroup();
@@ -7439,14 +7382,11 @@ void main() {
         var resp = convert.json.encode(buildGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroup(response as api.Group);
-      })));
+      final response = await res.insert(arg_request, $fields: arg_$fields);
+      checkGroup(response as api.Group);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).groups;
       var arg_customer = 'foo';
@@ -7532,23 +7472,20 @@ void main() {
         var resp = convert.json.encode(buildGroups());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              customer: arg_customer,
-              domain: arg_domain,
-              maxResults: arg_maxResults,
-              orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
-              query: arg_query,
-              sortOrder: arg_sortOrder,
-              userKey: arg_userKey,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroups(response as api.Groups);
-      })));
+      final response = await res.list(
+          customer: arg_customer,
+          domain: arg_domain,
+          maxResults: arg_maxResults,
+          orderBy: arg_orderBy,
+          pageToken: arg_pageToken,
+          query: arg_query,
+          sortOrder: arg_sortOrder,
+          userKey: arg_userKey,
+          $fields: arg_$fields);
+      checkGroups(response as api.Groups);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).groups;
       var arg_request = buildGroup();
@@ -7606,14 +7543,12 @@ void main() {
         var resp = convert.json.encode(buildGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_groupKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroup(response as api.Group);
-      })));
+      final response =
+          await res.patch(arg_request, arg_groupKey, $fields: arg_$fields);
+      checkGroup(response as api.Group);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).groups;
       var arg_request = buildGroup();
@@ -7671,16 +7606,14 @@ void main() {
         var resp = convert.json.encode(buildGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_groupKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroup(response as api.Group);
-      })));
+      final response =
+          await res.update(arg_request, arg_groupKey, $fields: arg_$fields);
+      checkGroup(response as api.Group);
     });
   });
 
   unittest.group('resource-GroupsAliasesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).groups.aliases;
       var arg_groupKey = 'foo';
@@ -7748,12 +7681,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_groupKey, arg_alias, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_groupKey, arg_alias, $fields: arg_$fields);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).groups.aliases;
       var arg_request = buildAlias();
@@ -7819,14 +7750,12 @@ void main() {
         var resp = convert.json.encode(buildAlias());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_groupKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAlias(response as api.Alias);
-      })));
+      final response =
+          await res.insert(arg_request, arg_groupKey, $fields: arg_$fields);
+      checkAlias(response as api.Alias);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).groups.aliases;
       var arg_groupKey = 'foo';
@@ -7887,16 +7816,13 @@ void main() {
         var resp = convert.json.encode(buildAliases());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_groupKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAliases(response as api.Aliases);
-      })));
+      final response = await res.list(arg_groupKey, $fields: arg_$fields);
+      checkAliases(response as api.Aliases);
     });
   });
 
   unittest.group('resource-MembersResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).members;
       var arg_groupKey = 'foo';
@@ -7964,12 +7890,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_groupKey, arg_memberKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_groupKey, arg_memberKey, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).members;
       var arg_groupKey = 'foo';
@@ -8037,14 +7961,12 @@ void main() {
         var resp = convert.json.encode(buildMember());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_groupKey, arg_memberKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMember(response as api.Member);
-      })));
+      final response =
+          await res.get(arg_groupKey, arg_memberKey, $fields: arg_$fields);
+      checkMember(response as api.Member);
     });
 
-    unittest.test('method--hasMember', () {
+    unittest.test('method--hasMember', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).members;
       var arg_groupKey = 'foo';
@@ -8112,14 +8034,12 @@ void main() {
         var resp = convert.json.encode(buildMembersHasMember());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .hasMember(arg_groupKey, arg_memberKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMembersHasMember(response as api.MembersHasMember);
-      })));
+      final response = await res.hasMember(arg_groupKey, arg_memberKey,
+          $fields: arg_$fields);
+      checkMembersHasMember(response as api.MembersHasMember);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).members;
       var arg_request = buildMember();
@@ -8185,14 +8105,12 @@ void main() {
         var resp = convert.json.encode(buildMember());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_groupKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMember(response as api.Member);
-      })));
+      final response =
+          await res.insert(arg_request, arg_groupKey, $fields: arg_$fields);
+      checkMember(response as api.Member);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).members;
       var arg_groupKey = 'foo';
@@ -8273,19 +8191,16 @@ void main() {
         var resp = convert.json.encode(buildMembers());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_groupKey,
-              includeDerivedMembership: arg_includeDerivedMembership,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              roles: arg_roles,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMembers(response as api.Members);
-      })));
+      final response = await res.list(arg_groupKey,
+          includeDerivedMembership: arg_includeDerivedMembership,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          roles: arg_roles,
+          $fields: arg_$fields);
+      checkMembers(response as api.Members);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).members;
       var arg_request = buildMember();
@@ -8358,14 +8273,12 @@ void main() {
         var resp = convert.json.encode(buildMember());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_groupKey, arg_memberKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMember(response as api.Member);
-      })));
+      final response = await res.patch(arg_request, arg_groupKey, arg_memberKey,
+          $fields: arg_$fields);
+      checkMember(response as api.Member);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).members;
       var arg_request = buildMember();
@@ -8438,17 +8351,15 @@ void main() {
         var resp = convert.json.encode(buildMember());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_groupKey, arg_memberKey,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMember(response as api.Member);
-      })));
+      final response = await res.update(
+          arg_request, arg_groupKey, arg_memberKey,
+          $fields: arg_$fields);
+      checkMember(response as api.Member);
     });
   });
 
   unittest.group('resource-MobiledevicesResource', () {
-    unittest.test('method--action', () {
+    unittest.test('method--action', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).mobiledevices;
       var arg_request = buildMobileDeviceAction();
@@ -8529,13 +8440,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .action(arg_request, arg_customerId, arg_resourceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.action(arg_request, arg_customerId, arg_resourceId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).mobiledevices;
       var arg_customerId = 'foo';
@@ -8603,12 +8512,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_customerId, arg_resourceId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_customerId, arg_resourceId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).mobiledevices;
       var arg_customerId = 'foo';
@@ -8681,15 +8588,12 @@ void main() {
         var resp = convert.json.encode(buildMobileDevice());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_customerId, arg_resourceId,
-              projection: arg_projection, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMobileDevice(response as api.MobileDevice);
-      })));
+      final response = await res.get(arg_customerId, arg_resourceId,
+          projection: arg_projection, $fields: arg_$fields);
+      checkMobileDevice(response as api.MobileDevice);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).mobiledevices;
       var arg_customerId = 'foo';
@@ -8780,23 +8684,20 @@ void main() {
         var resp = convert.json.encode(buildMobileDevices());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_customerId,
-              maxResults: arg_maxResults,
-              orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
-              projection: arg_projection,
-              query: arg_query,
-              sortOrder: arg_sortOrder,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMobileDevices(response as api.MobileDevices);
-      })));
+      final response = await res.list(arg_customerId,
+          maxResults: arg_maxResults,
+          orderBy: arg_orderBy,
+          pageToken: arg_pageToken,
+          projection: arg_projection,
+          query: arg_query,
+          sortOrder: arg_sortOrder,
+          $fields: arg_$fields);
+      checkMobileDevices(response as api.MobileDevices);
     });
   });
 
   unittest.group('resource-OrgunitsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).orgunits;
       var arg_customerId = 'foo';
@@ -8864,13 +8765,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_customerId, arg_orgUnitPath,
-              allowPlus: arg_allowPlus, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_customerId, arg_orgUnitPath,
+          allowPlus: arg_allowPlus, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).orgunits;
       var arg_customerId = 'foo';
@@ -8938,15 +8837,12 @@ void main() {
         var resp = convert.json.encode(buildOrgUnit());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_customerId, arg_orgUnitPath,
-              allowPlus: arg_allowPlus, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrgUnit(response as api.OrgUnit);
-      })));
+      final response = await res.get(arg_customerId, arg_orgUnitPath,
+          allowPlus: arg_allowPlus, $fields: arg_$fields);
+      checkOrgUnit(response as api.OrgUnit);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).orgunits;
       var arg_request = buildOrgUnit();
@@ -9012,14 +8908,12 @@ void main() {
         var resp = convert.json.encode(buildOrgUnit());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_customerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrgUnit(response as api.OrgUnit);
-      })));
+      final response =
+          await res.insert(arg_request, arg_customerId, $fields: arg_$fields);
+      checkOrgUnit(response as api.OrgUnit);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).orgunits;
       var arg_customerId = 'foo';
@@ -9090,17 +8984,12 @@ void main() {
         var resp = convert.json.encode(buildOrgUnits());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_customerId,
-              orgUnitPath: arg_orgUnitPath,
-              type: arg_type,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrgUnits(response as api.OrgUnits);
-      })));
+      final response = await res.list(arg_customerId,
+          orgUnitPath: arg_orgUnitPath, type: arg_type, $fields: arg_$fields);
+      checkOrgUnits(response as api.OrgUnits);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).orgunits;
       var arg_request = buildOrgUnit();
@@ -9173,15 +9062,13 @@ void main() {
         var resp = convert.json.encode(buildOrgUnit());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_customerId, arg_orgUnitPath,
-              allowPlus: arg_allowPlus, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrgUnit(response as api.OrgUnit);
-      })));
+      final response = await res.patch(
+          arg_request, arg_customerId, arg_orgUnitPath,
+          allowPlus: arg_allowPlus, $fields: arg_$fields);
+      checkOrgUnit(response as api.OrgUnit);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).orgunits;
       var arg_request = buildOrgUnit();
@@ -9254,17 +9141,15 @@ void main() {
         var resp = convert.json.encode(buildOrgUnit());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_customerId, arg_orgUnitPath,
-              allowPlus: arg_allowPlus, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrgUnit(response as api.OrgUnit);
-      })));
+      final response = await res.update(
+          arg_request, arg_customerId, arg_orgUnitPath,
+          allowPlus: arg_allowPlus, $fields: arg_$fields);
+      checkOrgUnit(response as api.OrgUnit);
     });
   });
 
   unittest.group('resource-PrivilegesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).privileges;
       var arg_customer = 'foo';
@@ -9325,16 +9210,13 @@ void main() {
         var resp = convert.json.encode(buildPrivileges());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_customer, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPrivileges(response as api.Privileges);
-      })));
+      final response = await res.list(arg_customer, $fields: arg_$fields);
+      checkPrivileges(response as api.Privileges);
     });
   });
 
   unittest.group('resource-ResourcesBuildingsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.buildings;
       var arg_customer = 'foo';
@@ -9402,12 +9284,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_customer, arg_buildingId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_customer, arg_buildingId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.buildings;
       var arg_customer = 'foo';
@@ -9475,14 +9355,12 @@ void main() {
         var resp = convert.json.encode(buildBuilding());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_customer, arg_buildingId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBuilding(response as api.Building);
-      })));
+      final response =
+          await res.get(arg_customer, arg_buildingId, $fields: arg_$fields);
+      checkBuilding(response as api.Building);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.buildings;
       var arg_request = buildBuilding();
@@ -9553,15 +9431,12 @@ void main() {
         var resp = convert.json.encode(buildBuilding());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_customer,
-              coordinatesSource: arg_coordinatesSource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBuilding(response as api.Building);
-      })));
+      final response = await res.insert(arg_request, arg_customer,
+          coordinatesSource: arg_coordinatesSource, $fields: arg_$fields);
+      checkBuilding(response as api.Building);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.buildings;
       var arg_customer = 'foo';
@@ -9632,17 +9507,14 @@ void main() {
         var resp = convert.json.encode(buildBuildings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_customer,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBuildings(response as api.Buildings);
-      })));
+      final response = await res.list(arg_customer,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkBuildings(response as api.Buildings);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.buildings;
       var arg_request = buildBuilding();
@@ -9720,15 +9592,13 @@ void main() {
         var resp = convert.json.encode(buildBuilding());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_customer, arg_buildingId,
-              coordinatesSource: arg_coordinatesSource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBuilding(response as api.Building);
-      })));
+      final response = await res.patch(
+          arg_request, arg_customer, arg_buildingId,
+          coordinatesSource: arg_coordinatesSource, $fields: arg_$fields);
+      checkBuilding(response as api.Building);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.buildings;
       var arg_request = buildBuilding();
@@ -9806,17 +9676,15 @@ void main() {
         var resp = convert.json.encode(buildBuilding());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_customer, arg_buildingId,
-              coordinatesSource: arg_coordinatesSource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBuilding(response as api.Building);
-      })));
+      final response = await res.update(
+          arg_request, arg_customer, arg_buildingId,
+          coordinatesSource: arg_coordinatesSource, $fields: arg_$fields);
+      checkBuilding(response as api.Building);
     });
   });
 
   unittest.group('resource-ResourcesCalendarsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.calendars;
       var arg_customer = 'foo';
@@ -9884,12 +9752,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_customer, arg_calendarResourceId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_customer, arg_calendarResourceId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.calendars;
       var arg_customer = 'foo';
@@ -9957,14 +9824,12 @@ void main() {
         var resp = convert.json.encode(buildCalendarResource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_customer, arg_calendarResourceId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCalendarResource(response as api.CalendarResource);
-      })));
+      final response = await res.get(arg_customer, arg_calendarResourceId,
+          $fields: arg_$fields);
+      checkCalendarResource(response as api.CalendarResource);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.calendars;
       var arg_request = buildCalendarResource();
@@ -10030,14 +9895,12 @@ void main() {
         var resp = convert.json.encode(buildCalendarResource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_customer, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCalendarResource(response as api.CalendarResource);
-      })));
+      final response =
+          await res.insert(arg_request, arg_customer, $fields: arg_$fields);
+      checkCalendarResource(response as api.CalendarResource);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.calendars;
       var arg_customer = 'foo';
@@ -10118,19 +9981,16 @@ void main() {
         var resp = convert.json.encode(buildCalendarResources());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_customer,
-              maxResults: arg_maxResults,
-              orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
-              query: arg_query,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCalendarResources(response as api.CalendarResources);
-      })));
+      final response = await res.list(arg_customer,
+          maxResults: arg_maxResults,
+          orderBy: arg_orderBy,
+          pageToken: arg_pageToken,
+          query: arg_query,
+          $fields: arg_$fields);
+      checkCalendarResources(response as api.CalendarResources);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.calendars;
       var arg_request = buildCalendarResource();
@@ -10203,15 +10063,13 @@ void main() {
         var resp = convert.json.encode(buildCalendarResource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_customer, arg_calendarResourceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCalendarResource(response as api.CalendarResource);
-      })));
+      final response = await res.patch(
+          arg_request, arg_customer, arg_calendarResourceId,
+          $fields: arg_$fields);
+      checkCalendarResource(response as api.CalendarResource);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.calendars;
       var arg_request = buildCalendarResource();
@@ -10284,17 +10142,15 @@ void main() {
         var resp = convert.json.encode(buildCalendarResource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_customer, arg_calendarResourceId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCalendarResource(response as api.CalendarResource);
-      })));
+      final response = await res.update(
+          arg_request, arg_customer, arg_calendarResourceId,
+          $fields: arg_$fields);
+      checkCalendarResource(response as api.CalendarResource);
     });
   });
 
   unittest.group('resource-ResourcesFeaturesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.features;
       var arg_customer = 'foo';
@@ -10362,12 +10218,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_customer, arg_featureKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_customer, arg_featureKey, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.features;
       var arg_customer = 'foo';
@@ -10435,14 +10289,12 @@ void main() {
         var resp = convert.json.encode(buildFeature());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_customer, arg_featureKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFeature(response as api.Feature);
-      })));
+      final response =
+          await res.get(arg_customer, arg_featureKey, $fields: arg_$fields);
+      checkFeature(response as api.Feature);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.features;
       var arg_request = buildFeature();
@@ -10508,14 +10360,12 @@ void main() {
         var resp = convert.json.encode(buildFeature());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_customer, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFeature(response as api.Feature);
-      })));
+      final response =
+          await res.insert(arg_request, arg_customer, $fields: arg_$fields);
+      checkFeature(response as api.Feature);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.features;
       var arg_customer = 'foo';
@@ -10586,17 +10436,14 @@ void main() {
         var resp = convert.json.encode(buildFeatures());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_customer,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFeatures(response as api.Features);
-      })));
+      final response = await res.list(arg_customer,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkFeatures(response as api.Features);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.features;
       var arg_request = buildFeature();
@@ -10669,15 +10516,13 @@ void main() {
         var resp = convert.json.encode(buildFeature());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_customer, arg_featureKey,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFeature(response as api.Feature);
-      })));
+      final response = await res.patch(
+          arg_request, arg_customer, arg_featureKey,
+          $fields: arg_$fields);
+      checkFeature(response as api.Feature);
     });
 
-    unittest.test('method--rename', () {
+    unittest.test('method--rename', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.features;
       var arg_request = buildFeatureRename();
@@ -10758,12 +10603,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .rename(arg_request, arg_customer, arg_oldName, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.rename(arg_request, arg_customer, arg_oldName,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).resources.features;
       var arg_request = buildFeature();
@@ -10836,17 +10680,15 @@ void main() {
         var resp = convert.json.encode(buildFeature());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_customer, arg_featureKey,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFeature(response as api.Feature);
-      })));
+      final response = await res.update(
+          arg_request, arg_customer, arg_featureKey,
+          $fields: arg_$fields);
+      checkFeature(response as api.Feature);
     });
   });
 
   unittest.group('resource-RoleAssignmentsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).roleAssignments;
       var arg_customer = 'foo';
@@ -10914,12 +10756,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_customer, arg_roleAssignmentId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_customer, arg_roleAssignmentId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).roleAssignments;
       var arg_customer = 'foo';
@@ -10987,14 +10828,12 @@ void main() {
         var resp = convert.json.encode(buildRoleAssignment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_customer, arg_roleAssignmentId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRoleAssignment(response as api.RoleAssignment);
-      })));
+      final response = await res.get(arg_customer, arg_roleAssignmentId,
+          $fields: arg_$fields);
+      checkRoleAssignment(response as api.RoleAssignment);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).roleAssignments;
       var arg_request = buildRoleAssignment();
@@ -11060,14 +10899,12 @@ void main() {
         var resp = convert.json.encode(buildRoleAssignment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_customer, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRoleAssignment(response as api.RoleAssignment);
-      })));
+      final response =
+          await res.insert(arg_request, arg_customer, $fields: arg_$fields);
+      checkRoleAssignment(response as api.RoleAssignment);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).roleAssignments;
       var arg_customer = 'foo';
@@ -11148,21 +10985,18 @@ void main() {
         var resp = convert.json.encode(buildRoleAssignments());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_customer,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              roleId: arg_roleId,
-              userKey: arg_userKey,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRoleAssignments(response as api.RoleAssignments);
-      })));
+      final response = await res.list(arg_customer,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          roleId: arg_roleId,
+          userKey: arg_userKey,
+          $fields: arg_$fields);
+      checkRoleAssignments(response as api.RoleAssignments);
     });
   });
 
   unittest.group('resource-RolesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).roles;
       var arg_customer = 'foo';
@@ -11230,12 +11064,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_customer, arg_roleId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_customer, arg_roleId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).roles;
       var arg_customer = 'foo';
@@ -11303,14 +11135,12 @@ void main() {
         var resp = convert.json.encode(buildRole());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_customer, arg_roleId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRole(response as api.Role);
-      })));
+      final response =
+          await res.get(arg_customer, arg_roleId, $fields: arg_$fields);
+      checkRole(response as api.Role);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).roles;
       var arg_request = buildRole();
@@ -11376,14 +11206,12 @@ void main() {
         var resp = convert.json.encode(buildRole());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_customer, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRole(response as api.Role);
-      })));
+      final response =
+          await res.insert(arg_request, arg_customer, $fields: arg_$fields);
+      checkRole(response as api.Role);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).roles;
       var arg_customer = 'foo';
@@ -11454,17 +11282,14 @@ void main() {
         var resp = convert.json.encode(buildRoles());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_customer,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRoles(response as api.Roles);
-      })));
+      final response = await res.list(arg_customer,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkRoles(response as api.Roles);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).roles;
       var arg_request = buildRole();
@@ -11537,14 +11362,12 @@ void main() {
         var resp = convert.json.encode(buildRole());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_customer, arg_roleId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRole(response as api.Role);
-      })));
+      final response = await res.patch(arg_request, arg_customer, arg_roleId,
+          $fields: arg_$fields);
+      checkRole(response as api.Role);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).roles;
       var arg_request = buildRole();
@@ -11617,16 +11440,14 @@ void main() {
         var resp = convert.json.encode(buildRole());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_customer, arg_roleId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRole(response as api.Role);
-      })));
+      final response = await res.update(arg_request, arg_customer, arg_roleId,
+          $fields: arg_$fields);
+      checkRole(response as api.Role);
     });
   });
 
   unittest.group('resource-SchemasResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).schemas;
       var arg_customerId = 'foo';
@@ -11694,12 +11515,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_customerId, arg_schemaKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_customerId, arg_schemaKey, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).schemas;
       var arg_customerId = 'foo';
@@ -11767,14 +11586,12 @@ void main() {
         var resp = convert.json.encode(buildSchema());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_customerId, arg_schemaKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSchema(response as api.Schema);
-      })));
+      final response =
+          await res.get(arg_customerId, arg_schemaKey, $fields: arg_$fields);
+      checkSchema(response as api.Schema);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).schemas;
       var arg_request = buildSchema();
@@ -11840,14 +11657,12 @@ void main() {
         var resp = convert.json.encode(buildSchema());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_customerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSchema(response as api.Schema);
-      })));
+      final response =
+          await res.insert(arg_request, arg_customerId, $fields: arg_$fields);
+      checkSchema(response as api.Schema);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).schemas;
       var arg_customerId = 'foo';
@@ -11908,14 +11723,11 @@ void main() {
         var resp = convert.json.encode(buildSchemas());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_customerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSchemas(response as api.Schemas);
-      })));
+      final response = await res.list(arg_customerId, $fields: arg_$fields);
+      checkSchemas(response as api.Schemas);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).schemas;
       var arg_request = buildSchema();
@@ -11988,15 +11800,13 @@ void main() {
         var resp = convert.json.encode(buildSchema());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_customerId, arg_schemaKey,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSchema(response as api.Schema);
-      })));
+      final response = await res.patch(
+          arg_request, arg_customerId, arg_schemaKey,
+          $fields: arg_$fields);
+      checkSchema(response as api.Schema);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).schemas;
       var arg_request = buildSchema();
@@ -12069,17 +11879,15 @@ void main() {
         var resp = convert.json.encode(buildSchema());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_customerId, arg_schemaKey,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSchema(response as api.Schema);
-      })));
+      final response = await res.update(
+          arg_request, arg_customerId, arg_schemaKey,
+          $fields: arg_$fields);
+      checkSchema(response as api.Schema);
     });
   });
 
   unittest.group('resource-TokensResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).tokens;
       var arg_userKey = 'foo';
@@ -12147,12 +11955,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_userKey, arg_clientId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_userKey, arg_clientId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).tokens;
       var arg_userKey = 'foo';
@@ -12220,14 +12026,12 @@ void main() {
         var resp = convert.json.encode(buildToken());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userKey, arg_clientId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkToken(response as api.Token);
-      })));
+      final response =
+          await res.get(arg_userKey, arg_clientId, $fields: arg_$fields);
+      checkToken(response as api.Token);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).tokens;
       var arg_userKey = 'foo';
@@ -12288,16 +12092,13 @@ void main() {
         var resp = convert.json.encode(buildTokens());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTokens(response as api.Tokens);
-      })));
+      final response = await res.list(arg_userKey, $fields: arg_$fields);
+      checkTokens(response as api.Tokens);
     });
   });
 
   unittest.group('resource-TwoStepVerificationResource', () {
-    unittest.test('method--turnOff', () {
+    unittest.test('method--turnOff', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).twoStepVerification;
       var arg_userKey = 'foo';
@@ -12358,14 +12159,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .turnOff(arg_userKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.turnOff(arg_userKey, $fields: arg_$fields);
     });
   });
 
   unittest.group('resource-UsersResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users;
       var arg_userKey = 'foo';
@@ -12418,12 +12217,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_userKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_userKey, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users;
       var arg_userKey = 'foo';
@@ -12491,18 +12288,15 @@ void main() {
         var resp = convert.json.encode(buildUser());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userKey,
-              customFieldMask: arg_customFieldMask,
-              projection: arg_projection,
-              viewType: arg_viewType,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUser(response as api.User);
-      })));
+      final response = await res.get(arg_userKey,
+          customFieldMask: arg_customFieldMask,
+          projection: arg_projection,
+          viewType: arg_viewType,
+          $fields: arg_$fields);
+      checkUser(response as api.User);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users;
       var arg_request = buildUser();
@@ -12553,14 +12347,11 @@ void main() {
         var resp = convert.json.encode(buildUser());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUser(response as api.User);
-      })));
+      final response = await res.insert(arg_request, $fields: arg_$fields);
+      checkUser(response as api.User);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users;
       var arg_customFieldMask = 'foo';
@@ -12661,26 +12452,23 @@ void main() {
         var resp = convert.json.encode(buildUsers());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              customFieldMask: arg_customFieldMask,
-              customer: arg_customer,
-              domain: arg_domain,
-              maxResults: arg_maxResults,
-              orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
-              projection: arg_projection,
-              query: arg_query,
-              showDeleted: arg_showDeleted,
-              sortOrder: arg_sortOrder,
-              viewType: arg_viewType,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUsers(response as api.Users);
-      })));
+      final response = await res.list(
+          customFieldMask: arg_customFieldMask,
+          customer: arg_customer,
+          domain: arg_domain,
+          maxResults: arg_maxResults,
+          orderBy: arg_orderBy,
+          pageToken: arg_pageToken,
+          projection: arg_projection,
+          query: arg_query,
+          showDeleted: arg_showDeleted,
+          sortOrder: arg_sortOrder,
+          viewType: arg_viewType,
+          $fields: arg_$fields);
+      checkUsers(response as api.Users);
     });
 
-    unittest.test('method--makeAdmin', () {
+    unittest.test('method--makeAdmin', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users;
       var arg_request = buildUserMakeAdmin();
@@ -12746,12 +12534,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .makeAdmin(arg_request, arg_userKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.makeAdmin(arg_request, arg_userKey, $fields: arg_$fields);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users;
       var arg_request = buildUser();
@@ -12809,14 +12595,12 @@ void main() {
         var resp = convert.json.encode(buildUser());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_userKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUser(response as api.User);
-      })));
+      final response =
+          await res.patch(arg_request, arg_userKey, $fields: arg_$fields);
+      checkUser(response as api.User);
     });
 
-    unittest.test('method--signOut', () {
+    unittest.test('method--signOut', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users;
       var arg_userKey = 'foo';
@@ -12877,12 +12661,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .signOut(arg_userKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.signOut(arg_userKey, $fields: arg_$fields);
     });
 
-    unittest.test('method--undelete', () {
+    unittest.test('method--undelete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users;
       var arg_request = buildUserUndelete();
@@ -12948,12 +12730,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .undelete(arg_request, arg_userKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.undelete(arg_request, arg_userKey, $fields: arg_$fields);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users;
       var arg_request = buildUser();
@@ -13011,14 +12791,12 @@ void main() {
         var resp = convert.json.encode(buildUser());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_userKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUser(response as api.User);
-      })));
+      final response =
+          await res.update(arg_request, arg_userKey, $fields: arg_$fields);
+      checkUser(response as api.User);
     });
 
-    unittest.test('method--watch', () {
+    unittest.test('method--watch', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users;
       var arg_request = buildChannel();
@@ -13129,29 +12907,26 @@ void main() {
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .watch(arg_request,
-              customFieldMask: arg_customFieldMask,
-              customer: arg_customer,
-              domain: arg_domain,
-              event: arg_event,
-              maxResults: arg_maxResults,
-              orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
-              projection: arg_projection,
-              query: arg_query,
-              showDeleted: arg_showDeleted,
-              sortOrder: arg_sortOrder,
-              viewType: arg_viewType,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChannel(response as api.Channel);
-      })));
+      final response = await res.watch(arg_request,
+          customFieldMask: arg_customFieldMask,
+          customer: arg_customer,
+          domain: arg_domain,
+          event: arg_event,
+          maxResults: arg_maxResults,
+          orderBy: arg_orderBy,
+          pageToken: arg_pageToken,
+          projection: arg_projection,
+          query: arg_query,
+          showDeleted: arg_showDeleted,
+          sortOrder: arg_sortOrder,
+          viewType: arg_viewType,
+          $fields: arg_$fields);
+      checkChannel(response as api.Channel);
     });
   });
 
   unittest.group('resource-UsersAliasesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users.aliases;
       var arg_userKey = 'foo';
@@ -13219,12 +12994,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_userKey, arg_alias, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_userKey, arg_alias, $fields: arg_$fields);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users.aliases;
       var arg_request = buildAlias();
@@ -13290,14 +13063,12 @@ void main() {
         var resp = convert.json.encode(buildAlias());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_userKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAlias(response as api.Alias);
-      })));
+      final response =
+          await res.insert(arg_request, arg_userKey, $fields: arg_$fields);
+      checkAlias(response as api.Alias);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users.aliases;
       var arg_userKey = 'foo';
@@ -13358,14 +13129,11 @@ void main() {
         var resp = convert.json.encode(buildAliases());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAliases(response as api.Aliases);
-      })));
+      final response = await res.list(arg_userKey, $fields: arg_$fields);
+      checkAliases(response as api.Aliases);
     });
 
-    unittest.test('method--watch', () {
+    unittest.test('method--watch', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users.aliases;
       var arg_request = buildChannel();
@@ -13436,17 +13204,14 @@ void main() {
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .watch(arg_request, arg_userKey,
-              event: arg_event, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChannel(response as api.Channel);
-      })));
+      final response = await res.watch(arg_request, arg_userKey,
+          event: arg_event, $fields: arg_$fields);
+      checkChannel(response as api.Channel);
     });
   });
 
   unittest.group('resource-UsersPhotosResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users.photos;
       var arg_userKey = 'foo';
@@ -13507,12 +13272,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_userKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_userKey, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users.photos;
       var arg_userKey = 'foo';
@@ -13573,14 +13336,11 @@ void main() {
         var resp = convert.json.encode(buildUserPhoto());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_userKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUserPhoto(response as api.UserPhoto);
-      })));
+      final response = await res.get(arg_userKey, $fields: arg_$fields);
+      checkUserPhoto(response as api.UserPhoto);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users.photos;
       var arg_request = buildUserPhoto();
@@ -13646,14 +13406,12 @@ void main() {
         var resp = convert.json.encode(buildUserPhoto());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_userKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUserPhoto(response as api.UserPhoto);
-      })));
+      final response =
+          await res.patch(arg_request, arg_userKey, $fields: arg_$fields);
+      checkUserPhoto(response as api.UserPhoto);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).users.photos;
       var arg_request = buildUserPhoto();
@@ -13719,16 +13477,14 @@ void main() {
         var resp = convert.json.encode(buildUserPhoto());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_userKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUserPhoto(response as api.UserPhoto);
-      })));
+      final response =
+          await res.update(arg_request, arg_userKey, $fields: arg_$fields);
+      checkUserPhoto(response as api.UserPhoto);
     });
   });
 
   unittest.group('resource-VerificationCodesResource', () {
-    unittest.test('method--generate', () {
+    unittest.test('method--generate', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).verificationCodes;
       var arg_userKey = 'foo';
@@ -13789,12 +13545,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .generate(arg_userKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.generate(arg_userKey, $fields: arg_$fields);
     });
 
-    unittest.test('method--invalidate', () {
+    unittest.test('method--invalidate', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).verificationCodes;
       var arg_userKey = 'foo';
@@ -13855,12 +13609,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .invalidate(arg_userKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.invalidate(arg_userKey, $fields: arg_$fields);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DirectoryApi(mock).verificationCodes;
       var arg_userKey = 'foo';
@@ -13921,11 +13673,8 @@ void main() {
         var resp = convert.json.encode(buildVerificationCodes());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_userKey, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVerificationCodes(response as api.VerificationCodes);
-      })));
+      final response = await res.list(arg_userKey, $fields: arg_$fields);
+      checkVerificationCodes(response as api.VerificationCodes);
     });
   });
 }

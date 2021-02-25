@@ -4168,7 +4168,7 @@ void checkUnnamed2419(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-Aggregation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAggregation();
       var od = api.Aggregation.fromJson(o.toJson());
       checkAggregation(od as api.Aggregation);
@@ -4176,7 +4176,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AlertPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAlertPolicy();
       var od = api.AlertPolicy.fromJson(o.toJson());
       checkAlertPolicy(od as api.AlertPolicy);
@@ -4184,7 +4184,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AppEngine', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppEngine();
       var od = api.AppEngine.fromJson(o.toJson());
       checkAppEngine(od as api.AppEngine);
@@ -4192,7 +4192,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AvailabilityCriteria', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAvailabilityCriteria();
       var od = api.AvailabilityCriteria.fromJson(o.toJson());
       checkAvailabilityCriteria(od as api.AvailabilityCriteria);
@@ -4200,7 +4200,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BasicAuthentication', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBasicAuthentication();
       var od = api.BasicAuthentication.fromJson(o.toJson());
       checkBasicAuthentication(od as api.BasicAuthentication);
@@ -4208,7 +4208,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BasicSli', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBasicSli();
       var od = api.BasicSli.fromJson(o.toJson());
       checkBasicSli(od as api.BasicSli);
@@ -4216,7 +4216,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BucketOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBucketOptions();
       var od = api.BucketOptions.fromJson(o.toJson());
       checkBucketOptions(od as api.BucketOptions);
@@ -4224,7 +4224,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CloudEndpoints', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCloudEndpoints();
       var od = api.CloudEndpoints.fromJson(o.toJson());
       checkCloudEndpoints(od as api.CloudEndpoints);
@@ -4232,7 +4232,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClusterIstio', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClusterIstio();
       var od = api.ClusterIstio.fromJson(o.toJson());
       checkClusterIstio(od as api.ClusterIstio);
@@ -4240,7 +4240,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CollectdPayload', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCollectdPayload();
       var od = api.CollectdPayload.fromJson(o.toJson());
       checkCollectdPayload(od as api.CollectdPayload);
@@ -4248,7 +4248,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CollectdPayloadError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCollectdPayloadError();
       var od = api.CollectdPayloadError.fromJson(o.toJson());
       checkCollectdPayloadError(od as api.CollectdPayloadError);
@@ -4256,7 +4256,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CollectdValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCollectdValue();
       var od = api.CollectdValue.fromJson(o.toJson());
       checkCollectdValue(od as api.CollectdValue);
@@ -4264,7 +4264,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CollectdValueError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCollectdValueError();
       var od = api.CollectdValueError.fromJson(o.toJson());
       checkCollectdValueError(od as api.CollectdValueError);
@@ -4272,7 +4272,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Condition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCondition();
       var od = api.Condition.fromJson(o.toJson());
       checkCondition(od as api.Condition);
@@ -4280,7 +4280,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ContentMatcher', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContentMatcher();
       var od = api.ContentMatcher.fromJson(o.toJson());
       checkContentMatcher(od as api.ContentMatcher);
@@ -4288,7 +4288,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateCollectdTimeSeriesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateCollectdTimeSeriesRequest();
       var od = api.CreateCollectdTimeSeriesRequest.fromJson(o.toJson());
       checkCreateCollectdTimeSeriesRequest(
@@ -4297,7 +4297,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateCollectdTimeSeriesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateCollectdTimeSeriesResponse();
       var od = api.CreateCollectdTimeSeriesResponse.fromJson(o.toJson());
       checkCreateCollectdTimeSeriesResponse(
@@ -4306,7 +4306,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateTimeSeriesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateTimeSeriesRequest();
       var od = api.CreateTimeSeriesRequest.fromJson(o.toJson());
       checkCreateTimeSeriesRequest(od as api.CreateTimeSeriesRequest);
@@ -4314,7 +4314,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateTimeSeriesSummary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateTimeSeriesSummary();
       var od = api.CreateTimeSeriesSummary.fromJson(o.toJson());
       checkCreateTimeSeriesSummary(od as api.CreateTimeSeriesSummary);
@@ -4322,7 +4322,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Custom', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustom();
       var od = api.Custom.fromJson(o.toJson());
       checkCustom(od as api.Custom);
@@ -4330,7 +4330,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Distribution', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDistribution();
       var od = api.Distribution.fromJson(o.toJson());
       checkDistribution(od as api.Distribution);
@@ -4338,7 +4338,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DistributionCut', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDistributionCut();
       var od = api.DistributionCut.fromJson(o.toJson());
       checkDistributionCut(od as api.DistributionCut);
@@ -4346,7 +4346,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Documentation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDocumentation();
       var od = api.Documentation.fromJson(o.toJson());
       checkDocumentation(od as api.Documentation);
@@ -4354,7 +4354,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DroppedLabels', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDroppedLabels();
       var od = api.DroppedLabels.fromJson(o.toJson());
       checkDroppedLabels(od as api.DroppedLabels);
@@ -4362,7 +4362,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -4370,7 +4370,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Error', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildError();
       var od = api.Error.fromJson(o.toJson());
       checkError(od as api.Error);
@@ -4378,7 +4378,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Exemplar', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExemplar();
       var od = api.Exemplar.fromJson(o.toJson());
       checkExemplar(od as api.Exemplar);
@@ -4386,7 +4386,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Explicit', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExplicit();
       var od = api.Explicit.fromJson(o.toJson());
       checkExplicit(od as api.Explicit);
@@ -4394,7 +4394,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Exponential', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExponential();
       var od = api.Exponential.fromJson(o.toJson());
       checkExponential(od as api.Exponential);
@@ -4402,7 +4402,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Field', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildField();
       var od = api.Field.fromJson(o.toJson());
       checkField(od as api.Field);
@@ -4411,7 +4411,7 @@ void main() {
 
   unittest.group('obj-schema-GetNotificationChannelVerificationCodeRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetNotificationChannelVerificationCodeRequest();
       var od = api.GetNotificationChannelVerificationCodeRequest.fromJson(
           o.toJson());
@@ -4422,7 +4422,7 @@ void main() {
 
   unittest.group('obj-schema-GetNotificationChannelVerificationCodeResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetNotificationChannelVerificationCodeResponse();
       var od = api.GetNotificationChannelVerificationCodeResponse.fromJson(
           o.toJson());
@@ -4432,7 +4432,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleMonitoringV3Range', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleMonitoringV3Range();
       var od = api.GoogleMonitoringV3Range.fromJson(o.toJson());
       checkGoogleMonitoringV3Range(od as api.GoogleMonitoringV3Range);
@@ -4440,7 +4440,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Group', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroup();
       var od = api.Group.fromJson(o.toJson());
       checkGroup(od as api.Group);
@@ -4448,7 +4448,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HttpCheck', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHttpCheck();
       var od = api.HttpCheck.fromJson(o.toJson());
       checkHttpCheck(od as api.HttpCheck);
@@ -4456,7 +4456,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InternalChecker', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInternalChecker();
       var od = api.InternalChecker.fromJson(o.toJson());
       checkInternalChecker(od as api.InternalChecker);
@@ -4464,7 +4464,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IstioCanonicalService', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIstioCanonicalService();
       var od = api.IstioCanonicalService.fromJson(o.toJson());
       checkIstioCanonicalService(od as api.IstioCanonicalService);
@@ -4472,7 +4472,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LabelDescriptor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLabelDescriptor();
       var od = api.LabelDescriptor.fromJson(o.toJson());
       checkLabelDescriptor(od as api.LabelDescriptor);
@@ -4480,7 +4480,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LabelValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLabelValue();
       var od = api.LabelValue.fromJson(o.toJson());
       checkLabelValue(od as api.LabelValue);
@@ -4488,7 +4488,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LatencyCriteria', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLatencyCriteria();
       var od = api.LatencyCriteria.fromJson(o.toJson());
       checkLatencyCriteria(od as api.LatencyCriteria);
@@ -4496,7 +4496,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Linear', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLinear();
       var od = api.Linear.fromJson(o.toJson());
       checkLinear(od as api.Linear);
@@ -4504,7 +4504,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAlertPoliciesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAlertPoliciesResponse();
       var od = api.ListAlertPoliciesResponse.fromJson(o.toJson());
       checkListAlertPoliciesResponse(od as api.ListAlertPoliciesResponse);
@@ -4512,7 +4512,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListGroupMembersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListGroupMembersResponse();
       var od = api.ListGroupMembersResponse.fromJson(o.toJson());
       checkListGroupMembersResponse(od as api.ListGroupMembersResponse);
@@ -4520,7 +4520,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListGroupsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListGroupsResponse();
       var od = api.ListGroupsResponse.fromJson(o.toJson());
       checkListGroupsResponse(od as api.ListGroupsResponse);
@@ -4528,7 +4528,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListMetricDescriptorsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListMetricDescriptorsResponse();
       var od = api.ListMetricDescriptorsResponse.fromJson(o.toJson());
       checkListMetricDescriptorsResponse(
@@ -4537,7 +4537,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListMonitoredResourceDescriptorsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListMonitoredResourceDescriptorsResponse();
       var od =
           api.ListMonitoredResourceDescriptorsResponse.fromJson(o.toJson());
@@ -4547,7 +4547,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListNotificationChannelDescriptorsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListNotificationChannelDescriptorsResponse();
       var od =
           api.ListNotificationChannelDescriptorsResponse.fromJson(o.toJson());
@@ -4557,7 +4557,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListNotificationChannelsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListNotificationChannelsResponse();
       var od = api.ListNotificationChannelsResponse.fromJson(o.toJson());
       checkListNotificationChannelsResponse(
@@ -4566,7 +4566,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListServiceLevelObjectivesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListServiceLevelObjectivesResponse();
       var od = api.ListServiceLevelObjectivesResponse.fromJson(o.toJson());
       checkListServiceLevelObjectivesResponse(
@@ -4575,7 +4575,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListServicesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListServicesResponse();
       var od = api.ListServicesResponse.fromJson(o.toJson());
       checkListServicesResponse(od as api.ListServicesResponse);
@@ -4583,7 +4583,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTimeSeriesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTimeSeriesResponse();
       var od = api.ListTimeSeriesResponse.fromJson(o.toJson());
       checkListTimeSeriesResponse(od as api.ListTimeSeriesResponse);
@@ -4591,7 +4591,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListUptimeCheckConfigsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListUptimeCheckConfigsResponse();
       var od = api.ListUptimeCheckConfigsResponse.fromJson(o.toJson());
       checkListUptimeCheckConfigsResponse(
@@ -4600,7 +4600,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListUptimeCheckIpsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListUptimeCheckIpsResponse();
       var od = api.ListUptimeCheckIpsResponse.fromJson(o.toJson());
       checkListUptimeCheckIpsResponse(od as api.ListUptimeCheckIpsResponse);
@@ -4608,7 +4608,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MeshIstio', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMeshIstio();
       var od = api.MeshIstio.fromJson(o.toJson());
       checkMeshIstio(od as api.MeshIstio);
@@ -4616,7 +4616,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Metric', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetric();
       var od = api.Metric.fromJson(o.toJson());
       checkMetric(od as api.Metric);
@@ -4624,7 +4624,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricAbsence', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricAbsence();
       var od = api.MetricAbsence.fromJson(o.toJson());
       checkMetricAbsence(od as api.MetricAbsence);
@@ -4632,7 +4632,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricDescriptor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricDescriptor();
       var od = api.MetricDescriptor.fromJson(o.toJson());
       checkMetricDescriptor(od as api.MetricDescriptor);
@@ -4640,7 +4640,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricDescriptorMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricDescriptorMetadata();
       var od = api.MetricDescriptorMetadata.fromJson(o.toJson());
       checkMetricDescriptorMetadata(od as api.MetricDescriptorMetadata);
@@ -4648,7 +4648,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricRange();
       var od = api.MetricRange.fromJson(o.toJson());
       checkMetricRange(od as api.MetricRange);
@@ -4656,7 +4656,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricThreshold', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricThreshold();
       var od = api.MetricThreshold.fromJson(o.toJson());
       checkMetricThreshold(od as api.MetricThreshold);
@@ -4664,7 +4664,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MonitoredResource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMonitoredResource();
       var od = api.MonitoredResource.fromJson(o.toJson());
       checkMonitoredResource(od as api.MonitoredResource);
@@ -4672,7 +4672,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MonitoredResourceDescriptor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMonitoredResourceDescriptor();
       var od = api.MonitoredResourceDescriptor.fromJson(o.toJson());
       checkMonitoredResourceDescriptor(od as api.MonitoredResourceDescriptor);
@@ -4680,7 +4680,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MonitoredResourceMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMonitoredResourceMetadata();
       var od = api.MonitoredResourceMetadata.fromJson(o.toJson());
       checkMonitoredResourceMetadata(od as api.MonitoredResourceMetadata);
@@ -4688,7 +4688,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MonitoringQueryLanguageCondition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMonitoringQueryLanguageCondition();
       var od = api.MonitoringQueryLanguageCondition.fromJson(o.toJson());
       checkMonitoringQueryLanguageCondition(
@@ -4697,7 +4697,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MutationRecord', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMutationRecord();
       var od = api.MutationRecord.fromJson(o.toJson());
       checkMutationRecord(od as api.MutationRecord);
@@ -4705,7 +4705,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NotificationChannel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNotificationChannel();
       var od = api.NotificationChannel.fromJson(o.toJson());
       checkNotificationChannel(od as api.NotificationChannel);
@@ -4713,7 +4713,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NotificationChannelDescriptor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNotificationChannelDescriptor();
       var od = api.NotificationChannelDescriptor.fromJson(o.toJson());
       checkNotificationChannelDescriptor(
@@ -4722,7 +4722,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Option', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOption();
       var od = api.Option.fromJson(o.toJson());
       checkOption(od as api.Option);
@@ -4730,7 +4730,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PerformanceThreshold', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPerformanceThreshold();
       var od = api.PerformanceThreshold.fromJson(o.toJson());
       checkPerformanceThreshold(od as api.PerformanceThreshold);
@@ -4738,7 +4738,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Point', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPoint();
       var od = api.Point.fromJson(o.toJson());
       checkPoint(od as api.Point);
@@ -4746,7 +4746,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PointData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPointData();
       var od = api.PointData.fromJson(o.toJson());
       checkPointData(od as api.PointData);
@@ -4754,7 +4754,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryTimeSeriesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryTimeSeriesRequest();
       var od = api.QueryTimeSeriesRequest.fromJson(o.toJson());
       checkQueryTimeSeriesRequest(od as api.QueryTimeSeriesRequest);
@@ -4762,7 +4762,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryTimeSeriesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryTimeSeriesResponse();
       var od = api.QueryTimeSeriesResponse.fromJson(o.toJson());
       checkQueryTimeSeriesResponse(od as api.QueryTimeSeriesResponse);
@@ -4770,7 +4770,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Range', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRange();
       var od = api.Range.fromJson(o.toJson());
       checkRange(od as api.Range);
@@ -4778,7 +4778,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RequestBasedSli', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRequestBasedSli();
       var od = api.RequestBasedSli.fromJson(o.toJson());
       checkRequestBasedSli(od as api.RequestBasedSli);
@@ -4786,7 +4786,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResourceGroup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResourceGroup();
       var od = api.ResourceGroup.fromJson(o.toJson());
       checkResourceGroup(od as api.ResourceGroup);
@@ -4795,7 +4795,7 @@ void main() {
 
   unittest.group('obj-schema-SendNotificationChannelVerificationCodeRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSendNotificationChannelVerificationCodeRequest();
       var od = api.SendNotificationChannelVerificationCodeRequest.fromJson(
           o.toJson());
@@ -4805,7 +4805,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Service', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildService();
       var od = api.Service.fromJson(o.toJson());
       checkService(od as api.Service);
@@ -4813,7 +4813,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ServiceLevelIndicator', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildServiceLevelIndicator();
       var od = api.ServiceLevelIndicator.fromJson(o.toJson());
       checkServiceLevelIndicator(od as api.ServiceLevelIndicator);
@@ -4821,7 +4821,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ServiceLevelObjective', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildServiceLevelObjective();
       var od = api.ServiceLevelObjective.fromJson(o.toJson());
       checkServiceLevelObjective(od as api.ServiceLevelObjective);
@@ -4829,7 +4829,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SourceContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSourceContext();
       var od = api.SourceContext.fromJson(o.toJson());
       checkSourceContext(od as api.SourceContext);
@@ -4837,7 +4837,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SpanContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSpanContext();
       var od = api.SpanContext.fromJson(o.toJson());
       checkSpanContext(od as api.SpanContext);
@@ -4845,7 +4845,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -4853,7 +4853,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TcpCheck', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTcpCheck();
       var od = api.TcpCheck.fromJson(o.toJson());
       checkTcpCheck(od as api.TcpCheck);
@@ -4861,7 +4861,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Telemetry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTelemetry();
       var od = api.Telemetry.fromJson(o.toJson());
       checkTelemetry(od as api.Telemetry);
@@ -4869,7 +4869,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimeInterval', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimeInterval();
       var od = api.TimeInterval.fromJson(o.toJson());
       checkTimeInterval(od as api.TimeInterval);
@@ -4877,7 +4877,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimeSeries', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimeSeries();
       var od = api.TimeSeries.fromJson(o.toJson());
       checkTimeSeries(od as api.TimeSeries);
@@ -4885,7 +4885,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimeSeriesData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimeSeriesData();
       var od = api.TimeSeriesData.fromJson(o.toJson());
       checkTimeSeriesData(od as api.TimeSeriesData);
@@ -4893,7 +4893,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimeSeriesDescriptor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimeSeriesDescriptor();
       var od = api.TimeSeriesDescriptor.fromJson(o.toJson());
       checkTimeSeriesDescriptor(od as api.TimeSeriesDescriptor);
@@ -4901,7 +4901,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimeSeriesRatio', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimeSeriesRatio();
       var od = api.TimeSeriesRatio.fromJson(o.toJson());
       checkTimeSeriesRatio(od as api.TimeSeriesRatio);
@@ -4909,7 +4909,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Trigger', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTrigger();
       var od = api.Trigger.fromJson(o.toJson());
       checkTrigger(od as api.Trigger);
@@ -4917,7 +4917,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Type', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildType();
       var od = api.Type.fromJson(o.toJson());
       checkType(od as api.Type);
@@ -4925,7 +4925,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TypedValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTypedValue();
       var od = api.TypedValue.fromJson(o.toJson());
       checkTypedValue(od as api.TypedValue);
@@ -4933,7 +4933,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UptimeCheckConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUptimeCheckConfig();
       var od = api.UptimeCheckConfig.fromJson(o.toJson());
       checkUptimeCheckConfig(od as api.UptimeCheckConfig);
@@ -4941,7 +4941,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UptimeCheckIp', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUptimeCheckIp();
       var od = api.UptimeCheckIp.fromJson(o.toJson());
       checkUptimeCheckIp(od as api.UptimeCheckIp);
@@ -4949,7 +4949,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ValueDescriptor', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildValueDescriptor();
       var od = api.ValueDescriptor.fromJson(o.toJson());
       checkValueDescriptor(od as api.ValueDescriptor);
@@ -4957,7 +4957,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VerifyNotificationChannelRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVerifyNotificationChannelRequest();
       var od = api.VerifyNotificationChannelRequest.fromJson(o.toJson());
       checkVerifyNotificationChannelRequest(
@@ -4966,7 +4966,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WindowsBasedSli', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWindowsBasedSli();
       var od = api.WindowsBasedSli.fromJson(o.toJson());
       checkWindowsBasedSli(od as api.WindowsBasedSli);
@@ -4974,7 +4974,7 @@ void main() {
   });
 
   unittest.group('resource-FoldersTimeSeriesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).folders.timeSeries;
       var arg_name = 'foo';
@@ -5097,37 +5097,33 @@ void main() {
         var resp = convert.json.encode(buildListTimeSeriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              aggregation_alignmentPeriod: arg_aggregation_alignmentPeriod,
-              aggregation_crossSeriesReducer:
-                  arg_aggregation_crossSeriesReducer,
-              aggregation_groupByFields: arg_aggregation_groupByFields,
-              aggregation_perSeriesAligner: arg_aggregation_perSeriesAligner,
-              filter: arg_filter,
-              interval_endTime: arg_interval_endTime,
-              interval_startTime: arg_interval_startTime,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              secondaryAggregation_alignmentPeriod:
-                  arg_secondaryAggregation_alignmentPeriod,
-              secondaryAggregation_crossSeriesReducer:
-                  arg_secondaryAggregation_crossSeriesReducer,
-              secondaryAggregation_groupByFields:
-                  arg_secondaryAggregation_groupByFields,
-              secondaryAggregation_perSeriesAligner:
-                  arg_secondaryAggregation_perSeriesAligner,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTimeSeriesResponse(response as api.ListTimeSeriesResponse);
-      })));
+      final response = await res.list(arg_name,
+          aggregation_alignmentPeriod: arg_aggregation_alignmentPeriod,
+          aggregation_crossSeriesReducer: arg_aggregation_crossSeriesReducer,
+          aggregation_groupByFields: arg_aggregation_groupByFields,
+          aggregation_perSeriesAligner: arg_aggregation_perSeriesAligner,
+          filter: arg_filter,
+          interval_endTime: arg_interval_endTime,
+          interval_startTime: arg_interval_startTime,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          secondaryAggregation_alignmentPeriod:
+              arg_secondaryAggregation_alignmentPeriod,
+          secondaryAggregation_crossSeriesReducer:
+              arg_secondaryAggregation_crossSeriesReducer,
+          secondaryAggregation_groupByFields:
+              arg_secondaryAggregation_groupByFields,
+          secondaryAggregation_perSeriesAligner:
+              arg_secondaryAggregation_perSeriesAligner,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListTimeSeriesResponse(response as api.ListTimeSeriesResponse);
     });
   });
 
   unittest.group('resource-OrganizationsTimeSeriesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).organizations.timeSeries;
       var arg_name = 'foo';
@@ -5250,37 +5246,33 @@ void main() {
         var resp = convert.json.encode(buildListTimeSeriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              aggregation_alignmentPeriod: arg_aggregation_alignmentPeriod,
-              aggregation_crossSeriesReducer:
-                  arg_aggregation_crossSeriesReducer,
-              aggregation_groupByFields: arg_aggregation_groupByFields,
-              aggregation_perSeriesAligner: arg_aggregation_perSeriesAligner,
-              filter: arg_filter,
-              interval_endTime: arg_interval_endTime,
-              interval_startTime: arg_interval_startTime,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              secondaryAggregation_alignmentPeriod:
-                  arg_secondaryAggregation_alignmentPeriod,
-              secondaryAggregation_crossSeriesReducer:
-                  arg_secondaryAggregation_crossSeriesReducer,
-              secondaryAggregation_groupByFields:
-                  arg_secondaryAggregation_groupByFields,
-              secondaryAggregation_perSeriesAligner:
-                  arg_secondaryAggregation_perSeriesAligner,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTimeSeriesResponse(response as api.ListTimeSeriesResponse);
-      })));
+      final response = await res.list(arg_name,
+          aggregation_alignmentPeriod: arg_aggregation_alignmentPeriod,
+          aggregation_crossSeriesReducer: arg_aggregation_crossSeriesReducer,
+          aggregation_groupByFields: arg_aggregation_groupByFields,
+          aggregation_perSeriesAligner: arg_aggregation_perSeriesAligner,
+          filter: arg_filter,
+          interval_endTime: arg_interval_endTime,
+          interval_startTime: arg_interval_startTime,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          secondaryAggregation_alignmentPeriod:
+              arg_secondaryAggregation_alignmentPeriod,
+          secondaryAggregation_crossSeriesReducer:
+              arg_secondaryAggregation_crossSeriesReducer,
+          secondaryAggregation_groupByFields:
+              arg_secondaryAggregation_groupByFields,
+          secondaryAggregation_perSeriesAligner:
+              arg_secondaryAggregation_perSeriesAligner,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListTimeSeriesResponse(response as api.ListTimeSeriesResponse);
     });
   });
 
   unittest.group('resource-ProjectsAlertPoliciesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.alertPolicies;
       var arg_request = buildAlertPolicy();
@@ -5333,14 +5325,12 @@ void main() {
         var resp = convert.json.encode(buildAlertPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAlertPolicy(response as api.AlertPolicy);
-      })));
+      final response =
+          await res.create(arg_request, arg_name, $fields: arg_$fields);
+      checkAlertPolicy(response as api.AlertPolicy);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.alertPolicies;
       var arg_name = 'foo';
@@ -5388,14 +5378,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.alertPolicies;
       var arg_name = 'foo';
@@ -5443,14 +5430,11 @@ void main() {
         var resp = convert.json.encode(buildAlertPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAlertPolicy(response as api.AlertPolicy);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkAlertPolicy(response as api.AlertPolicy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.alertPolicies;
       var arg_name = 'foo';
@@ -5518,20 +5502,16 @@ void main() {
         var resp = convert.json.encode(buildListAlertPoliciesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAlertPoliciesResponse(
-            response as api.ListAlertPoliciesResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAlertPoliciesResponse(response as api.ListAlertPoliciesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.alertPolicies;
       var arg_request = buildAlertPolicy();
@@ -5589,17 +5569,14 @@ void main() {
         var resp = convert.json.encode(buildAlertPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAlertPolicy(response as api.AlertPolicy);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkAlertPolicy(response as api.AlertPolicy);
     });
   });
 
   unittest.group('resource-ProjectsCollectdTimeSeriesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.collectdTimeSeries;
       var arg_request = buildCreateCollectdTimeSeriesRequest();
@@ -5653,17 +5630,15 @@ void main() {
         var resp = convert.json.encode(buildCreateCollectdTimeSeriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCreateCollectdTimeSeriesResponse(
-            response as api.CreateCollectdTimeSeriesResponse);
-      })));
+      final response =
+          await res.create(arg_request, arg_name, $fields: arg_$fields);
+      checkCreateCollectdTimeSeriesResponse(
+          response as api.CreateCollectdTimeSeriesResponse);
     });
   });
 
   unittest.group('resource-ProjectsGroupsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.groups;
       var arg_request = buildGroup();
@@ -5721,15 +5696,12 @@ void main() {
         var resp = convert.json.encode(buildGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_name,
-              validateOnly: arg_validateOnly, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroup(response as api.Group);
-      })));
+      final response = await res.create(arg_request, arg_name,
+          validateOnly: arg_validateOnly, $fields: arg_$fields);
+      checkGroup(response as api.Group);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.groups;
       var arg_name = 'foo';
@@ -5782,14 +5754,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, recursive: arg_recursive, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name,
+          recursive: arg_recursive, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.groups;
       var arg_name = 'foo';
@@ -5837,14 +5807,11 @@ void main() {
         var resp = convert.json.encode(buildGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroup(response as api.Group);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGroup(response as api.Group);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.groups;
       var arg_name = 'foo';
@@ -5917,20 +5884,17 @@ void main() {
         var resp = convert.json.encode(buildListGroupsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              ancestorsOfGroup: arg_ancestorsOfGroup,
-              childrenOfGroup: arg_childrenOfGroup,
-              descendantsOfGroup: arg_descendantsOfGroup,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListGroupsResponse(response as api.ListGroupsResponse);
-      })));
+      final response = await res.list(arg_name,
+          ancestorsOfGroup: arg_ancestorsOfGroup,
+          childrenOfGroup: arg_childrenOfGroup,
+          descendantsOfGroup: arg_descendantsOfGroup,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListGroupsResponse(response as api.ListGroupsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.groups;
       var arg_request = buildGroup();
@@ -5988,17 +5952,14 @@ void main() {
         var resp = convert.json.encode(buildGroup());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name,
-              validateOnly: arg_validateOnly, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroup(response as api.Group);
-      })));
+      final response = await res.update(arg_request, arg_name,
+          validateOnly: arg_validateOnly, $fields: arg_$fields);
+      checkGroup(response as api.Group);
     });
   });
 
   unittest.group('resource-ProjectsGroupsMembersResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.groups.members;
       var arg_name = 'foo';
@@ -6071,22 +6032,19 @@ void main() {
         var resp = convert.json.encode(buildListGroupMembersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              interval_endTime: arg_interval_endTime,
-              interval_startTime: arg_interval_startTime,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListGroupMembersResponse(response as api.ListGroupMembersResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          interval_endTime: arg_interval_endTime,
+          interval_startTime: arg_interval_startTime,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListGroupMembersResponse(response as api.ListGroupMembersResponse);
     });
   });
 
   unittest.group('resource-ProjectsMetricDescriptorsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.metricDescriptors;
       var arg_request = buildMetricDescriptor();
@@ -6139,14 +6097,12 @@ void main() {
         var resp = convert.json.encode(buildMetricDescriptor());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMetricDescriptor(response as api.MetricDescriptor);
-      })));
+      final response =
+          await res.create(arg_request, arg_name, $fields: arg_$fields);
+      checkMetricDescriptor(response as api.MetricDescriptor);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.metricDescriptors;
       var arg_name = 'foo';
@@ -6194,14 +6150,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.metricDescriptors;
       var arg_name = 'foo';
@@ -6249,14 +6202,11 @@ void main() {
         var resp = convert.json.encode(buildMetricDescriptor());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMetricDescriptor(response as api.MetricDescriptor);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkMetricDescriptor(response as api.MetricDescriptor);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.metricDescriptors;
       var arg_name = 'foo';
@@ -6319,21 +6269,18 @@ void main() {
         var resp = convert.json.encode(buildListMetricDescriptorsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListMetricDescriptorsResponse(
-            response as api.ListMetricDescriptorsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListMetricDescriptorsResponse(
+          response as api.ListMetricDescriptorsResponse);
     });
   });
 
   unittest.group('resource-ProjectsMonitoredResourceDescriptorsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.monitoredResourceDescriptors;
       var arg_name = 'foo';
@@ -6381,15 +6328,12 @@ void main() {
         var resp = convert.json.encode(buildMonitoredResourceDescriptor());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMonitoredResourceDescriptor(
-            response as api.MonitoredResourceDescriptor);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkMonitoredResourceDescriptor(
+          response as api.MonitoredResourceDescriptor);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.monitoredResourceDescriptors;
       var arg_name = 'foo';
@@ -6453,21 +6397,18 @@ void main() {
             .encode(buildListMonitoredResourceDescriptorsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListMonitoredResourceDescriptorsResponse(
-            response as api.ListMonitoredResourceDescriptorsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListMonitoredResourceDescriptorsResponse(
+          response as api.ListMonitoredResourceDescriptorsResponse);
     });
   });
 
   unittest.group('resource-ProjectsNotificationChannelDescriptorsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.notificationChannelDescriptors;
       var arg_name = 'foo';
@@ -6515,15 +6456,12 @@ void main() {
         var resp = convert.json.encode(buildNotificationChannelDescriptor());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNotificationChannelDescriptor(
-            response as api.NotificationChannelDescriptor);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkNotificationChannelDescriptor(
+          response as api.NotificationChannelDescriptor);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.notificationChannelDescriptors;
       var arg_name = 'foo';
@@ -6582,20 +6520,17 @@ void main() {
             .encode(buildListNotificationChannelDescriptorsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListNotificationChannelDescriptorsResponse(
-            response as api.ListNotificationChannelDescriptorsResponse);
-      })));
+      final response = await res.list(arg_name,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListNotificationChannelDescriptorsResponse(
+          response as api.ListNotificationChannelDescriptorsResponse);
     });
   });
 
   unittest.group('resource-ProjectsNotificationChannelsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.notificationChannels;
       var arg_request = buildNotificationChannel();
@@ -6648,14 +6583,12 @@ void main() {
         var resp = convert.json.encode(buildNotificationChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNotificationChannel(response as api.NotificationChannel);
-      })));
+      final response =
+          await res.create(arg_request, arg_name, $fields: arg_$fields);
+      checkNotificationChannel(response as api.NotificationChannel);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.notificationChannels;
       var arg_name = 'foo';
@@ -6708,14 +6641,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, force: arg_force, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.delete(arg_name, force: arg_force, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.notificationChannels;
       var arg_name = 'foo';
@@ -6763,14 +6694,11 @@ void main() {
         var resp = convert.json.encode(buildNotificationChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNotificationChannel(response as api.NotificationChannel);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkNotificationChannel(response as api.NotificationChannel);
     });
 
-    unittest.test('method--getVerificationCode', () {
+    unittest.test('method--getVerificationCode', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.notificationChannels;
       var arg_request = buildGetNotificationChannelVerificationCodeRequest();
@@ -6825,15 +6753,13 @@ void main() {
             .encode(buildGetNotificationChannelVerificationCodeResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getVerificationCode(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetNotificationChannelVerificationCodeResponse(
-            response as api.GetNotificationChannelVerificationCodeResponse);
-      })));
+      final response = await res.getVerificationCode(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkGetNotificationChannelVerificationCodeResponse(
+          response as api.GetNotificationChannelVerificationCodeResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.notificationChannels;
       var arg_name = 'foo';
@@ -6901,20 +6827,17 @@ void main() {
         var resp = convert.json.encode(buildListNotificationChannelsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListNotificationChannelsResponse(
-            response as api.ListNotificationChannelsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListNotificationChannelsResponse(
+          response as api.ListNotificationChannelsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.notificationChannels;
       var arg_request = buildNotificationChannel();
@@ -6972,15 +6895,12 @@ void main() {
         var resp = convert.json.encode(buildNotificationChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNotificationChannel(response as api.NotificationChannel);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkNotificationChannel(response as api.NotificationChannel);
     });
 
-    unittest.test('method--sendVerificationCode', () {
+    unittest.test('method--sendVerificationCode', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.notificationChannels;
       var arg_request = buildSendNotificationChannelVerificationCodeRequest();
@@ -7034,14 +6954,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .sendVerificationCode(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.sendVerificationCode(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--verify', () {
+    unittest.test('method--verify', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.notificationChannels;
       var arg_request = buildVerifyNotificationChannelRequest();
@@ -7095,16 +7013,14 @@ void main() {
         var resp = convert.json.encode(buildNotificationChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .verify(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNotificationChannel(response as api.NotificationChannel);
-      })));
+      final response =
+          await res.verify(arg_request, arg_name, $fields: arg_$fields);
+      checkNotificationChannel(response as api.NotificationChannel);
     });
   });
 
   unittest.group('resource-ProjectsTimeSeriesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.timeSeries;
       var arg_request = buildCreateTimeSeriesRequest();
@@ -7157,14 +7073,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.create(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.timeSeries;
       var arg_name = 'foo';
@@ -7287,35 +7201,31 @@ void main() {
         var resp = convert.json.encode(buildListTimeSeriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              aggregation_alignmentPeriod: arg_aggregation_alignmentPeriod,
-              aggregation_crossSeriesReducer:
-                  arg_aggregation_crossSeriesReducer,
-              aggregation_groupByFields: arg_aggregation_groupByFields,
-              aggregation_perSeriesAligner: arg_aggregation_perSeriesAligner,
-              filter: arg_filter,
-              interval_endTime: arg_interval_endTime,
-              interval_startTime: arg_interval_startTime,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              secondaryAggregation_alignmentPeriod:
-                  arg_secondaryAggregation_alignmentPeriod,
-              secondaryAggregation_crossSeriesReducer:
-                  arg_secondaryAggregation_crossSeriesReducer,
-              secondaryAggregation_groupByFields:
-                  arg_secondaryAggregation_groupByFields,
-              secondaryAggregation_perSeriesAligner:
-                  arg_secondaryAggregation_perSeriesAligner,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTimeSeriesResponse(response as api.ListTimeSeriesResponse);
-      })));
+      final response = await res.list(arg_name,
+          aggregation_alignmentPeriod: arg_aggregation_alignmentPeriod,
+          aggregation_crossSeriesReducer: arg_aggregation_crossSeriesReducer,
+          aggregation_groupByFields: arg_aggregation_groupByFields,
+          aggregation_perSeriesAligner: arg_aggregation_perSeriesAligner,
+          filter: arg_filter,
+          interval_endTime: arg_interval_endTime,
+          interval_startTime: arg_interval_startTime,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          secondaryAggregation_alignmentPeriod:
+              arg_secondaryAggregation_alignmentPeriod,
+          secondaryAggregation_crossSeriesReducer:
+              arg_secondaryAggregation_crossSeriesReducer,
+          secondaryAggregation_groupByFields:
+              arg_secondaryAggregation_groupByFields,
+          secondaryAggregation_perSeriesAligner:
+              arg_secondaryAggregation_perSeriesAligner,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListTimeSeriesResponse(response as api.ListTimeSeriesResponse);
     });
 
-    unittest.test('method--query', () {
+    unittest.test('method--query', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.timeSeries;
       var arg_request = buildQueryTimeSeriesRequest();
@@ -7368,16 +7278,14 @@ void main() {
         var resp = convert.json.encode(buildQueryTimeSeriesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .query(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkQueryTimeSeriesResponse(response as api.QueryTimeSeriesResponse);
-      })));
+      final response =
+          await res.query(arg_request, arg_name, $fields: arg_$fields);
+      checkQueryTimeSeriesResponse(response as api.QueryTimeSeriesResponse);
     });
   });
 
   unittest.group('resource-ProjectsUptimeCheckConfigsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.uptimeCheckConfigs;
       var arg_request = buildUptimeCheckConfig();
@@ -7430,14 +7338,12 @@ void main() {
         var resp = convert.json.encode(buildUptimeCheckConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUptimeCheckConfig(response as api.UptimeCheckConfig);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkUptimeCheckConfig(response as api.UptimeCheckConfig);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.uptimeCheckConfigs;
       var arg_name = 'foo';
@@ -7485,14 +7391,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.uptimeCheckConfigs;
       var arg_name = 'foo';
@@ -7540,14 +7443,11 @@ void main() {
         var resp = convert.json.encode(buildUptimeCheckConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUptimeCheckConfig(response as api.UptimeCheckConfig);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkUptimeCheckConfig(response as api.UptimeCheckConfig);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.uptimeCheckConfigs;
       var arg_parent = 'foo';
@@ -7605,18 +7505,15 @@ void main() {
         var resp = convert.json.encode(buildListUptimeCheckConfigsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListUptimeCheckConfigsResponse(
-            response as api.ListUptimeCheckConfigsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListUptimeCheckConfigsResponse(
+          response as api.ListUptimeCheckConfigsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).projects.uptimeCheckConfigs;
       var arg_request = buildUptimeCheckConfig();
@@ -7674,17 +7571,14 @@ void main() {
         var resp = convert.json.encode(buildUptimeCheckConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUptimeCheckConfig(response as api.UptimeCheckConfig);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkUptimeCheckConfig(response as api.UptimeCheckConfig);
     });
   });
 
   unittest.group('resource-ServicesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).services;
       var arg_request = buildService();
@@ -7742,15 +7636,12 @@ void main() {
         var resp = convert.json.encode(buildService());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              serviceId: arg_serviceId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkService(response as api.Service);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          serviceId: arg_serviceId, $fields: arg_$fields);
+      checkService(response as api.Service);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).services;
       var arg_name = 'foo';
@@ -7798,14 +7689,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).services;
       var arg_name = 'foo';
@@ -7853,14 +7741,11 @@ void main() {
         var resp = convert.json.encode(buildService());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkService(response as api.Service);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkService(response as api.Service);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).services;
       var arg_parent = 'foo';
@@ -7923,18 +7808,15 @@ void main() {
         var resp = convert.json.encode(buildListServicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListServicesResponse(response as api.ListServicesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListServicesResponse(response as api.ListServicesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).services;
       var arg_request = buildService();
@@ -7992,17 +7874,14 @@ void main() {
         var resp = convert.json.encode(buildService());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkService(response as api.Service);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkService(response as api.Service);
     });
   });
 
   unittest.group('resource-ServicesServiceLevelObjectivesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).services.serviceLevelObjectives;
       var arg_request = buildServiceLevelObjective();
@@ -8060,16 +7939,13 @@ void main() {
         var resp = convert.json.encode(buildServiceLevelObjective());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              serviceLevelObjectiveId: arg_serviceLevelObjectiveId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkServiceLevelObjective(response as api.ServiceLevelObjective);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          serviceLevelObjectiveId: arg_serviceLevelObjectiveId,
+          $fields: arg_$fields);
+      checkServiceLevelObjective(response as api.ServiceLevelObjective);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).services.serviceLevelObjectives;
       var arg_name = 'foo';
@@ -8117,14 +7993,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).services.serviceLevelObjectives;
       var arg_name = 'foo';
@@ -8177,14 +8050,12 @@ void main() {
         var resp = convert.json.encode(buildServiceLevelObjective());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, view: arg_view, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkServiceLevelObjective(response as api.ServiceLevelObjective);
-      })));
+      final response =
+          await res.get(arg_name, view: arg_view, $fields: arg_$fields);
+      checkServiceLevelObjective(response as api.ServiceLevelObjective);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).services.serviceLevelObjectives;
       var arg_parent = 'foo';
@@ -8253,20 +8124,17 @@ void main() {
             convert.json.encode(buildListServiceLevelObjectivesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListServiceLevelObjectivesResponse(
-            response as api.ListServiceLevelObjectivesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListServiceLevelObjectivesResponse(
+          response as api.ListServiceLevelObjectivesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).services.serviceLevelObjectives;
       var arg_request = buildServiceLevelObjective();
@@ -8324,17 +8192,14 @@ void main() {
         var resp = convert.json.encode(buildServiceLevelObjective());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkServiceLevelObjective(response as api.ServiceLevelObjective);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkServiceLevelObjective(response as api.ServiceLevelObjective);
     });
   });
 
   unittest.group('resource-UptimeCheckIpsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.MonitoringApi(mock).uptimeCheckIps;
       var arg_pageSize = 42;
@@ -8390,15 +8255,12 @@ void main() {
         var resp = convert.json.encode(buildListUptimeCheckIpsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListUptimeCheckIpsResponse(
-            response as api.ListUptimeCheckIpsResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListUptimeCheckIpsResponse(
+          response as api.ListUptimeCheckIpsResponse);
     });
   });
 }

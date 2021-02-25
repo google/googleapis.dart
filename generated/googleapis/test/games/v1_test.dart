@@ -2885,7 +2885,7 @@ void checkStatsResponse(api.StatsResponse o) {
 
 void main() {
   unittest.group('obj-schema-AchievementDefinition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAchievementDefinition();
       var od = api.AchievementDefinition.fromJson(o.toJson());
       checkAchievementDefinition(od as api.AchievementDefinition);
@@ -2893,7 +2893,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AchievementDefinitionsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAchievementDefinitionsListResponse();
       var od = api.AchievementDefinitionsListResponse.fromJson(o.toJson());
       checkAchievementDefinitionsListResponse(
@@ -2902,7 +2902,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AchievementIncrementResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAchievementIncrementResponse();
       var od = api.AchievementIncrementResponse.fromJson(o.toJson());
       checkAchievementIncrementResponse(od as api.AchievementIncrementResponse);
@@ -2910,7 +2910,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AchievementRevealResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAchievementRevealResponse();
       var od = api.AchievementRevealResponse.fromJson(o.toJson());
       checkAchievementRevealResponse(od as api.AchievementRevealResponse);
@@ -2918,7 +2918,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AchievementSetStepsAtLeastResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAchievementSetStepsAtLeastResponse();
       var od = api.AchievementSetStepsAtLeastResponse.fromJson(o.toJson());
       checkAchievementSetStepsAtLeastResponse(
@@ -2927,7 +2927,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AchievementUnlockResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAchievementUnlockResponse();
       var od = api.AchievementUnlockResponse.fromJson(o.toJson());
       checkAchievementUnlockResponse(od as api.AchievementUnlockResponse);
@@ -2935,7 +2935,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AchievementUpdateMultipleRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAchievementUpdateMultipleRequest();
       var od = api.AchievementUpdateMultipleRequest.fromJson(o.toJson());
       checkAchievementUpdateMultipleRequest(
@@ -2944,7 +2944,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AchievementUpdateMultipleResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAchievementUpdateMultipleResponse();
       var od = api.AchievementUpdateMultipleResponse.fromJson(o.toJson());
       checkAchievementUpdateMultipleResponse(
@@ -2953,7 +2953,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AchievementUpdateRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAchievementUpdateRequest();
       var od = api.AchievementUpdateRequest.fromJson(o.toJson());
       checkAchievementUpdateRequest(od as api.AchievementUpdateRequest);
@@ -2961,7 +2961,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AchievementUpdateResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAchievementUpdateResponse();
       var od = api.AchievementUpdateResponse.fromJson(o.toJson());
       checkAchievementUpdateResponse(od as api.AchievementUpdateResponse);
@@ -2969,7 +2969,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Application', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplication();
       var od = api.Application.fromJson(o.toJson());
       checkApplication(od as api.Application);
@@ -2977,7 +2977,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApplicationCategory', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplicationCategory();
       var od = api.ApplicationCategory.fromJson(o.toJson());
       checkApplicationCategory(od as api.ApplicationCategory);
@@ -2985,7 +2985,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApplicationVerifyResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplicationVerifyResponse();
       var od = api.ApplicationVerifyResponse.fromJson(o.toJson());
       checkApplicationVerifyResponse(od as api.ApplicationVerifyResponse);
@@ -2993,7 +2993,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Category', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCategory();
       var od = api.Category.fromJson(o.toJson());
       checkCategory(od as api.Category);
@@ -3001,7 +3001,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CategoryListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCategoryListResponse();
       var od = api.CategoryListResponse.fromJson(o.toJson());
       checkCategoryListResponse(od as api.CategoryListResponse);
@@ -3009,7 +3009,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EndPoint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEndPoint();
       var od = api.EndPoint.fromJson(o.toJson());
       checkEndPoint(od as api.EndPoint);
@@ -3017,7 +3017,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventBatchRecordFailure', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventBatchRecordFailure();
       var od = api.EventBatchRecordFailure.fromJson(o.toJson());
       checkEventBatchRecordFailure(od as api.EventBatchRecordFailure);
@@ -3025,7 +3025,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventChild', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventChild();
       var od = api.EventChild.fromJson(o.toJson());
       checkEventChild(od as api.EventChild);
@@ -3033,7 +3033,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventDefinition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventDefinition();
       var od = api.EventDefinition.fromJson(o.toJson());
       checkEventDefinition(od as api.EventDefinition);
@@ -3041,7 +3041,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventDefinitionListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventDefinitionListResponse();
       var od = api.EventDefinitionListResponse.fromJson(o.toJson());
       checkEventDefinitionListResponse(od as api.EventDefinitionListResponse);
@@ -3049,7 +3049,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventPeriodRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventPeriodRange();
       var od = api.EventPeriodRange.fromJson(o.toJson());
       checkEventPeriodRange(od as api.EventPeriodRange);
@@ -3057,7 +3057,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventPeriodUpdate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventPeriodUpdate();
       var od = api.EventPeriodUpdate.fromJson(o.toJson());
       checkEventPeriodUpdate(od as api.EventPeriodUpdate);
@@ -3065,7 +3065,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventRecordFailure', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventRecordFailure();
       var od = api.EventRecordFailure.fromJson(o.toJson());
       checkEventRecordFailure(od as api.EventRecordFailure);
@@ -3073,7 +3073,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventRecordRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventRecordRequest();
       var od = api.EventRecordRequest.fromJson(o.toJson());
       checkEventRecordRequest(od as api.EventRecordRequest);
@@ -3081,7 +3081,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventUpdateRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventUpdateRequest();
       var od = api.EventUpdateRequest.fromJson(o.toJson());
       checkEventUpdateRequest(od as api.EventUpdateRequest);
@@ -3089,7 +3089,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EventUpdateResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEventUpdateResponse();
       var od = api.EventUpdateResponse.fromJson(o.toJson());
       checkEventUpdateResponse(od as api.EventUpdateResponse);
@@ -3097,7 +3097,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GamesAchievementIncrement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGamesAchievementIncrement();
       var od = api.GamesAchievementIncrement.fromJson(o.toJson());
       checkGamesAchievementIncrement(od as api.GamesAchievementIncrement);
@@ -3105,7 +3105,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GamesAchievementSetStepsAtLeast', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGamesAchievementSetStepsAtLeast();
       var od = api.GamesAchievementSetStepsAtLeast.fromJson(o.toJson());
       checkGamesAchievementSetStepsAtLeast(
@@ -3114,7 +3114,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImageAsset', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImageAsset();
       var od = api.ImageAsset.fromJson(o.toJson());
       checkImageAsset(od as api.ImageAsset);
@@ -3122,7 +3122,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Instance', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstance();
       var od = api.Instance.fromJson(o.toJson());
       checkInstance(od as api.Instance);
@@ -3130,7 +3130,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstanceAndroidDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstanceAndroidDetails();
       var od = api.InstanceAndroidDetails.fromJson(o.toJson());
       checkInstanceAndroidDetails(od as api.InstanceAndroidDetails);
@@ -3138,7 +3138,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstanceIosDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstanceIosDetails();
       var od = api.InstanceIosDetails.fromJson(o.toJson());
       checkInstanceIosDetails(od as api.InstanceIosDetails);
@@ -3146,7 +3146,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstanceWebDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstanceWebDetails();
       var od = api.InstanceWebDetails.fromJson(o.toJson());
       checkInstanceWebDetails(od as api.InstanceWebDetails);
@@ -3154,7 +3154,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Leaderboard', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLeaderboard();
       var od = api.Leaderboard.fromJson(o.toJson());
       checkLeaderboard(od as api.Leaderboard);
@@ -3162,7 +3162,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LeaderboardEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLeaderboardEntry();
       var od = api.LeaderboardEntry.fromJson(o.toJson());
       checkLeaderboardEntry(od as api.LeaderboardEntry);
@@ -3170,7 +3170,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LeaderboardListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLeaderboardListResponse();
       var od = api.LeaderboardListResponse.fromJson(o.toJson());
       checkLeaderboardListResponse(od as api.LeaderboardListResponse);
@@ -3178,7 +3178,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LeaderboardScoreRank', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLeaderboardScoreRank();
       var od = api.LeaderboardScoreRank.fromJson(o.toJson());
       checkLeaderboardScoreRank(od as api.LeaderboardScoreRank);
@@ -3186,7 +3186,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LeaderboardScores', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLeaderboardScores();
       var od = api.LeaderboardScores.fromJson(o.toJson());
       checkLeaderboardScores(od as api.LeaderboardScores);
@@ -3194,7 +3194,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetagameConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetagameConfig();
       var od = api.MetagameConfig.fromJson(o.toJson());
       checkMetagameConfig(od as api.MetagameConfig);
@@ -3202,7 +3202,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PlayerName', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayerName();
       var od = api.PlayerName.fromJson(o.toJson());
       checkPlayerName(od as api.PlayerName);
@@ -3210,7 +3210,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Player', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayer();
       var od = api.Player.fromJson(o.toJson());
       checkPlayer(od as api.Player);
@@ -3218,7 +3218,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PlayerAchievement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayerAchievement();
       var od = api.PlayerAchievement.fromJson(o.toJson());
       checkPlayerAchievement(od as api.PlayerAchievement);
@@ -3226,7 +3226,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PlayerAchievementListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayerAchievementListResponse();
       var od = api.PlayerAchievementListResponse.fromJson(o.toJson());
       checkPlayerAchievementListResponse(
@@ -3235,7 +3235,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PlayerEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayerEvent();
       var od = api.PlayerEvent.fromJson(o.toJson());
       checkPlayerEvent(od as api.PlayerEvent);
@@ -3243,7 +3243,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PlayerEventListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayerEventListResponse();
       var od = api.PlayerEventListResponse.fromJson(o.toJson());
       checkPlayerEventListResponse(od as api.PlayerEventListResponse);
@@ -3251,7 +3251,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PlayerExperienceInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayerExperienceInfo();
       var od = api.PlayerExperienceInfo.fromJson(o.toJson());
       checkPlayerExperienceInfo(od as api.PlayerExperienceInfo);
@@ -3259,7 +3259,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PlayerLeaderboardScore', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayerLeaderboardScore();
       var od = api.PlayerLeaderboardScore.fromJson(o.toJson());
       checkPlayerLeaderboardScore(od as api.PlayerLeaderboardScore);
@@ -3267,7 +3267,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PlayerLeaderboardScoreListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayerLeaderboardScoreListResponse();
       var od = api.PlayerLeaderboardScoreListResponse.fromJson(o.toJson());
       checkPlayerLeaderboardScoreListResponse(
@@ -3276,7 +3276,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PlayerLevel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayerLevel();
       var od = api.PlayerLevel.fromJson(o.toJson());
       checkPlayerLevel(od as api.PlayerLevel);
@@ -3284,7 +3284,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PlayerListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayerListResponse();
       var od = api.PlayerListResponse.fromJson(o.toJson());
       checkPlayerListResponse(od as api.PlayerListResponse);
@@ -3292,7 +3292,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PlayerScore', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayerScore();
       var od = api.PlayerScore.fromJson(o.toJson());
       checkPlayerScore(od as api.PlayerScore);
@@ -3300,7 +3300,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PlayerScoreListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayerScoreListResponse();
       var od = api.PlayerScoreListResponse.fromJson(o.toJson());
       checkPlayerScoreListResponse(od as api.PlayerScoreListResponse);
@@ -3308,7 +3308,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PlayerScoreResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayerScoreResponse();
       var od = api.PlayerScoreResponse.fromJson(o.toJson());
       checkPlayerScoreResponse(od as api.PlayerScoreResponse);
@@ -3316,7 +3316,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PlayerScoreSubmissionList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPlayerScoreSubmissionList();
       var od = api.PlayerScoreSubmissionList.fromJson(o.toJson());
       checkPlayerScoreSubmissionList(od as api.PlayerScoreSubmissionList);
@@ -3324,7 +3324,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProfileSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProfileSettings();
       var od = api.ProfileSettings.fromJson(o.toJson());
       checkProfileSettings(od as api.ProfileSettings);
@@ -3332,7 +3332,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResolveSnapshotHeadRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResolveSnapshotHeadRequest();
       var od = api.ResolveSnapshotHeadRequest.fromJson(o.toJson());
       checkResolveSnapshotHeadRequest(od as api.ResolveSnapshotHeadRequest);
@@ -3340,7 +3340,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResolveSnapshotHeadResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResolveSnapshotHeadResponse();
       var od = api.ResolveSnapshotHeadResponse.fromJson(o.toJson());
       checkResolveSnapshotHeadResponse(od as api.ResolveSnapshotHeadResponse);
@@ -3348,7 +3348,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RevisionCheckResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRevisionCheckResponse();
       var od = api.RevisionCheckResponse.fromJson(o.toJson());
       checkRevisionCheckResponse(od as api.RevisionCheckResponse);
@@ -3356,7 +3356,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScoreSubmission', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScoreSubmission();
       var od = api.ScoreSubmission.fromJson(o.toJson());
       checkScoreSubmission(od as api.ScoreSubmission);
@@ -3364,7 +3364,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Snapshot', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSnapshot();
       var od = api.Snapshot.fromJson(o.toJson());
       checkSnapshot(od as api.Snapshot);
@@ -3372,7 +3372,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SnapshotCoverImageResource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSnapshotCoverImageResource();
       var od = api.SnapshotCoverImageResource.fromJson(o.toJson());
       checkSnapshotCoverImageResource(od as api.SnapshotCoverImageResource);
@@ -3380,7 +3380,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SnapshotDataResource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSnapshotDataResource();
       var od = api.SnapshotDataResource.fromJson(o.toJson());
       checkSnapshotDataResource(od as api.SnapshotDataResource);
@@ -3388,7 +3388,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SnapshotExtended', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSnapshotExtended();
       var od = api.SnapshotExtended.fromJson(o.toJson());
       checkSnapshotExtended(od as api.SnapshotExtended);
@@ -3396,7 +3396,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SnapshotImage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSnapshotImage();
       var od = api.SnapshotImage.fromJson(o.toJson());
       checkSnapshotImage(od as api.SnapshotImage);
@@ -3404,7 +3404,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SnapshotListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSnapshotListResponse();
       var od = api.SnapshotListResponse.fromJson(o.toJson());
       checkSnapshotListResponse(od as api.SnapshotListResponse);
@@ -3412,7 +3412,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SnapshotMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSnapshotMetadata();
       var od = api.SnapshotMetadata.fromJson(o.toJson());
       checkSnapshotMetadata(od as api.SnapshotMetadata);
@@ -3420,7 +3420,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SnapshotRevision', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSnapshotRevision();
       var od = api.SnapshotRevision.fromJson(o.toJson());
       checkSnapshotRevision(od as api.SnapshotRevision);
@@ -3428,7 +3428,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StatsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatsResponse();
       var od = api.StatsResponse.fromJson(o.toJson());
       checkStatsResponse(od as api.StatsResponse);
@@ -3436,7 +3436,7 @@ void main() {
   });
 
   unittest.group('resource-AchievementDefinitionsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).achievementDefinitions;
       var arg_language = 'foo';
@@ -3498,21 +3498,18 @@ void main() {
             convert.json.encode(buildAchievementDefinitionsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              language: arg_language,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAchievementDefinitionsListResponse(
-            response as api.AchievementDefinitionsListResponse);
-      })));
+      final response = await res.list(
+          language: arg_language,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkAchievementDefinitionsListResponse(
+          response as api.AchievementDefinitionsListResponse);
     });
   });
 
   unittest.group('resource-AchievementsResource', () {
-    unittest.test('method--increment', () {
+    unittest.test('method--increment', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).achievements;
       var arg_achievementId = 'foo';
@@ -3583,16 +3580,14 @@ void main() {
         var resp = convert.json.encode(buildAchievementIncrementResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .increment(arg_achievementId, arg_stepsToIncrement,
-              requestId: arg_requestId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAchievementIncrementResponse(
-            response as api.AchievementIncrementResponse);
-      })));
+      final response = await res.increment(
+          arg_achievementId, arg_stepsToIncrement,
+          requestId: arg_requestId, $fields: arg_$fields);
+      checkAchievementIncrementResponse(
+          response as api.AchievementIncrementResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).achievements;
       var arg_playerId = 'foo';
@@ -3673,20 +3668,17 @@ void main() {
         var resp = convert.json.encode(buildPlayerAchievementListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_playerId,
-              language: arg_language,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              state: arg_state,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPlayerAchievementListResponse(
-            response as api.PlayerAchievementListResponse);
-      })));
+      final response = await res.list(arg_playerId,
+          language: arg_language,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          state: arg_state,
+          $fields: arg_$fields);
+      checkPlayerAchievementListResponse(
+          response as api.PlayerAchievementListResponse);
     });
 
-    unittest.test('method--reveal', () {
+    unittest.test('method--reveal', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).achievements;
       var arg_achievementId = 'foo';
@@ -3747,15 +3739,12 @@ void main() {
         var resp = convert.json.encode(buildAchievementRevealResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reveal(arg_achievementId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAchievementRevealResponse(
-            response as api.AchievementRevealResponse);
-      })));
+      final response =
+          await res.reveal(arg_achievementId, $fields: arg_$fields);
+      checkAchievementRevealResponse(response as api.AchievementRevealResponse);
     });
 
-    unittest.test('method--setStepsAtLeast', () {
+    unittest.test('method--setStepsAtLeast', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).achievements;
       var arg_achievementId = 'foo';
@@ -3822,15 +3811,13 @@ void main() {
             convert.json.encode(buildAchievementSetStepsAtLeastResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setStepsAtLeast(arg_achievementId, arg_steps, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAchievementSetStepsAtLeastResponse(
-            response as api.AchievementSetStepsAtLeastResponse);
-      })));
+      final response = await res.setStepsAtLeast(arg_achievementId, arg_steps,
+          $fields: arg_$fields);
+      checkAchievementSetStepsAtLeastResponse(
+          response as api.AchievementSetStepsAtLeastResponse);
     });
 
-    unittest.test('method--unlock', () {
+    unittest.test('method--unlock', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).achievements;
       var arg_achievementId = 'foo';
@@ -3891,15 +3878,12 @@ void main() {
         var resp = convert.json.encode(buildAchievementUnlockResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .unlock(arg_achievementId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAchievementUnlockResponse(
-            response as api.AchievementUnlockResponse);
-      })));
+      final response =
+          await res.unlock(arg_achievementId, $fields: arg_$fields);
+      checkAchievementUnlockResponse(response as api.AchievementUnlockResponse);
     });
 
-    unittest.test('method--updateMultiple', () {
+    unittest.test('method--updateMultiple', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).achievements;
       var arg_request = buildAchievementUpdateMultipleRequest();
@@ -3952,17 +3936,15 @@ void main() {
             convert.json.encode(buildAchievementUpdateMultipleResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateMultiple(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAchievementUpdateMultipleResponse(
-            response as api.AchievementUpdateMultipleResponse);
-      })));
+      final response =
+          await res.updateMultiple(arg_request, $fields: arg_$fields);
+      checkAchievementUpdateMultipleResponse(
+          response as api.AchievementUpdateMultipleResponse);
     });
   });
 
   unittest.group('resource-ApplicationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).applications;
       var arg_applicationId = 'foo';
@@ -4025,17 +4007,14 @@ void main() {
         var resp = convert.json.encode(buildApplication());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_applicationId,
-              language: arg_language,
-              platformType: arg_platformType,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApplication(response as api.Application);
-      })));
+      final response = await res.get(arg_applicationId,
+          language: arg_language,
+          platformType: arg_platformType,
+          $fields: arg_$fields);
+      checkApplication(response as api.Application);
     });
 
-    unittest.test('method--getEndPoint', () {
+    unittest.test('method--getEndPoint', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).applications;
       var arg_applicationId = 'foo';
@@ -4091,17 +4070,14 @@ void main() {
         var resp = convert.json.encode(buildEndPoint());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getEndPoint(
-              applicationId: arg_applicationId,
-              endPointType: arg_endPointType,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEndPoint(response as api.EndPoint);
-      })));
+      final response = await res.getEndPoint(
+          applicationId: arg_applicationId,
+          endPointType: arg_endPointType,
+          $fields: arg_$fields);
+      checkEndPoint(response as api.EndPoint);
     });
 
-    unittest.test('method--played', () {
+    unittest.test('method--played', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).applications;
       var arg_$fields = 'foo';
@@ -4147,10 +4123,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.played($fields: arg_$fields).then(unittest.expectAsync1((_) {}));
+      await res.played($fields: arg_$fields);
     });
 
-    unittest.test('method--verify', () {
+    unittest.test('method--verify', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).applications;
       var arg_applicationId = 'foo';
@@ -4211,17 +4187,14 @@ void main() {
         var resp = convert.json.encode(buildApplicationVerifyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .verify(arg_applicationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApplicationVerifyResponse(
-            response as api.ApplicationVerifyResponse);
-      })));
+      final response =
+          await res.verify(arg_applicationId, $fields: arg_$fields);
+      checkApplicationVerifyResponse(response as api.ApplicationVerifyResponse);
     });
   });
 
   unittest.group('resource-EventsResource', () {
-    unittest.test('method--listByPlayer', () {
+    unittest.test('method--listByPlayer', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).events;
       var arg_language = 'foo';
@@ -4282,18 +4255,15 @@ void main() {
         var resp = convert.json.encode(buildPlayerEventListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listByPlayer(
-              language: arg_language,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPlayerEventListResponse(response as api.PlayerEventListResponse);
-      })));
+      final response = await res.listByPlayer(
+          language: arg_language,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkPlayerEventListResponse(response as api.PlayerEventListResponse);
     });
 
-    unittest.test('method--listDefinitions', () {
+    unittest.test('method--listDefinitions', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).events;
       var arg_language = 'foo';
@@ -4354,19 +4324,16 @@ void main() {
         var resp = convert.json.encode(buildEventDefinitionListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listDefinitions(
-              language: arg_language,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEventDefinitionListResponse(
-            response as api.EventDefinitionListResponse);
-      })));
+      final response = await res.listDefinitions(
+          language: arg_language,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkEventDefinitionListResponse(
+          response as api.EventDefinitionListResponse);
     });
 
-    unittest.test('method--record', () {
+    unittest.test('method--record', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).events;
       var arg_request = buildEventRecordRequest();
@@ -4422,16 +4389,14 @@ void main() {
         var resp = convert.json.encode(buildEventUpdateResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .record(arg_request, language: arg_language, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEventUpdateResponse(response as api.EventUpdateResponse);
-      })));
+      final response = await res.record(arg_request,
+          language: arg_language, $fields: arg_$fields);
+      checkEventUpdateResponse(response as api.EventUpdateResponse);
     });
   });
 
   unittest.group('resource-LeaderboardsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).leaderboards;
       var arg_leaderboardId = 'foo';
@@ -4489,14 +4454,12 @@ void main() {
         var resp = convert.json.encode(buildLeaderboard());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_leaderboardId, language: arg_language, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLeaderboard(response as api.Leaderboard);
-      })));
+      final response = await res.get(arg_leaderboardId,
+          language: arg_language, $fields: arg_$fields);
+      checkLeaderboard(response as api.Leaderboard);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).leaderboards;
       var arg_language = 'foo';
@@ -4557,20 +4520,17 @@ void main() {
         var resp = convert.json.encode(buildLeaderboardListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              language: arg_language,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLeaderboardListResponse(response as api.LeaderboardListResponse);
-      })));
+      final response = await res.list(
+          language: arg_language,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkLeaderboardListResponse(response as api.LeaderboardListResponse);
     });
   });
 
   unittest.group('resource-MetagameResource', () {
-    unittest.test('method--getMetagameConfig', () {
+    unittest.test('method--getMetagameConfig', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).metagame;
       var arg_$fields = 'foo';
@@ -4616,14 +4576,11 @@ void main() {
         var resp = convert.json.encode(buildMetagameConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getMetagameConfig($fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMetagameConfig(response as api.MetagameConfig);
-      })));
+      final response = await res.getMetagameConfig($fields: arg_$fields);
+      checkMetagameConfig(response as api.MetagameConfig);
     });
 
-    unittest.test('method--listCategoriesByPlayer', () {
+    unittest.test('method--listCategoriesByPlayer', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).metagame;
       var arg_playerId = 'foo';
@@ -4706,20 +4663,18 @@ void main() {
         var resp = convert.json.encode(buildCategoryListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listCategoriesByPlayer(arg_playerId, arg_collection,
-              language: arg_language,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCategoryListResponse(response as api.CategoryListResponse);
-      })));
+      final response = await res.listCategoriesByPlayer(
+          arg_playerId, arg_collection,
+          language: arg_language,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkCategoryListResponse(response as api.CategoryListResponse);
     });
   });
 
   unittest.group('resource-PlayersResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).players;
       var arg_playerId = 'foo';
@@ -4777,14 +4732,12 @@ void main() {
         var resp = convert.json.encode(buildPlayer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_playerId, language: arg_language, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPlayer(response as api.Player);
-      })));
+      final response = await res.get(arg_playerId,
+          language: arg_language, $fields: arg_$fields);
+      checkPlayer(response as api.Player);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).players;
       var arg_collection = 'foo';
@@ -4852,20 +4805,17 @@ void main() {
         var resp = convert.json.encode(buildPlayerListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_collection,
-              language: arg_language,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPlayerListResponse(response as api.PlayerListResponse);
-      })));
+      final response = await res.list(arg_collection,
+          language: arg_language,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkPlayerListResponse(response as api.PlayerListResponse);
     });
   });
 
   unittest.group('resource-RevisionsResource', () {
-    unittest.test('method--check', () {
+    unittest.test('method--check', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).revisions;
       var arg_clientRevision = 'foo';
@@ -4916,16 +4866,14 @@ void main() {
         var resp = convert.json.encode(buildRevisionCheckResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .check(arg_clientRevision, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRevisionCheckResponse(response as api.RevisionCheckResponse);
-      })));
+      final response =
+          await res.check(arg_clientRevision, $fields: arg_$fields);
+      checkRevisionCheckResponse(response as api.RevisionCheckResponse);
     });
   });
 
   unittest.group('resource-ScoresResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).scores;
       var arg_playerId = 'foo';
@@ -5029,20 +4977,18 @@ void main() {
             convert.json.encode(buildPlayerLeaderboardScoreListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_playerId, arg_leaderboardId, arg_timeSpan,
-              includeRankType: arg_includeRankType,
-              language: arg_language,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPlayerLeaderboardScoreListResponse(
-            response as api.PlayerLeaderboardScoreListResponse);
-      })));
+      final response = await res.get(
+          arg_playerId, arg_leaderboardId, arg_timeSpan,
+          includeRankType: arg_includeRankType,
+          language: arg_language,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkPlayerLeaderboardScoreListResponse(
+          response as api.PlayerLeaderboardScoreListResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).scores;
       var arg_leaderboardId = 'foo';
@@ -5130,18 +5076,16 @@ void main() {
         var resp = convert.json.encode(buildLeaderboardScores());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_leaderboardId, arg_collection, arg_timeSpan,
-              language: arg_language,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLeaderboardScores(response as api.LeaderboardScores);
-      })));
+      final response = await res.list(
+          arg_leaderboardId, arg_collection, arg_timeSpan,
+          language: arg_language,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkLeaderboardScores(response as api.LeaderboardScores);
     });
 
-    unittest.test('method--listWindow', () {
+    unittest.test('method--listWindow', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).scores;
       var arg_leaderboardId = 'foo';
@@ -5239,20 +5183,18 @@ void main() {
         var resp = convert.json.encode(buildLeaderboardScores());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listWindow(arg_leaderboardId, arg_collection, arg_timeSpan,
-              language: arg_language,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              resultsAbove: arg_resultsAbove,
-              returnTopIfAbsent: arg_returnTopIfAbsent,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLeaderboardScores(response as api.LeaderboardScores);
-      })));
+      final response = await res.listWindow(
+          arg_leaderboardId, arg_collection, arg_timeSpan,
+          language: arg_language,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          resultsAbove: arg_resultsAbove,
+          returnTopIfAbsent: arg_returnTopIfAbsent,
+          $fields: arg_$fields);
+      checkLeaderboardScores(response as api.LeaderboardScores);
     });
 
-    unittest.test('method--submit', () {
+    unittest.test('method--submit', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).scores;
       var arg_leaderboardId = 'foo';
@@ -5328,17 +5270,12 @@ void main() {
         var resp = convert.json.encode(buildPlayerScoreResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .submit(arg_leaderboardId, arg_score,
-              language: arg_language,
-              scoreTag: arg_scoreTag,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPlayerScoreResponse(response as api.PlayerScoreResponse);
-      })));
+      final response = await res.submit(arg_leaderboardId, arg_score,
+          language: arg_language, scoreTag: arg_scoreTag, $fields: arg_$fields);
+      checkPlayerScoreResponse(response as api.PlayerScoreResponse);
     });
 
-    unittest.test('method--submitMultiple', () {
+    unittest.test('method--submitMultiple', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).scores;
       var arg_request = buildPlayerScoreSubmissionList();
@@ -5394,17 +5331,14 @@ void main() {
         var resp = convert.json.encode(buildPlayerScoreListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .submitMultiple(arg_request,
-              language: arg_language, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPlayerScoreListResponse(response as api.PlayerScoreListResponse);
-      })));
+      final response = await res.submitMultiple(arg_request,
+          language: arg_language, $fields: arg_$fields);
+      checkPlayerScoreListResponse(response as api.PlayerScoreListResponse);
     });
   });
 
   unittest.group('resource-SnapshotsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).snapshots;
       var arg_snapshotId = 'foo';
@@ -5462,14 +5396,12 @@ void main() {
         var resp = convert.json.encode(buildSnapshot());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_snapshotId, language: arg_language, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSnapshot(response as api.Snapshot);
-      })));
+      final response = await res.get(arg_snapshotId,
+          language: arg_language, $fields: arg_$fields);
+      checkSnapshot(response as api.Snapshot);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).snapshots;
       var arg_playerId = 'foo';
@@ -5545,20 +5477,17 @@ void main() {
         var resp = convert.json.encode(buildSnapshotListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_playerId,
-              language: arg_language,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSnapshotListResponse(response as api.SnapshotListResponse);
-      })));
+      final response = await res.list(arg_playerId,
+          language: arg_language,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkSnapshotListResponse(response as api.SnapshotListResponse);
     });
   });
 
   unittest.group('resource-SnapshotsExtendedResource', () {
-    unittest.test('method--resolveSnapshotHead', () {
+    unittest.test('method--resolveSnapshotHead', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).snapshotsExtended;
       var arg_request = buildResolveSnapshotHeadRequest();
@@ -5624,18 +5553,16 @@ void main() {
         var resp = convert.json.encode(buildResolveSnapshotHeadResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resolveSnapshotHead(arg_request, arg_snapshotName,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkResolveSnapshotHeadResponse(
-            response as api.ResolveSnapshotHeadResponse);
-      })));
+      final response = await res.resolveSnapshotHead(
+          arg_request, arg_snapshotName,
+          $fields: arg_$fields);
+      checkResolveSnapshotHeadResponse(
+          response as api.ResolveSnapshotHeadResponse);
     });
   });
 
   unittest.group('resource-StatsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GamesApi(mock).stats;
       var arg_$fields = 'foo';
@@ -5681,9 +5608,8 @@ void main() {
         var resp = convert.json.encode(buildStatsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkStatsResponse(response as api.StatsResponse);
-      })));
+      final response = await res.get($fields: arg_$fields);
+      checkStatsResponse(response as api.StatsResponse);
     });
   });
 }

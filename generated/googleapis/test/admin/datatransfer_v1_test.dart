@@ -327,7 +327,7 @@ void checkDataTransfersListResponse(api.DataTransfersListResponse o) {
 
 void main() {
   unittest.group('obj-schema-Application', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplication();
       var od = api.Application.fromJson(o.toJson());
       checkApplication(od as api.Application);
@@ -335,7 +335,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApplicationDataTransfer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplicationDataTransfer();
       var od = api.ApplicationDataTransfer.fromJson(o.toJson());
       checkApplicationDataTransfer(od as api.ApplicationDataTransfer);
@@ -343,7 +343,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApplicationTransferParam', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplicationTransferParam();
       var od = api.ApplicationTransferParam.fromJson(o.toJson());
       checkApplicationTransferParam(od as api.ApplicationTransferParam);
@@ -351,7 +351,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApplicationsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplicationsListResponse();
       var od = api.ApplicationsListResponse.fromJson(o.toJson());
       checkApplicationsListResponse(od as api.ApplicationsListResponse);
@@ -359,7 +359,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DataTransfer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDataTransfer();
       var od = api.DataTransfer.fromJson(o.toJson());
       checkDataTransfer(od as api.DataTransfer);
@@ -367,7 +367,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DataTransfersListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDataTransfersListResponse();
       var od = api.DataTransfersListResponse.fromJson(o.toJson());
       checkDataTransfersListResponse(od as api.DataTransfersListResponse);
@@ -375,7 +375,7 @@ void main() {
   });
 
   unittest.group('resource-ApplicationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataTransferApi(mock).applications;
       var arg_applicationId = 'foo';
@@ -428,14 +428,11 @@ void main() {
         var resp = convert.json.encode(buildApplication());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_applicationId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApplication(response as api.Application);
-      })));
+      final response = await res.get(arg_applicationId, $fields: arg_$fields);
+      checkApplication(response as api.Application);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataTransferApi(mock).applications;
       var arg_customerId = 'foo';
@@ -496,20 +493,17 @@ void main() {
         var resp = convert.json.encode(buildApplicationsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              customerId: arg_customerId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApplicationsListResponse(response as api.ApplicationsListResponse);
-      })));
+      final response = await res.list(
+          customerId: arg_customerId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkApplicationsListResponse(response as api.ApplicationsListResponse);
     });
   });
 
   unittest.group('resource-TransfersResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DataTransferApi(mock).transfers;
       var arg_dataTransferId = 'foo';
@@ -562,14 +556,11 @@ void main() {
         var resp = convert.json.encode(buildDataTransfer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_dataTransferId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDataTransfer(response as api.DataTransfer);
-      })));
+      final response = await res.get(arg_dataTransferId, $fields: arg_$fields);
+      checkDataTransfer(response as api.DataTransfer);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DataTransferApi(mock).transfers;
       var arg_request = buildDataTransfer();
@@ -620,14 +611,11 @@ void main() {
         var resp = convert.json.encode(buildDataTransfer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDataTransfer(response as api.DataTransfer);
-      })));
+      final response = await res.insert(arg_request, $fields: arg_$fields);
+      checkDataTransfer(response as api.DataTransfer);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DataTransferApi(mock).transfers;
       var arg_customerId = 'foo';
@@ -703,19 +691,15 @@ void main() {
         var resp = convert.json.encode(buildDataTransfersListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              customerId: arg_customerId,
-              maxResults: arg_maxResults,
-              newOwnerUserId: arg_newOwnerUserId,
-              oldOwnerUserId: arg_oldOwnerUserId,
-              pageToken: arg_pageToken,
-              status: arg_status,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDataTransfersListResponse(
-            response as api.DataTransfersListResponse);
-      })));
+      final response = await res.list(
+          customerId: arg_customerId,
+          maxResults: arg_maxResults,
+          newOwnerUserId: arg_newOwnerUserId,
+          oldOwnerUserId: arg_oldOwnerUserId,
+          pageToken: arg_pageToken,
+          status: arg_status,
+          $fields: arg_$fields);
+      checkDataTransfersListResponse(response as api.DataTransfersListResponse);
     });
   });
 }

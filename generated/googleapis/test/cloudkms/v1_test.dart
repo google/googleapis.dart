@@ -1523,7 +1523,7 @@ void checkWrappingPublicKey(api.WrappingPublicKey o) {
 
 void main() {
   unittest.group('obj-schema-AsymmetricDecryptRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAsymmetricDecryptRequest();
       var od = api.AsymmetricDecryptRequest.fromJson(o.toJson());
       checkAsymmetricDecryptRequest(od as api.AsymmetricDecryptRequest);
@@ -1531,7 +1531,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AsymmetricDecryptResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAsymmetricDecryptResponse();
       var od = api.AsymmetricDecryptResponse.fromJson(o.toJson());
       checkAsymmetricDecryptResponse(od as api.AsymmetricDecryptResponse);
@@ -1539,7 +1539,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AsymmetricSignRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAsymmetricSignRequest();
       var od = api.AsymmetricSignRequest.fromJson(o.toJson());
       checkAsymmetricSignRequest(od as api.AsymmetricSignRequest);
@@ -1547,7 +1547,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AsymmetricSignResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAsymmetricSignResponse();
       var od = api.AsymmetricSignResponse.fromJson(o.toJson());
       checkAsymmetricSignResponse(od as api.AsymmetricSignResponse);
@@ -1555,7 +1555,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
       checkAuditConfig(od as api.AuditConfig);
@@ -1563,7 +1563,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
       checkAuditLogConfig(od as api.AuditLogConfig);
@@ -1571,7 +1571,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -1579,7 +1579,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CertificateChains', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCertificateChains();
       var od = api.CertificateChains.fromJson(o.toJson());
       checkCertificateChains(od as api.CertificateChains);
@@ -1587,7 +1587,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CryptoKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCryptoKey();
       var od = api.CryptoKey.fromJson(o.toJson());
       checkCryptoKey(od as api.CryptoKey);
@@ -1595,7 +1595,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CryptoKeyVersion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCryptoKeyVersion();
       var od = api.CryptoKeyVersion.fromJson(o.toJson());
       checkCryptoKeyVersion(od as api.CryptoKeyVersion);
@@ -1603,7 +1603,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CryptoKeyVersionTemplate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCryptoKeyVersionTemplate();
       var od = api.CryptoKeyVersionTemplate.fromJson(o.toJson());
       checkCryptoKeyVersionTemplate(od as api.CryptoKeyVersionTemplate);
@@ -1611,7 +1611,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DecryptRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDecryptRequest();
       var od = api.DecryptRequest.fromJson(o.toJson());
       checkDecryptRequest(od as api.DecryptRequest);
@@ -1619,7 +1619,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DecryptResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDecryptResponse();
       var od = api.DecryptResponse.fromJson(o.toJson());
       checkDecryptResponse(od as api.DecryptResponse);
@@ -1627,7 +1627,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DestroyCryptoKeyVersionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDestroyCryptoKeyVersionRequest();
       var od = api.DestroyCryptoKeyVersionRequest.fromJson(o.toJson());
       checkDestroyCryptoKeyVersionRequest(
@@ -1636,7 +1636,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Digest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDigest();
       var od = api.Digest.fromJson(o.toJson());
       checkDigest(od as api.Digest);
@@ -1644,7 +1644,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EncryptRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEncryptRequest();
       var od = api.EncryptRequest.fromJson(o.toJson());
       checkEncryptRequest(od as api.EncryptRequest);
@@ -1652,7 +1652,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EncryptResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEncryptResponse();
       var od = api.EncryptResponse.fromJson(o.toJson());
       checkEncryptResponse(od as api.EncryptResponse);
@@ -1660,7 +1660,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -1668,7 +1668,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExternalProtectionLevelOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExternalProtectionLevelOptions();
       var od = api.ExternalProtectionLevelOptions.fromJson(o.toJson());
       checkExternalProtectionLevelOptions(
@@ -1677,7 +1677,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImportCryptoKeyVersionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImportCryptoKeyVersionRequest();
       var od = api.ImportCryptoKeyVersionRequest.fromJson(o.toJson());
       checkImportCryptoKeyVersionRequest(
@@ -1686,7 +1686,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImportJob', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImportJob();
       var od = api.ImportJob.fromJson(o.toJson());
       checkImportJob(od as api.ImportJob);
@@ -1694,7 +1694,7 @@ void main() {
   });
 
   unittest.group('obj-schema-KeyOperationAttestation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildKeyOperationAttestation();
       var od = api.KeyOperationAttestation.fromJson(o.toJson());
       checkKeyOperationAttestation(od as api.KeyOperationAttestation);
@@ -1702,7 +1702,7 @@ void main() {
   });
 
   unittest.group('obj-schema-KeyRing', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildKeyRing();
       var od = api.KeyRing.fromJson(o.toJson());
       checkKeyRing(od as api.KeyRing);
@@ -1710,7 +1710,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCryptoKeyVersionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCryptoKeyVersionsResponse();
       var od = api.ListCryptoKeyVersionsResponse.fromJson(o.toJson());
       checkListCryptoKeyVersionsResponse(
@@ -1719,7 +1719,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListCryptoKeysResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListCryptoKeysResponse();
       var od = api.ListCryptoKeysResponse.fromJson(o.toJson());
       checkListCryptoKeysResponse(od as api.ListCryptoKeysResponse);
@@ -1727,7 +1727,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListImportJobsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListImportJobsResponse();
       var od = api.ListImportJobsResponse.fromJson(o.toJson());
       checkListImportJobsResponse(od as api.ListImportJobsResponse);
@@ -1735,7 +1735,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListKeyRingsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListKeyRingsResponse();
       var od = api.ListKeyRingsResponse.fromJson(o.toJson());
       checkListKeyRingsResponse(od as api.ListKeyRingsResponse);
@@ -1743,7 +1743,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -1751,7 +1751,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -1759,7 +1759,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LocationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocationMetadata();
       var od = api.LocationMetadata.fromJson(o.toJson());
       checkLocationMetadata(od as api.LocationMetadata);
@@ -1767,7 +1767,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -1775,7 +1775,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PublicKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPublicKey();
       var od = api.PublicKey.fromJson(o.toJson());
       checkPublicKey(od as api.PublicKey);
@@ -1783,7 +1783,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestoreCryptoKeyVersionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestoreCryptoKeyVersionRequest();
       var od = api.RestoreCryptoKeyVersionRequest.fromJson(o.toJson());
       checkRestoreCryptoKeyVersionRequest(
@@ -1792,7 +1792,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -1800,7 +1800,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -1808,7 +1808,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -1816,7 +1816,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateCryptoKeyPrimaryVersionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateCryptoKeyPrimaryVersionRequest();
       var od = api.UpdateCryptoKeyPrimaryVersionRequest.fromJson(o.toJson());
       checkUpdateCryptoKeyPrimaryVersionRequest(
@@ -1825,7 +1825,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WrappingPublicKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWrappingPublicKey();
       var od = api.WrappingPublicKey.fromJson(o.toJson());
       checkWrappingPublicKey(od as api.WrappingPublicKey);
@@ -1833,7 +1833,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -1881,14 +1881,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -1951,20 +1948,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsKeyRingsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings;
       var arg_request = buildKeyRing();
@@ -2022,15 +2016,12 @@ void main() {
         var resp = convert.json.encode(buildKeyRing());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              keyRingId: arg_keyRingId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkKeyRing(response as api.KeyRing);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          keyRingId: arg_keyRingId, $fields: arg_$fields);
+      checkKeyRing(response as api.KeyRing);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings;
       var arg_name = 'foo';
@@ -2078,14 +2069,11 @@ void main() {
         var resp = convert.json.encode(buildKeyRing());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkKeyRing(response as api.KeyRing);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkKeyRing(response as api.KeyRing);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings;
       var arg_resource = 'foo';
@@ -2138,17 +2126,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings;
       var arg_parent = 'foo';
@@ -2216,19 +2200,16 @@ void main() {
         var resp = convert.json.encode(buildListKeyRingsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListKeyRingsResponse(response as api.ListKeyRingsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListKeyRingsResponse(response as api.ListKeyRingsResponse);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings;
       var arg_request = buildSetIamPolicyRequest();
@@ -2281,14 +2262,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings;
       var arg_request = buildTestIamPermissionsRequest();
@@ -2341,17 +2320,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsKeyRingsCryptoKeysResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildCryptoKey();
@@ -2414,17 +2391,14 @@ void main() {
         var resp = convert.json.encode(buildCryptoKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              cryptoKeyId: arg_cryptoKeyId,
-              skipInitialVersionCreation: arg_skipInitialVersionCreation,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCryptoKey(response as api.CryptoKey);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          cryptoKeyId: arg_cryptoKeyId,
+          skipInitialVersionCreation: arg_skipInitialVersionCreation,
+          $fields: arg_$fields);
+      checkCryptoKey(response as api.CryptoKey);
     });
 
-    unittest.test('method--decrypt', () {
+    unittest.test('method--decrypt', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildDecryptRequest();
@@ -2477,14 +2451,12 @@ void main() {
         var resp = convert.json.encode(buildDecryptResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .decrypt(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDecryptResponse(response as api.DecryptResponse);
-      })));
+      final response =
+          await res.decrypt(arg_request, arg_name, $fields: arg_$fields);
+      checkDecryptResponse(response as api.DecryptResponse);
     });
 
-    unittest.test('method--encrypt', () {
+    unittest.test('method--encrypt', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildEncryptRequest();
@@ -2537,14 +2509,12 @@ void main() {
         var resp = convert.json.encode(buildEncryptResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .encrypt(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEncryptResponse(response as api.EncryptResponse);
-      })));
+      final response =
+          await res.encrypt(arg_request, arg_name, $fields: arg_$fields);
+      checkEncryptResponse(response as api.EncryptResponse);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_name = 'foo';
@@ -2592,14 +2562,11 @@ void main() {
         var resp = convert.json.encode(buildCryptoKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCryptoKey(response as api.CryptoKey);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkCryptoKey(response as api.CryptoKey);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_resource = 'foo';
@@ -2652,17 +2619,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_parent = 'foo';
@@ -2735,20 +2698,17 @@ void main() {
         var resp = convert.json.encode(buildListCryptoKeysResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              versionView: arg_versionView,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCryptoKeysResponse(response as api.ListCryptoKeysResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          versionView: arg_versionView,
+          $fields: arg_$fields);
+      checkListCryptoKeysResponse(response as api.ListCryptoKeysResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildCryptoKey();
@@ -2806,15 +2766,12 @@ void main() {
         var resp = convert.json.encode(buildCryptoKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCryptoKey(response as api.CryptoKey);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkCryptoKey(response as api.CryptoKey);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildSetIamPolicyRequest();
@@ -2867,14 +2824,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildTestIamPermissionsRequest();
@@ -2927,15 +2882,13 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
 
-    unittest.test('method--updatePrimaryVersion', () {
+    unittest.test('method--updatePrimaryVersion', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings.cryptoKeys;
       var arg_request = buildUpdateCryptoKeyPrimaryVersionRequest();
@@ -2989,18 +2942,16 @@ void main() {
         var resp = convert.json.encode(buildCryptoKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updatePrimaryVersion(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCryptoKey(response as api.CryptoKey);
-      })));
+      final response = await res.updatePrimaryVersion(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkCryptoKey(response as api.CryptoKey);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResource',
       () {
-    unittest.test('method--asymmetricDecrypt', () {
+    unittest.test('method--asymmetricDecrypt', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock)
           .projects
@@ -3058,15 +3009,12 @@ void main() {
         var resp = convert.json.encode(buildAsymmetricDecryptResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .asymmetricDecrypt(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAsymmetricDecryptResponse(
-            response as api.AsymmetricDecryptResponse);
-      })));
+      final response = await res.asymmetricDecrypt(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkAsymmetricDecryptResponse(response as api.AsymmetricDecryptResponse);
     });
 
-    unittest.test('method--asymmetricSign', () {
+    unittest.test('method--asymmetricSign', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock)
           .projects
@@ -3124,14 +3072,12 @@ void main() {
         var resp = convert.json.encode(buildAsymmetricSignResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .asymmetricSign(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAsymmetricSignResponse(response as api.AsymmetricSignResponse);
-      })));
+      final response =
+          await res.asymmetricSign(arg_request, arg_name, $fields: arg_$fields);
+      checkAsymmetricSignResponse(response as api.AsymmetricSignResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock)
           .projects
@@ -3189,14 +3135,12 @@ void main() {
         var resp = convert.json.encode(buildCryptoKeyVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCryptoKeyVersion(response as api.CryptoKeyVersion);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkCryptoKeyVersion(response as api.CryptoKeyVersion);
     });
 
-    unittest.test('method--destroy', () {
+    unittest.test('method--destroy', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock)
           .projects
@@ -3255,14 +3199,12 @@ void main() {
         var resp = convert.json.encode(buildCryptoKeyVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .destroy(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCryptoKeyVersion(response as api.CryptoKeyVersion);
-      })));
+      final response =
+          await res.destroy(arg_request, arg_name, $fields: arg_$fields);
+      checkCryptoKeyVersion(response as api.CryptoKeyVersion);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock)
           .projects
@@ -3315,14 +3257,11 @@ void main() {
         var resp = convert.json.encode(buildCryptoKeyVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCryptoKeyVersion(response as api.CryptoKeyVersion);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkCryptoKeyVersion(response as api.CryptoKeyVersion);
     });
 
-    unittest.test('method--getPublicKey', () {
+    unittest.test('method--getPublicKey', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock)
           .projects
@@ -3375,14 +3314,11 @@ void main() {
         var resp = convert.json.encode(buildPublicKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getPublicKey(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPublicKey(response as api.PublicKey);
-      })));
+      final response = await res.getPublicKey(arg_name, $fields: arg_$fields);
+      checkPublicKey(response as api.PublicKey);
     });
 
-    unittest.test('method--import', () {
+    unittest.test('method--import', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock)
           .projects
@@ -3441,14 +3377,12 @@ void main() {
         var resp = convert.json.encode(buildCryptoKeyVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .import(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCryptoKeyVersion(response as api.CryptoKeyVersion);
-      })));
+      final response =
+          await res.import(arg_request, arg_parent, $fields: arg_$fields);
+      checkCryptoKeyVersion(response as api.CryptoKeyVersion);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock)
           .projects
@@ -3526,21 +3460,18 @@ void main() {
         var resp = convert.json.encode(buildListCryptoKeyVersionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListCryptoKeyVersionsResponse(
-            response as api.ListCryptoKeyVersionsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListCryptoKeyVersionsResponse(
+          response as api.ListCryptoKeyVersionsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock)
           .projects
@@ -3603,15 +3534,12 @@ void main() {
         var resp = convert.json.encode(buildCryptoKeyVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCryptoKeyVersion(response as api.CryptoKeyVersion);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkCryptoKeyVersion(response as api.CryptoKeyVersion);
     });
 
-    unittest.test('method--restore', () {
+    unittest.test('method--restore', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock)
           .projects
@@ -3670,16 +3598,14 @@ void main() {
         var resp = convert.json.encode(buildCryptoKeyVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .restore(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCryptoKeyVersion(response as api.CryptoKeyVersion);
-      })));
+      final response =
+          await res.restore(arg_request, arg_name, $fields: arg_$fields);
+      checkCryptoKeyVersion(response as api.CryptoKeyVersion);
     });
   });
 
   unittest.group('resource-ProjectsLocationsKeyRingsImportJobsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings.importJobs;
       var arg_request = buildImportJob();
@@ -3737,15 +3663,12 @@ void main() {
         var resp = convert.json.encode(buildImportJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              importJobId: arg_importJobId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkImportJob(response as api.ImportJob);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          importJobId: arg_importJobId, $fields: arg_$fields);
+      checkImportJob(response as api.ImportJob);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings.importJobs;
       var arg_name = 'foo';
@@ -3793,14 +3716,11 @@ void main() {
         var resp = convert.json.encode(buildImportJob());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkImportJob(response as api.ImportJob);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkImportJob(response as api.ImportJob);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings.importJobs;
       var arg_resource = 'foo';
@@ -3853,17 +3773,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings.importJobs;
       var arg_parent = 'foo';
@@ -3931,19 +3847,16 @@ void main() {
         var resp = convert.json.encode(buildListImportJobsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListImportJobsResponse(response as api.ListImportJobsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListImportJobsResponse(response as api.ListImportJobsResponse);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings.importJobs;
       var arg_request = buildSetIamPolicyRequest();
@@ -3996,14 +3909,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.CloudKMSApi(mock).projects.locations.keyRings.importJobs;
       var arg_request = buildTestIamPermissionsRequest();
@@ -4056,12 +3967,10 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 }

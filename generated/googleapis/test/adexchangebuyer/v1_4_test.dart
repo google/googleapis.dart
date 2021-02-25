@@ -4779,7 +4779,7 @@ void checkUnnamed2347(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-AccountBidderLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountBidderLocation();
       var od = api.AccountBidderLocation.fromJson(o.toJson());
       checkAccountBidderLocation(od as api.AccountBidderLocation);
@@ -4787,7 +4787,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Account', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccount();
       var od = api.Account.fromJson(o.toJson());
       checkAccount(od as api.Account);
@@ -4795,7 +4795,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountsList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountsList();
       var od = api.AccountsList.fromJson(o.toJson());
       checkAccountsList(od as api.AccountsList);
@@ -4803,7 +4803,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AddOrderDealsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddOrderDealsRequest();
       var od = api.AddOrderDealsRequest.fromJson(o.toJson());
       checkAddOrderDealsRequest(od as api.AddOrderDealsRequest);
@@ -4811,7 +4811,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AddOrderDealsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddOrderDealsResponse();
       var od = api.AddOrderDealsResponse.fromJson(o.toJson());
       checkAddOrderDealsResponse(od as api.AddOrderDealsResponse);
@@ -4819,7 +4819,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AddOrderNotesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddOrderNotesRequest();
       var od = api.AddOrderNotesRequest.fromJson(o.toJson());
       checkAddOrderNotesRequest(od as api.AddOrderNotesRequest);
@@ -4827,7 +4827,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AddOrderNotesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddOrderNotesResponse();
       var od = api.AddOrderNotesResponse.fromJson(o.toJson());
       checkAddOrderNotesResponse(od as api.AddOrderNotesResponse);
@@ -4835,7 +4835,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BillingInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBillingInfo();
       var od = api.BillingInfo.fromJson(o.toJson());
       checkBillingInfo(od as api.BillingInfo);
@@ -4843,7 +4843,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BillingInfoList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBillingInfoList();
       var od = api.BillingInfoList.fromJson(o.toJson());
       checkBillingInfoList(od as api.BillingInfoList);
@@ -4851,7 +4851,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Budget', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBudget();
       var od = api.Budget.fromJson(o.toJson());
       checkBudget(od as api.Budget);
@@ -4859,7 +4859,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Buyer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuyer();
       var od = api.Buyer.fromJson(o.toJson());
       checkBuyer(od as api.Buyer);
@@ -4867,7 +4867,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ContactInformation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContactInformation();
       var od = api.ContactInformation.fromJson(o.toJson());
       checkContactInformation(od as api.ContactInformation);
@@ -4875,7 +4875,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateOrdersRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateOrdersRequest();
       var od = api.CreateOrdersRequest.fromJson(o.toJson());
       checkCreateOrdersRequest(od as api.CreateOrdersRequest);
@@ -4883,7 +4883,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateOrdersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateOrdersResponse();
       var od = api.CreateOrdersResponse.fromJson(o.toJson());
       checkCreateOrdersResponse(od as api.CreateOrdersResponse);
@@ -4891,7 +4891,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreativeAdTechnologyProviders', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreativeAdTechnologyProviders();
       var od = api.CreativeAdTechnologyProviders.fromJson(o.toJson());
       checkCreativeAdTechnologyProviders(
@@ -4900,7 +4900,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreativeCorrectionsContexts', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreativeCorrectionsContexts();
       var od = api.CreativeCorrectionsContexts.fromJson(o.toJson());
       checkCreativeCorrectionsContexts(od as api.CreativeCorrectionsContexts);
@@ -4908,7 +4908,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreativeCorrections', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreativeCorrections();
       var od = api.CreativeCorrections.fromJson(o.toJson());
       checkCreativeCorrections(od as api.CreativeCorrections);
@@ -4916,7 +4916,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreativeFilteringReasonsReasons', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreativeFilteringReasonsReasons();
       var od = api.CreativeFilteringReasonsReasons.fromJson(o.toJson());
       checkCreativeFilteringReasonsReasons(
@@ -4925,7 +4925,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreativeFilteringReasons', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreativeFilteringReasons();
       var od = api.CreativeFilteringReasons.fromJson(o.toJson());
       checkCreativeFilteringReasons(od as api.CreativeFilteringReasons);
@@ -4933,7 +4933,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreativeNativeAdAppIcon', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreativeNativeAdAppIcon();
       var od = api.CreativeNativeAdAppIcon.fromJson(o.toJson());
       checkCreativeNativeAdAppIcon(od as api.CreativeNativeAdAppIcon);
@@ -4941,7 +4941,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreativeNativeAdImage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreativeNativeAdImage();
       var od = api.CreativeNativeAdImage.fromJson(o.toJson());
       checkCreativeNativeAdImage(od as api.CreativeNativeAdImage);
@@ -4949,7 +4949,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreativeNativeAdLogo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreativeNativeAdLogo();
       var od = api.CreativeNativeAdLogo.fromJson(o.toJson());
       checkCreativeNativeAdLogo(od as api.CreativeNativeAdLogo);
@@ -4957,7 +4957,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreativeNativeAd', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreativeNativeAd();
       var od = api.CreativeNativeAd.fromJson(o.toJson());
       checkCreativeNativeAd(od as api.CreativeNativeAd);
@@ -4965,7 +4965,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreativeServingRestrictionsContexts', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreativeServingRestrictionsContexts();
       var od = api.CreativeServingRestrictionsContexts.fromJson(o.toJson());
       checkCreativeServingRestrictionsContexts(
@@ -4975,7 +4975,7 @@ void main() {
 
   unittest.group('obj-schema-CreativeServingRestrictionsDisapprovalReasons',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreativeServingRestrictionsDisapprovalReasons();
       var od = api.CreativeServingRestrictionsDisapprovalReasons.fromJson(
           o.toJson());
@@ -4985,7 +4985,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreativeServingRestrictions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreativeServingRestrictions();
       var od = api.CreativeServingRestrictions.fromJson(o.toJson());
       checkCreativeServingRestrictions(od as api.CreativeServingRestrictions);
@@ -4993,7 +4993,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Creative', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreative();
       var od = api.Creative.fromJson(o.toJson());
       checkCreative(od as api.Creative);
@@ -5001,7 +5001,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreativeDealIdsDealStatuses', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreativeDealIdsDealStatuses();
       var od = api.CreativeDealIdsDealStatuses.fromJson(o.toJson());
       checkCreativeDealIdsDealStatuses(od as api.CreativeDealIdsDealStatuses);
@@ -5009,7 +5009,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreativeDealIds', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreativeDealIds();
       var od = api.CreativeDealIds.fromJson(o.toJson());
       checkCreativeDealIds(od as api.CreativeDealIds);
@@ -5017,7 +5017,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreativesList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreativesList();
       var od = api.CreativesList.fromJson(o.toJson());
       checkCreativesList(od as api.CreativesList);
@@ -5025,7 +5025,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DealServingMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDealServingMetadata();
       var od = api.DealServingMetadata.fromJson(o.toJson());
       checkDealServingMetadata(od as api.DealServingMetadata);
@@ -5033,7 +5033,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DealServingMetadataDealPauseStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDealServingMetadataDealPauseStatus();
       var od = api.DealServingMetadataDealPauseStatus.fromJson(o.toJson());
       checkDealServingMetadataDealPauseStatus(
@@ -5042,7 +5042,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DealTerms', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDealTerms();
       var od = api.DealTerms.fromJson(o.toJson());
       checkDealTerms(od as api.DealTerms);
@@ -5050,7 +5050,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DealTermsGuaranteedFixedPriceTerms', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDealTermsGuaranteedFixedPriceTerms();
       var od = api.DealTermsGuaranteedFixedPriceTerms.fromJson(o.toJson());
       checkDealTermsGuaranteedFixedPriceTerms(
@@ -5060,7 +5060,7 @@ void main() {
 
   unittest.group('obj-schema-DealTermsGuaranteedFixedPriceTermsBillingInfo',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDealTermsGuaranteedFixedPriceTermsBillingInfo();
       var od = api.DealTermsGuaranteedFixedPriceTermsBillingInfo.fromJson(
           o.toJson());
@@ -5070,7 +5070,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DealTermsNonGuaranteedAuctionTerms', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDealTermsNonGuaranteedAuctionTerms();
       var od = api.DealTermsNonGuaranteedAuctionTerms.fromJson(o.toJson());
       checkDealTermsNonGuaranteedAuctionTerms(
@@ -5079,7 +5079,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DealTermsNonGuaranteedFixedPriceTerms', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDealTermsNonGuaranteedFixedPriceTerms();
       var od = api.DealTermsNonGuaranteedFixedPriceTerms.fromJson(o.toJson());
       checkDealTermsNonGuaranteedFixedPriceTerms(
@@ -5088,7 +5088,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DealTermsRubiconNonGuaranteedTerms', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDealTermsRubiconNonGuaranteedTerms();
       var od = api.DealTermsRubiconNonGuaranteedTerms.fromJson(o.toJson());
       checkDealTermsRubiconNonGuaranteedTerms(
@@ -5097,7 +5097,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteOrderDealsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteOrderDealsRequest();
       var od = api.DeleteOrderDealsRequest.fromJson(o.toJson());
       checkDeleteOrderDealsRequest(od as api.DeleteOrderDealsRequest);
@@ -5105,7 +5105,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeleteOrderDealsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeleteOrderDealsResponse();
       var od = api.DeleteOrderDealsResponse.fromJson(o.toJson());
       checkDeleteOrderDealsResponse(od as api.DeleteOrderDealsResponse);
@@ -5113,7 +5113,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeliveryControl', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeliveryControl();
       var od = api.DeliveryControl.fromJson(o.toJson());
       checkDeliveryControl(od as api.DeliveryControl);
@@ -5121,7 +5121,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeliveryControlFrequencyCap', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeliveryControlFrequencyCap();
       var od = api.DeliveryControlFrequencyCap.fromJson(o.toJson());
       checkDeliveryControlFrequencyCap(od as api.DeliveryControlFrequencyCap);
@@ -5129,7 +5129,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Dimension', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDimension();
       var od = api.Dimension.fromJson(o.toJson());
       checkDimension(od as api.Dimension);
@@ -5137,7 +5137,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DimensionDimensionValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDimensionDimensionValue();
       var od = api.DimensionDimensionValue.fromJson(o.toJson());
       checkDimensionDimensionValue(od as api.DimensionDimensionValue);
@@ -5145,7 +5145,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EditAllOrderDealsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEditAllOrderDealsRequest();
       var od = api.EditAllOrderDealsRequest.fromJson(o.toJson());
       checkEditAllOrderDealsRequest(od as api.EditAllOrderDealsRequest);
@@ -5153,7 +5153,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EditAllOrderDealsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEditAllOrderDealsResponse();
       var od = api.EditAllOrderDealsResponse.fromJson(o.toJson());
       checkEditAllOrderDealsResponse(od as api.EditAllOrderDealsResponse);
@@ -5161,7 +5161,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetOffersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetOffersResponse();
       var od = api.GetOffersResponse.fromJson(o.toJson());
       checkGetOffersResponse(od as api.GetOffersResponse);
@@ -5169,7 +5169,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetOrderDealsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetOrderDealsResponse();
       var od = api.GetOrderDealsResponse.fromJson(o.toJson());
       checkGetOrderDealsResponse(od as api.GetOrderDealsResponse);
@@ -5177,7 +5177,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetOrderNotesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetOrderNotesResponse();
       var od = api.GetOrderNotesResponse.fromJson(o.toJson());
       checkGetOrderNotesResponse(od as api.GetOrderNotesResponse);
@@ -5185,7 +5185,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetOrdersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetOrdersResponse();
       var od = api.GetOrdersResponse.fromJson(o.toJson());
       checkGetOrdersResponse(od as api.GetOrdersResponse);
@@ -5193,7 +5193,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetPublisherProfilesByAccountIdResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetPublisherProfilesByAccountIdResponse();
       var od = api.GetPublisherProfilesByAccountIdResponse.fromJson(o.toJson());
       checkGetPublisherProfilesByAccountIdResponse(
@@ -5202,7 +5202,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MarketplaceDeal', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMarketplaceDeal();
       var od = api.MarketplaceDeal.fromJson(o.toJson());
       checkMarketplaceDeal(od as api.MarketplaceDeal);
@@ -5210,7 +5210,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MarketplaceDealParty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMarketplaceDealParty();
       var od = api.MarketplaceDealParty.fromJson(o.toJson());
       checkMarketplaceDealParty(od as api.MarketplaceDealParty);
@@ -5218,7 +5218,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MarketplaceLabel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMarketplaceLabel();
       var od = api.MarketplaceLabel.fromJson(o.toJson());
       checkMarketplaceLabel(od as api.MarketplaceLabel);
@@ -5226,7 +5226,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MarketplaceNote', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMarketplaceNote();
       var od = api.MarketplaceNote.fromJson(o.toJson());
       checkMarketplaceNote(od as api.MarketplaceNote);
@@ -5234,7 +5234,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MobileApplication', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMobileApplication();
       var od = api.MobileApplication.fromJson(o.toJson());
       checkMobileApplication(od as api.MobileApplication);
@@ -5242,7 +5242,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PerformanceReport', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPerformanceReport();
       var od = api.PerformanceReport.fromJson(o.toJson());
       checkPerformanceReport(od as api.PerformanceReport);
@@ -5250,7 +5250,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PerformanceReportList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPerformanceReportList();
       var od = api.PerformanceReportList.fromJson(o.toJson());
       checkPerformanceReportList(od as api.PerformanceReportList);
@@ -5258,7 +5258,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PretargetingConfigDimensions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPretargetingConfigDimensions();
       var od = api.PretargetingConfigDimensions.fromJson(o.toJson());
       checkPretargetingConfigDimensions(od as api.PretargetingConfigDimensions);
@@ -5266,7 +5266,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PretargetingConfigExcludedPlacements', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPretargetingConfigExcludedPlacements();
       var od = api.PretargetingConfigExcludedPlacements.fromJson(o.toJson());
       checkPretargetingConfigExcludedPlacements(
@@ -5275,7 +5275,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PretargetingConfigPlacements', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPretargetingConfigPlacements();
       var od = api.PretargetingConfigPlacements.fromJson(o.toJson());
       checkPretargetingConfigPlacements(od as api.PretargetingConfigPlacements);
@@ -5283,7 +5283,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PretargetingConfigVideoPlayerSizes', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPretargetingConfigVideoPlayerSizes();
       var od = api.PretargetingConfigVideoPlayerSizes.fromJson(o.toJson());
       checkPretargetingConfigVideoPlayerSizes(
@@ -5292,7 +5292,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PretargetingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPretargetingConfig();
       var od = api.PretargetingConfig.fromJson(o.toJson());
       checkPretargetingConfig(od as api.PretargetingConfig);
@@ -5300,7 +5300,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PretargetingConfigList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPretargetingConfigList();
       var od = api.PretargetingConfigList.fromJson(o.toJson());
       checkPretargetingConfigList(od as api.PretargetingConfigList);
@@ -5308,7 +5308,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Price', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPrice();
       var od = api.Price.fromJson(o.toJson());
       checkPrice(od as api.Price);
@@ -5316,7 +5316,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PricePerBuyer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPricePerBuyer();
       var od = api.PricePerBuyer.fromJson(o.toJson());
       checkPricePerBuyer(od as api.PricePerBuyer);
@@ -5324,7 +5324,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PrivateData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPrivateData();
       var od = api.PrivateData.fromJson(o.toJson());
       checkPrivateData(od as api.PrivateData);
@@ -5332,7 +5332,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Product', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProduct();
       var od = api.Product.fromJson(o.toJson());
       checkProduct(od as api.Product);
@@ -5340,7 +5340,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Proposal', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProposal();
       var od = api.Proposal.fromJson(o.toJson());
       checkProposal(od as api.Proposal);
@@ -5348,7 +5348,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PublisherProfileApiProto', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPublisherProfileApiProto();
       var od = api.PublisherProfileApiProto.fromJson(o.toJson());
       checkPublisherProfileApiProto(od as api.PublisherProfileApiProto);
@@ -5356,7 +5356,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PublisherProvidedForecast', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPublisherProvidedForecast();
       var od = api.PublisherProvidedForecast.fromJson(o.toJson());
       checkPublisherProvidedForecast(od as api.PublisherProvidedForecast);
@@ -5364,7 +5364,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Seller', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSeller();
       var od = api.Seller.fromJson(o.toJson());
       checkSeller(od as api.Seller);
@@ -5372,7 +5372,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SharedTargeting', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSharedTargeting();
       var od = api.SharedTargeting.fromJson(o.toJson());
       checkSharedTargeting(od as api.SharedTargeting);
@@ -5380,7 +5380,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TargetingValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTargetingValue();
       var od = api.TargetingValue.fromJson(o.toJson());
       checkTargetingValue(od as api.TargetingValue);
@@ -5388,7 +5388,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TargetingValueCreativeSize', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTargetingValueCreativeSize();
       var od = api.TargetingValueCreativeSize.fromJson(o.toJson());
       checkTargetingValueCreativeSize(od as api.TargetingValueCreativeSize);
@@ -5396,7 +5396,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TargetingValueDayPartTargeting', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTargetingValueDayPartTargeting();
       var od = api.TargetingValueDayPartTargeting.fromJson(o.toJson());
       checkTargetingValueDayPartTargeting(
@@ -5405,7 +5405,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TargetingValueDayPartTargetingDayPart', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTargetingValueDayPartTargetingDayPart();
       var od = api.TargetingValueDayPartTargetingDayPart.fromJson(o.toJson());
       checkTargetingValueDayPartTargetingDayPart(
@@ -5414,7 +5414,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TargetingValueDemogAgeCriteria', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTargetingValueDemogAgeCriteria();
       var od = api.TargetingValueDemogAgeCriteria.fromJson(o.toJson());
       checkTargetingValueDemogAgeCriteria(
@@ -5423,7 +5423,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TargetingValueDemogGenderCriteria', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTargetingValueDemogGenderCriteria();
       var od = api.TargetingValueDemogGenderCriteria.fromJson(o.toJson());
       checkTargetingValueDemogGenderCriteria(
@@ -5432,7 +5432,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TargetingValueRequestPlatformTargeting', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTargetingValueRequestPlatformTargeting();
       var od = api.TargetingValueRequestPlatformTargeting.fromJson(o.toJson());
       checkTargetingValueRequestPlatformTargeting(
@@ -5441,7 +5441,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TargetingValueSize', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTargetingValueSize();
       var od = api.TargetingValueSize.fromJson(o.toJson());
       checkTargetingValueSize(od as api.TargetingValueSize);
@@ -5449,7 +5449,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdatePrivateAuctionProposalRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdatePrivateAuctionProposalRequest();
       var od = api.UpdatePrivateAuctionProposalRequest.fromJson(o.toJson());
       checkUpdatePrivateAuctionProposalRequest(
@@ -5458,7 +5458,7 @@ void main() {
   });
 
   unittest.group('resource-AccountsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).accounts;
       var arg_id = 42;
@@ -5516,14 +5516,11 @@ void main() {
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccount(response as api.Account);
-      })));
+      final response = await res.get(arg_id, $fields: arg_$fields);
+      checkAccount(response as api.Account);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).accounts;
       var arg_$fields = 'foo';
@@ -5574,12 +5571,11 @@ void main() {
         var resp = convert.json.encode(buildAccountsList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkAccountsList(response as api.AccountsList);
-      })));
+      final response = await res.list($fields: arg_$fields);
+      checkAccountsList(response as api.AccountsList);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).accounts;
       var arg_request = buildAccount();
@@ -5647,16 +5643,13 @@ void main() {
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_id,
-              confirmUnsafeAccountChange: arg_confirmUnsafeAccountChange,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccount(response as api.Account);
-      })));
+      final response = await res.patch(arg_request, arg_id,
+          confirmUnsafeAccountChange: arg_confirmUnsafeAccountChange,
+          $fields: arg_$fields);
+      checkAccount(response as api.Account);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).accounts;
       var arg_request = buildAccount();
@@ -5724,18 +5717,15 @@ void main() {
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_id,
-              confirmUnsafeAccountChange: arg_confirmUnsafeAccountChange,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccount(response as api.Account);
-      })));
+      final response = await res.update(arg_request, arg_id,
+          confirmUnsafeAccountChange: arg_confirmUnsafeAccountChange,
+          $fields: arg_$fields);
+      checkAccount(response as api.Account);
     });
   });
 
   unittest.group('resource-BillingInfoResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).billingInfo;
       var arg_accountId = 42;
@@ -5793,14 +5783,11 @@ void main() {
         var resp = convert.json.encode(buildBillingInfo());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_accountId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBillingInfo(response as api.BillingInfo);
-      })));
+      final response = await res.get(arg_accountId, $fields: arg_$fields);
+      checkBillingInfo(response as api.BillingInfo);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).billingInfo;
       var arg_$fields = 'foo';
@@ -5851,14 +5838,13 @@ void main() {
         var resp = convert.json.encode(buildBillingInfoList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkBillingInfoList(response as api.BillingInfoList);
-      })));
+      final response = await res.list($fields: arg_$fields);
+      checkBillingInfoList(response as api.BillingInfoList);
     });
   });
 
   unittest.group('resource-BudgetResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).budget;
       var arg_accountId = 'foo';
@@ -5931,14 +5917,12 @@ void main() {
         var resp = convert.json.encode(buildBudget());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_accountId, arg_billingId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBudget(response as api.Budget);
-      })));
+      final response =
+          await res.get(arg_accountId, arg_billingId, $fields: arg_$fields);
+      checkBudget(response as api.Budget);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).budget;
       var arg_request = buildBudget();
@@ -6016,15 +6000,13 @@ void main() {
         var resp = convert.json.encode(buildBudget());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_accountId, arg_billingId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBudget(response as api.Budget);
-      })));
+      final response = await res.patch(
+          arg_request, arg_accountId, arg_billingId,
+          $fields: arg_$fields);
+      checkBudget(response as api.Budget);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).budget;
       var arg_request = buildBudget();
@@ -6102,17 +6084,15 @@ void main() {
         var resp = convert.json.encode(buildBudget());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_accountId, arg_billingId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBudget(response as api.Budget);
-      })));
+      final response = await res.update(
+          arg_request, arg_accountId, arg_billingId,
+          $fields: arg_$fields);
+      checkBudget(response as api.Budget);
     });
   });
 
   unittest.group('resource-CreativesResource', () {
-    unittest.test('method--addDeal', () {
+    unittest.test('method--addDeal', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).creatives;
       var arg_accountId = 42;
@@ -6200,13 +6180,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .addDeal(arg_accountId, arg_buyerCreativeId, arg_dealId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.addDeal(arg_accountId, arg_buyerCreativeId, arg_dealId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).creatives;
       var arg_accountId = 42;
@@ -6279,14 +6257,12 @@ void main() {
         var resp = convert.json.encode(buildCreative());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_accountId, arg_buyerCreativeId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCreative(response as api.Creative);
-      })));
+      final response = await res.get(arg_accountId, arg_buyerCreativeId,
+          $fields: arg_$fields);
+      checkCreative(response as api.Creative);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).creatives;
       var arg_request = buildCreative();
@@ -6342,14 +6318,11 @@ void main() {
         var resp = convert.json.encode(buildCreative());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCreative(response as api.Creative);
-      })));
+      final response = await res.insert(arg_request, $fields: arg_$fields);
+      checkCreative(response as api.Creative);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).creatives;
       var arg_accountId = buildUnnamed2346();
@@ -6430,21 +6403,18 @@ void main() {
         var resp = convert.json.encode(buildCreativesList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              accountId: arg_accountId,
-              buyerCreativeId: arg_buyerCreativeId,
-              dealsStatusFilter: arg_dealsStatusFilter,
-              maxResults: arg_maxResults,
-              openAuctionStatusFilter: arg_openAuctionStatusFilter,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCreativesList(response as api.CreativesList);
-      })));
+      final response = await res.list(
+          accountId: arg_accountId,
+          buyerCreativeId: arg_buyerCreativeId,
+          dealsStatusFilter: arg_dealsStatusFilter,
+          maxResults: arg_maxResults,
+          openAuctionStatusFilter: arg_openAuctionStatusFilter,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkCreativesList(response as api.CreativesList);
     });
 
-    unittest.test('method--listDeals', () {
+    unittest.test('method--listDeals', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).creatives;
       var arg_accountId = 42;
@@ -6525,14 +6495,12 @@ void main() {
         var resp = convert.json.encode(buildCreativeDealIds());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listDeals(arg_accountId, arg_buyerCreativeId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCreativeDealIds(response as api.CreativeDealIds);
-      })));
+      final response = await res.listDeals(arg_accountId, arg_buyerCreativeId,
+          $fields: arg_$fields);
+      checkCreativeDealIds(response as api.CreativeDealIds);
     });
 
-    unittest.test('method--removeDeal', () {
+    unittest.test('method--removeDeal', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).creatives;
       var arg_accountId = 42;
@@ -6620,15 +6588,13 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .removeDeal(arg_accountId, arg_buyerCreativeId, arg_dealId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.removeDeal(arg_accountId, arg_buyerCreativeId, arg_dealId,
+          $fields: arg_$fields);
     });
   });
 
   unittest.group('resource-MarketplacedealsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).marketplacedeals;
       var arg_request = buildDeleteOrderDealsRequest();
@@ -6699,14 +6665,12 @@ void main() {
         var resp = convert.json.encode(buildDeleteOrderDealsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_request, arg_proposalId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDeleteOrderDealsResponse(response as api.DeleteOrderDealsResponse);
-      })));
+      final response =
+          await res.delete(arg_request, arg_proposalId, $fields: arg_$fields);
+      checkDeleteOrderDealsResponse(response as api.DeleteOrderDealsResponse);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).marketplacedeals;
       var arg_request = buildAddOrderDealsRequest();
@@ -6777,14 +6741,12 @@ void main() {
         var resp = convert.json.encode(buildAddOrderDealsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_proposalId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAddOrderDealsResponse(response as api.AddOrderDealsResponse);
-      })));
+      final response =
+          await res.insert(arg_request, arg_proposalId, $fields: arg_$fields);
+      checkAddOrderDealsResponse(response as api.AddOrderDealsResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).marketplacedeals;
       var arg_proposalId = 'foo';
@@ -6855,14 +6817,12 @@ void main() {
         var resp = convert.json.encode(buildGetOrderDealsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_proposalId, pqlQuery: arg_pqlQuery, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetOrderDealsResponse(response as api.GetOrderDealsResponse);
-      })));
+      final response = await res.list(arg_proposalId,
+          pqlQuery: arg_pqlQuery, $fields: arg_$fields);
+      checkGetOrderDealsResponse(response as api.GetOrderDealsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).marketplacedeals;
       var arg_request = buildEditAllOrderDealsRequest();
@@ -6933,17 +6893,14 @@ void main() {
         var resp = convert.json.encode(buildEditAllOrderDealsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_proposalId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEditAllOrderDealsResponse(
-            response as api.EditAllOrderDealsResponse);
-      })));
+      final response =
+          await res.update(arg_request, arg_proposalId, $fields: arg_$fields);
+      checkEditAllOrderDealsResponse(response as api.EditAllOrderDealsResponse);
     });
   });
 
   unittest.group('resource-MarketplacenotesResource', () {
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).marketplacenotes;
       var arg_request = buildAddOrderNotesRequest();
@@ -7014,14 +6971,12 @@ void main() {
         var resp = convert.json.encode(buildAddOrderNotesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_proposalId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAddOrderNotesResponse(response as api.AddOrderNotesResponse);
-      })));
+      final response =
+          await res.insert(arg_request, arg_proposalId, $fields: arg_$fields);
+      checkAddOrderNotesResponse(response as api.AddOrderNotesResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).marketplacenotes;
       var arg_proposalId = 'foo';
@@ -7092,16 +7047,14 @@ void main() {
         var resp = convert.json.encode(buildGetOrderNotesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_proposalId, pqlQuery: arg_pqlQuery, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetOrderNotesResponse(response as api.GetOrderNotesResponse);
-      })));
+      final response = await res.list(arg_proposalId,
+          pqlQuery: arg_pqlQuery, $fields: arg_$fields);
+      checkGetOrderNotesResponse(response as api.GetOrderNotesResponse);
     });
   });
 
   unittest.group('resource-MarketplaceprivateauctionResource', () {
-    unittest.test('method--updateproposal', () {
+    unittest.test('method--updateproposal', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).marketplaceprivateauction;
       var arg_request = buildUpdatePrivateAuctionProposalRequest();
@@ -7173,15 +7126,13 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateproposal(arg_request, arg_privateAuctionId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.updateproposal(arg_request, arg_privateAuctionId,
+          $fields: arg_$fields);
     });
   });
 
   unittest.group('resource-PerformanceReportResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).performanceReport;
       var arg_accountId = 'foo';
@@ -7257,19 +7208,17 @@ void main() {
         var resp = convert.json.encode(buildPerformanceReportList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId, arg_endDateTime, arg_startDateTime,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPerformanceReportList(response as api.PerformanceReportList);
-      })));
+      final response = await res.list(
+          arg_accountId, arg_endDateTime, arg_startDateTime,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkPerformanceReportList(response as api.PerformanceReportList);
     });
   });
 
   unittest.group('resource-PretargetingConfigResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
       var arg_accountId = 'foo';
@@ -7342,12 +7291,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_accountId, arg_configId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_accountId, arg_configId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
       var arg_accountId = 'foo';
@@ -7420,14 +7367,12 @@ void main() {
         var resp = convert.json.encode(buildPretargetingConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_accountId, arg_configId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPretargetingConfig(response as api.PretargetingConfig);
-      })));
+      final response =
+          await res.get(arg_accountId, arg_configId, $fields: arg_$fields);
+      checkPretargetingConfig(response as api.PretargetingConfig);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
       var arg_request = buildPretargetingConfig();
@@ -7490,14 +7435,12 @@ void main() {
         var resp = convert.json.encode(buildPretargetingConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_accountId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPretargetingConfig(response as api.PretargetingConfig);
-      })));
+      final response =
+          await res.insert(arg_request, arg_accountId, $fields: arg_$fields);
+      checkPretargetingConfig(response as api.PretargetingConfig);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
       var arg_accountId = 'foo';
@@ -7555,14 +7498,11 @@ void main() {
         var resp = convert.json.encode(buildPretargetingConfigList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPretargetingConfigList(response as api.PretargetingConfigList);
-      })));
+      final response = await res.list(arg_accountId, $fields: arg_$fields);
+      checkPretargetingConfigList(response as api.PretargetingConfigList);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
       var arg_request = buildPretargetingConfig();
@@ -7640,14 +7580,12 @@ void main() {
         var resp = convert.json.encode(buildPretargetingConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_accountId, arg_configId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPretargetingConfig(response as api.PretargetingConfig);
-      })));
+      final response = await res.patch(arg_request, arg_accountId, arg_configId,
+          $fields: arg_$fields);
+      checkPretargetingConfig(response as api.PretargetingConfig);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).pretargetingConfig;
       var arg_request = buildPretargetingConfig();
@@ -7725,17 +7663,15 @@ void main() {
         var resp = convert.json.encode(buildPretargetingConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_accountId, arg_configId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPretargetingConfig(response as api.PretargetingConfig);
-      })));
+      final response = await res.update(
+          arg_request, arg_accountId, arg_configId,
+          $fields: arg_$fields);
+      checkPretargetingConfig(response as api.PretargetingConfig);
     });
   });
 
   unittest.group('resource-ProductsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).products;
       var arg_productId = 'foo';
@@ -7793,14 +7729,11 @@ void main() {
         var resp = convert.json.encode(buildProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_productId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProduct(response as api.Product);
-      })));
+      final response = await res.get(arg_productId, $fields: arg_$fields);
+      checkProduct(response as api.Product);
     });
 
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).products;
       var arg_pqlQuery = 'foo';
@@ -7856,16 +7789,14 @@ void main() {
         var resp = convert.json.encode(buildGetOffersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(pqlQuery: arg_pqlQuery, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetOffersResponse(response as api.GetOffersResponse);
-      })));
+      final response =
+          await res.search(pqlQuery: arg_pqlQuery, $fields: arg_$fields);
+      checkGetOffersResponse(response as api.GetOffersResponse);
     });
   });
 
   unittest.group('resource-ProposalsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).proposals;
       var arg_proposalId = 'foo';
@@ -7923,14 +7854,11 @@ void main() {
         var resp = convert.json.encode(buildProposal());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_proposalId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProposal(response as api.Proposal);
-      })));
+      final response = await res.get(arg_proposalId, $fields: arg_$fields);
+      checkProposal(response as api.Proposal);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).proposals;
       var arg_request = buildCreateOrdersRequest();
@@ -7986,14 +7914,11 @@ void main() {
         var resp = convert.json.encode(buildCreateOrdersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCreateOrdersResponse(response as api.CreateOrdersResponse);
-      })));
+      final response = await res.insert(arg_request, $fields: arg_$fields);
+      checkCreateOrdersResponse(response as api.CreateOrdersResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).proposals;
       var arg_request = buildProposal();
@@ -8086,16 +8011,13 @@ void main() {
         var resp = convert.json.encode(buildProposal());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(
-              arg_request, arg_proposalId, arg_revisionNumber, arg_updateAction,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProposal(response as api.Proposal);
-      })));
+      final response = await res.patch(
+          arg_request, arg_proposalId, arg_revisionNumber, arg_updateAction,
+          $fields: arg_$fields);
+      checkProposal(response as api.Proposal);
     });
 
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).proposals;
       var arg_pqlQuery = 'foo';
@@ -8151,14 +8073,12 @@ void main() {
         var resp = convert.json.encode(buildGetOrdersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(pqlQuery: arg_pqlQuery, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetOrdersResponse(response as api.GetOrdersResponse);
-      })));
+      final response =
+          await res.search(pqlQuery: arg_pqlQuery, $fields: arg_$fields);
+      checkGetOrdersResponse(response as api.GetOrdersResponse);
     });
 
-    unittest.test('method--setupcomplete', () {
+    unittest.test('method--setupcomplete', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).proposals;
       var arg_proposalId = 'foo';
@@ -8224,12 +8144,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setupcomplete(arg_proposalId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.setupcomplete(arg_proposalId, $fields: arg_$fields);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).proposals;
       var arg_request = buildProposal();
@@ -8322,18 +8240,15 @@ void main() {
         var resp = convert.json.encode(buildProposal());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(
-              arg_request, arg_proposalId, arg_revisionNumber, arg_updateAction,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProposal(response as api.Proposal);
-      })));
+      final response = await res.update(
+          arg_request, arg_proposalId, arg_revisionNumber, arg_updateAction,
+          $fields: arg_$fields);
+      checkProposal(response as api.Proposal);
     });
   });
 
   unittest.group('resource-PubprofilesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AdExchangeBuyerApi(mock).pubprofiles;
       var arg_accountId = 42;
@@ -8400,12 +8315,9 @@ void main() {
             convert.json.encode(buildGetPublisherProfilesByAccountIdResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_accountId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetPublisherProfilesByAccountIdResponse(
-            response as api.GetPublisherProfilesByAccountIdResponse);
-      })));
+      final response = await res.list(arg_accountId, $fields: arg_$fields);
+      checkGetPublisherProfilesByAccountIdResponse(
+          response as api.GetPublisherProfilesByAccountIdResponse);
     });
   });
 }

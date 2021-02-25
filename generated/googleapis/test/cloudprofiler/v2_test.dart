@@ -177,7 +177,7 @@ void checkProfile(api.Profile o) {
 
 void main() {
   unittest.group('obj-schema-CreateProfileRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateProfileRequest();
       var od = api.CreateProfileRequest.fromJson(o.toJson());
       checkCreateProfileRequest(od as api.CreateProfileRequest);
@@ -185,7 +185,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Deployment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeployment();
       var od = api.Deployment.fromJson(o.toJson());
       checkDeployment(od as api.Deployment);
@@ -193,7 +193,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Profile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProfile();
       var od = api.Profile.fromJson(o.toJson());
       checkProfile(od as api.Profile);
@@ -201,7 +201,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsProfilesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudProfilerApi(mock).projects.profiles;
       var arg_request = buildCreateProfileRequest();
@@ -254,14 +254,12 @@ void main() {
         var resp = convert.json.encode(buildProfile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProfile(response as api.Profile);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkProfile(response as api.Profile);
     });
 
-    unittest.test('method--createOffline', () {
+    unittest.test('method--createOffline', () async {
       var mock = HttpServerMock();
       var res = api.CloudProfilerApi(mock).projects.profiles;
       var arg_request = buildProfile();
@@ -314,14 +312,12 @@ void main() {
         var resp = convert.json.encode(buildProfile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createOffline(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProfile(response as api.Profile);
-      })));
+      final response = await res.createOffline(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkProfile(response as api.Profile);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudProfilerApi(mock).projects.profiles;
       var arg_request = buildProfile();
@@ -379,12 +375,9 @@ void main() {
         var resp = convert.json.encode(buildProfile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProfile(response as api.Profile);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkProfile(response as api.Profile);
     });
   });
 }

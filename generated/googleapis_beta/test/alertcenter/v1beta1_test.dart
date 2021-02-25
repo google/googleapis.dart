@@ -1893,7 +1893,7 @@ void checkUserDefinedDetectorInfo(api.UserDefinedDetectorInfo o) {
 
 void main() {
   unittest.group('obj-schema-AccountWarning', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountWarning();
       var od = api.AccountWarning.fromJson(o.toJson());
       checkAccountWarning(od as api.AccountWarning);
@@ -1901,7 +1901,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ActivityRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildActivityRule();
       var od = api.ActivityRule.fromJson(o.toJson());
       checkActivityRule(od as api.ActivityRule);
@@ -1909,7 +1909,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Alert', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAlert();
       var od = api.Alert.fromJson(o.toJson());
       checkAlert(od as api.Alert);
@@ -1917,7 +1917,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AlertFeedback', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAlertFeedback();
       var od = api.AlertFeedback.fromJson(o.toJson());
       checkAlertFeedback(od as api.AlertFeedback);
@@ -1925,7 +1925,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AlertMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAlertMetadata();
       var od = api.AlertMetadata.fromJson(o.toJson());
       checkAlertMetadata(od as api.AlertMetadata);
@@ -1933,7 +1933,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AppMakerSqlSetupNotification', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppMakerSqlSetupNotification();
       var od = api.AppMakerSqlSetupNotification.fromJson(o.toJson());
       checkAppMakerSqlSetupNotification(od as api.AppMakerSqlSetupNotification);
@@ -1941,7 +1941,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Attachment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAttachment();
       var od = api.Attachment.fromJson(o.toJson());
       checkAttachment(od as api.Attachment);
@@ -1949,7 +1949,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BadWhitelist', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBadWhitelist();
       var od = api.BadWhitelist.fromJson(o.toJson());
       checkBadWhitelist(od as api.BadWhitelist);
@@ -1957,7 +1957,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchDeleteAlertsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchDeleteAlertsRequest();
       var od = api.BatchDeleteAlertsRequest.fromJson(o.toJson());
       checkBatchDeleteAlertsRequest(od as api.BatchDeleteAlertsRequest);
@@ -1965,7 +1965,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchDeleteAlertsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchDeleteAlertsResponse();
       var od = api.BatchDeleteAlertsResponse.fromJson(o.toJson());
       checkBatchDeleteAlertsResponse(od as api.BatchDeleteAlertsResponse);
@@ -1973,7 +1973,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchUndeleteAlertsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchUndeleteAlertsRequest();
       var od = api.BatchUndeleteAlertsRequest.fromJson(o.toJson());
       checkBatchUndeleteAlertsRequest(od as api.BatchUndeleteAlertsRequest);
@@ -1981,7 +1981,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchUndeleteAlertsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchUndeleteAlertsResponse();
       var od = api.BatchUndeleteAlertsResponse.fromJson(o.toJson());
       checkBatchUndeleteAlertsResponse(od as api.BatchUndeleteAlertsResponse);
@@ -1989,7 +1989,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CloudPubsubTopic', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCloudPubsubTopic();
       var od = api.CloudPubsubTopic.fromJson(o.toJson());
       checkCloudPubsubTopic(od as api.CloudPubsubTopic);
@@ -1997,7 +1997,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Csv', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCsv();
       var od = api.Csv.fromJson(o.toJson());
       checkCsv(od as api.Csv);
@@ -2005,7 +2005,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CsvRow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCsvRow();
       var od = api.CsvRow.fromJson(o.toJson());
       checkCsvRow(od as api.CsvRow);
@@ -2013,7 +2013,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceCompromised', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceCompromised();
       var od = api.DeviceCompromised.fromJson(o.toJson());
       checkDeviceCompromised(od as api.DeviceCompromised);
@@ -2021,7 +2021,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeviceCompromisedSecurityDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeviceCompromisedSecurityDetail();
       var od = api.DeviceCompromisedSecurityDetail.fromJson(o.toJson());
       checkDeviceCompromisedSecurityDetail(
@@ -2030,7 +2030,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DlpRuleViolation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDlpRuleViolation();
       var od = api.DlpRuleViolation.fromJson(o.toJson());
       checkDlpRuleViolation(od as api.DlpRuleViolation);
@@ -2038,7 +2038,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DomainId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDomainId();
       var od = api.DomainId.fromJson(o.toJson());
       checkDomainId(od as api.DomainId);
@@ -2046,7 +2046,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DomainWideTakeoutInitiated', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDomainWideTakeoutInitiated();
       var od = api.DomainWideTakeoutInitiated.fromJson(o.toJson());
       checkDomainWideTakeoutInitiated(od as api.DomainWideTakeoutInitiated);
@@ -2054,7 +2054,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -2062,7 +2062,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GmailMessageInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGmailMessageInfo();
       var od = api.GmailMessageInfo.fromJson(o.toJson());
       checkGmailMessageInfo(od as api.GmailMessageInfo);
@@ -2070,7 +2070,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleOperations', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleOperations();
       var od = api.GoogleOperations.fromJson(o.toJson());
       checkGoogleOperations(od as api.GoogleOperations);
@@ -2078,7 +2078,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAlertFeedbackResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAlertFeedbackResponse();
       var od = api.ListAlertFeedbackResponse.fromJson(o.toJson());
       checkListAlertFeedbackResponse(od as api.ListAlertFeedbackResponse);
@@ -2086,7 +2086,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAlertsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAlertsResponse();
       var od = api.ListAlertsResponse.fromJson(o.toJson());
       checkListAlertsResponse(od as api.ListAlertsResponse);
@@ -2094,7 +2094,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LoginDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLoginDetails();
       var od = api.LoginDetails.fromJson(o.toJson());
       checkLoginDetails(od as api.LoginDetails);
@@ -2102,7 +2102,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MailPhishing', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMailPhishing();
       var od = api.MailPhishing.fromJson(o.toJson());
       checkMailPhishing(od as api.MailPhishing);
@@ -2110,7 +2110,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MaliciousEntity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMaliciousEntity();
       var od = api.MaliciousEntity.fromJson(o.toJson());
       checkMaliciousEntity(od as api.MaliciousEntity);
@@ -2118,7 +2118,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MatchInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMatchInfo();
       var od = api.MatchInfo.fromJson(o.toJson());
       checkMatchInfo(od as api.MatchInfo);
@@ -2126,7 +2126,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Notification', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNotification();
       var od = api.Notification.fromJson(o.toJson());
       checkNotification(od as api.Notification);
@@ -2134,7 +2134,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PhishingSpike', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPhishingSpike();
       var od = api.PhishingSpike.fromJson(o.toJson());
       checkPhishingSpike(od as api.PhishingSpike);
@@ -2142,7 +2142,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PredefinedDetectorInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPredefinedDetectorInfo();
       var od = api.PredefinedDetectorInfo.fromJson(o.toJson());
       checkPredefinedDetectorInfo(od as api.PredefinedDetectorInfo);
@@ -2150,7 +2150,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RequestInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRequestInfo();
       var od = api.RequestInfo.fromJson(o.toJson());
       checkRequestInfo(od as api.RequestInfo);
@@ -2158,7 +2158,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResourceInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResourceInfo();
       var od = api.ResourceInfo.fromJson(o.toJson());
       checkResourceInfo(od as api.ResourceInfo);
@@ -2166,7 +2166,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RuleInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRuleInfo();
       var od = api.RuleInfo.fromJson(o.toJson());
       checkRuleInfo(od as api.RuleInfo);
@@ -2174,7 +2174,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RuleViolationInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRuleViolationInfo();
       var od = api.RuleViolationInfo.fromJson(o.toJson());
       checkRuleViolationInfo(od as api.RuleViolationInfo);
@@ -2182,7 +2182,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Settings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSettings();
       var od = api.Settings.fromJson(o.toJson());
       checkSettings(od as api.Settings);
@@ -2190,7 +2190,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StateSponsoredAttack', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStateSponsoredAttack();
       var od = api.StateSponsoredAttack.fromJson(o.toJson());
       checkStateSponsoredAttack(od as api.StateSponsoredAttack);
@@ -2198,7 +2198,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -2206,7 +2206,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuspiciousActivity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuspiciousActivity();
       var od = api.SuspiciousActivity.fromJson(o.toJson());
       checkSuspiciousActivity(od as api.SuspiciousActivity);
@@ -2214,7 +2214,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SuspiciousActivitySecurityDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSuspiciousActivitySecurityDetail();
       var od = api.SuspiciousActivitySecurityDetail.fromJson(o.toJson());
       checkSuspiciousActivitySecurityDetail(
@@ -2223,7 +2223,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UndeleteAlertRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUndeleteAlertRequest();
       var od = api.UndeleteAlertRequest.fromJson(o.toJson());
       checkUndeleteAlertRequest(od as api.UndeleteAlertRequest);
@@ -2231,7 +2231,7 @@ void main() {
   });
 
   unittest.group('obj-schema-User', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
       checkUser(od as api.User);
@@ -2239,7 +2239,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserDefinedDetectorInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserDefinedDetectorInfo();
       var od = api.UserDefinedDetectorInfo.fromJson(o.toJson());
       checkUserDefinedDetectorInfo(od as api.UserDefinedDetectorInfo);
@@ -2247,7 +2247,7 @@ void main() {
   });
 
   unittest.group('resource-AlertsResource', () {
-    unittest.test('method--batchDelete', () {
+    unittest.test('method--batchDelete', () async {
       var mock = HttpServerMock();
       var res = api.AlertCenterApi(mock).alerts;
       var arg_request = buildBatchDeleteAlertsRequest();
@@ -2298,15 +2298,11 @@ void main() {
         var resp = convert.json.encode(buildBatchDeleteAlertsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchDelete(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchDeleteAlertsResponse(
-            response as api.BatchDeleteAlertsResponse);
-      })));
+      final response = await res.batchDelete(arg_request, $fields: arg_$fields);
+      checkBatchDeleteAlertsResponse(response as api.BatchDeleteAlertsResponse);
     });
 
-    unittest.test('method--batchUndelete', () {
+    unittest.test('method--batchUndelete', () async {
       var mock = HttpServerMock();
       var res = api.AlertCenterApi(mock).alerts;
       var arg_request = buildBatchUndeleteAlertsRequest();
@@ -2357,15 +2353,13 @@ void main() {
         var resp = convert.json.encode(buildBatchUndeleteAlertsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchUndelete(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchUndeleteAlertsResponse(
-            response as api.BatchUndeleteAlertsResponse);
-      })));
+      final response =
+          await res.batchUndelete(arg_request, $fields: arg_$fields);
+      checkBatchUndeleteAlertsResponse(
+          response as api.BatchUndeleteAlertsResponse);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AlertCenterApi(mock).alerts;
       var arg_alertId = 'foo';
@@ -2423,14 +2417,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_alertId, customerId: arg_customerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_alertId,
+          customerId: arg_customerId, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AlertCenterApi(mock).alerts;
       var arg_alertId = 'foo';
@@ -2488,14 +2480,12 @@ void main() {
         var resp = convert.json.encode(buildAlert());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_alertId, customerId: arg_customerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAlert(response as api.Alert);
-      })));
+      final response = await res.get(arg_alertId,
+          customerId: arg_customerId, $fields: arg_$fields);
+      checkAlert(response as api.Alert);
     });
 
-    unittest.test('method--getMetadata', () {
+    unittest.test('method--getMetadata', () async {
       var mock = HttpServerMock();
       var res = api.AlertCenterApi(mock).alerts;
       var arg_alertId = 'foo';
@@ -2561,15 +2551,12 @@ void main() {
         var resp = convert.json.encode(buildAlertMetadata());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getMetadata(arg_alertId,
-              customerId: arg_customerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAlertMetadata(response as api.AlertMetadata);
-      })));
+      final response = await res.getMetadata(arg_alertId,
+          customerId: arg_customerId, $fields: arg_$fields);
+      checkAlertMetadata(response as api.AlertMetadata);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AlertCenterApi(mock).alerts;
       var arg_customerId = 'foo';
@@ -2640,20 +2627,17 @@ void main() {
         var resp = convert.json.encode(buildListAlertsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              customerId: arg_customerId,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAlertsResponse(response as api.ListAlertsResponse);
-      })));
+      final response = await res.list(
+          customerId: arg_customerId,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAlertsResponse(response as api.ListAlertsResponse);
     });
 
-    unittest.test('method--undelete', () {
+    unittest.test('method--undelete', () async {
       var mock = HttpServerMock();
       var res = api.AlertCenterApi(mock).alerts;
       var arg_request = buildUndeleteAlertRequest();
@@ -2719,16 +2703,14 @@ void main() {
         var resp = convert.json.encode(buildAlert());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .undelete(arg_request, arg_alertId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAlert(response as api.Alert);
-      })));
+      final response =
+          await res.undelete(arg_request, arg_alertId, $fields: arg_$fields);
+      checkAlert(response as api.Alert);
     });
   });
 
   unittest.group('resource-AlertsFeedbackResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.AlertCenterApi(mock).alerts.feedback;
       var arg_request = buildAlertFeedback();
@@ -2799,15 +2781,12 @@ void main() {
         var resp = convert.json.encode(buildAlertFeedback());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_alertId,
-              customerId: arg_customerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAlertFeedback(response as api.AlertFeedback);
-      })));
+      final response = await res.create(arg_request, arg_alertId,
+          customerId: arg_customerId, $fields: arg_$fields);
+      checkAlertFeedback(response as api.AlertFeedback);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AlertCenterApi(mock).alerts.feedback;
       var arg_alertId = 'foo';
@@ -2878,20 +2857,14 @@ void main() {
         var resp = convert.json.encode(buildListAlertFeedbackResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_alertId,
-              customerId: arg_customerId,
-              filter: arg_filter,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAlertFeedbackResponse(
-            response as api.ListAlertFeedbackResponse);
-      })));
+      final response = await res.list(arg_alertId,
+          customerId: arg_customerId, filter: arg_filter, $fields: arg_$fields);
+      checkListAlertFeedbackResponse(response as api.ListAlertFeedbackResponse);
     });
   });
 
   unittest.group('resource-V1beta1Resource', () {
-    unittest.test('method--getSettings', () {
+    unittest.test('method--getSettings', () async {
       var mock = HttpServerMock();
       var res = api.AlertCenterApi(mock).v1beta1;
       var arg_customerId = 'foo';
@@ -2942,14 +2915,12 @@ void main() {
         var resp = convert.json.encode(buildSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getSettings(customerId: arg_customerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSettings(response as api.Settings);
-      })));
+      final response = await res.getSettings(
+          customerId: arg_customerId, $fields: arg_$fields);
+      checkSettings(response as api.Settings);
     });
 
-    unittest.test('method--updateSettings', () {
+    unittest.test('method--updateSettings', () async {
       var mock = HttpServerMock();
       var res = api.AlertCenterApi(mock).v1beta1;
       var arg_request = buildSettings();
@@ -3005,12 +2976,9 @@ void main() {
         var resp = convert.json.encode(buildSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateSettings(arg_request,
-              customerId: arg_customerId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSettings(response as api.Settings);
-      })));
+      final response = await res.updateSettings(arg_request,
+          customerId: arg_customerId, $fields: arg_$fields);
+      checkSettings(response as api.Settings);
     });
   });
 }

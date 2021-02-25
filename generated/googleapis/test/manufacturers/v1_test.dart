@@ -783,7 +783,7 @@ void checkUnnamed1975(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-Attributes', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAttributes();
       var od = api.Attributes.fromJson(o.toJson());
       checkAttributes(od as api.Attributes);
@@ -791,7 +791,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Capacity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCapacity();
       var od = api.Capacity.fromJson(o.toJson());
       checkCapacity(od as api.Capacity);
@@ -799,7 +799,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Count', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCount();
       var od = api.Count.fromJson(o.toJson());
       checkCount(od as api.Count);
@@ -807,7 +807,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DestinationStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDestinationStatus();
       var od = api.DestinationStatus.fromJson(o.toJson());
       checkDestinationStatus(od as api.DestinationStatus);
@@ -815,7 +815,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -823,7 +823,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FeatureDescription', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFeatureDescription();
       var od = api.FeatureDescription.fromJson(o.toJson());
       checkFeatureDescription(od as api.FeatureDescription);
@@ -831,7 +831,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Image', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImage();
       var od = api.Image.fromJson(o.toJson());
       checkImage(od as api.Image);
@@ -839,7 +839,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Issue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIssue();
       var od = api.Issue.fromJson(o.toJson());
       checkIssue(od as api.Issue);
@@ -847,7 +847,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListProductsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListProductsResponse();
       var od = api.ListProductsResponse.fromJson(o.toJson());
       checkListProductsResponse(od as api.ListProductsResponse);
@@ -855,7 +855,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Price', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPrice();
       var od = api.Price.fromJson(o.toJson());
       checkPrice(od as api.Price);
@@ -863,7 +863,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Product', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProduct();
       var od = api.Product.fromJson(o.toJson());
       checkProduct(od as api.Product);
@@ -871,7 +871,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProductDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProductDetail();
       var od = api.ProductDetail.fromJson(o.toJson());
       checkProductDetail(od as api.ProductDetail);
@@ -879,7 +879,7 @@ void main() {
   });
 
   unittest.group('resource-AccountsProductsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ManufacturerCenterApi(mock).accounts.products;
       var arg_parent = 'foo';
@@ -928,14 +928,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_parent, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.delete(arg_parent, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ManufacturerCenterApi(mock).accounts.products;
       var arg_parent = 'foo';
@@ -989,14 +987,12 @@ void main() {
         var resp = convert.json.encode(buildProduct());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_parent, arg_name, include: arg_include, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProduct(response as api.Product);
-      })));
+      final response = await res.get(arg_parent, arg_name,
+          include: arg_include, $fields: arg_$fields);
+      checkProduct(response as api.Product);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ManufacturerCenterApi(mock).accounts.products;
       var arg_parent = 'foo';
@@ -1059,18 +1055,15 @@ void main() {
         var resp = convert.json.encode(buildListProductsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              include: arg_include,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListProductsResponse(response as api.ListProductsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          include: arg_include,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListProductsResponse(response as api.ListProductsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ManufacturerCenterApi(mock).accounts.products;
       var arg_request = buildAttributes();
@@ -1124,11 +1117,9 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_parent, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.update(arg_request, arg_parent, arg_name,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 }

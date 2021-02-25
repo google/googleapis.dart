@@ -122,7 +122,7 @@ void checkGoogleIdentityStsV1ExchangeTokenResponse(
 
 void main() {
   unittest.group('obj-schema-GoogleIdentityStsV1ExchangeTokenRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityStsV1ExchangeTokenRequest();
       var od = api.GoogleIdentityStsV1ExchangeTokenRequest.fromJson(o.toJson());
       checkGoogleIdentityStsV1ExchangeTokenRequest(
@@ -131,7 +131,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleIdentityStsV1ExchangeTokenResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityStsV1ExchangeTokenResponse();
       var od =
           api.GoogleIdentityStsV1ExchangeTokenResponse.fromJson(o.toJson());
@@ -141,7 +141,7 @@ void main() {
   });
 
   unittest.group('resource-V1Resource', () {
-    unittest.test('method--token', () {
+    unittest.test('method--token', () async {
       var mock = HttpServerMock();
       var res = api.CloudSecurityTokenApi(mock).v1;
       var arg_request = buildGoogleIdentityStsV1ExchangeTokenRequest();
@@ -194,12 +194,9 @@ void main() {
             .encode(buildGoogleIdentityStsV1ExchangeTokenResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .token(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleIdentityStsV1ExchangeTokenResponse(
-            response as api.GoogleIdentityStsV1ExchangeTokenResponse);
-      })));
+      final response = await res.token(arg_request, $fields: arg_$fields);
+      checkGoogleIdentityStsV1ExchangeTokenResponse(
+          response as api.GoogleIdentityStsV1ExchangeTokenResponse);
     });
   });
 }

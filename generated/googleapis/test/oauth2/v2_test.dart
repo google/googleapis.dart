@@ -147,7 +147,7 @@ void checkUserinfo(api.Userinfo o) {
 
 void main() {
   unittest.group('obj-schema-Tokeninfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTokeninfo();
       var od = api.Tokeninfo.fromJson(o.toJson());
       checkTokeninfo(od as api.Tokeninfo);
@@ -155,7 +155,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Userinfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserinfo();
       var od = api.Userinfo.fromJson(o.toJson());
       checkUserinfo(od as api.Userinfo);
@@ -163,7 +163,7 @@ void main() {
   });
 
   unittest.group('resource-Oauth2Api', () {
-    unittest.test('method--tokeninfo', () {
+    unittest.test('method--tokeninfo', () async {
       var mock = HttpServerMock();
       var res = api.Oauth2Api(mock);
       var arg_accessToken = 'foo';
@@ -219,19 +219,16 @@ void main() {
         var resp = convert.json.encode(buildTokeninfo());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .tokeninfo(
-              accessToken: arg_accessToken,
-              idToken: arg_idToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTokeninfo(response as api.Tokeninfo);
-      })));
+      final response = await res.tokeninfo(
+          accessToken: arg_accessToken,
+          idToken: arg_idToken,
+          $fields: arg_$fields);
+      checkTokeninfo(response as api.Tokeninfo);
     });
   });
 
   unittest.group('resource-UserinfoResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.Oauth2Api(mock).userinfo;
       var arg_$fields = 'foo';
@@ -277,14 +274,13 @@ void main() {
         var resp = convert.json.encode(buildUserinfo());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkUserinfo(response as api.Userinfo);
-      })));
+      final response = await res.get($fields: arg_$fields);
+      checkUserinfo(response as api.Userinfo);
     });
   });
 
   unittest.group('resource-UserinfoV2MeResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.Oauth2Api(mock).userinfo.v2.me;
       var arg_$fields = 'foo';
@@ -330,9 +326,8 @@ void main() {
         var resp = convert.json.encode(buildUserinfo());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.get($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkUserinfo(response as api.Userinfo);
-      })));
+      final response = await res.get($fields: arg_$fields);
+      checkUserinfo(response as api.Userinfo);
     });
   });
 }

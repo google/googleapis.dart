@@ -1393,7 +1393,7 @@ void checkEmpty(api.Empty o) {
 
 void main() {
   unittest.group('obj-schema-ApigatewayApi', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayApi();
       var od = api.ApigatewayApi.fromJson(o.toJson());
       checkApigatewayApi(od as api.ApigatewayApi);
@@ -1401,7 +1401,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayApiConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayApiConfig();
       var od = api.ApigatewayApiConfig.fromJson(o.toJson());
       checkApigatewayApiConfig(od as api.ApigatewayApiConfig);
@@ -1409,7 +1409,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayApiConfigFile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayApiConfigFile();
       var od = api.ApigatewayApiConfigFile.fromJson(o.toJson());
       checkApigatewayApiConfigFile(od as api.ApigatewayApiConfigFile);
@@ -1417,7 +1417,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayApiConfigGrpcServiceDefinition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayApiConfigGrpcServiceDefinition();
       var od =
           api.ApigatewayApiConfigGrpcServiceDefinition.fromJson(o.toJson());
@@ -1427,7 +1427,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayApiConfigOpenApiDocument', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayApiConfigOpenApiDocument();
       var od = api.ApigatewayApiConfigOpenApiDocument.fromJson(o.toJson());
       checkApigatewayApiConfigOpenApiDocument(
@@ -1436,7 +1436,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayAuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayAuditConfig();
       var od = api.ApigatewayAuditConfig.fromJson(o.toJson());
       checkApigatewayAuditConfig(od as api.ApigatewayAuditConfig);
@@ -1444,7 +1444,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayAuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayAuditLogConfig();
       var od = api.ApigatewayAuditLogConfig.fromJson(o.toJson());
       checkApigatewayAuditLogConfig(od as api.ApigatewayAuditLogConfig);
@@ -1452,7 +1452,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayBinding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayBinding();
       var od = api.ApigatewayBinding.fromJson(o.toJson());
       checkApigatewayBinding(od as api.ApigatewayBinding);
@@ -1460,7 +1460,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayCancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayCancelOperationRequest();
       var od = api.ApigatewayCancelOperationRequest.fromJson(o.toJson());
       checkApigatewayCancelOperationRequest(
@@ -1469,7 +1469,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayExpr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayExpr();
       var od = api.ApigatewayExpr.fromJson(o.toJson());
       checkApigatewayExpr(od as api.ApigatewayExpr);
@@ -1477,7 +1477,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayGateway', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayGateway();
       var od = api.ApigatewayGateway.fromJson(o.toJson());
       checkApigatewayGateway(od as api.ApigatewayGateway);
@@ -1485,7 +1485,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayListApiConfigsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayListApiConfigsResponse();
       var od = api.ApigatewayListApiConfigsResponse.fromJson(o.toJson());
       checkApigatewayListApiConfigsResponse(
@@ -1494,7 +1494,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayListApisResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayListApisResponse();
       var od = api.ApigatewayListApisResponse.fromJson(o.toJson());
       checkApigatewayListApisResponse(od as api.ApigatewayListApisResponse);
@@ -1502,7 +1502,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayListGatewaysResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayListGatewaysResponse();
       var od = api.ApigatewayListGatewaysResponse.fromJson(o.toJson());
       checkApigatewayListGatewaysResponse(
@@ -1511,7 +1511,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayListLocationsResponse();
       var od = api.ApigatewayListLocationsResponse.fromJson(o.toJson());
       checkApigatewayListLocationsResponse(
@@ -1520,7 +1520,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayListOperationsResponse();
       var od = api.ApigatewayListOperationsResponse.fromJson(o.toJson());
       checkApigatewayListOperationsResponse(
@@ -1529,7 +1529,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayLocation();
       var od = api.ApigatewayLocation.fromJson(o.toJson());
       checkApigatewayLocation(od as api.ApigatewayLocation);
@@ -1537,7 +1537,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayOperation();
       var od = api.ApigatewayOperation.fromJson(o.toJson());
       checkApigatewayOperation(od as api.ApigatewayOperation);
@@ -1545,7 +1545,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayOperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayOperationMetadata();
       var od = api.ApigatewayOperationMetadata.fromJson(o.toJson());
       checkApigatewayOperationMetadata(od as api.ApigatewayOperationMetadata);
@@ -1553,7 +1553,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayOperationMetadataDiagnostic', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayOperationMetadataDiagnostic();
       var od = api.ApigatewayOperationMetadataDiagnostic.fromJson(o.toJson());
       checkApigatewayOperationMetadataDiagnostic(
@@ -1562,7 +1562,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayPolicy();
       var od = api.ApigatewayPolicy.fromJson(o.toJson());
       checkApigatewayPolicy(od as api.ApigatewayPolicy);
@@ -1570,7 +1570,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewaySetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewaySetIamPolicyRequest();
       var od = api.ApigatewaySetIamPolicyRequest.fromJson(o.toJson());
       checkApigatewaySetIamPolicyRequest(
@@ -1579,7 +1579,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayStatus();
       var od = api.ApigatewayStatus.fromJson(o.toJson());
       checkApigatewayStatus(od as api.ApigatewayStatus);
@@ -1587,7 +1587,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayTestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayTestIamPermissionsRequest();
       var od = api.ApigatewayTestIamPermissionsRequest.fromJson(o.toJson());
       checkApigatewayTestIamPermissionsRequest(
@@ -1596,7 +1596,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApigatewayTestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApigatewayTestIamPermissionsResponse();
       var od = api.ApigatewayTestIamPermissionsResponse.fromJson(o.toJson());
       checkApigatewayTestIamPermissionsResponse(
@@ -1605,7 +1605,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1613,7 +1613,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations;
       var arg_name = 'foo';
@@ -1661,14 +1661,11 @@ void main() {
         var resp = convert.json.encode(buildApigatewayLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayLocation(response as api.ApigatewayLocation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkApigatewayLocation(response as api.ApigatewayLocation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations;
       var arg_name = 'foo';
@@ -1731,21 +1728,18 @@ void main() {
         var resp = convert.json.encode(buildApigatewayListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayListLocationsResponse(
-            response as api.ApigatewayListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkApigatewayListLocationsResponse(
+          response as api.ApigatewayListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsApisResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.apis;
       var arg_request = buildApigatewayApi();
@@ -1803,15 +1797,12 @@ void main() {
         var resp = convert.json.encode(buildApigatewayOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              apiId: arg_apiId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayOperation(response as api.ApigatewayOperation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          apiId: arg_apiId, $fields: arg_$fields);
+      checkApigatewayOperation(response as api.ApigatewayOperation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.apis;
       var arg_name = 'foo';
@@ -1859,14 +1850,11 @@ void main() {
         var resp = convert.json.encode(buildApigatewayOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayOperation(response as api.ApigatewayOperation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkApigatewayOperation(response as api.ApigatewayOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.apis;
       var arg_name = 'foo';
@@ -1914,14 +1902,11 @@ void main() {
         var resp = convert.json.encode(buildApigatewayApi());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayApi(response as api.ApigatewayApi);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkApigatewayApi(response as api.ApigatewayApi);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.apis;
       var arg_resource = 'foo';
@@ -1974,17 +1959,13 @@ void main() {
         var resp = convert.json.encode(buildApigatewayPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayPolicy(response as api.ApigatewayPolicy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkApigatewayPolicy(response as api.ApigatewayPolicy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.apis;
       var arg_parent = 'foo';
@@ -2052,20 +2033,17 @@ void main() {
         var resp = convert.json.encode(buildApigatewayListApisResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayListApisResponse(
-            response as api.ApigatewayListApisResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkApigatewayListApisResponse(
+          response as api.ApigatewayListApisResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.apis;
       var arg_request = buildApigatewayApi();
@@ -2123,15 +2101,12 @@ void main() {
         var resp = convert.json.encode(buildApigatewayOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayOperation(response as api.ApigatewayOperation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkApigatewayOperation(response as api.ApigatewayOperation);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.apis;
       var arg_request = buildApigatewaySetIamPolicyRequest();
@@ -2185,14 +2160,12 @@ void main() {
         var resp = convert.json.encode(buildApigatewayPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayPolicy(response as api.ApigatewayPolicy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkApigatewayPolicy(response as api.ApigatewayPolicy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.apis;
       var arg_request = buildApigatewayTestIamPermissionsRequest();
@@ -2247,17 +2220,15 @@ void main() {
             convert.json.encode(buildApigatewayTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayTestIamPermissionsResponse(
-            response as api.ApigatewayTestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkApigatewayTestIamPermissionsResponse(
+          response as api.ApigatewayTestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsApisConfigsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.apis.configs;
       var arg_request = buildApigatewayApiConfig();
@@ -2315,15 +2286,12 @@ void main() {
         var resp = convert.json.encode(buildApigatewayOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              apiConfigId: arg_apiConfigId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayOperation(response as api.ApigatewayOperation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          apiConfigId: arg_apiConfigId, $fields: arg_$fields);
+      checkApigatewayOperation(response as api.ApigatewayOperation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.apis.configs;
       var arg_name = 'foo';
@@ -2371,14 +2339,11 @@ void main() {
         var resp = convert.json.encode(buildApigatewayOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayOperation(response as api.ApigatewayOperation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkApigatewayOperation(response as api.ApigatewayOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.apis.configs;
       var arg_name = 'foo';
@@ -2431,14 +2396,12 @@ void main() {
         var resp = convert.json.encode(buildApigatewayApiConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, view: arg_view, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayApiConfig(response as api.ApigatewayApiConfig);
-      })));
+      final response =
+          await res.get(arg_name, view: arg_view, $fields: arg_$fields);
+      checkApigatewayApiConfig(response as api.ApigatewayApiConfig);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.apis.configs;
       var arg_resource = 'foo';
@@ -2491,17 +2454,13 @@ void main() {
         var resp = convert.json.encode(buildApigatewayPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayPolicy(response as api.ApigatewayPolicy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkApigatewayPolicy(response as api.ApigatewayPolicy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.apis.configs;
       var arg_parent = 'foo';
@@ -2569,20 +2528,17 @@ void main() {
         var resp = convert.json.encode(buildApigatewayListApiConfigsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayListApiConfigsResponse(
-            response as api.ApigatewayListApiConfigsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkApigatewayListApiConfigsResponse(
+          response as api.ApigatewayListApiConfigsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.apis.configs;
       var arg_request = buildApigatewayApiConfig();
@@ -2640,15 +2596,12 @@ void main() {
         var resp = convert.json.encode(buildApigatewayOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayOperation(response as api.ApigatewayOperation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkApigatewayOperation(response as api.ApigatewayOperation);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.apis.configs;
       var arg_request = buildApigatewaySetIamPolicyRequest();
@@ -2702,14 +2655,12 @@ void main() {
         var resp = convert.json.encode(buildApigatewayPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayPolicy(response as api.ApigatewayPolicy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkApigatewayPolicy(response as api.ApigatewayPolicy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.apis.configs;
       var arg_request = buildApigatewayTestIamPermissionsRequest();
@@ -2764,17 +2715,15 @@ void main() {
             convert.json.encode(buildApigatewayTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayTestIamPermissionsResponse(
-            response as api.ApigatewayTestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkApigatewayTestIamPermissionsResponse(
+          response as api.ApigatewayTestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsGatewaysResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.gateways;
       var arg_request = buildApigatewayGateway();
@@ -2832,15 +2781,12 @@ void main() {
         var resp = convert.json.encode(buildApigatewayOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              gatewayId: arg_gatewayId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayOperation(response as api.ApigatewayOperation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          gatewayId: arg_gatewayId, $fields: arg_$fields);
+      checkApigatewayOperation(response as api.ApigatewayOperation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.gateways;
       var arg_name = 'foo';
@@ -2888,14 +2834,11 @@ void main() {
         var resp = convert.json.encode(buildApigatewayOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayOperation(response as api.ApigatewayOperation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkApigatewayOperation(response as api.ApigatewayOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.gateways;
       var arg_name = 'foo';
@@ -2943,14 +2886,11 @@ void main() {
         var resp = convert.json.encode(buildApigatewayGateway());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayGateway(response as api.ApigatewayGateway);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkApigatewayGateway(response as api.ApigatewayGateway);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.gateways;
       var arg_resource = 'foo';
@@ -3003,17 +2943,13 @@ void main() {
         var resp = convert.json.encode(buildApigatewayPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayPolicy(response as api.ApigatewayPolicy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkApigatewayPolicy(response as api.ApigatewayPolicy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.gateways;
       var arg_parent = 'foo';
@@ -3081,20 +3017,17 @@ void main() {
         var resp = convert.json.encode(buildApigatewayListGatewaysResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayListGatewaysResponse(
-            response as api.ApigatewayListGatewaysResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkApigatewayListGatewaysResponse(
+          response as api.ApigatewayListGatewaysResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.gateways;
       var arg_request = buildApigatewayGateway();
@@ -3152,15 +3085,12 @@ void main() {
         var resp = convert.json.encode(buildApigatewayOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayOperation(response as api.ApigatewayOperation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkApigatewayOperation(response as api.ApigatewayOperation);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.gateways;
       var arg_request = buildApigatewaySetIamPolicyRequest();
@@ -3214,14 +3144,12 @@ void main() {
         var resp = convert.json.encode(buildApigatewayPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayPolicy(response as api.ApigatewayPolicy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkApigatewayPolicy(response as api.ApigatewayPolicy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.gateways;
       var arg_request = buildApigatewayTestIamPermissionsRequest();
@@ -3276,17 +3204,15 @@ void main() {
             convert.json.encode(buildApigatewayTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayTestIamPermissionsResponse(
-            response as api.ApigatewayTestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkApigatewayTestIamPermissionsResponse(
+          response as api.ApigatewayTestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.operations;
       var arg_request = buildApigatewayCancelOperationRequest();
@@ -3340,14 +3266,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -3395,14 +3319,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -3450,14 +3371,11 @@ void main() {
         var resp = convert.json.encode(buildApigatewayOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayOperation(response as api.ApigatewayOperation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkApigatewayOperation(response as api.ApigatewayOperation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ApigatewayApi_1(mock).projects.locations.operations;
       var arg_name = 'foo';
@@ -3520,16 +3438,13 @@ void main() {
         var resp = convert.json.encode(buildApigatewayListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApigatewayListOperationsResponse(
-            response as api.ApigatewayListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkApigatewayListOperationsResponse(
+          response as api.ApigatewayListOperationsResponse);
     });
   });
 }

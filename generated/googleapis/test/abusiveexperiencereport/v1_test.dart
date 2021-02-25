@@ -110,7 +110,7 @@ void checkViolatingSitesResponse(api.ViolatingSitesResponse o) {
 
 void main() {
   unittest.group('obj-schema-SiteSummaryResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSiteSummaryResponse();
       var od = api.SiteSummaryResponse.fromJson(o.toJson());
       checkSiteSummaryResponse(od as api.SiteSummaryResponse);
@@ -118,7 +118,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ViolatingSitesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildViolatingSitesResponse();
       var od = api.ViolatingSitesResponse.fromJson(o.toJson());
       checkViolatingSitesResponse(od as api.ViolatingSitesResponse);
@@ -126,7 +126,7 @@ void main() {
   });
 
   unittest.group('resource-SitesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AbusiveExperienceReportApi(mock).sites;
       var arg_name = 'foo';
@@ -174,16 +174,13 @@ void main() {
         var resp = convert.json.encode(buildSiteSummaryResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSiteSummaryResponse(response as api.SiteSummaryResponse);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSiteSummaryResponse(response as api.SiteSummaryResponse);
     });
   });
 
   unittest.group('resource-ViolatingSitesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AbusiveExperienceReportApi(mock).violatingSites;
       var arg_$fields = 'foo';
@@ -229,9 +226,8 @@ void main() {
         var resp = convert.json.encode(buildViolatingSitesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkViolatingSitesResponse(response as api.ViolatingSitesResponse);
-      })));
+      final response = await res.list($fields: arg_$fields);
+      checkViolatingSitesResponse(response as api.ViolatingSitesResponse);
     });
   });
 }

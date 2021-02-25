@@ -835,7 +835,7 @@ void checkStringList(api.StringList o) {
 
 void main() {
   unittest.group('obj-schema-Date', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
       checkDate(od as api.Date);
@@ -843,7 +843,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DateRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDateRange();
       var od = api.DateRange.fromJson(o.toJson());
       checkDateRange(od as api.DateRange);
@@ -851,7 +851,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GenerateMediationReportRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGenerateMediationReportRequest();
       var od = api.GenerateMediationReportRequest.fromJson(o.toJson());
       checkGenerateMediationReportRequest(
@@ -860,7 +860,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GenerateMediationReportResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGenerateMediationReportResponse();
       var od = api.GenerateMediationReportResponse.fromJson(o.toJson());
       checkGenerateMediationReportResponse(
@@ -869,7 +869,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GenerateNetworkReportRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGenerateNetworkReportRequest();
       var od = api.GenerateNetworkReportRequest.fromJson(o.toJson());
       checkGenerateNetworkReportRequest(od as api.GenerateNetworkReportRequest);
@@ -877,7 +877,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GenerateNetworkReportResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGenerateNetworkReportResponse();
       var od = api.GenerateNetworkReportResponse.fromJson(o.toJson());
       checkGenerateNetworkReportResponse(
@@ -886,7 +886,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListPublisherAccountsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListPublisherAccountsResponse();
       var od = api.ListPublisherAccountsResponse.fromJson(o.toJson());
       checkListPublisherAccountsResponse(
@@ -895,7 +895,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LocalizationSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocalizationSettings();
       var od = api.LocalizationSettings.fromJson(o.toJson());
       checkLocalizationSettings(od as api.LocalizationSettings);
@@ -903,7 +903,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MediationReportSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMediationReportSpec();
       var od = api.MediationReportSpec.fromJson(o.toJson());
       checkMediationReportSpec(od as api.MediationReportSpec);
@@ -911,7 +911,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MediationReportSpecDimensionFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMediationReportSpecDimensionFilter();
       var od = api.MediationReportSpecDimensionFilter.fromJson(o.toJson());
       checkMediationReportSpecDimensionFilter(
@@ -920,7 +920,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MediationReportSpecSortCondition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMediationReportSpecSortCondition();
       var od = api.MediationReportSpecSortCondition.fromJson(o.toJson());
       checkMediationReportSpecSortCondition(
@@ -929,7 +929,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NetworkReportSpec', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNetworkReportSpec();
       var od = api.NetworkReportSpec.fromJson(o.toJson());
       checkNetworkReportSpec(od as api.NetworkReportSpec);
@@ -937,7 +937,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NetworkReportSpecDimensionFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNetworkReportSpecDimensionFilter();
       var od = api.NetworkReportSpecDimensionFilter.fromJson(o.toJson());
       checkNetworkReportSpecDimensionFilter(
@@ -946,7 +946,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NetworkReportSpecSortCondition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNetworkReportSpecSortCondition();
       var od = api.NetworkReportSpecSortCondition.fromJson(o.toJson());
       checkNetworkReportSpecSortCondition(
@@ -955,7 +955,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PublisherAccount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPublisherAccount();
       var od = api.PublisherAccount.fromJson(o.toJson());
       checkPublisherAccount(od as api.PublisherAccount);
@@ -963,7 +963,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportFooter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportFooter();
       var od = api.ReportFooter.fromJson(o.toJson());
       checkReportFooter(od as api.ReportFooter);
@@ -971,7 +971,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportHeader', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportHeader();
       var od = api.ReportHeader.fromJson(o.toJson());
       checkReportHeader(od as api.ReportHeader);
@@ -979,7 +979,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportRow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportRow();
       var od = api.ReportRow.fromJson(o.toJson());
       checkReportRow(od as api.ReportRow);
@@ -987,7 +987,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportRowDimensionValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportRowDimensionValue();
       var od = api.ReportRowDimensionValue.fromJson(o.toJson());
       checkReportRowDimensionValue(od as api.ReportRowDimensionValue);
@@ -995,7 +995,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportRowMetricValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportRowMetricValue();
       var od = api.ReportRowMetricValue.fromJson(o.toJson());
       checkReportRowMetricValue(od as api.ReportRowMetricValue);
@@ -1003,7 +1003,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReportWarning', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReportWarning();
       var od = api.ReportWarning.fromJson(o.toJson());
       checkReportWarning(od as api.ReportWarning);
@@ -1011,7 +1011,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StringList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStringList();
       var od = api.StringList.fromJson(o.toJson());
       checkStringList(od as api.StringList);
@@ -1019,7 +1019,7 @@ void main() {
   });
 
   unittest.group('resource-AccountsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AdMobApi(mock).accounts;
       var arg_name = 'foo';
@@ -1067,14 +1067,11 @@ void main() {
         var resp = convert.json.encode(buildPublisherAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPublisherAccount(response as api.PublisherAccount);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkPublisherAccount(response as api.PublisherAccount);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AdMobApi(mock).accounts;
       var arg_pageSize = 42;
@@ -1130,20 +1127,17 @@ void main() {
         var resp = convert.json.encode(buildListPublisherAccountsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListPublisherAccountsResponse(
-            response as api.ListPublisherAccountsResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListPublisherAccountsResponse(
+          response as api.ListPublisherAccountsResponse);
     });
   });
 
   unittest.group('resource-AccountsMediationReportResource', () {
-    unittest.test('method--generate', () {
+    unittest.test('method--generate', () async {
       var mock = HttpServerMock();
       var res = api.AdMobApi(mock).accounts.mediationReport;
       var arg_request = buildGenerateMediationReportRequest();
@@ -1197,17 +1191,15 @@ void main() {
         var resp = convert.json.encode(buildGenerateMediationReportResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .generate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGenerateMediationReportResponse(
-            response as api.GenerateMediationReportResponse);
-      })));
+      final response =
+          await res.generate(arg_request, arg_parent, $fields: arg_$fields);
+      checkGenerateMediationReportResponse(
+          response as api.GenerateMediationReportResponse);
     });
   });
 
   unittest.group('resource-AccountsNetworkReportResource', () {
-    unittest.test('method--generate', () {
+    unittest.test('method--generate', () async {
       var mock = HttpServerMock();
       var res = api.AdMobApi(mock).accounts.networkReport;
       var arg_request = buildGenerateNetworkReportRequest();
@@ -1261,12 +1253,10 @@ void main() {
         var resp = convert.json.encode(buildGenerateNetworkReportResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .generate(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGenerateNetworkReportResponse(
-            response as api.GenerateNetworkReportResponse);
-      })));
+      final response =
+          await res.generate(arg_request, arg_parent, $fields: arg_$fields);
+      checkGenerateNetworkReportResponse(
+          response as api.GenerateNetworkReportResponse);
     });
   });
 }

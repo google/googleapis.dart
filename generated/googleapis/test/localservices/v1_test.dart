@@ -435,7 +435,7 @@ void checkGoogleTypeTimeZone(api.GoogleTypeTimeZone o) {
 void main() {
   unittest.group('obj-schema-GoogleAdsHomeservicesLocalservicesV1AccountReport',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAdsHomeservicesLocalservicesV1AccountReport();
       var od = api.GoogleAdsHomeservicesLocalservicesV1AccountReport.fromJson(
           o.toJson());
@@ -446,7 +446,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAdsHomeservicesLocalservicesV1AggregatorInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAdsHomeservicesLocalservicesV1AggregatorInfo();
       var od = api.GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(
           o.toJson());
@@ -457,7 +457,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport();
       var od =
           api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport.fromJson(
@@ -469,7 +469,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleAdsHomeservicesLocalservicesV1MessageLead',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAdsHomeservicesLocalservicesV1MessageLead();
       var od = api.GoogleAdsHomeservicesLocalservicesV1MessageLead.fromJson(
           o.toJson());
@@ -480,7 +480,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleAdsHomeservicesLocalservicesV1PhoneLead',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAdsHomeservicesLocalservicesV1PhoneLead();
       var od = api.GoogleAdsHomeservicesLocalservicesV1PhoneLead.fromJson(
           o.toJson());
@@ -492,7 +492,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse();
       var od =
@@ -507,7 +507,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse();
       var od =
@@ -520,7 +520,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypeTimeZone', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeTimeZone();
       var od = api.GoogleTypeTimeZone.fromJson(o.toJson());
       checkGoogleTypeTimeZone(od as api.GoogleTypeTimeZone);
@@ -528,7 +528,7 @@ void main() {
   });
 
   unittest.group('resource-AccountReportsResource', () {
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.LocalservicesApi(mock).accountReports;
       var arg_endDate_day = 42;
@@ -620,28 +620,25 @@ void main() {
             buildGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(
-              endDate_day: arg_endDate_day,
-              endDate_month: arg_endDate_month,
-              endDate_year: arg_endDate_year,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              query: arg_query,
-              startDate_day: arg_startDate_day,
-              startDate_month: arg_startDate_month,
-              startDate_year: arg_startDate_year,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse(
-            response as api
-                .GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse);
-      })));
+      final response = await res.search(
+          endDate_day: arg_endDate_day,
+          endDate_month: arg_endDate_month,
+          endDate_year: arg_endDate_year,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          query: arg_query,
+          startDate_day: arg_startDate_day,
+          startDate_month: arg_startDate_month,
+          startDate_year: arg_startDate_year,
+          $fields: arg_$fields);
+      checkGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse(
+          response as api
+              .GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse);
     });
   });
 
   unittest.group('resource-DetailedLeadReportsResource', () {
-    unittest.test('method--search', () {
+    unittest.test('method--search', () async {
       var mock = HttpServerMock();
       var res = api.LocalservicesApi(mock).detailedLeadReports;
       var arg_endDate_day = 42;
@@ -733,23 +730,20 @@ void main() {
             buildGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .search(
-              endDate_day: arg_endDate_day,
-              endDate_month: arg_endDate_month,
-              endDate_year: arg_endDate_year,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              query: arg_query,
-              startDate_day: arg_startDate_day,
-              startDate_month: arg_startDate_month,
-              startDate_year: arg_startDate_year,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse(
-            response as api
-                .GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse);
-      })));
+      final response = await res.search(
+          endDate_day: arg_endDate_day,
+          endDate_month: arg_endDate_month,
+          endDate_year: arg_endDate_year,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          query: arg_query,
+          startDate_day: arg_startDate_day,
+          startDate_month: arg_startDate_month,
+          startDate_year: arg_startDate_year,
+          $fields: arg_$fields);
+      checkGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse(
+          response as api
+              .GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse);
     });
   });
 }

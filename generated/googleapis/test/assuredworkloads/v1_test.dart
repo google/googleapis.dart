@@ -856,7 +856,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata();
       var od = api.GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata
@@ -868,7 +868,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudAssuredworkloadsV1ListWorkloadsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssuredworkloadsV1ListWorkloadsResponse();
       var od = api.GoogleCloudAssuredworkloadsV1ListWorkloadsResponse.fromJson(
           o.toJson());
@@ -878,7 +878,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudAssuredworkloadsV1Workload', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssuredworkloadsV1Workload();
       var od = api.GoogleCloudAssuredworkloadsV1Workload.fromJson(o.toJson());
       checkGoogleCloudAssuredworkloadsV1Workload(
@@ -888,7 +888,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudAssuredworkloadsV1WorkloadKMSSettings',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssuredworkloadsV1WorkloadKMSSettings();
       var od = api.GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(
           o.toJson());
@@ -899,7 +899,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudAssuredworkloadsV1WorkloadResourceInfo',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssuredworkloadsV1WorkloadResourceInfo();
       var od = api.GoogleCloudAssuredworkloadsV1WorkloadResourceInfo.fromJson(
           o.toJson());
@@ -911,7 +911,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata();
       var od =
@@ -924,7 +924,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudAssuredworkloadsV1beta1Workload', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssuredworkloadsV1beta1Workload();
       var od =
           api.GoogleCloudAssuredworkloadsV1beta1Workload.fromJson(o.toJson());
@@ -935,7 +935,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings();
       var od =
           api.GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings.fromJson(
@@ -948,7 +948,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings();
       var od = api.GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings
@@ -961,7 +961,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings();
       var od =
@@ -975,7 +975,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings();
       var od =
           api.GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings.fromJson(
@@ -987,7 +987,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings();
       var od =
           api.GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromJson(
@@ -999,7 +999,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo();
       var od =
           api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo.fromJson(
@@ -1010,7 +1010,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
       var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
       checkGoogleLongrunningListOperationsResponse(
@@ -1019,7 +1019,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
@@ -1027,7 +1027,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
@@ -1035,7 +1035,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleRpcStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
       var od = api.GoogleRpcStatus.fromJson(o.toJson());
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
@@ -1043,7 +1043,7 @@ void main() {
   });
 
   unittest.group('resource-OrganizationsLocationsOperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.AssuredworkloadsApi(mock).organizations.locations.operations;
@@ -1092,15 +1092,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.AssuredworkloadsApi(mock).organizations.locations.operations;
@@ -1165,21 +1162,18 @@ void main() {
             convert.json.encode(buildGoogleLongrunningListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningListOperationsResponse(
-            response as api.GoogleLongrunningListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleLongrunningListOperationsResponse(
+          response as api.GoogleLongrunningListOperationsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsLocationsWorkloadsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.AssuredworkloadsApi(mock).organizations.locations.workloads;
       var arg_request = buildGoogleCloudAssuredworkloadsV1Workload();
@@ -1238,16 +1232,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              externalId: arg_externalId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          externalId: arg_externalId, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AssuredworkloadsApi(mock).organizations.locations.workloads;
       var arg_name = 'foo';
@@ -1300,14 +1291,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, etag: arg_etag, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response =
+          await res.delete(arg_name, etag: arg_etag, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AssuredworkloadsApi(mock).organizations.locations.workloads;
       var arg_name = 'foo';
@@ -1356,15 +1345,12 @@ void main() {
             convert.json.encode(buildGoogleCloudAssuredworkloadsV1Workload());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudAssuredworkloadsV1Workload(
-            response as api.GoogleCloudAssuredworkloadsV1Workload);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudAssuredworkloadsV1Workload(
+          response as api.GoogleCloudAssuredworkloadsV1Workload);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AssuredworkloadsApi(mock).organizations.locations.workloads;
       var arg_parent = 'foo';
@@ -1428,19 +1414,16 @@ void main() {
             .encode(buildGoogleCloudAssuredworkloadsV1ListWorkloadsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudAssuredworkloadsV1ListWorkloadsResponse(
-            response as api.GoogleCloudAssuredworkloadsV1ListWorkloadsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudAssuredworkloadsV1ListWorkloadsResponse(
+          response as api.GoogleCloudAssuredworkloadsV1ListWorkloadsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AssuredworkloadsApi(mock).organizations.locations.workloads;
       var arg_request = buildGoogleCloudAssuredworkloadsV1Workload();
@@ -1500,13 +1483,10 @@ void main() {
             convert.json.encode(buildGoogleCloudAssuredworkloadsV1Workload());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudAssuredworkloadsV1Workload(
-            response as api.GoogleCloudAssuredworkloadsV1Workload);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleCloudAssuredworkloadsV1Workload(
+          response as api.GoogleCloudAssuredworkloadsV1Workload);
     });
   });
 }

@@ -1798,7 +1798,7 @@ void checkValueMatcher(api.ValueMatcher o) {
 
 void main() {
   unittest.group('obj-schema-Address', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddress();
       var od = api.Address.fromJson(o.toJson());
       checkAddress(od as api.Address);
@@ -1806,7 +1806,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuildVersion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuildVersion();
       var od = api.BuildVersion.fromJson(o.toJson());
       checkBuildVersion(od as api.BuildVersion);
@@ -1814,7 +1814,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClientConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClientConfig();
       var od = api.ClientConfig.fromJson(o.toJson());
       checkClientConfig(od as api.ClientConfig);
@@ -1822,7 +1822,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClientStatusRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClientStatusRequest();
       var od = api.ClientStatusRequest.fromJson(o.toJson());
       checkClientStatusRequest(od as api.ClientStatusRequest);
@@ -1830,7 +1830,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClientStatusResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClientStatusResponse();
       var od = api.ClientStatusResponse.fromJson(o.toJson());
       checkClientStatusResponse(od as api.ClientStatusResponse);
@@ -1838,7 +1838,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ClustersConfigDump', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClustersConfigDump();
       var od = api.ClustersConfigDump.fromJson(o.toJson());
       checkClustersConfigDump(od as api.ClustersConfigDump);
@@ -1846,7 +1846,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DoubleMatcher', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDoubleMatcher();
       var od = api.DoubleMatcher.fromJson(o.toJson());
       checkDoubleMatcher(od as api.DoubleMatcher);
@@ -1854,7 +1854,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DoubleRange', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDoubleRange();
       var od = api.DoubleRange.fromJson(o.toJson());
       checkDoubleRange(od as api.DoubleRange);
@@ -1862,7 +1862,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DynamicCluster', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDynamicCluster();
       var od = api.DynamicCluster.fromJson(o.toJson());
       checkDynamicCluster(od as api.DynamicCluster);
@@ -1870,7 +1870,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DynamicListener', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDynamicListener();
       var od = api.DynamicListener.fromJson(o.toJson());
       checkDynamicListener(od as api.DynamicListener);
@@ -1878,7 +1878,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DynamicListenerState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDynamicListenerState();
       var od = api.DynamicListenerState.fromJson(o.toJson());
       checkDynamicListenerState(od as api.DynamicListenerState);
@@ -1886,7 +1886,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DynamicRouteConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDynamicRouteConfig();
       var od = api.DynamicRouteConfig.fromJson(o.toJson());
       checkDynamicRouteConfig(od as api.DynamicRouteConfig);
@@ -1894,7 +1894,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DynamicScopedRouteConfigs', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDynamicScopedRouteConfigs();
       var od = api.DynamicScopedRouteConfigs.fromJson(o.toJson());
       checkDynamicScopedRouteConfigs(od as api.DynamicScopedRouteConfigs);
@@ -1902,7 +1902,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Extension', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExtension();
       var od = api.Extension.fromJson(o.toJson());
       checkExtension(od as api.Extension);
@@ -1910,7 +1910,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleRE2', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleRE2();
       var od = api.GoogleRE2.fromJson(o.toJson());
       checkGoogleRE2(od as api.GoogleRE2);
@@ -1918,7 +1918,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InlineScopedRouteConfigs', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInlineScopedRouteConfigs();
       var od = api.InlineScopedRouteConfigs.fromJson(o.toJson());
       checkInlineScopedRouteConfigs(od as api.InlineScopedRouteConfigs);
@@ -1926,7 +1926,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListMatcher', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListMatcher();
       var od = api.ListMatcher.fromJson(o.toJson());
       checkListMatcher(od as api.ListMatcher);
@@ -1934,7 +1934,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListenersConfigDump', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListenersConfigDump();
       var od = api.ListenersConfigDump.fromJson(o.toJson());
       checkListenersConfigDump(od as api.ListenersConfigDump);
@@ -1942,7 +1942,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Locality', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocality();
       var od = api.Locality.fromJson(o.toJson());
       checkLocality(od as api.Locality);
@@ -1950,7 +1950,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Node', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNode();
       var od = api.Node.fromJson(o.toJson());
       checkNode(od as api.Node);
@@ -1958,7 +1958,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NodeMatcher', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNodeMatcher();
       var od = api.NodeMatcher.fromJson(o.toJson());
       checkNodeMatcher(od as api.NodeMatcher);
@@ -1966,7 +1966,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NullMatch', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNullMatch();
       var od = api.NullMatch.fromJson(o.toJson());
       checkNullMatch(od as api.NullMatch);
@@ -1974,7 +1974,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PathSegment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPathSegment();
       var od = api.PathSegment.fromJson(o.toJson());
       checkPathSegment(od as api.PathSegment);
@@ -1982,7 +1982,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PerXdsConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPerXdsConfig();
       var od = api.PerXdsConfig.fromJson(o.toJson());
       checkPerXdsConfig(od as api.PerXdsConfig);
@@ -1990,7 +1990,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Pipe', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPipe();
       var od = api.Pipe.fromJson(o.toJson());
       checkPipe(od as api.Pipe);
@@ -1998,7 +1998,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RegexMatcher', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRegexMatcher();
       var od = api.RegexMatcher.fromJson(o.toJson());
       checkRegexMatcher(od as api.RegexMatcher);
@@ -2006,7 +2006,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RoutesConfigDump', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRoutesConfigDump();
       var od = api.RoutesConfigDump.fromJson(o.toJson());
       checkRoutesConfigDump(od as api.RoutesConfigDump);
@@ -2014,7 +2014,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScopedRoutesConfigDump', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScopedRoutesConfigDump();
       var od = api.ScopedRoutesConfigDump.fromJson(o.toJson());
       checkScopedRoutesConfigDump(od as api.ScopedRoutesConfigDump);
@@ -2022,7 +2022,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SemanticVersion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSemanticVersion();
       var od = api.SemanticVersion.fromJson(o.toJson());
       checkSemanticVersion(od as api.SemanticVersion);
@@ -2030,7 +2030,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SocketAddress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSocketAddress();
       var od = api.SocketAddress.fromJson(o.toJson());
       checkSocketAddress(od as api.SocketAddress);
@@ -2038,7 +2038,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StaticCluster', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStaticCluster();
       var od = api.StaticCluster.fromJson(o.toJson());
       checkStaticCluster(od as api.StaticCluster);
@@ -2046,7 +2046,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StaticListener', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStaticListener();
       var od = api.StaticListener.fromJson(o.toJson());
       checkStaticListener(od as api.StaticListener);
@@ -2054,7 +2054,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StaticRouteConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStaticRouteConfig();
       var od = api.StaticRouteConfig.fromJson(o.toJson());
       checkStaticRouteConfig(od as api.StaticRouteConfig);
@@ -2062,7 +2062,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StringMatcher', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStringMatcher();
       var od = api.StringMatcher.fromJson(o.toJson());
       checkStringMatcher(od as api.StringMatcher);
@@ -2070,7 +2070,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StructMatcher', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStructMatcher();
       var od = api.StructMatcher.fromJson(o.toJson());
       checkStructMatcher(od as api.StructMatcher);
@@ -2078,7 +2078,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateFailureState', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateFailureState();
       var od = api.UpdateFailureState.fromJson(o.toJson());
       checkUpdateFailureState(od as api.UpdateFailureState);
@@ -2086,7 +2086,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ValueMatcher', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildValueMatcher();
       var od = api.ValueMatcher.fromJson(o.toJson());
       checkValueMatcher(od as api.ValueMatcher);
@@ -2094,7 +2094,7 @@ void main() {
   });
 
   unittest.group('resource-DiscoveryResource', () {
-    unittest.test('method--clientStatus', () {
+    unittest.test('method--clientStatus', () async {
       var mock = HttpServerMock();
       var res = api.TrafficDirectorServiceApi(mock).discovery;
       var arg_request = buildClientStatusRequest();
@@ -2145,11 +2145,9 @@ void main() {
         var resp = convert.json.encode(buildClientStatusResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .clientStatus(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkClientStatusResponse(response as api.ClientStatusResponse);
-      })));
+      final response =
+          await res.clientStatus(arg_request, $fields: arg_$fields);
+      checkClientStatusResponse(response as api.ClientStatusResponse);
     });
   });
 }

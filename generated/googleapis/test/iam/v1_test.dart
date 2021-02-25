@@ -2014,7 +2014,7 @@ void checkUnnamed6725(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-AdminAuditData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAdminAuditData();
       var od = api.AdminAuditData.fromJson(o.toJson());
       checkAdminAuditData(od as api.AdminAuditData);
@@ -2022,7 +2022,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
       checkAuditConfig(od as api.AuditConfig);
@@ -2030,7 +2030,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditData();
       var od = api.AuditData.fromJson(o.toJson());
       checkAuditData(od as api.AuditData);
@@ -2038,7 +2038,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
       checkAuditLogConfig(od as api.AuditLogConfig);
@@ -2046,7 +2046,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditableService', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditableService();
       var od = api.AuditableService.fromJson(o.toJson());
       checkAuditableService(od as api.AuditableService);
@@ -2054,7 +2054,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Aws', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAws();
       var od = api.Aws.fromJson(o.toJson());
       checkAws(od as api.Aws);
@@ -2062,7 +2062,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -2070,7 +2070,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BindingDelta', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBindingDelta();
       var od = api.BindingDelta.fromJson(o.toJson());
       checkBindingDelta(od as api.BindingDelta);
@@ -2078,7 +2078,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateRoleRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateRoleRequest();
       var od = api.CreateRoleRequest.fromJson(o.toJson());
       checkCreateRoleRequest(od as api.CreateRoleRequest);
@@ -2086,7 +2086,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateServiceAccountKeyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateServiceAccountKeyRequest();
       var od = api.CreateServiceAccountKeyRequest.fromJson(o.toJson());
       checkCreateServiceAccountKeyRequest(
@@ -2095,7 +2095,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateServiceAccountRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateServiceAccountRequest();
       var od = api.CreateServiceAccountRequest.fromJson(o.toJson());
       checkCreateServiceAccountRequest(od as api.CreateServiceAccountRequest);
@@ -2103,7 +2103,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DisableServiceAccountRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDisableServiceAccountRequest();
       var od = api.DisableServiceAccountRequest.fromJson(o.toJson());
       checkDisableServiceAccountRequest(od as api.DisableServiceAccountRequest);
@@ -2111,7 +2111,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -2119,7 +2119,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnableServiceAccountRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnableServiceAccountRequest();
       var od = api.EnableServiceAccountRequest.fromJson(o.toJson());
       checkEnableServiceAccountRequest(od as api.EnableServiceAccountRequest);
@@ -2127,7 +2127,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -2135,7 +2135,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LintPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLintPolicyRequest();
       var od = api.LintPolicyRequest.fromJson(o.toJson());
       checkLintPolicyRequest(od as api.LintPolicyRequest);
@@ -2143,7 +2143,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LintPolicyResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLintPolicyResponse();
       var od = api.LintPolicyResponse.fromJson(o.toJson());
       checkLintPolicyResponse(od as api.LintPolicyResponse);
@@ -2151,7 +2151,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LintResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLintResult();
       var od = api.LintResult.fromJson(o.toJson());
       checkLintResult(od as api.LintResult);
@@ -2159,7 +2159,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListRolesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListRolesResponse();
       var od = api.ListRolesResponse.fromJson(o.toJson());
       checkListRolesResponse(od as api.ListRolesResponse);
@@ -2167,7 +2167,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListServiceAccountKeysResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListServiceAccountKeysResponse();
       var od = api.ListServiceAccountKeysResponse.fromJson(o.toJson());
       checkListServiceAccountKeysResponse(
@@ -2176,7 +2176,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListServiceAccountsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListServiceAccountsResponse();
       var od = api.ListServiceAccountsResponse.fromJson(o.toJson());
       checkListServiceAccountsResponse(od as api.ListServiceAccountsResponse);
@@ -2184,7 +2184,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListWorkloadIdentityPoolProvidersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListWorkloadIdentityPoolProvidersResponse();
       var od =
           api.ListWorkloadIdentityPoolProvidersResponse.fromJson(o.toJson());
@@ -2194,7 +2194,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListWorkloadIdentityPoolsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListWorkloadIdentityPoolsResponse();
       var od = api.ListWorkloadIdentityPoolsResponse.fromJson(o.toJson());
       checkListWorkloadIdentityPoolsResponse(
@@ -2203,7 +2203,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Oidc', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOidc();
       var od = api.Oidc.fromJson(o.toJson());
       checkOidc(od as api.Oidc);
@@ -2211,7 +2211,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -2219,7 +2219,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PatchServiceAccountRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPatchServiceAccountRequest();
       var od = api.PatchServiceAccountRequest.fromJson(o.toJson());
       checkPatchServiceAccountRequest(od as api.PatchServiceAccountRequest);
@@ -2227,7 +2227,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Permission', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPermission();
       var od = api.Permission.fromJson(o.toJson());
       checkPermission(od as api.Permission);
@@ -2235,7 +2235,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PermissionDelta', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPermissionDelta();
       var od = api.PermissionDelta.fromJson(o.toJson());
       checkPermissionDelta(od as api.PermissionDelta);
@@ -2243,7 +2243,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -2251,7 +2251,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PolicyDelta', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicyDelta();
       var od = api.PolicyDelta.fromJson(o.toJson());
       checkPolicyDelta(od as api.PolicyDelta);
@@ -2259,7 +2259,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryAuditableServicesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryAuditableServicesRequest();
       var od = api.QueryAuditableServicesRequest.fromJson(o.toJson());
       checkQueryAuditableServicesRequest(
@@ -2268,7 +2268,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryAuditableServicesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryAuditableServicesResponse();
       var od = api.QueryAuditableServicesResponse.fromJson(o.toJson());
       checkQueryAuditableServicesResponse(
@@ -2277,7 +2277,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryGrantableRolesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryGrantableRolesRequest();
       var od = api.QueryGrantableRolesRequest.fromJson(o.toJson());
       checkQueryGrantableRolesRequest(od as api.QueryGrantableRolesRequest);
@@ -2285,7 +2285,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryGrantableRolesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryGrantableRolesResponse();
       var od = api.QueryGrantableRolesResponse.fromJson(o.toJson());
       checkQueryGrantableRolesResponse(od as api.QueryGrantableRolesResponse);
@@ -2293,7 +2293,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryTestablePermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryTestablePermissionsRequest();
       var od = api.QueryTestablePermissionsRequest.fromJson(o.toJson());
       checkQueryTestablePermissionsRequest(
@@ -2302,7 +2302,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryTestablePermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryTestablePermissionsResponse();
       var od = api.QueryTestablePermissionsResponse.fromJson(o.toJson());
       checkQueryTestablePermissionsResponse(
@@ -2311,7 +2311,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Role', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRole();
       var od = api.Role.fromJson(o.toJson());
       checkRole(od as api.Role);
@@ -2319,7 +2319,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ServiceAccount', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildServiceAccount();
       var od = api.ServiceAccount.fromJson(o.toJson());
       checkServiceAccount(od as api.ServiceAccount);
@@ -2327,7 +2327,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ServiceAccountKey', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildServiceAccountKey();
       var od = api.ServiceAccountKey.fromJson(o.toJson());
       checkServiceAccountKey(od as api.ServiceAccountKey);
@@ -2335,7 +2335,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -2343,7 +2343,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SignBlobRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSignBlobRequest();
       var od = api.SignBlobRequest.fromJson(o.toJson());
       checkSignBlobRequest(od as api.SignBlobRequest);
@@ -2351,7 +2351,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SignBlobResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSignBlobResponse();
       var od = api.SignBlobResponse.fromJson(o.toJson());
       checkSignBlobResponse(od as api.SignBlobResponse);
@@ -2359,7 +2359,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SignJwtRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSignJwtRequest();
       var od = api.SignJwtRequest.fromJson(o.toJson());
       checkSignJwtRequest(od as api.SignJwtRequest);
@@ -2367,7 +2367,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SignJwtResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSignJwtResponse();
       var od = api.SignJwtResponse.fromJson(o.toJson());
       checkSignJwtResponse(od as api.SignJwtResponse);
@@ -2375,7 +2375,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -2383,7 +2383,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -2391,7 +2391,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -2399,7 +2399,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UndeleteRoleRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUndeleteRoleRequest();
       var od = api.UndeleteRoleRequest.fromJson(o.toJson());
       checkUndeleteRoleRequest(od as api.UndeleteRoleRequest);
@@ -2407,7 +2407,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UndeleteServiceAccountRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUndeleteServiceAccountRequest();
       var od = api.UndeleteServiceAccountRequest.fromJson(o.toJson());
       checkUndeleteServiceAccountRequest(
@@ -2416,7 +2416,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UndeleteServiceAccountResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUndeleteServiceAccountResponse();
       var od = api.UndeleteServiceAccountResponse.fromJson(o.toJson());
       checkUndeleteServiceAccountResponse(
@@ -2425,7 +2425,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UndeleteWorkloadIdentityPoolProviderRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUndeleteWorkloadIdentityPoolProviderRequest();
       var od =
           api.UndeleteWorkloadIdentityPoolProviderRequest.fromJson(o.toJson());
@@ -2435,7 +2435,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UndeleteWorkloadIdentityPoolRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUndeleteWorkloadIdentityPoolRequest();
       var od = api.UndeleteWorkloadIdentityPoolRequest.fromJson(o.toJson());
       checkUndeleteWorkloadIdentityPoolRequest(
@@ -2444,7 +2444,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UploadServiceAccountKeyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUploadServiceAccountKeyRequest();
       var od = api.UploadServiceAccountKeyRequest.fromJson(o.toJson());
       checkUploadServiceAccountKeyRequest(
@@ -2453,7 +2453,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WorkloadIdentityPool', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWorkloadIdentityPool();
       var od = api.WorkloadIdentityPool.fromJson(o.toJson());
       checkWorkloadIdentityPool(od as api.WorkloadIdentityPool);
@@ -2461,7 +2461,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WorkloadIdentityPoolProvider', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWorkloadIdentityPoolProvider();
       var od = api.WorkloadIdentityPoolProvider.fromJson(o.toJson());
       checkWorkloadIdentityPoolProvider(od as api.WorkloadIdentityPoolProvider);
@@ -2469,7 +2469,7 @@ void main() {
   });
 
   unittest.group('resource-IamPoliciesResource', () {
-    unittest.test('method--lintPolicy', () {
+    unittest.test('method--lintPolicy', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).iamPolicies;
       var arg_request = buildLintPolicyRequest();
@@ -2520,14 +2520,11 @@ void main() {
         var resp = convert.json.encode(buildLintPolicyResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .lintPolicy(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLintPolicyResponse(response as api.LintPolicyResponse);
-      })));
+      final response = await res.lintPolicy(arg_request, $fields: arg_$fields);
+      checkLintPolicyResponse(response as api.LintPolicyResponse);
     });
 
-    unittest.test('method--queryAuditableServices', () {
+    unittest.test('method--queryAuditableServices', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).iamPolicies;
       var arg_request = buildQueryAuditableServicesRequest();
@@ -2579,17 +2576,15 @@ void main() {
         var resp = convert.json.encode(buildQueryAuditableServicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .queryAuditableServices(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkQueryAuditableServicesResponse(
-            response as api.QueryAuditableServicesResponse);
-      })));
+      final response =
+          await res.queryAuditableServices(arg_request, $fields: arg_$fields);
+      checkQueryAuditableServicesResponse(
+          response as api.QueryAuditableServicesResponse);
     });
   });
 
   unittest.group('resource-OrganizationsRolesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).organizations.roles;
       var arg_request = buildCreateRoleRequest();
@@ -2642,14 +2637,12 @@ void main() {
         var resp = convert.json.encode(buildRole());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRole(response as api.Role);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkRole(response as api.Role);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).organizations.roles;
       var arg_name = 'foo';
@@ -2702,14 +2695,12 @@ void main() {
         var resp = convert.json.encode(buildRole());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, etag: arg_etag, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRole(response as api.Role);
-      })));
+      final response =
+          await res.delete(arg_name, etag: arg_etag, $fields: arg_$fields);
+      checkRole(response as api.Role);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).organizations.roles;
       var arg_name = 'foo';
@@ -2757,14 +2748,11 @@ void main() {
         var resp = convert.json.encode(buildRole());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRole(response as api.Role);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkRole(response as api.Role);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).organizations.roles;
       var arg_parent = 'foo';
@@ -2832,19 +2820,16 @@ void main() {
         var resp = convert.json.encode(buildListRolesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              showDeleted: arg_showDeleted,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListRolesResponse(response as api.ListRolesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          showDeleted: arg_showDeleted,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListRolesResponse(response as api.ListRolesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).organizations.roles;
       var arg_request = buildRole();
@@ -2902,15 +2887,12 @@ void main() {
         var resp = convert.json.encode(buildRole());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRole(response as api.Role);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkRole(response as api.Role);
     });
 
-    unittest.test('method--undelete', () {
+    unittest.test('method--undelete', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).organizations.roles;
       var arg_request = buildUndeleteRoleRequest();
@@ -2963,16 +2945,14 @@ void main() {
         var resp = convert.json.encode(buildRole());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .undelete(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRole(response as api.Role);
-      })));
+      final response =
+          await res.undelete(arg_request, arg_name, $fields: arg_$fields);
+      checkRole(response as api.Role);
     });
   });
 
   unittest.group('resource-PermissionsResource', () {
-    unittest.test('method--queryTestablePermissions', () {
+    unittest.test('method--queryTestablePermissions', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).permissions;
       var arg_request = buildQueryTestablePermissionsRequest();
@@ -3024,17 +3004,15 @@ void main() {
         var resp = convert.json.encode(buildQueryTestablePermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .queryTestablePermissions(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkQueryTestablePermissionsResponse(
-            response as api.QueryTestablePermissionsResponse);
-      })));
+      final response =
+          await res.queryTestablePermissions(arg_request, $fields: arg_$fields);
+      checkQueryTestablePermissionsResponse(
+          response as api.QueryTestablePermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsLocationsWorkloadIdentityPoolsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.locations.workloadIdentityPools;
       var arg_request = buildWorkloadIdentityPool();
@@ -3092,16 +3070,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              workloadIdentityPoolId: arg_workloadIdentityPoolId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          workloadIdentityPoolId: arg_workloadIdentityPoolId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.locations.workloadIdentityPools;
       var arg_name = 'foo';
@@ -3149,14 +3124,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.locations.workloadIdentityPools;
       var arg_name = 'foo';
@@ -3204,14 +3176,11 @@ void main() {
         var resp = convert.json.encode(buildWorkloadIdentityPool());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWorkloadIdentityPool(response as api.WorkloadIdentityPool);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkWorkloadIdentityPool(response as api.WorkloadIdentityPool);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.locations.workloadIdentityPools;
       var arg_parent = 'foo';
@@ -3275,19 +3244,16 @@ void main() {
             convert.json.encode(buildListWorkloadIdentityPoolsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              showDeleted: arg_showDeleted,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListWorkloadIdentityPoolsResponse(
-            response as api.ListWorkloadIdentityPoolsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          showDeleted: arg_showDeleted,
+          $fields: arg_$fields);
+      checkListWorkloadIdentityPoolsResponse(
+          response as api.ListWorkloadIdentityPoolsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.locations.workloadIdentityPools;
       var arg_request = buildWorkloadIdentityPool();
@@ -3345,15 +3311,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--undelete', () {
+    unittest.test('method--undelete', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.locations.workloadIdentityPools;
       var arg_request = buildUndeleteWorkloadIdentityPoolRequest();
@@ -3407,17 +3370,15 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .undelete(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.undelete(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsWorkloadIdentityPoolsOperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.IamApi(mock).projects.locations.workloadIdentityPools.operations;
@@ -3466,17 +3427,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsWorkloadIdentityPoolsProvidersResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.IamApi(mock).projects.locations.workloadIdentityPools.providers;
@@ -3536,17 +3494,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              workloadIdentityPoolProviderId:
-                  arg_workloadIdentityPoolProviderId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          workloadIdentityPoolProviderId: arg_workloadIdentityPoolProviderId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.IamApi(mock).projects.locations.workloadIdentityPools.providers;
@@ -3595,14 +3549,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.IamApi(mock).projects.locations.workloadIdentityPools.providers;
@@ -3651,15 +3602,12 @@ void main() {
         var resp = convert.json.encode(buildWorkloadIdentityPoolProvider());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWorkloadIdentityPoolProvider(
-            response as api.WorkloadIdentityPoolProvider);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkWorkloadIdentityPoolProvider(
+          response as api.WorkloadIdentityPoolProvider);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.IamApi(mock).projects.locations.workloadIdentityPools.providers;
@@ -3724,19 +3672,16 @@ void main() {
             .encode(buildListWorkloadIdentityPoolProvidersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              showDeleted: arg_showDeleted,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListWorkloadIdentityPoolProvidersResponse(
-            response as api.ListWorkloadIdentityPoolProvidersResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          showDeleted: arg_showDeleted,
+          $fields: arg_$fields);
+      checkListWorkloadIdentityPoolProvidersResponse(
+          response as api.ListWorkloadIdentityPoolProvidersResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res =
           api.IamApi(mock).projects.locations.workloadIdentityPools.providers;
@@ -3796,15 +3741,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--undelete', () {
+    unittest.test('method--undelete', () async {
       var mock = HttpServerMock();
       var res =
           api.IamApi(mock).projects.locations.workloadIdentityPools.providers;
@@ -3859,18 +3801,16 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .undelete(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.undelete(arg_request, arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsWorkloadIdentityPoolsProvidersOperationsResource',
       () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock)
           .projects
@@ -3923,16 +3863,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-ProjectsRolesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.roles;
       var arg_request = buildCreateRoleRequest();
@@ -3985,14 +3922,12 @@ void main() {
         var resp = convert.json.encode(buildRole());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRole(response as api.Role);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkRole(response as api.Role);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.roles;
       var arg_name = 'foo';
@@ -4045,14 +3980,12 @@ void main() {
         var resp = convert.json.encode(buildRole());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, etag: arg_etag, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRole(response as api.Role);
-      })));
+      final response =
+          await res.delete(arg_name, etag: arg_etag, $fields: arg_$fields);
+      checkRole(response as api.Role);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.roles;
       var arg_name = 'foo';
@@ -4100,14 +4033,11 @@ void main() {
         var resp = convert.json.encode(buildRole());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRole(response as api.Role);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkRole(response as api.Role);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.roles;
       var arg_parent = 'foo';
@@ -4175,19 +4105,16 @@ void main() {
         var resp = convert.json.encode(buildListRolesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              showDeleted: arg_showDeleted,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListRolesResponse(response as api.ListRolesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          showDeleted: arg_showDeleted,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListRolesResponse(response as api.ListRolesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.roles;
       var arg_request = buildRole();
@@ -4245,15 +4172,12 @@ void main() {
         var resp = convert.json.encode(buildRole());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRole(response as api.Role);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkRole(response as api.Role);
     });
 
-    unittest.test('method--undelete', () {
+    unittest.test('method--undelete', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.roles;
       var arg_request = buildUndeleteRoleRequest();
@@ -4306,16 +4230,14 @@ void main() {
         var resp = convert.json.encode(buildRole());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .undelete(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRole(response as api.Role);
-      })));
+      final response =
+          await res.undelete(arg_request, arg_name, $fields: arg_$fields);
+      checkRole(response as api.Role);
     });
   });
 
   unittest.group('resource-ProjectsServiceAccountsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildCreateServiceAccountRequest();
@@ -4369,14 +4291,12 @@ void main() {
         var resp = convert.json.encode(buildServiceAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkServiceAccount(response as api.ServiceAccount);
-      })));
+      final response =
+          await res.create(arg_request, arg_name, $fields: arg_$fields);
+      checkServiceAccount(response as api.ServiceAccount);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_name = 'foo';
@@ -4424,14 +4344,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--disable', () {
+    unittest.test('method--disable', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildDisableServiceAccountRequest();
@@ -4485,14 +4402,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .disable(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.disable(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--enable', () {
+    unittest.test('method--enable', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildEnableServiceAccountRequest();
@@ -4546,14 +4461,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .enable(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.enable(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_name = 'foo';
@@ -4601,14 +4514,11 @@ void main() {
         var resp = convert.json.encode(buildServiceAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkServiceAccount(response as api.ServiceAccount);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkServiceAccount(response as api.ServiceAccount);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_resource = 'foo';
@@ -4661,17 +4571,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_name = 'foo';
@@ -4729,18 +4635,15 @@ void main() {
         var resp = convert.json.encode(buildListServiceAccountsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListServiceAccountsResponse(
-            response as api.ListServiceAccountsResponse);
-      })));
+      final response = await res.list(arg_name,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListServiceAccountsResponse(
+          response as api.ListServiceAccountsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildPatchServiceAccountRequest();
@@ -4793,14 +4696,12 @@ void main() {
         var resp = convert.json.encode(buildServiceAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkServiceAccount(response as api.ServiceAccount);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkServiceAccount(response as api.ServiceAccount);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildSetIamPolicyRequest();
@@ -4853,14 +4754,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--signBlob', () {
+    unittest.test('method--signBlob', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildSignBlobRequest();
@@ -4913,14 +4812,12 @@ void main() {
         var resp = convert.json.encode(buildSignBlobResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .signBlob(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSignBlobResponse(response as api.SignBlobResponse);
-      })));
+      final response =
+          await res.signBlob(arg_request, arg_name, $fields: arg_$fields);
+      checkSignBlobResponse(response as api.SignBlobResponse);
     });
 
-    unittest.test('method--signJwt', () {
+    unittest.test('method--signJwt', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildSignJwtRequest();
@@ -4973,14 +4870,12 @@ void main() {
         var resp = convert.json.encode(buildSignJwtResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .signJwt(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSignJwtResponse(response as api.SignJwtResponse);
-      })));
+      final response =
+          await res.signJwt(arg_request, arg_name, $fields: arg_$fields);
+      checkSignJwtResponse(response as api.SignJwtResponse);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildTestIamPermissionsRequest();
@@ -5033,15 +4928,13 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
 
-    unittest.test('method--undelete', () {
+    unittest.test('method--undelete', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildUndeleteServiceAccountRequest();
@@ -5095,15 +4988,13 @@ void main() {
         var resp = convert.json.encode(buildUndeleteServiceAccountResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .undelete(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUndeleteServiceAccountResponse(
-            response as api.UndeleteServiceAccountResponse);
-      })));
+      final response =
+          await res.undelete(arg_request, arg_name, $fields: arg_$fields);
+      checkUndeleteServiceAccountResponse(
+          response as api.UndeleteServiceAccountResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts;
       var arg_request = buildServiceAccount();
@@ -5156,16 +5047,14 @@ void main() {
         var resp = convert.json.encode(buildServiceAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkServiceAccount(response as api.ServiceAccount);
-      })));
+      final response =
+          await res.update(arg_request, arg_name, $fields: arg_$fields);
+      checkServiceAccount(response as api.ServiceAccount);
     });
   });
 
   unittest.group('resource-ProjectsServiceAccountsKeysResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts.keys;
       var arg_request = buildCreateServiceAccountKeyRequest();
@@ -5219,14 +5108,12 @@ void main() {
         var resp = convert.json.encode(buildServiceAccountKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkServiceAccountKey(response as api.ServiceAccountKey);
-      })));
+      final response =
+          await res.create(arg_request, arg_name, $fields: arg_$fields);
+      checkServiceAccountKey(response as api.ServiceAccountKey);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts.keys;
       var arg_name = 'foo';
@@ -5274,14 +5161,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts.keys;
       var arg_name = 'foo';
@@ -5334,14 +5218,12 @@ void main() {
         var resp = convert.json.encode(buildServiceAccountKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, publicKeyType: arg_publicKeyType, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkServiceAccountKey(response as api.ServiceAccountKey);
-      })));
+      final response = await res.get(arg_name,
+          publicKeyType: arg_publicKeyType, $fields: arg_$fields);
+      checkServiceAccountKey(response as api.ServiceAccountKey);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts.keys;
       var arg_name = 'foo';
@@ -5394,15 +5276,13 @@ void main() {
         var resp = convert.json.encode(buildListServiceAccountKeysResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name, keyTypes: arg_keyTypes, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListServiceAccountKeysResponse(
-            response as api.ListServiceAccountKeysResponse);
-      })));
+      final response = await res.list(arg_name,
+          keyTypes: arg_keyTypes, $fields: arg_$fields);
+      checkListServiceAccountKeysResponse(
+          response as api.ListServiceAccountKeysResponse);
     });
 
-    unittest.test('method--upload', () {
+    unittest.test('method--upload', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).projects.serviceAccounts.keys;
       var arg_request = buildUploadServiceAccountKeyRequest();
@@ -5456,16 +5336,14 @@ void main() {
         var resp = convert.json.encode(buildServiceAccountKey());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .upload(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkServiceAccountKey(response as api.ServiceAccountKey);
-      })));
+      final response =
+          await res.upload(arg_request, arg_name, $fields: arg_$fields);
+      checkServiceAccountKey(response as api.ServiceAccountKey);
     });
   });
 
   unittest.group('resource-RolesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).roles;
       var arg_name = 'foo';
@@ -5513,14 +5391,11 @@ void main() {
         var resp = convert.json.encode(buildRole());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRole(response as api.Role);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkRole(response as api.Role);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).roles;
       var arg_pageSize = 42;
@@ -5591,20 +5466,17 @@ void main() {
         var resp = convert.json.encode(buildListRolesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              parent: arg_parent,
-              showDeleted: arg_showDeleted,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListRolesResponse(response as api.ListRolesResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          parent: arg_parent,
+          showDeleted: arg_showDeleted,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListRolesResponse(response as api.ListRolesResponse);
     });
 
-    unittest.test('method--queryGrantableRoles', () {
+    unittest.test('method--queryGrantableRoles', () async {
       var mock = HttpServerMock();
       var res = api.IamApi(mock).roles;
       var arg_request = buildQueryGrantableRolesRequest();
@@ -5655,12 +5527,10 @@ void main() {
         var resp = convert.json.encode(buildQueryGrantableRolesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .queryGrantableRoles(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkQueryGrantableRolesResponse(
-            response as api.QueryGrantableRolesResponse);
-      })));
+      final response =
+          await res.queryGrantableRoles(arg_request, $fields: arg_$fields);
+      checkQueryGrantableRolesResponse(
+          response as api.QueryGrantableRolesResponse);
     });
   });
 }

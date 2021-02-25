@@ -667,7 +667,7 @@ void checkWmxSitemapContent(api.WmxSitemapContent o) {
 
 void main() {
   unittest.group('obj-schema-ApiDataRow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApiDataRow();
       var od = api.ApiDataRow.fromJson(o.toJson());
       checkApiDataRow(od as api.ApiDataRow);
@@ -675,7 +675,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApiDimensionFilter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApiDimensionFilter();
       var od = api.ApiDimensionFilter.fromJson(o.toJson());
       checkApiDimensionFilter(od as api.ApiDimensionFilter);
@@ -683,7 +683,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApiDimensionFilterGroup', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApiDimensionFilterGroup();
       var od = api.ApiDimensionFilterGroup.fromJson(o.toJson());
       checkApiDimensionFilterGroup(od as api.ApiDimensionFilterGroup);
@@ -691,7 +691,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BlockedResource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBlockedResource();
       var od = api.BlockedResource.fromJson(o.toJson());
       checkBlockedResource(od as api.BlockedResource);
@@ -699,7 +699,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Image', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImage();
       var od = api.Image.fromJson(o.toJson());
       checkImage(od as api.Image);
@@ -707,7 +707,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MobileFriendlyIssue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMobileFriendlyIssue();
       var od = api.MobileFriendlyIssue.fromJson(o.toJson());
       checkMobileFriendlyIssue(od as api.MobileFriendlyIssue);
@@ -715,7 +715,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResourceIssue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResourceIssue();
       var od = api.ResourceIssue.fromJson(o.toJson());
       checkResourceIssue(od as api.ResourceIssue);
@@ -723,7 +723,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RunMobileFriendlyTestRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRunMobileFriendlyTestRequest();
       var od = api.RunMobileFriendlyTestRequest.fromJson(o.toJson());
       checkRunMobileFriendlyTestRequest(od as api.RunMobileFriendlyTestRequest);
@@ -731,7 +731,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RunMobileFriendlyTestResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRunMobileFriendlyTestResponse();
       var od = api.RunMobileFriendlyTestResponse.fromJson(o.toJson());
       checkRunMobileFriendlyTestResponse(
@@ -740,7 +740,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchAnalyticsQueryRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchAnalyticsQueryRequest();
       var od = api.SearchAnalyticsQueryRequest.fromJson(o.toJson());
       checkSearchAnalyticsQueryRequest(od as api.SearchAnalyticsQueryRequest);
@@ -748,7 +748,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SearchAnalyticsQueryResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSearchAnalyticsQueryResponse();
       var od = api.SearchAnalyticsQueryResponse.fromJson(o.toJson());
       checkSearchAnalyticsQueryResponse(od as api.SearchAnalyticsQueryResponse);
@@ -756,7 +756,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SitemapsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSitemapsListResponse();
       var od = api.SitemapsListResponse.fromJson(o.toJson());
       checkSitemapsListResponse(od as api.SitemapsListResponse);
@@ -764,7 +764,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SitesListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSitesListResponse();
       var od = api.SitesListResponse.fromJson(o.toJson());
       checkSitesListResponse(od as api.SitesListResponse);
@@ -772,7 +772,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestStatus();
       var od = api.TestStatus.fromJson(o.toJson());
       checkTestStatus(od as api.TestStatus);
@@ -780,7 +780,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WmxSite', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWmxSite();
       var od = api.WmxSite.fromJson(o.toJson());
       checkWmxSite(od as api.WmxSite);
@@ -788,7 +788,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WmxSitemap', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWmxSitemap();
       var od = api.WmxSitemap.fromJson(o.toJson());
       checkWmxSitemap(od as api.WmxSitemap);
@@ -796,7 +796,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WmxSitemapContent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWmxSitemapContent();
       var od = api.WmxSitemapContent.fromJson(o.toJson());
       checkWmxSitemapContent(od as api.WmxSitemapContent);
@@ -804,7 +804,7 @@ void main() {
   });
 
   unittest.group('resource-SearchanalyticsResource', () {
-    unittest.test('method--query', () {
+    unittest.test('method--query', () async {
       var mock = HttpServerMock();
       var res = api.SearchConsoleApi(mock).searchanalytics;
       var arg_request = buildSearchAnalyticsQueryRequest();
@@ -871,17 +871,15 @@ void main() {
         var resp = convert.json.encode(buildSearchAnalyticsQueryResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .query(arg_request, arg_siteUrl, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSearchAnalyticsQueryResponse(
-            response as api.SearchAnalyticsQueryResponse);
-      })));
+      final response =
+          await res.query(arg_request, arg_siteUrl, $fields: arg_$fields);
+      checkSearchAnalyticsQueryResponse(
+          response as api.SearchAnalyticsQueryResponse);
     });
   });
 
   unittest.group('resource-SitemapsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.SearchConsoleApi(mock).sitemaps;
       var arg_siteUrl = 'foo';
@@ -949,12 +947,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_siteUrl, arg_feedpath, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_siteUrl, arg_feedpath, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SearchConsoleApi(mock).sitemaps;
       var arg_siteUrl = 'foo';
@@ -1022,14 +1018,12 @@ void main() {
         var resp = convert.json.encode(buildWmxSitemap());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_siteUrl, arg_feedpath, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWmxSitemap(response as api.WmxSitemap);
-      })));
+      final response =
+          await res.get(arg_siteUrl, arg_feedpath, $fields: arg_$fields);
+      checkWmxSitemap(response as api.WmxSitemap);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SearchConsoleApi(mock).sitemaps;
       var arg_siteUrl = 'foo';
@@ -1095,15 +1089,12 @@ void main() {
         var resp = convert.json.encode(buildSitemapsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_siteUrl,
-              sitemapIndex: arg_sitemapIndex, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSitemapsListResponse(response as api.SitemapsListResponse);
-      })));
+      final response = await res.list(arg_siteUrl,
+          sitemapIndex: arg_sitemapIndex, $fields: arg_$fields);
+      checkSitemapsListResponse(response as api.SitemapsListResponse);
     });
 
-    unittest.test('method--submit', () {
+    unittest.test('method--submit', () async {
       var mock = HttpServerMock();
       var res = api.SearchConsoleApi(mock).sitemaps;
       var arg_siteUrl = 'foo';
@@ -1171,14 +1162,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .submit(arg_siteUrl, arg_feedpath, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.submit(arg_siteUrl, arg_feedpath, $fields: arg_$fields);
     });
   });
 
   unittest.group('resource-SitesResource', () {
-    unittest.test('method--add', () {
+    unittest.test('method--add', () async {
       var mock = HttpServerMock();
       var res = api.SearchConsoleApi(mock).sites;
       var arg_siteUrl = 'foo';
@@ -1231,12 +1220,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .add(arg_siteUrl, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.add(arg_siteUrl, $fields: arg_$fields);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.SearchConsoleApi(mock).sites;
       var arg_siteUrl = 'foo';
@@ -1289,12 +1276,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_siteUrl, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_siteUrl, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SearchConsoleApi(mock).sites;
       var arg_siteUrl = 'foo';
@@ -1347,14 +1332,11 @@ void main() {
         var resp = convert.json.encode(buildWmxSite());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_siteUrl, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWmxSite(response as api.WmxSite);
-      })));
+      final response = await res.get(arg_siteUrl, $fields: arg_$fields);
+      checkWmxSite(response as api.WmxSite);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SearchConsoleApi(mock).sites;
       var arg_$fields = 'foo';
@@ -1400,14 +1382,13 @@ void main() {
         var resp = convert.json.encode(buildSitesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkSitesListResponse(response as api.SitesListResponse);
-      })));
+      final response = await res.list($fields: arg_$fields);
+      checkSitesListResponse(response as api.SitesListResponse);
     });
   });
 
   unittest.group('resource-UrlTestingToolsMobileFriendlyTestResource', () {
-    unittest.test('method--run', () {
+    unittest.test('method--run', () async {
       var mock = HttpServerMock();
       var res = api.SearchConsoleApi(mock).urlTestingTools.mobileFriendlyTest;
       var arg_request = buildRunMobileFriendlyTestRequest();
@@ -1459,12 +1440,9 @@ void main() {
         var resp = convert.json.encode(buildRunMobileFriendlyTestResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .run(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRunMobileFriendlyTestResponse(
-            response as api.RunMobileFriendlyTestResponse);
-      })));
+      final response = await res.run(arg_request, $fields: arg_$fields);
+      checkRunMobileFriendlyTestResponse(
+          response as api.RunMobileFriendlyTestResponse);
     });
   });
 }

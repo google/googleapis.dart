@@ -2259,7 +2259,7 @@ void checkTestIamPermissionsResponse(api.TestIamPermissionsResponse o) {
 
 void main() {
   unittest.group('obj-schema-Asset', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAsset();
       var od = api.Asset.fromJson(o.toJson());
       checkAsset(od as api.Asset);
@@ -2267,7 +2267,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AssetDiscoveryConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAssetDiscoveryConfig();
       var od = api.AssetDiscoveryConfig.fromJson(o.toJson());
       checkAssetDiscoveryConfig(od as api.AssetDiscoveryConfig);
@@ -2275,7 +2275,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
       checkAuditConfig(od as api.AuditConfig);
@@ -2283,7 +2283,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
       checkAuditLogConfig(od as api.AuditLogConfig);
@@ -2291,7 +2291,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -2299,7 +2299,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -2307,7 +2307,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -2315,7 +2315,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Finding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFinding();
       var od = api.Finding.fromJson(o.toJson());
       checkFinding(od as api.Finding);
@@ -2323,7 +2323,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Folder', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFolder();
       var od = api.Folder.fromJson(o.toJson());
       checkFolder(od as api.Folder);
@@ -2331,7 +2331,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetIamPolicyRequest();
       var od = api.GetIamPolicyRequest.fromJson(o.toJson());
       checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
@@ -2339,7 +2339,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetPolicyOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetPolicyOptions();
       var od = api.GetPolicyOptions.fromJson(o.toJson());
       checkGetPolicyOptions(od as api.GetPolicyOptions);
@@ -2348,7 +2348,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudSecuritycenterV1NotificationMessage',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudSecuritycenterV1NotificationMessage();
       var od = api.GoogleCloudSecuritycenterV1NotificationMessage.fromJson(
           o.toJson());
@@ -2358,7 +2358,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudSecuritycenterV1Resource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudSecuritycenterV1Resource();
       var od = api.GoogleCloudSecuritycenterV1Resource.fromJson(o.toJson());
       checkGoogleCloudSecuritycenterV1Resource(
@@ -2368,7 +2368,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudSecuritycenterV1RunAssetDiscoveryResponse();
       var od =
           api.GoogleCloudSecuritycenterV1RunAssetDiscoveryResponse.fromJson(
@@ -2381,7 +2381,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse();
       var od = api.GoogleCloudSecuritycenterV1beta1RunAssetDiscoveryResponse
           .fromJson(o.toJson());
@@ -2391,7 +2391,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudSecuritycenterV1p1beta1Finding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudSecuritycenterV1p1beta1Finding();
       var od =
           api.GoogleCloudSecuritycenterV1p1beta1Finding.fromJson(o.toJson());
@@ -2401,7 +2401,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudSecuritycenterV1p1beta1Folder', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudSecuritycenterV1p1beta1Folder();
       var od =
           api.GoogleCloudSecuritycenterV1p1beta1Folder.fromJson(o.toJson());
@@ -2412,7 +2412,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudSecuritycenterV1p1beta1NotificationMessage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudSecuritycenterV1p1beta1NotificationMessage();
       var od =
           api.GoogleCloudSecuritycenterV1p1beta1NotificationMessage.fromJson(
@@ -2423,7 +2423,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudSecuritycenterV1p1beta1Resource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudSecuritycenterV1p1beta1Resource();
       var od =
           api.GoogleCloudSecuritycenterV1p1beta1Resource.fromJson(o.toJson());
@@ -2435,7 +2435,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse();
       var od = api.GoogleCloudSecuritycenterV1p1beta1RunAssetDiscoveryResponse
@@ -2447,7 +2447,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudSecuritycenterV1p1beta1SecurityMarks',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudSecuritycenterV1p1beta1SecurityMarks();
       var od = api.GoogleCloudSecuritycenterV1p1beta1SecurityMarks.fromJson(
           o.toJson());
@@ -2457,7 +2457,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GroupAssetsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroupAssetsRequest();
       var od = api.GroupAssetsRequest.fromJson(o.toJson());
       checkGroupAssetsRequest(od as api.GroupAssetsRequest);
@@ -2465,7 +2465,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GroupAssetsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroupAssetsResponse();
       var od = api.GroupAssetsResponse.fromJson(o.toJson());
       checkGroupAssetsResponse(od as api.GroupAssetsResponse);
@@ -2473,7 +2473,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GroupFindingsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroupFindingsRequest();
       var od = api.GroupFindingsRequest.fromJson(o.toJson());
       checkGroupFindingsRequest(od as api.GroupFindingsRequest);
@@ -2481,7 +2481,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GroupFindingsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroupFindingsResponse();
       var od = api.GroupFindingsResponse.fromJson(o.toJson());
       checkGroupFindingsResponse(od as api.GroupFindingsResponse);
@@ -2489,7 +2489,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GroupResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroupResult();
       var od = api.GroupResult.fromJson(o.toJson());
       checkGroupResult(od as api.GroupResult);
@@ -2497,7 +2497,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IamPolicy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIamPolicy();
       var od = api.IamPolicy.fromJson(o.toJson());
       checkIamPolicy(od as api.IamPolicy);
@@ -2505,7 +2505,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAssetsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAssetsResponse();
       var od = api.ListAssetsResponse.fromJson(o.toJson());
       checkListAssetsResponse(od as api.ListAssetsResponse);
@@ -2513,7 +2513,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAssetsResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAssetsResult();
       var od = api.ListAssetsResult.fromJson(o.toJson());
       checkListAssetsResult(od as api.ListAssetsResult);
@@ -2521,7 +2521,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListFindingsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListFindingsResponse();
       var od = api.ListFindingsResponse.fromJson(o.toJson());
       checkListFindingsResponse(od as api.ListFindingsResponse);
@@ -2529,7 +2529,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListFindingsResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListFindingsResult();
       var od = api.ListFindingsResult.fromJson(o.toJson());
       checkListFindingsResult(od as api.ListFindingsResult);
@@ -2537,7 +2537,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListNotificationConfigsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListNotificationConfigsResponse();
       var od = api.ListNotificationConfigsResponse.fromJson(o.toJson());
       checkListNotificationConfigsResponse(
@@ -2546,7 +2546,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -2554,7 +2554,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListSourcesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListSourcesResponse();
       var od = api.ListSourcesResponse.fromJson(o.toJson());
       checkListSourcesResponse(od as api.ListSourcesResponse);
@@ -2562,7 +2562,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NotificationConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNotificationConfig();
       var od = api.NotificationConfig.fromJson(o.toJson());
       checkNotificationConfig(od as api.NotificationConfig);
@@ -2570,7 +2570,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -2578,7 +2578,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OrganizationSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOrganizationSettings();
       var od = api.OrganizationSettings.fromJson(o.toJson());
       checkOrganizationSettings(od as api.OrganizationSettings);
@@ -2586,7 +2586,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -2594,7 +2594,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Resource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResource();
       var od = api.Resource.fromJson(o.toJson());
       checkResource(od as api.Resource);
@@ -2602,7 +2602,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RunAssetDiscoveryRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRunAssetDiscoveryRequest();
       var od = api.RunAssetDiscoveryRequest.fromJson(o.toJson());
       checkRunAssetDiscoveryRequest(od as api.RunAssetDiscoveryRequest);
@@ -2610,7 +2610,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SecurityCenterProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSecurityCenterProperties();
       var od = api.SecurityCenterProperties.fromJson(o.toJson());
       checkSecurityCenterProperties(od as api.SecurityCenterProperties);
@@ -2618,7 +2618,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SecurityMarks', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSecurityMarks();
       var od = api.SecurityMarks.fromJson(o.toJson());
       checkSecurityMarks(od as api.SecurityMarks);
@@ -2626,7 +2626,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetFindingStateRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetFindingStateRequest();
       var od = api.SetFindingStateRequest.fromJson(o.toJson());
       checkSetFindingStateRequest(od as api.SetFindingStateRequest);
@@ -2634,7 +2634,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -2642,7 +2642,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Source', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSource();
       var od = api.Source.fromJson(o.toJson());
       checkSource(od as api.Source);
@@ -2650,7 +2650,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -2658,7 +2658,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StreamingConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStreamingConfig();
       var od = api.StreamingConfig.fromJson(o.toJson());
       checkStreamingConfig(od as api.StreamingConfig);
@@ -2666,7 +2666,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -2674,7 +2674,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -2682,7 +2682,7 @@ void main() {
   });
 
   unittest.group('resource-FoldersAssetsResource', () {
-    unittest.test('method--group', () {
+    unittest.test('method--group', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).folders.assets;
       var arg_request = buildGroupAssetsRequest();
@@ -2735,14 +2735,12 @@ void main() {
         var resp = convert.json.encode(buildGroupAssetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .group(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroupAssetsResponse(response as api.GroupAssetsResponse);
-      })));
+      final response =
+          await res.group(arg_request, arg_parent, $fields: arg_$fields);
+      checkGroupAssetsResponse(response as api.GroupAssetsResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).folders.assets;
       var arg_parent = 'foo';
@@ -2825,22 +2823,19 @@ void main() {
         var resp = convert.json.encode(buildListAssetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              compareDuration: arg_compareDuration,
-              fieldMask: arg_fieldMask,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              readTime: arg_readTime,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAssetsResponse(response as api.ListAssetsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          compareDuration: arg_compareDuration,
+          fieldMask: arg_fieldMask,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          readTime: arg_readTime,
+          $fields: arg_$fields);
+      checkListAssetsResponse(response as api.ListAssetsResponse);
     });
 
-    unittest.test('method--updateSecurityMarks', () {
+    unittest.test('method--updateSecurityMarks', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).folders.assets;
       var arg_request = buildSecurityMarks();
@@ -2903,19 +2898,16 @@ void main() {
         var resp = convert.json.encode(buildSecurityMarks());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateSecurityMarks(arg_request, arg_name,
-              startTime: arg_startTime,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSecurityMarks(response as api.SecurityMarks);
-      })));
+      final response = await res.updateSecurityMarks(arg_request, arg_name,
+          startTime: arg_startTime,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkSecurityMarks(response as api.SecurityMarks);
     });
   });
 
   unittest.group('resource-FoldersSourcesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).folders.sources;
       var arg_parent = 'foo';
@@ -2973,19 +2965,16 @@ void main() {
         var resp = convert.json.encode(buildListSourcesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSourcesResponse(response as api.ListSourcesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListSourcesResponse(response as api.ListSourcesResponse);
     });
   });
 
   unittest.group('resource-FoldersSourcesFindingsResource', () {
-    unittest.test('method--group', () {
+    unittest.test('method--group', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).folders.sources.findings;
       var arg_request = buildGroupFindingsRequest();
@@ -3038,14 +3027,12 @@ void main() {
         var resp = convert.json.encode(buildGroupFindingsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .group(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroupFindingsResponse(response as api.GroupFindingsResponse);
-      })));
+      final response =
+          await res.group(arg_request, arg_parent, $fields: arg_$fields);
+      checkGroupFindingsResponse(response as api.GroupFindingsResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).folders.sources.findings;
       var arg_parent = 'foo';
@@ -3128,22 +3115,19 @@ void main() {
         var resp = convert.json.encode(buildListFindingsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              compareDuration: arg_compareDuration,
-              fieldMask: arg_fieldMask,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              readTime: arg_readTime,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListFindingsResponse(response as api.ListFindingsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          compareDuration: arg_compareDuration,
+          fieldMask: arg_fieldMask,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          readTime: arg_readTime,
+          $fields: arg_$fields);
+      checkListFindingsResponse(response as api.ListFindingsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).folders.sources.findings;
       var arg_request = buildFinding();
@@ -3201,15 +3185,12 @@ void main() {
         var resp = convert.json.encode(buildFinding());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFinding(response as api.Finding);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkFinding(response as api.Finding);
     });
 
-    unittest.test('method--setState', () {
+    unittest.test('method--setState', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).folders.sources.findings;
       var arg_request = buildSetFindingStateRequest();
@@ -3262,14 +3243,12 @@ void main() {
         var resp = convert.json.encode(buildFinding());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setState(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFinding(response as api.Finding);
-      })));
+      final response =
+          await res.setState(arg_request, arg_name, $fields: arg_$fields);
+      checkFinding(response as api.Finding);
     });
 
-    unittest.test('method--updateSecurityMarks', () {
+    unittest.test('method--updateSecurityMarks', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).folders.sources.findings;
       var arg_request = buildSecurityMarks();
@@ -3332,19 +3311,16 @@ void main() {
         var resp = convert.json.encode(buildSecurityMarks());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateSecurityMarks(arg_request, arg_name,
-              startTime: arg_startTime,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSecurityMarks(response as api.SecurityMarks);
-      })));
+      final response = await res.updateSecurityMarks(arg_request, arg_name,
+          startTime: arg_startTime,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkSecurityMarks(response as api.SecurityMarks);
     });
   });
 
   unittest.group('resource-OrganizationsResource', () {
-    unittest.test('method--getOrganizationSettings', () {
+    unittest.test('method--getOrganizationSettings', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations;
       var arg_name = 'foo';
@@ -3392,14 +3368,12 @@ void main() {
         var resp = convert.json.encode(buildOrganizationSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getOrganizationSettings(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrganizationSettings(response as api.OrganizationSettings);
-      })));
+      final response =
+          await res.getOrganizationSettings(arg_name, $fields: arg_$fields);
+      checkOrganizationSettings(response as api.OrganizationSettings);
     });
 
-    unittest.test('method--updateOrganizationSettings', () {
+    unittest.test('method--updateOrganizationSettings', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations;
       var arg_request = buildOrganizationSettings();
@@ -3457,17 +3431,15 @@ void main() {
         var resp = convert.json.encode(buildOrganizationSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateOrganizationSettings(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOrganizationSettings(response as api.OrganizationSettings);
-      })));
+      final response = await res.updateOrganizationSettings(
+          arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOrganizationSettings(response as api.OrganizationSettings);
     });
   });
 
   unittest.group('resource-OrganizationsAssetsResource', () {
-    unittest.test('method--group', () {
+    unittest.test('method--group', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations.assets;
       var arg_request = buildGroupAssetsRequest();
@@ -3520,14 +3492,12 @@ void main() {
         var resp = convert.json.encode(buildGroupAssetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .group(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroupAssetsResponse(response as api.GroupAssetsResponse);
-      })));
+      final response =
+          await res.group(arg_request, arg_parent, $fields: arg_$fields);
+      checkGroupAssetsResponse(response as api.GroupAssetsResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations.assets;
       var arg_parent = 'foo';
@@ -3610,22 +3580,19 @@ void main() {
         var resp = convert.json.encode(buildListAssetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              compareDuration: arg_compareDuration,
-              fieldMask: arg_fieldMask,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              readTime: arg_readTime,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAssetsResponse(response as api.ListAssetsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          compareDuration: arg_compareDuration,
+          fieldMask: arg_fieldMask,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          readTime: arg_readTime,
+          $fields: arg_$fields);
+      checkListAssetsResponse(response as api.ListAssetsResponse);
     });
 
-    unittest.test('method--runDiscovery', () {
+    unittest.test('method--runDiscovery', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations.assets;
       var arg_request = buildRunAssetDiscoveryRequest();
@@ -3678,14 +3645,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .runDiscovery(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.runDiscovery(arg_request, arg_parent, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--updateSecurityMarks', () {
+    unittest.test('method--updateSecurityMarks', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations.assets;
       var arg_request = buildSecurityMarks();
@@ -3748,19 +3713,16 @@ void main() {
         var resp = convert.json.encode(buildSecurityMarks());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateSecurityMarks(arg_request, arg_name,
-              startTime: arg_startTime,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSecurityMarks(response as api.SecurityMarks);
-      })));
+      final response = await res.updateSecurityMarks(arg_request, arg_name,
+          startTime: arg_startTime,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkSecurityMarks(response as api.SecurityMarks);
     });
   });
 
   unittest.group('resource-OrganizationsNotificationConfigsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.SecurityCommandCenterApi(mock).organizations.notificationConfigs;
@@ -3819,15 +3781,12 @@ void main() {
         var resp = convert.json.encode(buildNotificationConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              configId: arg_configId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNotificationConfig(response as api.NotificationConfig);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          configId: arg_configId, $fields: arg_$fields);
+      checkNotificationConfig(response as api.NotificationConfig);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.SecurityCommandCenterApi(mock).organizations.notificationConfigs;
@@ -3876,14 +3835,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.SecurityCommandCenterApi(mock).organizations.notificationConfigs;
@@ -3932,14 +3888,11 @@ void main() {
         var resp = convert.json.encode(buildNotificationConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNotificationConfig(response as api.NotificationConfig);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkNotificationConfig(response as api.NotificationConfig);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.SecurityCommandCenterApi(mock).organizations.notificationConfigs;
@@ -3998,18 +3951,15 @@ void main() {
         var resp = convert.json.encode(buildListNotificationConfigsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListNotificationConfigsResponse(
-            response as api.ListNotificationConfigsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListNotificationConfigsResponse(
+          response as api.ListNotificationConfigsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res =
           api.SecurityCommandCenterApi(mock).organizations.notificationConfigs;
@@ -4068,17 +4018,14 @@ void main() {
         var resp = convert.json.encode(buildNotificationConfig());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkNotificationConfig(response as api.NotificationConfig);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkNotificationConfig(response as api.NotificationConfig);
     });
   });
 
   unittest.group('resource-OrganizationsOperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations.operations;
       var arg_name = 'foo';
@@ -4126,14 +4073,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.cancel(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations.operations;
       var arg_name = 'foo';
@@ -4181,14 +4125,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations.operations;
       var arg_name = 'foo';
@@ -4236,14 +4177,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations.operations;
       var arg_name = 'foo';
@@ -4306,20 +4244,17 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsSourcesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations.sources;
       var arg_request = buildSource();
@@ -4372,14 +4307,12 @@ void main() {
         var resp = convert.json.encode(buildSource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSource(response as api.Source);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkSource(response as api.Source);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations.sources;
       var arg_name = 'foo';
@@ -4427,14 +4360,11 @@ void main() {
         var resp = convert.json.encode(buildSource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSource(response as api.Source);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSource(response as api.Source);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations.sources;
       var arg_request = buildGetIamPolicyRequest();
@@ -4487,14 +4417,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations.sources;
       var arg_parent = 'foo';
@@ -4552,17 +4480,14 @@ void main() {
         var resp = convert.json.encode(buildListSourcesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSourcesResponse(response as api.ListSourcesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListSourcesResponse(response as api.ListSourcesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations.sources;
       var arg_request = buildSource();
@@ -4620,15 +4545,12 @@ void main() {
         var resp = convert.json.encode(buildSource());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSource(response as api.Source);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkSource(response as api.Source);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations.sources;
       var arg_request = buildSetIamPolicyRequest();
@@ -4681,14 +4603,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).organizations.sources;
       var arg_request = buildTestIamPermissionsRequest();
@@ -4741,17 +4661,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsSourcesFindingsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.SecurityCommandCenterApi(mock).organizations.sources.findings;
@@ -4810,15 +4728,12 @@ void main() {
         var resp = convert.json.encode(buildFinding());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              findingId: arg_findingId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFinding(response as api.Finding);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          findingId: arg_findingId, $fields: arg_$fields);
+      checkFinding(response as api.Finding);
     });
 
-    unittest.test('method--group', () {
+    unittest.test('method--group', () async {
       var mock = HttpServerMock();
       var res =
           api.SecurityCommandCenterApi(mock).organizations.sources.findings;
@@ -4872,14 +4787,12 @@ void main() {
         var resp = convert.json.encode(buildGroupFindingsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .group(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroupFindingsResponse(response as api.GroupFindingsResponse);
-      })));
+      final response =
+          await res.group(arg_request, arg_parent, $fields: arg_$fields);
+      checkGroupFindingsResponse(response as api.GroupFindingsResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.SecurityCommandCenterApi(mock).organizations.sources.findings;
@@ -4963,22 +4876,19 @@ void main() {
         var resp = convert.json.encode(buildListFindingsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              compareDuration: arg_compareDuration,
-              fieldMask: arg_fieldMask,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              readTime: arg_readTime,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListFindingsResponse(response as api.ListFindingsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          compareDuration: arg_compareDuration,
+          fieldMask: arg_fieldMask,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          readTime: arg_readTime,
+          $fields: arg_$fields);
+      checkListFindingsResponse(response as api.ListFindingsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res =
           api.SecurityCommandCenterApi(mock).organizations.sources.findings;
@@ -5037,15 +4947,12 @@ void main() {
         var resp = convert.json.encode(buildFinding());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFinding(response as api.Finding);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkFinding(response as api.Finding);
     });
 
-    unittest.test('method--setState', () {
+    unittest.test('method--setState', () async {
       var mock = HttpServerMock();
       var res =
           api.SecurityCommandCenterApi(mock).organizations.sources.findings;
@@ -5099,14 +5006,12 @@ void main() {
         var resp = convert.json.encode(buildFinding());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setState(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFinding(response as api.Finding);
-      })));
+      final response =
+          await res.setState(arg_request, arg_name, $fields: arg_$fields);
+      checkFinding(response as api.Finding);
     });
 
-    unittest.test('method--updateSecurityMarks', () {
+    unittest.test('method--updateSecurityMarks', () async {
       var mock = HttpServerMock();
       var res =
           api.SecurityCommandCenterApi(mock).organizations.sources.findings;
@@ -5170,19 +5075,16 @@ void main() {
         var resp = convert.json.encode(buildSecurityMarks());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateSecurityMarks(arg_request, arg_name,
-              startTime: arg_startTime,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSecurityMarks(response as api.SecurityMarks);
-      })));
+      final response = await res.updateSecurityMarks(arg_request, arg_name,
+          startTime: arg_startTime,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkSecurityMarks(response as api.SecurityMarks);
     });
   });
 
   unittest.group('resource-ProjectsAssetsResource', () {
-    unittest.test('method--group', () {
+    unittest.test('method--group', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).projects.assets;
       var arg_request = buildGroupAssetsRequest();
@@ -5235,14 +5137,12 @@ void main() {
         var resp = convert.json.encode(buildGroupAssetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .group(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroupAssetsResponse(response as api.GroupAssetsResponse);
-      })));
+      final response =
+          await res.group(arg_request, arg_parent, $fields: arg_$fields);
+      checkGroupAssetsResponse(response as api.GroupAssetsResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).projects.assets;
       var arg_parent = 'foo';
@@ -5325,22 +5225,19 @@ void main() {
         var resp = convert.json.encode(buildListAssetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              compareDuration: arg_compareDuration,
-              fieldMask: arg_fieldMask,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              readTime: arg_readTime,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAssetsResponse(response as api.ListAssetsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          compareDuration: arg_compareDuration,
+          fieldMask: arg_fieldMask,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          readTime: arg_readTime,
+          $fields: arg_$fields);
+      checkListAssetsResponse(response as api.ListAssetsResponse);
     });
 
-    unittest.test('method--updateSecurityMarks', () {
+    unittest.test('method--updateSecurityMarks', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).projects.assets;
       var arg_request = buildSecurityMarks();
@@ -5403,19 +5300,16 @@ void main() {
         var resp = convert.json.encode(buildSecurityMarks());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateSecurityMarks(arg_request, arg_name,
-              startTime: arg_startTime,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSecurityMarks(response as api.SecurityMarks);
-      })));
+      final response = await res.updateSecurityMarks(arg_request, arg_name,
+          startTime: arg_startTime,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkSecurityMarks(response as api.SecurityMarks);
     });
   });
 
   unittest.group('resource-ProjectsSourcesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).projects.sources;
       var arg_parent = 'foo';
@@ -5473,19 +5367,16 @@ void main() {
         var resp = convert.json.encode(buildListSourcesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSourcesResponse(response as api.ListSourcesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListSourcesResponse(response as api.ListSourcesResponse);
     });
   });
 
   unittest.group('resource-ProjectsSourcesFindingsResource', () {
-    unittest.test('method--group', () {
+    unittest.test('method--group', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).projects.sources.findings;
       var arg_request = buildGroupFindingsRequest();
@@ -5538,14 +5429,12 @@ void main() {
         var resp = convert.json.encode(buildGroupFindingsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .group(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroupFindingsResponse(response as api.GroupFindingsResponse);
-      })));
+      final response =
+          await res.group(arg_request, arg_parent, $fields: arg_$fields);
+      checkGroupFindingsResponse(response as api.GroupFindingsResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).projects.sources.findings;
       var arg_parent = 'foo';
@@ -5628,22 +5517,19 @@ void main() {
         var resp = convert.json.encode(buildListFindingsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              compareDuration: arg_compareDuration,
-              fieldMask: arg_fieldMask,
-              filter: arg_filter,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              readTime: arg_readTime,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListFindingsResponse(response as api.ListFindingsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          compareDuration: arg_compareDuration,
+          fieldMask: arg_fieldMask,
+          filter: arg_filter,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          readTime: arg_readTime,
+          $fields: arg_$fields);
+      checkListFindingsResponse(response as api.ListFindingsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).projects.sources.findings;
       var arg_request = buildFinding();
@@ -5701,15 +5587,12 @@ void main() {
         var resp = convert.json.encode(buildFinding());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFinding(response as api.Finding);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkFinding(response as api.Finding);
     });
 
-    unittest.test('method--setState', () {
+    unittest.test('method--setState', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).projects.sources.findings;
       var arg_request = buildSetFindingStateRequest();
@@ -5762,14 +5645,12 @@ void main() {
         var resp = convert.json.encode(buildFinding());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setState(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFinding(response as api.Finding);
-      })));
+      final response =
+          await res.setState(arg_request, arg_name, $fields: arg_$fields);
+      checkFinding(response as api.Finding);
     });
 
-    unittest.test('method--updateSecurityMarks', () {
+    unittest.test('method--updateSecurityMarks', () async {
       var mock = HttpServerMock();
       var res = api.SecurityCommandCenterApi(mock).projects.sources.findings;
       var arg_request = buildSecurityMarks();
@@ -5832,14 +5713,11 @@ void main() {
         var resp = convert.json.encode(buildSecurityMarks());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateSecurityMarks(arg_request, arg_name,
-              startTime: arg_startTime,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSecurityMarks(response as api.SecurityMarks);
-      })));
+      final response = await res.updateSecurityMarks(arg_request, arg_name,
+          startTime: arg_startTime,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkSecurityMarks(response as api.SecurityMarks);
     });
   });
 }

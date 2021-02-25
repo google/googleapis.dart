@@ -377,7 +377,7 @@ void checkResourceProperties(api.ResourceProperties o) {
 
 void main() {
   unittest.group('obj-schema-AccessApprovalSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccessApprovalSettings();
       var od = api.AccessApprovalSettings.fromJson(o.toJson());
       checkAccessApprovalSettings(od as api.AccessApprovalSettings);
@@ -385,7 +385,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccessLocations', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccessLocations();
       var od = api.AccessLocations.fromJson(o.toJson());
       checkAccessLocations(od as api.AccessLocations);
@@ -393,7 +393,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccessReason', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccessReason();
       var od = api.AccessReason.fromJson(o.toJson());
       checkAccessReason(od as api.AccessReason);
@@ -401,7 +401,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApprovalRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApprovalRequest();
       var od = api.ApprovalRequest.fromJson(o.toJson());
       checkApprovalRequest(od as api.ApprovalRequest);
@@ -409,7 +409,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApproveApprovalRequestMessage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApproveApprovalRequestMessage();
       var od = api.ApproveApprovalRequestMessage.fromJson(o.toJson());
       checkApproveApprovalRequestMessage(
@@ -418,7 +418,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApproveDecision', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApproveDecision();
       var od = api.ApproveDecision.fromJson(o.toJson());
       checkApproveDecision(od as api.ApproveDecision);
@@ -426,7 +426,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DismissApprovalRequestMessage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDismissApprovalRequestMessage();
       var od = api.DismissApprovalRequestMessage.fromJson(o.toJson());
       checkDismissApprovalRequestMessage(
@@ -435,7 +435,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DismissDecision', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDismissDecision();
       var od = api.DismissDecision.fromJson(o.toJson());
       checkDismissDecision(od as api.DismissDecision);
@@ -443,7 +443,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -451,7 +451,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnrolledService', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnrolledService();
       var od = api.EnrolledService.fromJson(o.toJson());
       checkEnrolledService(od as api.EnrolledService);
@@ -459,7 +459,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListApprovalRequestsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListApprovalRequestsResponse();
       var od = api.ListApprovalRequestsResponse.fromJson(o.toJson());
       checkListApprovalRequestsResponse(od as api.ListApprovalRequestsResponse);
@@ -467,7 +467,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResourceProperties', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResourceProperties();
       var od = api.ResourceProperties.fromJson(o.toJson());
       checkResourceProperties(od as api.ResourceProperties);
@@ -475,7 +475,7 @@ void main() {
   });
 
   unittest.group('resource-FoldersResource', () {
-    unittest.test('method--deleteAccessApprovalSettings', () {
+    unittest.test('method--deleteAccessApprovalSettings', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).folders;
       var arg_name = 'foo';
@@ -523,14 +523,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deleteAccessApprovalSettings(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.deleteAccessApprovalSettings(arg_name,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--getAccessApprovalSettings', () {
+    unittest.test('method--getAccessApprovalSettings', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).folders;
       var arg_name = 'foo';
@@ -578,14 +576,12 @@ void main() {
         var resp = convert.json.encode(buildAccessApprovalSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getAccessApprovalSettings(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccessApprovalSettings(response as api.AccessApprovalSettings);
-      })));
+      final response =
+          await res.getAccessApprovalSettings(arg_name, $fields: arg_$fields);
+      checkAccessApprovalSettings(response as api.AccessApprovalSettings);
     });
 
-    unittest.test('method--updateAccessApprovalSettings', () {
+    unittest.test('method--updateAccessApprovalSettings', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).folders;
       var arg_request = buildAccessApprovalSettings();
@@ -643,17 +639,15 @@ void main() {
         var resp = convert.json.encode(buildAccessApprovalSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateAccessApprovalSettings(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccessApprovalSettings(response as api.AccessApprovalSettings);
-      })));
+      final response = await res.updateAccessApprovalSettings(
+          arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkAccessApprovalSettings(response as api.AccessApprovalSettings);
     });
   });
 
   unittest.group('resource-FoldersApprovalRequestsResource', () {
-    unittest.test('method--approve', () {
+    unittest.test('method--approve', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).folders.approvalRequests;
       var arg_request = buildApproveApprovalRequestMessage();
@@ -707,14 +701,12 @@ void main() {
         var resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .approve(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApprovalRequest(response as api.ApprovalRequest);
-      })));
+      final response =
+          await res.approve(arg_request, arg_name, $fields: arg_$fields);
+      checkApprovalRequest(response as api.ApprovalRequest);
     });
 
-    unittest.test('method--dismiss', () {
+    unittest.test('method--dismiss', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).folders.approvalRequests;
       var arg_request = buildDismissApprovalRequestMessage();
@@ -768,14 +760,12 @@ void main() {
         var resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .dismiss(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApprovalRequest(response as api.ApprovalRequest);
-      })));
+      final response =
+          await res.dismiss(arg_request, arg_name, $fields: arg_$fields);
+      checkApprovalRequest(response as api.ApprovalRequest);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).folders.approvalRequests;
       var arg_name = 'foo';
@@ -823,14 +813,11 @@ void main() {
         var resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApprovalRequest(response as api.ApprovalRequest);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkApprovalRequest(response as api.ApprovalRequest);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).folders.approvalRequests;
       var arg_parent = 'foo';
@@ -893,21 +880,18 @@ void main() {
         var resp = convert.json.encode(buildListApprovalRequestsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListApprovalRequestsResponse(
-            response as api.ListApprovalRequestsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListApprovalRequestsResponse(
+          response as api.ListApprovalRequestsResponse);
     });
   });
 
   unittest.group('resource-OrganizationsResource', () {
-    unittest.test('method--deleteAccessApprovalSettings', () {
+    unittest.test('method--deleteAccessApprovalSettings', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).organizations;
       var arg_name = 'foo';
@@ -955,14 +939,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deleteAccessApprovalSettings(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.deleteAccessApprovalSettings(arg_name,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--getAccessApprovalSettings', () {
+    unittest.test('method--getAccessApprovalSettings', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).organizations;
       var arg_name = 'foo';
@@ -1010,14 +992,12 @@ void main() {
         var resp = convert.json.encode(buildAccessApprovalSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getAccessApprovalSettings(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccessApprovalSettings(response as api.AccessApprovalSettings);
-      })));
+      final response =
+          await res.getAccessApprovalSettings(arg_name, $fields: arg_$fields);
+      checkAccessApprovalSettings(response as api.AccessApprovalSettings);
     });
 
-    unittest.test('method--updateAccessApprovalSettings', () {
+    unittest.test('method--updateAccessApprovalSettings', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).organizations;
       var arg_request = buildAccessApprovalSettings();
@@ -1075,17 +1055,15 @@ void main() {
         var resp = convert.json.encode(buildAccessApprovalSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateAccessApprovalSettings(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccessApprovalSettings(response as api.AccessApprovalSettings);
-      })));
+      final response = await res.updateAccessApprovalSettings(
+          arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkAccessApprovalSettings(response as api.AccessApprovalSettings);
     });
   });
 
   unittest.group('resource-OrganizationsApprovalRequestsResource', () {
-    unittest.test('method--approve', () {
+    unittest.test('method--approve', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).organizations.approvalRequests;
       var arg_request = buildApproveApprovalRequestMessage();
@@ -1139,14 +1117,12 @@ void main() {
         var resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .approve(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApprovalRequest(response as api.ApprovalRequest);
-      })));
+      final response =
+          await res.approve(arg_request, arg_name, $fields: arg_$fields);
+      checkApprovalRequest(response as api.ApprovalRequest);
     });
 
-    unittest.test('method--dismiss', () {
+    unittest.test('method--dismiss', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).organizations.approvalRequests;
       var arg_request = buildDismissApprovalRequestMessage();
@@ -1200,14 +1176,12 @@ void main() {
         var resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .dismiss(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApprovalRequest(response as api.ApprovalRequest);
-      })));
+      final response =
+          await res.dismiss(arg_request, arg_name, $fields: arg_$fields);
+      checkApprovalRequest(response as api.ApprovalRequest);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).organizations.approvalRequests;
       var arg_name = 'foo';
@@ -1255,14 +1229,11 @@ void main() {
         var resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApprovalRequest(response as api.ApprovalRequest);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkApprovalRequest(response as api.ApprovalRequest);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).organizations.approvalRequests;
       var arg_parent = 'foo';
@@ -1325,21 +1296,18 @@ void main() {
         var resp = convert.json.encode(buildListApprovalRequestsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListApprovalRequestsResponse(
-            response as api.ListApprovalRequestsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListApprovalRequestsResponse(
+          response as api.ListApprovalRequestsResponse);
     });
   });
 
   unittest.group('resource-ProjectsResource', () {
-    unittest.test('method--deleteAccessApprovalSettings', () {
+    unittest.test('method--deleteAccessApprovalSettings', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).projects;
       var arg_name = 'foo';
@@ -1387,14 +1355,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .deleteAccessApprovalSettings(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.deleteAccessApprovalSettings(arg_name,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--getAccessApprovalSettings', () {
+    unittest.test('method--getAccessApprovalSettings', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).projects;
       var arg_name = 'foo';
@@ -1442,14 +1408,12 @@ void main() {
         var resp = convert.json.encode(buildAccessApprovalSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getAccessApprovalSettings(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccessApprovalSettings(response as api.AccessApprovalSettings);
-      })));
+      final response =
+          await res.getAccessApprovalSettings(arg_name, $fields: arg_$fields);
+      checkAccessApprovalSettings(response as api.AccessApprovalSettings);
     });
 
-    unittest.test('method--updateAccessApprovalSettings', () {
+    unittest.test('method--updateAccessApprovalSettings', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).projects;
       var arg_request = buildAccessApprovalSettings();
@@ -1507,17 +1471,15 @@ void main() {
         var resp = convert.json.encode(buildAccessApprovalSettings());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateAccessApprovalSettings(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccessApprovalSettings(response as api.AccessApprovalSettings);
-      })));
+      final response = await res.updateAccessApprovalSettings(
+          arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkAccessApprovalSettings(response as api.AccessApprovalSettings);
     });
   });
 
   unittest.group('resource-ProjectsApprovalRequestsResource', () {
-    unittest.test('method--approve', () {
+    unittest.test('method--approve', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).projects.approvalRequests;
       var arg_request = buildApproveApprovalRequestMessage();
@@ -1571,14 +1533,12 @@ void main() {
         var resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .approve(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApprovalRequest(response as api.ApprovalRequest);
-      })));
+      final response =
+          await res.approve(arg_request, arg_name, $fields: arg_$fields);
+      checkApprovalRequest(response as api.ApprovalRequest);
     });
 
-    unittest.test('method--dismiss', () {
+    unittest.test('method--dismiss', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).projects.approvalRequests;
       var arg_request = buildDismissApprovalRequestMessage();
@@ -1632,14 +1592,12 @@ void main() {
         var resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .dismiss(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApprovalRequest(response as api.ApprovalRequest);
-      })));
+      final response =
+          await res.dismiss(arg_request, arg_name, $fields: arg_$fields);
+      checkApprovalRequest(response as api.ApprovalRequest);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).projects.approvalRequests;
       var arg_name = 'foo';
@@ -1687,14 +1645,11 @@ void main() {
         var resp = convert.json.encode(buildApprovalRequest());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApprovalRequest(response as api.ApprovalRequest);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkApprovalRequest(response as api.ApprovalRequest);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AccessApprovalApi(mock).projects.approvalRequests;
       var arg_parent = 'foo';
@@ -1757,16 +1712,13 @@ void main() {
         var resp = convert.json.encode(buildListApprovalRequestsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListApprovalRequestsResponse(
-            response as api.ListApprovalRequestsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListApprovalRequestsResponse(
+          response as api.ListApprovalRequestsResponse);
     });
   });
 }

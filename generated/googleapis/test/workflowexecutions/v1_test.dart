@@ -162,7 +162,7 @@ void checkListExecutionsResponse(api.ListExecutionsResponse o) {
 
 void main() {
   unittest.group('obj-schema-CancelExecutionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCancelExecutionRequest();
       var od = api.CancelExecutionRequest.fromJson(o.toJson());
       checkCancelExecutionRequest(od as api.CancelExecutionRequest);
@@ -170,7 +170,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Error', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildError();
       var od = api.Error.fromJson(o.toJson());
       checkError(od as api.Error);
@@ -178,7 +178,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Execution', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExecution();
       var od = api.Execution.fromJson(o.toJson());
       checkExecution(od as api.Execution);
@@ -186,7 +186,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListExecutionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListExecutionsResponse();
       var od = api.ListExecutionsResponse.fromJson(o.toJson());
       checkListExecutionsResponse(od as api.ListExecutionsResponse);
@@ -194,7 +194,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsWorkflowsExecutionsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.WorkflowExecutionsApi(mock)
           .projects
@@ -251,14 +251,12 @@ void main() {
         var resp = convert.json.encode(buildExecution());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkExecution(response as api.Execution);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkExecution(response as api.Execution);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.WorkflowExecutionsApi(mock)
           .projects
@@ -315,14 +313,12 @@ void main() {
         var resp = convert.json.encode(buildExecution());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkExecution(response as api.Execution);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkExecution(response as api.Execution);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.WorkflowExecutionsApi(mock)
           .projects
@@ -379,14 +375,12 @@ void main() {
         var resp = convert.json.encode(buildExecution());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, view: arg_view, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkExecution(response as api.Execution);
-      })));
+      final response =
+          await res.get(arg_name, view: arg_view, $fields: arg_$fields);
+      checkExecution(response as api.Execution);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.WorkflowExecutionsApi(mock)
           .projects
@@ -453,15 +447,12 @@ void main() {
         var resp = convert.json.encode(buildListExecutionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListExecutionsResponse(response as api.ListExecutionsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListExecutionsResponse(response as api.ListExecutionsResponse);
     });
   });
 }

@@ -3603,7 +3603,7 @@ void checkUser(api.User o) {
 
 void main() {
   unittest.group('obj-schema-AboutAdditionalRoleInfoRoleSets', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAboutAdditionalRoleInfoRoleSets();
       var od = api.AboutAdditionalRoleInfoRoleSets.fromJson(o.toJson());
       checkAboutAdditionalRoleInfoRoleSets(
@@ -3612,7 +3612,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AboutAdditionalRoleInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAboutAdditionalRoleInfo();
       var od = api.AboutAdditionalRoleInfo.fromJson(o.toJson());
       checkAboutAdditionalRoleInfo(od as api.AboutAdditionalRoleInfo);
@@ -3620,7 +3620,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AboutDriveThemes', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAboutDriveThemes();
       var od = api.AboutDriveThemes.fromJson(o.toJson());
       checkAboutDriveThemes(od as api.AboutDriveThemes);
@@ -3628,7 +3628,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AboutExportFormats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAboutExportFormats();
       var od = api.AboutExportFormats.fromJson(o.toJson());
       checkAboutExportFormats(od as api.AboutExportFormats);
@@ -3636,7 +3636,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AboutFeatures', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAboutFeatures();
       var od = api.AboutFeatures.fromJson(o.toJson());
       checkAboutFeatures(od as api.AboutFeatures);
@@ -3644,7 +3644,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AboutImportFormats', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAboutImportFormats();
       var od = api.AboutImportFormats.fromJson(o.toJson());
       checkAboutImportFormats(od as api.AboutImportFormats);
@@ -3652,7 +3652,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AboutMaxUploadSizes', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAboutMaxUploadSizes();
       var od = api.AboutMaxUploadSizes.fromJson(o.toJson());
       checkAboutMaxUploadSizes(od as api.AboutMaxUploadSizes);
@@ -3660,7 +3660,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AboutQuotaBytesByService', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAboutQuotaBytesByService();
       var od = api.AboutQuotaBytesByService.fromJson(o.toJson());
       checkAboutQuotaBytesByService(od as api.AboutQuotaBytesByService);
@@ -3668,7 +3668,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AboutTeamDriveThemes', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAboutTeamDriveThemes();
       var od = api.AboutTeamDriveThemes.fromJson(o.toJson());
       checkAboutTeamDriveThemes(od as api.AboutTeamDriveThemes);
@@ -3676,7 +3676,7 @@ void main() {
   });
 
   unittest.group('obj-schema-About', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAbout();
       var od = api.About.fromJson(o.toJson());
       checkAbout(od as api.About);
@@ -3684,7 +3684,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AppIcons', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppIcons();
       var od = api.AppIcons.fromJson(o.toJson());
       checkAppIcons(od as api.AppIcons);
@@ -3692,7 +3692,7 @@ void main() {
   });
 
   unittest.group('obj-schema-App', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApp();
       var od = api.App.fromJson(o.toJson());
       checkApp(od as api.App);
@@ -3700,7 +3700,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AppList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAppList();
       var od = api.AppList.fromJson(o.toJson());
       checkAppList(od as api.AppList);
@@ -3708,7 +3708,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Change', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChange();
       var od = api.Change.fromJson(o.toJson());
       checkChange(od as api.Change);
@@ -3716,7 +3716,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChangeList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChangeList();
       var od = api.ChangeList.fromJson(o.toJson());
       checkChangeList(od as api.ChangeList);
@@ -3724,7 +3724,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Channel', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChannel();
       var od = api.Channel.fromJson(o.toJson());
       checkChannel(od as api.Channel);
@@ -3732,7 +3732,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChildList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChildList();
       var od = api.ChildList.fromJson(o.toJson());
       checkChildList(od as api.ChildList);
@@ -3740,7 +3740,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ChildReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildChildReference();
       var od = api.ChildReference.fromJson(o.toJson());
       checkChildReference(od as api.ChildReference);
@@ -3748,7 +3748,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CommentContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCommentContext();
       var od = api.CommentContext.fromJson(o.toJson());
       checkCommentContext(od as api.CommentContext);
@@ -3756,7 +3756,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Comment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildComment();
       var od = api.Comment.fromJson(o.toJson());
       checkComment(od as api.Comment);
@@ -3764,7 +3764,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CommentList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCommentList();
       var od = api.CommentList.fromJson(o.toJson());
       checkCommentList(od as api.CommentList);
@@ -3772,7 +3772,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CommentReply', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCommentReply();
       var od = api.CommentReply.fromJson(o.toJson());
       checkCommentReply(od as api.CommentReply);
@@ -3780,7 +3780,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CommentReplyList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCommentReplyList();
       var od = api.CommentReplyList.fromJson(o.toJson());
       checkCommentReplyList(od as api.CommentReplyList);
@@ -3788,7 +3788,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ContentRestriction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContentRestriction();
       var od = api.ContentRestriction.fromJson(o.toJson());
       checkContentRestriction(od as api.ContentRestriction);
@@ -3796,7 +3796,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DriveBackgroundImageFile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDriveBackgroundImageFile();
       var od = api.DriveBackgroundImageFile.fromJson(o.toJson());
       checkDriveBackgroundImageFile(od as api.DriveBackgroundImageFile);
@@ -3804,7 +3804,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DriveCapabilities', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDriveCapabilities();
       var od = api.DriveCapabilities.fromJson(o.toJson());
       checkDriveCapabilities(od as api.DriveCapabilities);
@@ -3812,7 +3812,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DriveRestrictions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDriveRestrictions();
       var od = api.DriveRestrictions.fromJson(o.toJson());
       checkDriveRestrictions(od as api.DriveRestrictions);
@@ -3820,7 +3820,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Drive', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDrive();
       var od = api.Drive.fromJson(o.toJson());
       checkDrive(od as api.Drive);
@@ -3828,7 +3828,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DriveList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDriveList();
       var od = api.DriveList.fromJson(o.toJson());
       checkDriveList(od as api.DriveList);
@@ -3836,7 +3836,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FileCapabilities', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFileCapabilities();
       var od = api.FileCapabilities.fromJson(o.toJson());
       checkFileCapabilities(od as api.FileCapabilities);
@@ -3844,7 +3844,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FileImageMediaMetadataLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFileImageMediaMetadataLocation();
       var od = api.FileImageMediaMetadataLocation.fromJson(o.toJson());
       checkFileImageMediaMetadataLocation(
@@ -3853,7 +3853,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FileImageMediaMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFileImageMediaMetadata();
       var od = api.FileImageMediaMetadata.fromJson(o.toJson());
       checkFileImageMediaMetadata(od as api.FileImageMediaMetadata);
@@ -3861,7 +3861,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FileIndexableText', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFileIndexableText();
       var od = api.FileIndexableText.fromJson(o.toJson());
       checkFileIndexableText(od as api.FileIndexableText);
@@ -3869,7 +3869,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FileLabels', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFileLabels();
       var od = api.FileLabels.fromJson(o.toJson());
       checkFileLabels(od as api.FileLabels);
@@ -3877,7 +3877,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FileShortcutDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFileShortcutDetails();
       var od = api.FileShortcutDetails.fromJson(o.toJson());
       checkFileShortcutDetails(od as api.FileShortcutDetails);
@@ -3885,7 +3885,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FileThumbnail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFileThumbnail();
       var od = api.FileThumbnail.fromJson(o.toJson());
       checkFileThumbnail(od as api.FileThumbnail);
@@ -3893,7 +3893,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FileVideoMediaMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFileVideoMediaMetadata();
       var od = api.FileVideoMediaMetadata.fromJson(o.toJson());
       checkFileVideoMediaMetadata(od as api.FileVideoMediaMetadata);
@@ -3901,7 +3901,7 @@ void main() {
   });
 
   unittest.group('obj-schema-File', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFile();
       var od = api.File.fromJson(o.toJson());
       checkFile(od as api.File);
@@ -3909,7 +3909,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FileList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFileList();
       var od = api.FileList.fromJson(o.toJson());
       checkFileList(od as api.FileList);
@@ -3917,7 +3917,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GeneratedIds', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGeneratedIds();
       var od = api.GeneratedIds.fromJson(o.toJson());
       checkGeneratedIds(od as api.GeneratedIds);
@@ -3925,7 +3925,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ParentList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildParentList();
       var od = api.ParentList.fromJson(o.toJson());
       checkParentList(od as api.ParentList);
@@ -3933,7 +3933,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ParentReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildParentReference();
       var od = api.ParentReference.fromJson(o.toJson());
       checkParentReference(od as api.ParentReference);
@@ -3941,7 +3941,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PermissionPermissionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPermissionPermissionDetails();
       var od = api.PermissionPermissionDetails.fromJson(o.toJson());
       checkPermissionPermissionDetails(od as api.PermissionPermissionDetails);
@@ -3949,7 +3949,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PermissionTeamDrivePermissionDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPermissionTeamDrivePermissionDetails();
       var od = api.PermissionTeamDrivePermissionDetails.fromJson(o.toJson());
       checkPermissionTeamDrivePermissionDetails(
@@ -3958,7 +3958,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Permission', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPermission();
       var od = api.Permission.fromJson(o.toJson());
       checkPermission(od as api.Permission);
@@ -3966,7 +3966,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PermissionId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPermissionId();
       var od = api.PermissionId.fromJson(o.toJson());
       checkPermissionId(od as api.PermissionId);
@@ -3974,7 +3974,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PermissionList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPermissionList();
       var od = api.PermissionList.fromJson(o.toJson());
       checkPermissionList(od as api.PermissionList);
@@ -3982,7 +3982,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Property', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProperty();
       var od = api.Property.fromJson(o.toJson());
       checkProperty(od as api.Property);
@@ -3990,7 +3990,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PropertyList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPropertyList();
       var od = api.PropertyList.fromJson(o.toJson());
       checkPropertyList(od as api.PropertyList);
@@ -3998,7 +3998,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Revision', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRevision();
       var od = api.Revision.fromJson(o.toJson());
       checkRevision(od as api.Revision);
@@ -4006,7 +4006,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RevisionList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRevisionList();
       var od = api.RevisionList.fromJson(o.toJson());
       checkRevisionList(od as api.RevisionList);
@@ -4014,7 +4014,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StartPageToken', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStartPageToken();
       var od = api.StartPageToken.fromJson(o.toJson());
       checkStartPageToken(od as api.StartPageToken);
@@ -4022,7 +4022,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TeamDriveBackgroundImageFile', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTeamDriveBackgroundImageFile();
       var od = api.TeamDriveBackgroundImageFile.fromJson(o.toJson());
       checkTeamDriveBackgroundImageFile(od as api.TeamDriveBackgroundImageFile);
@@ -4030,7 +4030,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TeamDriveCapabilities', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTeamDriveCapabilities();
       var od = api.TeamDriveCapabilities.fromJson(o.toJson());
       checkTeamDriveCapabilities(od as api.TeamDriveCapabilities);
@@ -4038,7 +4038,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TeamDriveRestrictions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTeamDriveRestrictions();
       var od = api.TeamDriveRestrictions.fromJson(o.toJson());
       checkTeamDriveRestrictions(od as api.TeamDriveRestrictions);
@@ -4046,7 +4046,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TeamDrive', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTeamDrive();
       var od = api.TeamDrive.fromJson(o.toJson());
       checkTeamDrive(od as api.TeamDrive);
@@ -4054,7 +4054,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TeamDriveList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTeamDriveList();
       var od = api.TeamDriveList.fromJson(o.toJson());
       checkTeamDriveList(od as api.TeamDriveList);
@@ -4062,7 +4062,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserPicture', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserPicture();
       var od = api.UserPicture.fromJson(o.toJson());
       checkUserPicture(od as api.UserPicture);
@@ -4070,7 +4070,7 @@ void main() {
   });
 
   unittest.group('obj-schema-User', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
       checkUser(od as api.User);
@@ -4078,7 +4078,7 @@ void main() {
   });
 
   unittest.group('resource-AboutResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).about;
       var arg_includeSubscribed = true;
@@ -4144,20 +4144,17 @@ void main() {
         var resp = convert.json.encode(buildAbout());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(
-              includeSubscribed: arg_includeSubscribed,
-              maxChangeIdCount: arg_maxChangeIdCount,
-              startChangeId: arg_startChangeId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAbout(response as api.About);
-      })));
+      final response = await res.get(
+          includeSubscribed: arg_includeSubscribed,
+          maxChangeIdCount: arg_maxChangeIdCount,
+          startChangeId: arg_startChangeId,
+          $fields: arg_$fields);
+      checkAbout(response as api.About);
     });
   });
 
   unittest.group('resource-AppsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).apps;
       var arg_appId = 'foo';
@@ -4215,14 +4212,11 @@ void main() {
         var resp = convert.json.encode(buildApp());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_appId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApp(response as api.App);
-      })));
+      final response = await res.get(arg_appId, $fields: arg_$fields);
+      checkApp(response as api.App);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).apps;
       var arg_appFilterExtensions = 'foo';
@@ -4288,20 +4282,17 @@ void main() {
         var resp = convert.json.encode(buildAppList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              appFilterExtensions: arg_appFilterExtensions,
-              appFilterMimeTypes: arg_appFilterMimeTypes,
-              languageCode: arg_languageCode,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAppList(response as api.AppList);
-      })));
+      final response = await res.list(
+          appFilterExtensions: arg_appFilterExtensions,
+          appFilterMimeTypes: arg_appFilterMimeTypes,
+          languageCode: arg_languageCode,
+          $fields: arg_$fields);
+      checkAppList(response as api.AppList);
     });
   });
 
   unittest.group('resource-ChangesResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).changes;
       var arg_changeId = 'foo';
@@ -4379,19 +4370,16 @@ void main() {
         var resp = convert.json.encode(buildChange());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_changeId,
-              driveId: arg_driveId,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              teamDriveId: arg_teamDriveId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChange(response as api.Change);
-      })));
+      final response = await res.get(arg_changeId,
+          driveId: arg_driveId,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          teamDriveId: arg_teamDriveId,
+          $fields: arg_$fields);
+      checkChange(response as api.Change);
     });
 
-    unittest.test('method--getStartPageToken', () {
+    unittest.test('method--getStartPageToken', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).changes;
       var arg_driveId = 'foo';
@@ -4462,19 +4450,16 @@ void main() {
         var resp = convert.json.encode(buildStartPageToken());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getStartPageToken(
-              driveId: arg_driveId,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              teamDriveId: arg_teamDriveId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkStartPageToken(response as api.StartPageToken);
-      })));
+      final response = await res.getStartPageToken(
+          driveId: arg_driveId,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          teamDriveId: arg_teamDriveId,
+          $fields: arg_$fields);
+      checkStartPageToken(response as api.StartPageToken);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).changes;
       var arg_driveId = 'foo';
@@ -4595,29 +4580,26 @@ void main() {
         var resp = convert.json.encode(buildChangeList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              driveId: arg_driveId,
-              includeCorpusRemovals: arg_includeCorpusRemovals,
-              includeDeleted: arg_includeDeleted,
-              includeItemsFromAllDrives: arg_includeItemsFromAllDrives,
-              includePermissionsForView: arg_includePermissionsForView,
-              includeSubscribed: arg_includeSubscribed,
-              includeTeamDriveItems: arg_includeTeamDriveItems,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              spaces: arg_spaces,
-              startChangeId: arg_startChangeId,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              teamDriveId: arg_teamDriveId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChangeList(response as api.ChangeList);
-      })));
+      final response = await res.list(
+          driveId: arg_driveId,
+          includeCorpusRemovals: arg_includeCorpusRemovals,
+          includeDeleted: arg_includeDeleted,
+          includeItemsFromAllDrives: arg_includeItemsFromAllDrives,
+          includePermissionsForView: arg_includePermissionsForView,
+          includeSubscribed: arg_includeSubscribed,
+          includeTeamDriveItems: arg_includeTeamDriveItems,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          spaces: arg_spaces,
+          startChangeId: arg_startChangeId,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          teamDriveId: arg_teamDriveId,
+          $fields: arg_$fields);
+      checkChangeList(response as api.ChangeList);
     });
 
-    unittest.test('method--watch', () {
+    unittest.test('method--watch', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).changes;
       var arg_request = buildChannel();
@@ -4743,31 +4725,28 @@ void main() {
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .watch(arg_request,
-              driveId: arg_driveId,
-              includeCorpusRemovals: arg_includeCorpusRemovals,
-              includeDeleted: arg_includeDeleted,
-              includeItemsFromAllDrives: arg_includeItemsFromAllDrives,
-              includePermissionsForView: arg_includePermissionsForView,
-              includeSubscribed: arg_includeSubscribed,
-              includeTeamDriveItems: arg_includeTeamDriveItems,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              spaces: arg_spaces,
-              startChangeId: arg_startChangeId,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              teamDriveId: arg_teamDriveId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChannel(response as api.Channel);
-      })));
+      final response = await res.watch(arg_request,
+          driveId: arg_driveId,
+          includeCorpusRemovals: arg_includeCorpusRemovals,
+          includeDeleted: arg_includeDeleted,
+          includeItemsFromAllDrives: arg_includeItemsFromAllDrives,
+          includePermissionsForView: arg_includePermissionsForView,
+          includeSubscribed: arg_includeSubscribed,
+          includeTeamDriveItems: arg_includeTeamDriveItems,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          spaces: arg_spaces,
+          startChangeId: arg_startChangeId,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          teamDriveId: arg_teamDriveId,
+          $fields: arg_$fields);
+      checkChannel(response as api.Channel);
     });
   });
 
   unittest.group('resource-ChannelsResource', () {
-    unittest.test('method--stop', () {
+    unittest.test('method--stop', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).channels;
       var arg_request = buildChannel();
@@ -4823,14 +4802,12 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .stop(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.stop(arg_request, $fields: arg_$fields);
     });
   });
 
   unittest.group('resource-ChildrenResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).children;
       var arg_folderId = 'foo';
@@ -4908,14 +4885,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_folderId, arg_childId,
-              enforceSingleParent: arg_enforceSingleParent,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_folderId, arg_childId,
+          enforceSingleParent: arg_enforceSingleParent, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).children;
       var arg_folderId = 'foo';
@@ -4988,14 +4962,12 @@ void main() {
         var resp = convert.json.encode(buildChildReference());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_folderId, arg_childId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChildReference(response as api.ChildReference);
-      })));
+      final response =
+          await res.get(arg_folderId, arg_childId, $fields: arg_$fields);
+      checkChildReference(response as api.ChildReference);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).children;
       var arg_request = buildChildReference();
@@ -5081,18 +5053,15 @@ void main() {
         var resp = convert.json.encode(buildChildReference());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_folderId,
-              enforceSingleParent: arg_enforceSingleParent,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChildReference(response as api.ChildReference);
-      })));
+      final response = await res.insert(arg_request, arg_folderId,
+          enforceSingleParent: arg_enforceSingleParent,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          $fields: arg_$fields);
+      checkChildReference(response as api.ChildReference);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).children;
       var arg_folderId = 'foo';
@@ -5178,21 +5147,18 @@ void main() {
         var resp = convert.json.encode(buildChildList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_folderId,
-              maxResults: arg_maxResults,
-              orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
-              q: arg_q,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChildList(response as api.ChildList);
-      })));
+      final response = await res.list(arg_folderId,
+          maxResults: arg_maxResults,
+          orderBy: arg_orderBy,
+          pageToken: arg_pageToken,
+          q: arg_q,
+          $fields: arg_$fields);
+      checkChildList(response as api.ChildList);
     });
   });
 
   unittest.group('resource-CommentsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).comments;
       var arg_fileId = 'foo';
@@ -5265,12 +5231,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_fileId, arg_commentId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_fileId, arg_commentId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).comments;
       var arg_fileId = 'foo';
@@ -5348,15 +5312,12 @@ void main() {
         var resp = convert.json.encode(buildComment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_fileId, arg_commentId,
-              includeDeleted: arg_includeDeleted, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkComment(response as api.Comment);
-      })));
+      final response = await res.get(arg_fileId, arg_commentId,
+          includeDeleted: arg_includeDeleted, $fields: arg_$fields);
+      checkComment(response as api.Comment);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).comments;
       var arg_request = buildComment();
@@ -5427,14 +5388,12 @@ void main() {
         var resp = convert.json.encode(buildComment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_fileId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkComment(response as api.Comment);
-      })));
+      final response =
+          await res.insert(arg_request, arg_fileId, $fields: arg_$fields);
+      checkComment(response as api.Comment);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).comments;
       var arg_fileId = 'foo';
@@ -5520,19 +5479,16 @@ void main() {
         var resp = convert.json.encode(buildCommentList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_fileId,
-              includeDeleted: arg_includeDeleted,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              updatedMin: arg_updatedMin,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCommentList(response as api.CommentList);
-      })));
+      final response = await res.list(arg_fileId,
+          includeDeleted: arg_includeDeleted,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          updatedMin: arg_updatedMin,
+          $fields: arg_$fields);
+      checkCommentList(response as api.CommentList);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).comments;
       var arg_request = buildComment();
@@ -5610,14 +5566,12 @@ void main() {
         var resp = convert.json.encode(buildComment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_fileId, arg_commentId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkComment(response as api.Comment);
-      })));
+      final response = await res.patch(arg_request, arg_fileId, arg_commentId,
+          $fields: arg_$fields);
+      checkComment(response as api.Comment);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).comments;
       var arg_request = buildComment();
@@ -5695,16 +5649,14 @@ void main() {
         var resp = convert.json.encode(buildComment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_fileId, arg_commentId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkComment(response as api.Comment);
-      })));
+      final response = await res.update(arg_request, arg_fileId, arg_commentId,
+          $fields: arg_$fields);
+      checkComment(response as api.Comment);
     });
   });
 
   unittest.group('resource-DrivesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).drives;
       var arg_driveId = 'foo';
@@ -5762,12 +5714,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_driveId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_driveId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).drives;
       var arg_driveId = 'foo';
@@ -5830,16 +5780,12 @@ void main() {
         var resp = convert.json.encode(buildDrive());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_driveId,
-              useDomainAdminAccess: arg_useDomainAdminAccess,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDrive(response as api.Drive);
-      })));
+      final response = await res.get(arg_driveId,
+          useDomainAdminAccess: arg_useDomainAdminAccess, $fields: arg_$fields);
+      checkDrive(response as api.Drive);
     });
 
-    unittest.test('method--hide', () {
+    unittest.test('method--hide', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).drives;
       var arg_driveId = 'foo';
@@ -5905,14 +5851,11 @@ void main() {
         var resp = convert.json.encode(buildDrive());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .hide(arg_driveId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDrive(response as api.Drive);
-      })));
+      final response = await res.hide(arg_driveId, $fields: arg_$fields);
+      checkDrive(response as api.Drive);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).drives;
       var arg_request = buildDrive();
@@ -5973,14 +5916,12 @@ void main() {
         var resp = convert.json.encode(buildDrive());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_requestId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDrive(response as api.Drive);
-      })));
+      final response =
+          await res.insert(arg_request, arg_requestId, $fields: arg_$fields);
+      checkDrive(response as api.Drive);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).drives;
       var arg_maxResults = 42;
@@ -6051,19 +5992,16 @@ void main() {
         var resp = convert.json.encode(buildDriveList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              q: arg_q,
-              useDomainAdminAccess: arg_useDomainAdminAccess,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDriveList(response as api.DriveList);
-      })));
+      final response = await res.list(
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          q: arg_q,
+          useDomainAdminAccess: arg_useDomainAdminAccess,
+          $fields: arg_$fields);
+      checkDriveList(response as api.DriveList);
     });
 
-    unittest.test('method--unhide', () {
+    unittest.test('method--unhide', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).drives;
       var arg_driveId = 'foo';
@@ -6129,14 +6067,11 @@ void main() {
         var resp = convert.json.encode(buildDrive());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .unhide(arg_driveId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDrive(response as api.Drive);
-      })));
+      final response = await res.unhide(arg_driveId, $fields: arg_$fields);
+      checkDrive(response as api.Drive);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).drives;
       var arg_request = buildDrive();
@@ -6204,18 +6139,14 @@ void main() {
         var resp = convert.json.encode(buildDrive());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_driveId,
-              useDomainAdminAccess: arg_useDomainAdminAccess,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDrive(response as api.Drive);
-      })));
+      final response = await res.update(arg_request, arg_driveId,
+          useDomainAdminAccess: arg_useDomainAdminAccess, $fields: arg_$fields);
+      checkDrive(response as api.Drive);
     });
   });
 
   unittest.group('resource-FilesResource', () {
-    unittest.test('method--copy', () {
+    unittest.test('method--copy', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).files;
       var arg_request = buildFile();
@@ -6341,26 +6272,23 @@ void main() {
         var resp = convert.json.encode(buildFile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .copy(arg_request, arg_fileId,
-              convert: arg_convert,
-              enforceSingleParent: arg_enforceSingleParent,
-              includePermissionsForView: arg_includePermissionsForView,
-              ocr: arg_ocr,
-              ocrLanguage: arg_ocrLanguage,
-              pinned: arg_pinned,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              timedTextLanguage: arg_timedTextLanguage,
-              timedTextTrackName: arg_timedTextTrackName,
-              visibility: arg_visibility,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFile(response as api.File);
-      })));
+      final response = await res.copy(arg_request, arg_fileId,
+          convert: arg_convert,
+          enforceSingleParent: arg_enforceSingleParent,
+          includePermissionsForView: arg_includePermissionsForView,
+          ocr: arg_ocr,
+          ocrLanguage: arg_ocrLanguage,
+          pinned: arg_pinned,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          timedTextLanguage: arg_timedTextLanguage,
+          timedTextTrackName: arg_timedTextTrackName,
+          visibility: arg_visibility,
+          $fields: arg_$fields);
+      checkFile(response as api.File);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).files;
       var arg_fileId = 'foo';
@@ -6433,16 +6361,14 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_fileId,
-              enforceSingleParent: arg_enforceSingleParent,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_fileId,
+          enforceSingleParent: arg_enforceSingleParent,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--emptyTrash', () {
+    unittest.test('method--emptyTrash', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).files;
       var arg_enforceSingleParent = true;
@@ -6498,14 +6424,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .emptyTrash(
-              enforceSingleParent: arg_enforceSingleParent,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.emptyTrash(
+          enforceSingleParent: arg_enforceSingleParent, $fields: arg_$fields);
     });
 
-    unittest.test('method--export', () {
+    unittest.test('method--export', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -6579,12 +6502,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .export(arg_fileId, arg_mimeType, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.export(arg_fileId, arg_mimeType, $fields: arg_$fields);
     });
 
-    unittest.test('method--generateIds', () {
+    unittest.test('method--generateIds', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).files;
       var arg_maxResults = 42;
@@ -6645,17 +6566,12 @@ void main() {
         var resp = convert.json.encode(buildGeneratedIds());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .generateIds(
-              maxResults: arg_maxResults,
-              space: arg_space,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGeneratedIds(response as api.GeneratedIds);
-      })));
+      final response = await res.generateIds(
+          maxResults: arg_maxResults, space: arg_space, $fields: arg_$fields);
+      checkGeneratedIds(response as api.GeneratedIds);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -6751,22 +6667,19 @@ void main() {
         var resp = convert.json.encode(buildFile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_fileId,
-              acknowledgeAbuse: arg_acknowledgeAbuse,
-              includePermissionsForView: arg_includePermissionsForView,
-              projection: arg_projection,
-              revisionId: arg_revisionId,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              updateViewedDate: arg_updateViewedDate,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFile(response as api.File);
-      })));
+      final response = await res.get(arg_fileId,
+          acknowledgeAbuse: arg_acknowledgeAbuse,
+          includePermissionsForView: arg_includePermissionsForView,
+          projection: arg_projection,
+          revisionId: arg_revisionId,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          updateViewedDate: arg_updateViewedDate,
+          $fields: arg_$fields);
+      checkFile(response as api.File);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -6885,27 +6798,24 @@ void main() {
         var resp = convert.json.encode(buildFile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request,
-              convert: arg_convert,
-              enforceSingleParent: arg_enforceSingleParent,
-              includePermissionsForView: arg_includePermissionsForView,
-              ocr: arg_ocr,
-              ocrLanguage: arg_ocrLanguage,
-              pinned: arg_pinned,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              timedTextLanguage: arg_timedTextLanguage,
-              timedTextTrackName: arg_timedTextTrackName,
-              useContentAsIndexableText: arg_useContentAsIndexableText,
-              visibility: arg_visibility,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFile(response as api.File);
-      })));
+      final response = await res.insert(arg_request,
+          convert: arg_convert,
+          enforceSingleParent: arg_enforceSingleParent,
+          includePermissionsForView: arg_includePermissionsForView,
+          ocr: arg_ocr,
+          ocrLanguage: arg_ocrLanguage,
+          pinned: arg_pinned,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          timedTextLanguage: arg_timedTextLanguage,
+          timedTextTrackName: arg_timedTextTrackName,
+          useContentAsIndexableText: arg_useContentAsIndexableText,
+          visibility: arg_visibility,
+          $fields: arg_$fields);
+      checkFile(response as api.File);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).files;
       var arg_corpora = 'foo';
@@ -7031,30 +6941,27 @@ void main() {
         var resp = convert.json.encode(buildFileList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              corpora: arg_corpora,
-              corpus: arg_corpus,
-              driveId: arg_driveId,
-              includeItemsFromAllDrives: arg_includeItemsFromAllDrives,
-              includePermissionsForView: arg_includePermissionsForView,
-              includeTeamDriveItems: arg_includeTeamDriveItems,
-              maxResults: arg_maxResults,
-              orderBy: arg_orderBy,
-              pageToken: arg_pageToken,
-              projection: arg_projection,
-              q: arg_q,
-              spaces: arg_spaces,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              teamDriveId: arg_teamDriveId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFileList(response as api.FileList);
-      })));
+      final response = await res.list(
+          corpora: arg_corpora,
+          corpus: arg_corpus,
+          driveId: arg_driveId,
+          includeItemsFromAllDrives: arg_includeItemsFromAllDrives,
+          includePermissionsForView: arg_includePermissionsForView,
+          includeTeamDriveItems: arg_includeTeamDriveItems,
+          maxResults: arg_maxResults,
+          orderBy: arg_orderBy,
+          pageToken: arg_pageToken,
+          projection: arg_projection,
+          q: arg_q,
+          spaces: arg_spaces,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          teamDriveId: arg_teamDriveId,
+          $fields: arg_$fields);
+      checkFileList(response as api.FileList);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).files;
       var arg_request = buildFile();
@@ -7202,32 +7109,29 @@ void main() {
         var resp = convert.json.encode(buildFile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_fileId,
-              addParents: arg_addParents,
-              convert: arg_convert,
-              enforceSingleParent: arg_enforceSingleParent,
-              includePermissionsForView: arg_includePermissionsForView,
-              modifiedDateBehavior: arg_modifiedDateBehavior,
-              newRevision: arg_newRevision,
-              ocr: arg_ocr,
-              ocrLanguage: arg_ocrLanguage,
-              pinned: arg_pinned,
-              removeParents: arg_removeParents,
-              setModifiedDate: arg_setModifiedDate,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              timedTextLanguage: arg_timedTextLanguage,
-              timedTextTrackName: arg_timedTextTrackName,
-              updateViewedDate: arg_updateViewedDate,
-              useContentAsIndexableText: arg_useContentAsIndexableText,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFile(response as api.File);
-      })));
+      final response = await res.patch(arg_request, arg_fileId,
+          addParents: arg_addParents,
+          convert: arg_convert,
+          enforceSingleParent: arg_enforceSingleParent,
+          includePermissionsForView: arg_includePermissionsForView,
+          modifiedDateBehavior: arg_modifiedDateBehavior,
+          newRevision: arg_newRevision,
+          ocr: arg_ocr,
+          ocrLanguage: arg_ocrLanguage,
+          pinned: arg_pinned,
+          removeParents: arg_removeParents,
+          setModifiedDate: arg_setModifiedDate,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          timedTextLanguage: arg_timedTextLanguage,
+          timedTextTrackName: arg_timedTextTrackName,
+          updateViewedDate: arg_updateViewedDate,
+          useContentAsIndexableText: arg_useContentAsIndexableText,
+          $fields: arg_$fields);
+      checkFile(response as api.File);
     });
 
-    unittest.test('method--touch', () {
+    unittest.test('method--touch', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).files;
       var arg_fileId = 'foo';
@@ -7308,18 +7212,15 @@ void main() {
         var resp = convert.json.encode(buildFile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .touch(arg_fileId,
-              includePermissionsForView: arg_includePermissionsForView,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFile(response as api.File);
-      })));
+      final response = await res.touch(arg_fileId,
+          includePermissionsForView: arg_includePermissionsForView,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          $fields: arg_$fields);
+      checkFile(response as api.File);
     });
 
-    unittest.test('method--trash', () {
+    unittest.test('method--trash', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).files;
       var arg_fileId = 'foo';
@@ -7400,18 +7301,15 @@ void main() {
         var resp = convert.json.encode(buildFile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .trash(arg_fileId,
-              includePermissionsForView: arg_includePermissionsForView,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFile(response as api.File);
-      })));
+      final response = await res.trash(arg_fileId,
+          includePermissionsForView: arg_includePermissionsForView,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          $fields: arg_$fields);
+      checkFile(response as api.File);
     });
 
-    unittest.test('method--untrash', () {
+    unittest.test('method--untrash', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).files;
       var arg_fileId = 'foo';
@@ -7492,18 +7390,15 @@ void main() {
         var resp = convert.json.encode(buildFile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .untrash(arg_fileId,
-              includePermissionsForView: arg_includePermissionsForView,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFile(response as api.File);
-      })));
+      final response = await res.untrash(arg_fileId,
+          includePermissionsForView: arg_includePermissionsForView,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          $fields: arg_$fields);
+      checkFile(response as api.File);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -7654,32 +7549,29 @@ void main() {
         var resp = convert.json.encode(buildFile());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_fileId,
-              addParents: arg_addParents,
-              convert: arg_convert,
-              enforceSingleParent: arg_enforceSingleParent,
-              includePermissionsForView: arg_includePermissionsForView,
-              modifiedDateBehavior: arg_modifiedDateBehavior,
-              newRevision: arg_newRevision,
-              ocr: arg_ocr,
-              ocrLanguage: arg_ocrLanguage,
-              pinned: arg_pinned,
-              removeParents: arg_removeParents,
-              setModifiedDate: arg_setModifiedDate,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              timedTextLanguage: arg_timedTextLanguage,
-              timedTextTrackName: arg_timedTextTrackName,
-              updateViewedDate: arg_updateViewedDate,
-              useContentAsIndexableText: arg_useContentAsIndexableText,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFile(response as api.File);
-      })));
+      final response = await res.update(arg_request, arg_fileId,
+          addParents: arg_addParents,
+          convert: arg_convert,
+          enforceSingleParent: arg_enforceSingleParent,
+          includePermissionsForView: arg_includePermissionsForView,
+          modifiedDateBehavior: arg_modifiedDateBehavior,
+          newRevision: arg_newRevision,
+          ocr: arg_ocr,
+          ocrLanguage: arg_ocrLanguage,
+          pinned: arg_pinned,
+          removeParents: arg_removeParents,
+          setModifiedDate: arg_setModifiedDate,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          timedTextLanguage: arg_timedTextLanguage,
+          timedTextTrackName: arg_timedTextTrackName,
+          updateViewedDate: arg_updateViewedDate,
+          useContentAsIndexableText: arg_useContentAsIndexableText,
+          $fields: arg_$fields);
+      checkFile(response as api.File);
     });
 
-    unittest.test('method--watch', () {
+    unittest.test('method--watch', () async {
       // TODO: Implement tests for media upload;
       // TODO: Implement tests for media download;
 
@@ -7788,24 +7680,21 @@ void main() {
         var resp = convert.json.encode(buildChannel());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .watch(arg_request, arg_fileId,
-              acknowledgeAbuse: arg_acknowledgeAbuse,
-              includePermissionsForView: arg_includePermissionsForView,
-              projection: arg_projection,
-              revisionId: arg_revisionId,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              updateViewedDate: arg_updateViewedDate,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkChannel(response as api.Channel);
-      })));
+      final response = await res.watch(arg_request, arg_fileId,
+          acknowledgeAbuse: arg_acknowledgeAbuse,
+          includePermissionsForView: arg_includePermissionsForView,
+          projection: arg_projection,
+          revisionId: arg_revisionId,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          updateViewedDate: arg_updateViewedDate,
+          $fields: arg_$fields);
+      checkChannel(response as api.Channel);
     });
   });
 
   unittest.group('resource-ParentsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).parents;
       var arg_fileId = 'foo';
@@ -7883,14 +7772,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_fileId, arg_parentId,
-              enforceSingleParent: arg_enforceSingleParent,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_fileId, arg_parentId,
+          enforceSingleParent: arg_enforceSingleParent, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).parents;
       var arg_fileId = 'foo';
@@ -7963,14 +7849,12 @@ void main() {
         var resp = convert.json.encode(buildParentReference());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_fileId, arg_parentId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkParentReference(response as api.ParentReference);
-      })));
+      final response =
+          await res.get(arg_fileId, arg_parentId, $fields: arg_$fields);
+      checkParentReference(response as api.ParentReference);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).parents;
       var arg_request = buildParentReference();
@@ -8056,18 +7940,15 @@ void main() {
         var resp = convert.json.encode(buildParentReference());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_fileId,
-              enforceSingleParent: arg_enforceSingleParent,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkParentReference(response as api.ParentReference);
-      })));
+      final response = await res.insert(arg_request, arg_fileId,
+          enforceSingleParent: arg_enforceSingleParent,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          $fields: arg_$fields);
+      checkParentReference(response as api.ParentReference);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).parents;
       var arg_fileId = 'foo';
@@ -8133,16 +8014,13 @@ void main() {
         var resp = convert.json.encode(buildParentList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_fileId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkParentList(response as api.ParentList);
-      })));
+      final response = await res.list(arg_fileId, $fields: arg_$fields);
+      checkParentList(response as api.ParentList);
     });
   });
 
   unittest.group('resource-PermissionsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).permissions;
       var arg_fileId = 'foo';
@@ -8230,16 +8108,14 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_fileId, arg_permissionId,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              useDomainAdminAccess: arg_useDomainAdminAccess,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_fileId, arg_permissionId,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          useDomainAdminAccess: arg_useDomainAdminAccess,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).permissions;
       var arg_fileId = 'foo';
@@ -8327,18 +8203,15 @@ void main() {
         var resp = convert.json.encode(buildPermission());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_fileId, arg_permissionId,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              useDomainAdminAccess: arg_useDomainAdminAccess,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPermission(response as api.Permission);
-      })));
+      final response = await res.get(arg_fileId, arg_permissionId,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          useDomainAdminAccess: arg_useDomainAdminAccess,
+          $fields: arg_$fields);
+      checkPermission(response as api.Permission);
     });
 
-    unittest.test('method--getIdForEmail', () {
+    unittest.test('method--getIdForEmail', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).permissions;
       var arg_email = 'foo';
@@ -8396,14 +8269,11 @@ void main() {
         var resp = convert.json.encode(buildPermissionId());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIdForEmail(arg_email, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPermissionId(response as api.PermissionId);
-      })));
+      final response = await res.getIdForEmail(arg_email, $fields: arg_$fields);
+      checkPermissionId(response as api.PermissionId);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).permissions;
       var arg_request = buildPermission();
@@ -8509,22 +8379,19 @@ void main() {
         var resp = convert.json.encode(buildPermission());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_fileId,
-              emailMessage: arg_emailMessage,
-              enforceSingleParent: arg_enforceSingleParent,
-              moveToNewOwnersRoot: arg_moveToNewOwnersRoot,
-              sendNotificationEmails: arg_sendNotificationEmails,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              useDomainAdminAccess: arg_useDomainAdminAccess,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPermission(response as api.Permission);
-      })));
+      final response = await res.insert(arg_request, arg_fileId,
+          emailMessage: arg_emailMessage,
+          enforceSingleParent: arg_enforceSingleParent,
+          moveToNewOwnersRoot: arg_moveToNewOwnersRoot,
+          sendNotificationEmails: arg_sendNotificationEmails,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          useDomainAdminAccess: arg_useDomainAdminAccess,
+          $fields: arg_$fields);
+      checkPermission(response as api.Permission);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).permissions;
       var arg_fileId = 'foo';
@@ -8620,21 +8487,18 @@ void main() {
         var resp = convert.json.encode(buildPermissionList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_fileId,
-              includePermissionsForView: arg_includePermissionsForView,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              useDomainAdminAccess: arg_useDomainAdminAccess,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPermissionList(response as api.PermissionList);
-      })));
+      final response = await res.list(arg_fileId,
+          includePermissionsForView: arg_includePermissionsForView,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          useDomainAdminAccess: arg_useDomainAdminAccess,
+          $fields: arg_$fields);
+      checkPermissionList(response as api.PermissionList);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).permissions;
       var arg_request = buildPermission();
@@ -8737,20 +8601,18 @@ void main() {
         var resp = convert.json.encode(buildPermission());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_fileId, arg_permissionId,
-              removeExpiration: arg_removeExpiration,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              transferOwnership: arg_transferOwnership,
-              useDomainAdminAccess: arg_useDomainAdminAccess,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPermission(response as api.Permission);
-      })));
+      final response = await res.patch(
+          arg_request, arg_fileId, arg_permissionId,
+          removeExpiration: arg_removeExpiration,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          transferOwnership: arg_transferOwnership,
+          useDomainAdminAccess: arg_useDomainAdminAccess,
+          $fields: arg_$fields);
+      checkPermission(response as api.Permission);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).permissions;
       var arg_request = buildPermission();
@@ -8853,22 +8715,20 @@ void main() {
         var resp = convert.json.encode(buildPermission());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_fileId, arg_permissionId,
-              removeExpiration: arg_removeExpiration,
-              supportsAllDrives: arg_supportsAllDrives,
-              supportsTeamDrives: arg_supportsTeamDrives,
-              transferOwnership: arg_transferOwnership,
-              useDomainAdminAccess: arg_useDomainAdminAccess,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPermission(response as api.Permission);
-      })));
+      final response = await res.update(
+          arg_request, arg_fileId, arg_permissionId,
+          removeExpiration: arg_removeExpiration,
+          supportsAllDrives: arg_supportsAllDrives,
+          supportsTeamDrives: arg_supportsTeamDrives,
+          transferOwnership: arg_transferOwnership,
+          useDomainAdminAccess: arg_useDomainAdminAccess,
+          $fields: arg_$fields);
+      checkPermission(response as api.Permission);
     });
   });
 
   unittest.group('resource-PropertiesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).properties;
       var arg_fileId = 'foo';
@@ -8946,13 +8806,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_fileId, arg_propertyKey,
-              visibility: arg_visibility, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_fileId, arg_propertyKey,
+          visibility: arg_visibility, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).properties;
       var arg_fileId = 'foo';
@@ -9030,15 +8888,12 @@ void main() {
         var resp = convert.json.encode(buildProperty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_fileId, arg_propertyKey,
-              visibility: arg_visibility, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProperty(response as api.Property);
-      })));
+      final response = await res.get(arg_fileId, arg_propertyKey,
+          visibility: arg_visibility, $fields: arg_$fields);
+      checkProperty(response as api.Property);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).properties;
       var arg_request = buildProperty();
@@ -9109,14 +8964,12 @@ void main() {
         var resp = convert.json.encode(buildProperty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_fileId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProperty(response as api.Property);
-      })));
+      final response =
+          await res.insert(arg_request, arg_fileId, $fields: arg_$fields);
+      checkProperty(response as api.Property);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).properties;
       var arg_fileId = 'foo';
@@ -9182,14 +9035,11 @@ void main() {
         var resp = convert.json.encode(buildPropertyList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_fileId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPropertyList(response as api.PropertyList);
-      })));
+      final response = await res.list(arg_fileId, $fields: arg_$fields);
+      checkPropertyList(response as api.PropertyList);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).properties;
       var arg_request = buildProperty();
@@ -9272,15 +9122,12 @@ void main() {
         var resp = convert.json.encode(buildProperty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_fileId, arg_propertyKey,
-              visibility: arg_visibility, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProperty(response as api.Property);
-      })));
+      final response = await res.patch(arg_request, arg_fileId, arg_propertyKey,
+          visibility: arg_visibility, $fields: arg_$fields);
+      checkProperty(response as api.Property);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).properties;
       var arg_request = buildProperty();
@@ -9363,17 +9210,15 @@ void main() {
         var resp = convert.json.encode(buildProperty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_fileId, arg_propertyKey,
-              visibility: arg_visibility, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProperty(response as api.Property);
-      })));
+      final response = await res.update(
+          arg_request, arg_fileId, arg_propertyKey,
+          visibility: arg_visibility, $fields: arg_$fields);
+      checkProperty(response as api.Property);
     });
   });
 
   unittest.group('resource-RepliesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).replies;
       var arg_fileId = 'foo';
@@ -9461,12 +9306,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_fileId, arg_commentId, arg_replyId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_fileId, arg_commentId, arg_replyId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).replies;
       var arg_fileId = 'foo';
@@ -9559,15 +9403,12 @@ void main() {
         var resp = convert.json.encode(buildCommentReply());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_fileId, arg_commentId, arg_replyId,
-              includeDeleted: arg_includeDeleted, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCommentReply(response as api.CommentReply);
-      })));
+      final response = await res.get(arg_fileId, arg_commentId, arg_replyId,
+          includeDeleted: arg_includeDeleted, $fields: arg_$fields);
+      checkCommentReply(response as api.CommentReply);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).replies;
       var arg_request = buildCommentReply();
@@ -9653,14 +9494,12 @@ void main() {
         var resp = convert.json.encode(buildCommentReply());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_fileId, arg_commentId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCommentReply(response as api.CommentReply);
-      })));
+      final response = await res.insert(arg_request, arg_fileId, arg_commentId,
+          $fields: arg_$fields);
+      checkCommentReply(response as api.CommentReply);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).replies;
       var arg_fileId = 'foo';
@@ -9756,18 +9595,15 @@ void main() {
         var resp = convert.json.encode(buildCommentReplyList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_fileId, arg_commentId,
-              includeDeleted: arg_includeDeleted,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCommentReplyList(response as api.CommentReplyList);
-      })));
+      final response = await res.list(arg_fileId, arg_commentId,
+          includeDeleted: arg_includeDeleted,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkCommentReplyList(response as api.CommentReplyList);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).replies;
       var arg_request = buildCommentReply();
@@ -9860,15 +9696,13 @@ void main() {
         var resp = convert.json.encode(buildCommentReply());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_fileId, arg_commentId, arg_replyId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCommentReply(response as api.CommentReply);
-      })));
+      final response = await res.patch(
+          arg_request, arg_fileId, arg_commentId, arg_replyId,
+          $fields: arg_$fields);
+      checkCommentReply(response as api.CommentReply);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).replies;
       var arg_request = buildCommentReply();
@@ -9961,17 +9795,15 @@ void main() {
         var resp = convert.json.encode(buildCommentReply());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_fileId, arg_commentId, arg_replyId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCommentReply(response as api.CommentReply);
-      })));
+      final response = await res.update(
+          arg_request, arg_fileId, arg_commentId, arg_replyId,
+          $fields: arg_$fields);
+      checkCommentReply(response as api.CommentReply);
     });
   });
 
   unittest.group('resource-RevisionsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).revisions;
       var arg_fileId = 'foo';
@@ -10044,12 +9876,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_fileId, arg_revisionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_fileId, arg_revisionId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).revisions;
       var arg_fileId = 'foo';
@@ -10122,14 +9952,12 @@ void main() {
         var resp = convert.json.encode(buildRevision());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_fileId, arg_revisionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRevision(response as api.Revision);
-      })));
+      final response =
+          await res.get(arg_fileId, arg_revisionId, $fields: arg_$fields);
+      checkRevision(response as api.Revision);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).revisions;
       var arg_fileId = 'foo';
@@ -10205,17 +10033,14 @@ void main() {
         var resp = convert.json.encode(buildRevisionList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_fileId,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRevisionList(response as api.RevisionList);
-      })));
+      final response = await res.list(arg_fileId,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkRevisionList(response as api.RevisionList);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).revisions;
       var arg_request = buildRevision();
@@ -10293,14 +10118,12 @@ void main() {
         var resp = convert.json.encode(buildRevision());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_fileId, arg_revisionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRevision(response as api.Revision);
-      })));
+      final response = await res.patch(arg_request, arg_fileId, arg_revisionId,
+          $fields: arg_$fields);
+      checkRevision(response as api.Revision);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).revisions;
       var arg_request = buildRevision();
@@ -10378,16 +10201,14 @@ void main() {
         var resp = convert.json.encode(buildRevision());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_fileId, arg_revisionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRevision(response as api.Revision);
-      })));
+      final response = await res.update(arg_request, arg_fileId, arg_revisionId,
+          $fields: arg_$fields);
+      checkRevision(response as api.Revision);
     });
   });
 
   unittest.group('resource-TeamdrivesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).teamdrives;
       var arg_teamDriveId = 'foo';
@@ -10445,12 +10266,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_teamDriveId, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_teamDriveId, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).teamdrives;
       var arg_teamDriveId = 'foo';
@@ -10513,16 +10332,12 @@ void main() {
         var resp = convert.json.encode(buildTeamDrive());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_teamDriveId,
-              useDomainAdminAccess: arg_useDomainAdminAccess,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTeamDrive(response as api.TeamDrive);
-      })));
+      final response = await res.get(arg_teamDriveId,
+          useDomainAdminAccess: arg_useDomainAdminAccess, $fields: arg_$fields);
+      checkTeamDrive(response as api.TeamDrive);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).teamdrives;
       var arg_request = buildTeamDrive();
@@ -10583,14 +10398,12 @@ void main() {
         var resp = convert.json.encode(buildTeamDrive());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_requestId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTeamDrive(response as api.TeamDrive);
-      })));
+      final response =
+          await res.insert(arg_request, arg_requestId, $fields: arg_$fields);
+      checkTeamDrive(response as api.TeamDrive);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).teamdrives;
       var arg_maxResults = 42;
@@ -10661,19 +10474,16 @@ void main() {
         var resp = convert.json.encode(buildTeamDriveList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              q: arg_q,
-              useDomainAdminAccess: arg_useDomainAdminAccess,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTeamDriveList(response as api.TeamDriveList);
-      })));
+      final response = await res.list(
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          q: arg_q,
+          useDomainAdminAccess: arg_useDomainAdminAccess,
+          $fields: arg_$fields);
+      checkTeamDriveList(response as api.TeamDriveList);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.DriveApi(mock).teamdrives;
       var arg_request = buildTeamDrive();
@@ -10741,13 +10551,9 @@ void main() {
         var resp = convert.json.encode(buildTeamDrive());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_teamDriveId,
-              useDomainAdminAccess: arg_useDomainAdminAccess,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTeamDrive(response as api.TeamDrive);
-      })));
+      final response = await res.update(arg_request, arg_teamDriveId,
+          useDomainAdminAccess: arg_useDomainAdminAccess, $fields: arg_$fields);
+      checkTeamDrive(response as api.TeamDrive);
     });
   });
 }

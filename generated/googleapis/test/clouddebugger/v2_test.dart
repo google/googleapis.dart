@@ -1029,7 +1029,7 @@ void checkVariable(api.Variable o) {
 
 void main() {
   unittest.group('obj-schema-AliasContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAliasContext();
       var od = api.AliasContext.fromJson(o.toJson());
       checkAliasContext(od as api.AliasContext);
@@ -1037,7 +1037,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Breakpoint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBreakpoint();
       var od = api.Breakpoint.fromJson(o.toJson());
       checkBreakpoint(od as api.Breakpoint);
@@ -1045,7 +1045,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CloudRepoSourceContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCloudRepoSourceContext();
       var od = api.CloudRepoSourceContext.fromJson(o.toJson());
       checkCloudRepoSourceContext(od as api.CloudRepoSourceContext);
@@ -1053,7 +1053,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CloudWorkspaceId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCloudWorkspaceId();
       var od = api.CloudWorkspaceId.fromJson(o.toJson());
       checkCloudWorkspaceId(od as api.CloudWorkspaceId);
@@ -1061,7 +1061,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CloudWorkspaceSourceContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCloudWorkspaceSourceContext();
       var od = api.CloudWorkspaceSourceContext.fromJson(o.toJson());
       checkCloudWorkspaceSourceContext(od as api.CloudWorkspaceSourceContext);
@@ -1069,7 +1069,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Debuggee', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDebuggee();
       var od = api.Debuggee.fromJson(o.toJson());
       checkDebuggee(od as api.Debuggee);
@@ -1077,7 +1077,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1085,7 +1085,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExtendedSourceContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExtendedSourceContext();
       var od = api.ExtendedSourceContext.fromJson(o.toJson());
       checkExtendedSourceContext(od as api.ExtendedSourceContext);
@@ -1093,7 +1093,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FormatMessage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFormatMessage();
       var od = api.FormatMessage.fromJson(o.toJson());
       checkFormatMessage(od as api.FormatMessage);
@@ -1101,7 +1101,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GerritSourceContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGerritSourceContext();
       var od = api.GerritSourceContext.fromJson(o.toJson());
       checkGerritSourceContext(od as api.GerritSourceContext);
@@ -1109,7 +1109,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetBreakpointResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetBreakpointResponse();
       var od = api.GetBreakpointResponse.fromJson(o.toJson());
       checkGetBreakpointResponse(od as api.GetBreakpointResponse);
@@ -1117,7 +1117,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GitSourceContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGitSourceContext();
       var od = api.GitSourceContext.fromJson(o.toJson());
       checkGitSourceContext(od as api.GitSourceContext);
@@ -1125,7 +1125,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListActiveBreakpointsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListActiveBreakpointsResponse();
       var od = api.ListActiveBreakpointsResponse.fromJson(o.toJson());
       checkListActiveBreakpointsResponse(
@@ -1134,7 +1134,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListBreakpointsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListBreakpointsResponse();
       var od = api.ListBreakpointsResponse.fromJson(o.toJson());
       checkListBreakpointsResponse(od as api.ListBreakpointsResponse);
@@ -1142,7 +1142,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDebuggeesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDebuggeesResponse();
       var od = api.ListDebuggeesResponse.fromJson(o.toJson());
       checkListDebuggeesResponse(od as api.ListDebuggeesResponse);
@@ -1150,7 +1150,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ProjectRepoId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProjectRepoId();
       var od = api.ProjectRepoId.fromJson(o.toJson());
       checkProjectRepoId(od as api.ProjectRepoId);
@@ -1158,7 +1158,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RegisterDebuggeeRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRegisterDebuggeeRequest();
       var od = api.RegisterDebuggeeRequest.fromJson(o.toJson());
       checkRegisterDebuggeeRequest(od as api.RegisterDebuggeeRequest);
@@ -1166,7 +1166,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RegisterDebuggeeResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRegisterDebuggeeResponse();
       var od = api.RegisterDebuggeeResponse.fromJson(o.toJson());
       checkRegisterDebuggeeResponse(od as api.RegisterDebuggeeResponse);
@@ -1174,7 +1174,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RepoId', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepoId();
       var od = api.RepoId.fromJson(o.toJson());
       checkRepoId(od as api.RepoId);
@@ -1182,7 +1182,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetBreakpointResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetBreakpointResponse();
       var od = api.SetBreakpointResponse.fromJson(o.toJson());
       checkSetBreakpointResponse(od as api.SetBreakpointResponse);
@@ -1190,7 +1190,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SourceContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSourceContext();
       var od = api.SourceContext.fromJson(o.toJson());
       checkSourceContext(od as api.SourceContext);
@@ -1198,7 +1198,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SourceLocation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSourceLocation();
       var od = api.SourceLocation.fromJson(o.toJson());
       checkSourceLocation(od as api.SourceLocation);
@@ -1206,7 +1206,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StackFrame', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStackFrame();
       var od = api.StackFrame.fromJson(o.toJson());
       checkStackFrame(od as api.StackFrame);
@@ -1214,7 +1214,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StatusMessage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatusMessage();
       var od = api.StatusMessage.fromJson(o.toJson());
       checkStatusMessage(od as api.StatusMessage);
@@ -1222,7 +1222,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateActiveBreakpointRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateActiveBreakpointRequest();
       var od = api.UpdateActiveBreakpointRequest.fromJson(o.toJson());
       checkUpdateActiveBreakpointRequest(
@@ -1231,7 +1231,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateActiveBreakpointResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateActiveBreakpointResponse();
       var od = api.UpdateActiveBreakpointResponse.fromJson(o.toJson());
       checkUpdateActiveBreakpointResponse(
@@ -1240,7 +1240,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Variable', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVariable();
       var od = api.Variable.fromJson(o.toJson());
       checkVariable(od as api.Variable);
@@ -1248,7 +1248,7 @@ void main() {
   });
 
   unittest.group('resource-ControllerDebuggeesResource', () {
-    unittest.test('method--register', () {
+    unittest.test('method--register', () async {
       var mock = HttpServerMock();
       var res = api.CloudDebuggerApi(mock).controller.debuggees;
       var arg_request = buildRegisterDebuggeeRequest();
@@ -1299,16 +1299,13 @@ void main() {
         var resp = convert.json.encode(buildRegisterDebuggeeResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .register(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRegisterDebuggeeResponse(response as api.RegisterDebuggeeResponse);
-      })));
+      final response = await res.register(arg_request, $fields: arg_$fields);
+      checkRegisterDebuggeeResponse(response as api.RegisterDebuggeeResponse);
     });
   });
 
   unittest.group('resource-ControllerDebuggeesBreakpointsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudDebuggerApi(mock).controller.debuggees.breakpoints;
       var arg_debuggeeId = 'foo';
@@ -1384,19 +1381,16 @@ void main() {
         var resp = convert.json.encode(buildListActiveBreakpointsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_debuggeeId,
-              agentId: arg_agentId,
-              successOnTimeout: arg_successOnTimeout,
-              waitToken: arg_waitToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListActiveBreakpointsResponse(
-            response as api.ListActiveBreakpointsResponse);
-      })));
+      final response = await res.list(arg_debuggeeId,
+          agentId: arg_agentId,
+          successOnTimeout: arg_successOnTimeout,
+          waitToken: arg_waitToken,
+          $fields: arg_$fields);
+      checkListActiveBreakpointsResponse(
+          response as api.ListActiveBreakpointsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.CloudDebuggerApi(mock).controller.debuggees.breakpoints;
       var arg_request = buildUpdateActiveBreakpointRequest();
@@ -1470,17 +1464,15 @@ void main() {
         var resp = convert.json.encode(buildUpdateActiveBreakpointResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_debuggeeId, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUpdateActiveBreakpointResponse(
-            response as api.UpdateActiveBreakpointResponse);
-      })));
+      final response = await res.update(arg_request, arg_debuggeeId, arg_id,
+          $fields: arg_$fields);
+      checkUpdateActiveBreakpointResponse(
+          response as api.UpdateActiveBreakpointResponse);
     });
   });
 
   unittest.group('resource-DebuggerDebuggeesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudDebuggerApi(mock).debugger.debuggees;
       var arg_clientVersion = 'foo';
@@ -1541,20 +1533,17 @@ void main() {
         var resp = convert.json.encode(buildListDebuggeesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              clientVersion: arg_clientVersion,
-              includeInactive: arg_includeInactive,
-              project: arg_project,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDebuggeesResponse(response as api.ListDebuggeesResponse);
-      })));
+      final response = await res.list(
+          clientVersion: arg_clientVersion,
+          includeInactive: arg_includeInactive,
+          project: arg_project,
+          $fields: arg_$fields);
+      checkListDebuggeesResponse(response as api.ListDebuggeesResponse);
     });
   });
 
   unittest.group('resource-DebuggerDebuggeesBreakpointsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudDebuggerApi(mock).debugger.debuggees.breakpoints;
       var arg_debuggeeId = 'foo';
@@ -1627,15 +1616,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_debuggeeId, arg_breakpointId,
-              clientVersion: arg_clientVersion, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_debuggeeId, arg_breakpointId,
+          clientVersion: arg_clientVersion, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudDebuggerApi(mock).debugger.debuggees.breakpoints;
       var arg_debuggeeId = 'foo';
@@ -1708,15 +1694,12 @@ void main() {
         var resp = convert.json.encode(buildGetBreakpointResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_debuggeeId, arg_breakpointId,
-              clientVersion: arg_clientVersion, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetBreakpointResponse(response as api.GetBreakpointResponse);
-      })));
+      final response = await res.get(arg_debuggeeId, arg_breakpointId,
+          clientVersion: arg_clientVersion, $fields: arg_$fields);
+      checkGetBreakpointResponse(response as api.GetBreakpointResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudDebuggerApi(mock).debugger.debuggees.breakpoints;
       var arg_debuggeeId = 'foo';
@@ -1807,21 +1790,18 @@ void main() {
         var resp = convert.json.encode(buildListBreakpointsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_debuggeeId,
-              action_value: arg_action_value,
-              clientVersion: arg_clientVersion,
-              includeAllUsers: arg_includeAllUsers,
-              includeInactive: arg_includeInactive,
-              stripResults: arg_stripResults,
-              waitToken: arg_waitToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListBreakpointsResponse(response as api.ListBreakpointsResponse);
-      })));
+      final response = await res.list(arg_debuggeeId,
+          action_value: arg_action_value,
+          clientVersion: arg_clientVersion,
+          includeAllUsers: arg_includeAllUsers,
+          includeInactive: arg_includeInactive,
+          stripResults: arg_stripResults,
+          waitToken: arg_waitToken,
+          $fields: arg_$fields);
+      checkListBreakpointsResponse(response as api.ListBreakpointsResponse);
     });
 
-    unittest.test('method--set', () {
+    unittest.test('method--set', () async {
       var mock = HttpServerMock();
       var res = api.CloudDebuggerApi(mock).debugger.debuggees.breakpoints;
       var arg_request = buildBreakpoint();
@@ -1897,14 +1877,11 @@ void main() {
         var resp = convert.json.encode(buildSetBreakpointResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .set(arg_request, arg_debuggeeId,
-              canaryOption: arg_canaryOption,
-              clientVersion: arg_clientVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSetBreakpointResponse(response as api.SetBreakpointResponse);
-      })));
+      final response = await res.set(arg_request, arg_debuggeeId,
+          canaryOption: arg_canaryOption,
+          clientVersion: arg_clientVersion,
+          $fields: arg_$fields);
+      checkSetBreakpointResponse(response as api.SetBreakpointResponse);
     });
   });
 }

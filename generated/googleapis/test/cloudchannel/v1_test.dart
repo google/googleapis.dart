@@ -3607,7 +3607,7 @@ void checkGoogleTypePostalAddress(api.GoogleTypePostalAddress o) {
 void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1ActivateEntitlementRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ActivateEntitlementRequest();
       var od = api.GoogleCloudChannelV1ActivateEntitlementRequest.fromJson(
           o.toJson());
@@ -3617,7 +3617,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1AdminUser', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1AdminUser();
       var od = api.GoogleCloudChannelV1AdminUser.fromJson(o.toJson());
       checkGoogleCloudChannelV1AdminUser(
@@ -3626,7 +3626,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1AssociationInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1AssociationInfo();
       var od = api.GoogleCloudChannelV1AssociationInfo.fromJson(o.toJson());
       checkGoogleCloudChannelV1AssociationInfo(
@@ -3635,7 +3635,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1CancelEntitlementRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1CancelEntitlementRequest();
       var od =
           api.GoogleCloudChannelV1CancelEntitlementRequest.fromJson(o.toJson());
@@ -3645,7 +3645,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1ChangeOfferRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ChangeOfferRequest();
       var od = api.GoogleCloudChannelV1ChangeOfferRequest.fromJson(o.toJson());
       checkGoogleCloudChannelV1ChangeOfferRequest(
@@ -3654,7 +3654,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1ChangeParametersRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ChangeParametersRequest();
       var od =
           api.GoogleCloudChannelV1ChangeParametersRequest.fromJson(o.toJson());
@@ -3665,7 +3665,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudChannelV1ChangeRenewalSettingsRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ChangeRenewalSettingsRequest();
       var od = api.GoogleCloudChannelV1ChangeRenewalSettingsRequest.fromJson(
           o.toJson());
@@ -3675,7 +3675,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1ChannelPartnerLink', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ChannelPartnerLink();
       var od = api.GoogleCloudChannelV1ChannelPartnerLink.fromJson(o.toJson());
       checkGoogleCloudChannelV1ChannelPartnerLink(
@@ -3686,7 +3686,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest();
       var od = api.GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest
           .fromJson(o.toJson());
@@ -3698,7 +3698,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse();
       var od = api.GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse
@@ -3710,7 +3710,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudChannelV1CloudIdentityCustomerAccount',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1CloudIdentityCustomerAccount();
       var od = api.GoogleCloudChannelV1CloudIdentityCustomerAccount.fromJson(
           o.toJson());
@@ -3720,7 +3720,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1CloudIdentityInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1CloudIdentityInfo();
       var od = api.GoogleCloudChannelV1CloudIdentityInfo.fromJson(o.toJson());
       checkGoogleCloudChannelV1CloudIdentityInfo(
@@ -3729,7 +3729,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1CommitmentSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1CommitmentSettings();
       var od = api.GoogleCloudChannelV1CommitmentSettings.fromJson(o.toJson());
       checkGoogleCloudChannelV1CommitmentSettings(
@@ -3738,7 +3738,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1Constraints', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Constraints();
       var od = api.GoogleCloudChannelV1Constraints.fromJson(o.toJson());
       checkGoogleCloudChannelV1Constraints(
@@ -3747,7 +3747,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1ContactInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ContactInfo();
       var od = api.GoogleCloudChannelV1ContactInfo.fromJson(o.toJson());
       checkGoogleCloudChannelV1ContactInfo(
@@ -3756,7 +3756,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1CreateEntitlementRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1CreateEntitlementRequest();
       var od =
           api.GoogleCloudChannelV1CreateEntitlementRequest.fromJson(o.toJson());
@@ -3766,7 +3766,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1Customer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Customer();
       var od = api.GoogleCloudChannelV1Customer.fromJson(o.toJson());
       checkGoogleCloudChannelV1Customer(od as api.GoogleCloudChannelV1Customer);
@@ -3774,7 +3774,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1CustomerConstraints', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1CustomerConstraints();
       var od = api.GoogleCloudChannelV1CustomerConstraints.fromJson(o.toJson());
       checkGoogleCloudChannelV1CustomerConstraints(
@@ -3783,7 +3783,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1CustomerEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1CustomerEvent();
       var od = api.GoogleCloudChannelV1CustomerEvent.fromJson(o.toJson());
       checkGoogleCloudChannelV1CustomerEvent(
@@ -3792,7 +3792,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1EduData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1EduData();
       var od = api.GoogleCloudChannelV1EduData.fromJson(o.toJson());
       checkGoogleCloudChannelV1EduData(od as api.GoogleCloudChannelV1EduData);
@@ -3800,7 +3800,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1Entitlement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Entitlement();
       var od = api.GoogleCloudChannelV1Entitlement.fromJson(o.toJson());
       checkGoogleCloudChannelV1Entitlement(
@@ -3809,7 +3809,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1EntitlementEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1EntitlementEvent();
       var od = api.GoogleCloudChannelV1EntitlementEvent.fromJson(o.toJson());
       checkGoogleCloudChannelV1EntitlementEvent(
@@ -3819,7 +3819,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudChannelV1ListChannelPartnerLinksResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListChannelPartnerLinksResponse();
       var od = api.GoogleCloudChannelV1ListChannelPartnerLinksResponse.fromJson(
           o.toJson());
@@ -3829,7 +3829,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1ListCustomersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListCustomersResponse();
       var od =
           api.GoogleCloudChannelV1ListCustomersResponse.fromJson(o.toJson());
@@ -3839,7 +3839,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1ListEntitlementsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListEntitlementsResponse();
       var od =
           api.GoogleCloudChannelV1ListEntitlementsResponse.fromJson(o.toJson());
@@ -3849,7 +3849,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1ListOffersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListOffersResponse();
       var od = api.GoogleCloudChannelV1ListOffersResponse.fromJson(o.toJson());
       checkGoogleCloudChannelV1ListOffersResponse(
@@ -3858,7 +3858,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1ListProductsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListProductsResponse();
       var od =
           api.GoogleCloudChannelV1ListProductsResponse.fromJson(o.toJson());
@@ -3869,7 +3869,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudChannelV1ListPurchasableOffersResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListPurchasableOffersResponse();
       var od = api.GoogleCloudChannelV1ListPurchasableOffersResponse.fromJson(
           o.toJson());
@@ -3880,7 +3880,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudChannelV1ListPurchasableSkusResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListPurchasableSkusResponse();
       var od = api.GoogleCloudChannelV1ListPurchasableSkusResponse.fromJson(
           o.toJson());
@@ -3890,7 +3890,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1ListSkusResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListSkusResponse();
       var od = api.GoogleCloudChannelV1ListSkusResponse.fromJson(o.toJson());
       checkGoogleCloudChannelV1ListSkusResponse(
@@ -3899,7 +3899,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1ListSubscribersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListSubscribersResponse();
       var od =
           api.GoogleCloudChannelV1ListSubscribersResponse.fromJson(o.toJson());
@@ -3910,7 +3910,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudChannelV1ListTransferableOffersRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListTransferableOffersRequest();
       var od = api.GoogleCloudChannelV1ListTransferableOffersRequest.fromJson(
           o.toJson());
@@ -3921,7 +3921,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudChannelV1ListTransferableOffersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListTransferableOffersResponse();
       var od = api.GoogleCloudChannelV1ListTransferableOffersResponse.fromJson(
           o.toJson());
@@ -3932,7 +3932,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudChannelV1ListTransferableSkusRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListTransferableSkusRequest();
       var od = api.GoogleCloudChannelV1ListTransferableSkusRequest.fromJson(
           o.toJson());
@@ -3943,7 +3943,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudChannelV1ListTransferableSkusResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListTransferableSkusResponse();
       var od = api.GoogleCloudChannelV1ListTransferableSkusResponse.fromJson(
           o.toJson());
@@ -3953,7 +3953,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1MarketingInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1MarketingInfo();
       var od = api.GoogleCloudChannelV1MarketingInfo.fromJson(o.toJson());
       checkGoogleCloudChannelV1MarketingInfo(
@@ -3962,7 +3962,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1Media', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Media();
       var od = api.GoogleCloudChannelV1Media.fromJson(o.toJson());
       checkGoogleCloudChannelV1Media(od as api.GoogleCloudChannelV1Media);
@@ -3970,7 +3970,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1Offer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Offer();
       var od = api.GoogleCloudChannelV1Offer.fromJson(o.toJson());
       checkGoogleCloudChannelV1Offer(od as api.GoogleCloudChannelV1Offer);
@@ -3978,7 +3978,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1OperationMetadata();
       var od = api.GoogleCloudChannelV1OperationMetadata.fromJson(o.toJson());
       checkGoogleCloudChannelV1OperationMetadata(
@@ -3987,7 +3987,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1Parameter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Parameter();
       var od = api.GoogleCloudChannelV1Parameter.fromJson(o.toJson());
       checkGoogleCloudChannelV1Parameter(
@@ -3996,7 +3996,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1ParameterDefinition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ParameterDefinition();
       var od = api.GoogleCloudChannelV1ParameterDefinition.fromJson(o.toJson());
       checkGoogleCloudChannelV1ParameterDefinition(
@@ -4005,7 +4005,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1Period', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Period();
       var od = api.GoogleCloudChannelV1Period.fromJson(o.toJson());
       checkGoogleCloudChannelV1Period(od as api.GoogleCloudChannelV1Period);
@@ -4013,7 +4013,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1Plan', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Plan();
       var od = api.GoogleCloudChannelV1Plan.fromJson(o.toJson());
       checkGoogleCloudChannelV1Plan(od as api.GoogleCloudChannelV1Plan);
@@ -4021,7 +4021,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1Price', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Price();
       var od = api.GoogleCloudChannelV1Price.fromJson(o.toJson());
       checkGoogleCloudChannelV1Price(od as api.GoogleCloudChannelV1Price);
@@ -4029,7 +4029,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1PriceByResource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1PriceByResource();
       var od = api.GoogleCloudChannelV1PriceByResource.fromJson(o.toJson());
       checkGoogleCloudChannelV1PriceByResource(
@@ -4038,7 +4038,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1PricePhase', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1PricePhase();
       var od = api.GoogleCloudChannelV1PricePhase.fromJson(o.toJson());
       checkGoogleCloudChannelV1PricePhase(
@@ -4047,7 +4047,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1PriceTier', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1PriceTier();
       var od = api.GoogleCloudChannelV1PriceTier.fromJson(o.toJson());
       checkGoogleCloudChannelV1PriceTier(
@@ -4056,7 +4056,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1Product', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Product();
       var od = api.GoogleCloudChannelV1Product.fromJson(o.toJson());
       checkGoogleCloudChannelV1Product(od as api.GoogleCloudChannelV1Product);
@@ -4065,7 +4065,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudChannelV1ProvisionCloudIdentityRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ProvisionCloudIdentityRequest();
       var od = api.GoogleCloudChannelV1ProvisionCloudIdentityRequest.fromJson(
           o.toJson());
@@ -4075,7 +4075,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1ProvisionedService', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ProvisionedService();
       var od = api.GoogleCloudChannelV1ProvisionedService.fromJson(o.toJson());
       checkGoogleCloudChannelV1ProvisionedService(
@@ -4084,7 +4084,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1PurchasableOffer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1PurchasableOffer();
       var od = api.GoogleCloudChannelV1PurchasableOffer.fromJson(o.toJson());
       checkGoogleCloudChannelV1PurchasableOffer(
@@ -4093,7 +4093,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1PurchasableSku', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1PurchasableSku();
       var od = api.GoogleCloudChannelV1PurchasableSku.fromJson(o.toJson());
       checkGoogleCloudChannelV1PurchasableSku(
@@ -4103,7 +4103,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudChannelV1RegisterSubscriberRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1RegisterSubscriberRequest();
       var od = api.GoogleCloudChannelV1RegisterSubscriberRequest.fromJson(
           o.toJson());
@@ -4114,7 +4114,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudChannelV1RegisterSubscriberResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1RegisterSubscriberResponse();
       var od = api.GoogleCloudChannelV1RegisterSubscriberResponse.fromJson(
           o.toJson());
@@ -4124,7 +4124,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1RenewalSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1RenewalSettings();
       var od = api.GoogleCloudChannelV1RenewalSettings.fromJson(o.toJson());
       checkGoogleCloudChannelV1RenewalSettings(
@@ -4133,7 +4133,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1Sku', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Sku();
       var od = api.GoogleCloudChannelV1Sku.fromJson(o.toJson());
       checkGoogleCloudChannelV1Sku(od as api.GoogleCloudChannelV1Sku);
@@ -4141,7 +4141,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1StartPaidServiceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1StartPaidServiceRequest();
       var od =
           api.GoogleCloudChannelV1StartPaidServiceRequest.fromJson(o.toJson());
@@ -4151,7 +4151,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1SubscriberEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1SubscriberEvent();
       var od = api.GoogleCloudChannelV1SubscriberEvent.fromJson(o.toJson());
       checkGoogleCloudChannelV1SubscriberEvent(
@@ -4161,7 +4161,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudChannelV1SuspendEntitlementRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1SuspendEntitlementRequest();
       var od = api.GoogleCloudChannelV1SuspendEntitlementRequest.fromJson(
           o.toJson());
@@ -4171,7 +4171,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1TransferEligibility', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1TransferEligibility();
       var od = api.GoogleCloudChannelV1TransferEligibility.fromJson(o.toJson());
       checkGoogleCloudChannelV1TransferEligibility(
@@ -4181,7 +4181,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudChannelV1TransferEntitlementsRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1TransferEntitlementsRequest();
       var od = api.GoogleCloudChannelV1TransferEntitlementsRequest.fromJson(
           o.toJson());
@@ -4192,7 +4192,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudChannelV1TransferEntitlementsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1TransferEntitlementsResponse();
       var od = api.GoogleCloudChannelV1TransferEntitlementsResponse.fromJson(
           o.toJson());
@@ -4203,7 +4203,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudChannelV1TransferEntitlementsToGoogleRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1TransferEntitlementsToGoogleRequest();
       var od =
           api.GoogleCloudChannelV1TransferEntitlementsToGoogleRequest.fromJson(
@@ -4214,7 +4214,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1TransferableOffer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1TransferableOffer();
       var od = api.GoogleCloudChannelV1TransferableOffer.fromJson(o.toJson());
       checkGoogleCloudChannelV1TransferableOffer(
@@ -4223,7 +4223,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1TransferableSku', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1TransferableSku();
       var od = api.GoogleCloudChannelV1TransferableSku.fromJson(o.toJson());
       checkGoogleCloudChannelV1TransferableSku(
@@ -4232,7 +4232,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1TrialSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1TrialSettings();
       var od = api.GoogleCloudChannelV1TrialSettings.fromJson(o.toJson());
       checkGoogleCloudChannelV1TrialSettings(
@@ -4242,7 +4242,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudChannelV1UnregisterSubscriberRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1UnregisterSubscriberRequest();
       var od = api.GoogleCloudChannelV1UnregisterSubscriberRequest.fromJson(
           o.toJson());
@@ -4253,7 +4253,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudChannelV1UnregisterSubscriberResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1UnregisterSubscriberResponse();
       var od = api.GoogleCloudChannelV1UnregisterSubscriberResponse.fromJson(
           o.toJson());
@@ -4264,7 +4264,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudChannelV1UpdateChannelPartnerLinkRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1UpdateChannelPartnerLinkRequest();
       var od = api.GoogleCloudChannelV1UpdateChannelPartnerLinkRequest.fromJson(
           o.toJson());
@@ -4274,7 +4274,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1Value', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Value();
       var od = api.GoogleCloudChannelV1Value.fromJson(o.toJson());
       checkGoogleCloudChannelV1Value(od as api.GoogleCloudChannelV1Value);
@@ -4282,7 +4282,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1AssociationInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1AssociationInfo();
       var od =
           api.GoogleCloudChannelV1alpha1AssociationInfo.fromJson(o.toJson());
@@ -4292,7 +4292,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1CommitmentSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1CommitmentSettings();
       var od =
           api.GoogleCloudChannelV1alpha1CommitmentSettings.fromJson(o.toJson());
@@ -4302,7 +4302,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1CustomerEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1CustomerEvent();
       var od = api.GoogleCloudChannelV1alpha1CustomerEvent.fromJson(o.toJson());
       checkGoogleCloudChannelV1alpha1CustomerEvent(
@@ -4311,7 +4311,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1Entitlement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1Entitlement();
       var od = api.GoogleCloudChannelV1alpha1Entitlement.fromJson(o.toJson());
       checkGoogleCloudChannelV1alpha1Entitlement(
@@ -4320,7 +4320,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1EntitlementEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1EntitlementEvent();
       var od =
           api.GoogleCloudChannelV1alpha1EntitlementEvent.fromJson(o.toJson());
@@ -4330,7 +4330,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1OperationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1OperationMetadata();
       var od =
           api.GoogleCloudChannelV1alpha1OperationMetadata.fromJson(o.toJson());
@@ -4340,7 +4340,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1Parameter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1Parameter();
       var od = api.GoogleCloudChannelV1alpha1Parameter.fromJson(o.toJson());
       checkGoogleCloudChannelV1alpha1Parameter(
@@ -4349,7 +4349,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1Period', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1Period();
       var od = api.GoogleCloudChannelV1alpha1Period.fromJson(o.toJson());
       checkGoogleCloudChannelV1alpha1Period(
@@ -4358,7 +4358,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1ProvisionedService', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1ProvisionedService();
       var od =
           api.GoogleCloudChannelV1alpha1ProvisionedService.fromJson(o.toJson());
@@ -4368,7 +4368,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1RenewalSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1RenewalSettings();
       var od =
           api.GoogleCloudChannelV1alpha1RenewalSettings.fromJson(o.toJson());
@@ -4378,7 +4378,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1SubscriberEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1SubscriberEvent();
       var od =
           api.GoogleCloudChannelV1alpha1SubscriberEvent.fromJson(o.toJson());
@@ -4389,7 +4389,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudChannelV1alpha1TransferEntitlementsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1TransferEntitlementsResponse();
       var od =
           api.GoogleCloudChannelV1alpha1TransferEntitlementsResponse.fromJson(
@@ -4400,7 +4400,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1TrialSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1TrialSettings();
       var od = api.GoogleCloudChannelV1alpha1TrialSettings.fromJson(o.toJson());
       checkGoogleCloudChannelV1alpha1TrialSettings(
@@ -4409,7 +4409,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1Value', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1Value();
       var od = api.GoogleCloudChannelV1alpha1Value.fromJson(o.toJson());
       checkGoogleCloudChannelV1alpha1Value(
@@ -4418,7 +4418,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningCancelOperationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningCancelOperationRequest();
       var od = api.GoogleLongrunningCancelOperationRequest.fromJson(o.toJson());
       checkGoogleLongrunningCancelOperationRequest(
@@ -4427,7 +4427,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
       var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
       checkGoogleLongrunningListOperationsResponse(
@@ -4436,7 +4436,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
@@ -4444,7 +4444,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
@@ -4452,7 +4452,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleRpcStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
       var od = api.GoogleRpcStatus.fromJson(o.toJson());
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
@@ -4460,7 +4460,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypeMoney', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeMoney();
       var od = api.GoogleTypeMoney.fromJson(o.toJson());
       checkGoogleTypeMoney(od as api.GoogleTypeMoney);
@@ -4468,7 +4468,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleTypePostalAddress', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypePostalAddress();
       var od = api.GoogleTypePostalAddress.fromJson(o.toJson());
       checkGoogleTypePostalAddress(od as api.GoogleTypePostalAddress);
@@ -4476,7 +4476,7 @@ void main() {
   });
 
   unittest.group('resource-AccountsResource', () {
-    unittest.test('method--checkCloudIdentityAccountsExist', () {
+    unittest.test('method--checkCloudIdentityAccountsExist', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts;
       var arg_request =
@@ -4532,17 +4532,14 @@ void main() {
             buildGoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .checkCloudIdentityAccountsExist(arg_request, arg_parent,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse(
-            response as api
-                .GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse);
-      })));
+      final response = await res.checkCloudIdentityAccountsExist(
+          arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkGoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse(response
+          as api.GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse);
     });
 
-    unittest.test('method--listSubscribers', () {
+    unittest.test('method--listSubscribers', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts;
       var arg_account = 'foo';
@@ -4601,18 +4598,15 @@ void main() {
             .encode(buildGoogleCloudChannelV1ListSubscribersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listSubscribers(arg_account,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1ListSubscribersResponse(
-            response as api.GoogleCloudChannelV1ListSubscribersResponse);
-      })));
+      final response = await res.listSubscribers(arg_account,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudChannelV1ListSubscribersResponse(
+          response as api.GoogleCloudChannelV1ListSubscribersResponse);
     });
 
-    unittest.test('method--listTransferableOffers', () {
+    unittest.test('method--listTransferableOffers', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts;
       var arg_request =
@@ -4669,15 +4663,13 @@ void main() {
             .encode(buildGoogleCloudChannelV1ListTransferableOffersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listTransferableOffers(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1ListTransferableOffersResponse(
-            response as api.GoogleCloudChannelV1ListTransferableOffersResponse);
-      })));
+      final response = await res.listTransferableOffers(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkGoogleCloudChannelV1ListTransferableOffersResponse(
+          response as api.GoogleCloudChannelV1ListTransferableOffersResponse);
     });
 
-    unittest.test('method--listTransferableSkus', () {
+    unittest.test('method--listTransferableSkus', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts;
       var arg_request = buildGoogleCloudChannelV1ListTransferableSkusRequest();
@@ -4732,15 +4724,13 @@ void main() {
             .encode(buildGoogleCloudChannelV1ListTransferableSkusResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listTransferableSkus(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1ListTransferableSkusResponse(
-            response as api.GoogleCloudChannelV1ListTransferableSkusResponse);
-      })));
+      final response = await res.listTransferableSkus(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkGoogleCloudChannelV1ListTransferableSkusResponse(
+          response as api.GoogleCloudChannelV1ListTransferableSkusResponse);
     });
 
-    unittest.test('method--register', () {
+    unittest.test('method--register', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts;
       var arg_request = buildGoogleCloudChannelV1RegisterSubscriberRequest();
@@ -4795,15 +4785,13 @@ void main() {
             .encode(buildGoogleCloudChannelV1RegisterSubscriberResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .register(arg_request, arg_account, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1RegisterSubscriberResponse(
-            response as api.GoogleCloudChannelV1RegisterSubscriberResponse);
-      })));
+      final response =
+          await res.register(arg_request, arg_account, $fields: arg_$fields);
+      checkGoogleCloudChannelV1RegisterSubscriberResponse(
+          response as api.GoogleCloudChannelV1RegisterSubscriberResponse);
     });
 
-    unittest.test('method--unregister', () {
+    unittest.test('method--unregister', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts;
       var arg_request = buildGoogleCloudChannelV1UnregisterSubscriberRequest();
@@ -4858,17 +4846,15 @@ void main() {
             .encode(buildGoogleCloudChannelV1UnregisterSubscriberResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .unregister(arg_request, arg_account, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1UnregisterSubscriberResponse(
-            response as api.GoogleCloudChannelV1UnregisterSubscriberResponse);
-      })));
+      final response =
+          await res.unregister(arg_request, arg_account, $fields: arg_$fields);
+      checkGoogleCloudChannelV1UnregisterSubscriberResponse(
+          response as api.GoogleCloudChannelV1UnregisterSubscriberResponse);
     });
   });
 
   unittest.group('resource-AccountsChannelPartnerLinksResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.channelPartnerLinks;
       var arg_request = buildGoogleCloudChannelV1ChannelPartnerLink();
@@ -4923,15 +4909,13 @@ void main() {
             convert.json.encode(buildGoogleCloudChannelV1ChannelPartnerLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1ChannelPartnerLink(
-            response as api.GoogleCloudChannelV1ChannelPartnerLink);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudChannelV1ChannelPartnerLink(
+          response as api.GoogleCloudChannelV1ChannelPartnerLink);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.channelPartnerLinks;
       var arg_name = 'foo';
@@ -4985,15 +4969,13 @@ void main() {
             convert.json.encode(buildGoogleCloudChannelV1ChannelPartnerLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, view: arg_view, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1ChannelPartnerLink(
-            response as api.GoogleCloudChannelV1ChannelPartnerLink);
-      })));
+      final response =
+          await res.get(arg_name, view: arg_view, $fields: arg_$fields);
+      checkGoogleCloudChannelV1ChannelPartnerLink(
+          response as api.GoogleCloudChannelV1ChannelPartnerLink);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.channelPartnerLinks;
       var arg_parent = 'foo';
@@ -5057,19 +5039,16 @@ void main() {
             .encode(buildGoogleCloudChannelV1ListChannelPartnerLinksResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1ListChannelPartnerLinksResponse(response
-            as api.GoogleCloudChannelV1ListChannelPartnerLinksResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkGoogleCloudChannelV1ListChannelPartnerLinksResponse(
+          response as api.GoogleCloudChannelV1ListChannelPartnerLinksResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.channelPartnerLinks;
       var arg_request =
@@ -5126,17 +5105,15 @@ void main() {
             convert.json.encode(buildGoogleCloudChannelV1ChannelPartnerLink());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1ChannelPartnerLink(
-            response as api.GoogleCloudChannelV1ChannelPartnerLink);
-      })));
+      final response =
+          await res.patch(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudChannelV1ChannelPartnerLink(
+          response as api.GoogleCloudChannelV1ChannelPartnerLink);
     });
   });
 
   unittest.group('resource-AccountsCustomersResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers;
       var arg_request = buildGoogleCloudChannelV1Customer();
@@ -5190,15 +5167,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudChannelV1Customer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1Customer(
-            response as api.GoogleCloudChannelV1Customer);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudChannelV1Customer(
+          response as api.GoogleCloudChannelV1Customer);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers;
       var arg_name = 'foo';
@@ -5246,14 +5221,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers;
       var arg_name = 'foo';
@@ -5301,15 +5273,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudChannelV1Customer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1Customer(
-            response as api.GoogleCloudChannelV1Customer);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudChannelV1Customer(
+          response as api.GoogleCloudChannelV1Customer);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers;
       var arg_parent = 'foo';
@@ -5368,18 +5337,15 @@ void main() {
             .encode(buildGoogleCloudChannelV1ListCustomersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1ListCustomersResponse(
-            response as api.GoogleCloudChannelV1ListCustomersResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudChannelV1ListCustomersResponse(
+          response as api.GoogleCloudChannelV1ListCustomersResponse);
     });
 
-    unittest.test('method--listPurchasableOffers', () {
+    unittest.test('method--listPurchasableOffers', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers;
       var arg_customer = 'foo';
@@ -5458,23 +5424,19 @@ void main() {
             .encode(buildGoogleCloudChannelV1ListPurchasableOffersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listPurchasableOffers(arg_customer,
-              changeOfferPurchase_entitlement:
-                  arg_changeOfferPurchase_entitlement,
-              changeOfferPurchase_newSku: arg_changeOfferPurchase_newSku,
-              createEntitlementPurchase_sku: arg_createEntitlementPurchase_sku,
-              languageCode: arg_languageCode,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1ListPurchasableOffersResponse(
-            response as api.GoogleCloudChannelV1ListPurchasableOffersResponse);
-      })));
+      final response = await res.listPurchasableOffers(arg_customer,
+          changeOfferPurchase_entitlement: arg_changeOfferPurchase_entitlement,
+          changeOfferPurchase_newSku: arg_changeOfferPurchase_newSku,
+          createEntitlementPurchase_sku: arg_createEntitlementPurchase_sku,
+          languageCode: arg_languageCode,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudChannelV1ListPurchasableOffersResponse(
+          response as api.GoogleCloudChannelV1ListPurchasableOffersResponse);
     });
 
-    unittest.test('method--listPurchasableSkus', () {
+    unittest.test('method--listPurchasableSkus', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers;
       var arg_customer = 'foo';
@@ -5553,25 +5515,20 @@ void main() {
             .encode(buildGoogleCloudChannelV1ListPurchasableSkusResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listPurchasableSkus(arg_customer,
-              changeOfferPurchase_changeType:
-                  arg_changeOfferPurchase_changeType,
-              changeOfferPurchase_entitlement:
-                  arg_changeOfferPurchase_entitlement,
-              createEntitlementPurchase_product:
-                  arg_createEntitlementPurchase_product,
-              languageCode: arg_languageCode,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1ListPurchasableSkusResponse(
-            response as api.GoogleCloudChannelV1ListPurchasableSkusResponse);
-      })));
+      final response = await res.listPurchasableSkus(arg_customer,
+          changeOfferPurchase_changeType: arg_changeOfferPurchase_changeType,
+          changeOfferPurchase_entitlement: arg_changeOfferPurchase_entitlement,
+          createEntitlementPurchase_product:
+              arg_createEntitlementPurchase_product,
+          languageCode: arg_languageCode,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudChannelV1ListPurchasableSkusResponse(
+          response as api.GoogleCloudChannelV1ListPurchasableSkusResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers;
       var arg_request = buildGoogleCloudChannelV1Customer();
@@ -5630,16 +5587,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudChannelV1Customer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1Customer(
-            response as api.GoogleCloudChannelV1Customer);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleCloudChannelV1Customer(
+          response as api.GoogleCloudChannelV1Customer);
     });
 
-    unittest.test('method--provisionCloudIdentity', () {
+    unittest.test('method--provisionCloudIdentity', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers;
       var arg_request =
@@ -5695,16 +5649,14 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .provisionCloudIdentity(arg_request, arg_customer,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.provisionCloudIdentity(
+          arg_request, arg_customer,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--transferEntitlements', () {
+    unittest.test('method--transferEntitlements', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers;
       var arg_request = buildGoogleCloudChannelV1TransferEntitlementsRequest();
@@ -5758,15 +5710,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .transferEntitlements(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.transferEntitlements(arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--transferEntitlementsToGoogle', () {
+    unittest.test('method--transferEntitlementsToGoogle', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers;
       var arg_request =
@@ -5821,18 +5771,16 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .transferEntitlementsToGoogle(arg_request, arg_parent,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.transferEntitlementsToGoogle(
+          arg_request, arg_parent,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 
   unittest.group('resource-AccountsCustomersEntitlementsResource', () {
-    unittest.test('method--activate', () {
+    unittest.test('method--activate', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers.entitlements;
       var arg_request = buildGoogleCloudChannelV1ActivateEntitlementRequest();
@@ -5886,15 +5834,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .activate(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.activate(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers.entitlements;
       var arg_request = buildGoogleCloudChannelV1CancelEntitlementRequest();
@@ -5948,15 +5894,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--changeOffer', () {
+    unittest.test('method--changeOffer', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers.entitlements;
       var arg_request = buildGoogleCloudChannelV1ChangeOfferRequest();
@@ -6010,15 +5954,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .changeOffer(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.changeOffer(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--changeParameters', () {
+    unittest.test('method--changeParameters', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers.entitlements;
       var arg_request = buildGoogleCloudChannelV1ChangeParametersRequest();
@@ -6072,15 +6014,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .changeParameters(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.changeParameters(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--changeRenewalSettings', () {
+    unittest.test('method--changeRenewalSettings', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers.entitlements;
       var arg_request = buildGoogleCloudChannelV1ChangeRenewalSettingsRequest();
@@ -6134,15 +6074,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .changeRenewalSettings(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.changeRenewalSettings(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers.entitlements;
       var arg_request = buildGoogleCloudChannelV1CreateEntitlementRequest();
@@ -6196,15 +6134,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers.entitlements;
       var arg_name = 'foo';
@@ -6252,15 +6188,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleCloudChannelV1Entitlement());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1Entitlement(
-            response as api.GoogleCloudChannelV1Entitlement);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudChannelV1Entitlement(
+          response as api.GoogleCloudChannelV1Entitlement);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers.entitlements;
       var arg_parent = 'foo';
@@ -6319,18 +6252,15 @@ void main() {
             .encode(buildGoogleCloudChannelV1ListEntitlementsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1ListEntitlementsResponse(
-            response as api.GoogleCloudChannelV1ListEntitlementsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudChannelV1ListEntitlementsResponse(
+          response as api.GoogleCloudChannelV1ListEntitlementsResponse);
     });
 
-    unittest.test('method--startPaidService', () {
+    unittest.test('method--startPaidService', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers.entitlements;
       var arg_request = buildGoogleCloudChannelV1StartPaidServiceRequest();
@@ -6384,15 +6314,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .startPaidService(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.startPaidService(arg_request, arg_name,
+          $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--suspend', () {
+    unittest.test('method--suspend', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.customers.entitlements;
       var arg_request = buildGoogleCloudChannelV1SuspendEntitlementRequest();
@@ -6446,17 +6374,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .suspend(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.suspend(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
   });
 
   unittest.group('resource-AccountsOffersResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).accounts.offers;
       var arg_parent = 'foo';
@@ -6525,22 +6451,19 @@ void main() {
             convert.json.encode(buildGoogleCloudChannelV1ListOffersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              languageCode: arg_languageCode,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1ListOffersResponse(
-            response as api.GoogleCloudChannelV1ListOffersResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          languageCode: arg_languageCode,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudChannelV1ListOffersResponse(
+          response as api.GoogleCloudChannelV1ListOffersResponse);
     });
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--cancel', () {
+    unittest.test('method--cancel', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).operations;
       var arg_request = buildGoogleLongrunningCancelOperationRequest();
@@ -6594,14 +6517,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .cancel(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response =
+          await res.cancel(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).operations;
       var arg_name = 'foo';
@@ -6649,14 +6570,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).operations;
       var arg_name = 'foo';
@@ -6704,15 +6622,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).operations;
       var arg_name = 'foo';
@@ -6776,21 +6691,18 @@ void main() {
             convert.json.encode(buildGoogleLongrunningListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningListOperationsResponse(
-            response as api.GoogleLongrunningListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleLongrunningListOperationsResponse(
+          response as api.GoogleLongrunningListOperationsResponse);
     });
   });
 
   unittest.group('resource-ProductsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).products;
       var arg_account = 'foo';
@@ -6857,22 +6769,19 @@ void main() {
             .encode(buildGoogleCloudChannelV1ListProductsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              account: arg_account,
-              languageCode: arg_languageCode,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1ListProductsResponse(
-            response as api.GoogleCloudChannelV1ListProductsResponse);
-      })));
+      final response = await res.list(
+          account: arg_account,
+          languageCode: arg_languageCode,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudChannelV1ListProductsResponse(
+          response as api.GoogleCloudChannelV1ListProductsResponse);
     });
   });
 
   unittest.group('resource-ProductsSkusResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.CloudchannelApi(mock).products.skus;
       var arg_parent = 'foo';
@@ -6941,17 +6850,14 @@ void main() {
             convert.json.encode(buildGoogleCloudChannelV1ListSkusResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              account: arg_account,
-              languageCode: arg_languageCode,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudChannelV1ListSkusResponse(
-            response as api.GoogleCloudChannelV1ListSkusResponse);
-      })));
+      final response = await res.list(arg_parent,
+          account: arg_account,
+          languageCode: arg_languageCode,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudChannelV1ListSkusResponse(
+          response as api.GoogleCloudChannelV1ListSkusResponse);
     });
   });
 }

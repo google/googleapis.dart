@@ -257,7 +257,7 @@ void checkWebAsset(api.WebAsset o) {
 
 void main() {
   unittest.group('obj-schema-AndroidAppAsset', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAndroidAppAsset();
       var od = api.AndroidAppAsset.fromJson(o.toJson());
       checkAndroidAppAsset(od as api.AndroidAppAsset);
@@ -265,7 +265,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Asset', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAsset();
       var od = api.Asset.fromJson(o.toJson());
       checkAsset(od as api.Asset);
@@ -273,7 +273,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CertificateInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCertificateInfo();
       var od = api.CertificateInfo.fromJson(o.toJson());
       checkCertificateInfo(od as api.CertificateInfo);
@@ -281,7 +281,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CheckResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCheckResponse();
       var od = api.CheckResponse.fromJson(o.toJson());
       checkCheckResponse(od as api.CheckResponse);
@@ -289,7 +289,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListResponse();
       var od = api.ListResponse.fromJson(o.toJson());
       checkListResponse(od as api.ListResponse);
@@ -297,7 +297,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Statement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatement();
       var od = api.Statement.fromJson(o.toJson());
       checkStatement(od as api.Statement);
@@ -305,7 +305,7 @@ void main() {
   });
 
   unittest.group('obj-schema-WebAsset', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWebAsset();
       var od = api.WebAsset.fromJson(o.toJson());
       checkWebAsset(od as api.WebAsset);
@@ -313,7 +313,7 @@ void main() {
   });
 
   unittest.group('resource-AssetlinksResource', () {
-    unittest.test('method--check', () {
+    unittest.test('method--check', () async {
       var mock = HttpServerMock();
       var res = api.DigitalassetlinksApi(mock).assetlinks;
       var arg_relation = 'foo';
@@ -394,26 +394,23 @@ void main() {
         var resp = convert.json.encode(buildCheckResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .check(
-              relation: arg_relation,
-              source_androidApp_certificate_sha256Fingerprint:
-                  arg_source_androidApp_certificate_sha256Fingerprint,
-              source_androidApp_packageName: arg_source_androidApp_packageName,
-              source_web_site: arg_source_web_site,
-              target_androidApp_certificate_sha256Fingerprint:
-                  arg_target_androidApp_certificate_sha256Fingerprint,
-              target_androidApp_packageName: arg_target_androidApp_packageName,
-              target_web_site: arg_target_web_site,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCheckResponse(response as api.CheckResponse);
-      })));
+      final response = await res.check(
+          relation: arg_relation,
+          source_androidApp_certificate_sha256Fingerprint:
+              arg_source_androidApp_certificate_sha256Fingerprint,
+          source_androidApp_packageName: arg_source_androidApp_packageName,
+          source_web_site: arg_source_web_site,
+          target_androidApp_certificate_sha256Fingerprint:
+              arg_target_androidApp_certificate_sha256Fingerprint,
+          target_androidApp_packageName: arg_target_androidApp_packageName,
+          target_web_site: arg_target_web_site,
+          $fields: arg_$fields);
+      checkCheckResponse(response as api.CheckResponse);
     });
   });
 
   unittest.group('resource-StatementsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.DigitalassetlinksApi(mock).statements;
       var arg_relation = 'foo';
@@ -479,17 +476,14 @@ void main() {
         var resp = convert.json.encode(buildListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              relation: arg_relation,
-              source_androidApp_certificate_sha256Fingerprint:
-                  arg_source_androidApp_certificate_sha256Fingerprint,
-              source_androidApp_packageName: arg_source_androidApp_packageName,
-              source_web_site: arg_source_web_site,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListResponse(response as api.ListResponse);
-      })));
+      final response = await res.list(
+          relation: arg_relation,
+          source_androidApp_certificate_sha256Fingerprint:
+              arg_source_androidApp_certificate_sha256Fingerprint,
+          source_androidApp_packageName: arg_source_androidApp_packageName,
+          source_web_site: arg_source_web_site,
+          $fields: arg_$fields);
+      checkListResponse(response as api.ListResponse);
     });
   });
 }

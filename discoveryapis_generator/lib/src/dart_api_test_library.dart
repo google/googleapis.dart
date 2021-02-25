@@ -309,17 +309,16 @@ class ResourceTest extends TestHelper {
           }
 
           // Call the method & check the result
-          sb.write('      res.${method.name}(${args.join(', ')})'
-              '.then(unittest.expectAsync1(');
           if (method.returnType == null) {
-            sb.write('(_) {}');
+            sb.write('await res.${method.name}(${args.join(', ')});');
           } else {
+            sb.write(
+              'final response = await res.${method.name}(${args.join(', ')});',
+            );
+
             final t = apiTestLibrary.schemaTests[method.returnType];
-            sb.writeln('((response) {');
-            sb.writeln('        ${t.checkSchemaStatement('response')}');
-            sb.write('      })');
+            sb.writeln(t.checkSchemaStatement('response'));
           }
-          sb.writeln('));');
         });
         sb.writeln();
       }
@@ -1059,7 +1058,7 @@ class TestHelper {
   ) {
     final spaces = ' ' * indentation;
     buffer.write(spaces);
-    buffer.writeln("unittest.test('$name', () {");
+    buffer.writeln("unittest.test('$name', () async {");
     f();
     buffer.write(spaces);
     buffer.writeln('});');

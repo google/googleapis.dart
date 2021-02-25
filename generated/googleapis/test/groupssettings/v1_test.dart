@@ -351,7 +351,7 @@ void checkGroups(api.Groups o) {
 
 void main() {
   unittest.group('obj-schema-Groups', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGroups();
       var od = api.Groups.fromJson(o.toJson());
       checkGroups(od as api.Groups);
@@ -359,7 +359,7 @@ void main() {
   });
 
   unittest.group('resource-GroupsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.GroupssettingsApi(mock).groups;
       var arg_groupUniqueId = 'foo';
@@ -401,14 +401,11 @@ void main() {
         var resp = convert.json.encode(buildGroups());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_groupUniqueId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroups(response as api.Groups);
-      })));
+      final response = await res.get(arg_groupUniqueId, $fields: arg_$fields);
+      checkGroups(response as api.Groups);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.GroupssettingsApi(mock).groups;
       var arg_request = buildGroups();
@@ -455,14 +452,12 @@ void main() {
         var resp = convert.json.encode(buildGroups());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_groupUniqueId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroups(response as api.Groups);
-      })));
+      final response =
+          await res.patch(arg_request, arg_groupUniqueId, $fields: arg_$fields);
+      checkGroups(response as api.Groups);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.GroupssettingsApi(mock).groups;
       var arg_request = buildGroups();
@@ -509,11 +504,9 @@ void main() {
         var resp = convert.json.encode(buildGroups());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_groupUniqueId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGroups(response as api.Groups);
-      })));
+      final response = await res.update(arg_request, arg_groupUniqueId,
+          $fields: arg_$fields);
+      checkGroups(response as api.Groups);
     });
   });
 }

@@ -3073,7 +3073,7 @@ void checkUsersListResponse(api.UsersListResponse o) {
 
 void main() {
   unittest.group('obj-schema-AclEntry', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAclEntry();
       var od = api.AclEntry.fromJson(o.toJson());
       checkAclEntry(od as api.AclEntry);
@@ -3081,7 +3081,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApiWarning', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApiWarning();
       var od = api.ApiWarning.fromJson(o.toJson());
       checkApiWarning(od as api.ApiWarning);
@@ -3089,7 +3089,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BackupConfiguration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBackupConfiguration();
       var od = api.BackupConfiguration.fromJson(o.toJson());
       checkBackupConfiguration(od as api.BackupConfiguration);
@@ -3097,7 +3097,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BackupContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBackupContext();
       var od = api.BackupContext.fromJson(o.toJson());
       checkBackupContext(od as api.BackupContext);
@@ -3105,7 +3105,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BackupRetentionSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBackupRetentionSettings();
       var od = api.BackupRetentionSettings.fromJson(o.toJson());
       checkBackupRetentionSettings(od as api.BackupRetentionSettings);
@@ -3113,7 +3113,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BackupRun', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBackupRun();
       var od = api.BackupRun.fromJson(o.toJson());
       checkBackupRun(od as api.BackupRun);
@@ -3121,7 +3121,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BackupRunsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBackupRunsListResponse();
       var od = api.BackupRunsListResponse.fromJson(o.toJson());
       checkBackupRunsListResponse(od as api.BackupRunsListResponse);
@@ -3129,7 +3129,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BinLogCoordinates', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinLogCoordinates();
       var od = api.BinLogCoordinates.fromJson(o.toJson());
       checkBinLogCoordinates(od as api.BinLogCoordinates);
@@ -3137,7 +3137,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CloneContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCloneContext();
       var od = api.CloneContext.fromJson(o.toJson());
       checkCloneContext(od as api.CloneContext);
@@ -3145,7 +3145,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Database', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatabase();
       var od = api.Database.fromJson(o.toJson());
       checkDatabase(od as api.Database);
@@ -3153,7 +3153,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatabaseFlags', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatabaseFlags();
       var od = api.DatabaseFlags.fromJson(o.toJson());
       checkDatabaseFlags(od as api.DatabaseFlags);
@@ -3161,7 +3161,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatabaseInstanceFailoverReplica', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatabaseInstanceFailoverReplica();
       var od = api.DatabaseInstanceFailoverReplica.fromJson(o.toJson());
       checkDatabaseInstanceFailoverReplica(
@@ -3170,7 +3170,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatabaseInstance', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatabaseInstance();
       var od = api.DatabaseInstance.fromJson(o.toJson());
       checkDatabaseInstance(od as api.DatabaseInstance);
@@ -3178,7 +3178,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DatabasesListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDatabasesListResponse();
       var od = api.DatabasesListResponse.fromJson(o.toJson());
       checkDatabasesListResponse(od as api.DatabasesListResponse);
@@ -3186,7 +3186,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DemoteMasterConfiguration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDemoteMasterConfiguration();
       var od = api.DemoteMasterConfiguration.fromJson(o.toJson());
       checkDemoteMasterConfiguration(od as api.DemoteMasterConfiguration);
@@ -3194,7 +3194,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DemoteMasterContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDemoteMasterContext();
       var od = api.DemoteMasterContext.fromJson(o.toJson());
       checkDemoteMasterContext(od as api.DemoteMasterContext);
@@ -3202,7 +3202,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DemoteMasterMySqlReplicaConfiguration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDemoteMasterMySqlReplicaConfiguration();
       var od = api.DemoteMasterMySqlReplicaConfiguration.fromJson(o.toJson());
       checkDemoteMasterMySqlReplicaConfiguration(
@@ -3211,7 +3211,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DenyMaintenancePeriod', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDenyMaintenancePeriod();
       var od = api.DenyMaintenancePeriod.fromJson(o.toJson());
       checkDenyMaintenancePeriod(od as api.DenyMaintenancePeriod);
@@ -3219,7 +3219,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DiskEncryptionConfiguration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDiskEncryptionConfiguration();
       var od = api.DiskEncryptionConfiguration.fromJson(o.toJson());
       checkDiskEncryptionConfiguration(od as api.DiskEncryptionConfiguration);
@@ -3227,7 +3227,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DiskEncryptionStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDiskEncryptionStatus();
       var od = api.DiskEncryptionStatus.fromJson(o.toJson());
       checkDiskEncryptionStatus(od as api.DiskEncryptionStatus);
@@ -3235,7 +3235,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExportContextCsvExportOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExportContextCsvExportOptions();
       var od = api.ExportContextCsvExportOptions.fromJson(o.toJson());
       checkExportContextCsvExportOptions(
@@ -3245,7 +3245,7 @@ void main() {
 
   unittest.group('obj-schema-ExportContextSqlExportOptionsMysqlExportOptions',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExportContextSqlExportOptionsMysqlExportOptions();
       var od = api.ExportContextSqlExportOptionsMysqlExportOptions.fromJson(
           o.toJson());
@@ -3255,7 +3255,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExportContextSqlExportOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExportContextSqlExportOptions();
       var od = api.ExportContextSqlExportOptions.fromJson(o.toJson());
       checkExportContextSqlExportOptions(
@@ -3264,7 +3264,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExportContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExportContext();
       var od = api.ExportContext.fromJson(o.toJson());
       checkExportContext(od as api.ExportContext);
@@ -3272,7 +3272,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FailoverContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFailoverContext();
       var od = api.FailoverContext.fromJson(o.toJson());
       checkFailoverContext(od as api.FailoverContext);
@@ -3280,7 +3280,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Flag', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFlag();
       var od = api.Flag.fromJson(o.toJson());
       checkFlag(od as api.Flag);
@@ -3288,7 +3288,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FlagsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFlagsListResponse();
       var od = api.FlagsListResponse.fromJson(o.toJson());
       checkFlagsListResponse(od as api.FlagsListResponse);
@@ -3297,7 +3297,7 @@ void main() {
 
   unittest.group('obj-schema-ImportContextBakImportOptionsEncryptionOptions',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImportContextBakImportOptionsEncryptionOptions();
       var od = api.ImportContextBakImportOptionsEncryptionOptions.fromJson(
           o.toJson());
@@ -3307,7 +3307,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImportContextBakImportOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImportContextBakImportOptions();
       var od = api.ImportContextBakImportOptions.fromJson(o.toJson());
       checkImportContextBakImportOptions(
@@ -3316,7 +3316,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImportContextCsvImportOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImportContextCsvImportOptions();
       var od = api.ImportContextCsvImportOptions.fromJson(o.toJson());
       checkImportContextCsvImportOptions(
@@ -3325,7 +3325,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImportContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImportContext();
       var od = api.ImportContext.fromJson(o.toJson());
       checkImportContext(od as api.ImportContext);
@@ -3333,7 +3333,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InsightsConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInsightsConfig();
       var od = api.InsightsConfig.fromJson(o.toJson());
       checkInsightsConfig(od as api.InsightsConfig);
@@ -3341,7 +3341,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstancesCloneRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstancesCloneRequest();
       var od = api.InstancesCloneRequest.fromJson(o.toJson());
       checkInstancesCloneRequest(od as api.InstancesCloneRequest);
@@ -3349,7 +3349,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstancesDemoteMasterRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstancesDemoteMasterRequest();
       var od = api.InstancesDemoteMasterRequest.fromJson(o.toJson());
       checkInstancesDemoteMasterRequest(od as api.InstancesDemoteMasterRequest);
@@ -3357,7 +3357,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstancesExportRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstancesExportRequest();
       var od = api.InstancesExportRequest.fromJson(o.toJson());
       checkInstancesExportRequest(od as api.InstancesExportRequest);
@@ -3365,7 +3365,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstancesFailoverRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstancesFailoverRequest();
       var od = api.InstancesFailoverRequest.fromJson(o.toJson());
       checkInstancesFailoverRequest(od as api.InstancesFailoverRequest);
@@ -3373,7 +3373,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstancesImportRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstancesImportRequest();
       var od = api.InstancesImportRequest.fromJson(o.toJson());
       checkInstancesImportRequest(od as api.InstancesImportRequest);
@@ -3381,7 +3381,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstancesListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstancesListResponse();
       var od = api.InstancesListResponse.fromJson(o.toJson());
       checkInstancesListResponse(od as api.InstancesListResponse);
@@ -3389,7 +3389,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstancesListServerCasResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstancesListServerCasResponse();
       var od = api.InstancesListServerCasResponse.fromJson(o.toJson());
       checkInstancesListServerCasResponse(
@@ -3398,7 +3398,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstancesRestoreBackupRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstancesRestoreBackupRequest();
       var od = api.InstancesRestoreBackupRequest.fromJson(o.toJson());
       checkInstancesRestoreBackupRequest(
@@ -3407,7 +3407,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstancesRotateServerCaRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstancesRotateServerCaRequest();
       var od = api.InstancesRotateServerCaRequest.fromJson(o.toJson());
       checkInstancesRotateServerCaRequest(
@@ -3416,7 +3416,7 @@ void main() {
   });
 
   unittest.group('obj-schema-InstancesTruncateLogRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstancesTruncateLogRequest();
       var od = api.InstancesTruncateLogRequest.fromJson(o.toJson());
       checkInstancesTruncateLogRequest(od as api.InstancesTruncateLogRequest);
@@ -3424,7 +3424,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IpConfiguration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIpConfiguration();
       var od = api.IpConfiguration.fromJson(o.toJson());
       checkIpConfiguration(od as api.IpConfiguration);
@@ -3432,7 +3432,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IpMapping', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIpMapping();
       var od = api.IpMapping.fromJson(o.toJson());
       checkIpMapping(od as api.IpMapping);
@@ -3440,7 +3440,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LocationPreference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocationPreference();
       var od = api.LocationPreference.fromJson(o.toJson());
       checkLocationPreference(od as api.LocationPreference);
@@ -3448,7 +3448,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MaintenanceWindow', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMaintenanceWindow();
       var od = api.MaintenanceWindow.fromJson(o.toJson());
       checkMaintenanceWindow(od as api.MaintenanceWindow);
@@ -3456,7 +3456,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MySqlReplicaConfiguration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMySqlReplicaConfiguration();
       var od = api.MySqlReplicaConfiguration.fromJson(o.toJson());
       checkMySqlReplicaConfiguration(od as api.MySqlReplicaConfiguration);
@@ -3464,7 +3464,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OnPremisesConfiguration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOnPremisesConfiguration();
       var od = api.OnPremisesConfiguration.fromJson(o.toJson());
       checkOnPremisesConfiguration(od as api.OnPremisesConfiguration);
@@ -3472,7 +3472,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -3480,7 +3480,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationError();
       var od = api.OperationError.fromJson(o.toJson());
       checkOperationError(od as api.OperationError);
@@ -3488,7 +3488,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationErrors', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationErrors();
       var od = api.OperationErrors.fromJson(o.toJson());
       checkOperationErrors(od as api.OperationErrors);
@@ -3496,7 +3496,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationsListResponse();
       var od = api.OperationsListResponse.fromJson(o.toJson());
       checkOperationsListResponse(od as api.OperationsListResponse);
@@ -3504,7 +3504,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReplicaConfiguration', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReplicaConfiguration();
       var od = api.ReplicaConfiguration.fromJson(o.toJson());
       checkReplicaConfiguration(od as api.ReplicaConfiguration);
@@ -3512,7 +3512,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Reschedule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReschedule();
       var od = api.Reschedule.fromJson(o.toJson());
       checkReschedule(od as api.Reschedule);
@@ -3520,7 +3520,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RestoreBackupContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRestoreBackupContext();
       var od = api.RestoreBackupContext.fromJson(o.toJson());
       checkRestoreBackupContext(od as api.RestoreBackupContext);
@@ -3528,7 +3528,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RotateServerCaContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRotateServerCaContext();
       var od = api.RotateServerCaContext.fromJson(o.toJson());
       checkRotateServerCaContext(od as api.RotateServerCaContext);
@@ -3536,7 +3536,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Settings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSettings();
       var od = api.Settings.fromJson(o.toJson());
       checkSettings(od as api.Settings);
@@ -3544,7 +3544,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SqlActiveDirectoryConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSqlActiveDirectoryConfig();
       var od = api.SqlActiveDirectoryConfig.fromJson(o.toJson());
       checkSqlActiveDirectoryConfig(od as api.SqlActiveDirectoryConfig);
@@ -3552,7 +3552,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SqlExternalSyncSettingError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSqlExternalSyncSettingError();
       var od = api.SqlExternalSyncSettingError.fromJson(o.toJson());
       checkSqlExternalSyncSettingError(od as api.SqlExternalSyncSettingError);
@@ -3560,7 +3560,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SqlInstancesRescheduleMaintenanceRequestBody', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSqlInstancesRescheduleMaintenanceRequestBody();
       var od =
           api.SqlInstancesRescheduleMaintenanceRequestBody.fromJson(o.toJson());
@@ -3571,7 +3571,7 @@ void main() {
 
   unittest.group('obj-schema-SqlInstancesVerifyExternalSyncSettingsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSqlInstancesVerifyExternalSyncSettingsResponse();
       var od = api.SqlInstancesVerifyExternalSyncSettingsResponse.fromJson(
           o.toJson());
@@ -3581,7 +3581,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SqlScheduledMaintenance', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSqlScheduledMaintenance();
       var od = api.SqlScheduledMaintenance.fromJson(o.toJson());
       checkSqlScheduledMaintenance(od as api.SqlScheduledMaintenance);
@@ -3589,7 +3589,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SqlServerDatabaseDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSqlServerDatabaseDetails();
       var od = api.SqlServerDatabaseDetails.fromJson(o.toJson());
       checkSqlServerDatabaseDetails(od as api.SqlServerDatabaseDetails);
@@ -3597,7 +3597,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SqlServerUserDetails', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSqlServerUserDetails();
       var od = api.SqlServerUserDetails.fromJson(o.toJson());
       checkSqlServerUserDetails(od as api.SqlServerUserDetails);
@@ -3605,7 +3605,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SslCert', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSslCert();
       var od = api.SslCert.fromJson(o.toJson());
       checkSslCert(od as api.SslCert);
@@ -3613,7 +3613,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SslCertDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSslCertDetail();
       var od = api.SslCertDetail.fromJson(o.toJson());
       checkSslCertDetail(od as api.SslCertDetail);
@@ -3621,7 +3621,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SslCertsCreateEphemeralRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSslCertsCreateEphemeralRequest();
       var od = api.SslCertsCreateEphemeralRequest.fromJson(o.toJson());
       checkSslCertsCreateEphemeralRequest(
@@ -3630,7 +3630,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SslCertsInsertRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSslCertsInsertRequest();
       var od = api.SslCertsInsertRequest.fromJson(o.toJson());
       checkSslCertsInsertRequest(od as api.SslCertsInsertRequest);
@@ -3638,7 +3638,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SslCertsInsertResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSslCertsInsertResponse();
       var od = api.SslCertsInsertResponse.fromJson(o.toJson());
       checkSslCertsInsertResponse(od as api.SslCertsInsertResponse);
@@ -3646,7 +3646,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SslCertsListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSslCertsListResponse();
       var od = api.SslCertsListResponse.fromJson(o.toJson());
       checkSslCertsListResponse(od as api.SslCertsListResponse);
@@ -3654,7 +3654,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Tier', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTier();
       var od = api.Tier.fromJson(o.toJson());
       checkTier(od as api.Tier);
@@ -3662,7 +3662,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TiersListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTiersListResponse();
       var od = api.TiersListResponse.fromJson(o.toJson());
       checkTiersListResponse(od as api.TiersListResponse);
@@ -3670,7 +3670,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TruncateLogContext', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTruncateLogContext();
       var od = api.TruncateLogContext.fromJson(o.toJson());
       checkTruncateLogContext(od as api.TruncateLogContext);
@@ -3678,7 +3678,7 @@ void main() {
   });
 
   unittest.group('obj-schema-User', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
       checkUser(od as api.User);
@@ -3686,7 +3686,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UsersListResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUsersListResponse();
       var od = api.UsersListResponse.fromJson(o.toJson());
       checkUsersListResponse(od as api.UsersListResponse);
@@ -3694,7 +3694,7 @@ void main() {
   });
 
   unittest.group('resource-BackupRunsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).backupRuns;
       var arg_project = 'foo';
@@ -3777,14 +3777,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_project, arg_instance, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_project, arg_instance, arg_id,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).backupRuns;
       var arg_project = 'foo';
@@ -3867,14 +3865,12 @@ void main() {
         var resp = convert.json.encode(buildBackupRun());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_project, arg_instance, arg_id, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBackupRun(response as api.BackupRun);
-      })));
+      final response = await res.get(arg_project, arg_instance, arg_id,
+          $fields: arg_$fields);
+      checkBackupRun(response as api.BackupRun);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).backupRuns;
       var arg_request = buildBackupRun();
@@ -3955,14 +3951,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.insert(arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).backupRuns;
       var arg_project = 'foo';
@@ -4048,19 +4042,16 @@ void main() {
         var resp = convert.json.encode(buildBackupRunsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_project, arg_instance,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBackupRunsListResponse(response as api.BackupRunsListResponse);
-      })));
+      final response = await res.list(arg_project, arg_instance,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkBackupRunsListResponse(response as api.BackupRunsListResponse);
     });
   });
 
   unittest.group('resource-DatabasesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).databases;
       var arg_project = 'foo';
@@ -4143,14 +4134,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_project, arg_instance, arg_database, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_project, arg_instance, arg_database,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).databases;
       var arg_project = 'foo';
@@ -4233,14 +4222,12 @@ void main() {
         var resp = convert.json.encode(buildDatabase());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_project, arg_instance, arg_database, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDatabase(response as api.Database);
-      })));
+      final response = await res.get(arg_project, arg_instance, arg_database,
+          $fields: arg_$fields);
+      checkDatabase(response as api.Database);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).databases;
       var arg_request = buildDatabase();
@@ -4321,14 +4308,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.insert(arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).databases;
       var arg_project = 'foo';
@@ -4404,14 +4389,12 @@ void main() {
         var resp = convert.json.encode(buildDatabasesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDatabasesListResponse(response as api.DatabasesListResponse);
-      })));
+      final response =
+          await res.list(arg_project, arg_instance, $fields: arg_$fields);
+      checkDatabasesListResponse(response as api.DatabasesListResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).databases;
       var arg_request = buildDatabase();
@@ -4499,15 +4482,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_project, arg_instance, arg_database,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(
+          arg_request, arg_project, arg_instance, arg_database,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).databases;
       var arg_request = buildDatabase();
@@ -4595,17 +4576,15 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_project, arg_instance, arg_database,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.update(
+          arg_request, arg_project, arg_instance, arg_database,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-FlagsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).flags;
       var arg_databaseVersion = 'foo';
@@ -4656,16 +4635,14 @@ void main() {
         var resp = convert.json.encode(buildFlagsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(databaseVersion: arg_databaseVersion, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFlagsListResponse(response as api.FlagsListResponse);
-      })));
+      final response = await res.list(
+          databaseVersion: arg_databaseVersion, $fields: arg_$fields);
+      checkFlagsListResponse(response as api.FlagsListResponse);
     });
   });
 
   unittest.group('resource-InstancesResource', () {
-    unittest.test('method--addServerCa', () {
+    unittest.test('method--addServerCa', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
@@ -4741,14 +4718,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .addServerCa(arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.addServerCa(arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--clone', () {
+    unittest.test('method--clone', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildInstancesCloneRequest();
@@ -4829,14 +4804,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .clone(arg_request, arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.clone(arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
@@ -4904,14 +4877,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.delete(arg_project, arg_instance, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--demoteMaster', () {
+    unittest.test('method--demoteMaster', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildInstancesDemoteMasterRequest();
@@ -4993,15 +4964,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .demoteMaster(arg_request, arg_project, arg_instance,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.demoteMaster(
+          arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--export', () {
+    unittest.test('method--export', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildInstancesExportRequest();
@@ -5082,14 +5051,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .export(arg_request, arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.export(arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--failover', () {
+    unittest.test('method--failover', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildInstancesFailoverRequest();
@@ -5170,15 +5137,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .failover(arg_request, arg_project, arg_instance,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.failover(
+          arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
@@ -5246,14 +5211,12 @@ void main() {
         var resp = convert.json.encode(buildDatabaseInstance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDatabaseInstance(response as api.DatabaseInstance);
-      })));
+      final response =
+          await res.get(arg_project, arg_instance, $fields: arg_$fields);
+      checkDatabaseInstance(response as api.DatabaseInstance);
     });
 
-    unittest.test('method--import', () {
+    unittest.test('method--import', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildInstancesImportRequest();
@@ -5334,14 +5297,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .import(arg_request, arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.import(arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildDatabaseInstance();
@@ -5407,14 +5368,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_project, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.insert(arg_request, arg_project, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
@@ -5490,18 +5449,15 @@ void main() {
         var resp = convert.json.encode(buildInstancesListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_project,
-              filter: arg_filter,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInstancesListResponse(response as api.InstancesListResponse);
-      })));
+      final response = await res.list(arg_project,
+          filter: arg_filter,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkInstancesListResponse(response as api.InstancesListResponse);
     });
 
-    unittest.test('method--listServerCas', () {
+    unittest.test('method--listServerCas', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
@@ -5577,15 +5533,13 @@ void main() {
         var resp = convert.json.encode(buildInstancesListServerCasResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listServerCas(arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInstancesListServerCasResponse(
-            response as api.InstancesListServerCasResponse);
-      })));
+      final response = await res.listServerCas(arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkInstancesListServerCasResponse(
+          response as api.InstancesListServerCasResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildDatabaseInstance();
@@ -5658,14 +5612,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--promoteReplica', () {
+    unittest.test('method--promoteReplica', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
@@ -5741,14 +5693,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .promoteReplica(arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.promoteReplica(arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--resetSslConfig', () {
+    unittest.test('method--resetSslConfig', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
@@ -5824,14 +5774,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resetSslConfig(arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.resetSslConfig(arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--restart', () {
+    unittest.test('method--restart', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
@@ -5907,14 +5855,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .restart(arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.restart(arg_project, arg_instance, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--restoreBackup', () {
+    unittest.test('method--restoreBackup', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildInstancesRestoreBackupRequest();
@@ -5996,15 +5942,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .restoreBackup(arg_request, arg_project, arg_instance,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.restoreBackup(
+          arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--rotateServerCa', () {
+    unittest.test('method--rotateServerCa', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildInstancesRotateServerCaRequest();
@@ -6086,15 +6030,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .rotateServerCa(arg_request, arg_project, arg_instance,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.rotateServerCa(
+          arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--startReplica', () {
+    unittest.test('method--startReplica', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
@@ -6170,14 +6112,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .startReplica(arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.startReplica(arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--stopReplica', () {
+    unittest.test('method--stopReplica', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_project = 'foo';
@@ -6253,14 +6193,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .stopReplica(arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.stopReplica(arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--truncateLog', () {
+    unittest.test('method--truncateLog', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildInstancesTruncateLogRequest();
@@ -6342,15 +6280,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .truncateLog(arg_request, arg_project, arg_instance,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.truncateLog(
+          arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).instances;
       var arg_request = buildDatabaseInstance();
@@ -6423,16 +6359,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.update(arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-OperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).operations;
       var arg_project = 'foo';
@@ -6500,14 +6434,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_project, arg_operation, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.get(arg_project, arg_operation, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).operations;
       var arg_project = 'foo';
@@ -6583,20 +6515,17 @@ void main() {
         var resp = convert.json.encode(buildOperationsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_project,
-              instance: arg_instance,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperationsListResponse(response as api.OperationsListResponse);
-      })));
+      final response = await res.list(arg_project,
+          instance: arg_instance,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkOperationsListResponse(response as api.OperationsListResponse);
     });
   });
 
   unittest.group('resource-ProjectsInstancesResource', () {
-    unittest.test('method--rescheduleMaintenance', () {
+    unittest.test('method--rescheduleMaintenance', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).projects.instances;
       var arg_request = buildSqlInstancesRescheduleMaintenanceRequestBody();
@@ -6678,15 +6607,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .rescheduleMaintenance(arg_request, arg_project, arg_instance,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.rescheduleMaintenance(
+          arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--startExternalSync', () {
+    unittest.test('method--startExternalSync', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).projects.instances;
       var arg_project = 'foo';
@@ -6772,17 +6699,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .startExternalSync(arg_project, arg_instance,
-              skipVerification: arg_skipVerification,
-              syncMode: arg_syncMode,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.startExternalSync(arg_project, arg_instance,
+          skipVerification: arg_skipVerification,
+          syncMode: arg_syncMode,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--verifyExternalSyncSettings', () {
+    unittest.test('method--verifyExternalSyncSettings', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).projects.instances;
       var arg_project = 'foo';
@@ -6869,20 +6793,18 @@ void main() {
             .encode(buildSqlInstancesVerifyExternalSyncSettingsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .verifyExternalSyncSettings(arg_project, arg_instance,
-              syncMode: arg_syncMode,
-              verifyConnectionOnly: arg_verifyConnectionOnly,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSqlInstancesVerifyExternalSyncSettingsResponse(
-            response as api.SqlInstancesVerifyExternalSyncSettingsResponse);
-      })));
+      final response = await res.verifyExternalSyncSettings(
+          arg_project, arg_instance,
+          syncMode: arg_syncMode,
+          verifyConnectionOnly: arg_verifyConnectionOnly,
+          $fields: arg_$fields);
+      checkSqlInstancesVerifyExternalSyncSettingsResponse(
+          response as api.SqlInstancesVerifyExternalSyncSettingsResponse);
     });
   });
 
   unittest.group('resource-SslCertsResource', () {
-    unittest.test('method--createEphemeral', () {
+    unittest.test('method--createEphemeral', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).sslCerts;
       var arg_request = buildSslCertsCreateEphemeralRequest();
@@ -6964,15 +6886,13 @@ void main() {
         var resp = convert.json.encode(buildSslCert());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createEphemeral(arg_request, arg_project, arg_instance,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSslCert(response as api.SslCert);
-      })));
+      final response = await res.createEphemeral(
+          arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkSslCert(response as api.SslCert);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).sslCerts;
       var arg_project = 'foo';
@@ -7055,15 +6975,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_project, arg_instance, arg_sha1Fingerprint,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(
+          arg_project, arg_instance, arg_sha1Fingerprint,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).sslCerts;
       var arg_project = 'foo';
@@ -7146,15 +7064,13 @@ void main() {
         var resp = convert.json.encode(buildSslCert());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_project, arg_instance, arg_sha1Fingerprint,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSslCert(response as api.SslCert);
-      })));
+      final response = await res.get(
+          arg_project, arg_instance, arg_sha1Fingerprint,
+          $fields: arg_$fields);
+      checkSslCert(response as api.SslCert);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).sslCerts;
       var arg_request = buildSslCertsInsertRequest();
@@ -7235,14 +7151,12 @@ void main() {
         var resp = convert.json.encode(buildSslCertsInsertResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSslCertsInsertResponse(response as api.SslCertsInsertResponse);
-      })));
+      final response = await res.insert(arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkSslCertsInsertResponse(response as api.SslCertsInsertResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).sslCerts;
       var arg_project = 'foo';
@@ -7318,16 +7232,14 @@ void main() {
         var resp = convert.json.encode(buildSslCertsListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSslCertsListResponse(response as api.SslCertsListResponse);
-      })));
+      final response =
+          await res.list(arg_project, arg_instance, $fields: arg_$fields);
+      checkSslCertsListResponse(response as api.SslCertsListResponse);
     });
   });
 
   unittest.group('resource-TiersResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).tiers;
       var arg_project = 'foo';
@@ -7388,16 +7300,13 @@ void main() {
         var resp = convert.json.encode(buildTiersListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_project, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTiersListResponse(response as api.TiersListResponse);
-      })));
+      final response = await res.list(arg_project, $fields: arg_$fields);
+      checkTiersListResponse(response as api.TiersListResponse);
     });
   });
 
   unittest.group('resource-UsersResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).users;
       var arg_project = 'foo';
@@ -7483,15 +7392,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_project, arg_instance,
-              host: arg_host, name: arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_project, arg_instance,
+          host: arg_host, name: arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).users;
       var arg_request = buildUser();
@@ -7572,14 +7478,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.insert(arg_request, arg_project, arg_instance,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).users;
       var arg_project = 'foo';
@@ -7655,14 +7559,12 @@ void main() {
         var resp = convert.json.encode(buildUsersListResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_project, arg_instance, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUsersListResponse(response as api.UsersListResponse);
-      })));
+      final response =
+          await res.list(arg_project, arg_instance, $fields: arg_$fields);
+      checkUsersListResponse(response as api.UsersListResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.SQLAdminApi(mock).users;
       var arg_request = buildUser();
@@ -7753,12 +7655,9 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_project, arg_instance,
-              host: arg_host, name: arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.update(arg_request, arg_project, arg_instance,
+          host: arg_host, name: arg_name, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 }

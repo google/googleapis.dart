@@ -1562,7 +1562,7 @@ void checkUnnamed1692(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-Content', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContent();
       var od = api.Content.fromJson(o.toJson());
       checkContent(od as api.Content);
@@ -1570,7 +1570,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateProjectRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateProjectRequest();
       var od = api.CreateProjectRequest.fromJson(o.toJson());
       checkCreateProjectRequest(od as api.CreateProjectRequest);
@@ -1578,7 +1578,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Deployment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeployment();
       var od = api.Deployment.fromJson(o.toJson());
       checkDeployment(od as api.Deployment);
@@ -1586,7 +1586,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DeploymentConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeploymentConfig();
       var od = api.DeploymentConfig.fromJson(o.toJson());
       checkDeploymentConfig(od as api.DeploymentConfig);
@@ -1594,7 +1594,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1602,7 +1602,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EntryPoint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntryPoint();
       var od = api.EntryPoint.fromJson(o.toJson());
       checkEntryPoint(od as api.EntryPoint);
@@ -1610,7 +1610,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExecuteStreamResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExecuteStreamResponse();
       var od = api.ExecuteStreamResponse.fromJson(o.toJson());
       checkExecuteStreamResponse(od as api.ExecuteStreamResponse);
@@ -1618,7 +1618,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExecutionError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExecutionError();
       var od = api.ExecutionError.fromJson(o.toJson());
       checkExecutionError(od as api.ExecutionError);
@@ -1626,7 +1626,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExecutionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExecutionRequest();
       var od = api.ExecutionRequest.fromJson(o.toJson());
       checkExecutionRequest(od as api.ExecutionRequest);
@@ -1634,7 +1634,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ExecutionResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExecutionResponse();
       var od = api.ExecutionResponse.fromJson(o.toJson());
       checkExecutionResponse(od as api.ExecutionResponse);
@@ -1642,7 +1642,7 @@ void main() {
   });
 
   unittest.group('obj-schema-File', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFile();
       var od = api.File.fromJson(o.toJson());
       checkFile(od as api.File);
@@ -1650,7 +1650,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAppsScriptTypeAddOnEntryPoint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsScriptTypeAddOnEntryPoint();
       var od = api.GoogleAppsScriptTypeAddOnEntryPoint.fromJson(o.toJson());
       checkGoogleAppsScriptTypeAddOnEntryPoint(
@@ -1659,7 +1659,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAppsScriptTypeExecutionApiConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsScriptTypeExecutionApiConfig();
       var od = api.GoogleAppsScriptTypeExecutionApiConfig.fromJson(o.toJson());
       checkGoogleAppsScriptTypeExecutionApiConfig(
@@ -1668,7 +1668,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAppsScriptTypeExecutionApiEntryPoint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsScriptTypeExecutionApiEntryPoint();
       var od =
           api.GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(o.toJson());
@@ -1678,7 +1678,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAppsScriptTypeFunction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsScriptTypeFunction();
       var od = api.GoogleAppsScriptTypeFunction.fromJson(o.toJson());
       checkGoogleAppsScriptTypeFunction(od as api.GoogleAppsScriptTypeFunction);
@@ -1686,7 +1686,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAppsScriptTypeFunctionSet', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsScriptTypeFunctionSet();
       var od = api.GoogleAppsScriptTypeFunctionSet.fromJson(o.toJson());
       checkGoogleAppsScriptTypeFunctionSet(
@@ -1695,7 +1695,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAppsScriptTypeProcess', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsScriptTypeProcess();
       var od = api.GoogleAppsScriptTypeProcess.fromJson(o.toJson());
       checkGoogleAppsScriptTypeProcess(od as api.GoogleAppsScriptTypeProcess);
@@ -1703,7 +1703,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAppsScriptTypeUser', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsScriptTypeUser();
       var od = api.GoogleAppsScriptTypeUser.fromJson(o.toJson());
       checkGoogleAppsScriptTypeUser(od as api.GoogleAppsScriptTypeUser);
@@ -1711,7 +1711,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAppsScriptTypeWebAppConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsScriptTypeWebAppConfig();
       var od = api.GoogleAppsScriptTypeWebAppConfig.fromJson(o.toJson());
       checkGoogleAppsScriptTypeWebAppConfig(
@@ -1720,7 +1720,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleAppsScriptTypeWebAppEntryPoint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsScriptTypeWebAppEntryPoint();
       var od = api.GoogleAppsScriptTypeWebAppEntryPoint.fromJson(o.toJson());
       checkGoogleAppsScriptTypeWebAppEntryPoint(
@@ -1729,7 +1729,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDeploymentsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDeploymentsResponse();
       var od = api.ListDeploymentsResponse.fromJson(o.toJson());
       checkListDeploymentsResponse(od as api.ListDeploymentsResponse);
@@ -1737,7 +1737,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListScriptProcessesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListScriptProcessesResponse();
       var od = api.ListScriptProcessesResponse.fromJson(o.toJson());
       checkListScriptProcessesResponse(od as api.ListScriptProcessesResponse);
@@ -1745,7 +1745,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListUserProcessesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListUserProcessesResponse();
       var od = api.ListUserProcessesResponse.fromJson(o.toJson());
       checkListUserProcessesResponse(od as api.ListUserProcessesResponse);
@@ -1753,7 +1753,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListValue();
       var od = api.ListValue.fromJson(o.toJson());
       checkListValue(od as api.ListValue);
@@ -1761,7 +1761,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListVersionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListVersionsResponse();
       var od = api.ListVersionsResponse.fromJson(o.toJson());
       checkListVersionsResponse(od as api.ListVersionsResponse);
@@ -1769,7 +1769,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Metrics', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetrics();
       var od = api.Metrics.fromJson(o.toJson());
       checkMetrics(od as api.Metrics);
@@ -1777,7 +1777,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MetricsValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetricsValue();
       var od = api.MetricsValue.fromJson(o.toJson());
       checkMetricsValue(od as api.MetricsValue);
@@ -1785,7 +1785,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -1793,7 +1793,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Project', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildProject();
       var od = api.Project.fromJson(o.toJson());
       checkProject(od as api.Project);
@@ -1801,7 +1801,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScriptExecutionResult', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScriptExecutionResult();
       var od = api.ScriptExecutionResult.fromJson(o.toJson());
       checkScriptExecutionResult(od as api.ScriptExecutionResult);
@@ -1809,7 +1809,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScriptStackTraceElement', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScriptStackTraceElement();
       var od = api.ScriptStackTraceElement.fromJson(o.toJson());
       checkScriptStackTraceElement(od as api.ScriptStackTraceElement);
@@ -1817,7 +1817,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -1825,7 +1825,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Struct', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStruct();
       var od = api.Struct.fromJson(o.toJson());
       checkStruct(od as api.Struct);
@@ -1833,7 +1833,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UpdateDeploymentRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUpdateDeploymentRequest();
       var od = api.UpdateDeploymentRequest.fromJson(o.toJson());
       checkUpdateDeploymentRequest(od as api.UpdateDeploymentRequest);
@@ -1841,7 +1841,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Value', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildValue();
       var od = api.Value.fromJson(o.toJson());
       checkValue(od as api.Value);
@@ -1849,7 +1849,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Version', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVersion();
       var od = api.Version.fromJson(o.toJson());
       checkVersion(od as api.Version);
@@ -1857,7 +1857,7 @@ void main() {
   });
 
   unittest.group('resource-ProcessesResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).processes;
       var arg_pageSize = 42;
@@ -1958,30 +1958,24 @@ void main() {
         var resp = convert.json.encode(buildListUserProcessesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              userProcessFilter_deploymentId:
-                  arg_userProcessFilter_deploymentId,
-              userProcessFilter_endTime: arg_userProcessFilter_endTime,
-              userProcessFilter_functionName:
-                  arg_userProcessFilter_functionName,
-              userProcessFilter_projectName: arg_userProcessFilter_projectName,
-              userProcessFilter_scriptId: arg_userProcessFilter_scriptId,
-              userProcessFilter_startTime: arg_userProcessFilter_startTime,
-              userProcessFilter_statuses: arg_userProcessFilter_statuses,
-              userProcessFilter_types: arg_userProcessFilter_types,
-              userProcessFilter_userAccessLevels:
-                  arg_userProcessFilter_userAccessLevels,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListUserProcessesResponse(
-            response as api.ListUserProcessesResponse);
-      })));
+      final response = await res.list(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          userProcessFilter_deploymentId: arg_userProcessFilter_deploymentId,
+          userProcessFilter_endTime: arg_userProcessFilter_endTime,
+          userProcessFilter_functionName: arg_userProcessFilter_functionName,
+          userProcessFilter_projectName: arg_userProcessFilter_projectName,
+          userProcessFilter_scriptId: arg_userProcessFilter_scriptId,
+          userProcessFilter_startTime: arg_userProcessFilter_startTime,
+          userProcessFilter_statuses: arg_userProcessFilter_statuses,
+          userProcessFilter_types: arg_userProcessFilter_types,
+          userProcessFilter_userAccessLevels:
+              arg_userProcessFilter_userAccessLevels,
+          $fields: arg_$fields);
+      checkListUserProcessesResponse(response as api.ListUserProcessesResponse);
     });
 
-    unittest.test('method--listScriptProcesses', () {
+    unittest.test('method--listScriptProcesses', () async {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).processes;
       var arg_pageSize = 42;
@@ -2077,31 +2071,28 @@ void main() {
         var resp = convert.json.encode(buildListScriptProcessesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .listScriptProcesses(
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              scriptId: arg_scriptId,
-              scriptProcessFilter_deploymentId:
-                  arg_scriptProcessFilter_deploymentId,
-              scriptProcessFilter_endTime: arg_scriptProcessFilter_endTime,
-              scriptProcessFilter_functionName:
-                  arg_scriptProcessFilter_functionName,
-              scriptProcessFilter_startTime: arg_scriptProcessFilter_startTime,
-              scriptProcessFilter_statuses: arg_scriptProcessFilter_statuses,
-              scriptProcessFilter_types: arg_scriptProcessFilter_types,
-              scriptProcessFilter_userAccessLevels:
-                  arg_scriptProcessFilter_userAccessLevels,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListScriptProcessesResponse(
-            response as api.ListScriptProcessesResponse);
-      })));
+      final response = await res.listScriptProcesses(
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          scriptId: arg_scriptId,
+          scriptProcessFilter_deploymentId:
+              arg_scriptProcessFilter_deploymentId,
+          scriptProcessFilter_endTime: arg_scriptProcessFilter_endTime,
+          scriptProcessFilter_functionName:
+              arg_scriptProcessFilter_functionName,
+          scriptProcessFilter_startTime: arg_scriptProcessFilter_startTime,
+          scriptProcessFilter_statuses: arg_scriptProcessFilter_statuses,
+          scriptProcessFilter_types: arg_scriptProcessFilter_types,
+          scriptProcessFilter_userAccessLevels:
+              arg_scriptProcessFilter_userAccessLevels,
+          $fields: arg_$fields);
+      checkListScriptProcessesResponse(
+          response as api.ListScriptProcessesResponse);
     });
   });
 
   unittest.group('resource-ProjectsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).projects;
       var arg_request = buildCreateProjectRequest();
@@ -2152,14 +2143,11 @@ void main() {
         var resp = convert.json.encode(buildProject());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProject(response as api.Project);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkProject(response as api.Project);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).projects;
       var arg_scriptId = 'foo';
@@ -2212,14 +2200,11 @@ void main() {
         var resp = convert.json.encode(buildProject());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_scriptId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkProject(response as api.Project);
-      })));
+      final response = await res.get(arg_scriptId, $fields: arg_$fields);
+      checkProject(response as api.Project);
     });
 
-    unittest.test('method--getContent', () {
+    unittest.test('method--getContent', () async {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).projects;
       var arg_scriptId = 'foo';
@@ -2285,15 +2270,12 @@ void main() {
         var resp = convert.json.encode(buildContent());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getContent(arg_scriptId,
-              versionNumber: arg_versionNumber, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkContent(response as api.Content);
-      })));
+      final response = await res.getContent(arg_scriptId,
+          versionNumber: arg_versionNumber, $fields: arg_$fields);
+      checkContent(response as api.Content);
     });
 
-    unittest.test('method--getMetrics', () {
+    unittest.test('method--getMetrics', () async {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).projects;
       var arg_scriptId = 'foo';
@@ -2364,17 +2346,14 @@ void main() {
         var resp = convert.json.encode(buildMetrics());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getMetrics(arg_scriptId,
-              metricsFilter_deploymentId: arg_metricsFilter_deploymentId,
-              metricsGranularity: arg_metricsGranularity,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkMetrics(response as api.Metrics);
-      })));
+      final response = await res.getMetrics(arg_scriptId,
+          metricsFilter_deploymentId: arg_metricsFilter_deploymentId,
+          metricsGranularity: arg_metricsGranularity,
+          $fields: arg_$fields);
+      checkMetrics(response as api.Metrics);
     });
 
-    unittest.test('method--updateContent', () {
+    unittest.test('method--updateContent', () async {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).projects;
       var arg_request = buildContent();
@@ -2440,16 +2419,14 @@ void main() {
         var resp = convert.json.encode(buildContent());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .updateContent(arg_request, arg_scriptId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkContent(response as api.Content);
-      })));
+      final response = await res.updateContent(arg_request, arg_scriptId,
+          $fields: arg_$fields);
+      checkContent(response as api.Content);
     });
   });
 
   unittest.group('resource-ProjectsDeploymentsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).projects.deployments;
       var arg_request = buildDeploymentConfig();
@@ -2515,14 +2492,12 @@ void main() {
         var resp = convert.json.encode(buildDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_scriptId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDeployment(response as api.Deployment);
-      })));
+      final response =
+          await res.create(arg_request, arg_scriptId, $fields: arg_$fields);
+      checkDeployment(response as api.Deployment);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).projects.deployments;
       var arg_scriptId = 'foo';
@@ -2590,14 +2565,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_scriptId, arg_deploymentId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_scriptId, arg_deploymentId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).projects.deployments;
       var arg_scriptId = 'foo';
@@ -2665,14 +2638,12 @@ void main() {
         var resp = convert.json.encode(buildDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_scriptId, arg_deploymentId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDeployment(response as api.Deployment);
-      })));
+      final response =
+          await res.get(arg_scriptId, arg_deploymentId, $fields: arg_$fields);
+      checkDeployment(response as api.Deployment);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).projects.deployments;
       var arg_scriptId = 'foo';
@@ -2743,17 +2714,14 @@ void main() {
         var resp = convert.json.encode(buildListDeploymentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_scriptId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDeploymentsResponse(response as api.ListDeploymentsResponse);
-      })));
+      final response = await res.list(arg_scriptId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListDeploymentsResponse(response as api.ListDeploymentsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).projects.deployments;
       var arg_request = buildUpdateDeploymentRequest();
@@ -2826,17 +2794,15 @@ void main() {
         var resp = convert.json.encode(buildDeployment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_scriptId, arg_deploymentId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDeployment(response as api.Deployment);
-      })));
+      final response = await res.update(
+          arg_request, arg_scriptId, arg_deploymentId,
+          $fields: arg_$fields);
+      checkDeployment(response as api.Deployment);
     });
   });
 
   unittest.group('resource-ProjectsVersionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).projects.versions;
       var arg_request = buildVersion();
@@ -2902,14 +2868,12 @@ void main() {
         var resp = convert.json.encode(buildVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_scriptId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVersion(response as api.Version);
-      })));
+      final response =
+          await res.create(arg_request, arg_scriptId, $fields: arg_$fields);
+      checkVersion(response as api.Version);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).projects.versions;
       var arg_scriptId = 'foo';
@@ -2977,14 +2941,12 @@ void main() {
         var resp = convert.json.encode(buildVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_scriptId, arg_versionNumber, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVersion(response as api.Version);
-      })));
+      final response =
+          await res.get(arg_scriptId, arg_versionNumber, $fields: arg_$fields);
+      checkVersion(response as api.Version);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).projects.versions;
       var arg_scriptId = 'foo';
@@ -3055,19 +3017,16 @@ void main() {
         var resp = convert.json.encode(buildListVersionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_scriptId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListVersionsResponse(response as api.ListVersionsResponse);
-      })));
+      final response = await res.list(arg_scriptId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListVersionsResponse(response as api.ListVersionsResponse);
     });
   });
 
   unittest.group('resource-ScriptsResource', () {
-    unittest.test('method--run', () {
+    unittest.test('method--run', () async {
       var mock = HttpServerMock();
       var res = api.ScriptApi(mock).scripts;
       var arg_request = buildExecutionRequest();
@@ -3133,11 +3092,9 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .run(arg_request, arg_scriptId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.run(arg_request, arg_scriptId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 }

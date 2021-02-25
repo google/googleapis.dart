@@ -324,7 +324,7 @@ void checkRdapResponse(api.RdapResponse o) {
 
 void main() {
   unittest.group('obj-schema-HttpBody', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHttpBody();
       var od = api.HttpBody.fromJson(o.toJson());
       checkHttpBody(od as api.HttpBody);
@@ -332,7 +332,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Link', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLink();
       var od = api.Link.fromJson(o.toJson());
       checkLink(od as api.Link);
@@ -340,7 +340,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Notice', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNotice();
       var od = api.Notice.fromJson(o.toJson());
       checkNotice(od as api.Notice);
@@ -348,7 +348,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RdapResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRdapResponse();
       var od = api.RdapResponse.fromJson(o.toJson());
       checkRdapResponse(od as api.RdapResponse);
@@ -356,7 +356,7 @@ void main() {
   });
 
   unittest.group('resource-AutnumResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DomainsRDAPApi(mock).autnum;
       var arg_autnumId = 'foo';
@@ -409,16 +409,13 @@ void main() {
         var resp = convert.json.encode(buildRdapResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_autnumId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRdapResponse(response as api.RdapResponse);
-      })));
+      final response = await res.get(arg_autnumId, $fields: arg_$fields);
+      checkRdapResponse(response as api.RdapResponse);
     });
   });
 
   unittest.group('resource-DomainResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DomainsRDAPApi(mock).domain;
       var arg_domainName = 'foo';
@@ -466,16 +463,13 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_domainName, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.get(arg_domainName, $fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
   });
 
   unittest.group('resource-EntityResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DomainsRDAPApi(mock).entity;
       var arg_entityId = 'foo';
@@ -528,16 +522,13 @@ void main() {
         var resp = convert.json.encode(buildRdapResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_entityId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRdapResponse(response as api.RdapResponse);
-      })));
+      final response = await res.get(arg_entityId, $fields: arg_$fields);
+      checkRdapResponse(response as api.RdapResponse);
     });
   });
 
   unittest.group('resource-IpResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DomainsRDAPApi(mock).ip;
       var arg_ipId = 'foo';
@@ -605,16 +596,13 @@ void main() {
         var resp = convert.json.encode(buildRdapResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_ipId, arg_ipId1, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRdapResponse(response as api.RdapResponse);
-      })));
+      final response = await res.get(arg_ipId, arg_ipId1, $fields: arg_$fields);
+      checkRdapResponse(response as api.RdapResponse);
     });
   });
 
   unittest.group('resource-NameserverResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.DomainsRDAPApi(mock).nameserver;
       var arg_nameserverId = 'foo';
@@ -667,16 +655,13 @@ void main() {
         var resp = convert.json.encode(buildRdapResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_nameserverId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRdapResponse(response as api.RdapResponse);
-      })));
+      final response = await res.get(arg_nameserverId, $fields: arg_$fields);
+      checkRdapResponse(response as api.RdapResponse);
     });
   });
 
   unittest.group('resource-V1Resource', () {
-    unittest.test('method--getDomains', () {
+    unittest.test('method--getDomains', () async {
       var mock = HttpServerMock();
       var res = api.DomainsRDAPApi(mock).v1;
       var arg_$fields = 'foo';
@@ -722,14 +707,11 @@ void main() {
         var resp = convert.json.encode(buildRdapResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getDomains($fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRdapResponse(response as api.RdapResponse);
-      })));
+      final response = await res.getDomains($fields: arg_$fields);
+      checkRdapResponse(response as api.RdapResponse);
     });
 
-    unittest.test('method--getEntities', () {
+    unittest.test('method--getEntities', () async {
       var mock = HttpServerMock();
       var res = api.DomainsRDAPApi(mock).v1;
       var arg_$fields = 'foo';
@@ -775,14 +757,11 @@ void main() {
         var resp = convert.json.encode(buildRdapResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getEntities($fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRdapResponse(response as api.RdapResponse);
-      })));
+      final response = await res.getEntities($fields: arg_$fields);
+      checkRdapResponse(response as api.RdapResponse);
     });
 
-    unittest.test('method--getHelp', () {
+    unittest.test('method--getHelp', () async {
       var mock = HttpServerMock();
       var res = api.DomainsRDAPApi(mock).v1;
       var arg_$fields = 'foo';
@@ -828,12 +807,11 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getHelp($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.getHelp($fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--getIp', () {
+    unittest.test('method--getIp', () async {
       var mock = HttpServerMock();
       var res = api.DomainsRDAPApi(mock).v1;
       var arg_$fields = 'foo';
@@ -879,12 +857,11 @@ void main() {
         var resp = convert.json.encode(buildHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res.getIp($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkHttpBody(response as api.HttpBody);
-      })));
+      final response = await res.getIp($fields: arg_$fields);
+      checkHttpBody(response as api.HttpBody);
     });
 
-    unittest.test('method--getNameservers', () {
+    unittest.test('method--getNameservers', () async {
       var mock = HttpServerMock();
       var res = api.DomainsRDAPApi(mock).v1;
       var arg_$fields = 'foo';
@@ -930,11 +907,8 @@ void main() {
         var resp = convert.json.encode(buildRdapResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getNameservers($fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRdapResponse(response as api.RdapResponse);
-      })));
+      final response = await res.getNameservers($fields: arg_$fields);
+      checkRdapResponse(response as api.RdapResponse);
     });
   });
 }

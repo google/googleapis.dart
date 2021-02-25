@@ -336,7 +336,7 @@ void checkUrlNormalization(api.UrlNormalization o) {
 
 void main() {
   unittest.group('obj-schema-Bin', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBin();
       var od = api.Bin.fromJson(o.toJson());
       checkBin(od as api.Bin);
@@ -344,7 +344,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Key', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildKey();
       var od = api.Key.fromJson(o.toJson());
       checkKey(od as api.Key);
@@ -352,7 +352,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Metric', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMetric();
       var od = api.Metric.fromJson(o.toJson());
       checkMetric(od as api.Metric);
@@ -360,7 +360,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Percentiles', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPercentiles();
       var od = api.Percentiles.fromJson(o.toJson());
       checkPercentiles(od as api.Percentiles);
@@ -368,7 +368,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryRequest();
       var od = api.QueryRequest.fromJson(o.toJson());
       checkQueryRequest(od as api.QueryRequest);
@@ -376,7 +376,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QueryResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQueryResponse();
       var od = api.QueryResponse.fromJson(o.toJson());
       checkQueryResponse(od as api.QueryResponse);
@@ -384,7 +384,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Record', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRecord();
       var od = api.Record.fromJson(o.toJson());
       checkRecord(od as api.Record);
@@ -392,7 +392,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UrlNormalization', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUrlNormalization();
       var od = api.UrlNormalization.fromJson(o.toJson());
       checkUrlNormalization(od as api.UrlNormalization);
@@ -400,7 +400,7 @@ void main() {
   });
 
   unittest.group('resource-RecordsResource', () {
-    unittest.test('method--queryRecord', () {
+    unittest.test('method--queryRecord', () async {
       var mock = HttpServerMock();
       var res = api.ChromeUXReportApi(mock).records;
       var arg_request = buildQueryRequest();
@@ -451,11 +451,8 @@ void main() {
         var resp = convert.json.encode(buildQueryResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .queryRecord(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkQueryResponse(response as api.QueryResponse);
-      })));
+      final response = await res.queryRecord(arg_request, $fields: arg_$fields);
+      checkQueryResponse(response as api.QueryResponse);
     });
   });
 }

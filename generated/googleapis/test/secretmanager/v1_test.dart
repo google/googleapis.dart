@@ -1073,7 +1073,7 @@ void checkUserManagedStatus(api.UserManagedStatus o) {
 
 void main() {
   unittest.group('obj-schema-AccessSecretVersionResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccessSecretVersionResponse();
       var od = api.AccessSecretVersionResponse.fromJson(o.toJson());
       checkAccessSecretVersionResponse(od as api.AccessSecretVersionResponse);
@@ -1081,7 +1081,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AddSecretVersionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAddSecretVersionRequest();
       var od = api.AddSecretVersionRequest.fromJson(o.toJson());
       checkAddSecretVersionRequest(od as api.AddSecretVersionRequest);
@@ -1089,7 +1089,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
       checkAuditConfig(od as api.AuditConfig);
@@ -1097,7 +1097,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuditLogConfig', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
       checkAuditLogConfig(od as api.AuditLogConfig);
@@ -1105,7 +1105,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Automatic', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAutomatic();
       var od = api.Automatic.fromJson(o.toJson());
       checkAutomatic(od as api.Automatic);
@@ -1113,7 +1113,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AutomaticStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAutomaticStatus();
       var od = api.AutomaticStatus.fromJson(o.toJson());
       checkAutomaticStatus(od as api.AutomaticStatus);
@@ -1121,7 +1121,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Binding', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
       checkBinding(od as api.Binding);
@@ -1129,7 +1129,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomerManagedEncryption', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomerManagedEncryption();
       var od = api.CustomerManagedEncryption.fromJson(o.toJson());
       checkCustomerManagedEncryption(od as api.CustomerManagedEncryption);
@@ -1137,7 +1137,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomerManagedEncryptionStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomerManagedEncryptionStatus();
       var od = api.CustomerManagedEncryptionStatus.fromJson(o.toJson());
       checkCustomerManagedEncryptionStatus(
@@ -1146,7 +1146,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DestroySecretVersionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDestroySecretVersionRequest();
       var od = api.DestroySecretVersionRequest.fromJson(o.toJson());
       checkDestroySecretVersionRequest(od as api.DestroySecretVersionRequest);
@@ -1154,7 +1154,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DisableSecretVersionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDisableSecretVersionRequest();
       var od = api.DisableSecretVersionRequest.fromJson(o.toJson());
       checkDisableSecretVersionRequest(od as api.DisableSecretVersionRequest);
@@ -1162,7 +1162,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -1170,7 +1170,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EnableSecretVersionRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnableSecretVersionRequest();
       var od = api.EnableSecretVersionRequest.fromJson(o.toJson());
       checkEnableSecretVersionRequest(od as api.EnableSecretVersionRequest);
@@ -1178,7 +1178,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Expr', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
       checkExpr(od as api.Expr);
@@ -1186,7 +1186,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -1194,7 +1194,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListSecretVersionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListSecretVersionsResponse();
       var od = api.ListSecretVersionsResponse.fromJson(o.toJson());
       checkListSecretVersionsResponse(od as api.ListSecretVersionsResponse);
@@ -1202,7 +1202,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListSecretsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListSecretsResponse();
       var od = api.ListSecretsResponse.fromJson(o.toJson());
       checkListSecretsResponse(od as api.ListSecretsResponse);
@@ -1210,7 +1210,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -1218,7 +1218,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Policy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
       checkPolicy(od as api.Policy);
@@ -1226,7 +1226,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Replica', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReplica();
       var od = api.Replica.fromJson(o.toJson());
       checkReplica(od as api.Replica);
@@ -1234,7 +1234,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReplicaStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReplicaStatus();
       var od = api.ReplicaStatus.fromJson(o.toJson());
       checkReplicaStatus(od as api.ReplicaStatus);
@@ -1242,7 +1242,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Replication', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReplication();
       var od = api.Replication.fromJson(o.toJson());
       checkReplication(od as api.Replication);
@@ -1250,7 +1250,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReplicationStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReplicationStatus();
       var od = api.ReplicationStatus.fromJson(o.toJson());
       checkReplicationStatus(od as api.ReplicationStatus);
@@ -1258,7 +1258,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Secret', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSecret();
       var od = api.Secret.fromJson(o.toJson());
       checkSecret(od as api.Secret);
@@ -1266,7 +1266,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SecretPayload', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSecretPayload();
       var od = api.SecretPayload.fromJson(o.toJson());
       checkSecretPayload(od as api.SecretPayload);
@@ -1274,7 +1274,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SecretVersion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSecretVersion();
       var od = api.SecretVersion.fromJson(o.toJson());
       checkSecretVersion(od as api.SecretVersion);
@@ -1282,7 +1282,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetIamPolicyRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
@@ -1290,7 +1290,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
@@ -1298,7 +1298,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
@@ -1306,7 +1306,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Topic', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTopic();
       var od = api.Topic.fromJson(o.toJson());
       checkTopic(od as api.Topic);
@@ -1314,7 +1314,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserManaged', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserManaged();
       var od = api.UserManaged.fromJson(o.toJson());
       checkUserManaged(od as api.UserManaged);
@@ -1322,7 +1322,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserManagedStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserManagedStatus();
       var od = api.UserManagedStatus.fromJson(o.toJson());
       checkUserManagedStatus(od as api.UserManagedStatus);
@@ -1330,7 +1330,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -1378,14 +1378,11 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.locations;
       var arg_name = 'foo';
@@ -1448,20 +1445,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-ProjectsSecretsResource', () {
-    unittest.test('method--addVersion', () {
+    unittest.test('method--addVersion', () async {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.secrets;
       var arg_request = buildAddSecretVersionRequest();
@@ -1514,14 +1508,12 @@ void main() {
         var resp = convert.json.encode(buildSecretVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .addVersion(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSecretVersion(response as api.SecretVersion);
-      })));
+      final response =
+          await res.addVersion(arg_request, arg_parent, $fields: arg_$fields);
+      checkSecretVersion(response as api.SecretVersion);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.secrets;
       var arg_request = buildSecret();
@@ -1579,15 +1571,12 @@ void main() {
         var resp = convert.json.encode(buildSecret());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent,
-              secretId: arg_secretId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSecret(response as api.Secret);
-      })));
+      final response = await res.create(arg_request, arg_parent,
+          secretId: arg_secretId, $fields: arg_$fields);
+      checkSecret(response as api.Secret);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.secrets;
       var arg_name = 'foo';
@@ -1635,14 +1624,11 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.secrets;
       var arg_name = 'foo';
@@ -1690,14 +1676,11 @@ void main() {
         var resp = convert.json.encode(buildSecret());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSecret(response as api.Secret);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSecret(response as api.Secret);
     });
 
-    unittest.test('method--getIamPolicy', () {
+    unittest.test('method--getIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.secrets;
       var arg_resource = 'foo';
@@ -1750,17 +1733,13 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getIamPolicy(arg_resource,
-              options_requestedPolicyVersion:
-                  arg_options_requestedPolicyVersion,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.getIamPolicy(arg_resource,
+          options_requestedPolicyVersion: arg_options_requestedPolicyVersion,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.secrets;
       var arg_parent = 'foo';
@@ -1818,17 +1797,14 @@ void main() {
         var resp = convert.json.encode(buildListSecretsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSecretsResponse(response as api.ListSecretsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListSecretsResponse(response as api.ListSecretsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.secrets;
       var arg_request = buildSecret();
@@ -1886,15 +1862,12 @@ void main() {
         var resp = convert.json.encode(buildSecret());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSecret(response as api.Secret);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkSecret(response as api.Secret);
     });
 
-    unittest.test('method--setIamPolicy', () {
+    unittest.test('method--setIamPolicy', () async {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.secrets;
       var arg_request = buildSetIamPolicyRequest();
@@ -1947,14 +1920,12 @@ void main() {
         var resp = convert.json.encode(buildPolicy());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPolicy(response as api.Policy);
-      })));
+      final response = await res.setIamPolicy(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkPolicy(response as api.Policy);
     });
 
-    unittest.test('method--testIamPermissions', () {
+    unittest.test('method--testIamPermissions', () async {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.secrets;
       var arg_request = buildTestIamPermissionsRequest();
@@ -2007,17 +1978,15 @@ void main() {
         var resp = convert.json.encode(buildTestIamPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(
-            response as api.TestIamPermissionsResponse);
-      })));
+      final response = await res.testIamPermissions(arg_request, arg_resource,
+          $fields: arg_$fields);
+      checkTestIamPermissionsResponse(
+          response as api.TestIamPermissionsResponse);
     });
   });
 
   unittest.group('resource-ProjectsSecretsVersionsResource', () {
-    unittest.test('method--access', () {
+    unittest.test('method--access', () async {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.secrets.versions;
       var arg_name = 'foo';
@@ -2065,15 +2034,12 @@ void main() {
         var resp = convert.json.encode(buildAccessSecretVersionResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .access(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccessSecretVersionResponse(
-            response as api.AccessSecretVersionResponse);
-      })));
+      final response = await res.access(arg_name, $fields: arg_$fields);
+      checkAccessSecretVersionResponse(
+          response as api.AccessSecretVersionResponse);
     });
 
-    unittest.test('method--destroy', () {
+    unittest.test('method--destroy', () async {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.secrets.versions;
       var arg_request = buildDestroySecretVersionRequest();
@@ -2127,14 +2093,12 @@ void main() {
         var resp = convert.json.encode(buildSecretVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .destroy(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSecretVersion(response as api.SecretVersion);
-      })));
+      final response =
+          await res.destroy(arg_request, arg_name, $fields: arg_$fields);
+      checkSecretVersion(response as api.SecretVersion);
     });
 
-    unittest.test('method--disable', () {
+    unittest.test('method--disable', () async {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.secrets.versions;
       var arg_request = buildDisableSecretVersionRequest();
@@ -2188,14 +2152,12 @@ void main() {
         var resp = convert.json.encode(buildSecretVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .disable(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSecretVersion(response as api.SecretVersion);
-      })));
+      final response =
+          await res.disable(arg_request, arg_name, $fields: arg_$fields);
+      checkSecretVersion(response as api.SecretVersion);
     });
 
-    unittest.test('method--enable', () {
+    unittest.test('method--enable', () async {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.secrets.versions;
       var arg_request = buildEnableSecretVersionRequest();
@@ -2248,14 +2210,12 @@ void main() {
         var resp = convert.json.encode(buildSecretVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .enable(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSecretVersion(response as api.SecretVersion);
-      })));
+      final response =
+          await res.enable(arg_request, arg_name, $fields: arg_$fields);
+      checkSecretVersion(response as api.SecretVersion);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.secrets.versions;
       var arg_name = 'foo';
@@ -2303,14 +2263,11 @@ void main() {
         var resp = convert.json.encode(buildSecretVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSecretVersion(response as api.SecretVersion);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkSecretVersion(response as api.SecretVersion);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.SecretManagerApi(mock).projects.secrets.versions;
       var arg_parent = 'foo';
@@ -2368,15 +2325,12 @@ void main() {
         var resp = convert.json.encode(buildListSecretVersionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListSecretVersionsResponse(
-            response as api.ListSecretVersionsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListSecretVersionsResponse(
+          response as api.ListSecretVersionsResponse);
     });
   });
 }

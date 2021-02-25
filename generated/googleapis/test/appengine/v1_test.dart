@@ -3110,7 +3110,7 @@ void checkZipInfo(api.ZipInfo o) {
 
 void main() {
   unittest.group('obj-schema-ApiConfigHandler', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApiConfigHandler();
       var od = api.ApiConfigHandler.fromJson(o.toJson());
       checkApiConfigHandler(od as api.ApiConfigHandler);
@@ -3118,7 +3118,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ApiEndpointHandler', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApiEndpointHandler();
       var od = api.ApiEndpointHandler.fromJson(o.toJson());
       checkApiEndpointHandler(od as api.ApiEndpointHandler);
@@ -3126,7 +3126,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Application', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildApplication();
       var od = api.Application.fromJson(o.toJson());
       checkApplication(od as api.Application);
@@ -3134,7 +3134,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuthorizedCertificate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuthorizedCertificate();
       var od = api.AuthorizedCertificate.fromJson(o.toJson());
       checkAuthorizedCertificate(od as api.AuthorizedCertificate);
@@ -3142,7 +3142,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AuthorizedDomain', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAuthorizedDomain();
       var od = api.AuthorizedDomain.fromJson(o.toJson());
       checkAuthorizedDomain(od as api.AuthorizedDomain);
@@ -3150,7 +3150,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AutomaticScaling', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAutomaticScaling();
       var od = api.AutomaticScaling.fromJson(o.toJson());
       checkAutomaticScaling(od as api.AutomaticScaling);
@@ -3158,7 +3158,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BasicScaling', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBasicScaling();
       var od = api.BasicScaling.fromJson(o.toJson());
       checkBasicScaling(od as api.BasicScaling);
@@ -3166,7 +3166,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchUpdateIngressRulesRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchUpdateIngressRulesRequest();
       var od = api.BatchUpdateIngressRulesRequest.fromJson(o.toJson());
       checkBatchUpdateIngressRulesRequest(
@@ -3175,7 +3175,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchUpdateIngressRulesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchUpdateIngressRulesResponse();
       var od = api.BatchUpdateIngressRulesResponse.fromJson(o.toJson());
       checkBatchUpdateIngressRulesResponse(
@@ -3184,7 +3184,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CertificateRawData', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCertificateRawData();
       var od = api.CertificateRawData.fromJson(o.toJson());
       checkCertificateRawData(od as api.CertificateRawData);
@@ -3192,7 +3192,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CloudBuildOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCloudBuildOptions();
       var od = api.CloudBuildOptions.fromJson(o.toJson());
       checkCloudBuildOptions(od as api.CloudBuildOptions);
@@ -3200,7 +3200,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ContainerInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContainerInfo();
       var od = api.ContainerInfo.fromJson(o.toJson());
       checkContainerInfo(od as api.ContainerInfo);
@@ -3208,7 +3208,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CpuUtilization', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCpuUtilization();
       var od = api.CpuUtilization.fromJson(o.toJson());
       checkCpuUtilization(od as api.CpuUtilization);
@@ -3216,7 +3216,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateVersionMetadataV1', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateVersionMetadataV1();
       var od = api.CreateVersionMetadataV1.fromJson(o.toJson());
       checkCreateVersionMetadataV1(od as api.CreateVersionMetadataV1);
@@ -3224,7 +3224,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateVersionMetadataV1Alpha', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateVersionMetadataV1Alpha();
       var od = api.CreateVersionMetadataV1Alpha.fromJson(o.toJson());
       checkCreateVersionMetadataV1Alpha(od as api.CreateVersionMetadataV1Alpha);
@@ -3232,7 +3232,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateVersionMetadataV1Beta', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateVersionMetadataV1Beta();
       var od = api.CreateVersionMetadataV1Beta.fromJson(o.toJson());
       checkCreateVersionMetadataV1Beta(od as api.CreateVersionMetadataV1Beta);
@@ -3240,7 +3240,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DebugInstanceRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDebugInstanceRequest();
       var od = api.DebugInstanceRequest.fromJson(o.toJson());
       checkDebugInstanceRequest(od as api.DebugInstanceRequest);
@@ -3248,7 +3248,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Deployment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDeployment();
       var od = api.Deployment.fromJson(o.toJson());
       checkDeployment(od as api.Deployment);
@@ -3256,7 +3256,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DiskUtilization', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDiskUtilization();
       var od = api.DiskUtilization.fromJson(o.toJson());
       checkDiskUtilization(od as api.DiskUtilization);
@@ -3264,7 +3264,7 @@ void main() {
   });
 
   unittest.group('obj-schema-DomainMapping', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildDomainMapping();
       var od = api.DomainMapping.fromJson(o.toJson());
       checkDomainMapping(od as api.DomainMapping);
@@ -3272,7 +3272,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -3280,7 +3280,7 @@ void main() {
   });
 
   unittest.group('obj-schema-EndpointsApiService', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEndpointsApiService();
       var od = api.EndpointsApiService.fromJson(o.toJson());
       checkEndpointsApiService(od as api.EndpointsApiService);
@@ -3288,7 +3288,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Entrypoint', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntrypoint();
       var od = api.Entrypoint.fromJson(o.toJson());
       checkEntrypoint(od as api.Entrypoint);
@@ -3296,7 +3296,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ErrorHandler', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildErrorHandler();
       var od = api.ErrorHandler.fromJson(o.toJson());
       checkErrorHandler(od as api.ErrorHandler);
@@ -3304,7 +3304,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FeatureSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFeatureSettings();
       var od = api.FeatureSettings.fromJson(o.toJson());
       checkFeatureSettings(od as api.FeatureSettings);
@@ -3312,7 +3312,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FileInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFileInfo();
       var od = api.FileInfo.fromJson(o.toJson());
       checkFileInfo(od as api.FileInfo);
@@ -3320,7 +3320,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FirewallRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFirewallRule();
       var od = api.FirewallRule.fromJson(o.toJson());
       checkFirewallRule(od as api.FirewallRule);
@@ -3328,7 +3328,7 @@ void main() {
   });
 
   unittest.group('obj-schema-HealthCheck', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildHealthCheck();
       var od = api.HealthCheck.fromJson(o.toJson());
       checkHealthCheck(od as api.HealthCheck);
@@ -3336,7 +3336,7 @@ void main() {
   });
 
   unittest.group('obj-schema-IdentityAwareProxy', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildIdentityAwareProxy();
       var od = api.IdentityAwareProxy.fromJson(o.toJson());
       checkIdentityAwareProxy(od as api.IdentityAwareProxy);
@@ -3344,7 +3344,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Instance', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildInstance();
       var od = api.Instance.fromJson(o.toJson());
       checkInstance(od as api.Instance);
@@ -3352,7 +3352,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Library', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLibrary();
       var od = api.Library.fromJson(o.toJson());
       checkLibrary(od as api.Library);
@@ -3360,7 +3360,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAuthorizedCertificatesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAuthorizedCertificatesResponse();
       var od = api.ListAuthorizedCertificatesResponse.fromJson(o.toJson());
       checkListAuthorizedCertificatesResponse(
@@ -3369,7 +3369,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAuthorizedDomainsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAuthorizedDomainsResponse();
       var od = api.ListAuthorizedDomainsResponse.fromJson(o.toJson());
       checkListAuthorizedDomainsResponse(
@@ -3378,7 +3378,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListDomainMappingsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListDomainMappingsResponse();
       var od = api.ListDomainMappingsResponse.fromJson(o.toJson());
       checkListDomainMappingsResponse(od as api.ListDomainMappingsResponse);
@@ -3386,7 +3386,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListIngressRulesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListIngressRulesResponse();
       var od = api.ListIngressRulesResponse.fromJson(o.toJson());
       checkListIngressRulesResponse(od as api.ListIngressRulesResponse);
@@ -3394,7 +3394,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListInstancesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListInstancesResponse();
       var od = api.ListInstancesResponse.fromJson(o.toJson());
       checkListInstancesResponse(od as api.ListInstancesResponse);
@@ -3402,7 +3402,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLocationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
       checkListLocationsResponse(od as api.ListLocationsResponse);
@@ -3410,7 +3410,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
       checkListOperationsResponse(od as api.ListOperationsResponse);
@@ -3418,7 +3418,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListServicesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListServicesResponse();
       var od = api.ListServicesResponse.fromJson(o.toJson());
       checkListServicesResponse(od as api.ListServicesResponse);
@@ -3426,7 +3426,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListVersionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListVersionsResponse();
       var od = api.ListVersionsResponse.fromJson(o.toJson());
       checkListVersionsResponse(od as api.ListVersionsResponse);
@@ -3434,7 +3434,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LivenessCheck', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLivenessCheck();
       var od = api.LivenessCheck.fromJson(o.toJson());
       checkLivenessCheck(od as api.LivenessCheck);
@@ -3442,7 +3442,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Location', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
       checkLocation(od as api.Location);
@@ -3450,7 +3450,7 @@ void main() {
   });
 
   unittest.group('obj-schema-LocationMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLocationMetadata();
       var od = api.LocationMetadata.fromJson(o.toJson());
       checkLocationMetadata(od as api.LocationMetadata);
@@ -3458,7 +3458,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManagedCertificate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManagedCertificate();
       var od = api.ManagedCertificate.fromJson(o.toJson());
       checkManagedCertificate(od as api.ManagedCertificate);
@@ -3466,7 +3466,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ManualScaling', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildManualScaling();
       var od = api.ManualScaling.fromJson(o.toJson());
       checkManualScaling(od as api.ManualScaling);
@@ -3474,7 +3474,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Network', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNetwork();
       var od = api.Network.fromJson(o.toJson());
       checkNetwork(od as api.Network);
@@ -3482,7 +3482,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NetworkSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNetworkSettings();
       var od = api.NetworkSettings.fromJson(o.toJson());
       checkNetworkSettings(od as api.NetworkSettings);
@@ -3490,7 +3490,7 @@ void main() {
   });
 
   unittest.group('obj-schema-NetworkUtilization', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildNetworkUtilization();
       var od = api.NetworkUtilization.fromJson(o.toJson());
       checkNetworkUtilization(od as api.NetworkUtilization);
@@ -3498,7 +3498,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Operation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
       checkOperation(od as api.Operation);
@@ -3506,7 +3506,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationMetadataV1', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationMetadataV1();
       var od = api.OperationMetadataV1.fromJson(o.toJson());
       checkOperationMetadataV1(od as api.OperationMetadataV1);
@@ -3514,7 +3514,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationMetadataV1Alpha', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationMetadataV1Alpha();
       var od = api.OperationMetadataV1Alpha.fromJson(o.toJson());
       checkOperationMetadataV1Alpha(od as api.OperationMetadataV1Alpha);
@@ -3522,7 +3522,7 @@ void main() {
   });
 
   unittest.group('obj-schema-OperationMetadataV1Beta', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildOperationMetadataV1Beta();
       var od = api.OperationMetadataV1Beta.fromJson(o.toJson());
       checkOperationMetadataV1Beta(od as api.OperationMetadataV1Beta);
@@ -3530,7 +3530,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ReadinessCheck', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildReadinessCheck();
       var od = api.ReadinessCheck.fromJson(o.toJson());
       checkReadinessCheck(od as api.ReadinessCheck);
@@ -3538,7 +3538,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RepairApplicationRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRepairApplicationRequest();
       var od = api.RepairApplicationRequest.fromJson(o.toJson());
       checkRepairApplicationRequest(od as api.RepairApplicationRequest);
@@ -3546,7 +3546,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RequestUtilization', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRequestUtilization();
       var od = api.RequestUtilization.fromJson(o.toJson());
       checkRequestUtilization(od as api.RequestUtilization);
@@ -3554,7 +3554,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ResourceRecord', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResourceRecord();
       var od = api.ResourceRecord.fromJson(o.toJson());
       checkResourceRecord(od as api.ResourceRecord);
@@ -3562,7 +3562,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Resources', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildResources();
       var od = api.Resources.fromJson(o.toJson());
       checkResources(od as api.Resources);
@@ -3570,7 +3570,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ScriptHandler', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildScriptHandler();
       var od = api.ScriptHandler.fromJson(o.toJson());
       checkScriptHandler(od as api.ScriptHandler);
@@ -3578,7 +3578,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Service', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildService();
       var od = api.Service.fromJson(o.toJson());
       checkService(od as api.Service);
@@ -3586,7 +3586,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SslSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSslSettings();
       var od = api.SslSettings.fromJson(o.toJson());
       checkSslSettings(od as api.SslSettings);
@@ -3594,7 +3594,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StandardSchedulerSettings', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStandardSchedulerSettings();
       var od = api.StandardSchedulerSettings.fromJson(o.toJson());
       checkStandardSchedulerSettings(od as api.StandardSchedulerSettings);
@@ -3602,7 +3602,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StaticFilesHandler', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStaticFilesHandler();
       var od = api.StaticFilesHandler.fromJson(o.toJson());
       checkStaticFilesHandler(od as api.StaticFilesHandler);
@@ -3610,7 +3610,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -3618,7 +3618,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TrafficSplit', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTrafficSplit();
       var od = api.TrafficSplit.fromJson(o.toJson());
       checkTrafficSplit(od as api.TrafficSplit);
@@ -3626,7 +3626,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UrlDispatchRule', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUrlDispatchRule();
       var od = api.UrlDispatchRule.fromJson(o.toJson());
       checkUrlDispatchRule(od as api.UrlDispatchRule);
@@ -3634,7 +3634,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UrlMap', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUrlMap();
       var od = api.UrlMap.fromJson(o.toJson());
       checkUrlMap(od as api.UrlMap);
@@ -3642,7 +3642,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Version', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVersion();
       var od = api.Version.fromJson(o.toJson());
       checkVersion(od as api.Version);
@@ -3650,7 +3650,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Volume', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVolume();
       var od = api.Volume.fromJson(o.toJson());
       checkVolume(od as api.Volume);
@@ -3658,7 +3658,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VpcAccessConnector', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVpcAccessConnector();
       var od = api.VpcAccessConnector.fromJson(o.toJson());
       checkVpcAccessConnector(od as api.VpcAccessConnector);
@@ -3666,7 +3666,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ZipInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildZipInfo();
       var od = api.ZipInfo.fromJson(o.toJson());
       checkZipInfo(od as api.ZipInfo);
@@ -3674,7 +3674,7 @@ void main() {
   });
 
   unittest.group('resource-AppsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps;
       var arg_request = buildApplication();
@@ -3725,14 +3725,11 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps;
       var arg_appsId = 'foo';
@@ -3785,14 +3782,11 @@ void main() {
         var resp = convert.json.encode(buildApplication());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_appsId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkApplication(response as api.Application);
-      })));
+      final response = await res.get(arg_appsId, $fields: arg_$fields);
+      checkApplication(response as api.Application);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps;
       var arg_request = buildApplication();
@@ -3855,15 +3849,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_appsId,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_appsId,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--repair', () {
+    unittest.test('method--repair', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps;
       var arg_request = buildRepairApplicationRequest();
@@ -3929,16 +3920,14 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .repair(arg_request, arg_appsId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.repair(arg_request, arg_appsId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-AppsAuthorizedCertificatesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.authorizedCertificates;
       var arg_request = buildAuthorizedCertificate();
@@ -4004,14 +3993,12 @@ void main() {
         var resp = convert.json.encode(buildAuthorizedCertificate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_appsId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAuthorizedCertificate(response as api.AuthorizedCertificate);
-      })));
+      final response =
+          await res.create(arg_request, arg_appsId, $fields: arg_$fields);
+      checkAuthorizedCertificate(response as api.AuthorizedCertificate);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.authorizedCertificates;
       var arg_appsId = 'foo';
@@ -4079,15 +4066,13 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_appsId, arg_authorizedCertificatesId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(
+          arg_appsId, arg_authorizedCertificatesId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.authorizedCertificates;
       var arg_appsId = 'foo';
@@ -4160,15 +4145,12 @@ void main() {
         var resp = convert.json.encode(buildAuthorizedCertificate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_appsId, arg_authorizedCertificatesId,
-              view: arg_view, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAuthorizedCertificate(response as api.AuthorizedCertificate);
-      })));
+      final response = await res.get(arg_appsId, arg_authorizedCertificatesId,
+          view: arg_view, $fields: arg_$fields);
+      checkAuthorizedCertificate(response as api.AuthorizedCertificate);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.authorizedCertificates;
       var arg_appsId = 'foo';
@@ -4245,19 +4227,16 @@ void main() {
             convert.json.encode(buildListAuthorizedCertificatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_appsId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAuthorizedCertificatesResponse(
-            response as api.ListAuthorizedCertificatesResponse);
-      })));
+      final response = await res.list(arg_appsId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListAuthorizedCertificatesResponse(
+          response as api.ListAuthorizedCertificatesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.authorizedCertificates;
       var arg_request = buildAuthorizedCertificate();
@@ -4335,17 +4314,15 @@ void main() {
         var resp = convert.json.encode(buildAuthorizedCertificate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_appsId, arg_authorizedCertificatesId,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAuthorizedCertificate(response as api.AuthorizedCertificate);
-      })));
+      final response = await res.patch(
+          arg_request, arg_appsId, arg_authorizedCertificatesId,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkAuthorizedCertificate(response as api.AuthorizedCertificate);
     });
   });
 
   unittest.group('resource-AppsAuthorizedDomainsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.authorizedDomains;
       var arg_appsId = 'foo';
@@ -4416,20 +4393,17 @@ void main() {
         var resp = convert.json.encode(buildListAuthorizedDomainsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_appsId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAuthorizedDomainsResponse(
-            response as api.ListAuthorizedDomainsResponse);
-      })));
+      final response = await res.list(arg_appsId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAuthorizedDomainsResponse(
+          response as api.ListAuthorizedDomainsResponse);
     });
   });
 
   unittest.group('resource-AppsDomainMappingsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.domainMappings;
       var arg_request = buildDomainMapping();
@@ -4500,15 +4474,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_appsId,
-              overrideStrategy: arg_overrideStrategy, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_appsId,
+          overrideStrategy: arg_overrideStrategy, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.domainMappings;
       var arg_appsId = 'foo';
@@ -4576,14 +4547,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_appsId, arg_domainMappingsId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(arg_appsId, arg_domainMappingsId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.domainMappings;
       var arg_appsId = 'foo';
@@ -4651,14 +4620,12 @@ void main() {
         var resp = convert.json.encode(buildDomainMapping());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_appsId, arg_domainMappingsId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkDomainMapping(response as api.DomainMapping);
-      })));
+      final response =
+          await res.get(arg_appsId, arg_domainMappingsId, $fields: arg_$fields);
+      checkDomainMapping(response as api.DomainMapping);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.domainMappings;
       var arg_appsId = 'foo';
@@ -4729,18 +4696,15 @@ void main() {
         var resp = convert.json.encode(buildListDomainMappingsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_appsId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListDomainMappingsResponse(
-            response as api.ListDomainMappingsResponse);
-      })));
+      final response = await res.list(arg_appsId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListDomainMappingsResponse(
+          response as api.ListDomainMappingsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.domainMappings;
       var arg_request = buildDomainMapping();
@@ -4818,17 +4782,15 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_appsId, arg_domainMappingsId,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(
+          arg_request, arg_appsId, arg_domainMappingsId,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-AppsFirewallIngressRulesResource', () {
-    unittest.test('method--batchUpdate', () {
+    unittest.test('method--batchUpdate', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.firewall.ingressRules;
       var arg_request = buildBatchUpdateIngressRulesRequest();
@@ -4895,15 +4857,13 @@ void main() {
         var resp = convert.json.encode(buildBatchUpdateIngressRulesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchUpdate(arg_request, arg_appsId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkBatchUpdateIngressRulesResponse(
-            response as api.BatchUpdateIngressRulesResponse);
-      })));
+      final response =
+          await res.batchUpdate(arg_request, arg_appsId, $fields: arg_$fields);
+      checkBatchUpdateIngressRulesResponse(
+          response as api.BatchUpdateIngressRulesResponse);
     });
 
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.firewall.ingressRules;
       var arg_request = buildFirewallRule();
@@ -4969,14 +4929,12 @@ void main() {
         var resp = convert.json.encode(buildFirewallRule());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_appsId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFirewallRule(response as api.FirewallRule);
-      })));
+      final response =
+          await res.create(arg_request, arg_appsId, $fields: arg_$fields);
+      checkFirewallRule(response as api.FirewallRule);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.firewall.ingressRules;
       var arg_appsId = 'foo';
@@ -5044,14 +5002,12 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_appsId, arg_ingressRulesId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response = await res.delete(arg_appsId, arg_ingressRulesId,
+          $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.firewall.ingressRules;
       var arg_appsId = 'foo';
@@ -5119,14 +5075,12 @@ void main() {
         var resp = convert.json.encode(buildFirewallRule());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_appsId, arg_ingressRulesId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFirewallRule(response as api.FirewallRule);
-      })));
+      final response =
+          await res.get(arg_appsId, arg_ingressRulesId, $fields: arg_$fields);
+      checkFirewallRule(response as api.FirewallRule);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.firewall.ingressRules;
       var arg_appsId = 'foo';
@@ -5202,18 +5156,15 @@ void main() {
         var resp = convert.json.encode(buildListIngressRulesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_appsId,
-              matchingAddress: arg_matchingAddress,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListIngressRulesResponse(response as api.ListIngressRulesResponse);
-      })));
+      final response = await res.list(arg_appsId,
+          matchingAddress: arg_matchingAddress,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListIngressRulesResponse(response as api.ListIngressRulesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.firewall.ingressRules;
       var arg_request = buildFirewallRule();
@@ -5291,17 +5242,15 @@ void main() {
         var resp = convert.json.encode(buildFirewallRule());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_appsId, arg_ingressRulesId,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFirewallRule(response as api.FirewallRule);
-      })));
+      final response = await res.patch(
+          arg_request, arg_appsId, arg_ingressRulesId,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkFirewallRule(response as api.FirewallRule);
     });
   });
 
   unittest.group('resource-AppsLocationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.locations;
       var arg_appsId = 'foo';
@@ -5369,14 +5318,12 @@ void main() {
         var resp = convert.json.encode(buildLocation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_appsId, arg_locationsId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkLocation(response as api.Location);
-      })));
+      final response =
+          await res.get(arg_appsId, arg_locationsId, $fields: arg_$fields);
+      checkLocation(response as api.Location);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.locations;
       var arg_appsId = 'foo';
@@ -5452,20 +5399,17 @@ void main() {
         var resp = convert.json.encode(buildListLocationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_appsId,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response as api.ListLocationsResponse);
-      })));
+      final response = await res.list(arg_appsId,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLocationsResponse(response as api.ListLocationsResponse);
     });
   });
 
   unittest.group('resource-AppsOperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.operations;
       var arg_appsId = 'foo';
@@ -5533,14 +5477,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_appsId, arg_operationsId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.get(arg_appsId, arg_operationsId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.operations;
       var arg_appsId = 'foo';
@@ -5616,20 +5558,17 @@ void main() {
         var resp = convert.json.encode(buildListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_appsId,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response as api.ListOperationsResponse);
-      })));
+      final response = await res.list(arg_appsId,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListOperationsResponse(response as api.ListOperationsResponse);
     });
   });
 
   unittest.group('resource-AppsServicesResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.services;
       var arg_appsId = 'foo';
@@ -5697,14 +5636,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_appsId, arg_servicesId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response =
+          await res.delete(arg_appsId, arg_servicesId, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.services;
       var arg_appsId = 'foo';
@@ -5772,14 +5709,12 @@ void main() {
         var resp = convert.json.encode(buildService());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_appsId, arg_servicesId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkService(response as api.Service);
-      })));
+      final response =
+          await res.get(arg_appsId, arg_servicesId, $fields: arg_$fields);
+      checkService(response as api.Service);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.services;
       var arg_appsId = 'foo';
@@ -5850,17 +5785,14 @@ void main() {
         var resp = convert.json.encode(buildListServicesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_appsId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListServicesResponse(response as api.ListServicesResponse);
-      })));
+      final response = await res.list(arg_appsId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListServicesResponse(response as api.ListServicesResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.services;
       var arg_request = buildService();
@@ -5943,19 +5875,16 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_appsId, arg_servicesId,
-              migrateTraffic: arg_migrateTraffic,
-              updateMask: arg_updateMask,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(arg_request, arg_appsId, arg_servicesId,
+          migrateTraffic: arg_migrateTraffic,
+          updateMask: arg_updateMask,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-AppsServicesVersionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.services.versions;
       var arg_request = buildVersion();
@@ -6036,14 +5965,12 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_appsId, arg_servicesId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.create(arg_request, arg_appsId, arg_servicesId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.services.versions;
       var arg_appsId = 'foo';
@@ -6126,15 +6053,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_appsId, arg_servicesId, arg_versionsId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(
+          arg_appsId, arg_servicesId, arg_versionsId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.services.versions;
       var arg_appsId = 'foo';
@@ -6222,15 +6147,12 @@ void main() {
         var resp = convert.json.encode(buildVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_appsId, arg_servicesId, arg_versionsId,
-              view: arg_view, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVersion(response as api.Version);
-      })));
+      final response = await res.get(arg_appsId, arg_servicesId, arg_versionsId,
+          view: arg_view, $fields: arg_$fields);
+      checkVersion(response as api.Version);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.services.versions;
       var arg_appsId = 'foo';
@@ -6321,18 +6243,15 @@ void main() {
         var resp = convert.json.encode(buildListVersionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_appsId, arg_servicesId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              view: arg_view,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListVersionsResponse(response as api.ListVersionsResponse);
-      })));
+      final response = await res.list(arg_appsId, arg_servicesId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          view: arg_view,
+          $fields: arg_$fields);
+      checkListVersionsResponse(response as api.ListVersionsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.services.versions;
       var arg_request = buildVersion();
@@ -6425,17 +6344,15 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_appsId, arg_servicesId, arg_versionsId,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.patch(
+          arg_request, arg_appsId, arg_servicesId, arg_versionsId,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
   });
 
   unittest.group('resource-AppsServicesVersionsInstancesResource', () {
-    unittest.test('method--debug', () {
+    unittest.test('method--debug', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.services.versions.instances;
       var arg_request = buildDebugInstanceRequest();
@@ -6546,16 +6463,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .debug(arg_request, arg_appsId, arg_servicesId, arg_versionsId,
-              arg_instancesId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.debug(arg_request, arg_appsId, arg_servicesId,
+          arg_versionsId, arg_instancesId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.services.versions.instances;
       var arg_appsId = 'foo';
@@ -6653,15 +6567,13 @@ void main() {
         var resp = convert.json.encode(buildOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_appsId, arg_servicesId, arg_versionsId, arg_instancesId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkOperation(response as api.Operation);
-      })));
+      final response = await res.delete(
+          arg_appsId, arg_servicesId, arg_versionsId, arg_instancesId,
+          $fields: arg_$fields);
+      checkOperation(response as api.Operation);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.services.versions.instances;
       var arg_appsId = 'foo';
@@ -6759,15 +6671,13 @@ void main() {
         var resp = convert.json.encode(buildInstance());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_appsId, arg_servicesId, arg_versionsId, arg_instancesId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkInstance(response as api.Instance);
-      })));
+      final response = await res.get(
+          arg_appsId, arg_servicesId, arg_versionsId, arg_instancesId,
+          $fields: arg_$fields);
+      checkInstance(response as api.Instance);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.AppengineApi(mock).apps.services.versions.instances;
       var arg_appsId = 'foo';
@@ -6868,14 +6778,12 @@ void main() {
         var resp = convert.json.encode(buildListInstancesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_appsId, arg_servicesId, arg_versionsId,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListInstancesResponse(response as api.ListInstancesResponse);
-      })));
+      final response = await res.list(
+          arg_appsId, arg_servicesId, arg_versionsId,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListInstancesResponse(response as api.ListInstancesResponse);
     });
   });
 }

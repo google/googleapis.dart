@@ -637,7 +637,7 @@ void checkTruncatableString(api.TruncatableString o) {
 
 void main() {
   unittest.group('obj-schema-Annotation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAnnotation();
       var od = api.Annotation.fromJson(o.toJson());
       checkAnnotation(od as api.Annotation);
@@ -645,7 +645,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AttributeValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAttributeValue();
       var od = api.AttributeValue.fromJson(o.toJson());
       checkAttributeValue(od as api.AttributeValue);
@@ -653,7 +653,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Attributes', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAttributes();
       var od = api.Attributes.fromJson(o.toJson());
       checkAttributes(od as api.Attributes);
@@ -661,7 +661,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BatchWriteSpansRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBatchWriteSpansRequest();
       var od = api.BatchWriteSpansRequest.fromJson(o.toJson());
       checkBatchWriteSpansRequest(od as api.BatchWriteSpansRequest);
@@ -669,7 +669,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Empty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
       checkEmpty(od as api.Empty);
@@ -677,7 +677,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Link', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLink();
       var od = api.Link.fromJson(o.toJson());
       checkLink(od as api.Link);
@@ -685,7 +685,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Links', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildLinks();
       var od = api.Links.fromJson(o.toJson());
       checkLinks(od as api.Links);
@@ -693,7 +693,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MessageEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMessageEvent();
       var od = api.MessageEvent.fromJson(o.toJson());
       checkMessageEvent(od as api.MessageEvent);
@@ -701,7 +701,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Module', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildModule();
       var od = api.Module.fromJson(o.toJson());
       checkModule(od as api.Module);
@@ -709,7 +709,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Span', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSpan();
       var od = api.Span.fromJson(o.toJson());
       checkSpan(od as api.Span);
@@ -717,7 +717,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StackFrame', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStackFrame();
       var od = api.StackFrame.fromJson(o.toJson());
       checkStackFrame(od as api.StackFrame);
@@ -725,7 +725,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StackFrames', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStackFrames();
       var od = api.StackFrames.fromJson(o.toJson());
       checkStackFrames(od as api.StackFrames);
@@ -733,7 +733,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StackTrace', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStackTrace();
       var od = api.StackTrace.fromJson(o.toJson());
       checkStackTrace(od as api.StackTrace);
@@ -741,7 +741,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Status', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
       checkStatus(od as api.Status);
@@ -749,7 +749,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimeEvent', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimeEvent();
       var od = api.TimeEvent.fromJson(o.toJson());
       checkTimeEvent(od as api.TimeEvent);
@@ -757,7 +757,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TimeEvents', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTimeEvents();
       var od = api.TimeEvents.fromJson(o.toJson());
       checkTimeEvents(od as api.TimeEvents);
@@ -765,7 +765,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TruncatableString', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTruncatableString();
       var od = api.TruncatableString.fromJson(o.toJson());
       checkTruncatableString(od as api.TruncatableString);
@@ -773,7 +773,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsTracesResource', () {
-    unittest.test('method--batchWrite', () {
+    unittest.test('method--batchWrite', () async {
       var mock = HttpServerMock();
       var res = api.CloudTraceApi(mock).projects.traces;
       var arg_request = buildBatchWriteSpansRequest();
@@ -826,16 +826,14 @@ void main() {
         var resp = convert.json.encode(buildEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .batchWrite(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEmpty(response as api.Empty);
-      })));
+      final response =
+          await res.batchWrite(arg_request, arg_name, $fields: arg_$fields);
+      checkEmpty(response as api.Empty);
     });
   });
 
   unittest.group('resource-ProjectsTracesSpansResource', () {
-    unittest.test('method--createSpan', () {
+    unittest.test('method--createSpan', () async {
       var mock = HttpServerMock();
       var res = api.CloudTraceApi(mock).projects.traces.spans;
       var arg_request = buildSpan();
@@ -888,11 +886,9 @@ void main() {
         var resp = convert.json.encode(buildSpan());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createSpan(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSpan(response as api.Span);
-      })));
+      final response =
+          await res.createSpan(arg_request, arg_name, $fields: arg_$fields);
+      checkSpan(response as api.Span);
     });
   });
 }

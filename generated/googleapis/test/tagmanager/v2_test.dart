@@ -2971,7 +2971,7 @@ void checkUnnamed4946(core.List<core.String> o) {
 
 void main() {
   unittest.group('obj-schema-Account', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccount();
       var od = api.Account.fromJson(o.toJson());
       checkAccount(od as api.Account);
@@ -2979,7 +2979,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AccountAccess', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAccountAccess();
       var od = api.AccountAccess.fromJson(o.toJson());
       checkAccountAccess(od as api.AccountAccess);
@@ -2987,7 +2987,7 @@ void main() {
   });
 
   unittest.group('obj-schema-BuiltInVariable', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildBuiltInVariable();
       var od = api.BuiltInVariable.fromJson(o.toJson());
       checkBuiltInVariable(od as api.BuiltInVariable);
@@ -2995,7 +2995,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Client', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildClient();
       var od = api.Client.fromJson(o.toJson());
       checkClient(od as api.Client);
@@ -3003,7 +3003,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Condition', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCondition();
       var od = api.Condition.fromJson(o.toJson());
       checkCondition(od as api.Condition);
@@ -3011,7 +3011,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Container', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContainer();
       var od = api.Container.fromJson(o.toJson());
       checkContainer(od as api.Container);
@@ -3019,7 +3019,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ContainerAccess', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContainerAccess();
       var od = api.ContainerAccess.fromJson(o.toJson());
       checkContainerAccess(od as api.ContainerAccess);
@@ -3027,7 +3027,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ContainerVersion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContainerVersion();
       var od = api.ContainerVersion.fromJson(o.toJson());
       checkContainerVersion(od as api.ContainerVersion);
@@ -3035,7 +3035,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ContainerVersionHeader', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildContainerVersionHeader();
       var od = api.ContainerVersionHeader.fromJson(o.toJson());
       checkContainerVersionHeader(od as api.ContainerVersionHeader);
@@ -3043,7 +3043,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateBuiltInVariableResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateBuiltInVariableResponse();
       var od = api.CreateBuiltInVariableResponse.fromJson(o.toJson());
       checkCreateBuiltInVariableResponse(
@@ -3052,7 +3052,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateContainerVersionRequestVersionOptions', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateContainerVersionRequestVersionOptions();
       var od =
           api.CreateContainerVersionRequestVersionOptions.fromJson(o.toJson());
@@ -3062,7 +3062,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CreateContainerVersionResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCreateContainerVersionResponse();
       var od = api.CreateContainerVersionResponse.fromJson(o.toJson());
       checkCreateContainerVersionResponse(
@@ -3071,7 +3071,7 @@ void main() {
   });
 
   unittest.group('obj-schema-CustomTemplate', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildCustomTemplate();
       var od = api.CustomTemplate.fromJson(o.toJson());
       checkCustomTemplate(od as api.CustomTemplate);
@@ -3079,7 +3079,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Entity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEntity();
       var od = api.Entity.fromJson(o.toJson());
       checkEntity(od as api.Entity);
@@ -3087,7 +3087,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Environment', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildEnvironment();
       var od = api.Environment.fromJson(o.toJson());
       checkEnvironment(od as api.Environment);
@@ -3095,7 +3095,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Folder', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFolder();
       var od = api.Folder.fromJson(o.toJson());
       checkFolder(od as api.Folder);
@@ -3103,7 +3103,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FolderEntities', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFolderEntities();
       var od = api.FolderEntities.fromJson(o.toJson());
       checkFolderEntities(od as api.FolderEntities);
@@ -3111,7 +3111,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GalleryReference', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGalleryReference();
       var od = api.GalleryReference.fromJson(o.toJson());
       checkGalleryReference(od as api.GalleryReference);
@@ -3119,7 +3119,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GetWorkspaceStatusResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGetWorkspaceStatusResponse();
       var od = api.GetWorkspaceStatusResponse.fromJson(o.toJson());
       checkGetWorkspaceStatusResponse(od as api.GetWorkspaceStatusResponse);
@@ -3127,7 +3127,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAccountsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAccountsResponse();
       var od = api.ListAccountsResponse.fromJson(o.toJson());
       checkListAccountsResponse(od as api.ListAccountsResponse);
@@ -3135,7 +3135,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListContainerVersionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListContainerVersionsResponse();
       var od = api.ListContainerVersionsResponse.fromJson(o.toJson());
       checkListContainerVersionsResponse(
@@ -3144,7 +3144,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListContainersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListContainersResponse();
       var od = api.ListContainersResponse.fromJson(o.toJson());
       checkListContainersResponse(od as api.ListContainersResponse);
@@ -3152,7 +3152,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListEnabledBuiltInVariablesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListEnabledBuiltInVariablesResponse();
       var od = api.ListEnabledBuiltInVariablesResponse.fromJson(o.toJson());
       checkListEnabledBuiltInVariablesResponse(
@@ -3161,7 +3161,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListEnvironmentsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListEnvironmentsResponse();
       var od = api.ListEnvironmentsResponse.fromJson(o.toJson());
       checkListEnvironmentsResponse(od as api.ListEnvironmentsResponse);
@@ -3169,7 +3169,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListFoldersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListFoldersResponse();
       var od = api.ListFoldersResponse.fromJson(o.toJson());
       checkListFoldersResponse(od as api.ListFoldersResponse);
@@ -3177,7 +3177,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTagsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTagsResponse();
       var od = api.ListTagsResponse.fromJson(o.toJson());
       checkListTagsResponse(od as api.ListTagsResponse);
@@ -3185,7 +3185,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTemplatesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTemplatesResponse();
       var od = api.ListTemplatesResponse.fromJson(o.toJson());
       checkListTemplatesResponse(od as api.ListTemplatesResponse);
@@ -3193,7 +3193,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListTriggersResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListTriggersResponse();
       var od = api.ListTriggersResponse.fromJson(o.toJson());
       checkListTriggersResponse(od as api.ListTriggersResponse);
@@ -3201,7 +3201,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListUserPermissionsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListUserPermissionsResponse();
       var od = api.ListUserPermissionsResponse.fromJson(o.toJson());
       checkListUserPermissionsResponse(od as api.ListUserPermissionsResponse);
@@ -3209,7 +3209,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListVariablesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListVariablesResponse();
       var od = api.ListVariablesResponse.fromJson(o.toJson());
       checkListVariablesResponse(od as api.ListVariablesResponse);
@@ -3217,7 +3217,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListWorkspacesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListWorkspacesResponse();
       var od = api.ListWorkspacesResponse.fromJson(o.toJson());
       checkListWorkspacesResponse(od as api.ListWorkspacesResponse);
@@ -3225,7 +3225,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListZonesResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListZonesResponse();
       var od = api.ListZonesResponse.fromJson(o.toJson());
       checkListZonesResponse(od as api.ListZonesResponse);
@@ -3233,7 +3233,7 @@ void main() {
   });
 
   unittest.group('obj-schema-MergeConflict', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildMergeConflict();
       var od = api.MergeConflict.fromJson(o.toJson());
       checkMergeConflict(od as api.MergeConflict);
@@ -3241,7 +3241,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Parameter', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildParameter();
       var od = api.Parameter.fromJson(o.toJson());
       checkParameter(od as api.Parameter);
@@ -3249,7 +3249,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PublishContainerVersionResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPublishContainerVersionResponse();
       var od = api.PublishContainerVersionResponse.fromJson(o.toJson());
       checkPublishContainerVersionResponse(
@@ -3258,7 +3258,7 @@ void main() {
   });
 
   unittest.group('obj-schema-QuickPreviewResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQuickPreviewResponse();
       var od = api.QuickPreviewResponse.fromJson(o.toJson());
       checkQuickPreviewResponse(od as api.QuickPreviewResponse);
@@ -3266,7 +3266,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RevertBuiltInVariableResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRevertBuiltInVariableResponse();
       var od = api.RevertBuiltInVariableResponse.fromJson(o.toJson());
       checkRevertBuiltInVariableResponse(
@@ -3275,7 +3275,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RevertFolderResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRevertFolderResponse();
       var od = api.RevertFolderResponse.fromJson(o.toJson());
       checkRevertFolderResponse(od as api.RevertFolderResponse);
@@ -3283,7 +3283,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RevertTagResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRevertTagResponse();
       var od = api.RevertTagResponse.fromJson(o.toJson());
       checkRevertTagResponse(od as api.RevertTagResponse);
@@ -3291,7 +3291,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RevertTemplateResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRevertTemplateResponse();
       var od = api.RevertTemplateResponse.fromJson(o.toJson());
       checkRevertTemplateResponse(od as api.RevertTemplateResponse);
@@ -3299,7 +3299,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RevertTriggerResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRevertTriggerResponse();
       var od = api.RevertTriggerResponse.fromJson(o.toJson());
       checkRevertTriggerResponse(od as api.RevertTriggerResponse);
@@ -3307,7 +3307,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RevertVariableResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRevertVariableResponse();
       var od = api.RevertVariableResponse.fromJson(o.toJson());
       checkRevertVariableResponse(od as api.RevertVariableResponse);
@@ -3315,7 +3315,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RevertZoneResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRevertZoneResponse();
       var od = api.RevertZoneResponse.fromJson(o.toJson());
       checkRevertZoneResponse(od as api.RevertZoneResponse);
@@ -3323,7 +3323,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SetupTag', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSetupTag();
       var od = api.SetupTag.fromJson(o.toJson());
       checkSetupTag(od as api.SetupTag);
@@ -3331,7 +3331,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SyncStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSyncStatus();
       var od = api.SyncStatus.fromJson(o.toJson());
       checkSyncStatus(od as api.SyncStatus);
@@ -3339,7 +3339,7 @@ void main() {
   });
 
   unittest.group('obj-schema-SyncWorkspaceResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildSyncWorkspaceResponse();
       var od = api.SyncWorkspaceResponse.fromJson(o.toJson());
       checkSyncWorkspaceResponse(od as api.SyncWorkspaceResponse);
@@ -3347,7 +3347,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Tag', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTag();
       var od = api.Tag.fromJson(o.toJson());
       checkTag(od as api.Tag);
@@ -3355,7 +3355,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TeardownTag', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTeardownTag();
       var od = api.TeardownTag.fromJson(o.toJson());
       checkTeardownTag(od as api.TeardownTag);
@@ -3363,7 +3363,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Trigger', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTrigger();
       var od = api.Trigger.fromJson(o.toJson());
       checkTrigger(od as api.Trigger);
@@ -3371,7 +3371,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserPermission', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserPermission();
       var od = api.UserPermission.fromJson(o.toJson());
       checkUserPermission(od as api.UserPermission);
@@ -3379,7 +3379,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Variable', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVariable();
       var od = api.Variable.fromJson(o.toJson());
       checkVariable(od as api.Variable);
@@ -3387,7 +3387,7 @@ void main() {
   });
 
   unittest.group('obj-schema-VariableFormatValue', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildVariableFormatValue();
       var od = api.VariableFormatValue.fromJson(o.toJson());
       checkVariableFormatValue(od as api.VariableFormatValue);
@@ -3395,7 +3395,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Workspace', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildWorkspace();
       var od = api.Workspace.fromJson(o.toJson());
       checkWorkspace(od as api.Workspace);
@@ -3403,7 +3403,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Zone', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildZone();
       var od = api.Zone.fromJson(o.toJson());
       checkZone(od as api.Zone);
@@ -3411,7 +3411,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ZoneBoundary', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildZoneBoundary();
       var od = api.ZoneBoundary.fromJson(o.toJson());
       checkZoneBoundary(od as api.ZoneBoundary);
@@ -3419,7 +3419,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ZoneChildContainer', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildZoneChildContainer();
       var od = api.ZoneChildContainer.fromJson(o.toJson());
       checkZoneChildContainer(od as api.ZoneChildContainer);
@@ -3427,7 +3427,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ZoneTypeRestriction', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildZoneTypeRestriction();
       var od = api.ZoneTypeRestriction.fromJson(o.toJson());
       checkZoneTypeRestriction(od as api.ZoneTypeRestriction);
@@ -3435,7 +3435,7 @@ void main() {
   });
 
   unittest.group('resource-AccountsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts;
       var arg_path = 'foo';
@@ -3483,14 +3483,11 @@ void main() {
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccount(response as api.Account);
-      })));
+      final response = await res.get(arg_path, $fields: arg_$fields);
+      checkAccount(response as api.Account);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts;
       var arg_pageToken = 'foo';
@@ -3541,14 +3538,12 @@ void main() {
         var resp = convert.json.encode(buildListAccountsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(pageToken: arg_pageToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAccountsResponse(response as api.ListAccountsResponse);
-      })));
+      final response =
+          await res.list(pageToken: arg_pageToken, $fields: arg_$fields);
+      checkListAccountsResponse(response as api.ListAccountsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts;
       var arg_request = buildAccount();
@@ -3606,17 +3601,14 @@ void main() {
         var resp = convert.json.encode(buildAccount());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_path,
-              fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAccount(response as api.Account);
-      })));
+      final response = await res.update(arg_request, arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
+      checkAccount(response as api.Account);
     });
   });
 
   unittest.group('resource-AccountsContainersResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers;
       var arg_request = buildContainer();
@@ -3669,14 +3661,12 @@ void main() {
         var resp = convert.json.encode(buildContainer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkContainer(response as api.Container);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkContainer(response as api.Container);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers;
       var arg_path = 'foo';
@@ -3724,12 +3714,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_path, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers;
       var arg_path = 'foo';
@@ -3777,14 +3765,11 @@ void main() {
         var resp = convert.json.encode(buildContainer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkContainer(response as api.Container);
-      })));
+      final response = await res.get(arg_path, $fields: arg_$fields);
+      checkContainer(response as api.Container);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers;
       var arg_parent = 'foo';
@@ -3837,14 +3822,12 @@ void main() {
         var resp = convert.json.encode(buildListContainersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, pageToken: arg_pageToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListContainersResponse(response as api.ListContainersResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageToken: arg_pageToken, $fields: arg_$fields);
+      checkListContainersResponse(response as api.ListContainersResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers;
       var arg_request = buildContainer();
@@ -3902,17 +3885,14 @@ void main() {
         var resp = convert.json.encode(buildContainer());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_path,
-              fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkContainer(response as api.Container);
-      })));
+      final response = await res.update(arg_request, arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
+      checkContainer(response as api.Container);
     });
   });
 
   unittest.group('resource-AccountsContainersEnvironmentsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.environments;
       var arg_request = buildEnvironment();
@@ -3965,14 +3945,12 @@ void main() {
         var resp = convert.json.encode(buildEnvironment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEnvironment(response as api.Environment);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkEnvironment(response as api.Environment);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.environments;
       var arg_path = 'foo';
@@ -4020,12 +3998,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_path, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.environments;
       var arg_path = 'foo';
@@ -4073,14 +4049,11 @@ void main() {
         var resp = convert.json.encode(buildEnvironment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEnvironment(response as api.Environment);
-      })));
+      final response = await res.get(arg_path, $fields: arg_$fields);
+      checkEnvironment(response as api.Environment);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.environments;
       var arg_parent = 'foo';
@@ -4133,14 +4106,12 @@ void main() {
         var resp = convert.json.encode(buildListEnvironmentsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, pageToken: arg_pageToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListEnvironmentsResponse(response as api.ListEnvironmentsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageToken: arg_pageToken, $fields: arg_$fields);
+      checkListEnvironmentsResponse(response as api.ListEnvironmentsResponse);
     });
 
-    unittest.test('method--reauthorize', () {
+    unittest.test('method--reauthorize', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.environments;
       var arg_request = buildEnvironment();
@@ -4193,14 +4164,12 @@ void main() {
         var resp = convert.json.encode(buildEnvironment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .reauthorize(arg_request, arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEnvironment(response as api.Environment);
-      })));
+      final response =
+          await res.reauthorize(arg_request, arg_path, $fields: arg_$fields);
+      checkEnvironment(response as api.Environment);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.environments;
       var arg_request = buildEnvironment();
@@ -4258,17 +4227,14 @@ void main() {
         var resp = convert.json.encode(buildEnvironment());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_path,
-              fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkEnvironment(response as api.Environment);
-      })));
+      final response = await res.update(arg_request, arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
+      checkEnvironment(response as api.Environment);
     });
   });
 
   unittest.group('resource-AccountsContainersVersionHeadersResource', () {
-    unittest.test('method--latest', () {
+    unittest.test('method--latest', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.versionHeaders;
       var arg_parent = 'foo';
@@ -4316,14 +4282,11 @@ void main() {
         var resp = convert.json.encode(buildContainerVersionHeader());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .latest(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkContainerVersionHeader(response as api.ContainerVersionHeader);
-      })));
+      final response = await res.latest(arg_parent, $fields: arg_$fields);
+      checkContainerVersionHeader(response as api.ContainerVersionHeader);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.versionHeaders;
       var arg_parent = 'foo';
@@ -4381,20 +4344,17 @@ void main() {
         var resp = convert.json.encode(buildListContainerVersionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              includeDeleted: arg_includeDeleted,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListContainerVersionsResponse(
-            response as api.ListContainerVersionsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          includeDeleted: arg_includeDeleted,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListContainerVersionsResponse(
+          response as api.ListContainerVersionsResponse);
     });
   });
 
   unittest.group('resource-AccountsContainersVersionsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.versions;
       var arg_path = 'foo';
@@ -4442,12 +4402,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_path, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.versions;
       var arg_path = 'foo';
@@ -4500,15 +4458,12 @@ void main() {
         var resp = convert.json.encode(buildContainerVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_path,
-              containerVersionId: arg_containerVersionId, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkContainerVersion(response as api.ContainerVersion);
-      })));
+      final response = await res.get(arg_path,
+          containerVersionId: arg_containerVersionId, $fields: arg_$fields);
+      checkContainerVersion(response as api.ContainerVersion);
     });
 
-    unittest.test('method--live', () {
+    unittest.test('method--live', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.versions;
       var arg_parent = 'foo';
@@ -4556,14 +4511,11 @@ void main() {
         var resp = convert.json.encode(buildContainerVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .live(arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkContainerVersion(response as api.ContainerVersion);
-      })));
+      final response = await res.live(arg_parent, $fields: arg_$fields);
+      checkContainerVersion(response as api.ContainerVersion);
     });
 
-    unittest.test('method--publish', () {
+    unittest.test('method--publish', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.versions;
       var arg_path = 'foo';
@@ -4616,15 +4568,13 @@ void main() {
         var resp = convert.json.encode(buildPublishContainerVersionResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .publish(arg_path, fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkPublishContainerVersionResponse(
-            response as api.PublishContainerVersionResponse);
-      })));
+      final response = await res.publish(arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
+      checkPublishContainerVersionResponse(
+          response as api.PublishContainerVersionResponse);
     });
 
-    unittest.test('method--setLatest', () {
+    unittest.test('method--setLatest', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.versions;
       var arg_path = 'foo';
@@ -4672,14 +4622,11 @@ void main() {
         var resp = convert.json.encode(buildContainerVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .setLatest(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkContainerVersion(response as api.ContainerVersion);
-      })));
+      final response = await res.setLatest(arg_path, $fields: arg_$fields);
+      checkContainerVersion(response as api.ContainerVersion);
     });
 
-    unittest.test('method--undelete', () {
+    unittest.test('method--undelete', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.versions;
       var arg_path = 'foo';
@@ -4727,14 +4674,11 @@ void main() {
         var resp = convert.json.encode(buildContainerVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .undelete(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkContainerVersion(response as api.ContainerVersion);
-      })));
+      final response = await res.undelete(arg_path, $fields: arg_$fields);
+      checkContainerVersion(response as api.ContainerVersion);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.versions;
       var arg_request = buildContainerVersion();
@@ -4792,17 +4736,14 @@ void main() {
         var resp = convert.json.encode(buildContainerVersion());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_path,
-              fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkContainerVersion(response as api.ContainerVersion);
-      })));
+      final response = await res.update(arg_request, arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
+      checkContainerVersion(response as api.ContainerVersion);
     });
   });
 
   unittest.group('resource-AccountsContainersWorkspacesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces;
       var arg_request = buildWorkspace();
@@ -4855,14 +4796,12 @@ void main() {
         var resp = convert.json.encode(buildWorkspace());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWorkspace(response as api.Workspace);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkWorkspace(response as api.Workspace);
     });
 
-    unittest.test('method--createVersion', () {
+    unittest.test('method--createVersion', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces;
       var arg_request = buildCreateContainerVersionRequestVersionOptions();
@@ -4916,15 +4855,13 @@ void main() {
         var resp = convert.json.encode(buildCreateContainerVersionResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .createVersion(arg_request, arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCreateContainerVersionResponse(
-            response as api.CreateContainerVersionResponse);
-      })));
+      final response =
+          await res.createVersion(arg_request, arg_path, $fields: arg_$fields);
+      checkCreateContainerVersionResponse(
+          response as api.CreateContainerVersionResponse);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces;
       var arg_path = 'foo';
@@ -4972,12 +4909,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_path, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces;
       var arg_path = 'foo';
@@ -5025,14 +4960,11 @@ void main() {
         var resp = convert.json.encode(buildWorkspace());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWorkspace(response as api.Workspace);
-      })));
+      final response = await res.get(arg_path, $fields: arg_$fields);
+      checkWorkspace(response as api.Workspace);
     });
 
-    unittest.test('method--getStatus', () {
+    unittest.test('method--getStatus', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces;
       var arg_path = 'foo';
@@ -5080,15 +5012,12 @@ void main() {
         var resp = convert.json.encode(buildGetWorkspaceStatusResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .getStatus(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGetWorkspaceStatusResponse(
-            response as api.GetWorkspaceStatusResponse);
-      })));
+      final response = await res.getStatus(arg_path, $fields: arg_$fields);
+      checkGetWorkspaceStatusResponse(
+          response as api.GetWorkspaceStatusResponse);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces;
       var arg_parent = 'foo';
@@ -5141,14 +5070,12 @@ void main() {
         var resp = convert.json.encode(buildListWorkspacesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, pageToken: arg_pageToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListWorkspacesResponse(response as api.ListWorkspacesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageToken: arg_pageToken, $fields: arg_$fields);
+      checkListWorkspacesResponse(response as api.ListWorkspacesResponse);
     });
 
-    unittest.test('method--quickPreview', () {
+    unittest.test('method--quickPreview', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces;
       var arg_path = 'foo';
@@ -5196,14 +5123,11 @@ void main() {
         var resp = convert.json.encode(buildQuickPreviewResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .quickPreview(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkQuickPreviewResponse(response as api.QuickPreviewResponse);
-      })));
+      final response = await res.quickPreview(arg_path, $fields: arg_$fields);
+      checkQuickPreviewResponse(response as api.QuickPreviewResponse);
     });
 
-    unittest.test('method--resolveConflict', () {
+    unittest.test('method--resolveConflict', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces;
       var arg_request = buildEntity();
@@ -5261,13 +5185,11 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .resolveConflict(arg_request, arg_path,
-              fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.resolveConflict(arg_request, arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
     });
 
-    unittest.test('method--sync', () {
+    unittest.test('method--sync', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces;
       var arg_path = 'foo';
@@ -5315,14 +5237,11 @@ void main() {
         var resp = convert.json.encode(buildSyncWorkspaceResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .sync(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkSyncWorkspaceResponse(response as api.SyncWorkspaceResponse);
-      })));
+      final response = await res.sync(arg_path, $fields: arg_$fields);
+      checkSyncWorkspaceResponse(response as api.SyncWorkspaceResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces;
       var arg_request = buildWorkspace();
@@ -5380,18 +5299,15 @@ void main() {
         var resp = convert.json.encode(buildWorkspace());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_path,
-              fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkWorkspace(response as api.Workspace);
-      })));
+      final response = await res.update(arg_request, arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
+      checkWorkspace(response as api.Workspace);
     });
   });
 
   unittest.group(
       'resource-AccountsContainersWorkspacesBuiltInVariablesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock)
           .accounts
@@ -5448,15 +5364,13 @@ void main() {
         var resp = convert.json.encode(buildCreateBuiltInVariableResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_parent, type: arg_type, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCreateBuiltInVariableResponse(
-            response as api.CreateBuiltInVariableResponse);
-      })));
+      final response =
+          await res.create(arg_parent, type: arg_type, $fields: arg_$fields);
+      checkCreateBuiltInVariableResponse(
+          response as api.CreateBuiltInVariableResponse);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock)
           .accounts
@@ -5513,12 +5427,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_path, type: arg_type, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_path, type: arg_type, $fields: arg_$fields);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock)
           .accounts
@@ -5576,15 +5488,13 @@ void main() {
             convert.json.encode(buildListEnabledBuiltInVariablesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, pageToken: arg_pageToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListEnabledBuiltInVariablesResponse(
-            response as api.ListEnabledBuiltInVariablesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageToken: arg_pageToken, $fields: arg_$fields);
+      checkListEnabledBuiltInVariablesResponse(
+          response as api.ListEnabledBuiltInVariablesResponse);
     });
 
-    unittest.test('method--revert', () {
+    unittest.test('method--revert', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock)
           .accounts
@@ -5641,17 +5551,15 @@ void main() {
         var resp = convert.json.encode(buildRevertBuiltInVariableResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .revert(arg_path, type: arg_type, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRevertBuiltInVariableResponse(
-            response as api.RevertBuiltInVariableResponse);
-      })));
+      final response =
+          await res.revert(arg_path, type: arg_type, $fields: arg_$fields);
+      checkRevertBuiltInVariableResponse(
+          response as api.RevertBuiltInVariableResponse);
     });
   });
 
   unittest.group('resource-AccountsContainersWorkspacesFoldersResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.folders;
       var arg_request = buildFolder();
@@ -5704,14 +5612,12 @@ void main() {
         var resp = convert.json.encode(buildFolder());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFolder(response as api.Folder);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkFolder(response as api.Folder);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.folders;
       var arg_path = 'foo';
@@ -5759,12 +5665,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_path, $fields: arg_$fields);
     });
 
-    unittest.test('method--entities', () {
+    unittest.test('method--entities', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.folders;
       var arg_path = 'foo';
@@ -5817,14 +5721,12 @@ void main() {
         var resp = convert.json.encode(buildFolderEntities());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .entities(arg_path, pageToken: arg_pageToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFolderEntities(response as api.FolderEntities);
-      })));
+      final response = await res.entities(arg_path,
+          pageToken: arg_pageToken, $fields: arg_$fields);
+      checkFolderEntities(response as api.FolderEntities);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.folders;
       var arg_path = 'foo';
@@ -5872,14 +5774,11 @@ void main() {
         var resp = convert.json.encode(buildFolder());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFolder(response as api.Folder);
-      })));
+      final response = await res.get(arg_path, $fields: arg_$fields);
+      checkFolder(response as api.Folder);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.folders;
       var arg_parent = 'foo';
@@ -5932,14 +5831,12 @@ void main() {
         var resp = convert.json.encode(buildListFoldersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, pageToken: arg_pageToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListFoldersResponse(response as api.ListFoldersResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageToken: arg_pageToken, $fields: arg_$fields);
+      checkListFoldersResponse(response as api.ListFoldersResponse);
     });
 
-    unittest.test('method--moveEntitiesToFolder', () {
+    unittest.test('method--moveEntitiesToFolder', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.folders;
       var arg_request = buildFolder();
@@ -6007,16 +5904,14 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .moveEntitiesToFolder(arg_request, arg_path,
-              tagId: arg_tagId,
-              triggerId: arg_triggerId,
-              variableId: arg_variableId,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.moveEntitiesToFolder(arg_request, arg_path,
+          tagId: arg_tagId,
+          triggerId: arg_triggerId,
+          variableId: arg_variableId,
+          $fields: arg_$fields);
     });
 
-    unittest.test('method--revert', () {
+    unittest.test('method--revert', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.folders;
       var arg_path = 'foo';
@@ -6069,14 +5964,12 @@ void main() {
         var resp = convert.json.encode(buildRevertFolderResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .revert(arg_path, fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRevertFolderResponse(response as api.RevertFolderResponse);
-      })));
+      final response = await res.revert(arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
+      checkRevertFolderResponse(response as api.RevertFolderResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.folders;
       var arg_request = buildFolder();
@@ -6134,17 +6027,14 @@ void main() {
         var resp = convert.json.encode(buildFolder());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_path,
-              fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkFolder(response as api.Folder);
-      })));
+      final response = await res.update(arg_request, arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
+      checkFolder(response as api.Folder);
     });
   });
 
   unittest.group('resource-AccountsContainersWorkspacesTagsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.tags;
       var arg_request = buildTag();
@@ -6196,14 +6086,12 @@ void main() {
         var resp = convert.json.encode(buildTag());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTag(response as api.Tag);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkTag(response as api.Tag);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.tags;
       var arg_path = 'foo';
@@ -6251,12 +6139,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_path, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.tags;
       var arg_path = 'foo';
@@ -6304,14 +6190,11 @@ void main() {
         var resp = convert.json.encode(buildTag());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTag(response as api.Tag);
-      })));
+      final response = await res.get(arg_path, $fields: arg_$fields);
+      checkTag(response as api.Tag);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.tags;
       var arg_parent = 'foo';
@@ -6364,14 +6247,12 @@ void main() {
         var resp = convert.json.encode(buildListTagsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, pageToken: arg_pageToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTagsResponse(response as api.ListTagsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageToken: arg_pageToken, $fields: arg_$fields);
+      checkListTagsResponse(response as api.ListTagsResponse);
     });
 
-    unittest.test('method--revert', () {
+    unittest.test('method--revert', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.tags;
       var arg_path = 'foo';
@@ -6424,14 +6305,12 @@ void main() {
         var resp = convert.json.encode(buildRevertTagResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .revert(arg_path, fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRevertTagResponse(response as api.RevertTagResponse);
-      })));
+      final response = await res.revert(arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
+      checkRevertTagResponse(response as api.RevertTagResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.tags;
       var arg_request = buildTag();
@@ -6488,17 +6367,14 @@ void main() {
         var resp = convert.json.encode(buildTag());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_path,
-              fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTag(response as api.Tag);
-      })));
+      final response = await res.update(arg_request, arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
+      checkTag(response as api.Tag);
     });
   });
 
   unittest.group('resource-AccountsContainersWorkspacesTemplatesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.TagManagerApi(mock).accounts.containers.workspaces.templates;
@@ -6552,14 +6428,12 @@ void main() {
         var resp = convert.json.encode(buildCustomTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomTemplate(response as api.CustomTemplate);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkCustomTemplate(response as api.CustomTemplate);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.TagManagerApi(mock).accounts.containers.workspaces.templates;
@@ -6608,12 +6482,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_path, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.TagManagerApi(mock).accounts.containers.workspaces.templates;
@@ -6662,14 +6534,11 @@ void main() {
         var resp = convert.json.encode(buildCustomTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomTemplate(response as api.CustomTemplate);
-      })));
+      final response = await res.get(arg_path, $fields: arg_$fields);
+      checkCustomTemplate(response as api.CustomTemplate);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.TagManagerApi(mock).accounts.containers.workspaces.templates;
@@ -6723,14 +6592,12 @@ void main() {
         var resp = convert.json.encode(buildListTemplatesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, pageToken: arg_pageToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTemplatesResponse(response as api.ListTemplatesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageToken: arg_pageToken, $fields: arg_$fields);
+      checkListTemplatesResponse(response as api.ListTemplatesResponse);
     });
 
-    unittest.test('method--revert', () {
+    unittest.test('method--revert', () async {
       var mock = HttpServerMock();
       var res =
           api.TagManagerApi(mock).accounts.containers.workspaces.templates;
@@ -6784,14 +6651,12 @@ void main() {
         var resp = convert.json.encode(buildRevertTemplateResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .revert(arg_path, fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRevertTemplateResponse(response as api.RevertTemplateResponse);
-      })));
+      final response = await res.revert(arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
+      checkRevertTemplateResponse(response as api.RevertTemplateResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res =
           api.TagManagerApi(mock).accounts.containers.workspaces.templates;
@@ -6850,17 +6715,14 @@ void main() {
         var resp = convert.json.encode(buildCustomTemplate());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_path,
-              fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkCustomTemplate(response as api.CustomTemplate);
-      })));
+      final response = await res.update(arg_request, arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
+      checkCustomTemplate(response as api.CustomTemplate);
     });
   });
 
   unittest.group('resource-AccountsContainersWorkspacesTriggersResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.triggers;
       var arg_request = buildTrigger();
@@ -6913,14 +6775,12 @@ void main() {
         var resp = convert.json.encode(buildTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTrigger(response as api.Trigger);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkTrigger(response as api.Trigger);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.triggers;
       var arg_path = 'foo';
@@ -6968,12 +6828,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_path, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.triggers;
       var arg_path = 'foo';
@@ -7021,14 +6879,11 @@ void main() {
         var resp = convert.json.encode(buildTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTrigger(response as api.Trigger);
-      })));
+      final response = await res.get(arg_path, $fields: arg_$fields);
+      checkTrigger(response as api.Trigger);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.triggers;
       var arg_parent = 'foo';
@@ -7081,14 +6936,12 @@ void main() {
         var resp = convert.json.encode(buildListTriggersResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, pageToken: arg_pageToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListTriggersResponse(response as api.ListTriggersResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageToken: arg_pageToken, $fields: arg_$fields);
+      checkListTriggersResponse(response as api.ListTriggersResponse);
     });
 
-    unittest.test('method--revert', () {
+    unittest.test('method--revert', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.triggers;
       var arg_path = 'foo';
@@ -7141,14 +6994,12 @@ void main() {
         var resp = convert.json.encode(buildRevertTriggerResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .revert(arg_path, fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRevertTriggerResponse(response as api.RevertTriggerResponse);
-      })));
+      final response = await res.revert(arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
+      checkRevertTriggerResponse(response as api.RevertTriggerResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.triggers;
       var arg_request = buildTrigger();
@@ -7206,17 +7057,14 @@ void main() {
         var resp = convert.json.encode(buildTrigger());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_path,
-              fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTrigger(response as api.Trigger);
-      })));
+      final response = await res.update(arg_request, arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
+      checkTrigger(response as api.Trigger);
     });
   });
 
   unittest.group('resource-AccountsContainersWorkspacesVariablesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res =
           api.TagManagerApi(mock).accounts.containers.workspaces.variables;
@@ -7270,14 +7118,12 @@ void main() {
         var resp = convert.json.encode(buildVariable());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVariable(response as api.Variable);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkVariable(response as api.Variable);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res =
           api.TagManagerApi(mock).accounts.containers.workspaces.variables;
@@ -7326,12 +7172,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_path, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.TagManagerApi(mock).accounts.containers.workspaces.variables;
@@ -7380,14 +7224,11 @@ void main() {
         var resp = convert.json.encode(buildVariable());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVariable(response as api.Variable);
-      })));
+      final response = await res.get(arg_path, $fields: arg_$fields);
+      checkVariable(response as api.Variable);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.TagManagerApi(mock).accounts.containers.workspaces.variables;
@@ -7441,14 +7282,12 @@ void main() {
         var resp = convert.json.encode(buildListVariablesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, pageToken: arg_pageToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListVariablesResponse(response as api.ListVariablesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageToken: arg_pageToken, $fields: arg_$fields);
+      checkListVariablesResponse(response as api.ListVariablesResponse);
     });
 
-    unittest.test('method--revert', () {
+    unittest.test('method--revert', () async {
       var mock = HttpServerMock();
       var res =
           api.TagManagerApi(mock).accounts.containers.workspaces.variables;
@@ -7502,14 +7341,12 @@ void main() {
         var resp = convert.json.encode(buildRevertVariableResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .revert(arg_path, fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRevertVariableResponse(response as api.RevertVariableResponse);
-      })));
+      final response = await res.revert(arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
+      checkRevertVariableResponse(response as api.RevertVariableResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res =
           api.TagManagerApi(mock).accounts.containers.workspaces.variables;
@@ -7568,17 +7405,14 @@ void main() {
         var resp = convert.json.encode(buildVariable());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_path,
-              fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkVariable(response as api.Variable);
-      })));
+      final response = await res.update(arg_request, arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
+      checkVariable(response as api.Variable);
     });
   });
 
   unittest.group('resource-AccountsContainersWorkspacesZonesResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.zones;
       var arg_request = buildZone();
@@ -7631,14 +7465,12 @@ void main() {
         var resp = convert.json.encode(buildZone());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkZone(response as api.Zone);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkZone(response as api.Zone);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.zones;
       var arg_path = 'foo';
@@ -7686,12 +7518,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_path, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.zones;
       var arg_path = 'foo';
@@ -7739,14 +7569,11 @@ void main() {
         var resp = convert.json.encode(buildZone());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkZone(response as api.Zone);
-      })));
+      final response = await res.get(arg_path, $fields: arg_$fields);
+      checkZone(response as api.Zone);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.zones;
       var arg_parent = 'foo';
@@ -7799,14 +7626,12 @@ void main() {
         var resp = convert.json.encode(buildListZonesResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, pageToken: arg_pageToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListZonesResponse(response as api.ListZonesResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageToken: arg_pageToken, $fields: arg_$fields);
+      checkListZonesResponse(response as api.ListZonesResponse);
     });
 
-    unittest.test('method--revert', () {
+    unittest.test('method--revert', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.zones;
       var arg_path = 'foo';
@@ -7859,14 +7684,12 @@ void main() {
         var resp = convert.json.encode(buildRevertZoneResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .revert(arg_path, fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkRevertZoneResponse(response as api.RevertZoneResponse);
-      })));
+      final response = await res.revert(arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
+      checkRevertZoneResponse(response as api.RevertZoneResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.containers.workspaces.zones;
       var arg_request = buildZone();
@@ -7924,17 +7747,14 @@ void main() {
         var resp = convert.json.encode(buildZone());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_path,
-              fingerprint: arg_fingerprint, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkZone(response as api.Zone);
-      })));
+      final response = await res.update(arg_request, arg_path,
+          fingerprint: arg_fingerprint, $fields: arg_$fields);
+      checkZone(response as api.Zone);
     });
   });
 
   unittest.group('resource-AccountsUserPermissionsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.userPermissions;
       var arg_request = buildUserPermission();
@@ -7987,14 +7807,12 @@ void main() {
         var resp = convert.json.encode(buildUserPermission());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUserPermission(response as api.UserPermission);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkUserPermission(response as api.UserPermission);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.userPermissions;
       var arg_path = 'foo';
@@ -8042,12 +7860,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_path, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.userPermissions;
       var arg_path = 'foo';
@@ -8095,14 +7911,11 @@ void main() {
         var resp = convert.json.encode(buildUserPermission());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUserPermission(response as api.UserPermission);
-      })));
+      final response = await res.get(arg_path, $fields: arg_$fields);
+      checkUserPermission(response as api.UserPermission);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.userPermissions;
       var arg_parent = 'foo';
@@ -8155,15 +7968,13 @@ void main() {
         var resp = convert.json.encode(buildListUserPermissionsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent, pageToken: arg_pageToken, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListUserPermissionsResponse(
-            response as api.ListUserPermissionsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageToken: arg_pageToken, $fields: arg_$fields);
+      checkListUserPermissionsResponse(
+          response as api.ListUserPermissionsResponse);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.TagManagerApi(mock).accounts.userPermissions;
       var arg_request = buildUserPermission();
@@ -8216,11 +8027,9 @@ void main() {
         var resp = convert.json.encode(buildUserPermission());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_path, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkUserPermission(response as api.UserPermission);
-      })));
+      final response =
+          await res.update(arg_request, arg_path, $fields: arg_$fields);
+      checkUserPermission(response as api.UserPermission);
     });
   });
 }

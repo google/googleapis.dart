@@ -615,7 +615,7 @@ void checkUserAsset(api.UserAsset o) {
 
 void main() {
   unittest.group('obj-schema-Asset', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAsset();
       var od = api.Asset.fromJson(o.toJson());
       checkAsset(od as api.Asset);
@@ -623,7 +623,7 @@ void main() {
   });
 
   unittest.group('obj-schema-AssetImportMessage', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildAssetImportMessage();
       var od = api.AssetImportMessage.fromJson(o.toJson());
       checkAssetImportMessage(od as api.AssetImportMessage);
@@ -631,7 +631,7 @@ void main() {
   });
 
   unittest.group('obj-schema-File', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFile();
       var od = api.File.fromJson(o.toJson());
       checkFile(od as api.File);
@@ -639,7 +639,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Format', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFormat();
       var od = api.Format.fromJson(o.toJson());
       checkFormat(od as api.Format);
@@ -647,7 +647,7 @@ void main() {
   });
 
   unittest.group('obj-schema-FormatComplexity', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildFormatComplexity();
       var od = api.FormatComplexity.fromJson(o.toJson());
       checkFormatComplexity(od as api.FormatComplexity);
@@ -655,7 +655,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ImageError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildImageError();
       var od = api.ImageError.fromJson(o.toJson());
       checkImageError(od as api.ImageError);
@@ -663,7 +663,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListAssetsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListAssetsResponse();
       var od = api.ListAssetsResponse.fromJson(o.toJson());
       checkListAssetsResponse(od as api.ListAssetsResponse);
@@ -671,7 +671,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListLikedAssetsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListLikedAssetsResponse();
       var od = api.ListLikedAssetsResponse.fromJson(o.toJson());
       checkListLikedAssetsResponse(od as api.ListLikedAssetsResponse);
@@ -679,7 +679,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ListUserAssetsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildListUserAssetsResponse();
       var od = api.ListUserAssetsResponse.fromJson(o.toJson());
       checkListUserAssetsResponse(od as api.ListUserAssetsResponse);
@@ -687,7 +687,7 @@ void main() {
   });
 
   unittest.group('obj-schema-ObjParseError', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildObjParseError();
       var od = api.ObjParseError.fromJson(o.toJson());
       checkObjParseError(od as api.ObjParseError);
@@ -695,7 +695,7 @@ void main() {
   });
 
   unittest.group('obj-schema-PresentationParams', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildPresentationParams();
       var od = api.PresentationParams.fromJson(o.toJson());
       checkPresentationParams(od as api.PresentationParams);
@@ -703,7 +703,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Quaternion', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildQuaternion();
       var od = api.Quaternion.fromJson(o.toJson());
       checkQuaternion(od as api.Quaternion);
@@ -711,7 +711,7 @@ void main() {
   });
 
   unittest.group('obj-schema-RemixInfo', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildRemixInfo();
       var od = api.RemixInfo.fromJson(o.toJson());
       checkRemixInfo(od as api.RemixInfo);
@@ -719,7 +719,7 @@ void main() {
   });
 
   unittest.group('obj-schema-StartAssetImportResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildStartAssetImportResponse();
       var od = api.StartAssetImportResponse.fromJson(o.toJson());
       checkStartAssetImportResponse(od as api.StartAssetImportResponse);
@@ -727,7 +727,7 @@ void main() {
   });
 
   unittest.group('obj-schema-UserAsset', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildUserAsset();
       var od = api.UserAsset.fromJson(o.toJson());
       checkUserAsset(od as api.UserAsset);
@@ -735,7 +735,7 @@ void main() {
   });
 
   unittest.group('resource-AssetsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.PolyServiceApi(mock).assets;
       var arg_name = 'foo';
@@ -783,14 +783,11 @@ void main() {
         var resp = convert.json.encode(buildAsset());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkAsset(response as api.Asset);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkAsset(response as api.Asset);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.PolyServiceApi(mock).assets;
       var arg_category = 'foo';
@@ -876,25 +873,22 @@ void main() {
         var resp = convert.json.encode(buildListAssetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              category: arg_category,
-              curated: arg_curated,
-              format: arg_format,
-              keywords: arg_keywords,
-              maxComplexity: arg_maxComplexity,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListAssetsResponse(response as api.ListAssetsResponse);
-      })));
+      final response = await res.list(
+          category: arg_category,
+          curated: arg_curated,
+          format: arg_format,
+          keywords: arg_keywords,
+          maxComplexity: arg_maxComplexity,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListAssetsResponse(response as api.ListAssetsResponse);
     });
   });
 
   unittest.group('resource-UsersAssetsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.PolyServiceApi(mock).users.assets;
       var arg_name = 'foo';
@@ -967,22 +961,19 @@ void main() {
         var resp = convert.json.encode(buildListUserAssetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              format: arg_format,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              visibility: arg_visibility,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListUserAssetsResponse(response as api.ListUserAssetsResponse);
-      })));
+      final response = await res.list(arg_name,
+          format: arg_format,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          visibility: arg_visibility,
+          $fields: arg_$fields);
+      checkListUserAssetsResponse(response as api.ListUserAssetsResponse);
     });
   });
 
   unittest.group('resource-UsersLikedassetsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.PolyServiceApi(mock).users.likedassets;
       var arg_name = 'foo';
@@ -1050,16 +1041,13 @@ void main() {
         var resp = convert.json.encode(buildListLikedAssetsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              format: arg_format,
-              orderBy: arg_orderBy,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkListLikedAssetsResponse(response as api.ListLikedAssetsResponse);
-      })));
+      final response = await res.list(arg_name,
+          format: arg_format,
+          orderBy: arg_orderBy,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkListLikedAssetsResponse(response as api.ListLikedAssetsResponse);
     });
   });
 }

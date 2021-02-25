@@ -298,7 +298,7 @@ void checkTasks(api.Tasks o) {
 
 void main() {
   unittest.group('obj-schema-TaskLinks', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTaskLinks();
       var od = api.TaskLinks.fromJson(o.toJson());
       checkTaskLinks(od as api.TaskLinks);
@@ -306,7 +306,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Task', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTask();
       var od = api.Task.fromJson(o.toJson());
       checkTask(od as api.Task);
@@ -314,7 +314,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TaskList', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTaskList();
       var od = api.TaskList.fromJson(o.toJson());
       checkTaskList(od as api.TaskList);
@@ -322,7 +322,7 @@ void main() {
   });
 
   unittest.group('obj-schema-TaskLists', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTaskLists();
       var od = api.TaskLists.fromJson(o.toJson());
       checkTaskLists(od as api.TaskLists);
@@ -330,7 +330,7 @@ void main() {
   });
 
   unittest.group('obj-schema-Tasks', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildTasks();
       var od = api.Tasks.fromJson(o.toJson());
       checkTasks(od as api.Tasks);
@@ -338,7 +338,7 @@ void main() {
   });
 
   unittest.group('resource-TasklistsResource', () {
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.TasksApi(mock).tasklists;
       var arg_tasklist = 'foo';
@@ -391,12 +391,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_tasklist, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_tasklist, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TasksApi(mock).tasklists;
       var arg_tasklist = 'foo';
@@ -449,14 +447,11 @@ void main() {
         var resp = convert.json.encode(buildTaskList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_tasklist, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTaskList(response as api.TaskList);
-      })));
+      final response = await res.get(arg_tasklist, $fields: arg_$fields);
+      checkTaskList(response as api.TaskList);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.TasksApi(mock).tasklists;
       var arg_request = buildTaskList();
@@ -507,14 +502,11 @@ void main() {
         var resp = convert.json.encode(buildTaskList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTaskList(response as api.TaskList);
-      })));
+      final response = await res.insert(arg_request, $fields: arg_$fields);
+      checkTaskList(response as api.TaskList);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TasksApi(mock).tasklists;
       var arg_maxResults = 42;
@@ -570,17 +562,14 @@ void main() {
         var resp = convert.json.encode(buildTaskLists());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTaskLists(response as api.TaskLists);
-      })));
+      final response = await res.list(
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkTaskLists(response as api.TaskLists);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.TasksApi(mock).tasklists;
       var arg_request = buildTaskList();
@@ -638,14 +627,12 @@ void main() {
         var resp = convert.json.encode(buildTaskList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_tasklist, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTaskList(response as api.TaskList);
-      })));
+      final response =
+          await res.patch(arg_request, arg_tasklist, $fields: arg_$fields);
+      checkTaskList(response as api.TaskList);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.TasksApi(mock).tasklists;
       var arg_request = buildTaskList();
@@ -703,16 +690,14 @@ void main() {
         var resp = convert.json.encode(buildTaskList());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_tasklist, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTaskList(response as api.TaskList);
-      })));
+      final response =
+          await res.update(arg_request, arg_tasklist, $fields: arg_$fields);
+      checkTaskList(response as api.TaskList);
     });
   });
 
   unittest.group('resource-TasksResource', () {
-    unittest.test('method--clear', () {
+    unittest.test('method--clear', () async {
       var mock = HttpServerMock();
       var res = api.TasksApi(mock).tasks;
       var arg_tasklist = 'foo';
@@ -773,12 +758,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .clear(arg_tasklist, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.clear(arg_tasklist, $fields: arg_$fields);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.TasksApi(mock).tasks;
       var arg_tasklist = 'foo';
@@ -846,12 +829,10 @@ void main() {
         var resp = '';
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_tasklist, arg_task, $fields: arg_$fields)
-          .then(unittest.expectAsync1((_) {}));
+      await res.delete(arg_tasklist, arg_task, $fields: arg_$fields);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.TasksApi(mock).tasks;
       var arg_tasklist = 'foo';
@@ -919,14 +900,12 @@ void main() {
         var resp = convert.json.encode(buildTask());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_tasklist, arg_task, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTask(response as api.Task);
-      })));
+      final response =
+          await res.get(arg_tasklist, arg_task, $fields: arg_$fields);
+      checkTask(response as api.Task);
     });
 
-    unittest.test('method--insert', () {
+    unittest.test('method--insert', () async {
       var mock = HttpServerMock();
       var res = api.TasksApi(mock).tasks;
       var arg_request = buildTask();
@@ -1002,15 +981,12 @@ void main() {
         var resp = convert.json.encode(buildTask());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .insert(arg_request, arg_tasklist,
-              parent: arg_parent, previous: arg_previous, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTask(response as api.Task);
-      })));
+      final response = await res.insert(arg_request, arg_tasklist,
+          parent: arg_parent, previous: arg_previous, $fields: arg_$fields);
+      checkTask(response as api.Task);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.TasksApi(mock).tasks;
       var arg_tasklist = 'foo';
@@ -1121,25 +1097,22 @@ void main() {
         var resp = convert.json.encode(buildTasks());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_tasklist,
-              completedMax: arg_completedMax,
-              completedMin: arg_completedMin,
-              dueMax: arg_dueMax,
-              dueMin: arg_dueMin,
-              maxResults: arg_maxResults,
-              pageToken: arg_pageToken,
-              showCompleted: arg_showCompleted,
-              showDeleted: arg_showDeleted,
-              showHidden: arg_showHidden,
-              updatedMin: arg_updatedMin,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTasks(response as api.Tasks);
-      })));
+      final response = await res.list(arg_tasklist,
+          completedMax: arg_completedMax,
+          completedMin: arg_completedMin,
+          dueMax: arg_dueMax,
+          dueMin: arg_dueMin,
+          maxResults: arg_maxResults,
+          pageToken: arg_pageToken,
+          showCompleted: arg_showCompleted,
+          showDeleted: arg_showDeleted,
+          showHidden: arg_showHidden,
+          updatedMin: arg_updatedMin,
+          $fields: arg_$fields);
+      checkTasks(response as api.Tasks);
     });
 
-    unittest.test('method--move', () {
+    unittest.test('method--move', () async {
       var mock = HttpServerMock();
       var res = api.TasksApi(mock).tasks;
       var arg_tasklist = 'foo';
@@ -1225,15 +1198,12 @@ void main() {
         var resp = convert.json.encode(buildTask());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .move(arg_tasklist, arg_task,
-              parent: arg_parent, previous: arg_previous, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTask(response as api.Task);
-      })));
+      final response = await res.move(arg_tasklist, arg_task,
+          parent: arg_parent, previous: arg_previous, $fields: arg_$fields);
+      checkTask(response as api.Task);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.TasksApi(mock).tasks;
       var arg_request = buildTask();
@@ -1306,14 +1276,12 @@ void main() {
         var resp = convert.json.encode(buildTask());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_tasklist, arg_task, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTask(response as api.Task);
-      })));
+      final response = await res.patch(arg_request, arg_tasklist, arg_task,
+          $fields: arg_$fields);
+      checkTask(response as api.Task);
     });
 
-    unittest.test('method--update', () {
+    unittest.test('method--update', () async {
       var mock = HttpServerMock();
       var res = api.TasksApi(mock).tasks;
       var arg_request = buildTask();
@@ -1386,11 +1354,9 @@ void main() {
         var resp = convert.json.encode(buildTask());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .update(arg_request, arg_tasklist, arg_task, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkTask(response as api.Task);
-      })));
+      final response = await res.update(arg_request, arg_tasklist, arg_task,
+          $fields: arg_$fields);
+      checkTask(response as api.Task);
     });
   });
 }

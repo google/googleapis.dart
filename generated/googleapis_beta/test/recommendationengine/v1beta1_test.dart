@@ -2651,7 +2651,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
 
 void main() {
   unittest.group('obj-schema-GoogleApiHttpBody', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiHttpBody();
       var od = api.GoogleApiHttpBody.fromJson(o.toJson());
       checkGoogleApiHttpBody(od as api.GoogleApiHttpBody);
@@ -2661,7 +2661,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata();
       var od = api.GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata
@@ -2674,7 +2674,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1alphaRejoinCatalogResponse();
       var od = api.GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse
@@ -2686,7 +2686,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1alphaTuningMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1alphaTuningMetadata();
       var od =
           api.GoogleCloudRecommendationengineV1alphaTuningMetadata.fromJson(
@@ -2698,7 +2698,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1alphaTuningResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1alphaTuningResponse();
       var od =
           api.GoogleCloudRecommendationengineV1alphaTuningResponse.fromJson(
@@ -2710,7 +2710,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1BigQuerySource', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1BigQuerySource();
       var od =
           api.GoogleCloudRecommendationengineV1beta1BigQuerySource.fromJson(
@@ -2722,7 +2722,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1Catalog',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1Catalog();
       var od = api.GoogleCloudRecommendationengineV1beta1Catalog.fromJson(
           o.toJson());
@@ -2734,7 +2734,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1CatalogInlineSource',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1CatalogInlineSource();
       var od = api.GoogleCloudRecommendationengineV1beta1CatalogInlineSource
           .fromJson(o.toJson());
@@ -2745,7 +2745,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1CatalogItem',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1CatalogItem();
       var od = api.GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
           o.toJson());
@@ -2757,7 +2757,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy();
       var od =
@@ -2772,7 +2772,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig();
       var od = api.GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig
@@ -2785,7 +2785,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest();
       var od =
@@ -2799,7 +2799,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1EventDetail',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1EventDetail();
       var od = api.GoogleCloudRecommendationengineV1beta1EventDetail.fromJson(
           o.toJson());
@@ -2810,7 +2810,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1FeatureMap',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1FeatureMap();
       var od = api.GoogleCloudRecommendationengineV1beta1FeatureMap.fromJson(
           o.toJson());
@@ -2822,7 +2822,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1FeatureMapFloatList',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1FeatureMapFloatList();
       var od = api.GoogleCloudRecommendationengineV1beta1FeatureMapFloatList
           .fromJson(o.toJson());
@@ -2834,7 +2834,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1FeatureMapStringList',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1FeatureMapStringList();
       var od = api.GoogleCloudRecommendationengineV1beta1FeatureMapStringList
           .fromJson(o.toJson());
@@ -2845,7 +2845,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1GcsSource',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1GcsSource();
       var od = api.GoogleCloudRecommendationengineV1beta1GcsSource.fromJson(
           o.toJson());
@@ -2855,7 +2855,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1Image', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1Image();
       var od =
           api.GoogleCloudRecommendationengineV1beta1Image.fromJson(o.toJson());
@@ -2867,7 +2867,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest();
       var od =
@@ -2882,7 +2882,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse();
       var od =
@@ -2897,7 +2897,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1ImportErrorsConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1ImportErrorsConfig();
       var od =
           api.GoogleCloudRecommendationengineV1beta1ImportErrorsConfig.fromJson(
@@ -2909,7 +2909,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1ImportMetadata', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1ImportMetadata();
       var od =
           api.GoogleCloudRecommendationengineV1beta1ImportMetadata.fromJson(
@@ -2922,7 +2922,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest();
       var od = api.GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest
@@ -2935,7 +2935,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1ImportUserEventsResponse();
       var od =
@@ -2949,7 +2949,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1InputConfig',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1InputConfig();
       var od = api.GoogleCloudRecommendationengineV1beta1InputConfig.fromJson(
           o.toJson());
@@ -2961,7 +2961,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse();
       var od =
@@ -2976,7 +2976,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1ListCatalogsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1ListCatalogsResponse();
       var od = api.GoogleCloudRecommendationengineV1beta1ListCatalogsResponse
           .fromJson(o.toJson());
@@ -2988,7 +2988,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse();
       var od =
@@ -3003,7 +3003,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1ListUserEventsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1ListUserEventsResponse();
       var od = api.GoogleCloudRecommendationengineV1beta1ListUserEventsResponse
@@ -3015,7 +3015,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1PredictRequest', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1PredictRequest();
       var od =
           api.GoogleCloudRecommendationengineV1beta1PredictRequest.fromJson(
@@ -3027,7 +3027,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1PredictResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1PredictResponse();
       var od =
           api.GoogleCloudRecommendationengineV1beta1PredictResponse.fromJson(
@@ -3040,7 +3040,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult();
       var od =
@@ -3055,7 +3055,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration();
       var od =
@@ -3070,7 +3070,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1ProductCatalogItem',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1ProductCatalogItem();
       var od =
           api.GoogleCloudRecommendationengineV1beta1ProductCatalogItem.fromJson(
@@ -3083,7 +3083,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice();
       var od =
@@ -3098,7 +3098,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange();
       var od =
@@ -3112,7 +3112,7 @@ void main() {
 
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1ProductDetail', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1ProductDetail();
       var od = api.GoogleCloudRecommendationengineV1beta1ProductDetail.fromJson(
           o.toJson());
@@ -3124,7 +3124,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1ProductEventDetail',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1ProductEventDetail();
       var od =
           api.GoogleCloudRecommendationengineV1beta1ProductEventDetail.fromJson(
@@ -3137,7 +3137,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1PurchaseTransaction',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1PurchaseTransaction();
       var od = api.GoogleCloudRecommendationengineV1beta1PurchaseTransaction
           .fromJson(o.toJson());
@@ -3149,7 +3149,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata();
       var od = api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata
@@ -3162,7 +3162,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest();
       var od = api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest
@@ -3175,7 +3175,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse();
       var od = api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse
@@ -3188,7 +3188,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata();
       var od =
@@ -3203,7 +3203,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest();
       var od = api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest
@@ -3216,7 +3216,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse();
       var od =
@@ -3230,7 +3230,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1UserEvent',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1UserEvent();
       var od = api.GoogleCloudRecommendationengineV1beta1UserEvent.fromJson(
           o.toJson());
@@ -3242,7 +3242,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1UserEventImportSummary',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1UserEventImportSummary();
       var od = api.GoogleCloudRecommendationengineV1beta1UserEventImportSummary
@@ -3255,7 +3255,7 @@ void main() {
   unittest.group(
       'obj-schema-GoogleCloudRecommendationengineV1beta1UserEventInlineSource',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1UserEventInlineSource();
       var od = api.GoogleCloudRecommendationengineV1beta1UserEventInlineSource
@@ -3267,7 +3267,7 @@ void main() {
 
   unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1UserInfo',
       () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1UserInfo();
       var od = api.GoogleCloudRecommendationengineV1beta1UserInfo.fromJson(
           o.toJson());
@@ -3277,7 +3277,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
       var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
       checkGoogleLongrunningListOperationsResponse(
@@ -3286,7 +3286,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
@@ -3294,7 +3294,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
@@ -3302,7 +3302,7 @@ void main() {
   });
 
   unittest.group('obj-schema-GoogleRpcStatus', () {
-    unittest.test('to-json--from-json', () {
+    unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
       var od = api.GoogleRpcStatus.fromJson(o.toJson());
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
@@ -3310,7 +3310,7 @@ void main() {
   });
 
   unittest.group('resource-ProjectsLocationsCatalogsResource', () {
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock).projects.locations.catalogs;
       var arg_parent = 'foo';
@@ -3369,18 +3369,15 @@ void main() {
             buildGoogleCloudRecommendationengineV1beta1ListCatalogsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommendationengineV1beta1ListCatalogsResponse(response
-            as api.GoogleCloudRecommendationengineV1beta1ListCatalogsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudRecommendationengineV1beta1ListCatalogsResponse(response
+          as api.GoogleCloudRecommendationengineV1beta1ListCatalogsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock).projects.locations.catalogs;
       var arg_request = buildGoogleCloudRecommendationengineV1beta1Catalog();
@@ -3440,18 +3437,15 @@ void main() {
             .encode(buildGoogleCloudRecommendationengineV1beta1Catalog());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommendationengineV1beta1Catalog(
-            response as api.GoogleCloudRecommendationengineV1beta1Catalog);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleCloudRecommendationengineV1beta1Catalog(
+          response as api.GoogleCloudRecommendationengineV1beta1Catalog);
     });
   });
 
   unittest.group('resource-ProjectsLocationsCatalogsCatalogItemsResource', () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock)
           .projects
@@ -3512,15 +3506,13 @@ void main() {
             .encode(buildGoogleCloudRecommendationengineV1beta1CatalogItem());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommendationengineV1beta1CatalogItem(
-            response as api.GoogleCloudRecommendationengineV1beta1CatalogItem);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudRecommendationengineV1beta1CatalogItem(
+          response as api.GoogleCloudRecommendationengineV1beta1CatalogItem);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock)
           .projects
@@ -3572,14 +3564,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock)
           .projects
@@ -3632,15 +3621,12 @@ void main() {
             .encode(buildGoogleCloudRecommendationengineV1beta1CatalogItem());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommendationengineV1beta1CatalogItem(
-            response as api.GoogleCloudRecommendationengineV1beta1CatalogItem);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommendationengineV1beta1CatalogItem(
+          response as api.GoogleCloudRecommendationengineV1beta1CatalogItem);
     });
 
-    unittest.test('method--import', () {
+    unittest.test('method--import', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock)
           .projects
@@ -3701,15 +3687,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .import(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.import(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock)
           .projects
@@ -3777,20 +3761,17 @@ void main() {
             buildGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse(
-            response as api
-                .GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse(
+          response as api
+              .GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse);
     });
 
-    unittest.test('method--patch', () {
+    unittest.test('method--patch', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock)
           .projects
@@ -3856,19 +3837,16 @@ void main() {
             .encode(buildGoogleCloudRecommendationengineV1beta1CatalogItem());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .patch(arg_request, arg_name,
-              updateMask: arg_updateMask, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommendationengineV1beta1CatalogItem(
-            response as api.GoogleCloudRecommendationengineV1beta1CatalogItem);
-      })));
+      final response = await res.patch(arg_request, arg_name,
+          updateMask: arg_updateMask, $fields: arg_$fields);
+      checkGoogleCloudRecommendationengineV1beta1CatalogItem(
+          response as api.GoogleCloudRecommendationengineV1beta1CatalogItem);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsCatalogsEventStoresOperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock)
           .projects
@@ -3921,15 +3899,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock)
           .projects
@@ -3998,22 +3973,19 @@ void main() {
             convert.json.encode(buildGoogleLongrunningListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningListOperationsResponse(
-            response as api.GoogleLongrunningListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleLongrunningListOperationsResponse(
+          response as api.GoogleLongrunningListOperationsResponse);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsCatalogsEventStoresPlacementsResource', () {
-    unittest.test('method--predict', () {
+    unittest.test('method--predict', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock)
           .projects
@@ -4075,19 +4047,17 @@ void main() {
             buildGoogleCloudRecommendationengineV1beta1PredictResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .predict(arg_request, arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommendationengineV1beta1PredictResponse(response
-            as api.GoogleCloudRecommendationengineV1beta1PredictResponse);
-      })));
+      final response =
+          await res.predict(arg_request, arg_name, $fields: arg_$fields);
+      checkGoogleCloudRecommendationengineV1beta1PredictResponse(response
+          as api.GoogleCloudRecommendationengineV1beta1PredictResponse);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsCatalogsEventStoresPredictionApiKeyRegistrationsResource',
       () {
-    unittest.test('method--create', () {
+    unittest.test('method--create', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock)
           .projects
@@ -4150,16 +4120,14 @@ void main() {
             buildGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .create(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(
-            response as api
-                .GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration);
-      })));
+      final response =
+          await res.create(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(
+          response as api
+              .GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration);
     });
 
-    unittest.test('method--delete', () {
+    unittest.test('method--delete', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock)
           .projects
@@ -4212,14 +4180,11 @@ void main() {
         var resp = convert.json.encode(buildGoogleProtobufEmpty());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .delete(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
-      })));
+      final response = await res.delete(arg_name, $fields: arg_$fields);
+      checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock)
           .projects
@@ -4283,22 +4248,19 @@ void main() {
             buildGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse(
-            response as api
-                .GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse(
+          response as api
+              .GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse);
     });
   });
 
   unittest.group(
       'resource-ProjectsLocationsCatalogsEventStoresUserEventsResource', () {
-    unittest.test('method--collect', () {
+    unittest.test('method--collect', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock)
           .projects
@@ -4366,18 +4328,15 @@ void main() {
         var resp = convert.json.encode(buildGoogleApiHttpBody());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .collect(arg_parent,
-              ets: arg_ets,
-              uri: arg_uri,
-              userEvent: arg_userEvent,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
-      })));
+      final response = await res.collect(arg_parent,
+          ets: arg_ets,
+          uri: arg_uri,
+          userEvent: arg_userEvent,
+          $fields: arg_$fields);
+      checkGoogleApiHttpBody(response as api.GoogleApiHttpBody);
     });
 
-    unittest.test('method--import', () {
+    unittest.test('method--import', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock)
           .projects
@@ -4439,15 +4398,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .import(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.import(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock)
           .projects
@@ -4516,20 +4473,16 @@ void main() {
             buildGoogleCloudRecommendationengineV1beta1ListUserEventsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_parent,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommendationengineV1beta1ListUserEventsResponse(
-            response as api
-                .GoogleCloudRecommendationengineV1beta1ListUserEventsResponse);
-      })));
+      final response = await res.list(arg_parent,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleCloudRecommendationengineV1beta1ListUserEventsResponse(response
+          as api.GoogleCloudRecommendationengineV1beta1ListUserEventsResponse);
     });
 
-    unittest.test('method--purge', () {
+    unittest.test('method--purge', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock)
           .projects
@@ -4591,15 +4544,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .purge(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.purge(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--rejoin', () {
+    unittest.test('method--rejoin', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock)
           .projects
@@ -4661,15 +4612,13 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .rejoin(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response =
+          await res.rejoin(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--write', () {
+    unittest.test('method--write', () async {
       var mock = HttpServerMock();
       var res = api.RecommendationsAIApi(mock)
           .projects
@@ -4729,17 +4678,15 @@ void main() {
             .encode(buildGoogleCloudRecommendationengineV1beta1UserEvent());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .write(arg_request, arg_parent, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudRecommendationengineV1beta1UserEvent(
-            response as api.GoogleCloudRecommendationengineV1beta1UserEvent);
-      })));
+      final response =
+          await res.write(arg_request, arg_parent, $fields: arg_$fields);
+      checkGoogleCloudRecommendationengineV1beta1UserEvent(
+          response as api.GoogleCloudRecommendationengineV1beta1UserEvent);
     });
   });
 
   unittest.group('resource-ProjectsLocationsCatalogsOperationsResource', () {
-    unittest.test('method--get', () {
+    unittest.test('method--get', () async {
       var mock = HttpServerMock();
       var res =
           api.RecommendationsAIApi(mock).projects.locations.catalogs.operations;
@@ -4788,15 +4735,12 @@ void main() {
         var resp = convert.json.encode(buildGoogleLongrunningOperation());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .get(arg_name, $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(
-            response as api.GoogleLongrunningOperation);
-      })));
+      final response = await res.get(arg_name, $fields: arg_$fields);
+      checkGoogleLongrunningOperation(
+          response as api.GoogleLongrunningOperation);
     });
 
-    unittest.test('method--list', () {
+    unittest.test('method--list', () async {
       var mock = HttpServerMock();
       var res =
           api.RecommendationsAIApi(mock).projects.locations.catalogs.operations;
@@ -4861,16 +4805,13 @@ void main() {
             convert.json.encode(buildGoogleLongrunningListOperationsResponse());
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
-      res
-          .list(arg_name,
-              filter: arg_filter,
-              pageSize: arg_pageSize,
-              pageToken: arg_pageToken,
-              $fields: arg_$fields)
-          .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningListOperationsResponse(
-            response as api.GoogleLongrunningListOperationsResponse);
-      })));
+      final response = await res.list(arg_name,
+          filter: arg_filter,
+          pageSize: arg_pageSize,
+          pageToken: arg_pageToken,
+          $fields: arg_$fields);
+      checkGoogleLongrunningListOperationsResponse(
+          response as api.GoogleLongrunningListOperationsResponse);
     });
   });
 }
