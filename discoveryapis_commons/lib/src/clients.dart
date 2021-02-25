@@ -8,9 +8,9 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'request_headers.dart';
 
 import 'requests.dart' as client_requests;
-import 'version_fallback.dart' if (dart.library.io) 'version_io.dart';
 
 const contentTypeJsonUtf8 = 'application/json; charset=utf-8';
 
@@ -204,11 +204,11 @@ class ApiRequester {
 
       final headers = {
         'user-agent': _userAgent,
+        ...requestHeaders,
         'content-type': contentTypeJsonUtf8,
         'content-length': '$length',
         if (downloadRange != null)
           'range': 'bytes=${downloadRange.start}-${downloadRange.end}',
-        'x-goog-api-client': 'gl-dart/$dartVersion',
       };
 
       // Filter out headers forbidden in the browser (in calling in browser).
