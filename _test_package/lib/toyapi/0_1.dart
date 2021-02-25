@@ -903,6 +903,11 @@ class ListOfListOfString extends collection.ListBase<core.List<core.String>> {
   set length(core.int newLength) {
     _inner.length = newLength;
   }
+
+  @core.override
+  void add(core.List<core.String> element) {
+    _inner.add(element);
+  }
 }
 
 class ListOfListOfToyRequest
@@ -940,6 +945,11 @@ class ListOfListOfToyRequest
   set length(core.int newLength) {
     _inner.length = newLength;
   }
+
+  @core.override
+  void add(core.List<ToyRequest> element) {
+    _inner.add(element);
+  }
 }
 
 class ListOfListOfint extends collection.ListBase<core.List<core.int>> {
@@ -972,6 +982,11 @@ class ListOfListOfint extends collection.ListBase<core.List<core.int>> {
   @core.override
   set length(core.int newLength) {
     _inner.length = newLength;
+  }
+
+  @core.override
+  void add(core.List<core.int> element) {
+    _inner.add(element);
   }
 }
 
@@ -1016,6 +1031,11 @@ class ListOfMapOfListOfString
   set length(core.int newLength) {
     _inner.length = newLength;
   }
+
+  @core.override
+  void add(core.Map<core.String, core.List<core.String>> element) {
+    _inner.add(element);
+  }
 }
 
 class ListOfMapOfListOfint
@@ -1059,6 +1079,11 @@ class ListOfMapOfListOfint
   set length(core.int newLength) {
     _inner.length = newLength;
   }
+
+  @core.override
+  void add(core.Map<core.String, core.List<core.int>> element) {
+    _inner.add(element);
+  }
 }
 
 class ListOfString extends collection.ListBase<core.String> {
@@ -1087,6 +1112,11 @@ class ListOfString extends collection.ListBase<core.String> {
   @core.override
   set length(core.int newLength) {
     _inner.length = newLength;
+  }
+
+  @core.override
+  void add(core.String element) {
+    _inner.add(element);
   }
 }
 
@@ -1119,6 +1149,11 @@ class ListOfToyRequest extends collection.ListBase<ToyRequest> {
   @core.override
   set length(core.int newLength) {
     _inner.length = newLength;
+  }
+
+  @core.override
+  void add(ToyRequest element) {
+    _inner.add(element);
   }
 }
 

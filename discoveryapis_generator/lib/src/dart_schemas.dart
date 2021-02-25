@@ -570,6 +570,11 @@ $encode
   set length(${imports.core.ref()}int newLength) {
     _inner.length = newLength;
   }
+
+  @${core}override
+  void add($type element) {
+    _inner.add(element);
+  }
 }
 ''';
   }
