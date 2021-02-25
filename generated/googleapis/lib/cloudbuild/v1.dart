@@ -2082,8 +2082,8 @@ class BuildTrigger {
   /// If true, the trigger will never automatically execute a build.
   core.bool disabled;
 
-  /// Path, from the source root, to a file whose contents is used for the
-  /// template.
+  /// Path, from the source root, to the build configuration file (i.e.
+  /// cloudbuild.yaml).
   core.String filename;
 
   /// GitHubEventsConfig describes the configuration of a trigger that creates a

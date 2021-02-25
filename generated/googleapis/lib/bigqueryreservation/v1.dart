@@ -195,7 +195,7 @@ class ProjectsLocationsResource {
   /// Request parameters:
   ///
   /// [name] - Required. Name of the requested reservation, for example:
-  /// `projects/{project_id}/locations/{location_id}/bireservation`
+  /// `projects/{project_id}/locations/{location_id}/biReservation`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/biReservation$`.
   ///
@@ -383,7 +383,7 @@ class ProjectsLocationsResource {
   ///
   /// [name] - The resource name of the singleton BI reservation. Reservation
   /// names have the form
-  /// `projects/{project_id}/locations/{location_id}/bireservation`.
+  /// `projects/{project_id}/locations/{location_id}/biReservation`.
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/biReservation$`.
   ///
@@ -1058,11 +1058,14 @@ class ProjectsLocationsReservationsAssignmentsResource {
   /// The organization `organizationA` contains two projects, `project1` and
   /// `project2`. * Assignments for all three entities (`organizationA`,
   /// `project1`, and `project2`) could all be created and mapped to the same or
-  /// different reservations. Returns `google.rpc.Code.PERMISSION_DENIED` if
-  /// user does not have 'bigquery.admin' permissions on the project using the
-  /// reservation and the project that owns this reservation. Returns
-  /// `google.rpc.Code.INVALID_ARGUMENT` when location of the assignment does
-  /// not match location of the reservation.
+  /// different reservations. "None" assignments represent an absence of the
+  /// assignment. Projects assigned to None use on-demand pricing. To create a
+  /// "None" assignment, use "none" as a reservation_id in the parent. Example
+  /// parent: `projects/myproject/locations/US/reservations/none`. Returns
+  /// `google.rpc.Code.PERMISSION_DENIED` if user does not have 'bigquery.admin'
+  /// permissions on the project using the reservation and the project that owns
+  /// this reservation. Returns `google.rpc.Code.INVALID_ARGUMENT` when location
+  /// of the assignment does not match location of the reservation.
   ///
   /// [request] - The metadata request object.
   ///
@@ -1344,7 +1347,7 @@ class BiReservation {
   /// The resource name of the singleton BI reservation.
   ///
   /// Reservation names have the form
-  /// `projects/{project_id}/locations/{location_id}/bireservation`.
+  /// `projects/{project_id}/locations/{location_id}/biReservation`.
   core.String name;
 
   /// Size of a reservation, in bytes.

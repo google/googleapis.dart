@@ -1152,15 +1152,15 @@ class GoogleCloudDocumentaiV1HumanReviewStatus {
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Human review state is unspecified. Most likely due
   /// to an internal error.
-  /// - "HUMAN_REVIEW_SKIPPED" : Human review is skipped for the document. This
-  /// can happen because human review is not enabled on the processor or the
-  /// processing request has been set to skip this document.
-  /// - "HUMAN_REVIEW_VALIDATION_PASSED" : Human review validation is triggered
-  /// and passed, so no review is needed.
-  /// - "HUMAN_REVIEW_IN_PROGRESS" : Human review validation is triggered and
-  /// the document is under review.
-  /// - "HUMAN_REVIEW_ERROR" : Some error happened during triggering human
-  /// review, see the \[state_message\] for details.
+  /// - "SKIPPED" : Human review is skipped for the document. This can happen
+  /// because human review is not enabled on the processor or the processing
+  /// request has been set to skip this document.
+  /// - "VALIDATION_PASSED" : Human review validation is triggered and passed,
+  /// so no review is needed.
+  /// - "IN_PROGRESS" : Human review validation is triggered and the document is
+  /// under review.
+  /// - "ERROR" : Some error happened during triggering human review, see the
+  /// \[state_message\] for details.
   core.String state;
 
   /// A message providing more details about the human review state.
@@ -1597,6 +1597,11 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue {
   /// https://github.com/googleapis/googleapis/blob/master/google/type/postal_address.proto
   GoogleTypePostalAddress addressValue;
 
+  /// Boolean value.
+  ///
+  /// Can be used for entities with binary values, or for checkboxes.
+  core.bool booleanValue;
+
   /// Date value.
   ///
   /// Includes year, month, day. See also:
@@ -1634,6 +1639,9 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue {
       addressValue = GoogleTypePostalAddress.fromJson(
           _json['addressValue'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('booleanValue')) {
+      booleanValue = _json['booleanValue'] as core.bool;
+    }
     if (_json.containsKey('dateValue')) {
       dateValue = GoogleTypeDate.fromJson(
           _json['dateValue'] as core.Map<core.String, core.dynamic>);
@@ -1653,6 +1661,7 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue {
 
   core.Map<core.String, core.Object> toJson() => {
         if (addressValue != null) 'addressValue': addressValue.toJson(),
+        if (booleanValue != null) 'booleanValue': booleanValue,
         if (dateValue != null) 'dateValue': dateValue.toJson(),
         if (datetimeValue != null) 'datetimeValue': datetimeValue.toJson(),
         if (moneyValue != null) 'moneyValue': moneyValue.toJson(),
@@ -3707,6 +3716,11 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue {
   /// https://github.com/googleapis/googleapis/blob/master/google/type/postal_address.proto
   GoogleTypePostalAddress addressValue;
 
+  /// Boolean value.
+  ///
+  /// Can be used for entities with binary values, or for checkboxes.
+  core.bool booleanValue;
+
   /// Date value.
   ///
   /// Includes year, month, day. See also:
@@ -3744,6 +3758,9 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue {
       addressValue = GoogleTypePostalAddress.fromJson(
           _json['addressValue'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('booleanValue')) {
+      booleanValue = _json['booleanValue'] as core.bool;
+    }
     if (_json.containsKey('dateValue')) {
       dateValue = GoogleTypeDate.fromJson(
           _json['dateValue'] as core.Map<core.String, core.dynamic>);
@@ -3763,6 +3780,7 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue {
 
   core.Map<core.String, core.Object> toJson() => {
         if (addressValue != null) 'addressValue': addressValue.toJson(),
+        if (booleanValue != null) 'booleanValue': booleanValue,
         if (dateValue != null) 'dateValue': dateValue.toJson(),
         if (datetimeValue != null) 'datetimeValue': datetimeValue.toJson(),
         if (moneyValue != null) 'moneyValue': moneyValue.toJson(),
@@ -5494,6 +5512,35 @@ class GoogleCloudDocumentaiV1beta2Vertex {
       };
 }
 
+/// The common config to specify a set of documents used as input.
+class GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig {
+  /// The set of documents individually specified on Cloud Storage.
+  GoogleCloudDocumentaiV1beta3GcsDocuments gcsDocuments;
+
+  /// The set of documents that match the specified Cloud Storage
+  /// \[gcs_prefix\].
+  GoogleCloudDocumentaiV1beta3GcsPrefix gcsPrefix;
+
+  GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig();
+
+  GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig.fromJson(
+      core.Map _json) {
+    if (_json.containsKey('gcsDocuments')) {
+      gcsDocuments = GoogleCloudDocumentaiV1beta3GcsDocuments.fromJson(
+          _json['gcsDocuments'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('gcsPrefix')) {
+      gcsPrefix = GoogleCloudDocumentaiV1beta3GcsPrefix.fromJson(
+          _json['gcsPrefix'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsDocuments != null) 'gcsDocuments': gcsDocuments.toJson(),
+        if (gcsPrefix != null) 'gcsPrefix': gcsPrefix.toJson(),
+      };
+}
+
 /// The long running operation metadata for batch process method.
 class GoogleCloudDocumentaiV1beta3BatchProcessMetadata {
   /// The creation time of the operation.
@@ -5634,8 +5681,7 @@ class GoogleCloudDocumentaiV1beta3BatchProcessRequest {
       inputConfigs;
 
   /// The input documents for batch process.
-  GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig
-      inputDocuments;
+  GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig inputDocuments;
 
   /// The overall output config for batch process.
   GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig outputConfig;
@@ -5664,9 +5710,8 @@ class GoogleCloudDocumentaiV1beta3BatchProcessRequest {
     }
     if (_json.containsKey('inputDocuments')) {
       inputDocuments =
-          GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig
-              .fromJson(_json['inputDocuments']
-                  as core.Map<core.String, core.dynamic>);
+          GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig.fromJson(
+              _json['inputDocuments'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('outputConfig')) {
       outputConfig =
@@ -6141,6 +6186,11 @@ class GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue {
   /// https://github.com/googleapis/googleapis/blob/master/google/type/postal_address.proto
   GoogleTypePostalAddress addressValue;
 
+  /// Boolean value.
+  ///
+  /// Can be used for entities with binary values, or for checkboxes.
+  core.bool booleanValue;
+
   /// Date value.
   ///
   /// Includes year, month, day. See also:
@@ -6178,6 +6228,9 @@ class GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue {
       addressValue = GoogleTypePostalAddress.fromJson(
           _json['addressValue'] as core.Map<core.String, core.dynamic>);
     }
+    if (_json.containsKey('booleanValue')) {
+      booleanValue = _json['booleanValue'] as core.bool;
+    }
     if (_json.containsKey('dateValue')) {
       dateValue = GoogleTypeDate.fromJson(
           _json['dateValue'] as core.Map<core.String, core.dynamic>);
@@ -6197,6 +6250,7 @@ class GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue {
 
   core.Map<core.String, core.Object> toJson() => {
         if (addressValue != null) 'addressValue': addressValue.toJson(),
+        if (booleanValue != null) 'booleanValue': booleanValue,
         if (dateValue != null) 'dateValue': dateValue.toJson(),
         if (datetimeValue != null) 'datetimeValue': datetimeValue.toJson(),
         if (moneyValue != null) 'moneyValue': moneyValue.toJson(),
@@ -7672,6 +7726,72 @@ class GoogleCloudDocumentaiV1beta3DocumentTranslation {
       };
 }
 
+/// Specifies a document stored on Cloud Storage.
+class GoogleCloudDocumentaiV1beta3GcsDocument {
+  /// The Cloud Storage object uri.
+  core.String gcsUri;
+
+  /// An IANA MIME type (RFC6838) of the content.
+  core.String mimeType;
+
+  GoogleCloudDocumentaiV1beta3GcsDocument();
+
+  GoogleCloudDocumentaiV1beta3GcsDocument.fromJson(core.Map _json) {
+    if (_json.containsKey('gcsUri')) {
+      gcsUri = _json['gcsUri'] as core.String;
+    }
+    if (_json.containsKey('mimeType')) {
+      mimeType = _json['mimeType'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsUri != null) 'gcsUri': gcsUri,
+        if (mimeType != null) 'mimeType': mimeType,
+      };
+}
+
+/// Specifies a set of documents on Cloud Storage.
+class GoogleCloudDocumentaiV1beta3GcsDocuments {
+  /// The list of documents.
+  core.List<GoogleCloudDocumentaiV1beta3GcsDocument> documents;
+
+  GoogleCloudDocumentaiV1beta3GcsDocuments();
+
+  GoogleCloudDocumentaiV1beta3GcsDocuments.fromJson(core.Map _json) {
+    if (_json.containsKey('documents')) {
+      documents = (_json['documents'] as core.List)
+          .map<GoogleCloudDocumentaiV1beta3GcsDocument>((value) =>
+              GoogleCloudDocumentaiV1beta3GcsDocument.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (documents != null)
+          'documents': documents.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// Specifies all documents on Cloud Storage with a common prefix.
+class GoogleCloudDocumentaiV1beta3GcsPrefix {
+  /// The URI prefix.
+  core.String gcsUriPrefix;
+
+  GoogleCloudDocumentaiV1beta3GcsPrefix();
+
+  GoogleCloudDocumentaiV1beta3GcsPrefix.fromJson(core.Map _json) {
+    if (_json.containsKey('gcsUriPrefix')) {
+      gcsUriPrefix = _json['gcsUriPrefix'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (gcsUriPrefix != null) 'gcsUriPrefix': gcsUriPrefix,
+      };
+}
+
 /// The status of human review on a processed document.
 class GoogleCloudDocumentaiV1beta3HumanReviewStatus {
   /// The name of the operation triggered by the processed document.
@@ -7685,15 +7805,15 @@ class GoogleCloudDocumentaiV1beta3HumanReviewStatus {
   /// Possible string values are:
   /// - "STATE_UNSPECIFIED" : Human review state is unspecified. Most likely due
   /// to an internal error.
-  /// - "HUMAN_REVIEW_SKIPPED" : Human review is skipped for the document. This
-  /// can happen because human review is not enabled on the processor or the
-  /// processing request has been set to skip this document.
-  /// - "HUMAN_REVIEW_VALIDATION_PASSED" : Human review validation is triggered
-  /// and passed, so no review is needed.
-  /// - "HUMAN_REVIEW_IN_PROGRESS" : Human review validation is triggered and
-  /// the document is under review.
-  /// - "HUMAN_REVIEW_ERROR" : Some error happened during triggering human
-  /// review, see the \[state_message\] for details.
+  /// - "SKIPPED" : Human review is skipped for the document. This can happen
+  /// because human review is not enabled on the processor or the processing
+  /// request has been set to skip this document.
+  /// - "VALIDATION_PASSED" : Human review validation is triggered and passed,
+  /// so no review is needed.
+  /// - "IN_PROGRESS" : Human review validation is triggered and the document is
+  /// under review.
+  /// - "ERROR" : Some error happened during triggering human review, see the
+  /// \[state_message\] for details.
   core.String state;
 
   /// A message providing more details about the human review state.

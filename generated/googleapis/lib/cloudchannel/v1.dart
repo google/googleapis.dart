@@ -4429,6 +4429,12 @@ class GoogleCloudChannelV1Period {
 ///
 /// Describes how to make a payment.
 class GoogleCloudChannelV1Plan {
+  /// Reseller Billing account that will be charged when this offer is
+  /// transacted.
+  ///
+  /// Only present for GCP offers.
+  core.String billingAccount;
+
   /// Describes how frequently the reseller will be billed, such as once per
   /// month.
   GoogleCloudChannelV1Period paymentCycle;
@@ -4462,6 +4468,9 @@ class GoogleCloudChannelV1Plan {
   GoogleCloudChannelV1Plan();
 
   GoogleCloudChannelV1Plan.fromJson(core.Map _json) {
+    if (_json.containsKey('billingAccount')) {
+      billingAccount = _json['billingAccount'] as core.String;
+    }
     if (_json.containsKey('paymentCycle')) {
       paymentCycle = GoogleCloudChannelV1Period.fromJson(
           _json['paymentCycle'] as core.Map<core.String, core.dynamic>);
@@ -4479,6 +4488,7 @@ class GoogleCloudChannelV1Plan {
   }
 
   core.Map<core.String, core.Object> toJson() => {
+        if (billingAccount != null) 'billingAccount': billingAccount,
         if (paymentCycle != null) 'paymentCycle': paymentCycle.toJson(),
         if (paymentPlan != null) 'paymentPlan': paymentPlan,
         if (paymentType != null) 'paymentType': paymentType,

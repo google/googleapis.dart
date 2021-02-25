@@ -161,7 +161,7 @@ class DirectoryApi {
   static const adminDirectoryUserAliasReadonlyScope =
       'https://www.googleapis.com/auth/admin.directory.user.alias.readonly';
 
-  /// View users on your domain
+  /// See info about users on your domain
   static const adminDirectoryUserReadonlyScope =
       'https://www.googleapis.com/auth/admin.directory.user.readonly';
 

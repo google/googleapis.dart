@@ -783,6 +783,23 @@ class ProjectsInstancesBackupsResource {
   /// appended to `parent` forms the full backup name of the form
   /// `projects//instances//backups/`.
   ///
+  /// [encryptionConfig_encryptionType] - Required. The encryption type of the
+  /// backup.
+  /// Possible string values are:
+  /// - "ENCRYPTION_TYPE_UNSPECIFIED" : Unspecified. Do not use.
+  /// - "USE_DATABASE_ENCRYPTION" : Use the same encryption configuration as the
+  /// database. This is the default option when encryption_config is empty. For
+  /// example, if the database is using `Customer_Managed_Encryption`, the
+  /// backup will be using the same Cloud KMS key as the database.
+  /// - "GOOGLE_DEFAULT_ENCRYPTION" : Use Google default encryption.
+  /// - "CUSTOMER_MANAGED_ENCRYPTION" : Use customer managed encryption. If
+  /// specified, `kms_key_name` must contain a valid Cloud KMS key.
+  ///
+  /// [encryptionConfig_kmsKeyName] - Optional. The Cloud KMS key that will be
+  /// used to protect the backup. This field should be set only when
+  /// encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
+  /// `projects//locations//keyRings//cryptoKeys/`.
+  ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
   ///
@@ -797,6 +814,8 @@ class ProjectsInstancesBackupsResource {
     Backup request,
     core.String parent, {
     core.String backupId,
+    core.String encryptionConfig_encryptionType,
+    core.String encryptionConfig_kmsKeyName,
     core.String $fields,
   }) async {
     final _body =
@@ -806,6 +825,10 @@ class ProjectsInstancesBackupsResource {
     }
     final _queryParams = <core.String, core.List<core.String>>{
       if (backupId != null) 'backupId': [backupId],
+      if (encryptionConfig_encryptionType != null)
+        'encryptionConfig.encryptionType': [encryptionConfig_encryptionType],
+      if (encryptionConfig_kmsKeyName != null)
+        'encryptionConfig.kmsKeyName': [encryptionConfig_kmsKeyName],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3264,6 +3287,11 @@ class Backup {
   /// `projects//instances//databases/`.
   core.String database;
 
+  /// The encryption information for the backup.
+  ///
+  /// Output only.
+  EncryptionInfo encryptionInfo;
+
   /// Required for the CreateBackup operation.
   ///
   /// The expiration time of the backup, with microseconds granularity that must
@@ -3326,6 +3354,10 @@ class Backup {
     if (_json.containsKey('database')) {
       database = _json['database'] as core.String;
     }
+    if (_json.containsKey('encryptionInfo')) {
+      encryptionInfo = EncryptionInfo.fromJson(
+          _json['encryptionInfo'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('expireTime')) {
       expireTime = _json['expireTime'] as core.String;
     }
@@ -3351,6 +3383,7 @@ class Backup {
   core.Map<core.String, core.Object> toJson() => {
         if (createTime != null) 'createTime': createTime,
         if (database != null) 'database': database,
+        if (encryptionInfo != null) 'encryptionInfo': encryptionInfo.toJson(),
         if (expireTime != null) 'expireTime': expireTime,
         if (name != null) 'name': name,
         if (referencingDatabases != null)
@@ -3797,6 +3830,14 @@ class CreateDatabaseRequest {
   /// Required.
   core.String createStatement;
 
+  /// The encryption configuration for the database.
+  ///
+  /// If this field is not specified, Cloud Spanner will encrypt/decrypt all
+  /// data at rest using Google default encryption.
+  ///
+  /// Optional.
+  EncryptionConfig encryptionConfig;
+
   /// A list of DDL statements to run inside the newly created database.
   ///
   /// Statements can create tables, indexes, etc. These statements execute
@@ -3812,6 +3853,10 @@ class CreateDatabaseRequest {
     if (_json.containsKey('createStatement')) {
       createStatement = _json['createStatement'] as core.String;
     }
+    if (_json.containsKey('encryptionConfig')) {
+      encryptionConfig = EncryptionConfig.fromJson(
+          _json['encryptionConfig'] as core.Map<core.String, core.dynamic>);
+    }
     if (_json.containsKey('extraStatements')) {
       extraStatements = (_json['extraStatements'] as core.List)
           .map<core.String>((value) => value as core.String)
@@ -3821,6 +3866,8 @@ class CreateDatabaseRequest {
 
   core.Map<core.String, core.Object> toJson() => {
         if (createStatement != null) 'createStatement': createStatement,
+        if (encryptionConfig != null)
+          'encryptionConfig': encryptionConfig.toJson(),
         if (extraStatements != null) 'extraStatements': extraStatements,
       };
 }
@@ -3941,6 +3988,27 @@ class Database {
   /// Output only.
   core.String earliestVersionTime;
 
+  /// For databases that are using customer managed encryption, this field
+  /// contains the encryption configuration for the database.
+  ///
+  /// For databases that are using Google default or other types of encryption,
+  /// this field is empty.
+  ///
+  /// Output only.
+  EncryptionConfig encryptionConfig;
+
+  /// For databases that are using customer managed encryption, this field
+  /// contains the encryption information for the database, such as encryption
+  /// state and the Cloud KMS key versions that are in use.
+  ///
+  /// For databases that are using Google default or other types of encryption,
+  /// this field is empty. This field is propagated lazily from the backend.
+  /// There might be a delay from when a key version is being used and when it
+  /// appears in this field.
+  ///
+  /// Output only.
+  core.List<EncryptionInfo> encryptionInfo;
+
   /// The name of the database.
   ///
   /// Values are of the form `projects//instances//databases/`, where `` is as
@@ -3991,6 +4059,16 @@ class Database {
     if (_json.containsKey('earliestVersionTime')) {
       earliestVersionTime = _json['earliestVersionTime'] as core.String;
     }
+    if (_json.containsKey('encryptionConfig')) {
+      encryptionConfig = EncryptionConfig.fromJson(
+          _json['encryptionConfig'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('encryptionInfo')) {
+      encryptionInfo = (_json['encryptionInfo'] as core.List)
+          .map<EncryptionInfo>((value) => EncryptionInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
@@ -4010,6 +4088,11 @@ class Database {
         if (createTime != null) 'createTime': createTime,
         if (earliestVersionTime != null)
           'earliestVersionTime': earliestVersionTime,
+        if (encryptionConfig != null)
+          'encryptionConfig': encryptionConfig.toJson(),
+        if (encryptionInfo != null)
+          'encryptionInfo':
+              encryptionInfo.map((value) => value.toJson()).toList(),
         if (name != null) 'name': name,
         if (restoreInfo != null) 'restoreInfo': restoreInfo.toJson(),
         if (state != null) 'state': state,
@@ -4068,6 +4151,80 @@ class Empty {
       core.Map _json);
 
   core.Map<core.String, core.Object> toJson() => {};
+}
+
+/// Encryption configuration for a Cloud Spanner database.
+class EncryptionConfig {
+  /// The Cloud KMS key to be used for encrypting and decrypting the database.
+  ///
+  /// Values are of the form `projects//locations//keyRings//cryptoKeys/`.
+  core.String kmsKeyName;
+
+  EncryptionConfig();
+
+  EncryptionConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('kmsKeyName')) {
+      kmsKeyName = _json['kmsKeyName'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+      };
+}
+
+/// Encryption information for a Cloud Spanner database or backup.
+class EncryptionInfo {
+  /// If present, the status of a recent encrypt/decrypt call on underlying data
+  /// for this database or backup.
+  ///
+  /// Regardless of status, data is always encrypted at rest.
+  ///
+  /// Output only.
+  Status encryptionStatus;
+
+  /// The type of encryption.
+  ///
+  /// Output only.
+  /// Possible string values are:
+  /// - "TYPE_UNSPECIFIED" : Encryption type was not specified, though data at
+  /// rest remains encrypted.
+  /// - "GOOGLE_DEFAULT_ENCRYPTION" : The data is encrypted at rest with a key
+  /// that is fully managed by Google. No key version or status will be
+  /// populated. This is the default state.
+  /// - "CUSTOMER_MANAGED_ENCRYPTION" : The data is encrypted at rest with a key
+  /// that is managed by the customer. The active version of the key.
+  /// `kms_key_version` will be populated, and `encryption_status` may be
+  /// populated.
+  core.String encryptionType;
+
+  /// A Cloud KMS key version that is being used to protect the database or
+  /// backup.
+  ///
+  /// Output only.
+  core.String kmsKeyVersion;
+
+  EncryptionInfo();
+
+  EncryptionInfo.fromJson(core.Map _json) {
+    if (_json.containsKey('encryptionStatus')) {
+      encryptionStatus = Status.fromJson(
+          _json['encryptionStatus'] as core.Map<core.String, core.dynamic>);
+    }
+    if (_json.containsKey('encryptionType')) {
+      encryptionType = _json['encryptionType'] as core.String;
+    }
+    if (_json.containsKey('kmsKeyVersion')) {
+      kmsKeyVersion = _json['kmsKeyVersion'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (encryptionStatus != null)
+          'encryptionStatus': encryptionStatus.toJson(),
+        if (encryptionType != null) 'encryptionType': encryptionType,
+        if (kmsKeyVersion != null) 'kmsKeyVersion': kmsKeyVersion,
+      };
 }
 
 /// The request for ExecuteBatchDml.
@@ -6241,6 +6398,47 @@ class ReplicaInfo {
       };
 }
 
+/// Encryption configuration for the restored database.
+class RestoreDatabaseEncryptionConfig {
+  /// The encryption type of the restored database.
+  ///
+  /// Required.
+  /// Possible string values are:
+  /// - "ENCRYPTION_TYPE_UNSPECIFIED" : Unspecified. Do not use.
+  /// - "USE_CONFIG_DEFAULT_OR_BACKUP_ENCRYPTION" : This is the default option
+  /// when encryption_config is not specified.
+  /// - "GOOGLE_DEFAULT_ENCRYPTION" : Use Google default encryption.
+  /// - "CUSTOMER_MANAGED_ENCRYPTION" : Use customer managed encryption. If
+  /// specified, `kms_key_name` must must contain a valid Cloud KMS key.
+  core.String encryptionType;
+
+  /// The Cloud KMS key that will be used to encrypt/decrypt the restored
+  /// database.
+  ///
+  /// This field should be set only when encryption_type is
+  /// `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form
+  /// `projects//locations//keyRings//cryptoKeys/`.
+  ///
+  /// Optional.
+  core.String kmsKeyName;
+
+  RestoreDatabaseEncryptionConfig();
+
+  RestoreDatabaseEncryptionConfig.fromJson(core.Map _json) {
+    if (_json.containsKey('encryptionType')) {
+      encryptionType = _json['encryptionType'] as core.String;
+    }
+    if (_json.containsKey('kmsKeyName')) {
+      kmsKeyName = _json['kmsKeyName'] as core.String;
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (encryptionType != null) 'encryptionType': encryptionType,
+        if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+      };
+}
+
 /// Metadata type for the long-running operation returned by RestoreDatabase.
 class RestoreDatabaseMetadata {
   /// Information about the backup used to restore the database.
@@ -6336,6 +6534,16 @@ class RestoreDatabaseRequest {
   /// Required.
   core.String databaseId;
 
+  /// An encryption configuration describing the encryption type and key
+  /// resources in Cloud KMS used to encrypt/decrypt the database to restore to.
+  ///
+  /// If this field is not specified, the restored database will use the same
+  /// encryption configuration as the backup by default, namely encryption_type
+  /// = `USE_CONFIG_DEFAULT_OR_DATABASE_ENCRYPTION`.
+  ///
+  /// Optional.
+  RestoreDatabaseEncryptionConfig encryptionConfig;
+
   RestoreDatabaseRequest();
 
   RestoreDatabaseRequest.fromJson(core.Map _json) {
@@ -6345,11 +6553,17 @@ class RestoreDatabaseRequest {
     if (_json.containsKey('databaseId')) {
       databaseId = _json['databaseId'] as core.String;
     }
+    if (_json.containsKey('encryptionConfig')) {
+      encryptionConfig = RestoreDatabaseEncryptionConfig.fromJson(
+          _json['encryptionConfig'] as core.Map<core.String, core.dynamic>);
+    }
   }
 
   core.Map<core.String, core.Object> toJson() => {
         if (backup != null) 'backup': backup,
         if (databaseId != null) 'databaseId': databaseId,
+        if (encryptionConfig != null)
+          'encryptionConfig': encryptionConfig.toJson(),
       };
 }
 

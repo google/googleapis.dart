@@ -4502,8 +4502,7 @@ class GoogleApiServicecontrolV1Operation {
   /// Private Preview.
   ///
   /// This feature is only available for approved services. User defined labels
-  /// for the resource that this operation is associated with. Only a
-  /// combination of 1000 user labels per consumer project are allowed.
+  /// for the resource that this operation is associated with.
   core.Map<core.String, core.String> userLabels;
 
   GoogleApiServicecontrolV1Operation();

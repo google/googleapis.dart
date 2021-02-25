@@ -586,6 +586,57 @@ class OtherContactsResource {
     return ListOtherContactsResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
+
+  /// Provides a list of contacts in the authenticated user's other contacts
+  /// that matches the search query.
+  ///
+  /// Request parameters:
+  ///
+  /// [pageSize] - Optional. The number of results to return. Defaults to 10 if
+  /// field is not set, or set to 0.
+  ///
+  /// [query] - Required. The plain-text query for the request. The query is
+  /// used to match prefix phrases of the fields on a person. For example, a
+  /// person with name "foo name" matches queries such as "f", "fo", "foo", "foo
+  /// n", "nam", etc., but not "oo n".
+  ///
+  /// [readMask] - Required. A field mask to restrict which fields on each
+  /// person are returned. Multiple fields can be specified by separating them
+  /// with commas. Valid values are: * emailAddresses * names * phoneNumbers
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchResponse> search({
+    core.int pageSize,
+    core.String query,
+    core.String readMask,
+    core.String $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (query != null) 'query': [query],
+      if (readMask != null) 'readMask': [readMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/otherContacts:search';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return SearchResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
 }
 
 class PeopleResource {
@@ -973,6 +1024,61 @@ class PeopleResource {
       queryParams: _queryParams,
     );
     return ListDirectoryPeopleResponse.fromJson(
+        _response as core.Map<core.String, core.dynamic>);
+  }
+
+  /// Provides a list of contacts in the authenticated user's grouped contacts
+  /// that matches the search query.
+  ///
+  /// Request parameters:
+  ///
+  /// [pageSize] - Optional. The number of results to return.
+  ///
+  /// [query] - Required. The plain-text query for the request. The query is
+  /// used to match prefix phrases of the fields on a person. For example, a
+  /// person with name "foo name" matches queries such as "f", "fo", "foo", "foo
+  /// n", "nam", etc., but not "oo n".
+  ///
+  /// [readMask] - Required. A field mask to restrict which fields on each
+  /// person are returned. Multiple fields can be specified by separating them
+  /// with commas. Valid values are: * addresses * ageRanges * biographies *
+  /// birthdays * calendarUrls * clientData * coverPhotos * emailAddresses *
+  /// events * externalIds * genders * imClients * interests * locales *
+  /// locations * memberships * metadata * miscKeywords * names * nicknames *
+  /// occupations * organizations * phoneNumbers * photos * relations *
+  /// sipAddresses * skills * urls * userDefined
+  ///
+  /// [$fields] - Selector specifying which fields to include in a partial
+  /// response.
+  ///
+  /// Completes with a [SearchResponse].
+  ///
+  /// Completes with a [commons.ApiRequestError] if the API endpoint returned an
+  /// error.
+  ///
+  /// If the used [http.Client] completes with an error when making a REST call,
+  /// this method will complete with the same error.
+  async.Future<SearchResponse> searchContacts({
+    core.int pageSize,
+    core.String query,
+    core.String readMask,
+    core.String $fields,
+  }) async {
+    final _queryParams = <core.String, core.List<core.String>>{
+      if (pageSize != null) 'pageSize': ['${pageSize}'],
+      if (query != null) 'query': [query],
+      if (readMask != null) 'readMask': [readMask],
+      if ($fields != null) 'fields': [$fields],
+    };
+
+    const _url = 'v1/people:searchContacts';
+
+    final _response = await _requester.request(
+      _url,
+      'GET',
+      queryParams: _queryParams,
+    );
+    return SearchResponse.fromJson(
         _response as core.Map<core.String, core.dynamic>);
   }
 
@@ -2035,7 +2141,7 @@ class Date {
       };
 }
 
-/// The response for deleteing a contact's photo.
+/// The response for deleting a contact's photo.
 class DeleteContactPhotoResponse {
   /// The updated person, if person_fields is set in the
   /// DeleteContactPhotoRequest; otherwise this will be unset.
@@ -4207,6 +4313,47 @@ class SearchDirectoryPeopleResponse {
         if (people != null)
           'people': people.map((value) => value.toJson()).toList(),
         if (totalSize != null) 'totalSize': totalSize,
+      };
+}
+
+/// The response to a search request for the authenticated user, given a query.
+class SearchResponse {
+  /// The results of the request.
+  core.List<SearchResult> results;
+
+  SearchResponse();
+
+  SearchResponse.fromJson(core.Map _json) {
+    if (_json.containsKey('results')) {
+      results = (_json['results'] as core.List)
+          .map<SearchResult>((value) => SearchResult.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (results != null)
+          'results': results.map((value) => value.toJson()).toList(),
+      };
+}
+
+/// A result of a search query.
+class SearchResult {
+  /// The matched Person.
+  Person person;
+
+  SearchResult();
+
+  SearchResult.fromJson(core.Map _json) {
+    if (_json.containsKey('person')) {
+      person = Person.fromJson(
+          _json['person'] as core.Map<core.String, core.dynamic>);
+    }
+  }
+
+  core.Map<core.String, core.Object> toJson() => {
+        if (person != null) 'person': person.toJson(),
       };
 }
 

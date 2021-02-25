@@ -649,8 +649,6 @@ class GoogleHomeEnterpriseSdmV1ListStructuresResponse {
 
 /// Represents device relationships, for instance, structure/room to which the
 /// device is assigned to.
-///
-/// For now this is only filled in the enterprise flow.
 class GoogleHomeEnterpriseSdmV1ParentRelation {
   /// The custom name of the relation -- e.g., structure/room where the device
   /// is assigned to.

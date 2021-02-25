@@ -27,40 +27,40 @@ import 'package:googleapis/docs/v1.dart' as api;
 
 import '../test_shared.dart';
 
-core.List<core.String> buildUnnamed6348() {
+core.List<core.String> buildUnnamed6366() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6348(core.List<core.String> o) {
+void checkUnnamed6366(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed6349() {
+core.List<core.String> buildUnnamed6367() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6349(core.List<core.String> o) {
+void checkUnnamed6367(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, api.SuggestedTextStyle> buildUnnamed6350() {
+core.Map<core.String, api.SuggestedTextStyle> buildUnnamed6368() {
   var o = <core.String, api.SuggestedTextStyle>{};
   o['x'] = buildSuggestedTextStyle();
   o['y'] = buildSuggestedTextStyle();
   return o;
 }
 
-void checkUnnamed6350(core.Map<core.String, api.SuggestedTextStyle> o) {
+void checkUnnamed6368(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedTextStyle(o['x'] as api.SuggestedTextStyle);
   checkSuggestedTextStyle(o['y'] as api.SuggestedTextStyle);
@@ -71,9 +71,9 @@ api.AutoText buildAutoText() {
   var o = api.AutoText();
   buildCounterAutoText++;
   if (buildCounterAutoText < 3) {
-    o.suggestedDeletionIds = buildUnnamed6348();
-    o.suggestedInsertionIds = buildUnnamed6349();
-    o.suggestedTextStyleChanges = buildUnnamed6350();
+    o.suggestedDeletionIds = buildUnnamed6366();
+    o.suggestedInsertionIds = buildUnnamed6367();
+    o.suggestedTextStyleChanges = buildUnnamed6368();
     o.textStyle = buildTextStyle();
     o.type = 'foo';
   }
@@ -84,9 +84,9 @@ api.AutoText buildAutoText() {
 void checkAutoText(api.AutoText o) {
   buildCounterAutoText++;
   if (buildCounterAutoText < 3) {
-    checkUnnamed6348(o.suggestedDeletionIds);
-    checkUnnamed6349(o.suggestedInsertionIds);
-    checkUnnamed6350(o.suggestedTextStyleChanges);
+    checkUnnamed6366(o.suggestedDeletionIds);
+    checkUnnamed6367(o.suggestedInsertionIds);
+    checkUnnamed6368(o.suggestedTextStyleChanges);
     checkTextStyle(o.textStyle as api.TextStyle);
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -131,14 +131,14 @@ void checkBackgroundSuggestionState(api.BackgroundSuggestionState o) {
   buildCounterBackgroundSuggestionState--;
 }
 
-core.List<api.Request> buildUnnamed6351() {
+core.List<api.Request> buildUnnamed6369() {
   var o = <api.Request>[];
   o.add(buildRequest());
   o.add(buildRequest());
   return o;
 }
 
-void checkUnnamed6351(core.List<api.Request> o) {
+void checkUnnamed6369(core.List<api.Request> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRequest(o[0] as api.Request);
   checkRequest(o[1] as api.Request);
@@ -149,7 +149,7 @@ api.BatchUpdateDocumentRequest buildBatchUpdateDocumentRequest() {
   var o = api.BatchUpdateDocumentRequest();
   buildCounterBatchUpdateDocumentRequest++;
   if (buildCounterBatchUpdateDocumentRequest < 3) {
-    o.requests = buildUnnamed6351();
+    o.requests = buildUnnamed6369();
     o.writeControl = buildWriteControl();
   }
   buildCounterBatchUpdateDocumentRequest--;
@@ -159,20 +159,20 @@ api.BatchUpdateDocumentRequest buildBatchUpdateDocumentRequest() {
 void checkBatchUpdateDocumentRequest(api.BatchUpdateDocumentRequest o) {
   buildCounterBatchUpdateDocumentRequest++;
   if (buildCounterBatchUpdateDocumentRequest < 3) {
-    checkUnnamed6351(o.requests);
+    checkUnnamed6369(o.requests);
     checkWriteControl(o.writeControl as api.WriteControl);
   }
   buildCounterBatchUpdateDocumentRequest--;
 }
 
-core.List<api.Response> buildUnnamed6352() {
+core.List<api.Response> buildUnnamed6370() {
   var o = <api.Response>[];
   o.add(buildResponse());
   o.add(buildResponse());
   return o;
 }
 
-void checkUnnamed6352(core.List<api.Response> o) {
+void checkUnnamed6370(core.List<api.Response> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkResponse(o[0] as api.Response);
   checkResponse(o[1] as api.Response);
@@ -184,7 +184,7 @@ api.BatchUpdateDocumentResponse buildBatchUpdateDocumentResponse() {
   buildCounterBatchUpdateDocumentResponse++;
   if (buildCounterBatchUpdateDocumentResponse < 3) {
     o.documentId = 'foo';
-    o.replies = buildUnnamed6352();
+    o.replies = buildUnnamed6370();
     o.writeControl = buildWriteControl();
   }
   buildCounterBatchUpdateDocumentResponse--;
@@ -195,20 +195,20 @@ void checkBatchUpdateDocumentResponse(api.BatchUpdateDocumentResponse o) {
   buildCounterBatchUpdateDocumentResponse++;
   if (buildCounterBatchUpdateDocumentResponse < 3) {
     unittest.expect(o.documentId, unittest.equals('foo'));
-    checkUnnamed6352(o.replies);
+    checkUnnamed6370(o.replies);
     checkWriteControl(o.writeControl as api.WriteControl);
   }
   buildCounterBatchUpdateDocumentResponse--;
 }
 
-core.List<api.StructuralElement> buildUnnamed6353() {
+core.List<api.StructuralElement> buildUnnamed6371() {
   var o = <api.StructuralElement>[];
   o.add(buildStructuralElement());
   o.add(buildStructuralElement());
   return o;
 }
 
-void checkUnnamed6353(core.List<api.StructuralElement> o) {
+void checkUnnamed6371(core.List<api.StructuralElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStructuralElement(o[0] as api.StructuralElement);
   checkStructuralElement(o[1] as api.StructuralElement);
@@ -219,7 +219,7 @@ api.Body buildBody() {
   var o = api.Body();
   buildCounterBody++;
   if (buildCounterBody < 3) {
-    o.content = buildUnnamed6353();
+    o.content = buildUnnamed6371();
   }
   buildCounterBody--;
   return o;
@@ -228,7 +228,7 @@ api.Body buildBody() {
 void checkBody(api.Body o) {
   buildCounterBody++;
   if (buildCounterBody < 3) {
-    checkUnnamed6353(o.content);
+    checkUnnamed6371(o.content);
   }
   buildCounterBody--;
 }
@@ -299,40 +299,40 @@ void checkColor(api.Color o) {
   buildCounterColor--;
 }
 
-core.List<core.String> buildUnnamed6354() {
+core.List<core.String> buildUnnamed6372() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6354(core.List<core.String> o) {
+void checkUnnamed6372(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed6355() {
+core.List<core.String> buildUnnamed6373() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6355(core.List<core.String> o) {
+void checkUnnamed6373(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, api.SuggestedTextStyle> buildUnnamed6356() {
+core.Map<core.String, api.SuggestedTextStyle> buildUnnamed6374() {
   var o = <core.String, api.SuggestedTextStyle>{};
   o['x'] = buildSuggestedTextStyle();
   o['y'] = buildSuggestedTextStyle();
   return o;
 }
 
-void checkUnnamed6356(core.Map<core.String, api.SuggestedTextStyle> o) {
+void checkUnnamed6374(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedTextStyle(o['x'] as api.SuggestedTextStyle);
   checkSuggestedTextStyle(o['y'] as api.SuggestedTextStyle);
@@ -343,9 +343,9 @@ api.ColumnBreak buildColumnBreak() {
   var o = api.ColumnBreak();
   buildCounterColumnBreak++;
   if (buildCounterColumnBreak < 3) {
-    o.suggestedDeletionIds = buildUnnamed6354();
-    o.suggestedInsertionIds = buildUnnamed6355();
-    o.suggestedTextStyleChanges = buildUnnamed6356();
+    o.suggestedDeletionIds = buildUnnamed6372();
+    o.suggestedInsertionIds = buildUnnamed6373();
+    o.suggestedTextStyleChanges = buildUnnamed6374();
     o.textStyle = buildTextStyle();
   }
   buildCounterColumnBreak--;
@@ -355,9 +355,9 @@ api.ColumnBreak buildColumnBreak() {
 void checkColumnBreak(api.ColumnBreak o) {
   buildCounterColumnBreak++;
   if (buildCounterColumnBreak < 3) {
-    checkUnnamed6354(o.suggestedDeletionIds);
-    checkUnnamed6355(o.suggestedInsertionIds);
-    checkUnnamed6356(o.suggestedTextStyleChanges);
+    checkUnnamed6372(o.suggestedDeletionIds);
+    checkUnnamed6373(o.suggestedInsertionIds);
+    checkUnnamed6374(o.suggestedTextStyleChanges);
     checkTextStyle(o.textStyle as api.TextStyle);
   }
   buildCounterColumnBreak--;
@@ -774,118 +774,118 @@ void checkDimension(api.Dimension o) {
   buildCounterDimension--;
 }
 
-core.Map<core.String, api.Footer> buildUnnamed6357() {
+core.Map<core.String, api.Footer> buildUnnamed6375() {
   var o = <core.String, api.Footer>{};
   o['x'] = buildFooter();
   o['y'] = buildFooter();
   return o;
 }
 
-void checkUnnamed6357(core.Map<core.String, api.Footer> o) {
+void checkUnnamed6375(core.Map<core.String, api.Footer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFooter(o['x'] as api.Footer);
   checkFooter(o['y'] as api.Footer);
 }
 
-core.Map<core.String, api.Footnote> buildUnnamed6358() {
+core.Map<core.String, api.Footnote> buildUnnamed6376() {
   var o = <core.String, api.Footnote>{};
   o['x'] = buildFootnote();
   o['y'] = buildFootnote();
   return o;
 }
 
-void checkUnnamed6358(core.Map<core.String, api.Footnote> o) {
+void checkUnnamed6376(core.Map<core.String, api.Footnote> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkFootnote(o['x'] as api.Footnote);
   checkFootnote(o['y'] as api.Footnote);
 }
 
-core.Map<core.String, api.Header> buildUnnamed6359() {
+core.Map<core.String, api.Header> buildUnnamed6377() {
   var o = <core.String, api.Header>{};
   o['x'] = buildHeader();
   o['y'] = buildHeader();
   return o;
 }
 
-void checkUnnamed6359(core.Map<core.String, api.Header> o) {
+void checkUnnamed6377(core.Map<core.String, api.Header> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkHeader(o['x'] as api.Header);
   checkHeader(o['y'] as api.Header);
 }
 
-core.Map<core.String, api.InlineObject> buildUnnamed6360() {
+core.Map<core.String, api.InlineObject> buildUnnamed6378() {
   var o = <core.String, api.InlineObject>{};
   o['x'] = buildInlineObject();
   o['y'] = buildInlineObject();
   return o;
 }
 
-void checkUnnamed6360(core.Map<core.String, api.InlineObject> o) {
+void checkUnnamed6378(core.Map<core.String, api.InlineObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkInlineObject(o['x'] as api.InlineObject);
   checkInlineObject(o['y'] as api.InlineObject);
 }
 
-core.Map<core.String, api.List> buildUnnamed6361() {
+core.Map<core.String, api.List> buildUnnamed6379() {
   var o = <core.String, api.List>{};
   o['x'] = buildList();
   o['y'] = buildList();
   return o;
 }
 
-void checkUnnamed6361(core.Map<core.String, api.List> o) {
+void checkUnnamed6379(core.Map<core.String, api.List> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkList(o['x'] as api.List);
   checkList(o['y'] as api.List);
 }
 
-core.Map<core.String, api.NamedRanges> buildUnnamed6362() {
+core.Map<core.String, api.NamedRanges> buildUnnamed6380() {
   var o = <core.String, api.NamedRanges>{};
   o['x'] = buildNamedRanges();
   o['y'] = buildNamedRanges();
   return o;
 }
 
-void checkUnnamed6362(core.Map<core.String, api.NamedRanges> o) {
+void checkUnnamed6380(core.Map<core.String, api.NamedRanges> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNamedRanges(o['x'] as api.NamedRanges);
   checkNamedRanges(o['y'] as api.NamedRanges);
 }
 
-core.Map<core.String, api.PositionedObject> buildUnnamed6363() {
+core.Map<core.String, api.PositionedObject> buildUnnamed6381() {
   var o = <core.String, api.PositionedObject>{};
   o['x'] = buildPositionedObject();
   o['y'] = buildPositionedObject();
   return o;
 }
 
-void checkUnnamed6363(core.Map<core.String, api.PositionedObject> o) {
+void checkUnnamed6381(core.Map<core.String, api.PositionedObject> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkPositionedObject(o['x'] as api.PositionedObject);
   checkPositionedObject(o['y'] as api.PositionedObject);
 }
 
-core.Map<core.String, api.SuggestedDocumentStyle> buildUnnamed6364() {
+core.Map<core.String, api.SuggestedDocumentStyle> buildUnnamed6382() {
   var o = <core.String, api.SuggestedDocumentStyle>{};
   o['x'] = buildSuggestedDocumentStyle();
   o['y'] = buildSuggestedDocumentStyle();
   return o;
 }
 
-void checkUnnamed6364(core.Map<core.String, api.SuggestedDocumentStyle> o) {
+void checkUnnamed6382(core.Map<core.String, api.SuggestedDocumentStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedDocumentStyle(o['x'] as api.SuggestedDocumentStyle);
   checkSuggestedDocumentStyle(o['y'] as api.SuggestedDocumentStyle);
 }
 
-core.Map<core.String, api.SuggestedNamedStyles> buildUnnamed6365() {
+core.Map<core.String, api.SuggestedNamedStyles> buildUnnamed6383() {
   var o = <core.String, api.SuggestedNamedStyles>{};
   o['x'] = buildSuggestedNamedStyles();
   o['y'] = buildSuggestedNamedStyles();
   return o;
 }
 
-void checkUnnamed6365(core.Map<core.String, api.SuggestedNamedStyles> o) {
+void checkUnnamed6383(core.Map<core.String, api.SuggestedNamedStyles> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedNamedStyles(o['x'] as api.SuggestedNamedStyles);
   checkSuggestedNamedStyles(o['y'] as api.SuggestedNamedStyles);
@@ -899,17 +899,17 @@ api.Document buildDocument() {
     o.body = buildBody();
     o.documentId = 'foo';
     o.documentStyle = buildDocumentStyle();
-    o.footers = buildUnnamed6357();
-    o.footnotes = buildUnnamed6358();
-    o.headers = buildUnnamed6359();
-    o.inlineObjects = buildUnnamed6360();
-    o.lists = buildUnnamed6361();
-    o.namedRanges = buildUnnamed6362();
+    o.footers = buildUnnamed6375();
+    o.footnotes = buildUnnamed6376();
+    o.headers = buildUnnamed6377();
+    o.inlineObjects = buildUnnamed6378();
+    o.lists = buildUnnamed6379();
+    o.namedRanges = buildUnnamed6380();
     o.namedStyles = buildNamedStyles();
-    o.positionedObjects = buildUnnamed6363();
+    o.positionedObjects = buildUnnamed6381();
     o.revisionId = 'foo';
-    o.suggestedDocumentStyleChanges = buildUnnamed6364();
-    o.suggestedNamedStylesChanges = buildUnnamed6365();
+    o.suggestedDocumentStyleChanges = buildUnnamed6382();
+    o.suggestedNamedStylesChanges = buildUnnamed6383();
     o.suggestionsViewMode = 'foo';
     o.title = 'foo';
   }
@@ -923,17 +923,17 @@ void checkDocument(api.Document o) {
     checkBody(o.body as api.Body);
     unittest.expect(o.documentId, unittest.equals('foo'));
     checkDocumentStyle(o.documentStyle as api.DocumentStyle);
-    checkUnnamed6357(o.footers);
-    checkUnnamed6358(o.footnotes);
-    checkUnnamed6359(o.headers);
-    checkUnnamed6360(o.inlineObjects);
-    checkUnnamed6361(o.lists);
-    checkUnnamed6362(o.namedRanges);
+    checkUnnamed6375(o.footers);
+    checkUnnamed6376(o.footnotes);
+    checkUnnamed6377(o.headers);
+    checkUnnamed6378(o.inlineObjects);
+    checkUnnamed6379(o.lists);
+    checkUnnamed6380(o.namedRanges);
     checkNamedStyles(o.namedStyles as api.NamedStyles);
-    checkUnnamed6363(o.positionedObjects);
+    checkUnnamed6381(o.positionedObjects);
     unittest.expect(o.revisionId, unittest.equals('foo'));
-    checkUnnamed6364(o.suggestedDocumentStyleChanges);
-    checkUnnamed6365(o.suggestedNamedStylesChanges);
+    checkUnnamed6382(o.suggestedDocumentStyleChanges);
+    checkUnnamed6383(o.suggestedNamedStylesChanges);
     unittest.expect(o.suggestionsViewMode, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
   }
@@ -1242,27 +1242,27 @@ void checkEndOfSegmentLocation(api.EndOfSegmentLocation o) {
   buildCounterEndOfSegmentLocation--;
 }
 
-core.List<core.String> buildUnnamed6366() {
+core.List<core.String> buildUnnamed6384() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6366(core.List<core.String> o) {
+void checkUnnamed6384(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed6367() {
+core.List<core.String> buildUnnamed6385() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6367(core.List<core.String> o) {
+void checkUnnamed6385(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1273,8 +1273,8 @@ api.Equation buildEquation() {
   var o = api.Equation();
   buildCounterEquation++;
   if (buildCounterEquation < 3) {
-    o.suggestedDeletionIds = buildUnnamed6366();
-    o.suggestedInsertionIds = buildUnnamed6367();
+    o.suggestedDeletionIds = buildUnnamed6384();
+    o.suggestedInsertionIds = buildUnnamed6385();
   }
   buildCounterEquation--;
   return o;
@@ -1283,20 +1283,20 @@ api.Equation buildEquation() {
 void checkEquation(api.Equation o) {
   buildCounterEquation++;
   if (buildCounterEquation < 3) {
-    checkUnnamed6366(o.suggestedDeletionIds);
-    checkUnnamed6367(o.suggestedInsertionIds);
+    checkUnnamed6384(o.suggestedDeletionIds);
+    checkUnnamed6385(o.suggestedInsertionIds);
   }
   buildCounterEquation--;
 }
 
-core.List<api.StructuralElement> buildUnnamed6368() {
+core.List<api.StructuralElement> buildUnnamed6386() {
   var o = <api.StructuralElement>[];
   o.add(buildStructuralElement());
   o.add(buildStructuralElement());
   return o;
 }
 
-void checkUnnamed6368(core.List<api.StructuralElement> o) {
+void checkUnnamed6386(core.List<api.StructuralElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStructuralElement(o[0] as api.StructuralElement);
   checkStructuralElement(o[1] as api.StructuralElement);
@@ -1307,7 +1307,7 @@ api.Footer buildFooter() {
   var o = api.Footer();
   buildCounterFooter++;
   if (buildCounterFooter < 3) {
-    o.content = buildUnnamed6368();
+    o.content = buildUnnamed6386();
     o.footerId = 'foo';
   }
   buildCounterFooter--;
@@ -1317,20 +1317,20 @@ api.Footer buildFooter() {
 void checkFooter(api.Footer o) {
   buildCounterFooter++;
   if (buildCounterFooter < 3) {
-    checkUnnamed6368(o.content);
+    checkUnnamed6386(o.content);
     unittest.expect(o.footerId, unittest.equals('foo'));
   }
   buildCounterFooter--;
 }
 
-core.List<api.StructuralElement> buildUnnamed6369() {
+core.List<api.StructuralElement> buildUnnamed6387() {
   var o = <api.StructuralElement>[];
   o.add(buildStructuralElement());
   o.add(buildStructuralElement());
   return o;
 }
 
-void checkUnnamed6369(core.List<api.StructuralElement> o) {
+void checkUnnamed6387(core.List<api.StructuralElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStructuralElement(o[0] as api.StructuralElement);
   checkStructuralElement(o[1] as api.StructuralElement);
@@ -1341,7 +1341,7 @@ api.Footnote buildFootnote() {
   var o = api.Footnote();
   buildCounterFootnote++;
   if (buildCounterFootnote < 3) {
-    o.content = buildUnnamed6369();
+    o.content = buildUnnamed6387();
     o.footnoteId = 'foo';
   }
   buildCounterFootnote--;
@@ -1351,46 +1351,46 @@ api.Footnote buildFootnote() {
 void checkFootnote(api.Footnote o) {
   buildCounterFootnote++;
   if (buildCounterFootnote < 3) {
-    checkUnnamed6369(o.content);
+    checkUnnamed6387(o.content);
     unittest.expect(o.footnoteId, unittest.equals('foo'));
   }
   buildCounterFootnote--;
 }
 
-core.List<core.String> buildUnnamed6370() {
+core.List<core.String> buildUnnamed6388() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6370(core.List<core.String> o) {
+void checkUnnamed6388(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed6371() {
+core.List<core.String> buildUnnamed6389() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6371(core.List<core.String> o) {
+void checkUnnamed6389(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, api.SuggestedTextStyle> buildUnnamed6372() {
+core.Map<core.String, api.SuggestedTextStyle> buildUnnamed6390() {
   var o = <core.String, api.SuggestedTextStyle>{};
   o['x'] = buildSuggestedTextStyle();
   o['y'] = buildSuggestedTextStyle();
   return o;
 }
 
-void checkUnnamed6372(core.Map<core.String, api.SuggestedTextStyle> o) {
+void checkUnnamed6390(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedTextStyle(o['x'] as api.SuggestedTextStyle);
   checkSuggestedTextStyle(o['y'] as api.SuggestedTextStyle);
@@ -1403,9 +1403,9 @@ api.FootnoteReference buildFootnoteReference() {
   if (buildCounterFootnoteReference < 3) {
     o.footnoteId = 'foo';
     o.footnoteNumber = 'foo';
-    o.suggestedDeletionIds = buildUnnamed6370();
-    o.suggestedInsertionIds = buildUnnamed6371();
-    o.suggestedTextStyleChanges = buildUnnamed6372();
+    o.suggestedDeletionIds = buildUnnamed6388();
+    o.suggestedInsertionIds = buildUnnamed6389();
+    o.suggestedTextStyleChanges = buildUnnamed6390();
     o.textStyle = buildTextStyle();
   }
   buildCounterFootnoteReference--;
@@ -1417,22 +1417,22 @@ void checkFootnoteReference(api.FootnoteReference o) {
   if (buildCounterFootnoteReference < 3) {
     unittest.expect(o.footnoteId, unittest.equals('foo'));
     unittest.expect(o.footnoteNumber, unittest.equals('foo'));
-    checkUnnamed6370(o.suggestedDeletionIds);
-    checkUnnamed6371(o.suggestedInsertionIds);
-    checkUnnamed6372(o.suggestedTextStyleChanges);
+    checkUnnamed6388(o.suggestedDeletionIds);
+    checkUnnamed6389(o.suggestedInsertionIds);
+    checkUnnamed6390(o.suggestedTextStyleChanges);
     checkTextStyle(o.textStyle as api.TextStyle);
   }
   buildCounterFootnoteReference--;
 }
 
-core.List<api.StructuralElement> buildUnnamed6373() {
+core.List<api.StructuralElement> buildUnnamed6391() {
   var o = <api.StructuralElement>[];
   o.add(buildStructuralElement());
   o.add(buildStructuralElement());
   return o;
 }
 
-void checkUnnamed6373(core.List<api.StructuralElement> o) {
+void checkUnnamed6391(core.List<api.StructuralElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStructuralElement(o[0] as api.StructuralElement);
   checkStructuralElement(o[1] as api.StructuralElement);
@@ -1443,7 +1443,7 @@ api.Header buildHeader() {
   var o = api.Header();
   buildCounterHeader++;
   if (buildCounterHeader < 3) {
-    o.content = buildUnnamed6373();
+    o.content = buildUnnamed6391();
     o.headerId = 'foo';
   }
   buildCounterHeader--;
@@ -1453,46 +1453,46 @@ api.Header buildHeader() {
 void checkHeader(api.Header o) {
   buildCounterHeader++;
   if (buildCounterHeader < 3) {
-    checkUnnamed6373(o.content);
+    checkUnnamed6391(o.content);
     unittest.expect(o.headerId, unittest.equals('foo'));
   }
   buildCounterHeader--;
 }
 
-core.List<core.String> buildUnnamed6374() {
+core.List<core.String> buildUnnamed6392() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6374(core.List<core.String> o) {
+void checkUnnamed6392(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed6375() {
+core.List<core.String> buildUnnamed6393() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6375(core.List<core.String> o) {
+void checkUnnamed6393(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, api.SuggestedTextStyle> buildUnnamed6376() {
+core.Map<core.String, api.SuggestedTextStyle> buildUnnamed6394() {
   var o = <core.String, api.SuggestedTextStyle>{};
   o['x'] = buildSuggestedTextStyle();
   o['y'] = buildSuggestedTextStyle();
   return o;
 }
 
-void checkUnnamed6376(core.Map<core.String, api.SuggestedTextStyle> o) {
+void checkUnnamed6394(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedTextStyle(o['x'] as api.SuggestedTextStyle);
   checkSuggestedTextStyle(o['y'] as api.SuggestedTextStyle);
@@ -1503,9 +1503,9 @@ api.HorizontalRule buildHorizontalRule() {
   var o = api.HorizontalRule();
   buildCounterHorizontalRule++;
   if (buildCounterHorizontalRule < 3) {
-    o.suggestedDeletionIds = buildUnnamed6374();
-    o.suggestedInsertionIds = buildUnnamed6375();
-    o.suggestedTextStyleChanges = buildUnnamed6376();
+    o.suggestedDeletionIds = buildUnnamed6392();
+    o.suggestedInsertionIds = buildUnnamed6393();
+    o.suggestedTextStyleChanges = buildUnnamed6394();
     o.textStyle = buildTextStyle();
   }
   buildCounterHorizontalRule--;
@@ -1515,9 +1515,9 @@ api.HorizontalRule buildHorizontalRule() {
 void checkHorizontalRule(api.HorizontalRule o) {
   buildCounterHorizontalRule++;
   if (buildCounterHorizontalRule < 3) {
-    checkUnnamed6374(o.suggestedDeletionIds);
-    checkUnnamed6375(o.suggestedInsertionIds);
-    checkUnnamed6376(o.suggestedTextStyleChanges);
+    checkUnnamed6392(o.suggestedDeletionIds);
+    checkUnnamed6393(o.suggestedInsertionIds);
+    checkUnnamed6394(o.suggestedTextStyleChanges);
     checkTextStyle(o.textStyle as api.TextStyle);
   }
   buildCounterHorizontalRule--;
@@ -1586,27 +1586,27 @@ void checkImagePropertiesSuggestionState(api.ImagePropertiesSuggestionState o) {
   buildCounterImagePropertiesSuggestionState--;
 }
 
-core.List<core.String> buildUnnamed6377() {
+core.List<core.String> buildUnnamed6395() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6377(core.List<core.String> o) {
+void checkUnnamed6395(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, api.SuggestedInlineObjectProperties> buildUnnamed6378() {
+core.Map<core.String, api.SuggestedInlineObjectProperties> buildUnnamed6396() {
   var o = <core.String, api.SuggestedInlineObjectProperties>{};
   o['x'] = buildSuggestedInlineObjectProperties();
   o['y'] = buildSuggestedInlineObjectProperties();
   return o;
 }
 
-void checkUnnamed6378(
+void checkUnnamed6396(
     core.Map<core.String, api.SuggestedInlineObjectProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedInlineObjectProperties(
@@ -1622,8 +1622,8 @@ api.InlineObject buildInlineObject() {
   if (buildCounterInlineObject < 3) {
     o.inlineObjectProperties = buildInlineObjectProperties();
     o.objectId = 'foo';
-    o.suggestedDeletionIds = buildUnnamed6377();
-    o.suggestedInlineObjectPropertiesChanges = buildUnnamed6378();
+    o.suggestedDeletionIds = buildUnnamed6395();
+    o.suggestedInlineObjectPropertiesChanges = buildUnnamed6396();
     o.suggestedInsertionId = 'foo';
   }
   buildCounterInlineObject--;
@@ -1636,47 +1636,47 @@ void checkInlineObject(api.InlineObject o) {
     checkInlineObjectProperties(
         o.inlineObjectProperties as api.InlineObjectProperties);
     unittest.expect(o.objectId, unittest.equals('foo'));
-    checkUnnamed6377(o.suggestedDeletionIds);
-    checkUnnamed6378(o.suggestedInlineObjectPropertiesChanges);
+    checkUnnamed6395(o.suggestedDeletionIds);
+    checkUnnamed6396(o.suggestedInlineObjectPropertiesChanges);
     unittest.expect(o.suggestedInsertionId, unittest.equals('foo'));
   }
   buildCounterInlineObject--;
 }
 
-core.List<core.String> buildUnnamed6379() {
+core.List<core.String> buildUnnamed6397() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6379(core.List<core.String> o) {
+void checkUnnamed6397(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed6380() {
+core.List<core.String> buildUnnamed6398() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6380(core.List<core.String> o) {
+void checkUnnamed6398(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, api.SuggestedTextStyle> buildUnnamed6381() {
+core.Map<core.String, api.SuggestedTextStyle> buildUnnamed6399() {
   var o = <core.String, api.SuggestedTextStyle>{};
   o['x'] = buildSuggestedTextStyle();
   o['y'] = buildSuggestedTextStyle();
   return o;
 }
 
-void checkUnnamed6381(core.Map<core.String, api.SuggestedTextStyle> o) {
+void checkUnnamed6399(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedTextStyle(o['x'] as api.SuggestedTextStyle);
   checkSuggestedTextStyle(o['y'] as api.SuggestedTextStyle);
@@ -1688,9 +1688,9 @@ api.InlineObjectElement buildInlineObjectElement() {
   buildCounterInlineObjectElement++;
   if (buildCounterInlineObjectElement < 3) {
     o.inlineObjectId = 'foo';
-    o.suggestedDeletionIds = buildUnnamed6379();
-    o.suggestedInsertionIds = buildUnnamed6380();
-    o.suggestedTextStyleChanges = buildUnnamed6381();
+    o.suggestedDeletionIds = buildUnnamed6397();
+    o.suggestedInsertionIds = buildUnnamed6398();
+    o.suggestedTextStyleChanges = buildUnnamed6399();
     o.textStyle = buildTextStyle();
   }
   buildCounterInlineObjectElement--;
@@ -1701,9 +1701,9 @@ void checkInlineObjectElement(api.InlineObjectElement o) {
   buildCounterInlineObjectElement++;
   if (buildCounterInlineObjectElement < 3) {
     unittest.expect(o.inlineObjectId, unittest.equals('foo'));
-    checkUnnamed6379(o.suggestedDeletionIds);
-    checkUnnamed6380(o.suggestedInsertionIds);
-    checkUnnamed6381(o.suggestedTextStyleChanges);
+    checkUnnamed6397(o.suggestedDeletionIds);
+    checkUnnamed6398(o.suggestedInsertionIds);
+    checkUnnamed6399(o.suggestedTextStyleChanges);
     checkTextStyle(o.textStyle as api.TextStyle);
   }
   buildCounterInlineObjectElement--;
@@ -2020,27 +2020,27 @@ void checkLinkedContentReferenceSuggestionState(
   buildCounterLinkedContentReferenceSuggestionState--;
 }
 
-core.List<core.String> buildUnnamed6382() {
+core.List<core.String> buildUnnamed6400() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6382(core.List<core.String> o) {
+void checkUnnamed6400(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, api.SuggestedListProperties> buildUnnamed6383() {
+core.Map<core.String, api.SuggestedListProperties> buildUnnamed6401() {
   var o = <core.String, api.SuggestedListProperties>{};
   o['x'] = buildSuggestedListProperties();
   o['y'] = buildSuggestedListProperties();
   return o;
 }
 
-void checkUnnamed6383(core.Map<core.String, api.SuggestedListProperties> o) {
+void checkUnnamed6401(core.Map<core.String, api.SuggestedListProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedListProperties(o['x'] as api.SuggestedListProperties);
   checkSuggestedListProperties(o['y'] as api.SuggestedListProperties);
@@ -2052,9 +2052,9 @@ api.List buildList() {
   buildCounterList++;
   if (buildCounterList < 3) {
     o.listProperties = buildListProperties();
-    o.suggestedDeletionIds = buildUnnamed6382();
+    o.suggestedDeletionIds = buildUnnamed6400();
     o.suggestedInsertionId = 'foo';
-    o.suggestedListPropertiesChanges = buildUnnamed6383();
+    o.suggestedListPropertiesChanges = buildUnnamed6401();
   }
   buildCounterList--;
   return o;
@@ -2064,21 +2064,21 @@ void checkList(api.List o) {
   buildCounterList++;
   if (buildCounterList < 3) {
     checkListProperties(o.listProperties as api.ListProperties);
-    checkUnnamed6382(o.suggestedDeletionIds);
+    checkUnnamed6400(o.suggestedDeletionIds);
     unittest.expect(o.suggestedInsertionId, unittest.equals('foo'));
-    checkUnnamed6383(o.suggestedListPropertiesChanges);
+    checkUnnamed6401(o.suggestedListPropertiesChanges);
   }
   buildCounterList--;
 }
 
-core.List<api.NestingLevel> buildUnnamed6384() {
+core.List<api.NestingLevel> buildUnnamed6402() {
   var o = <api.NestingLevel>[];
   o.add(buildNestingLevel());
   o.add(buildNestingLevel());
   return o;
 }
 
-void checkUnnamed6384(core.List<api.NestingLevel> o) {
+void checkUnnamed6402(core.List<api.NestingLevel> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNestingLevel(o[0] as api.NestingLevel);
   checkNestingLevel(o[1] as api.NestingLevel);
@@ -2089,7 +2089,7 @@ api.ListProperties buildListProperties() {
   var o = api.ListProperties();
   buildCounterListProperties++;
   if (buildCounterListProperties < 3) {
-    o.nestingLevels = buildUnnamed6384();
+    o.nestingLevels = buildUnnamed6402();
   }
   buildCounterListProperties--;
   return o;
@@ -2098,19 +2098,19 @@ api.ListProperties buildListProperties() {
 void checkListProperties(api.ListProperties o) {
   buildCounterListProperties++;
   if (buildCounterListProperties < 3) {
-    checkUnnamed6384(o.nestingLevels);
+    checkUnnamed6402(o.nestingLevels);
   }
   buildCounterListProperties--;
 }
 
-core.List<api.NestingLevelSuggestionState> buildUnnamed6385() {
+core.List<api.NestingLevelSuggestionState> buildUnnamed6403() {
   var o = <api.NestingLevelSuggestionState>[];
   o.add(buildNestingLevelSuggestionState());
   o.add(buildNestingLevelSuggestionState());
   return o;
 }
 
-void checkUnnamed6385(core.List<api.NestingLevelSuggestionState> o) {
+void checkUnnamed6403(core.List<api.NestingLevelSuggestionState> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNestingLevelSuggestionState(o[0] as api.NestingLevelSuggestionState);
   checkNestingLevelSuggestionState(o[1] as api.NestingLevelSuggestionState);
@@ -2121,7 +2121,7 @@ api.ListPropertiesSuggestionState buildListPropertiesSuggestionState() {
   var o = api.ListPropertiesSuggestionState();
   buildCounterListPropertiesSuggestionState++;
   if (buildCounterListPropertiesSuggestionState < 3) {
-    o.nestingLevelsSuggestionStates = buildUnnamed6385();
+    o.nestingLevelsSuggestionStates = buildUnnamed6403();
   }
   buildCounterListPropertiesSuggestionState--;
   return o;
@@ -2130,7 +2130,7 @@ api.ListPropertiesSuggestionState buildListPropertiesSuggestionState() {
 void checkListPropertiesSuggestionState(api.ListPropertiesSuggestionState o) {
   buildCounterListPropertiesSuggestionState++;
   if (buildCounterListPropertiesSuggestionState < 3) {
-    checkUnnamed6385(o.nestingLevelsSuggestionStates);
+    checkUnnamed6403(o.nestingLevelsSuggestionStates);
   }
   buildCounterListPropertiesSuggestionState--;
 }
@@ -2175,14 +2175,14 @@ void checkMergeTableCellsRequest(api.MergeTableCellsRequest o) {
   buildCounterMergeTableCellsRequest--;
 }
 
-core.List<api.Range> buildUnnamed6386() {
+core.List<api.Range> buildUnnamed6404() {
   var o = <api.Range>[];
   o.add(buildRange());
   o.add(buildRange());
   return o;
 }
 
-void checkUnnamed6386(core.List<api.Range> o) {
+void checkUnnamed6404(core.List<api.Range> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkRange(o[0] as api.Range);
   checkRange(o[1] as api.Range);
@@ -2195,7 +2195,7 @@ api.NamedRange buildNamedRange() {
   if (buildCounterNamedRange < 3) {
     o.name = 'foo';
     o.namedRangeId = 'foo';
-    o.ranges = buildUnnamed6386();
+    o.ranges = buildUnnamed6404();
   }
   buildCounterNamedRange--;
   return o;
@@ -2206,19 +2206,19 @@ void checkNamedRange(api.NamedRange o) {
   if (buildCounterNamedRange < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.namedRangeId, unittest.equals('foo'));
-    checkUnnamed6386(o.ranges);
+    checkUnnamed6404(o.ranges);
   }
   buildCounterNamedRange--;
 }
 
-core.List<api.NamedRange> buildUnnamed6387() {
+core.List<api.NamedRange> buildUnnamed6405() {
   var o = <api.NamedRange>[];
   o.add(buildNamedRange());
   o.add(buildNamedRange());
   return o;
 }
 
-void checkUnnamed6387(core.List<api.NamedRange> o) {
+void checkUnnamed6405(core.List<api.NamedRange> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNamedRange(o[0] as api.NamedRange);
   checkNamedRange(o[1] as api.NamedRange);
@@ -2230,7 +2230,7 @@ api.NamedRanges buildNamedRanges() {
   buildCounterNamedRanges++;
   if (buildCounterNamedRanges < 3) {
     o.name = 'foo';
-    o.namedRanges = buildUnnamed6387();
+    o.namedRanges = buildUnnamed6405();
   }
   buildCounterNamedRanges--;
   return o;
@@ -2240,7 +2240,7 @@ void checkNamedRanges(api.NamedRanges o) {
   buildCounterNamedRanges++;
   if (buildCounterNamedRanges < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed6387(o.namedRanges);
+    checkUnnamed6405(o.namedRanges);
   }
   buildCounterNamedRanges--;
 }
@@ -2293,14 +2293,14 @@ void checkNamedStyleSuggestionState(api.NamedStyleSuggestionState o) {
   buildCounterNamedStyleSuggestionState--;
 }
 
-core.List<api.NamedStyle> buildUnnamed6388() {
+core.List<api.NamedStyle> buildUnnamed6406() {
   var o = <api.NamedStyle>[];
   o.add(buildNamedStyle());
   o.add(buildNamedStyle());
   return o;
 }
 
-void checkUnnamed6388(core.List<api.NamedStyle> o) {
+void checkUnnamed6406(core.List<api.NamedStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNamedStyle(o[0] as api.NamedStyle);
   checkNamedStyle(o[1] as api.NamedStyle);
@@ -2311,7 +2311,7 @@ api.NamedStyles buildNamedStyles() {
   var o = api.NamedStyles();
   buildCounterNamedStyles++;
   if (buildCounterNamedStyles < 3) {
-    o.styles = buildUnnamed6388();
+    o.styles = buildUnnamed6406();
   }
   buildCounterNamedStyles--;
   return o;
@@ -2320,19 +2320,19 @@ api.NamedStyles buildNamedStyles() {
 void checkNamedStyles(api.NamedStyles o) {
   buildCounterNamedStyles++;
   if (buildCounterNamedStyles < 3) {
-    checkUnnamed6388(o.styles);
+    checkUnnamed6406(o.styles);
   }
   buildCounterNamedStyles--;
 }
 
-core.List<api.NamedStyleSuggestionState> buildUnnamed6389() {
+core.List<api.NamedStyleSuggestionState> buildUnnamed6407() {
   var o = <api.NamedStyleSuggestionState>[];
   o.add(buildNamedStyleSuggestionState());
   o.add(buildNamedStyleSuggestionState());
   return o;
 }
 
-void checkUnnamed6389(core.List<api.NamedStyleSuggestionState> o) {
+void checkUnnamed6407(core.List<api.NamedStyleSuggestionState> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkNamedStyleSuggestionState(o[0] as api.NamedStyleSuggestionState);
   checkNamedStyleSuggestionState(o[1] as api.NamedStyleSuggestionState);
@@ -2343,7 +2343,7 @@ api.NamedStylesSuggestionState buildNamedStylesSuggestionState() {
   var o = api.NamedStylesSuggestionState();
   buildCounterNamedStylesSuggestionState++;
   if (buildCounterNamedStylesSuggestionState < 3) {
-    o.stylesSuggestionStates = buildUnnamed6389();
+    o.stylesSuggestionStates = buildUnnamed6407();
   }
   buildCounterNamedStylesSuggestionState--;
   return o;
@@ -2352,7 +2352,7 @@ api.NamedStylesSuggestionState buildNamedStylesSuggestionState() {
 void checkNamedStylesSuggestionState(api.NamedStylesSuggestionState o) {
   buildCounterNamedStylesSuggestionState++;
   if (buildCounterNamedStylesSuggestionState < 3) {
-    checkUnnamed6389(o.stylesSuggestionStates);
+    checkUnnamed6407(o.stylesSuggestionStates);
   }
   buildCounterNamedStylesSuggestionState--;
 }
@@ -2424,14 +2424,14 @@ void checkNestingLevelSuggestionState(api.NestingLevelSuggestionState o) {
   buildCounterNestingLevelSuggestionState--;
 }
 
-core.List<core.String> buildUnnamed6390() {
+core.List<core.String> buildUnnamed6408() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6390(core.List<core.String> o) {
+void checkUnnamed6408(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2442,7 +2442,7 @@ api.ObjectReferences buildObjectReferences() {
   var o = api.ObjectReferences();
   buildCounterObjectReferences++;
   if (buildCounterObjectReferences < 3) {
-    o.objectIds = buildUnnamed6390();
+    o.objectIds = buildUnnamed6408();
   }
   buildCounterObjectReferences--;
   return o;
@@ -2451,7 +2451,7 @@ api.ObjectReferences buildObjectReferences() {
 void checkObjectReferences(api.ObjectReferences o) {
   buildCounterObjectReferences++;
   if (buildCounterObjectReferences < 3) {
-    checkUnnamed6390(o.objectIds);
+    checkUnnamed6408(o.objectIds);
   }
   buildCounterObjectReferences--;
 }
@@ -2475,40 +2475,40 @@ void checkOptionalColor(api.OptionalColor o) {
   buildCounterOptionalColor--;
 }
 
-core.List<core.String> buildUnnamed6391() {
+core.List<core.String> buildUnnamed6409() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6391(core.List<core.String> o) {
+void checkUnnamed6409(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed6392() {
+core.List<core.String> buildUnnamed6410() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6392(core.List<core.String> o) {
+void checkUnnamed6410(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, api.SuggestedTextStyle> buildUnnamed6393() {
+core.Map<core.String, api.SuggestedTextStyle> buildUnnamed6411() {
   var o = <core.String, api.SuggestedTextStyle>{};
   o['x'] = buildSuggestedTextStyle();
   o['y'] = buildSuggestedTextStyle();
   return o;
 }
 
-void checkUnnamed6393(core.Map<core.String, api.SuggestedTextStyle> o) {
+void checkUnnamed6411(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedTextStyle(o['x'] as api.SuggestedTextStyle);
   checkSuggestedTextStyle(o['y'] as api.SuggestedTextStyle);
@@ -2519,9 +2519,9 @@ api.PageBreak buildPageBreak() {
   var o = api.PageBreak();
   buildCounterPageBreak++;
   if (buildCounterPageBreak < 3) {
-    o.suggestedDeletionIds = buildUnnamed6391();
-    o.suggestedInsertionIds = buildUnnamed6392();
-    o.suggestedTextStyleChanges = buildUnnamed6393();
+    o.suggestedDeletionIds = buildUnnamed6409();
+    o.suggestedInsertionIds = buildUnnamed6410();
+    o.suggestedTextStyleChanges = buildUnnamed6411();
     o.textStyle = buildTextStyle();
   }
   buildCounterPageBreak--;
@@ -2531,74 +2531,74 @@ api.PageBreak buildPageBreak() {
 void checkPageBreak(api.PageBreak o) {
   buildCounterPageBreak++;
   if (buildCounterPageBreak < 3) {
-    checkUnnamed6391(o.suggestedDeletionIds);
-    checkUnnamed6392(o.suggestedInsertionIds);
-    checkUnnamed6393(o.suggestedTextStyleChanges);
+    checkUnnamed6409(o.suggestedDeletionIds);
+    checkUnnamed6410(o.suggestedInsertionIds);
+    checkUnnamed6411(o.suggestedTextStyleChanges);
     checkTextStyle(o.textStyle as api.TextStyle);
   }
   buildCounterPageBreak--;
 }
 
-core.List<api.ParagraphElement> buildUnnamed6394() {
+core.List<api.ParagraphElement> buildUnnamed6412() {
   var o = <api.ParagraphElement>[];
   o.add(buildParagraphElement());
   o.add(buildParagraphElement());
   return o;
 }
 
-void checkUnnamed6394(core.List<api.ParagraphElement> o) {
+void checkUnnamed6412(core.List<api.ParagraphElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkParagraphElement(o[0] as api.ParagraphElement);
   checkParagraphElement(o[1] as api.ParagraphElement);
 }
 
-core.List<core.String> buildUnnamed6395() {
+core.List<core.String> buildUnnamed6413() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6395(core.List<core.String> o) {
+void checkUnnamed6413(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, api.SuggestedBullet> buildUnnamed6396() {
+core.Map<core.String, api.SuggestedBullet> buildUnnamed6414() {
   var o = <core.String, api.SuggestedBullet>{};
   o['x'] = buildSuggestedBullet();
   o['y'] = buildSuggestedBullet();
   return o;
 }
 
-void checkUnnamed6396(core.Map<core.String, api.SuggestedBullet> o) {
+void checkUnnamed6414(core.Map<core.String, api.SuggestedBullet> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedBullet(o['x'] as api.SuggestedBullet);
   checkSuggestedBullet(o['y'] as api.SuggestedBullet);
 }
 
-core.Map<core.String, api.SuggestedParagraphStyle> buildUnnamed6397() {
+core.Map<core.String, api.SuggestedParagraphStyle> buildUnnamed6415() {
   var o = <core.String, api.SuggestedParagraphStyle>{};
   o['x'] = buildSuggestedParagraphStyle();
   o['y'] = buildSuggestedParagraphStyle();
   return o;
 }
 
-void checkUnnamed6397(core.Map<core.String, api.SuggestedParagraphStyle> o) {
+void checkUnnamed6415(core.Map<core.String, api.SuggestedParagraphStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedParagraphStyle(o['x'] as api.SuggestedParagraphStyle);
   checkSuggestedParagraphStyle(o['y'] as api.SuggestedParagraphStyle);
 }
 
-core.Map<core.String, api.ObjectReferences> buildUnnamed6398() {
+core.Map<core.String, api.ObjectReferences> buildUnnamed6416() {
   var o = <core.String, api.ObjectReferences>{};
   o['x'] = buildObjectReferences();
   o['y'] = buildObjectReferences();
   return o;
 }
 
-void checkUnnamed6398(core.Map<core.String, api.ObjectReferences> o) {
+void checkUnnamed6416(core.Map<core.String, api.ObjectReferences> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkObjectReferences(o['x'] as api.ObjectReferences);
   checkObjectReferences(o['y'] as api.ObjectReferences);
@@ -2610,12 +2610,12 @@ api.Paragraph buildParagraph() {
   buildCounterParagraph++;
   if (buildCounterParagraph < 3) {
     o.bullet = buildBullet();
-    o.elements = buildUnnamed6394();
+    o.elements = buildUnnamed6412();
     o.paragraphStyle = buildParagraphStyle();
-    o.positionedObjectIds = buildUnnamed6395();
-    o.suggestedBulletChanges = buildUnnamed6396();
-    o.suggestedParagraphStyleChanges = buildUnnamed6397();
-    o.suggestedPositionedObjectIds = buildUnnamed6398();
+    o.positionedObjectIds = buildUnnamed6413();
+    o.suggestedBulletChanges = buildUnnamed6414();
+    o.suggestedParagraphStyleChanges = buildUnnamed6415();
+    o.suggestedPositionedObjectIds = buildUnnamed6416();
   }
   buildCounterParagraph--;
   return o;
@@ -2625,12 +2625,12 @@ void checkParagraph(api.Paragraph o) {
   buildCounterParagraph++;
   if (buildCounterParagraph < 3) {
     checkBullet(o.bullet as api.Bullet);
-    checkUnnamed6394(o.elements);
+    checkUnnamed6412(o.elements);
     checkParagraphStyle(o.paragraphStyle as api.ParagraphStyle);
-    checkUnnamed6395(o.positionedObjectIds);
-    checkUnnamed6396(o.suggestedBulletChanges);
-    checkUnnamed6397(o.suggestedParagraphStyleChanges);
-    checkUnnamed6398(o.suggestedPositionedObjectIds);
+    checkUnnamed6413(o.positionedObjectIds);
+    checkUnnamed6414(o.suggestedBulletChanges);
+    checkUnnamed6415(o.suggestedParagraphStyleChanges);
+    checkUnnamed6416(o.suggestedPositionedObjectIds);
   }
   buildCounterParagraph--;
 }
@@ -2697,14 +2697,14 @@ void checkParagraphElement(api.ParagraphElement o) {
   buildCounterParagraphElement--;
 }
 
-core.List<api.TabStop> buildUnnamed6399() {
+core.List<api.TabStop> buildUnnamed6417() {
   var o = <api.TabStop>[];
   o.add(buildTabStop());
   o.add(buildTabStop());
   return o;
 }
 
-void checkUnnamed6399(core.List<api.TabStop> o) {
+void checkUnnamed6417(core.List<api.TabStop> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTabStop(o[0] as api.TabStop);
   checkTabStop(o[1] as api.TabStop);
@@ -2735,7 +2735,7 @@ api.ParagraphStyle buildParagraphStyle() {
     o.spaceAbove = buildDimension();
     o.spaceBelow = buildDimension();
     o.spacingMode = 'foo';
-    o.tabStops = buildUnnamed6399();
+    o.tabStops = buildUnnamed6417();
   }
   buildCounterParagraphStyle--;
   return o;
@@ -2764,7 +2764,7 @@ void checkParagraphStyle(api.ParagraphStyle o) {
     checkDimension(o.spaceAbove as api.Dimension);
     checkDimension(o.spaceBelow as api.Dimension);
     unittest.expect(o.spacingMode, unittest.equals('foo'));
-    checkUnnamed6399(o.tabStops);
+    checkUnnamed6417(o.tabStops);
   }
   buildCounterParagraphStyle--;
 }
@@ -2827,28 +2827,28 @@ void checkParagraphStyleSuggestionState(api.ParagraphStyleSuggestionState o) {
   buildCounterParagraphStyleSuggestionState--;
 }
 
-core.List<core.String> buildUnnamed6400() {
+core.List<core.String> buildUnnamed6418() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6400(core.List<core.String> o) {
+void checkUnnamed6418(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
 core.Map<core.String, api.SuggestedPositionedObjectProperties>
-    buildUnnamed6401() {
+    buildUnnamed6419() {
   var o = <core.String, api.SuggestedPositionedObjectProperties>{};
   o['x'] = buildSuggestedPositionedObjectProperties();
   o['y'] = buildSuggestedPositionedObjectProperties();
   return o;
 }
 
-void checkUnnamed6401(
+void checkUnnamed6419(
     core.Map<core.String, api.SuggestedPositionedObjectProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedPositionedObjectProperties(
@@ -2864,9 +2864,9 @@ api.PositionedObject buildPositionedObject() {
   if (buildCounterPositionedObject < 3) {
     o.objectId = 'foo';
     o.positionedObjectProperties = buildPositionedObjectProperties();
-    o.suggestedDeletionIds = buildUnnamed6400();
+    o.suggestedDeletionIds = buildUnnamed6418();
     o.suggestedInsertionId = 'foo';
-    o.suggestedPositionedObjectPropertiesChanges = buildUnnamed6401();
+    o.suggestedPositionedObjectPropertiesChanges = buildUnnamed6419();
   }
   buildCounterPositionedObject--;
   return o;
@@ -2878,9 +2878,9 @@ void checkPositionedObject(api.PositionedObject o) {
     unittest.expect(o.objectId, unittest.equals('foo'));
     checkPositionedObjectProperties(
         o.positionedObjectProperties as api.PositionedObjectProperties);
-    checkUnnamed6400(o.suggestedDeletionIds);
+    checkUnnamed6418(o.suggestedDeletionIds);
     unittest.expect(o.suggestedInsertionId, unittest.equals('foo'));
-    checkUnnamed6401(o.suggestedPositionedObjectPropertiesChanges);
+    checkUnnamed6419(o.suggestedPositionedObjectPropertiesChanges);
   }
   buildCounterPositionedObject--;
 }
@@ -3250,27 +3250,27 @@ void checkRgbColor(api.RgbColor o) {
   buildCounterRgbColor--;
 }
 
-core.List<core.String> buildUnnamed6402() {
+core.List<core.String> buildUnnamed6420() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6402(core.List<core.String> o) {
+void checkUnnamed6420(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed6403() {
+core.List<core.String> buildUnnamed6421() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6403(core.List<core.String> o) {
+void checkUnnamed6421(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -3282,8 +3282,8 @@ api.SectionBreak buildSectionBreak() {
   buildCounterSectionBreak++;
   if (buildCounterSectionBreak < 3) {
     o.sectionStyle = buildSectionStyle();
-    o.suggestedDeletionIds = buildUnnamed6402();
-    o.suggestedInsertionIds = buildUnnamed6403();
+    o.suggestedDeletionIds = buildUnnamed6420();
+    o.suggestedInsertionIds = buildUnnamed6421();
   }
   buildCounterSectionBreak--;
   return o;
@@ -3293,8 +3293,8 @@ void checkSectionBreak(api.SectionBreak o) {
   buildCounterSectionBreak++;
   if (buildCounterSectionBreak < 3) {
     checkSectionStyle(o.sectionStyle as api.SectionStyle);
-    checkUnnamed6402(o.suggestedDeletionIds);
-    checkUnnamed6403(o.suggestedInsertionIds);
+    checkUnnamed6420(o.suggestedDeletionIds);
+    checkUnnamed6421(o.suggestedInsertionIds);
   }
   buildCounterSectionBreak--;
 }
@@ -3320,14 +3320,14 @@ void checkSectionColumnProperties(api.SectionColumnProperties o) {
   buildCounterSectionColumnProperties--;
 }
 
-core.List<api.SectionColumnProperties> buildUnnamed6404() {
+core.List<api.SectionColumnProperties> buildUnnamed6422() {
   var o = <api.SectionColumnProperties>[];
   o.add(buildSectionColumnProperties());
   o.add(buildSectionColumnProperties());
   return o;
 }
 
-void checkUnnamed6404(core.List<api.SectionColumnProperties> o) {
+void checkUnnamed6422(core.List<api.SectionColumnProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSectionColumnProperties(o[0] as api.SectionColumnProperties);
   checkSectionColumnProperties(o[1] as api.SectionColumnProperties);
@@ -3338,7 +3338,7 @@ api.SectionStyle buildSectionStyle() {
   var o = api.SectionStyle();
   buildCounterSectionStyle++;
   if (buildCounterSectionStyle < 3) {
-    o.columnProperties = buildUnnamed6404();
+    o.columnProperties = buildUnnamed6422();
     o.columnSeparatorStyle = 'foo';
     o.contentDirection = 'foo';
     o.defaultFooterId = 'foo';
@@ -3364,7 +3364,7 @@ api.SectionStyle buildSectionStyle() {
 void checkSectionStyle(api.SectionStyle o) {
   buildCounterSectionStyle++;
   if (buildCounterSectionStyle < 3) {
-    checkUnnamed6404(o.columnProperties);
+    checkUnnamed6422(o.columnProperties);
     unittest.expect(o.columnSeparatorStyle, unittest.equals('foo'));
     unittest.expect(o.contentDirection, unittest.equals('foo'));
     unittest.expect(o.defaultFooterId, unittest.equals('foo'));
@@ -3810,40 +3810,40 @@ void checkTabStop(api.TabStop o) {
   buildCounterTabStop--;
 }
 
-core.List<core.String> buildUnnamed6405() {
+core.List<core.String> buildUnnamed6423() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6405(core.List<core.String> o) {
+void checkUnnamed6423(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed6406() {
+core.List<core.String> buildUnnamed6424() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6406(core.List<core.String> o) {
+void checkUnnamed6424(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<api.TableRow> buildUnnamed6407() {
+core.List<api.TableRow> buildUnnamed6425() {
   var o = <api.TableRow>[];
   o.add(buildTableRow());
   o.add(buildTableRow());
   return o;
 }
 
-void checkUnnamed6407(core.List<api.TableRow> o) {
+void checkUnnamed6425(core.List<api.TableRow> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTableRow(o[0] as api.TableRow);
   checkTableRow(o[1] as api.TableRow);
@@ -3856,9 +3856,9 @@ api.Table buildTable() {
   if (buildCounterTable < 3) {
     o.columns = 42;
     o.rows = 42;
-    o.suggestedDeletionIds = buildUnnamed6405();
-    o.suggestedInsertionIds = buildUnnamed6406();
-    o.tableRows = buildUnnamed6407();
+    o.suggestedDeletionIds = buildUnnamed6423();
+    o.suggestedInsertionIds = buildUnnamed6424();
+    o.tableRows = buildUnnamed6425();
     o.tableStyle = buildTableStyle();
   }
   buildCounterTable--;
@@ -3870,61 +3870,61 @@ void checkTable(api.Table o) {
   if (buildCounterTable < 3) {
     unittest.expect(o.columns, unittest.equals(42));
     unittest.expect(o.rows, unittest.equals(42));
-    checkUnnamed6405(o.suggestedDeletionIds);
-    checkUnnamed6406(o.suggestedInsertionIds);
-    checkUnnamed6407(o.tableRows);
+    checkUnnamed6423(o.suggestedDeletionIds);
+    checkUnnamed6424(o.suggestedInsertionIds);
+    checkUnnamed6425(o.tableRows);
     checkTableStyle(o.tableStyle as api.TableStyle);
   }
   buildCounterTable--;
 }
 
-core.List<api.StructuralElement> buildUnnamed6408() {
+core.List<api.StructuralElement> buildUnnamed6426() {
   var o = <api.StructuralElement>[];
   o.add(buildStructuralElement());
   o.add(buildStructuralElement());
   return o;
 }
 
-void checkUnnamed6408(core.List<api.StructuralElement> o) {
+void checkUnnamed6426(core.List<api.StructuralElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStructuralElement(o[0] as api.StructuralElement);
   checkStructuralElement(o[1] as api.StructuralElement);
 }
 
-core.List<core.String> buildUnnamed6409() {
+core.List<core.String> buildUnnamed6427() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6409(core.List<core.String> o) {
+void checkUnnamed6427(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed6410() {
+core.List<core.String> buildUnnamed6428() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6410(core.List<core.String> o) {
+void checkUnnamed6428(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, api.SuggestedTableCellStyle> buildUnnamed6411() {
+core.Map<core.String, api.SuggestedTableCellStyle> buildUnnamed6429() {
   var o = <core.String, api.SuggestedTableCellStyle>{};
   o['x'] = buildSuggestedTableCellStyle();
   o['y'] = buildSuggestedTableCellStyle();
   return o;
 }
 
-void checkUnnamed6411(core.Map<core.String, api.SuggestedTableCellStyle> o) {
+void checkUnnamed6429(core.Map<core.String, api.SuggestedTableCellStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedTableCellStyle(o['x'] as api.SuggestedTableCellStyle);
   checkSuggestedTableCellStyle(o['y'] as api.SuggestedTableCellStyle);
@@ -3935,12 +3935,12 @@ api.TableCell buildTableCell() {
   var o = api.TableCell();
   buildCounterTableCell++;
   if (buildCounterTableCell < 3) {
-    o.content = buildUnnamed6408();
+    o.content = buildUnnamed6426();
     o.endIndex = 42;
     o.startIndex = 42;
-    o.suggestedDeletionIds = buildUnnamed6409();
-    o.suggestedInsertionIds = buildUnnamed6410();
-    o.suggestedTableCellStyleChanges = buildUnnamed6411();
+    o.suggestedDeletionIds = buildUnnamed6427();
+    o.suggestedInsertionIds = buildUnnamed6428();
+    o.suggestedTableCellStyleChanges = buildUnnamed6429();
     o.tableCellStyle = buildTableCellStyle();
   }
   buildCounterTableCell--;
@@ -3950,12 +3950,12 @@ api.TableCell buildTableCell() {
 void checkTableCell(api.TableCell o) {
   buildCounterTableCell++;
   if (buildCounterTableCell < 3) {
-    checkUnnamed6408(o.content);
+    checkUnnamed6426(o.content);
     unittest.expect(o.endIndex, unittest.equals(42));
     unittest.expect(o.startIndex, unittest.equals(42));
-    checkUnnamed6409(o.suggestedDeletionIds);
-    checkUnnamed6410(o.suggestedInsertionIds);
-    checkUnnamed6411(o.suggestedTableCellStyleChanges);
+    checkUnnamed6427(o.suggestedDeletionIds);
+    checkUnnamed6428(o.suggestedInsertionIds);
+    checkUnnamed6429(o.suggestedTableCellStyleChanges);
     checkTableCellStyle(o.tableCellStyle as api.TableCellStyle);
   }
   buildCounterTableCell--;
@@ -4110,40 +4110,40 @@ void checkTableColumnProperties(api.TableColumnProperties o) {
   buildCounterTableColumnProperties--;
 }
 
-core.List<api.StructuralElement> buildUnnamed6412() {
+core.List<api.StructuralElement> buildUnnamed6430() {
   var o = <api.StructuralElement>[];
   o.add(buildStructuralElement());
   o.add(buildStructuralElement());
   return o;
 }
 
-void checkUnnamed6412(core.List<api.StructuralElement> o) {
+void checkUnnamed6430(core.List<api.StructuralElement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkStructuralElement(o[0] as api.StructuralElement);
   checkStructuralElement(o[1] as api.StructuralElement);
 }
 
-core.List<core.String> buildUnnamed6413() {
+core.List<core.String> buildUnnamed6431() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6413(core.List<core.String> o) {
+void checkUnnamed6431(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed6414() {
+core.List<core.String> buildUnnamed6432() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6414(core.List<core.String> o) {
+void checkUnnamed6432(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -4154,9 +4154,9 @@ api.TableOfContents buildTableOfContents() {
   var o = api.TableOfContents();
   buildCounterTableOfContents++;
   if (buildCounterTableOfContents < 3) {
-    o.content = buildUnnamed6412();
-    o.suggestedDeletionIds = buildUnnamed6413();
-    o.suggestedInsertionIds = buildUnnamed6414();
+    o.content = buildUnnamed6430();
+    o.suggestedDeletionIds = buildUnnamed6431();
+    o.suggestedInsertionIds = buildUnnamed6432();
   }
   buildCounterTableOfContents--;
   return o;
@@ -4165,9 +4165,9 @@ api.TableOfContents buildTableOfContents() {
 void checkTableOfContents(api.TableOfContents o) {
   buildCounterTableOfContents++;
   if (buildCounterTableOfContents < 3) {
-    checkUnnamed6412(o.content);
-    checkUnnamed6413(o.suggestedDeletionIds);
-    checkUnnamed6414(o.suggestedInsertionIds);
+    checkUnnamed6430(o.content);
+    checkUnnamed6431(o.suggestedDeletionIds);
+    checkUnnamed6432(o.suggestedInsertionIds);
   }
   buildCounterTableOfContents--;
 }
@@ -4195,53 +4195,53 @@ void checkTableRange(api.TableRange o) {
   buildCounterTableRange--;
 }
 
-core.List<core.String> buildUnnamed6415() {
+core.List<core.String> buildUnnamed6433() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6415(core.List<core.String> o) {
+void checkUnnamed6433(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed6416() {
+core.List<core.String> buildUnnamed6434() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6416(core.List<core.String> o) {
+void checkUnnamed6434(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, api.SuggestedTableRowStyle> buildUnnamed6417() {
+core.Map<core.String, api.SuggestedTableRowStyle> buildUnnamed6435() {
   var o = <core.String, api.SuggestedTableRowStyle>{};
   o['x'] = buildSuggestedTableRowStyle();
   o['y'] = buildSuggestedTableRowStyle();
   return o;
 }
 
-void checkUnnamed6417(core.Map<core.String, api.SuggestedTableRowStyle> o) {
+void checkUnnamed6435(core.Map<core.String, api.SuggestedTableRowStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedTableRowStyle(o['x'] as api.SuggestedTableRowStyle);
   checkSuggestedTableRowStyle(o['y'] as api.SuggestedTableRowStyle);
 }
 
-core.List<api.TableCell> buildUnnamed6418() {
+core.List<api.TableCell> buildUnnamed6436() {
   var o = <api.TableCell>[];
   o.add(buildTableCell());
   o.add(buildTableCell());
   return o;
 }
 
-void checkUnnamed6418(core.List<api.TableCell> o) {
+void checkUnnamed6436(core.List<api.TableCell> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTableCell(o[0] as api.TableCell);
   checkTableCell(o[1] as api.TableCell);
@@ -4254,10 +4254,10 @@ api.TableRow buildTableRow() {
   if (buildCounterTableRow < 3) {
     o.endIndex = 42;
     o.startIndex = 42;
-    o.suggestedDeletionIds = buildUnnamed6415();
-    o.suggestedInsertionIds = buildUnnamed6416();
-    o.suggestedTableRowStyleChanges = buildUnnamed6417();
-    o.tableCells = buildUnnamed6418();
+    o.suggestedDeletionIds = buildUnnamed6433();
+    o.suggestedInsertionIds = buildUnnamed6434();
+    o.suggestedTableRowStyleChanges = buildUnnamed6435();
+    o.tableCells = buildUnnamed6436();
     o.tableRowStyle = buildTableRowStyle();
   }
   buildCounterTableRow--;
@@ -4269,10 +4269,10 @@ void checkTableRow(api.TableRow o) {
   if (buildCounterTableRow < 3) {
     unittest.expect(o.endIndex, unittest.equals(42));
     unittest.expect(o.startIndex, unittest.equals(42));
-    checkUnnamed6415(o.suggestedDeletionIds);
-    checkUnnamed6416(o.suggestedInsertionIds);
-    checkUnnamed6417(o.suggestedTableRowStyleChanges);
-    checkUnnamed6418(o.tableCells);
+    checkUnnamed6433(o.suggestedDeletionIds);
+    checkUnnamed6434(o.suggestedInsertionIds);
+    checkUnnamed6435(o.suggestedTableRowStyleChanges);
+    checkUnnamed6436(o.tableCells);
     checkTableRowStyle(o.tableRowStyle as api.TableRowStyle);
   }
   buildCounterTableRow--;
@@ -4316,14 +4316,14 @@ void checkTableRowStyleSuggestionState(api.TableRowStyleSuggestionState o) {
   buildCounterTableRowStyleSuggestionState--;
 }
 
-core.List<api.TableColumnProperties> buildUnnamed6419() {
+core.List<api.TableColumnProperties> buildUnnamed6437() {
   var o = <api.TableColumnProperties>[];
   o.add(buildTableColumnProperties());
   o.add(buildTableColumnProperties());
   return o;
 }
 
-void checkUnnamed6419(core.List<api.TableColumnProperties> o) {
+void checkUnnamed6437(core.List<api.TableColumnProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkTableColumnProperties(o[0] as api.TableColumnProperties);
   checkTableColumnProperties(o[1] as api.TableColumnProperties);
@@ -4334,7 +4334,7 @@ api.TableStyle buildTableStyle() {
   var o = api.TableStyle();
   buildCounterTableStyle++;
   if (buildCounterTableStyle < 3) {
-    o.tableColumnProperties = buildUnnamed6419();
+    o.tableColumnProperties = buildUnnamed6437();
   }
   buildCounterTableStyle--;
   return o;
@@ -4343,45 +4343,45 @@ api.TableStyle buildTableStyle() {
 void checkTableStyle(api.TableStyle o) {
   buildCounterTableStyle++;
   if (buildCounterTableStyle < 3) {
-    checkUnnamed6419(o.tableColumnProperties);
+    checkUnnamed6437(o.tableColumnProperties);
   }
   buildCounterTableStyle--;
 }
 
-core.List<core.String> buildUnnamed6420() {
+core.List<core.String> buildUnnamed6438() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6420(core.List<core.String> o) {
+void checkUnnamed6438(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed6421() {
+core.List<core.String> buildUnnamed6439() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed6421(core.List<core.String> o) {
+void checkUnnamed6439(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.Map<core.String, api.SuggestedTextStyle> buildUnnamed6422() {
+core.Map<core.String, api.SuggestedTextStyle> buildUnnamed6440() {
   var o = <core.String, api.SuggestedTextStyle>{};
   o['x'] = buildSuggestedTextStyle();
   o['y'] = buildSuggestedTextStyle();
   return o;
 }
 
-void checkUnnamed6422(core.Map<core.String, api.SuggestedTextStyle> o) {
+void checkUnnamed6440(core.Map<core.String, api.SuggestedTextStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkSuggestedTextStyle(o['x'] as api.SuggestedTextStyle);
   checkSuggestedTextStyle(o['y'] as api.SuggestedTextStyle);
@@ -4393,9 +4393,9 @@ api.TextRun buildTextRun() {
   buildCounterTextRun++;
   if (buildCounterTextRun < 3) {
     o.content = 'foo';
-    o.suggestedDeletionIds = buildUnnamed6420();
-    o.suggestedInsertionIds = buildUnnamed6421();
-    o.suggestedTextStyleChanges = buildUnnamed6422();
+    o.suggestedDeletionIds = buildUnnamed6438();
+    o.suggestedInsertionIds = buildUnnamed6439();
+    o.suggestedTextStyleChanges = buildUnnamed6440();
     o.textStyle = buildTextStyle();
   }
   buildCounterTextRun--;
@@ -4406,9 +4406,9 @@ void checkTextRun(api.TextRun o) {
   buildCounterTextRun++;
   if (buildCounterTextRun < 3) {
     unittest.expect(o.content, unittest.equals('foo'));
-    checkUnnamed6420(o.suggestedDeletionIds);
-    checkUnnamed6421(o.suggestedInsertionIds);
-    checkUnnamed6422(o.suggestedTextStyleChanges);
+    checkUnnamed6438(o.suggestedDeletionIds);
+    checkUnnamed6439(o.suggestedInsertionIds);
+    checkUnnamed6440(o.suggestedTextStyleChanges);
     checkTextStyle(o.textStyle as api.TextStyle);
   }
   buildCounterTextRun--;
@@ -4603,14 +4603,14 @@ void checkUpdateTableCellStyleRequest(api.UpdateTableCellStyleRequest o) {
   buildCounterUpdateTableCellStyleRequest--;
 }
 
-core.List<core.int> buildUnnamed6423() {
+core.List<core.int> buildUnnamed6441() {
   var o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
 }
 
-void checkUnnamed6423(core.List<core.int> o) {
+void checkUnnamed6441(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
@@ -4622,7 +4622,7 @@ api.UpdateTableColumnPropertiesRequest
   var o = api.UpdateTableColumnPropertiesRequest();
   buildCounterUpdateTableColumnPropertiesRequest++;
   if (buildCounterUpdateTableColumnPropertiesRequest < 3) {
-    o.columnIndices = buildUnnamed6423();
+    o.columnIndices = buildUnnamed6441();
     o.fields = 'foo';
     o.tableColumnProperties = buildTableColumnProperties();
     o.tableStartLocation = buildLocation();
@@ -4635,7 +4635,7 @@ void checkUpdateTableColumnPropertiesRequest(
     api.UpdateTableColumnPropertiesRequest o) {
   buildCounterUpdateTableColumnPropertiesRequest++;
   if (buildCounterUpdateTableColumnPropertiesRequest < 3) {
-    checkUnnamed6423(o.columnIndices);
+    checkUnnamed6441(o.columnIndices);
     unittest.expect(o.fields, unittest.equals('foo'));
     checkTableColumnProperties(
         o.tableColumnProperties as api.TableColumnProperties);
@@ -4644,14 +4644,14 @@ void checkUpdateTableColumnPropertiesRequest(
   buildCounterUpdateTableColumnPropertiesRequest--;
 }
 
-core.List<core.int> buildUnnamed6424() {
+core.List<core.int> buildUnnamed6442() {
   var o = <core.int>[];
   o.add(42);
   o.add(42);
   return o;
 }
 
-void checkUnnamed6424(core.List<core.int> o) {
+void checkUnnamed6442(core.List<core.int> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals(42));
   unittest.expect(o[1], unittest.equals(42));
@@ -4663,7 +4663,7 @@ api.UpdateTableRowStyleRequest buildUpdateTableRowStyleRequest() {
   buildCounterUpdateTableRowStyleRequest++;
   if (buildCounterUpdateTableRowStyleRequest < 3) {
     o.fields = 'foo';
-    o.rowIndices = buildUnnamed6424();
+    o.rowIndices = buildUnnamed6442();
     o.tableRowStyle = buildTableRowStyle();
     o.tableStartLocation = buildLocation();
   }
@@ -4675,7 +4675,7 @@ void checkUpdateTableRowStyleRequest(api.UpdateTableRowStyleRequest o) {
   buildCounterUpdateTableRowStyleRequest++;
   if (buildCounterUpdateTableRowStyleRequest < 3) {
     unittest.expect(o.fields, unittest.equals('foo'));
-    checkUnnamed6424(o.rowIndices);
+    checkUnnamed6442(o.rowIndices);
     checkTableRowStyle(o.tableRowStyle as api.TableRowStyle);
     checkLocation(o.tableStartLocation as api.Location);
   }

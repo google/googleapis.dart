@@ -196,6 +196,7 @@ packages:
     - youtube:v3 # https://developers.google.com/youtube/
     - youtubeAnalytics:v2 # https://developers.google.com/youtube/analytics/
     - youtubereporting:v1 # https://developers.google.com/youtube/reporting/v1/reports/
+    - webrisk:v1
 
 - googleapis_beta:
     version: 2.0.0-dev
@@ -225,6 +226,7 @@ packages:
     - lifesciences:v2beta
     - metastore:v1beta
     - networkconnectivity:v1alpha1
+    - ondemandscanning:v1beta1
     - policysimulator:v1beta1
     - privateca:v1beta1
     - prod_tt_sasportal:v1alpha1

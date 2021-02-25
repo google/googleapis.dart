@@ -113,14 +113,14 @@ void checkGoogleCloudChannelV1CancelEntitlementRequest(
   buildCounterGoogleCloudChannelV1CancelEntitlementRequest--;
 }
 
-core.List<api.GoogleCloudChannelV1Parameter> buildUnnamed2802() {
+core.List<api.GoogleCloudChannelV1Parameter> buildUnnamed2819() {
   var o = <api.GoogleCloudChannelV1Parameter>[];
   o.add(buildGoogleCloudChannelV1Parameter());
   o.add(buildGoogleCloudChannelV1Parameter());
   return o;
 }
 
-void checkUnnamed2802(core.List<api.GoogleCloudChannelV1Parameter> o) {
+void checkUnnamed2819(core.List<api.GoogleCloudChannelV1Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1Parameter(o[0] as api.GoogleCloudChannelV1Parameter);
   checkGoogleCloudChannelV1Parameter(o[1] as api.GoogleCloudChannelV1Parameter);
@@ -133,7 +133,7 @@ api.GoogleCloudChannelV1ChangeOfferRequest
   buildCounterGoogleCloudChannelV1ChangeOfferRequest++;
   if (buildCounterGoogleCloudChannelV1ChangeOfferRequest < 3) {
     o.offer = 'foo';
-    o.parameters = buildUnnamed2802();
+    o.parameters = buildUnnamed2819();
     o.purchaseOrderId = 'foo';
     o.requestId = 'foo';
   }
@@ -146,21 +146,21 @@ void checkGoogleCloudChannelV1ChangeOfferRequest(
   buildCounterGoogleCloudChannelV1ChangeOfferRequest++;
   if (buildCounterGoogleCloudChannelV1ChangeOfferRequest < 3) {
     unittest.expect(o.offer, unittest.equals('foo'));
-    checkUnnamed2802(o.parameters);
+    checkUnnamed2819(o.parameters);
     unittest.expect(o.purchaseOrderId, unittest.equals('foo'));
     unittest.expect(o.requestId, unittest.equals('foo'));
   }
   buildCounterGoogleCloudChannelV1ChangeOfferRequest--;
 }
 
-core.List<api.GoogleCloudChannelV1Parameter> buildUnnamed2803() {
+core.List<api.GoogleCloudChannelV1Parameter> buildUnnamed2820() {
   var o = <api.GoogleCloudChannelV1Parameter>[];
   o.add(buildGoogleCloudChannelV1Parameter());
   o.add(buildGoogleCloudChannelV1Parameter());
   return o;
 }
 
-void checkUnnamed2803(core.List<api.GoogleCloudChannelV1Parameter> o) {
+void checkUnnamed2820(core.List<api.GoogleCloudChannelV1Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1Parameter(o[0] as api.GoogleCloudChannelV1Parameter);
   checkGoogleCloudChannelV1Parameter(o[1] as api.GoogleCloudChannelV1Parameter);
@@ -172,7 +172,7 @@ api.GoogleCloudChannelV1ChangeParametersRequest
   var o = api.GoogleCloudChannelV1ChangeParametersRequest();
   buildCounterGoogleCloudChannelV1ChangeParametersRequest++;
   if (buildCounterGoogleCloudChannelV1ChangeParametersRequest < 3) {
-    o.parameters = buildUnnamed2803();
+    o.parameters = buildUnnamed2820();
     o.purchaseOrderId = 'foo';
     o.requestId = 'foo';
   }
@@ -184,7 +184,7 @@ void checkGoogleCloudChannelV1ChangeParametersRequest(
     api.GoogleCloudChannelV1ChangeParametersRequest o) {
   buildCounterGoogleCloudChannelV1ChangeParametersRequest++;
   if (buildCounterGoogleCloudChannelV1ChangeParametersRequest < 3) {
-    checkUnnamed2803(o.parameters);
+    checkUnnamed2820(o.parameters);
     unittest.expect(o.purchaseOrderId, unittest.equals('foo'));
     unittest.expect(o.requestId, unittest.equals('foo'));
   }
@@ -277,14 +277,14 @@ void checkGoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest(
 }
 
 core.List<api.GoogleCloudChannelV1CloudIdentityCustomerAccount>
-    buildUnnamed2804() {
+    buildUnnamed2821() {
   var o = <api.GoogleCloudChannelV1CloudIdentityCustomerAccount>[];
   o.add(buildGoogleCloudChannelV1CloudIdentityCustomerAccount());
   o.add(buildGoogleCloudChannelV1CloudIdentityCustomerAccount());
   return o;
 }
 
-void checkUnnamed2804(
+void checkUnnamed2821(
     core.List<api.GoogleCloudChannelV1CloudIdentityCustomerAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1CloudIdentityCustomerAccount(
@@ -301,7 +301,7 @@ api.GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse
   buildCounterGoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse++;
   if (buildCounterGoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse <
       3) {
-    o.cloudIdentityAccounts = buildUnnamed2804();
+    o.cloudIdentityAccounts = buildUnnamed2821();
   }
   buildCounterGoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse--;
   return o;
@@ -312,7 +312,7 @@ void checkGoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse(
   buildCounterGoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse++;
   if (buildCounterGoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse <
       3) {
-    checkUnnamed2804(o.cloudIdentityAccounts);
+    checkUnnamed2821(o.cloudIdentityAccounts);
   }
   buildCounterGoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse--;
 }
@@ -525,40 +525,40 @@ void checkGoogleCloudChannelV1Customer(api.GoogleCloudChannelV1Customer o) {
   buildCounterGoogleCloudChannelV1Customer--;
 }
 
-core.List<core.String> buildUnnamed2805() {
+core.List<core.String> buildUnnamed2822() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed2805(core.List<core.String> o) {
+void checkUnnamed2822(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed2806() {
+core.List<core.String> buildUnnamed2823() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed2806(core.List<core.String> o) {
+void checkUnnamed2823(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed2807() {
+core.List<core.String> buildUnnamed2824() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed2807(core.List<core.String> o) {
+void checkUnnamed2824(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -570,9 +570,9 @@ api.GoogleCloudChannelV1CustomerConstraints
   var o = api.GoogleCloudChannelV1CustomerConstraints();
   buildCounterGoogleCloudChannelV1CustomerConstraints++;
   if (buildCounterGoogleCloudChannelV1CustomerConstraints < 3) {
-    o.allowedCustomerTypes = buildUnnamed2805();
-    o.allowedRegions = buildUnnamed2806();
-    o.promotionalOrderTypes = buildUnnamed2807();
+    o.allowedCustomerTypes = buildUnnamed2822();
+    o.allowedRegions = buildUnnamed2823();
+    o.promotionalOrderTypes = buildUnnamed2824();
   }
   buildCounterGoogleCloudChannelV1CustomerConstraints--;
   return o;
@@ -582,9 +582,9 @@ void checkGoogleCloudChannelV1CustomerConstraints(
     api.GoogleCloudChannelV1CustomerConstraints o) {
   buildCounterGoogleCloudChannelV1CustomerConstraints++;
   if (buildCounterGoogleCloudChannelV1CustomerConstraints < 3) {
-    checkUnnamed2805(o.allowedCustomerTypes);
-    checkUnnamed2806(o.allowedRegions);
-    checkUnnamed2807(o.promotionalOrderTypes);
+    checkUnnamed2822(o.allowedCustomerTypes);
+    checkUnnamed2823(o.allowedRegions);
+    checkUnnamed2824(o.promotionalOrderTypes);
   }
   buildCounterGoogleCloudChannelV1CustomerConstraints--;
 }
@@ -634,27 +634,27 @@ void checkGoogleCloudChannelV1EduData(api.GoogleCloudChannelV1EduData o) {
   buildCounterGoogleCloudChannelV1EduData--;
 }
 
-core.List<api.GoogleCloudChannelV1Parameter> buildUnnamed2808() {
+core.List<api.GoogleCloudChannelV1Parameter> buildUnnamed2825() {
   var o = <api.GoogleCloudChannelV1Parameter>[];
   o.add(buildGoogleCloudChannelV1Parameter());
   o.add(buildGoogleCloudChannelV1Parameter());
   return o;
 }
 
-void checkUnnamed2808(core.List<api.GoogleCloudChannelV1Parameter> o) {
+void checkUnnamed2825(core.List<api.GoogleCloudChannelV1Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1Parameter(o[0] as api.GoogleCloudChannelV1Parameter);
   checkGoogleCloudChannelV1Parameter(o[1] as api.GoogleCloudChannelV1Parameter);
 }
 
-core.List<core.String> buildUnnamed2809() {
+core.List<core.String> buildUnnamed2826() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed2809(core.List<core.String> o) {
+void checkUnnamed2826(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -670,11 +670,11 @@ api.GoogleCloudChannelV1Entitlement buildGoogleCloudChannelV1Entitlement() {
     o.createTime = 'foo';
     o.name = 'foo';
     o.offer = 'foo';
-    o.parameters = buildUnnamed2808();
+    o.parameters = buildUnnamed2825();
     o.provisionedService = buildGoogleCloudChannelV1ProvisionedService();
     o.provisioningState = 'foo';
     o.purchaseOrderId = 'foo';
-    o.suspensionReasons = buildUnnamed2809();
+    o.suspensionReasons = buildUnnamed2826();
     o.trialSettings = buildGoogleCloudChannelV1TrialSettings();
     o.updateTime = 'foo';
   }
@@ -693,12 +693,12 @@ void checkGoogleCloudChannelV1Entitlement(
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.offer, unittest.equals('foo'));
-    checkUnnamed2808(o.parameters);
+    checkUnnamed2825(o.parameters);
     checkGoogleCloudChannelV1ProvisionedService(
         o.provisionedService as api.GoogleCloudChannelV1ProvisionedService);
     unittest.expect(o.provisioningState, unittest.equals('foo'));
     unittest.expect(o.purchaseOrderId, unittest.equals('foo'));
-    checkUnnamed2809(o.suspensionReasons);
+    checkUnnamed2826(o.suspensionReasons);
     checkGoogleCloudChannelV1TrialSettings(
         o.trialSettings as api.GoogleCloudChannelV1TrialSettings);
     unittest.expect(o.updateTime, unittest.equals('foo'));
@@ -729,14 +729,14 @@ void checkGoogleCloudChannelV1EntitlementEvent(
   buildCounterGoogleCloudChannelV1EntitlementEvent--;
 }
 
-core.List<api.GoogleCloudChannelV1ChannelPartnerLink> buildUnnamed2810() {
+core.List<api.GoogleCloudChannelV1ChannelPartnerLink> buildUnnamed2827() {
   var o = <api.GoogleCloudChannelV1ChannelPartnerLink>[];
   o.add(buildGoogleCloudChannelV1ChannelPartnerLink());
   o.add(buildGoogleCloudChannelV1ChannelPartnerLink());
   return o;
 }
 
-void checkUnnamed2810(core.List<api.GoogleCloudChannelV1ChannelPartnerLink> o) {
+void checkUnnamed2827(core.List<api.GoogleCloudChannelV1ChannelPartnerLink> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1ChannelPartnerLink(
       o[0] as api.GoogleCloudChannelV1ChannelPartnerLink);
@@ -750,7 +750,7 @@ api.GoogleCloudChannelV1ListChannelPartnerLinksResponse
   var o = api.GoogleCloudChannelV1ListChannelPartnerLinksResponse();
   buildCounterGoogleCloudChannelV1ListChannelPartnerLinksResponse++;
   if (buildCounterGoogleCloudChannelV1ListChannelPartnerLinksResponse < 3) {
-    o.channelPartnerLinks = buildUnnamed2810();
+    o.channelPartnerLinks = buildUnnamed2827();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudChannelV1ListChannelPartnerLinksResponse--;
@@ -761,20 +761,20 @@ void checkGoogleCloudChannelV1ListChannelPartnerLinksResponse(
     api.GoogleCloudChannelV1ListChannelPartnerLinksResponse o) {
   buildCounterGoogleCloudChannelV1ListChannelPartnerLinksResponse++;
   if (buildCounterGoogleCloudChannelV1ListChannelPartnerLinksResponse < 3) {
-    checkUnnamed2810(o.channelPartnerLinks);
+    checkUnnamed2827(o.channelPartnerLinks);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudChannelV1ListChannelPartnerLinksResponse--;
 }
 
-core.List<api.GoogleCloudChannelV1Customer> buildUnnamed2811() {
+core.List<api.GoogleCloudChannelV1Customer> buildUnnamed2828() {
   var o = <api.GoogleCloudChannelV1Customer>[];
   o.add(buildGoogleCloudChannelV1Customer());
   o.add(buildGoogleCloudChannelV1Customer());
   return o;
 }
 
-void checkUnnamed2811(core.List<api.GoogleCloudChannelV1Customer> o) {
+void checkUnnamed2828(core.List<api.GoogleCloudChannelV1Customer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1Customer(o[0] as api.GoogleCloudChannelV1Customer);
   checkGoogleCloudChannelV1Customer(o[1] as api.GoogleCloudChannelV1Customer);
@@ -786,7 +786,7 @@ api.GoogleCloudChannelV1ListCustomersResponse
   var o = api.GoogleCloudChannelV1ListCustomersResponse();
   buildCounterGoogleCloudChannelV1ListCustomersResponse++;
   if (buildCounterGoogleCloudChannelV1ListCustomersResponse < 3) {
-    o.customers = buildUnnamed2811();
+    o.customers = buildUnnamed2828();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudChannelV1ListCustomersResponse--;
@@ -797,20 +797,20 @@ void checkGoogleCloudChannelV1ListCustomersResponse(
     api.GoogleCloudChannelV1ListCustomersResponse o) {
   buildCounterGoogleCloudChannelV1ListCustomersResponse++;
   if (buildCounterGoogleCloudChannelV1ListCustomersResponse < 3) {
-    checkUnnamed2811(o.customers);
+    checkUnnamed2828(o.customers);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudChannelV1ListCustomersResponse--;
 }
 
-core.List<api.GoogleCloudChannelV1Entitlement> buildUnnamed2812() {
+core.List<api.GoogleCloudChannelV1Entitlement> buildUnnamed2829() {
   var o = <api.GoogleCloudChannelV1Entitlement>[];
   o.add(buildGoogleCloudChannelV1Entitlement());
   o.add(buildGoogleCloudChannelV1Entitlement());
   return o;
 }
 
-void checkUnnamed2812(core.List<api.GoogleCloudChannelV1Entitlement> o) {
+void checkUnnamed2829(core.List<api.GoogleCloudChannelV1Entitlement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1Entitlement(
       o[0] as api.GoogleCloudChannelV1Entitlement);
@@ -824,7 +824,7 @@ api.GoogleCloudChannelV1ListEntitlementsResponse
   var o = api.GoogleCloudChannelV1ListEntitlementsResponse();
   buildCounterGoogleCloudChannelV1ListEntitlementsResponse++;
   if (buildCounterGoogleCloudChannelV1ListEntitlementsResponse < 3) {
-    o.entitlements = buildUnnamed2812();
+    o.entitlements = buildUnnamed2829();
     o.nextPageToken = 'foo';
   }
   buildCounterGoogleCloudChannelV1ListEntitlementsResponse--;
@@ -835,20 +835,20 @@ void checkGoogleCloudChannelV1ListEntitlementsResponse(
     api.GoogleCloudChannelV1ListEntitlementsResponse o) {
   buildCounterGoogleCloudChannelV1ListEntitlementsResponse++;
   if (buildCounterGoogleCloudChannelV1ListEntitlementsResponse < 3) {
-    checkUnnamed2812(o.entitlements);
+    checkUnnamed2829(o.entitlements);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterGoogleCloudChannelV1ListEntitlementsResponse--;
 }
 
-core.List<api.GoogleCloudChannelV1Offer> buildUnnamed2813() {
+core.List<api.GoogleCloudChannelV1Offer> buildUnnamed2830() {
   var o = <api.GoogleCloudChannelV1Offer>[];
   o.add(buildGoogleCloudChannelV1Offer());
   o.add(buildGoogleCloudChannelV1Offer());
   return o;
 }
 
-void checkUnnamed2813(core.List<api.GoogleCloudChannelV1Offer> o) {
+void checkUnnamed2830(core.List<api.GoogleCloudChannelV1Offer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1Offer(o[0] as api.GoogleCloudChannelV1Offer);
   checkGoogleCloudChannelV1Offer(o[1] as api.GoogleCloudChannelV1Offer);
@@ -861,7 +861,7 @@ api.GoogleCloudChannelV1ListOffersResponse
   buildCounterGoogleCloudChannelV1ListOffersResponse++;
   if (buildCounterGoogleCloudChannelV1ListOffersResponse < 3) {
     o.nextPageToken = 'foo';
-    o.offers = buildUnnamed2813();
+    o.offers = buildUnnamed2830();
   }
   buildCounterGoogleCloudChannelV1ListOffersResponse--;
   return o;
@@ -872,19 +872,19 @@ void checkGoogleCloudChannelV1ListOffersResponse(
   buildCounterGoogleCloudChannelV1ListOffersResponse++;
   if (buildCounterGoogleCloudChannelV1ListOffersResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2813(o.offers);
+    checkUnnamed2830(o.offers);
   }
   buildCounterGoogleCloudChannelV1ListOffersResponse--;
 }
 
-core.List<api.GoogleCloudChannelV1Product> buildUnnamed2814() {
+core.List<api.GoogleCloudChannelV1Product> buildUnnamed2831() {
   var o = <api.GoogleCloudChannelV1Product>[];
   o.add(buildGoogleCloudChannelV1Product());
   o.add(buildGoogleCloudChannelV1Product());
   return o;
 }
 
-void checkUnnamed2814(core.List<api.GoogleCloudChannelV1Product> o) {
+void checkUnnamed2831(core.List<api.GoogleCloudChannelV1Product> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1Product(o[0] as api.GoogleCloudChannelV1Product);
   checkGoogleCloudChannelV1Product(o[1] as api.GoogleCloudChannelV1Product);
@@ -897,7 +897,7 @@ api.GoogleCloudChannelV1ListProductsResponse
   buildCounterGoogleCloudChannelV1ListProductsResponse++;
   if (buildCounterGoogleCloudChannelV1ListProductsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.products = buildUnnamed2814();
+    o.products = buildUnnamed2831();
   }
   buildCounterGoogleCloudChannelV1ListProductsResponse--;
   return o;
@@ -908,19 +908,19 @@ void checkGoogleCloudChannelV1ListProductsResponse(
   buildCounterGoogleCloudChannelV1ListProductsResponse++;
   if (buildCounterGoogleCloudChannelV1ListProductsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2814(o.products);
+    checkUnnamed2831(o.products);
   }
   buildCounterGoogleCloudChannelV1ListProductsResponse--;
 }
 
-core.List<api.GoogleCloudChannelV1PurchasableOffer> buildUnnamed2815() {
+core.List<api.GoogleCloudChannelV1PurchasableOffer> buildUnnamed2832() {
   var o = <api.GoogleCloudChannelV1PurchasableOffer>[];
   o.add(buildGoogleCloudChannelV1PurchasableOffer());
   o.add(buildGoogleCloudChannelV1PurchasableOffer());
   return o;
 }
 
-void checkUnnamed2815(core.List<api.GoogleCloudChannelV1PurchasableOffer> o) {
+void checkUnnamed2832(core.List<api.GoogleCloudChannelV1PurchasableOffer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1PurchasableOffer(
       o[0] as api.GoogleCloudChannelV1PurchasableOffer);
@@ -935,7 +935,7 @@ api.GoogleCloudChannelV1ListPurchasableOffersResponse
   buildCounterGoogleCloudChannelV1ListPurchasableOffersResponse++;
   if (buildCounterGoogleCloudChannelV1ListPurchasableOffersResponse < 3) {
     o.nextPageToken = 'foo';
-    o.purchasableOffers = buildUnnamed2815();
+    o.purchasableOffers = buildUnnamed2832();
   }
   buildCounterGoogleCloudChannelV1ListPurchasableOffersResponse--;
   return o;
@@ -946,19 +946,19 @@ void checkGoogleCloudChannelV1ListPurchasableOffersResponse(
   buildCounterGoogleCloudChannelV1ListPurchasableOffersResponse++;
   if (buildCounterGoogleCloudChannelV1ListPurchasableOffersResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2815(o.purchasableOffers);
+    checkUnnamed2832(o.purchasableOffers);
   }
   buildCounterGoogleCloudChannelV1ListPurchasableOffersResponse--;
 }
 
-core.List<api.GoogleCloudChannelV1PurchasableSku> buildUnnamed2816() {
+core.List<api.GoogleCloudChannelV1PurchasableSku> buildUnnamed2833() {
   var o = <api.GoogleCloudChannelV1PurchasableSku>[];
   o.add(buildGoogleCloudChannelV1PurchasableSku());
   o.add(buildGoogleCloudChannelV1PurchasableSku());
   return o;
 }
 
-void checkUnnamed2816(core.List<api.GoogleCloudChannelV1PurchasableSku> o) {
+void checkUnnamed2833(core.List<api.GoogleCloudChannelV1PurchasableSku> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1PurchasableSku(
       o[0] as api.GoogleCloudChannelV1PurchasableSku);
@@ -973,7 +973,7 @@ api.GoogleCloudChannelV1ListPurchasableSkusResponse
   buildCounterGoogleCloudChannelV1ListPurchasableSkusResponse++;
   if (buildCounterGoogleCloudChannelV1ListPurchasableSkusResponse < 3) {
     o.nextPageToken = 'foo';
-    o.purchasableSkus = buildUnnamed2816();
+    o.purchasableSkus = buildUnnamed2833();
   }
   buildCounterGoogleCloudChannelV1ListPurchasableSkusResponse--;
   return o;
@@ -984,19 +984,19 @@ void checkGoogleCloudChannelV1ListPurchasableSkusResponse(
   buildCounterGoogleCloudChannelV1ListPurchasableSkusResponse++;
   if (buildCounterGoogleCloudChannelV1ListPurchasableSkusResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2816(o.purchasableSkus);
+    checkUnnamed2833(o.purchasableSkus);
   }
   buildCounterGoogleCloudChannelV1ListPurchasableSkusResponse--;
 }
 
-core.List<api.GoogleCloudChannelV1Sku> buildUnnamed2817() {
+core.List<api.GoogleCloudChannelV1Sku> buildUnnamed2834() {
   var o = <api.GoogleCloudChannelV1Sku>[];
   o.add(buildGoogleCloudChannelV1Sku());
   o.add(buildGoogleCloudChannelV1Sku());
   return o;
 }
 
-void checkUnnamed2817(core.List<api.GoogleCloudChannelV1Sku> o) {
+void checkUnnamed2834(core.List<api.GoogleCloudChannelV1Sku> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1Sku(o[0] as api.GoogleCloudChannelV1Sku);
   checkGoogleCloudChannelV1Sku(o[1] as api.GoogleCloudChannelV1Sku);
@@ -1009,7 +1009,7 @@ api.GoogleCloudChannelV1ListSkusResponse
   buildCounterGoogleCloudChannelV1ListSkusResponse++;
   if (buildCounterGoogleCloudChannelV1ListSkusResponse < 3) {
     o.nextPageToken = 'foo';
-    o.skus = buildUnnamed2817();
+    o.skus = buildUnnamed2834();
   }
   buildCounterGoogleCloudChannelV1ListSkusResponse--;
   return o;
@@ -1020,19 +1020,19 @@ void checkGoogleCloudChannelV1ListSkusResponse(
   buildCounterGoogleCloudChannelV1ListSkusResponse++;
   if (buildCounterGoogleCloudChannelV1ListSkusResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2817(o.skus);
+    checkUnnamed2834(o.skus);
   }
   buildCounterGoogleCloudChannelV1ListSkusResponse--;
 }
 
-core.List<core.String> buildUnnamed2818() {
+core.List<core.String> buildUnnamed2835() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed2818(core.List<core.String> o) {
+void checkUnnamed2835(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -1045,7 +1045,7 @@ api.GoogleCloudChannelV1ListSubscribersResponse
   buildCounterGoogleCloudChannelV1ListSubscribersResponse++;
   if (buildCounterGoogleCloudChannelV1ListSubscribersResponse < 3) {
     o.nextPageToken = 'foo';
-    o.serviceAccounts = buildUnnamed2818();
+    o.serviceAccounts = buildUnnamed2835();
     o.topic = 'foo';
   }
   buildCounterGoogleCloudChannelV1ListSubscribersResponse--;
@@ -1057,7 +1057,7 @@ void checkGoogleCloudChannelV1ListSubscribersResponse(
   buildCounterGoogleCloudChannelV1ListSubscribersResponse++;
   if (buildCounterGoogleCloudChannelV1ListSubscribersResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2818(o.serviceAccounts);
+    checkUnnamed2835(o.serviceAccounts);
     unittest.expect(o.topic, unittest.equals('foo'));
   }
   buildCounterGoogleCloudChannelV1ListSubscribersResponse--;
@@ -1094,14 +1094,14 @@ void checkGoogleCloudChannelV1ListTransferableOffersRequest(
   buildCounterGoogleCloudChannelV1ListTransferableOffersRequest--;
 }
 
-core.List<api.GoogleCloudChannelV1TransferableOffer> buildUnnamed2819() {
+core.List<api.GoogleCloudChannelV1TransferableOffer> buildUnnamed2836() {
   var o = <api.GoogleCloudChannelV1TransferableOffer>[];
   o.add(buildGoogleCloudChannelV1TransferableOffer());
   o.add(buildGoogleCloudChannelV1TransferableOffer());
   return o;
 }
 
-void checkUnnamed2819(core.List<api.GoogleCloudChannelV1TransferableOffer> o) {
+void checkUnnamed2836(core.List<api.GoogleCloudChannelV1TransferableOffer> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1TransferableOffer(
       o[0] as api.GoogleCloudChannelV1TransferableOffer);
@@ -1116,7 +1116,7 @@ api.GoogleCloudChannelV1ListTransferableOffersResponse
   buildCounterGoogleCloudChannelV1ListTransferableOffersResponse++;
   if (buildCounterGoogleCloudChannelV1ListTransferableOffersResponse < 3) {
     o.nextPageToken = 'foo';
-    o.transferableOffers = buildUnnamed2819();
+    o.transferableOffers = buildUnnamed2836();
   }
   buildCounterGoogleCloudChannelV1ListTransferableOffersResponse--;
   return o;
@@ -1127,7 +1127,7 @@ void checkGoogleCloudChannelV1ListTransferableOffersResponse(
   buildCounterGoogleCloudChannelV1ListTransferableOffersResponse++;
   if (buildCounterGoogleCloudChannelV1ListTransferableOffersResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2819(o.transferableOffers);
+    checkUnnamed2836(o.transferableOffers);
   }
   buildCounterGoogleCloudChannelV1ListTransferableOffersResponse--;
 }
@@ -1163,14 +1163,14 @@ void checkGoogleCloudChannelV1ListTransferableSkusRequest(
   buildCounterGoogleCloudChannelV1ListTransferableSkusRequest--;
 }
 
-core.List<api.GoogleCloudChannelV1TransferableSku> buildUnnamed2820() {
+core.List<api.GoogleCloudChannelV1TransferableSku> buildUnnamed2837() {
   var o = <api.GoogleCloudChannelV1TransferableSku>[];
   o.add(buildGoogleCloudChannelV1TransferableSku());
   o.add(buildGoogleCloudChannelV1TransferableSku());
   return o;
 }
 
-void checkUnnamed2820(core.List<api.GoogleCloudChannelV1TransferableSku> o) {
+void checkUnnamed2837(core.List<api.GoogleCloudChannelV1TransferableSku> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1TransferableSku(
       o[0] as api.GoogleCloudChannelV1TransferableSku);
@@ -1185,7 +1185,7 @@ api.GoogleCloudChannelV1ListTransferableSkusResponse
   buildCounterGoogleCloudChannelV1ListTransferableSkusResponse++;
   if (buildCounterGoogleCloudChannelV1ListTransferableSkusResponse < 3) {
     o.nextPageToken = 'foo';
-    o.transferableSkus = buildUnnamed2820();
+    o.transferableSkus = buildUnnamed2837();
   }
   buildCounterGoogleCloudChannelV1ListTransferableSkusResponse--;
   return o;
@@ -1196,7 +1196,7 @@ void checkGoogleCloudChannelV1ListTransferableSkusResponse(
   buildCounterGoogleCloudChannelV1ListTransferableSkusResponse++;
   if (buildCounterGoogleCloudChannelV1ListTransferableSkusResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2820(o.transferableSkus);
+    checkUnnamed2837(o.transferableSkus);
   }
   buildCounterGoogleCloudChannelV1ListTransferableSkusResponse--;
 }
@@ -1249,14 +1249,14 @@ void checkGoogleCloudChannelV1Media(api.GoogleCloudChannelV1Media o) {
   buildCounterGoogleCloudChannelV1Media--;
 }
 
-core.List<api.GoogleCloudChannelV1ParameterDefinition> buildUnnamed2821() {
+core.List<api.GoogleCloudChannelV1ParameterDefinition> buildUnnamed2838() {
   var o = <api.GoogleCloudChannelV1ParameterDefinition>[];
   o.add(buildGoogleCloudChannelV1ParameterDefinition());
   o.add(buildGoogleCloudChannelV1ParameterDefinition());
   return o;
 }
 
-void checkUnnamed2821(
+void checkUnnamed2838(
     core.List<api.GoogleCloudChannelV1ParameterDefinition> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1ParameterDefinition(
@@ -1265,14 +1265,14 @@ void checkUnnamed2821(
       o[1] as api.GoogleCloudChannelV1ParameterDefinition);
 }
 
-core.List<api.GoogleCloudChannelV1PriceByResource> buildUnnamed2822() {
+core.List<api.GoogleCloudChannelV1PriceByResource> buildUnnamed2839() {
   var o = <api.GoogleCloudChannelV1PriceByResource>[];
   o.add(buildGoogleCloudChannelV1PriceByResource());
   o.add(buildGoogleCloudChannelV1PriceByResource());
   return o;
 }
 
-void checkUnnamed2822(core.List<api.GoogleCloudChannelV1PriceByResource> o) {
+void checkUnnamed2839(core.List<api.GoogleCloudChannelV1PriceByResource> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1PriceByResource(
       o[0] as api.GoogleCloudChannelV1PriceByResource);
@@ -1289,9 +1289,9 @@ api.GoogleCloudChannelV1Offer buildGoogleCloudChannelV1Offer() {
     o.endTime = 'foo';
     o.marketingInfo = buildGoogleCloudChannelV1MarketingInfo();
     o.name = 'foo';
-    o.parameterDefinitions = buildUnnamed2821();
+    o.parameterDefinitions = buildUnnamed2838();
     o.plan = buildGoogleCloudChannelV1Plan();
-    o.priceByResources = buildUnnamed2822();
+    o.priceByResources = buildUnnamed2839();
     o.sku = buildGoogleCloudChannelV1Sku();
     o.startTime = 'foo';
   }
@@ -1308,9 +1308,9 @@ void checkGoogleCloudChannelV1Offer(api.GoogleCloudChannelV1Offer o) {
     checkGoogleCloudChannelV1MarketingInfo(
         o.marketingInfo as api.GoogleCloudChannelV1MarketingInfo);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed2821(o.parameterDefinitions);
+    checkUnnamed2838(o.parameterDefinitions);
     checkGoogleCloudChannelV1Plan(o.plan as api.GoogleCloudChannelV1Plan);
-    checkUnnamed2822(o.priceByResources);
+    checkUnnamed2839(o.priceByResources);
     checkGoogleCloudChannelV1Sku(o.sku as api.GoogleCloudChannelV1Sku);
     unittest.expect(o.startTime, unittest.equals('foo'));
   }
@@ -1361,14 +1361,14 @@ void checkGoogleCloudChannelV1Parameter(api.GoogleCloudChannelV1Parameter o) {
   buildCounterGoogleCloudChannelV1Parameter--;
 }
 
-core.List<api.GoogleCloudChannelV1Value> buildUnnamed2823() {
+core.List<api.GoogleCloudChannelV1Value> buildUnnamed2840() {
   var o = <api.GoogleCloudChannelV1Value>[];
   o.add(buildGoogleCloudChannelV1Value());
   o.add(buildGoogleCloudChannelV1Value());
   return o;
 }
 
-void checkUnnamed2823(core.List<api.GoogleCloudChannelV1Value> o) {
+void checkUnnamed2840(core.List<api.GoogleCloudChannelV1Value> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1Value(o[0] as api.GoogleCloudChannelV1Value);
   checkGoogleCloudChannelV1Value(o[1] as api.GoogleCloudChannelV1Value);
@@ -1380,7 +1380,7 @@ api.GoogleCloudChannelV1ParameterDefinition
   var o = api.GoogleCloudChannelV1ParameterDefinition();
   buildCounterGoogleCloudChannelV1ParameterDefinition++;
   if (buildCounterGoogleCloudChannelV1ParameterDefinition < 3) {
-    o.allowedValues = buildUnnamed2823();
+    o.allowedValues = buildUnnamed2840();
     o.maxValue = buildGoogleCloudChannelV1Value();
     o.minValue = buildGoogleCloudChannelV1Value();
     o.name = 'foo';
@@ -1395,7 +1395,7 @@ void checkGoogleCloudChannelV1ParameterDefinition(
     api.GoogleCloudChannelV1ParameterDefinition o) {
   buildCounterGoogleCloudChannelV1ParameterDefinition++;
   if (buildCounterGoogleCloudChannelV1ParameterDefinition < 3) {
-    checkUnnamed2823(o.allowedValues);
+    checkUnnamed2840(o.allowedValues);
     checkGoogleCloudChannelV1Value(o.maxValue as api.GoogleCloudChannelV1Value);
     checkGoogleCloudChannelV1Value(o.minValue as api.GoogleCloudChannelV1Value);
     unittest.expect(o.name, unittest.equals('foo'));
@@ -1431,6 +1431,7 @@ api.GoogleCloudChannelV1Plan buildGoogleCloudChannelV1Plan() {
   var o = api.GoogleCloudChannelV1Plan();
   buildCounterGoogleCloudChannelV1Plan++;
   if (buildCounterGoogleCloudChannelV1Plan < 3) {
+    o.billingAccount = 'foo';
     o.paymentCycle = buildGoogleCloudChannelV1Period();
     o.paymentPlan = 'foo';
     o.paymentType = 'foo';
@@ -1443,6 +1444,7 @@ api.GoogleCloudChannelV1Plan buildGoogleCloudChannelV1Plan() {
 void checkGoogleCloudChannelV1Plan(api.GoogleCloudChannelV1Plan o) {
   buildCounterGoogleCloudChannelV1Plan++;
   if (buildCounterGoogleCloudChannelV1Plan < 3) {
+    unittest.expect(o.billingAccount, unittest.equals('foo'));
     checkGoogleCloudChannelV1Period(
         o.paymentCycle as api.GoogleCloudChannelV1Period);
     unittest.expect(o.paymentPlan, unittest.equals('foo'));
@@ -1478,14 +1480,14 @@ void checkGoogleCloudChannelV1Price(api.GoogleCloudChannelV1Price o) {
   buildCounterGoogleCloudChannelV1Price--;
 }
 
-core.List<api.GoogleCloudChannelV1PricePhase> buildUnnamed2824() {
+core.List<api.GoogleCloudChannelV1PricePhase> buildUnnamed2841() {
   var o = <api.GoogleCloudChannelV1PricePhase>[];
   o.add(buildGoogleCloudChannelV1PricePhase());
   o.add(buildGoogleCloudChannelV1PricePhase());
   return o;
 }
 
-void checkUnnamed2824(core.List<api.GoogleCloudChannelV1PricePhase> o) {
+void checkUnnamed2841(core.List<api.GoogleCloudChannelV1PricePhase> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1PricePhase(
       o[0] as api.GoogleCloudChannelV1PricePhase);
@@ -1500,7 +1502,7 @@ api.GoogleCloudChannelV1PriceByResource
   buildCounterGoogleCloudChannelV1PriceByResource++;
   if (buildCounterGoogleCloudChannelV1PriceByResource < 3) {
     o.price = buildGoogleCloudChannelV1Price();
-    o.pricePhases = buildUnnamed2824();
+    o.pricePhases = buildUnnamed2841();
     o.resourceType = 'foo';
   }
   buildCounterGoogleCloudChannelV1PriceByResource--;
@@ -1512,20 +1514,20 @@ void checkGoogleCloudChannelV1PriceByResource(
   buildCounterGoogleCloudChannelV1PriceByResource++;
   if (buildCounterGoogleCloudChannelV1PriceByResource < 3) {
     checkGoogleCloudChannelV1Price(o.price as api.GoogleCloudChannelV1Price);
-    checkUnnamed2824(o.pricePhases);
+    checkUnnamed2841(o.pricePhases);
     unittest.expect(o.resourceType, unittest.equals('foo'));
   }
   buildCounterGoogleCloudChannelV1PriceByResource--;
 }
 
-core.List<api.GoogleCloudChannelV1PriceTier> buildUnnamed2825() {
+core.List<api.GoogleCloudChannelV1PriceTier> buildUnnamed2842() {
   var o = <api.GoogleCloudChannelV1PriceTier>[];
   o.add(buildGoogleCloudChannelV1PriceTier());
   o.add(buildGoogleCloudChannelV1PriceTier());
   return o;
 }
 
-void checkUnnamed2825(core.List<api.GoogleCloudChannelV1PriceTier> o) {
+void checkUnnamed2842(core.List<api.GoogleCloudChannelV1PriceTier> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1PriceTier(o[0] as api.GoogleCloudChannelV1PriceTier);
   checkGoogleCloudChannelV1PriceTier(o[1] as api.GoogleCloudChannelV1PriceTier);
@@ -1540,7 +1542,7 @@ api.GoogleCloudChannelV1PricePhase buildGoogleCloudChannelV1PricePhase() {
     o.lastPeriod = 42;
     o.periodType = 'foo';
     o.price = buildGoogleCloudChannelV1Price();
-    o.priceTiers = buildUnnamed2825();
+    o.priceTiers = buildUnnamed2842();
   }
   buildCounterGoogleCloudChannelV1PricePhase--;
   return o;
@@ -1553,7 +1555,7 @@ void checkGoogleCloudChannelV1PricePhase(api.GoogleCloudChannelV1PricePhase o) {
     unittest.expect(o.lastPeriod, unittest.equals(42));
     unittest.expect(o.periodType, unittest.equals('foo'));
     checkGoogleCloudChannelV1Price(o.price as api.GoogleCloudChannelV1Price);
-    checkUnnamed2825(o.priceTiers);
+    checkUnnamed2842(o.priceTiers);
   }
   buildCounterGoogleCloudChannelV1PricePhase--;
 }
@@ -1884,14 +1886,14 @@ void checkGoogleCloudChannelV1TransferEligibility(
   buildCounterGoogleCloudChannelV1TransferEligibility--;
 }
 
-core.List<api.GoogleCloudChannelV1Entitlement> buildUnnamed2826() {
+core.List<api.GoogleCloudChannelV1Entitlement> buildUnnamed2843() {
   var o = <api.GoogleCloudChannelV1Entitlement>[];
   o.add(buildGoogleCloudChannelV1Entitlement());
   o.add(buildGoogleCloudChannelV1Entitlement());
   return o;
 }
 
-void checkUnnamed2826(core.List<api.GoogleCloudChannelV1Entitlement> o) {
+void checkUnnamed2843(core.List<api.GoogleCloudChannelV1Entitlement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1Entitlement(
       o[0] as api.GoogleCloudChannelV1Entitlement);
@@ -1906,7 +1908,7 @@ api.GoogleCloudChannelV1TransferEntitlementsRequest
   buildCounterGoogleCloudChannelV1TransferEntitlementsRequest++;
   if (buildCounterGoogleCloudChannelV1TransferEntitlementsRequest < 3) {
     o.authToken = 'foo';
-    o.entitlements = buildUnnamed2826();
+    o.entitlements = buildUnnamed2843();
     o.requestId = 'foo';
   }
   buildCounterGoogleCloudChannelV1TransferEntitlementsRequest--;
@@ -1918,20 +1920,20 @@ void checkGoogleCloudChannelV1TransferEntitlementsRequest(
   buildCounterGoogleCloudChannelV1TransferEntitlementsRequest++;
   if (buildCounterGoogleCloudChannelV1TransferEntitlementsRequest < 3) {
     unittest.expect(o.authToken, unittest.equals('foo'));
-    checkUnnamed2826(o.entitlements);
+    checkUnnamed2843(o.entitlements);
     unittest.expect(o.requestId, unittest.equals('foo'));
   }
   buildCounterGoogleCloudChannelV1TransferEntitlementsRequest--;
 }
 
-core.List<api.GoogleCloudChannelV1Entitlement> buildUnnamed2827() {
+core.List<api.GoogleCloudChannelV1Entitlement> buildUnnamed2844() {
   var o = <api.GoogleCloudChannelV1Entitlement>[];
   o.add(buildGoogleCloudChannelV1Entitlement());
   o.add(buildGoogleCloudChannelV1Entitlement());
   return o;
 }
 
-void checkUnnamed2827(core.List<api.GoogleCloudChannelV1Entitlement> o) {
+void checkUnnamed2844(core.List<api.GoogleCloudChannelV1Entitlement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1Entitlement(
       o[0] as api.GoogleCloudChannelV1Entitlement);
@@ -1945,7 +1947,7 @@ api.GoogleCloudChannelV1TransferEntitlementsResponse
   var o = api.GoogleCloudChannelV1TransferEntitlementsResponse();
   buildCounterGoogleCloudChannelV1TransferEntitlementsResponse++;
   if (buildCounterGoogleCloudChannelV1TransferEntitlementsResponse < 3) {
-    o.entitlements = buildUnnamed2827();
+    o.entitlements = buildUnnamed2844();
   }
   buildCounterGoogleCloudChannelV1TransferEntitlementsResponse--;
   return o;
@@ -1955,19 +1957,19 @@ void checkGoogleCloudChannelV1TransferEntitlementsResponse(
     api.GoogleCloudChannelV1TransferEntitlementsResponse o) {
   buildCounterGoogleCloudChannelV1TransferEntitlementsResponse++;
   if (buildCounterGoogleCloudChannelV1TransferEntitlementsResponse < 3) {
-    checkUnnamed2827(o.entitlements);
+    checkUnnamed2844(o.entitlements);
   }
   buildCounterGoogleCloudChannelV1TransferEntitlementsResponse--;
 }
 
-core.List<api.GoogleCloudChannelV1Entitlement> buildUnnamed2828() {
+core.List<api.GoogleCloudChannelV1Entitlement> buildUnnamed2845() {
   var o = <api.GoogleCloudChannelV1Entitlement>[];
   o.add(buildGoogleCloudChannelV1Entitlement());
   o.add(buildGoogleCloudChannelV1Entitlement());
   return o;
 }
 
-void checkUnnamed2828(core.List<api.GoogleCloudChannelV1Entitlement> o) {
+void checkUnnamed2845(core.List<api.GoogleCloudChannelV1Entitlement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1Entitlement(
       o[0] as api.GoogleCloudChannelV1Entitlement);
@@ -1982,7 +1984,7 @@ api.GoogleCloudChannelV1TransferEntitlementsToGoogleRequest
   var o = api.GoogleCloudChannelV1TransferEntitlementsToGoogleRequest();
   buildCounterGoogleCloudChannelV1TransferEntitlementsToGoogleRequest++;
   if (buildCounterGoogleCloudChannelV1TransferEntitlementsToGoogleRequest < 3) {
-    o.entitlements = buildUnnamed2828();
+    o.entitlements = buildUnnamed2845();
     o.requestId = 'foo';
   }
   buildCounterGoogleCloudChannelV1TransferEntitlementsToGoogleRequest--;
@@ -1993,7 +1995,7 @@ void checkGoogleCloudChannelV1TransferEntitlementsToGoogleRequest(
     api.GoogleCloudChannelV1TransferEntitlementsToGoogleRequest o) {
   buildCounterGoogleCloudChannelV1TransferEntitlementsToGoogleRequest++;
   if (buildCounterGoogleCloudChannelV1TransferEntitlementsToGoogleRequest < 3) {
-    checkUnnamed2828(o.entitlements);
+    checkUnnamed2845(o.entitlements);
     unittest.expect(o.requestId, unittest.equals('foo'));
   }
   buildCounterGoogleCloudChannelV1TransferEntitlementsToGoogleRequest--;
@@ -2132,7 +2134,7 @@ void checkGoogleCloudChannelV1UpdateChannelPartnerLinkRequest(
   buildCounterGoogleCloudChannelV1UpdateChannelPartnerLinkRequest--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2829() {
+core.Map<core.String, core.Object> buildUnnamed2846() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -2147,7 +2149,7 @@ core.Map<core.String, core.Object> buildUnnamed2829() {
   return o;
 }
 
-void checkUnnamed2829(core.Map<core.String, core.Object> o) {
+void checkUnnamed2846(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted1 = (o['x']) as core.Map;
   unittest.expect(casted1, unittest.hasLength(3));
@@ -2168,7 +2170,7 @@ api.GoogleCloudChannelV1Value buildGoogleCloudChannelV1Value() {
   if (buildCounterGoogleCloudChannelV1Value < 3) {
     o.doubleValue = 42.0;
     o.int64Value = 'foo';
-    o.protoValue = buildUnnamed2829();
+    o.protoValue = buildUnnamed2846();
     o.stringValue = 'foo';
   }
   buildCounterGoogleCloudChannelV1Value--;
@@ -2180,7 +2182,7 @@ void checkGoogleCloudChannelV1Value(api.GoogleCloudChannelV1Value o) {
   if (buildCounterGoogleCloudChannelV1Value < 3) {
     unittest.expect(o.doubleValue, unittest.equals(42.0));
     unittest.expect(o.int64Value, unittest.equals('foo'));
-    checkUnnamed2829(o.protoValue);
+    checkUnnamed2846(o.protoValue);
     unittest.expect(o.stringValue, unittest.equals('foo'));
   }
   buildCounterGoogleCloudChannelV1Value--;
@@ -2256,14 +2258,14 @@ void checkGoogleCloudChannelV1alpha1CustomerEvent(
   buildCounterGoogleCloudChannelV1alpha1CustomerEvent--;
 }
 
-core.List<api.GoogleCloudChannelV1alpha1Parameter> buildUnnamed2830() {
+core.List<api.GoogleCloudChannelV1alpha1Parameter> buildUnnamed2847() {
   var o = <api.GoogleCloudChannelV1alpha1Parameter>[];
   o.add(buildGoogleCloudChannelV1alpha1Parameter());
   o.add(buildGoogleCloudChannelV1alpha1Parameter());
   return o;
 }
 
-void checkUnnamed2830(core.List<api.GoogleCloudChannelV1alpha1Parameter> o) {
+void checkUnnamed2847(core.List<api.GoogleCloudChannelV1alpha1Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1alpha1Parameter(
       o[0] as api.GoogleCloudChannelV1alpha1Parameter);
@@ -2271,14 +2273,14 @@ void checkUnnamed2830(core.List<api.GoogleCloudChannelV1alpha1Parameter> o) {
       o[1] as api.GoogleCloudChannelV1alpha1Parameter);
 }
 
-core.List<core.String> buildUnnamed2831() {
+core.List<core.String> buildUnnamed2848() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed2831(core.List<core.String> o) {
+void checkUnnamed2848(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2299,11 +2301,11 @@ api.GoogleCloudChannelV1alpha1Entitlement
     o.name = 'foo';
     o.numUnits = 42;
     o.offer = 'foo';
-    o.parameters = buildUnnamed2830();
+    o.parameters = buildUnnamed2847();
     o.provisionedService = buildGoogleCloudChannelV1alpha1ProvisionedService();
     o.provisioningState = 'foo';
     o.purchaseOrderId = 'foo';
-    o.suspensionReasons = buildUnnamed2831();
+    o.suspensionReasons = buildUnnamed2848();
     o.trialSettings = buildGoogleCloudChannelV1alpha1TrialSettings();
     o.updateTime = 'foo';
   }
@@ -2326,12 +2328,12 @@ void checkGoogleCloudChannelV1alpha1Entitlement(
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.numUnits, unittest.equals(42));
     unittest.expect(o.offer, unittest.equals('foo'));
-    checkUnnamed2830(o.parameters);
+    checkUnnamed2847(o.parameters);
     checkGoogleCloudChannelV1alpha1ProvisionedService(o.provisionedService
         as api.GoogleCloudChannelV1alpha1ProvisionedService);
     unittest.expect(o.provisioningState, unittest.equals('foo'));
     unittest.expect(o.purchaseOrderId, unittest.equals('foo'));
-    checkUnnamed2831(o.suspensionReasons);
+    checkUnnamed2848(o.suspensionReasons);
     checkGoogleCloudChannelV1alpha1TrialSettings(
         o.trialSettings as api.GoogleCloudChannelV1alpha1TrialSettings);
     unittest.expect(o.updateTime, unittest.equals('foo'));
@@ -2513,14 +2515,14 @@ void checkGoogleCloudChannelV1alpha1SubscriberEvent(
   buildCounterGoogleCloudChannelV1alpha1SubscriberEvent--;
 }
 
-core.List<api.GoogleCloudChannelV1alpha1Entitlement> buildUnnamed2832() {
+core.List<api.GoogleCloudChannelV1alpha1Entitlement> buildUnnamed2849() {
   var o = <api.GoogleCloudChannelV1alpha1Entitlement>[];
   o.add(buildGoogleCloudChannelV1alpha1Entitlement());
   o.add(buildGoogleCloudChannelV1alpha1Entitlement());
   return o;
 }
 
-void checkUnnamed2832(core.List<api.GoogleCloudChannelV1alpha1Entitlement> o) {
+void checkUnnamed2849(core.List<api.GoogleCloudChannelV1alpha1Entitlement> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleCloudChannelV1alpha1Entitlement(
       o[0] as api.GoogleCloudChannelV1alpha1Entitlement);
@@ -2534,7 +2536,7 @@ api.GoogleCloudChannelV1alpha1TransferEntitlementsResponse
   var o = api.GoogleCloudChannelV1alpha1TransferEntitlementsResponse();
   buildCounterGoogleCloudChannelV1alpha1TransferEntitlementsResponse++;
   if (buildCounterGoogleCloudChannelV1alpha1TransferEntitlementsResponse < 3) {
-    o.entitlements = buildUnnamed2832();
+    o.entitlements = buildUnnamed2849();
   }
   buildCounterGoogleCloudChannelV1alpha1TransferEntitlementsResponse--;
   return o;
@@ -2544,7 +2546,7 @@ void checkGoogleCloudChannelV1alpha1TransferEntitlementsResponse(
     api.GoogleCloudChannelV1alpha1TransferEntitlementsResponse o) {
   buildCounterGoogleCloudChannelV1alpha1TransferEntitlementsResponse++;
   if (buildCounterGoogleCloudChannelV1alpha1TransferEntitlementsResponse < 3) {
-    checkUnnamed2832(o.entitlements);
+    checkUnnamed2849(o.entitlements);
   }
   buildCounterGoogleCloudChannelV1alpha1TransferEntitlementsResponse--;
 }
@@ -2572,7 +2574,7 @@ void checkGoogleCloudChannelV1alpha1TrialSettings(
   buildCounterGoogleCloudChannelV1alpha1TrialSettings--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2833() {
+core.Map<core.String, core.Object> buildUnnamed2850() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -2587,7 +2589,7 @@ core.Map<core.String, core.Object> buildUnnamed2833() {
   return o;
 }
 
-void checkUnnamed2833(core.Map<core.String, core.Object> o) {
+void checkUnnamed2850(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted3 = (o['x']) as core.Map;
   unittest.expect(casted3, unittest.hasLength(3));
@@ -2608,7 +2610,7 @@ api.GoogleCloudChannelV1alpha1Value buildGoogleCloudChannelV1alpha1Value() {
   if (buildCounterGoogleCloudChannelV1alpha1Value < 3) {
     o.doubleValue = 42.0;
     o.int64Value = 'foo';
-    o.protoValue = buildUnnamed2833();
+    o.protoValue = buildUnnamed2850();
     o.stringValue = 'foo';
   }
   buildCounterGoogleCloudChannelV1alpha1Value--;
@@ -2621,7 +2623,7 @@ void checkGoogleCloudChannelV1alpha1Value(
   if (buildCounterGoogleCloudChannelV1alpha1Value < 3) {
     unittest.expect(o.doubleValue, unittest.equals(42.0));
     unittest.expect(o.int64Value, unittest.equals('foo'));
-    checkUnnamed2833(o.protoValue);
+    checkUnnamed2850(o.protoValue);
     unittest.expect(o.stringValue, unittest.equals('foo'));
   }
   buildCounterGoogleCloudChannelV1alpha1Value--;
@@ -2644,14 +2646,14 @@ void checkGoogleLongrunningCancelOperationRequest(
   buildCounterGoogleLongrunningCancelOperationRequest--;
 }
 
-core.List<api.GoogleLongrunningOperation> buildUnnamed2834() {
+core.List<api.GoogleLongrunningOperation> buildUnnamed2851() {
   var o = <api.GoogleLongrunningOperation>[];
   o.add(buildGoogleLongrunningOperation());
   o.add(buildGoogleLongrunningOperation());
   return o;
 }
 
-void checkUnnamed2834(core.List<api.GoogleLongrunningOperation> o) {
+void checkUnnamed2851(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleLongrunningOperation(o[0] as api.GoogleLongrunningOperation);
   checkGoogleLongrunningOperation(o[1] as api.GoogleLongrunningOperation);
@@ -2664,7 +2666,7 @@ api.GoogleLongrunningListOperationsResponse
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     o.nextPageToken = 'foo';
-    o.operations = buildUnnamed2834();
+    o.operations = buildUnnamed2851();
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
   return o;
@@ -2675,12 +2677,12 @@ void checkGoogleLongrunningListOperationsResponse(
   buildCounterGoogleLongrunningListOperationsResponse++;
   if (buildCounterGoogleLongrunningListOperationsResponse < 3) {
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkUnnamed2834(o.operations);
+    checkUnnamed2851(o.operations);
   }
   buildCounterGoogleLongrunningListOperationsResponse--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2835() {
+core.Map<core.String, core.Object> buildUnnamed2852() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -2695,7 +2697,7 @@ core.Map<core.String, core.Object> buildUnnamed2835() {
   return o;
 }
 
-void checkUnnamed2835(core.Map<core.String, core.Object> o) {
+void checkUnnamed2852(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted5 = (o['x']) as core.Map;
   unittest.expect(casted5, unittest.hasLength(3));
@@ -2709,7 +2711,7 @@ void checkUnnamed2835(core.Map<core.String, core.Object> o) {
   unittest.expect(casted6['string'], unittest.equals('foo'));
 }
 
-core.Map<core.String, core.Object> buildUnnamed2836() {
+core.Map<core.String, core.Object> buildUnnamed2853() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -2724,7 +2726,7 @@ core.Map<core.String, core.Object> buildUnnamed2836() {
   return o;
 }
 
-void checkUnnamed2836(core.Map<core.String, core.Object> o) {
+void checkUnnamed2853(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted7 = (o['x']) as core.Map;
   unittest.expect(casted7, unittest.hasLength(3));
@@ -2745,9 +2747,9 @@ api.GoogleLongrunningOperation buildGoogleLongrunningOperation() {
   if (buildCounterGoogleLongrunningOperation < 3) {
     o.done = true;
     o.error = buildGoogleRpcStatus();
-    o.metadata = buildUnnamed2835();
+    o.metadata = buildUnnamed2852();
     o.name = 'foo';
-    o.response = buildUnnamed2836();
+    o.response = buildUnnamed2853();
   }
   buildCounterGoogleLongrunningOperation--;
   return o;
@@ -2758,9 +2760,9 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
     checkGoogleRpcStatus(o.error as api.GoogleRpcStatus);
-    checkUnnamed2835(o.metadata);
+    checkUnnamed2852(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkUnnamed2836(o.response);
+    checkUnnamed2853(o.response);
   }
   buildCounterGoogleLongrunningOperation--;
 }
@@ -2780,7 +2782,7 @@ void checkGoogleProtobufEmpty(api.GoogleProtobufEmpty o) {
   buildCounterGoogleProtobufEmpty--;
 }
 
-core.Map<core.String, core.Object> buildUnnamed2837() {
+core.Map<core.String, core.Object> buildUnnamed2854() {
   var o = <core.String, core.Object>{};
   o['x'] = {
     'list': [1, 2, 3],
@@ -2795,7 +2797,7 @@ core.Map<core.String, core.Object> buildUnnamed2837() {
   return o;
 }
 
-void checkUnnamed2837(core.Map<core.String, core.Object> o) {
+void checkUnnamed2854(core.Map<core.String, core.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
   var casted9 = (o['x']) as core.Map;
   unittest.expect(casted9, unittest.hasLength(3));
@@ -2809,17 +2811,17 @@ void checkUnnamed2837(core.Map<core.String, core.Object> o) {
   unittest.expect(casted10['string'], unittest.equals('foo'));
 }
 
-core.List<core.Map<core.String, core.Object>> buildUnnamed2838() {
+core.List<core.Map<core.String, core.Object>> buildUnnamed2855() {
   var o = <core.Map<core.String, core.Object>>[];
-  o.add(buildUnnamed2837());
-  o.add(buildUnnamed2837());
+  o.add(buildUnnamed2854());
+  o.add(buildUnnamed2854());
   return o;
 }
 
-void checkUnnamed2838(core.List<core.Map<core.String, core.Object>> o) {
+void checkUnnamed2855(core.List<core.Map<core.String, core.Object>> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnnamed2837(o[0]);
-  checkUnnamed2837(o[1]);
+  checkUnnamed2854(o[0]);
+  checkUnnamed2854(o[1]);
 }
 
 core.int buildCounterGoogleRpcStatus = 0;
@@ -2828,7 +2830,7 @@ api.GoogleRpcStatus buildGoogleRpcStatus() {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     o.code = 42;
-    o.details = buildUnnamed2838();
+    o.details = buildUnnamed2855();
     o.message = 'foo';
   }
   buildCounterGoogleRpcStatus--;
@@ -2839,7 +2841,7 @@ void checkGoogleRpcStatus(api.GoogleRpcStatus o) {
   buildCounterGoogleRpcStatus++;
   if (buildCounterGoogleRpcStatus < 3) {
     unittest.expect(o.code, unittest.equals(42));
-    checkUnnamed2838(o.details);
+    checkUnnamed2855(o.details);
     unittest.expect(o.message, unittest.equals('foo'));
   }
   buildCounterGoogleRpcStatus--;
@@ -2868,27 +2870,27 @@ void checkGoogleTypeMoney(api.GoogleTypeMoney o) {
   buildCounterGoogleTypeMoney--;
 }
 
-core.List<core.String> buildUnnamed2839() {
+core.List<core.String> buildUnnamed2856() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed2839(core.List<core.String> o) {
+void checkUnnamed2856(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
 }
 
-core.List<core.String> buildUnnamed2840() {
+core.List<core.String> buildUnnamed2857() {
   var o = <core.String>[];
   o.add('foo');
   o.add('foo');
   return o;
 }
 
-void checkUnnamed2840(core.List<core.String> o) {
+void checkUnnamed2857(core.List<core.String> o) {
   unittest.expect(o, unittest.hasLength(2));
   unittest.expect(o[0], unittest.equals('foo'));
   unittest.expect(o[1], unittest.equals('foo'));
@@ -2899,13 +2901,13 @@ api.GoogleTypePostalAddress buildGoogleTypePostalAddress() {
   var o = api.GoogleTypePostalAddress();
   buildCounterGoogleTypePostalAddress++;
   if (buildCounterGoogleTypePostalAddress < 3) {
-    o.addressLines = buildUnnamed2839();
+    o.addressLines = buildUnnamed2856();
     o.administrativeArea = 'foo';
     o.languageCode = 'foo';
     o.locality = 'foo';
     o.organization = 'foo';
     o.postalCode = 'foo';
-    o.recipients = buildUnnamed2840();
+    o.recipients = buildUnnamed2857();
     o.regionCode = 'foo';
     o.revision = 42;
     o.sortingCode = 'foo';
@@ -2918,13 +2920,13 @@ api.GoogleTypePostalAddress buildGoogleTypePostalAddress() {
 void checkGoogleTypePostalAddress(api.GoogleTypePostalAddress o) {
   buildCounterGoogleTypePostalAddress++;
   if (buildCounterGoogleTypePostalAddress < 3) {
-    checkUnnamed2839(o.addressLines);
+    checkUnnamed2856(o.addressLines);
     unittest.expect(o.administrativeArea, unittest.equals('foo'));
     unittest.expect(o.languageCode, unittest.equals('foo'));
     unittest.expect(o.locality, unittest.equals('foo'));
     unittest.expect(o.organization, unittest.equals('foo'));
     unittest.expect(o.postalCode, unittest.equals('foo'));
-    checkUnnamed2840(o.recipients);
+    checkUnnamed2857(o.recipients);
     unittest.expect(o.regionCode, unittest.equals('foo'));
     unittest.expect(o.revision, unittest.equals(42));
     unittest.expect(o.sortingCode, unittest.equals('foo'));

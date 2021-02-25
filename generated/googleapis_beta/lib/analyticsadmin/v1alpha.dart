@@ -334,9 +334,10 @@ class AccountsResource {
   /// accounts/{account} Example: "accounts/100"
   /// Value must have pattern `^accounts/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The list of fields to be updated. Omitted fields
-  /// will not be updated. To replace the entire entity, use one path with the
-  /// string "*" to match all fields.
+  /// [updateMask] - Required. The list of fields to be updated. Field names
+  /// must be in snake case (e.g., "field_to_update"). Omitted fields will not
+  /// be updated. To replace the entire entity, use one path with the string "*"
+  /// to match all fields.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1137,9 +1138,10 @@ class PropertiesResource {
   /// properties/{property_id} Example: "properties/1000"
   /// Value must have pattern `^properties/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The list of fields to be updated. Omitted fields
-  /// will not be updated. To replace the entire entity, use one path with the
-  /// string "*" to match all fields.
+  /// [updateMask] - Required. The list of fields to be updated. Field names
+  /// must be in snake case (e.g., "field_to_update"). Omitted fields will not
+  /// be updated. To replace the entire entity, use one path with the string "*"
+  /// to match all fields.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1397,9 +1399,10 @@ class PropertiesAndroidAppDataStreamsResource {
   /// Value must have pattern
   /// `^properties/\[^/\]+/androidAppDataStreams/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The list of fields to be updated. Omitted fields
-  /// will not be updated. To replace the entire entity, use one path with the
-  /// string "*" to match all fields.
+  /// [updateMask] - Required. The list of fields to be updated. Field names
+  /// must be in snake case (e.g., "field_to_update"). Omitted fields will not
+  /// be updated. To replace the entire entity, use one path with the string "*"
+  /// to match all fields.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1604,9 +1607,10 @@ class PropertiesFirebaseLinksResource {
   /// [name] - Output only. Example format: properties/1234/firebaseLinks/5678
   /// Value must have pattern `^properties/\[^/\]+/firebaseLinks/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The list of fields to be updated. Omitted fields
-  /// will not be updated. To replace the entire entity, use one path with the
-  /// string "*" to match all fields.
+  /// [updateMask] - Required. The list of fields to be updated. Field names
+  /// must be in snake case (e.g., "field_to_update"). Omitted fields will not
+  /// be updated. To replace the entire entity, use one path with the string "*"
+  /// to match all fields.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -1804,9 +1808,10 @@ class PropertiesGoogleAdsLinksResource {
   /// googleAdsLinkId is not the Google Ads customer ID.
   /// Value must have pattern `^properties/\[^/\]+/googleAdsLinks/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The list of fields to be updated. Omitted fields
-  /// will not be updated. To replace the entire entity, use one path with the
-  /// string "*" to match all fields.
+  /// [updateMask] - Required. The list of fields to be updated. Field names
+  /// must be in snake case (e.g., "field_to_update"). Omitted fields will not
+  /// be updated. To replace the entire entity, use one path with the string "*"
+  /// to match all fields.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2059,9 +2064,10 @@ class PropertiesIosAppDataStreamsResource {
   /// "properties/1000/iosAppDataStreams/2000"
   /// Value must have pattern `^properties/\[^/\]+/iosAppDataStreams/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The list of fields to be updated. Omitted fields
-  /// will not be updated. To replace the entire entity, use one path with the
-  /// string "*" to match all fields.
+  /// [updateMask] - Required. The list of fields to be updated. Field names
+  /// must be in snake case (e.g., "field_to_update"). Omitted fields will not
+  /// be updated. To replace the entire entity, use one path with the string "*"
+  /// to match all fields.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2898,9 +2904,10 @@ class PropertiesWebDataStreamsResource {
   /// "properties/1000/webDataStreams/2000"
   /// Value must have pattern `^properties/\[^/\]+/webDataStreams/\[^/\]+$`.
   ///
-  /// [updateMask] - Required. The list of fields to be updated. Omitted fields
-  /// will not be updated. To replace the entire entity, use one path with the
-  /// string "*" to match all fields.
+  /// [updateMask] - Required. The list of fields to be updated. Field names
+  /// must be in snake case (e.g., "field_to_update"). Omitted fields will not
+  /// be updated. To replace the entire entity, use one path with the string "*"
+  /// to match all fields.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -2955,9 +2962,10 @@ class PropertiesWebDataStreamsResource {
   /// Value must have pattern
   /// `^properties/\[^/\]+/webDataStreams/\[^/\]+/enhancedMeasurementSettings$`.
   ///
-  /// [updateMask] - Required. The list of fields to be updated. Omitted fields
-  /// will not be updated. To replace the entire entity, use one path with the
-  /// string "*" to match all fields.
+  /// [updateMask] - Required. The list of fields to be updated. Field names
+  /// must be in snake case (e.g., "field_to_update"). Omitted fields will not
+  /// be updated. To replace the entire entity, use one path with the string "*"
+  /// to match all fields.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.

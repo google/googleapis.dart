@@ -1295,6 +1295,7 @@ api.LocationMetadata buildLocationMetadata() {
   buildCounterLocationMetadata++;
   if (buildCounterLocationMetadata < 3) {
     o.flexibleEnvironmentAvailable = true;
+    o.searchApiAvailable = true;
     o.standardEnvironmentAvailable = true;
   }
   buildCounterLocationMetadata--;
@@ -1305,6 +1306,7 @@ void checkLocationMetadata(api.LocationMetadata o) {
   buildCounterLocationMetadata++;
   if (buildCounterLocationMetadata < 3) {
     unittest.expect(o.flexibleEnvironmentAvailable, unittest.isTrue);
+    unittest.expect(o.searchApiAvailable, unittest.isTrue);
     unittest.expect(o.standardEnvironmentAvailable, unittest.isTrue);
   }
   buildCounterLocationMetadata--;

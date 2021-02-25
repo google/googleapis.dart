@@ -7140,6 +7140,9 @@ class ListCreativeStatusBreakdownByDetailResponse {
   /// for more information.
   /// - "VENDOR_DOMAIN" : Indicates that the detail string refers the domain of
   /// an unknown vendor.
+  /// - "GVL_ID" : Indicates that the detail ID refers an IAB GVL ID which
+  /// Google did not detect in the latest TCF Vendor List. See
+  /// [Global Vendor List](https://vendor-list.consensu.org/v2/vendor-list.json)
   core.String detailType;
 
   /// List of rows, with counts of bids with a given creative status aggregated

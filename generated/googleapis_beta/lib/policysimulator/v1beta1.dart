@@ -16,6 +16,14 @@
 
 /// Policy Simulator API - v1beta1
 ///
+/// Policy Simulator is a collection of endpoints for creating, running, and
+/// viewing a Replay. A `Replay` is a type of simulation that lets you see how
+/// your members' access to resources might change if you changed your IAM
+/// policy. During a `Replay`, Policy Simulator re-evaluates, or replays, past
+/// access attempts under both the current policy and your proposed policy, and
+/// compares those results to determine how your members' access might change
+/// under the proposed policy.
+///
 /// For more information, see
 /// <https://cloud.google.com/iam/docs/simulating-access>
 ///
@@ -48,6 +56,15 @@ import '../src/user_agent.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
+/// Policy Simulator is a collection of endpoints for creating, running, and
+/// viewing a Replay.
+///
+/// A `Replay` is a type of simulation that lets you see how your members'
+/// access to resources might change if you changed your IAM policy. During a
+/// `Replay`, Policy Simulator re-evaluates, or replays, past access attempts
+/// under both the current policy and your proposed policy, and compares those
+/// results to determine how your members' access might change under the
+/// proposed policy.
 class PolicySimulatorApi {
   /// View and manage your data across Google Cloud Platform services
   static const cloudPlatformScope =
@@ -94,21 +111,14 @@ class FoldersLocationsReplaysResource {
   FoldersLocationsReplaysResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Create a replay using the given ReplayConfig.
-  ///
-  /// The parent of the replay must contain all resources in the overlay. For
-  /// example, if the overlay contains: ``` ReplayConfig { policy_overlay = map
-  /// = { "//cloudresourcemanager.googleapis.com/projects/project-1": ...,
-  /// "//cloudresourcemanager.googleapis.com/projects/project-2": ..., } ```
-  /// Then, the parent used for CreateReplay must be the organization or a
-  /// folder that contains both projects as children.
+  /// Creates and starts a Replay using the given ReplayConfig.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource where this Replay will be
-  /// created. This must be a project, folder, or organization with included
+  /// created. This resource must be a project, folder, or organization with a
   /// location. Example: `projects/my-example-project/locations/global`
   /// Value must have pattern `^folders/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -150,14 +160,18 @@ class FoldersLocationsReplaysResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Get the specified Replay.
+  /// Gets the specified Replay.
+  ///
+  /// Each `Replay` is available for at least 7 days.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the replay to retrieve. Format is
-  /// `PARENT/locations/{location}/replays/{replay}` where PARENT is a project,
-  /// folder, or organization. Example:
-  /// `projects/my-example-project/locations/{location}/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
+  /// [name] - Required. The name of the Replay to retrieve, in the following
+  /// format:
+  /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`,
+  /// where `{resource-id}` is the ID of the project, folder, or organization
+  /// that owns the `Replay`. Example:
+  /// `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/replays/\[^/\]+$`.
   ///
@@ -200,22 +214,27 @@ class FoldersLocationsReplaysResultsResource {
   FoldersLocationsReplaysResultsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// List the results of running a replay
+  /// Lists the results of running a Replay.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The replay we are listing results for.
+  /// [parent] - Required. The Replay whose results are listed, in the following
+  /// format:
+  /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`
+  /// Example:
+  /// `projects/my-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
   /// Value must have pattern
   /// `^folders/\[^/\]+/locations/\[^/\]+/replays/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of `ReplayResults` to return. If
-  /// unspecified, at most 5000 `Replays` will be returned. The maximum value is
-  /// 5000; values above 5000 will be coerced to 5000.
+  /// [pageSize] - The maximum number of ReplayResult objects to return.
+  /// Defaults to 5000. The maximum value is 5000; values above 5000 are rounded
+  /// down to 5000.
   ///
-  /// [pageToken] - A page token, received from a previous `ListReplayResults`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListReplayResults` must match the call that
-  /// provided the page token.
+  /// [pageToken] - A page token, received from a previous
+  /// Simulator.ListReplayResults call. Provide this token to retrieve the next
+  /// page of results. When paginating, all other parameters provided to
+  /// \[Simulator.ListReplayResults\[\] must match the call that provided the
+  /// page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -390,21 +409,14 @@ class OrganizationsLocationsReplaysResource {
   OrganizationsLocationsReplaysResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Create a replay using the given ReplayConfig.
-  ///
-  /// The parent of the replay must contain all resources in the overlay. For
-  /// example, if the overlay contains: ``` ReplayConfig { policy_overlay = map
-  /// = { "//cloudresourcemanager.googleapis.com/projects/project-1": ...,
-  /// "//cloudresourcemanager.googleapis.com/projects/project-2": ..., } ```
-  /// Then, the parent used for CreateReplay must be the organization or a
-  /// folder that contains both projects as children.
+  /// Creates and starts a Replay using the given ReplayConfig.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource where this Replay will be
-  /// created. This must be a project, folder, or organization with included
+  /// created. This resource must be a project, folder, or organization with a
   /// location. Example: `projects/my-example-project/locations/global`
   /// Value must have pattern `^organizations/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -446,14 +458,18 @@ class OrganizationsLocationsReplaysResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Get the specified Replay.
+  /// Gets the specified Replay.
+  ///
+  /// Each `Replay` is available for at least 7 days.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the replay to retrieve. Format is
-  /// `PARENT/locations/{location}/replays/{replay}` where PARENT is a project,
-  /// folder, or organization. Example:
-  /// `projects/my-example-project/locations/{location}/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
+  /// [name] - Required. The name of the Replay to retrieve, in the following
+  /// format:
+  /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`,
+  /// where `{resource-id}` is the ID of the project, folder, or organization
+  /// that owns the `Replay`. Example:
+  /// `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/replays/\[^/\]+$`.
   ///
@@ -496,22 +512,27 @@ class OrganizationsLocationsReplaysResultsResource {
   OrganizationsLocationsReplaysResultsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// List the results of running a replay
+  /// Lists the results of running a Replay.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The replay we are listing results for.
+  /// [parent] - Required. The Replay whose results are listed, in the following
+  /// format:
+  /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`
+  /// Example:
+  /// `projects/my-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
   /// Value must have pattern
   /// `^organizations/\[^/\]+/locations/\[^/\]+/replays/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of `ReplayResults` to return. If
-  /// unspecified, at most 5000 `Replays` will be returned. The maximum value is
-  /// 5000; values above 5000 will be coerced to 5000.
+  /// [pageSize] - The maximum number of ReplayResult objects to return.
+  /// Defaults to 5000. The maximum value is 5000; values above 5000 are rounded
+  /// down to 5000.
   ///
-  /// [pageToken] - A page token, received from a previous `ListReplayResults`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListReplayResults` must match the call that
-  /// provided the page token.
+  /// [pageToken] - A page token, received from a previous
+  /// Simulator.ListReplayResults call. Provide this token to retrieve the next
+  /// page of results. When paginating, all other parameters provided to
+  /// \[Simulator.ListReplayResults\[\] must match the call that provided the
+  /// page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -580,21 +601,14 @@ class ProjectsLocationsReplaysResource {
   ProjectsLocationsReplaysResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// Create a replay using the given ReplayConfig.
-  ///
-  /// The parent of the replay must contain all resources in the overlay. For
-  /// example, if the overlay contains: ``` ReplayConfig { policy_overlay = map
-  /// = { "//cloudresourcemanager.googleapis.com/projects/project-1": ...,
-  /// "//cloudresourcemanager.googleapis.com/projects/project-2": ..., } ```
-  /// Then, the parent used for CreateReplay must be the organization or a
-  /// folder that contains both projects as children.
+  /// Creates and starts a Replay using the given ReplayConfig.
   ///
   /// [request] - The metadata request object.
   ///
   /// Request parameters:
   ///
   /// [parent] - Required. The parent resource where this Replay will be
-  /// created. This must be a project, folder, or organization with included
+  /// created. This resource must be a project, folder, or organization with a
   /// location. Example: `projects/my-example-project/locations/global`
   /// Value must have pattern `^projects/\[^/\]+/locations/\[^/\]+$`.
   ///
@@ -636,14 +650,18 @@ class ProjectsLocationsReplaysResource {
         _response as core.Map<core.String, core.dynamic>);
   }
 
-  /// Get the specified Replay.
+  /// Gets the specified Replay.
+  ///
+  /// Each `Replay` is available for at least 7 days.
   ///
   /// Request parameters:
   ///
-  /// [name] - Required. The name of the replay to retrieve. Format is
-  /// `PARENT/locations/{location}/replays/{replay}` where PARENT is a project,
-  /// folder, or organization. Example:
-  /// `projects/my-example-project/locations/{location}/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
+  /// [name] - Required. The name of the Replay to retrieve, in the following
+  /// format:
+  /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`,
+  /// where `{resource-id}` is the ID of the project, folder, or organization
+  /// that owns the `Replay`. Example:
+  /// `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/replays/\[^/\]+$`.
   ///
@@ -686,22 +704,27 @@ class ProjectsLocationsReplaysResultsResource {
   ProjectsLocationsReplaysResultsResource(commons.ApiRequester client)
       : _requester = client;
 
-  /// List the results of running a replay
+  /// Lists the results of running a Replay.
   ///
   /// Request parameters:
   ///
-  /// [parent] - Required. The replay we are listing results for.
+  /// [parent] - Required. The Replay whose results are listed, in the following
+  /// format:
+  /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`
+  /// Example:
+  /// `projects/my-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
   /// Value must have pattern
   /// `^projects/\[^/\]+/locations/\[^/\]+/replays/\[^/\]+$`.
   ///
-  /// [pageSize] - The maximum number of `ReplayResults` to return. If
-  /// unspecified, at most 5000 `Replays` will be returned. The maximum value is
-  /// 5000; values above 5000 will be coerced to 5000.
+  /// [pageSize] - The maximum number of ReplayResult objects to return.
+  /// Defaults to 5000. The maximum value is 5000; values above 5000 are rounded
+  /// down to 5000.
   ///
-  /// [pageToken] - A page token, received from a previous `ListReplayResults`
-  /// call. Provide this to retrieve the subsequent page. When paginating, all
-  /// other parameters provided to `ListReplayResults` must match the call that
-  /// provided the page token.
+  /// [pageToken] - A page token, received from a previous
+  /// Simulator.ListReplayResults call. Provide this token to retrieve the next
+  /// page of results. When paginating, all other parameters provided to
+  /// \[Simulator.ListReplayResults\[\] must match the call that provided the
+  /// page token.
   ///
   /// [$fields] - Selector specifying which fields to include in a partial
   /// response.
@@ -743,35 +766,47 @@ class ProjectsLocationsReplaysResultsResource {
   }
 }
 
-/// The difference in AccessState between baseline and simulated policies.
-///
-/// If either AccessState cannot be fully evaluated, i.e. the AccessState is one
-/// of the UNKNOWN_* values, the explanation why full evaluation was not
-/// possible is in the ExplainedAccess message.
+/// A summary and comparison of the member's access under the current (baseline)
+/// policies and the proposed (simulated) policies for a single access tuple.
 class GoogleCloudPolicysimulatorV1beta1AccessStateDiff {
-  /// A single value interpretation of the difference between baseline and
-  /// simulated.
+  /// How the member's access, specified in the AccessState field, changed
+  /// between the current (baseline) policies and proposed (simulated) policies.
   /// Possible string values are:
-  /// - "ACCESS_CHANGE_TYPE_UNSPECIFIED" : Reserved
-  /// - "NO_CHANGE" : The two ExplainedAccesses are equal. This includes the
-  /// case where both baseline and simulated are UNKNOWN, but the unknown
-  /// information is equivalent.
-  /// - "UNKNOWN_CHANGE" : The baseline and simulated accesses are both UNKNOWN,
-  /// but the unknown information differs between them.
-  /// - "ACCESS_REVOKED" : The baseline access state is GRANTED and the
-  /// simulated access state is NOT_GRANTED
-  /// - "ACCESS_GAINED" : The baseline access state is NOT_GRANTED and the
-  /// simulated access state is GRANTED.
-  /// - "ACCESS_MAYBE_REVOKED" : The baseline access state is GRANTED and the
-  /// simulated access state is UNKNOWN.
-  /// - "ACCESS_MAYBE_GAINED" : The baseline state is NOT_GRANTED and the
-  /// simulated state is UNKNOWN.
+  /// - "ACCESS_CHANGE_TYPE_UNSPECIFIED" : The access change is unspecified.
+  /// - "NO_CHANGE" : The member's access did not change. This includes the case
+  /// where both baseline and simulated are UNKNOWN, but the unknown information
+  /// is equivalent.
+  /// - "UNKNOWN_CHANGE" : The member's access under both the current policies
+  /// and the proposed policies is `UNKNOWN`, but the unknown information
+  /// differs between them.
+  /// - "ACCESS_REVOKED" : The member had access under the current policies
+  /// (`GRANTED`), but will no longer have access after the proposed changes
+  /// (`NOT_GRANTED`).
+  /// - "ACCESS_GAINED" : The member did not have access under the current
+  /// policies (`NOT_GRANTED`), but will have access after the proposed changes
+  /// (`GRANTED`).
+  /// - "ACCESS_MAYBE_REVOKED" : This result can occur for the following
+  /// reasons: * The member had access under the current policies (`GRANTED`),
+  /// but their access after the proposed changes is `UNKNOWN`. * The member's
+  /// access under the current policies is `UNKNOWN`, but they will not have
+  /// access after the proposed changes (`NOT_GRANTED`).
+  /// - "ACCESS_MAYBE_GAINED" : This result can occur for the following reasons:
+  /// * The member did not have access under the current policies
+  /// (`NOT_GRANTED`), but their access after the proposed changes is `UNKNOWN`.
+  /// * The member's access under the current policies is `UNKNOWN`, but they
+  /// will have access after the proposed changes (`GRANTED`).
   core.String accessChange;
 
-  /// The explained access when replayed against the baseline policies.
+  /// The results of evaluating the access tuple under the current (baseline)
+  /// policies.
+  ///
+  /// If the AccessState couldn't be fully evaluated, this field explains why.
   GoogleCloudPolicysimulatorV1beta1ExplainedAccess baseline;
 
-  /// The explained access when replayed against the simulated policies.
+  /// The results of evaluating the access tuple under the proposed (simulated)
+  /// policies.
+  ///
+  /// If the AccessState couldn't be fully evaluated, this field explains why.
   GoogleCloudPolicysimulatorV1beta1ExplainedAccess simulated;
 
   GoogleCloudPolicysimulatorV1beta1AccessStateDiff();
@@ -864,20 +899,20 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanation {
   ///
   /// Required.
   /// Possible string values are:
-  /// - "ACCESS_STATE_UNSPECIFIED" : Reserved for future use.
+  /// - "ACCESS_STATE_UNSPECIFIED" : The access state is not specified.
   /// - "GRANTED" : The member has the permission.
   /// - "NOT_GRANTED" : The member does not have the permission.
   /// - "UNKNOWN_CONDITIONAL" : The member has the permission only if a
   /// condition expression evaluates to `true`.
-  /// - "UNKNOWN_INFO_DENIED" : The Simulator user does not have access to all
-  /// of the policies that Policy Troubleshooter needs to evaluate.
+  /// - "UNKNOWN_INFO_DENIED" : The user who created the Replay does not have
+  /// access to all of the policies that Policy Simulator needs to evaluate.
   core.String access;
 
   /// A condition expression that prevents this binding from granting access
   /// unless the expression evaluates to `true`.
   ///
   /// To learn about IAM Conditions, see
-  /// http://cloud.google.com/iam/help/conditions/overview.
+  /// https://cloud.google.com/iam/docs/conditions-overview.
   GoogleTypeExpr condition;
 
   /// Indicates whether each member in the binding includes the member specified
@@ -886,9 +921,9 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanation {
   /// Each key identifies a member in the binding, and each value indicates
   /// whether the member in the binding includes the member in the request. For
   /// example, suppose that a binding includes the following members: *
-  /// `user:alice@example.com` * `group:product-eng@example.com` You want to
-  /// troubleshoot access for `user:bob@example.com`. This user is a member of
-  /// the group `group:product-eng@example.com`. For the first member in the
+  /// `user:alice@example.com` * `group:product-eng@example.com` The member in
+  /// the replayed access tuple is `user:bob@example.com`. This user is a member
+  /// of the group `group:product-eng@example.com`. For the first member in the
   /// binding, the key is `user:alice@example.com`, and the `membership` field
   /// in the value is set to `MEMBERSHIP_NOT_INCLUDED`. For the second member in
   /// the binding, the key is `group:product-eng@example.com`, and the
@@ -917,12 +952,13 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanation {
   /// Indicates whether the role granted by this binding contains the specified
   /// permission.
   /// Possible string values are:
-  /// - "ROLE_PERMISSION_UNSPECIFIED" : Reserved for future use.
+  /// - "ROLE_PERMISSION_UNSPECIFIED" : The inclusion of the permission is not
+  /// specified.
   /// - "ROLE_PERMISSION_INCLUDED" : The permission is included in the role.
   /// - "ROLE_PERMISSION_NOT_INCLUDED" : The permission is not included in the
   /// role.
-  /// - "ROLE_PERMISSION_UNKNOWN_INFO_DENIED" : The Simulator user is not
-  /// allowed to access the binding.
+  /// - "ROLE_PERMISSION_UNKNOWN_INFO_DENIED" : The user who created the Replay
+  /// is not allowed to access the binding.
   core.String rolePermission;
 
   /// The relevance of the permission's existence, or nonexistence, in the role
@@ -987,15 +1023,15 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanation {
 class GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership {
   /// Indicates whether the binding includes the member.
   /// Possible string values are:
-  /// - "MEMBERSHIP_UNSPECIFIED" : Reserved for future use.
+  /// - "MEMBERSHIP_UNSPECIFIED" : The membership is not specified.
   /// - "MEMBERSHIP_INCLUDED" : The binding includes the member. The member can
   /// be included directly or indirectly. For example: * A member is included
   /// directly if that member is listed in the binding. * A member is included
-  /// indirectly if that member is in a Google group or G Suite domain that is
-  /// listed in the binding.
+  /// indirectly if that member is in a Google group or Google Workspace domain
+  /// that is listed in the binding.
   /// - "MEMBERSHIP_NOT_INCLUDED" : The binding does not include the member.
-  /// - "MEMBERSHIP_UNKNOWN_INFO_DENIED" : The Simulator user is not allowed to
-  /// access the binding.
+  /// - "MEMBERSHIP_UNKNOWN_INFO_DENIED" : The user who created the Replay is
+  /// not allowed to access the binding.
   /// - "MEMBERSHIP_UNKNOWN_UNSUPPORTED" : The member is an unsupported type.
   /// Only Google Accounts and service accounts are supported.
   core.String membership;
@@ -1028,29 +1064,31 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership {
       };
 }
 
-/// Details about how the set of Explained Policies resulted in the Access
-/// State.
+/// Details about how a set of policies, listed in ExplainedPolicy, resulted in
+/// a certain AccessState when replaying an access tuple.
 class GoogleCloudPolicysimulatorV1beta1ExplainedAccess {
-  /// The overall access state for the included set of policies.
+  /// Whether the member in the access tuple has permission to access the
+  /// resource in the access tuple under the given policies.
   /// Possible string values are:
-  /// - "ACCESS_STATE_UNSPECIFIED" : Reserved for future use.
+  /// - "ACCESS_STATE_UNSPECIFIED" : The access state is not specified.
   /// - "GRANTED" : The member has the permission.
   /// - "NOT_GRANTED" : The member does not have the permission.
   /// - "UNKNOWN_CONDITIONAL" : The member has the permission only if a
   /// condition expression evaluates to `true`.
-  /// - "UNKNOWN_INFO_DENIED" : The Simulator user does not have access to all
-  /// of the policies that Policy Troubleshooter needs to evaluate.
+  /// - "UNKNOWN_INFO_DENIED" : The user who created the Replay does not have
+  /// access to all of the policies that Policy Simulator needs to evaluate.
   core.String accessState;
 
-  /// The list of problems encountered when explaining this access.
+  /// If the AccessState is `UNKNOWN`, this field contains a list of errors
+  /// explaining why the result is `UNKNOWN`.
   ///
-  /// This list provides the reason why UNKNOWN information in `policies` was
-  /// unknown.
+  /// If the `AccessState` is `GRANTED` or `NOT_GRANTED`, this field is omitted.
   core.List<GoogleRpcStatus> errors;
 
-  /// The set of policies causing an UNKNOWN AccessState, if any.
+  /// If the AccessState is `UNKNOWN`, this field contains the policies that led
+  /// to that result.
   ///
-  /// If the Access is GRANTED or NOT_GRANTED, this list will be empty.
+  /// If the `AccessState` is `GRANTED` or `NOT_GRANTED`, this field is omitted.
   core.List<GoogleCloudPolicysimulatorV1beta1ExplainedPolicy> policies;
 
   GoogleCloudPolicysimulatorV1beta1ExplainedAccess();
@@ -1093,20 +1131,20 @@ class GoogleCloudPolicysimulatorV1beta1ExplainedPolicy {
   /// this policy. To determine whether the member actually has the permission,
   /// use the `access` field in the TroubleshootIamPolicyResponse.
   /// Possible string values are:
-  /// - "ACCESS_STATE_UNSPECIFIED" : Reserved for future use.
+  /// - "ACCESS_STATE_UNSPECIFIED" : The access state is not specified.
   /// - "GRANTED" : The member has the permission.
   /// - "NOT_GRANTED" : The member does not have the permission.
   /// - "UNKNOWN_CONDITIONAL" : The member has the permission only if a
   /// condition expression evaluates to `true`.
-  /// - "UNKNOWN_INFO_DENIED" : The Simulator user does not have access to all
-  /// of the policies that Policy Troubleshooter needs to evaluate.
+  /// - "UNKNOWN_INFO_DENIED" : The user who created the Replay does not have
+  /// access to all of the policies that Policy Simulator needs to evaluate.
   core.String access;
 
   /// Details about how each binding in the policy affects the member's ability,
   /// or inability, to use the permission for the resource.
   ///
-  /// If the Simulator user does not have access to the policy, this field is
-  /// omitted.
+  /// If the user who created the Replay does not have access to the policy,
+  /// this field is omitted.
   core.List<GoogleCloudPolicysimulatorV1beta1BindingExplanation>
       bindingExplanations;
 
@@ -1114,22 +1152,23 @@ class GoogleCloudPolicysimulatorV1beta1ExplainedPolicy {
   ///
   /// For example,
   /// `//compute.googleapis.com/projects/my-project/zones/us-central1-a/instances/my-instance`.
-  /// If the Simulator user does not have access to the policy, this field is
-  /// omitted. For examples of full resource names for Google Cloud services,
-  /// see https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
+  /// If the user who created the Replay does not have access to the policy,
+  /// this field is omitted. For examples of full resource names for Google
+  /// Cloud services, see
+  /// https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
   core.String fullResourceName;
 
   /// The IAM policy attached to the resource.
   ///
-  /// If the Simulator user does not have access to the policy, this field is
-  /// empty.
+  /// If the user who created the Replay does not have access to the policy,
+  /// this field is empty.
   GoogleIamV1Policy policy;
 
   /// The relevance of this policy to the overall determination in the
   /// TroubleshootIamPolicyResponse.
   ///
-  /// If the Simulator user does not have access to the policy, this field is
-  /// omitted.
+  /// If the user who created the Replay does not have access to the policy,
+  /// this field is omitted.
   /// Possible string values are:
   /// - "HEURISTIC_RELEVANCE_UNSPECIFIED" : Reserved for future use.
   /// - "NORMAL" : The data point has a limited effect on the result. Changing
@@ -1174,14 +1213,15 @@ class GoogleCloudPolicysimulatorV1beta1ExplainedPolicy {
       };
 }
 
-/// The results of a replay.
+/// Response message for Simulator.ListReplayResults.
 class GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse {
-  /// A token, which can be sent as `page_token` to retrieve the next page.
+  /// A token that you can use to retrieve the next page of ReplayResult
+  /// objects.
   ///
   /// If this field is omitted, there are no subsequent pages.
   core.String nextPageToken;
 
-  /// The results of running a replay.
+  /// The results of running a Replay.
   core.List<GoogleCloudPolicysimulatorV1beta1ReplayResult> replayResults;
 
   GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse();
@@ -1208,19 +1248,22 @@ class GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse {
       };
 }
 
-/// A Replay of Accesses against a simulated state.
+/// A resource describing a `Replay`, or simulation.
 class GoogleCloudPolicysimulatorV1beta1Replay {
-  /// The configuration used for the replay.
+  /// The configuration used for the `Replay`.
   ///
   /// Required.
   GoogleCloudPolicysimulatorV1beta1ReplayConfig config;
 
-  /// The resource name of the replay.
+  /// The resource name of the `Replay`, which has the following format:
+  /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}`,
+  /// where `{resource-id}` is the ID of the project, folder, or organization
+  /// that owns the Replay.
   ///
-  /// The replay id is randomly generated on creation. Format is
-  /// `PARENT/locations/{location}/replays/{replay}` where PARENT is a project,
-  /// folder, or organization. Example:
+  /// Example:
   /// `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36`
+  ///
+  /// Output only.
   core.String name;
 
   /// Summary statistics about the replayed log entries.
@@ -1228,17 +1271,15 @@ class GoogleCloudPolicysimulatorV1beta1Replay {
   /// Output only.
   GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary resultsSummary;
 
-  /// The current state of the replay.
-  ///
-  /// https://aip.dev/216
+  /// The current state of the `Replay`.
   ///
   /// Output only.
   /// Possible string values are:
-  /// - "STATE_UNSPECIFIED" : Reserved.
-  /// - "PENDING" : Replay has not started yet.
-  /// - "RUNNING" : Replay is currently running.
-  /// - "SUCCEEDED" : Replay has successfully completed.
-  /// - "FAILED" : Replay has finished with an error.
+  /// - "STATE_UNSPECIFIED" : The state is unspecified.
+  /// - "PENDING" : The `Replay` has not started yet.
+  /// - "RUNNING" : The `Replay` is currently running.
+  /// - "SUCCEEDED" : The `Replay` has successfully completed.
+  /// - "FAILED" : The `Replay` has finished with an error.
   core.String state;
 
   GoogleCloudPolicysimulatorV1beta1Replay();
@@ -1269,23 +1310,28 @@ class GoogleCloudPolicysimulatorV1beta1Replay {
       };
 }
 
-/// The configuration used for the replay.
+/// The configuration used for a Replay.
 class GoogleCloudPolicysimulatorV1beta1ReplayConfig {
-  /// The logs to use as input for the replay.
+  /// The logs to use as input for the Replay.
   /// Possible string values are:
-  /// - "LOG_SOURCE_UNSPECIFIED" : An unspecified log source. Replay will
-  /// default to using RECENT_ACCESSES.
-  /// - "RECENT_ACCESSES" : Retrieves the 5000 most recent accesses from the
-  /// last 90 days from an internal log source. Note that the log freshness
-  /// (i.e. the date of the newest log entry) may be up to 7 days stale. In
-  /// other words, an access attempt that only occurred within the past 7 days
-  /// may not be captured by the replay.
+  /// - "LOG_SOURCE_UNSPECIFIED" : An unspecified log source. If the log source
+  /// is unspecified, the Replay defaults to using `RECENT_ACCESSES`.
+  /// - "RECENT_ACCESSES" : All access logs from the last 90 days. These logs
+  /// may not include logs from the most recent 7 days.
   core.String logSource;
 
-  /// The policy overlay used during the replay.
+  /// A mapping of the resources that you want to simulate policies for and the
+  /// policies that you want to simulate.
   ///
-  /// Keys are full resource names and the values are the policies to apply on
-  /// these resources in the simulated state.
+  /// Keys are the full resource names for the resources. For example,
+  /// `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples
+  /// of full resource names for Google Cloud services, see
+  /// https://cloud.google.com/iam/help/troubleshooter/full-resource-names.
+  /// Values are Policy objects representing the policies that you want to
+  /// simulate. Replays automatically take into account any IAM policies
+  /// inherited through the resource hierarchy, and any policies set on
+  /// descendant resources. You do not need to include these policies in the
+  /// policy overlay.
   core.Map<core.String, GoogleIamV1Policy> policyOverlay;
 
   GoogleCloudPolicysimulatorV1beta1ReplayConfig();
@@ -1315,10 +1361,18 @@ class GoogleCloudPolicysimulatorV1beta1ReplayConfig {
       };
 }
 
-/// A successful replay of an AccessTuple that resulted in a difference between
-/// baseline and simulated.
+/// The difference between the results of evaluating an access tuple under the
+/// current (baseline) policies and under the proposed (simulated) policies.
+///
+/// This difference explains how a member's access could change if the proposed
+/// policies were applied.
 class GoogleCloudPolicysimulatorV1beta1ReplayDiff {
-  /// The difference in AccessState between replays.
+  /// A summary and comparison of the member's access under the current
+  /// (baseline) policies and the proposed (simulated) policies for a single
+  /// access tuple.
+  ///
+  /// The evaluation of the member's access is reported in the AccessState
+  /// field.
   GoogleCloudPolicysimulatorV1beta1AccessStateDiff accessDiff;
 
   GoogleCloudPolicysimulatorV1beta1ReplayDiff();
@@ -1335,7 +1389,7 @@ class GoogleCloudPolicysimulatorV1beta1ReplayDiff {
       };
 }
 
-/// Metadata about a ReplayAccessLogs operation.
+/// Metadata about a Replay operation.
 class GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata {
   /// Time when the request was received.
   core.String startTime;
@@ -1356,27 +1410,39 @@ class GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata {
 
 /// The result of replaying a single access tuple against a simulated state.
 class GoogleCloudPolicysimulatorV1beta1ReplayResult {
-  /// The access replayed.
+  /// The access tuple that was replayed.
+  ///
+  /// This field includes information about the member, resource, and permission
+  /// that were involved in the access attempt.
   GoogleCloudPolicysimulatorV1beta1AccessTuple accessTuple;
 
-  /// The tuple was successfully replayed and had a difference.
+  /// The difference between the member's access under the current (baseline)
+  /// policies and the member's access under the proposed (simulated) policies.
+  ///
+  /// This field is only included for access tuples that were successfully
+  /// replayed and had different results under the current policies and the
+  /// proposed policies.
   GoogleCloudPolicysimulatorV1beta1ReplayDiff diff;
 
-  /// The tuple was not successfully replayed.
+  /// The error that caused the access tuple replay to fail.
+  ///
+  /// This field is only included for access tuples that were not replayed
+  /// successfully.
   GoogleRpcStatus error;
 
-  /// The late date this access was seen in the logs.
+  /// The latest date this access tuple was seen in the logs.
   GoogleTypeDate lastSeenDate;
 
-  /// The resource name of the replay result.
+  /// The resource name of the `ReplayResult`, in the following format:
+  /// `{projects|folders|organizations}/{resource-id}/locations/global/replays/{replay-id}/results/{replay-result-id}`,
+  /// where `{resource-id}` is the ID of the project, folder, or organization
+  /// that owns the Replay.
   ///
-  /// Format is
-  /// `PARENT/locations/{location}/replays/{replay}/results/{replay_result}`
-  /// where PARENT is a project, folder, or organization. Example:
+  /// Example:
   /// `projects/my-example-project/locations/global/replays/506a5f7f-38ce-4d7d-8e03-479ce1833c36/results/1234`
   core.String name;
 
-  /// The replay the access tuple was included in.
+  /// The Replay that the access tuple was included in.
   core.String parent;
 
   GoogleCloudPolicysimulatorV1beta1ReplayResult();
@@ -1418,26 +1484,24 @@ class GoogleCloudPolicysimulatorV1beta1ReplayResult {
 
 /// Summary statistics about the replayed log entries.
 class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary {
-  /// Number of replayed log entries with a difference between baseline and
+  /// The number of replayed log entries with a difference between baseline and
   /// simulated policies.
   core.int differenceCount;
 
-  /// Number of log entries with an error during replay.
+  /// The number of log entries that could not be replayed.
   core.int errorCount;
 
-  /// Number of log entries replayed.
-  ///
-  /// log_count == unchanged_count + difference_count + error_count
+  /// The total number of log entries replayed.
   core.int logCount;
 
-  /// Date of newest log entry replayed.
+  /// The date of the newest log entry replayed.
   GoogleTypeDate newestDate;
 
-  /// Date of oldest log entry replayed.
+  /// The date of the oldest log entry replayed.
   GoogleTypeDate oldestDate;
 
-  /// Number of replayed log entries with no difference between baseline and
-  /// simulated
+  /// The number of replayed log entries with no difference between baseline and
+  /// simulated policies.
   core.int unchangedCount;
 
   GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary();

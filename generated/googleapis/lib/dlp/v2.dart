@@ -8444,7 +8444,7 @@ class GooglePrivacyDlpV2DeidentifyTemplate {
   /// Output only.
   core.String createTime;
 
-  /// ///////////// // The core content of the template // ///////////////
+  /// The core content of the template.
   GooglePrivacyDlpV2DeidentifyConfig deidentifyConfig;
 
   /// Short description (max 256 chars).
