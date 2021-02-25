@@ -13,7 +13,6 @@ import 'dart_comments.dart';
 import 'dart_schemas.dart';
 import 'generated_googleapis/discovery/v1.dart';
 import 'namer.dart';
-import 'null_safety.dart';
 import 'uri_template.dart';
 import 'utils.dart';
 
@@ -63,8 +62,7 @@ class MethodParameter {
   );
 
   /// Returns the declaration "Type name" of this method parameter.
-  String get declaration =>
-      '${type.declaration}${required ? '' : orNull} $name';
+  String get declaration => '${type.declaration}${required ? '' : '?'} $name';
 }
 
 /// Represents a method on a resource class.
@@ -142,7 +140,7 @@ class DartResourceMethod {
           namedString.write('${imports.commons}.UploadOptions uploadOptions = '
               '${imports.commons}.UploadOptions.defaultOptions, ');
         }
-        namedString.write('${imports.commons}.Media$orNull uploadMedia');
+        namedString.write('${imports.commons}.Media? uploadMedia');
       }
 
       if (mediaDownload) {
@@ -247,22 +245,10 @@ class DartResourceMethod {
       templateVars[param.jsonName] = param.name;
 
       if (param.required) {
-        if (generateNullSafeCode) {
-          // In null safe code these are required, no need to check for nulls.
-          // Still check for empty arrays that should not be empty.
-          if (param.type is UnnamedArrayType) {
-            params.writeln('    if (${param.name}.isEmpty) {');
-            params.writeln('      throw ${imports.core.ref()}ArgumentError'
-                "('Parameter ${param.name} is required.');");
-            params.writeln('    }');
-          }
-        } else {
-          if (param.type is UnnamedArrayType) {
-            params.writeln(
-                '    if (${param.name} == null || ${param.name}.isEmpty) {');
-          } else {
-            params.writeln('    if (${param.name} == null) {');
-          }
+        // In null safe code these are required, no need to check for nulls.
+        // Still check for empty arrays that should not be empty.
+        if (param.type is UnnamedArrayType) {
+          params.writeln('    if (${param.name}.isEmpty) {');
           params.writeln('      throw ${imports.core.ref()}ArgumentError'
               "('Parameter ${param.name} is required.');");
           params.writeln('    }');
