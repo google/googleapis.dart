@@ -283,6 +283,38 @@ jobs:
         working-directory: googleapis_auth
         run: dartanalyzer --fatal-infos .
   job_004:
+    name: "unittest; Dart beta; PKG: _test_package; `pub run test`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@v2
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;dart:beta;packages:_test_package;commands:test_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;dart:beta;packages:_test_package
+            os:ubuntu-latest;pub-cache-hosted;dart:beta
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - uses: dart-lang/setup-dart@v0.3
+        with:
+          sdk: beta
+      - id: checkout
+        uses: actions/checkout@v2
+      - id: _test_package_pub_upgrade
+        name: "_test_package; pub upgrade --no-precompile"
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: _test_package
+        run: pub upgrade --no-precompile
+      - name: _test_package; pub run test
+        if: "always() && steps._test_package_pub_upgrade.conclusion == 'success'"
+        working-directory: _test_package
+        run: pub run test
+    needs:
+      - job_001
+      - job_002
+      - job_003
+  job_005:
     name: "unittest; Dart beta; PKG: discoveryapis_commons; `pub run test`"
     runs-on: ubuntu-latest
     steps:
@@ -314,7 +346,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_005:
+  job_006:
     name: "unittest; Dart beta; PKG: discoveryapis_generator; `pub run test`"
     runs-on: ubuntu-latest
     steps:
@@ -346,7 +378,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_006:
+  job_007:
     name: "unittest; Dart beta; PKG: generated/googleapis; `pub run test`"
     runs-on: ubuntu-latest
     steps:
@@ -378,7 +410,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_007:
+  job_008:
     name: "unittest; Dart beta; PKG: generated/googleapis_beta; `pub run test`"
     runs-on: ubuntu-latest
     steps:
@@ -410,7 +442,39 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_008:
+  job_009:
+    name: "unittest; Dart dev; PKG: _test_package; `pub run test`"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cache Pub hosted dependencies
+        uses: actions/cache@v2
+        with:
+          path: "~/.pub-cache/hosted"
+          key: "os:ubuntu-latest;pub-cache-hosted;dart:dev;packages:_test_package;commands:test_0"
+          restore-keys: |
+            os:ubuntu-latest;pub-cache-hosted;dart:dev;packages:_test_package
+            os:ubuntu-latest;pub-cache-hosted;dart:dev
+            os:ubuntu-latest;pub-cache-hosted
+            os:ubuntu-latest
+      - uses: dart-lang/setup-dart@v0.3
+        with:
+          sdk: dev
+      - id: checkout
+        uses: actions/checkout@v2
+      - id: _test_package_pub_upgrade
+        name: "_test_package; pub upgrade --no-precompile"
+        if: "always() && steps.checkout.conclusion == 'success'"
+        working-directory: _test_package
+        run: pub upgrade --no-precompile
+      - name: _test_package; pub run test
+        if: "always() && steps._test_package_pub_upgrade.conclusion == 'success'"
+        working-directory: _test_package
+        run: pub run test
+    needs:
+      - job_001
+      - job_002
+      - job_003
+  job_010:
     name: "unittest; Dart dev; PKG: discoveryapis_commons; `pub run test`"
     runs-on: ubuntu-latest
     steps:
@@ -442,7 +506,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_009:
+  job_011:
     name: "unittest; Dart dev; PKG: discoveryapis_generator; `pub run test`"
     runs-on: ubuntu-latest
     steps:
@@ -474,7 +538,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_010:
+  job_012:
     name: "unittest; Dart dev; PKG: generated/googleapis; `pub run test`"
     runs-on: ubuntu-latest
     steps:
@@ -506,7 +570,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_011:
+  job_013:
     name: "unittest; Dart dev; PKG: generated/googleapis_beta; `pub run test`"
     runs-on: ubuntu-latest
     steps:
@@ -538,7 +602,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_012:
+  job_014:
     name: "unittest; Dart beta; PKG: googleapis_auth; `pub run test -p vm`"
     runs-on: ubuntu-latest
     steps:
@@ -570,7 +634,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_013:
+  job_015:
     name: "unittest; Dart dev; PKG: googleapis_auth; `pub run test -p vm`"
     runs-on: ubuntu-latest
     steps:
@@ -602,7 +666,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_014:
+  job_016:
     name: "unittest; Dart beta; PKG: googleapis_auth; `pub run test -p chrome`"
     runs-on: ubuntu-latest
     steps:
@@ -634,7 +698,7 @@ jobs:
       - job_001
       - job_002
       - job_003
-  job_015:
+  job_017:
     name: "unittest; Dart dev; PKG: googleapis_auth; `pub run test -p chrome`"
     runs-on: ubuntu-latest
     steps:
