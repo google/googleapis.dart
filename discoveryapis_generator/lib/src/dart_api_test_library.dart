@@ -10,7 +10,6 @@ import 'dart_api_library.dart';
 import 'dart_resources.dart';
 import 'dart_schemas.dart';
 import 'namer.dart';
-import 'null_safety.dart';
 import 'uri_template.dart';
 import 'utils.dart';
 
@@ -136,14 +135,14 @@ import 'dart:core' as core;
 import 'package:http/http.dart' as http;
 
 class HttpServerMock extends http.BaseClient {
-  ${lateQualifier}core.Future<http.StreamedResponse> Function(
-      http.BaseRequest, core.Object$orNull) _callback;
-  ${lateQualifier}core.bool _expectJson;
+  late core.Future<http.StreamedResponse> Function(
+      http.BaseRequest, core.Object?) _callback;
+  late core.bool _expectJson;
 
   void register(
     core.Future<http.StreamedResponse> Function(
       http.BaseRequest,
-      core.Object$orNull,
+      core.Object?,
     )
         callback,
     core.bool expectJson,

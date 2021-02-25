@@ -10,7 +10,6 @@ import 'dart_api_library.dart';
 import 'dart_comments.dart';
 import 'generated_googleapis/discovery/v1.dart';
 import 'namer.dart';
-import 'null_safety.dart';
 import 'utils.dart';
 
 /// Class for keeping all named schemas. This is used for
@@ -720,7 +719,7 @@ $decode
 $encode
 
   @${core}override
-  ${toType.declaration}$orNull operator [](${core}Object$orNull key)
+  ${toType.declaration}? operator [](${core}Object? key)
       => _innerMap[key];
 
   @${core}override
@@ -737,7 +736,7 @@ $encode
   ${core}Iterable<$fromT> get keys => _innerMap.keys;
 
   @${core}override
-  $toT$orNull remove(${core}Object$orNull key) => _innerMap.remove(key);
+  $toT? remove(${core}Object? key) => _innerMap.remove(key);
 }
 ''';
   }
@@ -805,7 +804,7 @@ class ObjectType extends ComplexDartSchemaType {
         postfix = ' = "${escapeString(discriminatorValue())}"';
       }
       propertyString.writeln(
-        '$comment  $prefix${property.type.declaration}$orNull ${property.name}'
+        '$comment  $prefix${property.type.declaration}? ${property.name}'
         '$postfix;',
       );
 
@@ -814,7 +813,7 @@ class ObjectType extends ComplexDartSchemaType {
             '  ${imports.core.ref()}List<${imports.core.ref()}int> get '
             '${property.byteArrayAccessor} =>');
         propertyString.writeln('${imports.convert.ref()}base64.decode'
-            '(${property.name}$notNull);');
+            '(${property.name}!);');
 
         propertyString.writeln();
 
@@ -861,7 +860,7 @@ class ObjectType extends ComplexDartSchemaType {
     for (var property in properties) {
       toJsonString.writeln('if (${property.name} != null)');
       toJsonString.writeln("'${escapeString(property.jsonName)}':"
-          '${property.type.jsonEncode('${property.name}$notNull')},');
+          '${property.type.jsonEncode('${property.name}!')},');
     }
     toJsonString.write('};');
 
