@@ -103,7 +103,7 @@ class ClientApiLibrary extends BaseApiLibrary {
     var result = '''
 // This is a generated file (see the discoveryapis_generator project).
 
-$ignoreForFileComments
+${ignoreForFileComments(ignoreForFileSet)}
 
 library $libraryName;
 

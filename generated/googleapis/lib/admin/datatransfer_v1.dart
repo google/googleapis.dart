@@ -11,7 +11,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Admin SDK API - datatransfer_v1
@@ -546,8 +545,7 @@ class DataTransfer {
         if (oldOwnerUserId != null) 'oldOwnerUserId': oldOwnerUserId!,
         if (overallTransferStatusCode != null)
           'overallTransferStatusCode': overallTransferStatusCode!,
-        if (requestTime != null)
-          'requestTime': (requestTime!).toIso8601String(),
+        if (requestTime != null) 'requestTime': requestTime!.toIso8601String(),
       };
 }
 

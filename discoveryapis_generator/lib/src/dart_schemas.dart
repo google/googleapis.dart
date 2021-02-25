@@ -408,10 +408,10 @@ class DateTimeType extends StringType {
   String get declaration => '${imports.core.ref()}DateTime';
 
   @override
-  String primitiveEncoding(String value) => '($value).toIso8601String()';
+  String primitiveEncoding(String value) => '$value.toIso8601String()';
 
   @override
-  String jsonEncode(String value) => '($value).toIso8601String()';
+  String jsonEncode(String value) => '$value.toIso8601String()';
 
   @override
   String jsonDecode(String json) => '${imports.core.ref()}DateTime'

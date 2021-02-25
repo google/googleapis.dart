@@ -11,7 +11,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Drive API - v3
@@ -3141,7 +3140,7 @@ class Change {
         if (removed != null) 'removed': removed!,
         if (teamDrive != null) 'teamDrive': teamDrive!.toJson(),
         if (teamDriveId != null) 'teamDriveId': teamDriveId!,
-        if (time != null) 'time': (time!).toIso8601String(),
+        if (time != null) 'time': time!.toIso8601String(),
         if (type != null) 'type': type!,
       };
 }
@@ -3437,14 +3436,13 @@ class Comment {
         if (anchor != null) 'anchor': anchor!,
         if (author != null) 'author': author!.toJson(),
         if (content != null) 'content': content!,
-        if (createdTime != null)
-          'createdTime': (createdTime!).toIso8601String(),
+        if (createdTime != null) 'createdTime': createdTime!.toIso8601String(),
         if (deleted != null) 'deleted': deleted!,
         if (htmlContent != null) 'htmlContent': htmlContent!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (modifiedTime != null)
-          'modifiedTime': (modifiedTime!).toIso8601String(),
+          'modifiedTime': modifiedTime!.toIso8601String(),
         if (quotedFileContent != null)
           'quotedFileContent': quotedFileContent!.toJson(),
         if (replies != null)
@@ -3556,7 +3554,7 @@ class ContentRestriction {
         if (restrictingUser != null)
           'restrictingUser': restrictingUser!.toJson(),
         if (restrictionTime != null)
-          'restrictionTime': (restrictionTime!).toIso8601String(),
+          'restrictionTime': restrictionTime!.toIso8601String(),
         if (type != null) 'type': type!,
       };
 }
@@ -3933,8 +3931,7 @@ class Drive {
           'backgroundImageLink': backgroundImageLink!,
         if (capabilities != null) 'capabilities': capabilities!.toJson(),
         if (colorRgb != null) 'colorRgb': colorRgb!,
-        if (createdTime != null)
-          'createdTime': (createdTime!).toIso8601String(),
+        if (createdTime != null) 'createdTime': createdTime!.toIso8601String(),
         if (hidden != null) 'hidden': hidden!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -5163,8 +5160,7 @@ class File {
               contentRestrictions!.map((value) => value.toJson()).toList(),
         if (copyRequiresWriterPermission != null)
           'copyRequiresWriterPermission': copyRequiresWriterPermission!,
-        if (createdTime != null)
-          'createdTime': (createdTime!).toIso8601String(),
+        if (createdTime != null) 'createdTime': createdTime!.toIso8601String(),
         if (description != null) 'description': description!,
         if (driveId != null) 'driveId': driveId!,
         if (explicitlyTrashed != null) 'explicitlyTrashed': explicitlyTrashed!,
@@ -5188,9 +5184,9 @@ class File {
         if (mimeType != null) 'mimeType': mimeType!,
         if (modifiedByMe != null) 'modifiedByMe': modifiedByMe!,
         if (modifiedByMeTime != null)
-          'modifiedByMeTime': (modifiedByMeTime!).toIso8601String(),
+          'modifiedByMeTime': modifiedByMeTime!.toIso8601String(),
         if (modifiedTime != null)
-          'modifiedTime': (modifiedTime!).toIso8601String(),
+          'modifiedTime': modifiedTime!.toIso8601String(),
         if (name != null) 'name': name!,
         if (originalFilename != null) 'originalFilename': originalFilename!,
         if (ownedByMe != null) 'ownedByMe': ownedByMe!,
@@ -5204,7 +5200,7 @@ class File {
         if (quotaBytesUsed != null) 'quotaBytesUsed': quotaBytesUsed!,
         if (shared != null) 'shared': shared!,
         if (sharedWithMeTime != null)
-          'sharedWithMeTime': (sharedWithMeTime!).toIso8601String(),
+          'sharedWithMeTime': sharedWithMeTime!.toIso8601String(),
         if (sharingUser != null) 'sharingUser': sharingUser!.toJson(),
         if (shortcutDetails != null)
           'shortcutDetails': shortcutDetails!.toJson(),
@@ -5215,15 +5211,14 @@ class File {
         if (thumbnailLink != null) 'thumbnailLink': thumbnailLink!,
         if (thumbnailVersion != null) 'thumbnailVersion': thumbnailVersion!,
         if (trashed != null) 'trashed': trashed!,
-        if (trashedTime != null)
-          'trashedTime': (trashedTime!).toIso8601String(),
+        if (trashedTime != null) 'trashedTime': trashedTime!.toIso8601String(),
         if (trashingUser != null) 'trashingUser': trashingUser!.toJson(),
         if (version != null) 'version': version!,
         if (videoMediaMetadata != null)
           'videoMediaMetadata': videoMediaMetadata!.toJson(),
         if (viewedByMe != null) 'viewedByMe': viewedByMe!,
         if (viewedByMeTime != null)
-          'viewedByMeTime': (viewedByMeTime!).toIso8601String(),
+          'viewedByMeTime': viewedByMeTime!.toIso8601String(),
         if (viewersCanCopyContent != null)
           'viewersCanCopyContent': viewersCanCopyContent!,
         if (webContentLink != null) 'webContentLink': webContentLink!,
@@ -5577,7 +5572,7 @@ class Permission {
         if (domain != null) 'domain': domain!,
         if (emailAddress != null) 'emailAddress': emailAddress!,
         if (expirationTime != null)
-          'expirationTime': (expirationTime!).toIso8601String(),
+          'expirationTime': expirationTime!.toIso8601String(),
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (permissionDetails != null)
@@ -5718,14 +5713,13 @@ class Reply {
         if (action != null) 'action': action!,
         if (author != null) 'author': author!.toJson(),
         if (content != null) 'content': content!,
-        if (createdTime != null)
-          'createdTime': (createdTime!).toIso8601String(),
+        if (createdTime != null) 'createdTime': createdTime!.toIso8601String(),
         if (deleted != null) 'deleted': deleted!,
         if (htmlContent != null) 'htmlContent': htmlContent!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (modifiedTime != null)
-          'modifiedTime': (modifiedTime!).toIso8601String(),
+          'modifiedTime': modifiedTime!.toIso8601String(),
       };
 }
 
@@ -5905,7 +5899,7 @@ class Revision {
         if (md5Checksum != null) 'md5Checksum': md5Checksum!,
         if (mimeType != null) 'mimeType': mimeType!,
         if (modifiedTime != null)
-          'modifiedTime': (modifiedTime!).toIso8601String(),
+          'modifiedTime': modifiedTime!.toIso8601String(),
         if (originalFilename != null) 'originalFilename': originalFilename!,
         if (publishAuto != null) 'publishAuto': publishAuto!,
         if (published != null) 'published': published!,
@@ -6363,8 +6357,7 @@ class TeamDrive {
           'backgroundImageLink': backgroundImageLink!,
         if (capabilities != null) 'capabilities': capabilities!.toJson(),
         if (colorRgb != null) 'colorRgb': colorRgb!,
-        if (createdTime != null)
-          'createdTime': (createdTime!).toIso8601String(),
+        if (createdTime != null) 'createdTime': createdTime!.toIso8601String(),
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,

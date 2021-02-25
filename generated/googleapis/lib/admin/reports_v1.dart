@@ -11,7 +11,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Admin SDK API - reports_v1
@@ -1230,7 +1229,7 @@ class ActivityId {
   core.Map<core.String, core.Object?> toJson() => {
         if (applicationName != null) 'applicationName': applicationName!,
         if (customerId != null) 'customerId': customerId!,
-        if (time != null) 'time': (time!).toIso8601String(),
+        if (time != null) 'time': time!.toIso8601String(),
         if (uniqueQualifier != null) 'uniqueQualifier': uniqueQualifier!,
       };
 }
@@ -1613,7 +1612,7 @@ class UsageReportParameters {
   core.Map<core.String, core.Object?> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
         if (datetimeValue != null)
-          'datetimeValue': (datetimeValue!).toIso8601String(),
+          'datetimeValue': datetimeValue!.toIso8601String(),
         if (intValue != null) 'intValue': intValue!,
         if (msgValue != null) 'msgValue': msgValue!,
         if (name != null) 'name': name!,

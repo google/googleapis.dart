@@ -11,7 +11,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Calendar API - v3
@@ -1520,8 +1519,8 @@ class EventsResource {
       if (originalStart != null) 'originalStart': [originalStart],
       if (pageToken != null) 'pageToken': [pageToken],
       if (showDeleted != null) 'showDeleted': ['${showDeleted}'],
-      if (timeMax != null) 'timeMax': [(timeMax).toIso8601String()],
-      if (timeMin != null) 'timeMin': [(timeMin).toIso8601String()],
+      if (timeMax != null) 'timeMax': [timeMax.toIso8601String()],
+      if (timeMin != null) 'timeMin': [timeMin.toIso8601String()],
       if (timeZone != null) 'timeZone': [timeZone],
       if ($fields != null) 'fields': [$fields],
     };
@@ -1698,10 +1697,10 @@ class EventsResource {
         'showHiddenInvitations': ['${showHiddenInvitations}'],
       if (singleEvents != null) 'singleEvents': ['${singleEvents}'],
       if (syncToken != null) 'syncToken': [syncToken],
-      if (timeMax != null) 'timeMax': [(timeMax).toIso8601String()],
-      if (timeMin != null) 'timeMin': [(timeMin).toIso8601String()],
+      if (timeMax != null) 'timeMax': [timeMax.toIso8601String()],
+      if (timeMin != null) 'timeMin': [timeMin.toIso8601String()],
       if (timeZone != null) 'timeZone': [timeZone],
-      if (updatedMin != null) 'updatedMin': [(updatedMin).toIso8601String()],
+      if (updatedMin != null) 'updatedMin': [updatedMin.toIso8601String()],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -2207,10 +2206,10 @@ class EventsResource {
         'showHiddenInvitations': ['${showHiddenInvitations}'],
       if (singleEvents != null) 'singleEvents': ['${singleEvents}'],
       if (syncToken != null) 'syncToken': [syncToken],
-      if (timeMax != null) 'timeMax': [(timeMax).toIso8601String()],
-      if (timeMin != null) 'timeMin': [(timeMin).toIso8601String()],
+      if (timeMax != null) 'timeMax': [timeMax.toIso8601String()],
+      if (timeMin != null) 'timeMin': [timeMin.toIso8601String()],
       if (timeZone != null) 'timeZone': [timeZone],
-      if (updatedMin != null) 'updatedMin': [(updatedMin).toIso8601String()],
+      if (updatedMin != null) 'updatedMin': [updatedMin.toIso8601String()],
       if ($fields != null) 'fields': [$fields],
     };
 
@@ -3155,7 +3154,7 @@ class Colors {
         if (event != null)
           'event': event!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (kind != null) 'kind': kind!,
-        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (updated != null) 'updated': updated!.toIso8601String(),
       };
 }
 
@@ -4355,7 +4354,7 @@ class Event {
         if (attendeesOmitted != null) 'attendeesOmitted': attendeesOmitted!,
         if (colorId != null) 'colorId': colorId!,
         if (conferenceData != null) 'conferenceData': conferenceData!.toJson(),
-        if (created != null) 'created': (created!).toIso8601String(),
+        if (created != null) 'created': created!.toIso8601String(),
         if (creator != null) 'creator': creator!.toJson(),
         if (description != null) 'description': description!,
         if (end != null) 'end': end!.toJson(),
@@ -4391,7 +4390,7 @@ class Event {
         if (status != null) 'status': status!,
         if (summary != null) 'summary': summary!,
         if (transparency != null) 'transparency': transparency!,
-        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (updated != null) 'updated': updated!.toIso8601String(),
         if (visibility != null) 'visibility': visibility!,
       };
 }
@@ -4595,7 +4594,7 @@ class EventDateTime {
         if (date != null)
           'date':
               "${(date!).year.toString().padLeft(4, '0')}-${(date!).month.toString().padLeft(2, '0')}-${(date!).day.toString().padLeft(2, '0')}",
-        if (dateTime != null) 'dateTime': (dateTime!).toIso8601String(),
+        if (dateTime != null) 'dateTime': dateTime!.toIso8601String(),
         if (timeZone != null) 'timeZone': timeZone!,
       };
 }
@@ -4756,7 +4755,7 @@ class Events {
         if (nextSyncToken != null) 'nextSyncToken': nextSyncToken!,
         if (summary != null) 'summary': summary!,
         if (timeZone != null) 'timeZone': timeZone!,
-        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (updated != null) 'updated': updated!.toIso8601String(),
       };
 }
 
@@ -4880,8 +4879,8 @@ class FreeBusyRequest {
         if (groupExpansionMax != null) 'groupExpansionMax': groupExpansionMax!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
-        if (timeMax != null) 'timeMax': (timeMax!).toIso8601String(),
-        if (timeMin != null) 'timeMin': (timeMin!).toIso8601String(),
+        if (timeMax != null) 'timeMax': timeMax!.toIso8601String(),
+        if (timeMin != null) 'timeMin': timeMin!.toIso8601String(),
         if (timeZone != null) 'timeZone': timeZone!,
       };
 }
@@ -4963,8 +4962,8 @@ class FreeBusyResponse {
           'groups':
               groups!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (kind != null) 'kind': kind!,
-        if (timeMax != null) 'timeMax': (timeMax!).toIso8601String(),
-        if (timeMin != null) 'timeMin': (timeMin!).toIso8601String(),
+        if (timeMax != null) 'timeMax': timeMax!.toIso8601String(),
+        if (timeMin != null) 'timeMin': timeMin!.toIso8601String(),
       };
 }
 
@@ -5084,7 +5083,7 @@ class TimePeriod {
   }
 
   core.Map<core.String, core.Object?> toJson() => {
-        if (end != null) 'end': (end!).toIso8601String(),
-        if (start != null) 'start': (start!).toIso8601String(),
+        if (end != null) 'end': end!.toIso8601String(),
+        if (start != null) 'start': start!.toIso8601String(),
       };
 }

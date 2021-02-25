@@ -11,7 +11,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Google Analytics API - v3
@@ -5017,14 +5016,14 @@ class Account {
 
   core.Map<core.String, core.Object?> toJson() => {
         if (childLink != null) 'childLink': childLink!.toJson(),
-        if (created != null) 'created': (created!).toIso8601String(),
+        if (created != null) 'created': created!.toIso8601String(),
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
         if (permissions != null) 'permissions': permissions!.toJson(),
         if (selfLink != null) 'selfLink': selfLink!,
         if (starred != null) 'starred': starred!,
-        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (updated != null) 'updated': updated!.toIso8601String(),
       };
 }
 
@@ -5753,7 +5752,7 @@ class CustomDataSource {
   core.Map<core.String, core.Object?> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (childLink != null) 'childLink': childLink!.toJson(),
-        if (created != null) 'created': (created!).toIso8601String(),
+        if (created != null) 'created': created!.toIso8601String(),
         if (description != null) 'description': description!,
         if (id != null) 'id': id!,
         if (importBehavior != null) 'importBehavior': importBehavior!,
@@ -5764,7 +5763,7 @@ class CustomDataSource {
         if (schema != null) 'schema': schema!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (type != null) 'type': type!,
-        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (updated != null) 'updated': updated!.toIso8601String(),
         if (uploadType != null) 'uploadType': uploadType!,
         if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
@@ -5966,7 +5965,7 @@ class CustomDimension {
   core.Map<core.String, core.Object?> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (active != null) 'active': active!,
-        if (created != null) 'created': (created!).toIso8601String(),
+        if (created != null) 'created': created!.toIso8601String(),
         if (id != null) 'id': id!,
         if (index != null) 'index': index!,
         if (kind != null) 'kind': kind!,
@@ -5974,7 +5973,7 @@ class CustomDimension {
         if (parentLink != null) 'parentLink': parentLink!.toJson(),
         if (scope != null) 'scope': scope!,
         if (selfLink != null) 'selfLink': selfLink!,
-        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (updated != null) 'updated': updated!.toIso8601String(),
         if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
@@ -6194,7 +6193,7 @@ class CustomMetric {
   core.Map<core.String, core.Object?> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (active != null) 'active': active!,
-        if (created != null) 'created': (created!).toIso8601String(),
+        if (created != null) 'created': created!.toIso8601String(),
         if (id != null) 'id': id!,
         if (index != null) 'index': index!,
         if (kind != null) 'kind': kind!,
@@ -6205,7 +6204,7 @@ class CustomMetric {
         if (scope != null) 'scope': scope!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (type != null) 'type': type!,
-        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (updated != null) 'updated': updated!.toIso8601String(),
         if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
@@ -7023,10 +7022,10 @@ class Experiment {
 
   core.Map<core.String, core.Object?> toJson() => {
         if (accountId != null) 'accountId': accountId!,
-        if (created != null) 'created': (created!).toIso8601String(),
+        if (created != null) 'created': created!.toIso8601String(),
         if (description != null) 'description': description!,
         if (editableInGaUi != null) 'editableInGaUi': editableInGaUi!,
-        if (endTime != null) 'endTime': (endTime!).toIso8601String(),
+        if (endTime != null) 'endTime': endTime!.toIso8601String(),
         if (equalWeighting != null) 'equalWeighting': equalWeighting!,
         if (id != null) 'id': id!,
         if (internalWebPropertyId != null)
@@ -7046,10 +7045,10 @@ class Experiment {
         if (selfLink != null) 'selfLink': selfLink!,
         if (servingFramework != null) 'servingFramework': servingFramework!,
         if (snippet != null) 'snippet': snippet!,
-        if (startTime != null) 'startTime': (startTime!).toIso8601String(),
+        if (startTime != null) 'startTime': startTime!.toIso8601String(),
         if (status != null) 'status': status!,
         if (trafficCoverage != null) 'trafficCoverage': trafficCoverage!,
-        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (updated != null) 'updated': updated!.toIso8601String(),
         if (variations != null)
           'variations': variations!.map((value) => value.toJson()).toList(),
         if (webPropertyId != null) 'webPropertyId': webPropertyId!,
@@ -7494,7 +7493,7 @@ class Filter {
         if (accountId != null) 'accountId': accountId!,
         if (advancedDetails != null)
           'advancedDetails': advancedDetails!.toJson(),
-        if (created != null) 'created': (created!).toIso8601String(),
+        if (created != null) 'created': created!.toIso8601String(),
         if (excludeDetails != null) 'excludeDetails': excludeDetails!.toJson(),
         if (id != null) 'id': id!,
         if (includeDetails != null) 'includeDetails': includeDetails!.toJson(),
@@ -7507,7 +7506,7 @@ class Filter {
           'searchAndReplaceDetails': searchAndReplaceDetails!.toJson(),
         if (selfLink != null) 'selfLink': selfLink!,
         if (type != null) 'type': type!,
-        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (updated != null) 'updated': updated!.toIso8601String(),
         if (uppercaseDetails != null)
           'uppercaseDetails': uppercaseDetails!.toJson(),
       };
@@ -8601,7 +8600,7 @@ class Goal {
   core.Map<core.String, core.Object?> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (active != null) 'active': active!,
-        if (created != null) 'created': (created!).toIso8601String(),
+        if (created != null) 'created': created!.toIso8601String(),
         if (eventDetails != null) 'eventDetails': eventDetails!.toJson(),
         if (id != null) 'id': id!,
         if (internalWebPropertyId != null)
@@ -8612,7 +8611,7 @@ class Goal {
         if (profileId != null) 'profileId': profileId!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (type != null) 'type': type!,
-        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (updated != null) 'updated': updated!.toIso8601String(),
         if (urlDestinationDetails != null)
           'urlDestinationDetails': urlDestinationDetails!.toJson(),
         if (value != null) 'value': value!,
@@ -9584,7 +9583,7 @@ class Profile {
         if (botFilteringEnabled != null)
           'botFilteringEnabled': botFilteringEnabled!,
         if (childLink != null) 'childLink': childLink!.toJson(),
-        if (created != null) 'created': (created!).toIso8601String(),
+        if (created != null) 'created': created!.toIso8601String(),
         if (currency != null) 'currency': currency!,
         if (defaultPage != null) 'defaultPage': defaultPage!,
         if (eCommerceTracking != null) 'eCommerceTracking': eCommerceTracking!,
@@ -9612,7 +9611,7 @@ class Profile {
           'stripSiteSearchQueryParameters': stripSiteSearchQueryParameters!,
         if (timezone != null) 'timezone': timezone!,
         if (type != null) 'type': type!,
-        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (updated != null) 'updated': updated!.toIso8601String(),
         if (webPropertyId != null) 'webPropertyId': webPropertyId!,
         if (websiteUrl != null) 'websiteUrl': websiteUrl!,
       };
@@ -10404,7 +10403,7 @@ class RemarketingAudience {
         if (audienceDefinition != null)
           'audienceDefinition': audienceDefinition!.toJson(),
         if (audienceType != null) 'audienceType': audienceType!,
-        if (created != null) 'created': (created!).toIso8601String(),
+        if (created != null) 'created': created!.toIso8601String(),
         if (description != null) 'description': description!,
         if (id != null) 'id': id!,
         if (internalWebPropertyId != null)
@@ -10418,7 +10417,7 @@ class RemarketingAudience {
         if (stateBasedAudienceDefinition != null)
           'stateBasedAudienceDefinition':
               stateBasedAudienceDefinition!.toJson(),
-        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (updated != null) 'updated': updated!.toIso8601String(),
         if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
@@ -10570,7 +10569,7 @@ class Segment {
   }
 
   core.Map<core.String, core.Object?> toJson() => {
-        if (created != null) 'created': (created!).toIso8601String(),
+        if (created != null) 'created': created!.toIso8601String(),
         if (definition != null) 'definition': definition!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -10578,7 +10577,7 @@ class Segment {
         if (segmentId != null) 'segmentId': segmentId!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (type != null) 'type': type!,
-        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (updated != null) 'updated': updated!.toIso8601String(),
       };
 }
 
@@ -10842,7 +10841,7 @@ class UnsampledReport {
         if (accountId != null) 'accountId': accountId!,
         if (cloudStorageDownloadDetails != null)
           'cloudStorageDownloadDetails': cloudStorageDownloadDetails!.toJson(),
-        if (created != null) 'created': (created!).toIso8601String(),
+        if (created != null) 'created': created!.toIso8601String(),
         if (dimensions != null) 'dimensions': dimensions!,
         if (downloadType != null) 'downloadType': downloadType!,
         if (driveDownloadDetails != null)
@@ -10858,7 +10857,7 @@ class UnsampledReport {
         if (startDate != null) 'start-date': startDate!,
         if (status != null) 'status': status!,
         if (title != null) 'title': title!,
-        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (updated != null) 'updated': updated!.toIso8601String(),
         if (webPropertyId != null) 'webPropertyId': webPropertyId!,
       };
 }
@@ -11006,7 +11005,7 @@ class Upload {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (status != null) 'status': status!,
-        if (uploadTime != null) 'uploadTime': (uploadTime!).toIso8601String(),
+        if (uploadTime != null) 'uploadTime': uploadTime!.toIso8601String(),
       };
 }
 
@@ -11156,7 +11155,7 @@ class UserDeletionRequest {
 
   core.Map<core.String, core.Object?> toJson() => {
         if (deletionRequestTime != null)
-          'deletionRequestTime': (deletionRequestTime!).toIso8601String(),
+          'deletionRequestTime': deletionRequestTime!.toIso8601String(),
         if (firebaseProjectId != null) 'firebaseProjectId': firebaseProjectId!,
         if (id != null) 'id': id!.toJson(),
         if (kind != null) 'kind': kind!,
@@ -11628,7 +11627,7 @@ class Webproperty {
   core.Map<core.String, core.Object?> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (childLink != null) 'childLink': childLink!.toJson(),
-        if (created != null) 'created': (created!).toIso8601String(),
+        if (created != null) 'created': created!.toIso8601String(),
         if (dataRetentionResetOnNewActivity != null)
           'dataRetentionResetOnNewActivity': dataRetentionResetOnNewActivity!,
         if (dataRetentionTtl != null) 'dataRetentionTtl': dataRetentionTtl!,
@@ -11645,7 +11644,7 @@ class Webproperty {
         if (profileCount != null) 'profileCount': profileCount!,
         if (selfLink != null) 'selfLink': selfLink!,
         if (starred != null) 'starred': starred!,
-        if (updated != null) 'updated': (updated!).toIso8601String(),
+        if (updated != null) 'updated': updated!.toIso8601String(),
         if (websiteUrl != null) 'websiteUrl': websiteUrl!,
       };
 }

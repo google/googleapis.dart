@@ -100,12 +100,7 @@ class DartApiTestLibrary extends TestHelper {
   }
 
   String get libraryHeader => """
-$ignoreForFileComments
-// ignore_for_file: avoid_returning_null
-// ignore_for_file: cascade_invocations
-// ignore_for_file: prefer_final_locals
-// ignore_for_file: prefer_single_quotes
-// ignore_for_file: unused_local_variable
+${ignoreForFileComments(_testIgnores)}
 
 import 'dart:async' as async;
 import 'dart:convert' as convert;
@@ -119,6 +114,16 @@ import '../$testSharedDartFileName';
 
 """;
 }
+
+const _testIgnores = {
+  ...ignoreForFileSet,
+  'avoid_returning_null',
+  'cascade_invocations',
+  'prefer_final_locals',
+  'prefer_single_quotes',
+  'unnecessary_parenthesis',
+  'unused_local_variable',
+};
 
 const testSharedDartFileName = 'test_shared.dart';
 

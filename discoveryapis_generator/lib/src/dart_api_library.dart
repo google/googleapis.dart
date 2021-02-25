@@ -13,7 +13,7 @@ import 'generated_googleapis/discovery/v1.dart';
 import 'namer.dart';
 import 'utils.dart';
 
-const _ignoreForFileSet = {
+const ignoreForFileSet = {
   // violated by `container` v1 API,
   'camel_case_types',
   // Can remove when https://github.com/dart-lang/linter/issues/2442 is fixed!
@@ -27,12 +27,11 @@ const _ignoreForFileSet = {
   'unnecessary_brace_in_string_interps',
   'unnecessary_cast',
   'unnecessary_lambdas',
-  'unnecessary_parenthesis',
   'unnecessary_string_interpolations',
 };
 
-String get ignoreForFileComments =>
-    _ignoreForFileSet.map((e) => '// ignore_for_file: $e').join('\n');
+String ignoreForFileComments(Iterable<String> ignores) =>
+    (ignores.toList()..sort()).map((e) => '// ignore_for_file: $e').join('\n');
 
 /// Encapsulates names of prefix-imported libraries.
 class DartApiImports {
@@ -123,7 +122,7 @@ class DartApiLibrary extends BaseApiLibrary {
     final result = [
       '// This is a generated file (see the discoveryapis_generator project).',
       '',
-      ignoreForFileComments,
+      ignoreForFileComments(ignoreForFileSet),
       '',
       _commentFromRestDescription(description, apiClass).asDartDoc(0).trim(),
       'library $libraryName;',

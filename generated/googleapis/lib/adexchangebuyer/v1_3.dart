@@ -11,7 +11,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Ad Exchange Buyer API - v1.3
@@ -1826,7 +1825,7 @@ class Creative {
         if (advertiserName != null) 'advertiserName': advertiserName!,
         if (agencyId != null) 'agencyId': agencyId!,
         if (apiUploadTimestamp != null)
-          'apiUploadTimestamp': (apiUploadTimestamp!).toIso8601String(),
+          'apiUploadTimestamp': apiUploadTimestamp!.toIso8601String(),
         if (attribute != null) 'attribute': attribute!,
         if (buyerCreativeId != null) 'buyerCreativeId': buyerCreativeId!,
         if (clickThroughUrl != null) 'clickThroughUrl': clickThroughUrl!,

@@ -11,7 +11,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
 /// Search Console API - v3
@@ -840,9 +839,9 @@ class WmxSitemap {
         if (isPending != null) 'isPending': isPending!,
         if (isSitemapsIndex != null) 'isSitemapsIndex': isSitemapsIndex!,
         if (lastDownloaded != null)
-          'lastDownloaded': (lastDownloaded!).toIso8601String(),
+          'lastDownloaded': lastDownloaded!.toIso8601String(),
         if (lastSubmitted != null)
-          'lastSubmitted': (lastSubmitted!).toIso8601String(),
+          'lastSubmitted': lastSubmitted!.toIso8601String(),
         if (path != null) 'path': path!,
         if (type != null) 'type': type!,
         if (warnings != null) 'warnings': warnings!,

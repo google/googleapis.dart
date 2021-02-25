@@ -11,7 +11,6 @@
 // ignore_for_file: unnecessary_brace_in_string_interps
 // ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
-// ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
 /// BigQuery API - v2
@@ -3343,7 +3342,7 @@ class BqmlTrainingRun {
         if (iterationResults != null)
           'iterationResults':
               iterationResults!.map((value) => value.toJson()).toList(),
-        if (startTime != null) 'startTime': (startTime!).toIso8601String(),
+        if (startTime != null) 'startTime': startTime!.toIso8601String(),
         if (state != null) 'state': state!,
         if (trainingOptions != null)
           'trainingOptions': trainingOptions!.toJson(),
@@ -9514,7 +9513,7 @@ class SnapshotDefinition {
         if (baseTableReference != null)
           'baseTableReference': baseTableReference!.toJson(),
         if (snapshotTime != null)
-          'snapshotTime': (snapshotTime!).toIso8601String(),
+          'snapshotTime': snapshotTime!.toIso8601String(),
       };
 }
 
