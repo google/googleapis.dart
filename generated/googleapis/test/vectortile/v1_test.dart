@@ -897,7 +897,8 @@ void main() {
   unittest.group('obj-schema-Area', () {
     unittest.test('to-json--from-json', () async {
       var o = buildArea();
-      var od = api.Area.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Area.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkArea(od as api.Area);
     });
   });
@@ -905,7 +906,9 @@ void main() {
   unittest.group('obj-schema-BasemapZOrder', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBasemapZOrder();
-      var od = api.BasemapZOrder.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BasemapZOrder.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBasemapZOrder(od as api.BasemapZOrder);
     });
   });
@@ -913,7 +916,9 @@ void main() {
   unittest.group('obj-schema-ExtrudedArea', () {
     unittest.test('to-json--from-json', () async {
       var o = buildExtrudedArea();
-      var od = api.ExtrudedArea.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ExtrudedArea.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkExtrudedArea(od as api.ExtrudedArea);
     });
   });
@@ -921,7 +926,9 @@ void main() {
   unittest.group('obj-schema-Feature', () {
     unittest.test('to-json--from-json', () async {
       var o = buildFeature();
-      var od = api.Feature.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Feature.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkFeature(od as api.Feature);
     });
   });
@@ -929,7 +936,9 @@ void main() {
   unittest.group('obj-schema-FeatureTile', () {
     unittest.test('to-json--from-json', () async {
       var o = buildFeatureTile();
-      var od = api.FeatureTile.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.FeatureTile.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkFeatureTile(od as api.FeatureTile);
     });
   });
@@ -937,7 +946,9 @@ void main() {
   unittest.group('obj-schema-FirstDerivativeElevationGrid', () {
     unittest.test('to-json--from-json', () async {
       var o = buildFirstDerivativeElevationGrid();
-      var od = api.FirstDerivativeElevationGrid.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.FirstDerivativeElevationGrid.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkFirstDerivativeElevationGrid(od as api.FirstDerivativeElevationGrid);
     });
   });
@@ -945,7 +956,9 @@ void main() {
   unittest.group('obj-schema-Geometry', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGeometry();
-      var od = api.Geometry.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Geometry.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGeometry(od as api.Geometry);
     });
   });
@@ -953,7 +966,8 @@ void main() {
   unittest.group('obj-schema-Line', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLine();
-      var od = api.Line.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Line.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLine(od as api.Line);
     });
   });
@@ -961,7 +975,9 @@ void main() {
   unittest.group('obj-schema-ModeledVolume', () {
     unittest.test('to-json--from-json', () async {
       var o = buildModeledVolume();
-      var od = api.ModeledVolume.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ModeledVolume.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkModeledVolume(od as api.ModeledVolume);
     });
   });
@@ -969,7 +985,9 @@ void main() {
   unittest.group('obj-schema-ProviderInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildProviderInfo();
-      var od = api.ProviderInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ProviderInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkProviderInfo(od as api.ProviderInfo);
     });
   });
@@ -977,7 +995,9 @@ void main() {
   unittest.group('obj-schema-Relation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRelation();
-      var od = api.Relation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Relation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkRelation(od as api.Relation);
     });
   });
@@ -985,7 +1005,9 @@ void main() {
   unittest.group('obj-schema-RoadInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRoadInfo();
-      var od = api.RoadInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.RoadInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkRoadInfo(od as api.RoadInfo);
     });
   });
@@ -993,7 +1015,8 @@ void main() {
   unittest.group('obj-schema-Row', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRow();
-      var od = api.Row.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Row.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkRow(od as api.Row);
     });
   });
@@ -1001,7 +1024,9 @@ void main() {
   unittest.group('obj-schema-SecondDerivativeElevationGrid', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSecondDerivativeElevationGrid();
-      var od = api.SecondDerivativeElevationGrid.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SecondDerivativeElevationGrid.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSecondDerivativeElevationGrid(
           od as api.SecondDerivativeElevationGrid);
     });
@@ -1010,7 +1035,9 @@ void main() {
   unittest.group('obj-schema-SegmentInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSegmentInfo();
-      var od = api.SegmentInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SegmentInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSegmentInfo(od as api.SegmentInfo);
     });
   });
@@ -1018,7 +1045,9 @@ void main() {
   unittest.group('obj-schema-TerrainTile', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTerrainTile();
-      var od = api.TerrainTile.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TerrainTile.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTerrainTile(od as api.TerrainTile);
     });
   });
@@ -1026,7 +1055,9 @@ void main() {
   unittest.group('obj-schema-TileCoordinates', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTileCoordinates();
-      var od = api.TileCoordinates.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TileCoordinates.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTileCoordinates(od as api.TileCoordinates);
     });
   });
@@ -1034,7 +1065,9 @@ void main() {
   unittest.group('obj-schema-TriangleStrip', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTriangleStrip();
-      var od = api.TriangleStrip.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TriangleStrip.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTriangleStrip(od as api.TriangleStrip);
     });
   });
@@ -1042,7 +1075,9 @@ void main() {
   unittest.group('obj-schema-Vertex2DList', () {
     unittest.test('to-json--from-json', () async {
       var o = buildVertex2DList();
-      var od = api.Vertex2DList.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Vertex2DList.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkVertex2DList(od as api.Vertex2DList);
     });
   });
@@ -1050,7 +1085,9 @@ void main() {
   unittest.group('obj-schema-Vertex3DList', () {
     unittest.test('to-json--from-json', () async {
       var o = buildVertex3DList();
-      var od = api.Vertex3DList.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Vertex3DList.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkVertex3DList(od as api.Vertex3DList);
     });
   });

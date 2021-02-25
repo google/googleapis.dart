@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -519,7 +518,7 @@ class GoogleCloudVideointelligenceV1AnnotateVideoProgress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationProgress != null)
           'annotationProgress':
               annotationProgress!.map((value) => value.toJson()).toList(),
@@ -608,7 +607,7 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (features != null) 'features': features!,
         if (inputContent != null) 'inputContent': inputContent!,
         if (inputUri != null) 'inputUri': inputUri!,
@@ -639,7 +638,7 @@ class GoogleCloudVideointelligenceV1AnnotateVideoResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationResults != null)
           'annotationResults':
               annotationResults!.map((value) => value.toJson()).toList(),
@@ -677,7 +676,7 @@ class GoogleCloudVideointelligenceV1DetectedAttribute {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
@@ -716,7 +715,7 @@ class GoogleCloudVideointelligenceV1DetectedLandmark {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (name != null) 'name': name!,
         if (point != null) 'point': point!.toJson(),
@@ -751,7 +750,7 @@ class GoogleCloudVideointelligenceV1Entity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (entityId != null) 'entityId': entityId!,
         if (languageCode != null) 'languageCode': languageCode!,
@@ -785,7 +784,7 @@ class GoogleCloudVideointelligenceV1ExplicitContentAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (frames != null)
           'frames': frames!.map((value) => value.toJson()).toList(),
         if (version != null) 'version': version!,
@@ -809,7 +808,7 @@ class GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (model != null) 'model': model!,
       };
 }
@@ -841,7 +840,7 @@ class GoogleCloudVideointelligenceV1ExplicitContentFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (pornographyLikelihood != null)
           'pornographyLikelihood': pornographyLikelihood!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
@@ -889,7 +888,7 @@ class GoogleCloudVideointelligenceV1FaceAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (frames != null)
           'frames': frames!.map((value) => value.toJson()).toList(),
         if (segments != null)
@@ -934,7 +933,7 @@ class GoogleCloudVideointelligenceV1FaceDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (thumbnail != null) 'thumbnail': thumbnail!,
         if (tracks != null)
           'tracks': tracks!.map((value) => value.toJson()).toList(),
@@ -973,7 +972,7 @@ class GoogleCloudVideointelligenceV1FaceDetectionConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (includeAttributes != null) 'includeAttributes': includeAttributes!,
         if (includeBoundingBoxes != null)
           'includeBoundingBoxes': includeBoundingBoxes!,
@@ -1011,7 +1010,7 @@ class GoogleCloudVideointelligenceV1FaceFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBoxes != null)
           'normalizedBoundingBoxes':
               normalizedBoundingBoxes!.map((value) => value.toJson()).toList(),
@@ -1033,7 +1032,7 @@ class GoogleCloudVideointelligenceV1FaceSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (segment != null) 'segment': segment!.toJson(),
       };
 }
@@ -1092,7 +1091,7 @@ class GoogleCloudVideointelligenceV1LabelAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (categoryEntities != null)
           'categoryEntities':
               categoryEntities!.map((value) => value.toJson()).toList(),
@@ -1171,7 +1170,7 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (frameConfidenceThreshold != null)
           'frameConfidenceThreshold': frameConfidenceThreshold!,
         if (labelDetectionMode != null)
@@ -1205,7 +1204,7 @@ class GoogleCloudVideointelligenceV1LabelFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
@@ -1233,7 +1232,7 @@ class GoogleCloudVideointelligenceV1LabelSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (segment != null) 'segment': segment!.toJson(),
       };
@@ -1281,7 +1280,7 @@ class GoogleCloudVideointelligenceV1LogoRecognitionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entity != null) 'entity': entity!.toJson(),
         if (segments != null)
           'segments': segments!.map((value) => value.toJson()).toList(),
@@ -1324,7 +1323,7 @@ class GoogleCloudVideointelligenceV1NormalizedBoundingBox {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bottom != null) 'bottom': bottom!,
         if (left != null) 'left': left!,
         if (right != null) 'right': right!,
@@ -1358,7 +1357,7 @@ class GoogleCloudVideointelligenceV1NormalizedBoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (vertices != null)
           'vertices': vertices!.map((value) => value.toJson()).toList(),
       };
@@ -1386,7 +1385,7 @@ class GoogleCloudVideointelligenceV1NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
       };
@@ -1454,7 +1453,7 @@ class GoogleCloudVideointelligenceV1ObjectTrackingAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (entity != null) 'entity': entity!.toJson(),
         if (frames != null)
@@ -1481,7 +1480,7 @@ class GoogleCloudVideointelligenceV1ObjectTrackingConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (model != null) 'model': model!,
       };
 }
@@ -1510,7 +1509,7 @@ class GoogleCloudVideointelligenceV1ObjectTrackingFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBox != null)
           'normalizedBoundingBox': normalizedBoundingBox!.toJson(),
         if (timeOffset != null) 'timeOffset': timeOffset!,
@@ -1541,7 +1540,7 @@ class GoogleCloudVideointelligenceV1PersonDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (tracks != null)
           'tracks': tracks!.map((value) => value.toJson()).toList(),
         if (version != null) 'version': version!,
@@ -1580,7 +1579,7 @@ class GoogleCloudVideointelligenceV1PersonDetectionConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (includeAttributes != null) 'includeAttributes': includeAttributes!,
         if (includeBoundingBoxes != null)
           'includeBoundingBoxes': includeBoundingBoxes!,
@@ -1606,7 +1605,7 @@ class GoogleCloudVideointelligenceV1ShotChangeDetectionConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (model != null) 'model': model!,
       };
 }
@@ -1636,7 +1635,7 @@ class GoogleCloudVideointelligenceV1SpeechContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (phrases != null) 'phrases': phrases!,
       };
 }
@@ -1684,7 +1683,7 @@ class GoogleCloudVideointelligenceV1SpeechRecognitionAlternative {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (transcript != null) 'transcript': transcript!,
         if (words != null)
@@ -1727,7 +1726,7 @@ class GoogleCloudVideointelligenceV1SpeechTranscription {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternatives != null)
           'alternatives': alternatives!.map((value) => value.toJson()).toList(),
         if (languageCode != null) 'languageCode': languageCode!,
@@ -1858,7 +1857,7 @@ class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audioTracks != null) 'audioTracks': audioTracks!,
         if (diarizationSpeakerCount != null)
           'diarizationSpeakerCount': diarizationSpeakerCount!,
@@ -1909,7 +1908,7 @@ class GoogleCloudVideointelligenceV1TextAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (segments != null)
           'segments': segments!.map((value) => value.toJson()).toList(),
         if (text != null) 'text': text!,
@@ -1946,7 +1945,7 @@ class GoogleCloudVideointelligenceV1TextDetectionConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (languageHints != null) 'languageHints': languageHints!,
         if (model != null) 'model': model!,
       };
@@ -1977,7 +1976,7 @@ class GoogleCloudVideointelligenceV1TextFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rotatedBoundingBox != null)
           'rotatedBoundingBox': rotatedBoundingBox!.toJson(),
         if (timeOffset != null) 'timeOffset': timeOffset!,
@@ -2017,7 +2016,7 @@ class GoogleCloudVideointelligenceV1TextSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (frames != null)
           'frames': frames!.map((value) => value.toJson()).toList(),
@@ -2075,7 +2074,7 @@ class GoogleCloudVideointelligenceV1TimestampedObject {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null)
           'attributes': attributes!.map((value) => value.toJson()).toList(),
         if (landmarks != null)
@@ -2131,7 +2130,7 @@ class GoogleCloudVideointelligenceV1Track {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null)
           'attributes': attributes!.map((value) => value.toJson()).toList(),
         if (confidence != null) 'confidence': confidence!,
@@ -2203,7 +2202,7 @@ class GoogleCloudVideointelligenceV1VideoAnnotationProgress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (feature != null) 'feature': feature!,
         if (inputUri != null) 'inputUri': inputUri!,
         if (progressPercent != null) 'progressPercent': progressPercent!,
@@ -2423,7 +2422,7 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (error != null) 'error': error!.toJson(),
         if (explicitAnnotation != null)
           'explicitAnnotation': explicitAnnotation!.toJson(),
@@ -2570,7 +2569,7 @@ class GoogleCloudVideointelligenceV1VideoContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (explicitContentDetectionConfig != null)
           'explicitContentDetectionConfig':
               explicitContentDetectionConfig!.toJson(),
@@ -2614,7 +2613,7 @@ class GoogleCloudVideointelligenceV1VideoSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
         if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
       };
@@ -2684,7 +2683,7 @@ class GoogleCloudVideointelligenceV1WordInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (endTime != null) 'endTime': endTime!,
         if (speakerTag != null) 'speakerTag': speakerTag!,
@@ -2716,7 +2715,7 @@ class GoogleCloudVideointelligenceV1beta2AnnotateVideoProgress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationProgress != null)
           'annotationProgress':
               annotationProgress!.map((value) => value.toJson()).toList(),
@@ -2746,7 +2745,7 @@ class GoogleCloudVideointelligenceV1beta2AnnotateVideoResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationResults != null)
           'annotationResults':
               annotationResults!.map((value) => value.toJson()).toList(),
@@ -2785,7 +2784,7 @@ class GoogleCloudVideointelligenceV1beta2DetectedAttribute {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
@@ -2824,7 +2823,7 @@ class GoogleCloudVideointelligenceV1beta2DetectedLandmark {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (name != null) 'name': name!,
         if (point != null) 'point': point!.toJson(),
@@ -2859,7 +2858,7 @@ class GoogleCloudVideointelligenceV1beta2Entity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (entityId != null) 'entityId': entityId!,
         if (languageCode != null) 'languageCode': languageCode!,
@@ -2893,7 +2892,7 @@ class GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (frames != null)
           'frames': frames!.map((value) => value.toJson()).toList(),
         if (version != null) 'version': version!,
@@ -2928,7 +2927,7 @@ class GoogleCloudVideointelligenceV1beta2ExplicitContentFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (pornographyLikelihood != null)
           'pornographyLikelihood': pornographyLikelihood!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
@@ -2976,7 +2975,7 @@ class GoogleCloudVideointelligenceV1beta2FaceAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (frames != null)
           'frames': frames!.map((value) => value.toJson()).toList(),
         if (segments != null)
@@ -3021,7 +3020,7 @@ class GoogleCloudVideointelligenceV1beta2FaceDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (thumbnail != null) 'thumbnail': thumbnail!,
         if (tracks != null)
           'tracks': tracks!.map((value) => value.toJson()).toList(),
@@ -3060,7 +3059,7 @@ class GoogleCloudVideointelligenceV1beta2FaceFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBoxes != null)
           'normalizedBoundingBoxes':
               normalizedBoundingBoxes!.map((value) => value.toJson()).toList(),
@@ -3082,7 +3081,7 @@ class GoogleCloudVideointelligenceV1beta2FaceSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (segment != null) 'segment': segment!.toJson(),
       };
 }
@@ -3141,7 +3140,7 @@ class GoogleCloudVideointelligenceV1beta2LabelAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (categoryEntities != null)
           'categoryEntities':
               categoryEntities!.map((value) => value.toJson()).toList(),
@@ -3176,7 +3175,7 @@ class GoogleCloudVideointelligenceV1beta2LabelFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
@@ -3204,7 +3203,7 @@ class GoogleCloudVideointelligenceV1beta2LabelSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (segment != null) 'segment': segment!.toJson(),
       };
@@ -3252,7 +3251,7 @@ class GoogleCloudVideointelligenceV1beta2LogoRecognitionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entity != null) 'entity': entity!.toJson(),
         if (segments != null)
           'segments': segments!.map((value) => value.toJson()).toList(),
@@ -3296,7 +3295,7 @@ class GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bottom != null) 'bottom': bottom!,
         if (left != null) 'left': left!,
         if (right != null) 'right': right!,
@@ -3330,7 +3329,7 @@ class GoogleCloudVideointelligenceV1beta2NormalizedBoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (vertices != null)
           'vertices': vertices!.map((value) => value.toJson()).toList(),
       };
@@ -3358,7 +3357,7 @@ class GoogleCloudVideointelligenceV1beta2NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
       };
@@ -3426,7 +3425,7 @@ class GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (entity != null) 'entity': entity!.toJson(),
         if (frames != null)
@@ -3463,7 +3462,7 @@ class GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBox != null)
           'normalizedBoundingBox': normalizedBoundingBox!.toJson(),
         if (timeOffset != null) 'timeOffset': timeOffset!,
@@ -3494,7 +3493,7 @@ class GoogleCloudVideointelligenceV1beta2PersonDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (tracks != null)
           'tracks': tracks!.map((value) => value.toJson()).toList(),
         if (version != null) 'version': version!,
@@ -3544,7 +3543,7 @@ class GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (transcript != null) 'transcript': transcript!,
         if (words != null)
@@ -3588,7 +3587,7 @@ class GoogleCloudVideointelligenceV1beta2SpeechTranscription {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternatives != null)
           'alternatives': alternatives!.map((value) => value.toJson()).toList(),
         if (languageCode != null) 'languageCode': languageCode!,
@@ -3627,7 +3626,7 @@ class GoogleCloudVideointelligenceV1beta2TextAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (segments != null)
           'segments': segments!.map((value) => value.toJson()).toList(),
         if (text != null) 'text': text!,
@@ -3660,7 +3659,7 @@ class GoogleCloudVideointelligenceV1beta2TextFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rotatedBoundingBox != null)
           'rotatedBoundingBox': rotatedBoundingBox!.toJson(),
         if (timeOffset != null) 'timeOffset': timeOffset!,
@@ -3700,7 +3699,7 @@ class GoogleCloudVideointelligenceV1beta2TextSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (frames != null)
           'frames': frames!.map((value) => value.toJson()).toList(),
@@ -3760,7 +3759,7 @@ class GoogleCloudVideointelligenceV1beta2TimestampedObject {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null)
           'attributes': attributes!.map((value) => value.toJson()).toList(),
         if (landmarks != null)
@@ -3816,7 +3815,7 @@ class GoogleCloudVideointelligenceV1beta2Track {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null)
           'attributes': attributes!.map((value) => value.toJson()).toList(),
         if (confidence != null) 'confidence': confidence!,
@@ -3888,7 +3887,7 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (feature != null) 'feature': feature!,
         if (inputUri != null) 'inputUri': inputUri!,
         if (progressPercent != null) 'progressPercent': progressPercent!,
@@ -4113,7 +4112,7 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (error != null) 'error': error!.toJson(),
         if (explicitAnnotation != null)
           'explicitAnnotation': explicitAnnotation!.toJson(),
@@ -4186,7 +4185,7 @@ class GoogleCloudVideointelligenceV1beta2VideoSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
         if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
       };
@@ -4256,7 +4255,7 @@ class GoogleCloudVideointelligenceV1beta2WordInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (endTime != null) 'endTime': endTime!,
         if (speakerTag != null) 'speakerTag': speakerTag!,
@@ -4288,7 +4287,7 @@ class GoogleCloudVideointelligenceV1p1beta1AnnotateVideoProgress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationProgress != null)
           'annotationProgress':
               annotationProgress!.map((value) => value.toJson()).toList(),
@@ -4318,7 +4317,7 @@ class GoogleCloudVideointelligenceV1p1beta1AnnotateVideoResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationResults != null)
           'annotationResults':
               annotationResults!.map((value) => value.toJson()).toList(),
@@ -4357,7 +4356,7 @@ class GoogleCloudVideointelligenceV1p1beta1DetectedAttribute {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
@@ -4397,7 +4396,7 @@ class GoogleCloudVideointelligenceV1p1beta1DetectedLandmark {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (name != null) 'name': name!,
         if (point != null) 'point': point!.toJson(),
@@ -4432,7 +4431,7 @@ class GoogleCloudVideointelligenceV1p1beta1Entity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (entityId != null) 'entityId': entityId!,
         if (languageCode != null) 'languageCode': languageCode!,
@@ -4467,7 +4466,7 @@ class GoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (frames != null)
           'frames': frames!.map((value) => value.toJson()).toList(),
         if (version != null) 'version': version!,
@@ -4502,7 +4501,7 @@ class GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (pornographyLikelihood != null)
           'pornographyLikelihood': pornographyLikelihood!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
@@ -4550,7 +4549,7 @@ class GoogleCloudVideointelligenceV1p1beta1FaceAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (frames != null)
           'frames': frames!.map((value) => value.toJson()).toList(),
         if (segments != null)
@@ -4595,7 +4594,7 @@ class GoogleCloudVideointelligenceV1p1beta1FaceDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (thumbnail != null) 'thumbnail': thumbnail!,
         if (tracks != null)
           'tracks': tracks!.map((value) => value.toJson()).toList(),
@@ -4634,7 +4633,7 @@ class GoogleCloudVideointelligenceV1p1beta1FaceFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBoxes != null)
           'normalizedBoundingBoxes':
               normalizedBoundingBoxes!.map((value) => value.toJson()).toList(),
@@ -4656,7 +4655,7 @@ class GoogleCloudVideointelligenceV1p1beta1FaceSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (segment != null) 'segment': segment!.toJson(),
       };
 }
@@ -4716,7 +4715,7 @@ class GoogleCloudVideointelligenceV1p1beta1LabelAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (categoryEntities != null)
           'categoryEntities':
               categoryEntities!.map((value) => value.toJson()).toList(),
@@ -4751,7 +4750,7 @@ class GoogleCloudVideointelligenceV1p1beta1LabelFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
@@ -4779,7 +4778,7 @@ class GoogleCloudVideointelligenceV1p1beta1LabelSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (segment != null) 'segment': segment!.toJson(),
       };
@@ -4827,7 +4826,7 @@ class GoogleCloudVideointelligenceV1p1beta1LogoRecognitionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entity != null) 'entity': entity!.toJson(),
         if (segments != null)
           'segments': segments!.map((value) => value.toJson()).toList(),
@@ -4871,7 +4870,7 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bottom != null) 'bottom': bottom!,
         if (left != null) 'left': left!,
         if (right != null) 'right': right!,
@@ -4905,7 +4904,7 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (vertices != null)
           'vertices': vertices!.map((value) => value.toJson()).toList(),
       };
@@ -4934,7 +4933,7 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
       };
@@ -5003,7 +5002,7 @@ class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (entity != null) 'entity': entity!.toJson(),
         if (frames != null)
@@ -5040,7 +5039,7 @@ class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBox != null)
           'normalizedBoundingBox': normalizedBoundingBox!.toJson(),
         if (timeOffset != null) 'timeOffset': timeOffset!,
@@ -5071,7 +5070,7 @@ class GoogleCloudVideointelligenceV1p1beta1PersonDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (tracks != null)
           'tracks': tracks!.map((value) => value.toJson()).toList(),
         if (version != null) 'version': version!,
@@ -5121,7 +5120,7 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (transcript != null) 'transcript': transcript!,
         if (words != null)
@@ -5165,7 +5164,7 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechTranscription {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternatives != null)
           'alternatives': alternatives!.map((value) => value.toJson()).toList(),
         if (languageCode != null) 'languageCode': languageCode!,
@@ -5204,7 +5203,7 @@ class GoogleCloudVideointelligenceV1p1beta1TextAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (segments != null)
           'segments': segments!.map((value) => value.toJson()).toList(),
         if (text != null) 'text': text!,
@@ -5238,7 +5237,7 @@ class GoogleCloudVideointelligenceV1p1beta1TextFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rotatedBoundingBox != null)
           'rotatedBoundingBox': rotatedBoundingBox!.toJson(),
         if (timeOffset != null) 'timeOffset': timeOffset!,
@@ -5278,7 +5277,7 @@ class GoogleCloudVideointelligenceV1p1beta1TextSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (frames != null)
           'frames': frames!.map((value) => value.toJson()).toList(),
@@ -5338,7 +5337,7 @@ class GoogleCloudVideointelligenceV1p1beta1TimestampedObject {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null)
           'attributes': attributes!.map((value) => value.toJson()).toList(),
         if (landmarks != null)
@@ -5394,7 +5393,7 @@ class GoogleCloudVideointelligenceV1p1beta1Track {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null)
           'attributes': attributes!.map((value) => value.toJson()).toList(),
         if (confidence != null) 'confidence': confidence!,
@@ -5466,7 +5465,7 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (feature != null) 'feature': feature!,
         if (inputUri != null) 'inputUri': inputUri!,
         if (progressPercent != null) 'progressPercent': progressPercent!,
@@ -5694,7 +5693,7 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (error != null) 'error': error!.toJson(),
         if (explicitAnnotation != null)
           'explicitAnnotation': explicitAnnotation!.toJson(),
@@ -5767,7 +5766,7 @@ class GoogleCloudVideointelligenceV1p1beta1VideoSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
         if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
       };
@@ -5837,7 +5836,7 @@ class GoogleCloudVideointelligenceV1p1beta1WordInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (endTime != null) 'endTime': endTime!,
         if (speakerTag != null) 'speakerTag': speakerTag!,
@@ -5869,7 +5868,7 @@ class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoProgress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationProgress != null)
           'annotationProgress':
               annotationProgress!.map((value) => value.toJson()).toList(),
@@ -5899,7 +5898,7 @@ class GoogleCloudVideointelligenceV1p2beta1AnnotateVideoResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationResults != null)
           'annotationResults':
               annotationResults!.map((value) => value.toJson()).toList(),
@@ -5938,7 +5937,7 @@ class GoogleCloudVideointelligenceV1p2beta1DetectedAttribute {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
@@ -5978,7 +5977,7 @@ class GoogleCloudVideointelligenceV1p2beta1DetectedLandmark {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (name != null) 'name': name!,
         if (point != null) 'point': point!.toJson(),
@@ -6013,7 +6012,7 @@ class GoogleCloudVideointelligenceV1p2beta1Entity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (entityId != null) 'entityId': entityId!,
         if (languageCode != null) 'languageCode': languageCode!,
@@ -6048,7 +6047,7 @@ class GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (frames != null)
           'frames': frames!.map((value) => value.toJson()).toList(),
         if (version != null) 'version': version!,
@@ -6083,7 +6082,7 @@ class GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (pornographyLikelihood != null)
           'pornographyLikelihood': pornographyLikelihood!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
@@ -6131,7 +6130,7 @@ class GoogleCloudVideointelligenceV1p2beta1FaceAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (frames != null)
           'frames': frames!.map((value) => value.toJson()).toList(),
         if (segments != null)
@@ -6176,7 +6175,7 @@ class GoogleCloudVideointelligenceV1p2beta1FaceDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (thumbnail != null) 'thumbnail': thumbnail!,
         if (tracks != null)
           'tracks': tracks!.map((value) => value.toJson()).toList(),
@@ -6215,7 +6214,7 @@ class GoogleCloudVideointelligenceV1p2beta1FaceFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBoxes != null)
           'normalizedBoundingBoxes':
               normalizedBoundingBoxes!.map((value) => value.toJson()).toList(),
@@ -6237,7 +6236,7 @@ class GoogleCloudVideointelligenceV1p2beta1FaceSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (segment != null) 'segment': segment!.toJson(),
       };
 }
@@ -6297,7 +6296,7 @@ class GoogleCloudVideointelligenceV1p2beta1LabelAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (categoryEntities != null)
           'categoryEntities':
               categoryEntities!.map((value) => value.toJson()).toList(),
@@ -6332,7 +6331,7 @@ class GoogleCloudVideointelligenceV1p2beta1LabelFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
@@ -6360,7 +6359,7 @@ class GoogleCloudVideointelligenceV1p2beta1LabelSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (segment != null) 'segment': segment!.toJson(),
       };
@@ -6408,7 +6407,7 @@ class GoogleCloudVideointelligenceV1p2beta1LogoRecognitionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entity != null) 'entity': entity!.toJson(),
         if (segments != null)
           'segments': segments!.map((value) => value.toJson()).toList(),
@@ -6452,7 +6451,7 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bottom != null) 'bottom': bottom!,
         if (left != null) 'left': left!,
         if (right != null) 'right': right!,
@@ -6486,7 +6485,7 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (vertices != null)
           'vertices': vertices!.map((value) => value.toJson()).toList(),
       };
@@ -6515,7 +6514,7 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
       };
@@ -6584,7 +6583,7 @@ class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (entity != null) 'entity': entity!.toJson(),
         if (frames != null)
@@ -6621,7 +6620,7 @@ class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBox != null)
           'normalizedBoundingBox': normalizedBoundingBox!.toJson(),
         if (timeOffset != null) 'timeOffset': timeOffset!,
@@ -6652,7 +6651,7 @@ class GoogleCloudVideointelligenceV1p2beta1PersonDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (tracks != null)
           'tracks': tracks!.map((value) => value.toJson()).toList(),
         if (version != null) 'version': version!,
@@ -6702,7 +6701,7 @@ class GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (transcript != null) 'transcript': transcript!,
         if (words != null)
@@ -6746,7 +6745,7 @@ class GoogleCloudVideointelligenceV1p2beta1SpeechTranscription {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternatives != null)
           'alternatives': alternatives!.map((value) => value.toJson()).toList(),
         if (languageCode != null) 'languageCode': languageCode!,
@@ -6785,7 +6784,7 @@ class GoogleCloudVideointelligenceV1p2beta1TextAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (segments != null)
           'segments': segments!.map((value) => value.toJson()).toList(),
         if (text != null) 'text': text!,
@@ -6819,7 +6818,7 @@ class GoogleCloudVideointelligenceV1p2beta1TextFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rotatedBoundingBox != null)
           'rotatedBoundingBox': rotatedBoundingBox!.toJson(),
         if (timeOffset != null) 'timeOffset': timeOffset!,
@@ -6859,7 +6858,7 @@ class GoogleCloudVideointelligenceV1p2beta1TextSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (frames != null)
           'frames': frames!.map((value) => value.toJson()).toList(),
@@ -6919,7 +6918,7 @@ class GoogleCloudVideointelligenceV1p2beta1TimestampedObject {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null)
           'attributes': attributes!.map((value) => value.toJson()).toList(),
         if (landmarks != null)
@@ -6975,7 +6974,7 @@ class GoogleCloudVideointelligenceV1p2beta1Track {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null)
           'attributes': attributes!.map((value) => value.toJson()).toList(),
         if (confidence != null) 'confidence': confidence!,
@@ -7047,7 +7046,7 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (feature != null) 'feature': feature!,
         if (inputUri != null) 'inputUri': inputUri!,
         if (progressPercent != null) 'progressPercent': progressPercent!,
@@ -7275,7 +7274,7 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (error != null) 'error': error!.toJson(),
         if (explicitAnnotation != null)
           'explicitAnnotation': explicitAnnotation!.toJson(),
@@ -7348,7 +7347,7 @@ class GoogleCloudVideointelligenceV1p2beta1VideoSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
         if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
       };
@@ -7418,7 +7417,7 @@ class GoogleCloudVideointelligenceV1p2beta1WordInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (endTime != null) 'endTime': endTime!,
         if (speakerTag != null) 'speakerTag': speakerTag!,
@@ -7450,7 +7449,7 @@ class GoogleCloudVideointelligenceV1p3beta1AnnotateVideoProgress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationProgress != null)
           'annotationProgress':
               annotationProgress!.map((value) => value.toJson()).toList(),
@@ -7480,7 +7479,7 @@ class GoogleCloudVideointelligenceV1p3beta1AnnotateVideoResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationResults != null)
           'annotationResults':
               annotationResults!.map((value) => value.toJson()).toList(),
@@ -7517,7 +7516,7 @@ class GoogleCloudVideointelligenceV1p3beta1Celebrity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
@@ -7550,7 +7549,7 @@ class GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (celebrityTracks != null)
           'celebrityTracks':
               celebrityTracks!.map((value) => value.toJson()).toList(),
@@ -7587,7 +7586,7 @@ class GoogleCloudVideointelligenceV1p3beta1CelebrityTrack {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (celebrities != null)
           'celebrities': celebrities!.map((value) => value.toJson()).toList(),
         if (faceTrack != null) 'faceTrack': faceTrack!.toJson(),
@@ -7626,7 +7625,7 @@ class GoogleCloudVideointelligenceV1p3beta1DetectedAttribute {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
@@ -7666,7 +7665,7 @@ class GoogleCloudVideointelligenceV1p3beta1DetectedLandmark {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (name != null) 'name': name!,
         if (point != null) 'point': point!.toJson(),
@@ -7701,7 +7700,7 @@ class GoogleCloudVideointelligenceV1p3beta1Entity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (entityId != null) 'entityId': entityId!,
         if (languageCode != null) 'languageCode': languageCode!,
@@ -7736,7 +7735,7 @@ class GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (frames != null)
           'frames': frames!.map((value) => value.toJson()).toList(),
         if (version != null) 'version': version!,
@@ -7771,7 +7770,7 @@ class GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (pornographyLikelihood != null)
           'pornographyLikelihood': pornographyLikelihood!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
@@ -7819,7 +7818,7 @@ class GoogleCloudVideointelligenceV1p3beta1FaceAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (frames != null)
           'frames': frames!.map((value) => value.toJson()).toList(),
         if (segments != null)
@@ -7864,7 +7863,7 @@ class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (thumbnail != null) 'thumbnail': thumbnail!,
         if (tracks != null)
           'tracks': tracks!.map((value) => value.toJson()).toList(),
@@ -7903,7 +7902,7 @@ class GoogleCloudVideointelligenceV1p3beta1FaceFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBoxes != null)
           'normalizedBoundingBoxes':
               normalizedBoundingBoxes!.map((value) => value.toJson()).toList(),
@@ -7925,7 +7924,7 @@ class GoogleCloudVideointelligenceV1p3beta1FaceSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (segment != null) 'segment': segment!.toJson(),
       };
 }
@@ -7985,7 +7984,7 @@ class GoogleCloudVideointelligenceV1p3beta1LabelAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (categoryEntities != null)
           'categoryEntities':
               categoryEntities!.map((value) => value.toJson()).toList(),
@@ -8020,7 +8019,7 @@ class GoogleCloudVideointelligenceV1p3beta1LabelFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
@@ -8048,7 +8047,7 @@ class GoogleCloudVideointelligenceV1p3beta1LabelSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (segment != null) 'segment': segment!.toJson(),
       };
@@ -8096,7 +8095,7 @@ class GoogleCloudVideointelligenceV1p3beta1LogoRecognitionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entity != null) 'entity': entity!.toJson(),
         if (segments != null)
           'segments': segments!.map((value) => value.toJson()).toList(),
@@ -8140,7 +8139,7 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bottom != null) 'bottom': bottom!,
         if (left != null) 'left': left!,
         if (right != null) 'right': right!,
@@ -8174,7 +8173,7 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (vertices != null)
           'vertices': vertices!.map((value) => value.toJson()).toList(),
       };
@@ -8203,7 +8202,7 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
       };
@@ -8272,7 +8271,7 @@ class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (entity != null) 'entity': entity!.toJson(),
         if (frames != null)
@@ -8309,7 +8308,7 @@ class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedBoundingBox != null)
           'normalizedBoundingBox': normalizedBoundingBox!.toJson(),
         if (timeOffset != null) 'timeOffset': timeOffset!,
@@ -8340,7 +8339,7 @@ class GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (tracks != null)
           'tracks': tracks!.map((value) => value.toJson()).toList(),
         if (version != null) 'version': version!,
@@ -8370,7 +8369,7 @@ class GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (celebrity != null) 'celebrity': celebrity!.toJson(),
         if (confidence != null) 'confidence': confidence!,
       };
@@ -8419,7 +8418,7 @@ class GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (transcript != null) 'transcript': transcript!,
         if (words != null)
@@ -8463,7 +8462,7 @@ class GoogleCloudVideointelligenceV1p3beta1SpeechTranscription {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternatives != null)
           'alternatives': alternatives!.map((value) => value.toJson()).toList(),
         if (languageCode != null) 'languageCode': languageCode!,
@@ -8510,7 +8509,7 @@ class GoogleCloudVideointelligenceV1p3beta1StreamingAnnotateVideoResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationResults != null)
           'annotationResults': annotationResults!.toJson(),
         if (annotationResultsUri != null)
@@ -8581,7 +8580,7 @@ class GoogleCloudVideointelligenceV1p3beta1StreamingVideoAnnotationResults {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (explicitAnnotation != null)
           'explicitAnnotation': explicitAnnotation!.toJson(),
         if (frameTimestamp != null) 'frameTimestamp': frameTimestamp!,
@@ -8629,7 +8628,7 @@ class GoogleCloudVideointelligenceV1p3beta1TextAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (segments != null)
           'segments': segments!.map((value) => value.toJson()).toList(),
         if (text != null) 'text': text!,
@@ -8663,7 +8662,7 @@ class GoogleCloudVideointelligenceV1p3beta1TextFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rotatedBoundingBox != null)
           'rotatedBoundingBox': rotatedBoundingBox!.toJson(),
         if (timeOffset != null) 'timeOffset': timeOffset!,
@@ -8703,7 +8702,7 @@ class GoogleCloudVideointelligenceV1p3beta1TextSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (frames != null)
           'frames': frames!.map((value) => value.toJson()).toList(),
@@ -8763,7 +8762,7 @@ class GoogleCloudVideointelligenceV1p3beta1TimestampedObject {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null)
           'attributes': attributes!.map((value) => value.toJson()).toList(),
         if (landmarks != null)
@@ -8819,7 +8818,7 @@ class GoogleCloudVideointelligenceV1p3beta1Track {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null)
           'attributes': attributes!.map((value) => value.toJson()).toList(),
         if (confidence != null) 'confidence': confidence!,
@@ -8892,7 +8891,7 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (feature != null) 'feature': feature!,
         if (inputUri != null) 'inputUri': inputUri!,
         if (progressPercent != null) 'progressPercent': progressPercent!,
@@ -9130,7 +9129,7 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (celebrityRecognitionAnnotations != null)
           'celebrityRecognitionAnnotations':
               celebrityRecognitionAnnotations!.toJson(),
@@ -9206,7 +9205,7 @@ class GoogleCloudVideointelligenceV1p3beta1VideoSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
         if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
       };
@@ -9276,7 +9275,7 @@ class GoogleCloudVideointelligenceV1p3beta1WordInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (endTime != null) 'endTime': endTime!,
         if (speakerTag != null) 'speakerTag': speakerTag!,
@@ -9293,7 +9292,7 @@ class GoogleLongrunningCancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The response message for Operations.ListOperations.
@@ -9319,7 +9318,7 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
@@ -9380,29 +9379,27 @@ class GoogleLongrunningOperation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -9425,7 +9422,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -9461,8 +9458,8 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -9475,7 +9472,7 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,

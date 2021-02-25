@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -792,7 +791,7 @@ class AchievementResetAllResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (results != null)
           'results': results!.map((value) => value.toJson()).toList(),
@@ -822,7 +821,7 @@ class AchievementResetMultipleForAllRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (achievementIds != null) 'achievement_ids': achievementIds!,
         if (kind != null) 'kind': kind!,
       };
@@ -866,7 +865,7 @@ class AchievementResetResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currentState != null) 'currentState': currentState!,
         if (definitionId != null) 'definitionId': definitionId!,
         if (kind != null) 'kind': kind!,
@@ -898,7 +897,7 @@ class EventsResetMultipleForAllRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (eventIds != null) 'event_ids': eventIds!,
         if (kind != null) 'kind': kind!,
       };
@@ -942,7 +941,7 @@ class GamesPlayerExperienceInfoResource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currentExperiencePoints != null)
           'currentExperiencePoints': currentExperiencePoints!,
         if (currentLevel != null) 'currentLevel': currentLevel!.toJson(),
@@ -977,7 +976,7 @@ class GamesPlayerLevelResource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (level != null) 'level': level!,
         if (maxExperiencePoints != null)
           'maxExperiencePoints': maxExperiencePoints!,
@@ -1020,7 +1019,7 @@ class HiddenPlayer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hiddenTimeMillis != null) 'hiddenTimeMillis': hiddenTimeMillis!,
         if (kind != null) 'kind': kind!,
         if (player != null) 'player': player!.toJson(),
@@ -1057,7 +1056,7 @@ class HiddenPlayerList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -1090,7 +1089,7 @@ class PlayerName {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (familyName != null) 'familyName': familyName!,
         if (givenName != null) 'givenName': givenName!,
       };
@@ -1184,7 +1183,7 @@ class Player {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (avatarImageUrl != null) 'avatarImageUrl': avatarImageUrl!,
         if (bannerUrlLandscape != null)
           'bannerUrlLandscape': bannerUrlLandscape!,
@@ -1227,7 +1226,7 @@ class PlayerScoreResetAllResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (results != null)
           'results': results!.map((value) => value.toJson()).toList(),
@@ -1268,7 +1267,7 @@ class PlayerScoreResetResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (definitionId != null) 'definitionId': definitionId!,
         if (kind != null) 'kind': kind!,
         if (resetScoreTimeSpans != null)
@@ -1295,7 +1294,7 @@ class ProfileSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (profileVisible != null) 'profileVisible': profileVisible!,
       };
@@ -1324,7 +1323,7 @@ class ScoresResetMultipleForAllRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (leaderboardIds != null) 'leaderboard_ids': leaderboardIds!,
       };

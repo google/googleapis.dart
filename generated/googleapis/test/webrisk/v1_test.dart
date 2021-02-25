@@ -835,8 +835,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1ComputeThreatListDiffResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudWebriskV1ComputeThreatListDiffResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudWebriskV1ComputeThreatListDiffResponse(
           od as api.GoogleCloudWebriskV1ComputeThreatListDiffResponse);
     });
@@ -847,8 +848,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum(
           od as api.GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum);
     });
@@ -857,7 +859,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudWebriskV1RawHashes', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1RawHashes();
-      var od = api.GoogleCloudWebriskV1RawHashes.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudWebriskV1RawHashes.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudWebriskV1RawHashes(
           od as api.GoogleCloudWebriskV1RawHashes);
     });
@@ -866,7 +870,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudWebriskV1RawIndices', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1RawIndices();
-      var od = api.GoogleCloudWebriskV1RawIndices.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudWebriskV1RawIndices.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudWebriskV1RawIndices(
           od as api.GoogleCloudWebriskV1RawIndices);
     });
@@ -875,7 +881,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudWebriskV1RiceDeltaEncoding', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1RiceDeltaEncoding();
-      var od = api.GoogleCloudWebriskV1RiceDeltaEncoding.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudWebriskV1RiceDeltaEncoding.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudWebriskV1RiceDeltaEncoding(
           od as api.GoogleCloudWebriskV1RiceDeltaEncoding);
     });
@@ -884,8 +892,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudWebriskV1SearchHashesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1SearchHashesResponse();
-      var od =
-          api.GoogleCloudWebriskV1SearchHashesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudWebriskV1SearchHashesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudWebriskV1SearchHashesResponse(
           od as api.GoogleCloudWebriskV1SearchHashesResponse);
     });
@@ -895,8 +904,9 @@ void main() {
       'obj-schema-GoogleCloudWebriskV1SearchHashesResponseThreatHash', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1SearchHashesResponseThreatHash();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudWebriskV1SearchHashesResponseThreatHash.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudWebriskV1SearchHashesResponseThreatHash(
           od as api.GoogleCloudWebriskV1SearchHashesResponseThreatHash);
     });
@@ -905,7 +915,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudWebriskV1SearchUrisResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1SearchUrisResponse();
-      var od = api.GoogleCloudWebriskV1SearchUrisResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudWebriskV1SearchUrisResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudWebriskV1SearchUrisResponse(
           od as api.GoogleCloudWebriskV1SearchUrisResponse);
     });
@@ -915,8 +927,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1SearchUrisResponseThreatUri();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudWebriskV1SearchUrisResponseThreatUri.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudWebriskV1SearchUrisResponseThreatUri(
           od as api.GoogleCloudWebriskV1SearchUrisResponseThreatUri);
     });
@@ -925,7 +938,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudWebriskV1Submission', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1Submission();
-      var od = api.GoogleCloudWebriskV1Submission.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudWebriskV1Submission.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudWebriskV1Submission(
           od as api.GoogleCloudWebriskV1Submission);
     });
@@ -934,7 +949,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudWebriskV1SubmitUriRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1SubmitUriRequest();
-      var od = api.GoogleCloudWebriskV1SubmitUriRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudWebriskV1SubmitUriRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudWebriskV1SubmitUriRequest(
           od as api.GoogleCloudWebriskV1SubmitUriRequest);
     });
@@ -943,8 +960,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudWebriskV1ThreatEntryAdditions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1ThreatEntryAdditions();
-      var od =
-          api.GoogleCloudWebriskV1ThreatEntryAdditions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudWebriskV1ThreatEntryAdditions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudWebriskV1ThreatEntryAdditions(
           od as api.GoogleCloudWebriskV1ThreatEntryAdditions);
     });
@@ -953,7 +971,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudWebriskV1ThreatEntryRemovals', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudWebriskV1ThreatEntryRemovals();
-      var od = api.GoogleCloudWebriskV1ThreatEntryRemovals.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudWebriskV1ThreatEntryRemovals.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudWebriskV1ThreatEntryRemovals(
           od as api.GoogleCloudWebriskV1ThreatEntryRemovals);
     });
@@ -962,7 +982,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningCancelOperationRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningCancelOperationRequest();
-      var od = api.GoogleLongrunningCancelOperationRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningCancelOperationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningCancelOperationRequest(
           od as api.GoogleLongrunningCancelOperationRequest);
     });
@@ -971,7 +993,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
-      var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningListOperationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningListOperationsResponse(
           od as api.GoogleLongrunningListOperationsResponse);
     });
@@ -980,7 +1004,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
-      var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningOperation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
     });
   });
@@ -988,7 +1014,9 @@ void main() {
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
-      var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleProtobufEmpty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
     });
   });
@@ -996,7 +1024,9 @@ void main() {
   unittest.group('obj-schema-GoogleRpcStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
-      var od = api.GoogleRpcStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleRpcStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
     });
   });

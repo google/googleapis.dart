@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1356,8 +1355,8 @@ class GoogleApiHttpBody {
     }
     if (_json.containsKey('extensions')) {
       extensions = (_json['extensions'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -1367,7 +1366,7 @@ class GoogleApiHttpBody {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentType != null) 'contentType': contentType!,
         if (data != null) 'data': data!,
         if (extensions != null) 'extensions': extensions!,
@@ -1382,7 +1381,7 @@ class GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Response message for TriggerCatalogRejoin method.
@@ -1399,7 +1398,7 @@ class GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rejoinedUserEventsCount != null)
           'rejoinedUserEventsCount': rejoinedUserEventsCount!,
       };
@@ -1422,7 +1421,7 @@ class GoogleCloudRecommendationengineV1alphaTuningMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (recommendationModel != null)
           'recommendationModel': recommendationModel!,
       };
@@ -1436,7 +1435,7 @@ class GoogleCloudRecommendationengineV1alphaTuningResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// BigQuery source import data from.
@@ -1502,7 +1501,7 @@ class GoogleCloudRecommendationengineV1beta1BigQuerySource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataSchema != null) 'dataSchema': dataSchema!,
         if (datasetId != null) 'datasetId': datasetId!,
         if (gcsStagingDir != null) 'gcsStagingDir': gcsStagingDir!,
@@ -1554,7 +1553,7 @@ class GoogleCloudRecommendationengineV1beta1Catalog {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (catalogItemLevelConfig != null)
           'catalogItemLevelConfig': catalogItemLevelConfig!.toJson(),
         if (defaultEventStoreId != null)
@@ -1586,7 +1585,7 @@ class GoogleCloudRecommendationengineV1beta1CatalogInlineSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (catalogItems != null)
           'catalogItems': catalogItems!.map((value) => value.toJson()).toList(),
       };
@@ -1718,7 +1717,7 @@ class GoogleCloudRecommendationengineV1beta1CatalogItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (categoryHierarchies != null)
           'categoryHierarchies':
               categoryHierarchies!.map((value) => value.toJson()).toList(),
@@ -1756,7 +1755,7 @@ class GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (categories != null) 'categories': categories!,
       };
 }
@@ -1802,7 +1801,7 @@ class GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (eventItemLevel != null) 'eventItemLevel': eventItemLevel!,
         if (predictItemLevel != null) 'predictItemLevel': predictItemLevel!,
       };
@@ -1828,7 +1827,7 @@ class GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRe
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (predictionApiKeyRegistration != null)
           'predictionApiKeyRegistration':
               predictionApiKeyRegistration!.toJson(),
@@ -1926,7 +1925,7 @@ class GoogleCloudRecommendationengineV1beta1EventDetail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (eventAttributes != null)
           'eventAttributes': eventAttributes!.toJson(),
         if (experimentIds != null) 'experimentIds': experimentIds!,
@@ -1966,30 +1965,30 @@ class GoogleCloudRecommendationengineV1beta1FeatureMap {
 
   GoogleCloudRecommendationengineV1beta1FeatureMap.fromJson(core.Map _json) {
     if (_json.containsKey('categoricalFeatures')) {
-      categoricalFeatures = (_json['categoricalFeatures'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              GoogleCloudRecommendationengineV1beta1FeatureMapStringList
-                  .fromJson(item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      categoricalFeatures =
+          (_json['categoricalFeatures'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleCloudRecommendationengineV1beta1FeatureMapStringList.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('numericalFeatures')) {
-      numericalFeatures = (_json['numericalFeatures'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              GoogleCloudRecommendationengineV1beta1FeatureMapFloatList
-                  .fromJson(item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      numericalFeatures =
+          (_json['numericalFeatures'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleCloudRecommendationengineV1beta1FeatureMapFloatList.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (categoricalFeatures != null)
           'categoricalFeatures': categoricalFeatures!
               .map((key, item) => core.MapEntry(key, item.toJson())),
@@ -2015,7 +2014,7 @@ class GoogleCloudRecommendationengineV1beta1FeatureMapFloatList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
       };
 }
@@ -2036,7 +2035,7 @@ class GoogleCloudRecommendationengineV1beta1FeatureMapStringList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
       };
 }
@@ -2085,7 +2084,7 @@ class GoogleCloudRecommendationengineV1beta1GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inputUris != null) 'inputUris': inputUris!,
         if (jsonSchema != null) 'jsonSchema': jsonSchema!,
       };
@@ -2122,7 +2121,7 @@ class GoogleCloudRecommendationengineV1beta1Image {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (uri != null) 'uri': uri!,
         if (width != null) 'width': width!,
@@ -2178,7 +2177,7 @@ class GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
         if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
         if (requestId != null) 'requestId': requestId!,
@@ -2215,7 +2214,7 @@ class GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
           'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
@@ -2240,7 +2239,7 @@ class GoogleCloudRecommendationengineV1beta1ImportErrorsConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
       };
 }
@@ -2295,7 +2294,7 @@ class GoogleCloudRecommendationengineV1beta1ImportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (failureCount != null) 'failureCount': failureCount!,
         if (operationName != null) 'operationName': operationName!,
@@ -2346,7 +2345,7 @@ class GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
         if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
         if (requestId != null) 'requestId': requestId!,
@@ -2391,7 +2390,7 @@ class GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
           'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
@@ -2441,7 +2440,7 @@ class GoogleCloudRecommendationengineV1beta1InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!.toJson(),
         if (catalogInlineSource != null)
           'catalogInlineSource': catalogInlineSource!.toJson(),
@@ -2478,7 +2477,7 @@ class GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (catalogItems != null)
           'catalogItems': catalogItems!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2511,7 +2510,7 @@ class GoogleCloudRecommendationengineV1beta1ListCatalogsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (catalogs != null)
           'catalogs': catalogs!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2548,7 +2547,7 @@ class GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsRes
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (predictionApiKeyRegistrations != null)
           'predictionApiKeyRegistrations': predictionApiKeyRegistrations!
@@ -2584,7 +2583,7 @@ class GoogleCloudRecommendationengineV1beta1ListUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (userEvents != null)
           'userEvents': userEvents!.map((value) => value.toJson()).toList(),
@@ -2685,13 +2684,12 @@ class GoogleCloudRecommendationengineV1beta1PredictRequest {
       filter = _json['filter'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('pageSize')) {
       pageSize = _json['pageSize'] as core.int;
@@ -2700,13 +2698,12 @@ class GoogleCloudRecommendationengineV1beta1PredictRequest {
       pageToken = _json['pageToken'] as core.String;
     }
     if (_json.containsKey('params')) {
-      params =
-          (_json['params'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      params = (_json['params'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('userEvent')) {
       userEvent = GoogleCloudRecommendationengineV1beta1UserEvent.fromJson(
@@ -2714,7 +2711,7 @@ class GoogleCloudRecommendationengineV1beta1PredictRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dryRun != null) 'dryRun': dryRun!,
         if (filter != null) 'filter': filter!,
         if (labels != null) 'labels': labels!,
@@ -2773,13 +2770,12 @@ class GoogleCloudRecommendationengineV1beta1PredictResponse {
           .toList();
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('nextPageToken')) {
       nextPageToken = _json['nextPageToken'] as core.String;
@@ -2797,7 +2793,7 @@ class GoogleCloudRecommendationengineV1beta1PredictResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dryRun != null) 'dryRun': dryRun!,
         if (itemsMissingInCatalog != null)
           'itemsMissingInCatalog': itemsMissingInCatalog!,
@@ -2834,18 +2830,17 @@ class GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('itemMetadata')) {
-      itemMetadata = (_json['itemMetadata'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      itemMetadata =
+          (_json['itemMetadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (itemMetadata != null) 'itemMetadata': itemMetadata!,
       };
@@ -2865,7 +2860,7 @@ class GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiKey != null) 'apiKey': apiKey!,
       };
 }
@@ -2941,12 +2936,12 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
       canonicalProductUri = _json['canonicalProductUri'] as core.String;
     }
     if (_json.containsKey('costs')) {
-      costs = (_json['costs'] as core.Map).cast<core.String, core.double>().map(
-            (key, item) => core.MapEntry(
-              key,
-              (item as core.num).toDouble(),
-            ),
-          );
+      costs = (_json['costs'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          (item as core.num).toDouble(),
+        ),
+      );
     }
     if (_json.containsKey('currencyCode')) {
       currencyCode = _json['currencyCode'] as core.String;
@@ -2975,7 +2970,7 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (availableQuantity != null) 'availableQuantity': availableQuantity!,
         if (canonicalProductUri != null)
           'canonicalProductUri': canonicalProductUri!,
@@ -3015,7 +3010,7 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayPrice != null) 'displayPrice': displayPrice!,
         if (originalPrice != null) 'originalPrice': originalPrice!,
       };
@@ -3046,7 +3041,7 @@ class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (max != null) 'max': max!,
         if (min != null) 'min': min!,
       };
@@ -3157,7 +3152,7 @@ class GoogleCloudRecommendationengineV1beta1ProductDetail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (availableQuantity != null) 'availableQuantity': availableQuantity!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (displayPrice != null) 'displayPrice': displayPrice!,
@@ -3268,7 +3263,7 @@ class GoogleCloudRecommendationengineV1beta1ProductEventDetail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cartId != null) 'cartId': cartId!,
         if (listId != null) 'listId': listId!,
         if (pageCategories != null)
@@ -3329,12 +3324,12 @@ class GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
   GoogleCloudRecommendationengineV1beta1PurchaseTransaction.fromJson(
       core.Map _json) {
     if (_json.containsKey('costs')) {
-      costs = (_json['costs'] as core.Map).cast<core.String, core.double>().map(
-            (key, item) => core.MapEntry(
-              key,
-              (item as core.num).toDouble(),
-            ),
-          );
+      costs = (_json['costs'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          (item as core.num).toDouble(),
+        ),
+      );
     }
     if (_json.containsKey('currencyCode')) {
       currencyCode = _json['currencyCode'] as core.String;
@@ -3346,16 +3341,16 @@ class GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
       revenue = (_json['revenue'] as core.num).toDouble();
     }
     if (_json.containsKey('taxes')) {
-      taxes = (_json['taxes'] as core.Map).cast<core.String, core.double>().map(
-            (key, item) => core.MapEntry(
-              key,
-              (item as core.num).toDouble(),
-            ),
-          );
+      taxes = (_json['taxes'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          (item as core.num).toDouble(),
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (costs != null) 'costs': costs!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (id != null) 'id': id!,
@@ -3386,7 +3381,7 @@ class GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (operationName != null) 'operationName': operationName!,
       };
@@ -3431,7 +3426,7 @@ class GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (filter != null) 'filter': filter!,
         if (force != null) 'force': force!,
       };
@@ -3467,7 +3462,7 @@ class GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
         if (userEventsSample != null)
           'userEventsSample':
@@ -3483,7 +3478,7 @@ class GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Request message for CatalogRejoin method.
@@ -3508,7 +3503,7 @@ class GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (userEventRejoinScope != null)
           'userEventRejoinScope': userEventRejoinScope!,
       };
@@ -3528,7 +3523,7 @@ class GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rejoinedUserEventsCount != null)
           'rejoinedUserEventsCount': rejoinedUserEventsCount!,
       };
@@ -3630,7 +3625,7 @@ class GoogleCloudRecommendationengineV1beta1UserEvent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (eventDetail != null) 'eventDetail': eventDetail!.toJson(),
         if (eventSource != null) 'eventSource': eventSource!,
         if (eventTime != null) 'eventTime': eventTime!,
@@ -3664,7 +3659,7 @@ class GoogleCloudRecommendationengineV1beta1UserEventImportSummary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
         if (unjoinedEventsCount != null)
           'unjoinedEventsCount': unjoinedEventsCount!,
@@ -3693,7 +3688,7 @@ class GoogleCloudRecommendationengineV1beta1UserEventInlineSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (userEvents != null)
           'userEvents': userEvents!.map((value) => value.toJson()).toList(),
       };
@@ -3769,7 +3764,7 @@ class GoogleCloudRecommendationengineV1beta1UserInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (directUserRequest != null) 'directUserRequest': directUserRequest!,
         if (ipAddress != null) 'ipAddress': ipAddress!,
         if (userAgent != null) 'userAgent': userAgent!,
@@ -3801,7 +3796,7 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
@@ -3862,29 +3857,27 @@ class GoogleLongrunningOperation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -3907,7 +3900,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3943,8 +3936,8 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -3957,7 +3950,7 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,

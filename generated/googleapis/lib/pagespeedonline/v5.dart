@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -162,7 +161,7 @@ class AuditRefs {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (group != null) 'group': group!,
         if (id != null) 'id': id!,
         if (weight != null) 'weight': weight!,
@@ -197,7 +196,7 @@ class Bucket {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (max != null) 'max': max!,
         if (min != null) 'min': min!,
         if (proportion != null) 'proportion': proportion!,
@@ -247,7 +246,7 @@ class Categories {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessibility != null) 'accessibility': accessibility!.toJson(),
         if (bestPractices != null) 'best-practices': bestPractices!.toJson(),
         if (performance != null) 'performance': performance!.toJson(),
@@ -275,7 +274,7 @@ class CategoryGroupV5 {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (title != null) 'title': title!,
       };
@@ -325,7 +324,7 @@ class ConfigSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channel != null) 'channel': channel!,
         if (emulatedFormFactor != null)
           'emulatedFormFactor': emulatedFormFactor!,
@@ -360,7 +359,7 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (benchmarkIndex != null) 'benchmarkIndex': benchmarkIndex!,
         if (hostUserAgent != null) 'hostUserAgent': hostUserAgent!,
         if (networkUserAgent != null) 'networkUserAgent': networkUserAgent!,
@@ -383,7 +382,7 @@ class I18n {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rendererFormattedStrings != null)
           'rendererFormattedStrings': rendererFormattedStrings!.toJson(),
       };
@@ -443,13 +442,12 @@ class LighthouseAuditResultV5 {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('details')) {
-      details =
-          (_json['details'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      details = (_json['details'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('displayValue')) {
       displayValue = _json['displayValue'] as core.String;
@@ -480,7 +478,7 @@ class LighthouseAuditResultV5 {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (details != null) 'details': details!,
         if (displayValue != null) 'displayValue': displayValue!,
@@ -546,7 +544,7 @@ class LighthouseCategoryV5 {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditRefs != null)
           'auditRefs': auditRefs!.map((value) => value.toJson()).toList(),
         if (description != null) 'description': description!,
@@ -614,30 +612,26 @@ class LighthouseResultV5 {
 
   LighthouseResultV5.fromJson(core.Map _json) {
     if (_json.containsKey('audits')) {
-      audits = (_json['audits'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              LighthouseAuditResultV5.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      audits = (_json['audits'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          LighthouseAuditResultV5.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('categories')) {
       categories = Categories.fromJson(
           _json['categories'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('categoryGroups')) {
-      categoryGroups = (_json['categoryGroups'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              CategoryGroupV5.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      categoryGroups =
+          (_json['categoryGroups'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          CategoryGroupV5.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('configSettings')) {
       configSettings = ConfigSettings.fromJson(
@@ -687,7 +681,7 @@ class LighthouseResultV5 {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audits != null)
           'audits':
               audits!.map((key, item) => core.MapEntry(key, item.toJson())),
@@ -738,15 +732,13 @@ class PagespeedApiLoadingExperienceV5 {
       initialUrl = _json['initial_url'] as core.String;
     }
     if (_json.containsKey('metrics')) {
-      metrics = (_json['metrics'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              UserPageLoadMetricV5.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      metrics = (_json['metrics'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          UserPageLoadMetricV5.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('origin_fallback')) {
       originFallback = _json['origin_fallback'] as core.bool;
@@ -756,7 +748,7 @@ class PagespeedApiLoadingExperienceV5 {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (initialUrl != null) 'initial_url': initialUrl!,
         if (metrics != null)
@@ -828,7 +820,7 @@ class PagespeedApiPagespeedResponseV5 {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (analysisUTCTimestamp != null)
           'analysisUTCTimestamp': analysisUTCTimestamp!,
         if (captchaResult != null) 'captchaResult': captchaResult!,
@@ -863,7 +855,7 @@ class PagespeedVersion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (major != null) 'major': major!,
         if (minor != null) 'minor': minor!,
       };
@@ -979,7 +971,7 @@ class RendererFormattedStrings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditGroupExpandTooltip != null)
           'auditGroupExpandTooltip': auditGroupExpandTooltip!,
         if (crcInitialNavigation != null)
@@ -1030,7 +1022,7 @@ class RuntimeError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (message != null) 'message': message!,
       };
@@ -1054,14 +1046,13 @@ class StackPack {
 
   StackPack.fromJson(core.Map _json) {
     if (_json.containsKey('descriptions')) {
-      descriptions = (_json['descriptions'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      descriptions =
+          (_json['descriptions'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('iconDataURL')) {
       iconDataURL = _json['iconDataURL'] as core.String;
@@ -1074,7 +1065,7 @@ class StackPack {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (descriptions != null) 'descriptions': descriptions!,
         if (iconDataURL != null) 'iconDataURL': iconDataURL!,
         if (id != null) 'id': id!,
@@ -1095,7 +1086,7 @@ class Timing {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (total != null) 'total': total!,
       };
 }
@@ -1150,7 +1141,7 @@ class UserPageLoadMetricV5 {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!,
         if (distributions != null)
           'distributions':

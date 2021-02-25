@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -478,7 +477,7 @@ class GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (complianceRegime != null) 'complianceRegime': complianceRegime!,
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
@@ -511,7 +510,7 @@ class GoogleCloudAssuredworkloadsV1ListWorkloadsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (workloads != null)
           'workloads': workloads!.map((value) => value.toJson()).toList(),
@@ -629,13 +628,12 @@ class GoogleCloudAssuredworkloadsV1Workload {
           _json['kmsSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -653,7 +651,7 @@ class GoogleCloudAssuredworkloadsV1Workload {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (billingAccount != null) 'billingAccount': billingAccount!,
         if (complianceRegime != null) 'complianceRegime': complianceRegime!,
         if (createTime != null) 'createTime': createTime!,
@@ -699,7 +697,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadKMSSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
         if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
       };
@@ -730,7 +728,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadResourceInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resourceId != null) 'resourceId': resourceId!,
         if (resourceType != null) 'resourceType': resourceType!,
       };
@@ -785,7 +783,7 @@ class GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (complianceRegime != null) 'complianceRegime': complianceRegime!,
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
@@ -957,13 +955,12 @@ class GoogleCloudAssuredworkloadsV1beta1Workload {
               _json['kmsSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -981,7 +978,7 @@ class GoogleCloudAssuredworkloadsV1beta1Workload {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (billingAccount != null) 'billingAccount': billingAccount!,
         if (cjisSettings != null) 'cjisSettings': cjisSettings!.toJson(),
         if (complianceRegime != null) 'complianceRegime': complianceRegime!,
@@ -1023,7 +1020,7 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kmsSettings != null) 'kmsSettings': kmsSettings!.toJson(),
       };
 }
@@ -1048,7 +1045,7 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kmsSettings != null) 'kmsSettings': kmsSettings!.toJson(),
       };
 }
@@ -1073,7 +1070,7 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kmsSettings != null) 'kmsSettings': kmsSettings!.toJson(),
       };
 }
@@ -1098,7 +1095,7 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kmsSettings != null) 'kmsSettings': kmsSettings!.toJson(),
       };
 }
@@ -1134,7 +1131,7 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextRotationTime != null) 'nextRotationTime': nextRotationTime!,
         if (rotationPeriod != null) 'rotationPeriod': rotationPeriod!,
       };
@@ -1166,7 +1163,7 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resourceId != null) 'resourceId': resourceId!,
         if (resourceType != null) 'resourceType': resourceType!,
       };
@@ -1195,7 +1192,7 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
@@ -1256,29 +1253,27 @@ class GoogleLongrunningOperation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -1301,7 +1296,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1337,8 +1332,8 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -1351,7 +1346,7 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,

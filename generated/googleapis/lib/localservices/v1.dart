@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -376,7 +375,7 @@ class GoogleAdsHomeservicesLocalservicesV1AccountReport {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (aggregatorInfo != null) 'aggregatorInfo': aggregatorInfo!.toJson(),
         if (averageFiveStarRating != null)
@@ -423,7 +422,7 @@ class GoogleAdsHomeservicesLocalservicesV1AggregatorInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aggregatorProviderId != null)
           'aggregatorProviderId': aggregatorProviderId!,
       };
@@ -541,7 +540,7 @@ class GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (aggregatorInfo != null) 'aggregatorInfo': aggregatorInfo!.toJson(),
         if (businessName != null) 'businessName': businessName!,
@@ -592,7 +591,7 @@ class GoogleAdsHomeservicesLocalservicesV1MessageLead {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (consumerPhoneNumber != null)
           'consumerPhoneNumber': consumerPhoneNumber!,
         if (customerName != null) 'customerName': customerName!,
@@ -627,7 +626,7 @@ class GoogleAdsHomeservicesLocalservicesV1PhoneLead {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (chargedCallTimestamp != null)
           'chargedCallTimestamp': chargedCallTimestamp!,
         if (chargedConnectedCallDurationSeconds != null)
@@ -669,7 +668,7 @@ class GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountReports != null)
           'accountReports':
               accountReports!.map((value) => value.toJson()).toList(),
@@ -709,7 +708,7 @@ class GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detailedLeadReports != null)
           'detailedLeadReports':
               detailedLeadReports!.map((value) => value.toJson()).toList(),
@@ -739,7 +738,7 @@ class GoogleTypeTimeZone {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (version != null) 'version': version!,
       };

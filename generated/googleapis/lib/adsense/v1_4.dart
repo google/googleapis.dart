@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -2265,7 +2264,7 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (creationTime != null) 'creation_time': creationTime!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -2313,7 +2312,7 @@ class Accounts {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -2359,7 +2358,7 @@ class AdClient {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (arcOptIn != null) 'arcOptIn': arcOptIn!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -2404,7 +2403,7 @@ class AdClients {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -2445,7 +2444,7 @@ class AdCode {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (adCode != null) 'adCode': adCode!,
         if (ampBody != null) 'ampBody': ampBody!,
         if (ampHead != null) 'ampHead': ampHead!,
@@ -2493,7 +2492,7 @@ class AdStyleColors {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (background != null) 'background': background!,
         if (border != null) 'border': border!,
         if (text != null) 'text': text!,
@@ -2521,7 +2520,7 @@ class AdStyleFont {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (family != null) 'family': family!,
         if (size != null) 'size': size!,
       };
@@ -2562,7 +2561,7 @@ class AdStyle {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (colors != null) 'colors': colors!.toJson(),
         if (corners != null) 'corners': corners!,
         if (font != null) 'font': font!.toJson(),
@@ -2597,7 +2596,7 @@ class AdUnitContentAdsSettingsBackupOption {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (color != null) 'color': color!,
         if (type != null) 'type': type!,
         if (url != null) 'url': url!,
@@ -2631,7 +2630,7 @@ class AdUnitContentAdsSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (backupOption != null) 'backupOption': backupOption!.toJson(),
         if (size != null) 'size': size!,
         if (type != null) 'type': type!,
@@ -2670,7 +2669,7 @@ class AdUnitFeedAdsSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (adPosition != null) 'adPosition': adPosition!,
         if (frequency != null) 'frequency': frequency!,
         if (minimumWordCount != null) 'minimumWordCount': minimumWordCount!,
@@ -2709,7 +2708,7 @@ class AdUnitMobileContentAdsSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (markupLanguage != null) 'markupLanguage': markupLanguage!,
         if (scriptingLanguage != null) 'scriptingLanguage': scriptingLanguage!,
         if (size != null) 'size': size!,
@@ -2802,7 +2801,7 @@ class AdUnit {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (contentAdsSettings != null)
           'contentAdsSettings': contentAdsSettings!.toJson(),
@@ -2855,7 +2854,7 @@ class AdUnits {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -2891,7 +2890,7 @@ class AdsenseReportsGenerateResponseHeaders {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currency != null) 'currency': currency!,
         if (name != null) 'name': name!,
         if (type != null) 'type': type!,
@@ -2988,7 +2987,7 @@ class AdsenseReportsGenerateResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (averages != null) 'averages': averages!,
         if (endDate != null) 'endDate': endDate!,
         if (headers != null)
@@ -3053,7 +3052,7 @@ class Alert {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (isDismissible != null) 'isDismissible': isDismissible!,
         if (kind != null) 'kind': kind!,
@@ -3084,7 +3083,7 @@ class Alerts {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -3128,7 +3127,7 @@ class CustomChannelTargetingInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (adsAppearOn != null) 'adsAppearOn': adsAppearOn!,
         if (description != null) 'description': description!,
         if (location != null) 'location': location!,
@@ -3176,7 +3175,7 @@ class CustomChannel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -3221,7 +3220,7 @@ class CustomChannels {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -3251,7 +3250,7 @@ class Metadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -3296,7 +3295,7 @@ class Payment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (paymentAmount != null) 'paymentAmount': paymentAmount!,
@@ -3330,7 +3329,7 @@ class Payments {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -3410,7 +3409,7 @@ class ReportingMetadataEntry {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (compatibleDimensions != null)
           'compatibleDimensions': compatibleDimensions!,
         if (compatibleMetrics != null) 'compatibleMetrics': compatibleMetrics!,
@@ -3457,7 +3456,7 @@ class SavedAdStyle {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (adStyle != null) 'adStyle': adStyle!.toJson(),
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -3501,7 +3500,7 @@ class SavedAdStyles {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -3534,7 +3533,7 @@ class SavedReport {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
@@ -3577,7 +3576,7 @@ class SavedReports {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -3615,7 +3614,7 @@ class UrlChannel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (urlPattern != null) 'urlPattern': urlPattern!,
@@ -3658,7 +3657,7 @@ class UrlChannels {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),

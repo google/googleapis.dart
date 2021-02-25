@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -696,7 +695,7 @@ class AccessDeniedPageSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessDeniedPageUri != null)
           'accessDeniedPageUri': accessDeniedPageUri!,
       };
@@ -741,7 +740,7 @@ class AccessSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (corsSettings != null) 'corsSettings': corsSettings!.toJson(),
         if (gcipSettings != null) 'gcipSettings': gcipSettings!.toJson(),
         if (oauthSettings != null) 'oauthSettings': oauthSettings!.toJson(),
@@ -781,7 +780,7 @@ class ApplicationSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessDeniedPageSettings != null)
           'accessDeniedPageSettings': accessDeniedPageSettings!.toJson(),
         if (cookieDomain != null) 'cookieDomain': cookieDomain!,
@@ -855,7 +854,7 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
@@ -903,7 +902,7 @@ class Brand {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (applicationTitle != null) 'applicationTitle': applicationTitle!,
         if (name != null) 'name': name!,
         if (orgInternalOnly != null) 'orgInternalOnly': orgInternalOnly!,
@@ -927,7 +926,7 @@ class CorsSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowHttpOptions != null) 'allowHttpOptions': allowHttpOptions!,
       };
 }
@@ -951,7 +950,7 @@ class CsmSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rctokenAud != null) 'rctokenAud': rctokenAud!,
       };
 }
@@ -970,7 +969,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1034,7 +1033,7 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,
@@ -1072,7 +1071,7 @@ class GcipSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (loginPageUri != null) 'loginPageUri': loginPageUri!,
         if (tenantIds != null) 'tenantIds': tenantIds!,
       };
@@ -1093,7 +1092,7 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (options != null) 'options': options!.toJson(),
       };
 }
@@ -1120,7 +1119,7 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (requestedPolicyVersion != null)
           'requestedPolicyVersion': requestedPolicyVersion!,
       };
@@ -1155,7 +1154,7 @@ class IapSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessSettings != null) 'accessSettings': accessSettings!.toJson(),
         if (applicationSettings != null)
           'applicationSettings': applicationSettings!.toJson(),
@@ -1192,7 +1191,7 @@ class IdentityAwareProxyClient {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (secret != null) 'secret': secret!,
@@ -1215,7 +1214,7 @@ class ListBrandsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (brands != null)
           'brands': brands!.map((value) => value.toJson()).toList(),
       };
@@ -1247,7 +1246,7 @@ class ListIdentityAwareProxyClientsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (identityAwareProxyClients != null)
           'identityAwareProxyClients': identityAwareProxyClients!
               .map((value) => value.toJson())
@@ -1275,7 +1274,7 @@ class OAuthSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (loginHint != null) 'loginHint': loginHint!,
       };
 }
@@ -1375,7 +1374,7 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bindings != null)
           'bindings': bindings!.map((value) => value.toJson()).toList(),
         if (etag != null) 'etag': etag!,
@@ -1425,7 +1424,7 @@ class PolicyDelegationSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (iamPermission != null) 'iamPermission': iamPermission!,
         if (iamServiceName != null) 'iamServiceName': iamServiceName!,
         if (policyName != null) 'policyName': policyName!.toJson(),
@@ -1461,7 +1460,7 @@ class PolicyName {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (region != null) 'region': region!,
         if (type != null) 'type': type!,
@@ -1476,7 +1475,7 @@ class ResetIdentityAwareProxyClientSecretRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 class Resource {
@@ -1532,13 +1531,12 @@ class Resource {
 
   Resource.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -1551,7 +1549,7 @@ class Resource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
         if (service != null) 'service': service!,
@@ -1577,7 +1575,7 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
       };
 }
@@ -1601,7 +1599,7 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -1622,7 +1620,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }

@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -762,7 +761,7 @@ class BuildBazelRemoteExecutionV2Action {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commandDigest != null) 'commandDigest': commandDigest!.toJson(),
         if (doNotCache != null) 'doNotCache': doNotCache!,
         if (inputRootDigest != null)
@@ -786,7 +785,7 @@ class BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (updateEnabled != null) 'updateEnabled': updateEnabled!,
       };
 }
@@ -987,7 +986,7 @@ class BuildBazelRemoteExecutionV2ActionResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (executionMetadata != null)
           'executionMetadata': executionMetadata!.toJson(),
         if (exitCode != null) 'exitCode': exitCode!,
@@ -1029,7 +1028,7 @@ class BuildBazelRemoteExecutionV2BatchReadBlobsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (digests != null)
           'digests': digests!.map((value) => value.toJson()).toList(),
       };
@@ -1054,7 +1053,7 @@ class BuildBazelRemoteExecutionV2BatchReadBlobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (responses != null)
           'responses': responses!.map((value) => value.toJson()).toList(),
       };
@@ -1094,7 +1093,7 @@ class BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (data != null) 'data': data!,
         if (digest != null) 'digest': digest!.toJson(),
         if (status != null) 'status': status!.toJson(),
@@ -1120,7 +1119,7 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (requests != null)
           'requests': requests!.map((value) => value.toJson()).toList(),
       };
@@ -1155,7 +1154,7 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (data != null) 'data': data!,
         if (digest != null) 'digest': digest!.toJson(),
       };
@@ -1180,7 +1179,7 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (responses != null)
           'responses': responses!.map((value) => value.toJson()).toList(),
       };
@@ -1208,7 +1207,7 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (digest != null) 'digest': digest!.toJson(),
         if (status != null) 'status': status!.toJson(),
       };
@@ -1273,7 +1272,7 @@ class BuildBazelRemoteExecutionV2CacheCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (actionCacheUpdateCapabilities != null)
           'actionCacheUpdateCapabilities':
               actionCacheUpdateCapabilities!.toJson(),
@@ -1435,7 +1434,7 @@ class BuildBazelRemoteExecutionV2Command {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (arguments != null) 'arguments': arguments!,
         if (environmentVariables != null)
           'environmentVariables':
@@ -1469,7 +1468,7 @@ class BuildBazelRemoteExecutionV2CommandEnvironmentVariable {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
       };
@@ -1522,7 +1521,7 @@ class BuildBazelRemoteExecutionV2Digest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hash != null) 'hash': hash!,
         if (sizeBytes != null) 'sizeBytes': sizeBytes!,
       };
@@ -1603,7 +1602,7 @@ class BuildBazelRemoteExecutionV2Directory {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (directories != null)
           'directories': directories!.map((value) => value.toJson()).toList(),
         if (files != null)
@@ -1640,7 +1639,7 @@ class BuildBazelRemoteExecutionV2DirectoryNode {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (digest != null) 'digest': digest!.toJson(),
         if (name != null) 'name': name!,
       };
@@ -1687,7 +1686,7 @@ class BuildBazelRemoteExecutionV2ExecuteOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (actionDigest != null) 'actionDigest': actionDigest!.toJson(),
         if (stage != null) 'stage': stage!,
         if (stderrStreamName != null) 'stderrStreamName': stderrStreamName!,
@@ -1749,7 +1748,7 @@ class BuildBazelRemoteExecutionV2ExecuteRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (actionDigest != null) 'actionDigest': actionDigest!.toJson(),
         if (executionPolicy != null)
           'executionPolicy': executionPolicy!.toJson(),
@@ -1809,15 +1808,14 @@ class BuildBazelRemoteExecutionV2ExecuteResponse {
           _json['result'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('serverLogs')) {
-      serverLogs = (_json['serverLogs'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              BuildBazelRemoteExecutionV2LogFile.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      serverLogs =
+          (_json['serverLogs'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          BuildBazelRemoteExecutionV2LogFile.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('status')) {
       status = GoogleRpcStatus.fromJson(
@@ -1825,7 +1823,7 @@ class BuildBazelRemoteExecutionV2ExecuteResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cachedResult != null) 'cachedResult': cachedResult!,
         if (message != null) 'message': message!,
         if (result != null) 'result': result!.toJson(),
@@ -1909,7 +1907,7 @@ class BuildBazelRemoteExecutionV2ExecutedActionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (executionCompletedTimestamp != null)
           'executionCompletedTimestamp': executionCompletedTimestamp!,
         if (executionStartTimestamp != null)
@@ -1978,7 +1976,7 @@ class BuildBazelRemoteExecutionV2ExecutionCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (digestFunction != null) 'digestFunction': digestFunction!,
         if (execEnabled != null) 'execEnabled': execEnabled!,
         if (executionPriorityCapabilities != null)
@@ -2011,7 +2009,7 @@ class BuildBazelRemoteExecutionV2ExecutionPolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (priority != null) 'priority': priority!,
       };
 }
@@ -2052,7 +2050,7 @@ class BuildBazelRemoteExecutionV2FileNode {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (digest != null) 'digest': digest!.toJson(),
         if (isExecutable != null) 'isExecutable': isExecutable!,
         if (name != null) 'name': name!,
@@ -2079,7 +2077,7 @@ class BuildBazelRemoteExecutionV2FindMissingBlobsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blobDigests != null)
           'blobDigests': blobDigests!.map((value) => value.toJson()).toList(),
       };
@@ -2102,7 +2100,7 @@ class BuildBazelRemoteExecutionV2FindMissingBlobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (missingBlobDigests != null)
           'missingBlobDigests':
               missingBlobDigests!.map((value) => value.toJson()).toList(),
@@ -2135,7 +2133,7 @@ class BuildBazelRemoteExecutionV2GetTreeResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (directories != null)
           'directories': directories!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2168,7 +2166,7 @@ class BuildBazelRemoteExecutionV2LogFile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (digest != null) 'digest': digest!.toJson(),
         if (humanReadable != null) 'humanReadable': humanReadable!,
       };
@@ -2197,7 +2195,7 @@ class BuildBazelRemoteExecutionV2NodeProperty {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
       };
@@ -2228,7 +2226,7 @@ class BuildBazelRemoteExecutionV2OutputDirectory {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (path != null) 'path': path!,
         if (treeDigest != null) 'treeDigest': treeDigest!.toJson(),
       };
@@ -2295,7 +2293,7 @@ class BuildBazelRemoteExecutionV2OutputFile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contents != null) 'contents': contents!,
         if (digest != null) 'digest': digest!.toJson(),
         if (isExecutable != null) 'isExecutable': isExecutable!,
@@ -2350,7 +2348,7 @@ class BuildBazelRemoteExecutionV2OutputSymlink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nodeProperties != null)
           'nodeProperties':
               nodeProperties!.map((value) => value.toJson()).toList(),
@@ -2385,7 +2383,7 @@ class BuildBazelRemoteExecutionV2Platform {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (properties != null)
           'properties': properties!.map((value) => value.toJson()).toList(),
       };
@@ -2422,7 +2420,7 @@ class BuildBazelRemoteExecutionV2PlatformProperty {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
       };
@@ -2447,7 +2445,7 @@ class BuildBazelRemoteExecutionV2PriorityCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (priorities != null)
           'priorities': priorities!.map((value) => value.toJson()).toList(),
       };
@@ -2470,7 +2468,7 @@ class BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (maxPriority != null) 'maxPriority': maxPriority!,
         if (minPriority != null) 'minPriority': minPriority!,
       };
@@ -2527,7 +2525,7 @@ class BuildBazelRemoteExecutionV2RequestMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (actionId != null) 'actionId': actionId!,
         if (correlatedInvocationsId != null)
           'correlatedInvocationsId': correlatedInvocationsId!,
@@ -2557,7 +2555,7 @@ class BuildBazelRemoteExecutionV2ResultsCachePolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (priority != null) 'priority': priority!,
       };
 }
@@ -2606,7 +2604,7 @@ class BuildBazelRemoteExecutionV2ServerCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cacheCapabilities != null)
           'cacheCapabilities': cacheCapabilities!.toJson(),
         if (deprecatedApiVersion != null)
@@ -2654,7 +2652,7 @@ class BuildBazelRemoteExecutionV2SymlinkNode {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (nodeProperties != null)
           'nodeProperties':
@@ -2682,7 +2680,7 @@ class BuildBazelRemoteExecutionV2ToolDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (toolName != null) 'toolName': toolName!,
         if (toolVersion != null) 'toolVersion': toolVersion!,
       };
@@ -2718,7 +2716,7 @@ class BuildBazelRemoteExecutionV2Tree {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (children != null)
           'children': children!.map((value) => value.toJson()).toList(),
         if (root != null) 'root': root!.toJson(),
@@ -2733,7 +2731,7 @@ class BuildBazelRemoteExecutionV2WaitExecutionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The full version of a given tool.
@@ -2771,7 +2769,7 @@ class BuildBazelSemverSemVer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (major != null) 'major': major!,
         if (minor != null) 'minor': minor!,
         if (patch != null) 'patch': patch!,
@@ -2862,7 +2860,7 @@ class GoogleDevtoolsRemotebuildbotCommandDurations {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cmWaitForAssignment != null)
           'cmWaitForAssignment': cmWaitForAssignment!,
         if (dockerPrep != null) 'dockerPrep': dockerPrep!,
@@ -2938,7 +2936,7 @@ class GoogleDevtoolsRemotebuildbotCommandEvents {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cmUsage != null) 'cmUsage': cmUsage!,
         if (dockerCacheHit != null) 'dockerCacheHit': dockerCacheHit!,
         if (dockerImageName != null) 'dockerImageName': dockerImageName!,
@@ -3033,7 +3031,7 @@ class GoogleDevtoolsRemotebuildbotCommandStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (message != null) 'message': message!,
       };
@@ -3061,7 +3059,7 @@ class GoogleDevtoolsRemotebuildbotResourceUsage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cpuUsedPercent != null) 'cpuUsedPercent': cpuUsedPercent!,
         if (diskUsage != null) 'diskUsage': diskUsage!.toJson(),
         if (memoryUsage != null) 'memoryUsage': memoryUsage!.toJson(),
@@ -3083,7 +3081,7 @@ class GoogleDevtoolsRemotebuildbotResourceUsageStat {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (total != null) 'total': total!,
         if (used != null) 'used': used!,
       };
@@ -3110,7 +3108,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (acceleratorCount != null) 'acceleratorCount': acceleratorCount!,
         if (acceleratorType != null) 'acceleratorType': acceleratorType!,
       };
@@ -3140,7 +3138,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (maxSize != null) 'maxSize': maxSize!,
         if (minSize != null) 'minSize': minSize!,
       };
@@ -3182,7 +3180,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (instance != null) 'instance': instance!.toJson(),
         if (instanceId != null) 'instanceId': instanceId!,
         if (parent != null) 'parent': parent!,
@@ -3225,7 +3223,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parent != null) 'parent': parent!,
         if (poolId != null) 'poolId': poolId!,
         if (workerPool != null) 'workerPool': workerPool!.toJson(),
@@ -3248,7 +3246,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
       };
 }
@@ -3270,7 +3268,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
       };
 }
@@ -3392,7 +3390,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (containerImageSources != null)
           'containerImageSources': containerImageSources!.toJson(),
         if (dockerAddCapabilities != null)
@@ -3444,7 +3442,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowedValues != null) 'allowedValues': allowedValues!,
         if (policy != null) 'policy': policy!,
       };
@@ -3466,7 +3464,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
       };
 }
@@ -3488,7 +3486,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
       };
 }
@@ -3562,7 +3560,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (featurePolicy != null) 'featurePolicy': featurePolicy!.toJson(),
         if (location != null) 'location': location!,
         if (loggingEnabled != null) 'loggingEnabled': loggingEnabled!,
@@ -3586,7 +3584,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parent != null) 'parent': parent!,
       };
 }
@@ -3608,7 +3606,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (instances != null)
           'instances': instances!.map((value) => value.toJson()).toList(),
       };
@@ -3652,7 +3650,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (filter != null) 'filter': filter!,
         if (parent != null) 'parent': parent!,
       };
@@ -3677,7 +3675,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (workerPools != null)
           'workerPools': workerPools!.map((value) => value.toJson()).toList(),
       };
@@ -3729,7 +3727,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (instance != null) 'instance': instance!.toJson(),
         if (loggingEnabled != null) 'loggingEnabled': loggingEnabled!,
         if (name != null) 'name': name!,
@@ -3766,7 +3764,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (updateMask != null) 'updateMask': updateMask!,
         if (workerPool != null) 'workerPool': workerPool!.toJson(),
       };
@@ -3858,13 +3856,12 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
       diskType = _json['diskType'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('machineType')) {
       machineType = _json['machineType'] as core.String;
@@ -3889,7 +3886,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accelerator != null) 'accelerator': accelerator!.toJson(),
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
@@ -3978,7 +3975,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (autoscale != null) 'autoscale': autoscale!.toJson(),
         if (channel != null) 'channel': channel!,
         if (name != null) 'name': name!,
@@ -4027,7 +4024,7 @@ class GoogleDevtoolsRemoteworkersV1test2AdminTemp {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (arg != null) 'arg': arg!,
         if (command != null) 'command': command!,
       };
@@ -4061,7 +4058,7 @@ class GoogleDevtoolsRemoteworkersV1test2Blob {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contents != null) 'contents': contents!,
         if (digest != null) 'digest': digest!.toJson(),
       };
@@ -4097,7 +4094,7 @@ class GoogleDevtoolsRemoteworkersV1test2CommandOutputs {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exitCode != null) 'exitCode': exitCode!,
         if (outputs != null) 'outputs': outputs!.toJson(),
       };
@@ -4129,7 +4126,7 @@ class GoogleDevtoolsRemoteworkersV1test2CommandOverhead {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (duration != null) 'duration': duration!,
         if (overhead != null) 'overhead': overhead!,
       };
@@ -4191,8 +4188,8 @@ class GoogleDevtoolsRemoteworkersV1test2CommandResult {
     }
     if (_json.containsKey('metadata')) {
       metadata = (_json['metadata'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -4213,7 +4210,7 @@ class GoogleDevtoolsRemoteworkersV1test2CommandResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (duration != null) 'duration': duration!,
         if (exitCode != null) 'exitCode': exitCode!,
         if (metadata != null) 'metadata': metadata!,
@@ -4253,7 +4250,7 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTask {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (expectedOutputs != null)
           'expectedOutputs': expectedOutputs!.toJson(),
         if (inputs != null) 'inputs': inputs!.toJson(),
@@ -4340,7 +4337,7 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (arguments != null) 'arguments': arguments!,
         if (environmentVariables != null)
           'environmentVariables':
@@ -4373,7 +4370,7 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
       };
@@ -4429,7 +4426,7 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (directories != null) 'directories': directories!,
         if (files != null) 'files': files!,
         if (stderrDestination != null) 'stderrDestination': stderrDestination!,
@@ -4476,7 +4473,7 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (execution != null) 'execution': execution!,
         if (idle != null) 'idle': idle!,
         if (shutdown != null) 'shutdown': shutdown!,
@@ -4516,7 +4513,7 @@ class GoogleDevtoolsRemoteworkersV1test2Digest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hash != null) 'hash': hash!,
         if (sizeBytes != null) 'sizeBytes': sizeBytes!,
       };
@@ -4551,7 +4548,7 @@ class GoogleDevtoolsRemoteworkersV1test2Directory {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (directories != null)
           'directories': directories!.map((value) => value.toJson()).toList(),
         if (files != null)
@@ -4582,7 +4579,7 @@ class GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (digest != null) 'digest': digest!.toJson(),
         if (path != null) 'path': path!,
       };
@@ -4638,7 +4635,7 @@ class GoogleDevtoolsRemoteworkersV1test2FileMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contents != null) 'contents': contents!,
         if (digest != null) 'digest': digest!.toJson(),
         if (isExecutable != null) 'isExecutable': isExecutable!,
@@ -4700,29 +4697,27 @@ class GoogleLongrunningOperation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -4764,8 +4759,8 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -4778,7 +4773,7 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,

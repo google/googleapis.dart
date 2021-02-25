@@ -185,7 +185,9 @@ void main() {
   unittest.group('obj-schema-AmpUrl', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAmpUrl();
-      var od = api.AmpUrl.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.AmpUrl.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkAmpUrl(od as api.AmpUrl);
     });
   });
@@ -193,7 +195,9 @@ void main() {
   unittest.group('obj-schema-AmpUrlError', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAmpUrlError();
-      var od = api.AmpUrlError.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AmpUrlError.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAmpUrlError(od as api.AmpUrlError);
     });
   });
@@ -201,7 +205,9 @@ void main() {
   unittest.group('obj-schema-BatchGetAmpUrlsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBatchGetAmpUrlsRequest();
-      var od = api.BatchGetAmpUrlsRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BatchGetAmpUrlsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBatchGetAmpUrlsRequest(od as api.BatchGetAmpUrlsRequest);
     });
   });
@@ -209,7 +215,9 @@ void main() {
   unittest.group('obj-schema-BatchGetAmpUrlsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBatchGetAmpUrlsResponse();
-      var od = api.BatchGetAmpUrlsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BatchGetAmpUrlsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBatchGetAmpUrlsResponse(od as api.BatchGetAmpUrlsResponse);
     });
   });

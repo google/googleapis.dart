@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1564,7 +1563,7 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
               auditLogConfigs!.map((value) => value.toJson()).toList(),
@@ -1606,7 +1605,7 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
         if (logType != null) 'logType': logType!,
       };
@@ -1678,7 +1677,7 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
@@ -1693,7 +1692,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Specifies required connection parameters, and, optionally, the parameters
@@ -1737,7 +1736,7 @@ class CloudSqlConnectionProfile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cloudSqlId != null) 'cloudSqlId': cloudSqlId!,
         if (privateIp != null) 'privateIp': privateIp!,
         if (publicIp != null) 'publicIp': publicIp!,
@@ -1854,14 +1853,13 @@ class CloudSqlSettings {
       dataDiskType = _json['dataDiskType'] as core.String;
     }
     if (_json.containsKey('databaseFlags')) {
-      databaseFlags = (_json['databaseFlags'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      databaseFlags =
+          (_json['databaseFlags'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('databaseVersion')) {
       databaseVersion = _json['databaseVersion'] as core.String;
@@ -1886,21 +1884,20 @@ class CloudSqlSettings {
       tier = _json['tier'] as core.String;
     }
     if (_json.containsKey('userLabels')) {
-      userLabels = (_json['userLabels'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      userLabels =
+          (_json['userLabels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('zone')) {
       zone = _json['zone'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (activationPolicy != null) 'activationPolicy': activationPolicy!,
         if (autoStorageIncrease != null)
           'autoStorageIncrease': autoStorageIncrease!,
@@ -2000,13 +1997,12 @@ class ConnectionProfile {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('mysql')) {
       mysql = MySqlConnectionProfile.fromJson(
@@ -2026,7 +2022,7 @@ class ConnectionProfile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cloudsql != null) 'cloudsql': cloudsql!.toJson(),
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
@@ -2067,7 +2063,7 @@ class DatabaseType {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (engine != null) 'engine': engine!,
         if (provider != null) 'provider': provider!,
       };
@@ -2087,7 +2083,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2151,7 +2147,7 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,
@@ -2194,7 +2190,7 @@ class GenerateSshScriptRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (vm != null) 'vm': vm!,
         if (vmCreationConfig != null)
           'vmCreationConfig': vmCreationConfig!.toJson(),
@@ -2271,7 +2267,7 @@ class GoogleCloudClouddmsV1beta1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
@@ -2315,7 +2311,7 @@ class ListConnectionProfilesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (connectionProfiles != null)
           'connectionProfiles':
               connectionProfiles!.map((value) => value.toJson()).toList(),
@@ -2346,7 +2342,7 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null)
           'locations': locations!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2385,7 +2381,7 @@ class ListMigrationJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (migrationJobs != null)
           'migrationJobs':
               migrationJobs!.map((value) => value.toJson()).toList(),
@@ -2416,7 +2412,7 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
@@ -2460,32 +2456,30 @@ class Location {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (labels != null) 'labels': labels!,
         if (locationId != null) 'locationId': locationId!,
@@ -2649,13 +2643,12 @@ class MigrationJob {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -2695,7 +2688,7 @@ class MigrationJob {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (destination != null) 'destination': destination!,
         if (destinationDatabase != null)
@@ -2768,7 +2761,7 @@ class MigrationJobVerificationError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorCode != null) 'errorCode': errorCode!,
         if (errorDetailMessage != null)
           'errorDetailMessage': errorDetailMessage!,
@@ -2844,7 +2837,7 @@ class MySqlConnectionProfile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cloudSqlId != null) 'cloudSqlId': cloudSqlId!,
         if (host != null) 'host': host!,
         if (password != null) 'password': password!,
@@ -2909,29 +2902,27 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -3044,7 +3035,7 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditConfigs != null)
           'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
@@ -3062,7 +3053,7 @@ class PromoteMigrationJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Request message for 'RestartMigrationJob' request.
@@ -3073,7 +3064,7 @@ class RestartMigrationJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Request message for 'ResumeMigrationJob' request.
@@ -3084,7 +3075,7 @@ class ResumeMigrationJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The details needed to configure a reverse SSH tunnel between the source and
@@ -3131,7 +3122,7 @@ class ReverseSshConnectivity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (vm != null) 'vm': vm!,
         if (vmIp != null) 'vmIp': vmIp!,
         if (vmPort != null) 'vmPort': vmPort!,
@@ -3166,7 +3157,7 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
         if (updateMask != null) 'updateMask': updateMask!,
       };
@@ -3207,7 +3198,7 @@ class SqlAclEntry {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (expireTime != null) 'expireTime': expireTime!,
         if (label != null) 'label': label!,
         if (ttl != null) 'ttl': ttl!,
@@ -3257,7 +3248,7 @@ class SqlIpConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (authorizedNetworks != null)
           'authorizedNetworks':
               authorizedNetworks!.map((value) => value.toJson()).toList(),
@@ -3280,7 +3271,7 @@ class SshScript {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (script != null) 'script': script!,
       };
 }
@@ -3338,7 +3329,7 @@ class SslConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (caCertificate != null) 'caCertificate': caCertificate!,
         if (clientCertificate != null) 'clientCertificate': clientCertificate!,
         if (clientKey != null) 'clientKey': clientKey!,
@@ -3354,7 +3345,7 @@ class StartMigrationJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The source database will allow incoming connections from the destination
@@ -3369,7 +3360,7 @@ class StaticIpConnectivity {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -3405,8 +3396,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -3419,7 +3410,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -3434,7 +3425,7 @@ class StopMigrationJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Request message for `TestIamPermissions` method.
@@ -3456,7 +3447,7 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -3477,7 +3468,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -3490,7 +3481,7 @@ class VerifyMigrationJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// VM creation configuration message
@@ -3520,7 +3511,7 @@ class VmCreationConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (subnet != null) 'subnet': subnet!,
         if (vmMachineType != null) 'vmMachineType': vmMachineType!,
         if (vmZone != null) 'vmZone': vmZone!,
@@ -3542,7 +3533,7 @@ class VmSelectionConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (vmZone != null) 'vmZone': vmZone!,
       };
 }
@@ -3563,7 +3554,7 @@ class VpcPeeringConnectivity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (vpc != null) 'vpc': vpc!,
       };
 }

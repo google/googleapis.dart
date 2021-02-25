@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -143,7 +142,7 @@ class GoogleCloudPolicytroubleshooterV1AccessTuple {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
         if (permission != null) 'permission': permission!,
         if (principal != null) 'principal': principal!,
@@ -245,15 +244,14 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
           _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('memberships')) {
-      memberships = (_json['memberships'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership
-                  .fromJson(item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      memberships =
+          (_json['memberships'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership
+              .fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('relevance')) {
       relevance = _json['relevance'] as core.String;
@@ -269,7 +267,7 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
         if (condition != null) 'condition': condition!.toJson(),
         if (memberships != null)
@@ -322,7 +320,7 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (membership != null) 'membership': membership!,
         if (relevance != null) 'relevance': relevance!,
       };
@@ -409,7 +407,7 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
         if (bindingExplanations != null)
           'bindingExplanations':
@@ -436,7 +434,7 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessTuple != null) 'accessTuple': accessTuple!.toJson(),
       };
 }
@@ -484,7 +482,7 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
         if (explainedPolicies != null)
           'explainedPolicies':
@@ -534,7 +532,7 @@ class GoogleIamV1AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
               auditLogConfigs!.map((value) => value.toJson()).toList(),
@@ -576,7 +574,7 @@ class GoogleIamV1AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
         if (logType != null) 'logType': logType!,
       };
@@ -648,7 +646,7 @@ class GoogleIamV1Binding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
@@ -760,7 +758,7 @@ class GoogleIamV1Policy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditConfigs != null)
           'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
@@ -831,7 +829,7 @@ class GoogleTypeExpr {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,

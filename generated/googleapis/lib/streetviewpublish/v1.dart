@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -577,7 +576,7 @@ class BatchDeletePhotosRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (photoIds != null) 'photoIds': photoIds!,
       };
 }
@@ -599,7 +598,7 @@ class BatchDeletePhotosResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (status != null)
           'status': status!.map((value) => value.toJson()).toList(),
       };
@@ -622,7 +621,7 @@ class BatchGetPhotosResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (results != null)
           'results': results!.map((value) => value.toJson()).toList(),
       };
@@ -648,7 +647,7 @@ class BatchUpdatePhotosRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (updatePhotoRequests != null)
           'updatePhotoRequests':
               updatePhotoRequests!.map((value) => value.toJson()).toList(),
@@ -672,7 +671,7 @@ class BatchUpdatePhotosResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (results != null)
           'results': results!.map((value) => value.toJson()).toList(),
       };
@@ -695,7 +694,7 @@ class Connection {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (target != null) 'target': target!.toJson(),
       };
 }
@@ -714,7 +713,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// An object that represents a latitude/longitude pair.
@@ -744,7 +743,7 @@ class LatLng {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (latitude != null) 'latitude': latitude!,
         if (longitude != null) 'longitude': longitude!,
       };
@@ -778,7 +777,7 @@ class Level {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (number != null) 'number': number!,
       };
@@ -809,7 +808,7 @@ class ListPhotosResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (photos != null)
           'photos': photos!.map((value) => value.toJson()).toList(),
@@ -870,29 +869,27 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -1033,7 +1030,7 @@ class Photo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (captureTime != null) 'captureTime': captureTime!,
         if (connections != null)
           'connections': connections!.map((value) => value.toJson()).toList(),
@@ -1067,7 +1064,7 @@ class PhotoId {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
       };
 }
@@ -1095,7 +1092,7 @@ class PhotoResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (photo != null) 'photo': photo!.toJson(),
         if (status != null) 'status': status!.toJson(),
       };
@@ -1132,7 +1129,7 @@ class Place {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
         if (name != null) 'name': name!,
         if (placeId != null) 'placeId': placeId!,
@@ -1214,7 +1211,7 @@ class Pose {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accuracyMeters != null) 'accuracyMeters': accuracyMeters!,
         if (altitude != null) 'altitude': altitude!,
         if (heading != null) 'heading': heading!,
@@ -1258,8 +1255,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -1272,7 +1269,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -1316,7 +1313,7 @@ class UpdatePhotoRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (photo != null) 'photo': photo!.toJson(),
         if (updateMask != null) 'updateMask': updateMask!,
       };
@@ -1338,7 +1335,7 @@ class UploadRef {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (uploadUrl != null) 'uploadUrl': uploadUrl!,
       };
 }

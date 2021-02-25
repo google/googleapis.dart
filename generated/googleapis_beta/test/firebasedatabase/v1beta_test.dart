@@ -141,7 +141,9 @@ void main() {
   unittest.group('obj-schema-DatabaseInstance', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDatabaseInstance();
-      var od = api.DatabaseInstance.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DatabaseInstance.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDatabaseInstance(od as api.DatabaseInstance);
     });
   });
@@ -149,7 +151,9 @@ void main() {
   unittest.group('obj-schema-DisableDatabaseInstanceRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDisableDatabaseInstanceRequest();
-      var od = api.DisableDatabaseInstanceRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DisableDatabaseInstanceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDisableDatabaseInstanceRequest(
           od as api.DisableDatabaseInstanceRequest);
     });
@@ -158,7 +162,9 @@ void main() {
   unittest.group('obj-schema-ListDatabaseInstancesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListDatabaseInstancesResponse();
-      var od = api.ListDatabaseInstancesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListDatabaseInstancesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListDatabaseInstancesResponse(
           od as api.ListDatabaseInstancesResponse);
     });
@@ -167,7 +173,9 @@ void main() {
   unittest.group('obj-schema-ReenableDatabaseInstanceRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReenableDatabaseInstanceRequest();
-      var od = api.ReenableDatabaseInstanceRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ReenableDatabaseInstanceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkReenableDatabaseInstanceRequest(
           od as api.ReenableDatabaseInstanceRequest);
     });

@@ -329,7 +329,9 @@ void main() {
   unittest.group('obj-schema-GenerateAccessTokenRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGenerateAccessTokenRequest();
-      var od = api.GenerateAccessTokenRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GenerateAccessTokenRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGenerateAccessTokenRequest(od as api.GenerateAccessTokenRequest);
     });
   });
@@ -337,7 +339,9 @@ void main() {
   unittest.group('obj-schema-GenerateAccessTokenResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGenerateAccessTokenResponse();
-      var od = api.GenerateAccessTokenResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GenerateAccessTokenResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGenerateAccessTokenResponse(od as api.GenerateAccessTokenResponse);
     });
   });
@@ -345,7 +349,9 @@ void main() {
   unittest.group('obj-schema-GenerateIdTokenRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGenerateIdTokenRequest();
-      var od = api.GenerateIdTokenRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GenerateIdTokenRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGenerateIdTokenRequest(od as api.GenerateIdTokenRequest);
     });
   });
@@ -353,7 +359,9 @@ void main() {
   unittest.group('obj-schema-GenerateIdTokenResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGenerateIdTokenResponse();
-      var od = api.GenerateIdTokenResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GenerateIdTokenResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGenerateIdTokenResponse(od as api.GenerateIdTokenResponse);
     });
   });
@@ -361,7 +369,9 @@ void main() {
   unittest.group('obj-schema-SignBlobRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSignBlobRequest();
-      var od = api.SignBlobRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SignBlobRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSignBlobRequest(od as api.SignBlobRequest);
     });
   });
@@ -369,7 +379,9 @@ void main() {
   unittest.group('obj-schema-SignBlobResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSignBlobResponse();
-      var od = api.SignBlobResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SignBlobResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSignBlobResponse(od as api.SignBlobResponse);
     });
   });
@@ -377,7 +389,9 @@ void main() {
   unittest.group('obj-schema-SignJwtRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSignJwtRequest();
-      var od = api.SignJwtRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SignJwtRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSignJwtRequest(od as api.SignJwtRequest);
     });
   });
@@ -385,7 +399,9 @@ void main() {
   unittest.group('obj-schema-SignJwtResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSignJwtResponse();
-      var od = api.SignJwtResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SignJwtResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSignJwtResponse(od as api.SignJwtResponse);
     });
   });

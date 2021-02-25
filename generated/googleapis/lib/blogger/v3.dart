@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1858,7 +1857,7 @@ class BlogLocale {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (country != null) 'country': country!,
         if (language != null) 'language': language!,
         if (variant != null) 'variant': variant!,
@@ -1884,7 +1883,7 @@ class BlogPages {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (selfLink != null) 'selfLink': selfLink!,
         if (totalItems != null) 'totalItems': totalItems!,
       };
@@ -1918,7 +1917,7 @@ class BlogPosts {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (selfLink != null) 'selfLink': selfLink!,
@@ -2022,7 +2021,7 @@ class Blog {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customMetaData != null) 'customMetaData': customMetaData!,
         if (description != null) 'description': description!,
         if (id != null) 'id': id!,
@@ -2071,7 +2070,7 @@ class BlogList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blogUserInfos != null)
           'blogUserInfos':
               blogUserInfos!.map((value) => value.toJson()).toList(),
@@ -2131,7 +2130,7 @@ class BlogPerUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blogId != null) 'blogId': blogId!,
         if (hasAdminAccess != null) 'hasAdminAccess': hasAdminAccess!,
         if (kind != null) 'kind': kind!,
@@ -2169,7 +2168,7 @@ class BlogUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blog != null) 'blog': blog!.toJson(),
         if (blogUserInfo != null) 'blog_user_info': blogUserInfo!.toJson(),
         if (kind != null) 'kind': kind!,
@@ -2189,7 +2188,7 @@ class CommentAuthorImage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
       };
 }
@@ -2226,7 +2225,7 @@ class CommentAuthor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (id != null) 'id': id!,
         if (image != null) 'image': image!.toJson(),
@@ -2247,7 +2246,7 @@ class CommentBlog {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
       };
 }
@@ -2265,7 +2264,7 @@ class CommentInReplyTo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
       };
 }
@@ -2283,7 +2282,7 @@ class CommentPost {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
       };
 }
@@ -2373,7 +2372,7 @@ class Comment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (author != null) 'author': author!.toJson(),
         if (blog != null) 'blog': blog!.toJson(),
         if (content != null) 'content': content!,
@@ -2429,7 +2428,7 @@ class CommentList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -2452,7 +2451,7 @@ class PageAuthorImage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
       };
 }
@@ -2489,7 +2488,7 @@ class PageAuthor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (id != null) 'id': id!,
         if (image != null) 'image': image!.toJson(),
@@ -2510,7 +2509,7 @@ class PageBlog {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
       };
 }
@@ -2602,7 +2601,7 @@ class Page {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (author != null) 'author': author!.toJson(),
         if (blog != null) 'blog': blog!.toJson(),
         if (content != null) 'content': content!,
@@ -2653,7 +2652,7 @@ class PageList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -2684,7 +2683,7 @@ class PageviewsCounts {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
         if (timeRange != null) 'timeRange': timeRange!,
       };
@@ -2719,7 +2718,7 @@ class Pageviews {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blogId != null) 'blogId': blogId!,
         if (counts != null)
           'counts': counts!.map((value) => value.toJson()).toList(),
@@ -2740,7 +2739,7 @@ class PostAuthorImage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
       };
 }
@@ -2777,7 +2776,7 @@ class PostAuthor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (id != null) 'id': id!,
         if (image != null) 'image': image!.toJson(),
@@ -2798,7 +2797,7 @@ class PostBlog {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
       };
 }
@@ -2814,7 +2813,7 @@ class PostImages {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
       };
 }
@@ -2852,7 +2851,7 @@ class PostLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (lat != null) 'lat': lat!,
         if (lng != null) 'lng': lng!,
         if (name != null) 'name': name!,
@@ -2888,7 +2887,7 @@ class PostReplies {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (selfLink != null) 'selfLink': selfLink!,
@@ -3039,7 +3038,7 @@ class Post {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (author != null) 'author': author!.toJson(),
         if (blog != null) 'blog': blog!.toJson(),
         if (content != null) 'content': content!,
@@ -3104,7 +3103,7 @@ class PostList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -3152,7 +3151,7 @@ class PostPerUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blogId != null) 'blogId': blogId!,
         if (hasEditAccess != null) 'hasEditAccess': hasEditAccess!,
         if (kind != null) 'kind': kind!,
@@ -3189,7 +3188,7 @@ class PostUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (post != null) 'post': post!.toJson(),
         if (postUserInfo != null) 'post_user_info': postUserInfo!.toJson(),
@@ -3225,7 +3224,7 @@ class PostUserInfosList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -3246,7 +3245,7 @@ class UserBlogs {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (selfLink != null) 'selfLink': selfLink!,
       };
 }
@@ -3276,7 +3275,7 @@ class UserLocale {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (country != null) 'country': country!,
         if (language != null) 'language': language!,
         if (variant != null) 'variant': variant!,
@@ -3347,7 +3346,7 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (about != null) 'about': about!,
         if (blogs != null) 'blogs': blogs!.toJson(),
         if (created != null) 'created': created!,

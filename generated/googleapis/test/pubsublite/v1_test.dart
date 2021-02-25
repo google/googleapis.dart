@@ -532,7 +532,9 @@ void main() {
   unittest.group('obj-schema-Capacity', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCapacity();
-      var od = api.Capacity.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Capacity.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkCapacity(od as api.Capacity);
     });
   });
@@ -540,7 +542,9 @@ void main() {
   unittest.group('obj-schema-ComputeHeadCursorRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildComputeHeadCursorRequest();
-      var od = api.ComputeHeadCursorRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ComputeHeadCursorRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkComputeHeadCursorRequest(od as api.ComputeHeadCursorRequest);
     });
   });
@@ -548,7 +552,9 @@ void main() {
   unittest.group('obj-schema-ComputeHeadCursorResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildComputeHeadCursorResponse();
-      var od = api.ComputeHeadCursorResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ComputeHeadCursorResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkComputeHeadCursorResponse(od as api.ComputeHeadCursorResponse);
     });
   });
@@ -556,7 +562,9 @@ void main() {
   unittest.group('obj-schema-ComputeMessageStatsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildComputeMessageStatsRequest();
-      var od = api.ComputeMessageStatsRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ComputeMessageStatsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkComputeMessageStatsRequest(od as api.ComputeMessageStatsRequest);
     });
   });
@@ -564,7 +572,9 @@ void main() {
   unittest.group('obj-schema-ComputeMessageStatsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildComputeMessageStatsResponse();
-      var od = api.ComputeMessageStatsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ComputeMessageStatsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkComputeMessageStatsResponse(od as api.ComputeMessageStatsResponse);
     });
   });
@@ -572,7 +582,9 @@ void main() {
   unittest.group('obj-schema-Cursor', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCursor();
-      var od = api.Cursor.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Cursor.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkCursor(od as api.Cursor);
     });
   });
@@ -580,7 +592,9 @@ void main() {
   unittest.group('obj-schema-DeliveryConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDeliveryConfig();
-      var od = api.DeliveryConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DeliveryConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDeliveryConfig(od as api.DeliveryConfig);
     });
   });
@@ -588,7 +602,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -596,7 +611,9 @@ void main() {
   unittest.group('obj-schema-ListPartitionCursorsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListPartitionCursorsResponse();
-      var od = api.ListPartitionCursorsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListPartitionCursorsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListPartitionCursorsResponse(od as api.ListPartitionCursorsResponse);
     });
   });
@@ -604,7 +621,9 @@ void main() {
   unittest.group('obj-schema-ListSubscriptionsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListSubscriptionsResponse();
-      var od = api.ListSubscriptionsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListSubscriptionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListSubscriptionsResponse(od as api.ListSubscriptionsResponse);
     });
   });
@@ -612,7 +631,9 @@ void main() {
   unittest.group('obj-schema-ListTopicSubscriptionsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListTopicSubscriptionsResponse();
-      var od = api.ListTopicSubscriptionsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListTopicSubscriptionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListTopicSubscriptionsResponse(
           od as api.ListTopicSubscriptionsResponse);
     });
@@ -621,7 +642,9 @@ void main() {
   unittest.group('obj-schema-ListTopicsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListTopicsResponse();
-      var od = api.ListTopicsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListTopicsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListTopicsResponse(od as api.ListTopicsResponse);
     });
   });
@@ -629,7 +652,9 @@ void main() {
   unittest.group('obj-schema-PartitionConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPartitionConfig();
-      var od = api.PartitionConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PartitionConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPartitionConfig(od as api.PartitionConfig);
     });
   });
@@ -637,7 +662,9 @@ void main() {
   unittest.group('obj-schema-PartitionCursor', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPartitionCursor();
-      var od = api.PartitionCursor.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PartitionCursor.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPartitionCursor(od as api.PartitionCursor);
     });
   });
@@ -645,7 +672,9 @@ void main() {
   unittest.group('obj-schema-RetentionConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRetentionConfig();
-      var od = api.RetentionConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RetentionConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRetentionConfig(od as api.RetentionConfig);
     });
   });
@@ -653,7 +682,9 @@ void main() {
   unittest.group('obj-schema-Subscription', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSubscription();
-      var od = api.Subscription.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Subscription.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSubscription(od as api.Subscription);
     });
   });
@@ -661,7 +692,8 @@ void main() {
   unittest.group('obj-schema-Topic', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTopic();
-      var od = api.Topic.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Topic.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkTopic(od as api.Topic);
     });
   });
@@ -669,7 +701,9 @@ void main() {
   unittest.group('obj-schema-TopicPartitions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTopicPartitions();
-      var od = api.TopicPartitions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TopicPartitions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTopicPartitions(od as api.TopicPartitions);
     });
   });

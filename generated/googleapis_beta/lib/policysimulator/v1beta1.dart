@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -791,7 +790,7 @@ class GoogleCloudPolicysimulatorV1beta1AccessStateDiff {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessChange != null) 'accessChange': accessChange!,
         if (baseline != null) 'baseline': baseline!.toJson(),
         if (simulated != null) 'simulated': simulated!.toJson(),
@@ -845,7 +844,7 @@ class GoogleCloudPolicysimulatorV1beta1AccessTuple {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
         if (permission != null) 'permission': permission!,
         if (principal != null) 'principal': principal!,
@@ -948,15 +947,14 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanation {
           _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('memberships')) {
-      memberships = (_json['memberships'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership
-                  .fromJson(item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      memberships =
+          (_json['memberships'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership
+              .fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('relevance')) {
       relevance = _json['relevance'] as core.String;
@@ -972,7 +970,7 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
         if (condition != null) 'condition': condition!.toJson(),
         if (memberships != null)
@@ -1025,7 +1023,7 @@ class GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (membership != null) 'membership': membership!,
         if (relevance != null) 'relevance': relevance!,
       };
@@ -1079,7 +1077,7 @@ class GoogleCloudPolicysimulatorV1beta1ExplainedAccess {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessState != null) 'accessState': accessState!,
         if (errors != null)
           'errors': errors!.map((value) => value.toJson()).toList(),
@@ -1169,7 +1167,7 @@ class GoogleCloudPolicysimulatorV1beta1ExplainedPolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
         if (bindingExplanations != null)
           'bindingExplanations':
@@ -1207,7 +1205,7 @@ class GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (replayResults != null)
           'replayResults':
@@ -1269,7 +1267,7 @@ class GoogleCloudPolicysimulatorV1beta1Replay {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (config != null) 'config': config!.toJson(),
         if (name != null) 'name': name!,
         if (resultsSummary != null) 'resultsSummary': resultsSummary!.toJson(),
@@ -1308,19 +1306,18 @@ class GoogleCloudPolicysimulatorV1beta1ReplayConfig {
       logSource = _json['logSource'] as core.String;
     }
     if (_json.containsKey('policyOverlay')) {
-      policyOverlay = (_json['policyOverlay'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              GoogleIamV1Policy.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      policyOverlay =
+          (_json['policyOverlay'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleIamV1Policy.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (logSource != null) 'logSource': logSource!,
         if (policyOverlay != null)
           'policyOverlay': policyOverlay!
@@ -1351,7 +1348,7 @@ class GoogleCloudPolicysimulatorV1beta1ReplayDiff {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessDiff != null) 'accessDiff': accessDiff!.toJson(),
       };
 }
@@ -1370,7 +1367,7 @@ class GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (startTime != null) 'startTime': startTime!,
       };
 }
@@ -1439,7 +1436,7 @@ class GoogleCloudPolicysimulatorV1beta1ReplayResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessTuple != null) 'accessTuple': accessTuple!.toJson(),
         if (diff != null) 'diff': diff!.toJson(),
         if (error != null) 'error': error!.toJson(),
@@ -1497,7 +1494,7 @@ class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (differenceCount != null) 'differenceCount': differenceCount!,
         if (errorCount != null) 'errorCount': errorCount!,
         if (logCount != null) 'logCount': logCount!,
@@ -1549,7 +1546,7 @@ class GoogleIamV1AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
               auditLogConfigs!.map((value) => value.toJson()).toList(),
@@ -1591,7 +1588,7 @@ class GoogleIamV1AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
         if (logType != null) 'logType': logType!,
       };
@@ -1663,7 +1660,7 @@ class GoogleIamV1Binding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
@@ -1775,7 +1772,7 @@ class GoogleIamV1Policy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditConfigs != null)
           'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
@@ -1808,7 +1805,7 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
@@ -1869,29 +1866,27 @@ class GoogleLongrunningOperation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -1933,8 +1928,8 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -1947,7 +1942,7 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -1994,7 +1989,7 @@ class GoogleTypeDate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
         if (month != null) 'month': month!,
         if (year != null) 'year': year!,
@@ -2062,7 +2057,7 @@ class GoogleTypeExpr {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,

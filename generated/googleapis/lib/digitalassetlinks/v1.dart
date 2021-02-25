@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -356,7 +355,7 @@ class AndroidAppAsset {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (certificate != null) 'certificate': certificate!.toJson(),
         if (packageName != null) 'packageName': packageName!,
       };
@@ -387,7 +386,7 @@ class Asset {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (androidApp != null) 'androidApp': androidApp!.toJson(),
         if (web != null) 'web': web!.toJson(),
       };
@@ -420,7 +419,7 @@ class CertificateInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sha256Fingerprint != null) 'sha256Fingerprint': sha256Fingerprint!,
       };
 }
@@ -469,7 +468,7 @@ class CheckResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (debugString != null) 'debugString': debugString!,
         if (errorCode != null) 'errorCode': errorCode!,
         if (linked != null) 'linked': linked!,
@@ -523,7 +522,7 @@ class ListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (debugString != null) 'debugString': debugString!,
         if (errorCode != null) 'errorCode': errorCode!,
         if (maxAge != null) 'maxAge': maxAge!,
@@ -578,7 +577,7 @@ class Statement {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (relation != null) 'relation': relation!,
         if (source != null) 'source': source!.toJson(),
         if (target != null) 'target': target!.toJson(),
@@ -614,7 +613,7 @@ class WebAsset {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (site != null) 'site': site!,
       };
 }

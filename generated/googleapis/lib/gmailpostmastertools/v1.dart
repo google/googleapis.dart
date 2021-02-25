@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -344,7 +343,7 @@ class DeliveryError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorClass != null) 'errorClass': errorClass!,
         if (errorRatio != null) 'errorRatio': errorRatio!,
         if (errorType != null) 'errorType': errorType!,
@@ -392,7 +391,7 @@ class Domain {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (name != null) 'name': name!,
         if (permission != null) 'permission': permission!,
@@ -420,7 +419,7 @@ class FeedbackLoop {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (spamRatio != null) 'spamRatio': spamRatio!,
       };
@@ -473,7 +472,7 @@ class IpReputation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ipCount != null) 'ipCount': ipCount!,
         if (reputation != null) 'reputation': reputation!,
         if (sampleIps != null) 'sampleIps': sampleIps!,
@@ -503,7 +502,7 @@ class ListDomainsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (domains != null)
           'domains': domains!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -533,7 +532,7 @@ class ListTrafficStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (trafficStats != null)
           'trafficStats': trafficStats!.map((value) => value.toJson()).toList(),
@@ -676,7 +675,7 @@ class TrafficStats {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deliveryErrors != null)
           'deliveryErrors':
               deliveryErrors!.map((value) => value.toJson()).toList(),

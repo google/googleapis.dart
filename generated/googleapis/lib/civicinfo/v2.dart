@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -358,7 +357,7 @@ class AdministrationRegion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (electionAdministrationBody != null)
           'electionAdministrationBody': electionAdministrationBody!.toJson(),
         if (localJurisdiction != null)
@@ -484,7 +483,7 @@ class AdministrativeBody {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (absenteeVotingInfoUrl != null)
           'absenteeVotingInfoUrl': absenteeVotingInfoUrl!,
         if (ballotInfoUrl != null) 'ballotInfoUrl': ballotInfoUrl!,
@@ -575,7 +574,7 @@ class Candidate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (candidateUrl != null) 'candidateUrl': candidateUrl!,
         if (channels != null)
           'channels': channels!.map((value) => value.toJson()).toList(),
@@ -611,7 +610,7 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (type != null) 'type': type!,
       };
@@ -839,7 +838,7 @@ class Contest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ballotPlacement != null) 'ballotPlacement': ballotPlacement!,
         if (ballotTitle != null) 'ballotTitle': ballotTitle!,
         if (candidates != null)
@@ -899,7 +898,7 @@ class DivisionSearchResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (results != null)
           'results': results!.map((value) => value.toJson()).toList(),
@@ -939,7 +938,7 @@ class DivisionSearchResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aliases != null) 'aliases': aliases!,
         if (name != null) 'name': name!,
         if (ocdId != null) 'ocdId': ocdId!,
@@ -982,7 +981,7 @@ class Election {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (electionDay != null) 'electionDay': electionDay!,
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
@@ -1027,7 +1026,7 @@ class ElectionOfficial {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (emailAddress != null) 'emailAddress': emailAddress!,
         if (faxNumber != null) 'faxNumber': faxNumber!,
         if (name != null) 'name': name!,
@@ -1060,7 +1059,7 @@ class ElectionsQueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (elections != null)
           'elections': elections!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -1114,7 +1113,7 @@ class ElectoralDistrict {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
         if (scope != null) 'scope': scope!,
@@ -1163,7 +1162,7 @@ class GeographicDivision {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alsoKnownAs != null) 'alsoKnownAs': alsoKnownAs!,
         if (name != null) 'name': name!,
         if (officeIndices != null) 'officeIndices': officeIndices!,
@@ -1236,7 +1235,7 @@ class Office {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (divisionId != null) 'divisionId': divisionId!,
         if (levels != null) 'levels': levels!,
         if (name != null) 'name': name!,
@@ -1314,7 +1313,7 @@ class Official {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (address != null)
           'address': address!.map((value) => value.toJson()).toList(),
         if (channels != null)
@@ -1417,7 +1416,7 @@ class PollingLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!.toJson(),
         if (endDate != null) 'endDate': endDate!,
         if (latitude != null) 'latitude': latitude!,
@@ -1451,15 +1450,14 @@ class RepresentativeInfoData {
 
   RepresentativeInfoData.fromJson(core.Map _json) {
     if (_json.containsKey('divisions')) {
-      divisions = (_json['divisions'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              GeographicDivision.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      divisions =
+          (_json['divisions'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          GeographicDivision.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('offices')) {
       offices = (_json['offices'] as core.List)
@@ -1475,7 +1473,7 @@ class RepresentativeInfoData {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (divisions != null)
           'divisions':
               divisions!.map((key, item) => core.MapEntry(key, item.toJson())),
@@ -1514,15 +1512,14 @@ class RepresentativeInfoResponse {
 
   RepresentativeInfoResponse.fromJson(core.Map _json) {
     if (_json.containsKey('divisions')) {
-      divisions = (_json['divisions'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              GeographicDivision.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      divisions =
+          (_json['divisions'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          GeographicDivision.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -1545,7 +1542,7 @@ class RepresentativeInfoResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (divisions != null)
           'divisions':
               divisions!.map((key, item) => core.MapEntry(key, item.toJson())),
@@ -1608,7 +1605,7 @@ class SimpleAddressType {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (city != null) 'city': city!,
         if (line1 != null) 'line1': line1!,
         if (line2 != null) 'line2': line2!,
@@ -1638,7 +1635,7 @@ class Source {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (official != null) 'official': official!,
       };
@@ -1756,7 +1753,7 @@ class VoterInfoResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contests != null)
           'contests': contests!.map((value) => value.toJson()).toList(),
         if (dropOffLocations != null)

@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -350,7 +349,7 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (googleAuto != null) 'googleAuto': googleAuto!.toJson(),
       };
 }
@@ -402,7 +401,7 @@ class AndroidDevice {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (androidModelId != null) 'androidModelId': androidModelId!,
         if (androidVersionId != null) 'androidVersionId': androidVersionId!,
         if (locale != null) 'locale': locale!,
@@ -442,7 +441,7 @@ class AndroidDeviceCatalog {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (models != null)
           'models': models!.map((value) => value.toJson()).toList(),
         if (runtimeConfiguration != null)
@@ -470,7 +469,7 @@ class AndroidDeviceList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (androidDevices != null)
           'androidDevices':
               androidDevices!.map((value) => value.toJson()).toList(),
@@ -578,7 +577,7 @@ class AndroidInstrumentationTest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appApk != null) 'appApk': appApk!.toJson(),
         if (appBundle != null) 'appBundle': appBundle!.toJson(),
         if (appPackageId != null) 'appPackageId': appPackageId!,
@@ -652,7 +651,7 @@ class AndroidMatrix {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (androidModelIds != null) 'androidModelIds': androidModelIds!,
         if (androidVersionIds != null) 'androidVersionIds': androidVersionIds!,
         if (locales != null) 'locales': locales!,
@@ -800,7 +799,7 @@ class AndroidModel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (brand != null) 'brand': brand!,
         if (codename != null) 'codename': codename!,
         if (form != null) 'form': form!,
@@ -909,7 +908,7 @@ class AndroidRoboTest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appApk != null) 'appApk': appApk!.toJson(),
         if (appBundle != null) 'appBundle': appBundle!.toJson(),
         if (appInitialActivity != null)
@@ -952,7 +951,7 @@ class AndroidRuntimeConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (locales != null)
           'locales': locales!.map((value) => value.toJson()).toList(),
         if (orientations != null)
@@ -1016,7 +1015,7 @@ class AndroidTestLoop {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appApk != null) 'appApk': appApk!.toJson(),
         if (appBundle != null) 'appBundle': appBundle!.toJson(),
         if (appPackageId != null) 'appPackageId': appPackageId!,
@@ -1088,7 +1087,7 @@ class AndroidVersion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiLevel != null) 'apiLevel': apiLevel!,
         if (codeName != null) 'codeName': codeName!,
         if (distribution != null) 'distribution': distribution!.toJson(),
@@ -1121,7 +1120,7 @@ class Apk {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (location != null) 'location': location!.toJson(),
         if (packageName != null) 'packageName': packageName!,
       };
@@ -1141,7 +1140,7 @@ class ApkDetail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apkManifest != null) 'apkManifest': apkManifest!.toJson(),
       };
 }
@@ -1200,7 +1199,7 @@ class ApkManifest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (applicationLabel != null) 'applicationLabel': applicationLabel!,
         if (intentFilters != null)
           'intentFilters':
@@ -1231,7 +1230,7 @@ class AppBundle {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bundleLocation != null) 'bundleLocation': bundleLocation!.toJson(),
       };
 }
@@ -1279,7 +1278,7 @@ class CancelTestMatrixResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (testState != null) 'testState': testState!,
       };
 }
@@ -1308,7 +1307,7 @@ class ClientInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clientInfoDetails != null)
           'clientInfoDetails':
               clientInfoDetails!.map((value) => value.toJson()).toList(),
@@ -1342,7 +1341,7 @@ class ClientInfoDetail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (value != null) 'value': value!,
       };
@@ -1388,7 +1387,7 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
         if (month != null) 'month': month!,
         if (year != null) 'year': year!,
@@ -1416,7 +1415,7 @@ class DeviceFile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (obbFile != null) 'obbFile': obbFile!.toJson(),
         if (regularFile != null) 'regularFile': regularFile!.toJson(),
       };
@@ -1455,7 +1454,7 @@ class DeviceIpBlock {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addedDate != null) 'addedDate': addedDate!.toJson(),
         if (block != null) 'block': block!,
         if (form != null) 'form': form!,
@@ -1478,7 +1477,7 @@ class DeviceIpBlockCatalog {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ipBlocks != null)
           'ipBlocks': ipBlocks!.map((value) => value.toJson()).toList(),
       };
@@ -1508,7 +1507,7 @@ class Distribution {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (marketShare != null) 'marketShare': marketShare!,
         if (measurementTime != null) 'measurementTime': measurementTime!,
       };
@@ -1535,7 +1534,7 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (androidDevice != null) 'androidDevice': androidDevice!.toJson(),
         if (iosDevice != null) 'iosDevice': iosDevice!.toJson(),
       };
@@ -1570,7 +1569,7 @@ class EnvironmentMatrix {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (androidDeviceList != null)
           'androidDeviceList': androidDeviceList!.toJson(),
         if (androidMatrix != null) 'androidMatrix': androidMatrix!.toJson(),
@@ -1597,7 +1596,7 @@ class EnvironmentVariable {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (value != null) 'value': value!,
       };
@@ -1619,7 +1618,7 @@ class FileReference {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsPath != null) 'gcsPath': gcsPath!,
       };
 }
@@ -1638,7 +1637,7 @@ class GetApkDetailsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apkDetail != null) 'apkDetail': apkDetail!.toJson(),
       };
 }
@@ -1657,7 +1656,7 @@ class GoogleAuto {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A storage location within Google cloud storage (GCS).
@@ -1679,7 +1678,7 @@ class GoogleCloudStorage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsPath != null) 'gcsPath': gcsPath!,
       };
 }
@@ -1715,7 +1714,7 @@ class IntentFilter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (actionNames != null) 'actionNames': actionNames!,
         if (categoryNames != null) 'categoryNames': categoryNames!,
         if (mimeType != null) 'mimeType': mimeType!,
@@ -1769,7 +1768,7 @@ class IosDevice {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (iosModelId != null) 'iosModelId': iosModelId!,
         if (iosVersionId != null) 'iosVersionId': iosVersionId!,
         if (locale != null) 'locale': locale!,
@@ -1818,7 +1817,7 @@ class IosDeviceCatalog {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (models != null)
           'models': models!.map((value) => value.toJson()).toList(),
         if (runtimeConfiguration != null)
@@ -1860,7 +1859,7 @@ class IosDeviceFile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bundleId != null) 'bundleId': bundleId!,
         if (content != null) 'content': content!.toJson(),
         if (devicePath != null) 'devicePath': devicePath!,
@@ -1885,7 +1884,7 @@ class IosDeviceList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (iosDevices != null)
           'iosDevices': iosDevices!.map((value) => value.toJson()).toList(),
       };
@@ -1973,7 +1972,7 @@ class IosModel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceCapabilities != null)
           'deviceCapabilities': deviceCapabilities!,
         if (formFactor != null) 'formFactor': formFactor!,
@@ -2013,7 +2012,7 @@ class IosRuntimeConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (locales != null)
           'locales': locales!.map((value) => value.toJson()).toList(),
         if (orientations != null)
@@ -2059,7 +2058,7 @@ class IosTestLoop {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appBundleId != null) 'appBundleId': appBundleId!,
         if (appIpa != null) 'appIpa': appIpa!.toJson(),
         if (scenarios != null) 'scenarios': scenarios!,
@@ -2115,7 +2114,7 @@ class IosTestSetup {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (additionalIpas != null)
           'additionalIpas':
               additionalIpas!.map((value) => value.toJson()).toList(),
@@ -2178,7 +2177,7 @@ class IosVersion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (majorVersion != null) 'majorVersion': majorVersion!,
         if (minorVersion != null) 'minorVersion': minorVersion!,
@@ -2253,7 +2252,7 @@ class IosXcTest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appBundleId != null) 'appBundleId': appBundleId!,
         if (testSpecialEntitlements != null)
           'testSpecialEntitlements': testSpecialEntitlements!,
@@ -2271,7 +2270,7 @@ class LauncherActivityIntent {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A location/region designation for language.
@@ -2315,7 +2314,7 @@ class Locale {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
         if (region != null) 'region': region!,
@@ -2349,7 +2348,7 @@ class ManualSharding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (testTargetsForShard != null)
           'testTargetsForShard':
               testTargetsForShard!.map((value) => value.toJson()).toList(),
@@ -2382,7 +2381,7 @@ class NetworkConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (downRule != null) 'downRule': downRule!.toJson(),
         if (id != null) 'id': id!,
         if (upRule != null) 'upRule': upRule!.toJson(),
@@ -2403,7 +2402,7 @@ class NetworkConfigurationCatalog {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (configurations != null)
           'configurations':
               configurations!.map((value) => value.toJson()).toList(),
@@ -2436,7 +2435,7 @@ class ObbFile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (obb != null) 'obb': obb!.toJson(),
         if (obbFileName != null) 'obbFileName': obbFileName!,
       };
@@ -2475,7 +2474,7 @@ class Orientation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
         if (tags != null) 'tags': tags!,
@@ -2510,7 +2509,7 @@ class ProvidedSoftwareCatalog {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (androidxOrchestratorVersion != null)
           'androidxOrchestratorVersion': androidxOrchestratorVersion!,
         if (orchestratorVersion != null)
@@ -2553,7 +2552,7 @@ class RegularFile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!.toJson(),
         if (devicePath != null) 'devicePath': devicePath!,
       };
@@ -2600,7 +2599,7 @@ class ResultStorage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (googleCloudStorage != null)
           'googleCloudStorage': googleCloudStorage!.toJson(),
         if (resultsUrl != null) 'resultsUrl': resultsUrl!,
@@ -2657,7 +2656,7 @@ class RoboDirective {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (actionType != null) 'actionType': actionType!,
         if (inputText != null) 'inputText': inputText!,
         if (resourceName != null) 'resourceName': resourceName!,
@@ -2691,7 +2690,7 @@ class RoboStartingIntent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (launcherActivity != null)
           'launcherActivity': launcherActivity!.toJson(),
         if (startActivity != null) 'startActivity': startActivity!.toJson(),
@@ -2733,7 +2732,7 @@ class Shard {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (numShards != null) 'numShards': numShards!,
         if (shardIndex != null) 'shardIndex': shardIndex!,
         if (testTargetsForShard != null)
@@ -2763,7 +2762,7 @@ class ShardingOption {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (manualSharding != null) 'manualSharding': manualSharding!.toJson(),
         if (uniformSharding != null)
           'uniformSharding': uniformSharding!.toJson(),
@@ -2799,7 +2798,7 @@ class StartActivityIntent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
         if (categories != null) 'categories': categories!,
         if (uri != null) 'uri': uri!,
@@ -2820,7 +2819,7 @@ class SystraceSetup {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (durationSeconds != null) 'durationSeconds': durationSeconds!,
       };
 }
@@ -2854,7 +2853,7 @@ class TestDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorMessage != null) 'errorMessage': errorMessage!,
         if (progressMessages != null) 'progressMessages': progressMessages!,
       };
@@ -2903,7 +2902,7 @@ class TestEnvironmentCatalog {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (androidDeviceCatalog != null)
           'androidDeviceCatalog': androidDeviceCatalog!.toJson(),
         if (deviceIpBlockCatalog != null)
@@ -3036,7 +3035,7 @@ class TestExecution {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (environment != null) 'environment': environment!.toJson(),
         if (id != null) 'id': id!,
         if (matrixId != null) 'matrixId': matrixId!,
@@ -3291,7 +3290,7 @@ class TestMatrix {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clientInfo != null) 'clientInfo': clientInfo!.toJson(),
         if (environmentMatrix != null)
           'environmentMatrix': environmentMatrix!.toJson(),
@@ -3399,7 +3398,7 @@ class TestSetup {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (account != null) 'account': account!.toJson(),
         if (additionalApks != null)
           'additionalApks':
@@ -3501,7 +3500,7 @@ class TestSpecification {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (androidInstrumentationTest != null)
           'androidInstrumentationTest': androidInstrumentationTest!.toJson(),
         if (androidRoboTest != null)
@@ -3539,7 +3538,7 @@ class TestTargetsForShard {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (testTargets != null) 'testTargets': testTargets!,
       };
 }
@@ -3577,7 +3576,7 @@ class ToolResultsExecution {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (executionId != null) 'executionId': executionId!,
         if (historyId != null) 'historyId': historyId!,
         if (projectId != null) 'projectId': projectId!,
@@ -3607,7 +3606,7 @@ class ToolResultsHistory {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (historyId != null) 'historyId': historyId!,
         if (projectId != null) 'projectId': projectId!,
       };
@@ -3654,7 +3653,7 @@ class ToolResultsStep {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (executionId != null) 'executionId': executionId!,
         if (historyId != null) 'historyId': historyId!,
         if (projectId != null) 'projectId': projectId!,
@@ -3700,7 +3699,7 @@ class TrafficRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bandwidth != null) 'bandwidth': bandwidth!,
         if (burst != null) 'burst': burst!,
         if (delay != null) 'delay': delay!,
@@ -3732,7 +3731,7 @@ class UniformSharding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (numShards != null) 'numShards': numShards!,
       };
 }
@@ -3762,7 +3761,7 @@ class XcodeVersion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (tags != null) 'tags': tags!,
         if (version != null) 'version': version!,
       };

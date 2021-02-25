@@ -329,7 +329,9 @@ void main() {
   unittest.group('obj-schema-Application', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApplication();
-      var od = api.Application.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Application.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApplication(od as api.Application);
     });
   });
@@ -337,7 +339,9 @@ void main() {
   unittest.group('obj-schema-ApplicationDataTransfer', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApplicationDataTransfer();
-      var od = api.ApplicationDataTransfer.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApplicationDataTransfer.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApplicationDataTransfer(od as api.ApplicationDataTransfer);
     });
   });
@@ -345,7 +349,9 @@ void main() {
   unittest.group('obj-schema-ApplicationTransferParam', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApplicationTransferParam();
-      var od = api.ApplicationTransferParam.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApplicationTransferParam.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApplicationTransferParam(od as api.ApplicationTransferParam);
     });
   });
@@ -353,7 +359,9 @@ void main() {
   unittest.group('obj-schema-ApplicationsListResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApplicationsListResponse();
-      var od = api.ApplicationsListResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApplicationsListResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApplicationsListResponse(od as api.ApplicationsListResponse);
     });
   });
@@ -361,7 +369,9 @@ void main() {
   unittest.group('obj-schema-DataTransfer', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDataTransfer();
-      var od = api.DataTransfer.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DataTransfer.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDataTransfer(od as api.DataTransfer);
     });
   });
@@ -369,7 +379,9 @@ void main() {
   unittest.group('obj-schema-DataTransfersListResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDataTransfersListResponse();
-      var od = api.DataTransfersListResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DataTransfersListResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDataTransfersListResponse(od as api.DataTransfersListResponse);
     });
   });

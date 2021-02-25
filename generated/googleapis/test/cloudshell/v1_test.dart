@@ -676,7 +676,9 @@ void main() {
   unittest.group('obj-schema-AddPublicKeyMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAddPublicKeyMetadata();
-      var od = api.AddPublicKeyMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AddPublicKeyMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAddPublicKeyMetadata(od as api.AddPublicKeyMetadata);
     });
   });
@@ -684,7 +686,9 @@ void main() {
   unittest.group('obj-schema-AddPublicKeyRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAddPublicKeyRequest();
-      var od = api.AddPublicKeyRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AddPublicKeyRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAddPublicKeyRequest(od as api.AddPublicKeyRequest);
     });
   });
@@ -692,7 +696,9 @@ void main() {
   unittest.group('obj-schema-AddPublicKeyResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAddPublicKeyResponse();
-      var od = api.AddPublicKeyResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AddPublicKeyResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAddPublicKeyResponse(od as api.AddPublicKeyResponse);
     });
   });
@@ -700,7 +706,9 @@ void main() {
   unittest.group('obj-schema-AuthorizeEnvironmentMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAuthorizeEnvironmentMetadata();
-      var od = api.AuthorizeEnvironmentMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AuthorizeEnvironmentMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAuthorizeEnvironmentMetadata(od as api.AuthorizeEnvironmentMetadata);
     });
   });
@@ -708,7 +716,9 @@ void main() {
   unittest.group('obj-schema-AuthorizeEnvironmentRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAuthorizeEnvironmentRequest();
-      var od = api.AuthorizeEnvironmentRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AuthorizeEnvironmentRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAuthorizeEnvironmentRequest(od as api.AuthorizeEnvironmentRequest);
     });
   });
@@ -716,7 +726,9 @@ void main() {
   unittest.group('obj-schema-AuthorizeEnvironmentResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAuthorizeEnvironmentResponse();
-      var od = api.AuthorizeEnvironmentResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AuthorizeEnvironmentResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAuthorizeEnvironmentResponse(od as api.AuthorizeEnvironmentResponse);
     });
   });
@@ -724,7 +736,9 @@ void main() {
   unittest.group('obj-schema-CancelOperationRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
-      var od = api.CancelOperationRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CancelOperationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCancelOperationRequest(od as api.CancelOperationRequest);
     });
   });
@@ -732,7 +746,9 @@ void main() {
   unittest.group('obj-schema-CreateEnvironmentMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreateEnvironmentMetadata();
-      var od = api.CreateEnvironmentMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreateEnvironmentMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreateEnvironmentMetadata(od as api.CreateEnvironmentMetadata);
     });
   });
@@ -740,7 +756,9 @@ void main() {
   unittest.group('obj-schema-DeleteEnvironmentMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDeleteEnvironmentMetadata();
-      var od = api.DeleteEnvironmentMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DeleteEnvironmentMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDeleteEnvironmentMetadata(od as api.DeleteEnvironmentMetadata);
     });
   });
@@ -748,7 +766,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -756,7 +775,9 @@ void main() {
   unittest.group('obj-schema-Environment', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEnvironment();
-      var od = api.Environment.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Environment.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkEnvironment(od as api.Environment);
     });
   });
@@ -764,7 +785,9 @@ void main() {
   unittest.group('obj-schema-ListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
-      var od = api.ListOperationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListOperationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
@@ -772,7 +795,9 @@ void main() {
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOperation();
-      var od = api.Operation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od as api.Operation);
     });
   });
@@ -780,7 +805,9 @@ void main() {
   unittest.group('obj-schema-RemovePublicKeyMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRemovePublicKeyMetadata();
-      var od = api.RemovePublicKeyMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RemovePublicKeyMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRemovePublicKeyMetadata(od as api.RemovePublicKeyMetadata);
     });
   });
@@ -788,7 +815,9 @@ void main() {
   unittest.group('obj-schema-RemovePublicKeyRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRemovePublicKeyRequest();
-      var od = api.RemovePublicKeyRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RemovePublicKeyRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRemovePublicKeyRequest(od as api.RemovePublicKeyRequest);
     });
   });
@@ -796,7 +825,9 @@ void main() {
   unittest.group('obj-schema-RemovePublicKeyResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRemovePublicKeyResponse();
-      var od = api.RemovePublicKeyResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RemovePublicKeyResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRemovePublicKeyResponse(od as api.RemovePublicKeyResponse);
     });
   });
@@ -804,7 +835,9 @@ void main() {
   unittest.group('obj-schema-StartEnvironmentMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStartEnvironmentMetadata();
-      var od = api.StartEnvironmentMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.StartEnvironmentMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkStartEnvironmentMetadata(od as api.StartEnvironmentMetadata);
     });
   });
@@ -812,7 +845,9 @@ void main() {
   unittest.group('obj-schema-StartEnvironmentRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStartEnvironmentRequest();
-      var od = api.StartEnvironmentRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.StartEnvironmentRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkStartEnvironmentRequest(od as api.StartEnvironmentRequest);
     });
   });
@@ -820,7 +855,9 @@ void main() {
   unittest.group('obj-schema-StartEnvironmentResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStartEnvironmentResponse();
-      var od = api.StartEnvironmentResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.StartEnvironmentResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkStartEnvironmentResponse(od as api.StartEnvironmentResponse);
     });
   });
@@ -828,7 +865,9 @@ void main() {
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStatus();
-      var od = api.Status.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od as api.Status);
     });
   });

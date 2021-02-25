@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -504,7 +503,7 @@ class DeleteEventsResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A description of the context in which an error occurred.
@@ -559,7 +558,7 @@ class ErrorContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (httpRequest != null) 'httpRequest': httpRequest!.toJson(),
         if (reportLocation != null) 'reportLocation': reportLocation!.toJson(),
         if (sourceReferences != null)
@@ -605,7 +604,7 @@ class ErrorEvent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (context != null) 'context': context!.toJson(),
         if (eventTime != null) 'eventTime': eventTime!,
         if (message != null) 'message': message!,
@@ -665,7 +664,7 @@ class ErrorGroup {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (groupId != null) 'groupId': groupId!,
         if (name != null) 'name': name!,
         if (resolutionStatus != null) 'resolutionStatus': resolutionStatus!,
@@ -774,7 +773,7 @@ class ErrorGroupStats {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (affectedServices != null)
           'affectedServices':
               affectedServices!.map((value) => value.toJson()).toList(),
@@ -842,7 +841,7 @@ class HttpRequestContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (method != null) 'method': method!,
         if (referrer != null) 'referrer': referrer!,
         if (remoteIp != null) 'remoteIp': remoteIp!,
@@ -885,7 +884,7 @@ class ListEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorEvents != null)
           'errorEvents': errorEvents!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -929,7 +928,7 @@ class ListGroupStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorGroupStats != null)
           'errorGroupStats':
               errorGroupStats!.map((value) => value.toJson()).toList(),
@@ -948,7 +947,7 @@ class ReportErrorEventResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// An error event which is reported to the Error Reporting system.
@@ -1016,7 +1015,7 @@ class ReportedErrorEvent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (context != null) 'context': context!.toJson(),
         if (eventTime != null) 'eventTime': eventTime!,
         if (message != null) 'message': message!,
@@ -1066,7 +1065,7 @@ class ServiceContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resourceType != null) 'resourceType': resourceType!,
         if (service != null) 'service': service!,
         if (version != null) 'version': version!,
@@ -1109,7 +1108,7 @@ class SourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (filePath != null) 'filePath': filePath!,
         if (functionName != null) 'functionName': functionName!,
         if (lineNumber != null) 'lineNumber': lineNumber!,
@@ -1142,7 +1141,7 @@ class SourceReference {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (repository != null) 'repository': repository!,
         if (revisionId != null) 'revisionId': revisionId!,
       };
@@ -1176,7 +1175,7 @@ class TimedCount {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
@@ -1198,7 +1197,7 @@ class TrackingIssue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
       };
 }

@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1849,7 +1848,7 @@ class AsymmetricDecryptRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ciphertext != null) 'ciphertext': ciphertext!,
         if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c!,
       };
@@ -1918,7 +1917,7 @@ class AsymmetricDecryptResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (plaintext != null) 'plaintext': plaintext!,
         if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c!,
         if (protectionLevel != null) 'protectionLevel': protectionLevel!,
@@ -1967,7 +1966,7 @@ class AsymmetricSignRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (digest != null) 'digest': digest!.toJson(),
         if (digestCrc32c != null) 'digestCrc32c': digestCrc32c!,
       };
@@ -2045,7 +2044,7 @@ class AsymmetricSignResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (protectionLevel != null) 'protectionLevel': protectionLevel!,
         if (signature != null) 'signature': signature!,
@@ -2096,7 +2095,7 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
               auditLogConfigs!.map((value) => value.toJson()).toList(),
@@ -2138,7 +2137,7 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
         if (logType != null) 'logType': logType!,
       };
@@ -2210,7 +2209,7 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
@@ -2251,7 +2250,7 @@ class CertificateChains {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (caviumCerts != null) 'caviumCerts': caviumCerts!,
         if (googleCardCerts != null) 'googleCardCerts': googleCardCerts!,
         if (googlePartitionCerts != null)
@@ -2336,13 +2335,12 @@ class CryptoKey {
       createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -2366,7 +2364,7 @@ class CryptoKey {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (labels != null) 'labels': labels!,
         if (name != null) 'name': name!,
@@ -2571,7 +2569,7 @@ class CryptoKeyVersion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (algorithm != null) 'algorithm': algorithm!,
         if (attestation != null) 'attestation': attestation!.toJson(),
         if (createTime != null) 'createTime': createTime!,
@@ -2658,7 +2656,7 @@ class CryptoKeyVersionTemplate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (algorithm != null) 'algorithm': algorithm!,
         if (protectionLevel != null) 'protectionLevel': protectionLevel!,
       };
@@ -2747,7 +2745,7 @@ class DecryptRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (additionalAuthenticatedData != null)
           'additionalAuthenticatedData': additionalAuthenticatedData!,
         if (additionalAuthenticatedDataCrc32c != null)
@@ -2813,7 +2811,7 @@ class DecryptResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (plaintext != null) 'plaintext': plaintext!,
         if (plaintextCrc32c != null) 'plaintextCrc32c': plaintextCrc32c!,
         if (protectionLevel != null) 'protectionLevel': protectionLevel!,
@@ -2829,7 +2827,7 @@ class DestroyCryptoKeyVersionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A Digest holds a cryptographic message digest.
@@ -2875,7 +2873,7 @@ class Digest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sha256 != null) 'sha256': sha256!,
         if (sha384 != null) 'sha384': sha384!,
         if (sha512 != null) 'sha512': sha512!,
@@ -2974,7 +2972,7 @@ class EncryptRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (additionalAuthenticatedData != null)
           'additionalAuthenticatedData': additionalAuthenticatedData!,
         if (additionalAuthenticatedDataCrc32c != null)
@@ -3074,7 +3072,7 @@ class EncryptResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ciphertext != null) 'ciphertext': ciphertext!,
         if (ciphertextCrc32c != null) 'ciphertextCrc32c': ciphertextCrc32c!,
         if (name != null) 'name': name!,
@@ -3148,7 +3146,7 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,
@@ -3171,7 +3169,7 @@ class ExternalProtectionLevelOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (externalKeyUri != null) 'externalKeyUri': externalKeyUri!,
       };
 }
@@ -3259,7 +3257,7 @@ class ImportCryptoKeyVersionRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (algorithm != null) 'algorithm': algorithm!,
         if (importJob != null) 'importJob': importJob!,
         if (rsaAesWrappedKey != null) 'rsaAesWrappedKey': rsaAesWrappedKey!,
@@ -3415,7 +3413,7 @@ class ImportJob {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attestation != null) 'attestation': attestation!.toJson(),
         if (createTime != null) 'createTime': createTime!,
         if (expireEventTime != null) 'expireEventTime': expireEventTime!,
@@ -3478,7 +3476,7 @@ class KeyOperationAttestation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (certChains != null) 'certChains': certChains!.toJson(),
         if (content != null) 'content': content!,
         if (format != null) 'format': format!,
@@ -3509,7 +3507,7 @@ class KeyRing {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (name != null) 'name': name!,
       };
@@ -3546,7 +3544,7 @@ class ListCryptoKeyVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cryptoKeyVersions != null)
           'cryptoKeyVersions':
               cryptoKeyVersions!.map((value) => value.toJson()).toList(),
@@ -3586,7 +3584,7 @@ class ListCryptoKeysResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cryptoKeys != null)
           'cryptoKeys': cryptoKeys!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3625,7 +3623,7 @@ class ListImportJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (importJobs != null)
           'importJobs': importJobs!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3664,7 +3662,7 @@ class ListKeyRingsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (keyRings != null)
           'keyRings': keyRings!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3694,7 +3692,7 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null)
           'locations': locations!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3738,32 +3736,30 @@ class Location {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (labels != null) 'labels': labels!,
         if (locationId != null) 'locationId': locationId!,
@@ -3793,7 +3789,7 @@ class LocationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ekmAvailable != null) 'ekmAvailable': ekmAvailable!,
         if (hsmAvailable != null) 'hsmAvailable': hsmAvailable!,
       };
@@ -3903,7 +3899,7 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditConfigs != null)
           'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
@@ -4009,7 +4005,7 @@ class PublicKey {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (algorithm != null) 'algorithm': algorithm!,
         if (name != null) 'name': name!,
         if (pem != null) 'pem': pem!,
@@ -4026,7 +4022,7 @@ class RestoreCryptoKeyVersionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -4056,7 +4052,7 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
         if (updateMask != null) 'updateMask': updateMask!,
       };
@@ -4081,7 +4077,7 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -4102,7 +4098,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -4122,7 +4118,7 @@ class UpdateCryptoKeyPrimaryVersionRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cryptoKeyVersionId != null)
           'cryptoKeyVersionId': cryptoKeyVersionId!,
       };
@@ -4150,7 +4146,7 @@ class WrappingPublicKey {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (pem != null) 'pem': pem!,
       };
 }

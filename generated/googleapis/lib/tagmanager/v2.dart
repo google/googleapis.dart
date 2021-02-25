@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -3776,7 +3775,7 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
         if (name != null) 'name': name!,
@@ -3808,7 +3807,7 @@ class AccountAccess {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permission != null) 'permission': permission!,
       };
 }
@@ -3976,7 +3975,7 @@ class BuiltInVariable {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (containerId != null) 'containerId': containerId!,
         if (name != null) 'name': name!,
@@ -4090,7 +4089,7 @@ class Client {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (clientId != null) 'clientId': clientId!,
         if (containerId != null) 'containerId': containerId!,
@@ -4157,7 +4156,7 @@ class Condition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parameter != null)
           'parameter': parameter!.map((value) => value.toJson()).toList(),
         if (type != null) 'type': type!,
@@ -4251,7 +4250,7 @@ class Container {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (containerId != null) 'containerId': containerId!,
         if (domainName != null) 'domainName': domainName!,
@@ -4297,7 +4296,7 @@ class ContainerAccess {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (containerId != null) 'containerId': containerId!,
         if (permission != null) 'permission': permission!,
       };
@@ -4449,7 +4448,7 @@ class ContainerVersion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (builtInVariable != null)
           'builtInVariable':
@@ -4571,7 +4570,7 @@ class ContainerVersionHeader {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (containerId != null) 'containerId': containerId!,
         if (containerVersionId != null)
@@ -4606,7 +4605,7 @@ class CreateBuiltInVariableResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (builtInVariable != null)
           'builtInVariable':
               builtInVariable!.map((value) => value.toJson()).toList(),
@@ -4632,7 +4631,7 @@ class CreateContainerVersionRequestVersionOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (notes != null) 'notes': notes!,
       };
@@ -4675,7 +4674,7 @@ class CreateContainerVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (compilerError != null) 'compilerError': compilerError!,
         if (containerVersion != null)
           'containerVersion': containerVersion!.toJson(),
@@ -4754,7 +4753,7 @@ class CustomTemplate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (containerId != null) 'containerId': containerId!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
@@ -4823,7 +4822,7 @@ class Entity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (changeStatus != null) 'changeStatus': changeStatus!,
         if (client != null) 'client': client!.toJson(),
         if (folder != null) 'folder': folder!.toJson(),
@@ -4956,7 +4955,7 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (authorizationCode != null) 'authorizationCode': authorizationCode!,
         if (authorizationTimestamp != null)
@@ -5046,7 +5045,7 @@ class Folder {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (containerId != null) 'containerId': containerId!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
@@ -5099,7 +5098,7 @@ class FolderEntities {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (tag != null) 'tag': tag!.map((value) => value.toJson()).toList(),
         if (trigger != null)
@@ -5157,7 +5156,7 @@ class GalleryReference {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (host != null) 'host': host!,
         if (isModified != null) 'isModified': isModified!,
         if (owner != null) 'owner': owner!,
@@ -5193,7 +5192,7 @@ class GetWorkspaceStatusResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mergeConflict != null)
           'mergeConflict':
               mergeConflict!.map((value) => value.toJson()).toList(),
@@ -5225,7 +5224,7 @@ class ListAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (account != null)
           'account': account!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5255,7 +5254,7 @@ class ListContainerVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (containerVersionHeader != null)
           'containerVersionHeader':
               containerVersionHeader!.map((value) => value.toJson()).toList(),
@@ -5285,7 +5284,7 @@ class ListContainersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (container != null)
           'container': container!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5314,7 +5313,7 @@ class ListEnabledBuiltInVariablesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (builtInVariable != null)
           'builtInVariable':
               builtInVariable!.map((value) => value.toJson()).toList(),
@@ -5344,7 +5343,7 @@ class ListEnvironmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (environment != null)
           'environment': environment!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5373,7 +5372,7 @@ class ListFoldersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (folder != null)
           'folder': folder!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5402,7 +5401,7 @@ class ListTagsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (tag != null) 'tag': tag!.map((value) => value.toJson()).toList(),
       };
@@ -5429,7 +5428,7 @@ class ListTemplatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (template != null)
           'template': template!.map((value) => value.toJson()).toList(),
@@ -5458,7 +5457,7 @@ class ListTriggersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (trigger != null)
           'trigger': trigger!.map((value) => value.toJson()).toList(),
@@ -5487,7 +5486,7 @@ class ListUserPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (userPermission != null)
           'userPermission':
@@ -5517,7 +5516,7 @@ class ListVariablesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (variable != null)
           'variable': variable!.map((value) => value.toJson()).toList(),
@@ -5546,7 +5545,7 @@ class ListWorkspacesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (workspace != null)
           'workspace': workspace!.map((value) => value.toJson()).toList(),
@@ -5574,7 +5573,7 @@ class ListZonesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (zone != null) 'zone': zone!.map((value) => value.toJson()).toList(),
       };
@@ -5609,7 +5608,7 @@ class MergeConflict {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entityInBaseVersion != null)
           'entityInBaseVersion': entityInBaseVersion!.toJson(),
         if (entityInWorkspace != null)
@@ -5715,7 +5714,7 @@ class Parameter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (list != null) 'list': list!.map((value) => value.toJson()).toList(),
         if (map != null) 'map': map!.map((value) => value.toJson()).toList(),
@@ -5744,7 +5743,7 @@ class PublishContainerVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (compilerError != null) 'compilerError': compilerError!,
         if (containerVersion != null)
           'containerVersion': containerVersion!.toJson(),
@@ -5779,7 +5778,7 @@ class QuickPreviewResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (compilerError != null) 'compilerError': compilerError!,
         if (containerVersion != null)
           'containerVersion': containerVersion!.toJson(),
@@ -5800,7 +5799,7 @@ class RevertBuiltInVariableResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
       };
 }
@@ -5823,7 +5822,7 @@ class RevertFolderResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (folder != null) 'folder': folder!.toJson(),
       };
 }
@@ -5845,7 +5844,7 @@ class RevertTagResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (tag != null) 'tag': tag!.toJson(),
       };
 }
@@ -5868,7 +5867,7 @@ class RevertTemplateResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (template != null) 'template': template!.toJson(),
       };
 }
@@ -5891,7 +5890,7 @@ class RevertTriggerResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (trigger != null) 'trigger': trigger!.toJson(),
       };
 }
@@ -5914,7 +5913,7 @@ class RevertVariableResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (variable != null) 'variable': variable!.toJson(),
       };
 }
@@ -5937,7 +5936,7 @@ class RevertZoneResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (zone != null) 'zone': zone!.toJson(),
       };
 }
@@ -5965,7 +5964,7 @@ class SetupTag {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (stopOnSetupFailure != null)
           'stopOnSetupFailure': stopOnSetupFailure!,
         if (tagName != null) 'tagName': tagName!,
@@ -5991,7 +5990,7 @@ class SyncStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mergeConflict != null) 'mergeConflict': mergeConflict!,
         if (syncError != null) 'syncError': syncError!,
       };
@@ -6024,7 +6023,7 @@ class SyncWorkspaceResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mergeConflict != null)
           'mergeConflict':
               mergeConflict!.map((value) => value.toJson()).toList(),
@@ -6287,7 +6286,7 @@ class Tag {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (blockingRuleId != null) 'blockingRuleId': blockingRuleId!,
         if (blockingTriggerId != null) 'blockingTriggerId': blockingTriggerId!,
@@ -6345,7 +6344,7 @@ class TeardownTag {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (stopTeardownOnFailure != null)
           'stopTeardownOnFailure': stopTeardownOnFailure!,
         if (tagName != null) 'tagName': tagName!,
@@ -6721,7 +6720,7 @@ class Trigger {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (autoEventFilter != null)
           'autoEventFilter':
@@ -6827,7 +6826,7 @@ class UserPermission {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountAccess != null) 'accountAccess': accountAccess!.toJson(),
         if (accountId != null) 'accountId': accountId!,
         if (containerAccess != null)
@@ -6987,7 +6986,7 @@ class Variable {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (containerId != null) 'containerId': containerId!,
         if (disablingTriggerId != null)
@@ -7056,7 +7055,7 @@ class VariableFormatValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (caseConversionType != null)
           'caseConversionType': caseConversionType!,
         if (convertFalseToValue != null)
@@ -7133,7 +7132,7 @@ class Workspace {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (containerId != null) 'containerId': containerId!,
         if (description != null) 'description': description!,
@@ -7231,7 +7230,7 @@ class Zone {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (boundary != null) 'boundary': boundary!.toJson(),
         if (childContainer != null)
@@ -7278,7 +7277,7 @@ class ZoneBoundary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null)
           'condition': condition!.map((value) => value.toJson()).toList(),
         if (customEvaluationTriggerId != null)
@@ -7305,7 +7304,7 @@ class ZoneChildContainer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nickname != null) 'nickname': nickname!,
         if (publicId != null) 'publicId': publicId!,
       };
@@ -7332,7 +7331,7 @@ class ZoneTypeRestriction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enable != null) 'enable': enable!,
         if (whitelistedTypeId != null) 'whitelistedTypeId': whitelistedTypeId!,
       };

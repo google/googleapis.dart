@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -924,7 +923,7 @@ class ListOfListOfToyRequest
                 .toList())
             .toList();
 
-  core.List<core.List<core.Map<core.String, core.Object?>>> toJson() {
+  core.List<core.List<core.Map<core.String, core.dynamic>>> toJson() {
     return _inner
         .map((value) => value.map((value) => value.toJson()).toList())
         .toList();
@@ -998,9 +997,7 @@ class ListOfMapOfListOfString
 
   ListOfMapOfListOfString.fromJson(core.List json)
       : _inner = json
-            .map((value) => (value as core.Map)
-                .cast<core.String, core.List<core.String>>()
-                .map(
+            .map((value) => (value as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     (item as core.List)
@@ -1010,7 +1007,7 @@ class ListOfMapOfListOfString
                 ))
             .toList();
 
-  core.List<core.Map<core.String, core.List<core.String>?>> toJson() {
+  core.List<core.Map<core.String, core.List<core.String>>> toJson() {
     return _inner.map((value) => value).toList();
   }
 
@@ -1046,9 +1043,7 @@ class ListOfMapOfListOfint
 
   ListOfMapOfListOfint.fromJson(core.List json)
       : _inner = json
-            .map((value) => (value as core.Map)
-                .cast<core.String, core.List<core.int>>()
-                .map(
+            .map((value) => (value as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     (item as core.List)
@@ -1058,7 +1053,7 @@ class ListOfMapOfListOfint
                 ))
             .toList();
 
-  core.List<core.Map<core.String, core.List<core.int>?>> toJson() {
+  core.List<core.Map<core.String, core.List<core.int>>> toJson() {
     return _inner.map((value) => value).toList();
   }
 
@@ -1131,7 +1126,7 @@ class ListOfToyRequest extends collection.ListBase<ToyRequest> {
                 value as core.Map<core.String, core.dynamic>))
             .toList();
 
-  core.List<core.Map<core.String, core.Object?>> toJson() {
+  core.List<core.Map<core.String, core.dynamic>> toJson() {
     return _inner.map((value) => value.toJson()).toList();
   }
 
@@ -1168,7 +1163,7 @@ class MapOfListOfMapOfbool extends collection
     _json.forEach((core.String key, value) {
       this[key] = (value as core.List)
           .map<core.Map<core.String, core.bool>>(
-              (value) => (value as core.Map).cast<core.String, core.bool>().map(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.bool,
@@ -1214,7 +1209,7 @@ class MapOfListOfMapOfint extends collection
     _json.forEach((core.String key, value) {
       this[key] = (value as core.List)
           .map<core.Map<core.String, core.int>>(
-              (value) => (value as core.Map).cast<core.String, core.int>().map(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.int,
@@ -1258,12 +1253,12 @@ class MapOfMapOfbool
 
   MapOfMapOfbool.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
-      this[key] = (value as core.Map).cast<core.String, core.bool>().map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.bool,
-            ),
-          );
+      this[key] = (value as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.bool,
+        ),
+      );
     });
   }
 
@@ -1300,12 +1295,12 @@ class MapOfMapOfint
 
   MapOfMapOfint.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
-      this[key] = (value as core.Map).cast<core.String, core.int>().map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.int,
-            ),
-          );
+      this[key] = (value as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.int,
+        ),
+      );
     });
   }
 
@@ -1414,7 +1409,7 @@ class NestedResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nestedResult != null) 'nestedResult': nestedResult!,
       };
 }
@@ -1430,7 +1425,7 @@ class ToyAgeRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (age != null) 'age': age!,
       };
 }
@@ -1443,22 +1438,20 @@ class ToyMapResponse {
 
   ToyMapResponse.fromJson(core.Map _json) {
     if (_json.containsKey('mapResult')) {
-      mapResult = (_json['mapResult'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              NestedResponse.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      mapResult =
+          (_json['mapResult'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          NestedResponse.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('result')) {
       result = _json['result'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mapResult != null)
           'mapResult':
               mapResult!.map((key, item) => core.MapEntry(key, item.toJson())),
@@ -1481,7 +1474,7 @@ class ToyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (age != null) 'age': age!,
         if (name != null) 'name': name!,
       };
@@ -1498,7 +1491,7 @@ class ToyResourceResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (result != null) 'result': result!,
       };
 }
@@ -1514,7 +1507,7 @@ class ToyResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (result != null) 'result': result!,
       };
 }

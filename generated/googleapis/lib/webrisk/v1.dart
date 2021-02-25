@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -651,7 +650,7 @@ class GoogleCloudWebriskV1ComputeThreatListDiffResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (additions != null) 'additions': additions!.toJson(),
         if (checksum != null) 'checksum': checksum!.toJson(),
         if (newVersionToken != null) 'newVersionToken': newVersionToken!,
@@ -683,7 +682,7 @@ class GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sha256 != null) 'sha256': sha256!,
       };
 }
@@ -726,7 +725,7 @@ class GoogleCloudWebriskV1RawHashes {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (prefixSize != null) 'prefixSize': prefixSize!,
         if (rawHashes != null) 'rawHashes': rawHashes!,
       };
@@ -747,7 +746,7 @@ class GoogleCloudWebriskV1RawIndices {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (indices != null) 'indices': indices!,
       };
 }
@@ -800,7 +799,7 @@ class GoogleCloudWebriskV1RiceDeltaEncoding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (encodedData != null) 'encodedData': encodedData!,
         if (entryCount != null) 'entryCount': entryCount!,
         if (firstValue != null) 'firstValue': firstValue!,
@@ -833,7 +832,7 @@ class GoogleCloudWebriskV1SearchHashesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (negativeExpireTime != null)
           'negativeExpireTime': negativeExpireTime!,
         if (threats != null)
@@ -882,7 +881,7 @@ class GoogleCloudWebriskV1SearchHashesResponseThreatHash {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (expireTime != null) 'expireTime': expireTime!,
         if (hash != null) 'hash': hash!,
         if (threatTypes != null) 'threatTypes': threatTypes!,
@@ -904,7 +903,7 @@ class GoogleCloudWebriskV1SearchUrisResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (threat != null) 'threat': threat!.toJson(),
       };
 }
@@ -933,7 +932,7 @@ class GoogleCloudWebriskV1SearchUrisResponseThreatUri {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (expireTime != null) 'expireTime': expireTime!,
         if (threatTypes != null) 'threatTypes': threatTypes!,
       };
@@ -965,7 +964,7 @@ class GoogleCloudWebriskV1Submission {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (threatTypes != null) 'threatTypes': threatTypes!,
         if (uri != null) 'uri': uri!,
       };
@@ -987,7 +986,7 @@ class GoogleCloudWebriskV1SubmitUriRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (submission != null) 'submission': submission!.toJson(),
       };
 }
@@ -1024,7 +1023,7 @@ class GoogleCloudWebriskV1ThreatEntryAdditions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rawHashes != null)
           'rawHashes': rawHashes!.map((value) => value.toJson()).toList(),
         if (riceHashes != null) 'riceHashes': riceHashes!.toJson(),
@@ -1057,7 +1056,7 @@ class GoogleCloudWebriskV1ThreatEntryRemovals {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rawIndices != null) 'rawIndices': rawIndices!.toJson(),
         if (riceIndices != null) 'riceIndices': riceIndices!.toJson(),
       };
@@ -1071,7 +1070,7 @@ class GoogleLongrunningCancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The response message for Operations.ListOperations.
@@ -1097,7 +1096,7 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
@@ -1158,29 +1157,27 @@ class GoogleLongrunningOperation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -1203,7 +1200,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -1239,8 +1236,8 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -1253,7 +1250,7 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,

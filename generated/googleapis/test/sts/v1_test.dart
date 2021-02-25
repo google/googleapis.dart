@@ -124,7 +124,9 @@ void main() {
   unittest.group('obj-schema-GoogleIdentityStsV1ExchangeTokenRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityStsV1ExchangeTokenRequest();
-      var od = api.GoogleIdentityStsV1ExchangeTokenRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIdentityStsV1ExchangeTokenRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIdentityStsV1ExchangeTokenRequest(
           od as api.GoogleIdentityStsV1ExchangeTokenRequest);
     });
@@ -133,8 +135,9 @@ void main() {
   unittest.group('obj-schema-GoogleIdentityStsV1ExchangeTokenResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIdentityStsV1ExchangeTokenResponse();
-      var od =
-          api.GoogleIdentityStsV1ExchangeTokenResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIdentityStsV1ExchangeTokenResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIdentityStsV1ExchangeTokenResponse(
           od as api.GoogleIdentityStsV1ExchangeTokenResponse);
     });

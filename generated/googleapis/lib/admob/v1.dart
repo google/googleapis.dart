@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -304,7 +303,7 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
         if (month != null) 'month': month!,
         if (year != null) 'year': year!,
@@ -338,7 +337,7 @@ class DateRange {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endDate != null) 'endDate': endDate!.toJson(),
         if (startDate != null) 'startDate': startDate!.toJson(),
       };
@@ -358,7 +357,7 @@ class GenerateMediationReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (reportSpec != null) 'reportSpec': reportSpec!.toJson(),
       };
 }
@@ -404,7 +403,7 @@ class GenerateMediationReportResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (footer != null) 'footer': footer!.toJson(),
         if (header != null) 'header': header!.toJson(),
         if (row != null) 'row': row!.toJson(),
@@ -425,7 +424,7 @@ class GenerateNetworkReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (reportSpec != null) 'reportSpec': reportSpec!.toJson(),
       };
 }
@@ -470,7 +469,7 @@ class GenerateNetworkReportResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (footer != null) 'footer': footer!.toJson(),
         if (header != null) 'header': header!.toJson(),
         if (row != null) 'row': row!.toJson(),
@@ -500,7 +499,7 @@ class ListPublisherAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (account != null)
           'account': account!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -536,7 +535,7 @@ class LocalizationSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (languageCode != null) 'languageCode': languageCode!,
       };
@@ -644,7 +643,7 @@ class MediationReportSpec {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dateRange != null) 'dateRange': dateRange!.toJson(),
         if (dimensionFilters != null)
           'dimensionFilters':
@@ -709,7 +708,7 @@ class MediationReportSpecDimensionFilter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dimension != null) 'dimension': dimension!,
         if (matchesAny != null) 'matchesAny': matchesAny!.toJson(),
       };
@@ -798,7 +797,7 @@ class MediationReportSpecSortCondition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dimension != null) 'dimension': dimension!,
         if (metric != null) 'metric': metric!,
         if (order != null) 'order': order!,
@@ -908,7 +907,7 @@ class NetworkReportSpec {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dateRange != null) 'dateRange': dateRange!.toJson(),
         if (dimensionFilters != null)
           'dimensionFilters':
@@ -971,7 +970,7 @@ class NetworkReportSpecDimensionFilter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dimension != null) 'dimension': dimension!,
         if (matchesAny != null) 'matchesAny': matchesAny!.toJson(),
       };
@@ -1059,7 +1058,7 @@ class NetworkReportSpecSortCondition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dimension != null) 'dimension': dimension!,
         if (metric != null) 'metric': metric!,
         if (order != null) 'order': order!,
@@ -1107,7 +1106,7 @@ class PublisherAccount {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (name != null) 'name': name!,
         if (publisherId != null) 'publisherId': publisherId!,
@@ -1143,7 +1142,7 @@ class ReportFooter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (matchingRowCount != null) 'matchingRowCount': matchingRowCount!,
         if (warnings != null)
           'warnings': warnings!.map((value) => value.toJson()).toList(),
@@ -1186,7 +1185,7 @@ class ReportHeader {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dateRange != null) 'dateRange': dateRange!.toJson(),
         if (localizationSettings != null)
           'localizationSettings': localizationSettings!.toJson(),
@@ -1210,30 +1209,28 @@ class ReportRow {
 
   ReportRow.fromJson(core.Map _json) {
     if (_json.containsKey('dimensionValues')) {
-      dimensionValues = (_json['dimensionValues'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              ReportRowDimensionValue.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      dimensionValues =
+          (_json['dimensionValues'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          ReportRowDimensionValue.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('metricValues')) {
-      metricValues = (_json['metricValues'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              ReportRowMetricValue.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      metricValues =
+          (_json['metricValues'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          ReportRowMetricValue.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dimensionValues != null)
           'dimensionValues': dimensionValues!
               .map((key, item) => core.MapEntry(key, item.toJson())),
@@ -1265,7 +1262,7 @@ class ReportRowDimensionValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayLabel != null) 'displayLabel': displayLabel!,
         if (value != null) 'value': value!,
       };
@@ -1302,7 +1299,7 @@ class ReportRowMetricValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (doubleValue != null) 'doubleValue': doubleValue!,
         if (integerValue != null) 'integerValue': integerValue!,
         if (microsValue != null) 'microsValue': microsValue!,
@@ -1345,7 +1342,7 @@ class ReportWarning {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (type != null) 'type': type!,
       };
@@ -1366,7 +1363,7 @@ class StringList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (values != null) 'values': values!,
       };
 }

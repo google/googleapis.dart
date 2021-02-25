@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -769,7 +768,7 @@ class AggregationInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aggregationCount != null) 'aggregationCount': aggregationCount!,
         if (aggregationInterval != null)
           'aggregationInterval': aggregationInterval!,
@@ -818,7 +817,7 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
               auditLogConfigs!.map((value) => value.toJson()).toList(),
@@ -860,7 +859,7 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
         if (logType != null) 'logType': logType!,
       };
@@ -920,7 +919,7 @@ class BillingAccount {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (masterBillingAccount != null)
           'masterBillingAccount': masterBillingAccount!,
@@ -995,7 +994,7 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
@@ -1039,7 +1038,7 @@ class Category {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resourceFamily != null) 'resourceFamily': resourceFamily!,
         if (resourceGroup != null) 'resourceGroup': resourceGroup!,
         if (serviceDisplayName != null)
@@ -1109,7 +1108,7 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,
@@ -1147,7 +1146,7 @@ class GeoTaxonomy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (regions != null) 'regions': regions!,
         if (type != null) 'type': type!,
       };
@@ -1179,7 +1178,7 @@ class ListBillingAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (billingAccounts != null)
           'billingAccounts':
               billingAccounts!.map((value) => value.toJson()).toList(),
@@ -1214,7 +1213,7 @@ class ListProjectBillingInfoResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (projectBillingInfo != null)
           'projectBillingInfo':
@@ -1248,7 +1247,7 @@ class ListServicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (services != null)
           'services': services!.map((value) => value.toJson()).toList(),
@@ -1281,7 +1280,7 @@ class ListSkusResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (skus != null) 'skus': skus!.map((value) => value.toJson()).toList(),
       };
@@ -1320,7 +1319,7 @@ class Money {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (nanos != null) 'nanos': nanos!,
         if (units != null) 'units': units!,
@@ -1431,7 +1430,7 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditConfigs != null)
           'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
@@ -1523,7 +1522,7 @@ class PricingExpression {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (baseUnit != null) 'baseUnit': baseUnit!,
         if (baseUnitConversionFactor != null)
           'baseUnitConversionFactor': baseUnitConversionFactor!,
@@ -1595,7 +1594,7 @@ class PricingInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aggregationInfo != null)
           'aggregationInfo': aggregationInfo!.toJson(),
         if (currencyConversionRate != null)
@@ -1658,7 +1657,7 @@ class ProjectBillingInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (billingAccountName != null)
           'billingAccountName': billingAccountName!,
         if (billingEnabled != null) 'billingEnabled': billingEnabled!,
@@ -1704,7 +1703,7 @@ class Service {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (businessEntityName != null)
           'businessEntityName': businessEntityName!,
         if (displayName != null) 'displayName': displayName!,
@@ -1740,7 +1739,7 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
         if (updateMask != null) 'updateMask': updateMask!,
       };
@@ -1818,7 +1817,7 @@ class Sku {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!.toJson(),
         if (description != null) 'description': description!,
         if (geoTaxonomy != null) 'geoTaxonomy': geoTaxonomy!.toJson(),
@@ -1851,7 +1850,7 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -1872,7 +1871,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -1902,7 +1901,7 @@ class TierRate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (startUsageAmount != null) 'startUsageAmount': startUsageAmount!,
         if (unitPrice != null) 'unitPrice': unitPrice!.toJson(),
       };

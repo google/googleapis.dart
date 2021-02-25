@@ -3609,8 +3609,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ActivateEntitlementRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1ActivateEntitlementRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ActivateEntitlementRequest(
           od as api.GoogleCloudChannelV1ActivateEntitlementRequest);
     });
@@ -3619,7 +3620,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1AdminUser', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1AdminUser();
-      var od = api.GoogleCloudChannelV1AdminUser.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1AdminUser.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1AdminUser(
           od as api.GoogleCloudChannelV1AdminUser);
     });
@@ -3628,7 +3631,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1AssociationInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1AssociationInfo();
-      var od = api.GoogleCloudChannelV1AssociationInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1AssociationInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1AssociationInfo(
           od as api.GoogleCloudChannelV1AssociationInfo);
     });
@@ -3637,8 +3642,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1CancelEntitlementRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1CancelEntitlementRequest();
-      var od =
-          api.GoogleCloudChannelV1CancelEntitlementRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1CancelEntitlementRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1CancelEntitlementRequest(
           od as api.GoogleCloudChannelV1CancelEntitlementRequest);
     });
@@ -3647,7 +3653,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1ChangeOfferRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ChangeOfferRequest();
-      var od = api.GoogleCloudChannelV1ChangeOfferRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1ChangeOfferRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ChangeOfferRequest(
           od as api.GoogleCloudChannelV1ChangeOfferRequest);
     });
@@ -3656,8 +3664,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1ChangeParametersRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ChangeParametersRequest();
-      var od =
-          api.GoogleCloudChannelV1ChangeParametersRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1ChangeParametersRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ChangeParametersRequest(
           od as api.GoogleCloudChannelV1ChangeParametersRequest);
     });
@@ -3667,8 +3676,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ChangeRenewalSettingsRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1ChangeRenewalSettingsRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ChangeRenewalSettingsRequest(
           od as api.GoogleCloudChannelV1ChangeRenewalSettingsRequest);
     });
@@ -3677,7 +3687,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1ChannelPartnerLink', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ChannelPartnerLink();
-      var od = api.GoogleCloudChannelV1ChannelPartnerLink.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1ChannelPartnerLink.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ChannelPartnerLink(
           od as api.GoogleCloudChannelV1ChannelPartnerLink);
     });
@@ -3688,8 +3700,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest(
           od as api.GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest);
     });
@@ -3701,8 +3714,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse(od
           as api.GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse);
     });
@@ -3712,8 +3726,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1CloudIdentityCustomerAccount();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1CloudIdentityCustomerAccount.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1CloudIdentityCustomerAccount(
           od as api.GoogleCloudChannelV1CloudIdentityCustomerAccount);
     });
@@ -3722,7 +3737,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1CloudIdentityInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1CloudIdentityInfo();
-      var od = api.GoogleCloudChannelV1CloudIdentityInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1CloudIdentityInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1CloudIdentityInfo(
           od as api.GoogleCloudChannelV1CloudIdentityInfo);
     });
@@ -3731,7 +3748,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1CommitmentSettings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1CommitmentSettings();
-      var od = api.GoogleCloudChannelV1CommitmentSettings.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1CommitmentSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1CommitmentSettings(
           od as api.GoogleCloudChannelV1CommitmentSettings);
     });
@@ -3740,7 +3759,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1Constraints', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Constraints();
-      var od = api.GoogleCloudChannelV1Constraints.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1Constraints.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1Constraints(
           od as api.GoogleCloudChannelV1Constraints);
     });
@@ -3749,7 +3770,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1ContactInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ContactInfo();
-      var od = api.GoogleCloudChannelV1ContactInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1ContactInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ContactInfo(
           od as api.GoogleCloudChannelV1ContactInfo);
     });
@@ -3758,8 +3781,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1CreateEntitlementRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1CreateEntitlementRequest();
-      var od =
-          api.GoogleCloudChannelV1CreateEntitlementRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1CreateEntitlementRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1CreateEntitlementRequest(
           od as api.GoogleCloudChannelV1CreateEntitlementRequest);
     });
@@ -3768,7 +3792,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1Customer', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Customer();
-      var od = api.GoogleCloudChannelV1Customer.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1Customer.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1Customer(od as api.GoogleCloudChannelV1Customer);
     });
   });
@@ -3776,7 +3802,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1CustomerConstraints', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1CustomerConstraints();
-      var od = api.GoogleCloudChannelV1CustomerConstraints.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1CustomerConstraints.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1CustomerConstraints(
           od as api.GoogleCloudChannelV1CustomerConstraints);
     });
@@ -3785,7 +3813,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1CustomerEvent', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1CustomerEvent();
-      var od = api.GoogleCloudChannelV1CustomerEvent.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1CustomerEvent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1CustomerEvent(
           od as api.GoogleCloudChannelV1CustomerEvent);
     });
@@ -3794,7 +3824,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1EduData', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1EduData();
-      var od = api.GoogleCloudChannelV1EduData.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1EduData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1EduData(od as api.GoogleCloudChannelV1EduData);
     });
   });
@@ -3802,7 +3834,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1Entitlement', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Entitlement();
-      var od = api.GoogleCloudChannelV1Entitlement.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1Entitlement.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1Entitlement(
           od as api.GoogleCloudChannelV1Entitlement);
     });
@@ -3811,7 +3845,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1EntitlementEvent', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1EntitlementEvent();
-      var od = api.GoogleCloudChannelV1EntitlementEvent.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1EntitlementEvent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1EntitlementEvent(
           od as api.GoogleCloudChannelV1EntitlementEvent);
     });
@@ -3821,8 +3857,9 @@ void main() {
       'obj-schema-GoogleCloudChannelV1ListChannelPartnerLinksResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListChannelPartnerLinksResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1ListChannelPartnerLinksResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ListChannelPartnerLinksResponse(
           od as api.GoogleCloudChannelV1ListChannelPartnerLinksResponse);
     });
@@ -3831,8 +3868,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1ListCustomersResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListCustomersResponse();
-      var od =
-          api.GoogleCloudChannelV1ListCustomersResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1ListCustomersResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ListCustomersResponse(
           od as api.GoogleCloudChannelV1ListCustomersResponse);
     });
@@ -3841,8 +3879,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1ListEntitlementsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListEntitlementsResponse();
-      var od =
-          api.GoogleCloudChannelV1ListEntitlementsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1ListEntitlementsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ListEntitlementsResponse(
           od as api.GoogleCloudChannelV1ListEntitlementsResponse);
     });
@@ -3851,7 +3890,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1ListOffersResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListOffersResponse();
-      var od = api.GoogleCloudChannelV1ListOffersResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1ListOffersResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ListOffersResponse(
           od as api.GoogleCloudChannelV1ListOffersResponse);
     });
@@ -3860,8 +3901,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1ListProductsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListProductsResponse();
-      var od =
-          api.GoogleCloudChannelV1ListProductsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1ListProductsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ListProductsResponse(
           od as api.GoogleCloudChannelV1ListProductsResponse);
     });
@@ -3871,8 +3913,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListPurchasableOffersResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1ListPurchasableOffersResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ListPurchasableOffersResponse(
           od as api.GoogleCloudChannelV1ListPurchasableOffersResponse);
     });
@@ -3882,8 +3925,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListPurchasableSkusResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1ListPurchasableSkusResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ListPurchasableSkusResponse(
           od as api.GoogleCloudChannelV1ListPurchasableSkusResponse);
     });
@@ -3892,7 +3936,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1ListSkusResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListSkusResponse();
-      var od = api.GoogleCloudChannelV1ListSkusResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1ListSkusResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ListSkusResponse(
           od as api.GoogleCloudChannelV1ListSkusResponse);
     });
@@ -3901,8 +3947,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1ListSubscribersResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListSubscribersResponse();
-      var od =
-          api.GoogleCloudChannelV1ListSubscribersResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1ListSubscribersResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ListSubscribersResponse(
           od as api.GoogleCloudChannelV1ListSubscribersResponse);
     });
@@ -3912,8 +3959,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListTransferableOffersRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1ListTransferableOffersRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ListTransferableOffersRequest(
           od as api.GoogleCloudChannelV1ListTransferableOffersRequest);
     });
@@ -3923,8 +3971,9 @@ void main() {
       'obj-schema-GoogleCloudChannelV1ListTransferableOffersResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListTransferableOffersResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1ListTransferableOffersResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ListTransferableOffersResponse(
           od as api.GoogleCloudChannelV1ListTransferableOffersResponse);
     });
@@ -3934,8 +3983,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListTransferableSkusRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1ListTransferableSkusRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ListTransferableSkusRequest(
           od as api.GoogleCloudChannelV1ListTransferableSkusRequest);
     });
@@ -3945,8 +3995,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ListTransferableSkusResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1ListTransferableSkusResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ListTransferableSkusResponse(
           od as api.GoogleCloudChannelV1ListTransferableSkusResponse);
     });
@@ -3955,7 +4006,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1MarketingInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1MarketingInfo();
-      var od = api.GoogleCloudChannelV1MarketingInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1MarketingInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1MarketingInfo(
           od as api.GoogleCloudChannelV1MarketingInfo);
     });
@@ -3964,7 +4017,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1Media', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Media();
-      var od = api.GoogleCloudChannelV1Media.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1Media.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1Media(od as api.GoogleCloudChannelV1Media);
     });
   });
@@ -3972,7 +4027,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1Offer', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Offer();
-      var od = api.GoogleCloudChannelV1Offer.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1Offer.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1Offer(od as api.GoogleCloudChannelV1Offer);
     });
   });
@@ -3980,7 +4037,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1OperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1OperationMetadata();
-      var od = api.GoogleCloudChannelV1OperationMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1OperationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1OperationMetadata(
           od as api.GoogleCloudChannelV1OperationMetadata);
     });
@@ -3989,7 +4048,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1Parameter', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Parameter();
-      var od = api.GoogleCloudChannelV1Parameter.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1Parameter.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1Parameter(
           od as api.GoogleCloudChannelV1Parameter);
     });
@@ -3998,7 +4059,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1ParameterDefinition', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ParameterDefinition();
-      var od = api.GoogleCloudChannelV1ParameterDefinition.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1ParameterDefinition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ParameterDefinition(
           od as api.GoogleCloudChannelV1ParameterDefinition);
     });
@@ -4007,7 +4070,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1Period', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Period();
-      var od = api.GoogleCloudChannelV1Period.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1Period.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1Period(od as api.GoogleCloudChannelV1Period);
     });
   });
@@ -4015,7 +4080,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1Plan', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Plan();
-      var od = api.GoogleCloudChannelV1Plan.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1Plan.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1Plan(od as api.GoogleCloudChannelV1Plan);
     });
   });
@@ -4023,7 +4090,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1Price', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Price();
-      var od = api.GoogleCloudChannelV1Price.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1Price.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1Price(od as api.GoogleCloudChannelV1Price);
     });
   });
@@ -4031,7 +4100,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1PriceByResource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1PriceByResource();
-      var od = api.GoogleCloudChannelV1PriceByResource.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1PriceByResource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1PriceByResource(
           od as api.GoogleCloudChannelV1PriceByResource);
     });
@@ -4040,7 +4111,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1PricePhase', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1PricePhase();
-      var od = api.GoogleCloudChannelV1PricePhase.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1PricePhase.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1PricePhase(
           od as api.GoogleCloudChannelV1PricePhase);
     });
@@ -4049,7 +4122,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1PriceTier', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1PriceTier();
-      var od = api.GoogleCloudChannelV1PriceTier.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1PriceTier.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1PriceTier(
           od as api.GoogleCloudChannelV1PriceTier);
     });
@@ -4058,7 +4133,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1Product', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Product();
-      var od = api.GoogleCloudChannelV1Product.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1Product.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1Product(od as api.GoogleCloudChannelV1Product);
     });
   });
@@ -4067,8 +4144,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ProvisionCloudIdentityRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1ProvisionCloudIdentityRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ProvisionCloudIdentityRequest(
           od as api.GoogleCloudChannelV1ProvisionCloudIdentityRequest);
     });
@@ -4077,7 +4155,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1ProvisionedService', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1ProvisionedService();
-      var od = api.GoogleCloudChannelV1ProvisionedService.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1ProvisionedService.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1ProvisionedService(
           od as api.GoogleCloudChannelV1ProvisionedService);
     });
@@ -4086,7 +4166,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1PurchasableOffer', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1PurchasableOffer();
-      var od = api.GoogleCloudChannelV1PurchasableOffer.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1PurchasableOffer.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1PurchasableOffer(
           od as api.GoogleCloudChannelV1PurchasableOffer);
     });
@@ -4095,7 +4177,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1PurchasableSku', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1PurchasableSku();
-      var od = api.GoogleCloudChannelV1PurchasableSku.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1PurchasableSku.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1PurchasableSku(
           od as api.GoogleCloudChannelV1PurchasableSku);
     });
@@ -4105,8 +4189,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1RegisterSubscriberRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1RegisterSubscriberRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1RegisterSubscriberRequest(
           od as api.GoogleCloudChannelV1RegisterSubscriberRequest);
     });
@@ -4116,8 +4201,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1RegisterSubscriberResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1RegisterSubscriberResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1RegisterSubscriberResponse(
           od as api.GoogleCloudChannelV1RegisterSubscriberResponse);
     });
@@ -4126,7 +4212,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1RenewalSettings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1RenewalSettings();
-      var od = api.GoogleCloudChannelV1RenewalSettings.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1RenewalSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1RenewalSettings(
           od as api.GoogleCloudChannelV1RenewalSettings);
     });
@@ -4135,7 +4223,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1Sku', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Sku();
-      var od = api.GoogleCloudChannelV1Sku.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1Sku.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1Sku(od as api.GoogleCloudChannelV1Sku);
     });
   });
@@ -4143,8 +4233,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1StartPaidServiceRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1StartPaidServiceRequest();
-      var od =
-          api.GoogleCloudChannelV1StartPaidServiceRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1StartPaidServiceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1StartPaidServiceRequest(
           od as api.GoogleCloudChannelV1StartPaidServiceRequest);
     });
@@ -4153,7 +4244,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1SubscriberEvent', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1SubscriberEvent();
-      var od = api.GoogleCloudChannelV1SubscriberEvent.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1SubscriberEvent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1SubscriberEvent(
           od as api.GoogleCloudChannelV1SubscriberEvent);
     });
@@ -4163,8 +4256,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1SuspendEntitlementRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1SuspendEntitlementRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1SuspendEntitlementRequest(
           od as api.GoogleCloudChannelV1SuspendEntitlementRequest);
     });
@@ -4173,7 +4267,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1TransferEligibility', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1TransferEligibility();
-      var od = api.GoogleCloudChannelV1TransferEligibility.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1TransferEligibility.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1TransferEligibility(
           od as api.GoogleCloudChannelV1TransferEligibility);
     });
@@ -4183,8 +4279,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1TransferEntitlementsRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1TransferEntitlementsRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1TransferEntitlementsRequest(
           od as api.GoogleCloudChannelV1TransferEntitlementsRequest);
     });
@@ -4194,8 +4291,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1TransferEntitlementsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1TransferEntitlementsResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1TransferEntitlementsResponse(
           od as api.GoogleCloudChannelV1TransferEntitlementsResponse);
     });
@@ -4205,9 +4303,10 @@ void main() {
       'obj-schema-GoogleCloudChannelV1TransferEntitlementsToGoogleRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1TransferEntitlementsToGoogleRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudChannelV1TransferEntitlementsToGoogleRequest.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1TransferEntitlementsToGoogleRequest(
           od as api.GoogleCloudChannelV1TransferEntitlementsToGoogleRequest);
     });
@@ -4216,7 +4315,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1TransferableOffer', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1TransferableOffer();
-      var od = api.GoogleCloudChannelV1TransferableOffer.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1TransferableOffer.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1TransferableOffer(
           od as api.GoogleCloudChannelV1TransferableOffer);
     });
@@ -4225,7 +4326,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1TransferableSku', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1TransferableSku();
-      var od = api.GoogleCloudChannelV1TransferableSku.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1TransferableSku.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1TransferableSku(
           od as api.GoogleCloudChannelV1TransferableSku);
     });
@@ -4234,7 +4337,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1TrialSettings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1TrialSettings();
-      var od = api.GoogleCloudChannelV1TrialSettings.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1TrialSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1TrialSettings(
           od as api.GoogleCloudChannelV1TrialSettings);
     });
@@ -4244,8 +4349,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1UnregisterSubscriberRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1UnregisterSubscriberRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1UnregisterSubscriberRequest(
           od as api.GoogleCloudChannelV1UnregisterSubscriberRequest);
     });
@@ -4255,8 +4361,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1UnregisterSubscriberResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1UnregisterSubscriberResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1UnregisterSubscriberResponse(
           od as api.GoogleCloudChannelV1UnregisterSubscriberResponse);
     });
@@ -4266,8 +4373,9 @@ void main() {
       'obj-schema-GoogleCloudChannelV1UpdateChannelPartnerLinkRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1UpdateChannelPartnerLinkRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudChannelV1UpdateChannelPartnerLinkRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1UpdateChannelPartnerLinkRequest(
           od as api.GoogleCloudChannelV1UpdateChannelPartnerLinkRequest);
     });
@@ -4276,7 +4384,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1Value', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1Value();
-      var od = api.GoogleCloudChannelV1Value.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1Value.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1Value(od as api.GoogleCloudChannelV1Value);
     });
   });
@@ -4284,8 +4394,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1AssociationInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1AssociationInfo();
-      var od =
-          api.GoogleCloudChannelV1alpha1AssociationInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1alpha1AssociationInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1alpha1AssociationInfo(
           od as api.GoogleCloudChannelV1alpha1AssociationInfo);
     });
@@ -4294,8 +4405,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1CommitmentSettings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1CommitmentSettings();
-      var od =
-          api.GoogleCloudChannelV1alpha1CommitmentSettings.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1alpha1CommitmentSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1alpha1CommitmentSettings(
           od as api.GoogleCloudChannelV1alpha1CommitmentSettings);
     });
@@ -4304,7 +4416,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1CustomerEvent', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1CustomerEvent();
-      var od = api.GoogleCloudChannelV1alpha1CustomerEvent.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1alpha1CustomerEvent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1alpha1CustomerEvent(
           od as api.GoogleCloudChannelV1alpha1CustomerEvent);
     });
@@ -4313,7 +4427,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1Entitlement', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1Entitlement();
-      var od = api.GoogleCloudChannelV1alpha1Entitlement.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1alpha1Entitlement.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1alpha1Entitlement(
           od as api.GoogleCloudChannelV1alpha1Entitlement);
     });
@@ -4322,8 +4438,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1EntitlementEvent', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1EntitlementEvent();
-      var od =
-          api.GoogleCloudChannelV1alpha1EntitlementEvent.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1alpha1EntitlementEvent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1alpha1EntitlementEvent(
           od as api.GoogleCloudChannelV1alpha1EntitlementEvent);
     });
@@ -4332,8 +4449,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1OperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1OperationMetadata();
-      var od =
-          api.GoogleCloudChannelV1alpha1OperationMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1alpha1OperationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1alpha1OperationMetadata(
           od as api.GoogleCloudChannelV1alpha1OperationMetadata);
     });
@@ -4342,7 +4460,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1Parameter', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1Parameter();
-      var od = api.GoogleCloudChannelV1alpha1Parameter.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1alpha1Parameter.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1alpha1Parameter(
           od as api.GoogleCloudChannelV1alpha1Parameter);
     });
@@ -4351,7 +4471,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1Period', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1Period();
-      var od = api.GoogleCloudChannelV1alpha1Period.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1alpha1Period.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1alpha1Period(
           od as api.GoogleCloudChannelV1alpha1Period);
     });
@@ -4360,8 +4482,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1ProvisionedService', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1ProvisionedService();
-      var od =
-          api.GoogleCloudChannelV1alpha1ProvisionedService.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1alpha1ProvisionedService.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1alpha1ProvisionedService(
           od as api.GoogleCloudChannelV1alpha1ProvisionedService);
     });
@@ -4370,8 +4493,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1RenewalSettings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1RenewalSettings();
-      var od =
-          api.GoogleCloudChannelV1alpha1RenewalSettings.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1alpha1RenewalSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1alpha1RenewalSettings(
           od as api.GoogleCloudChannelV1alpha1RenewalSettings);
     });
@@ -4380,8 +4504,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1SubscriberEvent', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1SubscriberEvent();
-      var od =
-          api.GoogleCloudChannelV1alpha1SubscriberEvent.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1alpha1SubscriberEvent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1alpha1SubscriberEvent(
           od as api.GoogleCloudChannelV1alpha1SubscriberEvent);
     });
@@ -4391,9 +4516,10 @@ void main() {
       'obj-schema-GoogleCloudChannelV1alpha1TransferEntitlementsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1TransferEntitlementsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudChannelV1alpha1TransferEntitlementsResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1alpha1TransferEntitlementsResponse(
           od as api.GoogleCloudChannelV1alpha1TransferEntitlementsResponse);
     });
@@ -4402,7 +4528,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1TrialSettings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1TrialSettings();
-      var od = api.GoogleCloudChannelV1alpha1TrialSettings.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1alpha1TrialSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1alpha1TrialSettings(
           od as api.GoogleCloudChannelV1alpha1TrialSettings);
     });
@@ -4411,7 +4539,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudChannelV1alpha1Value', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudChannelV1alpha1Value();
-      var od = api.GoogleCloudChannelV1alpha1Value.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudChannelV1alpha1Value.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudChannelV1alpha1Value(
           od as api.GoogleCloudChannelV1alpha1Value);
     });
@@ -4420,7 +4550,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningCancelOperationRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningCancelOperationRequest();
-      var od = api.GoogleLongrunningCancelOperationRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningCancelOperationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningCancelOperationRequest(
           od as api.GoogleLongrunningCancelOperationRequest);
     });
@@ -4429,7 +4561,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
-      var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningListOperationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningListOperationsResponse(
           od as api.GoogleLongrunningListOperationsResponse);
     });
@@ -4438,7 +4572,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
-      var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningOperation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
     });
   });
@@ -4446,7 +4582,9 @@ void main() {
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
-      var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleProtobufEmpty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
     });
   });
@@ -4454,7 +4592,9 @@ void main() {
   unittest.group('obj-schema-GoogleRpcStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
-      var od = api.GoogleRpcStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleRpcStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
     });
   });
@@ -4462,7 +4602,9 @@ void main() {
   unittest.group('obj-schema-GoogleTypeMoney', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeMoney();
-      var od = api.GoogleTypeMoney.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleTypeMoney.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleTypeMoney(od as api.GoogleTypeMoney);
     });
   });
@@ -4470,7 +4612,9 @@ void main() {
   unittest.group('obj-schema-GoogleTypePostalAddress', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypePostalAddress();
-      var od = api.GoogleTypePostalAddress.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleTypePostalAddress.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleTypePostalAddress(od as api.GoogleTypePostalAddress);
     });
   });

@@ -937,7 +937,9 @@ void main() {
   unittest.group('obj-schema-AgentDeviceId', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAgentDeviceId();
-      var od = api.AgentDeviceId.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AgentDeviceId.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAgentDeviceId(od as api.AgentDeviceId);
     });
   });
@@ -945,7 +947,9 @@ void main() {
   unittest.group('obj-schema-AgentOtherDeviceId', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAgentOtherDeviceId();
-      var od = api.AgentOtherDeviceId.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AgentOtherDeviceId.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAgentOtherDeviceId(od as api.AgentOtherDeviceId);
     });
   });
@@ -953,7 +957,9 @@ void main() {
   unittest.group('obj-schema-Device', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDevice();
-      var od = api.Device.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Device.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDevice(od as api.Device);
     });
   });
@@ -961,7 +967,9 @@ void main() {
   unittest.group('obj-schema-DeviceInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDeviceInfo();
-      var od = api.DeviceInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.DeviceInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDeviceInfo(od as api.DeviceInfo);
     });
   });
@@ -969,7 +977,9 @@ void main() {
   unittest.group('obj-schema-DeviceNames', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDeviceNames();
-      var od = api.DeviceNames.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DeviceNames.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDeviceNames(od as api.DeviceNames);
     });
   });
@@ -977,7 +987,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -985,7 +996,9 @@ void main() {
   unittest.group('obj-schema-NonLocalTrait', () {
     unittest.test('to-json--from-json', () async {
       var o = buildNonLocalTrait();
-      var od = api.NonLocalTrait.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.NonLocalTrait.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkNonLocalTrait(od as api.NonLocalTrait);
     });
   });
@@ -993,7 +1006,9 @@ void main() {
   unittest.group('obj-schema-QueryRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildQueryRequest();
-      var od = api.QueryRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.QueryRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkQueryRequest(od as api.QueryRequest);
     });
   });
@@ -1001,7 +1016,9 @@ void main() {
   unittest.group('obj-schema-QueryRequestInput', () {
     unittest.test('to-json--from-json', () async {
       var o = buildQueryRequestInput();
-      var od = api.QueryRequestInput.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.QueryRequestInput.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkQueryRequestInput(od as api.QueryRequestInput);
     });
   });
@@ -1009,7 +1026,9 @@ void main() {
   unittest.group('obj-schema-QueryRequestPayload', () {
     unittest.test('to-json--from-json', () async {
       var o = buildQueryRequestPayload();
-      var od = api.QueryRequestPayload.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.QueryRequestPayload.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkQueryRequestPayload(od as api.QueryRequestPayload);
     });
   });
@@ -1017,7 +1036,9 @@ void main() {
   unittest.group('obj-schema-QueryResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildQueryResponse();
-      var od = api.QueryResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.QueryResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkQueryResponse(od as api.QueryResponse);
     });
   });
@@ -1025,7 +1046,9 @@ void main() {
   unittest.group('obj-schema-QueryResponsePayload', () {
     unittest.test('to-json--from-json', () async {
       var o = buildQueryResponsePayload();
-      var od = api.QueryResponsePayload.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.QueryResponsePayload.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkQueryResponsePayload(od as api.QueryResponsePayload);
     });
   });
@@ -1033,7 +1056,9 @@ void main() {
   unittest.group('obj-schema-ReportStateAndNotificationDevice', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReportStateAndNotificationDevice();
-      var od = api.ReportStateAndNotificationDevice.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ReportStateAndNotificationDevice.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkReportStateAndNotificationDevice(
           od as api.ReportStateAndNotificationDevice);
     });
@@ -1042,7 +1067,9 @@ void main() {
   unittest.group('obj-schema-ReportStateAndNotificationRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReportStateAndNotificationRequest();
-      var od = api.ReportStateAndNotificationRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ReportStateAndNotificationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkReportStateAndNotificationRequest(
           od as api.ReportStateAndNotificationRequest);
     });
@@ -1051,7 +1078,9 @@ void main() {
   unittest.group('obj-schema-ReportStateAndNotificationResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReportStateAndNotificationResponse();
-      var od = api.ReportStateAndNotificationResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ReportStateAndNotificationResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkReportStateAndNotificationResponse(
           od as api.ReportStateAndNotificationResponse);
     });
@@ -1060,7 +1089,9 @@ void main() {
   unittest.group('obj-schema-RequestSyncDevicesRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRequestSyncDevicesRequest();
-      var od = api.RequestSyncDevicesRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RequestSyncDevicesRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRequestSyncDevicesRequest(od as api.RequestSyncDevicesRequest);
     });
   });
@@ -1068,7 +1099,9 @@ void main() {
   unittest.group('obj-schema-RequestSyncDevicesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRequestSyncDevicesResponse();
-      var od = api.RequestSyncDevicesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RequestSyncDevicesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRequestSyncDevicesResponse(od as api.RequestSyncDevicesResponse);
     });
   });
@@ -1076,7 +1109,9 @@ void main() {
   unittest.group('obj-schema-StateAndNotificationPayload', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStateAndNotificationPayload();
-      var od = api.StateAndNotificationPayload.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.StateAndNotificationPayload.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkStateAndNotificationPayload(od as api.StateAndNotificationPayload);
     });
   });
@@ -1084,7 +1119,9 @@ void main() {
   unittest.group('obj-schema-SyncRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSyncRequest();
-      var od = api.SyncRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SyncRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSyncRequest(od as api.SyncRequest);
     });
   });
@@ -1092,7 +1129,9 @@ void main() {
   unittest.group('obj-schema-SyncResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSyncResponse();
-      var od = api.SyncResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SyncResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSyncResponse(od as api.SyncResponse);
     });
   });
@@ -1100,7 +1139,9 @@ void main() {
   unittest.group('obj-schema-SyncResponsePayload', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSyncResponsePayload();
-      var od = api.SyncResponsePayload.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SyncResponsePayload.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSyncResponsePayload(od as api.SyncResponsePayload);
     });
   });

@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1331,7 +1330,7 @@ class ClaimDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customerId != null) 'customerId': customerId!,
         if (deviceIdentifier != null)
           'deviceIdentifier': deviceIdentifier!.toJson(),
@@ -1360,7 +1359,7 @@ class ClaimDeviceResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
         if (deviceName != null) 'deviceName': deviceName!,
       };
@@ -1387,7 +1386,7 @@ class ClaimDevicesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (claims != null)
           'claims': claims!.map((value) => value.toJson()).toList(),
       };
@@ -1483,7 +1482,7 @@ class Company {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (adminEmails != null) 'adminEmails': adminEmails!,
         if (companyId != null) 'companyId': companyId!,
         if (companyName != null) 'companyName': companyName!,
@@ -1613,7 +1612,7 @@ class Configuration {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (companyName != null) 'companyName': companyName!,
         if (configurationId != null) 'configurationId': configurationId!,
         if (configurationName != null) 'configurationName': configurationName!,
@@ -1647,7 +1646,7 @@ class CreateCustomerRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customer != null) 'customer': customer!.toJson(),
       };
 }
@@ -1677,7 +1676,7 @@ class CustomerApplyConfigurationRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (configuration != null) 'configuration': configuration!,
         if (device != null) 'device': device!.toJson(),
       };
@@ -1699,7 +1698,7 @@ class CustomerListConfigurationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (configurations != null)
           'configurations':
               configurations!.map((value) => value.toJson()).toList(),
@@ -1730,7 +1729,7 @@ class CustomerListCustomersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customers != null)
           'customers': customers!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1761,7 +1760,7 @@ class CustomerListDevicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (devices != null)
           'devices': devices!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1785,7 +1784,7 @@ class CustomerListDpcsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dpcs != null) 'dpcs': dpcs!.map((value) => value.toJson()).toList(),
       };
 }
@@ -1806,7 +1805,7 @@ class CustomerRemoveConfigurationRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (device != null) 'device': device!.toJson(),
       };
 }
@@ -1827,7 +1826,7 @@ class CustomerUnclaimDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (device != null) 'device': device!.toJson(),
       };
 }
@@ -1902,7 +1901,7 @@ class Device {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (claims != null)
           'claims': claims!.map((value) => value.toJson()).toList(),
         if (configuration != null) 'configuration': configuration!,
@@ -1965,7 +1964,7 @@ class DeviceClaim {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ownerCompanyId != null) 'ownerCompanyId': ownerCompanyId!,
         if (resellerId != null) 'resellerId': resellerId!,
         if (sectionType != null) 'sectionType': sectionType!,
@@ -2028,7 +2027,7 @@ class DeviceIdentifier {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (imei != null) 'imei': imei!,
         if (manufacturer != null) 'manufacturer': manufacturer!,
         if (meid != null) 'meid': meid!,
@@ -2049,17 +2048,16 @@ class DeviceMetadata {
 
   DeviceMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
-      entries =
-          (_json['entries'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      entries = (_json['entries'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entries != null) 'entries': entries!,
       };
 }
@@ -2092,7 +2090,7 @@ class DeviceReference {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
         if (deviceIdentifier != null)
           'deviceIdentifier': deviceIdentifier!.toJson(),
@@ -2141,7 +2139,7 @@ class DevicesLongRunningOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (devicesCount != null) 'devicesCount': devicesCount!,
         if (processingStatus != null) 'processingStatus': processingStatus!,
         if (progress != null) 'progress': progress!,
@@ -2180,7 +2178,7 @@ class DevicesLongRunningOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (perDeviceStatus != null)
           'perDeviceStatus':
               perDeviceStatus!.map((value) => value.toJson()).toList(),
@@ -2234,7 +2232,7 @@ class Dpc {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dpcName != null) 'dpcName': dpcName!,
         if (name != null) 'name': name!,
         if (packageName != null) 'packageName': packageName!,
@@ -2255,7 +2253,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Request to find devices.
@@ -2290,7 +2288,7 @@ class FindDevicesByDeviceIdentifierRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceIdentifier != null)
           'deviceIdentifier': deviceIdentifier!.toJson(),
         if (limit != null) 'limit': limit!,
@@ -2328,7 +2326,7 @@ class FindDevicesByDeviceIdentifierResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (devices != null)
           'devices': devices!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2381,7 +2379,7 @@ class FindDevicesByOwnerRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customerId != null) 'customerId': customerId!,
         if (limit != null) 'limit': limit!,
         if (pageToken != null) 'pageToken': pageToken!,
@@ -2419,7 +2417,7 @@ class FindDevicesByOwnerResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (devices != null)
           'devices': devices!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2457,7 +2455,7 @@ class ListCustomersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customers != null)
           'customers': customers!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2495,7 +2493,7 @@ class ListVendorCustomersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customers != null)
           'customers': customers!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2536,7 +2534,7 @@ class ListVendorsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (totalSize != null) 'totalSize': totalSize!,
         if (vendors != null)
@@ -2594,29 +2592,27 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -2662,7 +2658,7 @@ class OperationPerDevice {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (claim != null) 'claim': claim!.toJson(),
         if (result != null) 'result': result!.toJson(),
         if (unclaim != null) 'unclaim': unclaim!.toJson(),
@@ -2715,7 +2711,7 @@ class PartnerClaim {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customerId != null) 'customerId': customerId!,
         if (deviceIdentifier != null)
           'deviceIdentifier': deviceIdentifier!.toJson(),
@@ -2779,7 +2775,7 @@ class PartnerUnclaim {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
         if (deviceIdentifier != null)
           'deviceIdentifier': deviceIdentifier!.toJson(),
@@ -2834,7 +2830,7 @@ class PerDeviceStatusInBatch {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
         if (errorIdentifier != null) 'errorIdentifier': errorIdentifier!,
         if (errorMessage != null) 'errorMessage': errorMessage!,
@@ -2875,8 +2871,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -2889,7 +2885,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -2947,7 +2943,7 @@ class UnclaimDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
         if (deviceIdentifier != null)
           'deviceIdentifier': deviceIdentifier!.toJson(),
@@ -2976,7 +2972,7 @@ class UnclaimDevicesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (unclaims != null)
           'unclaims': unclaims!.map((value) => value.toJson()).toList(),
       };
@@ -3001,7 +2997,7 @@ class UpdateDeviceMetadataInBatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (updates != null)
           'updates': updates!.map((value) => value.toJson()).toList(),
       };
@@ -3023,7 +3019,7 @@ class UpdateDeviceMetadataRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!.toJson(),
       };
 }
@@ -3061,7 +3057,7 @@ class UpdateMetadataArguments {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
         if (deviceIdentifier != null)
           'deviceIdentifier': deviceIdentifier!.toJson(),

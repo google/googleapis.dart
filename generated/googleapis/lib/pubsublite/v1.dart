@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -905,7 +904,7 @@ class Capacity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (publishMibPerSec != null) 'publishMibPerSec': publishMibPerSec!,
         if (subscribeMibPerSec != null)
           'subscribeMibPerSec': subscribeMibPerSec!,
@@ -927,7 +926,7 @@ class ComputeHeadCursorRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (partition != null) 'partition': partition!,
       };
 }
@@ -946,7 +945,7 @@ class ComputeHeadCursorResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (headCursor != null) 'headCursor': headCursor!.toJson(),
       };
 }
@@ -984,7 +983,7 @@ class ComputeMessageStatsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endCursor != null) 'endCursor': endCursor!.toJson(),
         if (partition != null) 'partition': partition!,
         if (startCursor != null) 'startCursor': startCursor!.toJson(),
@@ -1029,7 +1028,7 @@ class ComputeMessageStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (messageBytes != null) 'messageBytes': messageBytes!,
         if (messageCount != null) 'messageCount': messageCount!,
         if (minimumEventTime != null) 'minimumEventTime': minimumEventTime!,
@@ -1053,7 +1052,7 @@ class Cursor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (offset != null) 'offset': offset!,
       };
 }
@@ -1079,7 +1078,7 @@ class DeliveryConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deliveryRequirement != null)
           'deliveryRequirement': deliveryRequirement!,
       };
@@ -1099,7 +1098,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Response for ListPartitionCursors
@@ -1126,7 +1125,7 @@ class ListPartitionCursorsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (partitionCursors != null)
           'partitionCursors':
@@ -1161,7 +1160,7 @@ class ListSubscriptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (subscriptions != null)
           'subscriptions':
@@ -1195,7 +1194,7 @@ class ListTopicSubscriptionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (subscriptions != null) 'subscriptions': subscriptions!,
       };
@@ -1228,7 +1227,7 @@ class ListTopicsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (topics != null)
           'topics': topics!.map((value) => value.toJson()).toList(),
@@ -1269,7 +1268,7 @@ class PartitionConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (capacity != null) 'capacity': capacity!.toJson(),
         if (count != null) 'count': count!,
         if (scale != null) 'scale': scale!,
@@ -1296,7 +1295,7 @@ class PartitionCursor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cursor != null) 'cursor': cursor!.toJson(),
         if (partition != null) 'partition': partition!,
       };
@@ -1328,7 +1327,7 @@ class RetentionConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (perPartitionBytes != null) 'perPartitionBytes': perPartitionBytes!,
         if (period != null) 'period': period!,
       };
@@ -1366,7 +1365,7 @@ class Subscription {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deliveryConfig != null) 'deliveryConfig': deliveryConfig!.toJson(),
         if (name != null) 'name': name!,
         if (topic != null) 'topic': topic!,
@@ -1403,7 +1402,7 @@ class Topic {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (partitionConfig != null)
           'partitionConfig': partitionConfig!.toJson(),
@@ -1425,7 +1424,7 @@ class TopicPartitions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (partitionCount != null) 'partitionCount': partitionCount!,
       };
 }

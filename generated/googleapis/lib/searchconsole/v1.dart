@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -520,7 +519,7 @@ class ApiDataRow {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clicks != null) 'clicks': clicks!,
         if (ctr != null) 'ctr': ctr!,
         if (impressions != null) 'impressions': impressions!,
@@ -569,7 +568,7 @@ class ApiDimensionFilter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dimension != null) 'dimension': dimension!,
         if (expression != null) 'expression': expression!,
         if (operator != null) 'operator': operator!,
@@ -603,7 +602,7 @@ class ApiDimensionFilterGroup {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (filters != null)
           'filters': filters!.map((value) => value.toJson()).toList(),
         if (groupType != null) 'groupType': groupType!,
@@ -623,7 +622,7 @@ class BlockedResource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
       };
 }
@@ -656,7 +655,7 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (data != null) 'data': data!,
         if (mimeType != null) 'mimeType': mimeType!,
       };
@@ -693,7 +692,7 @@ class MobileFriendlyIssue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rule != null) 'rule': rule!,
       };
 }
@@ -712,7 +711,7 @@ class ResourceIssue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blockedResource != null)
           'blockedResource': blockedResource!.toJson(),
       };
@@ -739,7 +738,7 @@ class RunMobileFriendlyTestRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (requestScreenshot != null) 'requestScreenshot': requestScreenshot!,
         if (url != null) 'url': url!,
       };
@@ -796,7 +795,7 @@ class RunMobileFriendlyTestResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mobileFriendliness != null)
           'mobileFriendliness': mobileFriendliness!,
         if (mobileFriendlyIssues != null)
@@ -928,7 +927,7 @@ class SearchAnalyticsQueryRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aggregationType != null) 'aggregationType': aggregationType!,
         if (dataState != null) 'dataState': dataState!,
         if (dimensionFilterGroups != null)
@@ -972,7 +971,7 @@ class SearchAnalyticsQueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (responseAggregationType != null)
           'responseAggregationType': responseAggregationType!,
         if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
@@ -996,7 +995,7 @@ class SitemapsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sitemap != null)
           'sitemap': sitemap!.map((value) => value.toJson()).toList(),
       };
@@ -1021,7 +1020,7 @@ class SitesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (siteEntry != null)
           'siteEntry': siteEntry!.map((value) => value.toJson()).toList(),
       };
@@ -1057,7 +1056,7 @@ class TestStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
         if (status != null) 'status': status!,
       };
@@ -1093,7 +1092,7 @@ class WmxSite {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissionLevel != null) 'permissionLevel': permissionLevel!,
         if (siteUrl != null) 'siteUrl': siteUrl!,
       };
@@ -1183,7 +1182,7 @@ class WmxSitemap {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contents != null)
           'contents': contents!.map((value) => value.toJson()).toList(),
         if (errors != null) 'errors': errors!,
@@ -1235,7 +1234,7 @@ class WmxSitemapContent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (indexed != null) 'indexed': indexed!,
         if (submitted != null) 'submitted': submitted!,
         if (type != null) 'type': type!,

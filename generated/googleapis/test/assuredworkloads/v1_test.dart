@@ -859,8 +859,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata(od
           as api.GoogleCloudAssuredworkloadsV1CreateWorkloadOperationMetadata);
     });
@@ -870,8 +871,9 @@ void main() {
       'obj-schema-GoogleCloudAssuredworkloadsV1ListWorkloadsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssuredworkloadsV1ListWorkloadsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudAssuredworkloadsV1ListWorkloadsResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAssuredworkloadsV1ListWorkloadsResponse(
           od as api.GoogleCloudAssuredworkloadsV1ListWorkloadsResponse);
     });
@@ -880,7 +882,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudAssuredworkloadsV1Workload', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssuredworkloadsV1Workload();
-      var od = api.GoogleCloudAssuredworkloadsV1Workload.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudAssuredworkloadsV1Workload.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAssuredworkloadsV1Workload(
           od as api.GoogleCloudAssuredworkloadsV1Workload);
     });
@@ -890,8 +894,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssuredworkloadsV1WorkloadKMSSettings();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudAssuredworkloadsV1WorkloadKMSSettings.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAssuredworkloadsV1WorkloadKMSSettings(
           od as api.GoogleCloudAssuredworkloadsV1WorkloadKMSSettings);
     });
@@ -901,8 +906,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssuredworkloadsV1WorkloadResourceInfo();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudAssuredworkloadsV1WorkloadResourceInfo.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAssuredworkloadsV1WorkloadResourceInfo(
           od as api.GoogleCloudAssuredworkloadsV1WorkloadResourceInfo);
     });
@@ -914,9 +920,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata(od
           as api
               .GoogleCloudAssuredworkloadsV1beta1CreateWorkloadOperationMetadata);
@@ -926,8 +933,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudAssuredworkloadsV1beta1Workload', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssuredworkloadsV1beta1Workload();
-      var od =
-          api.GoogleCloudAssuredworkloadsV1beta1Workload.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudAssuredworkloadsV1beta1Workload.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAssuredworkloadsV1beta1Workload(
           od as api.GoogleCloudAssuredworkloadsV1beta1Workload);
     });
@@ -937,9 +945,10 @@ void main() {
       'obj-schema-GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings(
           od as api.GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings);
     });
@@ -951,8 +960,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings(od
           as api.GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampHighSettings);
     });
@@ -964,9 +974,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings(od
           as api
               .GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettings);
@@ -977,9 +988,10 @@ void main() {
       'obj-schema-GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings(
           od as api.GoogleCloudAssuredworkloadsV1beta1WorkloadIL4Settings);
     });
@@ -989,9 +1001,10 @@ void main() {
       'obj-schema-GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings(
           od as api.GoogleCloudAssuredworkloadsV1beta1WorkloadKMSSettings);
     });
@@ -1001,9 +1014,10 @@ void main() {
       'obj-schema-GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo(
           od as api.GoogleCloudAssuredworkloadsV1beta1WorkloadResourceInfo);
     });
@@ -1012,7 +1026,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
-      var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningListOperationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningListOperationsResponse(
           od as api.GoogleLongrunningListOperationsResponse);
     });
@@ -1021,7 +1037,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
-      var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningOperation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
     });
   });
@@ -1029,7 +1047,9 @@ void main() {
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
-      var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleProtobufEmpty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
     });
   });
@@ -1037,7 +1057,9 @@ void main() {
   unittest.group('obj-schema-GoogleRpcStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
-      var od = api.GoogleRpcStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleRpcStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
     });
   });

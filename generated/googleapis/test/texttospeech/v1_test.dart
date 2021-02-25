@@ -283,7 +283,9 @@ void main() {
   unittest.group('obj-schema-AudioConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAudioConfig();
-      var od = api.AudioConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AudioConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAudioConfig(od as api.AudioConfig);
     });
   });
@@ -291,7 +293,9 @@ void main() {
   unittest.group('obj-schema-ListVoicesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListVoicesResponse();
-      var od = api.ListVoicesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListVoicesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListVoicesResponse(od as api.ListVoicesResponse);
     });
   });
@@ -299,7 +303,9 @@ void main() {
   unittest.group('obj-schema-SynthesisInput', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSynthesisInput();
-      var od = api.SynthesisInput.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SynthesisInput.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSynthesisInput(od as api.SynthesisInput);
     });
   });
@@ -307,7 +313,9 @@ void main() {
   unittest.group('obj-schema-SynthesizeSpeechRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSynthesizeSpeechRequest();
-      var od = api.SynthesizeSpeechRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SynthesizeSpeechRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSynthesizeSpeechRequest(od as api.SynthesizeSpeechRequest);
     });
   });
@@ -315,7 +323,9 @@ void main() {
   unittest.group('obj-schema-SynthesizeSpeechResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSynthesizeSpeechResponse();
-      var od = api.SynthesizeSpeechResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SynthesizeSpeechResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSynthesizeSpeechResponse(od as api.SynthesizeSpeechResponse);
     });
   });
@@ -323,7 +333,8 @@ void main() {
   unittest.group('obj-schema-Voice', () {
     unittest.test('to-json--from-json', () async {
       var o = buildVoice();
-      var od = api.Voice.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Voice.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkVoice(od as api.Voice);
     });
   });
@@ -331,7 +342,9 @@ void main() {
   unittest.group('obj-schema-VoiceSelectionParams', () {
     unittest.test('to-json--from-json', () async {
       var o = buildVoiceSelectionParams();
-      var od = api.VoiceSelectionParams.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.VoiceSelectionParams.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkVoiceSelectionParams(od as api.VoiceSelectionParams);
     });
   });

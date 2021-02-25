@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -358,7 +357,7 @@ class GoogleExampleLibraryagentV1Book {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (author != null) 'author': author!,
         if (name != null) 'name': name!,
         if (read != null) 'read': read!,
@@ -392,7 +391,7 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (books != null)
           'books': books!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -426,7 +425,7 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (shelves != null)
           'shelves': shelves!.map((value) => value.toJson()).toList(),
@@ -457,7 +456,7 @@ class GoogleExampleLibraryagentV1Shelf {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (theme != null) 'theme': theme!,
       };

@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -621,7 +620,7 @@ class AchievementConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (achievementType != null) 'achievementType': achievementType!,
         if (draft != null) 'draft': draft!.toJson(),
         if (id != null) 'id': id!,
@@ -685,7 +684,7 @@ class AchievementConfigurationDetail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!.toJson(),
         if (iconUrl != null) 'iconUrl': iconUrl!,
         if (kind != null) 'kind': kind!,
@@ -727,7 +726,7 @@ class AchievementConfigurationListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -792,7 +791,7 @@ class GamesNumberAffixConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (few != null) 'few': few!.toJson(),
         if (many != null) 'many': many!.toJson(),
         if (one != null) 'one': one!.toJson(),
@@ -848,7 +847,7 @@ class GamesNumberFormatConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (numDecimalPlaces != null) 'numDecimalPlaces': numDecimalPlaces!,
         if (numberFormatType != null) 'numberFormatType': numberFormatType!,
@@ -893,7 +892,7 @@ class ImageConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (imageType != null) 'imageType': imageType!,
         if (kind != null) 'kind': kind!,
         if (resourceId != null) 'resourceId': resourceId!,
@@ -965,7 +964,7 @@ class LeaderboardConfiguration {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (draft != null) 'draft': draft!.toJson(),
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -1023,7 +1022,7 @@ class LeaderboardConfigurationDetail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (iconUrl != null) 'iconUrl': iconUrl!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!.toJson(),
@@ -1064,7 +1063,7 @@ class LeaderboardConfigurationListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -1099,7 +1098,7 @@ class LocalizedString {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (locale != null) 'locale': locale!,
         if (value != null) 'value': value!,
@@ -1131,7 +1130,7 @@ class LocalizedStringBundle {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (translations != null)
           'translations': translations!.map((value) => value.toJson()).toList(),

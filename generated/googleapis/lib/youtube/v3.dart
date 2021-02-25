@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -5388,7 +5387,7 @@ class AbuseReport {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (abuseTypes != null)
           'abuseTypes': abuseTypes!.map((value) => value.toJson()).toList(),
         if (description != null) 'description': description!,
@@ -5410,7 +5409,7 @@ class AbuseType {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
       };
 }
@@ -5438,7 +5437,7 @@ class AccessPolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowed != null) 'allowed': allowed!,
         if (exception != null) 'exception': exception!,
       };
@@ -5497,7 +5496,7 @@ class Activity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
@@ -5620,7 +5619,7 @@ class ActivityContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bulletin != null) 'bulletin': bulletin!.toJson(),
         if (channelItem != null) 'channelItem': channelItem!.toJson(),
         if (comment != null) 'comment': comment!.toJson(),
@@ -5652,7 +5651,7 @@ class ActivityContentDetailsBulletin {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resourceId != null) 'resourceId': resourceId!.toJson(),
       };
 }
@@ -5672,7 +5671,7 @@ class ActivityContentDetailsChannelItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resourceId != null) 'resourceId': resourceId!.toJson(),
       };
 }
@@ -5692,7 +5691,7 @@ class ActivityContentDetailsComment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resourceId != null) 'resourceId': resourceId!.toJson(),
       };
 }
@@ -5712,7 +5711,7 @@ class ActivityContentDetailsFavorite {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resourceId != null) 'resourceId': resourceId!.toJson(),
       };
 }
@@ -5732,7 +5731,7 @@ class ActivityContentDetailsLike {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resourceId != null) 'resourceId': resourceId!.toJson(),
       };
 }
@@ -5764,7 +5763,7 @@ class ActivityContentDetailsPlaylistItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (playlistId != null) 'playlistId': playlistId!,
         if (playlistItemId != null) 'playlistItemId': playlistItemId!,
         if (resourceId != null) 'resourceId': resourceId!.toJson(),
@@ -5857,7 +5856,7 @@ class ActivityContentDetailsPromotedItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (adTag != null) 'adTag': adTag!,
         if (clickTrackingUrl != null) 'clickTrackingUrl': clickTrackingUrl!,
         if (creativeViewUrl != null) 'creativeViewUrl': creativeViewUrl!,
@@ -5906,7 +5905,7 @@ class ActivityContentDetailsRecommendation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (reason != null) 'reason': reason!,
         if (resourceId != null) 'resourceId': resourceId!.toJson(),
         if (seedResourceId != null) 'seedResourceId': seedResourceId!.toJson(),
@@ -5957,7 +5956,7 @@ class ActivityContentDetailsSocial {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (author != null) 'author': author!,
         if (imageUrl != null) 'imageUrl': imageUrl!,
         if (referenceUrl != null) 'referenceUrl': referenceUrl!,
@@ -5981,7 +5980,7 @@ class ActivityContentDetailsSubscription {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resourceId != null) 'resourceId': resourceId!.toJson(),
       };
 }
@@ -5999,7 +5998,7 @@ class ActivityContentDetailsUpload {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (videoId != null) 'videoId': videoId!,
       };
 }
@@ -6069,7 +6068,7 @@ class ActivityListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -6170,7 +6169,7 @@ class ActivitySnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
         if (channelTitle != null) 'channelTitle': channelTitle!,
         if (description != null) 'description': description!,
@@ -6218,7 +6217,7 @@ class Caption {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -6267,7 +6266,7 @@ class CaptionListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -6409,7 +6408,7 @@ class CaptionSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audioTrackType != null) 'audioTrackType': audioTrackType!,
         if (failureReason != null) 'failureReason': failureReason!,
         if (isAutoSynced != null) 'isAutoSynced': isAutoSynced!,
@@ -6483,7 +6482,7 @@ class CdnSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (format != null) 'format': format!,
         if (frameRate != null) 'frameRate': frameRate!,
         if (ingestionInfo != null) 'ingestionInfo': ingestionInfo!.toJson(),
@@ -6576,15 +6575,14 @@ class Channel {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('localizations')) {
-      localizations = (_json['localizations'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              ChannelLocalization.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      localizations =
+          (_json['localizations'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          ChannelLocalization.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('snippet')) {
       snippet = ChannelSnippet.fromJson(
@@ -6604,7 +6602,7 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditDetails != null) 'auditDetails': auditDetails!.toJson(),
         if (brandingSettings != null)
           'brandingSettings': brandingSettings!.toJson(),
@@ -6655,7 +6653,7 @@ class ChannelAuditDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (communityGuidelinesGoodStanding != null)
           'communityGuidelinesGoodStanding': communityGuidelinesGoodStanding!,
         if (contentIdClaimsGoodStanding != null)
@@ -6691,7 +6689,7 @@ class ChannelBannerResource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (url != null) 'url': url!,
@@ -6735,7 +6733,7 @@ class ChannelBrandingSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channel != null) 'channel': channel!.toJson(),
         if (hints != null)
           'hints': hints!.map((value) => value.toJson()).toList(),
@@ -6795,7 +6793,7 @@ class ChannelContentDetailsRelatedPlaylists {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (favorites != null) 'favorites': favorites!,
         if (likes != null) 'likes': likes!,
         if (uploads != null) 'uploads': uploads!,
@@ -6817,7 +6815,7 @@ class ChannelContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (relatedPlaylists != null)
           'relatedPlaylists': relatedPlaylists!.toJson(),
       };
@@ -6843,7 +6841,7 @@ class ChannelContentOwnerDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentOwner != null) 'contentOwner': contentOwner!,
         if (timeLinked != null) 'timeLinked': timeLinked!.toIso8601String(),
       };
@@ -6882,7 +6880,7 @@ class ChannelConversionPing {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (context != null) 'context': context!,
         if (conversionUrl != null) 'conversionUrl': conversionUrl!,
       };
@@ -6908,7 +6906,7 @@ class ChannelConversionPings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (pings != null)
           'pings': pings!.map((value) => value.toJson()).toList(),
       };
@@ -6979,7 +6977,7 @@ class ChannelListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -7013,7 +7011,7 @@ class ChannelLocalization {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (title != null) 'title': title!,
       };
@@ -7049,7 +7047,7 @@ class ChannelProfileDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
         if (channelUrl != null) 'channelUrl': channelUrl!,
         if (displayName != null) 'displayName': displayName!,
@@ -7101,15 +7099,14 @@ class ChannelSection {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('localizations')) {
-      localizations = (_json['localizations'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              ChannelSectionLocalization.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      localizations =
+          (_json['localizations'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          ChannelSectionLocalization.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('snippet')) {
       snippet = ChannelSectionSnippet.fromJson(
@@ -7121,7 +7118,7 @@ class ChannelSection {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
@@ -7159,7 +7156,7 @@ class ChannelSectionContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channels != null) 'channels': channels!,
         if (playlists != null) 'playlists': playlists!,
       };
@@ -7206,7 +7203,7 @@ class ChannelSectionListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -7229,7 +7226,7 @@ class ChannelSectionLocalization {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (title != null) 'title': title!,
       };
 }
@@ -7307,7 +7304,7 @@ class ChannelSectionSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
         if (defaultLanguage != null) 'defaultLanguage': defaultLanguage!,
         if (localized != null) 'localized': localized!.toJson(),
@@ -7349,7 +7346,7 @@ class ChannelSectionTargeting {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (countries != null) 'countries': countries!,
         if (languages != null) 'languages': languages!,
         if (regions != null) 'regions': regions!,
@@ -7450,7 +7447,7 @@ class ChannelSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (country != null) 'country': country!,
         if (defaultLanguage != null) 'defaultLanguage': defaultLanguage!,
         if (defaultTab != null) 'defaultTab': defaultTab!,
@@ -7542,7 +7539,7 @@ class ChannelSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (country != null) 'country': country!,
         if (customUrl != null) 'customUrl': customUrl!,
         if (defaultLanguage != null) 'defaultLanguage': defaultLanguage!,
@@ -7592,7 +7589,7 @@ class ChannelStatistics {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commentCount != null) 'commentCount': commentCount!,
         if (hiddenSubscriberCount != null)
           'hiddenSubscriberCount': hiddenSubscriberCount!,
@@ -7649,7 +7646,7 @@ class ChannelStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (isLinked != null) 'isLinked': isLinked!,
         if (longUploadsStatus != null) 'longUploadsStatus': longUploadsStatus!,
         if (madeForKids != null) 'madeForKids': madeForKids!,
@@ -7679,7 +7676,7 @@ class ChannelToStoreLinkDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (storeName != null) 'storeName': storeName!,
         if (storeUrl != null) 'storeUrl': storeUrl!,
       };
@@ -7711,7 +7708,7 @@ class ChannelTopicDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (topicCategories != null) 'topicCategories': topicCategories!,
         if (topicIds != null) 'topicIds': topicIds!,
       };
@@ -7751,7 +7748,7 @@ class Comment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -7819,7 +7816,7 @@ class CommentListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -7955,7 +7952,7 @@ class CommentSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (authorChannelId != null)
           'authorChannelId': authorChannelId!.toJson(),
         if (authorChannelUrl != null) 'authorChannelUrl': authorChannelUrl!,
@@ -7988,7 +7985,7 @@ class CommentSnippetAuthorChannelId {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
       };
 }
@@ -8039,7 +8036,7 @@ class CommentThread {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -8108,7 +8105,7 @@ class CommentThreadListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -8142,7 +8139,7 @@ class CommentThreadReplies {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (comments != null)
           'comments': comments!.map((value) => value.toJson()).toList(),
       };
@@ -8201,7 +8198,7 @@ class CommentThreadSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (canReply != null) 'canReply': canReply!,
         if (channelId != null) 'channelId': channelId!,
         if (isPublic != null) 'isPublic': isPublic!,
@@ -9335,7 +9332,7 @@ class ContentRating {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (acbRating != null) 'acbRating': acbRating!,
         if (agcomRating != null) 'agcomRating': agcomRating!,
         if (anatelRating != null) 'anatelRating': anatelRating!,
@@ -9432,7 +9429,7 @@ class Entity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (typeId != null) 'typeId': typeId!,
         if (url != null) 'url': url!,
@@ -9464,7 +9461,7 @@ class GeoPoint {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (altitude != null) 'altitude': altitude!,
         if (latitude != null) 'latitude': latitude!,
         if (longitude != null) 'longitude': longitude!,
@@ -9507,7 +9504,7 @@ class I18nLanguage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -9559,7 +9556,7 @@ class I18nLanguageListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -9589,7 +9586,7 @@ class I18nLanguageSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hl != null) 'hl': hl!,
         if (name != null) 'name': name!,
       };
@@ -9630,7 +9627,7 @@ class I18nRegion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -9682,7 +9679,7 @@ class I18nRegionListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -9712,7 +9709,7 @@ class I18nRegionSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gl != null) 'gl': gl!,
         if (name != null) 'name': name!,
       };
@@ -9905,7 +9902,7 @@ class ImageSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (backgroundImageUrl != null)
           'backgroundImageUrl': backgroundImageUrl!.toJson(),
         if (bannerExternalUrl != null) 'bannerExternalUrl': bannerExternalUrl!,
@@ -10002,7 +9999,7 @@ class IngestionInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (backupIngestionAddress != null)
           'backupIngestionAddress': backupIngestionAddress!,
         if (ingestionAddress != null) 'ingestionAddress': ingestionAddress!,
@@ -10067,7 +10064,7 @@ class InvideoBranding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (imageBytes != null) 'imageBytes': imageBytes!,
         if (imageUrl != null) 'imageUrl': imageUrl!,
         if (position != null) 'position': position!.toJson(),
@@ -10104,7 +10101,7 @@ class InvideoPosition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cornerPosition != null) 'cornerPosition': cornerPosition!,
         if (type != null) 'type': type!,
       };
@@ -10149,7 +10146,7 @@ class InvideoTiming {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (durationMs != null) 'durationMs': durationMs!,
         if (offsetMs != null) 'offsetMs': offsetMs!,
         if (type != null) 'type': type!,
@@ -10167,7 +10164,7 @@ class LanguageTag {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
       };
 }
@@ -10184,7 +10181,7 @@ class LevelDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
       };
 }
@@ -10253,7 +10250,7 @@ class LiveBroadcast {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
@@ -10456,7 +10453,7 @@ class LiveBroadcastContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boundStreamId != null) 'boundStreamId': boundStreamId!,
         if (boundStreamLastUpdateTimeMs != null)
           'boundStreamLastUpdateTimeMs':
@@ -10549,7 +10546,7 @@ class LiveBroadcastListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -10662,7 +10659,7 @@ class LiveBroadcastSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (actualEndTime != null)
           'actualEndTime': actualEndTime!.toIso8601String(),
         if (actualStartTime != null)
@@ -10704,7 +10701,7 @@ class LiveBroadcastStatistics {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (totalChatCount != null) 'totalChatCount': totalChatCount!,
       };
 }
@@ -10791,7 +10788,7 @@ class LiveBroadcastStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (lifeCycleStatus != null) 'lifeCycleStatus': lifeCycleStatus!,
         if (liveBroadcastPriority != null)
           'liveBroadcastPriority': liveBroadcastPriority!,
@@ -10837,7 +10834,7 @@ class LiveChatBan {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -10878,7 +10875,7 @@ class LiveChatBanSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (banDurationSeconds != null)
           'banDurationSeconds': banDurationSeconds!,
         if (bannedUserDetails != null)
@@ -10918,7 +10915,7 @@ class LiveChatFanFundingEventDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (amountDisplayString != null)
           'amountDisplayString': amountDisplayString!,
         if (amountMicros != null) 'amountMicros': amountMicros!,
@@ -10970,7 +10967,7 @@ class LiveChatMessage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (authorDetails != null) 'authorDetails': authorDetails!.toJson(),
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
@@ -11033,7 +11030,7 @@ class LiveChatMessageAuthorDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
         if (channelUrl != null) 'channelUrl': channelUrl!,
         if (displayName != null) 'displayName': displayName!,
@@ -11056,7 +11053,7 @@ class LiveChatMessageDeletedDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deletedMessageId != null) 'deletedMessageId': deletedMessageId!,
       };
 }
@@ -11128,7 +11125,7 @@ class LiveChatMessageListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -11156,7 +11153,7 @@ class LiveChatMessageRetractedDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (retractedMessageId != null)
           'retractedMessageId': retractedMessageId!,
       };
@@ -11278,7 +11275,7 @@ class LiveChatMessageSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (authorChannelId != null) 'authorChannelId': authorChannelId!,
         if (displayMessage != null) 'displayMessage': displayMessage!,
         if (fanFundingEventDetails != null)
@@ -11340,7 +11337,7 @@ class LiveChatModerator {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -11415,7 +11412,7 @@ class LiveChatModeratorListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -11449,7 +11446,7 @@ class LiveChatModeratorSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (liveChatId != null) 'liveChatId': liveChatId!,
         if (moderatorDetails != null)
           'moderatorDetails': moderatorDetails!.toJson(),
@@ -11494,7 +11491,7 @@ class LiveChatSuperChatDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (amountDisplayString != null)
           'amountDisplayString': amountDisplayString!,
         if (amountMicros != null) 'amountMicros': amountMicros!,
@@ -11543,7 +11540,7 @@ class LiveChatSuperStickerDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (amountDisplayString != null)
           'amountDisplayString': amountDisplayString!,
         if (amountMicros != null) 'amountMicros': amountMicros!,
@@ -11566,7 +11563,7 @@ class LiveChatTextMessageDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (messageText != null) 'messageText': messageText!,
       };
 }
@@ -11601,7 +11598,7 @@ class LiveChatUserBannedMessageDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (banDurationSeconds != null)
           'banDurationSeconds': banDurationSeconds!,
         if (banType != null) 'banType': banType!,
@@ -11671,7 +11668,7 @@ class LiveStream {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cdn != null) 'cdn': cdn!.toJson(),
         if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
         if (etag != null) 'etag': etag!,
@@ -11751,7 +11748,7 @@ class LiveStreamConfigurationIssue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (reason != null) 'reason': reason!,
         if (severity != null) 'severity': severity!,
@@ -11792,7 +11789,7 @@ class LiveStreamContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (closedCaptionsIngestionUrl != null)
           'closedCaptionsIngestionUrl': closedCaptionsIngestionUrl!,
         if (isReusable != null) 'isReusable': isReusable!,
@@ -11833,7 +11830,7 @@ class LiveStreamHealthStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (configurationIssues != null)
           'configurationIssues':
               configurationIssues!.map((value) => value.toJson()).toList(),
@@ -11908,7 +11905,7 @@ class LiveStreamListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -11962,7 +11959,7 @@ class LiveStreamSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
         if (description != null) 'description': description!,
         if (isDefaultStream != null) 'isDefaultStream': isDefaultStream!,
@@ -11997,7 +11994,7 @@ class LiveStreamStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (healthStatus != null) 'healthStatus': healthStatus!.toJson(),
         if (streamStatus != null) 'streamStatus': streamStatus!,
       };
@@ -12028,7 +12025,7 @@ class LocalizedProperty {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (default_ != null) 'default': default_!,
         if (defaultLanguage != null)
           'defaultLanguage': defaultLanguage!.toJson(),
@@ -12052,7 +12049,7 @@ class LocalizedString {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (language != null) 'language': language!,
         if (value != null) 'value': value!,
       };
@@ -12089,7 +12086,7 @@ class Member {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (snippet != null) 'snippet': snippet!.toJson(),
@@ -12154,7 +12151,7 @@ class MemberListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -12194,7 +12191,7 @@ class MemberSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (creatorChannelId != null) 'creatorChannelId': creatorChannelId!,
         if (memberDetails != null) 'memberDetails': memberDetails!.toJson(),
         if (membershipsDetails != null)
@@ -12252,7 +12249,7 @@ class MembershipsDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessibleLevels != null) 'accessibleLevels': accessibleLevels!,
         if (highestAccessibleLevel != null)
           'highestAccessibleLevel': highestAccessibleLevel!,
@@ -12289,7 +12286,7 @@ class MembershipsDuration {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (memberSince != null) 'memberSince': memberSince!,
         if (memberTotalDurationMonths != null)
           'memberTotalDurationMonths': memberTotalDurationMonths!,
@@ -12323,7 +12320,7 @@ class MembershipsDurationAtLevel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (level != null) 'level': level!,
         if (memberSince != null) 'memberSince': memberSince!,
         if (memberTotalDurationMonths != null)
@@ -12370,7 +12367,7 @@ class MembershipsLevel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -12419,7 +12416,7 @@ class MembershipsLevelListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -12448,7 +12445,7 @@ class MembershipsLevelSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (creatorChannelId != null) 'creatorChannelId': creatorChannelId!,
         if (levelDetails != null) 'levelDetails': levelDetails!.toJson(),
       };
@@ -12489,7 +12486,7 @@ class MonitorStreamInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (broadcastStreamDelayMs != null)
           'broadcastStreamDelayMs': broadcastStreamDelayMs!,
         if (embedHtml != null) 'embedHtml': embedHtml!,
@@ -12518,7 +12515,7 @@ class PageInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resultsPerPage != null) 'resultsPerPage': resultsPerPage!,
         if (totalResults != null) 'totalResults': totalResults!,
       };
@@ -12586,15 +12583,14 @@ class Playlist {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('localizations')) {
-      localizations = (_json['localizations'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              PlaylistLocalization.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      localizations =
+          (_json['localizations'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          PlaylistLocalization.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('player')) {
       player = PlaylistPlayer.fromJson(
@@ -12610,7 +12606,7 @@ class Playlist {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
@@ -12636,7 +12632,7 @@ class PlaylistContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (itemCount != null) 'itemCount': itemCount!,
       };
 }
@@ -12710,7 +12706,7 @@ class PlaylistItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
@@ -12770,7 +12766,7 @@ class PlaylistItemContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endAt != null) 'endAt': endAt!,
         if (note != null) 'note': note!,
         if (startAt != null) 'startAt': startAt!,
@@ -12847,7 +12843,7 @@ class PlaylistItemListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -12949,7 +12945,7 @@ class PlaylistItemSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
         if (channelTitle != null) 'channelTitle': channelTitle!,
         if (description != null) 'description': description!,
@@ -12983,7 +12979,7 @@ class PlaylistItemStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (privacyStatus != null) 'privacyStatus': privacyStatus!,
       };
 }
@@ -13055,7 +13051,7 @@ class PlaylistListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -13089,7 +13085,7 @@ class PlaylistLocalization {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (title != null) 'title': title!,
       };
@@ -13107,7 +13103,7 @@ class PlaylistPlayer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (embedHtml != null) 'embedHtml': embedHtml!,
       };
 }
@@ -13197,7 +13193,7 @@ class PlaylistSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
         if (channelTitle != null) 'channelTitle': channelTitle!,
         if (defaultLanguage != null) 'defaultLanguage': defaultLanguage!,
@@ -13227,7 +13223,7 @@ class PlaylistStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (privacyStatus != null) 'privacyStatus': privacyStatus!,
       };
 }
@@ -13251,7 +13247,7 @@ class PropertyValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (property != null) 'property': property!,
         if (value != null) 'value': value!,
       };
@@ -13269,7 +13265,7 @@ class RelatedEntity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entity != null) 'entity': entity!.toJson(),
       };
 }
@@ -13318,7 +13314,7 @@ class ResourceId {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
         if (kind != null) 'kind': kind!,
         if (playlistId != null) 'playlistId': playlistId!,
@@ -13397,7 +13393,7 @@ class SearchListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -13457,7 +13453,7 @@ class SearchResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!.toJson(),
         if (kind != null) 'kind': kind!,
@@ -13531,7 +13527,7 @@ class SearchResultSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
         if (channelTitle != null) 'channelTitle': channelTitle!,
         if (description != null) 'description': description!,
@@ -13598,7 +13594,7 @@ class Subscription {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
@@ -13639,7 +13635,7 @@ class SubscriptionContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (activityType != null) 'activityType': activityType!,
         if (newItemCount != null) 'newItemCount': newItemCount!,
         if (totalItemCount != null) 'totalItemCount': totalItemCount!,
@@ -13711,7 +13707,7 @@ class SubscriptionListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -13783,7 +13779,7 @@ class SubscriptionSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
         if (channelTitle != null) 'channelTitle': channelTitle!,
         if (description != null) 'description': description!,
@@ -13827,7 +13823,7 @@ class SubscriptionSubscriberSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channelId != null) 'channelId': channelId!,
         if (description != null) 'description': description!,
         if (thumbnails != null) 'thumbnails': thumbnails!.toJson(),
@@ -13870,7 +13866,7 @@ class SuperChatEvent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -13936,7 +13932,7 @@ class SuperChatEventListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -14027,7 +14023,7 @@ class SuperChatEventSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (amountMicros != null) 'amountMicros': amountMicros!,
         if (channelId != null) 'channelId': channelId!,
         if (commentText != null) 'commentText': commentText!,
@@ -14072,7 +14068,7 @@ class SuperStickerMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (altText != null) 'altText': altText!,
         if (altTextLanguage != null) 'altTextLanguage': altTextLanguage!,
         if (stickerId != null) 'stickerId': stickerId!,
@@ -14099,7 +14095,7 @@ class TestItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gaia != null) 'gaia': gaia!,
         if (id != null) 'id': id!,
         if (snippet != null) 'snippet': snippet!.toJson(),
@@ -14113,7 +14109,7 @@ class TestItemTestItemSnippet {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A *third party account link* resource represents a link between a YouTube
@@ -14160,7 +14156,7 @@ class ThirdPartyLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (linkingToken != null) 'linkingToken': linkingToken!,
@@ -14196,7 +14192,7 @@ class ThirdPartyLinkSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channelToStoreLink != null)
           'channelToStoreLink': channelToStoreLink!.toJson(),
         if (type != null) 'type': type!,
@@ -14222,7 +14218,7 @@ class ThirdPartyLinkStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (linkStatus != null) 'linkStatus': linkStatus!,
       };
 }
@@ -14252,7 +14248,7 @@ class Thumbnail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (url != null) 'url': url!,
         if (width != null) 'width': width!,
@@ -14301,7 +14297,7 @@ class ThumbnailDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (default_ != null) 'default': default_!.toJson(),
         if (high != null) 'high': high!.toJson(),
         if (maxres != null) 'maxres': maxres!.toJson(),
@@ -14351,7 +14347,7 @@ class ThumbnailSetResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -14369,7 +14365,7 @@ class TokenPagination {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A *video* resource represents a YouTube video.
@@ -14501,15 +14497,14 @@ class Video {
           _json['liveStreamingDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('localizations')) {
-      localizations = (_json['localizations'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              VideoLocalization.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      localizations =
+          (_json['localizations'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          VideoLocalization.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('monetizationDetails')) {
       monetizationDetails = VideoMonetizationDetails.fromJson(
@@ -14553,7 +14548,7 @@ class Video {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ageGating != null) 'ageGating': ageGating!.toJson(),
         if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
         if (etag != null) 'etag': etag!,
@@ -14623,7 +14618,7 @@ class VideoAbuseReport {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (comments != null) 'comments': comments!,
         if (language != null) 'language': language!,
         if (reasonId != null) 'reasonId': reasonId!,
@@ -14669,7 +14664,7 @@ class VideoAbuseReportReason {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -14719,7 +14714,7 @@ class VideoAbuseReportReasonListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -14754,7 +14749,7 @@ class VideoAbuseReportReasonSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (label != null) 'label': label!,
         if (secondaryReasons != null)
           'secondaryReasons':
@@ -14780,7 +14775,7 @@ class VideoAbuseReportSecondaryReason {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (label != null) 'label': label!,
       };
@@ -14822,7 +14817,7 @@ class VideoAgeGating {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alcoholContent != null) 'alcoholContent': alcoholContent!,
         if (restricted != null) 'restricted': restricted!,
         if (videoGameRating != null) 'videoGameRating': videoGameRating!,
@@ -14865,7 +14860,7 @@ class VideoCategory {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -14943,7 +14938,7 @@ class VideoCategoryListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -14982,7 +14977,7 @@ class VideoCategorySnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (assignable != null) 'assignable': assignable!,
         if (channelId != null) 'channelId': channelId!,
         if (title != null) 'title': title!,
@@ -15088,7 +15083,7 @@ class VideoContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (caption != null) 'caption': caption!,
         if (contentRating != null) 'contentRating': contentRating!.toJson(),
         if (countryRestriction != null)
@@ -15137,7 +15132,7 @@ class VideoContentDetailsRegionRestriction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowed != null) 'allowed': allowed!,
         if (blocked != null) 'blocked': blocked!,
       };
@@ -15241,7 +15236,7 @@ class VideoFileDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audioStreams != null)
           'audioStreams': audioStreams!.map((value) => value.toJson()).toList(),
         if (bitrateBps != null) 'bitrateBps': bitrateBps!,
@@ -15289,7 +15284,7 @@ class VideoFileDetailsAudioStream {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bitrateBps != null) 'bitrateBps': bitrateBps!,
         if (channelCount != null) 'channelCount': channelCount!,
         if (codec != null) 'codec': codec!,
@@ -15365,7 +15360,7 @@ class VideoFileDetailsVideoStream {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aspectRatio != null) 'aspectRatio': aspectRatio!,
         if (bitrateBps != null) 'bitrateBps': bitrateBps!,
         if (codec != null) 'codec': codec!,
@@ -15442,7 +15437,7 @@ class VideoListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -15524,7 +15519,7 @@ class VideoLiveStreamingDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (activeLiveChatId != null) 'activeLiveChatId': activeLiveChatId!,
         if (actualEndTime != null)
           'actualEndTime': actualEndTime!.toIso8601String(),
@@ -15557,7 +15552,7 @@ class VideoLocalization {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (title != null) 'title': title!,
       };
@@ -15577,7 +15572,7 @@ class VideoMonetizationDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!.toJson(),
       };
 }
@@ -15606,7 +15601,7 @@ class VideoPlayer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (embedHeight != null) 'embedHeight': embedHeight!,
         if (embedHtml != null) 'embedHtml': embedHtml!,
         if (embedWidth != null) 'embedWidth': embedWidth!,
@@ -15714,7 +15709,7 @@ class VideoProcessingDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (editorSuggestionsAvailability != null)
           'editorSuggestionsAvailability': editorSuggestionsAvailability!,
         if (fileDetailsAvailability != null)
@@ -15770,7 +15765,7 @@ class VideoProcessingDetailsProcessingProgress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (partsProcessed != null) 'partsProcessed': partsProcessed!,
         if (partsTotal != null) 'partsTotal': partsTotal!,
         if (timeLeftMs != null) 'timeLeftMs': timeLeftMs!,
@@ -15795,7 +15790,7 @@ class VideoProjectDetails {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Basic details about rating of a video.
@@ -15821,7 +15816,7 @@ class VideoRating {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rating != null) 'rating': rating!,
         if (videoId != null) 'videoId': videoId!,
       };
@@ -15868,7 +15863,7 @@ class VideoRatingListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (eventId != null) 'eventId': eventId!,
         if (items != null)
@@ -15905,7 +15900,7 @@ class VideoRecordingDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (location != null) 'location': location!.toJson(),
         if (locationDescription != null)
           'locationDescription': locationDescription!,
@@ -16020,7 +16015,7 @@ class VideoSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (categoryId != null) 'categoryId': categoryId!,
         if (channelId != null) 'channelId': channelId!,
         if (channelTitle != null) 'channelTitle': channelTitle!,
@@ -16079,7 +16074,7 @@ class VideoStatistics {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commentCount != null) 'commentCount': commentCount!,
         if (dislikeCount != null) 'dislikeCount': dislikeCount!,
         if (favoriteCount != null) 'favoriteCount': favoriteCount!,
@@ -16200,7 +16195,7 @@ class VideoStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (embeddable != null) 'embeddable': embeddable!,
         if (failureReason != null) 'failureReason': failureReason!,
         if (license != null) 'license': license!,
@@ -16280,7 +16275,7 @@ class VideoSuggestions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (editorSuggestions != null) 'editorSuggestions': editorSuggestions!,
         if (processingErrors != null) 'processingErrors': processingErrors!,
         if (processingHints != null) 'processingHints': processingHints!,
@@ -16318,7 +16313,7 @@ class VideoSuggestionsTagSuggestion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (categoryRestricts != null) 'categoryRestricts': categoryRestricts!,
         if (tag != null) 'tag': tag!,
       };
@@ -16365,7 +16360,7 @@ class VideoTopicDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (relevantTopicIds != null) 'relevantTopicIds': relevantTopicIds!,
         if (topicCategories != null) 'topicCategories': topicCategories!,
         if (topicIds != null) 'topicIds': topicIds!,
@@ -16400,7 +16395,7 @@ class WatchSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (backgroundColor != null) 'backgroundColor': backgroundColor!,
         if (featuredPlaylistId != null)
           'featuredPlaylistId': featuredPlaylistId!,

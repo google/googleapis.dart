@@ -617,7 +617,8 @@ void main() {
   unittest.group('obj-schema-Asset', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAsset();
-      var od = api.Asset.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Asset.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkAsset(od as api.Asset);
     });
   });
@@ -625,7 +626,9 @@ void main() {
   unittest.group('obj-schema-AssetImportMessage', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAssetImportMessage();
-      var od = api.AssetImportMessage.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AssetImportMessage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAssetImportMessage(od as api.AssetImportMessage);
     });
   });
@@ -633,7 +636,8 @@ void main() {
   unittest.group('obj-schema-File', () {
     unittest.test('to-json--from-json', () async {
       var o = buildFile();
-      var od = api.File.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.File.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkFile(od as api.File);
     });
   });
@@ -641,7 +645,9 @@ void main() {
   unittest.group('obj-schema-Format', () {
     unittest.test('to-json--from-json', () async {
       var o = buildFormat();
-      var od = api.Format.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Format.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkFormat(od as api.Format);
     });
   });
@@ -649,7 +655,9 @@ void main() {
   unittest.group('obj-schema-FormatComplexity', () {
     unittest.test('to-json--from-json', () async {
       var o = buildFormatComplexity();
-      var od = api.FormatComplexity.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.FormatComplexity.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkFormatComplexity(od as api.FormatComplexity);
     });
   });
@@ -657,7 +665,9 @@ void main() {
   unittest.group('obj-schema-ImageError', () {
     unittest.test('to-json--from-json', () async {
       var o = buildImageError();
-      var od = api.ImageError.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.ImageError.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkImageError(od as api.ImageError);
     });
   });
@@ -665,7 +675,9 @@ void main() {
   unittest.group('obj-schema-ListAssetsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListAssetsResponse();
-      var od = api.ListAssetsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListAssetsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListAssetsResponse(od as api.ListAssetsResponse);
     });
   });
@@ -673,7 +685,9 @@ void main() {
   unittest.group('obj-schema-ListLikedAssetsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListLikedAssetsResponse();
-      var od = api.ListLikedAssetsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListLikedAssetsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListLikedAssetsResponse(od as api.ListLikedAssetsResponse);
     });
   });
@@ -681,7 +695,9 @@ void main() {
   unittest.group('obj-schema-ListUserAssetsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListUserAssetsResponse();
-      var od = api.ListUserAssetsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListUserAssetsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListUserAssetsResponse(od as api.ListUserAssetsResponse);
     });
   });
@@ -689,7 +705,9 @@ void main() {
   unittest.group('obj-schema-ObjParseError', () {
     unittest.test('to-json--from-json', () async {
       var o = buildObjParseError();
-      var od = api.ObjParseError.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ObjParseError.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkObjParseError(od as api.ObjParseError);
     });
   });
@@ -697,7 +715,9 @@ void main() {
   unittest.group('obj-schema-PresentationParams', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPresentationParams();
-      var od = api.PresentationParams.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PresentationParams.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPresentationParams(od as api.PresentationParams);
     });
   });
@@ -705,7 +725,9 @@ void main() {
   unittest.group('obj-schema-Quaternion', () {
     unittest.test('to-json--from-json', () async {
       var o = buildQuaternion();
-      var od = api.Quaternion.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Quaternion.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkQuaternion(od as api.Quaternion);
     });
   });
@@ -713,7 +735,9 @@ void main() {
   unittest.group('obj-schema-RemixInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRemixInfo();
-      var od = api.RemixInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.RemixInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkRemixInfo(od as api.RemixInfo);
     });
   });
@@ -721,7 +745,9 @@ void main() {
   unittest.group('obj-schema-StartAssetImportResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStartAssetImportResponse();
-      var od = api.StartAssetImportResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.StartAssetImportResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkStartAssetImportResponse(od as api.StartAssetImportResponse);
     });
   });
@@ -729,7 +755,9 @@ void main() {
   unittest.group('obj-schema-UserAsset', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUserAsset();
-      var od = api.UserAsset.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.UserAsset.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkUserAsset(od as api.UserAsset);
     });
   });

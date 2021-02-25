@@ -1525,7 +1525,9 @@ void main() {
   unittest.group('obj-schema-AsymmetricDecryptRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAsymmetricDecryptRequest();
-      var od = api.AsymmetricDecryptRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AsymmetricDecryptRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAsymmetricDecryptRequest(od as api.AsymmetricDecryptRequest);
     });
   });
@@ -1533,7 +1535,9 @@ void main() {
   unittest.group('obj-schema-AsymmetricDecryptResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAsymmetricDecryptResponse();
-      var od = api.AsymmetricDecryptResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AsymmetricDecryptResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAsymmetricDecryptResponse(od as api.AsymmetricDecryptResponse);
     });
   });
@@ -1541,7 +1545,9 @@ void main() {
   unittest.group('obj-schema-AsymmetricSignRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAsymmetricSignRequest();
-      var od = api.AsymmetricSignRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AsymmetricSignRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAsymmetricSignRequest(od as api.AsymmetricSignRequest);
     });
   });
@@ -1549,7 +1555,9 @@ void main() {
   unittest.group('obj-schema-AsymmetricSignResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAsymmetricSignResponse();
-      var od = api.AsymmetricSignResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AsymmetricSignResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAsymmetricSignResponse(od as api.AsymmetricSignResponse);
     });
   });
@@ -1557,7 +1565,9 @@ void main() {
   unittest.group('obj-schema-AuditConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAuditConfig();
-      var od = api.AuditConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AuditConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAuditConfig(od as api.AuditConfig);
     });
   });
@@ -1565,7 +1575,9 @@ void main() {
   unittest.group('obj-schema-AuditLogConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAuditLogConfig();
-      var od = api.AuditLogConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AuditLogConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAuditLogConfig(od as api.AuditLogConfig);
     });
   });
@@ -1573,7 +1585,9 @@ void main() {
   unittest.group('obj-schema-Binding', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBinding();
-      var od = api.Binding.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Binding.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBinding(od as api.Binding);
     });
   });
@@ -1581,7 +1595,9 @@ void main() {
   unittest.group('obj-schema-CertificateChains', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCertificateChains();
-      var od = api.CertificateChains.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CertificateChains.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCertificateChains(od as api.CertificateChains);
     });
   });
@@ -1589,7 +1605,9 @@ void main() {
   unittest.group('obj-schema-CryptoKey', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCryptoKey();
-      var od = api.CryptoKey.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.CryptoKey.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkCryptoKey(od as api.CryptoKey);
     });
   });
@@ -1597,7 +1615,9 @@ void main() {
   unittest.group('obj-schema-CryptoKeyVersion', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCryptoKeyVersion();
-      var od = api.CryptoKeyVersion.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CryptoKeyVersion.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCryptoKeyVersion(od as api.CryptoKeyVersion);
     });
   });
@@ -1605,7 +1625,9 @@ void main() {
   unittest.group('obj-schema-CryptoKeyVersionTemplate', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCryptoKeyVersionTemplate();
-      var od = api.CryptoKeyVersionTemplate.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CryptoKeyVersionTemplate.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCryptoKeyVersionTemplate(od as api.CryptoKeyVersionTemplate);
     });
   });
@@ -1613,7 +1635,9 @@ void main() {
   unittest.group('obj-schema-DecryptRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDecryptRequest();
-      var od = api.DecryptRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DecryptRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDecryptRequest(od as api.DecryptRequest);
     });
   });
@@ -1621,7 +1645,9 @@ void main() {
   unittest.group('obj-schema-DecryptResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDecryptResponse();
-      var od = api.DecryptResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DecryptResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDecryptResponse(od as api.DecryptResponse);
     });
   });
@@ -1629,7 +1655,9 @@ void main() {
   unittest.group('obj-schema-DestroyCryptoKeyVersionRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDestroyCryptoKeyVersionRequest();
-      var od = api.DestroyCryptoKeyVersionRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DestroyCryptoKeyVersionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDestroyCryptoKeyVersionRequest(
           od as api.DestroyCryptoKeyVersionRequest);
     });
@@ -1638,7 +1666,9 @@ void main() {
   unittest.group('obj-schema-Digest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDigest();
-      var od = api.Digest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Digest.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDigest(od as api.Digest);
     });
   });
@@ -1646,7 +1676,9 @@ void main() {
   unittest.group('obj-schema-EncryptRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEncryptRequest();
-      var od = api.EncryptRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.EncryptRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkEncryptRequest(od as api.EncryptRequest);
     });
   });
@@ -1654,7 +1686,9 @@ void main() {
   unittest.group('obj-schema-EncryptResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEncryptResponse();
-      var od = api.EncryptResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.EncryptResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkEncryptResponse(od as api.EncryptResponse);
     });
   });
@@ -1662,7 +1696,8 @@ void main() {
   unittest.group('obj-schema-Expr', () {
     unittest.test('to-json--from-json', () async {
       var o = buildExpr();
-      var od = api.Expr.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Expr.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkExpr(od as api.Expr);
     });
   });
@@ -1670,7 +1705,9 @@ void main() {
   unittest.group('obj-schema-ExternalProtectionLevelOptions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildExternalProtectionLevelOptions();
-      var od = api.ExternalProtectionLevelOptions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ExternalProtectionLevelOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkExternalProtectionLevelOptions(
           od as api.ExternalProtectionLevelOptions);
     });
@@ -1679,7 +1716,9 @@ void main() {
   unittest.group('obj-schema-ImportCryptoKeyVersionRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildImportCryptoKeyVersionRequest();
-      var od = api.ImportCryptoKeyVersionRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ImportCryptoKeyVersionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkImportCryptoKeyVersionRequest(
           od as api.ImportCryptoKeyVersionRequest);
     });
@@ -1688,7 +1727,9 @@ void main() {
   unittest.group('obj-schema-ImportJob', () {
     unittest.test('to-json--from-json', () async {
       var o = buildImportJob();
-      var od = api.ImportJob.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.ImportJob.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkImportJob(od as api.ImportJob);
     });
   });
@@ -1696,7 +1737,9 @@ void main() {
   unittest.group('obj-schema-KeyOperationAttestation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildKeyOperationAttestation();
-      var od = api.KeyOperationAttestation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.KeyOperationAttestation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkKeyOperationAttestation(od as api.KeyOperationAttestation);
     });
   });
@@ -1704,7 +1747,9 @@ void main() {
   unittest.group('obj-schema-KeyRing', () {
     unittest.test('to-json--from-json', () async {
       var o = buildKeyRing();
-      var od = api.KeyRing.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.KeyRing.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkKeyRing(od as api.KeyRing);
     });
   });
@@ -1712,7 +1757,9 @@ void main() {
   unittest.group('obj-schema-ListCryptoKeyVersionsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListCryptoKeyVersionsResponse();
-      var od = api.ListCryptoKeyVersionsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListCryptoKeyVersionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListCryptoKeyVersionsResponse(
           od as api.ListCryptoKeyVersionsResponse);
     });
@@ -1721,7 +1768,9 @@ void main() {
   unittest.group('obj-schema-ListCryptoKeysResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListCryptoKeysResponse();
-      var od = api.ListCryptoKeysResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListCryptoKeysResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListCryptoKeysResponse(od as api.ListCryptoKeysResponse);
     });
   });
@@ -1729,7 +1778,9 @@ void main() {
   unittest.group('obj-schema-ListImportJobsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListImportJobsResponse();
-      var od = api.ListImportJobsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListImportJobsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListImportJobsResponse(od as api.ListImportJobsResponse);
     });
   });
@@ -1737,7 +1788,9 @@ void main() {
   unittest.group('obj-schema-ListKeyRingsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListKeyRingsResponse();
-      var od = api.ListKeyRingsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListKeyRingsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListKeyRingsResponse(od as api.ListKeyRingsResponse);
     });
   });
@@ -1745,7 +1798,9 @@ void main() {
   unittest.group('obj-schema-ListLocationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
-      var od = api.ListLocationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListLocationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
@@ -1753,7 +1808,9 @@ void main() {
   unittest.group('obj-schema-Location', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLocation();
-      var od = api.Location.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Location.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLocation(od as api.Location);
     });
   });
@@ -1761,7 +1818,9 @@ void main() {
   unittest.group('obj-schema-LocationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLocationMetadata();
-      var od = api.LocationMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LocationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLocationMetadata(od as api.LocationMetadata);
     });
   });
@@ -1769,7 +1828,9 @@ void main() {
   unittest.group('obj-schema-Policy', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
-      var od = api.Policy.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Policy.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPolicy(od as api.Policy);
     });
   });
@@ -1777,7 +1838,9 @@ void main() {
   unittest.group('obj-schema-PublicKey', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPublicKey();
-      var od = api.PublicKey.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.PublicKey.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPublicKey(od as api.PublicKey);
     });
   });
@@ -1785,7 +1848,9 @@ void main() {
   unittest.group('obj-schema-RestoreCryptoKeyVersionRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRestoreCryptoKeyVersionRequest();
-      var od = api.RestoreCryptoKeyVersionRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RestoreCryptoKeyVersionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRestoreCryptoKeyVersionRequest(
           od as api.RestoreCryptoKeyVersionRequest);
     });
@@ -1794,7 +1859,9 @@ void main() {
   unittest.group('obj-schema-SetIamPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
-      var od = api.SetIamPolicyRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SetIamPolicyRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
@@ -1802,7 +1869,9 @@ void main() {
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
-      var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TestIamPermissionsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
@@ -1810,7 +1879,9 @@ void main() {
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
-      var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TestIamPermissionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
@@ -1818,7 +1889,9 @@ void main() {
   unittest.group('obj-schema-UpdateCryptoKeyPrimaryVersionRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUpdateCryptoKeyPrimaryVersionRequest();
-      var od = api.UpdateCryptoKeyPrimaryVersionRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UpdateCryptoKeyPrimaryVersionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUpdateCryptoKeyPrimaryVersionRequest(
           od as api.UpdateCryptoKeyPrimaryVersionRequest);
     });
@@ -1827,7 +1900,9 @@ void main() {
   unittest.group('obj-schema-WrappingPublicKey', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWrappingPublicKey();
-      var od = api.WrappingPublicKey.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.WrappingPublicKey.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkWrappingPublicKey(od as api.WrappingPublicKey);
     });
   });

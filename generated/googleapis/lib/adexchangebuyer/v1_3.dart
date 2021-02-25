@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1011,7 +1010,7 @@ class AccountBidderLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (maximumQps != null) 'maximumQps': maximumQps!,
         if (region != null) 'region': region!,
         if (url != null) 'url': url!,
@@ -1084,7 +1083,7 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bidderLocation != null)
           'bidderLocation':
               bidderLocation!.map((value) => value.toJson()).toList(),
@@ -1125,7 +1124,7 @@ class AccountsList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -1168,7 +1167,7 @@ class BillingInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (accountName != null) 'accountName': accountName!,
         if (billingId != null) 'billingId': billingId!,
@@ -1201,7 +1200,7 @@ class BillingInfoList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -1261,7 +1260,7 @@ class Budget {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (billingId != null) 'billingId': billingId!,
         if (budgetAmount != null) 'budgetAmount': budgetAmount!,
@@ -1308,7 +1307,7 @@ class CreativeAdTechnologyProviders {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectedProviderIds != null)
           'detectedProviderIds': detectedProviderIds!,
         if (hasUnidentifiedProvider != null)
@@ -1336,7 +1335,7 @@ class CreativeCorrections {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
         if (reason != null) 'reason': reason!,
       };
@@ -1362,7 +1361,7 @@ class CreativeDisapprovalReasons {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
         if (reason != null) 'reason': reason!,
       };
@@ -1390,7 +1389,7 @@ class CreativeFilteringReasonsReasons {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (filteringCount != null) 'filteringCount': filteringCount!,
         if (filteringStatus != null) 'filteringStatus': filteringStatus!,
       };
@@ -1423,7 +1422,7 @@ class CreativeFilteringReasons {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (date != null) 'date': date!,
         if (reasons != null)
           'reasons': reasons!.map((value) => value.toJson()).toList(),
@@ -1450,7 +1449,7 @@ class CreativeNativeAdAppIcon {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (url != null) 'url': url!,
         if (width != null) 'width': width!,
@@ -1477,7 +1476,7 @@ class CreativeNativeAdImage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (url != null) 'url': url!,
         if (width != null) 'width': width!,
@@ -1504,7 +1503,7 @@ class CreativeNativeAdLogo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (url != null) 'url': url!,
         if (width != null) 'width': width!,
@@ -1590,7 +1589,7 @@ class CreativeNativeAd {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (advertiser != null) 'advertiser': advertiser!,
         if (appIcon != null) 'appIcon': appIcon!.toJson(),
         if (body != null) 'body': body!,
@@ -1816,7 +1815,7 @@ class Creative {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (HTMLSnippet != null) 'HTMLSnippet': HTMLSnippet!,
         if (accountId != null) 'accountId': accountId!,
         if (adTechnologyProviders != null)
@@ -1888,7 +1887,7 @@ class CreativesList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -2013,7 +2012,7 @@ class DirectDeal {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (advertiser != null) 'advertiser': advertiser!,
         if (allowsAlcohol != null) 'allowsAlcohol': allowsAlcohol!,
@@ -2060,7 +2059,7 @@ class DirectDealsList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (directDeals != null)
           'directDeals': directDeals!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -2244,7 +2243,7 @@ class PerformanceReport {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bidRate != null) 'bidRate': bidRate!,
         if (bidRequestRate != null) 'bidRequestRate': bidRequestRate!,
         if (calloutStatusRate != null) 'calloutStatusRate': calloutStatusRate!,
@@ -2305,7 +2304,7 @@ class PerformanceReportList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (performanceReport != null)
           'performanceReport':
@@ -2331,7 +2330,7 @@ class PretargetingConfigDimensions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (width != null) 'width': width!,
       };
@@ -2359,7 +2358,7 @@ class PretargetingConfigExcludedPlacements {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (token != null) 'token': token!,
         if (type != null) 'type': type!,
       };
@@ -2387,7 +2386,7 @@ class PretargetingConfigPlacements {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (token != null) 'token': token!,
         if (type != null) 'type': type!,
       };
@@ -2625,7 +2624,7 @@ class PretargetingConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (billingId != null) 'billingId': billingId!,
         if (configId != null) 'configId': configId!,
         if (configName != null) 'configName': configName!,
@@ -2682,7 +2681,7 @@ class PretargetingConfigList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,

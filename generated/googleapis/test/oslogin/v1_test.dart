@@ -228,7 +228,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -236,7 +237,9 @@ void main() {
   unittest.group('obj-schema-ImportSshPublicKeyResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildImportSshPublicKeyResponse();
-      var od = api.ImportSshPublicKeyResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ImportSshPublicKeyResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkImportSshPublicKeyResponse(od as api.ImportSshPublicKeyResponse);
     });
   });
@@ -244,7 +247,9 @@ void main() {
   unittest.group('obj-schema-LoginProfile', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLoginProfile();
-      var od = api.LoginProfile.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LoginProfile.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLoginProfile(od as api.LoginProfile);
     });
   });
@@ -252,7 +257,9 @@ void main() {
   unittest.group('obj-schema-PosixAccount', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPosixAccount();
-      var od = api.PosixAccount.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PosixAccount.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPosixAccount(od as api.PosixAccount);
     });
   });
@@ -260,7 +267,9 @@ void main() {
   unittest.group('obj-schema-SshPublicKey', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSshPublicKey();
-      var od = api.SshPublicKey.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SshPublicKey.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSshPublicKey(od as api.SshPublicKey);
     });
   });

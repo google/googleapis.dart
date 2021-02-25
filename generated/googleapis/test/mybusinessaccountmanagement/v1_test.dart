@@ -503,7 +503,9 @@ void main() {
   unittest.group('obj-schema-AcceptInvitationRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAcceptInvitationRequest();
-      var od = api.AcceptInvitationRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AcceptInvitationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAcceptInvitationRequest(od as api.AcceptInvitationRequest);
     });
   });
@@ -511,7 +513,9 @@ void main() {
   unittest.group('obj-schema-Account', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAccount();
-      var od = api.Account.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Account.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkAccount(od as api.Account);
     });
   });
@@ -519,7 +523,8 @@ void main() {
   unittest.group('obj-schema-Admin', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAdmin();
-      var od = api.Admin.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Admin.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkAdmin(od as api.Admin);
     });
   });
@@ -527,7 +532,9 @@ void main() {
   unittest.group('obj-schema-DeclineInvitationRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDeclineInvitationRequest();
-      var od = api.DeclineInvitationRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DeclineInvitationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDeclineInvitationRequest(od as api.DeclineInvitationRequest);
     });
   });
@@ -535,7 +542,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -543,7 +551,9 @@ void main() {
   unittest.group('obj-schema-Invitation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildInvitation();
-      var od = api.Invitation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Invitation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkInvitation(od as api.Invitation);
     });
   });
@@ -551,7 +561,9 @@ void main() {
   unittest.group('obj-schema-ListAccountAdminsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListAccountAdminsResponse();
-      var od = api.ListAccountAdminsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListAccountAdminsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListAccountAdminsResponse(od as api.ListAccountAdminsResponse);
     });
   });
@@ -559,7 +571,9 @@ void main() {
   unittest.group('obj-schema-ListAccountsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListAccountsResponse();
-      var od = api.ListAccountsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListAccountsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListAccountsResponse(od as api.ListAccountsResponse);
     });
   });
@@ -567,7 +581,9 @@ void main() {
   unittest.group('obj-schema-ListInvitationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListInvitationsResponse();
-      var od = api.ListInvitationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListInvitationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListInvitationsResponse(od as api.ListInvitationsResponse);
     });
   });
@@ -575,7 +591,9 @@ void main() {
   unittest.group('obj-schema-ListLocationAdminsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListLocationAdminsResponse();
-      var od = api.ListLocationAdminsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListLocationAdminsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListLocationAdminsResponse(od as api.ListLocationAdminsResponse);
     });
   });
@@ -583,7 +601,9 @@ void main() {
   unittest.group('obj-schema-OrganizationInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOrganizationInfo();
-      var od = api.OrganizationInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.OrganizationInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkOrganizationInfo(od as api.OrganizationInfo);
     });
   });
@@ -591,7 +611,9 @@ void main() {
   unittest.group('obj-schema-PostalAddress', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPostalAddress();
-      var od = api.PostalAddress.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PostalAddress.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPostalAddress(od as api.PostalAddress);
     });
   });
@@ -599,7 +621,9 @@ void main() {
   unittest.group('obj-schema-TargetLocation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTargetLocation();
-      var od = api.TargetLocation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TargetLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTargetLocation(od as api.TargetLocation);
     });
   });

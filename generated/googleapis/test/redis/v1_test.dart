@@ -990,7 +990,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -998,7 +999,9 @@ void main() {
   unittest.group('obj-schema-ExportInstanceRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildExportInstanceRequest();
-      var od = api.ExportInstanceRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ExportInstanceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkExportInstanceRequest(od as api.ExportInstanceRequest);
     });
   });
@@ -1006,7 +1009,9 @@ void main() {
   unittest.group('obj-schema-FailoverInstanceRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildFailoverInstanceRequest();
-      var od = api.FailoverInstanceRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.FailoverInstanceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkFailoverInstanceRequest(od as api.FailoverInstanceRequest);
     });
   });
@@ -1014,7 +1019,9 @@ void main() {
   unittest.group('obj-schema-GcsDestination', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGcsDestination();
-      var od = api.GcsDestination.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GcsDestination.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGcsDestination(od as api.GcsDestination);
     });
   });
@@ -1022,7 +1029,9 @@ void main() {
   unittest.group('obj-schema-GcsSource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGcsSource();
-      var od = api.GcsSource.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.GcsSource.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGcsSource(od as api.GcsSource);
     });
   });
@@ -1030,7 +1039,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudRedisV1LocationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRedisV1LocationMetadata();
-      var od = api.GoogleCloudRedisV1LocationMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudRedisV1LocationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRedisV1LocationMetadata(
           od as api.GoogleCloudRedisV1LocationMetadata);
     });
@@ -1039,7 +1050,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudRedisV1OperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRedisV1OperationMetadata();
-      var od = api.GoogleCloudRedisV1OperationMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudRedisV1OperationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRedisV1OperationMetadata(
           od as api.GoogleCloudRedisV1OperationMetadata);
     });
@@ -1048,7 +1061,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudRedisV1ZoneMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRedisV1ZoneMetadata();
-      var od = api.GoogleCloudRedisV1ZoneMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudRedisV1ZoneMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRedisV1ZoneMetadata(
           od as api.GoogleCloudRedisV1ZoneMetadata);
     });
@@ -1057,7 +1072,9 @@ void main() {
   unittest.group('obj-schema-ImportInstanceRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildImportInstanceRequest();
-      var od = api.ImportInstanceRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ImportInstanceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkImportInstanceRequest(od as api.ImportInstanceRequest);
     });
   });
@@ -1065,7 +1082,9 @@ void main() {
   unittest.group('obj-schema-InputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildInputConfig();
-      var od = api.InputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.InputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkInputConfig(od as api.InputConfig);
     });
   });
@@ -1073,7 +1092,9 @@ void main() {
   unittest.group('obj-schema-Instance', () {
     unittest.test('to-json--from-json', () async {
       var o = buildInstance();
-      var od = api.Instance.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Instance.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkInstance(od as api.Instance);
     });
   });
@@ -1081,7 +1102,9 @@ void main() {
   unittest.group('obj-schema-InstanceAuthString', () {
     unittest.test('to-json--from-json', () async {
       var o = buildInstanceAuthString();
-      var od = api.InstanceAuthString.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.InstanceAuthString.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkInstanceAuthString(od as api.InstanceAuthString);
     });
   });
@@ -1089,7 +1112,9 @@ void main() {
   unittest.group('obj-schema-ListInstancesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListInstancesResponse();
-      var od = api.ListInstancesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListInstancesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListInstancesResponse(od as api.ListInstancesResponse);
     });
   });
@@ -1097,7 +1122,9 @@ void main() {
   unittest.group('obj-schema-ListLocationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
-      var od = api.ListLocationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListLocationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
@@ -1105,7 +1132,9 @@ void main() {
   unittest.group('obj-schema-ListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
-      var od = api.ListOperationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListOperationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
@@ -1113,7 +1142,9 @@ void main() {
   unittest.group('obj-schema-Location', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLocation();
-      var od = api.Location.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Location.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLocation(od as api.Location);
     });
   });
@@ -1121,7 +1152,9 @@ void main() {
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOperation();
-      var od = api.Operation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od as api.Operation);
     });
   });
@@ -1129,7 +1162,9 @@ void main() {
   unittest.group('obj-schema-OutputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOutputConfig();
-      var od = api.OutputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.OutputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkOutputConfig(od as api.OutputConfig);
     });
   });
@@ -1137,7 +1172,9 @@ void main() {
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStatus();
-      var od = api.Status.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od as api.Status);
     });
   });
@@ -1145,7 +1182,9 @@ void main() {
   unittest.group('obj-schema-TlsCertificate', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTlsCertificate();
-      var od = api.TlsCertificate.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TlsCertificate.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTlsCertificate(od as api.TlsCertificate);
     });
   });
@@ -1153,7 +1192,9 @@ void main() {
   unittest.group('obj-schema-UpgradeInstanceRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUpgradeInstanceRequest();
-      var od = api.UpgradeInstanceRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UpgradeInstanceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUpgradeInstanceRequest(od as api.UpgradeInstanceRequest);
     });
   });

@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -306,7 +305,7 @@ class GenerateAccessTokenRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (delegates != null) 'delegates': delegates!,
         if (lifetime != null) 'lifetime': lifetime!,
         if (scope != null) 'scope': scope!,
@@ -333,7 +332,7 @@ class GenerateAccessTokenResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessToken != null) 'accessToken': accessToken!,
         if (expireTime != null) 'expireTime': expireTime!,
       };
@@ -380,7 +379,7 @@ class GenerateIdTokenRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audience != null) 'audience': audience!,
         if (delegates != null) 'delegates': delegates!,
         if (includeEmail != null) 'includeEmail': includeEmail!,
@@ -399,7 +398,7 @@ class GenerateIdTokenResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (token != null) 'token': token!,
       };
 }
@@ -441,7 +440,7 @@ class SignBlobRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (delegates != null) 'delegates': delegates!,
         if (payload != null) 'payload': payload!,
       };
@@ -487,7 +486,7 @@ class SignBlobResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (keyId != null) 'keyId': keyId!,
         if (signedBlob != null) 'signedBlob': signedBlob!,
       };
@@ -529,7 +528,7 @@ class SignJwtRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (delegates != null) 'delegates': delegates!,
         if (payload != null) 'payload': payload!,
       };
@@ -570,7 +569,7 @@ class SignJwtResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (keyId != null) 'keyId': keyId!,
         if (signedJwt != null) 'signedJwt': signedJwt!,
       };

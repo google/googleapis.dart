@@ -164,7 +164,9 @@ void main() {
   unittest.group('obj-schema-CancelExecutionRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCancelExecutionRequest();
-      var od = api.CancelExecutionRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CancelExecutionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCancelExecutionRequest(od as api.CancelExecutionRequest);
     });
   });
@@ -172,7 +174,8 @@ void main() {
   unittest.group('obj-schema-Error', () {
     unittest.test('to-json--from-json', () async {
       var o = buildError();
-      var od = api.Error.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Error.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkError(od as api.Error);
     });
   });
@@ -180,7 +183,9 @@ void main() {
   unittest.group('obj-schema-Execution', () {
     unittest.test('to-json--from-json', () async {
       var o = buildExecution();
-      var od = api.Execution.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Execution.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkExecution(od as api.Execution);
     });
   });
@@ -188,7 +193,9 @@ void main() {
   unittest.group('obj-schema-ListExecutionsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListExecutionsResponse();
-      var od = api.ListExecutionsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListExecutionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListExecutionsResponse(od as api.ListExecutionsResponse);
     });
   });

@@ -561,7 +561,9 @@ void main() {
   unittest.group('obj-schema-GoogleHomeEnterpriseSdmV1Device', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleHomeEnterpriseSdmV1Device();
-      var od = api.GoogleHomeEnterpriseSdmV1Device.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleHomeEnterpriseSdmV1Device.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleHomeEnterpriseSdmV1Device(
           od as api.GoogleHomeEnterpriseSdmV1Device);
     });
@@ -571,9 +573,10 @@ void main() {
       'obj-schema-GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest(
           od as api.GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest);
     });
@@ -583,9 +586,10 @@ void main() {
       'obj-schema-GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse(
           od as api.GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse);
     });
@@ -594,8 +598,9 @@ void main() {
   unittest.group('obj-schema-GoogleHomeEnterpriseSdmV1ListDevicesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleHomeEnterpriseSdmV1ListDevicesResponse();
-      var od =
-          api.GoogleHomeEnterpriseSdmV1ListDevicesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleHomeEnterpriseSdmV1ListDevicesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleHomeEnterpriseSdmV1ListDevicesResponse(
           od as api.GoogleHomeEnterpriseSdmV1ListDevicesResponse);
     });
@@ -604,8 +609,9 @@ void main() {
   unittest.group('obj-schema-GoogleHomeEnterpriseSdmV1ListRoomsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleHomeEnterpriseSdmV1ListRoomsResponse();
-      var od =
-          api.GoogleHomeEnterpriseSdmV1ListRoomsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleHomeEnterpriseSdmV1ListRoomsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleHomeEnterpriseSdmV1ListRoomsResponse(
           od as api.GoogleHomeEnterpriseSdmV1ListRoomsResponse);
     });
@@ -615,8 +621,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleHomeEnterpriseSdmV1ListStructuresResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleHomeEnterpriseSdmV1ListStructuresResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleHomeEnterpriseSdmV1ListStructuresResponse(
           od as api.GoogleHomeEnterpriseSdmV1ListStructuresResponse);
     });
@@ -625,7 +632,9 @@ void main() {
   unittest.group('obj-schema-GoogleHomeEnterpriseSdmV1ParentRelation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleHomeEnterpriseSdmV1ParentRelation();
-      var od = api.GoogleHomeEnterpriseSdmV1ParentRelation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleHomeEnterpriseSdmV1ParentRelation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleHomeEnterpriseSdmV1ParentRelation(
           od as api.GoogleHomeEnterpriseSdmV1ParentRelation);
     });
@@ -634,7 +643,9 @@ void main() {
   unittest.group('obj-schema-GoogleHomeEnterpriseSdmV1Room', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleHomeEnterpriseSdmV1Room();
-      var od = api.GoogleHomeEnterpriseSdmV1Room.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleHomeEnterpriseSdmV1Room.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleHomeEnterpriseSdmV1Room(
           od as api.GoogleHomeEnterpriseSdmV1Room);
     });
@@ -643,7 +654,9 @@ void main() {
   unittest.group('obj-schema-GoogleHomeEnterpriseSdmV1Structure', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleHomeEnterpriseSdmV1Structure();
-      var od = api.GoogleHomeEnterpriseSdmV1Structure.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleHomeEnterpriseSdmV1Structure.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleHomeEnterpriseSdmV1Structure(
           od as api.GoogleHomeEnterpriseSdmV1Structure);
     });

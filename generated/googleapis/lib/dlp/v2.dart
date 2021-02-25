@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -5909,7 +5908,7 @@ class GooglePrivacyDlpV2Action {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (jobNotificationEmails != null)
           'jobNotificationEmails': jobNotificationEmails!.toJson(),
         if (pubSub != null) 'pubSub': pubSub!.toJson(),
@@ -5932,7 +5931,7 @@ class GooglePrivacyDlpV2ActivateJobTriggerRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Result of a risk analysis operation request.
@@ -6012,7 +6011,7 @@ class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (categoricalStatsResult != null)
           'categoricalStatsResult': categoricalStatsResult!.toJson(),
         if (deltaPresenceEstimationResult != null)
@@ -6082,7 +6081,7 @@ class GooglePrivacyDlpV2AuxiliaryTable {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (quasiIds != null)
           'quasiIds': quasiIds!.map((value) => value.toJson()).toList(),
         if (relativeFrequency != null)
@@ -6112,7 +6111,7 @@ class GooglePrivacyDlpV2BigQueryField {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (field != null) 'field': field!.toJson(),
         if (table != null) 'table': table!.toJson(),
       };
@@ -6143,7 +6142,7 @@ class GooglePrivacyDlpV2BigQueryKey {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rowNumber != null) 'rowNumber': rowNumber!,
         if (tableReference != null) 'tableReference': tableReference!.toJson(),
       };
@@ -6225,7 +6224,7 @@ class GooglePrivacyDlpV2BigQueryOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (excludedFields != null)
           'excludedFields':
               excludedFields!.map((value) => value.toJson()).toList(),
@@ -6270,7 +6269,7 @@ class GooglePrivacyDlpV2BigQueryTable {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (datasetId != null) 'datasetId': datasetId!,
         if (projectId != null) 'projectId': projectId!,
         if (tableId != null) 'tableId': tableId!,
@@ -6312,7 +6311,7 @@ class GooglePrivacyDlpV2BoundingBox {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (left != null) 'left': left!,
         if (top != null) 'top': top!,
@@ -6352,7 +6351,7 @@ class GooglePrivacyDlpV2Bucket {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (max != null) 'max': max!.toJson(),
         if (min != null) 'min': min!.toJson(),
         if (replacementValue != null)
@@ -6387,7 +6386,7 @@ class GooglePrivacyDlpV2BucketingConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (buckets != null)
           'buckets': buckets!.map((value) => value.toJson()).toList(),
       };
@@ -6433,7 +6432,7 @@ class GooglePrivacyDlpV2ByteContentItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (data != null) 'data': data!,
         if (type != null) 'type': type!,
       };
@@ -6447,7 +6446,7 @@ class GooglePrivacyDlpV2CancelDlpJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Compute numerical stats over an individual column, including number of
@@ -6469,7 +6468,7 @@ class GooglePrivacyDlpV2CategoricalStatsConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (field != null) 'field': field!.toJson(),
       };
 }
@@ -6519,7 +6518,7 @@ class GooglePrivacyDlpV2CategoricalStatsHistogramBucket {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bucketSize != null) 'bucketSize': bucketSize!,
         if (bucketValueCount != null) 'bucketValueCount': bucketValueCount!,
         if (bucketValues != null)
@@ -6550,7 +6549,7 @@ class GooglePrivacyDlpV2CategoricalStatsResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (valueFrequencyHistogramBuckets != null)
           'valueFrequencyHistogramBuckets': valueFrequencyHistogramBuckets!
               .map((value) => value.toJson())
@@ -6618,7 +6617,7 @@ class GooglePrivacyDlpV2CharacterMaskConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (charactersToIgnore != null)
           'charactersToIgnore':
               charactersToIgnore!.map((value) => value.toJson()).toList(),
@@ -6660,7 +6659,7 @@ class GooglePrivacyDlpV2CharsToIgnore {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (charactersToSkip != null) 'charactersToSkip': charactersToSkip!,
         if (commonCharactersToIgnore != null)
           'commonCharactersToIgnore': commonCharactersToIgnore!,
@@ -6682,7 +6681,7 @@ class GooglePrivacyDlpV2CloudStorageFileSet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
       };
 }
@@ -6760,7 +6759,7 @@ class GooglePrivacyDlpV2CloudStorageOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bytesLimitPerFile != null) 'bytesLimitPerFile': bytesLimitPerFile!,
         if (bytesLimitPerFilePercent != null)
           'bytesLimitPerFilePercent': bytesLimitPerFilePercent!,
@@ -6786,7 +6785,7 @@ class GooglePrivacyDlpV2CloudStoragePath {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (path != null) 'path': path!,
       };
 }
@@ -6855,7 +6854,7 @@ class GooglePrivacyDlpV2CloudStorageRegexFileSet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bucketName != null) 'bucketName': bucketName!,
         if (excludeRegex != null) 'excludeRegex': excludeRegex!,
         if (includeRegex != null) 'includeRegex': includeRegex!,
@@ -6887,7 +6886,7 @@ class GooglePrivacyDlpV2Color {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blue != null) 'blue': blue!,
         if (green != null) 'green': green!,
         if (red != null) 'red': red!,
@@ -6949,7 +6948,7 @@ class GooglePrivacyDlpV2Condition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (field != null) 'field': field!.toJson(),
         if (operator != null) 'operator': operator!,
         if (value != null) 'value': value!.toJson(),
@@ -6973,7 +6972,7 @@ class GooglePrivacyDlpV2Conditions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (conditions != null)
           'conditions': conditions!.map((value) => value.toJson()).toList(),
       };
@@ -7049,7 +7048,7 @@ class GooglePrivacyDlpV2Container {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fullPath != null) 'fullPath': fullPath!,
         if (projectId != null) 'projectId': projectId!,
         if (relativePath != null) 'relativePath': relativePath!,
@@ -7092,7 +7091,7 @@ class GooglePrivacyDlpV2ContentItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (byteItem != null) 'byteItem': byteItem!.toJson(),
         if (table != null) 'table': table!.toJson(),
         if (value != null) 'value': value!,
@@ -7165,7 +7164,7 @@ class GooglePrivacyDlpV2ContentLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (containerName != null) 'containerName': containerName!,
         if (containerTimestamp != null)
           'containerTimestamp': containerTimestamp!,
@@ -7213,7 +7212,7 @@ class GooglePrivacyDlpV2CreateDeidentifyTemplateRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deidentifyTemplate != null)
           'deidentifyTemplate': deidentifyTemplate!.toJson(),
         if (locationId != null) 'locationId': locationId!,
@@ -7264,7 +7263,7 @@ class GooglePrivacyDlpV2CreateDlpJobRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inspectJob != null) 'inspectJob': inspectJob!.toJson(),
         if (jobId != null) 'jobId': jobId!,
         if (locationId != null) 'locationId': locationId!,
@@ -7306,7 +7305,7 @@ class GooglePrivacyDlpV2CreateInspectTemplateRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inspectTemplate != null)
           'inspectTemplate': inspectTemplate!.toJson(),
         if (locationId != null) 'locationId': locationId!,
@@ -7348,7 +7347,7 @@ class GooglePrivacyDlpV2CreateJobTriggerRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (jobTrigger != null) 'jobTrigger': jobTrigger!.toJson(),
         if (locationId != null) 'locationId': locationId!,
         if (triggerId != null) 'triggerId': triggerId!,
@@ -7390,7 +7389,7 @@ class GooglePrivacyDlpV2CreateStoredInfoTypeRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (config != null) 'config': config!.toJson(),
         if (locationId != null) 'locationId': locationId!,
         if (storedInfoTypeId != null) 'storedInfoTypeId': storedInfoTypeId!,
@@ -7465,7 +7464,7 @@ class GooglePrivacyDlpV2CryptoDeterministicConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (context != null) 'context': context!.toJson(),
         if (cryptoKey != null) 'cryptoKey': cryptoKey!.toJson(),
         if (surrogateInfoType != null)
@@ -7493,7 +7492,7 @@ class GooglePrivacyDlpV2CryptoHashConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cryptoKey != null) 'cryptoKey': cryptoKey!.toJson(),
       };
 }
@@ -7531,7 +7530,7 @@ class GooglePrivacyDlpV2CryptoKey {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kmsWrapped != null) 'kmsWrapped': kmsWrapped!.toJson(),
         if (transient != null) 'transient': transient!.toJson(),
         if (unwrapped != null) 'unwrapped': unwrapped!.toJson(),
@@ -7646,7 +7645,7 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commonAlphabet != null) 'commonAlphabet': commonAlphabet!,
         if (context != null) 'context': context!.toJson(),
         if (cryptoKey != null) 'cryptoKey': cryptoKey!.toJson(),
@@ -7755,7 +7754,7 @@ class GooglePrivacyDlpV2CustomInfoType {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectionRules != null)
           'detectionRules':
               detectionRules!.map((value) => value.toJson()).toList(),
@@ -7783,7 +7782,7 @@ class GooglePrivacyDlpV2DatastoreKey {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entityKey != null) 'entityKey': entityKey!.toJson(),
       };
 }
@@ -7812,7 +7811,7 @@ class GooglePrivacyDlpV2DatastoreOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!.toJson(),
         if (partitionId != null) 'partitionId': partitionId!.toJson(),
       };
@@ -7869,7 +7868,7 @@ class GooglePrivacyDlpV2DateShiftConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (context != null) 'context': context!.toJson(),
         if (cryptoKey != null) 'cryptoKey': cryptoKey!.toJson(),
         if (lowerBoundDays != null) 'lowerBoundDays': lowerBoundDays!,
@@ -7924,7 +7923,7 @@ class GooglePrivacyDlpV2DateTime {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (date != null) 'date': date!.toJson(),
         if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
         if (time != null) 'time': time!.toJson(),
@@ -7972,7 +7971,7 @@ class GooglePrivacyDlpV2DeidentifyConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (infoTypeTransformations != null)
           'infoTypeTransformations': infoTypeTransformations!.toJson(),
         if (recordTransformations != null)
@@ -8048,7 +8047,7 @@ class GooglePrivacyDlpV2DeidentifyContentRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deidentifyConfig != null)
           'deidentifyConfig': deidentifyConfig!.toJson(),
         if (deidentifyTemplateName != null)
@@ -8082,7 +8081,7 @@ class GooglePrivacyDlpV2DeidentifyContentResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (item != null) 'item': item!.toJson(),
         if (overview != null) 'overview': overview!.toJson(),
       };
@@ -8144,7 +8143,7 @@ class GooglePrivacyDlpV2DeidentifyTemplate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (deidentifyConfig != null)
           'deidentifyConfig': deidentifyConfig!.toJson(),
@@ -8202,7 +8201,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auxiliaryTables != null)
           'auxiliaryTables':
               auxiliaryTables!.map((value) => value.toJson()).toList(),
@@ -8263,7 +8262,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bucketSize != null) 'bucketSize': bucketSize!,
         if (bucketValueCount != null) 'bucketValueCount': bucketValueCount!,
         if (bucketValues != null)
@@ -8306,7 +8305,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (estimatedProbability != null)
           'estimatedProbability': estimatedProbability!,
         if (quasiIdsValues != null)
@@ -8345,7 +8344,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deltaPresenceEstimationHistogram != null)
           'deltaPresenceEstimationHistogram': deltaPresenceEstimationHistogram!
               .map((value) => value.toJson())
@@ -8371,7 +8370,7 @@ class GooglePrivacyDlpV2DetectionRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hotwordRule != null) 'hotwordRule': hotwordRule!.toJson(),
       };
 }
@@ -8419,7 +8418,7 @@ class GooglePrivacyDlpV2Dictionary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cloudStoragePath != null)
           'cloudStoragePath': cloudStoragePath!.toJson(),
         if (wordList != null) 'wordList': wordList!.toJson(),
@@ -8516,7 +8515,7 @@ class GooglePrivacyDlpV2DlpJob {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
         if (errors != null)
@@ -8545,7 +8544,7 @@ class GooglePrivacyDlpV2DocumentLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fileOffset != null) 'fileOffset': fileOffset!,
       };
 }
@@ -8570,7 +8569,7 @@ class GooglePrivacyDlpV2EntityId {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (field != null) 'field': field!.toJson(),
       };
 }
@@ -8598,7 +8597,7 @@ class GooglePrivacyDlpV2Error {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!.toJson(),
         if (timestamps != null) 'timestamps': timestamps!,
       };
@@ -8629,7 +8628,7 @@ class GooglePrivacyDlpV2ExcludeInfoTypes {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (infoTypes != null)
           'infoTypes': infoTypes!.map((value) => value.toJson()).toList(),
       };
@@ -8683,7 +8682,7 @@ class GooglePrivacyDlpV2ExclusionRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dictionary != null) 'dictionary': dictionary!.toJson(),
         if (excludeInfoTypes != null)
           'excludeInfoTypes': excludeInfoTypes!.toJson(),
@@ -8717,7 +8716,7 @@ class GooglePrivacyDlpV2Expressions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (conditions != null) 'conditions': conditions!.toJson(),
         if (logicalOperator != null) 'logicalOperator': logicalOperator!,
       };
@@ -8736,7 +8735,7 @@ class GooglePrivacyDlpV2FieldId {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
       };
 }
@@ -8793,7 +8792,7 @@ class GooglePrivacyDlpV2FieldTransformation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
         if (fields != null)
           'fields': fields!.map((value) => value.toJson()).toList(),
@@ -8833,7 +8832,7 @@ class GooglePrivacyDlpV2FileSet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (regexFileSet != null) 'regexFileSet': regexFileSet!.toJson(),
         if (url != null) 'url': url!,
       };
@@ -8927,13 +8926,12 @@ class GooglePrivacyDlpV2Finding {
       jobName = _json['jobName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('likelihood')) {
       likelihood = _json['likelihood'] as core.String;
@@ -8960,7 +8958,7 @@ class GooglePrivacyDlpV2Finding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (findingId != null) 'findingId': findingId!,
         if (infoType != null) 'infoType': infoType!.toJson(),
@@ -9015,7 +9013,7 @@ class GooglePrivacyDlpV2FindingLimits {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (maxFindingsPerInfoType != null)
           'maxFindingsPerInfoType':
               maxFindingsPerInfoType!.map((value) => value.toJson()).toList(),
@@ -9034,7 +9032,7 @@ class GooglePrivacyDlpV2FinishDlpJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Buckets values based on fixed size ranges.
@@ -9093,7 +9091,7 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bucketSize != null) 'bucketSize': bucketSize!,
         if (lowerBound != null) 'lowerBound': lowerBound!.toJson(),
         if (upperBound != null) 'upperBound': upperBound!.toJson(),
@@ -9137,7 +9135,7 @@ class GooglePrivacyDlpV2HotwordRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hotwordRegex != null) 'hotwordRegex': hotwordRegex!.toJson(),
         if (likelihoodAdjustment != null)
           'likelihoodAdjustment': likelihoodAdjustment!.toJson(),
@@ -9168,7 +9166,7 @@ class GooglePrivacyDlpV2HybridContentItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (findingDetails != null) 'findingDetails': findingDetails!.toJson(),
         if (item != null) 'item': item!.toJson(),
       };
@@ -9224,13 +9222,12 @@ class GooglePrivacyDlpV2HybridFindingDetails {
       fileOffset = _json['fileOffset'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('rowOffset')) {
       rowOffset = _json['rowOffset'] as core.String;
@@ -9241,7 +9238,7 @@ class GooglePrivacyDlpV2HybridFindingDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (containerDetails != null)
           'containerDetails': containerDetails!.toJson(),
         if (fileOffset != null) 'fileOffset': fileOffset!,
@@ -9265,7 +9262,7 @@ class GooglePrivacyDlpV2HybridInspectDlpJobRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hybridItem != null) 'hybridItem': hybridItem!.toJson(),
       };
 }
@@ -9284,7 +9281,7 @@ class GooglePrivacyDlpV2HybridInspectJobTriggerRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hybridItem != null) 'hybridItem': hybridItem!.toJson(),
       };
 }
@@ -9297,7 +9294,7 @@ class GooglePrivacyDlpV2HybridInspectResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Statistics related to processing hybrid inspect requests.
@@ -9331,7 +9328,7 @@ class GooglePrivacyDlpV2HybridInspectStatistics {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (abortedCount != null) 'abortedCount': abortedCount!,
         if (pendingCount != null) 'pendingCount': pendingCount!,
         if (processedCount != null) 'processedCount': processedCount!,
@@ -9376,13 +9373,12 @@ class GooglePrivacyDlpV2HybridOptions {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('requiredFindingLabelKeys')) {
       requiredFindingLabelKeys =
@@ -9396,7 +9392,7 @@ class GooglePrivacyDlpV2HybridOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (labels != null) 'labels': labels!,
         if (requiredFindingLabelKeys != null)
@@ -9423,7 +9419,7 @@ class GooglePrivacyDlpV2ImageLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boundingBoxes != null)
           'boundingBoxes':
               boundingBoxes!.map((value) => value.toJson()).toList(),
@@ -9466,7 +9462,7 @@ class GooglePrivacyDlpV2ImageRedactionConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (infoType != null) 'infoType': infoType!.toJson(),
         if (redactAllText != null) 'redactAllText': redactAllText!,
         if (redactionColor != null) 'redactionColor': redactionColor!.toJson(),
@@ -9492,7 +9488,7 @@ class GooglePrivacyDlpV2InfoType {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
       };
 }
@@ -9532,7 +9528,7 @@ class GooglePrivacyDlpV2InfoTypeDescription {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
@@ -9565,7 +9561,7 @@ class GooglePrivacyDlpV2InfoTypeLimit {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (infoType != null) 'infoType': infoType!.toJson(),
         if (maxFindings != null) 'maxFindings': maxFindings!,
       };
@@ -9591,7 +9587,7 @@ class GooglePrivacyDlpV2InfoTypeStats {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
         if (infoType != null) 'infoType': infoType!.toJson(),
       };
@@ -9629,7 +9625,7 @@ class GooglePrivacyDlpV2InfoTypeTransformation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (infoTypes != null)
           'infoTypes': infoTypes!.map((value) => value.toJson()).toList(),
         if (primitiveTransformation != null)
@@ -9660,7 +9656,7 @@ class GooglePrivacyDlpV2InfoTypeTransformations {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (transformations != null)
           'transformations':
               transformations!.map((value) => value.toJson()).toList(),
@@ -9768,7 +9764,7 @@ class GooglePrivacyDlpV2InspectConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentOptions != null) 'contentOptions': contentOptions!,
         if (customInfoTypes != null)
           'customInfoTypes':
@@ -9827,7 +9823,7 @@ class GooglePrivacyDlpV2InspectContentRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inspectConfig != null) 'inspectConfig': inspectConfig!.toJson(),
         if (inspectTemplateName != null)
           'inspectTemplateName': inspectTemplateName!,
@@ -9850,7 +9846,7 @@ class GooglePrivacyDlpV2InspectContentResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (result != null) 'result': result!.toJson(),
       };
 }
@@ -9876,7 +9872,7 @@ class GooglePrivacyDlpV2InspectDataSourceDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (requestedOptions != null)
           'requestedOptions': requestedOptions!.toJson(),
         if (result != null) 'result': result!.toJson(),
@@ -9923,7 +9919,7 @@ class GooglePrivacyDlpV2InspectJobConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (actions != null)
           'actions': actions!.map((value) => value.toJson()).toList(),
         if (inspectConfig != null) 'inspectConfig': inspectConfig!.toJson(),
@@ -9962,7 +9958,7 @@ class GooglePrivacyDlpV2InspectResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (findings != null)
           'findings': findings!.map((value) => value.toJson()).toList(),
         if (findingsTruncated != null) 'findingsTruncated': findingsTruncated!,
@@ -10029,7 +10025,7 @@ class GooglePrivacyDlpV2InspectTemplate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
@@ -10061,7 +10057,7 @@ class GooglePrivacyDlpV2InspectionRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exclusionRule != null) 'exclusionRule': exclusionRule!.toJson(),
         if (hotwordRule != null) 'hotwordRule': hotwordRule!.toJson(),
       };
@@ -10098,7 +10094,7 @@ class GooglePrivacyDlpV2InspectionRuleSet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (infoTypes != null)
           'infoTypes': infoTypes!.map((value) => value.toJson()).toList(),
         if (rules != null)
@@ -10115,7 +10111,7 @@ class GooglePrivacyDlpV2JobNotificationEmails {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Contains a configuration to make dlp api calls on a repeating basis.
@@ -10221,7 +10217,7 @@ class GooglePrivacyDlpV2JobTrigger {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
@@ -10275,7 +10271,7 @@ class GooglePrivacyDlpV2KAnonymityConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entityId != null) 'entityId': entityId!.toJson(),
         if (quasiIds != null)
           'quasiIds': quasiIds!.map((value) => value.toJson()).toList(),
@@ -10309,7 +10305,7 @@ class GooglePrivacyDlpV2KAnonymityEquivalenceClass {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (equivalenceClassSize != null)
           'equivalenceClassSize': equivalenceClassSize!,
         if (quasiIdsValues != null)
@@ -10363,7 +10359,7 @@ class GooglePrivacyDlpV2KAnonymityHistogramBucket {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bucketSize != null) 'bucketSize': bucketSize!,
         if (bucketValueCount != null) 'bucketValueCount': bucketValueCount!,
         if (bucketValues != null)
@@ -10394,7 +10390,7 @@ class GooglePrivacyDlpV2KAnonymityResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (equivalenceClassHistogramBuckets != null)
           'equivalenceClassHistogramBuckets': equivalenceClassHistogramBuckets!
               .map((value) => value.toJson())
@@ -10452,7 +10448,7 @@ class GooglePrivacyDlpV2KMapEstimationConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auxiliaryTables != null)
           'auxiliaryTables':
               auxiliaryTables!.map((value) => value.toJson()).toList(),
@@ -10512,7 +10508,7 @@ class GooglePrivacyDlpV2KMapEstimationHistogramBucket {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bucketSize != null) 'bucketSize': bucketSize!,
         if (bucketValueCount != null) 'bucketValueCount': bucketValueCount!,
         if (bucketValues != null)
@@ -10545,7 +10541,7 @@ class GooglePrivacyDlpV2KMapEstimationQuasiIdValues {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (estimatedAnonymity != null)
           'estimatedAnonymity': estimatedAnonymity!,
         if (quasiIdsValues != null)
@@ -10581,7 +10577,7 @@ class GooglePrivacyDlpV2KMapEstimationResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kMapEstimationHistogram != null)
           'kMapEstimationHistogram':
               kMapEstimationHistogram!.map((value) => value.toJson()).toList(),
@@ -10627,7 +10623,7 @@ class GooglePrivacyDlpV2Key {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (partitionId != null) 'partitionId': partitionId!.toJson(),
         if (path != null) 'path': path!.map((value) => value.toJson()).toList(),
       };
@@ -10646,7 +10642,7 @@ class GooglePrivacyDlpV2KindExpression {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
       };
 }
@@ -10685,7 +10681,7 @@ class GooglePrivacyDlpV2KmsWrappedCryptoKey {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cryptoKeyName != null) 'cryptoKeyName': cryptoKeyName!,
         if (wrappedKey != null) 'wrappedKey': wrappedKey!,
       };
@@ -10719,7 +10715,7 @@ class GooglePrivacyDlpV2LDiversityConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (quasiIds != null)
           'quasiIds': quasiIds!.map((value) => value.toJson()).toList(),
         if (sensitiveAttribute != null)
@@ -10769,7 +10765,7 @@ class GooglePrivacyDlpV2LDiversityEquivalenceClass {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (equivalenceClassSize != null)
           'equivalenceClassSize': equivalenceClassSize!,
         if (numDistinctSensitiveValues != null)
@@ -10830,7 +10826,7 @@ class GooglePrivacyDlpV2LDiversityHistogramBucket {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bucketSize != null) 'bucketSize': bucketSize!,
         if (bucketValueCount != null) 'bucketValueCount': bucketValueCount!,
         if (bucketValues != null)
@@ -10863,7 +10859,7 @@ class GooglePrivacyDlpV2LDiversityResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sensitiveValueFrequencyHistogramBuckets != null)
           'sensitiveValueFrequencyHistogramBuckets':
               sensitiveValueFrequencyHistogramBuckets!
@@ -10910,7 +10906,7 @@ class GooglePrivacyDlpV2LargeCustomDictionaryConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bigQueryField != null) 'bigQueryField': bigQueryField!.toJson(),
         if (cloudStorageFileSet != null)
           'cloudStorageFileSet': cloudStorageFileSet!.toJson(),
@@ -10931,7 +10927,7 @@ class GooglePrivacyDlpV2LargeCustomDictionaryStats {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (approxNumPhrases != null) 'approxNumPhrases': approxNumPhrases!,
       };
 }
@@ -10948,7 +10944,7 @@ class GooglePrivacyDlpV2LeaveUntransformed {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Message for specifying an adjustment to the likelihood of a finding as part
@@ -10985,7 +10981,7 @@ class GooglePrivacyDlpV2LikelihoodAdjustment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fixedLikelihood != null) 'fixedLikelihood': fixedLikelihood!,
         if (relativeLikelihood != null)
           'relativeLikelihood': relativeLikelihood!,
@@ -11017,7 +11013,7 @@ class GooglePrivacyDlpV2ListDeidentifyTemplatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deidentifyTemplates != null)
           'deidentifyTemplates':
               deidentifyTemplates!.map((value) => value.toJson()).toList(),
@@ -11048,7 +11044,7 @@ class GooglePrivacyDlpV2ListDlpJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -11071,7 +11067,7 @@ class GooglePrivacyDlpV2ListInfoTypesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (infoTypes != null)
           'infoTypes': infoTypes!.map((value) => value.toJson()).toList(),
       };
@@ -11101,7 +11097,7 @@ class GooglePrivacyDlpV2ListInspectTemplatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inspectTemplates != null)
           'inspectTemplates':
               inspectTemplates!.map((value) => value.toJson()).toList(),
@@ -11133,7 +11129,7 @@ class GooglePrivacyDlpV2ListJobTriggersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (jobTriggers != null)
           'jobTriggers': jobTriggers!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -11164,7 +11160,7 @@ class GooglePrivacyDlpV2ListStoredInfoTypesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (storedInfoTypes != null)
           'storedInfoTypes':
@@ -11218,7 +11214,7 @@ class GooglePrivacyDlpV2Location {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (byteRange != null) 'byteRange': byteRange!.toJson(),
         if (codepointRange != null) 'codepointRange': codepointRange!.toJson(),
         if (container != null) 'container': container!.toJson(),
@@ -11238,7 +11234,7 @@ class GooglePrivacyDlpV2Manual {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Metadata Location
@@ -11264,7 +11260,7 @@ class GooglePrivacyDlpV2MetadataLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (storageLabel != null) 'storageLabel': storageLabel!.toJson(),
         if (type != null) 'type': type!,
       };
@@ -11287,7 +11283,7 @@ class GooglePrivacyDlpV2NumericalStatsConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (field != null) 'field': field!.toJson(),
       };
 }
@@ -11324,7 +11320,7 @@ class GooglePrivacyDlpV2NumericalStatsResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (maxValue != null) 'maxValue': maxValue!.toJson(),
         if (minValue != null) 'minValue': minValue!.toJson(),
         if (quantileValues != null)
@@ -11383,7 +11379,7 @@ class GooglePrivacyDlpV2OutputStorageConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (outputSchema != null) 'outputSchema': outputSchema!,
         if (table != null) 'table': table!.toJson(),
       };
@@ -11412,7 +11408,7 @@ class GooglePrivacyDlpV2PartitionId {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (namespaceId != null) 'namespaceId': namespaceId!,
         if (projectId != null) 'projectId': projectId!,
       };
@@ -11455,7 +11451,7 @@ class GooglePrivacyDlpV2PathElement {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
@@ -11554,7 +11550,7 @@ class GooglePrivacyDlpV2PrimitiveTransformation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bucketingConfig != null)
           'bucketingConfig': bucketingConfig!.toJson(),
         if (characterMaskConfig != null)
@@ -11631,7 +11627,7 @@ class GooglePrivacyDlpV2PrivacyMetric {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (categoricalStatsConfig != null)
           'categoricalStatsConfig': categoricalStatsConfig!.toJson(),
         if (deltaPresenceEstimationConfig != null)
@@ -11667,7 +11663,7 @@ class GooglePrivacyDlpV2Proximity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (windowAfter != null) 'windowAfter': windowAfter!,
         if (windowBefore != null) 'windowBefore': windowBefore!,
       };
@@ -11690,7 +11686,7 @@ class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Publish the result summary of a DlpJob to the Cloud Security Command Center
@@ -11710,7 +11706,7 @@ class GooglePrivacyDlpV2PublishSummaryToCscc {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Publish a message into given Pub/Sub topic when DlpJob has completed.
@@ -11735,7 +11731,7 @@ class GooglePrivacyDlpV2PublishToPubSub {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (topic != null) 'topic': topic!,
       };
 }
@@ -11752,7 +11748,7 @@ class GooglePrivacyDlpV2PublishToStackdriver {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A column with a semantic tag attached.
@@ -11800,7 +11796,7 @@ class GooglePrivacyDlpV2QuasiId {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customTag != null) 'customTag': customTag!,
         if (field != null) 'field': field!.toJson(),
         if (inferred != null) 'inferred': inferred!.toJson(),
@@ -11829,7 +11825,7 @@ class GooglePrivacyDlpV2QuasiIdField {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customTag != null) 'customTag': customTag!,
         if (field != null) 'field': field!.toJson(),
       };
@@ -11859,7 +11855,7 @@ class GooglePrivacyDlpV2QuasiIdentifierField {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customTag != null) 'customTag': customTag!,
         if (field != null) 'field': field!.toJson(),
       };
@@ -11879,7 +11875,7 @@ class GooglePrivacyDlpV2QuoteInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dateTime != null) 'dateTime': dateTime!.toJson(),
       };
 }
@@ -11903,7 +11899,7 @@ class GooglePrivacyDlpV2Range {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (end != null) 'end': end!,
         if (start != null) 'start': start!,
       };
@@ -11924,7 +11920,7 @@ class GooglePrivacyDlpV2RecordCondition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (expressions != null) 'expressions': expressions!.toJson(),
       };
 }
@@ -11958,7 +11954,7 @@ class GooglePrivacyDlpV2RecordKey {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bigQueryKey != null) 'bigQueryKey': bigQueryKey!.toJson(),
         if (datastoreKey != null) 'datastoreKey': datastoreKey!.toJson(),
         if (idValues != null) 'idValues': idValues!,
@@ -11993,7 +11989,7 @@ class GooglePrivacyDlpV2RecordLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fieldId != null) 'fieldId': fieldId!.toJson(),
         if (recordKey != null) 'recordKey': recordKey!.toJson(),
         if (tableLocation != null) 'tableLocation': tableLocation!.toJson(),
@@ -12016,7 +12012,7 @@ class GooglePrivacyDlpV2RecordSuppression {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
       };
 }
@@ -12051,7 +12047,7 @@ class GooglePrivacyDlpV2RecordTransformations {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fieldTransformations != null)
           'fieldTransformations':
               fieldTransformations!.map((value) => value.toJson()).toList(),
@@ -12073,7 +12069,7 @@ class GooglePrivacyDlpV2RedactConfig {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Request to search for potentially sensitive info in an image and redact it
@@ -12123,7 +12119,7 @@ class GooglePrivacyDlpV2RedactImageRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (byteItem != null) 'byteItem': byteItem!.toJson(),
         if (imageRedactionConfigs != null)
           'imageRedactionConfigs':
@@ -12173,7 +12169,7 @@ class GooglePrivacyDlpV2RedactImageResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (extractedText != null) 'extractedText': extractedText!,
         if (inspectResult != null) 'inspectResult': inspectResult!.toJson(),
         if (redactedImage != null) 'redactedImage': redactedImage!,
@@ -12207,7 +12203,7 @@ class GooglePrivacyDlpV2Regex {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (groupIndexes != null) 'groupIndexes': groupIndexes!,
         if (pattern != null) 'pattern': pattern!,
       };
@@ -12283,7 +12279,7 @@ class GooglePrivacyDlpV2ReidentifyContentRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inspectConfig != null) 'inspectConfig': inspectConfig!.toJson(),
         if (inspectTemplateName != null)
           'inspectTemplateName': inspectTemplateName!,
@@ -12317,7 +12313,7 @@ class GooglePrivacyDlpV2ReidentifyContentResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (item != null) 'item': item!.toJson(),
         if (overview != null) 'overview': overview!.toJson(),
       };
@@ -12337,7 +12333,7 @@ class GooglePrivacyDlpV2ReplaceValueConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (newValue != null) 'newValue': newValue!.toJson(),
       };
 }
@@ -12350,7 +12346,7 @@ class GooglePrivacyDlpV2ReplaceWithInfoTypeConfig {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Snapshot of the inspection configuration.
@@ -12376,7 +12372,7 @@ class GooglePrivacyDlpV2RequestedOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (jobConfig != null) 'jobConfig': jobConfig!.toJson(),
         if (snapshotInspectTemplate != null)
           'snapshotInspectTemplate': snapshotInspectTemplate!.toJson(),
@@ -12397,7 +12393,7 @@ class GooglePrivacyDlpV2RequestedRiskAnalysisOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (jobConfig != null) 'jobConfig': jobConfig!.toJson(),
       };
 }
@@ -12439,7 +12435,7 @@ class GooglePrivacyDlpV2Result {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hybridStats != null) 'hybridStats': hybridStats!.toJson(),
         if (infoTypeStats != null)
           'infoTypeStats':
@@ -12485,7 +12481,7 @@ class GooglePrivacyDlpV2RiskAnalysisJobConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (actions != null)
           'actions': actions!.map((value) => value.toJson()).toList(),
         if (privacyMetric != null) 'privacyMetric': privacyMetric!.toJson(),
@@ -12510,7 +12506,7 @@ class GooglePrivacyDlpV2Row {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (values != null)
           'values': values!.map((value) => value.toJson()).toList(),
       };
@@ -12534,7 +12530,7 @@ class GooglePrivacyDlpV2SaveFindings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (outputConfig != null) 'outputConfig': outputConfig!.toJson(),
       };
 }
@@ -12558,7 +12554,7 @@ class GooglePrivacyDlpV2Schedule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (recurrencePeriodDuration != null)
           'recurrencePeriodDuration': recurrencePeriodDuration!,
       };
@@ -12611,7 +12607,7 @@ class GooglePrivacyDlpV2StatisticalTable {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (quasiIds != null)
           'quasiIds': quasiIds!.map((value) => value.toJson()).toList(),
         if (relativeFrequency != null)
@@ -12660,7 +12656,7 @@ class GooglePrivacyDlpV2StorageConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bigQueryOptions != null)
           'bigQueryOptions': bigQueryOptions!.toJson(),
         if (cloudStorageOptions != null)
@@ -12684,7 +12680,7 @@ class GooglePrivacyDlpV2StorageMetadataLabel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
       };
 }
@@ -12722,7 +12718,7 @@ class GooglePrivacyDlpV2StoredInfoType {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currentVersion != null) 'currentVersion': currentVersion!.toJson(),
         if (name != null) 'name': name!,
         if (pendingVersions != null)
@@ -12776,7 +12772,7 @@ class GooglePrivacyDlpV2StoredInfoTypeConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (dictionary != null) 'dictionary': dictionary!.toJson(),
         if (displayName != null) 'displayName': displayName!,
@@ -12802,7 +12798,7 @@ class GooglePrivacyDlpV2StoredInfoTypeStats {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (largeCustomDictionary != null)
           'largeCustomDictionary': largeCustomDictionary!.toJson(),
       };
@@ -12876,7 +12872,7 @@ class GooglePrivacyDlpV2StoredInfoTypeVersion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (config != null) 'config': config!.toJson(),
         if (createTime != null) 'createTime': createTime!,
         if (errors != null)
@@ -12910,7 +12906,7 @@ class GooglePrivacyDlpV2StoredType {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (name != null) 'name': name!,
       };
@@ -12947,7 +12943,7 @@ class GooglePrivacyDlpV2SummaryResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (count != null) 'count': count!,
         if (details != null) 'details': details!,
@@ -12969,7 +12965,7 @@ class GooglePrivacyDlpV2SurrogateType {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Structured content to inspect.
@@ -13002,7 +12998,7 @@ class GooglePrivacyDlpV2Table {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (headers != null)
           'headers': headers!.map((value) => value.toJson()).toList(),
         if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
@@ -13028,7 +13024,7 @@ class GooglePrivacyDlpV2TableLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rowIndex != null) 'rowIndex': rowIndex!,
       };
 }
@@ -13055,7 +13051,7 @@ class GooglePrivacyDlpV2TableOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (identifyingFields != null)
           'identifyingFields':
               identifyingFields!.map((value) => value.toJson()).toList(),
@@ -13107,7 +13103,7 @@ class GooglePrivacyDlpV2TaggedField {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customTag != null) 'customTag': customTag!,
         if (field != null) 'field': field!.toJson(),
         if (inferred != null) 'inferred': inferred!.toJson(),
@@ -13123,7 +13119,7 @@ class GooglePrivacyDlpV2ThrowError {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a
@@ -13148,7 +13144,7 @@ class GooglePrivacyDlpV2TimePartConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (partToExtract != null) 'partToExtract': partToExtract!,
       };
 }
@@ -13168,7 +13164,7 @@ class GooglePrivacyDlpV2TimeZone {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (offsetMinutes != null) 'offsetMinutes': offsetMinutes!,
       };
 }
@@ -13229,7 +13225,7 @@ class GooglePrivacyDlpV2TimespanConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enableAutoPopulationOfTimespanConfig != null)
           'enableAutoPopulationOfTimespanConfig':
               enableAutoPopulationOfTimespanConfig!,
@@ -13267,7 +13263,7 @@ class GooglePrivacyDlpV2TransformationErrorHandling {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (leaveUntransformed != null)
           'leaveUntransformed': leaveUntransformed!.toJson(),
         if (throwError != null) 'throwError': throwError!.toJson(),
@@ -13297,7 +13293,7 @@ class GooglePrivacyDlpV2TransformationOverview {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (transformationSummaries != null)
           'transformationSummaries':
               transformationSummaries!.map((value) => value.toJson()).toList(),
@@ -13372,7 +13368,7 @@ class GooglePrivacyDlpV2TransformationSummary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (field != null) 'field': field!.toJson(),
         if (fieldTransformations != null)
           'fieldTransformations':
@@ -13409,7 +13405,7 @@ class GooglePrivacyDlpV2TransientCryptoKey {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
       };
 }
@@ -13437,7 +13433,7 @@ class GooglePrivacyDlpV2Trigger {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (manual != null) 'manual': manual!.toJson(),
         if (schedule != null) 'schedule': schedule!.toJson(),
       };
@@ -13467,7 +13463,7 @@ class GooglePrivacyDlpV2UnwrappedCryptoKey {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
       };
 }
@@ -13492,7 +13488,7 @@ class GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deidentifyTemplate != null)
           'deidentifyTemplate': deidentifyTemplate!.toJson(),
         if (updateMask != null) 'updateMask': updateMask!,
@@ -13519,7 +13515,7 @@ class GooglePrivacyDlpV2UpdateInspectTemplateRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inspectTemplate != null)
           'inspectTemplate': inspectTemplate!.toJson(),
         if (updateMask != null) 'updateMask': updateMask!,
@@ -13546,7 +13542,7 @@ class GooglePrivacyDlpV2UpdateJobTriggerRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (jobTrigger != null) 'jobTrigger': jobTrigger!.toJson(),
         if (updateMask != null) 'updateMask': updateMask!,
       };
@@ -13575,7 +13571,7 @@ class GooglePrivacyDlpV2UpdateStoredInfoTypeRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (config != null) 'config': config!.toJson(),
         if (updateMask != null) 'updateMask': updateMask!,
       };
@@ -13653,7 +13649,7 @@ class GooglePrivacyDlpV2Value {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (booleanValue != null) 'booleanValue': booleanValue!,
         if (dateValue != null) 'dateValue': dateValue!.toJson(),
         if (dayOfWeekValue != null) 'dayOfWeekValue': dayOfWeekValue!,
@@ -13685,7 +13681,7 @@ class GooglePrivacyDlpV2ValueFrequency {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
         if (value != null) 'value': value!.toJson(),
       };
@@ -13709,7 +13705,7 @@ class GooglePrivacyDlpV2WordList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (words != null) 'words': words!,
       };
 }
@@ -13728,7 +13724,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -13764,8 +13760,8 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -13778,7 +13774,7 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -13825,7 +13821,7 @@ class GoogleTypeDate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
         if (month != null) 'month': month!,
         if (year != null) 'year': year!,
@@ -13877,7 +13873,7 @@ class GoogleTypeTimeOfDay {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hours != null) 'hours': hours!,
         if (minutes != null) 'minutes': minutes!,
         if (nanos != null) 'nanos': nanos!,

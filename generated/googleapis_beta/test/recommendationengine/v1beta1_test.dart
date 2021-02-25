@@ -2653,7 +2653,9 @@ void main() {
   unittest.group('obj-schema-GoogleApiHttpBody', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiHttpBody();
-      var od = api.GoogleApiHttpBody.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleApiHttpBody.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleApiHttpBody(od as api.GoogleApiHttpBody);
     });
   });
@@ -2664,8 +2666,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata(od
           as api.GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata);
     });
@@ -2677,8 +2680,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1alphaRejoinCatalogResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1alphaRejoinCatalogResponse(od
           as api.GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse);
     });
@@ -2688,9 +2692,10 @@ void main() {
       'obj-schema-GoogleCloudRecommendationengineV1alphaTuningMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1alphaTuningMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1alphaTuningMetadata.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1alphaTuningMetadata(
           od as api.GoogleCloudRecommendationengineV1alphaTuningMetadata);
     });
@@ -2700,9 +2705,10 @@ void main() {
       'obj-schema-GoogleCloudRecommendationengineV1alphaTuningResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1alphaTuningResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1alphaTuningResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1alphaTuningResponse(
           od as api.GoogleCloudRecommendationengineV1alphaTuningResponse);
     });
@@ -2712,9 +2718,10 @@ void main() {
       'obj-schema-GoogleCloudRecommendationengineV1beta1BigQuerySource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1BigQuerySource();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1BigQuerySource.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1BigQuerySource(
           od as api.GoogleCloudRecommendationengineV1beta1BigQuerySource);
     });
@@ -2724,8 +2731,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1Catalog();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1Catalog.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1Catalog(
           od as api.GoogleCloudRecommendationengineV1beta1Catalog);
     });
@@ -2736,8 +2744,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1CatalogInlineSource();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1CatalogInlineSource
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1CatalogInlineSource(
           od as api.GoogleCloudRecommendationengineV1beta1CatalogInlineSource);
     });
@@ -2747,8 +2756,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1CatalogItem();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1CatalogItem.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1CatalogItem(
           od as api.GoogleCloudRecommendationengineV1beta1CatalogItem);
     });
@@ -2760,9 +2770,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy(od
           as api
               .GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy);
@@ -2775,8 +2786,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig(od
           as api.GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig);
     });
@@ -2788,9 +2800,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest(
           od as api
               .GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest);
@@ -2801,8 +2814,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1EventDetail();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1EventDetail.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1EventDetail(
           od as api.GoogleCloudRecommendationengineV1beta1EventDetail);
     });
@@ -2812,8 +2826,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1FeatureMap();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1FeatureMap.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1FeatureMap(
           od as api.GoogleCloudRecommendationengineV1beta1FeatureMap);
     });
@@ -2824,8 +2839,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1FeatureMapFloatList();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1FeatureMapFloatList
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1FeatureMapFloatList(
           od as api.GoogleCloudRecommendationengineV1beta1FeatureMapFloatList);
     });
@@ -2836,8 +2852,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1FeatureMapStringList();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1FeatureMapStringList
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1FeatureMapStringList(
           od as api.GoogleCloudRecommendationengineV1beta1FeatureMapStringList);
     });
@@ -2847,8 +2864,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1GcsSource();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1GcsSource.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1GcsSource(
           od as api.GoogleCloudRecommendationengineV1beta1GcsSource);
     });
@@ -2857,8 +2875,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudRecommendationengineV1beta1Image', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1Image();
-      var od =
-          api.GoogleCloudRecommendationengineV1beta1Image.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudRecommendationengineV1beta1Image.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1Image(
           od as api.GoogleCloudRecommendationengineV1beta1Image);
     });
@@ -2870,9 +2889,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest(od
           as api
               .GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest);
@@ -2885,9 +2905,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse(od
           as api
               .GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse);
@@ -2899,9 +2920,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1ImportErrorsConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1ImportErrorsConfig.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1ImportErrorsConfig(
           od as api.GoogleCloudRecommendationengineV1beta1ImportErrorsConfig);
     });
@@ -2911,9 +2933,10 @@ void main() {
       'obj-schema-GoogleCloudRecommendationengineV1beta1ImportMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1ImportMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1ImportMetadata.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1ImportMetadata(
           od as api.GoogleCloudRecommendationengineV1beta1ImportMetadata);
     });
@@ -2925,8 +2948,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1ImportUserEventsRequest(od
           as api.GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest);
     });
@@ -2938,9 +2962,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1ImportUserEventsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1ImportUserEventsResponse(od
           as api
               .GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse);
@@ -2951,8 +2976,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1InputConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1InputConfig.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1InputConfig(
           od as api.GoogleCloudRecommendationengineV1beta1InputConfig);
     });
@@ -2964,9 +2990,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse(od
           as api
               .GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse);
@@ -2978,8 +3005,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1ListCatalogsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1ListCatalogsResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1ListCatalogsResponse(
           od as api.GoogleCloudRecommendationengineV1beta1ListCatalogsResponse);
     });
@@ -2991,9 +3019,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse(
           od as api
               .GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse);
@@ -3006,8 +3035,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1ListUserEventsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1ListUserEventsResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1ListUserEventsResponse(od
           as api.GoogleCloudRecommendationengineV1beta1ListUserEventsResponse);
     });
@@ -3017,9 +3047,10 @@ void main() {
       'obj-schema-GoogleCloudRecommendationengineV1beta1PredictRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1PredictRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1PredictRequest.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1PredictRequest(
           od as api.GoogleCloudRecommendationengineV1beta1PredictRequest);
     });
@@ -3029,9 +3060,10 @@ void main() {
       'obj-schema-GoogleCloudRecommendationengineV1beta1PredictResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1PredictResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1PredictResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1PredictResponse(
           od as api.GoogleCloudRecommendationengineV1beta1PredictResponse);
     });
@@ -3043,9 +3075,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult(
           od as api
               .GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult);
@@ -3058,9 +3091,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration(od
           as api
               .GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration);
@@ -3072,9 +3106,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1ProductCatalogItem();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1ProductCatalogItem.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1ProductCatalogItem(
           od as api.GoogleCloudRecommendationengineV1beta1ProductCatalogItem);
     });
@@ -3086,9 +3121,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice(od
           as api
               .GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice);
@@ -3101,9 +3137,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange(od
           as api
               .GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange);
@@ -3114,8 +3151,9 @@ void main() {
       'obj-schema-GoogleCloudRecommendationengineV1beta1ProductDetail', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1ProductDetail();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1ProductDetail.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1ProductDetail(
           od as api.GoogleCloudRecommendationengineV1beta1ProductDetail);
     });
@@ -3126,9 +3164,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1ProductEventDetail();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1ProductEventDetail.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1ProductEventDetail(
           od as api.GoogleCloudRecommendationengineV1beta1ProductEventDetail);
     });
@@ -3139,8 +3178,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1PurchaseTransaction();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1PurchaseTransaction
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1PurchaseTransaction(
           od as api.GoogleCloudRecommendationengineV1beta1PurchaseTransaction);
     });
@@ -3152,8 +3192,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata(od
           as api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata);
     });
@@ -3165,8 +3206,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest(od
           as api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest);
     });
@@ -3178,8 +3220,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse(od
           as api.GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse);
     });
@@ -3191,9 +3234,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata(od
           as api
               .GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata);
@@ -3206,8 +3250,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest(od
           as api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest);
     });
@@ -3219,9 +3264,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse(od
           as api
               .GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse);
@@ -3232,8 +3278,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1UserEvent();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1UserEvent.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1UserEvent(
           od as api.GoogleCloudRecommendationengineV1beta1UserEvent);
     });
@@ -3245,8 +3292,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1UserEventImportSummary();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1UserEventImportSummary
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1UserEventImportSummary(od
           as api.GoogleCloudRecommendationengineV1beta1UserEventImportSummary);
     });
@@ -3258,8 +3306,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudRecommendationengineV1beta1UserEventInlineSource();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1UserEventInlineSource
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1UserEventInlineSource(od
           as api.GoogleCloudRecommendationengineV1beta1UserEventInlineSource);
     });
@@ -3269,8 +3318,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudRecommendationengineV1beta1UserInfo();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudRecommendationengineV1beta1UserInfo.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudRecommendationengineV1beta1UserInfo(
           od as api.GoogleCloudRecommendationengineV1beta1UserInfo);
     });
@@ -3279,7 +3329,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
-      var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningListOperationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningListOperationsResponse(
           od as api.GoogleLongrunningListOperationsResponse);
     });
@@ -3288,7 +3340,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
-      var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningOperation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
     });
   });
@@ -3296,7 +3350,9 @@ void main() {
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
-      var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleProtobufEmpty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
     });
   });
@@ -3304,7 +3360,9 @@ void main() {
   unittest.group('obj-schema-GoogleRpcStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
-      var od = api.GoogleRpcStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleRpcStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
     });
   });

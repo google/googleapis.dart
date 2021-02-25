@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -445,7 +444,7 @@ class AdBreak {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
       };
 }
@@ -467,7 +466,7 @@ class Aes128Encryption {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (keyUri != null) 'keyUri': keyUri!,
       };
 }
@@ -500,7 +499,7 @@ class Animation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (animationEnd != null) 'animationEnd': animationEnd!.toJson(),
         if (animationFade != null) 'animationFade': animationFade!.toJson(),
         if (animationStatic != null)
@@ -526,7 +525,7 @@ class AnimationEnd {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
       };
 }
@@ -578,7 +577,7 @@ class AnimationFade {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
         if (fadeType != null) 'fadeType': fadeType!,
         if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
@@ -613,7 +612,7 @@ class AnimationStatic {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
         if (xy != null) 'xy': xy!.toJson(),
       };
@@ -656,7 +655,7 @@ class Audio {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (highBoost != null) 'highBoost': highBoost!,
         if (lowBoost != null) 'lowBoost': lowBoost!,
         if (lufs != null) 'lufs': lufs!,
@@ -690,7 +689,7 @@ class AudioAtom {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channels != null)
           'channels': channels!.map((value) => value.toJson()).toList(),
         if (key != null) 'key': key!,
@@ -713,7 +712,7 @@ class AudioChannel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inputs != null)
           'inputs': inputs!.map((value) => value.toJson()).toList(),
       };
@@ -759,7 +758,7 @@ class AudioChannelInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channel != null) 'channel': channel!,
         if (gainDb != null) 'gainDb': gainDb!,
         if (key != null) 'key': key!,
@@ -832,7 +831,7 @@ class AudioStream {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bitrateBps != null) 'bitrateBps': bitrateBps!,
         if (channelCount != null) 'channelCount': channelCount!,
         if (channelLayout != null) 'channelLayout': channelLayout!,
@@ -877,7 +876,7 @@ class Color {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (brightness != null) 'brightness': brightness!,
         if (contrast != null) 'contrast': contrast!,
         if (saturation != null) 'saturation': saturation!,
@@ -925,7 +924,7 @@ class Crop {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bottomPixels != null) 'bottomPixels': bottomPixels!,
         if (leftPixels != null) 'leftPixels': leftPixels!,
         if (rightPixels != null) 'rightPixels': rightPixels!,
@@ -957,7 +956,7 @@ class Deblock {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
         if (strength != null) 'strength': strength!,
       };
@@ -988,7 +987,7 @@ class Denoise {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (strength != null) 'strength': strength!,
         if (tune != null) 'tune': tune!,
       };
@@ -1036,7 +1035,7 @@ class EditAtom {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
         if (inputs != null) 'inputs': inputs!,
         if (key != null) 'key': key!,
@@ -1083,7 +1082,7 @@ class ElementaryStream {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audioStream != null) 'audioStream': audioStream!.toJson(),
         if (key != null) 'key': key!,
         if (textStream != null) 'textStream': textStream!.toJson(),
@@ -1105,7 +1104,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Encryption settings.
@@ -1153,7 +1152,7 @@ class Encryption {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aes128 != null) 'aes128': aes128!.toJson(),
         if (iv != null) 'iv': iv!,
         if (key != null) 'key': key!,
@@ -1175,7 +1174,7 @@ class FailureDetail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
       };
 }
@@ -1216,7 +1215,7 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alpha != null) 'alpha': alpha!,
         if (resolution != null) 'resolution': resolution!.toJson(),
         if (uri != null) 'uri': uri!,
@@ -1255,7 +1254,7 @@ class Input {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (preprocessingConfig != null)
           'preprocessingConfig': preprocessingConfig!.toJson(),
@@ -1421,7 +1420,7 @@ class Job {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (config != null) 'config': config!.toJson(),
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
@@ -1540,7 +1539,7 @@ class JobConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (adBreaks != null)
           'adBreaks': adBreaks!.map((value) => value.toJson()).toList(),
         if (editList != null)
@@ -1587,7 +1586,7 @@ class JobTemplate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (config != null) 'config': config!.toJson(),
         if (name != null) 'name': name!,
       };
@@ -1615,7 +1614,7 @@ class ListJobTemplatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (jobTemplates != null)
           'jobTemplates': jobTemplates!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1644,7 +1643,7 @@ class ListJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -1694,7 +1693,7 @@ class Manifest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fileName != null) 'fileName': fileName!,
         if (muxStreams != null) 'muxStreams': muxStreams!,
         if (type != null) 'type': type!,
@@ -1727,7 +1726,7 @@ class MpegCommonEncryption {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (keyId != null) 'keyId': keyId!,
         if (scheme != null) 'scheme': scheme!,
       };
@@ -1791,7 +1790,7 @@ class MuxStream {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (container != null) 'container': container!,
         if (elementaryStreams != null) 'elementaryStreams': elementaryStreams!,
         if (encryption != null) 'encryption': encryption!.toJson(),
@@ -1823,7 +1822,7 @@ class NormalizedCoordinate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
       };
@@ -1896,7 +1895,7 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
         if (cancelRequested != null) 'cancelRequested': cancelRequested!,
         if (createTime != null) 'createTime': createTime!,
@@ -1930,7 +1929,7 @@ class OriginUri {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dash != null) 'dash': dash!,
         if (hls != null) 'hls': hls!,
       };
@@ -1952,7 +1951,7 @@ class Output {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
       };
 }
@@ -1982,7 +1981,7 @@ class Overlay {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (animations != null)
           'animations': animations!.map((value) => value.toJson()).toList(),
         if (image != null) 'image': image!.toJson(),
@@ -2031,7 +2030,7 @@ class Pad {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bottomPixels != null) 'bottomPixels': bottomPixels!,
         if (leftPixels != null) 'leftPixels': leftPixels!,
         if (rightPixels != null) 'rightPixels': rightPixels!,
@@ -2087,7 +2086,7 @@ class PreprocessingConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audio != null) 'audio': audio!.toJson(),
         if (color != null) 'color': color!.toJson(),
         if (crop != null) 'crop': crop!.toJson(),
@@ -2128,7 +2127,7 @@ class Progress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (analyzed != null) 'analyzed': analyzed!,
         if (encoded != null) 'encoded': encoded!,
         if (notified != null) 'notified': notified!,
@@ -2151,7 +2150,7 @@ class PubsubDestination {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (topic != null) 'topic': topic!,
       };
 }
@@ -2173,7 +2172,7 @@ class SampleAesEncryption {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (keyUri != null) 'keyUri': keyUri!,
       };
 }
@@ -2205,7 +2204,7 @@ class SegmentSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (individualSegments != null)
           'individualSegments': individualSegments!,
         if (segmentDuration != null) 'segmentDuration': segmentDuration!,
@@ -2319,7 +2318,7 @@ class SpriteSheet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (columnCount != null) 'columnCount': columnCount!,
         if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
         if (filePrefix != null) 'filePrefix': filePrefix!,
@@ -2362,7 +2361,7 @@ class TextAtom {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inputs != null)
           'inputs': inputs!.map((value) => value.toJson()).toList(),
         if (key != null) 'key': key!,
@@ -2392,7 +2391,7 @@ class TextInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (track != null) 'track': track!,
       };
@@ -2436,7 +2435,7 @@ class TextStream {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (codec != null) 'codec': codec!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (mapping != null)
@@ -2661,7 +2660,7 @@ class VideoStream {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowOpenGop != null) 'allowOpenGop': allowOpenGop!,
         if (aqStrength != null) 'aqStrength': aqStrength!,
         if (bFrameCount != null) 'bFrameCount': bFrameCount!,

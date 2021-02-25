@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -354,7 +353,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A response message for importing an SSH public key.
@@ -377,7 +376,7 @@ class ImportSshPublicKeyResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
         if (loginProfile != null) 'loginProfile': loginProfile!.toJson(),
       };
@@ -410,19 +409,17 @@ class LoginProfile {
           .toList();
     }
     if (_json.containsKey('sshPublicKeys')) {
-      sshPublicKeys = (_json['sshPublicKeys'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              SshPublicKey.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      sshPublicKeys =
+          (_json['sshPublicKeys'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          SshPublicKey.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (posixAccounts != null)
           'posixAccounts':
@@ -517,7 +514,7 @@ class PosixAccount {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (gecos != null) 'gecos': gecos!,
         if (gid != null) 'gid': gid!,
@@ -568,7 +565,7 @@ class SshPublicKey {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (expirationTimeUsec != null)
           'expirationTimeUsec': expirationTimeUsec!,
         if (fingerprint != null) 'fingerprint': fingerprint!,

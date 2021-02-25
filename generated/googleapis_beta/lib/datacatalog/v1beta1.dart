@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -2967,7 +2966,7 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
@@ -2988,7 +2987,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -3052,7 +3051,7 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,
@@ -3075,7 +3074,7 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (options != null) 'options': options!.toJson(),
       };
 }
@@ -3102,7 +3101,7 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (requestedPolicyVersion != null)
           'requestedPolicyVersion': requestedPolicyVersion!,
       };
@@ -3148,7 +3147,7 @@ class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataset != null) 'dataset': dataset!,
         if (shardCount != null) 'shardCount': shardCount!,
         if (tablePrefix != null) 'tablePrefix': tablePrefix!,
@@ -3195,7 +3194,7 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (tableSourceType != null) 'tableSourceType': tableSourceType!,
         if (tableSpec != null) 'tableSpec': tableSpec!.toJson(),
         if (viewSpec != null) 'viewSpec': viewSpec!.toJson(),
@@ -3263,7 +3262,7 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (column != null) 'column': column!,
         if (description != null) 'description': description!,
         if (mode != null) 'mode': mode!,
@@ -3449,7 +3448,7 @@ class GoogleCloudDatacatalogV1beta1Entry {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bigqueryDateShardedSpec != null)
           'bigqueryDateShardedSpec': bigqueryDateShardedSpec!.toJson(),
         if (bigqueryTableSpec != null)
@@ -3522,7 +3521,7 @@ class GoogleCloudDatacatalogV1beta1EntryGroup {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataCatalogTimestamps != null)
           'dataCatalogTimestamps': dataCatalogTimestamps!.toJson(),
         if (description != null) 'description': description!,
@@ -3549,7 +3548,7 @@ class GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (taxonomies != null)
           'taxonomies': taxonomies!.map((value) => value.toJson()).toList(),
       };
@@ -3581,7 +3580,7 @@ class GoogleCloudDatacatalogV1beta1FieldType {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enumType != null) 'enumType': enumType!.toJson(),
         if (primitiveType != null) 'primitiveType': primitiveType!,
       };
@@ -3603,7 +3602,7 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowedValues != null)
           'allowedValues':
               allowedValues!.map((value) => value.toJson()).toList(),
@@ -3627,7 +3626,7 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
       };
 }
@@ -3666,7 +3665,7 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpec {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (filePath != null) 'filePath': filePath!,
         if (gcsTimestamps != null) 'gcsTimestamps': gcsTimestamps!.toJson(),
         if (sizeBytes != null) 'sizeBytes': sizeBytes!,
@@ -3721,7 +3720,7 @@ class GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (filePatterns != null) 'filePatterns': filePatterns!,
         if (sampleGcsFileSpecs != null)
           'sampleGcsFileSpecs':
@@ -3744,7 +3743,7 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inlineSource != null) 'inlineSource': inlineSource!.toJson(),
       };
 }
@@ -3767,7 +3766,7 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (taxonomies != null)
           'taxonomies': taxonomies!.map((value) => value.toJson()).toList(),
       };
@@ -3792,7 +3791,7 @@ class GoogleCloudDatacatalogV1beta1InlineSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (taxonomies != null)
           'taxonomies': taxonomies!.map((value) => value.toJson()).toList(),
       };
@@ -3823,7 +3822,7 @@ class GoogleCloudDatacatalogV1beta1ListEntriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entries != null)
           'entries': entries!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3856,7 +3855,7 @@ class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entryGroups != null)
           'entryGroups': entryGroups!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3887,7 +3886,7 @@ class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (policyTags != null)
           'policyTags': policyTags!.map((value) => value.toJson()).toList(),
@@ -3919,7 +3918,7 @@ class GoogleCloudDatacatalogV1beta1ListTagsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (tags != null) 'tags': tags!.map((value) => value.toJson()).toList(),
       };
@@ -3949,7 +3948,7 @@ class GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (taxonomies != null)
           'taxonomies': taxonomies!.map((value) => value.toJson()).toList(),
@@ -4022,7 +4021,7 @@ class GoogleCloudDatacatalogV1beta1PolicyTag {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (childPolicyTags != null) 'childPolicyTags': childPolicyTags!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
@@ -4049,7 +4048,7 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (newEnumValueDisplayName != null)
           'newEnumValueDisplayName': newEnumValueDisplayName!,
       };
@@ -4073,7 +4072,7 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (newTagTemplateFieldId != null)
           'newTagTemplateFieldId': newTagTemplateFieldId!,
       };
@@ -4100,7 +4099,7 @@ class GoogleCloudDatacatalogV1beta1Schema {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (columns != null)
           'columns': columns!.map((value) => value.toJson()).toList(),
       };
@@ -4173,7 +4172,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (orderBy != null) 'orderBy': orderBy!,
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
@@ -4246,7 +4245,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (includeGcpPublicDatasets != null)
           'includeGcpPublicDatasets': includeGcpPublicDatasets!,
         if (includeOrgIds != null) 'includeOrgIds': includeOrgIds!,
@@ -4292,7 +4291,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (results != null)
           'results': results!.map((value) => value.toJson()).toList(),
@@ -4360,7 +4359,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (linkedResource != null) 'linkedResource': linkedResource!,
         if (modifyTime != null) 'modifyTime': modifyTime!,
         if (relativeResourceName != null)
@@ -4415,7 +4414,7 @@ class GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (childPolicyTags != null)
           'childPolicyTags':
               childPolicyTags!.map((value) => value.toJson()).toList(),
@@ -4471,7 +4470,7 @@ class GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (activatedPolicyTypes != null)
           'activatedPolicyTypes': activatedPolicyTypes!,
         if (description != null) 'description': description!,
@@ -4510,7 +4509,7 @@ class GoogleCloudDatacatalogV1beta1SystemTimestamps {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -4537,7 +4536,7 @@ class GoogleCloudDatacatalogV1beta1TableSpec {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (groupedEntry != null) 'groupedEntry': groupedEntry!,
       };
 }
@@ -4593,15 +4592,13 @@ class GoogleCloudDatacatalogV1beta1Tag {
       column = _json['column'] as core.String;
     }
     if (_json.containsKey('fields')) {
-      fields = (_json['fields'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              GoogleCloudDatacatalogV1beta1TagField.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      fields = (_json['fields'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleCloudDatacatalogV1beta1TagField.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -4614,7 +4611,7 @@ class GoogleCloudDatacatalogV1beta1Tag {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (column != null) 'column': column!,
         if (fields != null)
           'fields':
@@ -4687,7 +4684,7 @@ class GoogleCloudDatacatalogV1beta1TagField {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
         if (displayName != null) 'displayName': displayName!,
         if (doubleValue != null) 'doubleValue': doubleValue!,
@@ -4711,7 +4708,7 @@ class GoogleCloudDatacatalogV1beta1TagFieldEnumValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
       };
 }
@@ -4757,22 +4754,20 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('fields')) {
-      fields = (_json['fields'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      fields = (_json['fields'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (fields != null)
           'fields':
@@ -4844,7 +4839,7 @@ class GoogleCloudDatacatalogV1beta1TagTemplateField {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (isRequired != null) 'isRequired': isRequired!,
@@ -4933,7 +4928,7 @@ class GoogleCloudDatacatalogV1beta1Taxonomy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (activatedPolicyTypes != null)
           'activatedPolicyTypes': activatedPolicyTypes!,
         if (description != null) 'description': description!,
@@ -4960,7 +4955,7 @@ class GoogleCloudDatacatalogV1beta1ViewSpec {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (viewQuery != null) 'viewQuery': viewQuery!,
       };
 }
@@ -5060,7 +5055,7 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bindings != null)
           'bindings': bindings!.map((value) => value.toJson()).toList(),
         if (etag != null) 'etag': etag!,
@@ -5086,7 +5081,7 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
       };
 }
@@ -5110,7 +5105,7 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -5131,7 +5126,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }

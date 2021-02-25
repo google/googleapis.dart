@@ -6707,7 +6707,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Action', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Action();
-      var od = api.GooglePrivacyDlpV2Action.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Action.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Action(od as api.GooglePrivacyDlpV2Action);
     });
   });
@@ -6715,8 +6717,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2ActivateJobTriggerRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ActivateJobTriggerRequest();
-      var od =
-          api.GooglePrivacyDlpV2ActivateJobTriggerRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2ActivateJobTriggerRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ActivateJobTriggerRequest(
           od as api.GooglePrivacyDlpV2ActivateJobTriggerRequest);
     });
@@ -6726,8 +6729,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2AnalyzeDataSourceRiskDetails();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2AnalyzeDataSourceRiskDetails(
           od as api.GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails);
     });
@@ -6736,7 +6740,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2AuxiliaryTable', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2AuxiliaryTable();
-      var od = api.GooglePrivacyDlpV2AuxiliaryTable.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2AuxiliaryTable.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2AuxiliaryTable(
           od as api.GooglePrivacyDlpV2AuxiliaryTable);
     });
@@ -6745,7 +6751,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2BigQueryField', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2BigQueryField();
-      var od = api.GooglePrivacyDlpV2BigQueryField.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2BigQueryField.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2BigQueryField(
           od as api.GooglePrivacyDlpV2BigQueryField);
     });
@@ -6754,7 +6762,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2BigQueryKey', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2BigQueryKey();
-      var od = api.GooglePrivacyDlpV2BigQueryKey.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2BigQueryKey.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2BigQueryKey(
           od as api.GooglePrivacyDlpV2BigQueryKey);
     });
@@ -6763,7 +6773,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2BigQueryOptions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2BigQueryOptions();
-      var od = api.GooglePrivacyDlpV2BigQueryOptions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2BigQueryOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2BigQueryOptions(
           od as api.GooglePrivacyDlpV2BigQueryOptions);
     });
@@ -6772,7 +6784,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2BigQueryTable', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2BigQueryTable();
-      var od = api.GooglePrivacyDlpV2BigQueryTable.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2BigQueryTable.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2BigQueryTable(
           od as api.GooglePrivacyDlpV2BigQueryTable);
     });
@@ -6781,7 +6795,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2BoundingBox', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2BoundingBox();
-      var od = api.GooglePrivacyDlpV2BoundingBox.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2BoundingBox.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2BoundingBox(
           od as api.GooglePrivacyDlpV2BoundingBox);
     });
@@ -6790,7 +6806,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Bucket', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Bucket();
-      var od = api.GooglePrivacyDlpV2Bucket.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Bucket.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Bucket(od as api.GooglePrivacyDlpV2Bucket);
     });
   });
@@ -6798,7 +6816,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2BucketingConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2BucketingConfig();
-      var od = api.GooglePrivacyDlpV2BucketingConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2BucketingConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2BucketingConfig(
           od as api.GooglePrivacyDlpV2BucketingConfig);
     });
@@ -6807,7 +6827,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2ByteContentItem', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ByteContentItem();
-      var od = api.GooglePrivacyDlpV2ByteContentItem.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2ByteContentItem.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ByteContentItem(
           od as api.GooglePrivacyDlpV2ByteContentItem);
     });
@@ -6816,7 +6838,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2CancelDlpJobRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CancelDlpJobRequest();
-      var od = api.GooglePrivacyDlpV2CancelDlpJobRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2CancelDlpJobRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CancelDlpJobRequest(
           od as api.GooglePrivacyDlpV2CancelDlpJobRequest);
     });
@@ -6825,8 +6849,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2CategoricalStatsConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CategoricalStatsConfig();
-      var od =
-          api.GooglePrivacyDlpV2CategoricalStatsConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2CategoricalStatsConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CategoricalStatsConfig(
           od as api.GooglePrivacyDlpV2CategoricalStatsConfig);
     });
@@ -6836,8 +6861,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CategoricalStatsHistogramBucket();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2CategoricalStatsHistogramBucket.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CategoricalStatsHistogramBucket(
           od as api.GooglePrivacyDlpV2CategoricalStatsHistogramBucket);
     });
@@ -6846,8 +6872,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2CategoricalStatsResult', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CategoricalStatsResult();
-      var od =
-          api.GooglePrivacyDlpV2CategoricalStatsResult.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2CategoricalStatsResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CategoricalStatsResult(
           od as api.GooglePrivacyDlpV2CategoricalStatsResult);
     });
@@ -6856,7 +6883,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2CharacterMaskConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CharacterMaskConfig();
-      var od = api.GooglePrivacyDlpV2CharacterMaskConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2CharacterMaskConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CharacterMaskConfig(
           od as api.GooglePrivacyDlpV2CharacterMaskConfig);
     });
@@ -6865,7 +6894,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2CharsToIgnore', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CharsToIgnore();
-      var od = api.GooglePrivacyDlpV2CharsToIgnore.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2CharsToIgnore.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CharsToIgnore(
           od as api.GooglePrivacyDlpV2CharsToIgnore);
     });
@@ -6874,7 +6905,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2CloudStorageFileSet', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CloudStorageFileSet();
-      var od = api.GooglePrivacyDlpV2CloudStorageFileSet.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2CloudStorageFileSet.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CloudStorageFileSet(
           od as api.GooglePrivacyDlpV2CloudStorageFileSet);
     });
@@ -6883,7 +6916,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2CloudStorageOptions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CloudStorageOptions();
-      var od = api.GooglePrivacyDlpV2CloudStorageOptions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2CloudStorageOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CloudStorageOptions(
           od as api.GooglePrivacyDlpV2CloudStorageOptions);
     });
@@ -6892,7 +6927,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2CloudStoragePath', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CloudStoragePath();
-      var od = api.GooglePrivacyDlpV2CloudStoragePath.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2CloudStoragePath.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CloudStoragePath(
           od as api.GooglePrivacyDlpV2CloudStoragePath);
     });
@@ -6901,8 +6938,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2CloudStorageRegexFileSet', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CloudStorageRegexFileSet();
-      var od =
-          api.GooglePrivacyDlpV2CloudStorageRegexFileSet.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2CloudStorageRegexFileSet.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CloudStorageRegexFileSet(
           od as api.GooglePrivacyDlpV2CloudStorageRegexFileSet);
     });
@@ -6911,7 +6949,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Color', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Color();
-      var od = api.GooglePrivacyDlpV2Color.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Color.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Color(od as api.GooglePrivacyDlpV2Color);
     });
   });
@@ -6919,7 +6959,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Condition', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Condition();
-      var od = api.GooglePrivacyDlpV2Condition.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Condition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Condition(od as api.GooglePrivacyDlpV2Condition);
     });
   });
@@ -6927,7 +6969,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Conditions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Conditions();
-      var od = api.GooglePrivacyDlpV2Conditions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Conditions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Conditions(od as api.GooglePrivacyDlpV2Conditions);
     });
   });
@@ -6935,7 +6979,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Container', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Container();
-      var od = api.GooglePrivacyDlpV2Container.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Container.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Container(od as api.GooglePrivacyDlpV2Container);
     });
   });
@@ -6943,7 +6989,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2ContentItem', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ContentItem();
-      var od = api.GooglePrivacyDlpV2ContentItem.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2ContentItem.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ContentItem(
           od as api.GooglePrivacyDlpV2ContentItem);
     });
@@ -6952,7 +7000,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2ContentLocation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ContentLocation();
-      var od = api.GooglePrivacyDlpV2ContentLocation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2ContentLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ContentLocation(
           od as api.GooglePrivacyDlpV2ContentLocation);
     });
@@ -6962,8 +7012,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CreateDeidentifyTemplateRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CreateDeidentifyTemplateRequest(
           od as api.GooglePrivacyDlpV2CreateDeidentifyTemplateRequest);
     });
@@ -6972,7 +7023,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2CreateDlpJobRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CreateDlpJobRequest();
-      var od = api.GooglePrivacyDlpV2CreateDlpJobRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2CreateDlpJobRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CreateDlpJobRequest(
           od as api.GooglePrivacyDlpV2CreateDlpJobRequest);
     });
@@ -6982,8 +7035,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CreateInspectTemplateRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CreateInspectTemplateRequest(
           od as api.GooglePrivacyDlpV2CreateInspectTemplateRequest);
     });
@@ -6992,8 +7046,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2CreateJobTriggerRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CreateJobTriggerRequest();
-      var od =
-          api.GooglePrivacyDlpV2CreateJobTriggerRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2CreateJobTriggerRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CreateJobTriggerRequest(
           od as api.GooglePrivacyDlpV2CreateJobTriggerRequest);
     });
@@ -7003,8 +7058,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CreateStoredInfoTypeRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CreateStoredInfoTypeRequest(
           od as api.GooglePrivacyDlpV2CreateStoredInfoTypeRequest);
     });
@@ -7013,8 +7069,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2CryptoDeterministicConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CryptoDeterministicConfig();
-      var od =
-          api.GooglePrivacyDlpV2CryptoDeterministicConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2CryptoDeterministicConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CryptoDeterministicConfig(
           od as api.GooglePrivacyDlpV2CryptoDeterministicConfig);
     });
@@ -7023,7 +7080,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2CryptoHashConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CryptoHashConfig();
-      var od = api.GooglePrivacyDlpV2CryptoHashConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2CryptoHashConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CryptoHashConfig(
           od as api.GooglePrivacyDlpV2CryptoHashConfig);
     });
@@ -7032,7 +7091,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2CryptoKey', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CryptoKey();
-      var od = api.GooglePrivacyDlpV2CryptoKey.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2CryptoKey.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CryptoKey(od as api.GooglePrivacyDlpV2CryptoKey);
     });
   });
@@ -7040,8 +7101,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CryptoReplaceFfxFpeConfig();
-      var od =
-          api.GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CryptoReplaceFfxFpeConfig(
           od as api.GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig);
     });
@@ -7050,7 +7112,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2CustomInfoType', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2CustomInfoType();
-      var od = api.GooglePrivacyDlpV2CustomInfoType.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2CustomInfoType.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2CustomInfoType(
           od as api.GooglePrivacyDlpV2CustomInfoType);
     });
@@ -7059,7 +7123,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2DatastoreKey', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DatastoreKey();
-      var od = api.GooglePrivacyDlpV2DatastoreKey.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2DatastoreKey.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DatastoreKey(
           od as api.GooglePrivacyDlpV2DatastoreKey);
     });
@@ -7068,7 +7134,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2DatastoreOptions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DatastoreOptions();
-      var od = api.GooglePrivacyDlpV2DatastoreOptions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2DatastoreOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DatastoreOptions(
           od as api.GooglePrivacyDlpV2DatastoreOptions);
     });
@@ -7077,7 +7145,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2DateShiftConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DateShiftConfig();
-      var od = api.GooglePrivacyDlpV2DateShiftConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2DateShiftConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DateShiftConfig(
           od as api.GooglePrivacyDlpV2DateShiftConfig);
     });
@@ -7086,7 +7156,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2DateTime', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DateTime();
-      var od = api.GooglePrivacyDlpV2DateTime.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2DateTime.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DateTime(od as api.GooglePrivacyDlpV2DateTime);
     });
   });
@@ -7094,7 +7166,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2DeidentifyConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DeidentifyConfig();
-      var od = api.GooglePrivacyDlpV2DeidentifyConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2DeidentifyConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DeidentifyConfig(
           od as api.GooglePrivacyDlpV2DeidentifyConfig);
     });
@@ -7103,8 +7177,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2DeidentifyContentRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DeidentifyContentRequest();
-      var od =
-          api.GooglePrivacyDlpV2DeidentifyContentRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2DeidentifyContentRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DeidentifyContentRequest(
           od as api.GooglePrivacyDlpV2DeidentifyContentRequest);
     });
@@ -7113,8 +7188,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2DeidentifyContentResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DeidentifyContentResponse();
-      var od =
-          api.GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DeidentifyContentResponse(
           od as api.GooglePrivacyDlpV2DeidentifyContentResponse);
     });
@@ -7123,7 +7199,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2DeidentifyTemplate', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DeidentifyTemplate();
-      var od = api.GooglePrivacyDlpV2DeidentifyTemplate.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DeidentifyTemplate(
           od as api.GooglePrivacyDlpV2DeidentifyTemplate);
     });
@@ -7133,8 +7211,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DeltaPresenceEstimationConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2DeltaPresenceEstimationConfig.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DeltaPresenceEstimationConfig(
           od as api.GooglePrivacyDlpV2DeltaPresenceEstimationConfig);
     });
@@ -7145,9 +7224,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket(
           od as api.GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket);
     });
@@ -7157,9 +7237,10 @@ void main() {
       'obj-schema-GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues(
           od as api.GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues);
     });
@@ -7169,8 +7250,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DeltaPresenceEstimationResult();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2DeltaPresenceEstimationResult.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DeltaPresenceEstimationResult(
           od as api.GooglePrivacyDlpV2DeltaPresenceEstimationResult);
     });
@@ -7179,7 +7261,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2DetectionRule', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DetectionRule();
-      var od = api.GooglePrivacyDlpV2DetectionRule.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2DetectionRule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DetectionRule(
           od as api.GooglePrivacyDlpV2DetectionRule);
     });
@@ -7188,7 +7272,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Dictionary', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Dictionary();
-      var od = api.GooglePrivacyDlpV2Dictionary.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Dictionary.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Dictionary(od as api.GooglePrivacyDlpV2Dictionary);
     });
   });
@@ -7196,7 +7282,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2DlpJob', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DlpJob();
-      var od = api.GooglePrivacyDlpV2DlpJob.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2DlpJob.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DlpJob(od as api.GooglePrivacyDlpV2DlpJob);
     });
   });
@@ -7204,7 +7292,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2DocumentLocation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2DocumentLocation();
-      var od = api.GooglePrivacyDlpV2DocumentLocation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2DocumentLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2DocumentLocation(
           od as api.GooglePrivacyDlpV2DocumentLocation);
     });
@@ -7213,7 +7303,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2EntityId', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2EntityId();
-      var od = api.GooglePrivacyDlpV2EntityId.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2EntityId.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2EntityId(od as api.GooglePrivacyDlpV2EntityId);
     });
   });
@@ -7221,7 +7313,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Error', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Error();
-      var od = api.GooglePrivacyDlpV2Error.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Error.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Error(od as api.GooglePrivacyDlpV2Error);
     });
   });
@@ -7229,7 +7323,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2ExcludeInfoTypes', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ExcludeInfoTypes();
-      var od = api.GooglePrivacyDlpV2ExcludeInfoTypes.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2ExcludeInfoTypes.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ExcludeInfoTypes(
           od as api.GooglePrivacyDlpV2ExcludeInfoTypes);
     });
@@ -7238,7 +7334,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2ExclusionRule', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ExclusionRule();
-      var od = api.GooglePrivacyDlpV2ExclusionRule.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2ExclusionRule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ExclusionRule(
           od as api.GooglePrivacyDlpV2ExclusionRule);
     });
@@ -7247,7 +7345,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Expressions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Expressions();
-      var od = api.GooglePrivacyDlpV2Expressions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Expressions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Expressions(
           od as api.GooglePrivacyDlpV2Expressions);
     });
@@ -7256,7 +7356,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2FieldId', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2FieldId();
-      var od = api.GooglePrivacyDlpV2FieldId.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2FieldId.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FieldId(od as api.GooglePrivacyDlpV2FieldId);
     });
   });
@@ -7264,7 +7366,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2FieldTransformation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2FieldTransformation();
-      var od = api.GooglePrivacyDlpV2FieldTransformation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2FieldTransformation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FieldTransformation(
           od as api.GooglePrivacyDlpV2FieldTransformation);
     });
@@ -7273,7 +7377,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2FileSet', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2FileSet();
-      var od = api.GooglePrivacyDlpV2FileSet.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2FileSet.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FileSet(od as api.GooglePrivacyDlpV2FileSet);
     });
   });
@@ -7281,7 +7387,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Finding', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Finding();
-      var od = api.GooglePrivacyDlpV2Finding.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Finding.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Finding(od as api.GooglePrivacyDlpV2Finding);
     });
   });
@@ -7289,7 +7397,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2FindingLimits', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2FindingLimits();
-      var od = api.GooglePrivacyDlpV2FindingLimits.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2FindingLimits.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FindingLimits(
           od as api.GooglePrivacyDlpV2FindingLimits);
     });
@@ -7298,7 +7408,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2FinishDlpJobRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2FinishDlpJobRequest();
-      var od = api.GooglePrivacyDlpV2FinishDlpJobRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2FinishDlpJobRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FinishDlpJobRequest(
           od as api.GooglePrivacyDlpV2FinishDlpJobRequest);
     });
@@ -7307,8 +7419,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2FixedSizeBucketingConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2FixedSizeBucketingConfig();
-      var od =
-          api.GooglePrivacyDlpV2FixedSizeBucketingConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2FixedSizeBucketingConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2FixedSizeBucketingConfig(
           od as api.GooglePrivacyDlpV2FixedSizeBucketingConfig);
     });
@@ -7317,7 +7430,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2HotwordRule', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2HotwordRule();
-      var od = api.GooglePrivacyDlpV2HotwordRule.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2HotwordRule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2HotwordRule(
           od as api.GooglePrivacyDlpV2HotwordRule);
     });
@@ -7326,7 +7441,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2HybridContentItem', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2HybridContentItem();
-      var od = api.GooglePrivacyDlpV2HybridContentItem.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2HybridContentItem.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2HybridContentItem(
           od as api.GooglePrivacyDlpV2HybridContentItem);
     });
@@ -7335,7 +7452,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2HybridFindingDetails', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2HybridFindingDetails();
-      var od = api.GooglePrivacyDlpV2HybridFindingDetails.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2HybridFindingDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2HybridFindingDetails(
           od as api.GooglePrivacyDlpV2HybridFindingDetails);
     });
@@ -7344,8 +7463,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2HybridInspectDlpJobRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2HybridInspectDlpJobRequest();
-      var od =
-          api.GooglePrivacyDlpV2HybridInspectDlpJobRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2HybridInspectDlpJobRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2HybridInspectDlpJobRequest(
           od as api.GooglePrivacyDlpV2HybridInspectDlpJobRequest);
     });
@@ -7355,8 +7475,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2HybridInspectJobTriggerRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2HybridInspectJobTriggerRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2HybridInspectJobTriggerRequest(
           od as api.GooglePrivacyDlpV2HybridInspectJobTriggerRequest);
     });
@@ -7365,7 +7486,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2HybridInspectResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2HybridInspectResponse();
-      var od = api.GooglePrivacyDlpV2HybridInspectResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2HybridInspectResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2HybridInspectResponse(
           od as api.GooglePrivacyDlpV2HybridInspectResponse);
     });
@@ -7374,8 +7497,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2HybridInspectStatistics', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2HybridInspectStatistics();
-      var od =
-          api.GooglePrivacyDlpV2HybridInspectStatistics.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2HybridInspectStatistics.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2HybridInspectStatistics(
           od as api.GooglePrivacyDlpV2HybridInspectStatistics);
     });
@@ -7384,7 +7508,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2HybridOptions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2HybridOptions();
-      var od = api.GooglePrivacyDlpV2HybridOptions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2HybridOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2HybridOptions(
           od as api.GooglePrivacyDlpV2HybridOptions);
     });
@@ -7393,7 +7519,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2ImageLocation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ImageLocation();
-      var od = api.GooglePrivacyDlpV2ImageLocation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2ImageLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ImageLocation(
           od as api.GooglePrivacyDlpV2ImageLocation);
     });
@@ -7402,7 +7530,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2ImageRedactionConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ImageRedactionConfig();
-      var od = api.GooglePrivacyDlpV2ImageRedactionConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2ImageRedactionConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ImageRedactionConfig(
           od as api.GooglePrivacyDlpV2ImageRedactionConfig);
     });
@@ -7411,7 +7541,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2InfoType', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InfoType();
-      var od = api.GooglePrivacyDlpV2InfoType.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2InfoType.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InfoType(od as api.GooglePrivacyDlpV2InfoType);
     });
   });
@@ -7419,7 +7551,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2InfoTypeDescription', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InfoTypeDescription();
-      var od = api.GooglePrivacyDlpV2InfoTypeDescription.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2InfoTypeDescription.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InfoTypeDescription(
           od as api.GooglePrivacyDlpV2InfoTypeDescription);
     });
@@ -7428,7 +7562,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2InfoTypeLimit', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InfoTypeLimit();
-      var od = api.GooglePrivacyDlpV2InfoTypeLimit.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2InfoTypeLimit.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InfoTypeLimit(
           od as api.GooglePrivacyDlpV2InfoTypeLimit);
     });
@@ -7437,7 +7573,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2InfoTypeStats', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InfoTypeStats();
-      var od = api.GooglePrivacyDlpV2InfoTypeStats.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2InfoTypeStats.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InfoTypeStats(
           od as api.GooglePrivacyDlpV2InfoTypeStats);
     });
@@ -7446,8 +7584,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2InfoTypeTransformation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InfoTypeTransformation();
-      var od =
-          api.GooglePrivacyDlpV2InfoTypeTransformation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2InfoTypeTransformation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InfoTypeTransformation(
           od as api.GooglePrivacyDlpV2InfoTypeTransformation);
     });
@@ -7456,8 +7595,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2InfoTypeTransformations', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InfoTypeTransformations();
-      var od =
-          api.GooglePrivacyDlpV2InfoTypeTransformations.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2InfoTypeTransformations.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InfoTypeTransformations(
           od as api.GooglePrivacyDlpV2InfoTypeTransformations);
     });
@@ -7466,7 +7606,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2InspectConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InspectConfig();
-      var od = api.GooglePrivacyDlpV2InspectConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2InspectConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InspectConfig(
           od as api.GooglePrivacyDlpV2InspectConfig);
     });
@@ -7475,7 +7617,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2InspectContentRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InspectContentRequest();
-      var od = api.GooglePrivacyDlpV2InspectContentRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2InspectContentRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InspectContentRequest(
           od as api.GooglePrivacyDlpV2InspectContentRequest);
     });
@@ -7484,8 +7628,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2InspectContentResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InspectContentResponse();
-      var od =
-          api.GooglePrivacyDlpV2InspectContentResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2InspectContentResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InspectContentResponse(
           od as api.GooglePrivacyDlpV2InspectContentResponse);
     });
@@ -7494,8 +7639,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2InspectDataSourceDetails', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InspectDataSourceDetails();
-      var od =
-          api.GooglePrivacyDlpV2InspectDataSourceDetails.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2InspectDataSourceDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InspectDataSourceDetails(
           od as api.GooglePrivacyDlpV2InspectDataSourceDetails);
     });
@@ -7504,7 +7650,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2InspectJobConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InspectJobConfig();
-      var od = api.GooglePrivacyDlpV2InspectJobConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2InspectJobConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InspectJobConfig(
           od as api.GooglePrivacyDlpV2InspectJobConfig);
     });
@@ -7513,7 +7661,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2InspectResult', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InspectResult();
-      var od = api.GooglePrivacyDlpV2InspectResult.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2InspectResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InspectResult(
           od as api.GooglePrivacyDlpV2InspectResult);
     });
@@ -7522,7 +7672,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2InspectTemplate', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InspectTemplate();
-      var od = api.GooglePrivacyDlpV2InspectTemplate.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2InspectTemplate.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InspectTemplate(
           od as api.GooglePrivacyDlpV2InspectTemplate);
     });
@@ -7531,7 +7683,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2InspectionRule', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InspectionRule();
-      var od = api.GooglePrivacyDlpV2InspectionRule.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2InspectionRule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InspectionRule(
           od as api.GooglePrivacyDlpV2InspectionRule);
     });
@@ -7540,7 +7694,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2InspectionRuleSet', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2InspectionRuleSet();
-      var od = api.GooglePrivacyDlpV2InspectionRuleSet.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2InspectionRuleSet.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2InspectionRuleSet(
           od as api.GooglePrivacyDlpV2InspectionRuleSet);
     });
@@ -7549,7 +7705,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2JobNotificationEmails', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2JobNotificationEmails();
-      var od = api.GooglePrivacyDlpV2JobNotificationEmails.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2JobNotificationEmails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2JobNotificationEmails(
           od as api.GooglePrivacyDlpV2JobNotificationEmails);
     });
@@ -7558,7 +7716,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2JobTrigger', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2JobTrigger();
-      var od = api.GooglePrivacyDlpV2JobTrigger.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2JobTrigger.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2JobTrigger(od as api.GooglePrivacyDlpV2JobTrigger);
     });
   });
@@ -7566,7 +7726,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2KAnonymityConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KAnonymityConfig();
-      var od = api.GooglePrivacyDlpV2KAnonymityConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2KAnonymityConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2KAnonymityConfig(
           od as api.GooglePrivacyDlpV2KAnonymityConfig);
     });
@@ -7575,8 +7737,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2KAnonymityEquivalenceClass', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KAnonymityEquivalenceClass();
-      var od =
-          api.GooglePrivacyDlpV2KAnonymityEquivalenceClass.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2KAnonymityEquivalenceClass.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2KAnonymityEquivalenceClass(
           od as api.GooglePrivacyDlpV2KAnonymityEquivalenceClass);
     });
@@ -7585,8 +7748,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2KAnonymityHistogramBucket', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KAnonymityHistogramBucket();
-      var od =
-          api.GooglePrivacyDlpV2KAnonymityHistogramBucket.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2KAnonymityHistogramBucket.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2KAnonymityHistogramBucket(
           od as api.GooglePrivacyDlpV2KAnonymityHistogramBucket);
     });
@@ -7595,7 +7759,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2KAnonymityResult', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KAnonymityResult();
-      var od = api.GooglePrivacyDlpV2KAnonymityResult.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2KAnonymityResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2KAnonymityResult(
           od as api.GooglePrivacyDlpV2KAnonymityResult);
     });
@@ -7604,7 +7770,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2KMapEstimationConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KMapEstimationConfig();
-      var od = api.GooglePrivacyDlpV2KMapEstimationConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2KMapEstimationConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2KMapEstimationConfig(
           od as api.GooglePrivacyDlpV2KMapEstimationConfig);
     });
@@ -7614,8 +7782,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KMapEstimationHistogramBucket();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2KMapEstimationHistogramBucket.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2KMapEstimationHistogramBucket(
           od as api.GooglePrivacyDlpV2KMapEstimationHistogramBucket);
     });
@@ -7625,8 +7794,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KMapEstimationQuasiIdValues();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2KMapEstimationQuasiIdValues(
           od as api.GooglePrivacyDlpV2KMapEstimationQuasiIdValues);
     });
@@ -7635,7 +7805,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2KMapEstimationResult', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KMapEstimationResult();
-      var od = api.GooglePrivacyDlpV2KMapEstimationResult.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2KMapEstimationResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2KMapEstimationResult(
           od as api.GooglePrivacyDlpV2KMapEstimationResult);
     });
@@ -7644,7 +7816,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Key', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Key();
-      var od = api.GooglePrivacyDlpV2Key.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Key.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Key(od as api.GooglePrivacyDlpV2Key);
     });
   });
@@ -7652,7 +7826,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2KindExpression', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KindExpression();
-      var od = api.GooglePrivacyDlpV2KindExpression.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2KindExpression.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2KindExpression(
           od as api.GooglePrivacyDlpV2KindExpression);
     });
@@ -7661,7 +7837,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2KmsWrappedCryptoKey', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2KmsWrappedCryptoKey();
-      var od = api.GooglePrivacyDlpV2KmsWrappedCryptoKey.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2KmsWrappedCryptoKey.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2KmsWrappedCryptoKey(
           od as api.GooglePrivacyDlpV2KmsWrappedCryptoKey);
     });
@@ -7670,7 +7848,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2LDiversityConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2LDiversityConfig();
-      var od = api.GooglePrivacyDlpV2LDiversityConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2LDiversityConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2LDiversityConfig(
           od as api.GooglePrivacyDlpV2LDiversityConfig);
     });
@@ -7679,8 +7859,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2LDiversityEquivalenceClass', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2LDiversityEquivalenceClass();
-      var od =
-          api.GooglePrivacyDlpV2LDiversityEquivalenceClass.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2LDiversityEquivalenceClass.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2LDiversityEquivalenceClass(
           od as api.GooglePrivacyDlpV2LDiversityEquivalenceClass);
     });
@@ -7689,8 +7870,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2LDiversityHistogramBucket', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2LDiversityHistogramBucket();
-      var od =
-          api.GooglePrivacyDlpV2LDiversityHistogramBucket.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2LDiversityHistogramBucket.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2LDiversityHistogramBucket(
           od as api.GooglePrivacyDlpV2LDiversityHistogramBucket);
     });
@@ -7699,7 +7881,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2LDiversityResult', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2LDiversityResult();
-      var od = api.GooglePrivacyDlpV2LDiversityResult.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2LDiversityResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2LDiversityResult(
           od as api.GooglePrivacyDlpV2LDiversityResult);
     });
@@ -7709,8 +7893,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2LargeCustomDictionaryConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2LargeCustomDictionaryConfig(
           od as api.GooglePrivacyDlpV2LargeCustomDictionaryConfig);
     });
@@ -7719,8 +7904,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2LargeCustomDictionaryStats', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2LargeCustomDictionaryStats();
-      var od =
-          api.GooglePrivacyDlpV2LargeCustomDictionaryStats.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2LargeCustomDictionaryStats.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2LargeCustomDictionaryStats(
           od as api.GooglePrivacyDlpV2LargeCustomDictionaryStats);
     });
@@ -7729,7 +7915,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2LeaveUntransformed', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2LeaveUntransformed();
-      var od = api.GooglePrivacyDlpV2LeaveUntransformed.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2LeaveUntransformed.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2LeaveUntransformed(
           od as api.GooglePrivacyDlpV2LeaveUntransformed);
     });
@@ -7738,7 +7926,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2LikelihoodAdjustment', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2LikelihoodAdjustment();
-      var od = api.GooglePrivacyDlpV2LikelihoodAdjustment.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2LikelihoodAdjustment.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2LikelihoodAdjustment(
           od as api.GooglePrivacyDlpV2LikelihoodAdjustment);
     });
@@ -7748,8 +7938,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ListDeidentifyTemplatesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ListDeidentifyTemplatesResponse(
           od as api.GooglePrivacyDlpV2ListDeidentifyTemplatesResponse);
     });
@@ -7758,7 +7949,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2ListDlpJobsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ListDlpJobsResponse();
-      var od = api.GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ListDlpJobsResponse(
           od as api.GooglePrivacyDlpV2ListDlpJobsResponse);
     });
@@ -7767,7 +7960,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2ListInfoTypesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ListInfoTypesResponse();
-      var od = api.GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ListInfoTypesResponse(
           od as api.GooglePrivacyDlpV2ListInfoTypesResponse);
     });
@@ -7777,8 +7972,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ListInspectTemplatesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ListInspectTemplatesResponse(
           od as api.GooglePrivacyDlpV2ListInspectTemplatesResponse);
     });
@@ -7787,8 +7983,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2ListJobTriggersResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ListJobTriggersResponse();
-      var od =
-          api.GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ListJobTriggersResponse(
           od as api.GooglePrivacyDlpV2ListJobTriggersResponse);
     });
@@ -7798,8 +7995,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ListStoredInfoTypesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ListStoredInfoTypesResponse(
           od as api.GooglePrivacyDlpV2ListStoredInfoTypesResponse);
     });
@@ -7808,7 +8006,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Location', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Location();
-      var od = api.GooglePrivacyDlpV2Location.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Location.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Location(od as api.GooglePrivacyDlpV2Location);
     });
   });
@@ -7816,7 +8016,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Manual', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Manual();
-      var od = api.GooglePrivacyDlpV2Manual.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Manual.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Manual(od as api.GooglePrivacyDlpV2Manual);
     });
   });
@@ -7824,7 +8026,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2MetadataLocation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2MetadataLocation();
-      var od = api.GooglePrivacyDlpV2MetadataLocation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2MetadataLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2MetadataLocation(
           od as api.GooglePrivacyDlpV2MetadataLocation);
     });
@@ -7833,7 +8037,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2NumericalStatsConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2NumericalStatsConfig();
-      var od = api.GooglePrivacyDlpV2NumericalStatsConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2NumericalStatsConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2NumericalStatsConfig(
           od as api.GooglePrivacyDlpV2NumericalStatsConfig);
     });
@@ -7842,7 +8048,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2NumericalStatsResult', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2NumericalStatsResult();
-      var od = api.GooglePrivacyDlpV2NumericalStatsResult.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2NumericalStatsResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2NumericalStatsResult(
           od as api.GooglePrivacyDlpV2NumericalStatsResult);
     });
@@ -7851,7 +8059,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2OutputStorageConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2OutputStorageConfig();
-      var od = api.GooglePrivacyDlpV2OutputStorageConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2OutputStorageConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2OutputStorageConfig(
           od as api.GooglePrivacyDlpV2OutputStorageConfig);
     });
@@ -7860,7 +8070,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2PartitionId', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2PartitionId();
-      var od = api.GooglePrivacyDlpV2PartitionId.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2PartitionId.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PartitionId(
           od as api.GooglePrivacyDlpV2PartitionId);
     });
@@ -7869,7 +8081,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2PathElement', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2PathElement();
-      var od = api.GooglePrivacyDlpV2PathElement.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2PathElement.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PathElement(
           od as api.GooglePrivacyDlpV2PathElement);
     });
@@ -7878,8 +8092,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2PrimitiveTransformation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2PrimitiveTransformation();
-      var od =
-          api.GooglePrivacyDlpV2PrimitiveTransformation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2PrimitiveTransformation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PrimitiveTransformation(
           od as api.GooglePrivacyDlpV2PrimitiveTransformation);
     });
@@ -7888,7 +8103,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2PrivacyMetric', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2PrivacyMetric();
-      var od = api.GooglePrivacyDlpV2PrivacyMetric.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2PrivacyMetric.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PrivacyMetric(
           od as api.GooglePrivacyDlpV2PrivacyMetric);
     });
@@ -7897,7 +8114,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Proximity', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Proximity();
-      var od = api.GooglePrivacyDlpV2Proximity.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Proximity.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Proximity(od as api.GooglePrivacyDlpV2Proximity);
     });
   });
@@ -7906,8 +8125,9 @@ void main() {
       'obj-schema-GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2PublishFindingsToCloudDataCatalog();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PublishFindingsToCloudDataCatalog(
           od as api.GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog);
     });
@@ -7916,7 +8136,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2PublishSummaryToCscc', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2PublishSummaryToCscc();
-      var od = api.GooglePrivacyDlpV2PublishSummaryToCscc.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2PublishSummaryToCscc.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PublishSummaryToCscc(
           od as api.GooglePrivacyDlpV2PublishSummaryToCscc);
     });
@@ -7925,7 +8147,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2PublishToPubSub', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2PublishToPubSub();
-      var od = api.GooglePrivacyDlpV2PublishToPubSub.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2PublishToPubSub.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PublishToPubSub(
           od as api.GooglePrivacyDlpV2PublishToPubSub);
     });
@@ -7934,7 +8158,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2PublishToStackdriver', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2PublishToStackdriver();
-      var od = api.GooglePrivacyDlpV2PublishToStackdriver.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2PublishToStackdriver.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2PublishToStackdriver(
           od as api.GooglePrivacyDlpV2PublishToStackdriver);
     });
@@ -7943,7 +8169,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2QuasiId', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2QuasiId();
-      var od = api.GooglePrivacyDlpV2QuasiId.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2QuasiId.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2QuasiId(od as api.GooglePrivacyDlpV2QuasiId);
     });
   });
@@ -7951,7 +8179,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2QuasiIdField', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2QuasiIdField();
-      var od = api.GooglePrivacyDlpV2QuasiIdField.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2QuasiIdField.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2QuasiIdField(
           od as api.GooglePrivacyDlpV2QuasiIdField);
     });
@@ -7960,7 +8190,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2QuasiIdentifierField', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2QuasiIdentifierField();
-      var od = api.GooglePrivacyDlpV2QuasiIdentifierField.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2QuasiIdentifierField.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2QuasiIdentifierField(
           od as api.GooglePrivacyDlpV2QuasiIdentifierField);
     });
@@ -7969,7 +8201,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2QuoteInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2QuoteInfo();
-      var od = api.GooglePrivacyDlpV2QuoteInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2QuoteInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2QuoteInfo(od as api.GooglePrivacyDlpV2QuoteInfo);
     });
   });
@@ -7977,7 +8211,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Range', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Range();
-      var od = api.GooglePrivacyDlpV2Range.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Range.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Range(od as api.GooglePrivacyDlpV2Range);
     });
   });
@@ -7985,7 +8221,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2RecordCondition', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RecordCondition();
-      var od = api.GooglePrivacyDlpV2RecordCondition.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2RecordCondition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RecordCondition(
           od as api.GooglePrivacyDlpV2RecordCondition);
     });
@@ -7994,7 +8232,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2RecordKey', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RecordKey();
-      var od = api.GooglePrivacyDlpV2RecordKey.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2RecordKey.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RecordKey(od as api.GooglePrivacyDlpV2RecordKey);
     });
   });
@@ -8002,7 +8242,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2RecordLocation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RecordLocation();
-      var od = api.GooglePrivacyDlpV2RecordLocation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2RecordLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RecordLocation(
           od as api.GooglePrivacyDlpV2RecordLocation);
     });
@@ -8011,7 +8253,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2RecordSuppression', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RecordSuppression();
-      var od = api.GooglePrivacyDlpV2RecordSuppression.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2RecordSuppression.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RecordSuppression(
           od as api.GooglePrivacyDlpV2RecordSuppression);
     });
@@ -8020,7 +8264,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2RecordTransformations', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RecordTransformations();
-      var od = api.GooglePrivacyDlpV2RecordTransformations.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2RecordTransformations.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RecordTransformations(
           od as api.GooglePrivacyDlpV2RecordTransformations);
     });
@@ -8029,7 +8275,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2RedactConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RedactConfig();
-      var od = api.GooglePrivacyDlpV2RedactConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2RedactConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RedactConfig(
           od as api.GooglePrivacyDlpV2RedactConfig);
     });
@@ -8038,7 +8286,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2RedactImageRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RedactImageRequest();
-      var od = api.GooglePrivacyDlpV2RedactImageRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2RedactImageRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RedactImageRequest(
           od as api.GooglePrivacyDlpV2RedactImageRequest);
     });
@@ -8047,7 +8297,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2RedactImageResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RedactImageResponse();
-      var od = api.GooglePrivacyDlpV2RedactImageResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2RedactImageResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RedactImageResponse(
           od as api.GooglePrivacyDlpV2RedactImageResponse);
     });
@@ -8056,7 +8308,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Regex', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Regex();
-      var od = api.GooglePrivacyDlpV2Regex.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Regex.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Regex(od as api.GooglePrivacyDlpV2Regex);
     });
   });
@@ -8064,8 +8318,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2ReidentifyContentRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ReidentifyContentRequest();
-      var od =
-          api.GooglePrivacyDlpV2ReidentifyContentRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2ReidentifyContentRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ReidentifyContentRequest(
           od as api.GooglePrivacyDlpV2ReidentifyContentRequest);
     });
@@ -8074,8 +8329,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2ReidentifyContentResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ReidentifyContentResponse();
-      var od =
-          api.GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ReidentifyContentResponse(
           od as api.GooglePrivacyDlpV2ReidentifyContentResponse);
     });
@@ -8084,7 +8340,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2ReplaceValueConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ReplaceValueConfig();
-      var od = api.GooglePrivacyDlpV2ReplaceValueConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2ReplaceValueConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ReplaceValueConfig(
           od as api.GooglePrivacyDlpV2ReplaceValueConfig);
     });
@@ -8093,8 +8351,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2ReplaceWithInfoTypeConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ReplaceWithInfoTypeConfig();
-      var od =
-          api.GooglePrivacyDlpV2ReplaceWithInfoTypeConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2ReplaceWithInfoTypeConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ReplaceWithInfoTypeConfig(
           od as api.GooglePrivacyDlpV2ReplaceWithInfoTypeConfig);
     });
@@ -8103,7 +8362,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2RequestedOptions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RequestedOptions();
-      var od = api.GooglePrivacyDlpV2RequestedOptions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2RequestedOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RequestedOptions(
           od as api.GooglePrivacyDlpV2RequestedOptions);
     });
@@ -8113,8 +8374,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RequestedRiskAnalysisOptions();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2RequestedRiskAnalysisOptions.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RequestedRiskAnalysisOptions(
           od as api.GooglePrivacyDlpV2RequestedRiskAnalysisOptions);
     });
@@ -8123,7 +8385,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Result', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Result();
-      var od = api.GooglePrivacyDlpV2Result.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Result.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Result(od as api.GooglePrivacyDlpV2Result);
     });
   });
@@ -8131,7 +8395,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2RiskAnalysisJobConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2RiskAnalysisJobConfig();
-      var od = api.GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2RiskAnalysisJobConfig(
           od as api.GooglePrivacyDlpV2RiskAnalysisJobConfig);
     });
@@ -8140,7 +8406,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Row', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Row();
-      var od = api.GooglePrivacyDlpV2Row.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Row.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Row(od as api.GooglePrivacyDlpV2Row);
     });
   });
@@ -8148,7 +8416,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2SaveFindings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2SaveFindings();
-      var od = api.GooglePrivacyDlpV2SaveFindings.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2SaveFindings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2SaveFindings(
           od as api.GooglePrivacyDlpV2SaveFindings);
     });
@@ -8157,7 +8427,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Schedule', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Schedule();
-      var od = api.GooglePrivacyDlpV2Schedule.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Schedule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Schedule(od as api.GooglePrivacyDlpV2Schedule);
     });
   });
@@ -8165,7 +8437,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2StatisticalTable', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2StatisticalTable();
-      var od = api.GooglePrivacyDlpV2StatisticalTable.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2StatisticalTable.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2StatisticalTable(
           od as api.GooglePrivacyDlpV2StatisticalTable);
     });
@@ -8174,7 +8448,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2StorageConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2StorageConfig();
-      var od = api.GooglePrivacyDlpV2StorageConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2StorageConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2StorageConfig(
           od as api.GooglePrivacyDlpV2StorageConfig);
     });
@@ -8183,7 +8459,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2StorageMetadataLabel', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2StorageMetadataLabel();
-      var od = api.GooglePrivacyDlpV2StorageMetadataLabel.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2StorageMetadataLabel.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2StorageMetadataLabel(
           od as api.GooglePrivacyDlpV2StorageMetadataLabel);
     });
@@ -8192,7 +8470,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2StoredInfoType', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2StoredInfoType();
-      var od = api.GooglePrivacyDlpV2StoredInfoType.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2StoredInfoType.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2StoredInfoType(
           od as api.GooglePrivacyDlpV2StoredInfoType);
     });
@@ -8201,7 +8481,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2StoredInfoTypeConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2StoredInfoTypeConfig();
-      var od = api.GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2StoredInfoTypeConfig(
           od as api.GooglePrivacyDlpV2StoredInfoTypeConfig);
     });
@@ -8210,7 +8492,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2StoredInfoTypeStats', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2StoredInfoTypeStats();
-      var od = api.GooglePrivacyDlpV2StoredInfoTypeStats.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2StoredInfoTypeStats.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2StoredInfoTypeStats(
           od as api.GooglePrivacyDlpV2StoredInfoTypeStats);
     });
@@ -8219,7 +8503,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2StoredInfoTypeVersion', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2StoredInfoTypeVersion();
-      var od = api.GooglePrivacyDlpV2StoredInfoTypeVersion.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2StoredInfoTypeVersion.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2StoredInfoTypeVersion(
           od as api.GooglePrivacyDlpV2StoredInfoTypeVersion);
     });
@@ -8228,7 +8514,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2StoredType', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2StoredType();
-      var od = api.GooglePrivacyDlpV2StoredType.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2StoredType.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2StoredType(od as api.GooglePrivacyDlpV2StoredType);
     });
   });
@@ -8236,7 +8524,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2SummaryResult', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2SummaryResult();
-      var od = api.GooglePrivacyDlpV2SummaryResult.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2SummaryResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2SummaryResult(
           od as api.GooglePrivacyDlpV2SummaryResult);
     });
@@ -8245,7 +8535,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2SurrogateType', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2SurrogateType();
-      var od = api.GooglePrivacyDlpV2SurrogateType.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2SurrogateType.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2SurrogateType(
           od as api.GooglePrivacyDlpV2SurrogateType);
     });
@@ -8254,7 +8546,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Table', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Table();
-      var od = api.GooglePrivacyDlpV2Table.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Table.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Table(od as api.GooglePrivacyDlpV2Table);
     });
   });
@@ -8262,7 +8556,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2TableLocation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TableLocation();
-      var od = api.GooglePrivacyDlpV2TableLocation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2TableLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TableLocation(
           od as api.GooglePrivacyDlpV2TableLocation);
     });
@@ -8271,7 +8567,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2TableOptions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TableOptions();
-      var od = api.GooglePrivacyDlpV2TableOptions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2TableOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TableOptions(
           od as api.GooglePrivacyDlpV2TableOptions);
     });
@@ -8280,7 +8578,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2TaggedField', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TaggedField();
-      var od = api.GooglePrivacyDlpV2TaggedField.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2TaggedField.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TaggedField(
           od as api.GooglePrivacyDlpV2TaggedField);
     });
@@ -8289,7 +8589,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2ThrowError', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ThrowError();
-      var od = api.GooglePrivacyDlpV2ThrowError.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2ThrowError.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ThrowError(od as api.GooglePrivacyDlpV2ThrowError);
     });
   });
@@ -8297,7 +8599,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2TimePartConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TimePartConfig();
-      var od = api.GooglePrivacyDlpV2TimePartConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2TimePartConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TimePartConfig(
           od as api.GooglePrivacyDlpV2TimePartConfig);
     });
@@ -8306,7 +8610,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2TimeZone', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TimeZone();
-      var od = api.GooglePrivacyDlpV2TimeZone.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2TimeZone.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TimeZone(od as api.GooglePrivacyDlpV2TimeZone);
     });
   });
@@ -8314,7 +8620,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2TimespanConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TimespanConfig();
-      var od = api.GooglePrivacyDlpV2TimespanConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2TimespanConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TimespanConfig(
           od as api.GooglePrivacyDlpV2TimespanConfig);
     });
@@ -8324,8 +8632,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TransformationErrorHandling();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2TransformationErrorHandling.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TransformationErrorHandling(
           od as api.GooglePrivacyDlpV2TransformationErrorHandling);
     });
@@ -8334,8 +8643,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2TransformationOverview', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TransformationOverview();
-      var od =
-          api.GooglePrivacyDlpV2TransformationOverview.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2TransformationOverview.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TransformationOverview(
           od as api.GooglePrivacyDlpV2TransformationOverview);
     });
@@ -8344,7 +8654,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2TransformationSummary', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TransformationSummary();
-      var od = api.GooglePrivacyDlpV2TransformationSummary.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2TransformationSummary.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TransformationSummary(
           od as api.GooglePrivacyDlpV2TransformationSummary);
     });
@@ -8353,7 +8665,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2TransientCryptoKey', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2TransientCryptoKey();
-      var od = api.GooglePrivacyDlpV2TransientCryptoKey.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2TransientCryptoKey.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2TransientCryptoKey(
           od as api.GooglePrivacyDlpV2TransientCryptoKey);
     });
@@ -8362,7 +8676,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Trigger', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Trigger();
-      var od = api.GooglePrivacyDlpV2Trigger.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Trigger.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Trigger(od as api.GooglePrivacyDlpV2Trigger);
     });
   });
@@ -8370,7 +8686,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2UnwrappedCryptoKey', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2UnwrappedCryptoKey();
-      var od = api.GooglePrivacyDlpV2UnwrappedCryptoKey.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2UnwrappedCryptoKey.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2UnwrappedCryptoKey(
           od as api.GooglePrivacyDlpV2UnwrappedCryptoKey);
     });
@@ -8380,8 +8698,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2UpdateDeidentifyTemplateRequest(
           od as api.GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest);
     });
@@ -8391,8 +8710,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2UpdateInspectTemplateRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2UpdateInspectTemplateRequest(
           od as api.GooglePrivacyDlpV2UpdateInspectTemplateRequest);
     });
@@ -8401,8 +8721,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2UpdateJobTriggerRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2UpdateJobTriggerRequest();
-      var od =
-          api.GooglePrivacyDlpV2UpdateJobTriggerRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2UpdateJobTriggerRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2UpdateJobTriggerRequest(
           od as api.GooglePrivacyDlpV2UpdateJobTriggerRequest);
     });
@@ -8412,8 +8733,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2UpdateStoredInfoTypeRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2UpdateStoredInfoTypeRequest(
           od as api.GooglePrivacyDlpV2UpdateStoredInfoTypeRequest);
     });
@@ -8422,7 +8744,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2Value', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2Value();
-      var od = api.GooglePrivacyDlpV2Value.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2Value.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2Value(od as api.GooglePrivacyDlpV2Value);
     });
   });
@@ -8430,7 +8754,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2ValueFrequency', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2ValueFrequency();
-      var od = api.GooglePrivacyDlpV2ValueFrequency.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2ValueFrequency.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2ValueFrequency(
           od as api.GooglePrivacyDlpV2ValueFrequency);
     });
@@ -8439,7 +8765,9 @@ void main() {
   unittest.group('obj-schema-GooglePrivacyDlpV2WordList', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePrivacyDlpV2WordList();
-      var od = api.GooglePrivacyDlpV2WordList.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePrivacyDlpV2WordList.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePrivacyDlpV2WordList(od as api.GooglePrivacyDlpV2WordList);
     });
   });
@@ -8447,7 +8775,9 @@ void main() {
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
-      var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleProtobufEmpty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
     });
   });
@@ -8455,7 +8785,9 @@ void main() {
   unittest.group('obj-schema-GoogleRpcStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
-      var od = api.GoogleRpcStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleRpcStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
     });
   });
@@ -8463,7 +8795,9 @@ void main() {
   unittest.group('obj-schema-GoogleTypeDate', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeDate();
-      var od = api.GoogleTypeDate.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleTypeDate.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleTypeDate(od as api.GoogleTypeDate);
     });
   });
@@ -8471,7 +8805,9 @@ void main() {
   unittest.group('obj-schema-GoogleTypeTimeOfDay', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeTimeOfDay();
-      var od = api.GoogleTypeTimeOfDay.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleTypeTimeOfDay.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleTypeTimeOfDay(od as api.GoogleTypeTimeOfDay);
     });
   });

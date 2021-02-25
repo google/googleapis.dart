@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -2466,7 +2465,7 @@ class Acl {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -2506,7 +2505,7 @@ class AclRuleScope {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
         if (value != null) 'value': value!,
       };
@@ -2561,7 +2560,7 @@ class AclRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -2635,7 +2634,7 @@ class Calendar {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (conferenceProperties != null)
           'conferenceProperties': conferenceProperties!.toJson(),
         if (description != null) 'description': description!,
@@ -2694,7 +2693,7 @@ class CalendarList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -2721,7 +2720,7 @@ class CalendarListEntryNotificationSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (notifications != null)
           'notifications':
               notifications!.map((value) => value.toJson()).toList(),
@@ -2898,7 +2897,7 @@ class CalendarListEntry {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessRole != null) 'accessRole': accessRole!,
         if (backgroundColor != null) 'backgroundColor': backgroundColor!,
         if (colorId != null) 'colorId': colorId!,
@@ -2958,7 +2957,7 @@ class CalendarNotification {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (method != null) 'method': method!,
         if (type != null) 'type': type!,
       };
@@ -3027,13 +3026,12 @@ class Channel {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('params')) {
-      params =
-          (_json['params'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      params = (_json['params'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('payload')) {
       payload = _json['payload'] as core.bool;
@@ -3052,7 +3050,7 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
         if (expiration != null) 'expiration': expiration!,
         if (id != null) 'id': id!,
@@ -3085,7 +3083,7 @@ class ColorDefinition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (background != null) 'background': background!,
         if (foreground != null) 'foreground': foreground!,
       };
@@ -3118,26 +3116,20 @@ class Colors {
 
   Colors.fromJson(core.Map _json) {
     if (_json.containsKey('calendar')) {
-      calendar = (_json['calendar'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              ColorDefinition.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      calendar = (_json['calendar'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          ColorDefinition.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('event')) {
-      event = (_json['event'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              ColorDefinition.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      event = (_json['event'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          ColorDefinition.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -3147,7 +3139,7 @@ class Colors {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (calendar != null)
           'calendar':
               calendar!.map((key, item) => core.MapEntry(key, item.toJson())),
@@ -3245,7 +3237,7 @@ class ConferenceData {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (conferenceId != null) 'conferenceId': conferenceId!,
         if (conferenceSolution != null)
           'conferenceSolution': conferenceSolution!.toJson(),
@@ -3271,7 +3263,7 @@ class ConferenceParameters {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addOnParameters != null)
           'addOnParameters': addOnParameters!.toJson(),
       };
@@ -3284,18 +3276,17 @@ class ConferenceParametersAddOnParameters {
 
   ConferenceParametersAddOnParameters.fromJson(core.Map _json) {
     if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      parameters =
+          (_json['parameters'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parameters != null) 'parameters': parameters!,
       };
 }
@@ -3319,7 +3310,7 @@ class ConferenceProperties {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowedConferenceSolutionTypes != null)
           'allowedConferenceSolutionTypes': allowedConferenceSolutionTypes!,
       };
@@ -3345,7 +3336,7 @@ class ConferenceRequestStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (statusCode != null) 'statusCode': statusCode!,
       };
 }
@@ -3378,7 +3369,7 @@ class ConferenceSolution {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (iconUri != null) 'iconUri': iconUri!,
         if (key != null) 'key': key!.toJson(),
         if (name != null) 'name': name!,
@@ -3407,7 +3398,7 @@ class ConferenceSolutionKey {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
       };
 }
@@ -3443,7 +3434,7 @@ class CreateConferenceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (conferenceSolutionKey != null)
           'conferenceSolutionKey': conferenceSolutionKey!.toJson(),
         if (requestId != null) 'requestId': requestId!,
@@ -3587,7 +3578,7 @@ class EntryPoint {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessCode != null) 'accessCode': accessCode!,
         if (entryPointFeatures != null)
           'entryPointFeatures': entryPointFeatures!,
@@ -3630,7 +3621,7 @@ class Error {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (domain != null) 'domain': domain!,
         if (reason != null) 'reason': reason!,
       };
@@ -3674,7 +3665,7 @@ class EventCreator {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (email != null) 'email': email!,
         if (id != null) 'id': id!,
@@ -3696,26 +3687,24 @@ class EventExtendedProperties {
 
   EventExtendedProperties.fromJson(core.Map _json) {
     if (_json.containsKey('private')) {
-      private =
-          (_json['private'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      private = (_json['private'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('shared')) {
-      shared =
-          (_json['shared'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      shared = (_json['shared'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (private != null) 'private': private!,
         if (shared != null) 'shared': shared!,
       };
@@ -3783,14 +3772,13 @@ class EventGadget {
       link = _json['link'] as core.String;
     }
     if (_json.containsKey('preferences')) {
-      preferences = (_json['preferences'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      preferences =
+          (_json['preferences'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -3803,7 +3791,7 @@ class EventGadget {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (display != null) 'display': display!,
         if (height != null) 'height': height!,
         if (iconLink != null) 'iconLink': iconLink!,
@@ -3858,7 +3846,7 @@ class EventOrganizer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (email != null) 'email': email!,
         if (id != null) 'id': id!,
@@ -3892,7 +3880,7 @@ class EventReminders {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (overrides != null)
           'overrides': overrides!.map((value) => value.toJson()).toList(),
         if (useDefault != null) 'useDefault': useDefault!,
@@ -3925,7 +3913,7 @@ class EventSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (title != null) 'title': title!,
         if (url != null) 'url': url!,
       };
@@ -4345,7 +4333,7 @@ class Event {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (anyoneCanAddSelf != null) 'anyoneCanAddSelf': anyoneCanAddSelf!,
         if (attachments != null)
           'attachments': attachments!.map((value) => value.toJson()).toList(),
@@ -4440,7 +4428,7 @@ class EventAttachment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fileId != null) 'fileId': fileId!,
         if (fileUrl != null) 'fileUrl': fileUrl!,
         if (iconLink != null) 'iconLink': iconLink!,
@@ -4544,7 +4532,7 @@ class EventAttendee {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (additionalGuests != null) 'additionalGuests': additionalGuests!,
         if (comment != null) 'comment': comment!,
         if (displayName != null) 'displayName': displayName!,
@@ -4590,7 +4578,7 @@ class EventDateTime {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (date != null)
           'date':
               "${(date!).year.toString().padLeft(4, '0')}-${(date!).month.toString().padLeft(2, '0')}-${(date!).day.toString().padLeft(2, '0')}",
@@ -4626,7 +4614,7 @@ class EventReminder {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (method != null) 'method': method!,
         if (minutes != null) 'minutes': minutes!,
       };
@@ -4741,7 +4729,7 @@ class Events {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessRole != null) 'accessRole': accessRole!,
         if (defaultReminders != null)
           'defaultReminders':
@@ -4783,7 +4771,7 @@ class FreeBusyCalendar {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (busy != null) 'busy': busy!.map((value) => value.toJson()).toList(),
         if (errors != null)
           'errors': errors!.map((value) => value.toJson()).toList(),
@@ -4813,7 +4801,7 @@ class FreeBusyGroup {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (calendars != null) 'calendars': calendars!,
         if (errors != null)
           'errors': errors!.map((value) => value.toJson()).toList(),
@@ -4873,7 +4861,7 @@ class FreeBusyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (calendarExpansionMax != null)
           'calendarExpansionMax': calendarExpansionMax!,
         if (groupExpansionMax != null) 'groupExpansionMax': groupExpansionMax!,
@@ -4897,7 +4885,7 @@ class FreeBusyRequestItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
       };
 }
@@ -4922,26 +4910,22 @@ class FreeBusyResponse {
 
   FreeBusyResponse.fromJson(core.Map _json) {
     if (_json.containsKey('calendars')) {
-      calendars = (_json['calendars'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              FreeBusyCalendar.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      calendars =
+          (_json['calendars'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          FreeBusyCalendar.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('groups')) {
-      groups = (_json['groups'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              FreeBusyGroup.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      groups = (_json['groups'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          FreeBusyGroup.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -4954,7 +4938,7 @@ class FreeBusyResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (calendars != null)
           'calendars':
               calendars!.map((key, item) => core.MapEntry(key, item.toJson())),
@@ -5000,7 +4984,7 @@ class Setting {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -5054,7 +5038,7 @@ class Settings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -5082,7 +5066,7 @@ class TimePeriod {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (end != null) 'end': end!.toIso8601String(),
         if (start != null) 'start': start!.toIso8601String(),
       };

@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1466,7 +1465,7 @@ class Address {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (city != null) 'city': city!,
         if (country != null) 'country': country!,
         if (countryCode != null) 'countryCode': countryCode!,
@@ -1507,7 +1506,7 @@ class AgeRangeType {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ageRange != null) 'ageRange': ageRange!,
         if (metadata != null) 'metadata': metadata!.toJson(),
       };
@@ -1529,7 +1528,7 @@ class BatchGetContactGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (responses != null)
           'responses': responses!.map((value) => value.toJson()).toList(),
       };
@@ -1565,7 +1564,7 @@ class Biography {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentType != null) 'contentType': contentType!,
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (value != null) 'value': value!,
@@ -1602,7 +1601,7 @@ class Birthday {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (date != null) 'date': date!.toJson(),
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (text != null) 'text': text!,
@@ -1629,7 +1628,7 @@ class BraggingRights {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (value != null) 'value': value!,
       };
@@ -1673,7 +1672,7 @@ class CalendarUrl {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (formattedType != null) 'formattedType': formattedType!,
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (type != null) 'type': type!,
@@ -1709,7 +1708,7 @@ class ClientData {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (value != null) 'value': value!,
@@ -1811,7 +1810,7 @@ class ContactGroup {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clientData != null)
           'clientData': clientData!.map((value) => value.toJson()).toList(),
         if (etag != null) 'etag': etag!,
@@ -1854,7 +1853,7 @@ class ContactGroupMembership {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contactGroupId != null) 'contactGroupId': contactGroupId!,
         if (contactGroupResourceName != null)
           'contactGroupResourceName': contactGroupResourceName!,
@@ -1888,7 +1887,7 @@ class ContactGroupMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deleted != null) 'deleted': deleted!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -1921,7 +1920,7 @@ class ContactGroupResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contactGroup != null) 'contactGroup': contactGroup!.toJson(),
         if (requestedResourceName != null)
           'requestedResourceName': requestedResourceName!,
@@ -1976,7 +1975,7 @@ class CopyOtherContactToMyContactsGroupRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (copyMask != null) 'copyMask': copyMask!,
         if (readMask != null) 'readMask': readMask!,
         if (sources != null) 'sources': sources!,
@@ -2013,7 +2012,7 @@ class CoverPhoto {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (default_ != null) 'default': default_!,
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (url != null) 'url': url!,
@@ -2047,7 +2046,7 @@ class CreateContactGroupRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contactGroup != null) 'contactGroup': contactGroup!.toJson(),
         if (readGroupFields != null) 'readGroupFields': readGroupFields!,
       };
@@ -2093,7 +2092,7 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
         if (month != null) 'month': month!,
         if (year != null) 'year': year!,
@@ -2115,7 +2114,7 @@ class DeleteContactPhotoResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (person != null) 'person': person!.toJson(),
       };
 }
@@ -2133,7 +2132,7 @@ class DomainMembership {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inViewerDomain != null) 'inViewerDomain': inViewerDomain!,
       };
 }
@@ -2182,7 +2181,7 @@ class EmailAddress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (formattedType != null) 'formattedType': formattedType!,
         if (metadata != null) 'metadata': metadata!.toJson(),
@@ -2205,7 +2204,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// An event related to the person.
@@ -2247,7 +2246,7 @@ class Event {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (date != null) 'date': date!.toJson(),
         if (formattedType != null) 'formattedType': formattedType!,
         if (metadata != null) 'metadata': metadata!.toJson(),
@@ -2293,7 +2292,7 @@ class ExternalId {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (formattedType != null) 'formattedType': formattedType!,
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (type != null) 'type': type!,
@@ -2333,7 +2332,7 @@ class FieldMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (primary != null) 'primary': primary!,
         if (source != null) 'source': source!.toJson(),
         if (verified != null) 'verified': verified!,
@@ -2360,7 +2359,7 @@ class FileAs {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (value != null) 'value': value!,
       };
@@ -2409,7 +2408,7 @@ class Gender {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addressMeAs != null) 'addressMeAs': addressMeAs!,
         if (formattedValue != null) 'formattedValue': formattedValue!,
         if (metadata != null) 'metadata': metadata!.toJson(),
@@ -2433,7 +2432,7 @@ class GetPeopleResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (responses != null)
           'responses': responses!.map((value) => value.toJson()).toList(),
       };
@@ -2460,7 +2459,7 @@ class GroupClientData {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (value != null) 'value': value!,
       };
@@ -2523,7 +2522,7 @@ class ImClient {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (formattedProtocol != null) 'formattedProtocol': formattedProtocol!,
         if (formattedType != null) 'formattedType': formattedType!,
         if (metadata != null) 'metadata': metadata!.toJson(),
@@ -2553,7 +2552,7 @@ class Interest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (value != null) 'value': value!,
       };
@@ -2606,7 +2605,7 @@ class ListConnectionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (connections != null)
           'connections': connections!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2652,7 +2651,7 @@ class ListContactGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contactGroups != null)
           'contactGroups':
               contactGroups!.map((value) => value.toJson()).toList(),
@@ -2695,7 +2694,7 @@ class ListDirectoryPeopleResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (nextSyncToken != null) 'nextSyncToken': nextSyncToken!,
         if (people != null)
@@ -2739,7 +2738,7 @@ class ListOtherContactsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (nextSyncToken != null) 'nextSyncToken': nextSyncToken!,
         if (otherContacts != null)
@@ -2769,7 +2768,7 @@ class Locale {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (value != null) 'value': value!,
       };
@@ -2834,7 +2833,7 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (buildingId != null) 'buildingId': buildingId!,
         if (current != null) 'current': current!,
         if (deskCode != null) 'deskCode': deskCode!,
@@ -2879,7 +2878,7 @@ class Membership {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contactGroupMembership != null)
           'contactGroupMembership': contactGroupMembership!.toJson(),
         if (domainMembership != null)
@@ -2936,7 +2935,7 @@ class MiscKeyword {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (formattedType != null) 'formattedType': formattedType!,
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (type != null) 'type': type!,
@@ -2982,7 +2981,7 @@ class ModifyContactGroupMembersRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resourceNamesToAdd != null)
           'resourceNamesToAdd': resourceNamesToAdd!,
         if (resourceNamesToRemove != null)
@@ -3015,7 +3014,7 @@ class ModifyContactGroupMembersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (canNotRemoveLastContactGroupResourceNames != null)
           'canNotRemoveLastContactGroupResourceNames':
               canNotRemoveLastContactGroupResourceNames!,
@@ -3131,7 +3130,7 @@ class Name {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (displayNameLastFirst != null)
           'displayNameLastFirst': displayNameLastFirst!,
@@ -3191,7 +3190,7 @@ class Nickname {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (type != null) 'type': type!,
         if (value != null) 'value': value!,
@@ -3218,7 +3217,7 @@ class Occupation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (value != null) 'value': value!,
       };
@@ -3329,7 +3328,7 @@ class Organization {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (current != null) 'current': current!,
         if (department != null) 'department': department!,
         if (domain != null) 'domain': domain!,
@@ -3729,7 +3728,7 @@ class Person {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addresses != null)
           'addresses': addresses!.map((value) => value.toJson()).toList(),
         if (ageRange != null) 'ageRange': ageRange!,
@@ -3878,7 +3877,7 @@ class PersonMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deleted != null) 'deleted': deleted!,
         if (linkedPeopleResourceNames != null)
           'linkedPeopleResourceNames': linkedPeopleResourceNames!,
@@ -3929,7 +3928,7 @@ class PersonResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (httpStatusCode != null) 'httpStatusCode': httpStatusCode!,
         if (person != null) 'person': person!.toJson(),
         if (requestedResourceName != null)
@@ -3987,7 +3986,7 @@ class PhoneNumber {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (canonicalForm != null) 'canonicalForm': canonicalForm!,
         if (formattedType != null) 'formattedType': formattedType!,
         if (metadata != null) 'metadata': metadata!.toJson(),
@@ -4030,7 +4029,7 @@ class Photo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (default_ != null) 'default': default_!,
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (url != null) 'url': url!,
@@ -4066,7 +4065,7 @@ class ProfileMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (objectType != null) 'objectType': objectType!,
         if (userTypes != null) 'userTypes': userTypes!,
       };
@@ -4112,7 +4111,7 @@ class Relation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (formattedType != null) 'formattedType': formattedType!,
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (person != null) 'person': person!,
@@ -4153,7 +4152,7 @@ class RelationshipInterest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (formattedValue != null) 'formattedValue': formattedValue!,
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (value != null) 'value': value!,
@@ -4193,7 +4192,7 @@ class RelationshipStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (formattedValue != null) 'formattedValue': formattedValue!,
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (value != null) 'value': value!,
@@ -4229,7 +4228,7 @@ class Residence {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (current != null) 'current': current!,
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (value != null) 'value': value!,
@@ -4267,7 +4266,7 @@ class SearchDirectoryPeopleResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (people != null)
           'people': people!.map((value) => value.toJson()).toList(),
@@ -4291,7 +4290,7 @@ class SearchResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (results != null)
           'results': results!.map((value) => value.toJson()).toList(),
       };
@@ -4311,7 +4310,7 @@ class SearchResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (person != null) 'person': person!.toJson(),
       };
 }
@@ -4359,7 +4358,7 @@ class SipAddress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (formattedType != null) 'formattedType': formattedType!,
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (type != null) 'type': type!,
@@ -4387,7 +4386,7 @@ class Skill {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (value != null) 'value': value!,
       };
@@ -4457,7 +4456,7 @@ class Source {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (profileMetadata != null)
@@ -4500,8 +4499,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -4514,7 +4513,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -4542,7 +4541,7 @@ class Tagline {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (value != null) 'value': value!,
       };
@@ -4590,7 +4589,7 @@ class UpdateContactGroupRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contactGroup != null) 'contactGroup': contactGroup!.toJson(),
         if (readGroupFields != null) 'readGroupFields': readGroupFields!,
         if (updateGroupFields != null) 'updateGroupFields': updateGroupFields!,
@@ -4651,7 +4650,7 @@ class UpdateContactPhotoRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (personFields != null) 'personFields': personFields!,
         if (photoBytes != null) 'photoBytes': photoBytes!,
         if (sources != null) 'sources': sources!,
@@ -4673,7 +4672,7 @@ class UpdateContactPhotoResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (person != null) 'person': person!.toJson(),
       };
 }
@@ -4717,7 +4716,7 @@ class Url {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (formattedType != null) 'formattedType': formattedType!,
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (type != null) 'type': type!,
@@ -4751,7 +4750,7 @@ class UserDefined {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (value != null) 'value': value!,

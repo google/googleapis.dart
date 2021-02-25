@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -542,7 +541,7 @@ class AptSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (excludes != null) 'excludes': excludes!,
         if (exclusivePackages != null) 'exclusivePackages': exclusivePackages!,
         if (type != null) 'type': type!,
@@ -557,7 +556,7 @@ class CancelPatchJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -574,7 +573,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A step that runs an executable for a PatchJob.
@@ -599,7 +598,7 @@ class ExecStep {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (linuxExecStepConfig != null)
           'linuxExecStepConfig': linuxExecStepConfig!.toJson(),
         if (windowsExecStepConfig != null)
@@ -656,7 +655,7 @@ class ExecStepConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowedSuccessCodes != null)
           'allowedSuccessCodes': allowedSuccessCodes!,
         if (gcsObject != null) 'gcsObject': gcsObject!.toJson(),
@@ -729,7 +728,7 @@ class ExecutePatchJobRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (dryRun != null) 'dryRun': dryRun!,
@@ -761,7 +760,7 @@ class FixedOrPercent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fixed != null) 'fixed': fixed!,
         if (percent != null) 'percent': percent!,
       };
@@ -801,7 +800,7 @@ class GcsObject {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bucket != null) 'bucket': bucket!,
         if (generationNumber != null) 'generationNumber': generationNumber!,
         if (object != null) 'object': object!,
@@ -816,7 +815,7 @@ class GooSettings {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The inventory details of a VM.
@@ -835,15 +834,12 @@ class Inventory {
 
   Inventory.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
-      items = (_json['items'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              InventoryItem.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      items = (_json['items'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          InventoryItem.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('osInfo')) {
       osInfo = InventoryOsInfo.fromJson(
@@ -851,7 +847,7 @@ class Inventory {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((key, item) => core.MapEntry(key, item.toJson())),
         if (osInfo != null) 'osInfo': osInfo!.toJson(),
@@ -919,7 +915,7 @@ class InventoryItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (availablePackage != null)
           'availablePackage': availablePackage!.toJson(),
         if (createTime != null) 'createTime': createTime!,
@@ -992,7 +988,7 @@ class InventoryOsInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (architecture != null) 'architecture': architecture!,
         if (hostname != null) 'hostname': hostname!,
         if (kernelRelease != null) 'kernelRelease': kernelRelease!,
@@ -1090,7 +1086,7 @@ class InventorySoftwarePackage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aptPackage != null) 'aptPackage': aptPackage!.toJson(),
         if (cosPackage != null) 'cosPackage': cosPackage!.toJson(),
         if (googetPackage != null) 'googetPackage': googetPackage!.toJson(),
@@ -1130,7 +1126,7 @@ class InventoryVersionedPackage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (architecture != null) 'architecture': architecture!,
         if (packageName != null) 'packageName': packageName!,
         if (version != null) 'version': version!,
@@ -1174,7 +1170,7 @@ class InventoryWindowsQuickFixEngineeringPackage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (caption != null) 'caption': caption!,
         if (description != null) 'description': description!,
         if (hotFixId != null) 'hotFixId': hotFixId!,
@@ -1261,7 +1257,7 @@ class InventoryWindowsUpdatePackage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (categories != null)
           'categories': categories!.map((value) => value.toJson()).toList(),
         if (description != null) 'description': description!,
@@ -1295,7 +1291,7 @@ class InventoryWindowsUpdatePackageWindowsUpdateCategory {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
       };
@@ -1332,7 +1328,7 @@ class InventoryZypperPatch {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!,
         if (patchName != null) 'patchName': patchName!,
         if (severity != null) 'severity': severity!,
@@ -1363,7 +1359,7 @@ class ListPatchDeploymentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (patchDeployments != null)
           'patchDeployments':
@@ -1394,7 +1390,7 @@ class ListPatchJobInstanceDetailsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (patchJobInstanceDetails != null)
           'patchJobInstanceDetails':
@@ -1424,7 +1420,7 @@ class ListPatchJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (patchJobs != null)
           'patchJobs': patchJobs!.map((value) => value.toJson()).toList(),
@@ -1463,7 +1459,7 @@ class MonthlySchedule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (monthDay != null) 'monthDay': monthDay!,
         if (weekDayOfMonth != null) 'weekDayOfMonth': weekDayOfMonth!.toJson(),
       };
@@ -1486,7 +1482,7 @@ class OneTimeSchedule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (executeTime != null) 'executeTime': executeTime!,
       };
 }
@@ -1573,7 +1569,7 @@ class PatchConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apt != null) 'apt': apt!.toJson(),
         if (goo != null) 'goo': goo!.toJson(),
         if (postStep != null) 'postStep': postStep!.toJson(),
@@ -1706,7 +1702,7 @@ class PatchDeployment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (duration != null) 'duration': duration!,
@@ -1788,7 +1784,7 @@ class PatchInstanceFilter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (all != null) 'all': all!,
         if (groupLabels != null)
           'groupLabels': groupLabels!.map((value) => value.toJson()).toList(),
@@ -1816,17 +1812,16 @@ class PatchInstanceFilterGroupLabel {
 
   PatchInstanceFilterGroupLabel.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (labels != null) 'labels': labels!,
       };
 }
@@ -1961,7 +1956,7 @@ class PatchJob {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
@@ -2044,7 +2039,7 @@ class PatchJobInstanceDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attemptCount != null) 'attemptCount': attemptCount!,
         if (failureReason != null) 'failureReason': failureReason!,
         if (instanceSystemId != null) 'instanceSystemId': instanceSystemId!,
@@ -2164,7 +2159,7 @@ class PatchJobInstanceDetailsSummary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ackedInstanceCount != null)
           'ackedInstanceCount': ackedInstanceCount!,
         if (applyingPatchesInstanceCount != null)
@@ -2251,7 +2246,7 @@ class PatchRollout {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (disruptionBudget != null)
           'disruptionBudget': disruptionBudget!.toJson(),
         if (mode != null) 'mode': mode!,
@@ -2352,7 +2347,7 @@ class RecurringSchedule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (frequency != null) 'frequency': frequency!,
         if (lastExecuteTime != null) 'lastExecuteTime': lastExecuteTime!,
@@ -2410,7 +2405,7 @@ class TimeOfDay {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hours != null) 'hours': hours!,
         if (minutes != null) 'minutes': minutes!,
         if (nanos != null) 'nanos': nanos!,
@@ -2440,7 +2435,7 @@ class TimeZone {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (version != null) 'version': version!,
       };
@@ -2483,7 +2478,7 @@ class WeekDayOfMonth {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
         if (weekOrdinal != null) 'weekOrdinal': weekOrdinal!,
       };
@@ -2513,7 +2508,7 @@ class WeeklySchedule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
       };
 }
@@ -2554,7 +2549,7 @@ class WindowsUpdateSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (classifications != null) 'classifications': classifications!,
         if (excludes != null) 'excludes': excludes!,
         if (exclusivePatches != null) 'exclusivePatches': exclusivePatches!,
@@ -2607,7 +2602,7 @@ class YumSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (excludes != null) 'excludes': excludes!,
         if (exclusivePackages != null) 'exclusivePackages': exclusivePackages!,
         if (minimal != null) 'minimal': minimal!,
@@ -2676,7 +2671,7 @@ class ZypperSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (categories != null) 'categories': categories!,
         if (excludes != null) 'excludes': excludes!,
         if (exclusivePatches != null) 'exclusivePatches': exclusivePatches!,

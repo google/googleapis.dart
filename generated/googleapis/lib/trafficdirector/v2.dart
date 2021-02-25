@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -111,7 +110,7 @@ class Address {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (pipe != null) 'pipe': pipe!.toJson(),
         if (socketAddress != null) 'socketAddress': socketAddress!.toJson(),
       };
@@ -136,13 +135,12 @@ class BuildVersion {
 
   BuildVersion.fromJson(core.Map _json) {
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('version')) {
       version = SemanticVersion.fromJson(
@@ -150,7 +148,7 @@ class BuildVersion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!,
         if (version != null) 'version': version!.toJson(),
       };
@@ -177,7 +175,7 @@ class ClientConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (node != null) 'node': node!.toJson(),
         if (xdsConfig != null)
           'xdsConfig': xdsConfig!.map((value) => value.toJson()).toList(),
@@ -202,7 +200,7 @@ class ClientStatusRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nodeMatchers != null)
           'nodeMatchers': nodeMatchers!.map((value) => value.toJson()).toList(),
       };
@@ -223,7 +221,7 @@ class ClientStatusResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (config != null)
           'config': config!.map((value) => value.toJson()).toList(),
       };
@@ -284,7 +282,7 @@ class ClustersConfigDump {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dynamicActiveClusters != null)
           'dynamicActiveClusters':
               dynamicActiveClusters!.map((value) => value.toJson()).toList(),
@@ -321,7 +319,7 @@ class DoubleMatcher {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exact != null) 'exact': exact!,
         if (range != null) 'range': range!.toJson(),
       };
@@ -347,7 +345,7 @@ class DoubleRange {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (end != null) 'end': end!,
         if (start != null) 'start': start!,
       };
@@ -375,13 +373,12 @@ class DynamicCluster {
 
   DynamicCluster.fromJson(core.Map _json) {
     if (_json.containsKey('cluster')) {
-      cluster =
-          (_json['cluster'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      cluster = (_json['cluster'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('lastUpdated')) {
       lastUpdated = _json['lastUpdated'] as core.String;
@@ -391,7 +388,7 @@ class DynamicCluster {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cluster != null) 'cluster': cluster!,
         if (lastUpdated != null) 'lastUpdated': lastUpdated!,
         if (versionInfo != null) 'versionInfo': versionInfo!,
@@ -454,7 +451,7 @@ class DynamicListener {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (activeState != null) 'activeState': activeState!.toJson(),
         if (drainingState != null) 'drainingState': drainingState!.toJson(),
         if (errorState != null) 'errorState': errorState!.toJson(),
@@ -487,20 +484,19 @@ class DynamicListenerState {
       lastUpdated = _json['lastUpdated'] as core.String;
     }
     if (_json.containsKey('listener')) {
-      listener =
-          (_json['listener'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      listener = (_json['listener'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('versionInfo')) {
       versionInfo = _json['versionInfo'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (lastUpdated != null) 'lastUpdated': lastUpdated!,
         if (listener != null) 'listener': listener!,
         if (versionInfo != null) 'versionInfo': versionInfo!,
@@ -530,21 +526,20 @@ class DynamicRouteConfig {
       lastUpdated = _json['lastUpdated'] as core.String;
     }
     if (_json.containsKey('routeConfig')) {
-      routeConfig = (_json['routeConfig'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      routeConfig =
+          (_json['routeConfig'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('versionInfo')) {
       versionInfo = _json['versionInfo'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (lastUpdated != null) 'lastUpdated': lastUpdated!,
         if (routeConfig != null) 'routeConfig': routeConfig!,
         if (versionInfo != null) 'versionInfo': versionInfo!,
@@ -581,8 +576,8 @@ class DynamicScopedRouteConfigs {
     }
     if (_json.containsKey('scopedRouteConfigs')) {
       scopedRouteConfigs = (_json['scopedRouteConfigs'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -595,7 +590,7 @@ class DynamicScopedRouteConfigs {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (lastUpdated != null) 'lastUpdated': lastUpdated!,
         if (name != null) 'name': name!,
         if (scopedRouteConfigs != null)
@@ -656,7 +651,7 @@ class Extension {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!,
         if (disabled != null) 'disabled': disabled!,
         if (name != null) 'name': name!,
@@ -699,7 +694,7 @@ class GoogleRE2 {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (maxProgramSize != null) 'maxProgramSize': maxProgramSize!,
       };
 }
@@ -728,8 +723,8 @@ class InlineScopedRouteConfigs {
     }
     if (_json.containsKey('scopedRouteConfigs')) {
       scopedRouteConfigs = (_json['scopedRouteConfigs'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -739,7 +734,7 @@ class InlineScopedRouteConfigs {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (lastUpdated != null) 'lastUpdated': lastUpdated!,
         if (name != null) 'name': name!,
         if (scopedRouteConfigs != null)
@@ -762,7 +757,7 @@ class ListMatcher {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (oneOf != null) 'oneOf': oneOf!.toJson(),
       };
 }
@@ -806,7 +801,7 @@ class ListenersConfigDump {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dynamicListeners != null)
           'dynamicListeners':
               dynamicListeners!.map((value) => value.toJson()).toList(),
@@ -849,7 +844,7 @@ class Locality {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (region != null) 'region': region!,
         if (subZone != null) 'subZone': subZone!,
         if (zone != null) 'zone': zone!,
@@ -964,13 +959,12 @@ class Node {
           _json['locality'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('userAgentBuildVersion')) {
       userAgentBuildVersion = BuildVersion.fromJson(
@@ -985,7 +979,7 @@ class Node {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (buildVersion != null) 'buildVersion': buildVersion!,
         if (clientFeatures != null) 'clientFeatures': clientFeatures!,
         if (cluster != null) 'cluster': cluster!,
@@ -1029,7 +1023,7 @@ class NodeMatcher {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nodeId != null) 'nodeId': nodeId!.toJson(),
         if (nodeMetadatas != null)
           'nodeMetadatas':
@@ -1045,7 +1039,7 @@ class NullMatch {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Specifies the segment in a path to retrieve value from Struct.
@@ -1061,7 +1055,7 @@ class PathSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
       };
 }
@@ -1111,7 +1105,7 @@ class PerXdsConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterConfig != null) 'clusterConfig': clusterConfig!.toJson(),
         if (listenerConfig != null) 'listenerConfig': listenerConfig!.toJson(),
         if (routeConfig != null) 'routeConfig': routeConfig!.toJson(),
@@ -1145,7 +1139,7 @@ class Pipe {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mode != null) 'mode': mode!,
         if (path != null) 'path': path!,
       };
@@ -1173,7 +1167,7 @@ class RegexMatcher {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (googleRe2 != null) 'googleRe2': googleRe2!.toJson(),
         if (regex != null) 'regex': regex!,
       };
@@ -1211,7 +1205,7 @@ class RoutesConfigDump {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dynamicRouteConfigs != null)
           'dynamicRouteConfigs':
               dynamicRouteConfigs!.map((value) => value.toJson()).toList(),
@@ -1256,7 +1250,7 @@ class ScopedRoutesConfigDump {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dynamicScopedRouteConfigs != null)
           'dynamicScopedRouteConfigs': dynamicScopedRouteConfigs!
               .map((value) => value.toJson())
@@ -1290,7 +1284,7 @@ class SemanticVersion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (majorNumber != null) 'majorNumber': majorNumber!,
         if (minorNumber != null) 'minorNumber': minorNumber!,
         if (patch != null) 'patch': patch!,
@@ -1363,7 +1357,7 @@ class SocketAddress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
         if (ipv4Compat != null) 'ipv4Compat': ipv4Compat!,
         if (namedPort != null) 'namedPort': namedPort!,
@@ -1388,20 +1382,19 @@ class StaticCluster {
 
   StaticCluster.fromJson(core.Map _json) {
     if (_json.containsKey('cluster')) {
-      cluster =
-          (_json['cluster'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      cluster = (_json['cluster'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('lastUpdated')) {
       lastUpdated = _json['lastUpdated'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cluster != null) 'cluster': cluster!,
         if (lastUpdated != null) 'lastUpdated': lastUpdated!,
       };
@@ -1425,17 +1418,16 @@ class StaticListener {
       lastUpdated = _json['lastUpdated'] as core.String;
     }
     if (_json.containsKey('listener')) {
-      listener =
-          (_json['listener'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      listener = (_json['listener'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (lastUpdated != null) 'lastUpdated': lastUpdated!,
         if (listener != null) 'listener': listener!,
       };
@@ -1458,18 +1450,17 @@ class StaticRouteConfig {
       lastUpdated = _json['lastUpdated'] as core.String;
     }
     if (_json.containsKey('routeConfig')) {
-      routeConfig = (_json['routeConfig'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      routeConfig =
+          (_json['routeConfig'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (lastUpdated != null) 'lastUpdated': lastUpdated!,
         if (routeConfig != null) 'routeConfig': routeConfig!,
       };
@@ -1539,7 +1530,7 @@ class StringMatcher {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exact != null) 'exact': exact!,
         if (ignoreCase != null) 'ignoreCase': ignoreCase!,
         if (prefix != null) 'prefix': prefix!,
@@ -1587,7 +1578,7 @@ class StructMatcher {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (path != null) 'path': path!.map((value) => value.toJson()).toList(),
         if (value != null) 'value': value!.toJson(),
       };
@@ -1614,21 +1605,21 @@ class UpdateFailureState {
       details = _json['details'] as core.String;
     }
     if (_json.containsKey('failedConfiguration')) {
-      failedConfiguration = (_json['failedConfiguration'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      failedConfiguration =
+          (_json['failedConfiguration'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('lastUpdateAttempt')) {
       lastUpdateAttempt = _json['lastUpdateAttempt'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
         if (failedConfiguration != null)
           'failedConfiguration': failedConfiguration!,
@@ -1695,7 +1686,7 @@ class ValueMatcher {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boolMatch != null) 'boolMatch': boolMatch!,
         if (doubleMatch != null) 'doubleMatch': doubleMatch!.toJson(),
         if (listMatch != null) 'listMatch': listMatch!.toJson(),

@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1427,7 +1426,7 @@ class AdvancedSecurityOverrides {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commonCriteriaMode != null)
           'commonCriteriaMode': commonCriteriaMode!,
         if (untrustedAppsPolicy != null)
@@ -1454,7 +1453,7 @@ class AlwaysOnVpnPackage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (lockdownEnabled != null) 'lockdownEnabled': lockdownEnabled!,
         if (packageName != null) 'packageName': packageName!,
       };
@@ -1479,7 +1478,7 @@ class ApiLevelCondition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (minApiLevel != null) 'minApiLevel': minApiLevel!,
       };
 }
@@ -1507,7 +1506,7 @@ class AppTrackInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (trackAlias != null) 'trackAlias': trackAlias!,
         if (trackId != null) 'trackId': trackId!,
       };
@@ -1562,7 +1561,7 @@ class Application {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appTracks != null)
           'appTracks': appTracks!.map((value) => value.toJson()).toList(),
         if (managedProperties != null)
@@ -1606,7 +1605,7 @@ class ApplicationEvent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (eventType != null) 'eventType': eventType!,
       };
@@ -1644,7 +1643,7 @@ class ApplicationPermission {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (name != null) 'name': name!,
         if (permissionId != null) 'permissionId': permissionId!,
@@ -1805,14 +1804,14 @@ class ApplicationPolicy {
       lockTaskAllowed = _json['lockTaskAllowed'] as core.bool;
     }
     if (_json.containsKey('managedConfiguration')) {
-      managedConfiguration = (_json['managedConfiguration'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      managedConfiguration =
+          (_json['managedConfiguration'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('managedConfigurationTemplate')) {
       managedConfigurationTemplate = ManagedConfigurationTemplate.fromJson(
@@ -1833,7 +1832,7 @@ class ApplicationPolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessibleTrackIds != null)
           'accessibleTrackIds': accessibleTrackIds!,
         if (autoUpdateMode != null) 'autoUpdateMode': autoUpdateMode!,
@@ -1965,7 +1964,7 @@ class ApplicationReport {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (applicationSource != null) 'applicationSource': applicationSource!,
         if (displayName != null) 'displayName': displayName!,
         if (events != null)
@@ -1998,7 +1997,7 @@ class ApplicationReportingSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (includeRemovedApps != null)
           'includeRemovedApps': includeRemovedApps!,
       };
@@ -2041,7 +2040,7 @@ class BlockAction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blockAfterDays != null) 'blockAfterDays': blockAfterDays!,
         if (blockScope != null) 'blockScope': blockScope!,
       };
@@ -2084,7 +2083,7 @@ class ChoosePrivateKeyRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (packageNames != null) 'packageNames': packageNames!,
         if (privateKeyAlias != null) 'privateKeyAlias': privateKeyAlias!,
         if (urlPattern != null) 'urlPattern': urlPattern!,
@@ -2175,7 +2174,7 @@ class Command {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (duration != null) 'duration': duration!,
         if (errorCode != null) 'errorCode': errorCode!,
@@ -2211,7 +2210,7 @@ class CommonCriteriaModeInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commonCriteriaModeStatus != null)
           'commonCriteriaModeStatus': commonCriteriaModeStatus!,
       };
@@ -2267,7 +2266,7 @@ class ComplianceRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiLevelCondition != null)
           'apiLevelCondition': apiLevelCondition!.toJson(),
         if (disableApps != null) 'disableApps': disableApps!,
@@ -2339,7 +2338,7 @@ class ContactInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contactEmail != null) 'contactEmail': contactEmail!,
         if (dataProtectionOfficerEmail != null)
           'dataProtectionOfficerEmail': dataProtectionOfficerEmail!,
@@ -2396,7 +2395,7 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
         if (month != null) 'month': month!,
         if (year != null) 'year': year!,
@@ -2724,14 +2723,14 @@ class Device {
       state = _json['state'] as core.String;
     }
     if (_json.containsKey('systemProperties')) {
-      systemProperties = (_json['systemProperties'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      systemProperties =
+          (_json['systemProperties'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('user')) {
       user =
@@ -2742,7 +2741,7 @@ class Device {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiLevel != null) 'apiLevel': apiLevel!,
         if (applicationReports != null)
           'applicationReports':
@@ -2865,7 +2864,7 @@ class DeviceSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (adbEnabled != null) 'adbEnabled': adbEnabled!,
         if (developmentSettingsEnabled != null)
           'developmentSettingsEnabled': developmentSettingsEnabled!,
@@ -2933,7 +2932,7 @@ class Display {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (density != null) 'density': density!,
         if (displayId != null) 'displayId': displayId!,
         if (height != null) 'height': height!,
@@ -2958,7 +2957,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// An enrollment token.
@@ -3077,7 +3076,7 @@ class EnrollmentToken {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (additionalData != null) 'additionalData': additionalData!,
         if (allowPersonalUsage != null)
           'allowPersonalUsage': allowPersonalUsage!,
@@ -3187,7 +3186,7 @@ class Enterprise {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appAutoApprovalEnabled != null)
           'appAutoApprovalEnabled': appAutoApprovalEnabled!,
         if (contactInfo != null) 'contactInfo': contactInfo!.toJson(),
@@ -3238,7 +3237,7 @@ class ExternalData {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sha256Hash != null) 'sha256Hash': sha256Hash!,
         if (url != null) 'url': url!,
       };
@@ -3282,7 +3281,7 @@ class FreezePeriod {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endDate != null) 'endDate': endDate!.toJson(),
         if (startDate != null) 'startDate': startDate!.toJson(),
       };
@@ -3418,7 +3417,7 @@ class HardwareInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (batteryShutdownTemperatures != null)
           'batteryShutdownTemperatures': batteryShutdownTemperatures!,
         if (batteryThrottlingTemperatures != null)
@@ -3515,7 +3514,7 @@ class HardwareStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (batteryTemperatures != null)
           'batteryTemperatures': batteryTemperatures!,
         if (cpuTemperatures != null) 'cpuTemperatures': cpuTemperatures!,
@@ -3586,7 +3585,7 @@ class KeyedAppState {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (data != null) 'data': data!,
         if (key != null) 'key': key!,
@@ -3683,7 +3682,7 @@ class KioskCustomization {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceSettings != null) 'deviceSettings': deviceSettings!,
         if (powerButtonActions != null)
           'powerButtonActions': powerButtonActions!,
@@ -3707,7 +3706,7 @@ class LaunchAppAction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (packageName != null) 'packageName': packageName!,
       };
 }
@@ -3734,7 +3733,7 @@ class ListDevicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (devices != null)
           'devices': devices!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3769,7 +3768,7 @@ class ListEnterprisesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enterprises != null)
           'enterprises': enterprises!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3798,7 +3797,7 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
@@ -3827,7 +3826,7 @@ class ListPoliciesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (policies != null)
           'policies': policies!.map((value) => value.toJson()).toList(),
@@ -3856,7 +3855,7 @@ class ListWebAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (webApps != null)
           'webApps': webApps!.map((value) => value.toJson()).toList(),
@@ -3877,21 +3876,21 @@ class ManagedConfigurationTemplate {
 
   ManagedConfigurationTemplate.fromJson(core.Map _json) {
     if (_json.containsKey('configurationVariables')) {
-      configurationVariables = (_json['configurationVariables'] as core.Map)
-          .cast<core.String, core.String>()
+      configurationVariables = (_json['configurationVariables']
+              as core.Map<core.String, core.dynamic>)
           .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('templateId')) {
       templateId = _json['templateId'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (configurationVariables != null)
           'configurationVariables': configurationVariables!,
         if (templateId != null) 'templateId': templateId!,
@@ -3978,7 +3977,7 @@ class ManagedProperty {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (defaultValue != null) 'defaultValue': defaultValue!,
         if (description != null) 'description': description!,
         if (entries != null)
@@ -4016,7 +4015,7 @@ class ManagedPropertyEntry {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
       };
@@ -4060,7 +4059,7 @@ class MemoryEvent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (byteCount != null) 'byteCount': byteCount!,
         if (createTime != null) 'createTime': createTime!,
         if (eventType != null) 'eventType': eventType!,
@@ -4086,7 +4085,7 @@ class MemoryInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (totalInternalStorage != null)
           'totalInternalStorage': totalInternalStorage!,
         if (totalRam != null) 'totalRam': totalRam!,
@@ -4145,7 +4144,7 @@ class NetworkInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (imei != null) 'imei': imei!,
         if (meid != null) 'meid': meid!,
         if (networkOperatorName != null)
@@ -4261,7 +4260,7 @@ class NonComplianceDetail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currentValue != null) 'currentValue': currentValue!,
         if (fieldPath != null) 'fieldPath': fieldPath!,
         if (installationFailureReason != null)
@@ -4331,7 +4330,7 @@ class NonComplianceDetailCondition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nonComplianceReason != null)
           'nonComplianceReason': nonComplianceReason!,
         if (packageName != null) 'packageName': packageName!,
@@ -4393,29 +4392,27 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -4439,7 +4436,7 @@ class PackageNameList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (packageNames != null) 'packageNames': packageNames!,
       };
 }
@@ -4594,7 +4591,7 @@ class PasswordRequirements {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (maximumFailedPasswordsForWipe != null)
           'maximumFailedPasswordsForWipe': maximumFailedPasswordsForWipe!,
         if (passwordExpirationTimeout != null)
@@ -4649,7 +4646,7 @@ class PermissionGrant {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permission != null) 'permission': permission!,
         if (policy != null) 'policy': policy!,
       };
@@ -4702,7 +4699,7 @@ class PersistentPreferredActivity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (actions != null) 'actions': actions!,
         if (categories != null) 'categories': categories!,
         if (receiverActivity != null) 'receiverActivity': receiverActivity!,
@@ -4734,7 +4731,7 @@ class PersonalApplicationPolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (installType != null) 'installType': installType!,
         if (packageName != null) 'packageName': packageName!,
       };
@@ -4805,7 +4802,7 @@ class PersonalUsagePolicies {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountTypesWithManagementDisabled != null)
           'accountTypesWithManagementDisabled':
               accountTypesWithManagementDisabled!,
@@ -5416,14 +5413,14 @@ class Policy {
       networkResetDisabled = _json['networkResetDisabled'] as core.bool;
     }
     if (_json.containsKey('openNetworkConfiguration')) {
-      openNetworkConfiguration = (_json['openNetworkConfiguration'] as core.Map)
-          .cast<core.String, core.Object>()
+      openNetworkConfiguration = (_json['openNetworkConfiguration']
+              as core.Map<core.String, core.dynamic>)
           .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('outgoingBeamDisabled')) {
       outgoingBeamDisabled = _json['outgoingBeamDisabled'] as core.bool;
@@ -5569,7 +5566,7 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountTypesWithManagementDisabled != null)
           'accountTypesWithManagementDisabled':
               accountTypesWithManagementDisabled!,
@@ -5764,7 +5761,7 @@ class PolicyEnforcementRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blockAction != null) 'blockAction': blockAction!.toJson(),
         if (settingName != null) 'settingName': settingName!,
         if (wipeAction != null) 'wipeAction': wipeAction!.toJson(),
@@ -5801,7 +5798,7 @@ class PostureDetail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (advice != null)
           'advice': advice!.map((value) => value.toJson()).toList(),
         if (securityRisk != null) 'securityRisk': securityRisk!,
@@ -5843,7 +5840,7 @@ class PowerManagementEvent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (batteryLevel != null) 'batteryLevel': batteryLevel!,
         if (createTime != null) 'createTime': createTime!,
         if (eventType != null) 'eventType': eventType!,
@@ -5888,7 +5885,7 @@ class ProxyInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (excludedHosts != null) 'excludedHosts': excludedHosts!,
         if (host != null) 'host': host!,
         if (pacUri != null) 'pacUri': pacUri!,
@@ -5927,7 +5924,7 @@ class SecurityPosture {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (devicePosture != null) 'devicePosture': devicePosture!,
         if (postureDetails != null)
           'postureDetails':
@@ -5963,7 +5960,7 @@ class SetupAction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!.toJson(),
         if (launchApp != null) 'launchApp': launchApp!.toJson(),
         if (title != null) 'title': title!.toJson(),
@@ -6027,7 +6024,7 @@ class SigninDetail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowPersonalUsage != null)
           'allowPersonalUsage': allowPersonalUsage!,
         if (qrCode != null) 'qrCode': qrCode!,
@@ -6061,7 +6058,7 @@ class SignupUrl {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (url != null) 'url': url!,
       };
@@ -6150,7 +6147,7 @@ class SoftwareInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (androidBuildNumber != null)
           'androidBuildNumber': androidBuildNumber!,
         if (androidBuildTime != null) 'androidBuildTime': androidBuildTime!,
@@ -6206,8 +6203,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -6220,7 +6217,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -6316,7 +6313,7 @@ class StatusReportingSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (applicationReportingSettings != null)
           'applicationReportingSettings':
               applicationReportingSettings!.toJson(),
@@ -6399,7 +6396,7 @@ class SystemUpdate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endMinutes != null) 'endMinutes': endMinutes!,
         if (freezePeriods != null)
           'freezePeriods':
@@ -6443,7 +6440,7 @@ class SystemUpdateInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (updateReceivedTime != null)
           'updateReceivedTime': updateReceivedTime!,
         if (updateStatus != null) 'updateStatus': updateStatus!,
@@ -6471,7 +6468,7 @@ class TelephonyInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (carrierName != null) 'carrierName': carrierName!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
       };
@@ -6500,7 +6497,7 @@ class TermsAndConditions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!.toJson(),
         if (header != null) 'header': header!.toJson(),
       };
@@ -6525,7 +6522,7 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountIdentifier != null) 'accountIdentifier': accountIdentifier!,
       };
 }
@@ -6552,18 +6549,18 @@ class UserFacingMessage {
       defaultMessage = _json['defaultMessage'] as core.String;
     }
     if (_json.containsKey('localizedMessages')) {
-      localizedMessages = (_json['localizedMessages'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      localizedMessages =
+          (_json['localizedMessages'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (defaultMessage != null) 'defaultMessage': defaultMessage!,
         if (localizedMessages != null) 'localizedMessages': localizedMessages!,
       };
@@ -6633,7 +6630,7 @@ class WebApp {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayMode != null) 'displayMode': displayMode!,
         if (icons != null)
           'icons': icons!.map((value) => value.toJson()).toList(),
@@ -6663,7 +6660,7 @@ class WebAppIcon {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (imageData != null) 'imageData': imageData!,
       };
 }
@@ -6726,7 +6723,7 @@ class WebToken {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enabledFeatures != null) 'enabledFeatures': enabledFeatures!,
         if (name != null) 'name': name!,
         if (parentFrameUrl != null) 'parentFrameUrl': parentFrameUrl!,
@@ -6761,7 +6758,7 @@ class WipeAction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (preserveFrp != null) 'preserveFrp': preserveFrp!,
         if (wipeAfterDays != null) 'wipeAfterDays': wipeAfterDays!,
       };

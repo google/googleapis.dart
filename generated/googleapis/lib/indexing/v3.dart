@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -152,7 +151,7 @@ class PublishUrlNotificationResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (urlNotificationMetadata != null)
           'urlNotificationMetadata': urlNotificationMetadata!.toJson(),
       };
@@ -194,7 +193,7 @@ class UrlNotification {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (notifyTime != null) 'notifyTime': notifyTime!,
         if (type != null) 'type': type!,
         if (url != null) 'url': url!,
@@ -229,7 +228,7 @@ class UrlNotificationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (latestRemove != null) 'latestRemove': latestRemove!.toJson(),
         if (latestUpdate != null) 'latestUpdate': latestUpdate!.toJson(),
         if (url != null) 'url': url!,

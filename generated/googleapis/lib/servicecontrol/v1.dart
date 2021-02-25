@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -249,7 +248,7 @@ class AllocateInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (unusedArguments != null) 'unusedArguments': unusedArguments!,
       };
 }
@@ -278,7 +277,7 @@ class AllocateQuotaRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allocateOperation != null)
           'allocateOperation': allocateOperation!.toJson(),
         if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
@@ -338,7 +337,7 @@ class AllocateQuotaResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allocateErrors != null)
           'allocateErrors':
               allocateErrors!.map((value) => value.toJson()).toList(),
@@ -376,7 +375,7 @@ class AttributeValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
         if (intValue != null) 'intValue': intValue!,
         if (stringValue != null) 'stringValue': stringValue!.toJson(),
@@ -405,22 +404,20 @@ class Attributes {
 
   Attributes.fromJson(core.Map _json) {
     if (_json.containsKey('attributeMap')) {
-      attributeMap = (_json['attributeMap'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              AttributeValue.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      attributeMap =
+          (_json['attributeMap'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          AttributeValue.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('droppedAttributesCount')) {
       droppedAttributesCount = _json['droppedAttributesCount'] as core.int;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributeMap != null)
           'attributeMap': attributeMap!
               .map((key, item) => core.MapEntry(key, item.toJson())),
@@ -541,13 +538,12 @@ class AuditLog {
           .toList();
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('methodName')) {
       methodName = _json['methodName'] as core.String;
@@ -556,13 +552,12 @@ class AuditLog {
       numResponseItems = _json['numResponseItems'] as core.String;
     }
     if (_json.containsKey('request')) {
-      request =
-          (_json['request'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      request = (_json['request'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('requestMetadata')) {
       requestMetadata = RequestMetadata.fromJson(
@@ -576,33 +571,31 @@ class AuditLog {
       resourceName = _json['resourceName'] as core.String;
     }
     if (_json.containsKey('resourceOriginalState')) {
-      resourceOriginalState = (_json['resourceOriginalState'] as core.Map)
-          .cast<core.String, core.Object>()
+      resourceOriginalState = (_json['resourceOriginalState']
+              as core.Map<core.String, core.dynamic>)
           .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('serviceData')) {
-      serviceData = (_json['serviceData'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      serviceData =
+          (_json['serviceData'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('serviceName')) {
       serviceName = _json['serviceName'] as core.String;
@@ -613,7 +606,7 @@ class AuditLog {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (authenticationInfo != null)
           'authenticationInfo': authenticationInfo!.toJson(),
         if (authorizationInfo != null)
@@ -709,13 +702,12 @@ class Auth {
           .toList();
     }
     if (_json.containsKey('claims')) {
-      claims =
-          (_json['claims'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      claims = (_json['claims'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('presenter')) {
       presenter = _json['presenter'] as core.String;
@@ -725,7 +717,7 @@ class Auth {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevels != null) 'accessLevels': accessLevels!,
         if (audiences != null) 'audiences': audiences!,
         if (claims != null) 'claims': claims!,
@@ -805,18 +797,18 @@ class AuthenticationInfo {
       serviceAccountKeyName = _json['serviceAccountKeyName'] as core.String;
     }
     if (_json.containsKey('thirdPartyPrincipal')) {
-      thirdPartyPrincipal = (_json['thirdPartyPrincipal'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      thirdPartyPrincipal =
+          (_json['thirdPartyPrincipal'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (authoritySelector != null) 'authoritySelector': authoritySelector!,
         if (principalEmail != null) 'principalEmail': principalEmail!,
         if (principalSubject != null) 'principalSubject': principalSubject!,
@@ -871,7 +863,7 @@ class AuthorizationInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (granted != null) 'granted': granted!,
         if (permission != null) 'permission': permission!,
         if (resource != null) 'resource': resource!,
@@ -986,7 +978,7 @@ class CheckError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (detail != null) 'detail': detail!,
         if (status != null) 'status': status!.toJson(),
@@ -1019,7 +1011,7 @@ class CheckInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (consumerInfo != null) 'consumerInfo': consumerInfo!.toJson(),
         if (unusedArguments != null) 'unusedArguments': unusedArguments!,
       };
@@ -1065,7 +1057,7 @@ class CheckRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (operation != null) 'operation': operation!.toJson(),
         if (requestProjectSettings != null)
           'requestProjectSettings': requestProjectSettings!,
@@ -1129,7 +1121,7 @@ class CheckResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (checkErrors != null)
           'checkErrors': checkErrors!.map((value) => value.toJson()).toList(),
         if (checkInfo != null) 'checkInfo': checkInfo!.toJson(),
@@ -1182,7 +1174,7 @@ class ConsumerInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (consumerNumber != null) 'consumerNumber': consumerNumber!,
         if (projectNumber != null) 'projectNumber': projectNumber!,
         if (type != null) 'type': type!,
@@ -1294,7 +1286,7 @@ class Distribution {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bucketCounts != null) 'bucketCounts': bucketCounts!,
         if (count != null) 'count': count!,
         if (exemplars != null)
@@ -1346,8 +1338,8 @@ class Exemplar {
   Exemplar.fromJson(core.Map _json) {
     if (_json.containsKey('attachments')) {
       attachments = (_json['attachments'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -1363,7 +1355,7 @@ class Exemplar {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attachments != null) 'attachments': attachments!,
         if (timestamp != null) 'timestamp': timestamp!,
         if (value != null) 'value': value!,
@@ -1395,7 +1387,7 @@ class ExplicitBuckets {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bounds != null) 'bounds': bounds!,
       };
 }
@@ -1436,7 +1428,7 @@ class ExponentialBuckets {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (growthFactor != null) 'growthFactor': growthFactor!,
         if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
         if (scale != null) 'scale': scale!,
@@ -1465,18 +1457,17 @@ class FirstPartyPrincipal {
       principalEmail = _json['principalEmail'] as core.String;
     }
     if (_json.containsKey('serviceMetadata')) {
-      serviceMetadata = (_json['serviceMetadata'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      serviceMetadata =
+          (_json['serviceMetadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (principalEmail != null) 'principalEmail': principalEmail!,
         if (serviceMetadata != null) 'serviceMetadata': serviceMetadata!,
       };
@@ -1608,7 +1599,7 @@ class HttpRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cacheFillBytes != null) 'cacheFillBytes': cacheFillBytes!,
         if (cacheHit != null) 'cacheHit': cacheHit!,
         if (cacheLookup != null) 'cacheLookup': cacheLookup!,
@@ -1662,7 +1653,7 @@ class LinearBuckets {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (numFiniteBuckets != null) 'numFiniteBuckets': numFiniteBuckets!,
         if (offset != null) 'offset': offset!,
         if (width != null) 'width': width!,
@@ -1766,13 +1757,12 @@ class LogEntry {
       insertId = _json['insertId'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -1782,14 +1772,13 @@ class LogEntry {
           _json['operation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('protoPayload')) {
-      protoPayload = (_json['protoPayload'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      protoPayload =
+          (_json['protoPayload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('severity')) {
       severity = _json['severity'] as core.String;
@@ -1799,14 +1788,13 @@ class LogEntry {
           _json['sourceLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('structPayload')) {
-      structPayload = (_json['structPayload'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      structPayload =
+          (_json['structPayload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('textPayload')) {
       textPayload = _json['textPayload'] as core.String;
@@ -1819,7 +1807,7 @@ class LogEntry {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (httpRequest != null) 'httpRequest': httpRequest!.toJson(),
         if (insertId != null) 'insertId': insertId!,
         if (labels != null) 'labels': labels!,
@@ -1882,7 +1870,7 @@ class LogEntryOperation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (first != null) 'first': first!,
         if (id != null) 'id': id!,
         if (last != null) 'last': last!,
@@ -1933,7 +1921,7 @@ class LogEntrySourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (file != null) 'file': file!,
         if (function != null) 'function': function!,
         if (line != null) 'line': line!,
@@ -2003,13 +1991,12 @@ class MetricValue {
       int64Value = _json['int64Value'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('moneyValue')) {
       moneyValue = Money.fromJson(
@@ -2023,7 +2010,7 @@ class MetricValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
         if (distributionValue != null)
           'distributionValue': distributionValue!.toJson(),
@@ -2062,7 +2049,7 @@ class MetricValueSet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metricName != null) 'metricName': metricName!,
         if (metricValues != null)
           'metricValues': metricValues!.map((value) => value.toJson()).toList(),
@@ -2102,7 +2089,7 @@ class Money {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (nanos != null) 'nanos': nanos!,
         if (units != null) 'units': units!,
@@ -2234,8 +2221,8 @@ class Operation {
     }
     if (_json.containsKey('extensions')) {
       extensions = (_json['extensions'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -2247,13 +2234,12 @@ class Operation {
       importance = _json['importance'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('logEntries')) {
       logEntries = (_json['logEntries'] as core.List)
@@ -2293,18 +2279,17 @@ class Operation {
           .toList();
     }
     if (_json.containsKey('userLabels')) {
-      userLabels = (_json['userLabels'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      userLabels =
+          (_json['userLabels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (consumerId != null) 'consumerId': consumerId!,
         if (endTime != null) 'endTime': endTime!,
         if (extensions != null) 'extensions': extensions!,
@@ -2363,13 +2348,12 @@ class Peer {
       ip = _json['ip'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('port')) {
       port = _json['port'] as core.String;
@@ -2382,7 +2366,7 @@ class Peer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ip != null) 'ip': ip!,
         if (labels != null) 'labels': labels!,
         if (port != null) 'port': port!,
@@ -2456,7 +2440,7 @@ class QuotaError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (description != null) 'description': description!,
         if (status != null) 'status': status!.toJson(),
@@ -2506,14 +2490,13 @@ class QuotaInfo {
           .toList();
     }
     if (_json.containsKey('quotaConsumed')) {
-      quotaConsumed = (_json['quotaConsumed'] as core.Map)
-          .cast<core.String, core.int>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.int,
-            ),
-          );
+      quotaConsumed =
+          (_json['quotaConsumed'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.int,
+        ),
+      );
     }
     if (_json.containsKey('quotaMetrics')) {
       quotaMetrics = (_json['quotaMetrics'] as core.List)
@@ -2523,7 +2506,7 @@ class QuotaInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (limitExceeded != null) 'limitExceeded': limitExceeded!,
         if (quotaConsumed != null) 'quotaConsumed': quotaConsumed!,
         if (quotaMetrics != null)
@@ -2614,13 +2597,12 @@ class QuotaOperation {
       consumerId = _json['consumerId'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('methodName')) {
       methodName = _json['methodName'] as core.String;
@@ -2639,7 +2621,7 @@ class QuotaOperation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (consumerId != null) 'consumerId': consumerId!,
         if (labels != null) 'labels': labels!,
         if (methodName != null) 'methodName': methodName!,
@@ -2674,7 +2656,7 @@ class QuotaProperties {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (quotaMode != null) 'quotaMode': quotaMode!,
       };
 }
@@ -2699,7 +2681,7 @@ class ReportError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (operationId != null) 'operationId': operationId!,
         if (status != null) 'status': status!.toJson(),
       };
@@ -2738,7 +2720,7 @@ class ReportRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
         if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
@@ -2785,7 +2767,7 @@ class ReportResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (reportErrors != null)
           'reportErrors': reportErrors!.map((value) => value.toJson()).toList(),
         if (serviceConfigId != null) 'serviceConfigId': serviceConfigId!,
@@ -2867,13 +2849,12 @@ class Request {
           Auth.fromJson(_json['auth'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('headers')) {
-      headers =
-          (_json['headers'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      headers = (_json['headers'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('host')) {
       host = _json['host'] as core.String;
@@ -2907,7 +2888,7 @@ class Request {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auth != null) 'auth': auth!.toJson(),
         if (headers != null) 'headers': headers!,
         if (host != null) 'host': host!,
@@ -2994,7 +2975,7 @@ class RequestMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (callerIp != null) 'callerIp': callerIp!,
         if (callerNetwork != null) 'callerNetwork': callerNetwork!,
         if (callerSuppliedUserAgent != null)
@@ -3110,14 +3091,13 @@ class Resource {
 
   Resource.fromJson(core.Map _json) {
     if (_json.containsKey('annotations')) {
-      annotations = (_json['annotations'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      annotations =
+          (_json['annotations'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
@@ -3132,13 +3112,12 @@ class Resource {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('location')) {
       location = _json['location'] as core.String;
@@ -3160,7 +3139,7 @@ class Resource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotations != null) 'annotations': annotations!,
         if (createTime != null) 'createTime': createTime!,
         if (deleteTime != null) 'deleteTime': deleteTime!,
@@ -3210,7 +3189,7 @@ class ResourceInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resourceContainer != null) 'resourceContainer': resourceContainer!,
         if (resourceLocation != null) 'resourceLocation': resourceLocation!,
         if (resourceName != null) 'resourceName': resourceName!,
@@ -3248,7 +3227,7 @@ class ResourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currentLocations != null) 'currentLocations': currentLocations!,
         if (originalLocations != null) 'originalLocations': originalLocations!,
       };
@@ -3283,7 +3262,7 @@ class ServiceAccountDelegationInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (firstPartyPrincipal != null)
           'firstPartyPrincipal': firstPartyPrincipal!.toJson(),
         if (principalSubject != null) 'principalSubject': principalSubject!,
@@ -3316,7 +3295,7 @@ class SpanContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (spanName != null) 'spanName': spanName!,
       };
 }
@@ -3354,8 +3333,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -3368,7 +3347,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -3387,18 +3366,18 @@ class ThirdPartyPrincipal {
 
   ThirdPartyPrincipal.fromJson(core.Map _json) {
     if (_json.containsKey('thirdPartyClaims')) {
-      thirdPartyClaims = (_json['thirdPartyClaims'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      thirdPartyClaims =
+          (_json['thirdPartyClaims'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (thirdPartyClaims != null) 'thirdPartyClaims': thirdPartyClaims!,
       };
 }
@@ -3535,7 +3514,7 @@ class TraceSpan {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!.toJson(),
         if (childSpanCount != null) 'childSpanCount': childSpanCount!,
         if (displayName != null) 'displayName': displayName!.toJson(),
@@ -3578,7 +3557,7 @@ class TruncatableString {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (truncatedByteCount != null)
           'truncatedByteCount': truncatedByteCount!,
         if (value != null) 'value': value!,

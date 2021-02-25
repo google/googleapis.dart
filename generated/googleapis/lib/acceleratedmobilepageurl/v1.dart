@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -122,7 +121,7 @@ class AmpUrl {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ampUrl != null) 'ampUrl': ampUrl!,
         if (cdnAmpUrl != null) 'cdnAmpUrl': cdnAmpUrl!,
         if (originalUrl != null) 'originalUrl': originalUrl!,
@@ -168,7 +167,7 @@ class AmpUrlError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorCode != null) 'errorCode': errorCode!,
         if (errorMessage != null) 'errorMessage': errorMessage!,
         if (originalUrl != null) 'originalUrl': originalUrl!,
@@ -209,7 +208,7 @@ class BatchGetAmpUrlsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (lookupStrategy != null) 'lookupStrategy': lookupStrategy!,
         if (urls != null) 'urls': urls!,
       };
@@ -244,7 +243,7 @@ class BatchGetAmpUrlsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ampUrls != null)
           'ampUrls': ampUrls!.map((value) => value.toJson()).toList(),
         if (urlErrors != null)

@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1278,7 +1277,7 @@ class Change {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (additions != null)
           'additions': additions!.map((value) => value.toJson()).toList(),
         if (deletions != null)
@@ -1334,7 +1333,7 @@ class ChangesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (changes != null)
           'changes': changes!.map((value) => value.toJson()).toList(),
         if (header != null) 'header': header!.toJson(),
@@ -1457,7 +1456,7 @@ class DnsKey {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (algorithm != null) 'algorithm': algorithm!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (description != null) 'description': description!,
@@ -1497,7 +1496,7 @@ class DnsKeyDigest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (digest != null) 'digest': digest!,
         if (type != null) 'type': type!,
       };
@@ -1550,7 +1549,7 @@ class DnsKeySpec {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (algorithm != null) 'algorithm': algorithm!,
         if (keyLength != null) 'keyLength': keyLength!,
         if (keyType != null) 'keyType': keyType!,
@@ -1600,7 +1599,7 @@ class DnsKeysListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dnsKeys != null)
           'dnsKeys': dnsKeys!.map((value) => value.toJson()).toList(),
         if (header != null) 'header': header!.toJson(),
@@ -1719,13 +1718,12 @@ class ManagedZone {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -1761,7 +1759,7 @@ class ManagedZone {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (creationTime != null) 'creationTime': creationTime!,
         if (description != null) 'description': description!,
         if (dnsName != null) 'dnsName': dnsName!,
@@ -1827,7 +1825,7 @@ class ManagedZoneDnsSecConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (defaultKeySpecs != null)
           'defaultKeySpecs':
               defaultKeySpecs!.map((value) => value.toJson()).toList(),
@@ -1861,7 +1859,7 @@ class ManagedZoneForwardingConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (targetNameServers != null)
           'targetNameServers':
@@ -1901,7 +1899,7 @@ class ManagedZoneForwardingConfigNameServerTarget {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (forwardingPath != null) 'forwardingPath': forwardingPath!,
         if (ipv4Address != null) 'ipv4Address': ipv4Address!,
         if (kind != null) 'kind': kind!,
@@ -1948,7 +1946,7 @@ class ManagedZoneOperationsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (header != null) 'header': header!.toJson(),
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1975,7 +1973,7 @@ class ManagedZonePeeringConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (targetNetwork != null) 'targetNetwork': targetNetwork!.toJson(),
       };
@@ -2011,7 +2009,7 @@ class ManagedZonePeeringConfigTargetNetwork {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deactivateTime != null) 'deactivateTime': deactivateTime!,
         if (kind != null) 'kind': kind!,
         if (networkUrl != null) 'networkUrl': networkUrl!,
@@ -2039,7 +2037,7 @@ class ManagedZonePrivateVisibilityConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (networks != null)
           'networks': networks!.map((value) => value.toJson()).toList(),
@@ -2066,7 +2064,7 @@ class ManagedZonePrivateVisibilityConfigNetwork {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (networkUrl != null) 'networkUrl': networkUrl!,
       };
@@ -2083,7 +2081,7 @@ class ManagedZoneReverseLookupConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
       };
 }
@@ -2107,7 +2105,7 @@ class ManagedZoneServiceDirectoryConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (namespace != null) 'namespace': namespace!.toJson(),
       };
@@ -2141,7 +2139,7 @@ class ManagedZoneServiceDirectoryConfigNamespace {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deletionTime != null) 'deletionTime': deletionTime!,
         if (kind != null) 'kind': kind!,
         if (namespaceUrl != null) 'namespaceUrl': namespaceUrl!,
@@ -2190,7 +2188,7 @@ class ManagedZonesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (header != null) 'header': header!.toJson(),
         if (kind != null) 'kind': kind!,
         if (managedZones != null)
@@ -2278,7 +2276,7 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dnsKeyContext != null) 'dnsKeyContext': dnsKeyContext!.toJson(),
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -2310,7 +2308,7 @@ class OperationDnsKeyContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (newValue != null) 'newValue': newValue!.toJson(),
         if (oldValue != null) 'oldValue': oldValue!.toJson(),
       };
@@ -2336,7 +2334,7 @@ class OperationManagedZoneContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (newValue != null) 'newValue': newValue!.toJson(),
         if (oldValue != null) 'oldValue': oldValue!.toJson(),
       };
@@ -2384,7 +2382,7 @@ class PoliciesListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (header != null) 'header': header!.toJson(),
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2410,7 +2408,7 @@ class PoliciesPatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (header != null) 'header': header!.toJson(),
         if (policy != null) 'policy': policy!.toJson(),
       };
@@ -2433,7 +2431,7 @@ class PoliciesUpdateResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (header != null) 'header': header!.toJson(),
         if (policy != null) 'policy': policy!.toJson(),
       };
@@ -2511,7 +2509,7 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternativeNameServerConfig != null)
           'alternativeNameServerConfig': alternativeNameServerConfig!.toJson(),
         if (description != null) 'description': description!,
@@ -2552,7 +2550,7 @@ class PolicyAlternativeNameServerConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (targetNameServers != null)
           'targetNameServers':
@@ -2593,7 +2591,7 @@ class PolicyAlternativeNameServerConfigTargetNameServer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (forwardingPath != null) 'forwardingPath': forwardingPath!,
         if (ipv4Address != null) 'ipv4Address': ipv4Address!,
         if (kind != null) 'kind': kind!,
@@ -2620,7 +2618,7 @@ class PolicyNetwork {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (networkUrl != null) 'networkUrl': networkUrl!,
       };
@@ -2660,7 +2658,7 @@ class Project {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (number != null) 'number': number!,
@@ -2773,7 +2771,7 @@ class Quota {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dnsKeysPerManagedZone != null)
           'dnsKeysPerManagedZone': dnsKeysPerManagedZone!,
         if (kind != null) 'kind': kind!,
@@ -2853,7 +2851,7 @@ class ResourceRecordSet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
         if (rrdatas != null) 'rrdatas': rrdatas!,
@@ -2905,7 +2903,7 @@ class ResourceRecordSetsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (header != null) 'header': header!.toJson(),
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2930,7 +2928,7 @@ class ResponseHeader {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (operationId != null) 'operationId': operationId!,
       };
 }

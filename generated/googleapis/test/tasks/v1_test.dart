@@ -300,7 +300,9 @@ void main() {
   unittest.group('obj-schema-TaskLinks', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTaskLinks();
-      var od = api.TaskLinks.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.TaskLinks.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkTaskLinks(od as api.TaskLinks);
     });
   });
@@ -308,7 +310,8 @@ void main() {
   unittest.group('obj-schema-Task', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTask();
-      var od = api.Task.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Task.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkTask(od as api.Task);
     });
   });
@@ -316,7 +319,9 @@ void main() {
   unittest.group('obj-schema-TaskList', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTaskList();
-      var od = api.TaskList.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.TaskList.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkTaskList(od as api.TaskList);
     });
   });
@@ -324,7 +329,9 @@ void main() {
   unittest.group('obj-schema-TaskLists', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTaskLists();
-      var od = api.TaskLists.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.TaskLists.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkTaskLists(od as api.TaskLists);
     });
   });
@@ -332,7 +339,8 @@ void main() {
   unittest.group('obj-schema-Tasks', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTasks();
-      var od = api.Tasks.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Tasks.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkTasks(od as api.Tasks);
     });
   });

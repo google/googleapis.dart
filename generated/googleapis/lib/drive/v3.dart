@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -2814,7 +2813,7 @@ class AboutDriveThemes {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (backgroundImageLink != null)
           'backgroundImageLink': backgroundImageLink!,
         if (colorRgb != null) 'colorRgb': colorRgb!,
@@ -2857,7 +2856,7 @@ class AboutStorageQuota {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (limit != null) 'limit': limit!,
         if (usage != null) 'usage': usage!,
         if (usageInDrive != null) 'usageInDrive': usageInDrive!,
@@ -2889,7 +2888,7 @@ class AboutTeamDriveThemes {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (backgroundImageLink != null)
           'backgroundImageLink': backgroundImageLink!,
         if (colorRgb != null) 'colorRgb': colorRgb!,
@@ -2961,16 +2960,15 @@ class About {
           .toList();
     }
     if (_json.containsKey('exportFormats')) {
-      exportFormats = (_json['exportFormats'] as core.Map)
-          .cast<core.String, core.List<core.String>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              (item as core.List)
-                  .map<core.String>((value) => value as core.String)
-                  .toList(),
-            ),
-          );
+      exportFormats =
+          (_json['exportFormats'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          (item as core.List)
+              .map<core.String>((value) => value as core.String)
+              .toList(),
+        ),
+      );
     }
     if (_json.containsKey('folderColorPalette')) {
       folderColorPalette = (_json['folderColorPalette'] as core.List)
@@ -2978,29 +2976,27 @@ class About {
           .toList();
     }
     if (_json.containsKey('importFormats')) {
-      importFormats = (_json['importFormats'] as core.Map)
-          .cast<core.String, core.List<core.String>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              (item as core.List)
-                  .map<core.String>((value) => value as core.String)
-                  .toList(),
-            ),
-          );
+      importFormats =
+          (_json['importFormats'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          (item as core.List)
+              .map<core.String>((value) => value as core.String)
+              .toList(),
+        ),
+      );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('maxImportSizes')) {
-      maxImportSizes = (_json['maxImportSizes'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      maxImportSizes =
+          (_json['maxImportSizes'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('maxUploadSize')) {
       maxUploadSize = _json['maxUploadSize'] as core.String;
@@ -3021,7 +3017,7 @@ class About {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appInstalled != null) 'appInstalled': appInstalled!,
         if (canCreateDrives != null) 'canCreateDrives': canCreateDrives!,
         if (canCreateTeamDrives != null)
@@ -3130,7 +3126,7 @@ class Change {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (changeType != null) 'changeType': changeType!,
         if (drive != null) 'drive': drive!.toJson(),
         if (driveId != null) 'driveId': driveId!,
@@ -3191,7 +3187,7 @@ class ChangeList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (changes != null)
           'changes': changes!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -3261,13 +3257,12 @@ class Channel {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('params')) {
-      params =
-          (_json['params'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      params = (_json['params'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('payload')) {
       payload = _json['payload'] as core.bool;
@@ -3286,7 +3281,7 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
         if (expiration != null) 'expiration': expiration!,
         if (id != null) 'id': id!,
@@ -3325,7 +3320,7 @@ class CommentQuotedFileContent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mimeType != null) 'mimeType': mimeType!,
         if (value != null) 'value': value!,
       };
@@ -3432,7 +3427,7 @@ class Comment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (anchor != null) 'anchor': anchor!,
         if (author != null) 'author': author!.toJson(),
         if (content != null) 'content': content!,
@@ -3488,7 +3483,7 @@ class CommentList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (comments != null)
           'comments': comments!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -3548,7 +3543,7 @@ class ContentRestriction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (readOnly != null) 'readOnly': readOnly!,
         if (reason != null) 'reason': reason!,
         if (restrictingUser != null)
@@ -3610,7 +3605,7 @@ class DriveBackgroundImageFile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (width != null) 'width': width!,
         if (xCoordinate != null) 'xCoordinate': xCoordinate!,
@@ -3748,7 +3743,7 @@ class DriveCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (canAddChildren != null) 'canAddChildren': canAddChildren!,
         if (canChangeCopyRequiresWriterPermissionRestriction != null)
           'canChangeCopyRequiresWriterPermissionRestriction':
@@ -3820,7 +3815,7 @@ class DriveRestrictions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (adminManagedRestrictions != null)
           'adminManagedRestrictions': adminManagedRestrictions!,
         if (copyRequiresWriterPermission != null)
@@ -3924,7 +3919,7 @@ class Drive {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (backgroundImageFile != null)
           'backgroundImageFile': backgroundImageFile!.toJson(),
         if (backgroundImageLink != null)
@@ -3978,7 +3973,7 @@ class DriveList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (drives != null)
           'drives': drives!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -4263,7 +4258,7 @@ class FileCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (canAddChildren != null) 'canAddChildren': canAddChildren!,
         if (canAddFolderFromAnotherDrive != null)
           'canAddFolderFromAnotherDrive': canAddFolderFromAnotherDrive!,
@@ -4345,7 +4340,7 @@ class FileContentHintsThumbnail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (image != null) 'image': image!,
         if (mimeType != null) 'mimeType': mimeType!,
       };
@@ -4378,7 +4373,7 @@ class FileContentHints {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (indexableText != null) 'indexableText': indexableText!,
         if (thumbnail != null) 'thumbnail': thumbnail!.toJson(),
       };
@@ -4409,7 +4404,7 @@ class FileImageMediaMetadataLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (altitude != null) 'altitude': altitude!,
         if (latitude != null) 'latitude': latitude!,
         if (longitude != null) 'longitude': longitude!,
@@ -4552,7 +4547,7 @@ class FileImageMediaMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aperture != null) 'aperture': aperture!,
         if (cameraMake != null) 'cameraMake': cameraMake!,
         if (cameraModel != null) 'cameraModel': cameraModel!,
@@ -4602,7 +4597,7 @@ class FileShortcutDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (targetId != null) 'targetId': targetId!,
         if (targetMimeType != null) 'targetMimeType': targetMimeType!,
       };
@@ -4635,7 +4630,7 @@ class FileVideoMediaMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (durationMillis != null) 'durationMillis': durationMillis!,
         if (height != null) 'height': height!,
         if (width != null) 'width': width!,
@@ -4931,14 +4926,13 @@ class File {
 
   File.fromJson(core.Map _json) {
     if (_json.containsKey('appProperties')) {
-      appProperties = (_json['appProperties'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      appProperties =
+          (_json['appProperties'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('capabilities')) {
       capabilities = FileCapabilities.fromJson(
@@ -4971,14 +4965,13 @@ class File {
       explicitlyTrashed = _json['explicitlyTrashed'] as core.bool;
     }
     if (_json.containsKey('exportLinks')) {
-      exportLinks = (_json['exportLinks'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      exportLinks =
+          (_json['exportLinks'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('fileExtension')) {
       fileExtension = _json['fileExtension'] as core.String;
@@ -5066,14 +5059,13 @@ class File {
           .toList();
     }
     if (_json.containsKey('properties')) {
-      properties = (_json['properties'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      properties =
+          (_json['properties'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('quotaBytesUsed')) {
       quotaBytesUsed = _json['quotaBytesUsed'] as core.String;
@@ -5151,7 +5143,7 @@ class File {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appProperties != null) 'appProperties': appProperties!,
         if (capabilities != null) 'capabilities': capabilities!.toJson(),
         if (contentHints != null) 'contentHints': contentHints!.toJson(),
@@ -5276,7 +5268,7 @@ class FileList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (files != null)
           'files': files!.map((value) => value.toJson()).toList(),
         if (incompleteSearch != null) 'incompleteSearch': incompleteSearch!,
@@ -5314,7 +5306,7 @@ class GeneratedIds {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ids != null) 'ids': ids!,
         if (kind != null) 'kind': kind!,
         if (space != null) 'space': space!,
@@ -5368,7 +5360,7 @@ class PermissionPermissionDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inherited != null) 'inherited': inherited!,
         if (inheritedFrom != null) 'inheritedFrom': inheritedFrom!,
         if (permissionType != null) 'permissionType': permissionType!,
@@ -5406,7 +5398,7 @@ class PermissionTeamDrivePermissionDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inherited != null) 'inherited': inherited!,
         if (inheritedFrom != null) 'inheritedFrom': inheritedFrom!,
         if (role != null) 'role': role!,
@@ -5564,7 +5556,7 @@ class Permission {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowFileDiscovery != null)
           'allowFileDiscovery': allowFileDiscovery!,
         if (deleted != null) 'deleted': deleted!,
@@ -5626,7 +5618,7 @@ class PermissionList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (permissions != null)
@@ -5709,7 +5701,7 @@ class Reply {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
         if (author != null) 'author': author!.toJson(),
         if (content != null) 'content': content!,
@@ -5760,7 +5752,7 @@ class ReplyList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (replies != null)
@@ -5838,14 +5830,13 @@ class Revision {
 
   Revision.fromJson(core.Map _json) {
     if (_json.containsKey('exportLinks')) {
-      exportLinks = (_json['exportLinks'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      exportLinks =
+          (_json['exportLinks'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -5889,7 +5880,7 @@ class Revision {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exportLinks != null) 'exportLinks': exportLinks!,
         if (id != null) 'id': id!,
         if (keepForever != null) 'keepForever': keepForever!,
@@ -5947,7 +5938,7 @@ class RevisionList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (revisions != null)
@@ -5975,7 +5966,7 @@ class StartPageToken {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (startPageToken != null) 'startPageToken': startPageToken!,
       };
@@ -6032,7 +6023,7 @@ class TeamDriveBackgroundImageFile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (width != null) 'width': width!,
         if (xCoordinate != null) 'xCoordinate': xCoordinate!,
@@ -6177,7 +6168,7 @@ class TeamDriveCapabilities {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (canAddChildren != null) 'canAddChildren': canAddChildren!,
         if (canChangeCopyRequiresWriterPermissionRestriction != null)
           'canChangeCopyRequiresWriterPermissionRestriction':
@@ -6252,7 +6243,7 @@ class TeamDriveRestrictions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (adminManagedRestrictions != null)
           'adminManagedRestrictions': adminManagedRestrictions!,
         if (copyRequiresWriterPermission != null)
@@ -6350,7 +6341,7 @@ class TeamDrive {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (backgroundImageFile != null)
           'backgroundImageFile': backgroundImageFile!.toJson(),
         if (backgroundImageLink != null)
@@ -6403,7 +6394,7 @@ class TeamDriveList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (teamDrives != null)
@@ -6459,7 +6450,7 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (emailAddress != null) 'emailAddress': emailAddress!,
         if (kind != null) 'kind': kind!,

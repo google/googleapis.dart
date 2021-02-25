@@ -2620,7 +2620,9 @@ void main() {
   unittest.group('obj-schema-CreateAuthUriResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreateAuthUriResponse();
-      var od = api.CreateAuthUriResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreateAuthUriResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreateAuthUriResponse(od as api.CreateAuthUriResponse);
     });
   });
@@ -2628,7 +2630,9 @@ void main() {
   unittest.group('obj-schema-DeleteAccountResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDeleteAccountResponse();
-      var od = api.DeleteAccountResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DeleteAccountResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDeleteAccountResponse(od as api.DeleteAccountResponse);
     });
   });
@@ -2636,7 +2640,9 @@ void main() {
   unittest.group('obj-schema-DownloadAccountResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDownloadAccountResponse();
-      var od = api.DownloadAccountResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DownloadAccountResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDownloadAccountResponse(od as api.DownloadAccountResponse);
     });
   });
@@ -2644,7 +2650,9 @@ void main() {
   unittest.group('obj-schema-EmailLinkSigninResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmailLinkSigninResponse();
-      var od = api.EmailLinkSigninResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.EmailLinkSigninResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkEmailLinkSigninResponse(od as api.EmailLinkSigninResponse);
     });
   });
@@ -2652,7 +2660,9 @@ void main() {
   unittest.group('obj-schema-EmailTemplate', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmailTemplate();
-      var od = api.EmailTemplate.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.EmailTemplate.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkEmailTemplate(od as api.EmailTemplate);
     });
   });
@@ -2660,7 +2670,9 @@ void main() {
   unittest.group('obj-schema-GetAccountInfoResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGetAccountInfoResponse();
-      var od = api.GetAccountInfoResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GetAccountInfoResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetAccountInfoResponse(od as api.GetAccountInfoResponse);
     });
   });
@@ -2668,7 +2680,9 @@ void main() {
   unittest.group('obj-schema-GetOobConfirmationCodeResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGetOobConfirmationCodeResponse();
-      var od = api.GetOobConfirmationCodeResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GetOobConfirmationCodeResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetOobConfirmationCodeResponse(
           od as api.GetOobConfirmationCodeResponse);
     });
@@ -2677,7 +2691,9 @@ void main() {
   unittest.group('obj-schema-GetRecaptchaParamResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGetRecaptchaParamResponse();
-      var od = api.GetRecaptchaParamResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GetRecaptchaParamResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetRecaptchaParamResponse(od as api.GetRecaptchaParamResponse);
     });
   });
@@ -2686,8 +2702,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyCreateAuthUriRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartyCreateAuthUriRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartyCreateAuthUriRequest(
           od as api.IdentitytoolkitRelyingpartyCreateAuthUriRequest);
     });
@@ -2697,8 +2714,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyDeleteAccountRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartyDeleteAccountRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartyDeleteAccountRequest(
           od as api.IdentitytoolkitRelyingpartyDeleteAccountRequest);
     });
@@ -2708,8 +2726,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyDownloadAccountRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartyDownloadAccountRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartyDownloadAccountRequest(
           od as api.IdentitytoolkitRelyingpartyDownloadAccountRequest);
     });
@@ -2719,8 +2738,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyEmailLinkSigninRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartyEmailLinkSigninRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartyEmailLinkSigninRequest(
           od as api.IdentitytoolkitRelyingpartyEmailLinkSigninRequest);
     });
@@ -2730,8 +2750,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyGetAccountInfoRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartyGetAccountInfoRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartyGetAccountInfoRequest(
           od as api.IdentitytoolkitRelyingpartyGetAccountInfoRequest);
     });
@@ -2741,8 +2762,9 @@ void main() {
       'obj-schema-IdentitytoolkitRelyingpartyGetProjectConfigResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyGetProjectConfigResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartyGetProjectConfigResponse(
           od as api.IdentitytoolkitRelyingpartyGetProjectConfigResponse);
     });
@@ -2752,8 +2774,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyGetPublicKeysResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartyGetPublicKeysResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartyGetPublicKeysResponse(
           od as api.IdentitytoolkitRelyingpartyGetPublicKeysResponse);
     });
@@ -2763,8 +2786,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyResetPasswordRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartyResetPasswordRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartyResetPasswordRequest(
           od as api.IdentitytoolkitRelyingpartyResetPasswordRequest);
     });
@@ -2774,9 +2798,10 @@ void main() {
       'obj-schema-IdentitytoolkitRelyingpartySendVerificationCodeRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartySendVerificationCodeRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.IdentitytoolkitRelyingpartySendVerificationCodeRequest.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartySendVerificationCodeRequest(
           od as api.IdentitytoolkitRelyingpartySendVerificationCodeRequest);
     });
@@ -2786,9 +2811,10 @@ void main() {
       'obj-schema-IdentitytoolkitRelyingpartySendVerificationCodeResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartySendVerificationCodeResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartySendVerificationCodeResponse(
           od as api.IdentitytoolkitRelyingpartySendVerificationCodeResponse);
     });
@@ -2798,8 +2824,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartySetAccountInfoRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartySetAccountInfoRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartySetAccountInfoRequest(
           od as api.IdentitytoolkitRelyingpartySetAccountInfoRequest);
     });
@@ -2809,8 +2836,9 @@ void main() {
       'obj-schema-IdentitytoolkitRelyingpartySetProjectConfigRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartySetProjectConfigRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartySetProjectConfigRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartySetProjectConfigRequest(
           od as api.IdentitytoolkitRelyingpartySetProjectConfigRequest);
     });
@@ -2820,8 +2848,9 @@ void main() {
       'obj-schema-IdentitytoolkitRelyingpartySetProjectConfigResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartySetProjectConfigResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartySetProjectConfigResponse(
           od as api.IdentitytoolkitRelyingpartySetProjectConfigResponse);
     });
@@ -2831,8 +2860,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartySignOutUserRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartySignOutUserRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartySignOutUserRequest(
           od as api.IdentitytoolkitRelyingpartySignOutUserRequest);
     });
@@ -2842,8 +2872,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartySignOutUserResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartySignOutUserResponse(
           od as api.IdentitytoolkitRelyingpartySignOutUserResponse);
     });
@@ -2853,8 +2884,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartySignupNewUserRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartySignupNewUserRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartySignupNewUserRequest(
           od as api.IdentitytoolkitRelyingpartySignupNewUserRequest);
     });
@@ -2864,8 +2896,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyUploadAccountRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartyUploadAccountRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartyUploadAccountRequest(
           od as api.IdentitytoolkitRelyingpartyUploadAccountRequest);
     });
@@ -2875,8 +2908,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyVerifyAssertionRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartyVerifyAssertionRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartyVerifyAssertionRequest(
           od as api.IdentitytoolkitRelyingpartyVerifyAssertionRequest);
     });
@@ -2886,8 +2920,9 @@ void main() {
       'obj-schema-IdentitytoolkitRelyingpartyVerifyCustomTokenRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyVerifyCustomTokenRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartyVerifyCustomTokenRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartyVerifyCustomTokenRequest(
           od as api.IdentitytoolkitRelyingpartyVerifyCustomTokenRequest);
     });
@@ -2897,8 +2932,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyVerifyPasswordRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartyVerifyPasswordRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartyVerifyPasswordRequest(
           od as api.IdentitytoolkitRelyingpartyVerifyPasswordRequest);
     });
@@ -2908,8 +2944,9 @@ void main() {
       'obj-schema-IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyVerifyPhoneNumberRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartyVerifyPhoneNumberRequest(
           od as api.IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest);
     });
@@ -2919,9 +2956,10 @@ void main() {
       'obj-schema-IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdentitytoolkitRelyingpartyVerifyPhoneNumberResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkIdentitytoolkitRelyingpartyVerifyPhoneNumberResponse(
           od as api.IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse);
     });
@@ -2930,7 +2968,9 @@ void main() {
   unittest.group('obj-schema-IdpConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildIdpConfig();
-      var od = api.IdpConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.IdpConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkIdpConfig(od as api.IdpConfig);
     });
   });
@@ -2938,7 +2978,9 @@ void main() {
   unittest.group('obj-schema-Relyingparty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRelyingparty();
-      var od = api.Relyingparty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Relyingparty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRelyingparty(od as api.Relyingparty);
     });
   });
@@ -2946,7 +2988,9 @@ void main() {
   unittest.group('obj-schema-ResetPasswordResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildResetPasswordResponse();
-      var od = api.ResetPasswordResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ResetPasswordResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkResetPasswordResponse(od as api.ResetPasswordResponse);
     });
   });
@@ -2954,7 +2998,9 @@ void main() {
   unittest.group('obj-schema-SetAccountInfoResponseProviderUserInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSetAccountInfoResponseProviderUserInfo();
-      var od = api.SetAccountInfoResponseProviderUserInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SetAccountInfoResponseProviderUserInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSetAccountInfoResponseProviderUserInfo(
           od as api.SetAccountInfoResponseProviderUserInfo);
     });
@@ -2963,7 +3009,9 @@ void main() {
   unittest.group('obj-schema-SetAccountInfoResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSetAccountInfoResponse();
-      var od = api.SetAccountInfoResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SetAccountInfoResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSetAccountInfoResponse(od as api.SetAccountInfoResponse);
     });
   });
@@ -2971,7 +3019,9 @@ void main() {
   unittest.group('obj-schema-SignupNewUserResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSignupNewUserResponse();
-      var od = api.SignupNewUserResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SignupNewUserResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSignupNewUserResponse(od as api.SignupNewUserResponse);
     });
   });
@@ -2979,7 +3029,9 @@ void main() {
   unittest.group('obj-schema-UploadAccountResponseError', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUploadAccountResponseError();
-      var od = api.UploadAccountResponseError.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UploadAccountResponseError.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUploadAccountResponseError(od as api.UploadAccountResponseError);
     });
   });
@@ -2987,7 +3039,9 @@ void main() {
   unittest.group('obj-schema-UploadAccountResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUploadAccountResponse();
-      var od = api.UploadAccountResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UploadAccountResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUploadAccountResponse(od as api.UploadAccountResponse);
     });
   });
@@ -2995,7 +3049,9 @@ void main() {
   unittest.group('obj-schema-UserInfoProviderUserInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUserInfoProviderUserInfo();
-      var od = api.UserInfoProviderUserInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UserInfoProviderUserInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUserInfoProviderUserInfo(od as api.UserInfoProviderUserInfo);
     });
   });
@@ -3003,7 +3059,9 @@ void main() {
   unittest.group('obj-schema-UserInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUserInfo();
-      var od = api.UserInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.UserInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkUserInfo(od as api.UserInfo);
     });
   });
@@ -3011,7 +3069,9 @@ void main() {
   unittest.group('obj-schema-VerifyAssertionResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildVerifyAssertionResponse();
-      var od = api.VerifyAssertionResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.VerifyAssertionResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkVerifyAssertionResponse(od as api.VerifyAssertionResponse);
     });
   });
@@ -3019,7 +3079,9 @@ void main() {
   unittest.group('obj-schema-VerifyCustomTokenResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildVerifyCustomTokenResponse();
-      var od = api.VerifyCustomTokenResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.VerifyCustomTokenResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkVerifyCustomTokenResponse(od as api.VerifyCustomTokenResponse);
     });
   });
@@ -3027,7 +3089,9 @@ void main() {
   unittest.group('obj-schema-VerifyPasswordResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildVerifyPasswordResponse();
-      var od = api.VerifyPasswordResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.VerifyPasswordResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkVerifyPasswordResponse(od as api.VerifyPasswordResponse);
     });
   });

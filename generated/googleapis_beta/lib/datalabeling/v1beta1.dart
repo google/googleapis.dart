@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -2457,7 +2456,7 @@ class GoogleCloudDatalabelingV1alpha1CreateInstructionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (instruction != null) 'instruction': instruction!,
         if (partialFailures != null)
@@ -2515,7 +2514,7 @@ class GoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotatedDataset != null) 'annotatedDataset': annotatedDataset!,
         if (createTime != null) 'createTime': createTime!,
         if (dataset != null) 'dataset': dataset!,
@@ -2584,7 +2583,7 @@ class GoogleCloudDatalabelingV1alpha1ExportDataOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotatedDataset != null) 'annotatedDataset': annotatedDataset!,
         if (dataset != null) 'dataset': dataset!,
         if (exportCount != null) 'exportCount': exportCount!,
@@ -2619,7 +2618,7 @@ class GoogleCloudDatalabelingV1alpha1GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mimeType != null) 'mimeType': mimeType!,
         if (outputUri != null) 'outputUri': outputUri!,
       };
@@ -2640,7 +2639,7 @@ class GoogleCloudDatalabelingV1alpha1GcsFolderDestination {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (outputFolderUri != null) 'outputFolderUri': outputFolderUri!,
       };
 }
@@ -2751,7 +2750,7 @@ class GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotatedDatasetDescription != null)
           'annotatedDatasetDescription': annotatedDatasetDescription!,
         if (annotatedDatasetDisplayName != null)
@@ -2806,7 +2805,7 @@ class GoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (dataset != null) 'dataset': dataset!,
         if (partialFailures != null)
@@ -2847,7 +2846,7 @@ class GoogleCloudDatalabelingV1alpha1ImportDataOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataset != null) 'dataset': dataset!,
         if (importCount != null) 'importCount': importCount!,
         if (totalCount != null) 'totalCount': totalCount!,
@@ -2870,7 +2869,7 @@ class GoogleCloudDatalabelingV1alpha1LabelImageBoundingBoxOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -2891,7 +2890,7 @@ class GoogleCloudDatalabelingV1alpha1LabelImageBoundingPolyOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -2912,7 +2911,7 @@ class GoogleCloudDatalabelingV1alpha1LabelImageClassificationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -2933,7 +2932,7 @@ class GoogleCloudDatalabelingV1alpha1LabelImageOrientedBoundingBoxOperationMetad
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -2954,7 +2953,7 @@ class GoogleCloudDatalabelingV1alpha1LabelImagePolylineOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -2975,7 +2974,7 @@ class GoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -3161,7 +3160,7 @@ class GoogleCloudDatalabelingV1alpha1LabelOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotatedDataset != null) 'annotatedDataset': annotatedDataset!,
         if (createTime != null) 'createTime': createTime!,
         if (dataset != null) 'dataset': dataset!,
@@ -3211,18 +3210,17 @@ class GoogleCloudDatalabelingV1alpha1LabelStats {
 
   GoogleCloudDatalabelingV1alpha1LabelStats.fromJson(core.Map _json) {
     if (_json.containsKey('exampleCount')) {
-      exampleCount = (_json['exampleCount'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      exampleCount =
+          (_json['exampleCount'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exampleCount != null) 'exampleCount': exampleCount!,
       };
 }
@@ -3243,7 +3241,7 @@ class GoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -3264,7 +3262,7 @@ class GoogleCloudDatalabelingV1alpha1LabelTextEntityExtractionOperationMetadata 
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -3285,7 +3283,7 @@ class GoogleCloudDatalabelingV1alpha1LabelVideoClassificationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -3306,7 +3304,7 @@ class GoogleCloudDatalabelingV1alpha1LabelVideoEventOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -3327,7 +3325,7 @@ class GoogleCloudDatalabelingV1alpha1LabelVideoObjectDetectionOperationMetadata 
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -3348,7 +3346,7 @@ class GoogleCloudDatalabelingV1alpha1LabelVideoObjectTrackingOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -3381,7 +3379,7 @@ class GoogleCloudDatalabelingV1alpha1OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
         if (gcsFolderDestination != null)
           'gcsFolderDestination': gcsFolderDestination!.toJson(),
@@ -3527,7 +3525,7 @@ class GoogleCloudDatalabelingV1beta1AnnotatedDataset {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSource != null) 'annotationSource': annotationSource!,
         if (annotationType != null) 'annotationType': annotationType!,
         if (blockingResources != null) 'blockingResources': blockingResources!,
@@ -3651,7 +3649,7 @@ class GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boundingPolyConfig != null)
           'boundingPolyConfig': boundingPolyConfig!.toJson(),
         if (eventConfig != null) 'eventConfig': eventConfig!.toJson(),
@@ -3739,7 +3737,7 @@ class GoogleCloudDatalabelingV1beta1Annotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationMetadata != null)
           'annotationMetadata': annotationMetadata!.toJson(),
         if (annotationSentiment != null)
@@ -3766,7 +3764,7 @@ class GoogleCloudDatalabelingV1beta1AnnotationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (operatorMetadata != null)
           'operatorMetadata': operatorMetadata!.toJson(),
       };
@@ -3819,7 +3817,7 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpec {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (index != null) 'index': index!,
@@ -3892,7 +3890,7 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpecSet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpecs != null)
           'annotationSpecs':
               annotationSpecs!.map((value) => value.toJson()).toList(),
@@ -3928,7 +3926,7 @@ class GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowMultiLabel != null) 'allowMultiLabel': allowMultiLabel!,
         if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet!,
       };
@@ -4035,7 +4033,7 @@ class GoogleCloudDatalabelingV1beta1AnnotationValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (imageBoundingPolyAnnotation != null)
           'imageBoundingPolyAnnotation': imageBoundingPolyAnnotation!.toJson(),
         if (imageClassificationAnnotation != null)
@@ -4083,7 +4081,7 @@ class GoogleCloudDatalabelingV1beta1Attempt {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attemptTime != null) 'attemptTime': attemptTime!,
         if (partialFailures != null)
           'partialFailures':
@@ -4118,7 +4116,7 @@ class GoogleCloudDatalabelingV1beta1BigQuerySource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inputUri != null) 'inputUri': inputUri!,
       };
 }
@@ -4141,7 +4139,7 @@ class GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (iouThreshold != null) 'iouThreshold': iouThreshold!,
       };
 }
@@ -4163,7 +4161,7 @@ class GoogleCloudDatalabelingV1beta1BoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (vertices != null)
           'vertices': vertices!.map((value) => value.toJson()).toList(),
       };
@@ -4192,7 +4190,7 @@ class GoogleCloudDatalabelingV1beta1BoundingPolyConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet!,
         if (instructionMessage != null)
           'instructionMessage': instructionMessage!,
@@ -4213,7 +4211,7 @@ class GoogleCloudDatalabelingV1beta1ClassificationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (isMultiLabel != null) 'isMultiLabel': isMultiLabel!,
       };
 }
@@ -4242,7 +4240,7 @@ class GoogleCloudDatalabelingV1beta1ClassificationMetrics {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confusionMatrix != null)
           'confusionMatrix': confusionMatrix!.toJson(),
         if (prCurve != null) 'prCurve': prCurve!.toJson(),
@@ -4325,7 +4323,7 @@ class GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidenceThreshold != null)
           'confidenceThreshold': confidenceThreshold!,
         if (f1Score != null) 'f1Score': f1Score!,
@@ -4359,7 +4357,7 @@ class GoogleCloudDatalabelingV1beta1ConfusionMatrix {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (row != null) 'row': row!.map((value) => value.toJson()).toList(),
       };
 }
@@ -4386,7 +4384,7 @@ class GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpec != null) 'annotationSpec': annotationSpec!.toJson(),
         if (itemCount != null) 'itemCount': itemCount!,
       };
@@ -4414,7 +4412,7 @@ class GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpecSet != null)
           'annotationSpecSet': annotationSpecSet!.toJson(),
       };
@@ -4436,7 +4434,7 @@ class GoogleCloudDatalabelingV1beta1CreateDatasetRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataset != null) 'dataset': dataset!.toJson(),
       };
 }
@@ -4458,7 +4456,7 @@ class GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (job != null) 'job': job!.toJson(),
       };
 }
@@ -4497,7 +4495,7 @@ class GoogleCloudDatalabelingV1beta1CreateInstructionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (instruction != null) 'instruction': instruction!,
         if (partialFailures != null)
@@ -4523,7 +4521,7 @@ class GoogleCloudDatalabelingV1beta1CreateInstructionRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (instruction != null) 'instruction': instruction!.toJson(),
       };
 }
@@ -4545,7 +4543,7 @@ class GoogleCloudDatalabelingV1beta1CsvInstruction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsFileUri != null) 'gcsFileUri': gcsFileUri!,
       };
 }
@@ -4589,7 +4587,7 @@ class GoogleCloudDatalabelingV1beta1DataItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (imagePayload != null) 'imagePayload': imagePayload!.toJson(),
         if (name != null) 'name': name!,
         if (textPayload != null) 'textPayload': textPayload!.toJson(),
@@ -4687,7 +4685,7 @@ class GoogleCloudDatalabelingV1beta1Dataset {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blockingResources != null) 'blockingResources': blockingResources!,
         if (createTime != null) 'createTime': createTime!,
         if (dataItemCount != null) 'dataItemCount': dataItemCount!,
@@ -4800,7 +4798,7 @@ class GoogleCloudDatalabelingV1beta1Evaluation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationType != null) 'annotationType': annotationType!,
         if (config != null) 'config': config!.toJson(),
         if (createTime != null) 'createTime': createTime!,
@@ -4835,7 +4833,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boundingBoxEvaluationOptions != null)
           'boundingBoxEvaluationOptions':
               boundingBoxEvaluationOptions!.toJson(),
@@ -5000,7 +4998,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJob {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet!,
         if (attempts != null)
           'attempts': attempts!.map((value) => value.toJson()).toList(),
@@ -5048,7 +5046,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
         if (minAcceptableMeanAveragePrecision != null)
           'minAcceptableMeanAveragePrecision':
@@ -5170,14 +5168,14 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfig {
 
   GoogleCloudDatalabelingV1beta1EvaluationJobConfig.fromJson(core.Map _json) {
     if (_json.containsKey('bigqueryImportKeys')) {
-      bigqueryImportKeys = (_json['bigqueryImportKeys'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      bigqueryImportKeys =
+          (_json['bigqueryImportKeys'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('boundingPolyConfig')) {
       boundingPolyConfig =
@@ -5227,7 +5225,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bigqueryImportKeys != null)
           'bigqueryImportKeys': bigqueryImportKeys!,
         if (boundingPolyConfig != null)
@@ -5270,7 +5268,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationMetrics {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (classificationMetrics != null)
           'classificationMetrics': classificationMetrics!.toJson(),
         if (objectDetectionMetrics != null)
@@ -5315,7 +5313,7 @@ class GoogleCloudDatalabelingV1beta1EventConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpecSets != null)
           'annotationSpecSets': annotationSpecSets!,
         if (clipLength != null) 'clipLength': clipLength!,
@@ -5377,7 +5375,7 @@ class GoogleCloudDatalabelingV1beta1Example {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotations != null)
           'annotations': annotations!.map((value) => value.toJson()).toList(),
         if (imagePayload != null) 'imagePayload': imagePayload!.toJson(),
@@ -5412,7 +5410,7 @@ class GoogleCloudDatalabelingV1beta1ExampleComparison {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (groundTruthExample != null)
           'groundTruthExample': groundTruthExample!.toJson(),
         if (modelCreatedExamples != null)
@@ -5470,7 +5468,7 @@ class GoogleCloudDatalabelingV1beta1ExportDataOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotatedDataset != null) 'annotatedDataset': annotatedDataset!,
         if (createTime != null) 'createTime': createTime!,
         if (dataset != null) 'dataset': dataset!,
@@ -5539,7 +5537,7 @@ class GoogleCloudDatalabelingV1beta1ExportDataOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotatedDataset != null) 'annotatedDataset': annotatedDataset!,
         if (dataset != null) 'dataset': dataset!,
         if (exportCount != null) 'exportCount': exportCount!,
@@ -5595,7 +5593,7 @@ class GoogleCloudDatalabelingV1beta1ExportDataRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotatedDataset != null) 'annotatedDataset': annotatedDataset!,
         if (filter != null) 'filter': filter!,
         if (outputConfig != null) 'outputConfig': outputConfig!.toJson(),
@@ -5662,7 +5660,7 @@ class GoogleCloudDatalabelingV1beta1FeedbackMessage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (body != null) 'body': body!,
         if (createTime != null) 'createTime': createTime!,
         if (image != null) 'image': image!,
@@ -5699,7 +5697,7 @@ class GoogleCloudDatalabelingV1beta1FeedbackThread {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (feedbackThreadMetadata != null)
           'feedbackThreadMetadata': feedbackThreadMetadata!.toJson(),
         if (name != null) 'name': name!,
@@ -5747,7 +5745,7 @@ class GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
         if (status != null) 'status': status!,
@@ -5780,7 +5778,7 @@ class GoogleCloudDatalabelingV1beta1GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mimeType != null) 'mimeType': mimeType!,
         if (outputUri != null) 'outputUri': outputUri!,
       };
@@ -5801,7 +5799,7 @@ class GoogleCloudDatalabelingV1beta1GcsFolderDestination {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (outputFolderUri != null) 'outputFolderUri': outputFolderUri!,
       };
 }
@@ -5833,7 +5831,7 @@ class GoogleCloudDatalabelingV1beta1GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inputUri != null) 'inputUri': inputUri!,
         if (mimeType != null) 'mimeType': mimeType!,
       };
@@ -5944,7 +5942,7 @@ class GoogleCloudDatalabelingV1beta1HumanAnnotationConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotatedDatasetDescription != null)
           'annotatedDatasetDescription': annotatedDatasetDescription!,
         if (annotatedDatasetDisplayName != null)
@@ -5988,7 +5986,7 @@ class GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpec != null) 'annotationSpec': annotationSpec!.toJson(),
         if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
         if (normalizedBoundingPoly != null)
@@ -6011,7 +6009,7 @@ class GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpec != null) 'annotationSpec': annotationSpec!.toJson(),
       };
 }
@@ -6054,7 +6052,7 @@ class GoogleCloudDatalabelingV1beta1ImageClassificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowMultiLabel != null) 'allowMultiLabel': allowMultiLabel!,
         if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet!,
         if (answerAggregationType != null)
@@ -6100,7 +6098,7 @@ class GoogleCloudDatalabelingV1beta1ImagePayload {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (imageThumbnail != null) 'imageThumbnail': imageThumbnail!,
         if (imageUri != null) 'imageUri': imageUri!,
         if (mimeType != null) 'mimeType': mimeType!,
@@ -6135,7 +6133,7 @@ class GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpec != null) 'annotationSpec': annotationSpec!.toJson(),
         if (normalizedPolyline != null)
           'normalizedPolyline': normalizedPolyline!.toJson(),
@@ -6170,15 +6168,15 @@ class GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation {
   GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation.fromJson(
       core.Map _json) {
     if (_json.containsKey('annotationColors')) {
-      annotationColors = (_json['annotationColors'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      annotationColors =
+          (_json['annotationColors'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('imageBytes')) {
       imageBytes = _json['imageBytes'] as core.String;
@@ -6188,7 +6186,7 @@ class GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationColors != null)
           'annotationColors': annotationColors!
               .map((key, item) => core.MapEntry(key, item.toJson())),
@@ -6237,7 +6235,7 @@ class GoogleCloudDatalabelingV1beta1ImportDataOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (dataset != null) 'dataset': dataset!,
         if (partialFailures != null)
@@ -6278,7 +6276,7 @@ class GoogleCloudDatalabelingV1beta1ImportDataOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataset != null) 'dataset': dataset!,
         if (importCount != null) 'importCount': importCount!,
         if (totalCount != null) 'totalCount': totalCount!,
@@ -6310,7 +6308,7 @@ class GoogleCloudDatalabelingV1beta1ImportDataRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
         if (userEmailAddress != null) 'userEmailAddress': userEmailAddress!,
       };
@@ -6408,7 +6406,7 @@ class GoogleCloudDatalabelingV1beta1InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationType != null) 'annotationType': annotationType!,
         if (bigquerySource != null) 'bigquerySource': bigquerySource!.toJson(),
         if (classificationMetadata != null)
@@ -6519,7 +6517,7 @@ class GoogleCloudDatalabelingV1beta1Instruction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blockingResources != null) 'blockingResources': blockingResources!,
         if (createTime != null) 'createTime': createTime!,
         if (csvInstruction != null) 'csvInstruction': csvInstruction!.toJson(),
@@ -6548,7 +6546,7 @@ class GoogleCloudDatalabelingV1beta1LabelImageBoundingBoxOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -6569,7 +6567,7 @@ class GoogleCloudDatalabelingV1beta1LabelImageBoundingPolyOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -6590,7 +6588,7 @@ class GoogleCloudDatalabelingV1beta1LabelImageClassificationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -6611,7 +6609,7 @@ class GoogleCloudDatalabelingV1beta1LabelImageOrientedBoundingBoxOperationMetada
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -6632,7 +6630,7 @@ class GoogleCloudDatalabelingV1beta1LabelImagePolylineOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -6723,7 +6721,7 @@ class GoogleCloudDatalabelingV1beta1LabelImageRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
         if (boundingPolyConfig != null)
           'boundingPolyConfig': boundingPolyConfig!.toJson(),
@@ -6752,7 +6750,7 @@ class GoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -6938,7 +6936,7 @@ class GoogleCloudDatalabelingV1beta1LabelOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotatedDataset != null) 'annotatedDataset': annotatedDataset!,
         if (createTime != null) 'createTime': createTime!,
         if (dataset != null) 'dataset': dataset!,
@@ -6988,18 +6986,17 @@ class GoogleCloudDatalabelingV1beta1LabelStats {
 
   GoogleCloudDatalabelingV1beta1LabelStats.fromJson(core.Map _json) {
     if (_json.containsKey('exampleCount')) {
-      exampleCount = (_json['exampleCount'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      exampleCount =
+          (_json['exampleCount'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exampleCount != null) 'exampleCount': exampleCount!,
       };
 }
@@ -7020,7 +7017,7 @@ class GoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -7041,7 +7038,7 @@ class GoogleCloudDatalabelingV1beta1LabelTextEntityExtractionOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -7101,7 +7098,7 @@ class GoogleCloudDatalabelingV1beta1LabelTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
         if (feature != null) 'feature': feature!,
         if (textClassificationConfig != null)
@@ -7127,7 +7124,7 @@ class GoogleCloudDatalabelingV1beta1LabelVideoClassificationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -7148,7 +7145,7 @@ class GoogleCloudDatalabelingV1beta1LabelVideoEventOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -7169,7 +7166,7 @@ class GoogleCloudDatalabelingV1beta1LabelVideoObjectDetectionOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -7190,7 +7187,7 @@ class GoogleCloudDatalabelingV1beta1LabelVideoObjectTrackingOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -7275,7 +7272,7 @@ class GoogleCloudDatalabelingV1beta1LabelVideoRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
         if (eventConfig != null) 'eventConfig': eventConfig!.toJson(),
         if (feature != null) 'feature': feature!,
@@ -7312,7 +7309,7 @@ class GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotatedDatasets != null)
           'annotatedDatasets':
               annotatedDatasets!.map((value) => value.toJson()).toList(),
@@ -7345,7 +7342,7 @@ class GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpecSets != null)
           'annotationSpecSets':
               annotationSpecSets!.map((value) => value.toJson()).toList(),
@@ -7376,7 +7373,7 @@ class GoogleCloudDatalabelingV1beta1ListDataItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataItems != null)
           'dataItems': dataItems!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -7406,7 +7403,7 @@ class GoogleCloudDatalabelingV1beta1ListDatasetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (datasets != null)
           'datasets': datasets!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -7437,7 +7434,7 @@ class GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (evaluationJobs != null)
           'evaluationJobs':
               evaluationJobs!.map((value) => value.toJson()).toList(),
@@ -7468,7 +7465,7 @@ class GoogleCloudDatalabelingV1beta1ListExamplesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (examples != null)
           'examples': examples!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -7499,7 +7496,7 @@ class GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (feedbackMessages != null)
           'feedbackMessages':
               feedbackMessages!.map((value) => value.toJson()).toList(),
@@ -7531,7 +7528,7 @@ class GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (feedbackThreads != null)
           'feedbackThreads':
               feedbackThreads!.map((value) => value.toJson()).toList(),
@@ -7563,7 +7560,7 @@ class GoogleCloudDatalabelingV1beta1ListInstructionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (instructions != null)
           'instructions': instructions!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -7588,7 +7585,7 @@ class GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedVertices != null)
           'normalizedVertices':
               normalizedVertices!.map((value) => value.toJson()).toList(),
@@ -7612,7 +7609,7 @@ class GoogleCloudDatalabelingV1beta1NormalizedPolyline {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedVertices != null)
           'normalizedVertices':
               normalizedVertices!.map((value) => value.toJson()).toList(),
@@ -7641,7 +7638,7 @@ class GoogleCloudDatalabelingV1beta1NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
       };
@@ -7676,7 +7673,7 @@ class GoogleCloudDatalabelingV1beta1ObjectDetectionConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet!,
         if (extractionFrameRate != null)
           'extractionFrameRate': extractionFrameRate!,
@@ -7698,7 +7695,7 @@ class GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (prCurve != null) 'prCurve': prCurve!.toJson(),
       };
 }
@@ -7736,7 +7733,7 @@ class GoogleCloudDatalabelingV1beta1ObjectTrackingConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet!,
         if (clipLength != null) 'clipLength': clipLength!,
         if (overlapLength != null) 'overlapLength': overlapLength!,
@@ -7769,7 +7766,7 @@ class GoogleCloudDatalabelingV1beta1ObjectTrackingFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
         if (normalizedBoundingPoly != null)
           'normalizedBoundingPoly': normalizedBoundingPoly!.toJson(),
@@ -7785,7 +7782,7 @@ class GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// General information useful for labels coming from contributors.
@@ -7824,7 +7821,7 @@ class GoogleCloudDatalabelingV1beta1OperatorMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (comments != null) 'comments': comments!,
         if (labelVotes != null) 'labelVotes': labelVotes!,
         if (score != null) 'score': score!,
@@ -7860,7 +7857,7 @@ class GoogleCloudDatalabelingV1beta1OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
         if (gcsFolderDestination != null)
           'gcsFolderDestination': gcsFolderDestination!.toJson(),
@@ -7875,7 +7872,7 @@ class GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Instruction from a PDF file.
@@ -7893,7 +7890,7 @@ class GoogleCloudDatalabelingV1beta1PdfInstruction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsFileUri != null) 'gcsFileUri': gcsFileUri!,
       };
 }
@@ -7915,7 +7912,7 @@ class GoogleCloudDatalabelingV1beta1Polyline {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (vertices != null)
           'vertices': vertices!.map((value) => value.toJson()).toList(),
       };
@@ -7944,7 +7941,7 @@ class GoogleCloudDatalabelingV1beta1PolylineConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet!,
         if (instructionMessage != null)
           'instructionMessage': instructionMessage!,
@@ -7999,7 +7996,7 @@ class GoogleCloudDatalabelingV1beta1PrCurve {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpec != null) 'annotationSpec': annotationSpec!.toJson(),
         if (areaUnderCurve != null) 'areaUnderCurve': areaUnderCurve!,
         if (confidenceMetricsEntries != null)
@@ -8018,7 +8015,7 @@ class GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Request message ResumeEvaluationJob.
@@ -8029,7 +8026,7 @@ class GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A row in the confusion matrix.
@@ -8060,7 +8057,7 @@ class GoogleCloudDatalabelingV1beta1Row {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpec != null) 'annotationSpec': annotationSpec!.toJson(),
         if (entries != null)
           'entries': entries!.map((value) => value.toJson()).toList(),
@@ -8091,7 +8088,7 @@ class GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (evaluations != null)
           'evaluations': evaluations!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -8128,7 +8125,7 @@ class GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
       };
@@ -8159,7 +8156,7 @@ class GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exampleComparisons != null)
           'exampleComparisons':
               exampleComparisons!.map((value) => value.toJson()).toList(),
@@ -8190,7 +8187,7 @@ class GoogleCloudDatalabelingV1beta1SegmentationConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet!,
         if (instructionMessage != null)
           'instructionMessage': instructionMessage!,
@@ -8214,7 +8211,7 @@ class GoogleCloudDatalabelingV1beta1SentimentConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enableLabelSentimentSelection != null)
           'enableLabelSentimentSelection': enableLabelSentimentSelection!,
       };
@@ -8239,7 +8236,7 @@ class GoogleCloudDatalabelingV1beta1SequentialSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (end != null) 'end': end!,
         if (start != null) 'start': start!,
       };
@@ -8260,7 +8257,7 @@ class GoogleCloudDatalabelingV1beta1TextClassificationAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpec != null) 'annotationSpec': annotationSpec!.toJson(),
       };
 }
@@ -8302,7 +8299,7 @@ class GoogleCloudDatalabelingV1beta1TextClassificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowMultiLabel != null) 'allowMultiLabel': allowMultiLabel!,
         if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet!,
         if (sentimentConfig != null)
@@ -8334,7 +8331,7 @@ class GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpec != null) 'annotationSpec': annotationSpec!.toJson(),
         if (sequentialSegment != null)
           'sequentialSegment': sequentialSegment!.toJson(),
@@ -8357,7 +8354,7 @@ class GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpecSet != null) 'annotationSpecSet': annotationSpecSet!,
       };
 }
@@ -8378,7 +8375,7 @@ class GoogleCloudDatalabelingV1beta1TextMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
       };
 }
@@ -8396,7 +8393,7 @@ class GoogleCloudDatalabelingV1beta1TextPayload {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (textContent != null) 'textContent': textContent!,
       };
 }
@@ -8422,7 +8419,7 @@ class GoogleCloudDatalabelingV1beta1TimeSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endTimeOffset != null) 'endTimeOffset': endTimeOffset!,
         if (startTimeOffset != null) 'startTimeOffset': startTimeOffset!,
       };
@@ -8449,7 +8446,7 @@ class GoogleCloudDatalabelingV1beta1Vertex {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
       };
@@ -8477,7 +8474,7 @@ class GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpec != null) 'annotationSpec': annotationSpec!.toJson(),
         if (timeSegment != null) 'timeSegment': timeSegment!.toJson(),
       };
@@ -8523,7 +8520,7 @@ class GoogleCloudDatalabelingV1beta1VideoClassificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpecSetConfigs != null)
           'annotationSpecSetConfigs':
               annotationSpecSetConfigs!.map((value) => value.toJson()).toList(),
@@ -8553,7 +8550,7 @@ class GoogleCloudDatalabelingV1beta1VideoEventAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpec != null) 'annotationSpec': annotationSpec!.toJson(),
         if (timeSegment != null) 'timeSegment': timeSegment!.toJson(),
       };
@@ -8592,7 +8589,7 @@ class GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationSpec != null) 'annotationSpec': annotationSpec!.toJson(),
         if (objectTrackingFrames != null)
           'objectTrackingFrames':
@@ -8642,7 +8639,7 @@ class GoogleCloudDatalabelingV1beta1VideoPayload {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (frameRate != null) 'frameRate': frameRate!,
         if (mimeType != null) 'mimeType': mimeType!,
         if (signedUri != null) 'signedUri': signedUri!,
@@ -8679,7 +8676,7 @@ class GoogleCloudDatalabelingV1beta1VideoThumbnail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (thumbnail != null) 'thumbnail': thumbnail!,
         if (timeOffset != null) 'timeOffset': timeOffset!,
       };
@@ -8719,7 +8716,7 @@ class GoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (instruction != null) 'instruction': instruction!,
         if (partialFailures != null)
@@ -8777,7 +8774,7 @@ class GoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotatedDataset != null) 'annotatedDataset': annotatedDataset!,
         if (createTime != null) 'createTime': createTime!,
         if (dataset != null) 'dataset': dataset!,
@@ -8846,7 +8843,7 @@ class GoogleCloudDatalabelingV1p1alpha1ExportDataOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotatedDataset != null) 'annotatedDataset': annotatedDataset!,
         if (dataset != null) 'dataset': dataset!,
         if (exportCount != null) 'exportCount': exportCount!,
@@ -8881,7 +8878,7 @@ class GoogleCloudDatalabelingV1p1alpha1GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mimeType != null) 'mimeType': mimeType!,
         if (outputUri != null) 'outputUri': outputUri!,
       };
@@ -8903,7 +8900,7 @@ class GoogleCloudDatalabelingV1p1alpha1GcsFolderDestination {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (outputFolderUri != null) 'outputFolderUri': outputFolderUri!,
       };
 }
@@ -8930,7 +8927,7 @@ class GoogleCloudDatalabelingV1p1alpha1GenerateAnalysisReportOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (dataset != null) 'dataset': dataset!,
       };
@@ -9042,7 +9039,7 @@ class GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotatedDatasetDescription != null)
           'annotatedDatasetDescription': annotatedDatasetDescription!,
         if (annotatedDatasetDisplayName != null)
@@ -9097,7 +9094,7 @@ class GoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (dataset != null) 'dataset': dataset!,
         if (partialFailures != null)
@@ -9138,7 +9135,7 @@ class GoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataset != null) 'dataset': dataset!,
         if (importCount != null) 'importCount': importCount!,
         if (totalCount != null) 'totalCount': totalCount!,
@@ -9161,7 +9158,7 @@ class GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingBoxOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -9182,7 +9179,7 @@ class GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingPolyOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -9203,7 +9200,7 @@ class GoogleCloudDatalabelingV1p1alpha1LabelImageClassificationOperationMetadata
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -9224,7 +9221,7 @@ class GoogleCloudDatalabelingV1p1alpha1LabelImageOrientedBoundingBoxOperationMet
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -9245,7 +9242,7 @@ class GoogleCloudDatalabelingV1p1alpha1LabelImagePolylineOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -9266,7 +9263,7 @@ class GoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -9452,7 +9449,7 @@ class GoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotatedDataset != null) 'annotatedDataset': annotatedDataset!,
         if (createTime != null) 'createTime': createTime!,
         if (dataset != null) 'dataset': dataset!,
@@ -9502,18 +9499,17 @@ class GoogleCloudDatalabelingV1p1alpha1LabelStats {
 
   GoogleCloudDatalabelingV1p1alpha1LabelStats.fromJson(core.Map _json) {
     if (_json.containsKey('exampleCount')) {
-      exampleCount = (_json['exampleCount'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      exampleCount =
+          (_json['exampleCount'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exampleCount != null) 'exampleCount': exampleCount!,
       };
 }
@@ -9534,7 +9530,7 @@ class GoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetadata 
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -9555,7 +9551,7 @@ class GoogleCloudDatalabelingV1p1alpha1LabelTextEntityExtractionOperationMetadat
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -9576,7 +9572,7 @@ class GoogleCloudDatalabelingV1p1alpha1LabelVideoClassificationOperationMetadata
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -9597,7 +9593,7 @@ class GoogleCloudDatalabelingV1p1alpha1LabelVideoEventOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -9618,7 +9614,7 @@ class GoogleCloudDatalabelingV1p1alpha1LabelVideoObjectDetectionOperationMetadat
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -9639,7 +9635,7 @@ class GoogleCloudDatalabelingV1p1alpha1LabelVideoObjectTrackingOperationMetadata
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -9672,7 +9668,7 @@ class GoogleCloudDatalabelingV1p1alpha1OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
         if (gcsFolderDestination != null)
           'gcsFolderDestination': gcsFolderDestination!.toJson(),
@@ -9713,7 +9709,7 @@ class GoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (instruction != null) 'instruction': instruction!,
         if (partialFailures != null)
@@ -9771,7 +9767,7 @@ class GoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotatedDataset != null) 'annotatedDataset': annotatedDataset!,
         if (createTime != null) 'createTime': createTime!,
         if (dataset != null) 'dataset': dataset!,
@@ -9840,7 +9836,7 @@ class GoogleCloudDatalabelingV1p2alpha1ExportDataOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotatedDataset != null) 'annotatedDataset': annotatedDataset!,
         if (dataset != null) 'dataset': dataset!,
         if (exportCount != null) 'exportCount': exportCount!,
@@ -9875,7 +9871,7 @@ class GoogleCloudDatalabelingV1p2alpha1GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mimeType != null) 'mimeType': mimeType!,
         if (outputUri != null) 'outputUri': outputUri!,
       };
@@ -9897,7 +9893,7 @@ class GoogleCloudDatalabelingV1p2alpha1GcsFolderDestination {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (outputFolderUri != null) 'outputFolderUri': outputFolderUri!,
       };
 }
@@ -10008,7 +10004,7 @@ class GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotatedDatasetDescription != null)
           'annotatedDatasetDescription': annotatedDatasetDescription!,
         if (annotatedDatasetDisplayName != null)
@@ -10063,7 +10059,7 @@ class GoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (dataset != null) 'dataset': dataset!,
         if (partialFailures != null)
@@ -10104,7 +10100,7 @@ class GoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataset != null) 'dataset': dataset!,
         if (importCount != null) 'importCount': importCount!,
         if (totalCount != null) 'totalCount': totalCount!,
@@ -10127,7 +10123,7 @@ class GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingBoxOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -10148,7 +10144,7 @@ class GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingPolyOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -10169,7 +10165,7 @@ class GoogleCloudDatalabelingV1p2alpha1LabelImageClassificationOperationMetadata
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -10190,7 +10186,7 @@ class GoogleCloudDatalabelingV1p2alpha1LabelImageOrientedBoundingBoxOperationMet
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -10211,7 +10207,7 @@ class GoogleCloudDatalabelingV1p2alpha1LabelImagePolylineOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -10232,7 +10228,7 @@ class GoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -10418,7 +10414,7 @@ class GoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotatedDataset != null) 'annotatedDataset': annotatedDataset!,
         if (createTime != null) 'createTime': createTime!,
         if (dataset != null) 'dataset': dataset!,
@@ -10468,18 +10464,17 @@ class GoogleCloudDatalabelingV1p2alpha1LabelStats {
 
   GoogleCloudDatalabelingV1p2alpha1LabelStats.fromJson(core.Map _json) {
     if (_json.containsKey('exampleCount')) {
-      exampleCount = (_json['exampleCount'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      exampleCount =
+          (_json['exampleCount'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exampleCount != null) 'exampleCount': exampleCount!,
       };
 }
@@ -10500,7 +10495,7 @@ class GoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetadata 
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -10521,7 +10516,7 @@ class GoogleCloudDatalabelingV1p2alpha1LabelTextEntityExtractionOperationMetadat
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -10542,7 +10537,7 @@ class GoogleCloudDatalabelingV1p2alpha1LabelVideoClassificationOperationMetadata
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -10563,7 +10558,7 @@ class GoogleCloudDatalabelingV1p2alpha1LabelVideoEventOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -10584,7 +10579,7 @@ class GoogleCloudDatalabelingV1p2alpha1LabelVideoObjectDetectionOperationMetadat
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -10605,7 +10600,7 @@ class GoogleCloudDatalabelingV1p2alpha1LabelVideoObjectTrackingOperationMetadata
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConfig != null) 'basicConfig': basicConfig!.toJson(),
       };
 }
@@ -10638,7 +10633,7 @@ class GoogleCloudDatalabelingV1p2alpha1OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
         if (gcsFolderDestination != null)
           'gcsFolderDestination': gcsFolderDestination!.toJson(),
@@ -10668,7 +10663,7 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
@@ -10729,29 +10724,27 @@ class GoogleLongrunningOperation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -10774,7 +10767,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -10810,8 +10803,8 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -10824,7 +10817,7 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,

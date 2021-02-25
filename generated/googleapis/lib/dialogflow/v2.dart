@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -3206,7 +3205,7 @@ class GoogleCloudDialogflowCxV3AudioInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audio != null) 'audio': audio!,
         if (config != null) 'config': config!.toJson(),
       };
@@ -3230,7 +3229,7 @@ class GoogleCloudDialogflowCxV3BatchRunTestCasesMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errors != null)
           'errors': errors!.map((value) => value.toJson()).toList(),
       };
@@ -3255,7 +3254,7 @@ class GoogleCloudDialogflowCxV3BatchRunTestCasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (results != null)
           'results': results!.map((value) => value.toJson()).toList(),
       };
@@ -3287,7 +3286,7 @@ class GoogleCloudDialogflowCxV3ConversationTurn {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (userInput != null) 'userInput': userInput!.toJson(),
         if (virtualAgentOutput != null)
           'virtualAgentOutput': virtualAgentOutput!.toJson(),
@@ -3316,14 +3315,14 @@ class GoogleCloudDialogflowCxV3ConversationTurnUserInput {
 
   GoogleCloudDialogflowCxV3ConversationTurnUserInput.fromJson(core.Map _json) {
     if (_json.containsKey('injectedParameters')) {
-      injectedParameters = (_json['injectedParameters'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      injectedParameters =
+          (_json['injectedParameters'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('input')) {
       input = GoogleCloudDialogflowCxV3QueryInput.fromJson(
@@ -3334,7 +3333,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnUserInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (injectedParameters != null)
           'injectedParameters': injectedParameters!,
         if (input != null) 'input': input!.toJson(),
@@ -3393,14 +3392,13 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
           _json['currentPage'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('diagnosticInfo')) {
-      diagnosticInfo = (_json['diagnosticInfo'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      diagnosticInfo =
+          (_json['diagnosticInfo'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('differences')) {
       differences = (_json['differences'] as core.List)
@@ -3410,14 +3408,14 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
           .toList();
     }
     if (_json.containsKey('sessionParameters')) {
-      sessionParameters = (_json['sessionParameters'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      sessionParameters =
+          (_json['sessionParameters'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('status')) {
       status = GoogleRpcStatus.fromJson(
@@ -3436,7 +3434,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currentPage != null) 'currentPage': currentPage!.toJson(),
         if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo!,
         if (differences != null)
@@ -3467,7 +3465,7 @@ class GoogleCloudDialogflowCxV3CreateDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (genericMetadata != null)
           'genericMetadata': genericMetadata!.toJson(),
       };
@@ -3490,7 +3488,7 @@ class GoogleCloudDialogflowCxV3CreateVersionOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (version != null) 'version': version!,
       };
 }
@@ -3511,7 +3509,7 @@ class GoogleCloudDialogflowCxV3DeleteDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (genericMetadata != null)
           'genericMetadata': genericMetadata!.toJson(),
       };
@@ -3536,7 +3534,7 @@ class GoogleCloudDialogflowCxV3DtmfInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (digits != null) 'digits': digits!,
         if (finishDigit != null) 'finishDigit': finishDigit!,
       };
@@ -3599,7 +3597,7 @@ class GoogleCloudDialogflowCxV3EventHandler {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (event != null) 'event': event!,
         if (name != null) 'name': name!,
         if (targetFlow != null) 'targetFlow': targetFlow!,
@@ -3622,7 +3620,7 @@ class GoogleCloudDialogflowCxV3EventInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (event != null) 'event': event!,
       };
 }
@@ -3656,7 +3654,7 @@ class GoogleCloudDialogflowCxV3ExportAgentResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agentContent != null) 'agentContent': agentContent!,
         if (agentUri != null) 'agentUri': agentUri!,
       };
@@ -3670,7 +3668,7 @@ class GoogleCloudDialogflowCxV3ExportTestCasesMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The response message for TestCases.ExportTestCases.
@@ -3701,7 +3699,7 @@ class GoogleCloudDialogflowCxV3ExportTestCasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (gcsUri != null) 'gcsUri': gcsUri!,
       };
@@ -3730,7 +3728,7 @@ class GoogleCloudDialogflowCxV3Form {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parameters != null)
           'parameters': parameters!.map((value) => value.toJson()).toList(),
       };
@@ -3812,7 +3810,7 @@ class GoogleCloudDialogflowCxV3FormParameter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (defaultValue != null) 'defaultValue': defaultValue!,
         if (displayName != null) 'displayName': displayName!,
         if (entityType != null) 'entityType': entityType!,
@@ -3872,7 +3870,7 @@ class GoogleCloudDialogflowCxV3FormParameterFillBehavior {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (initialPromptFulfillment != null)
           'initialPromptFulfillment': initialPromptFulfillment!.toJson(),
         if (repromptEventHandlers != null)
@@ -3944,7 +3942,7 @@ class GoogleCloudDialogflowCxV3Fulfillment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (conditionalCases != null)
           'conditionalCases':
               conditionalCases!.map((value) => value.toJson()).toList(),
@@ -3980,7 +3978,7 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCases {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cases != null)
           'cases': cases!.map((value) => value.toJson()).toList(),
       };
@@ -4020,7 +4018,7 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (caseContent != null)
           'caseContent': caseContent!.map((value) => value.toJson()).toList(),
         if (condition != null) 'condition': condition!,
@@ -4050,7 +4048,7 @@ class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (additionalCases != null)
           'additionalCases': additionalCases!.toJson(),
         if (message != null) 'message': message!.toJson(),
@@ -4082,7 +4080,7 @@ class GoogleCloudDialogflowCxV3FulfillmentSetParameterAction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parameter != null) 'parameter': parameter!,
         if (value != null) 'value': value!,
       };
@@ -4109,7 +4107,7 @@ class GoogleCloudDialogflowCxV3GenericKnowledgeOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
       };
 }
@@ -4130,7 +4128,7 @@ class GoogleCloudDialogflowCxV3ImportDocumentsOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (genericMetadata != null)
           'genericMetadata': genericMetadata!.toJson(),
       };
@@ -4152,7 +4150,7 @@ class GoogleCloudDialogflowCxV3ImportDocumentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (warnings != null)
           'warnings': warnings!.map((value) => value.toJson()).toList(),
       };
@@ -4175,7 +4173,7 @@ class GoogleCloudDialogflowCxV3ImportTestCasesMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errors != null)
           'errors': errors!.map((value) => value.toJson()).toList(),
       };
@@ -4198,7 +4196,7 @@ class GoogleCloudDialogflowCxV3ImportTestCasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (names != null) 'names': names!,
       };
 }
@@ -4346,7 +4344,7 @@ class GoogleCloudDialogflowCxV3InputAudioConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audioEncoding != null) 'audioEncoding': audioEncoding!,
         if (enableWordInfo != null) 'enableWordInfo': enableWordInfo!,
         if (model != null) 'model': model!,
@@ -4436,13 +4434,12 @@ class GoogleCloudDialogflowCxV3Intent {
       isFallback = _json['isFallback'] as core.bool;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -4466,7 +4463,7 @@ class GoogleCloudDialogflowCxV3Intent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (isFallback != null) 'isFallback': isFallback!,
@@ -4499,7 +4496,7 @@ class GoogleCloudDialogflowCxV3IntentInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (intent != null) 'intent': intent!,
       };
 }
@@ -4551,7 +4548,7 @@ class GoogleCloudDialogflowCxV3IntentParameter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entityType != null) 'entityType': entityType!,
         if (id != null) 'id': id!,
         if (isList != null) 'isList': isList!,
@@ -4604,7 +4601,7 @@ class GoogleCloudDialogflowCxV3IntentTrainingPhrase {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (parts != null)
           'parts': parts!.map((value) => value.toJson()).toList(),
@@ -4635,7 +4632,7 @@ class GoogleCloudDialogflowCxV3IntentTrainingPhrasePart {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parameterId != null) 'parameterId': parameterId!,
         if (text != null) 'text': text!,
       };
@@ -4740,7 +4737,7 @@ class GoogleCloudDialogflowCxV3Page {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (entryFulfillment != null)
           'entryFulfillment': entryFulfillment!.toJson(),
@@ -4782,7 +4779,7 @@ class GoogleCloudDialogflowCxV3PageInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currentPage != null) 'currentPage': currentPage!,
         if (formInfo != null) 'formInfo': formInfo!.toJson(),
       };
@@ -4809,7 +4806,7 @@ class GoogleCloudDialogflowCxV3PageInfoFormInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parameterInfo != null)
           'parameterInfo':
               parameterInfo!.map((value) => value.toJson()).toList(),
@@ -4882,7 +4879,7 @@ class GoogleCloudDialogflowCxV3PageInfoFormInfoParameterInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (justCollected != null) 'justCollected': justCollected!,
         if (required != null) 'required': required!,
@@ -4950,7 +4947,7 @@ class GoogleCloudDialogflowCxV3QueryInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audio != null) 'audio': audio!.toJson(),
         if (dtmf != null) 'dtmf': dtmf!.toJson(),
         if (event != null) 'event': event!.toJson(),
@@ -4976,7 +4973,7 @@ class GoogleCloudDialogflowCxV3ReloadDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (genericMetadata != null)
           'genericMetadata': genericMetadata!.toJson(),
       };
@@ -5072,13 +5069,12 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
               _json['outputAudioText'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
-      payload =
-          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      payload = (_json['payload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('playAudio')) {
       playAudio = GoogleCloudDialogflowCxV3ResponseMessagePlayAudio.fromJson(
@@ -5090,7 +5086,7 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (conversationSuccess != null)
           'conversationSuccess': conversationSuccess!.toJson(),
         if (endInteraction != null) 'endInteraction': endInteraction!.toJson(),
@@ -5130,17 +5126,16 @@ class GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess {
   GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess.fromJson(
       core.Map _json) {
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!,
       };
 }
@@ -5156,7 +5151,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageEndInteraction {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Indicates that the conversation should be handed off to a live agent.
@@ -5181,17 +5176,16 @@ class GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff {
   GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff.fromJson(
       core.Map _json) {
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!,
       };
 }
@@ -5220,7 +5214,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageMixedAudio {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (segments != null)
           'segments': segments!.map((value) => value.toJson()).toList(),
       };
@@ -5265,7 +5259,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageMixedAudioSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowPlaybackInterruption != null)
           'allowPlaybackInterruption': allowPlaybackInterruption!,
         if (audio != null) 'audio': audio!,
@@ -5306,7 +5300,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowPlaybackInterruption != null)
           'allowPlaybackInterruption': allowPlaybackInterruption!,
         if (ssml != null) 'ssml': ssml!,
@@ -5342,7 +5336,7 @@ class GoogleCloudDialogflowCxV3ResponseMessagePlayAudio {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowPlaybackInterruption != null)
           'allowPlaybackInterruption': allowPlaybackInterruption!,
         if (audioUri != null) 'audioUri': audioUri!,
@@ -5376,7 +5370,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageText {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowPlaybackInterruption != null)
           'allowPlaybackInterruption': allowPlaybackInterruption!,
         if (text != null) 'text': text!,
@@ -5391,7 +5385,7 @@ class GoogleCloudDialogflowCxV3RunTestCaseMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The response message for TestCases.RunTestCase.
@@ -5408,7 +5402,7 @@ class GoogleCloudDialogflowCxV3RunTestCaseResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (result != null) 'result': result!.toJson(),
       };
 }
@@ -5440,21 +5434,20 @@ class GoogleCloudDialogflowCxV3SessionInfo {
 
   GoogleCloudDialogflowCxV3SessionInfo.fromJson(core.Map _json) {
     if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      parameters =
+          (_json['parameters'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('session')) {
       session = _json['session'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parameters != null) 'parameters': parameters!,
         if (session != null) 'session': session!,
       };
@@ -5543,7 +5536,7 @@ class GoogleCloudDialogflowCxV3TestCase {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (creationTime != null) 'creationTime': creationTime!,
         if (displayName != null) 'displayName': displayName!,
         if (lastTestResult != null) 'lastTestResult': lastTestResult!.toJson(),
@@ -5579,7 +5572,7 @@ class GoogleCloudDialogflowCxV3TestCaseError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (status != null) 'status': status!.toJson(),
         if (testCase != null) 'testCase': testCase!.toJson(),
       };
@@ -5635,7 +5628,7 @@ class GoogleCloudDialogflowCxV3TestCaseResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (conversationTurns != null)
           'conversationTurns':
               conversationTurns!.map((value) => value.toJson()).toList(),
@@ -5670,7 +5663,7 @@ class GoogleCloudDialogflowCxV3TestConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (flow != null) 'flow': flow!,
         if (trackingParameters != null)
           'trackingParameters': trackingParameters!,
@@ -5703,7 +5696,7 @@ class GoogleCloudDialogflowCxV3TestError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (status != null) 'status': status!.toJson(),
         if (testCase != null) 'testCase': testCase!,
         if (testTime != null) 'testTime': testTime!,
@@ -5735,7 +5728,7 @@ class GoogleCloudDialogflowCxV3TestRunDifference {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (type != null) 'type': type!,
       };
@@ -5758,7 +5751,7 @@ class GoogleCloudDialogflowCxV3TextInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (text != null) 'text': text!,
       };
 }
@@ -5836,7 +5829,7 @@ class GoogleCloudDialogflowCxV3TransitionRoute {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!,
         if (intent != null) 'intent': intent!,
         if (name != null) 'name': name!,
@@ -5863,7 +5856,7 @@ class GoogleCloudDialogflowCxV3UpdateDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (genericMetadata != null)
           'genericMetadata': genericMetadata!.toJson(),
       };
@@ -5937,13 +5930,12 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
           _json['pageInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
-      payload =
-          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      payload = (_json['payload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('sentimentAnalysisResult')) {
       sentimentAnalysisResult =
@@ -5957,7 +5949,7 @@ class GoogleCloudDialogflowCxV3WebhookRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectIntentResponseId != null)
           'detectIntentResponseId': detectIntentResponseId!,
         if (fulfillmentInfo != null)
@@ -5989,7 +5981,7 @@ class GoogleCloudDialogflowCxV3WebhookRequestFulfillmentInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (tag != null) 'tag': tag!,
       };
 }
@@ -6034,19 +6026,18 @@ class GoogleCloudDialogflowCxV3WebhookRequestIntentInfo {
       lastMatchedIntent = _json['lastMatchedIntent'] as core.String;
     }
     if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue
-                  .fromJson(item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      parameters =
+          (_json['parameters'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue
+              .fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (displayName != null) 'displayName': displayName!,
         if (lastMatchedIntent != null) 'lastMatchedIntent': lastMatchedIntent!,
@@ -6083,7 +6074,7 @@ class GoogleCloudDialogflowCxV3WebhookRequestIntentInfoIntentParameterValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (originalValue != null) 'originalValue': originalValue!,
         if (resolvedValue != null) 'resolvedValue': resolvedValue!,
       };
@@ -6112,7 +6103,7 @@ class GoogleCloudDialogflowCxV3WebhookRequestSentimentAnalysisResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (magnitude != null) 'magnitude': magnitude!,
         if (score != null) 'score': score!,
       };
@@ -6169,13 +6160,12 @@ class GoogleCloudDialogflowCxV3WebhookResponse {
           _json['pageInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
-      payload =
-          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      payload = (_json['payload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('sessionInfo')) {
       sessionInfo = GoogleCloudDialogflowCxV3SessionInfo.fromJson(
@@ -6189,7 +6179,7 @@ class GoogleCloudDialogflowCxV3WebhookResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fulfillmentResponse != null)
           'fulfillmentResponse': fulfillmentResponse!.toJson(),
         if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
@@ -6230,7 +6220,7 @@ class GoogleCloudDialogflowCxV3WebhookResponseFulfillmentResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mergeBehavior != null) 'mergeBehavior': mergeBehavior!,
         if (messages != null)
           'messages': messages!.map((value) => value.toJson()).toList(),
@@ -6271,7 +6261,7 @@ class GoogleCloudDialogflowCxV3beta1AudioInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audio != null) 'audio': audio!,
         if (config != null) 'config': config!.toJson(),
       };
@@ -6296,7 +6286,7 @@ class GoogleCloudDialogflowCxV3beta1BatchRunTestCasesMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errors != null)
           'errors': errors!.map((value) => value.toJson()).toList(),
       };
@@ -6322,7 +6312,7 @@ class GoogleCloudDialogflowCxV3beta1BatchRunTestCasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (results != null)
           'results': results!.map((value) => value.toJson()).toList(),
       };
@@ -6355,7 +6345,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurn {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (userInput != null) 'userInput': userInput!.toJson(),
         if (virtualAgentOutput != null)
           'virtualAgentOutput': virtualAgentOutput!.toJson(),
@@ -6385,14 +6375,14 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput {
   GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput.fromJson(
       core.Map _json) {
     if (_json.containsKey('injectedParameters')) {
-      injectedParameters = (_json['injectedParameters'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      injectedParameters =
+          (_json['injectedParameters'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('input')) {
       input = GoogleCloudDialogflowCxV3beta1QueryInput.fromJson(
@@ -6403,7 +6393,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnUserInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (injectedParameters != null)
           'injectedParameters': injectedParameters!,
         if (input != null) 'input': input!.toJson(),
@@ -6462,14 +6452,13 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
           _json['currentPage'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('diagnosticInfo')) {
-      diagnosticInfo = (_json['diagnosticInfo'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      diagnosticInfo =
+          (_json['diagnosticInfo'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('differences')) {
       differences = (_json['differences'] as core.List)
@@ -6479,14 +6468,14 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
           .toList();
     }
     if (_json.containsKey('sessionParameters')) {
-      sessionParameters = (_json['sessionParameters'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      sessionParameters =
+          (_json['sessionParameters'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('status')) {
       status = GoogleRpcStatus.fromJson(
@@ -6505,7 +6494,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currentPage != null) 'currentPage': currentPage!.toJson(),
         if (diagnosticInfo != null) 'diagnosticInfo': diagnosticInfo!,
         if (differences != null)
@@ -6538,7 +6527,7 @@ class GoogleCloudDialogflowCxV3beta1CreateDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (genericMetadata != null)
           'genericMetadata': genericMetadata!.toJson(),
       };
@@ -6561,7 +6550,7 @@ class GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (version != null) 'version': version!,
       };
 }
@@ -6584,7 +6573,7 @@ class GoogleCloudDialogflowCxV3beta1DeleteDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (genericMetadata != null)
           'genericMetadata': genericMetadata!.toJson(),
       };
@@ -6609,7 +6598,7 @@ class GoogleCloudDialogflowCxV3beta1DtmfInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (digits != null) 'digits': digits!,
         if (finishDigit != null) 'finishDigit': finishDigit!,
       };
@@ -6672,7 +6661,7 @@ class GoogleCloudDialogflowCxV3beta1EventHandler {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (event != null) 'event': event!,
         if (name != null) 'name': name!,
         if (targetFlow != null) 'targetFlow': targetFlow!,
@@ -6695,7 +6684,7 @@ class GoogleCloudDialogflowCxV3beta1EventInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (event != null) 'event': event!,
       };
 }
@@ -6729,7 +6718,7 @@ class GoogleCloudDialogflowCxV3beta1ExportAgentResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agentContent != null) 'agentContent': agentContent!,
         if (agentUri != null) 'agentUri': agentUri!,
       };
@@ -6743,7 +6732,7 @@ class GoogleCloudDialogflowCxV3beta1ExportTestCasesMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The response message for TestCases.ExportTestCases.
@@ -6775,7 +6764,7 @@ class GoogleCloudDialogflowCxV3beta1ExportTestCasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (gcsUri != null) 'gcsUri': gcsUri!,
       };
@@ -6804,7 +6793,7 @@ class GoogleCloudDialogflowCxV3beta1Form {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parameters != null)
           'parameters': parameters!.map((value) => value.toJson()).toList(),
       };
@@ -6886,7 +6875,7 @@ class GoogleCloudDialogflowCxV3beta1FormParameter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (defaultValue != null) 'defaultValue': defaultValue!,
         if (displayName != null) 'displayName': displayName!,
         if (entityType != null) 'entityType': entityType!,
@@ -6948,7 +6937,7 @@ class GoogleCloudDialogflowCxV3beta1FormParameterFillBehavior {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (initialPromptFulfillment != null)
           'initialPromptFulfillment': initialPromptFulfillment!.toJson(),
         if (repromptEventHandlers != null)
@@ -7022,7 +7011,7 @@ class GoogleCloudDialogflowCxV3beta1Fulfillment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (conditionalCases != null)
           'conditionalCases':
               conditionalCases!.map((value) => value.toJson()).toList(),
@@ -7059,7 +7048,7 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCases {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cases != null)
           'cases': cases!.map((value) => value.toJson()).toList(),
       };
@@ -7099,7 +7088,7 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCase {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (caseContent != null)
           'caseContent': caseContent!.map((value) => value.toJson()).toList(),
         if (condition != null) 'condition': condition!,
@@ -7129,7 +7118,7 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (additionalCases != null)
           'additionalCases': additionalCases!.toJson(),
         if (message != null) 'message': message!.toJson(),
@@ -7161,7 +7150,7 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parameter != null) 'parameter': parameter!,
         if (value != null) 'value': value!,
       };
@@ -7188,7 +7177,7 @@ class GoogleCloudDialogflowCxV3beta1GenericKnowledgeOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
       };
 }
@@ -7211,7 +7200,7 @@ class GoogleCloudDialogflowCxV3beta1ImportDocumentsOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (genericMetadata != null)
           'genericMetadata': genericMetadata!.toJson(),
       };
@@ -7234,7 +7223,7 @@ class GoogleCloudDialogflowCxV3beta1ImportDocumentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (warnings != null)
           'warnings': warnings!.map((value) => value.toJson()).toList(),
       };
@@ -7258,7 +7247,7 @@ class GoogleCloudDialogflowCxV3beta1ImportTestCasesMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errors != null)
           'errors': errors!.map((value) => value.toJson()).toList(),
       };
@@ -7282,7 +7271,7 @@ class GoogleCloudDialogflowCxV3beta1ImportTestCasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (names != null) 'names': names!,
       };
 }
@@ -7430,7 +7419,7 @@ class GoogleCloudDialogflowCxV3beta1InputAudioConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audioEncoding != null) 'audioEncoding': audioEncoding!,
         if (enableWordInfo != null) 'enableWordInfo': enableWordInfo!,
         if (model != null) 'model': model!,
@@ -7521,13 +7510,12 @@ class GoogleCloudDialogflowCxV3beta1Intent {
       isFallback = _json['isFallback'] as core.bool;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -7551,7 +7539,7 @@ class GoogleCloudDialogflowCxV3beta1Intent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (isFallback != null) 'isFallback': isFallback!,
@@ -7584,7 +7572,7 @@ class GoogleCloudDialogflowCxV3beta1IntentInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (intent != null) 'intent': intent!,
       };
 }
@@ -7636,7 +7624,7 @@ class GoogleCloudDialogflowCxV3beta1IntentParameter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entityType != null) 'entityType': entityType!,
         if (id != null) 'id': id!,
         if (isList != null) 'isList': isList!,
@@ -7689,7 +7677,7 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrase {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (parts != null)
           'parts': parts!.map((value) => value.toJson()).toList(),
@@ -7721,7 +7709,7 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parameterId != null) 'parameterId': parameterId!,
         if (text != null) 'text': text!,
       };
@@ -7826,7 +7814,7 @@ class GoogleCloudDialogflowCxV3beta1Page {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (entryFulfillment != null)
           'entryFulfillment': entryFulfillment!.toJson(),
@@ -7868,7 +7856,7 @@ class GoogleCloudDialogflowCxV3beta1PageInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currentPage != null) 'currentPage': currentPage!,
         if (formInfo != null) 'formInfo': formInfo!.toJson(),
       };
@@ -7896,7 +7884,7 @@ class GoogleCloudDialogflowCxV3beta1PageInfoFormInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parameterInfo != null)
           'parameterInfo':
               parameterInfo!.map((value) => value.toJson()).toList(),
@@ -7969,7 +7957,7 @@ class GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (justCollected != null) 'justCollected': justCollected!,
         if (required != null) 'required': required!,
@@ -8037,7 +8025,7 @@ class GoogleCloudDialogflowCxV3beta1QueryInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audio != null) 'audio': audio!.toJson(),
         if (dtmf != null) 'dtmf': dtmf!.toJson(),
         if (event != null) 'event': event!.toJson(),
@@ -8065,7 +8053,7 @@ class GoogleCloudDialogflowCxV3beta1ReloadDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (genericMetadata != null)
           'genericMetadata': genericMetadata!.toJson(),
       };
@@ -8164,13 +8152,12 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessage {
               _json['outputAudioText'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
-      payload =
-          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      payload = (_json['payload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('playAudio')) {
       playAudio =
@@ -8183,7 +8170,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (conversationSuccess != null)
           'conversationSuccess': conversationSuccess!.toJson(),
         if (endInteraction != null) 'endInteraction': endInteraction!.toJson(),
@@ -8223,17 +8210,16 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess {
   GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess.fromJson(
       core.Map _json) {
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!,
       };
 }
@@ -8249,7 +8235,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Indicates that the conversation should be handed off to a live agent.
@@ -8274,17 +8260,16 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff {
   GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff.fromJson(
       core.Map _json) {
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metadata != null) 'metadata': metadata!,
       };
 }
@@ -8314,7 +8299,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (segments != null)
           'segments': segments!.map((value) => value.toJson()).toList(),
       };
@@ -8359,7 +8344,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowPlaybackInterruption != null)
           'allowPlaybackInterruption': allowPlaybackInterruption!,
         if (audio != null) 'audio': audio!,
@@ -8400,7 +8385,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowPlaybackInterruption != null)
           'allowPlaybackInterruption': allowPlaybackInterruption!,
         if (ssml != null) 'ssml': ssml!,
@@ -8437,7 +8422,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowPlaybackInterruption != null)
           'allowPlaybackInterruption': allowPlaybackInterruption!,
         if (audioUri != null) 'audioUri': audioUri!,
@@ -8471,7 +8456,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageText {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowPlaybackInterruption != null)
           'allowPlaybackInterruption': allowPlaybackInterruption!,
         if (text != null) 'text': text!,
@@ -8486,7 +8471,7 @@ class GoogleCloudDialogflowCxV3beta1RunTestCaseMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The response message for TestCases.RunTestCase.
@@ -8503,7 +8488,7 @@ class GoogleCloudDialogflowCxV3beta1RunTestCaseResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (result != null) 'result': result!.toJson(),
       };
 }
@@ -8535,21 +8520,20 @@ class GoogleCloudDialogflowCxV3beta1SessionInfo {
 
   GoogleCloudDialogflowCxV3beta1SessionInfo.fromJson(core.Map _json) {
     if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      parameters =
+          (_json['parameters'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('session')) {
       session = _json['session'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parameters != null) 'parameters': parameters!,
         if (session != null) 'session': session!,
       };
@@ -8638,7 +8622,7 @@ class GoogleCloudDialogflowCxV3beta1TestCase {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (creationTime != null) 'creationTime': creationTime!,
         if (displayName != null) 'displayName': displayName!,
         if (lastTestResult != null) 'lastTestResult': lastTestResult!.toJson(),
@@ -8674,7 +8658,7 @@ class GoogleCloudDialogflowCxV3beta1TestCaseError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (status != null) 'status': status!.toJson(),
         if (testCase != null) 'testCase': testCase!.toJson(),
       };
@@ -8730,7 +8714,7 @@ class GoogleCloudDialogflowCxV3beta1TestCaseResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (conversationTurns != null)
           'conversationTurns':
               conversationTurns!.map((value) => value.toJson()).toList(),
@@ -8765,7 +8749,7 @@ class GoogleCloudDialogflowCxV3beta1TestConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (flow != null) 'flow': flow!,
         if (trackingParameters != null)
           'trackingParameters': trackingParameters!,
@@ -8798,7 +8782,7 @@ class GoogleCloudDialogflowCxV3beta1TestError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (status != null) 'status': status!.toJson(),
         if (testCase != null) 'testCase': testCase!,
         if (testTime != null) 'testTime': testTime!,
@@ -8830,7 +8814,7 @@ class GoogleCloudDialogflowCxV3beta1TestRunDifference {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (type != null) 'type': type!,
       };
@@ -8853,7 +8837,7 @@ class GoogleCloudDialogflowCxV3beta1TextInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (text != null) 'text': text!,
       };
 }
@@ -8931,7 +8915,7 @@ class GoogleCloudDialogflowCxV3beta1TransitionRoute {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!,
         if (intent != null) 'intent': intent!,
         if (name != null) 'name': name!,
@@ -8960,7 +8944,7 @@ class GoogleCloudDialogflowCxV3beta1UpdateDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (genericMetadata != null)
           'genericMetadata': genericMetadata!.toJson(),
       };
@@ -9035,13 +9019,12 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
           _json['pageInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
-      payload =
-          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      payload = (_json['payload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('sentimentAnalysisResult')) {
       sentimentAnalysisResult =
@@ -9055,7 +9038,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectIntentResponseId != null)
           'detectIntentResponseId': detectIntentResponseId!,
         if (fulfillmentInfo != null)
@@ -9087,7 +9070,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (tag != null) 'tag': tag!,
       };
 }
@@ -9133,19 +9116,18 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo {
       lastMatchedIntent = _json['lastMatchedIntent'] as core.String;
     }
     if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue
-                  .fromJson(item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      parameters =
+          (_json['parameters'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue
+              .fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (displayName != null) 'displayName': displayName!,
         if (lastMatchedIntent != null) 'lastMatchedIntent': lastMatchedIntent!,
@@ -9182,7 +9164,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (originalValue != null) 'originalValue': originalValue!,
         if (resolvedValue != null) 'resolvedValue': resolvedValue!,
       };
@@ -9211,7 +9193,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestSentimentAnalysisResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (magnitude != null) 'magnitude': magnitude!,
         if (score != null) 'score': score!,
       };
@@ -9268,13 +9250,12 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponse {
           _json['pageInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
-      payload =
-          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      payload = (_json['payload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('sessionInfo')) {
       sessionInfo = GoogleCloudDialogflowCxV3beta1SessionInfo.fromJson(
@@ -9288,7 +9269,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fulfillmentResponse != null)
           'fulfillmentResponse': fulfillmentResponse!.toJson(),
         if (pageInfo != null) 'pageInfo': pageInfo!.toJson(),
@@ -9329,7 +9310,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mergeBehavior != null) 'mergeBehavior': mergeBehavior!,
         if (messages != null)
           'messages': messages!.map((value) => value.toJson()).toList(),
@@ -9498,7 +9479,7 @@ class GoogleCloudDialogflowV2Agent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
         if (avatarUri != null) 'avatarUri': avatarUri!,
         if (classificationThreshold != null)
@@ -9558,7 +9539,7 @@ class GoogleCloudDialogflowV2AnnotatedMessagePart {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entityType != null) 'entityType': entityType!,
         if (formattedValue != null) 'formattedValue': formattedValue!,
         if (text != null) 'text': text!,
@@ -9596,7 +9577,7 @@ class GoogleCloudDialogflowV2BatchCreateEntitiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entities != null)
           'entities': entities!.map((value) => value.toJson()).toList(),
         if (languageCode != null) 'languageCode': languageCode!,
@@ -9635,7 +9616,7 @@ class GoogleCloudDialogflowV2BatchDeleteEntitiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entityValues != null) 'entityValues': entityValues!,
         if (languageCode != null) 'languageCode': languageCode!,
       };
@@ -9661,7 +9642,7 @@ class GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entityTypeNames != null) 'entityTypeNames': entityTypeNames!,
       };
 }
@@ -9687,7 +9668,7 @@ class GoogleCloudDialogflowV2BatchDeleteIntentsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (intents != null)
           'intents': intents!.map((value) => value.toJson()).toList(),
       };
@@ -9732,7 +9713,7 @@ class GoogleCloudDialogflowV2BatchUpdateEntitiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entities != null)
           'entities': entities!.map((value) => value.toJson()).toList(),
         if (languageCode != null) 'languageCode': languageCode!,
@@ -9786,7 +9767,7 @@ class GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entityTypeBatchInline != null)
           'entityTypeBatchInline': entityTypeBatchInline!.toJson(),
         if (entityTypeBatchUri != null)
@@ -9814,7 +9795,7 @@ class GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entityTypes != null)
           'entityTypes': entityTypes!.map((value) => value.toJson()).toList(),
       };
@@ -9875,7 +9856,7 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (intentBatchInline != null)
           'intentBatchInline': intentBatchInline!.toJson(),
         if (intentBatchUri != null) 'intentBatchUri': intentBatchUri!,
@@ -9902,7 +9883,7 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (intents != null)
           'intents': intents!.map((value) => value.toJson()).toList(),
       };
@@ -9974,18 +9955,17 @@ class GoogleCloudDialogflowV2Context {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      parameters =
+          (_json['parameters'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (lifespanCount != null) 'lifespanCount': lifespanCount!,
         if (name != null) 'name': name!,
         if (parameters != null) 'parameters': parameters!,
@@ -10049,7 +10029,7 @@ class GoogleCloudDialogflowV2ConversationEvent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (conversation != null) 'conversation': conversation!,
         if (errorStatus != null) 'errorStatus': errorStatus!.toJson(),
         if (newMessagePayload != null)
@@ -10122,7 +10102,7 @@ class GoogleCloudDialogflowV2DetectIntentRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inputAudio != null) 'inputAudio': inputAudio!,
         if (outputAudioConfig != null)
           'outputAudioConfig': outputAudioConfig!.toJson(),
@@ -10193,7 +10173,7 @@ class GoogleCloudDialogflowV2DetectIntentResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (outputAudio != null) 'outputAudio': outputAudio!,
         if (outputAudioConfig != null)
           'outputAudioConfig': outputAudioConfig!.toJson(),
@@ -10287,7 +10267,7 @@ class GoogleCloudDialogflowV2EntityType {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (autoExpansionMode != null) 'autoExpansionMode': autoExpansionMode!,
         if (displayName != null) 'displayName': displayName!,
         if (enableFuzzyExtraction != null)
@@ -10316,7 +10296,7 @@ class GoogleCloudDialogflowV2EntityTypeBatch {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entityTypes != null)
           'entityTypes': entityTypes!.map((value) => value.toJson()).toList(),
       };
@@ -10357,7 +10337,7 @@ class GoogleCloudDialogflowV2EntityTypeEntity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (synonyms != null) 'synonyms': synonyms!,
         if (value != null) 'value': value!,
       };
@@ -10438,7 +10418,7 @@ class GoogleCloudDialogflowV2Environment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agentVersion != null) 'agentVersion': agentVersion!,
         if (description != null) 'description': description!,
         if (name != null) 'name': name!,
@@ -10494,18 +10474,17 @@ class GoogleCloudDialogflowV2EventInput {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      parameters =
+          (_json['parameters'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
         if (name != null) 'name': name!,
         if (parameters != null) 'parameters': parameters!,
@@ -10531,7 +10510,7 @@ class GoogleCloudDialogflowV2ExportAgentRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agentUri != null) 'agentUri': agentUri!,
       };
 }
@@ -10565,7 +10544,7 @@ class GoogleCloudDialogflowV2ExportAgentResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agentContent != null) 'agentContent': agentContent!,
         if (agentUri != null) 'agentUri': agentUri!,
       };
@@ -10633,7 +10612,7 @@ class GoogleCloudDialogflowV2Fulfillment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (enabled != null) 'enabled': enabled!,
         if (features != null)
@@ -10660,7 +10639,7 @@ class GoogleCloudDialogflowV2FulfillmentFeature {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
       };
 }
@@ -10712,14 +10691,13 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebService {
       password = _json['password'] as core.String;
     }
     if (_json.containsKey('requestHeaders')) {
-      requestHeaders = (_json['requestHeaders'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      requestHeaders =
+          (_json['requestHeaders'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('uri')) {
       uri = _json['uri'] as core.String;
@@ -10729,7 +10707,7 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebService {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (isCloudFunction != null) 'isCloudFunction': isCloudFunction!,
         if (password != null) 'password': password!,
         if (requestHeaders != null) 'requestHeaders': requestHeaders!,
@@ -10766,7 +10744,7 @@ class GoogleCloudDialogflowV2ImportAgentRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agentContent != null) 'agentContent': agentContent!,
         if (agentUri != null) 'agentUri': agentUri!,
       };
@@ -10939,7 +10917,7 @@ class GoogleCloudDialogflowV2InputAudioConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audioEncoding != null) 'audioEncoding': audioEncoding!,
         if (enableWordInfo != null) 'enableWordInfo': enableWordInfo!,
         if (languageCode != null) 'languageCode': languageCode!,
@@ -11185,7 +11163,7 @@ class GoogleCloudDialogflowV2Intent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
         if (defaultResponsePlatforms != null)
           'defaultResponsePlatforms': defaultResponsePlatforms!,
@@ -11235,7 +11213,7 @@ class GoogleCloudDialogflowV2IntentBatch {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (intents != null)
           'intents': intents!.map((value) => value.toJson()).toList(),
       };
@@ -11265,7 +11243,7 @@ class GoogleCloudDialogflowV2IntentFollowupIntentInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (followupIntentName != null)
           'followupIntentName': followupIntentName!,
         if (parentFollowupIntentName != null)
@@ -11382,13 +11360,12 @@ class GoogleCloudDialogflowV2IntentMessage {
           _json['mediaContent'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
-      payload =
-          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      payload = (_json['payload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('platform')) {
       platform = _json['platform'] as core.String;
@@ -11416,7 +11393,7 @@ class GoogleCloudDialogflowV2IntentMessage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicCard != null) 'basicCard': basicCard!.toJson(),
         if (browseCarouselCard != null)
           'browseCarouselCard': browseCarouselCard!.toJson(),
@@ -11492,7 +11469,7 @@ class GoogleCloudDialogflowV2IntentMessageBasicCard {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (buttons != null)
           'buttons': buttons!.map((value) => value.toJson()).toList(),
         if (formattedText != null) 'formattedText': formattedText!,
@@ -11529,7 +11506,7 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButton {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (openUriAction != null) 'openUriAction': openUriAction!.toJson(),
         if (title != null) 'title': title!,
       };
@@ -11551,7 +11528,7 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
       };
 }
@@ -11608,7 +11585,7 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (imageDisplayOptions != null)
           'imageDisplayOptions': imageDisplayOptions!,
         if (items != null)
@@ -11675,7 +11652,7 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (footer != null) 'footer': footer!,
         if (image != null) 'image': image!.toJson(),
@@ -11715,7 +11692,7 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
         if (urlTypeHint != null) 'urlTypeHint': urlTypeHint!,
       };
@@ -11764,7 +11741,7 @@ class GoogleCloudDialogflowV2IntentMessageCard {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (buttons != null)
           'buttons': buttons!.map((value) => value.toJson()).toList(),
         if (imageUri != null) 'imageUri': imageUri!,
@@ -11796,7 +11773,7 @@ class GoogleCloudDialogflowV2IntentMessageCardButton {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (postback != null) 'postback': postback!,
         if (text != null) 'text': text!,
       };
@@ -11821,7 +11798,7 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelect {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
       };
@@ -11869,7 +11846,7 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (image != null) 'image': image!.toJson(),
         if (info != null) 'info': info!.toJson(),
@@ -11907,7 +11884,7 @@ class GoogleCloudDialogflowV2IntentMessageColumnProperties {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (header != null) 'header': header!,
         if (horizontalAlignment != null)
           'horizontalAlignment': horizontalAlignment!,
@@ -11938,7 +11915,7 @@ class GoogleCloudDialogflowV2IntentMessageImage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessibilityText != null) 'accessibilityText': accessibilityText!,
         if (imageUri != null) 'imageUri': imageUri!,
       };
@@ -11969,7 +11946,7 @@ class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (destinationName != null) 'destinationName': destinationName!,
         if (uri != null) 'uri': uri!,
       };
@@ -12010,7 +11987,7 @@ class GoogleCloudDialogflowV2IntentMessageListSelect {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (subtitle != null) 'subtitle': subtitle!,
@@ -12059,7 +12036,7 @@ class GoogleCloudDialogflowV2IntentMessageListSelectItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (image != null) 'image': image!.toJson(),
         if (info != null) 'info': info!.toJson(),
@@ -12100,7 +12077,7 @@ class GoogleCloudDialogflowV2IntentMessageMediaContent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mediaObjects != null)
           'mediaObjects': mediaObjects!.map((value) => value.toJson()).toList(),
         if (mediaType != null) 'mediaType': mediaType!,
@@ -12157,7 +12134,7 @@ class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentUrl != null) 'contentUrl': contentUrl!,
         if (description != null) 'description': description!,
         if (icon != null) 'icon': icon!.toJson(),
@@ -12191,7 +12168,7 @@ class GoogleCloudDialogflowV2IntentMessageQuickReplies {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (quickReplies != null) 'quickReplies': quickReplies!,
         if (title != null) 'title': title!,
       };
@@ -12223,7 +12200,7 @@ class GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (synonyms != null) 'synonyms': synonyms!,
       };
@@ -12261,7 +12238,7 @@ class GoogleCloudDialogflowV2IntentMessageSimpleResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayText != null) 'displayText': displayText!,
         if (ssml != null) 'ssml': ssml!,
         if (textToSpeech != null) 'textToSpeech': textToSpeech!,
@@ -12292,7 +12269,7 @@ class GoogleCloudDialogflowV2IntentMessageSimpleResponses {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (simpleResponses != null)
           'simpleResponses':
               simpleResponses!.map((value) => value.toJson()).toList(),
@@ -12315,7 +12292,7 @@ class GoogleCloudDialogflowV2IntentMessageSuggestion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (title != null) 'title': title!,
       };
 }
@@ -12339,7 +12316,7 @@ class GoogleCloudDialogflowV2IntentMessageSuggestions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (suggestions != null)
           'suggestions': suggestions!.map((value) => value.toJson()).toList(),
       };
@@ -12414,7 +12391,7 @@ class GoogleCloudDialogflowV2IntentMessageTableCard {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (buttons != null)
           'buttons': buttons!.map((value) => value.toJson()).toList(),
         if (columnProperties != null)
@@ -12442,7 +12419,7 @@ class GoogleCloudDialogflowV2IntentMessageTableCardCell {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (text != null) 'text': text!,
       };
 }
@@ -12474,7 +12451,7 @@ class GoogleCloudDialogflowV2IntentMessageTableCardRow {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cells != null)
           'cells': cells!.map((value) => value.toJson()).toList(),
         if (dividerAfter != null) 'dividerAfter': dividerAfter!,
@@ -12498,7 +12475,7 @@ class GoogleCloudDialogflowV2IntentMessageText {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (text != null) 'text': text!,
       };
 }
@@ -12589,7 +12566,7 @@ class GoogleCloudDialogflowV2IntentParameter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (defaultValue != null) 'defaultValue': defaultValue!,
         if (displayName != null) 'displayName': displayName!,
         if (entityTypeDisplayName != null)
@@ -12669,7 +12646,7 @@ class GoogleCloudDialogflowV2IntentTrainingPhrase {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (parts != null)
           'parts': parts!.map((value) => value.toJson()).toList(),
@@ -12726,7 +12703,7 @@ class GoogleCloudDialogflowV2IntentTrainingPhrasePart {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alias != null) 'alias': alias!,
         if (entityType != null) 'entityType': entityType!,
         if (text != null) 'text': text!,
@@ -12761,7 +12738,7 @@ class GoogleCloudDialogflowV2ListContextsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contexts != null)
           'contexts': contexts!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -12795,7 +12772,7 @@ class GoogleCloudDialogflowV2ListEntityTypesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entityTypes != null)
           'entityTypes': entityTypes!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -12829,7 +12806,7 @@ class GoogleCloudDialogflowV2ListEnvironmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (environments != null)
           'environments': environments!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -12863,7 +12840,7 @@ class GoogleCloudDialogflowV2ListIntentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (intents != null)
           'intents': intents!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -12898,7 +12875,7 @@ class GoogleCloudDialogflowV2ListSessionEntityTypesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (sessionEntityTypes != null)
           'sessionEntityTypes':
@@ -12980,7 +12957,7 @@ class GoogleCloudDialogflowV2Message {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (createTime != null) 'createTime': createTime!,
         if (languageCode != null) 'languageCode': languageCode!,
@@ -13019,7 +12996,7 @@ class GoogleCloudDialogflowV2MessageAnnotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (containEntities != null) 'containEntities': containEntities!,
         if (parts != null)
           'parts': parts!.map((value) => value.toJson()).toList(),
@@ -13062,13 +13039,12 @@ class GoogleCloudDialogflowV2OriginalDetectIntentRequest {
 
   GoogleCloudDialogflowV2OriginalDetectIntentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('payload')) {
-      payload =
-          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      payload = (_json['payload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('source')) {
       source = _json['source'] as core.String;
@@ -13078,7 +13054,7 @@ class GoogleCloudDialogflowV2OriginalDetectIntentRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (payload != null) 'payload': payload!,
         if (source != null) 'source': source!,
         if (version != null) 'version': version!,
@@ -13135,7 +13111,7 @@ class GoogleCloudDialogflowV2OutputAudioConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audioEncoding != null) 'audioEncoding': audioEncoding!,
         if (sampleRateHertz != null) 'sampleRateHertz': sampleRateHertz!,
         if (synthesizeSpeechConfig != null)
@@ -13175,7 +13151,7 @@ class GoogleCloudDialogflowV2QueryInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audioConfig != null) 'audioConfig': audioConfig!.toJson(),
         if (event != null) 'event': event!.toJson(),
         if (text != null) 'text': text!.toJson(),
@@ -13251,13 +13227,12 @@ class GoogleCloudDialogflowV2QueryParameters {
           _json['geoLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
-      payload =
-          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      payload = (_json['payload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('resetContexts')) {
       resetContexts = _json['resetContexts'] as core.bool;
@@ -13279,18 +13254,17 @@ class GoogleCloudDialogflowV2QueryParameters {
       timeZone = _json['timeZone'] as core.String;
     }
     if (_json.containsKey('webhookHeaders')) {
-      webhookHeaders = (_json['webhookHeaders'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      webhookHeaders =
+          (_json['webhookHeaders'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contexts != null)
           'contexts': contexts!.map((value) => value.toJson()).toList(),
         if (geoLocation != null) 'geoLocation': geoLocation!.toJson(),
@@ -13427,14 +13401,13 @@ class GoogleCloudDialogflowV2QueryResult {
       allRequiredParamsPresent = _json['allRequiredParamsPresent'] as core.bool;
     }
     if (_json.containsKey('diagnosticInfo')) {
-      diagnosticInfo = (_json['diagnosticInfo'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      diagnosticInfo =
+          (_json['diagnosticInfo'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('fulfillmentMessages')) {
       fulfillmentMessages = (_json['fulfillmentMessages'] as core.List)
@@ -13465,14 +13438,13 @@ class GoogleCloudDialogflowV2QueryResult {
           .toList();
     }
     if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      parameters =
+          (_json['parameters'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('queryText')) {
       queryText = _json['queryText'] as core.String;
@@ -13488,21 +13460,20 @@ class GoogleCloudDialogflowV2QueryResult {
           (_json['speechRecognitionConfidence'] as core.num).toDouble();
     }
     if (_json.containsKey('webhookPayload')) {
-      webhookPayload = (_json['webhookPayload'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      webhookPayload =
+          (_json['webhookPayload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('webhookSource')) {
       webhookSource = _json['webhookSource'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
         if (allRequiredParamsPresent != null)
           'allRequiredParamsPresent': allRequiredParamsPresent!,
@@ -13557,7 +13528,7 @@ class GoogleCloudDialogflowV2RestoreAgentRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agentContent != null) 'agentContent': agentContent!,
         if (agentUri != null) 'agentUri': agentUri!,
       };
@@ -13590,7 +13561,7 @@ class GoogleCloudDialogflowV2SearchAgentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agents != null)
           'agents': agents!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -13620,7 +13591,7 @@ class GoogleCloudDialogflowV2Sentiment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (magnitude != null) 'magnitude': magnitude!,
         if (score != null) 'score': score!,
       };
@@ -13643,7 +13614,7 @@ class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (analyzeQueryTextSentiment != null)
           'analyzeQueryTextSentiment': analyzeQueryTextSentiment!,
       };
@@ -13672,7 +13643,7 @@ class GoogleCloudDialogflowV2SentimentAnalysisResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (queryTextSentiment != null)
           'queryTextSentiment': queryTextSentiment!.toJson(),
       };
@@ -13742,7 +13713,7 @@ class GoogleCloudDialogflowV2SessionEntityType {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entities != null)
           'entities': entities!.map((value) => value.toJson()).toList(),
         if (entityOverrideMode != null)
@@ -13790,7 +13761,7 @@ class GoogleCloudDialogflowV2SpeechContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boost != null) 'boost': boost!,
         if (phrases != null) 'phrases': phrases!,
       };
@@ -13864,7 +13835,7 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (effectsProfileId != null) 'effectsProfileId': effectsProfileId!,
         if (pitch != null) 'pitch': pitch!,
         if (speakingRate != null) 'speakingRate': speakingRate!,
@@ -13903,7 +13874,7 @@ class GoogleCloudDialogflowV2TextInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
         if (text != null) 'text': text!,
       };
@@ -13917,7 +13888,7 @@ class GoogleCloudDialogflowV2TrainAgentRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Represents a single validation error.
@@ -13961,7 +13932,7 @@ class GoogleCloudDialogflowV2ValidationError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entries != null) 'entries': entries!,
         if (errorMessage != null) 'errorMessage': errorMessage!,
         if (severity != null) 'severity': severity!,
@@ -13985,7 +13956,7 @@ class GoogleCloudDialogflowV2ValidationResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (validationErrors != null)
           'validationErrors':
               validationErrors!.map((value) => value.toJson()).toList(),
@@ -14030,7 +14001,7 @@ class GoogleCloudDialogflowV2VoiceSelectionParams {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (ssmlGender != null) 'ssmlGender': ssmlGender!,
       };
@@ -14083,7 +14054,7 @@ class GoogleCloudDialogflowV2WebhookRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (originalDetectIntentRequest != null)
           'originalDetectIntentRequest': originalDetectIntentRequest!.toJson(),
         if (queryResult != null) 'queryResult': queryResult!.toJson(),
@@ -14197,13 +14168,12 @@ class GoogleCloudDialogflowV2WebhookResponse {
           .toList();
     }
     if (_json.containsKey('payload')) {
-      payload =
-          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      payload = (_json['payload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('sessionEntityTypes')) {
       sessionEntityTypes = (_json['sessionEntityTypes'] as core.List)
@@ -14217,7 +14187,7 @@ class GoogleCloudDialogflowV2WebhookResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (followupEventInput != null)
           'followupEventInput': followupEventInput!.toJson(),
         if (fulfillmentMessages != null)
@@ -14253,7 +14223,7 @@ class GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entityTypes != null)
           'entityTypes': entityTypes!.map((value) => value.toJson()).toList(),
       };
@@ -14277,7 +14247,7 @@ class GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (intents != null)
           'intents': intents!.map((value) => value.toJson()).toList(),
       };
@@ -14351,18 +14321,17 @@ class GoogleCloudDialogflowV2beta1Context {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      parameters =
+          (_json['parameters'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (lifespanCount != null) 'lifespanCount': lifespanCount!,
         if (name != null) 'name': name!,
         if (parameters != null) 'parameters': parameters!,
@@ -14453,7 +14422,7 @@ class GoogleCloudDialogflowV2beta1EntityType {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (autoExpansionMode != null) 'autoExpansionMode': autoExpansionMode!,
         if (displayName != null) 'displayName': displayName!,
         if (enableFuzzyExtraction != null)
@@ -14500,7 +14469,7 @@ class GoogleCloudDialogflowV2beta1EntityTypeEntity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (synonyms != null) 'synonyms': synonyms!,
         if (value != null) 'value': value!,
       };
@@ -14553,18 +14522,17 @@ class GoogleCloudDialogflowV2beta1EventInput {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      parameters =
+          (_json['parameters'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
         if (name != null) 'name': name!,
         if (parameters != null) 'parameters': parameters!,
@@ -14600,7 +14568,7 @@ class GoogleCloudDialogflowV2beta1ExportAgentResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agentContent != null) 'agentContent': agentContent!,
         if (agentUri != null) 'agentUri': agentUri!,
       };
@@ -14872,7 +14840,7 @@ class GoogleCloudDialogflowV2beta1Intent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
         if (defaultResponsePlatforms != null)
           'defaultResponsePlatforms': defaultResponsePlatforms!,
@@ -14932,7 +14900,7 @@ class GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (followupIntentName != null)
           'followupIntentName': followupIntentName!,
         if (parentFollowupIntentName != null)
@@ -15073,13 +15041,12 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
               _json['mediaContent'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
-      payload =
-          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      payload = (_json['payload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('platform')) {
       platform = _json['platform'] as core.String;
@@ -15143,7 +15110,7 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicCard != null) 'basicCard': basicCard!.toJson(),
         if (browseCarouselCard != null)
           'browseCarouselCard': browseCarouselCard!.toJson(),
@@ -15231,7 +15198,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCard {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (buttons != null)
           'buttons': buttons!.map((value) => value.toJson()).toList(),
         if (formattedText != null) 'formattedText': formattedText!,
@@ -15269,7 +15236,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (openUriAction != null) 'openUriAction': openUriAction!.toJson(),
         if (title != null) 'title': title!,
       };
@@ -15291,7 +15258,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
       };
 }
@@ -15348,7 +15315,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (imageDisplayOptions != null)
           'imageDisplayOptions': imageDisplayOptions!,
         if (items != null)
@@ -15415,7 +15382,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (footer != null) 'footer': footer!,
         if (image != null) 'image': image!.toJson(),
@@ -15455,7 +15422,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
         if (urlTypeHint != null) 'urlTypeHint': urlTypeHint!,
       };
@@ -15504,7 +15471,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageCard {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (buttons != null)
           'buttons': buttons!.map((value) => value.toJson()).toList(),
         if (imageUri != null) 'imageUri': imageUri!,
@@ -15538,7 +15505,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageCardButton {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (postback != null) 'postback': postback!,
         if (text != null) 'text': text!,
       };
@@ -15565,7 +15532,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
       };
@@ -15613,7 +15580,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (image != null) 'image': image!.toJson(),
         if (info != null) 'info': info!.toJson(),
@@ -15651,7 +15618,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageColumnProperties {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (header != null) 'header': header!,
         if (horizontalAlignment != null)
           'horizontalAlignment': horizontalAlignment!,
@@ -15682,7 +15649,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageImage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessibilityText != null) 'accessibilityText': accessibilityText!,
         if (imageUri != null) 'imageUri': imageUri!,
       };
@@ -15713,7 +15680,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (destinationName != null) 'destinationName': destinationName!,
         if (uri != null) 'uri': uri!,
       };
@@ -15754,7 +15721,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelect {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (subtitle != null) 'subtitle': subtitle!,
@@ -15804,7 +15771,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelectItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (image != null) 'image': image!.toJson(),
         if (info != null) 'info': info!.toJson(),
@@ -15846,7 +15813,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mediaObjects != null)
           'mediaObjects': mediaObjects!.map((value) => value.toJson()).toList(),
         if (mediaType != null) 'mediaType': mediaType!,
@@ -15903,7 +15870,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentUrl != null) 'contentUrl': contentUrl!,
         if (description != null) 'description': description!,
         if (icon != null) 'icon': icon!.toJson(),
@@ -15938,7 +15905,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageQuickReplies {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (quickReplies != null) 'quickReplies': quickReplies!,
         if (title != null) 'title': title!,
       };
@@ -15996,7 +15963,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (media != null) 'media': media!.toJson(),
         if (suggestions != null)
@@ -16058,7 +16025,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fileUri != null) 'fileUri': fileUri!,
         if (height != null) 'height': height!,
         if (thumbnailUri != null) 'thumbnailUri': thumbnailUri!,
@@ -16104,7 +16071,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cardContents != null)
           'cardContents': cardContents!.map((value) => value.toJson()).toList(),
         if (cardWidth != null) 'cardWidth': cardWidth!,
@@ -16158,7 +16125,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cardContent != null) 'cardContent': cardContent!.toJson(),
         if (cardOrientation != null) 'cardOrientation': cardOrientation!,
         if (thumbnailImageAlignment != null)
@@ -16220,7 +16187,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dial != null) 'dial': dial!.toJson(),
         if (openUrl != null) 'openUrl': openUrl!.toJson(),
         if (postbackData != null) 'postbackData': postbackData!,
@@ -16249,7 +16216,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAct
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
       };
 }
@@ -16273,7 +16240,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAct
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
       };
 }
@@ -16287,7 +16254,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAct
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Rich Business Messaging (RBM) suggested reply that the user can click
@@ -16315,7 +16282,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (postbackData != null) 'postbackData': postbackData!,
         if (text != null) 'text': text!,
       };
@@ -16348,7 +16315,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!.toJson(),
         if (reply != null) 'reply': reply!.toJson(),
       };
@@ -16382,7 +16349,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmText {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rbmSuggestion != null)
           'rbmSuggestion':
               rbmSuggestion!.map((value) => value.toJson()).toList(),
@@ -16417,7 +16384,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (synonyms != null) 'synonyms': synonyms!,
       };
@@ -16456,7 +16423,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayText != null) 'displayText': displayText!,
         if (ssml != null) 'ssml': ssml!,
         if (textToSpeech != null) 'textToSpeech': textToSpeech!,
@@ -16488,7 +16455,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (simpleResponses != null)
           'simpleResponses':
               simpleResponses!.map((value) => value.toJson()).toList(),
@@ -16511,7 +16478,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageSuggestion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (title != null) 'title': title!,
       };
 }
@@ -16536,7 +16503,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageSuggestions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (suggestions != null)
           'suggestions': suggestions!.map((value) => value.toJson()).toList(),
       };
@@ -16613,7 +16580,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCard {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (buttons != null)
           'buttons': buttons!.map((value) => value.toJson()).toList(),
         if (columnProperties != null)
@@ -16642,7 +16609,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardCell {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (text != null) 'text': text!,
       };
 }
@@ -16675,7 +16642,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardRow {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cells != null)
           'cells': cells!.map((value) => value.toJson()).toList(),
         if (dividerAfter != null) 'dividerAfter': dividerAfter!,
@@ -16708,7 +16675,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audioUri != null) 'audioUri': audioUri!,
       };
 }
@@ -16741,7 +16708,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ssml != null) 'ssml': ssml!,
         if (text != null) 'text': text!,
       };
@@ -16766,7 +16733,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
       };
 }
@@ -16788,7 +16755,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageText {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (text != null) 'text': text!,
       };
 }
@@ -16879,7 +16846,7 @@ class GoogleCloudDialogflowV2beta1IntentParameter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (defaultValue != null) 'defaultValue': defaultValue!,
         if (displayName != null) 'displayName': displayName!,
         if (entityTypeDisplayName != null)
@@ -16959,7 +16926,7 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrase {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (parts != null)
           'parts': parts!.map((value) => value.toJson()).toList(),
@@ -17017,7 +16984,7 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alias != null) 'alias': alias!,
         if (entityType != null) 'entityType': entityType!,
         if (text != null) 'text': text!,
@@ -17042,7 +17009,7 @@ class GoogleCloudDialogflowV2beta1KnowledgeAnswers {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (answers != null)
           'answers': answers!.map((value) => value.toJson()).toList(),
       };
@@ -17107,7 +17074,7 @@ class GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (answer != null) 'answer': answer!,
         if (faqQuestion != null) 'faqQuestion': faqQuestion!,
         if (matchConfidence != null) 'matchConfidence': matchConfidence!,
@@ -17138,7 +17105,7 @@ class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
       };
 }
@@ -17180,13 +17147,12 @@ class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest {
   GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('payload')) {
-      payload =
-          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      payload = (_json['payload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('source')) {
       source = _json['source'] as core.String;
@@ -17196,7 +17162,7 @@ class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (payload != null) 'payload': payload!,
         if (source != null) 'source': source!,
         if (version != null) 'version': version!,
@@ -17327,14 +17293,13 @@ class GoogleCloudDialogflowV2beta1QueryResult {
       allRequiredParamsPresent = _json['allRequiredParamsPresent'] as core.bool;
     }
     if (_json.containsKey('diagnosticInfo')) {
-      diagnosticInfo = (_json['diagnosticInfo'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      diagnosticInfo =
+          (_json['diagnosticInfo'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('fulfillmentMessages')) {
       fulfillmentMessages = (_json['fulfillmentMessages'] as core.List)
@@ -17369,14 +17334,13 @@ class GoogleCloudDialogflowV2beta1QueryResult {
           .toList();
     }
     if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      parameters =
+          (_json['parameters'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('queryText')) {
       queryText = _json['queryText'] as core.String;
@@ -17392,21 +17356,20 @@ class GoogleCloudDialogflowV2beta1QueryResult {
           (_json['speechRecognitionConfidence'] as core.num).toDouble();
     }
     if (_json.containsKey('webhookPayload')) {
-      webhookPayload = (_json['webhookPayload'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      webhookPayload =
+          (_json['webhookPayload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('webhookSource')) {
       webhookSource = _json['webhookSource'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
         if (allRequiredParamsPresent != null)
           'allRequiredParamsPresent': allRequiredParamsPresent!,
@@ -17458,7 +17421,7 @@ class GoogleCloudDialogflowV2beta1Sentiment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (magnitude != null) 'magnitude': magnitude!,
         if (score != null) 'score': score!,
       };
@@ -17487,7 +17450,7 @@ class GoogleCloudDialogflowV2beta1SentimentAnalysisResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (queryTextSentiment != null)
           'queryTextSentiment': queryTextSentiment!.toJson(),
       };
@@ -17560,7 +17523,7 @@ class GoogleCloudDialogflowV2beta1SessionEntityType {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entities != null)
           'entities': entities!.map((value) => value.toJson()).toList(),
         if (entityOverrideMode != null)
@@ -17628,7 +17591,7 @@ class GoogleCloudDialogflowV2beta1WebhookRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternativeQueryResults != null)
           'alternativeQueryResults':
               alternativeQueryResults!.map((value) => value.toJson()).toList(),
@@ -17757,13 +17720,12 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
           .toList();
     }
     if (_json.containsKey('payload')) {
-      payload =
-          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      payload = (_json['payload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('sessionEntityTypes')) {
       sessionEntityTypes = (_json['sessionEntityTypes'] as core.List)
@@ -17777,7 +17739,7 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endInteraction != null) 'endInteraction': endInteraction!,
         if (followupEventInput != null)
           'followupEventInput': followupEventInput!.toJson(),
@@ -17814,7 +17776,7 @@ class GoogleCloudDialogflowV3alpha1CreateDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (genericMetadata != null)
           'genericMetadata': genericMetadata!.toJson(),
       };
@@ -17838,7 +17800,7 @@ class GoogleCloudDialogflowV3alpha1DeleteDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (genericMetadata != null)
           'genericMetadata': genericMetadata!.toJson(),
       };
@@ -17865,7 +17827,7 @@ class GoogleCloudDialogflowV3alpha1GenericKnowledgeOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
       };
 }
@@ -17888,7 +17850,7 @@ class GoogleCloudDialogflowV3alpha1ImportDocumentsOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (genericMetadata != null)
           'genericMetadata': genericMetadata!.toJson(),
       };
@@ -17911,7 +17873,7 @@ class GoogleCloudDialogflowV3alpha1ImportDocumentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (warnings != null)
           'warnings': warnings!.map((value) => value.toJson()).toList(),
       };
@@ -17935,7 +17897,7 @@ class GoogleCloudDialogflowV3alpha1ReloadDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (genericMetadata != null)
           'genericMetadata': genericMetadata!.toJson(),
       };
@@ -17959,7 +17921,7 @@ class GoogleCloudDialogflowV3alpha1UpdateDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (genericMetadata != null)
           'genericMetadata': genericMetadata!.toJson(),
       };
@@ -17988,7 +17950,7 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
@@ -18049,29 +18011,27 @@ class GoogleLongrunningOperation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -18094,7 +18054,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -18130,8 +18090,8 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -18144,7 +18104,7 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -18178,7 +18138,7 @@ class GoogleTypeLatLng {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (latitude != null) 'latitude': latitude!,
         if (longitude != null) 'longitude': longitude!,
       };

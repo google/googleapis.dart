@@ -472,7 +472,9 @@ void main() {
   unittest.group('obj-schema-ApiDataRow', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApiDataRow();
-      var od = api.ApiDataRow.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.ApiDataRow.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkApiDataRow(od as api.ApiDataRow);
     });
   });
@@ -480,7 +482,9 @@ void main() {
   unittest.group('obj-schema-ApiDimensionFilter', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApiDimensionFilter();
-      var od = api.ApiDimensionFilter.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApiDimensionFilter.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApiDimensionFilter(od as api.ApiDimensionFilter);
     });
   });
@@ -488,7 +492,9 @@ void main() {
   unittest.group('obj-schema-ApiDimensionFilterGroup', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApiDimensionFilterGroup();
-      var od = api.ApiDimensionFilterGroup.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApiDimensionFilterGroup.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApiDimensionFilterGroup(od as api.ApiDimensionFilterGroup);
     });
   });
@@ -496,7 +502,9 @@ void main() {
   unittest.group('obj-schema-SearchAnalyticsQueryRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSearchAnalyticsQueryRequest();
-      var od = api.SearchAnalyticsQueryRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SearchAnalyticsQueryRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSearchAnalyticsQueryRequest(od as api.SearchAnalyticsQueryRequest);
     });
   });
@@ -504,7 +512,9 @@ void main() {
   unittest.group('obj-schema-SearchAnalyticsQueryResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSearchAnalyticsQueryResponse();
-      var od = api.SearchAnalyticsQueryResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SearchAnalyticsQueryResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSearchAnalyticsQueryResponse(od as api.SearchAnalyticsQueryResponse);
     });
   });
@@ -512,7 +522,9 @@ void main() {
   unittest.group('obj-schema-SitemapsListResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSitemapsListResponse();
-      var od = api.SitemapsListResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SitemapsListResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSitemapsListResponse(od as api.SitemapsListResponse);
     });
   });
@@ -520,7 +532,9 @@ void main() {
   unittest.group('obj-schema-SitesListResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSitesListResponse();
-      var od = api.SitesListResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SitesListResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSitesListResponse(od as api.SitesListResponse);
     });
   });
@@ -528,7 +542,9 @@ void main() {
   unittest.group('obj-schema-WmxSite', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWmxSite();
-      var od = api.WmxSite.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.WmxSite.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkWmxSite(od as api.WmxSite);
     });
   });
@@ -536,7 +552,9 @@ void main() {
   unittest.group('obj-schema-WmxSitemap', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWmxSitemap();
-      var od = api.WmxSitemap.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.WmxSitemap.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkWmxSitemap(od as api.WmxSitemap);
     });
   });
@@ -544,7 +562,9 @@ void main() {
   unittest.group('obj-schema-WmxSitemapContent', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWmxSitemapContent();
-      var od = api.WmxSitemapContent.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.WmxSitemapContent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkWmxSitemapContent(od as api.WmxSitemapContent);
     });
   });

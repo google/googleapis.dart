@@ -1560,7 +1560,9 @@ void main() {
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaAccount', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaAccount();
-      var od = api.GoogleAnalyticsAdminV1alphaAccount.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAnalyticsAdminV1alphaAccount.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaAccount(
           od as api.GoogleAnalyticsAdminV1alphaAccount);
     });
@@ -1569,8 +1571,9 @@ void main() {
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaAccountSummary', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaAccountSummary();
-      var od =
-          api.GoogleAnalyticsAdminV1alphaAccountSummary.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAnalyticsAdminV1alphaAccountSummary.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaAccountSummary(
           od as api.GoogleAnalyticsAdminV1alphaAccountSummary);
     });
@@ -1580,8 +1583,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaAndroidAppDataStream();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAnalyticsAdminV1alphaAndroidAppDataStream.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaAndroidAppDataStream(
           od as api.GoogleAnalyticsAdminV1alphaAndroidAppDataStream);
     });
@@ -1590,8 +1594,9 @@ void main() {
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaAuditUserLink', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaAuditUserLink();
-      var od =
-          api.GoogleAnalyticsAdminV1alphaAuditUserLink.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAnalyticsAdminV1alphaAuditUserLink.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaAuditUserLink(
           od as api.GoogleAnalyticsAdminV1alphaAuditUserLink);
     });
@@ -1601,8 +1606,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaAuditUserLinksRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAnalyticsAdminV1alphaAuditUserLinksRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaAuditUserLinksRequest(
           od as api.GoogleAnalyticsAdminV1alphaAuditUserLinksRequest);
     });
@@ -1612,8 +1618,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaAuditUserLinksResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAnalyticsAdminV1alphaAuditUserLinksResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaAuditUserLinksResponse(
           od as api.GoogleAnalyticsAdminV1alphaAuditUserLinksResponse);
     });
@@ -1623,9 +1630,10 @@ void main() {
       'obj-schema-GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest(
           od as api.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest);
     });
@@ -1635,9 +1643,10 @@ void main() {
       'obj-schema-GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse(
           od as api.GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse);
     });
@@ -1647,9 +1656,10 @@ void main() {
       'obj-schema-GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest(
           od as api.GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest);
     });
@@ -1659,9 +1669,10 @@ void main() {
       'obj-schema-GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse(
           od as api.GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse);
     });
@@ -1671,9 +1682,10 @@ void main() {
       'obj-schema-GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest(
           od as api.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest);
     });
@@ -1683,9 +1695,10 @@ void main() {
       'obj-schema-GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse(
           od as api.GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse);
     });
@@ -1695,8 +1708,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaCreateUserLinkRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAnalyticsAdminV1alphaCreateUserLinkRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaCreateUserLinkRequest(
           od as api.GoogleAnalyticsAdminV1alphaCreateUserLinkRequest);
     });
@@ -1706,8 +1720,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaDataSharingSettings();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAnalyticsAdminV1alphaDataSharingSettings.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaDataSharingSettings(
           od as api.GoogleAnalyticsAdminV1alphaDataSharingSettings);
     });
@@ -1717,8 +1732,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaDeleteUserLinkRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaDeleteUserLinkRequest(
           od as api.GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest);
     });
@@ -1728,9 +1744,10 @@ void main() {
       'obj-schema-GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings(
           od as api.GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings);
     });
@@ -1739,7 +1756,9 @@ void main() {
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaFirebaseLink', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaFirebaseLink();
-      var od = api.GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAnalyticsAdminV1alphaFirebaseLink.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaFirebaseLink(
           od as api.GoogleAnalyticsAdminV1alphaFirebaseLink);
     });
@@ -1748,8 +1767,9 @@ void main() {
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaGlobalSiteTag', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaGlobalSiteTag();
-      var od =
-          api.GoogleAnalyticsAdminV1alphaGlobalSiteTag.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAnalyticsAdminV1alphaGlobalSiteTag.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaGlobalSiteTag(
           od as api.GoogleAnalyticsAdminV1alphaGlobalSiteTag);
     });
@@ -1758,8 +1778,9 @@ void main() {
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaGoogleAdsLink', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaGoogleAdsLink();
-      var od =
-          api.GoogleAnalyticsAdminV1alphaGoogleAdsLink.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAnalyticsAdminV1alphaGoogleAdsLink.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaGoogleAdsLink(
           od as api.GoogleAnalyticsAdminV1alphaGoogleAdsLink);
     });
@@ -1768,8 +1789,9 @@ void main() {
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaIosAppDataStream', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaIosAppDataStream();
-      var od =
-          api.GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAnalyticsAdminV1alphaIosAppDataStream.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaIosAppDataStream(
           od as api.GoogleAnalyticsAdminV1alphaIosAppDataStream);
     });
@@ -1779,9 +1801,10 @@ void main() {
       'obj-schema-GoogleAnalyticsAdminV1alphaListAccountSummariesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaListAccountSummariesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAnalyticsAdminV1alphaListAccountSummariesResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaListAccountSummariesResponse(
           od as api.GoogleAnalyticsAdminV1alphaListAccountSummariesResponse);
     });
@@ -1791,8 +1814,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaListAccountsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAnalyticsAdminV1alphaListAccountsResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaListAccountsResponse(
           od as api.GoogleAnalyticsAdminV1alphaListAccountsResponse);
     });
@@ -1804,8 +1828,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse(od
           as api.GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse);
     });
@@ -1815,9 +1840,10 @@ void main() {
       'obj-schema-GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaListFirebaseLinksResponse(
           od as api.GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse);
     });
@@ -1827,9 +1853,10 @@ void main() {
       'obj-schema-GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse(
           od as api.GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse);
     });
@@ -1840,9 +1867,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse(
           od as api.GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse);
     });
@@ -1852,8 +1880,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaListPropertiesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAnalyticsAdminV1alphaListPropertiesResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaListPropertiesResponse(
           od as api.GoogleAnalyticsAdminV1alphaListPropertiesResponse);
     });
@@ -1863,8 +1892,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaListUserLinksResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAnalyticsAdminV1alphaListUserLinksResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaListUserLinksResponse(
           od as api.GoogleAnalyticsAdminV1alphaListUserLinksResponse);
     });
@@ -1874,9 +1904,10 @@ void main() {
       'obj-schema-GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaListWebDataStreamsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaListWebDataStreamsResponse(
           od as api.GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse);
     });
@@ -1885,7 +1916,9 @@ void main() {
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaProperty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaProperty();
-      var od = api.GoogleAnalyticsAdminV1alphaProperty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAnalyticsAdminV1alphaProperty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaProperty(
           od as api.GoogleAnalyticsAdminV1alphaProperty);
     });
@@ -1894,8 +1927,9 @@ void main() {
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaPropertySummary', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaPropertySummary();
-      var od =
-          api.GoogleAnalyticsAdminV1alphaPropertySummary.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAnalyticsAdminV1alphaPropertySummary.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaPropertySummary(
           od as api.GoogleAnalyticsAdminV1alphaPropertySummary);
     });
@@ -1906,9 +1940,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest(
           od as api.GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest);
     });
@@ -1919,8 +1954,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse(
           od as api.GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse);
     });
@@ -1930,8 +1966,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaUpdateUserLinkRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaUpdateUserLinkRequest(
           od as api.GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest);
     });
@@ -1940,7 +1977,9 @@ void main() {
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaUserLink', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaUserLink();
-      var od = api.GoogleAnalyticsAdminV1alphaUserLink.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAnalyticsAdminV1alphaUserLink.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaUserLink(
           od as api.GoogleAnalyticsAdminV1alphaUserLink);
     });
@@ -1949,8 +1988,9 @@ void main() {
   unittest.group('obj-schema-GoogleAnalyticsAdminV1alphaWebDataStream', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAnalyticsAdminV1alphaWebDataStream();
-      var od =
-          api.GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAnalyticsAdminV1alphaWebDataStream.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAnalyticsAdminV1alphaWebDataStream(
           od as api.GoogleAnalyticsAdminV1alphaWebDataStream);
     });
@@ -1959,7 +1999,9 @@ void main() {
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
-      var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleProtobufEmpty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
     });
   });

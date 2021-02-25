@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -248,7 +247,7 @@ class AudioConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audioEncoding != null) 'audioEncoding': audioEncoding!,
         if (effectsProfileId != null) 'effectsProfileId': effectsProfileId!,
         if (pitch != null) 'pitch': pitch!,
@@ -274,7 +273,7 @@ class ListVoicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (voices != null)
           'voices': voices!.map((value) => value.toJson()).toList(),
       };
@@ -307,7 +306,7 @@ class SynthesisInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ssml != null) 'ssml': ssml!,
         if (text != null) 'text': text!,
       };
@@ -347,7 +346,7 @@ class SynthesizeSpeechRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audioConfig != null) 'audioConfig': audioConfig!.toJson(),
         if (input != null) 'input': input!.toJson(),
         if (voice != null) 'voice': voice!.toJson(),
@@ -379,7 +378,7 @@ class SynthesizeSpeechResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audioContent != null) 'audioContent': audioContent!,
       };
 }
@@ -430,7 +429,7 @@ class Voice {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (languageCodes != null) 'languageCodes': languageCodes!,
         if (name != null) 'name': name!,
         if (naturalSampleRateHertz != null)
@@ -495,7 +494,7 @@ class VoiceSelectionParams {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
         if (name != null) 'name': name!,
         if (ssmlGender != null) 'ssmlGender': ssmlGender!,

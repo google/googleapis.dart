@@ -909,7 +909,9 @@ void main() {
   unittest.group('obj-schema-Activities', () {
     unittest.test('to-json--from-json', () async {
       var o = buildActivities();
-      var od = api.Activities.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Activities.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkActivities(od as api.Activities);
     });
   });
@@ -917,7 +919,9 @@ void main() {
   unittest.group('obj-schema-ActivityActor', () {
     unittest.test('to-json--from-json', () async {
       var o = buildActivityActor();
-      var od = api.ActivityActor.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ActivityActor.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkActivityActor(od as api.ActivityActor);
     });
   });
@@ -925,7 +929,9 @@ void main() {
   unittest.group('obj-schema-ActivityEventsParametersMessageValue', () {
     unittest.test('to-json--from-json', () async {
       var o = buildActivityEventsParametersMessageValue();
-      var od = api.ActivityEventsParametersMessageValue.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ActivityEventsParametersMessageValue.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkActivityEventsParametersMessageValue(
           od as api.ActivityEventsParametersMessageValue);
     });
@@ -934,8 +940,9 @@ void main() {
   unittest.group('obj-schema-ActivityEventsParametersMultiMessageValue', () {
     unittest.test('to-json--from-json', () async {
       var o = buildActivityEventsParametersMultiMessageValue();
-      var od =
-          api.ActivityEventsParametersMultiMessageValue.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ActivityEventsParametersMultiMessageValue.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkActivityEventsParametersMultiMessageValue(
           od as api.ActivityEventsParametersMultiMessageValue);
     });
@@ -944,7 +951,9 @@ void main() {
   unittest.group('obj-schema-ActivityEventsParameters', () {
     unittest.test('to-json--from-json', () async {
       var o = buildActivityEventsParameters();
-      var od = api.ActivityEventsParameters.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ActivityEventsParameters.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkActivityEventsParameters(od as api.ActivityEventsParameters);
     });
   });
@@ -952,7 +961,9 @@ void main() {
   unittest.group('obj-schema-ActivityEvents', () {
     unittest.test('to-json--from-json', () async {
       var o = buildActivityEvents();
-      var od = api.ActivityEvents.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ActivityEvents.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkActivityEvents(od as api.ActivityEvents);
     });
   });
@@ -960,7 +971,9 @@ void main() {
   unittest.group('obj-schema-ActivityId', () {
     unittest.test('to-json--from-json', () async {
       var o = buildActivityId();
-      var od = api.ActivityId.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.ActivityId.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkActivityId(od as api.ActivityId);
     });
   });
@@ -968,7 +981,9 @@ void main() {
   unittest.group('obj-schema-Activity', () {
     unittest.test('to-json--from-json', () async {
       var o = buildActivity();
-      var od = api.Activity.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Activity.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkActivity(od as api.Activity);
     });
   });
@@ -976,7 +991,9 @@ void main() {
   unittest.group('obj-schema-Channel', () {
     unittest.test('to-json--from-json', () async {
       var o = buildChannel();
-      var od = api.Channel.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Channel.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkChannel(od as api.Channel);
     });
   });
@@ -984,7 +1001,9 @@ void main() {
   unittest.group('obj-schema-NestedParameter', () {
     unittest.test('to-json--from-json', () async {
       var o = buildNestedParameter();
-      var od = api.NestedParameter.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.NestedParameter.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkNestedParameter(od as api.NestedParameter);
     });
   });
@@ -992,7 +1011,9 @@ void main() {
   unittest.group('obj-schema-UsageReportEntity', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUsageReportEntity();
-      var od = api.UsageReportEntity.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UsageReportEntity.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUsageReportEntity(od as api.UsageReportEntity);
     });
   });
@@ -1000,7 +1021,9 @@ void main() {
   unittest.group('obj-schema-UsageReportParameters', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUsageReportParameters();
-      var od = api.UsageReportParameters.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UsageReportParameters.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUsageReportParameters(od as api.UsageReportParameters);
     });
   });
@@ -1008,7 +1031,9 @@ void main() {
   unittest.group('obj-schema-UsageReport', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUsageReport();
-      var od = api.UsageReport.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UsageReport.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUsageReport(od as api.UsageReport);
     });
   });
@@ -1016,7 +1041,9 @@ void main() {
   unittest.group('obj-schema-UsageReportsWarningsData', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUsageReportsWarningsData();
-      var od = api.UsageReportsWarningsData.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UsageReportsWarningsData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUsageReportsWarningsData(od as api.UsageReportsWarningsData);
     });
   });
@@ -1024,7 +1051,9 @@ void main() {
   unittest.group('obj-schema-UsageReportsWarnings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUsageReportsWarnings();
-      var od = api.UsageReportsWarnings.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UsageReportsWarnings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUsageReportsWarnings(od as api.UsageReportsWarnings);
     });
   });
@@ -1032,7 +1061,9 @@ void main() {
   unittest.group('obj-schema-UsageReports', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUsageReports();
-      var od = api.UsageReports.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UsageReports.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUsageReports(od as api.UsageReports);
     });
   });

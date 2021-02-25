@@ -537,8 +537,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1Claim();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1Claim.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleFactcheckingFactchecktoolsV1alpha1Claim(
           od as api.GoogleFactcheckingFactchecktoolsV1alpha1Claim);
     });
@@ -548,8 +549,9 @@ void main() {
       'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor(
           od as api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor);
     });
@@ -559,8 +561,9 @@ void main() {
       'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimRating(
           od as api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating);
     });
@@ -570,8 +573,9 @@ void main() {
       'obj-schema-GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReview(
           od as api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview);
     });
@@ -582,8 +586,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor(
           od as api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor);
     });
@@ -594,8 +599,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup(
           od as api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup);
     });
@@ -607,8 +613,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage(od
           as api.GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage);
     });
@@ -620,9 +627,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse(
           od as api
               .GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse);
@@ -635,9 +643,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse(
           od as api
               .GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse);
@@ -648,8 +657,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleFactcheckingFactchecktoolsV1alpha1Publisher();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleFactcheckingFactchecktoolsV1alpha1Publisher.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleFactcheckingFactchecktoolsV1alpha1Publisher(
           od as api.GoogleFactcheckingFactchecktoolsV1alpha1Publisher);
     });
@@ -658,7 +668,9 @@ void main() {
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
-      var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleProtobufEmpty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
     });
   });

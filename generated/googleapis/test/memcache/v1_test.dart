@@ -1830,7 +1830,9 @@ void main() {
   unittest.group('obj-schema-ApplyParametersRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApplyParametersRequest();
-      var od = api.ApplyParametersRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApplyParametersRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApplyParametersRequest(od as api.ApplyParametersRequest);
     });
   });
@@ -1838,7 +1840,9 @@ void main() {
   unittest.group('obj-schema-CancelOperationRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
-      var od = api.CancelOperationRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CancelOperationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCancelOperationRequest(od as api.CancelOperationRequest);
     });
   });
@@ -1846,7 +1850,9 @@ void main() {
   unittest.group('obj-schema-DailyCycle', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDailyCycle();
-      var od = api.DailyCycle.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.DailyCycle.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDailyCycle(od as api.DailyCycle);
     });
   });
@@ -1854,7 +1860,8 @@ void main() {
   unittest.group('obj-schema-Date', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDate();
-      var od = api.Date.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Date.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDate(od as api.Date);
     });
   });
@@ -1862,7 +1869,9 @@ void main() {
   unittest.group('obj-schema-DenyMaintenancePeriod', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDenyMaintenancePeriod();
-      var od = api.DenyMaintenancePeriod.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DenyMaintenancePeriod.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDenyMaintenancePeriod(od as api.DenyMaintenancePeriod);
     });
   });
@@ -1870,7 +1879,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -1878,7 +1888,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMemcacheV1OperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMemcacheV1OperationMetadata();
-      var od = api.GoogleCloudMemcacheV1OperationMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMemcacheV1OperationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMemcacheV1OperationMetadata(
           od as api.GoogleCloudMemcacheV1OperationMetadata);
     });
@@ -1888,9 +1900,10 @@ void main() {
       'obj-schema-GoogleCloudSaasacceleratorManagementProvidersV1Instance', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudSaasacceleratorManagementProvidersV1Instance();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1Instance.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudSaasacceleratorManagementProvidersV1Instance(
           od as api.GoogleCloudSaasacceleratorManagementProvidersV1Instance);
     });
@@ -1902,9 +1915,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(od
           as api
               .GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule);
@@ -1917,9 +1931,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings(od
           as api
               .GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings);
@@ -1932,9 +1947,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(od
           as api
               .GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata);
@@ -1947,9 +1963,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(od
           as api
               .GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource);
@@ -1962,8 +1979,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility(od
           as api.GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility);
     });
@@ -1975,8 +1993,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(od
           as api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion);
     });
@@ -1987,8 +2006,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata(
           od as api.GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata);
     });
@@ -1997,7 +2017,9 @@ void main() {
   unittest.group('obj-schema-Instance', () {
     unittest.test('to-json--from-json', () async {
       var o = buildInstance();
-      var od = api.Instance.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Instance.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkInstance(od as api.Instance);
     });
   });
@@ -2005,7 +2027,9 @@ void main() {
   unittest.group('obj-schema-InstanceMessage', () {
     unittest.test('to-json--from-json', () async {
       var o = buildInstanceMessage();
-      var od = api.InstanceMessage.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.InstanceMessage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkInstanceMessage(od as api.InstanceMessage);
     });
   });
@@ -2013,7 +2037,9 @@ void main() {
   unittest.group('obj-schema-ListInstancesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListInstancesResponse();
-      var od = api.ListInstancesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListInstancesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListInstancesResponse(od as api.ListInstancesResponse);
     });
   });
@@ -2021,7 +2047,9 @@ void main() {
   unittest.group('obj-schema-ListLocationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
-      var od = api.ListLocationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListLocationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
@@ -2029,7 +2057,9 @@ void main() {
   unittest.group('obj-schema-ListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
-      var od = api.ListOperationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListOperationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
@@ -2037,7 +2067,9 @@ void main() {
   unittest.group('obj-schema-Location', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLocation();
-      var od = api.Location.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Location.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLocation(od as api.Location);
     });
   });
@@ -2045,7 +2077,9 @@ void main() {
   unittest.group('obj-schema-LocationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLocationMetadata();
-      var od = api.LocationMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LocationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLocationMetadata(od as api.LocationMetadata);
     });
   });
@@ -2053,7 +2087,9 @@ void main() {
   unittest.group('obj-schema-MaintenancePolicy', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMaintenancePolicy();
-      var od = api.MaintenancePolicy.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MaintenancePolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkMaintenancePolicy(od as api.MaintenancePolicy);
     });
   });
@@ -2061,7 +2097,9 @@ void main() {
   unittest.group('obj-schema-MaintenanceWindow', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMaintenanceWindow();
-      var od = api.MaintenanceWindow.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MaintenanceWindow.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkMaintenanceWindow(od as api.MaintenanceWindow);
     });
   });
@@ -2069,7 +2107,9 @@ void main() {
   unittest.group('obj-schema-MemcacheParameters', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMemcacheParameters();
-      var od = api.MemcacheParameters.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MemcacheParameters.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkMemcacheParameters(od as api.MemcacheParameters);
     });
   });
@@ -2077,7 +2117,8 @@ void main() {
   unittest.group('obj-schema-Node', () {
     unittest.test('to-json--from-json', () async {
       var o = buildNode();
-      var od = api.Node.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Node.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkNode(od as api.Node);
     });
   });
@@ -2085,7 +2126,9 @@ void main() {
   unittest.group('obj-schema-NodeConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildNodeConfig();
-      var od = api.NodeConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.NodeConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkNodeConfig(od as api.NodeConfig);
     });
   });
@@ -2093,7 +2136,9 @@ void main() {
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOperation();
-      var od = api.Operation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od as api.Operation);
     });
   });
@@ -2101,7 +2146,9 @@ void main() {
   unittest.group('obj-schema-OperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOperationMetadata();
-      var od = api.OperationMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.OperationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkOperationMetadata(od as api.OperationMetadata);
     });
   });
@@ -2109,7 +2156,9 @@ void main() {
   unittest.group('obj-schema-Schedule', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSchedule();
-      var od = api.Schedule.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Schedule.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkSchedule(od as api.Schedule);
     });
   });
@@ -2117,7 +2166,9 @@ void main() {
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStatus();
-      var od = api.Status.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od as api.Status);
     });
   });
@@ -2125,7 +2176,9 @@ void main() {
   unittest.group('obj-schema-TimeOfDay', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTimeOfDay();
-      var od = api.TimeOfDay.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.TimeOfDay.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkTimeOfDay(od as api.TimeOfDay);
     });
   });
@@ -2133,7 +2186,9 @@ void main() {
   unittest.group('obj-schema-UpdateParametersRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUpdateParametersRequest();
-      var od = api.UpdateParametersRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UpdateParametersRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUpdateParametersRequest(od as api.UpdateParametersRequest);
     });
   });
@@ -2141,7 +2196,9 @@ void main() {
   unittest.group('obj-schema-UpdatePolicy', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUpdatePolicy();
-      var od = api.UpdatePolicy.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UpdatePolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUpdatePolicy(od as api.UpdatePolicy);
     });
   });
@@ -2149,7 +2206,9 @@ void main() {
   unittest.group('obj-schema-WeeklyCycle', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWeeklyCycle();
-      var od = api.WeeklyCycle.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.WeeklyCycle.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkWeeklyCycle(od as api.WeeklyCycle);
     });
   });
@@ -2157,7 +2216,9 @@ void main() {
   unittest.group('obj-schema-ZoneMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildZoneMetadata();
-      var od = api.ZoneMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ZoneMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkZoneMetadata(od as api.ZoneMetadata);
     });
   });

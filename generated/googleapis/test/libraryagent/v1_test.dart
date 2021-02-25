@@ -176,7 +176,9 @@ void main() {
   unittest.group('obj-schema-GoogleExampleLibraryagentV1Book', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleExampleLibraryagentV1Book();
-      var od = api.GoogleExampleLibraryagentV1Book.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleExampleLibraryagentV1Book.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleExampleLibraryagentV1Book(
           od as api.GoogleExampleLibraryagentV1Book);
     });
@@ -185,8 +187,9 @@ void main() {
   unittest.group('obj-schema-GoogleExampleLibraryagentV1ListBooksResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleExampleLibraryagentV1ListBooksResponse();
-      var od =
-          api.GoogleExampleLibraryagentV1ListBooksResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleExampleLibraryagentV1ListBooksResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleExampleLibraryagentV1ListBooksResponse(
           od as api.GoogleExampleLibraryagentV1ListBooksResponse);
     });
@@ -196,8 +199,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleExampleLibraryagentV1ListShelvesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleExampleLibraryagentV1ListShelvesResponse(
           od as api.GoogleExampleLibraryagentV1ListShelvesResponse);
     });
@@ -206,7 +210,9 @@ void main() {
   unittest.group('obj-schema-GoogleExampleLibraryagentV1Shelf', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleExampleLibraryagentV1Shelf();
-      var od = api.GoogleExampleLibraryagentV1Shelf.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleExampleLibraryagentV1Shelf.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleExampleLibraryagentV1Shelf(
           od as api.GoogleExampleLibraryagentV1Shelf);
     });

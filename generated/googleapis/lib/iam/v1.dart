@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -2844,7 +2843,7 @@ class AdminAuditData {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissionDelta != null)
           'permissionDelta': permissionDelta!.toJson(),
       };
@@ -2891,7 +2890,7 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
               auditLogConfigs!.map((value) => value.toJson()).toList(),
@@ -2916,7 +2915,7 @@ class AuditData {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (policyDelta != null) 'policyDelta': policyDelta!.toJson(),
       };
 }
@@ -2955,7 +2954,7 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
         if (logType != null) 'logType': logType!,
       };
@@ -2976,7 +2975,7 @@ class AuditableService {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
       };
 }
@@ -2996,7 +2995,7 @@ class Aws {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
       };
 }
@@ -3067,7 +3066,7 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
@@ -3119,7 +3118,7 @@ class BindingDelta {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
         if (condition != null) 'condition': condition!.toJson(),
         if (member != null) 'member': member!,
@@ -3151,7 +3150,7 @@ class CreateRoleRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (role != null) 'role': role!.toJson(),
         if (roleId != null) 'roleId': roleId!,
       };
@@ -3193,7 +3192,7 @@ class CreateServiceAccountKeyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (keyAlgorithm != null) 'keyAlgorithm': keyAlgorithm!,
         if (privateKeyType != null) 'privateKeyType': privateKeyType!,
       };
@@ -3228,7 +3227,7 @@ class CreateServiceAccountRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (serviceAccount != null) 'serviceAccount': serviceAccount!.toJson(),
       };
@@ -3242,7 +3241,7 @@ class DisableServiceAccountRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -3259,7 +3258,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The service account enable request.
@@ -3270,7 +3269,7 @@ class EnableServiceAccountRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -3334,7 +3333,7 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,
@@ -3369,7 +3368,7 @@ class LintPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
       };
@@ -3394,7 +3393,7 @@ class LintPolicyResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (lintResults != null)
           'lintResults': lintResults!.map((value) => value.toJson()).toList(),
       };
@@ -3478,7 +3477,7 @@ class LintResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (debugMessage != null) 'debugMessage': debugMessage!,
         if (fieldName != null) 'fieldName': fieldName!,
         if (level != null) 'level': level!,
@@ -3512,7 +3511,7 @@ class ListRolesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (roles != null)
           'roles': roles!.map((value) => value.toJson()).toList(),
@@ -3535,7 +3534,7 @@ class ListServiceAccountKeysResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (keys != null) 'keys': keys!.map((value) => value.toJson()).toList(),
       };
 }
@@ -3563,7 +3562,7 @@ class ListServiceAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accounts != null)
           'accounts': accounts!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3596,7 +3595,7 @@ class ListWorkloadIdentityPoolProvidersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (workloadIdentityPoolProviders != null)
           'workloadIdentityPoolProviders': workloadIdentityPoolProviders!
@@ -3629,7 +3628,7 @@ class ListWorkloadIdentityPoolsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (workloadIdentityPools != null)
           'workloadIdentityPools':
@@ -3670,7 +3669,7 @@ class Oidc {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowedAudiences != null) 'allowedAudiences': allowedAudiences!,
         if (issuerUri != null) 'issuerUri': issuerUri!,
       };
@@ -3730,29 +3729,27 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -3783,7 +3780,7 @@ class PatchServiceAccountRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (serviceAccount != null) 'serviceAccount': serviceAccount!.toJson(),
         if (updateMask != null) 'updateMask': updateMask!,
       };
@@ -3857,7 +3854,7 @@ class Permission {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiDisabled != null) 'apiDisabled': apiDisabled!,
         if (customRolesSupportLevel != null)
           'customRolesSupportLevel': customRolesSupportLevel!,
@@ -3895,7 +3892,7 @@ class PermissionDelta {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addedPermissions != null) 'addedPermissions': addedPermissions!,
         if (removedPermissions != null)
           'removedPermissions': removedPermissions!,
@@ -4006,7 +4003,7 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditConfigs != null)
           'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
@@ -4032,7 +4029,7 @@ class PolicyDelta {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bindingDeltas != null)
           'bindingDeltas':
               bindingDeltas!.map((value) => value.toJson()).toList(),
@@ -4058,7 +4055,7 @@ class QueryAuditableServicesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
       };
 }
@@ -4079,7 +4076,7 @@ class QueryAuditableServicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (services != null)
           'services': services!.map((value) => value.toJson()).toList(),
       };
@@ -4129,7 +4126,7 @@ class QueryGrantableRolesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
@@ -4160,7 +4157,7 @@ class QueryGrantableRolesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (roles != null)
           'roles': roles!.map((value) => value.toJson()).toList(),
@@ -4201,7 +4198,7 @@ class QueryTestablePermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fullResourceName != null) 'fullResourceName': fullResourceName!,
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
@@ -4231,7 +4228,7 @@ class QueryTestablePermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (permissions != null)
           'permissions': permissions!.map((value) => value.toJson()).toList(),
@@ -4322,7 +4319,7 @@ class Role {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deleted != null) 'deleted': deleted!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
@@ -4447,7 +4444,7 @@ class ServiceAccount {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
@@ -4589,7 +4586,7 @@ class ServiceAccountKey {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (keyAlgorithm != null) 'keyAlgorithm': keyAlgorithm!,
         if (keyOrigin != null) 'keyOrigin': keyOrigin!,
         if (keyType != null) 'keyType': keyType!,
@@ -4629,7 +4626,7 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
         if (updateMask != null) 'updateMask': updateMask!,
       };
@@ -4663,7 +4660,7 @@ class SignBlobRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bytesToSign != null) 'bytesToSign': bytesToSign!,
       };
 }
@@ -4705,7 +4702,7 @@ class SignBlobResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (keyId != null) 'keyId': keyId!,
         if (signature != null) 'signature': signature!,
       };
@@ -4738,7 +4735,7 @@ class SignJwtRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (payload != null) 'payload': payload!,
       };
 }
@@ -4774,7 +4771,7 @@ class SignJwtResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (keyId != null) 'keyId': keyId!,
         if (signedJwt != null) 'signedJwt': signedJwt!,
       };
@@ -4813,8 +4810,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -4827,7 +4824,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -4853,7 +4850,7 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -4874,7 +4871,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -4898,7 +4895,7 @@ class UndeleteRoleRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
       };
 }
@@ -4911,7 +4908,7 @@ class UndeleteServiceAccountRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 class UndeleteServiceAccountResponse {
@@ -4927,7 +4924,7 @@ class UndeleteServiceAccountResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (restoredAccount != null)
           'restoredAccount': restoredAccount!.toJson(),
       };
@@ -4941,7 +4938,7 @@ class UndeleteWorkloadIdentityPoolProviderRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Request message for UndeleteWorkloadIdentityPool.
@@ -4952,7 +4949,7 @@ class UndeleteWorkloadIdentityPoolRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The service account key upload request.
@@ -4979,7 +4976,7 @@ class UploadServiceAccountKeyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (publicKeyData != null) 'publicKeyData': publicKeyData!,
       };
 }
@@ -5046,7 +5043,7 @@ class WorkloadIdentityPool {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (disabled != null) 'disabled': disabled!,
         if (displayName != null) 'displayName': displayName!,
@@ -5165,14 +5162,14 @@ class WorkloadIdentityPoolProvider {
       attributeCondition = _json['attributeCondition'] as core.String;
     }
     if (_json.containsKey('attributeMapping')) {
-      attributeMapping = (_json['attributeMapping'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      attributeMapping =
+          (_json['attributeMapping'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('aws')) {
       aws = Aws.fromJson(_json['aws'] as core.Map<core.String, core.dynamic>);
@@ -5198,7 +5195,7 @@ class WorkloadIdentityPoolProvider {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributeCondition != null)
           'attributeCondition': attributeCondition!,
         if (attributeMapping != null) 'attributeMapping': attributeMapping!,

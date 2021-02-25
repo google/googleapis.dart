@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -144,15 +143,13 @@ class ToyApi {
       body: _body,
       queryParams: _queryParams,
     );
-    return (_response as core.Map)
-        .cast<core.String, core.Map<core.String, core.Object?>>()
-        .map(
-          (key, item) => core.MapEntry(
-            key,
-            ToyResponseFactory.fromJson(
-                item as core.Map<core.String, core.dynamic>),
-          ),
-        );
+    return (_response as core.Map<core.String, core.dynamic>).map(
+      (key, item) => core.MapEntry(
+        key,
+        ToyResponseFactory.fromJson(
+            item as core.Map<core.String, core.dynamic>),
+      ),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -189,15 +186,13 @@ class ToyApi {
       body: _body,
       queryParams: _queryParams,
     );
-    return (_response as core.Map)
-        .cast<core.String, core.Map<core.String, core.Object?>>()
-        .map(
-          (key, item) => core.MapEntry(
-            key,
-            ToyResponseFactory.fromJson(
-                item as core.Map<core.String, core.dynamic>),
-          ),
-        );
+    return (_response as core.Map<core.String, core.dynamic>).map(
+      (key, item) => core.MapEntry(
+        key,
+        ToyResponseFactory.fromJson(
+            item as core.Map<core.String, core.dynamic>),
+      ),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -231,12 +226,12 @@ class ToyApi {
       body: _body,
       queryParams: _queryParams,
     );
-    return (_response as core.Map).cast<core.String, core.int>().map(
-          (key, item) => core.MapEntry(
-            key,
-            item as core.int,
-          ),
-        );
+    return (_response as core.Map<core.String, core.dynamic>).map(
+      (key, item) => core.MapEntry(
+        key,
+        item as core.int,
+      ),
+    );
   }
 
   /// Request parameters:
@@ -429,8 +424,8 @@ class ToyApi {
       queryParams: _queryParams,
     );
     return (_response as core.List)
-        .map<core.Map<core.String, core.List<core.String>>>((value) =>
-            (value as core.Map).cast<core.String, core.List<core.String>>().map(
+        .map<core.Map<core.String, core.List<core.String>>>(
+            (value) => (value as core.Map<core.String, core.dynamic>).map(
                   (key, item) => core.MapEntry(
                     key,
                     (item as core.List)
@@ -505,22 +500,20 @@ class ToyApi {
       body: _body,
       queryParams: _queryParams,
     );
-    return (_response as core.Map)
-        .cast<core.String, core.List<core.Map<core.String, core.bool?>>>()
-        .map(
-          (key, item) => core.MapEntry(
-            key,
-            (item as core.List)
-                .map<core.Map<core.String, core.bool>>((value) =>
-                    (value as core.Map).cast<core.String, core.bool>().map(
-                          (key, item) => core.MapEntry(
-                            key,
-                            item as core.bool,
-                          ),
-                        ))
-                .toList(),
-          ),
-        );
+    return (_response as core.Map<core.String, core.dynamic>).map(
+      (key, item) => core.MapEntry(
+        key,
+        (item as core.List)
+            .map<core.Map<core.String, core.bool>>(
+                (value) => (value as core.Map<core.String, core.dynamic>).map(
+                      (key, item) => core.MapEntry(
+                        key,
+                        item as core.bool,
+                      ),
+                    ))
+            .toList(),
+      ),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -556,19 +549,17 @@ class ToyApi {
       body: _body,
       queryParams: _queryParams,
     );
-    return (_response as core.Map)
-        .cast<core.String, core.Map<core.String, core.bool?>>()
-        .map(
+    return (_response as core.Map<core.String, core.dynamic>).map(
+      (key, item) => core.MapEntry(
+        key,
+        (item as core.Map<core.String, core.dynamic>).map(
           (key, item) => core.MapEntry(
             key,
-            (item as core.Map).cast<core.String, core.bool>().map(
-                  (key, item) => core.MapEntry(
-                    key,
-                    item as core.bool,
-                  ),
-                ),
+            item as core.bool,
           ),
-        );
+        ),
+      ),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -967,15 +958,14 @@ class ToyMapResponseFactory {
   static ToyMapResponse fromJson(core.Map _json) {
     final message = ToyMapResponse();
     if (_json.containsKey('mapResult')) {
-      message.mapResult = (_json['mapResult'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              NestedResponseFactory.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      message.mapResult =
+          (_json['mapResult'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          NestedResponseFactory.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('result')) {
       message.result = _json['result'] as core.String;

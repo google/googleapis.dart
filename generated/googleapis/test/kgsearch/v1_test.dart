@@ -192,7 +192,9 @@ void main() {
   unittest.group('obj-schema-SearchResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSearchResponse();
-      var od = api.SearchResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SearchResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSearchResponse(od as api.SearchResponse);
     });
   });

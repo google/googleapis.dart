@@ -772,7 +772,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -780,7 +781,9 @@ void main() {
   unittest.group('obj-schema-GdataBlobstore2Info', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGdataBlobstore2Info();
-      var od = api.GdataBlobstore2Info.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GdataBlobstore2Info.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGdataBlobstore2Info(od as api.GdataBlobstore2Info);
     });
   });
@@ -788,7 +791,9 @@ void main() {
   unittest.group('obj-schema-GdataCompositeMedia', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGdataCompositeMedia();
-      var od = api.GdataCompositeMedia.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GdataCompositeMedia.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGdataCompositeMedia(od as api.GdataCompositeMedia);
     });
   });
@@ -796,7 +801,9 @@ void main() {
   unittest.group('obj-schema-GdataContentTypeInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGdataContentTypeInfo();
-      var od = api.GdataContentTypeInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GdataContentTypeInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGdataContentTypeInfo(od as api.GdataContentTypeInfo);
     });
   });
@@ -804,7 +811,9 @@ void main() {
   unittest.group('obj-schema-GdataDiffChecksumsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGdataDiffChecksumsResponse();
-      var od = api.GdataDiffChecksumsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GdataDiffChecksumsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGdataDiffChecksumsResponse(od as api.GdataDiffChecksumsResponse);
     });
   });
@@ -812,7 +821,9 @@ void main() {
   unittest.group('obj-schema-GdataDiffDownloadResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGdataDiffDownloadResponse();
-      var od = api.GdataDiffDownloadResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GdataDiffDownloadResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGdataDiffDownloadResponse(od as api.GdataDiffDownloadResponse);
     });
   });
@@ -820,7 +831,9 @@ void main() {
   unittest.group('obj-schema-GdataDiffUploadRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGdataDiffUploadRequest();
-      var od = api.GdataDiffUploadRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GdataDiffUploadRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGdataDiffUploadRequest(od as api.GdataDiffUploadRequest);
     });
   });
@@ -828,7 +841,9 @@ void main() {
   unittest.group('obj-schema-GdataDiffUploadResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGdataDiffUploadResponse();
-      var od = api.GdataDiffUploadResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GdataDiffUploadResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGdataDiffUploadResponse(od as api.GdataDiffUploadResponse);
     });
   });
@@ -836,7 +851,9 @@ void main() {
   unittest.group('obj-schema-GdataDiffVersionResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGdataDiffVersionResponse();
-      var od = api.GdataDiffVersionResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GdataDiffVersionResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGdataDiffVersionResponse(od as api.GdataDiffVersionResponse);
     });
   });
@@ -844,7 +861,9 @@ void main() {
   unittest.group('obj-schema-GdataDownloadParameters', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGdataDownloadParameters();
-      var od = api.GdataDownloadParameters.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GdataDownloadParameters.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGdataDownloadParameters(od as api.GdataDownloadParameters);
     });
   });
@@ -852,7 +871,9 @@ void main() {
   unittest.group('obj-schema-GdataMedia', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGdataMedia();
-      var od = api.GdataMedia.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.GdataMedia.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGdataMedia(od as api.GdataMedia);
     });
   });
@@ -860,7 +881,9 @@ void main() {
   unittest.group('obj-schema-GdataObjectId', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGdataObjectId();
-      var od = api.GdataObjectId.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GdataObjectId.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGdataObjectId(od as api.GdataObjectId);
     });
   });
@@ -868,7 +891,8 @@ void main() {
   unittest.group('obj-schema-Job', () {
     unittest.test('to-json--from-json', () async {
       var o = buildJob();
-      var od = api.Job.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Job.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkJob(od as api.Job);
     });
   });
@@ -876,7 +900,9 @@ void main() {
   unittest.group('obj-schema-ListJobsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListJobsResponse();
-      var od = api.ListJobsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListJobsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListJobsResponse(od as api.ListJobsResponse);
     });
   });
@@ -884,7 +910,9 @@ void main() {
   unittest.group('obj-schema-ListReportTypesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListReportTypesResponse();
-      var od = api.ListReportTypesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListReportTypesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListReportTypesResponse(od as api.ListReportTypesResponse);
     });
   });
@@ -892,7 +920,9 @@ void main() {
   unittest.group('obj-schema-ListReportsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListReportsResponse();
-      var od = api.ListReportsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListReportsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListReportsResponse(od as api.ListReportsResponse);
     });
   });
@@ -900,7 +930,9 @@ void main() {
   unittest.group('obj-schema-Report', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReport();
-      var od = api.Report.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Report.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkReport(od as api.Report);
     });
   });
@@ -908,7 +940,9 @@ void main() {
   unittest.group('obj-schema-ReportType', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReportType();
-      var od = api.ReportType.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.ReportType.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkReportType(od as api.ReportType);
     });
   });

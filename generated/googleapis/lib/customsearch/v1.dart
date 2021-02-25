@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -694,7 +693,7 @@ class PromotionBodyLines {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (htmlTitle != null) 'htmlTitle': htmlTitle!,
         if (link != null) 'link': link!,
         if (title != null) 'title': title!,
@@ -727,7 +726,7 @@ class PromotionImage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (source != null) 'source': source!,
         if (width != null) 'width': width!,
@@ -785,7 +784,7 @@ class Promotion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bodyLines != null)
           'bodyLines': bodyLines!.map((value) => value.toJson()).toList(),
         if (displayLink != null) 'displayLink': displayLink!,
@@ -845,7 +844,7 @@ class ResultImage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (byteSize != null) 'byteSize': byteSize!,
         if (contextLink != null) 'contextLink': contextLink!,
         if (height != null) 'height': height!,
@@ -885,7 +884,7 @@ class ResultLabels {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (labelWithOp != null) 'label_with_op': labelWithOp!,
         if (name != null) 'name': name!,
@@ -992,13 +991,12 @@ class Result {
       mime = _json['mime'] as core.String;
     }
     if (_json.containsKey('pagemap')) {
-      pagemap =
-          (_json['pagemap'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      pagemap = (_json['pagemap'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('snippet')) {
       snippet = _json['snippet'] as core.String;
@@ -1008,7 +1006,7 @@ class Result {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cacheId != null) 'cacheId': cacheId!,
         if (displayLink != null) 'displayLink': displayLink!,
         if (fileFormat != null) 'fileFormat': fileFormat!,
@@ -1359,7 +1357,7 @@ class SearchQueriesNextPage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
         if (cr != null) 'cr': cr!,
         if (cx != null) 'cx': cx!,
@@ -1731,7 +1729,7 @@ class SearchQueriesPreviousPage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
         if (cr != null) 'cr': cr!,
         if (cx != null) 'cx': cx!,
@@ -2103,7 +2101,7 @@ class SearchQueriesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
         if (cr != null) 'cr': cr!,
         if (cx != null) 'cx': cx!,
@@ -2179,7 +2177,7 @@ class SearchQueries {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPage != null)
           'nextPage': nextPage!.map((value) => value.toJson()).toList(),
         if (previousPage != null)
@@ -2221,7 +2219,7 @@ class SearchSearchInformation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (formattedSearchTime != null)
           'formattedSearchTime': formattedSearchTime!,
         if (formattedTotalResults != null)
@@ -2250,7 +2248,7 @@ class SearchSpelling {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (correctedQuery != null) 'correctedQuery': correctedQuery!,
         if (htmlCorrectedQuery != null)
           'htmlCorrectedQuery': htmlCorrectedQuery!,
@@ -2279,7 +2277,7 @@ class SearchUrl {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (template != null) 'template': template!,
         if (type != null) 'type': type!,
       };
@@ -2329,13 +2327,12 @@ class Search {
 
   Search.fromJson(core.Map _json) {
     if (_json.containsKey('context')) {
-      context =
-          (_json['context'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      context = (_json['context'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
@@ -2370,7 +2367,7 @@ class Search {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (context != null) 'context': context!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),

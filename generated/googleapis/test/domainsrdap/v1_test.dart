@@ -326,7 +326,9 @@ void main() {
   unittest.group('obj-schema-HttpBody', () {
     unittest.test('to-json--from-json', () async {
       var o = buildHttpBody();
-      var od = api.HttpBody.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.HttpBody.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkHttpBody(od as api.HttpBody);
     });
   });
@@ -334,7 +336,8 @@ void main() {
   unittest.group('obj-schema-Link', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLink();
-      var od = api.Link.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Link.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLink(od as api.Link);
     });
   });
@@ -342,7 +345,9 @@ void main() {
   unittest.group('obj-schema-Notice', () {
     unittest.test('to-json--from-json', () async {
       var o = buildNotice();
-      var od = api.Notice.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Notice.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkNotice(od as api.Notice);
     });
   });
@@ -350,7 +355,9 @@ void main() {
   unittest.group('obj-schema-RdapResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRdapResponse();
-      var od = api.RdapResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RdapResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRdapResponse(od as api.RdapResponse);
     });
   });

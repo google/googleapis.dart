@@ -4161,7 +4161,9 @@ void main() {
   unittest.group('obj-schema-AdvancedSecurityOverrides', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAdvancedSecurityOverrides();
-      var od = api.AdvancedSecurityOverrides.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AdvancedSecurityOverrides.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAdvancedSecurityOverrides(od as api.AdvancedSecurityOverrides);
     });
   });
@@ -4169,7 +4171,9 @@ void main() {
   unittest.group('obj-schema-AlwaysOnVpnPackage', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAlwaysOnVpnPackage();
-      var od = api.AlwaysOnVpnPackage.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AlwaysOnVpnPackage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAlwaysOnVpnPackage(od as api.AlwaysOnVpnPackage);
     });
   });
@@ -4177,7 +4181,9 @@ void main() {
   unittest.group('obj-schema-ApiLevelCondition', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApiLevelCondition();
-      var od = api.ApiLevelCondition.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApiLevelCondition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApiLevelCondition(od as api.ApiLevelCondition);
     });
   });
@@ -4185,7 +4191,9 @@ void main() {
   unittest.group('obj-schema-AppTrackInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAppTrackInfo();
-      var od = api.AppTrackInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AppTrackInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAppTrackInfo(od as api.AppTrackInfo);
     });
   });
@@ -4193,7 +4201,9 @@ void main() {
   unittest.group('obj-schema-Application', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApplication();
-      var od = api.Application.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Application.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApplication(od as api.Application);
     });
   });
@@ -4201,7 +4211,9 @@ void main() {
   unittest.group('obj-schema-ApplicationEvent', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApplicationEvent();
-      var od = api.ApplicationEvent.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApplicationEvent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApplicationEvent(od as api.ApplicationEvent);
     });
   });
@@ -4209,7 +4221,9 @@ void main() {
   unittest.group('obj-schema-ApplicationPermission', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApplicationPermission();
-      var od = api.ApplicationPermission.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApplicationPermission.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApplicationPermission(od as api.ApplicationPermission);
     });
   });
@@ -4217,7 +4231,9 @@ void main() {
   unittest.group('obj-schema-ApplicationPolicy', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApplicationPolicy();
-      var od = api.ApplicationPolicy.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApplicationPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApplicationPolicy(od as api.ApplicationPolicy);
     });
   });
@@ -4225,7 +4241,9 @@ void main() {
   unittest.group('obj-schema-ApplicationReport', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApplicationReport();
-      var od = api.ApplicationReport.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApplicationReport.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApplicationReport(od as api.ApplicationReport);
     });
   });
@@ -4233,7 +4251,9 @@ void main() {
   unittest.group('obj-schema-ApplicationReportingSettings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApplicationReportingSettings();
-      var od = api.ApplicationReportingSettings.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApplicationReportingSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApplicationReportingSettings(od as api.ApplicationReportingSettings);
     });
   });
@@ -4241,7 +4261,9 @@ void main() {
   unittest.group('obj-schema-BlockAction', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBlockAction();
-      var od = api.BlockAction.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BlockAction.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBlockAction(od as api.BlockAction);
     });
   });
@@ -4249,7 +4271,9 @@ void main() {
   unittest.group('obj-schema-ChoosePrivateKeyRule', () {
     unittest.test('to-json--from-json', () async {
       var o = buildChoosePrivateKeyRule();
-      var od = api.ChoosePrivateKeyRule.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ChoosePrivateKeyRule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkChoosePrivateKeyRule(od as api.ChoosePrivateKeyRule);
     });
   });
@@ -4257,7 +4281,9 @@ void main() {
   unittest.group('obj-schema-Command', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCommand();
-      var od = api.Command.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Command.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkCommand(od as api.Command);
     });
   });
@@ -4265,7 +4291,9 @@ void main() {
   unittest.group('obj-schema-CommonCriteriaModeInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCommonCriteriaModeInfo();
-      var od = api.CommonCriteriaModeInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CommonCriteriaModeInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCommonCriteriaModeInfo(od as api.CommonCriteriaModeInfo);
     });
   });
@@ -4273,7 +4301,9 @@ void main() {
   unittest.group('obj-schema-ComplianceRule', () {
     unittest.test('to-json--from-json', () async {
       var o = buildComplianceRule();
-      var od = api.ComplianceRule.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ComplianceRule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkComplianceRule(od as api.ComplianceRule);
     });
   });
@@ -4281,7 +4311,9 @@ void main() {
   unittest.group('obj-schema-ContactInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildContactInfo();
-      var od = api.ContactInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ContactInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkContactInfo(od as api.ContactInfo);
     });
   });
@@ -4289,7 +4321,8 @@ void main() {
   unittest.group('obj-schema-Date', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDate();
-      var od = api.Date.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Date.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDate(od as api.Date);
     });
   });
@@ -4297,7 +4330,9 @@ void main() {
   unittest.group('obj-schema-Device', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDevice();
-      var od = api.Device.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Device.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDevice(od as api.Device);
     });
   });
@@ -4305,7 +4340,9 @@ void main() {
   unittest.group('obj-schema-DeviceSettings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDeviceSettings();
-      var od = api.DeviceSettings.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DeviceSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDeviceSettings(od as api.DeviceSettings);
     });
   });
@@ -4313,7 +4350,9 @@ void main() {
   unittest.group('obj-schema-Display', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDisplay();
-      var od = api.Display.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Display.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDisplay(od as api.Display);
     });
   });
@@ -4321,7 +4360,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -4329,7 +4369,9 @@ void main() {
   unittest.group('obj-schema-EnrollmentToken', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEnrollmentToken();
-      var od = api.EnrollmentToken.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.EnrollmentToken.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkEnrollmentToken(od as api.EnrollmentToken);
     });
   });
@@ -4337,7 +4379,9 @@ void main() {
   unittest.group('obj-schema-Enterprise', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEnterprise();
-      var od = api.Enterprise.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Enterprise.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEnterprise(od as api.Enterprise);
     });
   });
@@ -4345,7 +4389,9 @@ void main() {
   unittest.group('obj-schema-ExternalData', () {
     unittest.test('to-json--from-json', () async {
       var o = buildExternalData();
-      var od = api.ExternalData.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ExternalData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkExternalData(od as api.ExternalData);
     });
   });
@@ -4353,7 +4399,9 @@ void main() {
   unittest.group('obj-schema-FreezePeriod', () {
     unittest.test('to-json--from-json', () async {
       var o = buildFreezePeriod();
-      var od = api.FreezePeriod.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.FreezePeriod.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkFreezePeriod(od as api.FreezePeriod);
     });
   });
@@ -4361,7 +4409,9 @@ void main() {
   unittest.group('obj-schema-HardwareInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildHardwareInfo();
-      var od = api.HardwareInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.HardwareInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkHardwareInfo(od as api.HardwareInfo);
     });
   });
@@ -4369,7 +4419,9 @@ void main() {
   unittest.group('obj-schema-HardwareStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildHardwareStatus();
-      var od = api.HardwareStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.HardwareStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkHardwareStatus(od as api.HardwareStatus);
     });
   });
@@ -4377,7 +4429,9 @@ void main() {
   unittest.group('obj-schema-KeyedAppState', () {
     unittest.test('to-json--from-json', () async {
       var o = buildKeyedAppState();
-      var od = api.KeyedAppState.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.KeyedAppState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkKeyedAppState(od as api.KeyedAppState);
     });
   });
@@ -4385,7 +4439,9 @@ void main() {
   unittest.group('obj-schema-KioskCustomization', () {
     unittest.test('to-json--from-json', () async {
       var o = buildKioskCustomization();
-      var od = api.KioskCustomization.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.KioskCustomization.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkKioskCustomization(od as api.KioskCustomization);
     });
   });
@@ -4393,7 +4449,9 @@ void main() {
   unittest.group('obj-schema-LaunchAppAction', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLaunchAppAction();
-      var od = api.LaunchAppAction.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LaunchAppAction.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLaunchAppAction(od as api.LaunchAppAction);
     });
   });
@@ -4401,7 +4459,9 @@ void main() {
   unittest.group('obj-schema-ListDevicesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListDevicesResponse();
-      var od = api.ListDevicesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListDevicesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListDevicesResponse(od as api.ListDevicesResponse);
     });
   });
@@ -4409,7 +4469,9 @@ void main() {
   unittest.group('obj-schema-ListEnterprisesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListEnterprisesResponse();
-      var od = api.ListEnterprisesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListEnterprisesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListEnterprisesResponse(od as api.ListEnterprisesResponse);
     });
   });
@@ -4417,7 +4479,9 @@ void main() {
   unittest.group('obj-schema-ListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
-      var od = api.ListOperationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListOperationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
@@ -4425,7 +4489,9 @@ void main() {
   unittest.group('obj-schema-ListPoliciesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListPoliciesResponse();
-      var od = api.ListPoliciesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListPoliciesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListPoliciesResponse(od as api.ListPoliciesResponse);
     });
   });
@@ -4433,7 +4499,9 @@ void main() {
   unittest.group('obj-schema-ListWebAppsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListWebAppsResponse();
-      var od = api.ListWebAppsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListWebAppsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListWebAppsResponse(od as api.ListWebAppsResponse);
     });
   });
@@ -4441,7 +4509,9 @@ void main() {
   unittest.group('obj-schema-ManagedConfigurationTemplate', () {
     unittest.test('to-json--from-json', () async {
       var o = buildManagedConfigurationTemplate();
-      var od = api.ManagedConfigurationTemplate.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ManagedConfigurationTemplate.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkManagedConfigurationTemplate(od as api.ManagedConfigurationTemplate);
     });
   });
@@ -4449,7 +4519,9 @@ void main() {
   unittest.group('obj-schema-ManagedProperty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildManagedProperty();
-      var od = api.ManagedProperty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ManagedProperty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkManagedProperty(od as api.ManagedProperty);
     });
   });
@@ -4457,7 +4529,9 @@ void main() {
   unittest.group('obj-schema-ManagedPropertyEntry', () {
     unittest.test('to-json--from-json', () async {
       var o = buildManagedPropertyEntry();
-      var od = api.ManagedPropertyEntry.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ManagedPropertyEntry.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkManagedPropertyEntry(od as api.ManagedPropertyEntry);
     });
   });
@@ -4465,7 +4539,9 @@ void main() {
   unittest.group('obj-schema-MemoryEvent', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMemoryEvent();
-      var od = api.MemoryEvent.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MemoryEvent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkMemoryEvent(od as api.MemoryEvent);
     });
   });
@@ -4473,7 +4549,9 @@ void main() {
   unittest.group('obj-schema-MemoryInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMemoryInfo();
-      var od = api.MemoryInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.MemoryInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkMemoryInfo(od as api.MemoryInfo);
     });
   });
@@ -4481,7 +4559,9 @@ void main() {
   unittest.group('obj-schema-NetworkInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildNetworkInfo();
-      var od = api.NetworkInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.NetworkInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkNetworkInfo(od as api.NetworkInfo);
     });
   });
@@ -4489,7 +4569,9 @@ void main() {
   unittest.group('obj-schema-NonComplianceDetail', () {
     unittest.test('to-json--from-json', () async {
       var o = buildNonComplianceDetail();
-      var od = api.NonComplianceDetail.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.NonComplianceDetail.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkNonComplianceDetail(od as api.NonComplianceDetail);
     });
   });
@@ -4497,7 +4579,9 @@ void main() {
   unittest.group('obj-schema-NonComplianceDetailCondition', () {
     unittest.test('to-json--from-json', () async {
       var o = buildNonComplianceDetailCondition();
-      var od = api.NonComplianceDetailCondition.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.NonComplianceDetailCondition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkNonComplianceDetailCondition(od as api.NonComplianceDetailCondition);
     });
   });
@@ -4505,7 +4589,9 @@ void main() {
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOperation();
-      var od = api.Operation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od as api.Operation);
     });
   });
@@ -4513,7 +4599,9 @@ void main() {
   unittest.group('obj-schema-PackageNameList', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPackageNameList();
-      var od = api.PackageNameList.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PackageNameList.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPackageNameList(od as api.PackageNameList);
     });
   });
@@ -4521,7 +4609,9 @@ void main() {
   unittest.group('obj-schema-PasswordRequirements', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPasswordRequirements();
-      var od = api.PasswordRequirements.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PasswordRequirements.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPasswordRequirements(od as api.PasswordRequirements);
     });
   });
@@ -4529,7 +4619,9 @@ void main() {
   unittest.group('obj-schema-PermissionGrant', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPermissionGrant();
-      var od = api.PermissionGrant.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PermissionGrant.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPermissionGrant(od as api.PermissionGrant);
     });
   });
@@ -4537,7 +4629,9 @@ void main() {
   unittest.group('obj-schema-PersistentPreferredActivity', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPersistentPreferredActivity();
-      var od = api.PersistentPreferredActivity.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PersistentPreferredActivity.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPersistentPreferredActivity(od as api.PersistentPreferredActivity);
     });
   });
@@ -4545,7 +4639,9 @@ void main() {
   unittest.group('obj-schema-PersonalApplicationPolicy', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPersonalApplicationPolicy();
-      var od = api.PersonalApplicationPolicy.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PersonalApplicationPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPersonalApplicationPolicy(od as api.PersonalApplicationPolicy);
     });
   });
@@ -4553,7 +4649,9 @@ void main() {
   unittest.group('obj-schema-PersonalUsagePolicies', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPersonalUsagePolicies();
-      var od = api.PersonalUsagePolicies.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PersonalUsagePolicies.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPersonalUsagePolicies(od as api.PersonalUsagePolicies);
     });
   });
@@ -4561,7 +4659,9 @@ void main() {
   unittest.group('obj-schema-Policy', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
-      var od = api.Policy.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Policy.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPolicy(od as api.Policy);
     });
   });
@@ -4569,7 +4669,9 @@ void main() {
   unittest.group('obj-schema-PolicyEnforcementRule', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPolicyEnforcementRule();
-      var od = api.PolicyEnforcementRule.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PolicyEnforcementRule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPolicyEnforcementRule(od as api.PolicyEnforcementRule);
     });
   });
@@ -4577,7 +4679,9 @@ void main() {
   unittest.group('obj-schema-PostureDetail', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPostureDetail();
-      var od = api.PostureDetail.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PostureDetail.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPostureDetail(od as api.PostureDetail);
     });
   });
@@ -4585,7 +4689,9 @@ void main() {
   unittest.group('obj-schema-PowerManagementEvent', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPowerManagementEvent();
-      var od = api.PowerManagementEvent.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PowerManagementEvent.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPowerManagementEvent(od as api.PowerManagementEvent);
     });
   });
@@ -4593,7 +4699,9 @@ void main() {
   unittest.group('obj-schema-ProxyInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildProxyInfo();
-      var od = api.ProxyInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.ProxyInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkProxyInfo(od as api.ProxyInfo);
     });
   });
@@ -4601,7 +4709,9 @@ void main() {
   unittest.group('obj-schema-SecurityPosture', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSecurityPosture();
-      var od = api.SecurityPosture.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SecurityPosture.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSecurityPosture(od as api.SecurityPosture);
     });
   });
@@ -4609,7 +4719,9 @@ void main() {
   unittest.group('obj-schema-SetupAction', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSetupAction();
-      var od = api.SetupAction.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SetupAction.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSetupAction(od as api.SetupAction);
     });
   });
@@ -4617,7 +4729,9 @@ void main() {
   unittest.group('obj-schema-SigninDetail', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSigninDetail();
-      var od = api.SigninDetail.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SigninDetail.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSigninDetail(od as api.SigninDetail);
     });
   });
@@ -4625,7 +4739,9 @@ void main() {
   unittest.group('obj-schema-SignupUrl', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSignupUrl();
-      var od = api.SignupUrl.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.SignupUrl.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkSignupUrl(od as api.SignupUrl);
     });
   });
@@ -4633,7 +4749,9 @@ void main() {
   unittest.group('obj-schema-SoftwareInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSoftwareInfo();
-      var od = api.SoftwareInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SoftwareInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSoftwareInfo(od as api.SoftwareInfo);
     });
   });
@@ -4641,7 +4759,9 @@ void main() {
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStatus();
-      var od = api.Status.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od as api.Status);
     });
   });
@@ -4649,7 +4769,9 @@ void main() {
   unittest.group('obj-schema-StatusReportingSettings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStatusReportingSettings();
-      var od = api.StatusReportingSettings.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.StatusReportingSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkStatusReportingSettings(od as api.StatusReportingSettings);
     });
   });
@@ -4657,7 +4779,9 @@ void main() {
   unittest.group('obj-schema-SystemUpdate', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSystemUpdate();
-      var od = api.SystemUpdate.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SystemUpdate.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSystemUpdate(od as api.SystemUpdate);
     });
   });
@@ -4665,7 +4789,9 @@ void main() {
   unittest.group('obj-schema-SystemUpdateInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSystemUpdateInfo();
-      var od = api.SystemUpdateInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SystemUpdateInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSystemUpdateInfo(od as api.SystemUpdateInfo);
     });
   });
@@ -4673,7 +4799,9 @@ void main() {
   unittest.group('obj-schema-TelephonyInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTelephonyInfo();
-      var od = api.TelephonyInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TelephonyInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTelephonyInfo(od as api.TelephonyInfo);
     });
   });
@@ -4681,7 +4809,9 @@ void main() {
   unittest.group('obj-schema-TermsAndConditions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTermsAndConditions();
-      var od = api.TermsAndConditions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TermsAndConditions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTermsAndConditions(od as api.TermsAndConditions);
     });
   });
@@ -4689,7 +4819,8 @@ void main() {
   unittest.group('obj-schema-User', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUser();
-      var od = api.User.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.User.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkUser(od as api.User);
     });
   });
@@ -4697,7 +4828,9 @@ void main() {
   unittest.group('obj-schema-UserFacingMessage', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUserFacingMessage();
-      var od = api.UserFacingMessage.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UserFacingMessage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUserFacingMessage(od as api.UserFacingMessage);
     });
   });
@@ -4705,7 +4838,9 @@ void main() {
   unittest.group('obj-schema-WebApp', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWebApp();
-      var od = api.WebApp.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.WebApp.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkWebApp(od as api.WebApp);
     });
   });
@@ -4713,7 +4848,9 @@ void main() {
   unittest.group('obj-schema-WebAppIcon', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWebAppIcon();
-      var od = api.WebAppIcon.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.WebAppIcon.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkWebAppIcon(od as api.WebAppIcon);
     });
   });
@@ -4721,7 +4858,9 @@ void main() {
   unittest.group('obj-schema-WebToken', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWebToken();
-      var od = api.WebToken.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.WebToken.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkWebToken(od as api.WebToken);
     });
   });
@@ -4729,7 +4868,9 @@ void main() {
   unittest.group('obj-schema-WipeAction', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWipeAction();
-      var od = api.WipeAction.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.WipeAction.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkWipeAction(od as api.WipeAction);
     });
   });

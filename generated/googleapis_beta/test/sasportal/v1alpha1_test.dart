@@ -1468,7 +1468,9 @@ void main() {
   unittest.group('obj-schema-SasPortalAssignment', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalAssignment();
-      var od = api.SasPortalAssignment.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalAssignment.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalAssignment(od as api.SasPortalAssignment);
     });
   });
@@ -1476,7 +1478,9 @@ void main() {
   unittest.group('obj-schema-SasPortalCreateSignedDeviceRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalCreateSignedDeviceRequest();
-      var od = api.SasPortalCreateSignedDeviceRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalCreateSignedDeviceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalCreateSignedDeviceRequest(
           od as api.SasPortalCreateSignedDeviceRequest);
     });
@@ -1485,7 +1489,9 @@ void main() {
   unittest.group('obj-schema-SasPortalCustomer', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalCustomer();
-      var od = api.SasPortalCustomer.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalCustomer.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalCustomer(od as api.SasPortalCustomer);
     });
   });
@@ -1493,7 +1499,9 @@ void main() {
   unittest.group('obj-schema-SasPortalDeployment', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalDeployment();
-      var od = api.SasPortalDeployment.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalDeployment.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalDeployment(od as api.SasPortalDeployment);
     });
   });
@@ -1501,7 +1509,9 @@ void main() {
   unittest.group('obj-schema-SasPortalDevice', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalDevice();
-      var od = api.SasPortalDevice.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalDevice.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalDevice(od as api.SasPortalDevice);
     });
   });
@@ -1509,7 +1519,9 @@ void main() {
   unittest.group('obj-schema-SasPortalDeviceAirInterface', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalDeviceAirInterface();
-      var od = api.SasPortalDeviceAirInterface.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalDeviceAirInterface.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalDeviceAirInterface(od as api.SasPortalDeviceAirInterface);
     });
   });
@@ -1517,7 +1529,9 @@ void main() {
   unittest.group('obj-schema-SasPortalDeviceConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalDeviceConfig();
-      var od = api.SasPortalDeviceConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalDeviceConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalDeviceConfig(od as api.SasPortalDeviceConfig);
     });
   });
@@ -1525,7 +1539,9 @@ void main() {
   unittest.group('obj-schema-SasPortalDeviceGrant', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalDeviceGrant();
-      var od = api.SasPortalDeviceGrant.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalDeviceGrant.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalDeviceGrant(od as api.SasPortalDeviceGrant);
     });
   });
@@ -1533,7 +1549,9 @@ void main() {
   unittest.group('obj-schema-SasPortalDeviceMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalDeviceMetadata();
-      var od = api.SasPortalDeviceMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalDeviceMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalDeviceMetadata(od as api.SasPortalDeviceMetadata);
     });
   });
@@ -1541,7 +1559,9 @@ void main() {
   unittest.group('obj-schema-SasPortalDeviceModel', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalDeviceModel();
-      var od = api.SasPortalDeviceModel.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalDeviceModel.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalDeviceModel(od as api.SasPortalDeviceModel);
     });
   });
@@ -1549,7 +1569,9 @@ void main() {
   unittest.group('obj-schema-SasPortalDpaMoveList', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalDpaMoveList();
-      var od = api.SasPortalDpaMoveList.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalDpaMoveList.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalDpaMoveList(od as api.SasPortalDpaMoveList);
     });
   });
@@ -1557,7 +1579,9 @@ void main() {
   unittest.group('obj-schema-SasPortalEmpty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalEmpty();
-      var od = api.SasPortalEmpty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalEmpty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalEmpty(od as api.SasPortalEmpty);
     });
   });
@@ -1565,7 +1589,9 @@ void main() {
   unittest.group('obj-schema-SasPortalFrequencyRange', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalFrequencyRange();
-      var od = api.SasPortalFrequencyRange.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalFrequencyRange.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalFrequencyRange(od as api.SasPortalFrequencyRange);
     });
   });
@@ -1573,7 +1599,9 @@ void main() {
   unittest.group('obj-schema-SasPortalGenerateSecretRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalGenerateSecretRequest();
-      var od = api.SasPortalGenerateSecretRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalGenerateSecretRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalGenerateSecretRequest(
           od as api.SasPortalGenerateSecretRequest);
     });
@@ -1582,7 +1610,9 @@ void main() {
   unittest.group('obj-schema-SasPortalGenerateSecretResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalGenerateSecretResponse();
-      var od = api.SasPortalGenerateSecretResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalGenerateSecretResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalGenerateSecretResponse(
           od as api.SasPortalGenerateSecretResponse);
     });
@@ -1591,7 +1621,9 @@ void main() {
   unittest.group('obj-schema-SasPortalGetPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalGetPolicyRequest();
-      var od = api.SasPortalGetPolicyRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalGetPolicyRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalGetPolicyRequest(od as api.SasPortalGetPolicyRequest);
     });
   });
@@ -1599,7 +1631,9 @@ void main() {
   unittest.group('obj-schema-SasPortalInstallationParams', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalInstallationParams();
-      var od = api.SasPortalInstallationParams.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalInstallationParams.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalInstallationParams(od as api.SasPortalInstallationParams);
     });
   });
@@ -1607,7 +1641,9 @@ void main() {
   unittest.group('obj-schema-SasPortalListCustomersResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalListCustomersResponse();
-      var od = api.SasPortalListCustomersResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalListCustomersResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalListCustomersResponse(
           od as api.SasPortalListCustomersResponse);
     });
@@ -1616,7 +1652,9 @@ void main() {
   unittest.group('obj-schema-SasPortalListDeploymentsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalListDeploymentsResponse();
-      var od = api.SasPortalListDeploymentsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalListDeploymentsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalListDeploymentsResponse(
           od as api.SasPortalListDeploymentsResponse);
     });
@@ -1625,7 +1663,9 @@ void main() {
   unittest.group('obj-schema-SasPortalListDevicesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalListDevicesResponse();
-      var od = api.SasPortalListDevicesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalListDevicesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalListDevicesResponse(od as api.SasPortalListDevicesResponse);
     });
   });
@@ -1633,7 +1673,9 @@ void main() {
   unittest.group('obj-schema-SasPortalListNodesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalListNodesResponse();
-      var od = api.SasPortalListNodesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalListNodesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalListNodesResponse(od as api.SasPortalListNodesResponse);
     });
   });
@@ -1641,7 +1683,9 @@ void main() {
   unittest.group('obj-schema-SasPortalMoveDeploymentRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalMoveDeploymentRequest();
-      var od = api.SasPortalMoveDeploymentRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalMoveDeploymentRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalMoveDeploymentRequest(
           od as api.SasPortalMoveDeploymentRequest);
     });
@@ -1650,7 +1694,9 @@ void main() {
   unittest.group('obj-schema-SasPortalMoveDeviceRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalMoveDeviceRequest();
-      var od = api.SasPortalMoveDeviceRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalMoveDeviceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalMoveDeviceRequest(od as api.SasPortalMoveDeviceRequest);
     });
   });
@@ -1658,7 +1704,9 @@ void main() {
   unittest.group('obj-schema-SasPortalMoveNodeRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalMoveNodeRequest();
-      var od = api.SasPortalMoveNodeRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalMoveNodeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalMoveNodeRequest(od as api.SasPortalMoveNodeRequest);
     });
   });
@@ -1666,7 +1714,9 @@ void main() {
   unittest.group('obj-schema-SasPortalNode', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalNode();
-      var od = api.SasPortalNode.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalNode.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalNode(od as api.SasPortalNode);
     });
   });
@@ -1674,7 +1724,9 @@ void main() {
   unittest.group('obj-schema-SasPortalOperation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalOperation();
-      var od = api.SasPortalOperation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalOperation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalOperation(od as api.SasPortalOperation);
     });
   });
@@ -1682,7 +1734,9 @@ void main() {
   unittest.group('obj-schema-SasPortalPolicy', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalPolicy();
-      var od = api.SasPortalPolicy.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalPolicy(od as api.SasPortalPolicy);
     });
   });
@@ -1690,7 +1744,9 @@ void main() {
   unittest.group('obj-schema-SasPortalSetPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalSetPolicyRequest();
-      var od = api.SasPortalSetPolicyRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalSetPolicyRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalSetPolicyRequest(od as api.SasPortalSetPolicyRequest);
     });
   });
@@ -1698,7 +1754,9 @@ void main() {
   unittest.group('obj-schema-SasPortalSignDeviceRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalSignDeviceRequest();
-      var od = api.SasPortalSignDeviceRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalSignDeviceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalSignDeviceRequest(od as api.SasPortalSignDeviceRequest);
     });
   });
@@ -1706,7 +1764,9 @@ void main() {
   unittest.group('obj-schema-SasPortalStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalStatus();
-      var od = api.SasPortalStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalStatus(od as api.SasPortalStatus);
     });
   });
@@ -1714,7 +1774,9 @@ void main() {
   unittest.group('obj-schema-SasPortalTestPermissionsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalTestPermissionsRequest();
-      var od = api.SasPortalTestPermissionsRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalTestPermissionsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalTestPermissionsRequest(
           od as api.SasPortalTestPermissionsRequest);
     });
@@ -1723,7 +1785,9 @@ void main() {
   unittest.group('obj-schema-SasPortalTestPermissionsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalTestPermissionsResponse();
-      var od = api.SasPortalTestPermissionsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalTestPermissionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalTestPermissionsResponse(
           od as api.SasPortalTestPermissionsResponse);
     });
@@ -1732,7 +1796,9 @@ void main() {
   unittest.group('obj-schema-SasPortalUpdateSignedDeviceRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalUpdateSignedDeviceRequest();
-      var od = api.SasPortalUpdateSignedDeviceRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalUpdateSignedDeviceRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalUpdateSignedDeviceRequest(
           od as api.SasPortalUpdateSignedDeviceRequest);
     });
@@ -1741,7 +1807,9 @@ void main() {
   unittest.group('obj-schema-SasPortalValidateInstallerRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalValidateInstallerRequest();
-      var od = api.SasPortalValidateInstallerRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalValidateInstallerRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalValidateInstallerRequest(
           od as api.SasPortalValidateInstallerRequest);
     });
@@ -1750,7 +1818,9 @@ void main() {
   unittest.group('obj-schema-SasPortalValidateInstallerResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSasPortalValidateInstallerResponse();
-      var od = api.SasPortalValidateInstallerResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SasPortalValidateInstallerResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSasPortalValidateInstallerResponse(
           od as api.SasPortalValidateInstallerResponse);
     });

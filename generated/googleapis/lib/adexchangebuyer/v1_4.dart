@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1825,7 +1824,7 @@ class AccountBidderLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bidProtocol != null) 'bidProtocol': bidProtocol!,
         if (maximumQps != null) 'maximumQps': maximumQps!,
         if (region != null) 'region': region!,
@@ -1911,7 +1910,7 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (applyPretargetingToNonGuaranteedDeals != null)
           'applyPretargetingToNonGuaranteedDeals':
               applyPretargetingToNonGuaranteedDeals!,
@@ -1955,7 +1954,7 @@ class AccountsList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -1989,7 +1988,7 @@ class AddOrderDealsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deals != null)
           'deals': deals!.map((value) => value.toJson()).toList(),
         if (proposalRevisionNumber != null)
@@ -2019,7 +2018,7 @@ class AddOrderDealsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deals != null)
           'deals': deals!.map((value) => value.toJson()).toList(),
         if (proposalRevisionNumber != null)
@@ -2042,7 +2041,7 @@ class AddOrderNotesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (notes != null)
           'notes': notes!.map((value) => value.toJson()).toList(),
       };
@@ -2062,7 +2061,7 @@ class AddOrderNotesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (notes != null)
           'notes': notes!.map((value) => value.toJson()).toList(),
       };
@@ -2104,7 +2103,7 @@ class BillingInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (accountName != null) 'accountName': accountName!,
         if (billingId != null) 'billingId': billingId!,
@@ -2137,7 +2136,7 @@ class BillingInfoList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -2197,7 +2196,7 @@ class Budget {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (billingId != null) 'billingId': billingId!,
         if (budgetAmount != null) 'budgetAmount': budgetAmount!,
@@ -2219,7 +2218,7 @@ class Buyer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
       };
 }
@@ -2242,7 +2241,7 @@ class ContactInformation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
         if (name != null) 'name': name!,
       };
@@ -2269,7 +2268,7 @@ class CreateOrdersRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (proposals != null)
           'proposals': proposals!.map((value) => value.toJson()).toList(),
         if (webPropertyCode != null) 'webPropertyCode': webPropertyCode!,
@@ -2291,7 +2290,7 @@ class CreateOrdersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (proposals != null)
           'proposals': proposals!.map((value) => value.toJson()).toList(),
       };
@@ -2334,7 +2333,7 @@ class CreativeAdTechnologyProviders {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectedProviderIds != null)
           'detectedProviderIds': detectedProviderIds!,
         if (hasUnidentifiedProvider != null)
@@ -2384,7 +2383,7 @@ class CreativeCorrectionsContexts {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auctionType != null) 'auctionType': auctionType!,
         if (contextType != null) 'contextType': contextType!,
         if (geoCriteriaId != null) 'geoCriteriaId': geoCriteriaId!,
@@ -2422,7 +2421,7 @@ class CreativeCorrections {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contexts != null)
           'contexts': contexts!.map((value) => value.toJson()).toList(),
         if (details != null) 'details': details!,
@@ -2450,7 +2449,7 @@ class CreativeFilteringReasonsReasons {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (filteringCount != null) 'filteringCount': filteringCount!,
         if (filteringStatus != null) 'filteringStatus': filteringStatus!,
       };
@@ -2483,7 +2482,7 @@ class CreativeFilteringReasons {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (date != null) 'date': date!,
         if (reasons != null)
           'reasons': reasons!.map((value) => value.toJson()).toList(),
@@ -2510,7 +2509,7 @@ class CreativeNativeAdAppIcon {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (url != null) 'url': url!,
         if (width != null) 'width': width!,
@@ -2537,7 +2536,7 @@ class CreativeNativeAdImage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (url != null) 'url': url!,
         if (width != null) 'width': width!,
@@ -2564,7 +2563,7 @@ class CreativeNativeAdLogo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (url != null) 'url': url!,
         if (width != null) 'width': width!,
@@ -2667,7 +2666,7 @@ class CreativeNativeAd {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (advertiser != null) 'advertiser': advertiser!,
         if (appIcon != null) 'appIcon': appIcon!.toJson(),
         if (body != null) 'body': body!,
@@ -2729,7 +2728,7 @@ class CreativeServingRestrictionsContexts {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auctionType != null) 'auctionType': auctionType!,
         if (contextType != null) 'contextType': contextType!,
         if (geoCriteriaId != null) 'geoCriteriaId': geoCriteriaId!,
@@ -2757,7 +2756,7 @@ class CreativeServingRestrictionsDisapprovalReasons {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
         if (reason != null) 'reason': reason!,
       };
@@ -2801,7 +2800,7 @@ class CreativeServingRestrictions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contexts != null)
           'contexts': contexts!.map((value) => value.toJson()).toList(),
         if (disapprovalReasons != null)
@@ -3107,7 +3106,7 @@ class Creative {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (HTMLSnippet != null) 'HTMLSnippet': HTMLSnippet!,
         if (accountId != null) 'accountId': accountId!,
         if (adChoicesDestinationUrl != null)
@@ -3177,7 +3176,7 @@ class CreativeDealIdsDealStatuses {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (arcStatus != null) 'arcStatus': arcStatus!,
         if (dealId != null) 'dealId': dealId!,
         if (webPropertyId != null) 'webPropertyId': webPropertyId!,
@@ -3207,7 +3206,7 @@ class CreativeDealIds {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dealStatuses != null)
           'dealStatuses': dealStatuses!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -3248,7 +3247,7 @@ class CreativesList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -3280,7 +3279,7 @@ class DealServingMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alcoholAdsAllowed != null) 'alcoholAdsAllowed': alcoholAdsAllowed!,
         if (dealPauseStatus != null)
           'dealPauseStatus': dealPauseStatus!.toJson(),
@@ -3321,7 +3320,7 @@ class DealServingMetadataDealPauseStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (buyerPauseReason != null) 'buyerPauseReason': buyerPauseReason!,
         if (firstPausedBy != null) 'firstPausedBy': firstPausedBy!,
         if (hasBuyerPaused != null) 'hasBuyerPaused': hasBuyerPaused!,
@@ -3415,7 +3414,7 @@ class DealTerms {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (brandingType != null) 'brandingType': brandingType!,
         if (crossListedExternalDealIdType != null)
           'crossListedExternalDealIdType': crossListedExternalDealIdType!,
@@ -3489,7 +3488,7 @@ class DealTermsGuaranteedFixedPriceTerms {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (billingInfo != null) 'billingInfo': billingInfo!.toJson(),
         if (fixedPrices != null)
           'fixedPrices': fixedPrices!.map((value) => value.toJson()).toList(),
@@ -3546,7 +3545,7 @@ class DealTermsGuaranteedFixedPriceTermsBillingInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currencyConversionTimeMs != null)
           'currencyConversionTimeMs': currencyConversionTimeMs!,
         if (dfpLineItemId != null) 'dfpLineItemId': dfpLineItemId!,
@@ -3579,7 +3578,7 @@ class DealTermsNonGuaranteedAuctionTerms {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (autoOptimizePrivateAuction != null)
           'autoOptimizePrivateAuction': autoOptimizePrivateAuction!,
         if (reservePricePerBuyers != null)
@@ -3603,7 +3602,7 @@ class DealTermsNonGuaranteedFixedPriceTerms {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fixedPrices != null)
           'fixedPrices': fixedPrices!.map((value) => value.toJson()).toList(),
       };
@@ -3629,7 +3628,7 @@ class DealTermsRubiconNonGuaranteedTerms {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (priorityPrice != null) 'priorityPrice': priorityPrice!.toJson(),
         if (standardPrice != null) 'standardPrice': standardPrice!.toJson(),
       };
@@ -3661,7 +3660,7 @@ class DeleteOrderDealsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dealIds != null) 'dealIds': dealIds!,
         if (proposalRevisionNumber != null)
           'proposalRevisionNumber': proposalRevisionNumber!,
@@ -3690,7 +3689,7 @@ class DeleteOrderDealsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deals != null)
           'deals': deals!.map((value) => value.toJson()).toList(),
         if (proposalRevisionNumber != null)
@@ -3721,7 +3720,7 @@ class DeliveryControl {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (creativeBlockingLevel != null)
           'creativeBlockingLevel': creativeBlockingLevel!,
         if (deliveryRateType != null) 'deliveryRateType': deliveryRateType!,
@@ -3750,7 +3749,7 @@ class DeliveryControlFrequencyCap {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (maxImpressions != null) 'maxImpressions': maxImpressions!,
         if (numTimeUnits != null) 'numTimeUnits': numTimeUnits!,
         if (timeUnitType != null) 'timeUnitType': timeUnitType!,
@@ -3780,7 +3779,7 @@ class Dimension {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dimensionType != null) 'dimensionType': dimensionType!,
         if (dimensionValues != null)
           'dimensionValues':
@@ -3820,7 +3819,7 @@ class DimensionDimensionValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
         if (percentage != null) 'percentage': percentage!,
@@ -3876,7 +3875,7 @@ class EditAllOrderDealsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deals != null)
           'deals': deals!.map((value) => value.toJson()).toList(),
         if (proposal != null) 'proposal': proposal!.toJson(),
@@ -3907,7 +3906,7 @@ class EditAllOrderDealsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deals != null)
           'deals': deals!.map((value) => value.toJson()).toList(),
         if (orderRevisionNumber != null)
@@ -3930,7 +3929,7 @@ class GetOffersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (products != null)
           'products': products!.map((value) => value.toJson()).toList(),
       };
@@ -3951,7 +3950,7 @@ class GetOrderDealsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deals != null)
           'deals': deals!.map((value) => value.toJson()).toList(),
       };
@@ -3976,7 +3975,7 @@ class GetOrderNotesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (notes != null)
           'notes': notes!.map((value) => value.toJson()).toList(),
       };
@@ -3997,7 +3996,7 @@ class GetOrdersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (proposals != null)
           'proposals': proposals!.map((value) => value.toJson()).toList(),
       };
@@ -4019,7 +4018,7 @@ class GetPublisherProfilesByAccountIdResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (profiles != null)
           'profiles': profiles!.map((value) => value.toJson()).toList(),
       };
@@ -4238,7 +4237,7 @@ class MarketplaceDeal {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (buyerPrivateData != null)
           'buyerPrivateData': buyerPrivateData!.toJson(),
         if (creationTimeMs != null) 'creationTimeMs': creationTimeMs!,
@@ -4306,7 +4305,7 @@ class MarketplaceDealParty {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (buyer != null) 'buyer': buyer!.toJson(),
         if (seller != null) 'seller': seller!.toJson(),
       };
@@ -4344,7 +4343,7 @@ class MarketplaceLabel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (createTimeMs != null) 'createTimeMs': createTimeMs!,
         if (deprecatedMarketplaceDealParty != null)
@@ -4427,7 +4426,7 @@ class MarketplaceNote {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (creatorRole != null) 'creatorRole': creatorRole!,
         if (dealId != null) 'dealId': dealId!,
         if (kind != null) 'kind': kind!,
@@ -4455,7 +4454,7 @@ class MobileApplication {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appStore != null) 'appStore': appStore!,
         if (externalAppId != null) 'externalAppId': externalAppId!,
       };
@@ -4638,7 +4637,7 @@ class PerformanceReport {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bidRate != null) 'bidRate': bidRate!,
         if (bidRequestRate != null) 'bidRequestRate': bidRequestRate!,
         if (calloutStatusRate != null) 'calloutStatusRate': calloutStatusRate!,
@@ -4699,7 +4698,7 @@ class PerformanceReportList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (performanceReport != null)
           'performanceReport':
@@ -4725,7 +4724,7 @@ class PretargetingConfigDimensions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (width != null) 'width': width!,
       };
@@ -4753,7 +4752,7 @@ class PretargetingConfigExcludedPlacements {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (token != null) 'token': token!,
         if (type != null) 'type': type!,
       };
@@ -4781,7 +4780,7 @@ class PretargetingConfigPlacements {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (token != null) 'token': token!,
         if (type != null) 'type': type!,
       };
@@ -4817,7 +4816,7 @@ class PretargetingConfigVideoPlayerSizes {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aspectRatio != null) 'aspectRatio': aspectRatio!,
         if (minHeight != null) 'minHeight': minHeight!,
         if (minWidth != null) 'minWidth': minWidth!,
@@ -5091,7 +5090,7 @@ class PretargetingConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (billingId != null) 'billingId': billingId!,
         if (configId != null) 'configId': configId!,
         if (configName != null) 'configName': configName!,
@@ -5155,7 +5154,7 @@ class PretargetingConfigList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -5192,7 +5191,7 @@ class Price {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (amountMicros != null) 'amountMicros': amountMicros!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (expectedCpmMicros != null) 'expectedCpmMicros': expectedCpmMicros!,
@@ -5242,7 +5241,7 @@ class PricePerBuyer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auctionTier != null) 'auctionTier': auctionTier!,
         if (billedBuyer != null) 'billedBuyer': billedBuyer!.toJson(),
         if (buyer != null) 'buyer': buyer!.toJson(),
@@ -5272,7 +5271,7 @@ class PrivateData {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (referenceId != null) 'referenceId': referenceId!,
         if (referencePayload != null) 'referencePayload': referencePayload!,
       };
@@ -5519,7 +5518,7 @@ class Product {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (billedBuyer != null) 'billedBuyer': billedBuyer!.toJson(),
         if (buyer != null) 'buyer': buyer!.toJson(),
         if (creationTimeMs != null) 'creationTimeMs': creationTimeMs!,
@@ -5764,7 +5763,7 @@ class Proposal {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (billedBuyer != null) 'billedBuyer': billedBuyer!.toJson(),
         if (buyer != null) 'buyer': buyer!.toJson(),
         if (buyerContacts != null)
@@ -5973,7 +5972,7 @@ class PublisherProfileApiProto {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audience != null) 'audience': audience!,
         if (buyerPitchStatement != null)
           'buyerPitchStatement': buyerPitchStatement!,
@@ -6037,7 +6036,7 @@ class PublisherProvidedForecast {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dimensions != null)
           'dimensions': dimensions!.map((value) => value.toJson()).toList(),
         if (weeklyImpressions != null) 'weeklyImpressions': weeklyImpressions!,
@@ -6066,7 +6065,7 @@ class Seller {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (subAccountId != null) 'subAccountId': subAccountId!,
       };
@@ -6106,7 +6105,7 @@ class SharedTargeting {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exclusions != null)
           'exclusions': exclusions!.map((value) => value.toJson()).toList(),
         if (inclusions != null)
@@ -6169,7 +6168,7 @@ class TargetingValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (creativeSizeValue != null)
           'creativeSizeValue': creativeSizeValue!.toJson(),
         if (dayPartTargetingValue != null)
@@ -6236,7 +6235,7 @@ class TargetingValueCreativeSize {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowedFormats != null) 'allowedFormats': allowedFormats!,
         if (companionSizes != null)
           'companionSizes':
@@ -6267,7 +6266,7 @@ class TargetingValueDayPartTargeting {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dayParts != null)
           'dayParts': dayParts!.map((value) => value.toJson()).toList(),
         if (timeZoneType != null) 'timeZoneType': timeZoneType!,
@@ -6301,7 +6300,7 @@ class TargetingValueDayPartTargetingDayPart {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dayOfWeek != null) 'dayOfWeek': dayOfWeek!,
         if (endHour != null) 'endHour': endHour!,
         if (endMinute != null) 'endMinute': endMinute!,
@@ -6323,7 +6322,7 @@ class TargetingValueDemogAgeCriteria {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (demogAgeCriteriaIds != null)
           'demogAgeCriteriaIds': demogAgeCriteriaIds!,
       };
@@ -6342,7 +6341,7 @@ class TargetingValueDemogGenderCriteria {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (demogGenderCriteriaIds != null)
           'demogGenderCriteriaIds': demogGenderCriteriaIds!,
       };
@@ -6361,7 +6360,7 @@ class TargetingValueRequestPlatformTargeting {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (requestPlatforms != null) 'requestPlatforms': requestPlatforms!,
       };
 }
@@ -6384,7 +6383,7 @@ class TargetingValueSize {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (width != null) 'width': width!,
       };
@@ -6421,7 +6420,7 @@ class UpdatePrivateAuctionProposalRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (externalDealId != null) 'externalDealId': externalDealId!,
         if (note != null) 'note': note!.toJson(),
         if (proposalRevisionNumber != null)

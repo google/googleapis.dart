@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1762,7 +1761,7 @@ class CheckValidCredsRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A response indicating whether the credentials exist and are valid.
@@ -1778,7 +1777,7 @@ class CheckValidCredsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hasValidCreds != null) 'hasValidCreds': hasValidCreds!,
       };
 }
@@ -1955,7 +1954,7 @@ class DataSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (authorizationType != null) 'authorizationType': authorizationType!,
         if (clientId != null) 'clientId': clientId!,
         if (dataRefreshType != null) 'dataRefreshType': dataRefreshType!,
@@ -2115,7 +2114,7 @@ class DataSourceParameter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowedValues != null) 'allowedValues': allowedValues!,
         if (deprecated != null) 'deprecated': deprecated!,
         if (description != null) 'description': description!,
@@ -2151,7 +2150,7 @@ class EmailPreferences {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enableFailureEmail != null)
           'enableFailureEmail': enableFailureEmail!,
       };
@@ -2171,7 +2170,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Returns list of supported data sources and their metadata.
@@ -2202,7 +2201,7 @@ class ListDataSourcesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataSources != null)
           'dataSources': dataSources!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2231,7 +2230,7 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null)
           'locations': locations!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2268,7 +2267,7 @@ class ListTransferConfigsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (transferConfigs != null)
           'transferConfigs':
@@ -2306,7 +2305,7 @@ class ListTransferLogsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (transferMessages != null)
           'transferMessages':
@@ -2344,7 +2343,7 @@ class ListTransferRunsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (transferRuns != null)
           'transferRuns': transferRuns!.map((value) => value.toJson()).toList(),
@@ -2388,32 +2387,30 @@ class Location {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (labels != null) 'labels': labels!,
         if (locationId != null) 'locationId': locationId!,
@@ -2461,7 +2458,7 @@ class ScheduleOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (disableAutoScheduling != null)
           'disableAutoScheduling': disableAutoScheduling!,
         if (endTime != null) 'endTime': endTime!,
@@ -2496,7 +2493,7 @@ class ScheduleTransferRunsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
       };
@@ -2518,7 +2515,7 @@ class ScheduleTransferRunsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (runs != null) 'runs': runs!.map((value) => value.toJson()).toList(),
       };
 }
@@ -2545,7 +2542,7 @@ class StartManualTransferRunsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (requestedRunTime != null) 'requestedRunTime': requestedRunTime!,
         if (requestedTimeRange != null)
           'requestedTimeRange': requestedTimeRange!.toJson(),
@@ -2568,7 +2565,7 @@ class StartManualTransferRunsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (runs != null) 'runs': runs!.map((value) => value.toJson()).toList(),
       };
 }
@@ -2606,8 +2603,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -2620,7 +2617,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -2655,7 +2652,7 @@ class TimeRange {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
       };
@@ -2799,13 +2796,12 @@ class TransferConfig {
       notificationPubsubTopic = _json['notificationPubsubTopic'] as core.String;
     }
     if (_json.containsKey('params')) {
-      params =
-          (_json['params'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      params = (_json['params'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('schedule')) {
       schedule = _json['schedule'] as core.String;
@@ -2825,7 +2821,7 @@ class TransferConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataRefreshWindowDays != null)
           'dataRefreshWindowDays': dataRefreshWindowDays!,
         if (dataSourceId != null) 'dataSourceId': dataSourceId!,
@@ -2880,7 +2876,7 @@ class TransferMessage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (messageText != null) 'messageText': messageText!,
         if (messageTime != null) 'messageTime': messageTime!,
         if (severity != null) 'severity': severity!,
@@ -3011,13 +3007,12 @@ class TransferRun {
       notificationPubsubTopic = _json['notificationPubsubTopic'] as core.String;
     }
     if (_json.containsKey('params')) {
-      params =
-          (_json['params'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      params = (_json['params'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('runTime')) {
       runTime = _json['runTime'] as core.String;
@@ -3042,7 +3037,7 @@ class TransferRun {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataSourceId != null) 'dataSourceId': dataSourceId!,
         if (destinationDatasetId != null)
           'destinationDatasetId': destinationDatasetId!,

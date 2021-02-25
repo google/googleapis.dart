@@ -149,7 +149,9 @@ void main() {
   unittest.group('obj-schema-Tokeninfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTokeninfo();
-      var od = api.Tokeninfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Tokeninfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkTokeninfo(od as api.Tokeninfo);
     });
   });
@@ -157,7 +159,9 @@ void main() {
   unittest.group('obj-schema-Userinfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUserinfo();
-      var od = api.Userinfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Userinfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkUserinfo(od as api.Userinfo);
     });
   });

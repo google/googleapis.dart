@@ -121,6 +121,7 @@ const _testIgnores = {
   'cascade_invocations',
   'prefer_final_locals',
   'prefer_single_quotes',
+  'unnecessary_cast',
   'unnecessary_parenthesis',
   'unused_local_variable',
 };
@@ -810,10 +811,11 @@ abstract class NamedSchemaTest<T extends ComplexDartSchemaType>
     final sb = StringBuffer();
     withTestGroup(2, sb, 'obj-schema-${schema.className}', () {
       withTest(4, sb, 'to-json--from-json', () {
-        sb.writeln('      var o = $newSchemaExpr;');
-        sb.writeln('      var od = api.${schema.className.name}'
-            '.fromJson(o.toJson());');
-        sb.writeln('      ${checkSchemaStatement('od')}');
+        sb.writeln('var o = $newSchemaExpr;');
+        sb.writeln('var oJson = convert.jsonDecode(convert.jsonEncode(o));');
+        sb.writeln('var od = api.${schema.className.name}'
+            '.fromJson(oJson as ${schema.jsonType.baseDeclaration});');
+        sb.writeln(checkSchemaStatement('od'));
       });
     });
     return '$sb';

@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -835,7 +834,7 @@ class AdmissionRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enforcementMode != null) 'enforcementMode': enforcementMode!,
         if (evaluationMode != null) 'evaluationMode': evaluationMode!,
         if (requireAttestationsBy != null)
@@ -860,7 +859,7 @@ class AdmissionWhitelistPattern {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (namePattern != null) 'namePattern': namePattern!,
       };
 }
@@ -925,7 +924,7 @@ class AttestationOccurrence {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (jwts != null) 'jwts': jwts!.map((value) => value.toJson()).toList(),
         if (serializedPayload != null) 'serializedPayload': serializedPayload!,
         if (signatures != null)
@@ -978,7 +977,7 @@ class Attestor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -1044,7 +1043,7 @@ class AttestorPublicKey {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (asciiArmoredPgpPublicKey != null)
           'asciiArmoredPgpPublicKey': asciiArmoredPgpPublicKey!,
         if (comment != null) 'comment': comment!,
@@ -1119,7 +1118,7 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
@@ -1140,7 +1139,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -1204,7 +1203,7 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,
@@ -1307,7 +1306,7 @@ class IamPolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bindings != null)
           'bindings': bindings!.map((value) => value.toJson()).toList(),
         if (etag != null) 'etag': etag!,
@@ -1330,7 +1329,7 @@ class Jwt {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (compactJwt != null) 'compactJwt': compactJwt!,
       };
 }
@@ -1361,7 +1360,7 @@ class ListAttestorsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attestors != null)
           'attestors': attestors!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1423,7 +1422,7 @@ class PkixPublicKey {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (publicKeyPem != null) 'publicKeyPem': publicKeyPem!,
         if (signatureAlgorithm != null)
           'signatureAlgorithm': signatureAlgorithm!,
@@ -1525,15 +1524,14 @@ class Policy {
               .toList();
     }
     if (_json.containsKey('clusterAdmissionRules')) {
-      clusterAdmissionRules = (_json['clusterAdmissionRules'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
+      clusterAdmissionRules = (_json['clusterAdmissionRules']
+              as core.Map<core.String, core.dynamic>)
           .map(
-            (key, item) => core.MapEntry(
-              key,
-              AdmissionRule.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+        (key, item) => core.MapEntry(
+          key,
+          AdmissionRule.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('defaultAdmissionRule')) {
       defaultAdmissionRule = AdmissionRule.fromJson(
@@ -1548,39 +1546,36 @@ class Policy {
     }
     if (_json.containsKey('istioServiceIdentityAdmissionRules')) {
       istioServiceIdentityAdmissionRules =
-          (_json['istioServiceIdentityAdmissionRules'] as core.Map)
-              .cast<core.String, core.Map<core.String, core.Object?>>()
+          (_json['istioServiceIdentityAdmissionRules']
+                  as core.Map<core.String, core.dynamic>)
               .map(
-                (key, item) => core.MapEntry(
-                  key,
-                  AdmissionRule.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+        (key, item) => core.MapEntry(
+          key,
+          AdmissionRule.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('kubernetesNamespaceAdmissionRules')) {
       kubernetesNamespaceAdmissionRules =
-          (_json['kubernetesNamespaceAdmissionRules'] as core.Map)
-              .cast<core.String, core.Map<core.String, core.Object?>>()
+          (_json['kubernetesNamespaceAdmissionRules']
+                  as core.Map<core.String, core.dynamic>)
               .map(
-                (key, item) => core.MapEntry(
-                  key,
-                  AdmissionRule.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+        (key, item) => core.MapEntry(
+          key,
+          AdmissionRule.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('kubernetesServiceAccountAdmissionRules')) {
       kubernetesServiceAccountAdmissionRules =
-          (_json['kubernetesServiceAccountAdmissionRules'] as core.Map)
-              .cast<core.String, core.Map<core.String, core.Object?>>()
+          (_json['kubernetesServiceAccountAdmissionRules']
+                  as core.Map<core.String, core.dynamic>)
               .map(
-                (key, item) => core.MapEntry(
-                  key,
-                  AdmissionRule.fromJson(
-                      item as core.Map<core.String, core.dynamic>),
-                ),
-              );
+        (key, item) => core.MapEntry(
+          key,
+          AdmissionRule.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -1590,7 +1585,7 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (admissionWhitelistPatterns != null)
           'admissionWhitelistPatterns': admissionWhitelistPatterns!
               .map((value) => value.toJson())
@@ -1638,7 +1633,7 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
       };
 }
@@ -1703,7 +1698,7 @@ class Signature {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (publicKeyId != null) 'publicKeyId': publicKeyId!,
         if (signature != null) 'signature': signature!,
       };
@@ -1728,7 +1723,7 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -1749,7 +1744,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -1808,7 +1803,7 @@ class UserOwnedGrafeasNote {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (delegationServiceAccountEmail != null)
           'delegationServiceAccountEmail': delegationServiceAccountEmail!,
         if (noteReference != null) 'noteReference': noteReference!,
@@ -1855,7 +1850,7 @@ class ValidateAttestationOccurrenceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attestation != null) 'attestation': attestation!.toJson(),
         if (occurrenceNote != null) 'occurrenceNote': occurrenceNote!,
         if (occurrenceResourceUri != null)
@@ -1887,7 +1882,7 @@ class ValidateAttestationOccurrenceResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (denialReason != null) 'denialReason': denialReason!,
         if (result != null) 'result': result!,
       };

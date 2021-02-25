@@ -533,7 +533,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudBillingBudgetsV1Budget', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudBillingBudgetsV1Budget();
-      var od = api.GoogleCloudBillingBudgetsV1Budget.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudBillingBudgetsV1Budget.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudBillingBudgetsV1Budget(
           od as api.GoogleCloudBillingBudgetsV1Budget);
     });
@@ -542,7 +544,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudBillingBudgetsV1BudgetAmount', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudBillingBudgetsV1BudgetAmount();
-      var od = api.GoogleCloudBillingBudgetsV1BudgetAmount.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudBillingBudgetsV1BudgetAmount.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudBillingBudgetsV1BudgetAmount(
           od as api.GoogleCloudBillingBudgetsV1BudgetAmount);
     });
@@ -551,7 +555,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudBillingBudgetsV1CustomPeriod', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudBillingBudgetsV1CustomPeriod();
-      var od = api.GoogleCloudBillingBudgetsV1CustomPeriod.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudBillingBudgetsV1CustomPeriod.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudBillingBudgetsV1CustomPeriod(
           od as api.GoogleCloudBillingBudgetsV1CustomPeriod);
     });
@@ -560,7 +566,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudBillingBudgetsV1Filter', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudBillingBudgetsV1Filter();
-      var od = api.GoogleCloudBillingBudgetsV1Filter.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudBillingBudgetsV1Filter.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudBillingBudgetsV1Filter(
           od as api.GoogleCloudBillingBudgetsV1Filter);
     });
@@ -569,8 +577,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudBillingBudgetsV1LastPeriodAmount', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudBillingBudgetsV1LastPeriodAmount();
-      var od =
-          api.GoogleCloudBillingBudgetsV1LastPeriodAmount.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudBillingBudgetsV1LastPeriodAmount.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudBillingBudgetsV1LastPeriodAmount(
           od as api.GoogleCloudBillingBudgetsV1LastPeriodAmount);
     });
@@ -580,8 +589,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudBillingBudgetsV1ListBudgetsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudBillingBudgetsV1ListBudgetsResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudBillingBudgetsV1ListBudgetsResponse(
           od as api.GoogleCloudBillingBudgetsV1ListBudgetsResponse);
     });
@@ -590,8 +600,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudBillingBudgetsV1NotificationsRule', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudBillingBudgetsV1NotificationsRule();
-      var od =
-          api.GoogleCloudBillingBudgetsV1NotificationsRule.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudBillingBudgetsV1NotificationsRule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudBillingBudgetsV1NotificationsRule(
           od as api.GoogleCloudBillingBudgetsV1NotificationsRule);
     });
@@ -600,8 +611,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudBillingBudgetsV1ThresholdRule', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudBillingBudgetsV1ThresholdRule();
-      var od =
-          api.GoogleCloudBillingBudgetsV1ThresholdRule.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudBillingBudgetsV1ThresholdRule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudBillingBudgetsV1ThresholdRule(
           od as api.GoogleCloudBillingBudgetsV1ThresholdRule);
     });
@@ -610,7 +622,9 @@ void main() {
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
-      var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleProtobufEmpty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
     });
   });
@@ -618,7 +632,9 @@ void main() {
   unittest.group('obj-schema-GoogleTypeDate', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeDate();
-      var od = api.GoogleTypeDate.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleTypeDate.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleTypeDate(od as api.GoogleTypeDate);
     });
   });
@@ -626,7 +642,9 @@ void main() {
   unittest.group('obj-schema-GoogleTypeMoney', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeMoney();
-      var od = api.GoogleTypeMoney.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleTypeMoney.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleTypeMoney(od as api.GoogleTypeMoney);
     });
   });

@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -4921,7 +4920,7 @@ class AccountChildLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (href != null) 'href': href!,
         if (type != null) 'type': type!,
       };
@@ -4944,7 +4943,7 @@ class AccountPermissions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (effective != null) 'effective': effective!,
       };
 }
@@ -5014,7 +5013,7 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (childLink != null) 'childLink': childLink!.toJson(),
         if (created != null) 'created': created!.toIso8601String(),
         if (id != null) 'id': id!,
@@ -5058,7 +5057,7 @@ class AccountRef {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (href != null) 'href': href!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -5133,7 +5132,7 @@ class AccountSummaries {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
@@ -5188,7 +5187,7 @@ class AccountSummary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
@@ -5250,7 +5249,7 @@ class AccountTicket {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (account != null) 'account': account!.toJson(),
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -5298,7 +5297,7 @@ class AccountTreeRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountName != null) 'accountName': accountName!,
         if (kind != null) 'kind': kind!,
         if (profileName != null) 'profileName': profileName!,
@@ -5345,7 +5344,7 @@ class AccountTreeResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (account != null) 'account': account!.toJson(),
         if (kind != null) 'kind': kind!,
         if (profile != null) 'profile': profile!.toJson(),
@@ -5421,7 +5420,7 @@ class Accounts {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
@@ -5463,7 +5462,7 @@ class AdWordsAccount {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (autoTaggingEnabled != null)
           'autoTaggingEnabled': autoTaggingEnabled!,
         if (customerId != null) 'customerId': customerId!,
@@ -5486,7 +5485,7 @@ class AnalyticsDataimportDeleteUploadDataRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customDataImportUids != null)
           'customDataImportUids': customDataImportUids!,
       };
@@ -5507,14 +5506,13 @@ class Column {
 
   Column.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes = (_json['attributes'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      attributes =
+          (_json['attributes'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -5524,7 +5522,7 @@ class Column {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -5576,7 +5574,7 @@ class Columns {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributeNames != null) 'attributeNames': attributeNames!,
         if (etag != null) 'etag': etag!,
         if (items != null)
@@ -5608,7 +5606,7 @@ class CustomDataSourceChildLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (href != null) 'href': href!,
         if (type != null) 'type': type!,
       };
@@ -5635,7 +5633,7 @@ class CustomDataSourceParentLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (href != null) 'href': href!,
         if (type != null) 'type': type!,
       };
@@ -5749,7 +5747,7 @@ class CustomDataSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (childLink != null) 'childLink': childLink!.toJson(),
         if (created != null) 'created': created!.toIso8601String(),
@@ -5836,7 +5834,7 @@ class CustomDataSources {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
@@ -5872,7 +5870,7 @@ class CustomDimensionParentLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (href != null) 'href': href!,
         if (type != null) 'type': type!,
       };
@@ -5962,7 +5960,7 @@ class CustomDimension {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (active != null) 'active': active!,
         if (created != null) 'created': created!.toIso8601String(),
@@ -6046,7 +6044,7 @@ class CustomDimensions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
@@ -6082,7 +6080,7 @@ class CustomMetricParentLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (href != null) 'href': href!,
         if (type != null) 'type': type!,
       };
@@ -6190,7 +6188,7 @@ class CustomMetric {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (active != null) 'active': active!,
         if (created != null) 'created': created!.toIso8601String(),
@@ -6277,7 +6275,7 @@ class CustomMetrics {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
@@ -6303,7 +6301,7 @@ class EntityAdWordsLinkEntity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (webPropertyRef != null) 'webPropertyRef': webPropertyRef!.toJson(),
       };
 }
@@ -6368,7 +6366,7 @@ class EntityAdWordsLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (adWordsAccounts != null)
           'adWordsAccounts':
               adWordsAccounts!.map((value) => value.toJson()).toList(),
@@ -6440,7 +6438,7 @@ class EntityAdWordsLinks {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
@@ -6482,7 +6480,7 @@ class EntityUserLinkEntity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountRef != null) 'accountRef': accountRef!.toJson(),
         if (profileRef != null) 'profileRef': profileRef!.toJson(),
         if (webPropertyRef != null) 'webPropertyRef': webPropertyRef!.toJson(),
@@ -6520,7 +6518,7 @@ class EntityUserLinkPermissions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (effective != null) 'effective': effective!,
         if (local != null) 'local': local!,
       };
@@ -6576,7 +6574,7 @@ class EntityUserLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entity != null) 'entity': entity!.toJson(),
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -6645,7 +6643,7 @@ class EntityUserLinks {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
@@ -6682,7 +6680,7 @@ class ExperimentParentLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (href != null) 'href': href!,
         if (type != null) 'type': type!,
       };
@@ -6738,7 +6736,7 @@ class ExperimentVariations {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (status != null) 'status': status!,
         if (url != null) 'url': url!,
@@ -7020,7 +7018,7 @@ class Experiment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (created != null) 'created': created!.toIso8601String(),
         if (description != null) 'description': description!,
@@ -7126,7 +7124,7 @@ class Experiments {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
@@ -7231,7 +7229,7 @@ class FilterAdvancedDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (caseSensitive != null) 'caseSensitive': caseSensitive!,
         if (extractA != null) 'extractA': extractA!,
         if (extractB != null) 'extractB': extractB!,
@@ -7271,7 +7269,7 @@ class FilterLowercaseDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (field != null) 'field': field!,
         if (fieldIndex != null) 'fieldIndex': fieldIndex!,
       };
@@ -7298,7 +7296,7 @@ class FilterParentLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (href != null) 'href': href!,
         if (type != null) 'type': type!,
       };
@@ -7343,7 +7341,7 @@ class FilterSearchAndReplaceDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (caseSensitive != null) 'caseSensitive': caseSensitive!,
         if (field != null) 'field': field!,
         if (fieldIndex != null) 'fieldIndex': fieldIndex!,
@@ -7373,7 +7371,7 @@ class FilterUppercaseDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (field != null) 'field': field!,
         if (fieldIndex != null) 'fieldIndex': fieldIndex!,
       };
@@ -7489,7 +7487,7 @@ class Filter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (advancedDetails != null)
           'advancedDetails': advancedDetails!.toJson(),
@@ -7649,7 +7647,7 @@ class FilterExpression {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (caseSensitive != null) 'caseSensitive': caseSensitive!,
         if (expressionValue != null) 'expressionValue': expressionValue!,
         if (field != null) 'field': field!,
@@ -7696,7 +7694,7 @@ class FilterRef {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (href != null) 'href': href!,
         if (id != null) 'id': id!,
@@ -7771,7 +7769,7 @@ class Filters {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
@@ -7814,7 +7812,7 @@ class GaDataColumnHeaders {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (columnType != null) 'columnType': columnType!,
         if (dataType != null) 'dataType': dataType!,
         if (name != null) 'name': name!,
@@ -7840,7 +7838,7 @@ class GaDataDataTableCols {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (label != null) 'label': label!,
         if (type != null) 'type': type!,
@@ -7858,7 +7856,7 @@ class GaDataDataTableRowsC {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (v != null) 'v': v!,
       };
 }
@@ -7877,7 +7875,7 @@ class GaDataDataTableRows {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (c != null) 'c': c!.map((value) => value.toJson()).toList(),
       };
 }
@@ -7903,7 +7901,7 @@ class GaDataDataTable {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cols != null) 'cols': cols!.map((value) => value.toJson()).toList(),
         if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
       };
@@ -7953,7 +7951,7 @@ class GaDataProfileInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (internalWebPropertyId != null)
           'internalWebPropertyId': internalWebPropertyId!,
@@ -8041,7 +8039,7 @@ class GaDataQuery {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dimensions != null) 'dimensions': dimensions!,
         if (endDate != null) 'end-date': endDate!,
         if (filters != null) 'filters': filters!,
@@ -8184,18 +8182,18 @@ class GaData {
       totalResults = _json['totalResults'] as core.int;
     }
     if (_json.containsKey('totalsForAllResults')) {
-      totalsForAllResults = (_json['totalsForAllResults'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      totalsForAllResults =
+          (_json['totalsForAllResults'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (columnHeaders != null)
           'columnHeaders':
               columnHeaders!.map((value) => value.toJson()).toList(),
@@ -8262,7 +8260,7 @@ class GoalEventDetailsEventConditions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (comparisonType != null) 'comparisonType': comparisonType!,
         if (comparisonValue != null) 'comparisonValue': comparisonValue!,
         if (expression != null) 'expression': expression!,
@@ -8294,7 +8292,7 @@ class GoalEventDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (eventConditions != null)
           'eventConditions':
               eventConditions!.map((value) => value.toJson()).toList(),
@@ -8323,7 +8321,7 @@ class GoalParentLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (href != null) 'href': href!,
         if (type != null) 'type': type!,
       };
@@ -8353,7 +8351,7 @@ class GoalUrlDestinationDetailsSteps {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (number != null) 'number': number!,
         if (url != null) 'url': url!,
@@ -8404,7 +8402,7 @@ class GoalUrlDestinationDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (caseSensitive != null) 'caseSensitive': caseSensitive!,
         if (firstStepRequired != null) 'firstStepRequired': firstStepRequired!,
         if (matchType != null) 'matchType': matchType!,
@@ -8435,7 +8433,7 @@ class GoalVisitNumPagesDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (comparisonType != null) 'comparisonType': comparisonType!,
         if (comparisonValue != null) 'comparisonValue': comparisonValue!,
       };
@@ -8462,7 +8460,7 @@ class GoalVisitTimeOnSiteDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (comparisonType != null) 'comparisonType': comparisonType!,
         if (comparisonValue != null) 'comparisonValue': comparisonValue!,
       };
@@ -8597,7 +8595,7 @@ class Goal {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (active != null) 'active': active!,
         if (created != null) 'created': created!.toIso8601String(),
@@ -8690,7 +8688,7 @@ class Goals {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
@@ -8723,7 +8721,7 @@ class HashClientIdRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clientId != null) 'clientId': clientId!,
         if (kind != null) 'kind': kind!,
         if (webPropertyId != null) 'webPropertyId': webPropertyId!,
@@ -8754,7 +8752,7 @@ class HashClientIdResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clientId != null) 'clientId': clientId!,
         if (hashedClientId != null) 'hashedClientId': hashedClientId!,
         if (kind != null) 'kind': kind!,
@@ -8807,7 +8805,7 @@ class IncludeConditions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (daysToLookBack != null) 'daysToLookBack': daysToLookBack!,
         if (isSmartList != null) 'isSmartList': isSmartList!,
         if (kind != null) 'kind': kind!,
@@ -8891,7 +8889,7 @@ class LinkedForeignAccount {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (eligibleForSearch != null) 'eligibleForSearch': eligibleForSearch!,
         if (id != null) 'id': id!,
@@ -8936,7 +8934,7 @@ class McfDataColumnHeaders {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (columnType != null) 'columnType': columnType!,
         if (dataType != null) 'dataType': dataType!,
         if (name != null) 'name': name!,
@@ -8987,7 +8985,7 @@ class McfDataProfileInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (internalWebPropertyId != null)
           'internalWebPropertyId': internalWebPropertyId!,
@@ -9075,7 +9073,7 @@ class McfDataQuery {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dimensions != null) 'dimensions': dimensions!,
         if (endDate != null) 'end-date': endDate!,
         if (filters != null) 'filters': filters!,
@@ -9112,7 +9110,7 @@ class McfDataRowsConversionPathValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (interactionType != null) 'interactionType': interactionType!,
         if (nodeValue != null) 'nodeValue': nodeValue!,
       };
@@ -9147,7 +9145,7 @@ class McfDataRows {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (conversionPathValue != null)
           'conversionPathValue':
               conversionPathValue!.map((value) => value.toJson()).toList(),
@@ -9273,18 +9271,18 @@ class McfData {
       totalResults = _json['totalResults'] as core.int;
     }
     if (_json.containsKey('totalsForAllResults')) {
-      totalsForAllResults = (_json['totalsForAllResults'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      totalsForAllResults =
+          (_json['totalsForAllResults'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (columnHeaders != null)
           'columnHeaders':
               columnHeaders!.map((value) => value.toJson()).toList(),
@@ -9331,7 +9329,7 @@ class ProfileChildLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (href != null) 'href': href!,
         if (type != null) 'type': type!,
       };
@@ -9358,7 +9356,7 @@ class ProfileParentLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (href != null) 'href': href!,
         if (type != null) 'type': type!,
       };
@@ -9382,7 +9380,7 @@ class ProfilePermissions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (effective != null) 'effective': effective!,
       };
 }
@@ -9578,7 +9576,7 @@ class Profile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (botFilteringEnabled != null)
           'botFilteringEnabled': botFilteringEnabled!,
@@ -9674,7 +9672,7 @@ class ProfileFilterLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (filterRef != null) 'filterRef': filterRef!.toJson(),
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -9751,7 +9749,7 @@ class ProfileFilterLinks {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
@@ -9814,7 +9812,7 @@ class ProfileRef {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (href != null) 'href': href!,
         if (id != null) 'id': id!,
@@ -9867,7 +9865,7 @@ class ProfileSummary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
@@ -9944,7 +9942,7 @@ class Profiles {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
@@ -9987,7 +9985,7 @@ class RealtimeDataColumnHeaders {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (columnType != null) 'columnType': columnType!,
         if (dataType != null) 'dataType': dataType!,
         if (name != null) 'name': name!,
@@ -10038,7 +10036,7 @@ class RealtimeDataProfileInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (internalWebPropertyId != null)
           'internalWebPropertyId': internalWebPropertyId!,
@@ -10096,7 +10094,7 @@ class RealtimeDataQuery {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dimensions != null) 'dimensions': dimensions!,
         if (filters != null) 'filters': filters!,
         if (ids != null) 'ids': ids!,
@@ -10184,18 +10182,18 @@ class RealtimeData {
       totalResults = _json['totalResults'] as core.int;
     }
     if (_json.containsKey('totalsForAllResults')) {
-      totalsForAllResults = (_json['totalsForAllResults'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      totalsForAllResults =
+          (_json['totalsForAllResults'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (columnHeaders != null)
           'columnHeaders':
               columnHeaders!.map((value) => value.toJson()).toList(),
@@ -10226,7 +10224,7 @@ class RemarketingAudienceAudienceDefinition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (includeConditions != null)
           'includeConditions': includeConditions!.toJson(),
       };
@@ -10253,7 +10251,7 @@ class RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exclusionDuration != null) 'exclusionDuration': exclusionDuration!,
         if (segment != null) 'segment': segment!,
       };
@@ -10284,7 +10282,7 @@ class RemarketingAudienceStateBasedAudienceDefinition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (excludeConditions != null)
           'excludeConditions': excludeConditions!.toJson(),
         if (includeConditions != null)
@@ -10398,7 +10396,7 @@ class RemarketingAudience {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (audienceDefinition != null)
           'audienceDefinition': audienceDefinition!.toJson(),
@@ -10490,7 +10488,7 @@ class RemarketingAudiences {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
@@ -10568,7 +10566,7 @@ class Segment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (created != null) 'created': created!.toIso8601String(),
         if (definition != null) 'definition': definition!,
         if (id != null) 'id': id!,
@@ -10647,7 +10645,7 @@ class Segments {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
@@ -10679,7 +10677,7 @@ class UnsampledReportCloudStorageDownloadDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bucketId != null) 'bucketId': bucketId!,
         if (objectId != null) 'objectId': objectId!,
       };
@@ -10698,7 +10696,7 @@ class UnsampledReportDriveDownloadDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (documentId != null) 'documentId': documentId!,
       };
 }
@@ -10837,7 +10835,7 @@ class UnsampledReport {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (cloudStorageDownloadDetails != null)
           'cloudStorageDownloadDetails': cloudStorageDownloadDetails!.toJson(),
@@ -10931,7 +10929,7 @@ class UnsampledReports {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
@@ -10997,7 +10995,7 @@ class Upload {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (customDataSourceId != null)
           'customDataSourceId': customDataSourceId!,
@@ -11070,7 +11068,7 @@ class Uploads {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
@@ -11101,7 +11099,7 @@ class UserDeletionRequestId {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
         if (userId != null) 'userId': userId!,
       };
@@ -11153,7 +11151,7 @@ class UserDeletionRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deletionRequestTime != null)
           'deletionRequestTime': deletionRequestTime!.toIso8601String(),
         if (firebaseProjectId != null) 'firebaseProjectId': firebaseProjectId!,
@@ -11187,7 +11185,7 @@ class UserRef {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -11237,7 +11235,7 @@ class WebPropertyRef {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (href != null) 'href': href!,
         if (id != null) 'id': id!,
@@ -11311,7 +11309,7 @@ class WebPropertySummary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (internalWebPropertyId != null)
           'internalWebPropertyId': internalWebPropertyId!,
@@ -11393,7 +11391,7 @@ class Webproperties {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (itemsPerPage != null) 'itemsPerPage': itemsPerPage!,
@@ -11429,7 +11427,7 @@ class WebpropertyChildLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (href != null) 'href': href!,
         if (type != null) 'type': type!,
       };
@@ -11458,7 +11456,7 @@ class WebpropertyParentLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (href != null) 'href': href!,
         if (type != null) 'type': type!,
       };
@@ -11482,7 +11480,7 @@ class WebpropertyPermissions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (effective != null) 'effective': effective!,
       };
 }
@@ -11624,7 +11622,7 @@ class Webproperty {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (childLink != null) 'childLink': childLink!.toJson(),
         if (created != null) 'created': created!.toIso8601String(),

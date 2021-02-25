@@ -473,7 +473,9 @@ void main() {
   unittest.group('obj-schema-AchievementConfiguration', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAchievementConfiguration();
-      var od = api.AchievementConfiguration.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AchievementConfiguration.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAchievementConfiguration(od as api.AchievementConfiguration);
     });
   });
@@ -481,7 +483,9 @@ void main() {
   unittest.group('obj-schema-AchievementConfigurationDetail', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAchievementConfigurationDetail();
-      var od = api.AchievementConfigurationDetail.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AchievementConfigurationDetail.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAchievementConfigurationDetail(
           od as api.AchievementConfigurationDetail);
     });
@@ -490,7 +494,9 @@ void main() {
   unittest.group('obj-schema-AchievementConfigurationListResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAchievementConfigurationListResponse();
-      var od = api.AchievementConfigurationListResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AchievementConfigurationListResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAchievementConfigurationListResponse(
           od as api.AchievementConfigurationListResponse);
     });
@@ -499,7 +505,9 @@ void main() {
   unittest.group('obj-schema-GamesNumberAffixConfiguration', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGamesNumberAffixConfiguration();
-      var od = api.GamesNumberAffixConfiguration.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GamesNumberAffixConfiguration.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGamesNumberAffixConfiguration(
           od as api.GamesNumberAffixConfiguration);
     });
@@ -508,7 +516,9 @@ void main() {
   unittest.group('obj-schema-GamesNumberFormatConfiguration', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGamesNumberFormatConfiguration();
-      var od = api.GamesNumberFormatConfiguration.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GamesNumberFormatConfiguration.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGamesNumberFormatConfiguration(
           od as api.GamesNumberFormatConfiguration);
     });
@@ -517,7 +527,9 @@ void main() {
   unittest.group('obj-schema-ImageConfiguration', () {
     unittest.test('to-json--from-json', () async {
       var o = buildImageConfiguration();
-      var od = api.ImageConfiguration.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ImageConfiguration.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkImageConfiguration(od as api.ImageConfiguration);
     });
   });
@@ -525,7 +537,9 @@ void main() {
   unittest.group('obj-schema-LeaderboardConfiguration', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLeaderboardConfiguration();
-      var od = api.LeaderboardConfiguration.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LeaderboardConfiguration.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLeaderboardConfiguration(od as api.LeaderboardConfiguration);
     });
   });
@@ -533,7 +547,9 @@ void main() {
   unittest.group('obj-schema-LeaderboardConfigurationDetail', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLeaderboardConfigurationDetail();
-      var od = api.LeaderboardConfigurationDetail.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LeaderboardConfigurationDetail.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLeaderboardConfigurationDetail(
           od as api.LeaderboardConfigurationDetail);
     });
@@ -542,7 +558,9 @@ void main() {
   unittest.group('obj-schema-LeaderboardConfigurationListResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLeaderboardConfigurationListResponse();
-      var od = api.LeaderboardConfigurationListResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LeaderboardConfigurationListResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLeaderboardConfigurationListResponse(
           od as api.LeaderboardConfigurationListResponse);
     });
@@ -551,7 +569,9 @@ void main() {
   unittest.group('obj-schema-LocalizedString', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLocalizedString();
-      var od = api.LocalizedString.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LocalizedString.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLocalizedString(od as api.LocalizedString);
     });
   });
@@ -559,7 +579,9 @@ void main() {
   unittest.group('obj-schema-LocalizedStringBundle', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLocalizedStringBundle();
-      var od = api.LocalizedStringBundle.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LocalizedStringBundle.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLocalizedStringBundle(od as api.LocalizedStringBundle);
     });
   });

@@ -578,7 +578,9 @@ void main() {
   unittest.group('obj-schema-Address', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAddress();
-      var od = api.Address.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Address.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkAddress(od as api.Address);
     });
   });
@@ -586,7 +588,9 @@ void main() {
   unittest.group('obj-schema-ChangePlanRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildChangePlanRequest();
-      var od = api.ChangePlanRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ChangePlanRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkChangePlanRequest(od as api.ChangePlanRequest);
     });
   });
@@ -594,7 +598,9 @@ void main() {
   unittest.group('obj-schema-Customer', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCustomer();
-      var od = api.Customer.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Customer.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkCustomer(od as api.Customer);
     });
   });
@@ -602,7 +608,9 @@ void main() {
   unittest.group('obj-schema-RenewalSettings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRenewalSettings();
-      var od = api.RenewalSettings.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RenewalSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRenewalSettings(od as api.RenewalSettings);
     });
   });
@@ -610,7 +618,9 @@ void main() {
   unittest.group('obj-schema-ResellernotifyGetwatchdetailsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildResellernotifyGetwatchdetailsResponse();
-      var od = api.ResellernotifyGetwatchdetailsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ResellernotifyGetwatchdetailsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkResellernotifyGetwatchdetailsResponse(
           od as api.ResellernotifyGetwatchdetailsResponse);
     });
@@ -619,7 +629,9 @@ void main() {
   unittest.group('obj-schema-ResellernotifyResource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildResellernotifyResource();
-      var od = api.ResellernotifyResource.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ResellernotifyResource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkResellernotifyResource(od as api.ResellernotifyResource);
     });
   });
@@ -627,7 +639,8 @@ void main() {
   unittest.group('obj-schema-Seats', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSeats();
-      var od = api.Seats.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Seats.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkSeats(od as api.Seats);
     });
   });
@@ -635,7 +648,9 @@ void main() {
   unittest.group('obj-schema-SubscriptionPlanCommitmentInterval', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSubscriptionPlanCommitmentInterval();
-      var od = api.SubscriptionPlanCommitmentInterval.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SubscriptionPlanCommitmentInterval.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSubscriptionPlanCommitmentInterval(
           od as api.SubscriptionPlanCommitmentInterval);
     });
@@ -644,7 +659,9 @@ void main() {
   unittest.group('obj-schema-SubscriptionPlan', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSubscriptionPlan();
-      var od = api.SubscriptionPlan.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SubscriptionPlan.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSubscriptionPlan(od as api.SubscriptionPlan);
     });
   });
@@ -652,7 +669,9 @@ void main() {
   unittest.group('obj-schema-SubscriptionTransferInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSubscriptionTransferInfo();
-      var od = api.SubscriptionTransferInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SubscriptionTransferInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSubscriptionTransferInfo(od as api.SubscriptionTransferInfo);
     });
   });
@@ -660,7 +679,9 @@ void main() {
   unittest.group('obj-schema-SubscriptionTrialSettings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSubscriptionTrialSettings();
-      var od = api.SubscriptionTrialSettings.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SubscriptionTrialSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSubscriptionTrialSettings(od as api.SubscriptionTrialSettings);
     });
   });
@@ -668,7 +689,9 @@ void main() {
   unittest.group('obj-schema-Subscription', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSubscription();
-      var od = api.Subscription.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Subscription.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSubscription(od as api.Subscription);
     });
   });
@@ -676,7 +699,9 @@ void main() {
   unittest.group('obj-schema-Subscriptions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSubscriptions();
-      var od = api.Subscriptions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Subscriptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSubscriptions(od as api.Subscriptions);
     });
   });

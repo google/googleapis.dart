@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -402,7 +401,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The expected state of a client's local database.
@@ -425,7 +424,7 @@ class GoogleSecuritySafebrowsingV4Checksum {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sha256 != null) 'sha256': sha256!,
       };
 }
@@ -450,7 +449,7 @@ class GoogleSecuritySafebrowsingV4ClientInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clientId != null) 'clientId': clientId!,
         if (clientVersion != null) 'clientVersion': clientVersion!,
       };
@@ -488,7 +487,7 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (client != null) 'client': client!.toJson(),
         if (listUpdateRequests != null)
           'listUpdateRequests':
@@ -589,7 +588,7 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (constraints != null) 'constraints': constraints!.toJson(),
         if (platformType != null) 'platformType': platformType!,
         if (state != null) 'state': state!,
@@ -657,7 +656,7 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesRequestListUpdateRequest
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceLocation != null) 'deviceLocation': deviceLocation!,
         if (language != null) 'language': language!,
         if (maxDatabaseEntries != null)
@@ -702,7 +701,7 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (listUpdateResponses != null)
           'listUpdateResponses':
               listUpdateResponses!.map((value) => value.toJson()).toList(),
@@ -848,7 +847,7 @@ class GoogleSecuritySafebrowsingV4FetchThreatListUpdatesResponseListUpdateRespon
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (additions != null)
           'additions': additions!.map((value) => value.toJson()).toList(),
         if (checksum != null) 'checksum': checksum!.toJson(),
@@ -899,7 +898,7 @@ class GoogleSecuritySafebrowsingV4FindFullHashesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiClient != null) 'apiClient': apiClient!.toJson(),
         if (client != null) 'client': client!.toJson(),
         if (clientStates != null) 'clientStates': clientStates!,
@@ -940,7 +939,7 @@ class GoogleSecuritySafebrowsingV4FindFullHashesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (matches != null)
           'matches': matches!.map((value) => value.toJson()).toList(),
         if (minimumWaitDuration != null)
@@ -972,7 +971,7 @@ class GoogleSecuritySafebrowsingV4FindThreatMatchesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (client != null) 'client': client!.toJson(),
         if (threatInfo != null) 'threatInfo': threatInfo!.toJson(),
       };
@@ -995,7 +994,7 @@ class GoogleSecuritySafebrowsingV4FindThreatMatchesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (matches != null)
           'matches': matches!.map((value) => value.toJson()).toList(),
       };
@@ -1017,7 +1016,7 @@ class GoogleSecuritySafebrowsingV4ListThreatListsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (threatLists != null)
           'threatLists': threatLists!.map((value) => value.toJson()).toList(),
       };
@@ -1061,7 +1060,7 @@ class GoogleSecuritySafebrowsingV4RawHashes {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (prefixSize != null) 'prefixSize': prefixSize!,
         if (rawHashes != null) 'rawHashes': rawHashes!,
       };
@@ -1082,7 +1081,7 @@ class GoogleSecuritySafebrowsingV4RawIndices {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (indices != null) 'indices': indices!,
       };
 }
@@ -1135,7 +1134,7 @@ class GoogleSecuritySafebrowsingV4RiceDeltaEncoding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (encodedData != null) 'encodedData': encodedData!,
         if (firstValue != null) 'firstValue': firstValue!,
         if (numEntries != null) 'numEntries': numEntries!,
@@ -1190,7 +1189,7 @@ class GoogleSecuritySafebrowsingV4ThreatEntry {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (digest != null) 'digest': digest!,
         if (hash != null) 'hash': hash!,
         if (url != null) 'url': url!,
@@ -1219,7 +1218,7 @@ class GoogleSecuritySafebrowsingV4ThreatEntryMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entries != null)
           'entries': entries!.map((value) => value.toJson()).toList(),
       };
@@ -1261,7 +1260,7 @@ class GoogleSecuritySafebrowsingV4ThreatEntryMetadataMetadataEntry {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (value != null) 'value': value!,
       };
@@ -1322,7 +1321,7 @@ class GoogleSecuritySafebrowsingV4ThreatEntrySet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (compressionType != null) 'compressionType': compressionType!,
         if (rawHashes != null) 'rawHashes': rawHashes!.toJson(),
         if (rawIndices != null) 'rawIndices': rawIndices!.toJson(),
@@ -1418,7 +1417,7 @@ class GoogleSecuritySafebrowsingV4ThreatHit {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clientInfo != null) 'clientInfo': clientInfo!.toJson(),
         if (entry != null) 'entry': entry!.toJson(),
         if (platformType != null) 'platformType': platformType!,
@@ -1473,7 +1472,7 @@ class GoogleSecuritySafebrowsingV4ThreatHitThreatSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (referrer != null) 'referrer': referrer!,
         if (remoteIp != null) 'remoteIp': remoteIp!,
         if (type != null) 'type': type!,
@@ -1506,7 +1505,7 @@ class GoogleSecuritySafebrowsingV4ThreatHitUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (regionCode != null) 'regionCode': regionCode!,
         if (userId != null) 'userId': userId!,
       };
@@ -1554,7 +1553,7 @@ class GoogleSecuritySafebrowsingV4ThreatInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (platformTypes != null) 'platformTypes': platformTypes!,
         if (threatEntries != null)
           'threatEntries':
@@ -1636,7 +1635,7 @@ class GoogleSecuritySafebrowsingV4ThreatListDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (platformType != null) 'platformType': platformType!,
         if (threatEntryType != null) 'threatEntryType': threatEntryType!,
         if (threatType != null) 'threatType': threatType!,
@@ -1737,7 +1736,7 @@ class GoogleSecuritySafebrowsingV4ThreatMatch {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cacheDuration != null) 'cacheDuration': cacheDuration!,
         if (platformType != null) 'platformType': platformType!,
         if (threat != null) 'threat': threat!.toJson(),

@@ -1958,7 +1958,9 @@ void main() {
   unittest.group('obj-schema-Binding', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBinding();
-      var od = api.Binding.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Binding.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBinding(od as api.Binding);
     });
   });
@@ -1966,7 +1968,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -1974,7 +1977,8 @@ void main() {
   unittest.group('obj-schema-Expr', () {
     unittest.test('to-json--from-json', () async {
       var o = buildExpr();
-      var od = api.Expr.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Expr.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkExpr(od as api.Expr);
     });
   });
@@ -1982,7 +1986,9 @@ void main() {
   unittest.group('obj-schema-GetIamPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGetIamPolicyRequest();
-      var od = api.GetIamPolicyRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GetIamPolicyRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
     });
   });
@@ -1990,7 +1996,9 @@ void main() {
   unittest.group('obj-schema-GetPolicyOptions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGetPolicyOptions();
-      var od = api.GetPolicyOptions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GetPolicyOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetPolicyOptions(od as api.GetPolicyOptions);
     });
   });
@@ -1999,9 +2007,10 @@ void main() {
       'obj-schema-GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec(
           od as api.GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec);
     });
@@ -2011,8 +2020,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1BigQueryTableSpec();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1BigQueryTableSpec(
           od as api.GoogleCloudDatacatalogV1beta1BigQueryTableSpec);
     });
@@ -2021,8 +2031,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1ColumnSchema', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ColumnSchema();
-      var od =
-          api.GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1ColumnSchema(
           od as api.GoogleCloudDatacatalogV1beta1ColumnSchema);
     });
@@ -2031,7 +2042,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1Entry', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1Entry();
-      var od = api.GoogleCloudDatacatalogV1beta1Entry.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatacatalogV1beta1Entry.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1Entry(
           od as api.GoogleCloudDatacatalogV1beta1Entry);
     });
@@ -2040,7 +2053,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1EntryGroup', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1EntryGroup();
-      var od = api.GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1EntryGroup(
           od as api.GoogleCloudDatacatalogV1beta1EntryGroup);
     });
@@ -2050,9 +2065,10 @@ void main() {
       'obj-schema-GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse(
           od as api.GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse);
     });
@@ -2061,7 +2077,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1FieldType', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1FieldType();
-      var od = api.GoogleCloudDatacatalogV1beta1FieldType.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatacatalogV1beta1FieldType.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1FieldType(
           od as api.GoogleCloudDatacatalogV1beta1FieldType);
     });
@@ -2071,8 +2089,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1FieldTypeEnumType();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatacatalogV1beta1FieldTypeEnumType.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1FieldTypeEnumType(
           od as api.GoogleCloudDatacatalogV1beta1FieldTypeEnumType);
     });
@@ -2082,9 +2101,10 @@ void main() {
       'obj-schema-GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue(
           od as api.GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue);
     });
@@ -2093,8 +2113,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1GcsFileSpec', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1GcsFileSpec();
-      var od =
-          api.GoogleCloudDatacatalogV1beta1GcsFileSpec.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatacatalogV1beta1GcsFileSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1GcsFileSpec(
           od as api.GoogleCloudDatacatalogV1beta1GcsFileSpec);
     });
@@ -2103,8 +2124,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1GcsFilesetSpec', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1GcsFilesetSpec();
-      var od =
-          api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1GcsFilesetSpec(
           od as api.GoogleCloudDatacatalogV1beta1GcsFilesetSpec);
     });
@@ -2114,9 +2136,10 @@ void main() {
       'obj-schema-GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest(
           od as api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest);
     });
@@ -2126,9 +2149,10 @@ void main() {
       'obj-schema-GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse(
           od as api.GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse);
     });
@@ -2137,8 +2161,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1InlineSource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1InlineSource();
-      var od =
-          api.GoogleCloudDatacatalogV1beta1InlineSource.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatacatalogV1beta1InlineSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1InlineSource(
           od as api.GoogleCloudDatacatalogV1beta1InlineSource);
     });
@@ -2148,8 +2173,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ListEntriesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1ListEntriesResponse(
           od as api.GoogleCloudDatacatalogV1beta1ListEntriesResponse);
     });
@@ -2159,9 +2185,10 @@ void main() {
       'obj-schema-GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1ListEntryGroupsResponse(
           od as api.GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse);
     });
@@ -2171,8 +2198,9 @@ void main() {
       'obj-schema-GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1ListPolicyTagsResponse(
           od as api.GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse);
     });
@@ -2182,8 +2210,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ListTagsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1ListTagsResponse(
           od as api.GoogleCloudDatacatalogV1beta1ListTagsResponse);
     });
@@ -2193,8 +2222,9 @@ void main() {
       'obj-schema-GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1ListTaxonomiesResponse(
           od as api.GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse);
     });
@@ -2203,7 +2233,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1PolicyTag', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1PolicyTag();
-      var od = api.GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1PolicyTag(
           od as api.GoogleCloudDatacatalogV1beta1PolicyTag);
     });
@@ -2215,9 +2247,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest(
           od as api
               .GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest);
@@ -2229,8 +2262,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest(
           od as api.GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest);
     });
@@ -2239,7 +2273,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1Schema', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1Schema();
-      var od = api.GoogleCloudDatacatalogV1beta1Schema.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatacatalogV1beta1Schema.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1Schema(
           od as api.GoogleCloudDatacatalogV1beta1Schema);
     });
@@ -2249,8 +2285,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1SearchCatalogRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1SearchCatalogRequest(
           od as api.GoogleCloudDatacatalogV1beta1SearchCatalogRequest);
     });
@@ -2260,9 +2297,10 @@ void main() {
       'obj-schema-GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1SearchCatalogRequestScope(
           od as api.GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope);
     });
@@ -2272,8 +2310,9 @@ void main() {
       'obj-schema-GoogleCloudDatacatalogV1beta1SearchCatalogResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1SearchCatalogResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1SearchCatalogResponse(
           od as api.GoogleCloudDatacatalogV1beta1SearchCatalogResponse);
     });
@@ -2283,8 +2322,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1SearchCatalogResult();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatacatalogV1beta1SearchCatalogResult.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1SearchCatalogResult(
           od as api.GoogleCloudDatacatalogV1beta1SearchCatalogResult);
     });
@@ -2294,8 +2334,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1SerializedPolicyTag();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1SerializedPolicyTag(
           od as api.GoogleCloudDatacatalogV1beta1SerializedPolicyTag);
     });
@@ -2305,8 +2346,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1SerializedTaxonomy();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1SerializedTaxonomy(
           od as api.GoogleCloudDatacatalogV1beta1SerializedTaxonomy);
     });
@@ -2316,8 +2358,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1SystemTimestamps();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1SystemTimestamps(
           od as api.GoogleCloudDatacatalogV1beta1SystemTimestamps);
     });
@@ -2326,7 +2369,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1TableSpec', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1TableSpec();
-      var od = api.GoogleCloudDatacatalogV1beta1TableSpec.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatacatalogV1beta1TableSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1TableSpec(
           od as api.GoogleCloudDatacatalogV1beta1TableSpec);
     });
@@ -2335,7 +2380,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1Tag', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1Tag();
-      var od = api.GoogleCloudDatacatalogV1beta1Tag.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatacatalogV1beta1Tag.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1Tag(
           od as api.GoogleCloudDatacatalogV1beta1Tag);
     });
@@ -2344,7 +2391,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1TagField', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1TagField();
-      var od = api.GoogleCloudDatacatalogV1beta1TagField.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatacatalogV1beta1TagField.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1TagField(
           od as api.GoogleCloudDatacatalogV1beta1TagField);
     });
@@ -2354,8 +2403,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1TagFieldEnumValue();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatacatalogV1beta1TagFieldEnumValue.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1TagFieldEnumValue(
           od as api.GoogleCloudDatacatalogV1beta1TagFieldEnumValue);
     });
@@ -2364,8 +2414,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1TagTemplate', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1TagTemplate();
-      var od =
-          api.GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1TagTemplate(
           od as api.GoogleCloudDatacatalogV1beta1TagTemplate);
     });
@@ -2375,8 +2426,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1TagTemplateField();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1TagTemplateField(
           od as api.GoogleCloudDatacatalogV1beta1TagTemplateField);
     });
@@ -2385,7 +2437,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1Taxonomy', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1Taxonomy();
-      var od = api.GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1Taxonomy(
           od as api.GoogleCloudDatacatalogV1beta1Taxonomy);
     });
@@ -2394,7 +2448,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatacatalogV1beta1ViewSpec', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatacatalogV1beta1ViewSpec();
-      var od = api.GoogleCloudDatacatalogV1beta1ViewSpec.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatacatalogV1beta1ViewSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatacatalogV1beta1ViewSpec(
           od as api.GoogleCloudDatacatalogV1beta1ViewSpec);
     });
@@ -2403,7 +2459,9 @@ void main() {
   unittest.group('obj-schema-Policy', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
-      var od = api.Policy.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Policy.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPolicy(od as api.Policy);
     });
   });
@@ -2411,7 +2469,9 @@ void main() {
   unittest.group('obj-schema-SetIamPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
-      var od = api.SetIamPolicyRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SetIamPolicyRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
@@ -2419,7 +2479,9 @@ void main() {
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
-      var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TestIamPermissionsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
@@ -2427,7 +2489,9 @@ void main() {
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
-      var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TestIamPermissionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });

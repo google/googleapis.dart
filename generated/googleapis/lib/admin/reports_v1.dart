@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -952,7 +951,7 @@ class Activities {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -999,7 +998,7 @@ class ActivityActor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (callerType != null) 'callerType': callerType!,
         if (email != null) 'email': email!,
         if (key != null) 'key': key!,
@@ -1027,7 +1026,7 @@ class ActivityEventsParametersMessageValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parameter != null)
           'parameter': parameter!.map((value) => value.toJson()).toList(),
       };
@@ -1048,7 +1047,7 @@ class ActivityEventsParametersMultiMessageValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parameter != null)
           'parameter': parameter!.map((value) => value.toJson()).toList(),
       };
@@ -1121,7 +1120,7 @@ class ActivityEventsParameters {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
         if (intValue != null) 'intValue': intValue!,
         if (messageValue != null) 'messageValue': messageValue!.toJson(),
@@ -1182,7 +1181,7 @@ class ActivityEvents {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (parameters != null)
           'parameters': parameters!.map((value) => value.toJson()).toList(),
@@ -1226,7 +1225,7 @@ class ActivityId {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (applicationName != null) 'applicationName': applicationName!,
         if (customerId != null) 'customerId': customerId!,
         if (time != null) 'time': time!.toIso8601String(),
@@ -1298,7 +1297,7 @@ class Activity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (actor != null) 'actor': actor!.toJson(),
         if (etag != null) 'etag': etag!,
         if (events != null)
@@ -1373,13 +1372,12 @@ class Channel {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('params')) {
-      params =
-          (_json['params'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      params = (_json['params'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('payload')) {
       payload = _json['payload'] as core.bool;
@@ -1398,7 +1396,7 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
         if (expiration != null) 'expiration': expiration!,
         if (id != null) 'id': id!,
@@ -1467,7 +1465,7 @@ class NestedParameter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
         if (intValue != null) 'intValue': intValue!,
         if (multiBoolValue != null) 'multiBoolValue': multiBoolValue!,
@@ -1534,7 +1532,7 @@ class UsageReportEntity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customerId != null) 'customerId': customerId!,
         if (entityId != null) 'entityId': entityId!,
         if (profileId != null) 'profileId': profileId!,
@@ -1592,8 +1590,8 @@ class UsageReportParameters {
     }
     if (_json.containsKey('msgValue')) {
       msgValue = (_json['msgValue'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -1609,7 +1607,7 @@ class UsageReportParameters {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
         if (datetimeValue != null)
           'datetimeValue': datetimeValue!.toIso8601String(),
@@ -1673,7 +1671,7 @@ class UsageReport {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (date != null) 'date': date!,
         if (entity != null) 'entity': entity!.toJson(),
         if (etag != null) 'etag': etag!,
@@ -1703,7 +1701,7 @@ class UsageReportsWarningsData {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (value != null) 'value': value!,
       };
@@ -1745,7 +1743,7 @@ class UsageReportsWarnings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (data != null) 'data': data!.map((value) => value.toJson()).toList(),
         if (message != null) 'message': message!,
@@ -1800,7 +1798,7 @@ class UsageReports {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,

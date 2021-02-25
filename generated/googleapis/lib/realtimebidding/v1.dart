@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1421,7 +1420,7 @@ class ActivatePretargetingConfigRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A request to start targeting the provided app IDs in a specific pretargeting
@@ -1464,7 +1463,7 @@ class AddTargetedAppsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appIds != null) 'appIds': appIds!,
         if (targetingMode != null) 'targetingMode': targetingMode!,
       };
@@ -1513,7 +1512,7 @@ class AddTargetedPublishersRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (publisherIds != null) 'publisherIds': publisherIds!,
         if (targetingMode != null) 'targetingMode': targetingMode!,
       };
@@ -1559,7 +1558,7 @@ class AddTargetedSitesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sites != null) 'sites': sites!,
         if (targetingMode != null) 'targetingMode': targetingMode!,
       };
@@ -1607,7 +1606,7 @@ class AdvertiserAndBrand {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserId != null) 'advertiserId': advertiserId!,
         if (advertiserName != null) 'advertiserName': advertiserName!,
         if (brandId != null) 'brandId': brandId!,
@@ -1644,7 +1643,7 @@ class AppTargeting {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mobileAppCategoryTargeting != null)
           'mobileAppCategoryTargeting': mobileAppCategoryTargeting!.toJson(),
         if (mobileAppTargeting != null)
@@ -1660,7 +1659,7 @@ class CloseUserListRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A creative and its classification data.
@@ -1873,7 +1872,7 @@ class Creative {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (adChoicesDestinationUrl != null)
           'adChoicesDestinationUrl': adChoicesDestinationUrl!,
@@ -1925,7 +1924,7 @@ class CreativeDimensions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (width != null) 'width': width!,
       };
@@ -2099,7 +2098,7 @@ class CreativeServingDecision {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (chinaPolicyCompliance != null)
           'chinaPolicyCompliance': chinaPolicyCompliance!.toJson(),
         if (dealsPolicyCompliance != null)
@@ -2168,7 +2167,7 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
         if (month != null) 'month': month!,
         if (year != null) 'year': year!,
@@ -2209,7 +2208,7 @@ class DestinationNotCrawlableEvidence {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (crawlTime != null) 'crawlTime': crawlTime!,
         if (crawledUrl != null) 'crawledUrl': crawledUrl!,
         if (reason != null) 'reason': reason!,
@@ -2299,7 +2298,7 @@ class DestinationNotWorkingEvidence {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dnsError != null) 'dnsError': dnsError!,
         if (expandedUrl != null) 'expandedUrl': expandedUrl!,
         if (httpError != null) 'httpError': httpError!,
@@ -2324,7 +2323,7 @@ class DestinationUrlEvidence {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (destinationUrl != null) 'destinationUrl': destinationUrl!,
       };
 }
@@ -2352,7 +2351,7 @@ class DomainCallEvidence {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (topHttpCallDomains != null)
           'topHttpCallDomains':
               topHttpCallDomains!.map((value) => value.toJson()).toList(),
@@ -2380,7 +2379,7 @@ class DomainCalls {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (domain != null) 'domain': domain!,
         if (httpCallCount != null) 'httpCallCount': httpCallCount!,
       };
@@ -2410,7 +2409,7 @@ class DownloadSizeEvidence {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (topUrlDownloadSizeBreakdowns != null)
           'topUrlDownloadSizeBreakdowns': topUrlDownloadSizeBreakdowns!
               .map((value) => value.toJson())
@@ -2434,7 +2433,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Response for a request to get remarketing tag.
@@ -2455,7 +2454,7 @@ class GetRemarketingTagResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (snippet != null) 'snippet': snippet!,
       };
 }
@@ -2489,7 +2488,7 @@ class HtmlContent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (snippet != null) 'snippet': snippet!,
         if (width != null) 'width': width!,
@@ -2511,7 +2510,7 @@ class HttpCallEvidence {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (urls != null) 'urls': urls!,
       };
 }
@@ -2545,7 +2544,7 @@ class HttpCookieEvidence {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cookieNames != null) 'cookieNames': cookieNames!,
         if (maxCookieCount != null) 'maxCookieCount': maxCookieCount!,
       };
@@ -2579,7 +2578,7 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (url != null) 'url': url!,
         if (width != null) 'width': width!,
@@ -2612,7 +2611,7 @@ class ListCreativesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (creatives != null)
           'creatives': creatives!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2643,7 +2642,7 @@ class ListPretargetingConfigsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (pretargetingConfigs != null)
           'pretargetingConfigs':
@@ -2678,7 +2677,7 @@ class ListUserListsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (userLists != null)
           'userLists': userLists!.map((value) => value.toJson()).toList(),
@@ -2728,7 +2727,7 @@ class MediaFile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bitrate != null) 'bitrate': bitrate!,
         if (mimeType != null) 'mimeType': mimeType!,
       };
@@ -2818,7 +2817,7 @@ class NativeContent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (advertiserName != null) 'advertiserName': advertiserName!,
         if (appIcon != null) 'appIcon': appIcon!.toJson(),
         if (body != null) 'body': body!,
@@ -2859,7 +2858,7 @@ class NumericTargetingDimension {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (excludedIds != null) 'excludedIds': excludedIds!,
         if (includedIds != null) 'includedIds': includedIds!,
       };
@@ -2873,7 +2872,7 @@ class OpenUserListRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Policy compliance of the creative for a transaction type or a region.
@@ -2909,7 +2908,7 @@ class PolicyCompliance {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (status != null) 'status': status!,
         if (topics != null)
           'topics': topics!.map((value) => value.toJson()).toList(),
@@ -2951,7 +2950,7 @@ class PolicyTopicEntry {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (evidences != null)
           'evidences': evidences!.map((value) => value.toJson()).toList(),
         if (helpCenterUrl != null) 'helpCenterUrl': helpCenterUrl!,
@@ -3019,7 +3018,7 @@ class PolicyTopicEvidence {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (destinationNotCrawlable != null)
           'destinationNotCrawlable': destinationNotCrawlable!.toJson(),
         if (destinationNotWorking != null)
@@ -3318,7 +3317,7 @@ class PretargetingConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowedUserTargetingModes != null)
           'allowedUserTargetingModes': allowedUserTargetingModes!,
         if (appTargeting != null) 'appTargeting': appTargeting!.toJson(),
@@ -3380,7 +3379,7 @@ class RemoveTargetedAppsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appIds != null) 'appIds': appIds!,
       };
 }
@@ -3410,7 +3409,7 @@ class RemoveTargetedPublishersRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (publisherIds != null) 'publisherIds': publisherIds!,
       };
 }
@@ -3436,7 +3435,7 @@ class RemoveTargetedSitesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sites != null) 'sites': sites!,
       };
 }
@@ -3469,7 +3468,7 @@ class StringTargetingDimension {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (targetingMode != null) 'targetingMode': targetingMode!,
         if (values != null) 'values': values!,
       };
@@ -3485,7 +3484,7 @@ class SuspendPretargetingConfigRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The URL-level breakdown for the download size.
@@ -3507,7 +3506,7 @@ class UrlDownloadSize {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (downloadSizeKb != null) 'downloadSizeKb': downloadSizeKb!,
         if (normalizedUrl != null) 'normalizedUrl': normalizedUrl!,
       };
@@ -3571,7 +3570,7 @@ class UrlRestriction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endDate != null) 'endDate': endDate!.toJson(),
         if (restrictionType != null) 'restrictionType': restrictionType!,
         if (startDate != null) 'startDate': startDate!.toJson(),
@@ -3655,7 +3654,7 @@ class UserList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (membershipDurationDays != null)
@@ -3696,7 +3695,7 @@ class VideoContent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (videoMetadata != null) 'videoMetadata': videoMetadata!.toJson(),
         if (videoUrl != null) 'videoUrl': videoUrl!,
         if (videoVastXml != null) 'videoVastXml': videoVastXml!,
@@ -3769,7 +3768,7 @@ class VideoMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (duration != null) 'duration': duration!,
         if (isValidVast != null) 'isValidVast': isValidVast!,
         if (isVpaid != null) 'isVpaid': isVpaid!,
@@ -3789,7 +3788,7 @@ class WatchCreativesRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A response for the request to receive push notification when a bidder's
@@ -3823,7 +3822,7 @@ class WatchCreativesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (subscription != null) 'subscription': subscription!,
         if (topic != null) 'topic': topic!,
       };

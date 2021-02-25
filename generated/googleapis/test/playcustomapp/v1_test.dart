@@ -63,7 +63,9 @@ void main() {
   unittest.group('obj-schema-CustomApp', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCustomApp();
-      var od = api.CustomApp.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.CustomApp.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkCustomApp(od as api.CustomApp);
     });
   });

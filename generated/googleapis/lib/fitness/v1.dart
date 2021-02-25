@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -977,7 +976,7 @@ class AggregateBucket {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (activity != null) 'activity': activity!,
         if (dataset != null)
           'dataset': dataset!.map((value) => value.toJson()).toList(),
@@ -1020,7 +1019,7 @@ class AggregateBy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataSourceId != null) 'dataSourceId': dataSourceId!,
         if (dataTypeName != null) 'dataTypeName': dataTypeName!,
       };
@@ -1121,7 +1120,7 @@ class AggregateRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aggregateBy != null)
           'aggregateBy': aggregateBy!.map((value) => value.toJson()).toList(),
         if (bucketByActivitySegment != null)
@@ -1153,7 +1152,7 @@ class AggregateResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bucket != null)
           'bucket': bucket!.map((value) => value.toJson()).toList(),
       };
@@ -1202,7 +1201,7 @@ class Application {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detailsUrl != null) 'detailsUrl': detailsUrl!,
         if (name != null) 'name': name!,
         if (packageName != null) 'packageName': packageName!,
@@ -1231,7 +1230,7 @@ class BucketByActivity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (activityDataSourceId != null)
           'activityDataSourceId': activityDataSourceId!,
         if (minDurationMillis != null) 'minDurationMillis': minDurationMillis!,
@@ -1251,7 +1250,7 @@ class BucketBySession {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (minDurationMillis != null) 'minDurationMillis': minDurationMillis!,
       };
 }
@@ -1277,7 +1276,7 @@ class BucketByTime {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (durationMillis != null) 'durationMillis': durationMillis!,
         if (period != null) 'period': period!.toJson(),
       };
@@ -1309,7 +1308,7 @@ class BucketByTimePeriod {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (timeZoneId != null) 'timeZoneId': timeZoneId!,
         if (type != null) 'type': type!,
         if (value != null) 'value': value!,
@@ -1401,7 +1400,7 @@ class DataPoint {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (computationTimeMillis != null)
           'computationTimeMillis': computationTimeMillis!,
         if (dataTypeName != null) 'dataTypeName': dataTypeName!,
@@ -1531,7 +1530,7 @@ class DataSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (application != null) 'application': application!.toJson(),
         if (dataQualityStandard != null)
           'dataQualityStandard': dataQualityStandard!,
@@ -1568,7 +1567,7 @@ class DataType {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (field != null)
           'field': field!.map((value) => value.toJson()).toList(),
         if (name != null) 'name': name!,
@@ -1614,7 +1613,7 @@ class DataTypeField {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (format != null) 'format': format!,
         if (name != null) 'name': name!,
         if (optional != null) 'optional': optional!,
@@ -1683,7 +1682,7 @@ class Dataset {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataSourceId != null) 'dataSourceId': dataSourceId!,
         if (maxEndTimeNs != null) 'maxEndTimeNs': maxEndTimeNs!,
         if (minStartTimeNs != null) 'minStartTimeNs': minStartTimeNs!,
@@ -1754,7 +1753,7 @@ class Device {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (manufacturer != null) 'manufacturer': manufacturer!,
         if (model != null) 'model': model!,
         if (type != null) 'type': type!,
@@ -1804,7 +1803,7 @@ class ListDataPointChangesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataSourceId != null) 'dataSourceId': dataSourceId!,
         if (deletedDataPoint != null)
           'deletedDataPoint':
@@ -1831,7 +1830,7 @@ class ListDataSourcesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataSource != null)
           'dataSource': dataSource!.map((value) => value.toJson()).toList(),
       };
@@ -1881,7 +1880,7 @@ class ListSessionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deletedSession != null)
           'deletedSession':
               deletedSession!.map((value) => value.toJson()).toList(),
@@ -1908,7 +1907,7 @@ class MapValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fpVal != null) 'fpVal': fpVal!,
       };
 }
@@ -1982,7 +1981,7 @@ class Session {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (activeTimeMillis != null) 'activeTimeMillis': activeTimeMillis!,
         if (activityType != null) 'activityType': activityType!,
         if (application != null) 'application': application!.toJson(),
@@ -2046,7 +2045,7 @@ class Value {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fpVal != null) 'fpVal': fpVal!,
         if (intVal != null) 'intVal': intVal!,
         if (mapVal != null)
@@ -2071,7 +2070,7 @@ class ValueMapValEntry {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (value != null) 'value': value!.toJson(),
       };

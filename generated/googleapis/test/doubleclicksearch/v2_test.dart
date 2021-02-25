@@ -1007,7 +1007,9 @@ void main() {
   unittest.group('obj-schema-Availability', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAvailability();
-      var od = api.Availability.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Availability.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAvailability(od as api.Availability);
     });
   });
@@ -1015,7 +1017,9 @@ void main() {
   unittest.group('obj-schema-Conversion', () {
     unittest.test('to-json--from-json', () async {
       var o = buildConversion();
-      var od = api.Conversion.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Conversion.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkConversion(od as api.Conversion);
     });
   });
@@ -1023,7 +1027,9 @@ void main() {
   unittest.group('obj-schema-ConversionList', () {
     unittest.test('to-json--from-json', () async {
       var o = buildConversionList();
-      var od = api.ConversionList.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ConversionList.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkConversionList(od as api.ConversionList);
     });
   });
@@ -1031,7 +1037,9 @@ void main() {
   unittest.group('obj-schema-CustomDimension', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCustomDimension();
-      var od = api.CustomDimension.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CustomDimension.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCustomDimension(od as api.CustomDimension);
     });
   });
@@ -1039,7 +1047,9 @@ void main() {
   unittest.group('obj-schema-CustomMetric', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCustomMetric();
-      var od = api.CustomMetric.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CustomMetric.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCustomMetric(od as api.CustomMetric);
     });
   });
@@ -1047,7 +1057,9 @@ void main() {
   unittest.group('obj-schema-ReportFiles', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReportFiles();
-      var od = api.ReportFiles.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ReportFiles.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkReportFiles(od as api.ReportFiles);
     });
   });
@@ -1055,7 +1067,9 @@ void main() {
   unittest.group('obj-schema-Report', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReport();
-      var od = api.Report.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Report.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkReport(od as api.Report);
     });
   });
@@ -1063,7 +1077,9 @@ void main() {
   unittest.group('obj-schema-ReportApiColumnSpec', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReportApiColumnSpec();
-      var od = api.ReportApiColumnSpec.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ReportApiColumnSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkReportApiColumnSpec(od as api.ReportApiColumnSpec);
     });
   });
@@ -1071,7 +1087,9 @@ void main() {
   unittest.group('obj-schema-ReportRequestFilters', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReportRequestFilters();
-      var od = api.ReportRequestFilters.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ReportRequestFilters.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkReportRequestFilters(od as api.ReportRequestFilters);
     });
   });
@@ -1079,7 +1097,9 @@ void main() {
   unittest.group('obj-schema-ReportRequestOrderBy', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReportRequestOrderBy();
-      var od = api.ReportRequestOrderBy.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ReportRequestOrderBy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkReportRequestOrderBy(od as api.ReportRequestOrderBy);
     });
   });
@@ -1087,7 +1107,9 @@ void main() {
   unittest.group('obj-schema-ReportRequestReportScope', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReportRequestReportScope();
-      var od = api.ReportRequestReportScope.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ReportRequestReportScope.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkReportRequestReportScope(od as api.ReportRequestReportScope);
     });
   });
@@ -1095,7 +1117,9 @@ void main() {
   unittest.group('obj-schema-ReportRequestTimeRange', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReportRequestTimeRange();
-      var od = api.ReportRequestTimeRange.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ReportRequestTimeRange.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkReportRequestTimeRange(od as api.ReportRequestTimeRange);
     });
   });
@@ -1103,7 +1127,9 @@ void main() {
   unittest.group('obj-schema-ReportRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReportRequest();
-      var od = api.ReportRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ReportRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkReportRequest(od as api.ReportRequest);
     });
   });
@@ -1111,7 +1137,9 @@ void main() {
   unittest.group('obj-schema-ReportRow', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReportRow();
-      var od = api.ReportRow.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.ReportRow.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkReportRow(od as api.ReportRow);
     });
   });
@@ -1119,7 +1147,9 @@ void main() {
   unittest.group('obj-schema-SavedColumn', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSavedColumn();
-      var od = api.SavedColumn.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SavedColumn.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSavedColumn(od as api.SavedColumn);
     });
   });
@@ -1127,7 +1157,9 @@ void main() {
   unittest.group('obj-schema-SavedColumnList', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSavedColumnList();
-      var od = api.SavedColumnList.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SavedColumnList.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSavedColumnList(od as api.SavedColumnList);
     });
   });
@@ -1135,7 +1167,9 @@ void main() {
   unittest.group('obj-schema-UpdateAvailabilityRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUpdateAvailabilityRequest();
-      var od = api.UpdateAvailabilityRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UpdateAvailabilityRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUpdateAvailabilityRequest(od as api.UpdateAvailabilityRequest);
     });
   });
@@ -1143,7 +1177,9 @@ void main() {
   unittest.group('obj-schema-UpdateAvailabilityResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUpdateAvailabilityResponse();
-      var od = api.UpdateAvailabilityResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UpdateAvailabilityResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUpdateAvailabilityResponse(od as api.UpdateAvailabilityResponse);
     });
   });

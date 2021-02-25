@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -486,7 +485,7 @@ class Area {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basemapZOrder != null) 'basemapZOrder': basemapZOrder!.toJson(),
         if (hasExternalEdges != null) 'hasExternalEdges': hasExternalEdges!,
         if (internalEdges != null) 'internalEdges': internalEdges!,
@@ -530,7 +529,7 @@ class BasemapZOrder {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (zGrade != null) 'zGrade': zGrade!,
         if (zPlane != null) 'zPlane': zPlane!,
         if (zWithinGrade != null) 'zWithinGrade': zWithinGrade!,
@@ -573,7 +572,7 @@ class ExtrudedArea {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (area != null) 'area': area!.toJson(),
         if (maxZ != null) 'maxZ': maxZ!,
         if (minZ != null) 'minZ': minZ!,
@@ -674,7 +673,7 @@ class Feature {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (geometry != null) 'geometry': geometry!.toJson(),
         if (placeId != null) 'placeId': placeId!,
@@ -759,7 +758,7 @@ class FeatureTile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (coordinates != null) 'coordinates': coordinates!.toJson(),
         if (features != null)
           'features': features!.map((value) => value.toJson()).toList(),
@@ -810,7 +809,7 @@ class FirstDerivativeElevationGrid {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (altitudeMultiplier != null)
           'altitudeMultiplier': altitudeMultiplier!,
         if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
@@ -876,7 +875,7 @@ class Geometry {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (areas != null)
           'areas': areas!.map((value) => value.toJson()).toList(),
         if (extrudedAreas != null)
@@ -935,7 +934,7 @@ class Line {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basemapZOrder != null) 'basemapZOrder': basemapZOrder!.toJson(),
         if (vertexOffsets != null) 'vertexOffsets': vertexOffsets!.toJson(),
         if (zOrder != null) 'zOrder': zOrder!,
@@ -967,7 +966,7 @@ class ModeledVolume {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (strips != null)
           'strips': strips!.map((value) => value.toJson()).toList(),
         if (vertexOffsets != null) 'vertexOffsets': vertexOffsets!.toJson(),
@@ -990,7 +989,7 @@ class ProviderInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
       };
 }
@@ -1024,7 +1023,7 @@ class Relation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (relatedFeatureIndex != null)
           'relatedFeatureIndex': relatedFeatureIndex!,
         if (relationType != null) 'relationType': relationType!,
@@ -1046,7 +1045,7 @@ class RoadInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (isPrivate != null) 'isPrivate': isPrivate!,
       };
 }
@@ -1074,7 +1073,7 @@ class Row {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (altitudeDiffs != null) 'altitudeDiffs': altitudeDiffs!,
       };
 }
@@ -1155,7 +1154,7 @@ class SecondDerivativeElevationGrid {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (altitudeMultiplier != null)
           'altitudeMultiplier': altitudeMultiplier!,
         if (columnCount != null) 'columnCount': columnCount!,
@@ -1178,7 +1177,7 @@ class SegmentInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (roadInfo != null) 'roadInfo': roadInfo!.toJson(),
       };
 }
@@ -1224,7 +1223,7 @@ class TerrainTile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (coordinates != null) 'coordinates': coordinates!.toJson(),
         if (firstDerivative != null)
           'firstDerivative': firstDerivative!.toJson(),
@@ -1279,7 +1278,7 @@ class TileCoordinates {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
         if (zoom != null) 'zoom': zoom!,
@@ -1308,7 +1307,7 @@ class TriangleStrip {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (vertexIndices != null) 'vertexIndices': vertexIndices!,
       };
 }
@@ -1341,7 +1340,7 @@ class Vertex2DList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (xOffsets != null) 'xOffsets': xOffsets!,
         if (yOffsets != null) 'yOffsets': yOffsets!,
       };
@@ -1381,7 +1380,7 @@ class Vertex3DList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (xOffsets != null) 'xOffsets': xOffsets!,
         if (yOffsets != null) 'yOffsets': yOffsets!,
         if (zOffsets != null) 'zOffsets': zOffsets!,

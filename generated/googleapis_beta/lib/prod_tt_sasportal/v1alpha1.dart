@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -3598,7 +3597,7 @@ class SasPortalAssignment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
       };
@@ -3638,7 +3637,7 @@ class SasPortalCreateSignedDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (encodedDevice != null) 'encodedDevice': encodedDevice!,
         if (installerId != null) 'installerId': installerId!,
       };
@@ -3675,7 +3674,7 @@ class SasPortalCustomer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (sasUserIds != null) 'sasUserIds': sasUserIds!,
@@ -3732,7 +3731,7 @@ class SasPortalDeployment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowedBillingModes != null)
           'allowedBillingModes': allowedBillingModes!,
         if (defaultBillingMode != null)
@@ -3834,7 +3833,7 @@ class SasPortalDevice {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (activeConfig != null) 'activeConfig': activeConfig!.toJson(),
         if (deviceMetadata != null) 'deviceMetadata': deviceMetadata!.toJson(),
         if (displayName != null) 'displayName': displayName!,
@@ -3888,7 +3887,7 @@ class SasPortalDeviceAirInterface {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (radioTechnology != null) 'radioTechnology': radioTechnology!,
         if (supportedSpec != null) 'supportedSpec': supportedSpec!,
       };
@@ -3978,7 +3977,7 @@ class SasPortalDeviceConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (airInterface != null) 'airInterface': airInterface!.toJson(),
         if (callSign != null) 'callSign': callSign!,
         if (category != null) 'category': category!,
@@ -4076,7 +4075,7 @@ class SasPortalDeviceGrant {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channelType != null) 'channelType': channelType!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (frequencyRange != null) 'frequencyRange': frequencyRange!.toJson(),
@@ -4097,7 +4096,7 @@ class SasPortalDeviceMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Information about the model of the device.
@@ -4137,7 +4136,7 @@ class SasPortalDeviceModel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
         if (hardwareVersion != null) 'hardwareVersion': hardwareVersion!,
         if (name != null) 'name': name!,
@@ -4166,7 +4165,7 @@ class SasPortalDpaMoveList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dpaId != null) 'dpaId': dpaId!,
         if (frequencyRange != null) 'frequencyRange': frequencyRange!.toJson(),
       };
@@ -4186,7 +4185,7 @@ class SasPortalEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Frequency range from `low_frequency` to `high_frequency`.
@@ -4208,7 +4207,7 @@ class SasPortalFrequencyRange {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (highFrequencyMhz != null) 'highFrequencyMhz': highFrequencyMhz!,
         if (lowFrequencyMhz != null) 'lowFrequencyMhz': lowFrequencyMhz!,
       };
@@ -4222,7 +4221,7 @@ class SasPortalGenerateSecretRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Response for GenerateSecret.
@@ -4238,7 +4237,7 @@ class SasPortalGenerateSecretResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (secret != null) 'secret': secret!,
       };
 }
@@ -4258,7 +4257,7 @@ class SasPortalGetPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resource != null) 'resource': resource!,
       };
 }
@@ -4409,7 +4408,7 @@ class SasPortalInstallationParams {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (antennaAzimuth != null) 'antennaAzimuth': antennaAzimuth!,
         if (antennaBeamwidth != null) 'antennaBeamwidth': antennaBeamwidth!,
         if (antennaDowntilt != null) 'antennaDowntilt': antennaDowntilt!,
@@ -4453,7 +4452,7 @@ class SasPortalListCustomersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customers != null)
           'customers': customers!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -4485,7 +4484,7 @@ class SasPortalListDeploymentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deployments != null)
           'deployments': deployments!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -4517,7 +4516,7 @@ class SasPortalListDevicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (devices != null)
           'devices': devices!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -4549,7 +4548,7 @@ class SasPortalListNodesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (nodes != null)
           'nodes': nodes!.map((value) => value.toJson()).toList(),
@@ -4572,7 +4571,7 @@ class SasPortalMoveDeploymentRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (destination != null) 'destination': destination!,
       };
 }
@@ -4593,7 +4592,7 @@ class SasPortalMoveDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (destination != null) 'destination': destination!,
       };
 }
@@ -4614,7 +4613,7 @@ class SasPortalMoveNodeRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (destination != null) 'destination': destination!,
       };
 }
@@ -4648,7 +4647,7 @@ class SasPortalNode {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (sasUserIds != null) 'sasUserIds': sasUserIds!,
@@ -4709,29 +4708,27 @@ class SasPortalOperation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -4777,7 +4774,7 @@ class SasPortalPolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (assignments != null)
           'assignments': assignments!.map((value) => value.toJson()).toList(),
         if (etag != null) 'etag': etag!,
@@ -4810,7 +4807,7 @@ class SasPortalSetPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
         if (resource != null) 'resource': resource!,
       };
@@ -4835,7 +4832,7 @@ class SasPortalSignDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (device != null) 'device': device!.toJson(),
       };
 }
@@ -4873,8 +4870,8 @@ class SasPortalStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -4887,7 +4884,7 @@ class SasPortalStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -4917,7 +4914,7 @@ class SasPortalTestPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
         if (resource != null) 'resource': resource!,
       };
@@ -4938,7 +4935,7 @@ class SasPortalTestPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -4977,7 +4974,7 @@ class SasPortalUpdateSignedDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (encodedDevice != null) 'encodedDevice': encodedDevice!,
         if (installerId != null) 'installerId': installerId!,
       };
@@ -5017,7 +5014,7 @@ class SasPortalValidateInstallerRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (encodedSecret != null) 'encodedSecret': encodedSecret!,
         if (installerId != null) 'installerId': installerId!,
         if (secret != null) 'secret': secret!,
@@ -5032,5 +5029,5 @@ class SasPortalValidateInstallerResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }

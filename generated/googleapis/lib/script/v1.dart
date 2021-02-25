@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -993,7 +992,7 @@ class Content {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (files != null)
           'files': files!.map((value) => value.toJson()).toList(),
         if (scriptId != null) 'scriptId': scriptId!,
@@ -1022,7 +1021,7 @@ class CreateProjectRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parentId != null) 'parentId': parentId!,
         if (title != null) 'title': title!,
       };
@@ -1063,7 +1062,7 @@ class Deployment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deploymentConfig != null)
           'deploymentConfig': deploymentConfig!.toJson(),
         if (deploymentId != null) 'deploymentId': deploymentId!,
@@ -1104,7 +1103,7 @@ class DeploymentConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (manifestFileName != null) 'manifestFileName': manifestFileName!,
         if (scriptId != null) 'scriptId': scriptId!,
@@ -1126,7 +1125,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A configuration that defines how a deployment is accessed externally.
@@ -1168,7 +1167,7 @@ class EntryPoint {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addOn != null) 'addOn': addOn!.toJson(),
         if (entryPointType != null) 'entryPointType': entryPointType!,
         if (executionApi != null) 'executionApi': executionApi!.toJson(),
@@ -1191,7 +1190,7 @@ class ExecuteStreamResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (result != null) 'result': result!.toJson(),
       };
 }
@@ -1236,7 +1235,7 @@ class ExecutionError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorMessage != null) 'errorMessage': errorMessage!,
         if (errorType != null) 'errorType': errorType!,
         if (scriptStackTraceElements != null)
@@ -1309,7 +1308,7 @@ class ExecutionRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (devMode != null) 'devMode': devMode!,
         if (function != null) 'function': function!,
         if (parameters != null) 'parameters': parameters!,
@@ -1342,7 +1341,7 @@ class ExecutionResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (result != null) 'result': result!,
       };
 }
@@ -1421,7 +1420,7 @@ class File {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (functionSet != null) 'functionSet': functionSet!.toJson(),
         if (lastModifyUser != null) 'lastModifyUser': lastModifyUser!.toJson(),
@@ -1479,7 +1478,7 @@ class GoogleAppsScriptTypeAddOnEntryPoint {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addOnType != null) 'addOnType': addOnType!,
         if (description != null) 'description': description!,
         if (helpUrl != null) 'helpUrl': helpUrl!,
@@ -1512,7 +1511,7 @@ class GoogleAppsScriptTypeExecutionApiConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
       };
 }
@@ -1531,7 +1530,7 @@ class GoogleAppsScriptTypeExecutionApiEntryPoint {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entryPointConfig != null)
           'entryPointConfig': entryPointConfig!.toJson(),
       };
@@ -1550,7 +1549,7 @@ class GoogleAppsScriptTypeFunction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
       };
 }
@@ -1574,7 +1573,7 @@ class GoogleAppsScriptTypeFunctionSet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (values != null)
           'values': values!.map((value) => value.toJson()).toList(),
       };
@@ -1661,7 +1660,7 @@ class GoogleAppsScriptTypeProcess {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (duration != null) 'duration': duration!,
         if (functionName != null) 'functionName': functionName!,
         if (processStatus != null) 'processStatus': processStatus!,
@@ -1703,7 +1702,7 @@ class GoogleAppsScriptTypeUser {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (domain != null) 'domain': domain!,
         if (email != null) 'email': email!,
         if (name != null) 'name': name!,
@@ -1745,7 +1744,7 @@ class GoogleAppsScriptTypeWebAppConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
         if (executeAs != null) 'executeAs': executeAs!,
       };
@@ -1771,7 +1770,7 @@ class GoogleAppsScriptTypeWebAppEntryPoint {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entryPointConfig != null)
           'entryPointConfig': entryPointConfig!.toJson(),
         if (url != null) 'url': url!,
@@ -1801,7 +1800,7 @@ class ListDeploymentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deployments != null)
           'deployments': deployments!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1833,7 +1832,7 @@ class ListScriptProcessesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (processes != null)
           'processes': processes!.map((value) => value.toJson()).toList(),
@@ -1865,7 +1864,7 @@ class ListUserProcessesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (processes != null)
           'processes': processes!.map((value) => value.toJson()).toList(),
@@ -1888,7 +1887,7 @@ class ListValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (values != null)
           'values': values!.map((value) => value.toJson()).toList(),
       };
@@ -1918,7 +1917,7 @@ class ListVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (versions != null)
           'versions': versions!.map((value) => value.toJson()).toList(),
@@ -1960,7 +1959,7 @@ class Metrics {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (activeUsers != null)
           'activeUsers': activeUsers!.map((value) => value.toJson()).toList(),
         if (failedExecutions != null)
@@ -1997,7 +1996,7 @@ class MetricsValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
         if (value != null) 'value': value!,
@@ -2056,17 +2055,16 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (response != null) 'response': response!,
@@ -2127,7 +2125,7 @@ class Project {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (creator != null) 'creator': creator!.toJson(),
         if (lastModifyUser != null) 'lastModifyUser': lastModifyUser!.toJson(),
@@ -2152,7 +2150,7 @@ class ScriptExecutionResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (returnValue != null) 'returnValue': returnValue!.toJson(),
       };
 }
@@ -2176,7 +2174,7 @@ class ScriptStackTraceElement {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (function != null) 'function': function!,
         if (lineNumber != null) 'lineNumber': lineNumber!,
       };
@@ -2214,8 +2212,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -2228,7 +2226,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -2245,18 +2243,16 @@ class Struct {
 
   Struct.fromJson(core.Map _json) {
     if (_json.containsKey('fields')) {
-      fields = (_json['fields'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              Value.fromJson(item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      fields = (_json['fields'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          Value.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fields != null)
           'fields':
               fields!.map((key, item) => core.MapEntry(key, item.toJson())),
@@ -2277,7 +2273,7 @@ class UpdateDeploymentRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deploymentConfig != null)
           'deploymentConfig': deploymentConfig!.toJson(),
       };
@@ -2348,14 +2344,13 @@ class Value {
       numberValue = (_json['numberValue'] as core.num).toDouble();
     }
     if (_json.containsKey('protoValue')) {
-      protoValue = (_json['protoValue'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      protoValue =
+          (_json['protoValue'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('stringValue')) {
       stringValue = _json['stringValue'] as core.String;
@@ -2366,7 +2361,7 @@ class Value {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
         if (bytesValue != null) 'bytesValue': bytesValue!,
         if (dateValue != null) 'dateValue': dateValue!,
@@ -2417,7 +2412,7 @@ class Version {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (scriptId != null) 'scriptId': scriptId!,

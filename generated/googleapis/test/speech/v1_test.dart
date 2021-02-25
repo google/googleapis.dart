@@ -773,7 +773,9 @@ void main() {
   unittest.group('obj-schema-ListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
-      var od = api.ListOperationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListOperationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
@@ -781,7 +783,9 @@ void main() {
   unittest.group('obj-schema-LongRunningRecognizeMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLongRunningRecognizeMetadata();
-      var od = api.LongRunningRecognizeMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LongRunningRecognizeMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLongRunningRecognizeMetadata(od as api.LongRunningRecognizeMetadata);
     });
   });
@@ -789,7 +793,9 @@ void main() {
   unittest.group('obj-schema-LongRunningRecognizeRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLongRunningRecognizeRequest();
-      var od = api.LongRunningRecognizeRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LongRunningRecognizeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLongRunningRecognizeRequest(od as api.LongRunningRecognizeRequest);
     });
   });
@@ -797,7 +803,9 @@ void main() {
   unittest.group('obj-schema-LongRunningRecognizeResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLongRunningRecognizeResponse();
-      var od = api.LongRunningRecognizeResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LongRunningRecognizeResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLongRunningRecognizeResponse(od as api.LongRunningRecognizeResponse);
     });
   });
@@ -805,7 +813,9 @@ void main() {
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOperation();
-      var od = api.Operation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od as api.Operation);
     });
   });
@@ -813,7 +823,9 @@ void main() {
   unittest.group('obj-schema-RecognitionAudio', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRecognitionAudio();
-      var od = api.RecognitionAudio.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RecognitionAudio.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRecognitionAudio(od as api.RecognitionAudio);
     });
   });
@@ -821,7 +833,9 @@ void main() {
   unittest.group('obj-schema-RecognitionConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRecognitionConfig();
-      var od = api.RecognitionConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RecognitionConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRecognitionConfig(od as api.RecognitionConfig);
     });
   });
@@ -829,7 +843,9 @@ void main() {
   unittest.group('obj-schema-RecognitionMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRecognitionMetadata();
-      var od = api.RecognitionMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RecognitionMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRecognitionMetadata(od as api.RecognitionMetadata);
     });
   });
@@ -837,7 +853,9 @@ void main() {
   unittest.group('obj-schema-RecognizeRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRecognizeRequest();
-      var od = api.RecognizeRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RecognizeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRecognizeRequest(od as api.RecognizeRequest);
     });
   });
@@ -845,7 +863,9 @@ void main() {
   unittest.group('obj-schema-RecognizeResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRecognizeResponse();
-      var od = api.RecognizeResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RecognizeResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRecognizeResponse(od as api.RecognizeResponse);
     });
   });
@@ -853,7 +873,9 @@ void main() {
   unittest.group('obj-schema-SpeakerDiarizationConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSpeakerDiarizationConfig();
-      var od = api.SpeakerDiarizationConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SpeakerDiarizationConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSpeakerDiarizationConfig(od as api.SpeakerDiarizationConfig);
     });
   });
@@ -861,7 +883,9 @@ void main() {
   unittest.group('obj-schema-SpeechContext', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSpeechContext();
-      var od = api.SpeechContext.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SpeechContext.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSpeechContext(od as api.SpeechContext);
     });
   });
@@ -869,7 +893,9 @@ void main() {
   unittest.group('obj-schema-SpeechRecognitionAlternative', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSpeechRecognitionAlternative();
-      var od = api.SpeechRecognitionAlternative.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SpeechRecognitionAlternative.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSpeechRecognitionAlternative(od as api.SpeechRecognitionAlternative);
     });
   });
@@ -877,7 +903,9 @@ void main() {
   unittest.group('obj-schema-SpeechRecognitionResult', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSpeechRecognitionResult();
-      var od = api.SpeechRecognitionResult.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SpeechRecognitionResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSpeechRecognitionResult(od as api.SpeechRecognitionResult);
     });
   });
@@ -885,7 +913,9 @@ void main() {
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStatus();
-      var od = api.Status.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od as api.Status);
     });
   });
@@ -893,7 +923,9 @@ void main() {
   unittest.group('obj-schema-WordInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWordInfo();
-      var od = api.WordInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.WordInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkWordInfo(od as api.WordInfo);
     });
   });

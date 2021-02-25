@@ -173,7 +173,9 @@ void main() {
   unittest.group('obj-schema-Webfont', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWebfont();
-      var od = api.Webfont.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Webfont.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkWebfont(od as api.Webfont);
     });
   });
@@ -181,7 +183,9 @@ void main() {
   unittest.group('obj-schema-WebfontList', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWebfontList();
-      var od = api.WebfontList.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.WebfontList.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkWebfontList(od as api.WebfontList);
     });
   });

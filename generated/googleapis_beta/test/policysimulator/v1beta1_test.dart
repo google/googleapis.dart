@@ -1072,8 +1072,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1AccessStateDiff();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudPolicysimulatorV1beta1AccessStateDiff.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudPolicysimulatorV1beta1AccessStateDiff(
           od as api.GoogleCloudPolicysimulatorV1beta1AccessStateDiff);
     });
@@ -1082,8 +1083,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudPolicysimulatorV1beta1AccessTuple', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1AccessTuple();
-      var od =
-          api.GoogleCloudPolicysimulatorV1beta1AccessTuple.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudPolicysimulatorV1beta1AccessTuple.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudPolicysimulatorV1beta1AccessTuple(
           od as api.GoogleCloudPolicysimulatorV1beta1AccessTuple);
     });
@@ -1093,8 +1095,9 @@ void main() {
       'obj-schema-GoogleCloudPolicysimulatorV1beta1BindingExplanation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1BindingExplanation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudPolicysimulatorV1beta1BindingExplanation.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudPolicysimulatorV1beta1BindingExplanation(
           od as api.GoogleCloudPolicysimulatorV1beta1BindingExplanation);
     });
@@ -1106,9 +1109,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership(
           od as api
               .GoogleCloudPolicysimulatorV1beta1BindingExplanationAnnotatedMembership);
@@ -1119,8 +1123,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1ExplainedAccess();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudPolicysimulatorV1beta1ExplainedAccess.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudPolicysimulatorV1beta1ExplainedAccess(
           od as api.GoogleCloudPolicysimulatorV1beta1ExplainedAccess);
     });
@@ -1130,8 +1135,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1ExplainedPolicy();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudPolicysimulatorV1beta1ExplainedPolicy.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudPolicysimulatorV1beta1ExplainedPolicy(
           od as api.GoogleCloudPolicysimulatorV1beta1ExplainedPolicy);
     });
@@ -1142,8 +1148,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse(
           od as api.GoogleCloudPolicysimulatorV1beta1ListReplayResultsResponse);
     });
@@ -1152,7 +1159,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudPolicysimulatorV1beta1Replay', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1Replay();
-      var od = api.GoogleCloudPolicysimulatorV1beta1Replay.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudPolicysimulatorV1beta1Replay.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudPolicysimulatorV1beta1Replay(
           od as api.GoogleCloudPolicysimulatorV1beta1Replay);
     });
@@ -1162,8 +1171,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1ReplayConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudPolicysimulatorV1beta1ReplayConfig.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudPolicysimulatorV1beta1ReplayConfig(
           od as api.GoogleCloudPolicysimulatorV1beta1ReplayConfig);
     });
@@ -1172,8 +1182,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudPolicysimulatorV1beta1ReplayDiff', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1ReplayDiff();
-      var od =
-          api.GoogleCloudPolicysimulatorV1beta1ReplayDiff.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudPolicysimulatorV1beta1ReplayDiff.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudPolicysimulatorV1beta1ReplayDiff(
           od as api.GoogleCloudPolicysimulatorV1beta1ReplayDiff);
     });
@@ -1184,9 +1195,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata(
           od as api.GoogleCloudPolicysimulatorV1beta1ReplayOperationMetadata);
     });
@@ -1196,8 +1208,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1ReplayResult();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudPolicysimulatorV1beta1ReplayResult.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudPolicysimulatorV1beta1ReplayResult(
           od as api.GoogleCloudPolicysimulatorV1beta1ReplayResult);
     });
@@ -1207,9 +1220,10 @@ void main() {
       'obj-schema-GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudPolicysimulatorV1beta1ReplayResultsSummary();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudPolicysimulatorV1beta1ReplayResultsSummary(
           od as api.GoogleCloudPolicysimulatorV1beta1ReplayResultsSummary);
     });
@@ -1218,7 +1232,9 @@ void main() {
   unittest.group('obj-schema-GoogleIamV1AuditConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1AuditConfig();
-      var od = api.GoogleIamV1AuditConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIamV1AuditConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamV1AuditConfig(od as api.GoogleIamV1AuditConfig);
     });
   });
@@ -1226,7 +1242,9 @@ void main() {
   unittest.group('obj-schema-GoogleIamV1AuditLogConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1AuditLogConfig();
-      var od = api.GoogleIamV1AuditLogConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIamV1AuditLogConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamV1AuditLogConfig(od as api.GoogleIamV1AuditLogConfig);
     });
   });
@@ -1234,7 +1252,9 @@ void main() {
   unittest.group('obj-schema-GoogleIamV1Binding', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1Binding();
-      var od = api.GoogleIamV1Binding.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIamV1Binding.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamV1Binding(od as api.GoogleIamV1Binding);
     });
   });
@@ -1242,7 +1262,9 @@ void main() {
   unittest.group('obj-schema-GoogleIamV1Policy', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1Policy();
-      var od = api.GoogleIamV1Policy.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIamV1Policy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamV1Policy(od as api.GoogleIamV1Policy);
     });
   });
@@ -1250,7 +1272,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
-      var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningListOperationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningListOperationsResponse(
           od as api.GoogleLongrunningListOperationsResponse);
     });
@@ -1259,7 +1283,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
-      var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningOperation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
     });
   });
@@ -1267,7 +1293,9 @@ void main() {
   unittest.group('obj-schema-GoogleRpcStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
-      var od = api.GoogleRpcStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleRpcStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
     });
   });
@@ -1275,7 +1303,9 @@ void main() {
   unittest.group('obj-schema-GoogleTypeDate', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeDate();
-      var od = api.GoogleTypeDate.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleTypeDate.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleTypeDate(od as api.GoogleTypeDate);
     });
   });
@@ -1283,7 +1313,9 @@ void main() {
   unittest.group('obj-schema-GoogleTypeExpr', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeExpr();
-      var od = api.GoogleTypeExpr.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleTypeExpr.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleTypeExpr(od as api.GoogleTypeExpr);
     });
   });

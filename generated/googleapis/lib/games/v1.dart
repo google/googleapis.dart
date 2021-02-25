@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1716,7 +1715,7 @@ class AchievementDefinition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (achievementType != null) 'achievementType': achievementType!,
         if (description != null) 'description': description!,
         if (experiencePoints != null) 'experiencePoints': experiencePoints!,
@@ -1767,7 +1766,7 @@ class AchievementDefinitionsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -1803,7 +1802,7 @@ class AchievementIncrementResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currentSteps != null) 'currentSteps': currentSteps!,
         if (kind != null) 'kind': kind!,
         if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked!,
@@ -1837,7 +1836,7 @@ class AchievementRevealResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currentState != null) 'currentState': currentState!,
         if (kind != null) 'kind': kind!,
       };
@@ -1872,7 +1871,7 @@ class AchievementSetStepsAtLeastResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currentSteps != null) 'currentSteps': currentSteps!,
         if (kind != null) 'kind': kind!,
         if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked!,
@@ -1901,7 +1900,7 @@ class AchievementUnlockResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (newlyUnlocked != null) 'newlyUnlocked': newlyUnlocked!,
       };
@@ -1932,7 +1931,7 @@ class AchievementUpdateMultipleRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (updates != null)
           'updates': updates!.map((value) => value.toJson()).toList(),
@@ -1965,7 +1964,7 @@ class AchievementUpdateMultipleResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (updatedAchievements != null)
           'updatedAchievements':
@@ -2024,7 +2023,7 @@ class AchievementUpdateRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (achievementId != null) 'achievementId': achievementId!,
         if (incrementPayload != null)
           'incrementPayload': incrementPayload!.toJson(),
@@ -2086,7 +2085,7 @@ class AchievementUpdateResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (achievementId != null) 'achievementId': achievementId!,
         if (currentState != null) 'currentState': currentState!,
         if (currentSteps != null) 'currentSteps': currentSteps!,
@@ -2194,7 +2193,7 @@ class Application {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (achievementCount != null) 'achievement_count': achievementCount!,
         if (assets != null)
           'assets': assets!.map((value) => value.toJson()).toList(),
@@ -2241,7 +2240,7 @@ class ApplicationCategory {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (primary != null) 'primary': primary!,
         if (secondary != null) 'secondary': secondary!,
@@ -2278,7 +2277,7 @@ class ApplicationVerifyResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternatePlayerId != null)
           'alternate_player_id': alternatePlayerId!,
         if (kind != null) 'kind': kind!,
@@ -2313,7 +2312,7 @@ class Category {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (category != null) 'category': category!,
         if (experiencePoints != null) 'experiencePoints': experiencePoints!,
         if (kind != null) 'kind': kind!,
@@ -2350,7 +2349,7 @@ class CategoryListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -2371,7 +2370,7 @@ class EndPoint {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
       };
 }
@@ -2418,7 +2417,7 @@ class EventBatchRecordFailure {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (failureCause != null) 'failureCause': failureCause!,
         if (kind != null) 'kind': kind!,
         if (range != null) 'range': range!.toJson(),
@@ -2446,7 +2445,7 @@ class EventChild {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (childId != null) 'childId': childId!,
         if (kind != null) 'kind': kind!,
       };
@@ -2518,7 +2517,7 @@ class EventDefinition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (childEvents != null)
           'childEvents': childEvents!.map((value) => value.toJson()).toList(),
         if (description != null) 'description': description!,
@@ -2561,7 +2560,7 @@ class EventDefinitionListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -2598,7 +2597,7 @@ class EventPeriodRange {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (periodEndMillis != null) 'periodEndMillis': periodEndMillis!,
         if (periodStartMillis != null) 'periodStartMillis': periodStartMillis!,
@@ -2636,7 +2635,7 @@ class EventPeriodUpdate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (timePeriod != null) 'timePeriod': timePeriod!.toJson(),
         if (updates != null)
@@ -2677,7 +2676,7 @@ class EventRecordFailure {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (eventId != null) 'eventId': eventId!,
         if (failureCause != null) 'failureCause': failureCause!,
         if (kind != null) 'kind': kind!,
@@ -2721,7 +2720,7 @@ class EventRecordRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currentTimeMillis != null) 'currentTimeMillis': currentTimeMillis!,
         if (kind != null) 'kind': kind!,
         if (requestId != null) 'requestId': requestId!,
@@ -2757,7 +2756,7 @@ class EventUpdateRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (definitionId != null) 'definitionId': definitionId!,
         if (kind != null) 'kind': kind!,
         if (updateCount != null) 'updateCount': updateCount!,
@@ -2807,7 +2806,7 @@ class EventUpdateResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (batchFailures != null)
           'batchFailures':
               batchFailures!.map((value) => value.toJson()).toList(),
@@ -2847,7 +2846,7 @@ class GamesAchievementIncrement {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (requestId != null) 'requestId': requestId!,
         if (steps != null) 'steps': steps!,
@@ -2875,7 +2874,7 @@ class GamesAchievementSetStepsAtLeast {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (steps != null) 'steps': steps!,
       };
@@ -2920,7 +2919,7 @@ class ImageAsset {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
@@ -3000,7 +2999,7 @@ class Instance {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (acquisitionUri != null) 'acquisitionUri': acquisitionUri!,
         if (androidInstance != null)
           'androidInstance': androidInstance!.toJson(),
@@ -3047,7 +3046,7 @@ class InstanceAndroidDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enablePiracyCheck != null) 'enablePiracyCheck': enablePiracyCheck!,
         if (kind != null) 'kind': kind!,
         if (packageName != null) 'packageName': packageName!,
@@ -3108,7 +3107,7 @@ class InstanceIosDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bundleIdentifier != null) 'bundleIdentifier': bundleIdentifier!,
         if (itunesAppId != null) 'itunesAppId': itunesAppId!,
         if (kind != null) 'kind': kind!,
@@ -3147,7 +3146,7 @@ class InstanceWebDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (launchUrl != null) 'launchUrl': launchUrl!,
         if (preferred != null) 'preferred': preferred!,
@@ -3206,7 +3205,7 @@ class Leaderboard {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (iconUrl != null) 'iconUrl': iconUrl!,
         if (id != null) 'id': id!,
         if (isIconUrlDefault != null) 'isIconUrlDefault': isIconUrlDefault!,
@@ -3289,7 +3288,7 @@ class LeaderboardEntry {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (formattedScore != null) 'formattedScore': formattedScore!,
         if (formattedScoreRank != null)
           'formattedScoreRank': formattedScoreRank!,
@@ -3334,7 +3333,7 @@ class LeaderboardListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -3381,7 +3380,7 @@ class LeaderboardScoreRank {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (formattedNumScores != null)
           'formattedNumScores': formattedNumScores!,
         if (formattedRank != null) 'formattedRank': formattedRank!,
@@ -3445,7 +3444,7 @@ class LeaderboardScores {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -3488,7 +3487,7 @@ class MetagameConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currentVersion != null) 'currentVersion': currentVersion!,
         if (kind != null) 'kind': kind!,
         if (playerLevels != null)
@@ -3519,7 +3518,7 @@ class PlayerName {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (familyName != null) 'familyName': familyName!,
         if (givenName != null) 'givenName': givenName!,
       };
@@ -3623,7 +3622,7 @@ class Player {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (avatarImageUrl != null) 'avatarImageUrl': avatarImageUrl!,
         if (bannerUrlLandscape != null)
           'bannerUrlLandscape': bannerUrlLandscape!,
@@ -3702,7 +3701,7 @@ class PlayerAchievement {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (achievementState != null) 'achievementState': achievementState!,
         if (currentSteps != null) 'currentSteps': currentSteps!,
         if (experiencePoints != null) 'experiencePoints': experiencePoints!,
@@ -3745,7 +3744,7 @@ class PlayerAchievementListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -3795,7 +3794,7 @@ class PlayerEvent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (definitionId != null) 'definitionId': definitionId!,
         if (formattedNumEvents != null)
           'formattedNumEvents': formattedNumEvents!,
@@ -3835,7 +3834,7 @@ class PlayerEventListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -3889,7 +3888,7 @@ class PlayerExperienceInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currentExperiencePoints != null)
           'currentExperiencePoints': currentExperiencePoints!,
         if (currentLevel != null) 'currentLevel': currentLevel!.toJson(),
@@ -3984,7 +3983,7 @@ class PlayerLeaderboardScore {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (friendsRank != null) 'friendsRank': friendsRank!.toJson(),
         if (kind != null) 'kind': kind!,
         if (leaderboardId != null) 'leaderboard_id': leaderboardId!,
@@ -4037,7 +4036,7 @@ class PlayerLeaderboardScoreListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -4079,7 +4078,7 @@ class PlayerLevel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (level != null) 'level': level!,
         if (maxExperiencePoints != null)
@@ -4119,7 +4118,7 @@ class PlayerListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -4174,7 +4173,7 @@ class PlayerScore {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (formattedScore != null) 'formattedScore': formattedScore!,
         if (kind != null) 'kind': kind!,
         if (score != null) 'score': score!,
@@ -4207,7 +4206,7 @@ class PlayerScoreListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (submittedScores != null)
           'submittedScores':
@@ -4273,7 +4272,7 @@ class PlayerScoreResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (beatenScoreTimeSpans != null)
           'beatenScoreTimeSpans': beatenScoreTimeSpans!,
         if (formattedScore != null) 'formattedScore': formattedScore!,
@@ -4310,7 +4309,7 @@ class PlayerScoreSubmissionList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (scores != null)
           'scores': scores!.map((value) => value.toJson()).toList(),
@@ -4354,7 +4353,7 @@ class ProfileSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (friendsListVisibility != null)
           'friendsListVisibility': friendsListVisibility!,
         if (kind != null) 'kind': kind!,
@@ -4404,7 +4403,7 @@ class ResolveSnapshotHeadRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (maxConflictsPerSnapshot != null)
           'maxConflictsPerSnapshot': maxConflictsPerSnapshot!,
         if (resolutionPolicy != null) 'resolutionPolicy': resolutionPolicy!,
@@ -4425,7 +4424,7 @@ class ResolveSnapshotHeadResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (snapshot != null) 'snapshot': snapshot!.toJson(),
       };
 }
@@ -4465,7 +4464,7 @@ class RevisionCheckResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
         if (kind != null) 'kind': kind!,
         if (revisionStatus != null) 'revisionStatus': revisionStatus!,
@@ -4515,7 +4514,7 @@ class ScoreSubmission {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (leaderboardId != null) 'leaderboardId': leaderboardId!,
         if (score != null) 'score': score!,
@@ -4610,7 +4609,7 @@ class Snapshot {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (coverImage != null) 'coverImage': coverImage!.toJson(),
         if (description != null) 'description': description!,
         if (driveId != null) 'driveId': driveId!,
@@ -4694,7 +4693,7 @@ class SnapshotCoverImageResource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentHash != null) 'contentHash': contentHash!,
         if (downloadUrl != null) 'downloadUrl': downloadUrl!,
         if (height != null) 'height': height!,
@@ -4760,7 +4759,7 @@ class SnapshotDataResource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentHash != null) 'contentHash': contentHash!,
         if (downloadUrl != null) 'downloadUrl': downloadUrl!,
         if (resourceId != null) 'resourceId': resourceId!,
@@ -4825,7 +4824,7 @@ class SnapshotExtended {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (conflictingRevisions != null)
           'conflictingRevisions':
               conflictingRevisions!.map((value) => value.toJson()).toList(),
@@ -4877,7 +4876,7 @@ class SnapshotImage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (kind != null) 'kind': kind!,
         if (mimeType != null) 'mime_type': mimeType!,
@@ -4918,7 +4917,7 @@ class SnapshotListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -4974,7 +4973,7 @@ class SnapshotMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (deviceName != null) 'deviceName': deviceName!,
         if (gameplayDuration != null) 'gameplayDuration': gameplayDuration!,
@@ -5021,7 +5020,7 @@ class SnapshotRevision {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blob != null) 'blob': blob!.toJson(),
         if (coverImage != null) 'coverImage': coverImage!.toJson(),
         if (id != null) 'id': id!,
@@ -5141,7 +5140,7 @@ class StatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (avgSessionLengthMinutes != null)
           'avg_session_length_minutes': avgSessionLengthMinutes!,
         if (churnProbability != null) 'churn_probability': churnProbability!,

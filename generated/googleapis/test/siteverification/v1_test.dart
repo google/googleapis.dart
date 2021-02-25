@@ -230,8 +230,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildSiteVerificationWebResourceGettokenRequestSite();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.SiteVerificationWebResourceGettokenRequestSite.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkSiteVerificationWebResourceGettokenRequestSite(
           od as api.SiteVerificationWebResourceGettokenRequestSite);
     });
@@ -240,8 +241,9 @@ void main() {
   unittest.group('obj-schema-SiteVerificationWebResourceGettokenRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSiteVerificationWebResourceGettokenRequest();
-      var od =
-          api.SiteVerificationWebResourceGettokenRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SiteVerificationWebResourceGettokenRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSiteVerificationWebResourceGettokenRequest(
           od as api.SiteVerificationWebResourceGettokenRequest);
     });
@@ -250,8 +252,9 @@ void main() {
   unittest.group('obj-schema-SiteVerificationWebResourceGettokenResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSiteVerificationWebResourceGettokenResponse();
-      var od =
-          api.SiteVerificationWebResourceGettokenResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SiteVerificationWebResourceGettokenResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSiteVerificationWebResourceGettokenResponse(
           od as api.SiteVerificationWebResourceGettokenResponse);
     });
@@ -260,7 +263,9 @@ void main() {
   unittest.group('obj-schema-SiteVerificationWebResourceListResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSiteVerificationWebResourceListResponse();
-      var od = api.SiteVerificationWebResourceListResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SiteVerificationWebResourceListResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSiteVerificationWebResourceListResponse(
           od as api.SiteVerificationWebResourceListResponse);
     });
@@ -269,7 +274,9 @@ void main() {
   unittest.group('obj-schema-SiteVerificationWebResourceResourceSite', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSiteVerificationWebResourceResourceSite();
-      var od = api.SiteVerificationWebResourceResourceSite.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SiteVerificationWebResourceResourceSite.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSiteVerificationWebResourceResourceSite(
           od as api.SiteVerificationWebResourceResourceSite);
     });
@@ -278,7 +285,9 @@ void main() {
   unittest.group('obj-schema-SiteVerificationWebResourceResource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSiteVerificationWebResourceResource();
-      var od = api.SiteVerificationWebResourceResource.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SiteVerificationWebResourceResource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSiteVerificationWebResourceResource(
           od as api.SiteVerificationWebResourceResource);
     });

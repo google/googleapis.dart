@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -3081,7 +3080,7 @@ class AnnotationClientVersionRanges {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cfiRange != null) 'cfiRange': cfiRange!.toJson(),
         if (contentVersion != null) 'contentVersion': contentVersion!,
         if (gbImageRange != null) 'gbImageRange': gbImageRange!.toJson(),
@@ -3131,7 +3130,7 @@ class AnnotationCurrentVersionRanges {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cfiRange != null) 'cfiRange': cfiRange!.toJson(),
         if (contentVersion != null) 'contentVersion': contentVersion!,
         if (gbImageRange != null) 'gbImageRange': gbImageRange!.toJson(),
@@ -3167,7 +3166,7 @@ class AnnotationLayerSummary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowedCharacterCount != null)
           'allowedCharacterCount': allowedCharacterCount!,
         if (limitType != null) 'limitType': limitType!,
@@ -3293,7 +3292,7 @@ class Annotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (afterSelectedText != null) 'afterSelectedText': afterSelectedText!,
         if (beforeSelectedText != null)
           'beforeSelectedText': beforeSelectedText!,
@@ -3355,7 +3354,7 @@ class Annotations {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -3391,7 +3390,7 @@ class AnnotationsSummaryLayers {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowedCharacterCount != null)
           'allowedCharacterCount': allowedCharacterCount!,
         if (layerId != null) 'layerId': layerId!,
@@ -3421,7 +3420,7 @@ class AnnotationsSummary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (layers != null)
           'layers': layers!.map((value) => value.toJson()).toList(),
@@ -3463,7 +3462,7 @@ class Annotationsdata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -3502,7 +3501,7 @@ class BooksAnnotationsRange {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endOffset != null) 'endOffset': endOffset!,
         if (endPosition != null) 'endPosition': endPosition!,
         if (startOffset != null) 'startOffset': startOffset!,
@@ -3533,7 +3532,7 @@ class BooksCloudloadingResource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (author != null) 'author': author!,
         if (processingState != null) 'processingState': processingState!,
         if (title != null) 'title': title!,
@@ -3552,7 +3551,7 @@ class BooksVolumesRecommendedRateResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (consistencyToken != null) 'consistency_token': consistencyToken!,
       };
 }
@@ -3626,7 +3625,7 @@ class Bookshelf {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (access != null) 'access': access!,
         if (created != null) 'created': created!,
         if (description != null) 'description': description!,
@@ -3662,7 +3661,7 @@ class Bookshelves {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -3688,7 +3687,7 @@ class CategoryItems {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (badgeUrl != null) 'badgeUrl': badgeUrl!,
         if (categoryId != null) 'categoryId': categoryId!,
         if (name != null) 'name': name!,
@@ -3716,7 +3715,7 @@ class Category {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -3799,7 +3798,7 @@ class ConcurrentAccessRestriction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceAllowed != null) 'deviceAllowed': deviceAllowed!,
         if (kind != null) 'kind': kind!,
         if (maxConcurrentDevices != null)
@@ -3894,7 +3893,7 @@ class DictionaryAnnotationdata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationType != null) 'annotationType': annotationType!,
         if (data != null) 'data': data!.toJson(),
         if (encodedData != null) 'encodedData': encodedData!,
@@ -3920,7 +3919,7 @@ class DictlayerdataCommon {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (title != null) 'title': title!,
       };
 }
@@ -3941,7 +3940,7 @@ class DictlayerdataDictSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attribution != null) 'attribution': attribution!,
         if (url != null) 'url': url!,
       };
@@ -3962,7 +3961,7 @@ class DictlayerdataDictWordsDerivativesSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attribution != null) 'attribution': attribution!,
         if (url != null) 'url': url!,
       };
@@ -3984,7 +3983,7 @@ class DictlayerdataDictWordsDerivatives {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (source != null) 'source': source!.toJson(),
         if (text != null) 'text': text!,
       };
@@ -4005,7 +4004,7 @@ class DictlayerdataDictWordsExamplesSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attribution != null) 'attribution': attribution!,
         if (url != null) 'url': url!,
       };
@@ -4027,7 +4026,7 @@ class DictlayerdataDictWordsExamples {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (source != null) 'source': source!.toJson(),
         if (text != null) 'text': text!,
       };
@@ -4048,7 +4047,7 @@ class DictlayerdataDictWordsSensesConjugations {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
         if (value != null) 'value': value!,
       };
@@ -4070,7 +4069,7 @@ class DictlayerdataDictWordsSensesDefinitionsExamplesSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attribution != null) 'attribution': attribution!,
         if (url != null) 'url': url!,
       };
@@ -4092,7 +4091,7 @@ class DictlayerdataDictWordsSensesDefinitionsExamples {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (source != null) 'source': source!.toJson(),
         if (text != null) 'text': text!,
       };
@@ -4117,7 +4116,7 @@ class DictlayerdataDictWordsSensesDefinitions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (definition != null) 'definition': definition!,
         if (examples != null)
           'examples': examples!.map((value) => value.toJson()).toList(),
@@ -4139,7 +4138,7 @@ class DictlayerdataDictWordsSensesSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attribution != null) 'attribution': attribution!,
         if (url != null) 'url': url!,
       };
@@ -4160,7 +4159,7 @@ class DictlayerdataDictWordsSensesSynonymsSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attribution != null) 'attribution': attribution!,
         if (url != null) 'url': url!,
       };
@@ -4182,7 +4181,7 @@ class DictlayerdataDictWordsSensesSynonyms {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (source != null) 'source': source!.toJson(),
         if (text != null) 'text': text!,
       };
@@ -4240,7 +4239,7 @@ class DictlayerdataDictWordsSenses {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (conjugations != null)
           'conjugations': conjugations!.map((value) => value.toJson()).toList(),
         if (definitions != null)
@@ -4272,7 +4271,7 @@ class DictlayerdataDictWordsSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attribution != null) 'attribution': attribution!,
         if (url != null) 'url': url!,
       };
@@ -4317,7 +4316,7 @@ class DictlayerdataDictWords {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (derivatives != null)
           'derivatives': derivatives!.map((value) => value.toJson()).toList(),
         if (examples != null)
@@ -4349,7 +4348,7 @@ class DictlayerdataDict {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (source != null) 'source': source!.toJson(),
         if (words != null)
           'words': words!.map((value) => value.toJson()).toList(),
@@ -4377,7 +4376,7 @@ class Dictlayerdata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (common != null) 'common': common!.toJson(),
         if (dict != null) 'dict': dict!.toJson(),
         if (kind != null) 'kind': kind!,
@@ -4415,7 +4414,7 @@ class DiscoveryclustersClustersBannerWithContentContainer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fillColorArgb != null) 'fillColorArgb': fillColorArgb!,
         if (imageUrl != null) 'imageUrl': imageUrl!,
         if (maskColorArgb != null) 'maskColorArgb': maskColorArgb!,
@@ -4463,7 +4462,7 @@ class DiscoveryclustersClusters {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bannerWithContentContainer != null)
           'banner_with_content_container': bannerWithContentContainer!.toJson(),
         if (subTitle != null) 'subTitle': subTitle!,
@@ -4500,7 +4499,7 @@ class Discoveryclusters {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusters != null)
           'clusters': clusters!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -4596,7 +4595,7 @@ class DownloadAccessRestriction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceAllowed != null) 'deviceAllowed': deviceAllowed!,
         if (downloadsAcquired != null) 'downloadsAcquired': downloadsAcquired!,
         if (justAcquired != null) 'justAcquired': justAcquired!,
@@ -4635,7 +4634,7 @@ class DownloadAccesses {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (downloadAccessList != null)
           'downloadAccessList':
               downloadAccessList!.map((value) => value.toJson()).toList(),
@@ -4657,7 +4656,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Family membership info of the user that made the request.
@@ -4695,7 +4694,7 @@ class FamilyInfoMembership {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (acquirePermission != null) 'acquirePermission': acquirePermission!,
         if (ageGroup != null) 'ageGroup': ageGroup!,
         if (allowedMaturityRating != null)
@@ -4724,7 +4723,7 @@ class FamilyInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (membership != null) 'membership': membership!.toJson(),
       };
@@ -4809,7 +4808,7 @@ class GeoAnnotationdata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationType != null) 'annotationType': annotationType!,
         if (data != null) 'data': data!.toJson(),
         if (encodedData != null) 'encodedData': encodedData!,
@@ -4861,7 +4860,7 @@ class GeolayerdataCommon {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (lang != null) 'lang': lang!,
         if (previewImageUrl != null) 'previewImageUrl': previewImageUrl!,
         if (snippet != null) 'snippet': snippet!,
@@ -4885,7 +4884,7 @@ class GeolayerdataGeoViewportHi {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (latitude != null) 'latitude': latitude!,
         if (longitude != null) 'longitude': longitude!,
       };
@@ -4906,7 +4905,7 @@ class GeolayerdataGeoViewportLo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (latitude != null) 'latitude': latitude!,
         if (longitude != null) 'longitude': longitude!,
       };
@@ -4932,7 +4931,7 @@ class GeolayerdataGeoViewport {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hi != null) 'hi': hi!.toJson(),
         if (lo != null) 'lo': lo!.toJson(),
       };
@@ -5006,7 +5005,7 @@ class GeolayerdataGeo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boundary != null) 'boundary': boundary!,
         if (cachePolicy != null) 'cachePolicy': cachePolicy!,
         if (countryCode != null) 'countryCode': countryCode!,
@@ -5039,7 +5038,7 @@ class Geolayerdata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (common != null) 'common': common!.toJson(),
         if (geo != null) 'geo': geo!.toJson(),
         if (kind != null) 'kind': kind!,
@@ -5073,7 +5072,7 @@ class Layersummaries {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -5174,7 +5173,7 @@ class Layersummary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationCount != null) 'annotationCount': annotationCount!,
         if (annotationTypes != null) 'annotationTypes': annotationTypes!,
         if (annotationsDataLink != null)
@@ -5220,7 +5219,7 @@ class MetadataItems {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (downloadUrl != null) 'download_url': downloadUrl!,
         if (encryptedKey != null) 'encrypted_key': encryptedKey!,
         if (language != null) 'language': language!,
@@ -5250,7 +5249,7 @@ class Metadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -5335,7 +5334,7 @@ class Notification {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (body != null) 'body': body!,
         if (crmExperimentIds != null) 'crmExperimentIds': crmExperimentIds!,
         if (docId != null) 'doc_id': docId!,
@@ -5388,7 +5387,7 @@ class OffersItemsItems {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (author != null) 'author': author!,
         if (canonicalVolumeLink != null)
           'canonicalVolumeLink': canonicalVolumeLink!,
@@ -5425,7 +5424,7 @@ class OffersItems {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (artUrl != null) 'artUrl': artUrl!,
         if (gservicesKey != null) 'gservicesKey': gservicesKey!,
         if (id != null) 'id': id!,
@@ -5455,7 +5454,7 @@ class Offers {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -5511,7 +5510,7 @@ class ReadingPosition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (epubCfiPosition != null) 'epubCfiPosition': epubCfiPosition!,
         if (gbImagePosition != null) 'gbImagePosition': gbImagePosition!,
         if (gbTextPosition != null) 'gbTextPosition': gbTextPosition!,
@@ -5548,7 +5547,7 @@ class RequestAccessData {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (concurrentAccess != null)
           'concurrentAccess': concurrentAccess!.toJson(),
         if (downloadAccess != null) 'downloadAccess': downloadAccess!.toJson(),
@@ -5569,7 +5568,7 @@ class ReviewAuthor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
       };
 }
@@ -5600,7 +5599,7 @@ class ReviewSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (extraDescription != null) 'extraDescription': extraDescription!,
         if (url != null) 'url': url!,
@@ -5680,7 +5679,7 @@ class Review {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (author != null) 'author': author!.toJson(),
         if (content != null) 'content': content!,
         if (date != null) 'date': date!,
@@ -5718,7 +5717,7 @@ class SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (amountInMicros != null) 'amountInMicros': amountInMicros!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (releaseNumber != null) 'releaseNumber': releaseNumber!,
@@ -5750,7 +5749,7 @@ class SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (amountInMicros != null) 'amountInMicros': amountInMicros!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (releaseNumber != null) 'releaseNumber': releaseNumber!,
@@ -5787,7 +5786,7 @@ class SeriesSeriesSeriesSubscriptionReleaseInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cancelTime != null) 'cancelTime': cancelTime!,
         if (currentReleaseInfo != null)
           'currentReleaseInfo': currentReleaseInfo!.toJson(),
@@ -5848,7 +5847,7 @@ class SeriesSeries {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bannerImageUrl != null) 'bannerImageUrl': bannerImageUrl!,
         if (eligibleForSubscription != null)
           'eligibleForSubscription': eligibleForSubscription!,
@@ -5884,7 +5883,7 @@ class Series {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (series != null)
           'series': series!.map((value) => value.toJson()).toList(),
@@ -5914,7 +5913,7 @@ class Seriesmembership {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (member != null)
           'member': member!.map((value) => value.toJson()).toList(),
@@ -5938,7 +5937,7 @@ class UsersettingsNotesExport {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (folderName != null) 'folderName': folderName!,
         if (isEnabled != null) 'isEnabled': isEnabled!,
       };
@@ -5955,7 +5954,7 @@ class UsersettingsNotificationMatchMyInterests {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (optedState != null) 'opted_state': optedState!,
       };
 }
@@ -5971,7 +5970,7 @@ class UsersettingsNotificationMoreFromAuthors {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (optedState != null) 'opted_state': optedState!,
       };
 }
@@ -5987,7 +5986,7 @@ class UsersettingsNotificationMoreFromSeries {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (optedState != null) 'opted_state': optedState!,
       };
 }
@@ -6003,7 +6002,7 @@ class UsersettingsNotificationPriceDrop {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (optedState != null) 'opted_state': optedState!,
       };
 }
@@ -6019,7 +6018,7 @@ class UsersettingsNotificationRewardExpirations {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (optedState != null) 'opted_state': optedState!,
       };
 }
@@ -6056,7 +6055,7 @@ class UsersettingsNotification {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (matchMyInterests != null)
           'matchMyInterests': matchMyInterests!.toJson(),
         if (moreFromAuthors != null)
@@ -6092,7 +6091,7 @@ class Usersettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (notesExport != null) 'notesExport': notesExport!.toJson(),
         if (notification != null) 'notification': notification!.toJson(),
@@ -6132,7 +6131,7 @@ class VolumeAccessInfoEpub {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (acsTokenLink != null) 'acsTokenLink': acsTokenLink!,
         if (downloadLink != null) 'downloadLink': downloadLink!,
         if (isAvailable != null) 'isAvailable': isAvailable!,
@@ -6172,7 +6171,7 @@ class VolumeAccessInfoPdf {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (acsTokenLink != null) 'acsTokenLink': acsTokenLink!,
         if (downloadLink != null) 'downloadLink': downloadLink!,
         if (isAvailable != null) 'isAvailable': isAvailable!,
@@ -6305,7 +6304,7 @@ class VolumeAccessInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessViewStatus != null) 'accessViewStatus': accessViewStatus!,
         if (country != null) 'country': country!,
         if (downloadAccess != null) 'downloadAccess': downloadAccess!.toJson(),
@@ -6350,7 +6349,7 @@ class VolumeLayerInfoLayers {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (layerId != null) 'layerId': layerId!,
         if (volumeAnnotationsVersion != null)
           'volumeAnnotationsVersion': volumeAnnotationsVersion!,
@@ -6373,7 +6372,7 @@ class VolumeLayerInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (layers != null)
           'layers': layers!.map((value) => value.toJson()).toList(),
       };
@@ -6392,7 +6391,7 @@ class VolumeRecommendedInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (explanation != null) 'explanation': explanation!,
       };
 }
@@ -6422,7 +6421,7 @@ class VolumeSaleInfoListPrice {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (amount != null) 'amount': amount!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
       };
@@ -6444,7 +6443,7 @@ class VolumeSaleInfoOffersListPrice {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (amountInMicros != null) 'amountInMicros': amountInMicros!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
       };
@@ -6466,7 +6465,7 @@ class VolumeSaleInfoOffersRentalDuration {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
         if (unit != null) 'unit': unit!,
       };
@@ -6488,7 +6487,7 @@ class VolumeSaleInfoOffersRetailPrice {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (amountInMicros != null) 'amountInMicros': amountInMicros!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
       };
@@ -6533,7 +6532,7 @@ class VolumeSaleInfoOffers {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (finskyOfferType != null) 'finskyOfferType': finskyOfferType!,
         if (giftable != null) 'giftable': giftable!,
         if (listPrice != null) 'listPrice': listPrice!.toJson(),
@@ -6568,7 +6567,7 @@ class VolumeSaleInfoRetailPrice {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (amount != null) 'amount': amount!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
       };
@@ -6653,7 +6652,7 @@ class VolumeSaleInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (buyLink != null) 'buyLink': buyLink!,
         if (country != null) 'country': country!,
         if (isEbook != null) 'isEbook': isEbook!,
@@ -6679,7 +6678,7 @@ class VolumeSearchInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (textSnippet != null) 'textSnippet': textSnippet!,
       };
 }
@@ -6708,7 +6707,7 @@ class VolumeUserInfoCopy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowedCharacterCount != null)
           'allowedCharacterCount': allowedCharacterCount!,
         if (limitType != null) 'limitType': limitType!,
@@ -6747,7 +6746,7 @@ class VolumeUserInfoFamilySharing {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (familyRole != null) 'familyRole': familyRole!,
         if (isSharingAllowed != null) 'isSharingAllowed': isSharingAllowed!,
         if (isSharingDisabledByFop != null)
@@ -6771,7 +6770,7 @@ class VolumeUserInfoRentalPeriod {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endUtcSec != null) 'endUtcSec': endUtcSec!,
         if (startUtcSec != null) 'startUtcSec': startUtcSec!,
       };
@@ -6788,7 +6787,7 @@ class VolumeUserInfoUserUploadedVolumeInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (processingState != null) 'processingState': processingState!,
       };
 }
@@ -6936,7 +6935,7 @@ class VolumeUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (acquiredTime != null) 'acquiredTime': acquiredTime!,
         if (acquisitionType != null) 'acquisitionType': acquisitionType!,
         if (copy != null) 'copy': copy!.toJson(),
@@ -6990,7 +6989,7 @@ class VolumeVolumeInfoDimensions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (thickness != null) 'thickness': thickness!,
         if (width != null) 'width': width!,
@@ -7054,7 +7053,7 @@ class VolumeVolumeInfoImageLinks {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (extraLarge != null) 'extraLarge': extraLarge!,
         if (large != null) 'large': large!,
         if (medium != null) 'medium': medium!,
@@ -7084,7 +7083,7 @@ class VolumeVolumeInfoIndustryIdentifiers {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (identifier != null) 'identifier': identifier!,
         if (type != null) 'type': type!,
       };
@@ -7114,7 +7113,7 @@ class VolumeVolumeInfoPanelizationSummary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (containsEpubBubbles != null)
           'containsEpubBubbles': containsEpubBubbles!,
         if (containsImageBubbles != null)
@@ -7141,7 +7140,7 @@ class VolumeVolumeInfoReadingModes {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (image != null) 'image': image!,
         if (text != null) 'text': text!,
       };
@@ -7361,7 +7360,7 @@ class VolumeVolumeInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowAnonLogging != null) 'allowAnonLogging': allowAnonLogging!,
         if (authors != null) 'authors': authors!,
         if (averageRating != null) 'averageRating': averageRating!,
@@ -7494,7 +7493,7 @@ class Volume {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessInfo != null) 'accessInfo': accessInfo!.toJson(),
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
@@ -7535,7 +7534,7 @@ class Volume2 {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -7577,7 +7576,7 @@ class VolumeannotationContentRanges {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cfiRange != null) 'cfiRange': cfiRange!.toJson(),
         if (contentVersion != null) 'contentVersion': contentVersion!,
         if (gbImageRange != null) 'gbImageRange': gbImageRange!.toJson(),
@@ -7680,7 +7679,7 @@ class Volumeannotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotationDataId != null) 'annotationDataId': annotationDataId!,
         if (annotationDataLink != null)
           'annotationDataLink': annotationDataLink!,
@@ -7745,7 +7744,7 @@ class Volumeannotations {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -7785,7 +7784,7 @@ class Volumes {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -7808,7 +7807,7 @@ class VolumeseriesinfoVolumeSeriesIssue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (issueDisplayNumber != null)
           'issueDisplayNumber': issueDisplayNumber!,
         if (issueOrderNumber != null) 'issueOrderNumber': issueOrderNumber!,
@@ -7853,7 +7852,7 @@ class VolumeseriesinfoVolumeSeries {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (issue != null)
           'issue': issue!.map((value) => value.toJson()).toList(),
         if (orderNumber != null) 'orderNumber': orderNumber!,
@@ -7897,7 +7896,7 @@ class Volumeseriesinfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bookDisplayNumber != null) 'bookDisplayNumber': bookDisplayNumber!,
         if (kind != null) 'kind': kind!,
         if (shortSeriesBookTitle != null)

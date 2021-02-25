@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -3593,7 +3592,7 @@ class AcceleratorConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (acceleratorCount != null) 'acceleratorCount': acceleratorCount!,
         if (acceleratorTypeUri != null)
           'acceleratorTypeUri': acceleratorTypeUri!,
@@ -3621,7 +3620,7 @@ class AutoscalingConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (policyUri != null) 'policyUri': policyUri!,
       };
 }
@@ -3686,7 +3685,7 @@ class AutoscalingPolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicAlgorithm != null) 'basicAlgorithm': basicAlgorithm!.toJson(),
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
@@ -3723,7 +3722,7 @@ class BasicAutoscalingAlgorithm {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cooldownPeriod != null) 'cooldownPeriod': cooldownPeriod!,
         if (yarnConfig != null) 'yarnConfig': yarnConfig!.toJson(),
       };
@@ -3811,7 +3810,7 @@ class BasicYarnAutoscalingConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gracefulDecommissionTimeout != null)
           'gracefulDecommissionTimeout': gracefulDecommissionTimeout!,
         if (scaleDownFactor != null) 'scaleDownFactor': scaleDownFactor!,
@@ -3890,7 +3889,7 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
@@ -3905,7 +3904,7 @@ class CancelJobRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Describes the identifying information, config, and status of a cluster of
@@ -3982,13 +3981,12 @@ class Cluster {
           _json['config'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('metrics')) {
       metrics = ClusterMetrics.fromJson(
@@ -4009,7 +4007,7 @@ class Cluster {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterName != null) 'clusterName': clusterName!,
         if (clusterUuid != null) 'clusterUuid': clusterUuid!,
         if (config != null) 'config': config!.toJson(),
@@ -4188,7 +4186,7 @@ class ClusterConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (autoscalingConfig != null)
           'autoscalingConfig': autoscalingConfig!.toJson(),
         if (configBucket != null) 'configBucket': configBucket!,
@@ -4229,28 +4227,26 @@ class ClusterMetrics {
 
   ClusterMetrics.fromJson(core.Map _json) {
     if (_json.containsKey('hdfsMetrics')) {
-      hdfsMetrics = (_json['hdfsMetrics'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      hdfsMetrics =
+          (_json['hdfsMetrics'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('yarnMetrics')) {
-      yarnMetrics = (_json['yarnMetrics'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      yarnMetrics =
+          (_json['yarnMetrics'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hdfsMetrics != null) 'hdfsMetrics': hdfsMetrics!,
         if (yarnMetrics != null) 'yarnMetrics': yarnMetrics!,
       };
@@ -4287,7 +4283,7 @@ class ClusterOperation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!,
         if (operationId != null) 'operationId': operationId!,
@@ -4349,13 +4345,12 @@ class ClusterOperationMetadata {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('operationType')) {
       operationType = _json['operationType'] as core.String;
@@ -4378,7 +4373,7 @@ class ClusterOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterName != null) 'clusterName': clusterName!,
         if (clusterUuid != null) 'clusterUuid': clusterUuid!,
         if (description != null) 'description': description!,
@@ -4436,7 +4431,7 @@ class ClusterOperationStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
         if (innerState != null) 'innerState': innerState!,
         if (state != null) 'state': state!,
@@ -4465,21 +4460,20 @@ class ClusterSelector {
 
   ClusterSelector.fromJson(core.Map _json) {
     if (_json.containsKey('clusterLabels')) {
-      clusterLabels = (_json['clusterLabels'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      clusterLabels =
+          (_json['clusterLabels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('zone')) {
       zone = _json['zone'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterLabels != null) 'clusterLabels': clusterLabels!,
         if (zone != null) 'zone': zone!,
       };
@@ -4542,7 +4536,7 @@ class ClusterStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detail != null) 'detail': detail!,
         if (state != null) 'state': state!,
         if (stateStartTime != null) 'stateStartTime': stateStartTime!,
@@ -4558,7 +4552,7 @@ class DiagnoseClusterRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The location of diagnostic output.
@@ -4579,7 +4573,7 @@ class DiagnoseClusterResults {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (outputUri != null) 'outputUri': outputUri!,
       };
 }
@@ -4625,7 +4619,7 @@ class DiskConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bootDiskSizeGb != null) 'bootDiskSizeGb': bootDiskSizeGb!,
         if (bootDiskType != null) 'bootDiskType': bootDiskType!,
         if (numLocalSsds != null) 'numLocalSsds': numLocalSsds!,
@@ -4646,7 +4640,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Encryption settings for the cluster.
@@ -4665,7 +4659,7 @@ class EncryptionConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcePdKmsKeyName != null) 'gcePdKmsKeyName': gcePdKmsKeyName!,
       };
 }
@@ -4695,16 +4689,16 @@ class EndpointConfig {
     }
     if (_json.containsKey('httpPorts')) {
       httpPorts =
-          (_json['httpPorts'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+          (_json['httpPorts'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enableHttpPortAccess != null)
           'enableHttpPortAccess': enableHttpPortAccess!,
         if (httpPorts != null) 'httpPorts': httpPorts!,
@@ -4772,7 +4766,7 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,
@@ -4906,13 +4900,12 @@ class GceClusterConfig {
       internalIpOnly = _json['internalIpOnly'] as core.bool;
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('networkUri')) {
       networkUri = _json['networkUri'] as core.String;
@@ -4954,7 +4947,7 @@ class GceClusterConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (internalIpOnly != null) 'internalIpOnly': internalIpOnly!,
         if (metadata != null) 'metadata': metadata!,
         if (networkUri != null) 'networkUri': networkUri!,
@@ -4990,7 +4983,7 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (options != null) 'options': options!.toJson(),
       };
 }
@@ -5017,7 +5010,7 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (requestedPolicyVersion != null)
           'requestedPolicyVersion': requestedPolicyVersion!,
       };
@@ -5120,18 +5113,17 @@ class HadoopJob {
       mainJarFileUri = _json['mainJarFileUri'] as core.String;
     }
     if (_json.containsKey('properties')) {
-      properties = (_json['properties'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      properties =
+          (_json['properties'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (archiveUris != null) 'archiveUris': archiveUris!,
         if (args != null) 'args': args!,
         if (fileUris != null) 'fileUris': fileUris!,
@@ -5195,14 +5187,13 @@ class HiveJob {
           .toList();
     }
     if (_json.containsKey('properties')) {
-      properties = (_json['properties'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      properties =
+          (_json['properties'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('queryFileUri')) {
       queryFileUri = _json['queryFileUri'] as core.String;
@@ -5212,18 +5203,17 @@ class HiveJob {
           _json['queryList'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scriptVariables')) {
-      scriptVariables = (_json['scriptVariables'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      scriptVariables =
+          (_json['scriptVariables'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (continueOnFailure != null) 'continueOnFailure': continueOnFailure!,
         if (jarFileUris != null) 'jarFileUris': jarFileUris!,
         if (properties != null) 'properties': properties!,
@@ -5259,7 +5249,7 @@ class InjectCredentialsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterUuid != null) 'clusterUuid': clusterUuid!,
         if (credentialsCiphertext != null)
           'credentialsCiphertext': credentialsCiphertext!,
@@ -5321,7 +5311,7 @@ class InstanceGroupAutoscalingPolicyConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (maxInstances != null) 'maxInstances': maxInstances!,
         if (minInstances != null) 'minInstances': minInstances!,
         if (weight != null) 'weight': weight!,
@@ -5477,7 +5467,7 @@ class InstanceGroupConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accelerators != null)
           'accelerators': accelerators!.map((value) => value.toJson()).toList(),
         if (diskConfig != null) 'diskConfig': diskConfig!.toJson(),
@@ -5521,7 +5511,7 @@ class InstanceReference {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (instanceId != null) 'instanceId': instanceId!,
         if (instanceName != null) 'instanceName': instanceName!,
         if (publicKey != null) 'publicKey': publicKey!,
@@ -5563,14 +5553,13 @@ class InstantiateWorkflowTemplateRequest {
 
   InstantiateWorkflowTemplateRequest.fromJson(core.Map _json) {
     if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      parameters =
+          (_json['parameters'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('requestId')) {
       requestId = _json['requestId'] as core.String;
@@ -5580,7 +5569,7 @@ class InstantiateWorkflowTemplateRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parameters != null) 'parameters': parameters!,
         if (requestId != null) 'requestId': requestId!,
         if (version != null) 'version': version!,
@@ -5735,13 +5724,12 @@ class Job {
       jobUuid = _json['jobUuid'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('pigJob')) {
       pigJob = PigJob.fromJson(
@@ -5797,7 +5785,7 @@ class Job {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (driverControlFilesUri != null)
           'driverControlFilesUri': driverControlFilesUri!,
@@ -5866,7 +5854,7 @@ class JobMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (jobId != null) 'jobId': jobId!,
         if (operationType != null) 'operationType': operationType!,
         if (startTime != null) 'startTime': startTime!,
@@ -5896,14 +5884,13 @@ class JobPlacement {
 
   JobPlacement.fromJson(core.Map _json) {
     if (_json.containsKey('clusterLabels')) {
-      clusterLabels = (_json['clusterLabels'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      clusterLabels =
+          (_json['clusterLabels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('clusterName')) {
       clusterName = _json['clusterName'] as core.String;
@@ -5913,7 +5900,7 @@ class JobPlacement {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterLabels != null) 'clusterLabels': clusterLabels!,
         if (clusterName != null) 'clusterName': clusterName!,
         if (clusterUuid != null) 'clusterUuid': clusterUuid!,
@@ -5949,7 +5936,7 @@ class JobReference {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (jobId != null) 'jobId': jobId!,
         if (projectId != null) 'projectId': projectId!,
       };
@@ -5984,7 +5971,7 @@ class JobScheduling {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (maxFailuresPerHour != null)
           'maxFailuresPerHour': maxFailuresPerHour!,
         if (maxFailuresTotal != null) 'maxFailuresTotal': maxFailuresTotal!,
@@ -6057,7 +6044,7 @@ class JobStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (details != null) 'details': details!,
         if (state != null) 'state': state!,
         if (stateStartTime != null) 'stateStartTime': stateStartTime!,
@@ -6221,7 +6208,7 @@ class KerberosConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (crossRealmTrustAdminServer != null)
           'crossRealmTrustAdminServer': crossRealmTrustAdminServer!,
         if (crossRealmTrustKdc != null)
@@ -6302,7 +6289,7 @@ class LifecycleConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (autoDeleteTime != null) 'autoDeleteTime': autoDeleteTime!,
         if (autoDeleteTtl != null) 'autoDeleteTtl': autoDeleteTtl!,
         if (idleDeleteTtl != null) 'idleDeleteTtl': idleDeleteTtl!,
@@ -6336,7 +6323,7 @@ class ListAutoscalingPoliciesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (policies != null)
           'policies': policies!.map((value) => value.toJson()).toList(),
@@ -6372,7 +6359,7 @@ class ListClustersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusters != null)
           'clusters': clusters!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -6408,7 +6395,7 @@ class ListJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -6436,7 +6423,7 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
@@ -6472,7 +6459,7 @@ class ListWorkflowTemplatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (templates != null)
           'templates': templates!.map((value) => value.toJson()).toList(),
@@ -6491,18 +6478,17 @@ class LoggingConfig {
 
   LoggingConfig.fromJson(core.Map _json) {
     if (_json.containsKey('driverLogLevels')) {
-      driverLogLevels = (_json['driverLogLevels'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      driverLogLevels =
+          (_json['driverLogLevels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (driverLogLevels != null) 'driverLogLevels': driverLogLevels!,
       };
 }
@@ -6545,17 +6531,16 @@ class ManagedCluster {
           _json['config'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterName != null) 'clusterName': clusterName!,
         if (config != null) 'config': config!.toJson(),
         if (labels != null) 'labels': labels!,
@@ -6586,7 +6571,7 @@ class ManagedGroupConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (instanceGroupManagerName != null)
           'instanceGroupManagerName': instanceGroupManagerName!,
         if (instanceTemplateName != null)
@@ -6611,7 +6596,7 @@ class MetastoreConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataprocMetastoreService != null)
           'dataprocMetastoreService': dataprocMetastoreService!,
       };
@@ -6640,7 +6625,7 @@ class NodeGroupAffinity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nodeGroupUri != null) 'nodeGroupUri': nodeGroupUri!,
       };
 }
@@ -6675,7 +6660,7 @@ class NodeInitializationAction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (executableFile != null) 'executableFile': executableFile!,
         if (executionTimeout != null) 'executionTimeout': executionTimeout!,
       };
@@ -6735,29 +6720,27 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -6854,13 +6837,12 @@ class OrderedJob {
           _json['hiveJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('pigJob')) {
       pigJob = PigJob.fromJson(
@@ -6900,7 +6882,7 @@ class OrderedJob {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hadoopJob != null) 'hadoopJob': hadoopJob!.toJson(),
         if (hiveJob != null) 'hiveJob': hiveJob!.toJson(),
         if (labels != null) 'labels': labels!,
@@ -6938,7 +6920,7 @@ class ParameterValidation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (regex != null) 'regex': regex!.toJson(),
         if (values != null) 'values': values!.toJson(),
       };
@@ -7005,14 +6987,13 @@ class PigJob {
           _json['loggingConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('properties')) {
-      properties = (_json['properties'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      properties =
+          (_json['properties'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('queryFileUri')) {
       queryFileUri = _json['queryFileUri'] as core.String;
@@ -7022,18 +7003,17 @@ class PigJob {
           _json['queryList'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scriptVariables')) {
-      scriptVariables = (_json['scriptVariables'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      scriptVariables =
+          (_json['scriptVariables'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (continueOnFailure != null) 'continueOnFailure': continueOnFailure!,
         if (jarFileUris != null) 'jarFileUris': jarFileUris!,
         if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
@@ -7137,7 +7117,7 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bindings != null)
           'bindings': bindings!.map((value) => value.toJson()).toList(),
         if (etag != null) 'etag': etag!,
@@ -7210,14 +7190,13 @@ class PrestoJob {
       outputFormat = _json['outputFormat'] as core.String;
     }
     if (_json.containsKey('properties')) {
-      properties = (_json['properties'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      properties =
+          (_json['properties'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('queryFileUri')) {
       queryFileUri = _json['queryFileUri'] as core.String;
@@ -7228,7 +7207,7 @@ class PrestoJob {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clientTags != null) 'clientTags': clientTags!,
         if (continueOnFailure != null) 'continueOnFailure': continueOnFailure!,
         if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
@@ -7332,14 +7311,13 @@ class PySparkJob {
       mainPythonFileUri = _json['mainPythonFileUri'] as core.String;
     }
     if (_json.containsKey('properties')) {
-      properties = (_json['properties'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      properties =
+          (_json['properties'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('pythonFileUris')) {
       pythonFileUris = (_json['pythonFileUris'] as core.List)
@@ -7348,7 +7326,7 @@ class PySparkJob {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (archiveUris != null) 'archiveUris': archiveUris!,
         if (args != null) 'args': args!,
         if (fileUris != null) 'fileUris': fileUris!,
@@ -7383,7 +7361,7 @@ class QueryList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (queries != null) 'queries': queries!,
       };
 }
@@ -7408,7 +7386,7 @@ class RegexValidation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (regexes != null) 'regexes': regexes!,
       };
 }
@@ -7452,7 +7430,7 @@ class ReservationAffinity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (consumeReservationType != null)
           'consumeReservationType': consumeReservationType!,
         if (key != null) 'key': key!,
@@ -7476,7 +7454,7 @@ class SecurityConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kerberosConfig != null) 'kerberosConfig': kerberosConfig!.toJson(),
       };
 }
@@ -7499,7 +7477,7 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
       };
 }
@@ -7537,7 +7515,7 @@ class ShieldedInstanceConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enableIntegrityMonitoring != null)
           'enableIntegrityMonitoring': enableIntegrityMonitoring!,
         if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot!,
@@ -7589,18 +7567,17 @@ class SoftwareConfig {
           .toList();
     }
     if (_json.containsKey('properties')) {
-      properties = (_json['properties'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      properties =
+          (_json['properties'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (imageVersion != null) 'imageVersion': imageVersion!,
         if (optionalComponents != null)
           'optionalComponents': optionalComponents!,
@@ -7698,18 +7675,17 @@ class SparkJob {
       mainJarFileUri = _json['mainJarFileUri'] as core.String;
     }
     if (_json.containsKey('properties')) {
-      properties = (_json['properties'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      properties =
+          (_json['properties'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (archiveUris != null) 'archiveUris': archiveUris!,
         if (args != null) 'args': args!,
         if (fileUris != null) 'fileUris': fileUris!,
@@ -7795,18 +7771,17 @@ class SparkRJob {
       mainRFileUri = _json['mainRFileUri'] as core.String;
     }
     if (_json.containsKey('properties')) {
-      properties = (_json['properties'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      properties =
+          (_json['properties'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (archiveUris != null) 'archiveUris': archiveUris!,
         if (args != null) 'args': args!,
         if (fileUris != null) 'fileUris': fileUris!,
@@ -7863,14 +7838,13 @@ class SparkSqlJob {
           _json['loggingConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('properties')) {
-      properties = (_json['properties'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      properties =
+          (_json['properties'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('queryFileUri')) {
       queryFileUri = _json['queryFileUri'] as core.String;
@@ -7880,18 +7854,17 @@ class SparkSqlJob {
           _json['queryList'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scriptVariables')) {
-      scriptVariables = (_json['scriptVariables'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      scriptVariables =
+          (_json['scriptVariables'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (jarFileUris != null) 'jarFileUris': jarFileUris!,
         if (loggingConfig != null) 'loggingConfig': loggingConfig!.toJson(),
         if (properties != null) 'properties': properties!,
@@ -7934,7 +7907,7 @@ class StartClusterRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterUuid != null) 'clusterUuid': clusterUuid!,
         if (requestId != null) 'requestId': requestId!,
       };
@@ -7973,8 +7946,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -7987,7 +7960,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -8027,7 +8000,7 @@ class StopClusterRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterUuid != null) 'clusterUuid': clusterUuid!,
         if (requestId != null) 'requestId': requestId!,
       };
@@ -8065,7 +8038,7 @@ class SubmitJobRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (job != null) 'job': job!.toJson(),
         if (requestId != null) 'requestId': requestId!,
       };
@@ -8150,7 +8123,7 @@ class TemplateParameter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (fields != null) 'fields': fields!,
         if (name != null) 'name': name!,
@@ -8177,7 +8150,7 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -8197,7 +8170,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -8219,7 +8192,7 @@ class ValueValidation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (values != null) 'values': values!,
       };
 }
@@ -8242,7 +8215,7 @@ class WorkflowGraph {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nodes != null)
           'nodes': nodes!.map((value) => value.toJson()).toList(),
       };
@@ -8367,14 +8340,13 @@ class WorkflowMetadata {
           _json['graph'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      parameters =
+          (_json['parameters'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('startTime')) {
       startTime = _json['startTime'] as core.String;
@@ -8390,7 +8362,7 @@ class WorkflowMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterName != null) 'clusterName': clusterName!,
         if (clusterUuid != null) 'clusterUuid': clusterUuid!,
         if (createCluster != null) 'createCluster': createCluster!.toJson(),
@@ -8465,7 +8437,7 @@ class WorkflowNode {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (error != null) 'error': error!,
         if (jobId != null) 'jobId': jobId!,
         if (prerequisiteStepIds != null)
@@ -8575,13 +8547,12 @@ class WorkflowTemplate {
           .toList();
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -8604,7 +8575,7 @@ class WorkflowTemplate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (dagTimeout != null) 'dagTimeout': dagTimeout!,
         if (id != null) 'id': id!,
@@ -8644,7 +8615,7 @@ class WorkflowTemplatePlacement {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterSelector != null)
           'clusterSelector': clusterSelector!.toJson(),
         if (managedCluster != null) 'managedCluster': managedCluster!.toJson(),
@@ -8709,7 +8680,7 @@ class YarnApplication {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (progress != null) 'progress': progress!,
         if (state != null) 'state': state!,

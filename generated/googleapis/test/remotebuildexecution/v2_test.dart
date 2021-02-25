@@ -3710,7 +3710,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2Action', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2Action();
-      var od = api.BuildBazelRemoteExecutionV2Action.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2Action.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2Action(
           od as api.BuildBazelRemoteExecutionV2Action);
     });
@@ -3721,9 +3723,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities(
           od as api.BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities);
     });
@@ -3732,7 +3735,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2ActionResult', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ActionResult();
-      var od = api.BuildBazelRemoteExecutionV2ActionResult.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2ActionResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2ActionResult(
           od as api.BuildBazelRemoteExecutionV2ActionResult);
     });
@@ -3742,8 +3747,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2BatchReadBlobsRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.BuildBazelRemoteExecutionV2BatchReadBlobsRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2BatchReadBlobsRequest(
           od as api.BuildBazelRemoteExecutionV2BatchReadBlobsRequest);
     });
@@ -3753,8 +3759,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2BatchReadBlobsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.BuildBazelRemoteExecutionV2BatchReadBlobsResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2BatchReadBlobsResponse(
           od as api.BuildBazelRemoteExecutionV2BatchReadBlobsResponse);
     });
@@ -3765,8 +3772,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse(
           od as api.BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse);
     });
@@ -3776,8 +3784,9 @@ void main() {
       'obj-schema-BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest(
           od as api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest);
     });
@@ -3788,8 +3797,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest(
           od as api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest);
     });
@@ -3799,8 +3809,9 @@ void main() {
       'obj-schema-BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse(
           od as api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse);
     });
@@ -3812,8 +3823,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse(od
           as api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse);
     });
@@ -3822,8 +3834,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2CacheCapabilities', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2CacheCapabilities();
-      var od =
-          api.BuildBazelRemoteExecutionV2CacheCapabilities.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2CacheCapabilities.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2CacheCapabilities(
           od as api.BuildBazelRemoteExecutionV2CacheCapabilities);
     });
@@ -3832,7 +3845,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2Command', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2Command();
-      var od = api.BuildBazelRemoteExecutionV2Command.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2Command.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2Command(
           od as api.BuildBazelRemoteExecutionV2Command);
     });
@@ -3842,9 +3857,10 @@ void main() {
       'obj-schema-BuildBazelRemoteExecutionV2CommandEnvironmentVariable', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2CommandEnvironmentVariable();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.BuildBazelRemoteExecutionV2CommandEnvironmentVariable.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2CommandEnvironmentVariable(
           od as api.BuildBazelRemoteExecutionV2CommandEnvironmentVariable);
     });
@@ -3853,7 +3869,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2Digest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2Digest();
-      var od = api.BuildBazelRemoteExecutionV2Digest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2Digest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2Digest(
           od as api.BuildBazelRemoteExecutionV2Digest);
     });
@@ -3862,7 +3880,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2Directory', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2Directory();
-      var od = api.BuildBazelRemoteExecutionV2Directory.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2Directory.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2Directory(
           od as api.BuildBazelRemoteExecutionV2Directory);
     });
@@ -3871,8 +3891,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2DirectoryNode', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2DirectoryNode();
-      var od =
-          api.BuildBazelRemoteExecutionV2DirectoryNode.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2DirectoryNode.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2DirectoryNode(
           od as api.BuildBazelRemoteExecutionV2DirectoryNode);
     });
@@ -3882,8 +3903,9 @@ void main() {
       'obj-schema-BuildBazelRemoteExecutionV2ExecuteOperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ExecuteOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.BuildBazelRemoteExecutionV2ExecuteOperationMetadata.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2ExecuteOperationMetadata(
           od as api.BuildBazelRemoteExecutionV2ExecuteOperationMetadata);
     });
@@ -3892,8 +3914,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2ExecuteRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ExecuteRequest();
-      var od =
-          api.BuildBazelRemoteExecutionV2ExecuteRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2ExecuteRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2ExecuteRequest(
           od as api.BuildBazelRemoteExecutionV2ExecuteRequest);
     });
@@ -3902,8 +3925,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2ExecuteResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ExecuteResponse();
-      var od =
-          api.BuildBazelRemoteExecutionV2ExecuteResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2ExecuteResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2ExecuteResponse(
           od as api.BuildBazelRemoteExecutionV2ExecuteResponse);
     });
@@ -3913,8 +3937,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ExecutedActionMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.BuildBazelRemoteExecutionV2ExecutedActionMetadata.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2ExecutedActionMetadata(
           od as api.BuildBazelRemoteExecutionV2ExecutedActionMetadata);
     });
@@ -3924,8 +3949,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ExecutionCapabilities();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.BuildBazelRemoteExecutionV2ExecutionCapabilities.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2ExecutionCapabilities(
           od as api.BuildBazelRemoteExecutionV2ExecutionCapabilities);
     });
@@ -3934,8 +3960,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2ExecutionPolicy', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ExecutionPolicy();
-      var od =
-          api.BuildBazelRemoteExecutionV2ExecutionPolicy.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2ExecutionPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2ExecutionPolicy(
           od as api.BuildBazelRemoteExecutionV2ExecutionPolicy);
     });
@@ -3944,7 +3971,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2FileNode', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2FileNode();
-      var od = api.BuildBazelRemoteExecutionV2FileNode.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2FileNode.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2FileNode(
           od as api.BuildBazelRemoteExecutionV2FileNode);
     });
@@ -3954,8 +3983,9 @@ void main() {
       'obj-schema-BuildBazelRemoteExecutionV2FindMissingBlobsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2FindMissingBlobsRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.BuildBazelRemoteExecutionV2FindMissingBlobsRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2FindMissingBlobsRequest(
           od as api.BuildBazelRemoteExecutionV2FindMissingBlobsRequest);
     });
@@ -3965,8 +3995,9 @@ void main() {
       'obj-schema-BuildBazelRemoteExecutionV2FindMissingBlobsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2FindMissingBlobsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.BuildBazelRemoteExecutionV2FindMissingBlobsResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2FindMissingBlobsResponse(
           od as api.BuildBazelRemoteExecutionV2FindMissingBlobsResponse);
     });
@@ -3975,8 +4006,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2GetTreeResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2GetTreeResponse();
-      var od =
-          api.BuildBazelRemoteExecutionV2GetTreeResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2GetTreeResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2GetTreeResponse(
           od as api.BuildBazelRemoteExecutionV2GetTreeResponse);
     });
@@ -3985,7 +4017,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2LogFile', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2LogFile();
-      var od = api.BuildBazelRemoteExecutionV2LogFile.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2LogFile.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2LogFile(
           od as api.BuildBazelRemoteExecutionV2LogFile);
     });
@@ -3994,7 +4028,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2NodeProperty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2NodeProperty();
-      var od = api.BuildBazelRemoteExecutionV2NodeProperty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2NodeProperty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2NodeProperty(
           od as api.BuildBazelRemoteExecutionV2NodeProperty);
     });
@@ -4003,8 +4039,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2OutputDirectory', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2OutputDirectory();
-      var od =
-          api.BuildBazelRemoteExecutionV2OutputDirectory.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2OutputDirectory.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2OutputDirectory(
           od as api.BuildBazelRemoteExecutionV2OutputDirectory);
     });
@@ -4013,7 +4050,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2OutputFile', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2OutputFile();
-      var od = api.BuildBazelRemoteExecutionV2OutputFile.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2OutputFile.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2OutputFile(
           od as api.BuildBazelRemoteExecutionV2OutputFile);
     });
@@ -4022,8 +4061,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2OutputSymlink', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2OutputSymlink();
-      var od =
-          api.BuildBazelRemoteExecutionV2OutputSymlink.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2OutputSymlink.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2OutputSymlink(
           od as api.BuildBazelRemoteExecutionV2OutputSymlink);
     });
@@ -4032,7 +4072,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2Platform', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2Platform();
-      var od = api.BuildBazelRemoteExecutionV2Platform.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2Platform.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2Platform(
           od as api.BuildBazelRemoteExecutionV2Platform);
     });
@@ -4041,8 +4083,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2PlatformProperty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2PlatformProperty();
-      var od =
-          api.BuildBazelRemoteExecutionV2PlatformProperty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2PlatformProperty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2PlatformProperty(
           od as api.BuildBazelRemoteExecutionV2PlatformProperty);
     });
@@ -4052,8 +4095,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2PriorityCapabilities();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.BuildBazelRemoteExecutionV2PriorityCapabilities.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2PriorityCapabilities(
           od as api.BuildBazelRemoteExecutionV2PriorityCapabilities);
     });
@@ -4065,8 +4109,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildBuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange(od
           as api.BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange);
     });
@@ -4075,8 +4120,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2RequestMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2RequestMetadata();
-      var od =
-          api.BuildBazelRemoteExecutionV2RequestMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2RequestMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2RequestMetadata(
           od as api.BuildBazelRemoteExecutionV2RequestMetadata);
     });
@@ -4086,8 +4132,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ResultsCachePolicy();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.BuildBazelRemoteExecutionV2ResultsCachePolicy.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2ResultsCachePolicy(
           od as api.BuildBazelRemoteExecutionV2ResultsCachePolicy);
     });
@@ -4097,8 +4144,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ServerCapabilities();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.BuildBazelRemoteExecutionV2ServerCapabilities.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2ServerCapabilities(
           od as api.BuildBazelRemoteExecutionV2ServerCapabilities);
     });
@@ -4107,7 +4155,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2SymlinkNode', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2SymlinkNode();
-      var od = api.BuildBazelRemoteExecutionV2SymlinkNode.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2SymlinkNode.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2SymlinkNode(
           od as api.BuildBazelRemoteExecutionV2SymlinkNode);
     });
@@ -4116,7 +4166,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2ToolDetails', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2ToolDetails();
-      var od = api.BuildBazelRemoteExecutionV2ToolDetails.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2ToolDetails.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2ToolDetails(
           od as api.BuildBazelRemoteExecutionV2ToolDetails);
     });
@@ -4125,7 +4177,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelRemoteExecutionV2Tree', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2Tree();
-      var od = api.BuildBazelRemoteExecutionV2Tree.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelRemoteExecutionV2Tree.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2Tree(
           od as api.BuildBazelRemoteExecutionV2Tree);
     });
@@ -4135,8 +4189,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelRemoteExecutionV2WaitExecutionRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.BuildBazelRemoteExecutionV2WaitExecutionRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelRemoteExecutionV2WaitExecutionRequest(
           od as api.BuildBazelRemoteExecutionV2WaitExecutionRequest);
     });
@@ -4145,7 +4200,9 @@ void main() {
   unittest.group('obj-schema-BuildBazelSemverSemVer', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuildBazelSemverSemVer();
-      var od = api.BuildBazelSemverSemVer.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BuildBazelSemverSemVer.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBuildBazelSemverSemVer(od as api.BuildBazelSemverSemVer);
     });
   });
@@ -4153,8 +4210,9 @@ void main() {
   unittest.group('obj-schema-GoogleDevtoolsRemotebuildbotCommandDurations', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemotebuildbotCommandDurations();
-      var od =
-          api.GoogleDevtoolsRemotebuildbotCommandDurations.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleDevtoolsRemotebuildbotCommandDurations.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildbotCommandDurations(
           od as api.GoogleDevtoolsRemotebuildbotCommandDurations);
     });
@@ -4163,8 +4221,9 @@ void main() {
   unittest.group('obj-schema-GoogleDevtoolsRemotebuildbotCommandEvents', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemotebuildbotCommandEvents();
-      var od =
-          api.GoogleDevtoolsRemotebuildbotCommandEvents.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleDevtoolsRemotebuildbotCommandEvents.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildbotCommandEvents(
           od as api.GoogleDevtoolsRemotebuildbotCommandEvents);
     });
@@ -4173,8 +4232,9 @@ void main() {
   unittest.group('obj-schema-GoogleDevtoolsRemotebuildbotCommandStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemotebuildbotCommandStatus();
-      var od =
-          api.GoogleDevtoolsRemotebuildbotCommandStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleDevtoolsRemotebuildbotCommandStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildbotCommandStatus(
           od as api.GoogleDevtoolsRemotebuildbotCommandStatus);
     });
@@ -4183,8 +4243,9 @@ void main() {
   unittest.group('obj-schema-GoogleDevtoolsRemotebuildbotResourceUsage', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemotebuildbotResourceUsage();
-      var od =
-          api.GoogleDevtoolsRemotebuildbotResourceUsage.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleDevtoolsRemotebuildbotResourceUsage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildbotResourceUsage(
           od as api.GoogleDevtoolsRemotebuildbotResourceUsage);
     });
@@ -4194,8 +4255,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemotebuildbotResourceUsageStat();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleDevtoolsRemotebuildbotResourceUsageStat.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildbotResourceUsageStat(
           od as api.GoogleDevtoolsRemotebuildbotResourceUsageStat);
     });
@@ -4207,9 +4269,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig(od
           as api
               .GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig);
@@ -4220,9 +4283,10 @@ void main() {
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale(
           od as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale);
     });
@@ -4234,9 +4298,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest(
           od as api
               .GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest);
@@ -4249,9 +4314,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest(
           od as api
               .GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest);
@@ -4264,9 +4330,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest(
           od as api
               .GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest);
@@ -4279,9 +4346,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest(
           od as api
               .GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest);
@@ -4294,8 +4362,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy(od
           as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy);
     });
@@ -4307,9 +4376,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(od
           as api
               .GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature);
@@ -4322,9 +4392,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest(od
           as api
               .GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest);
@@ -4337,9 +4408,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest(od
           as api
               .GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest);
@@ -4350,9 +4422,10 @@ void main() {
       'obj-schema-GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance(
           od as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance);
     });
@@ -4364,9 +4437,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest(od
           as api
               .GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest);
@@ -4379,9 +4453,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse(
           od as api
               .GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse);
@@ -4394,9 +4469,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest(
           od as api
               .GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest);
@@ -4409,9 +4485,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse(
           od as api
               .GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse);
@@ -4424,9 +4501,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest(
           od as api
               .GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest);
@@ -4439,9 +4517,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest(
           od as api
               .GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest);
@@ -4453,8 +4532,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig(
           od as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig);
     });
@@ -4465,9 +4545,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool(
           od as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool);
     });
@@ -4476,8 +4557,9 @@ void main() {
   unittest.group('obj-schema-GoogleDevtoolsRemoteworkersV1test2AdminTemp', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2AdminTemp();
-      var od =
-          api.GoogleDevtoolsRemoteworkersV1test2AdminTemp.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleDevtoolsRemoteworkersV1test2AdminTemp.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemoteworkersV1test2AdminTemp(
           od as api.GoogleDevtoolsRemoteworkersV1test2AdminTemp);
     });
@@ -4486,7 +4568,9 @@ void main() {
   unittest.group('obj-schema-GoogleDevtoolsRemoteworkersV1test2Blob', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2Blob();
-      var od = api.GoogleDevtoolsRemoteworkersV1test2Blob.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleDevtoolsRemoteworkersV1test2Blob.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemoteworkersV1test2Blob(
           od as api.GoogleDevtoolsRemoteworkersV1test2Blob);
     });
@@ -4496,8 +4580,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandOutputs();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleDevtoolsRemoteworkersV1test2CommandOutputs.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemoteworkersV1test2CommandOutputs(
           od as api.GoogleDevtoolsRemoteworkersV1test2CommandOutputs);
     });
@@ -4507,8 +4592,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandOverhead();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleDevtoolsRemoteworkersV1test2CommandOverhead.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemoteworkersV1test2CommandOverhead(
           od as api.GoogleDevtoolsRemoteworkersV1test2CommandOverhead);
     });
@@ -4518,8 +4604,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandResult();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleDevtoolsRemoteworkersV1test2CommandResult.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemoteworkersV1test2CommandResult(
           od as api.GoogleDevtoolsRemoteworkersV1test2CommandResult);
     });
@@ -4529,8 +4616,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandTask();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleDevtoolsRemoteworkersV1test2CommandTask.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemoteworkersV1test2CommandTask(
           od as api.GoogleDevtoolsRemoteworkersV1test2CommandTask);
     });
@@ -4540,8 +4628,9 @@ void main() {
       'obj-schema-GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs(
           od as api.GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs);
     });
@@ -4553,9 +4642,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable(
           od as api
               .GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable);
@@ -4566,9 +4656,10 @@ void main() {
       'obj-schema-GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs(
           od as api.GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs);
     });
@@ -4578,9 +4669,10 @@ void main() {
       'obj-schema-GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts(
           od as api.GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts);
     });
@@ -4589,8 +4681,9 @@ void main() {
   unittest.group('obj-schema-GoogleDevtoolsRemoteworkersV1test2Digest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2Digest();
-      var od =
-          api.GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemoteworkersV1test2Digest(
           od as api.GoogleDevtoolsRemoteworkersV1test2Digest);
     });
@@ -4599,8 +4692,9 @@ void main() {
   unittest.group('obj-schema-GoogleDevtoolsRemoteworkersV1test2Directory', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2Directory();
-      var od =
-          api.GoogleDevtoolsRemoteworkersV1test2Directory.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleDevtoolsRemoteworkersV1test2Directory.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemoteworkersV1test2Directory(
           od as api.GoogleDevtoolsRemoteworkersV1test2Directory);
     });
@@ -4610,8 +4704,9 @@ void main() {
       'obj-schema-GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata(
           od as api.GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata);
     });
@@ -4621,8 +4716,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleDevtoolsRemoteworkersV1test2FileMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleDevtoolsRemoteworkersV1test2FileMetadata.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleDevtoolsRemoteworkersV1test2FileMetadata(
           od as api.GoogleDevtoolsRemoteworkersV1test2FileMetadata);
     });
@@ -4631,7 +4727,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
-      var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningOperation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
     });
   });
@@ -4639,7 +4737,9 @@ void main() {
   unittest.group('obj-schema-GoogleRpcStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
-      var od = api.GoogleRpcStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleRpcStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
     });
   });

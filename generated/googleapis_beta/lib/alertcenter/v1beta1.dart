@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -612,7 +611,7 @@ class AccountWarning {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
         if (loginDetails != null) 'loginDetails': loginDetails!.toJson(),
       };
@@ -712,7 +711,7 @@ class ActivityRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (actionNames != null) 'actionNames': actionNames!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
@@ -834,12 +833,12 @@ class Alert {
       customerId = _json['customerId'] as core.String;
     }
     if (_json.containsKey('data')) {
-      data = (_json['data'] as core.Map).cast<core.String, core.Object>().map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      data = (_json['data'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('deleted')) {
       deleted = _json['deleted'] as core.bool;
@@ -872,7 +871,7 @@ class Alert {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alertId != null) 'alertId': alertId!,
         if (createTime != null) 'createTime': createTime!,
         if (customerId != null) 'customerId': customerId!,
@@ -950,7 +949,7 @@ class AlertFeedback {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alertId != null) 'alertId': alertId!,
         if (createTime != null) 'createTime': createTime!,
         if (customerId != null) 'customerId': customerId!,
@@ -1034,7 +1033,7 @@ class AlertMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alertId != null) 'alertId': alertId!,
         if (assignee != null) 'assignee': assignee!,
         if (customerId != null) 'customerId': customerId!,
@@ -1061,7 +1060,7 @@ class AppMakerSqlSetupNotification {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (requestInfo != null)
           'requestInfo': requestInfo!.map((value) => value.toJson()).toList(),
       };
@@ -1080,7 +1079,7 @@ class Attachment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (csv != null) 'csv': csv!.toJson(),
       };
 }
@@ -1122,7 +1121,7 @@ class BadWhitelist {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (domainId != null) 'domainId': domainId!.toJson(),
         if (maliciousEntity != null)
           'maliciousEntity': maliciousEntity!.toJson(),
@@ -1158,7 +1157,7 @@ class BatchDeleteAlertsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alertId != null) 'alertId': alertId!,
         if (customerId != null) 'customerId': customerId!,
       };
@@ -1176,14 +1175,14 @@ class BatchDeleteAlertsResponse {
 
   BatchDeleteAlertsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('failedAlertStatus')) {
-      failedAlertStatus = (_json['failedAlertStatus'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              Status.fromJson(item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      failedAlertStatus =
+          (_json['failedAlertStatus'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          Status.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('successAlertIds')) {
       successAlertIds = (_json['successAlertIds'] as core.List)
@@ -1192,7 +1191,7 @@ class BatchDeleteAlertsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (failedAlertStatus != null)
           'failedAlertStatus': failedAlertStatus!
               .map((key, item) => core.MapEntry(key, item.toJson())),
@@ -1226,7 +1225,7 @@ class BatchUndeleteAlertsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alertId != null) 'alertId': alertId!,
         if (customerId != null) 'customerId': customerId!,
       };
@@ -1244,14 +1243,14 @@ class BatchUndeleteAlertsResponse {
 
   BatchUndeleteAlertsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('failedAlertStatus')) {
-      failedAlertStatus = (_json['failedAlertStatus'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              Status.fromJson(item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      failedAlertStatus =
+          (_json['failedAlertStatus'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          Status.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('successAlertIds')) {
       successAlertIds = (_json['successAlertIds'] as core.List)
@@ -1260,7 +1259,7 @@ class BatchUndeleteAlertsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (failedAlertStatus != null)
           'failedAlertStatus': failedAlertStatus!
               .map((key, item) => core.MapEntry(key, item.toJson())),
@@ -1300,7 +1299,7 @@ class CloudPubsubTopic {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (payloadFormat != null) 'payloadFormat': payloadFormat!,
         if (topicName != null) 'topicName': topicName!,
       };
@@ -1332,7 +1331,7 @@ class Csv {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataRows != null)
           'dataRows': dataRows!.map((value) => value.toJson()).toList(),
         if (headers != null) 'headers': headers!,
@@ -1355,7 +1354,7 @@ class CsvRow {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entries != null) 'entries': entries!,
       };
 }
@@ -1387,7 +1386,7 @@ class DeviceCompromised {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
         if (events != null)
           'events': events!.map((value) => value.toJson()).toList(),
@@ -1447,7 +1446,7 @@ class DeviceCompromisedSecurityDetail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceCompromisedState != null)
           'deviceCompromisedState': deviceCompromisedState!,
         if (deviceId != null) 'deviceId': deviceId!,
@@ -1478,7 +1477,7 @@ class DlpRuleViolation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ruleViolationInfo != null)
           'ruleViolationInfo': ruleViolationInfo!.toJson(),
       };
@@ -1497,7 +1496,7 @@ class DomainId {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customerPrimaryDomain != null)
           'customerPrimaryDomain': customerPrimaryDomain!,
       };
@@ -1524,7 +1523,7 @@ class DomainWideTakeoutInitiated {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
         if (takeoutRequestId != null) 'takeoutRequestId': takeoutRequestId!,
       };
@@ -1544,7 +1543,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Details of a message in phishing spike alert.
@@ -1604,7 +1603,7 @@ class GmailMessageInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attachmentsSha256Hash != null)
           'attachmentsSha256Hash': attachmentsSha256Hash!,
         if (date != null) 'date': date!,
@@ -1667,7 +1666,7 @@ class GoogleOperations {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (affectedUserEmails != null)
           'affectedUserEmails': affectedUserEmails!,
         if (attachmentData != null) 'attachmentData': attachmentData!.toJson(),
@@ -1695,7 +1694,7 @@ class ListAlertFeedbackResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (feedback != null)
           'feedback': feedback!.map((value) => value.toJson()).toList(),
       };
@@ -1727,7 +1726,7 @@ class ListAlertsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alerts != null)
           'alerts': alerts!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1760,7 +1759,7 @@ class LoginDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ipAddress != null) 'ipAddress': ipAddress!,
         if (loginTime != null) 'loginTime': loginTime!,
       };
@@ -1817,7 +1816,7 @@ class MailPhishing {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (domainId != null) 'domainId': domainId!.toJson(),
         if (isInternal != null) 'isInternal': isInternal!,
         if (maliciousEntity != null)
@@ -1854,7 +1853,7 @@ class MaliciousEntity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (entity != null) 'entity': entity!.toJson(),
         if (fromHeader != null) 'fromHeader': fromHeader!,
@@ -1882,7 +1881,7 @@ class MatchInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (predefinedDetector != null)
           'predefinedDetector': predefinedDetector!.toJson(),
         if (userDefinedDetector != null)
@@ -1907,7 +1906,7 @@ class Notification {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cloudPubsubTopic != null)
           'cloudPubsubTopic': cloudPubsubTopic!.toJson(),
       };
@@ -1953,7 +1952,7 @@ class PhishingSpike {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (domainId != null) 'domainId': domainId!.toJson(),
         if (isInternal != null) 'isInternal': isInternal!,
         if (maliciousEntity != null)
@@ -1976,7 +1975,7 @@ class PredefinedDetectorInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectorName != null) 'detectorName': detectorName!,
       };
 }
@@ -2013,7 +2012,7 @@ class RequestInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appDeveloperEmail != null) 'appDeveloperEmail': appDeveloperEmail!,
         if (appKey != null) 'appKey': appKey!,
         if (numberOfRequests != null) 'numberOfRequests': numberOfRequests!,
@@ -2039,7 +2038,7 @@ class ResourceInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (documentId != null) 'documentId': documentId!,
         if (resourceTitle != null) 'resourceTitle': resourceTitle!,
       };
@@ -2064,7 +2063,7 @@ class RuleInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (resourceName != null) 'resourceName': resourceName!,
       };
@@ -2158,7 +2157,7 @@ class RuleViolationInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataSource != null) 'dataSource': dataSource!,
         if (matchInfo != null)
           'matchInfo': matchInfo!.map((value) => value.toJson()).toList(),
@@ -2191,7 +2190,7 @@ class Settings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (notifications != null)
           'notifications':
               notifications!.map((value) => value.toJson()).toList(),
@@ -2213,7 +2212,7 @@ class StateSponsoredAttack {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
       };
 }
@@ -2251,8 +2250,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -2265,7 +2264,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -2299,7 +2298,7 @@ class SuspiciousActivity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
         if (events != null)
           'events': events!.map((value) => value.toJson()).toList(),
@@ -2369,7 +2368,7 @@ class SuspiciousActivitySecurityDetail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
         if (deviceModel != null) 'deviceModel': deviceModel!,
         if (deviceProperty != null) 'deviceProperty': deviceProperty!,
@@ -2400,7 +2399,7 @@ class UndeleteAlertRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customerId != null) 'customerId': customerId!,
       };
 }
@@ -2424,7 +2423,7 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (emailAddress != null) 'emailAddress': emailAddress!,
       };
@@ -2449,7 +2448,7 @@ class UserDefinedDetectorInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (resourceName != null) 'resourceName': resourceName!,
       };

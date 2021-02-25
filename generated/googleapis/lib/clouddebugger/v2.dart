@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -585,7 +584,7 @@ class AliasContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
       };
@@ -752,13 +751,12 @@ class Breakpoint {
       isFinalState = _json['isFinalState'] as core.bool;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('location')) {
       location = SourceLocation.fromJson(
@@ -794,7 +792,7 @@ class Breakpoint {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
         if (canaryExpireTime != null) 'canaryExpireTime': canaryExpireTime!,
         if (condition != null) 'condition': condition!,
@@ -855,7 +853,7 @@ class CloudRepoSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aliasContext != null) 'aliasContext': aliasContext!.toJson(),
         if (aliasName != null) 'aliasName': aliasName!,
         if (repoId != null) 'repoId': repoId!.toJson(),
@@ -889,7 +887,7 @@ class CloudWorkspaceId {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (repoId != null) 'repoId': repoId!.toJson(),
       };
@@ -917,7 +915,7 @@ class CloudWorkspaceSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (snapshotId != null) 'snapshotId': snapshotId!,
         if (workspaceId != null) 'workspaceId': workspaceId!.toJson(),
       };
@@ -1031,13 +1029,12 @@ class Debuggee {
       isInactive = _json['isInactive'] as core.bool;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('project')) {
       project = _json['project'] as core.String;
@@ -1057,7 +1054,7 @@ class Debuggee {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agentVersion != null) 'agentVersion': agentVersion!,
         if (canaryMode != null) 'canaryMode': canaryMode!,
         if (description != null) 'description': description!,
@@ -1091,7 +1088,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// An ExtendedSourceContext is a SourceContext combined with additional details
@@ -1111,17 +1108,16 @@ class ExtendedSourceContext {
           _json['context'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (context != null) 'context': context!.toJson(),
         if (labels != null) 'labels': labels!,
       };
@@ -1153,7 +1149,7 @@ class FormatMessage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (format != null) 'format': format!,
         if (parameters != null) 'parameters': parameters!,
       };
@@ -1200,7 +1196,7 @@ class GerritSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aliasContext != null) 'aliasContext': aliasContext!.toJson(),
         if (aliasName != null) 'aliasName': aliasName!,
         if (gerritProject != null) 'gerritProject': gerritProject!,
@@ -1225,7 +1221,7 @@ class GetBreakpointResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (breakpoint != null) 'breakpoint': breakpoint!.toJson(),
       };
 }
@@ -1252,7 +1248,7 @@ class GitSourceContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (revisionId != null) 'revisionId': revisionId!,
         if (url != null) 'url': url!,
       };
@@ -1293,7 +1289,7 @@ class ListActiveBreakpointsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (breakpoints != null)
           'breakpoints': breakpoints!.map((value) => value.toJson()).toList(),
         if (nextWaitToken != null) 'nextWaitToken': nextWaitToken!,
@@ -1329,7 +1325,7 @@ class ListBreakpointsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (breakpoints != null)
           'breakpoints': breakpoints!.map((value) => value.toJson()).toList(),
         if (nextWaitToken != null) 'nextWaitToken': nextWaitToken!,
@@ -1356,7 +1352,7 @@ class ListDebuggeesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (debuggees != null)
           'debuggees': debuggees!.map((value) => value.toJson()).toList(),
       };
@@ -1384,7 +1380,7 @@ class ProjectRepoId {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (projectId != null) 'projectId': projectId!,
         if (repoName != null) 'repoName': repoName!,
       };
@@ -1409,7 +1405,7 @@ class RegisterDebuggeeRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (debuggee != null) 'debuggee': debuggee!.toJson(),
       };
 }
@@ -1441,7 +1437,7 @@ class RegisterDebuggeeResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agentId != null) 'agentId': agentId!,
         if (debuggee != null) 'debuggee': debuggee!.toJson(),
       };
@@ -1467,7 +1463,7 @@ class RepoId {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (projectRepoId != null) 'projectRepoId': projectRepoId!.toJson(),
         if (uid != null) 'uid': uid!,
       };
@@ -1489,7 +1485,7 @@ class SetBreakpointResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (breakpoint != null) 'breakpoint': breakpoint!.toJson(),
       };
 }
@@ -1532,7 +1528,7 @@ class SourceContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cloudRepo != null) 'cloudRepo': cloudRepo!.toJson(),
         if (cloudWorkspace != null) 'cloudWorkspace': cloudWorkspace!.toJson(),
         if (gerrit != null) 'gerrit': gerrit!.toJson(),
@@ -1570,7 +1566,7 @@ class SourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (column != null) 'column': column!,
         if (line != null) 'line': line!,
         if (path != null) 'path': path!,
@@ -1619,7 +1615,7 @@ class StackFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (arguments != null)
           'arguments': arguments!.map((value) => value.toJson()).toList(),
         if (function != null) 'function': function!,
@@ -1675,7 +1671,7 @@ class StatusMessage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!.toJson(),
         if (isError != null) 'isError': isError!,
         if (refersTo != null) 'refersTo': refersTo!,
@@ -1701,7 +1697,7 @@ class UpdateActiveBreakpointRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (breakpoint != null) 'breakpoint': breakpoint!.toJson(),
       };
 }
@@ -1716,7 +1712,7 @@ class UpdateActiveBreakpointResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Represents a variable or an argument possibly of a compound object type.
@@ -1818,7 +1814,7 @@ class Variable {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (members != null)
           'members': members!.map((value) => value.toJson()).toList(),
         if (name != null) 'name': name!,

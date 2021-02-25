@@ -1395,7 +1395,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayApi', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayApi();
-      var od = api.ApigatewayApi.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayApi.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayApi(od as api.ApigatewayApi);
     });
   });
@@ -1403,7 +1405,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayApiConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayApiConfig();
-      var od = api.ApigatewayApiConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayApiConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayApiConfig(od as api.ApigatewayApiConfig);
     });
   });
@@ -1411,7 +1415,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayApiConfigFile', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayApiConfigFile();
-      var od = api.ApigatewayApiConfigFile.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayApiConfigFile.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayApiConfigFile(od as api.ApigatewayApiConfigFile);
     });
   });
@@ -1419,8 +1425,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayApiConfigGrpcServiceDefinition', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayApiConfigGrpcServiceDefinition();
-      var od =
-          api.ApigatewayApiConfigGrpcServiceDefinition.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayApiConfigGrpcServiceDefinition.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayApiConfigGrpcServiceDefinition(
           od as api.ApigatewayApiConfigGrpcServiceDefinition);
     });
@@ -1429,7 +1436,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayApiConfigOpenApiDocument', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayApiConfigOpenApiDocument();
-      var od = api.ApigatewayApiConfigOpenApiDocument.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayApiConfigOpenApiDocument.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayApiConfigOpenApiDocument(
           od as api.ApigatewayApiConfigOpenApiDocument);
     });
@@ -1438,7 +1447,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayAuditConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayAuditConfig();
-      var od = api.ApigatewayAuditConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayAuditConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayAuditConfig(od as api.ApigatewayAuditConfig);
     });
   });
@@ -1446,7 +1457,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayAuditLogConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayAuditLogConfig();
-      var od = api.ApigatewayAuditLogConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayAuditLogConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayAuditLogConfig(od as api.ApigatewayAuditLogConfig);
     });
   });
@@ -1454,7 +1467,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayBinding', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayBinding();
-      var od = api.ApigatewayBinding.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayBinding.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayBinding(od as api.ApigatewayBinding);
     });
   });
@@ -1462,7 +1477,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayCancelOperationRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayCancelOperationRequest();
-      var od = api.ApigatewayCancelOperationRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayCancelOperationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayCancelOperationRequest(
           od as api.ApigatewayCancelOperationRequest);
     });
@@ -1471,7 +1488,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayExpr', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayExpr();
-      var od = api.ApigatewayExpr.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayExpr.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayExpr(od as api.ApigatewayExpr);
     });
   });
@@ -1479,7 +1498,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayGateway', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayGateway();
-      var od = api.ApigatewayGateway.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayGateway.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayGateway(od as api.ApigatewayGateway);
     });
   });
@@ -1487,7 +1508,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayListApiConfigsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayListApiConfigsResponse();
-      var od = api.ApigatewayListApiConfigsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayListApiConfigsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayListApiConfigsResponse(
           od as api.ApigatewayListApiConfigsResponse);
     });
@@ -1496,7 +1519,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayListApisResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayListApisResponse();
-      var od = api.ApigatewayListApisResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayListApisResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayListApisResponse(od as api.ApigatewayListApisResponse);
     });
   });
@@ -1504,7 +1529,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayListGatewaysResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayListGatewaysResponse();
-      var od = api.ApigatewayListGatewaysResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayListGatewaysResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayListGatewaysResponse(
           od as api.ApigatewayListGatewaysResponse);
     });
@@ -1513,7 +1540,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayListLocationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayListLocationsResponse();
-      var od = api.ApigatewayListLocationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayListLocationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayListLocationsResponse(
           od as api.ApigatewayListLocationsResponse);
     });
@@ -1522,7 +1551,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayListOperationsResponse();
-      var od = api.ApigatewayListOperationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayListOperationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayListOperationsResponse(
           od as api.ApigatewayListOperationsResponse);
     });
@@ -1531,7 +1562,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayLocation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayLocation();
-      var od = api.ApigatewayLocation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayLocation(od as api.ApigatewayLocation);
     });
   });
@@ -1539,7 +1572,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayOperation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayOperation();
-      var od = api.ApigatewayOperation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayOperation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayOperation(od as api.ApigatewayOperation);
     });
   });
@@ -1547,7 +1582,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayOperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayOperationMetadata();
-      var od = api.ApigatewayOperationMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayOperationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayOperationMetadata(od as api.ApigatewayOperationMetadata);
     });
   });
@@ -1555,7 +1592,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayOperationMetadataDiagnostic', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayOperationMetadataDiagnostic();
-      var od = api.ApigatewayOperationMetadataDiagnostic.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayOperationMetadataDiagnostic.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayOperationMetadataDiagnostic(
           od as api.ApigatewayOperationMetadataDiagnostic);
     });
@@ -1564,7 +1603,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayPolicy', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayPolicy();
-      var od = api.ApigatewayPolicy.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayPolicy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayPolicy(od as api.ApigatewayPolicy);
     });
   });
@@ -1572,7 +1613,9 @@ void main() {
   unittest.group('obj-schema-ApigatewaySetIamPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewaySetIamPolicyRequest();
-      var od = api.ApigatewaySetIamPolicyRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewaySetIamPolicyRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewaySetIamPolicyRequest(
           od as api.ApigatewaySetIamPolicyRequest);
     });
@@ -1581,7 +1624,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayStatus();
-      var od = api.ApigatewayStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayStatus(od as api.ApigatewayStatus);
     });
   });
@@ -1589,7 +1634,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayTestIamPermissionsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayTestIamPermissionsRequest();
-      var od = api.ApigatewayTestIamPermissionsRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayTestIamPermissionsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayTestIamPermissionsRequest(
           od as api.ApigatewayTestIamPermissionsRequest);
     });
@@ -1598,7 +1645,9 @@ void main() {
   unittest.group('obj-schema-ApigatewayTestIamPermissionsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApigatewayTestIamPermissionsResponse();
-      var od = api.ApigatewayTestIamPermissionsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApigatewayTestIamPermissionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApigatewayTestIamPermissionsResponse(
           od as api.ApigatewayTestIamPermissionsResponse);
     });
@@ -1607,7 +1656,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });

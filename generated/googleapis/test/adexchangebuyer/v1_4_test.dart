@@ -4781,7 +4781,9 @@ void main() {
   unittest.group('obj-schema-AccountBidderLocation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAccountBidderLocation();
-      var od = api.AccountBidderLocation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AccountBidderLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAccountBidderLocation(od as api.AccountBidderLocation);
     });
   });
@@ -4789,7 +4791,9 @@ void main() {
   unittest.group('obj-schema-Account', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAccount();
-      var od = api.Account.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Account.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkAccount(od as api.Account);
     });
   });
@@ -4797,7 +4801,9 @@ void main() {
   unittest.group('obj-schema-AccountsList', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAccountsList();
-      var od = api.AccountsList.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AccountsList.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAccountsList(od as api.AccountsList);
     });
   });
@@ -4805,7 +4811,9 @@ void main() {
   unittest.group('obj-schema-AddOrderDealsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAddOrderDealsRequest();
-      var od = api.AddOrderDealsRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AddOrderDealsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAddOrderDealsRequest(od as api.AddOrderDealsRequest);
     });
   });
@@ -4813,7 +4821,9 @@ void main() {
   unittest.group('obj-schema-AddOrderDealsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAddOrderDealsResponse();
-      var od = api.AddOrderDealsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AddOrderDealsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAddOrderDealsResponse(od as api.AddOrderDealsResponse);
     });
   });
@@ -4821,7 +4831,9 @@ void main() {
   unittest.group('obj-schema-AddOrderNotesRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAddOrderNotesRequest();
-      var od = api.AddOrderNotesRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AddOrderNotesRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAddOrderNotesRequest(od as api.AddOrderNotesRequest);
     });
   });
@@ -4829,7 +4841,9 @@ void main() {
   unittest.group('obj-schema-AddOrderNotesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAddOrderNotesResponse();
-      var od = api.AddOrderNotesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AddOrderNotesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAddOrderNotesResponse(od as api.AddOrderNotesResponse);
     });
   });
@@ -4837,7 +4851,9 @@ void main() {
   unittest.group('obj-schema-BillingInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBillingInfo();
-      var od = api.BillingInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BillingInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBillingInfo(od as api.BillingInfo);
     });
   });
@@ -4845,7 +4861,9 @@ void main() {
   unittest.group('obj-schema-BillingInfoList', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBillingInfoList();
-      var od = api.BillingInfoList.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BillingInfoList.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBillingInfoList(od as api.BillingInfoList);
     });
   });
@@ -4853,7 +4871,9 @@ void main() {
   unittest.group('obj-schema-Budget', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBudget();
-      var od = api.Budget.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Budget.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBudget(od as api.Budget);
     });
   });
@@ -4861,7 +4881,8 @@ void main() {
   unittest.group('obj-schema-Buyer', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBuyer();
-      var od = api.Buyer.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Buyer.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBuyer(od as api.Buyer);
     });
   });
@@ -4869,7 +4890,9 @@ void main() {
   unittest.group('obj-schema-ContactInformation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildContactInformation();
-      var od = api.ContactInformation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ContactInformation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkContactInformation(od as api.ContactInformation);
     });
   });
@@ -4877,7 +4900,9 @@ void main() {
   unittest.group('obj-schema-CreateOrdersRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreateOrdersRequest();
-      var od = api.CreateOrdersRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreateOrdersRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreateOrdersRequest(od as api.CreateOrdersRequest);
     });
   });
@@ -4885,7 +4910,9 @@ void main() {
   unittest.group('obj-schema-CreateOrdersResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreateOrdersResponse();
-      var od = api.CreateOrdersResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreateOrdersResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreateOrdersResponse(od as api.CreateOrdersResponse);
     });
   });
@@ -4893,7 +4920,9 @@ void main() {
   unittest.group('obj-schema-CreativeAdTechnologyProviders', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreativeAdTechnologyProviders();
-      var od = api.CreativeAdTechnologyProviders.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreativeAdTechnologyProviders.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreativeAdTechnologyProviders(
           od as api.CreativeAdTechnologyProviders);
     });
@@ -4902,7 +4931,9 @@ void main() {
   unittest.group('obj-schema-CreativeCorrectionsContexts', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreativeCorrectionsContexts();
-      var od = api.CreativeCorrectionsContexts.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreativeCorrectionsContexts.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreativeCorrectionsContexts(od as api.CreativeCorrectionsContexts);
     });
   });
@@ -4910,7 +4941,9 @@ void main() {
   unittest.group('obj-schema-CreativeCorrections', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreativeCorrections();
-      var od = api.CreativeCorrections.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreativeCorrections.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreativeCorrections(od as api.CreativeCorrections);
     });
   });
@@ -4918,7 +4951,9 @@ void main() {
   unittest.group('obj-schema-CreativeFilteringReasonsReasons', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreativeFilteringReasonsReasons();
-      var od = api.CreativeFilteringReasonsReasons.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreativeFilteringReasonsReasons.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreativeFilteringReasonsReasons(
           od as api.CreativeFilteringReasonsReasons);
     });
@@ -4927,7 +4962,9 @@ void main() {
   unittest.group('obj-schema-CreativeFilteringReasons', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreativeFilteringReasons();
-      var od = api.CreativeFilteringReasons.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreativeFilteringReasons.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreativeFilteringReasons(od as api.CreativeFilteringReasons);
     });
   });
@@ -4935,7 +4972,9 @@ void main() {
   unittest.group('obj-schema-CreativeNativeAdAppIcon', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreativeNativeAdAppIcon();
-      var od = api.CreativeNativeAdAppIcon.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreativeNativeAdAppIcon.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreativeNativeAdAppIcon(od as api.CreativeNativeAdAppIcon);
     });
   });
@@ -4943,7 +4982,9 @@ void main() {
   unittest.group('obj-schema-CreativeNativeAdImage', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreativeNativeAdImage();
-      var od = api.CreativeNativeAdImage.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreativeNativeAdImage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreativeNativeAdImage(od as api.CreativeNativeAdImage);
     });
   });
@@ -4951,7 +4992,9 @@ void main() {
   unittest.group('obj-schema-CreativeNativeAdLogo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreativeNativeAdLogo();
-      var od = api.CreativeNativeAdLogo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreativeNativeAdLogo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreativeNativeAdLogo(od as api.CreativeNativeAdLogo);
     });
   });
@@ -4959,7 +5002,9 @@ void main() {
   unittest.group('obj-schema-CreativeNativeAd', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreativeNativeAd();
-      var od = api.CreativeNativeAd.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreativeNativeAd.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreativeNativeAd(od as api.CreativeNativeAd);
     });
   });
@@ -4967,7 +5012,9 @@ void main() {
   unittest.group('obj-schema-CreativeServingRestrictionsContexts', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreativeServingRestrictionsContexts();
-      var od = api.CreativeServingRestrictionsContexts.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreativeServingRestrictionsContexts.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreativeServingRestrictionsContexts(
           od as api.CreativeServingRestrictionsContexts);
     });
@@ -4977,8 +5024,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreativeServingRestrictionsDisapprovalReasons();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.CreativeServingRestrictionsDisapprovalReasons.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreativeServingRestrictionsDisapprovalReasons(
           od as api.CreativeServingRestrictionsDisapprovalReasons);
     });
@@ -4987,7 +5035,9 @@ void main() {
   unittest.group('obj-schema-CreativeServingRestrictions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreativeServingRestrictions();
-      var od = api.CreativeServingRestrictions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreativeServingRestrictions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreativeServingRestrictions(od as api.CreativeServingRestrictions);
     });
   });
@@ -4995,7 +5045,9 @@ void main() {
   unittest.group('obj-schema-Creative', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreative();
-      var od = api.Creative.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Creative.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkCreative(od as api.Creative);
     });
   });
@@ -5003,7 +5055,9 @@ void main() {
   unittest.group('obj-schema-CreativeDealIdsDealStatuses', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreativeDealIdsDealStatuses();
-      var od = api.CreativeDealIdsDealStatuses.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreativeDealIdsDealStatuses.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreativeDealIdsDealStatuses(od as api.CreativeDealIdsDealStatuses);
     });
   });
@@ -5011,7 +5065,9 @@ void main() {
   unittest.group('obj-schema-CreativeDealIds', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreativeDealIds();
-      var od = api.CreativeDealIds.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreativeDealIds.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreativeDealIds(od as api.CreativeDealIds);
     });
   });
@@ -5019,7 +5075,9 @@ void main() {
   unittest.group('obj-schema-CreativesList', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreativesList();
-      var od = api.CreativesList.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreativesList.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreativesList(od as api.CreativesList);
     });
   });
@@ -5027,7 +5085,9 @@ void main() {
   unittest.group('obj-schema-DealServingMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDealServingMetadata();
-      var od = api.DealServingMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DealServingMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDealServingMetadata(od as api.DealServingMetadata);
     });
   });
@@ -5035,7 +5095,9 @@ void main() {
   unittest.group('obj-schema-DealServingMetadataDealPauseStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDealServingMetadataDealPauseStatus();
-      var od = api.DealServingMetadataDealPauseStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DealServingMetadataDealPauseStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDealServingMetadataDealPauseStatus(
           od as api.DealServingMetadataDealPauseStatus);
     });
@@ -5044,7 +5106,9 @@ void main() {
   unittest.group('obj-schema-DealTerms', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDealTerms();
-      var od = api.DealTerms.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.DealTerms.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDealTerms(od as api.DealTerms);
     });
   });
@@ -5052,7 +5116,9 @@ void main() {
   unittest.group('obj-schema-DealTermsGuaranteedFixedPriceTerms', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDealTermsGuaranteedFixedPriceTerms();
-      var od = api.DealTermsGuaranteedFixedPriceTerms.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DealTermsGuaranteedFixedPriceTerms.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDealTermsGuaranteedFixedPriceTerms(
           od as api.DealTermsGuaranteedFixedPriceTerms);
     });
@@ -5062,8 +5128,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildDealTermsGuaranteedFixedPriceTermsBillingInfo();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.DealTermsGuaranteedFixedPriceTermsBillingInfo.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkDealTermsGuaranteedFixedPriceTermsBillingInfo(
           od as api.DealTermsGuaranteedFixedPriceTermsBillingInfo);
     });
@@ -5072,7 +5139,9 @@ void main() {
   unittest.group('obj-schema-DealTermsNonGuaranteedAuctionTerms', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDealTermsNonGuaranteedAuctionTerms();
-      var od = api.DealTermsNonGuaranteedAuctionTerms.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DealTermsNonGuaranteedAuctionTerms.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDealTermsNonGuaranteedAuctionTerms(
           od as api.DealTermsNonGuaranteedAuctionTerms);
     });
@@ -5081,7 +5150,9 @@ void main() {
   unittest.group('obj-schema-DealTermsNonGuaranteedFixedPriceTerms', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDealTermsNonGuaranteedFixedPriceTerms();
-      var od = api.DealTermsNonGuaranteedFixedPriceTerms.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DealTermsNonGuaranteedFixedPriceTerms.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDealTermsNonGuaranteedFixedPriceTerms(
           od as api.DealTermsNonGuaranteedFixedPriceTerms);
     });
@@ -5090,7 +5161,9 @@ void main() {
   unittest.group('obj-schema-DealTermsRubiconNonGuaranteedTerms', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDealTermsRubiconNonGuaranteedTerms();
-      var od = api.DealTermsRubiconNonGuaranteedTerms.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DealTermsRubiconNonGuaranteedTerms.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDealTermsRubiconNonGuaranteedTerms(
           od as api.DealTermsRubiconNonGuaranteedTerms);
     });
@@ -5099,7 +5172,9 @@ void main() {
   unittest.group('obj-schema-DeleteOrderDealsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDeleteOrderDealsRequest();
-      var od = api.DeleteOrderDealsRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DeleteOrderDealsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDeleteOrderDealsRequest(od as api.DeleteOrderDealsRequest);
     });
   });
@@ -5107,7 +5182,9 @@ void main() {
   unittest.group('obj-schema-DeleteOrderDealsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDeleteOrderDealsResponse();
-      var od = api.DeleteOrderDealsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DeleteOrderDealsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDeleteOrderDealsResponse(od as api.DeleteOrderDealsResponse);
     });
   });
@@ -5115,7 +5192,9 @@ void main() {
   unittest.group('obj-schema-DeliveryControl', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDeliveryControl();
-      var od = api.DeliveryControl.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DeliveryControl.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDeliveryControl(od as api.DeliveryControl);
     });
   });
@@ -5123,7 +5202,9 @@ void main() {
   unittest.group('obj-schema-DeliveryControlFrequencyCap', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDeliveryControlFrequencyCap();
-      var od = api.DeliveryControlFrequencyCap.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DeliveryControlFrequencyCap.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDeliveryControlFrequencyCap(od as api.DeliveryControlFrequencyCap);
     });
   });
@@ -5131,7 +5212,9 @@ void main() {
   unittest.group('obj-schema-Dimension', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDimension();
-      var od = api.Dimension.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Dimension.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDimension(od as api.Dimension);
     });
   });
@@ -5139,7 +5222,9 @@ void main() {
   unittest.group('obj-schema-DimensionDimensionValue', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDimensionDimensionValue();
-      var od = api.DimensionDimensionValue.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DimensionDimensionValue.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDimensionDimensionValue(od as api.DimensionDimensionValue);
     });
   });
@@ -5147,7 +5232,9 @@ void main() {
   unittest.group('obj-schema-EditAllOrderDealsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEditAllOrderDealsRequest();
-      var od = api.EditAllOrderDealsRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.EditAllOrderDealsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkEditAllOrderDealsRequest(od as api.EditAllOrderDealsRequest);
     });
   });
@@ -5155,7 +5242,9 @@ void main() {
   unittest.group('obj-schema-EditAllOrderDealsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEditAllOrderDealsResponse();
-      var od = api.EditAllOrderDealsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.EditAllOrderDealsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkEditAllOrderDealsResponse(od as api.EditAllOrderDealsResponse);
     });
   });
@@ -5163,7 +5252,9 @@ void main() {
   unittest.group('obj-schema-GetOffersResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGetOffersResponse();
-      var od = api.GetOffersResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GetOffersResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetOffersResponse(od as api.GetOffersResponse);
     });
   });
@@ -5171,7 +5262,9 @@ void main() {
   unittest.group('obj-schema-GetOrderDealsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGetOrderDealsResponse();
-      var od = api.GetOrderDealsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GetOrderDealsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetOrderDealsResponse(od as api.GetOrderDealsResponse);
     });
   });
@@ -5179,7 +5272,9 @@ void main() {
   unittest.group('obj-schema-GetOrderNotesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGetOrderNotesResponse();
-      var od = api.GetOrderNotesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GetOrderNotesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetOrderNotesResponse(od as api.GetOrderNotesResponse);
     });
   });
@@ -5187,7 +5282,9 @@ void main() {
   unittest.group('obj-schema-GetOrdersResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGetOrdersResponse();
-      var od = api.GetOrdersResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GetOrdersResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetOrdersResponse(od as api.GetOrdersResponse);
     });
   });
@@ -5195,7 +5292,9 @@ void main() {
   unittest.group('obj-schema-GetPublisherProfilesByAccountIdResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGetPublisherProfilesByAccountIdResponse();
-      var od = api.GetPublisherProfilesByAccountIdResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GetPublisherProfilesByAccountIdResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetPublisherProfilesByAccountIdResponse(
           od as api.GetPublisherProfilesByAccountIdResponse);
     });
@@ -5204,7 +5303,9 @@ void main() {
   unittest.group('obj-schema-MarketplaceDeal', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMarketplaceDeal();
-      var od = api.MarketplaceDeal.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MarketplaceDeal.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkMarketplaceDeal(od as api.MarketplaceDeal);
     });
   });
@@ -5212,7 +5313,9 @@ void main() {
   unittest.group('obj-schema-MarketplaceDealParty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMarketplaceDealParty();
-      var od = api.MarketplaceDealParty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MarketplaceDealParty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkMarketplaceDealParty(od as api.MarketplaceDealParty);
     });
   });
@@ -5220,7 +5323,9 @@ void main() {
   unittest.group('obj-schema-MarketplaceLabel', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMarketplaceLabel();
-      var od = api.MarketplaceLabel.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MarketplaceLabel.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkMarketplaceLabel(od as api.MarketplaceLabel);
     });
   });
@@ -5228,7 +5333,9 @@ void main() {
   unittest.group('obj-schema-MarketplaceNote', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMarketplaceNote();
-      var od = api.MarketplaceNote.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MarketplaceNote.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkMarketplaceNote(od as api.MarketplaceNote);
     });
   });
@@ -5236,7 +5343,9 @@ void main() {
   unittest.group('obj-schema-MobileApplication', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMobileApplication();
-      var od = api.MobileApplication.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MobileApplication.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkMobileApplication(od as api.MobileApplication);
     });
   });
@@ -5244,7 +5353,9 @@ void main() {
   unittest.group('obj-schema-PerformanceReport', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPerformanceReport();
-      var od = api.PerformanceReport.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PerformanceReport.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPerformanceReport(od as api.PerformanceReport);
     });
   });
@@ -5252,7 +5363,9 @@ void main() {
   unittest.group('obj-schema-PerformanceReportList', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPerformanceReportList();
-      var od = api.PerformanceReportList.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PerformanceReportList.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPerformanceReportList(od as api.PerformanceReportList);
     });
   });
@@ -5260,7 +5373,9 @@ void main() {
   unittest.group('obj-schema-PretargetingConfigDimensions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPretargetingConfigDimensions();
-      var od = api.PretargetingConfigDimensions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PretargetingConfigDimensions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPretargetingConfigDimensions(od as api.PretargetingConfigDimensions);
     });
   });
@@ -5268,7 +5383,9 @@ void main() {
   unittest.group('obj-schema-PretargetingConfigExcludedPlacements', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPretargetingConfigExcludedPlacements();
-      var od = api.PretargetingConfigExcludedPlacements.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PretargetingConfigExcludedPlacements.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPretargetingConfigExcludedPlacements(
           od as api.PretargetingConfigExcludedPlacements);
     });
@@ -5277,7 +5394,9 @@ void main() {
   unittest.group('obj-schema-PretargetingConfigPlacements', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPretargetingConfigPlacements();
-      var od = api.PretargetingConfigPlacements.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PretargetingConfigPlacements.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPretargetingConfigPlacements(od as api.PretargetingConfigPlacements);
     });
   });
@@ -5285,7 +5404,9 @@ void main() {
   unittest.group('obj-schema-PretargetingConfigVideoPlayerSizes', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPretargetingConfigVideoPlayerSizes();
-      var od = api.PretargetingConfigVideoPlayerSizes.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PretargetingConfigVideoPlayerSizes.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPretargetingConfigVideoPlayerSizes(
           od as api.PretargetingConfigVideoPlayerSizes);
     });
@@ -5294,7 +5415,9 @@ void main() {
   unittest.group('obj-schema-PretargetingConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPretargetingConfig();
-      var od = api.PretargetingConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PretargetingConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPretargetingConfig(od as api.PretargetingConfig);
     });
   });
@@ -5302,7 +5425,9 @@ void main() {
   unittest.group('obj-schema-PretargetingConfigList', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPretargetingConfigList();
-      var od = api.PretargetingConfigList.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PretargetingConfigList.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPretargetingConfigList(od as api.PretargetingConfigList);
     });
   });
@@ -5310,7 +5435,8 @@ void main() {
   unittest.group('obj-schema-Price', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPrice();
-      var od = api.Price.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Price.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPrice(od as api.Price);
     });
   });
@@ -5318,7 +5444,9 @@ void main() {
   unittest.group('obj-schema-PricePerBuyer', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPricePerBuyer();
-      var od = api.PricePerBuyer.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PricePerBuyer.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPricePerBuyer(od as api.PricePerBuyer);
     });
   });
@@ -5326,7 +5454,9 @@ void main() {
   unittest.group('obj-schema-PrivateData', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPrivateData();
-      var od = api.PrivateData.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PrivateData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPrivateData(od as api.PrivateData);
     });
   });
@@ -5334,7 +5464,9 @@ void main() {
   unittest.group('obj-schema-Product', () {
     unittest.test('to-json--from-json', () async {
       var o = buildProduct();
-      var od = api.Product.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Product.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkProduct(od as api.Product);
     });
   });
@@ -5342,7 +5474,9 @@ void main() {
   unittest.group('obj-schema-Proposal', () {
     unittest.test('to-json--from-json', () async {
       var o = buildProposal();
-      var od = api.Proposal.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Proposal.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkProposal(od as api.Proposal);
     });
   });
@@ -5350,7 +5484,9 @@ void main() {
   unittest.group('obj-schema-PublisherProfileApiProto', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPublisherProfileApiProto();
-      var od = api.PublisherProfileApiProto.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PublisherProfileApiProto.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPublisherProfileApiProto(od as api.PublisherProfileApiProto);
     });
   });
@@ -5358,7 +5494,9 @@ void main() {
   unittest.group('obj-schema-PublisherProvidedForecast', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPublisherProvidedForecast();
-      var od = api.PublisherProvidedForecast.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PublisherProvidedForecast.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPublisherProvidedForecast(od as api.PublisherProvidedForecast);
     });
   });
@@ -5366,7 +5504,9 @@ void main() {
   unittest.group('obj-schema-Seller', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSeller();
-      var od = api.Seller.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Seller.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkSeller(od as api.Seller);
     });
   });
@@ -5374,7 +5514,9 @@ void main() {
   unittest.group('obj-schema-SharedTargeting', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSharedTargeting();
-      var od = api.SharedTargeting.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SharedTargeting.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSharedTargeting(od as api.SharedTargeting);
     });
   });
@@ -5382,7 +5524,9 @@ void main() {
   unittest.group('obj-schema-TargetingValue', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTargetingValue();
-      var od = api.TargetingValue.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TargetingValue.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTargetingValue(od as api.TargetingValue);
     });
   });
@@ -5390,7 +5534,9 @@ void main() {
   unittest.group('obj-schema-TargetingValueCreativeSize', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTargetingValueCreativeSize();
-      var od = api.TargetingValueCreativeSize.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TargetingValueCreativeSize.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTargetingValueCreativeSize(od as api.TargetingValueCreativeSize);
     });
   });
@@ -5398,7 +5544,9 @@ void main() {
   unittest.group('obj-schema-TargetingValueDayPartTargeting', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTargetingValueDayPartTargeting();
-      var od = api.TargetingValueDayPartTargeting.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TargetingValueDayPartTargeting.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTargetingValueDayPartTargeting(
           od as api.TargetingValueDayPartTargeting);
     });
@@ -5407,7 +5555,9 @@ void main() {
   unittest.group('obj-schema-TargetingValueDayPartTargetingDayPart', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTargetingValueDayPartTargetingDayPart();
-      var od = api.TargetingValueDayPartTargetingDayPart.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TargetingValueDayPartTargetingDayPart.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTargetingValueDayPartTargetingDayPart(
           od as api.TargetingValueDayPartTargetingDayPart);
     });
@@ -5416,7 +5566,9 @@ void main() {
   unittest.group('obj-schema-TargetingValueDemogAgeCriteria', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTargetingValueDemogAgeCriteria();
-      var od = api.TargetingValueDemogAgeCriteria.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TargetingValueDemogAgeCriteria.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTargetingValueDemogAgeCriteria(
           od as api.TargetingValueDemogAgeCriteria);
     });
@@ -5425,7 +5577,9 @@ void main() {
   unittest.group('obj-schema-TargetingValueDemogGenderCriteria', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTargetingValueDemogGenderCriteria();
-      var od = api.TargetingValueDemogGenderCriteria.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TargetingValueDemogGenderCriteria.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTargetingValueDemogGenderCriteria(
           od as api.TargetingValueDemogGenderCriteria);
     });
@@ -5434,7 +5588,9 @@ void main() {
   unittest.group('obj-schema-TargetingValueRequestPlatformTargeting', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTargetingValueRequestPlatformTargeting();
-      var od = api.TargetingValueRequestPlatformTargeting.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TargetingValueRequestPlatformTargeting.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTargetingValueRequestPlatformTargeting(
           od as api.TargetingValueRequestPlatformTargeting);
     });
@@ -5443,7 +5599,9 @@ void main() {
   unittest.group('obj-schema-TargetingValueSize', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTargetingValueSize();
-      var od = api.TargetingValueSize.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TargetingValueSize.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTargetingValueSize(od as api.TargetingValueSize);
     });
   });
@@ -5451,7 +5609,9 @@ void main() {
   unittest.group('obj-schema-UpdatePrivateAuctionProposalRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUpdatePrivateAuctionProposalRequest();
-      var od = api.UpdatePrivateAuctionProposalRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UpdatePrivateAuctionProposalRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUpdatePrivateAuctionProposalRequest(
           od as api.UpdatePrivateAuctionProposalRequest);
     });

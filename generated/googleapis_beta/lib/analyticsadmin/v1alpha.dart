@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -2880,7 +2879,7 @@ class GoogleAnalyticsAdminV1alphaAccount {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (deleted != null) 'deleted': deleted!,
         if (displayName != null) 'displayName': displayName!,
@@ -2929,7 +2928,7 @@ class GoogleAnalyticsAdminV1alphaAccountSummary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (account != null) 'account': account!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
@@ -3001,7 +3000,7 @@ class GoogleAnalyticsAdminV1alphaAndroidAppDataStream {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
         if (firebaseAppId != null) 'firebaseAppId': firebaseAppId!,
@@ -3052,7 +3051,7 @@ class GoogleAnalyticsAdminV1alphaAuditUserLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (directRoles != null) 'directRoles': directRoles!,
         if (effectiveRoles != null) 'effectiveRoles': effectiveRoles!,
         if (emailAddress != null) 'emailAddress': emailAddress!,
@@ -3087,7 +3086,7 @@ class GoogleAnalyticsAdminV1alphaAuditUserLinksRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (pageSize != null) 'pageSize': pageSize!,
         if (pageToken != null) 'pageToken': pageToken!,
       };
@@ -3120,7 +3119,7 @@ class GoogleAnalyticsAdminV1alphaAuditUserLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (userLinks != null)
           'userLinks': userLinks!.map((value) => value.toJson()).toList(),
@@ -3161,7 +3160,7 @@ class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (notifyNewUsers != null) 'notifyNewUsers': notifyNewUsers!,
         if (requests != null)
           'requests': requests!.map((value) => value.toJson()).toList(),
@@ -3186,7 +3185,7 @@ class GoogleAnalyticsAdminV1alphaBatchCreateUserLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (userLinks != null)
           'userLinks': userLinks!.map((value) => value.toJson()).toList(),
       };
@@ -3214,7 +3213,7 @@ class GoogleAnalyticsAdminV1alphaBatchDeleteUserLinksRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (requests != null)
           'requests': requests!.map((value) => value.toJson()).toList(),
       };
@@ -3238,7 +3237,7 @@ class GoogleAnalyticsAdminV1alphaBatchGetUserLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (userLinks != null)
           'userLinks': userLinks!.map((value) => value.toJson()).toList(),
       };
@@ -3266,7 +3265,7 @@ class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (requests != null)
           'requests': requests!.map((value) => value.toJson()).toList(),
       };
@@ -3290,7 +3289,7 @@ class GoogleAnalyticsAdminV1alphaBatchUpdateUserLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (userLinks != null)
           'userLinks': userLinks!.map((value) => value.toJson()).toList(),
       };
@@ -3336,7 +3335,7 @@ class GoogleAnalyticsAdminV1alphaCreateUserLinkRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (notifyNewUser != null) 'notifyNewUser': notifyNewUser!,
         if (parent != null) 'parent': parent!,
         if (userLink != null) 'userLink': userLink!.toJson(),
@@ -3402,7 +3401,7 @@ class GoogleAnalyticsAdminV1alphaDataSharingSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (sharingWithGoogleAnySalesEnabled != null)
           'sharingWithGoogleAnySalesEnabled': sharingWithGoogleAnySalesEnabled!,
@@ -3433,7 +3432,7 @@ class GoogleAnalyticsAdminV1alphaDeleteUserLinkRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
       };
 }
@@ -3547,7 +3546,7 @@ class GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fileDownloadsEnabled != null)
           'fileDownloadsEnabled': fileDownloadsEnabled!,
         if (name != null) 'name': name!,
@@ -3621,7 +3620,7 @@ class GoogleAnalyticsAdminV1alphaFirebaseLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (maximumUserAccess != null) 'maximumUserAccess': maximumUserAccess!,
         if (name != null) 'name': name!,
@@ -3656,7 +3655,7 @@ class GoogleAnalyticsAdminV1alphaGlobalSiteTag {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (snippet != null) 'snippet': snippet!,
       };
@@ -3731,7 +3730,7 @@ class GoogleAnalyticsAdminV1alphaGoogleAdsLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (adsPersonalizationEnabled != null)
           'adsPersonalizationEnabled': adsPersonalizationEnabled!,
         if (canManageClients != null) 'canManageClients': canManageClients!,
@@ -3803,7 +3802,7 @@ class GoogleAnalyticsAdminV1alphaIosAppDataStream {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bundleId != null) 'bundleId': bundleId!,
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
@@ -3839,7 +3838,7 @@ class GoogleAnalyticsAdminV1alphaListAccountSummariesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountSummaries != null)
           'accountSummaries':
               accountSummaries!.map((value) => value.toJson()).toList(),
@@ -3872,7 +3871,7 @@ class GoogleAnalyticsAdminV1alphaListAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accounts != null)
           'accounts': accounts!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3907,7 +3906,7 @@ class GoogleAnalyticsAdminV1alphaListAndroidAppDataStreamsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (androidAppDataStreams != null)
           'androidAppDataStreams':
               androidAppDataStreams!.map((value) => value.toJson()).toList(),
@@ -3945,7 +3944,7 @@ class GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (firebaseLinks != null)
           'firebaseLinks':
               firebaseLinks!.map((value) => value.toJson()).toList(),
@@ -3979,7 +3978,7 @@ class GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (googleAdsLinks != null)
           'googleAdsLinks':
               googleAdsLinks!.map((value) => value.toJson()).toList(),
@@ -4014,7 +4013,7 @@ class GoogleAnalyticsAdminV1alphaListIosAppDataStreamsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (iosAppDataStreams != null)
           'iosAppDataStreams':
               iosAppDataStreams!.map((value) => value.toJson()).toList(),
@@ -4048,7 +4047,7 @@ class GoogleAnalyticsAdminV1alphaListPropertiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (properties != null)
           'properties': properties!.map((value) => value.toJson()).toList(),
@@ -4082,7 +4081,7 @@ class GoogleAnalyticsAdminV1alphaListUserLinksResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (userLinks != null)
           'userLinks': userLinks!.map((value) => value.toJson()).toList(),
@@ -4116,7 +4115,7 @@ class GoogleAnalyticsAdminV1alphaListWebDataStreamsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (webDataStreams != null)
           'webDataStreams':
@@ -4244,7 +4243,7 @@ class GoogleAnalyticsAdminV1alphaProperty {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (deleted != null) 'deleted': deleted!,
@@ -4277,7 +4276,7 @@ class GoogleAnalyticsAdminV1alphaPropertySummary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (property != null) 'property': property!,
       };
@@ -4306,7 +4305,7 @@ class GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (account != null) 'account': account!.toJson(),
         if (redirectUri != null) 'redirectUri': redirectUri!,
       };
@@ -4326,7 +4325,7 @@ class GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountTicketId != null) 'accountTicketId': accountTicketId!,
       };
 }
@@ -4347,7 +4346,7 @@ class GoogleAnalyticsAdminV1alphaUpdateUserLinkRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (userLink != null) 'userLink': userLink!.toJson(),
       };
 }
@@ -4386,7 +4385,7 @@ class GoogleAnalyticsAdminV1alphaUserLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (directRoles != null) 'directRoles': directRoles!,
         if (emailAddress != null) 'emailAddress': emailAddress!,
         if (name != null) 'name': name!,
@@ -4467,7 +4466,7 @@ class GoogleAnalyticsAdminV1alphaWebDataStream {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (defaultUri != null) 'defaultUri': defaultUri!,
         if (displayName != null) 'displayName': displayName!,
@@ -4492,5 +4491,5 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }

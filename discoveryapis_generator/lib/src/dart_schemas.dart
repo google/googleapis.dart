@@ -124,10 +124,10 @@ class MapJsonType extends JsonType {
 
   @override
   String get declaration => '${imports.core.ref()}Map'
-      '<${keyJsonType.declaration}, ${valueJsonType.declaration}$orNull>';
+      '<${keyJsonType.declaration}, ${valueJsonType.declaration}>';
 
   @override
-  String get baseDeclaration => '${imports.core.ref()}Map';
+  String get baseDeclaration => imports.coreJsonMap;
 }
 
 class ArrayJsonType extends JsonType {
@@ -147,7 +147,7 @@ class AnyJsonType extends JsonType {
   AnyJsonType(DartApiImports imports) : super(imports);
 
   @override
-  String get declaration => '${imports.core.ref()}Object';
+  String get declaration => '${imports.core.ref()}dynamic';
 }
 
 /// Represents an internal representation used for codegen.
@@ -649,15 +649,8 @@ class UnnamedMapType extends ComplexDartSchemaType {
   @override
   String jsonDecode(String json) {
     if (fromType.needsJsonDecoding || toType.needsJsonDecoding) {
-      // Null safe code is strict about types, so be more precise about generics
-      // This should also work in legacy mode, but keep as before to avoid churn
-      final toTypeJsonDeclaration = generateNullSafeCode
-          ? toType.jsonType.declaration
-          : toType.jsonType.baseDeclaration;
       return '''
-($json as ${imports.core.ref()}Map)
-.cast<${fromType.jsonType.baseDeclaration}, $toTypeJsonDeclaration>()
-.map(
+($json as $coreMapJsonType).map(
 (key, item) => ${imports.core.ref()}MapEntry(
 key,
 ${toType.jsonDecode('item')},

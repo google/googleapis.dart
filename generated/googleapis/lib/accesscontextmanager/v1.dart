@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1434,7 +1433,7 @@ class AccessLevel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basic != null) 'basic': basic!.toJson(),
         if (custom != null) 'custom': custom!.toJson(),
         if (description != null) 'description': description!,
@@ -1498,7 +1497,7 @@ class AccessPolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (name != null) 'name': name!,
         if (parent != null) 'parent': parent!,
@@ -1537,7 +1536,7 @@ class ApiOperation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (methodSelectors != null)
           'methodSelectors':
               methodSelectors!.map((value) => value.toJson()).toList(),
@@ -1579,7 +1578,7 @@ class BasicLevel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (combiningFunction != null) 'combiningFunction': combiningFunction!,
         if (conditions != null)
           'conditions': conditions!.map((value) => value.toJson()).toList(),
@@ -1594,7 +1593,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A request to commit dry-run specs in all Service Perimeters belonging to an
@@ -1620,7 +1619,7 @@ class CommitServicePerimetersRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
       };
 }
@@ -1643,7 +1642,7 @@ class CommitServicePerimetersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (servicePerimeters != null)
           'servicePerimeters':
               servicePerimeters!.map((value) => value.toJson()).toList(),
@@ -1734,7 +1733,7 @@ class Condition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (devicePolicy != null) 'devicePolicy': devicePolicy!.toJson(),
         if (ipSubnetworks != null) 'ipSubnetworks': ipSubnetworks!,
         if (members != null) 'members': members!,
@@ -1764,7 +1763,7 @@ class CustomLevel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (expr != null) 'expr': expr!.toJson(),
       };
 }
@@ -1834,7 +1833,7 @@ class DevicePolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowedDeviceManagementLevels != null)
           'allowedDeviceManagementLevels': allowedDeviceManagementLevels!,
         if (allowedEncryptionStatuses != null)
@@ -1891,7 +1890,7 @@ class EgressFrom {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (identities != null) 'identities': identities!,
         if (identityType != null) 'identityType': identityType!,
       };
@@ -1933,7 +1932,7 @@ class EgressPolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (egressFrom != null) 'egressFrom': egressFrom!.toJson(),
         if (egressTo != null) 'egressTo': egressTo!.toJson(),
       };
@@ -1976,7 +1975,7 @@ class EgressTo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
         if (resources != null) 'resources': resources!,
@@ -1997,7 +1996,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2061,7 +2060,7 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,
@@ -2119,7 +2118,7 @@ class GcpUserAccessBinding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevels != null) 'accessLevels': accessLevels!,
         if (groupKey != null) 'groupKey': groupKey!,
         if (name != null) 'name': name!,
@@ -2173,7 +2172,7 @@ class IngressFrom {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (identities != null) 'identities': identities!,
         if (identityType != null) 'identityType': identityType!,
         if (sources != null)
@@ -2215,7 +2214,7 @@ class IngressPolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ingressFrom != null) 'ingressFrom': ingressFrom!.toJson(),
         if (ingressTo != null) 'ingressTo': ingressTo!.toJson(),
       };
@@ -2254,7 +2253,7 @@ class IngressSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevel != null) 'accessLevel': accessLevel!,
         if (resource != null) 'resource': resource!,
       };
@@ -2295,7 +2294,7 @@ class IngressTo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
         if (resources != null) 'resources': resources!,
@@ -2326,7 +2325,7 @@ class ListAccessLevelsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevels != null)
           'accessLevels': accessLevels!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2357,7 +2356,7 @@ class ListAccessPoliciesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessPolicies != null)
           'accessPolicies':
               accessPolicies!.map((value) => value.toJson()).toList(),
@@ -2389,7 +2388,7 @@ class ListGcpUserAccessBindingsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcpUserAccessBindings != null)
           'gcpUserAccessBindings':
               gcpUserAccessBindings!.map((value) => value.toJson()).toList(),
@@ -2419,7 +2418,7 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
@@ -2450,7 +2449,7 @@ class ListServicePerimetersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (servicePerimeters != null)
           'servicePerimeters':
@@ -2482,7 +2481,7 @@ class MethodSelector {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (method != null) 'method': method!,
         if (permission != null) 'permission': permission!,
       };
@@ -2542,29 +2541,27 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -2616,7 +2613,7 @@ class OsConstraint {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (minimumVersion != null) 'minimumVersion': minimumVersion!,
         if (osType != null) 'osType': osType!,
         if (requireVerifiedChromeOs != null)
@@ -2661,7 +2658,7 @@ class ReplaceAccessLevelsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevels != null)
           'accessLevels': accessLevels!.map((value) => value.toJson()).toList(),
         if (etag != null) 'etag': etag!,
@@ -2686,7 +2683,7 @@ class ReplaceAccessLevelsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevels != null)
           'accessLevels': accessLevels!.map((value) => value.toJson()).toList(),
       };
@@ -2729,7 +2726,7 @@ class ReplaceServicePerimetersRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (servicePerimeters != null)
           'servicePerimeters':
@@ -2755,7 +2752,7 @@ class ReplaceServicePerimetersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (servicePerimeters != null)
           'servicePerimeters':
               servicePerimeters!.map((value) => value.toJson()).toList(),
@@ -2861,7 +2858,7 @@ class ServicePerimeter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (name != null) 'name': name!,
         if (perimeterType != null) 'perimeterType': perimeterType!,
@@ -2955,7 +2952,7 @@ class ServicePerimeterConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessLevels != null) 'accessLevels': accessLevels!,
         if (egressPolicies != null)
           'egressPolicies':
@@ -3004,8 +3001,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -3018,7 +3015,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -3052,7 +3049,7 @@ class VpcAccessibleServices {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowedServices != null) 'allowedServices': allowedServices!,
         if (enableRestriction != null) 'enableRestriction': enableRestriction!,
       };

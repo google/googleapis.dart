@@ -571,7 +571,9 @@ void main() {
   unittest.group('obj-schema-AchievementResetAllResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAchievementResetAllResponse();
-      var od = api.AchievementResetAllResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AchievementResetAllResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAchievementResetAllResponse(od as api.AchievementResetAllResponse);
     });
   });
@@ -579,7 +581,9 @@ void main() {
   unittest.group('obj-schema-AchievementResetMultipleForAllRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAchievementResetMultipleForAllRequest();
-      var od = api.AchievementResetMultipleForAllRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AchievementResetMultipleForAllRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAchievementResetMultipleForAllRequest(
           od as api.AchievementResetMultipleForAllRequest);
     });
@@ -588,7 +592,9 @@ void main() {
   unittest.group('obj-schema-AchievementResetResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAchievementResetResponse();
-      var od = api.AchievementResetResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AchievementResetResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAchievementResetResponse(od as api.AchievementResetResponse);
     });
   });
@@ -596,7 +602,9 @@ void main() {
   unittest.group('obj-schema-EventsResetMultipleForAllRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEventsResetMultipleForAllRequest();
-      var od = api.EventsResetMultipleForAllRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.EventsResetMultipleForAllRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkEventsResetMultipleForAllRequest(
           od as api.EventsResetMultipleForAllRequest);
     });
@@ -605,7 +613,9 @@ void main() {
   unittest.group('obj-schema-GamesPlayerExperienceInfoResource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGamesPlayerExperienceInfoResource();
-      var od = api.GamesPlayerExperienceInfoResource.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GamesPlayerExperienceInfoResource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGamesPlayerExperienceInfoResource(
           od as api.GamesPlayerExperienceInfoResource);
     });
@@ -614,7 +624,9 @@ void main() {
   unittest.group('obj-schema-GamesPlayerLevelResource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGamesPlayerLevelResource();
-      var od = api.GamesPlayerLevelResource.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GamesPlayerLevelResource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGamesPlayerLevelResource(od as api.GamesPlayerLevelResource);
     });
   });
@@ -622,7 +634,9 @@ void main() {
   unittest.group('obj-schema-HiddenPlayer', () {
     unittest.test('to-json--from-json', () async {
       var o = buildHiddenPlayer();
-      var od = api.HiddenPlayer.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.HiddenPlayer.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkHiddenPlayer(od as api.HiddenPlayer);
     });
   });
@@ -630,7 +644,9 @@ void main() {
   unittest.group('obj-schema-HiddenPlayerList', () {
     unittest.test('to-json--from-json', () async {
       var o = buildHiddenPlayerList();
-      var od = api.HiddenPlayerList.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.HiddenPlayerList.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkHiddenPlayerList(od as api.HiddenPlayerList);
     });
   });
@@ -638,7 +654,9 @@ void main() {
   unittest.group('obj-schema-PlayerName', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPlayerName();
-      var od = api.PlayerName.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.PlayerName.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPlayerName(od as api.PlayerName);
     });
   });
@@ -646,7 +664,9 @@ void main() {
   unittest.group('obj-schema-Player', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPlayer();
-      var od = api.Player.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Player.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPlayer(od as api.Player);
     });
   });
@@ -654,7 +674,9 @@ void main() {
   unittest.group('obj-schema-PlayerScoreResetAllResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPlayerScoreResetAllResponse();
-      var od = api.PlayerScoreResetAllResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PlayerScoreResetAllResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPlayerScoreResetAllResponse(od as api.PlayerScoreResetAllResponse);
     });
   });
@@ -662,7 +684,9 @@ void main() {
   unittest.group('obj-schema-PlayerScoreResetResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPlayerScoreResetResponse();
-      var od = api.PlayerScoreResetResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PlayerScoreResetResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPlayerScoreResetResponse(od as api.PlayerScoreResetResponse);
     });
   });
@@ -670,7 +694,9 @@ void main() {
   unittest.group('obj-schema-ProfileSettings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildProfileSettings();
-      var od = api.ProfileSettings.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ProfileSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkProfileSettings(od as api.ProfileSettings);
     });
   });
@@ -678,7 +704,9 @@ void main() {
   unittest.group('obj-schema-ScoresResetMultipleForAllRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildScoresResetMultipleForAllRequest();
-      var od = api.ScoresResetMultipleForAllRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ScoresResetMultipleForAllRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkScoresResetMultipleForAllRequest(
           od as api.ScoresResetMultipleForAllRequest);
     });

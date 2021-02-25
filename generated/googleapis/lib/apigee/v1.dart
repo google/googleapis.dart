@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -10302,8 +10301,8 @@ class GoogleApiHttpBody {
     }
     if (_json.containsKey('extensions')) {
       extensions = (_json['extensions'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -10313,7 +10312,7 @@ class GoogleApiHttpBody {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentType != null) 'contentType': contentType!,
         if (data != null) 'data': data!,
         if (extensions != null) 'extensions': extensions!,
@@ -10342,7 +10341,7 @@ class GoogleCloudApigeeV1Access {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (Get != null) 'Get': Get!.toJson(),
         if (Remove != null) 'Remove': Remove!.toJson(),
         if (Set != null) 'Set': Set!.toJson(),
@@ -10367,7 +10366,7 @@ class GoogleCloudApigeeV1AccessGet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
       };
@@ -10391,7 +10390,7 @@ class GoogleCloudApigeeV1AccessRemove {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (success != null) 'success': success!,
       };
@@ -10420,7 +10419,7 @@ class GoogleCloudApigeeV1AccessSet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (success != null) 'success': success!,
         if (value != null) 'value': value!,
@@ -10437,7 +10436,7 @@ class GoogleCloudApigeeV1ActivateNatAddressRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Reference to a certificate or key/certificate pair.
@@ -10472,7 +10471,7 @@ class GoogleCloudApigeeV1Alias {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alias != null) 'alias': alias!,
         if (certsInfo != null) 'certsInfo': certsInfo!.toJson(),
         if (type != null) 'type': type!,
@@ -10511,7 +10510,7 @@ class GoogleCloudApigeeV1AliasRevisionConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
         if (type != null) 'type': type!,
@@ -10556,7 +10555,7 @@ class GoogleCloudApigeeV1ApiCategory {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (data != null) 'data': data!.toJson(),
         if (errorCode != null) 'errorCode': errorCode!,
         if (message != null) 'message': message!,
@@ -10596,7 +10595,7 @@ class GoogleCloudApigeeV1ApiCategoryData {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
         if (siteId != null) 'siteId': siteId!,
@@ -10790,7 +10789,7 @@ class GoogleCloudApigeeV1ApiProduct {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiResources != null) 'apiResources': apiResources!,
         if (approvalType != null) 'approvalType': approvalType!,
         if (attributes != null)
@@ -10828,7 +10827,7 @@ class GoogleCloudApigeeV1ApiProductRef {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiproduct != null) 'apiproduct': apiproduct!,
         if (status != null) 'status': status!,
       };
@@ -10868,7 +10867,7 @@ class GoogleCloudApigeeV1ApiProxy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (latestRevisionId != null) 'latestRevisionId': latestRevisionId!,
         if (metaData != null) 'metaData': metaData!.toJson(),
         if (name != null) 'name': name!,
@@ -10993,15 +10992,14 @@ class GoogleCloudApigeeV1ApiProxyRevision {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('entityMetaDataAsProperties')) {
-      entityMetaDataAsProperties =
-          (_json['entityMetaDataAsProperties'] as core.Map)
-              .cast<core.String, core.String>()
-              .map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      entityMetaDataAsProperties = (_json['entityMetaDataAsProperties']
+              as core.Map<core.String, core.dynamic>)
+          .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('lastModifiedAt')) {
       lastModifiedAt = _json['lastModifiedAt'] as core.String;
@@ -11069,7 +11067,7 @@ class GoogleCloudApigeeV1ApiProxyRevision {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basepaths != null) 'basepaths': basepaths!,
         if (configurationVersion != null)
           'configurationVersion': configurationVersion!.toJson(),
@@ -11127,7 +11125,7 @@ class GoogleCloudApigeeV1ApiResponseWrapper {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorCode != null) 'errorCode': errorCode!,
         if (message != null) 'message': message!,
         if (requestId != null) 'requestId': requestId!,
@@ -11249,7 +11247,7 @@ class GoogleCloudApigeeV1App {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiProducts != null)
           'apiProducts': apiProducts!.map((value) => value.toJson()).toList(),
         if (appId != null) 'appId': appId!,
@@ -11360,7 +11358,7 @@ class GoogleCloudApigeeV1AsyncQuery {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (created != null) 'created': created!,
         if (envgroupHostname != null) 'envgroupHostname': envgroupHostname!,
         if (error != null) 'error': error!,
@@ -11401,7 +11399,7 @@ class GoogleCloudApigeeV1AsyncQueryResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (expires != null) 'expires': expires!,
         if (self != null) 'self': self!,
       };
@@ -11453,7 +11451,7 @@ class GoogleCloudApigeeV1AsyncQueryResultView {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (error != null) 'error': error!,
         if (metadata != null) 'metadata': metadata!.toJson(),
@@ -11481,7 +11479,7 @@ class GoogleCloudApigeeV1Attribute {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
       };
@@ -11503,7 +11501,7 @@ class GoogleCloudApigeeV1Attributes {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attribute != null)
           'attribute': attribute!.map((value) => value.toJson()).toList(),
       };
@@ -11599,7 +11597,7 @@ class GoogleCloudApigeeV1CanaryEvaluation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (control != null) 'control': control!,
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
@@ -11643,7 +11641,7 @@ class GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (env != null) 'env': env!,
         if (instanceId != null) 'instance_id': instanceId!,
         if (location != null) 'location': location!,
@@ -11728,7 +11726,7 @@ class GoogleCloudApigeeV1CertInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basicConstraints != null) 'basicConstraints': basicConstraints!,
         if (expiryDate != null) 'expiryDate': expiryDate!,
         if (isValid != null) 'isValid': isValid!,
@@ -11760,7 +11758,7 @@ class GoogleCloudApigeeV1Certificate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (certInfo != null)
           'certInfo': certInfo!.map((value) => value.toJson()).toList(),
       };
@@ -11781,7 +11779,7 @@ class GoogleCloudApigeeV1CommonNameConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (matchWildCards != null) 'matchWildCards': matchWildCards!,
         if (name != null) 'name': name!,
       };
@@ -11808,7 +11806,7 @@ class GoogleCloudApigeeV1ConfigVersion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (majorVersion != null) 'majorVersion': majorVersion!,
         if (minorVersion != null) 'minorVersion': minorVersion!,
       };
@@ -11881,7 +11879,7 @@ class GoogleCloudApigeeV1Credential {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiProducts != null)
           'apiProducts': apiProducts!.map((value) => value.toJson()).toList(),
         if (attributes != null)
@@ -12083,7 +12081,7 @@ class GoogleCloudApigeeV1CustomReport {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (chartType != null) 'chartType': chartType!,
         if (comments != null) 'comments': comments!,
         if (createdAt != null) 'createdAt': createdAt!,
@@ -12131,7 +12129,7 @@ class GoogleCloudApigeeV1CustomReportMetric {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (function != null) 'function': function!,
         if (name != null) 'name': name!,
       };
@@ -12191,7 +12189,7 @@ class GoogleCloudApigeeV1DataCollector {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createdAt != null) 'createdAt': createdAt!,
         if (description != null) 'description': description!,
         if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
@@ -12227,7 +12225,7 @@ class GoogleCloudApigeeV1DataCollectorConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (type != null) 'type': type!,
       };
@@ -12301,7 +12299,7 @@ class GoogleCloudApigeeV1Datastore {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (datastoreConfig != null)
           'datastoreConfig': datastoreConfig!.toJson(),
@@ -12354,7 +12352,7 @@ class GoogleCloudApigeeV1DatastoreConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bucketName != null) 'bucketName': bucketName!,
         if (datasetName != null) 'datasetName': datasetName!,
         if (path != null) 'path': path!,
@@ -12391,7 +12389,7 @@ class GoogleCloudApigeeV1DateRange {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (end != null) 'end': end!,
         if (start != null) 'start': start!,
       };
@@ -12448,14 +12446,13 @@ class GoogleCloudApigeeV1DebugMask {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('namespaces')) {
-      namespaces = (_json['namespaces'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      namespaces =
+          (_json['namespaces'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('requestJSONPaths')) {
       requestJSONPaths = (_json['requestJSONPaths'] as core.List)
@@ -12484,7 +12481,7 @@ class GoogleCloudApigeeV1DebugMask {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (faultJSONPaths != null) 'faultJSONPaths': faultJSONPaths!,
         if (faultXPaths != null) 'faultXPaths': faultXPaths!,
         if (name != null) 'name': name!,
@@ -12561,7 +12558,7 @@ class GoogleCloudApigeeV1DebugSession {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
         if (filter != null) 'filter': filter!,
         if (name != null) 'name': name!,
@@ -12599,7 +12596,7 @@ class GoogleCloudApigeeV1DebugSessionTransaction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (completed != null) 'completed': completed!,
         if (point != null)
           'point': point!.map((value) => value.toJson()).toList(),
@@ -12618,7 +12615,7 @@ class GoogleCloudApigeeV1DeleteCustomReportResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (message != null) 'message': message!,
       };
 }
@@ -12722,7 +12719,7 @@ class GoogleCloudApigeeV1Deployment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiProxy != null) 'apiProxy': apiProxy!,
         if (deployStartTime != null) 'deployStartTime': deployStartTime!,
         if (environment != null) 'environment': environment!,
@@ -12789,7 +12786,7 @@ class GoogleCloudApigeeV1DeploymentChangeReport {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (routingChanges != null)
           'routingChanges':
               routingChanges!.map((value) => value.toJson()).toList(),
@@ -12849,7 +12846,7 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (environmentGroup != null) 'environmentGroup': environmentGroup!,
         if (fromDeployment != null) 'fromDeployment': fromDeployment!.toJson(),
@@ -12890,7 +12887,7 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (conflictingDeployment != null)
           'conflictingDeployment': conflictingDeployment!.toJson(),
         if (description != null) 'description': description!,
@@ -12930,7 +12927,7 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiProxy != null) 'apiProxy': apiProxy!,
         if (basepath != null) 'basepath': basepath!,
         if (environment != null) 'environment': environment!,
@@ -12967,14 +12964,13 @@ class GoogleCloudApigeeV1DeploymentConfig {
 
   GoogleCloudApigeeV1DeploymentConfig.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes = (_json['attributes'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      attributes =
+          (_json['attributes'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('basePath')) {
       basePath = _json['basePath'] as core.String;
@@ -12993,7 +12989,7 @@ class GoogleCloudApigeeV1DeploymentConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!,
         if (basePath != null) 'basePath': basePath!,
         if (location != null) 'location': location!,
@@ -13131,7 +13127,7 @@ class GoogleCloudApigeeV1Developer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessType != null) 'accessType': accessType!,
         if (appFamily != null) 'appFamily': appFamily!,
         if (apps != null) 'apps': apps!,
@@ -13263,7 +13259,7 @@ class GoogleCloudApigeeV1DeveloperApp {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiProducts != null) 'apiProducts': apiProducts!,
         if (appFamily != null) 'appFamily': appFamily!,
         if (appId != null) 'appId': appId!,
@@ -13366,7 +13362,7 @@ class GoogleCloudApigeeV1DeveloperAppKey {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiProducts != null) 'apiProducts': apiProducts!,
         if (attributes != null)
           'attributes': attributes!.map((value) => value.toJson()).toList(),
@@ -13403,7 +13399,7 @@ class GoogleCloudApigeeV1DimensionMetric {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metrics != null)
           'metrics': metrics!.map((value) => value.toJson()).toList(),
         if (name != null) 'name': name!,
@@ -13436,7 +13432,7 @@ class GoogleCloudApigeeV1EntityMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createdAt != null) 'createdAt': createdAt!,
         if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
         if (subType != null) 'subType': subType!,
@@ -13515,7 +13511,7 @@ class GoogleCloudApigeeV1Environment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createdAt != null) 'createdAt': createdAt!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
@@ -13614,14 +13610,13 @@ class GoogleCloudApigeeV1EnvironmentConfig {
           .toList();
     }
     if (_json.containsKey('featureFlags')) {
-      featureFlags = (_json['featureFlags'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      featureFlags =
+          (_json['featureFlags'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('flowhooks')) {
       flowhooks = (_json['flowhooks'] as core.List)
@@ -13682,7 +13677,7 @@ class GoogleCloudApigeeV1EnvironmentConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (dataCollectors != null)
           'dataCollectors':
@@ -13771,7 +13766,7 @@ class GoogleCloudApigeeV1EnvironmentGroup {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createdAt != null) 'createdAt': createdAt!,
         if (hostnames != null) 'hostnames': hostnames!,
         if (lastModifiedAt != null) 'lastModifiedAt': lastModifiedAt!,
@@ -13811,7 +13806,7 @@ class GoogleCloudApigeeV1EnvironmentGroupAttachment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createdAt != null) 'createdAt': createdAt!,
         if (environment != null) 'environment': environment!,
         if (name != null) 'name': name!,
@@ -13868,7 +13863,7 @@ class GoogleCloudApigeeV1EnvironmentGroupConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hostnames != null) 'hostnames': hostnames!,
         if (name != null) 'name': name!,
         if (revisionId != null) 'revisionId': revisionId!,
@@ -13961,7 +13956,7 @@ class GoogleCloudApigeeV1Export {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (created != null) 'created': created!,
         if (datastoreName != null) 'datastoreName': datastoreName!,
         if (description != null) 'description': description!,
@@ -14036,7 +14031,7 @@ class GoogleCloudApigeeV1ExportRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (csvDelimiter != null) 'csvDelimiter': csvDelimiter!,
         if (datastoreName != null) 'datastoreName': datastoreName!,
         if (dateRange != null) 'dateRange': dateRange!.toJson(),
@@ -14088,7 +14083,7 @@ class GoogleCloudApigeeV1FlowHook {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (continueOnError != null) 'continueOnError': continueOnError!,
         if (description != null) 'description': description!,
         if (flowHookPoint != null) 'flowHookPoint': flowHookPoint!,
@@ -14128,7 +14123,7 @@ class GoogleCloudApigeeV1FlowHookConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (continueOnError != null) 'continueOnError': continueOnError!,
         if (name != null) 'name': name!,
         if (sharedFlowName != null) 'sharedFlowName': sharedFlowName!,
@@ -14143,7 +14138,7 @@ class GoogleCloudApigeeV1GetSyncAuthorizationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 class GoogleCloudApigeeV1IngressConfig {
@@ -14190,7 +14185,7 @@ class GoogleCloudApigeeV1IngressConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (environmentGroups != null)
           'environmentGroups':
               environmentGroups!.map((value) => value.toJson()).toList(),
@@ -14315,7 +14310,7 @@ class GoogleCloudApigeeV1Instance {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createdAt != null) 'createdAt': createdAt!,
         if (description != null) 'description': description!,
         if (diskEncryptionKeyName != null)
@@ -14361,7 +14356,7 @@ class GoogleCloudApigeeV1InstanceAttachment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createdAt != null) 'createdAt': createdAt!,
         if (environment != null) 'environment': environment!,
         if (name != null) 'name': name!,
@@ -14407,7 +14402,7 @@ class GoogleCloudApigeeV1InstanceDeploymentStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deployedRevisions != null)
           'deployedRevisions':
               deployedRevisions!.map((value) => value.toJson()).toList(),
@@ -14438,7 +14433,7 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (percentage != null) 'percentage': percentage!,
         if (revision != null) 'revision': revision!,
       };
@@ -14478,7 +14473,7 @@ class GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basepath != null) 'basepath': basepath!,
         if (envgroup != null) 'envgroup': envgroup!,
         if (environment != null) 'environment': environment!,
@@ -14507,7 +14502,7 @@ class GoogleCloudApigeeV1KeyAliasReference {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aliasId != null) 'aliasId': aliasId!,
         if (reference != null) 'reference': reference!,
       };
@@ -14536,7 +14531,7 @@ class GoogleCloudApigeeV1KeyValueMap {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (encrypted != null) 'encrypted': encrypted!,
         if (name != null) 'name': name!,
       };
@@ -14569,7 +14564,7 @@ class GoogleCloudApigeeV1Keystore {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aliases != null) 'aliases': aliases!,
         if (name != null) 'name': name!,
       };
@@ -14598,7 +14593,7 @@ class GoogleCloudApigeeV1KeystoreConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aliases != null)
           'aliases': aliases!.map((value) => value.toJson()).toList(),
         if (name != null) 'name': name!,
@@ -14646,7 +14641,7 @@ class GoogleCloudApigeeV1ListApiCategoriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (data != null) 'data': data!.map((value) => value.toJson()).toList(),
         if (errorCode != null) 'errorCode': errorCode!,
         if (message != null) 'message': message!,
@@ -14671,7 +14666,7 @@ class GoogleCloudApigeeV1ListApiProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiProduct != null)
           'apiProduct': apiProduct!.map((value) => value.toJson()).toList(),
       };
@@ -14692,7 +14687,7 @@ class GoogleCloudApigeeV1ListApiProxiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (proxies != null)
           'proxies': proxies!.map((value) => value.toJson()).toList(),
       };
@@ -14713,7 +14708,7 @@ class GoogleCloudApigeeV1ListAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (app != null) 'app': app!.map((value) => value.toJson()).toList(),
       };
 }
@@ -14735,7 +14730,7 @@ class GoogleCloudApigeeV1ListAsyncQueriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (queries != null)
           'queries': queries!.map((value) => value.toJson()).toList(),
       };
@@ -14757,7 +14752,7 @@ class GoogleCloudApigeeV1ListCustomReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (qualifier != null)
           'qualifier': qualifier!.map((value) => value.toJson()).toList(),
       };
@@ -14789,7 +14784,7 @@ class GoogleCloudApigeeV1ListDataCollectorsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataCollectors != null)
           'dataCollectors':
               dataCollectors!.map((value) => value.toJson()).toList(),
@@ -14814,7 +14809,7 @@ class GoogleCloudApigeeV1ListDatastoresResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (datastores != null)
           'datastores': datastores!.map((value) => value.toJson()).toList(),
       };
@@ -14846,7 +14841,7 @@ class GoogleCloudApigeeV1ListDebugSessionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (sessions != null)
           'sessions': sessions!.map((value) => value.toJson()).toList(),
@@ -14869,7 +14864,7 @@ class GoogleCloudApigeeV1ListDeploymentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deployments != null)
           'deployments': deployments!.map((value) => value.toJson()).toList(),
       };
@@ -14891,7 +14886,7 @@ class GoogleCloudApigeeV1ListDeveloperAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (app != null) 'app': app!.map((value) => value.toJson()).toList(),
       };
 }
@@ -14925,7 +14920,7 @@ class GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (environmentGroupAttachments != null)
           'environmentGroupAttachments': environmentGroupAttachments!
               .map((value) => value.toJson())
@@ -14960,7 +14955,7 @@ class GoogleCloudApigeeV1ListEnvironmentGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (environmentGroups != null)
           'environmentGroups':
               environmentGroups!.map((value) => value.toJson()).toList(),
@@ -14985,7 +14980,7 @@ class GoogleCloudApigeeV1ListEnvironmentResourcesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resourceFile != null)
           'resourceFile': resourceFile!.map((value) => value.toJson()).toList(),
       };
@@ -15008,7 +15003,7 @@ class GoogleCloudApigeeV1ListExportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exports != null)
           'exports': exports!.map((value) => value.toJson()).toList(),
       };
@@ -15030,7 +15025,7 @@ class GoogleCloudApigeeV1ListHybridIssuersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (issuers != null)
           'issuers': issuers!.map((value) => value.toJson()).toList(),
       };
@@ -15062,7 +15057,7 @@ class GoogleCloudApigeeV1ListInstanceAttachmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attachments != null)
           'attachments': attachments!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -15095,7 +15090,7 @@ class GoogleCloudApigeeV1ListInstancesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (instances != null)
           'instances': instances!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -15128,7 +15123,7 @@ class GoogleCloudApigeeV1ListNatAddressesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (natAddresses != null)
           'natAddresses': natAddresses!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -15151,7 +15146,7 @@ class GoogleCloudApigeeV1ListOfDevelopersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (developer != null)
           'developer': developer!.map((value) => value.toJson()).toList(),
       };
@@ -15173,7 +15168,7 @@ class GoogleCloudApigeeV1ListOrganizationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (organizations != null)
           'organizations':
               organizations!.map((value) => value.toJson()).toList(),
@@ -15195,7 +15190,7 @@ class GoogleCloudApigeeV1ListSharedFlowsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sharedFlows != null)
           'sharedFlows': sharedFlows!.map((value) => value.toJson()).toList(),
       };
@@ -15229,7 +15224,7 @@ class GoogleCloudApigeeV1Metadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errors != null) 'errors': errors!,
         if (notices != null) 'notices': notices!,
       };
@@ -15266,7 +15261,7 @@ class GoogleCloudApigeeV1Metric {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (values != null) 'values': values!,
       };
@@ -15313,7 +15308,7 @@ class GoogleCloudApigeeV1NatAddress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ipAddress != null) 'ipAddress': ipAddress!,
         if (name != null) 'name': name!,
         if (state != null) 'state': state!,
@@ -15348,7 +15343,7 @@ class GoogleCloudApigeeV1Operation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (methods != null) 'methods': methods!,
         if (resource != null) 'resource': resource!,
       };
@@ -15405,7 +15400,7 @@ class GoogleCloudApigeeV1OperationConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiSource != null) 'apiSource': apiSource!,
         if (attributes != null)
           'attributes': attributes!.map((value) => value.toJson()).toList(),
@@ -15450,7 +15445,7 @@ class GoogleCloudApigeeV1OperationGroup {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (operationConfigType != null)
           'operationConfigType': operationConfigType!,
         if (operationConfigs != null)
@@ -15494,7 +15489,7 @@ class GoogleCloudApigeeV1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (operationType != null) 'operationType': operationType!,
         if (state != null) 'state': state!,
         if (targetResourceName != null)
@@ -15526,7 +15521,7 @@ class GoogleCloudApigeeV1OptimizedStats {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (Response != null) 'Response': Response!.toJson(),
       };
 }
@@ -15555,7 +15550,7 @@ class GoogleCloudApigeeV1OptimizedStatsNode {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (data != null) 'data': data!,
       };
 }
@@ -15598,7 +15593,7 @@ class GoogleCloudApigeeV1OptimizedStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (TimeUnit != null) 'TimeUnit': TimeUnit!,
         if (metaData != null) 'metaData': metaData!.toJson(),
         if (resultTruncated != null) 'resultTruncated': resultTruncated!,
@@ -15820,7 +15815,7 @@ class GoogleCloudApigeeV1Organization {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (analyticsRegion != null) 'analyticsRegion': analyticsRegion!,
         if (attributes != null) 'attributes': attributes!,
         if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork!,
@@ -15864,7 +15859,7 @@ class GoogleCloudApigeeV1OrganizationProjectMapping {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (organization != null) 'organization': organization!,
         if (projectIds != null) 'projectIds': projectIds!,
       };
@@ -15937,7 +15932,7 @@ class GoogleCloudApigeeV1PodStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appVersion != null) 'appVersion': appVersion!,
         if (deploymentStatus != null) 'deploymentStatus': deploymentStatus!,
         if (deploymentStatusTime != null)
@@ -15984,7 +15979,7 @@ class GoogleCloudApigeeV1Point {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (results != null)
           'results': results!.map((value) => value.toJson()).toList(),
@@ -16009,7 +16004,7 @@ class GoogleCloudApigeeV1Properties {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (property != null)
           'property': property!.map((value) => value.toJson()).toList(),
       };
@@ -16034,7 +16029,7 @@ class GoogleCloudApigeeV1Property {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
       };
@@ -16075,7 +16070,7 @@ class GoogleCloudApigeeV1ProvisionOrganizationRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (analyticsRegion != null) 'analyticsRegion': analyticsRegion!,
         if (authorizedNetwork != null) 'authorizedNetwork': authorizedNetwork!,
         if (runtimeLocation != null) 'runtimeLocation': runtimeLocation!,
@@ -16197,7 +16192,7 @@ class GoogleCloudApigeeV1Query {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (csvDelimiter != null) 'csvDelimiter': csvDelimiter!,
         if (dimensions != null) 'dimensions': dimensions!,
         if (envgroupHostname != null) 'envgroupHostname': envgroupHostname!,
@@ -16262,7 +16257,7 @@ class GoogleCloudApigeeV1QueryMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dimensions != null) 'dimensions': dimensions!,
         if (endTimestamp != null) 'endTimestamp': endTimestamp!,
         if (metrics != null) 'metrics': metrics!,
@@ -16314,7 +16309,7 @@ class GoogleCloudApigeeV1QueryMetric {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alias != null) 'alias': alias!,
         if (function != null) 'function': function!,
         if (name != null) 'name': name!,
@@ -16363,7 +16358,7 @@ class GoogleCloudApigeeV1Quota {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (interval != null) 'interval': interval!,
         if (limit != null) 'limit': limit!,
         if (timeUnit != null) 'timeUnit': timeUnit!,
@@ -16417,7 +16412,7 @@ class GoogleCloudApigeeV1Reference {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (name != null) 'name': name!,
         if (refers != null) 'refers': refers!,
@@ -16446,7 +16441,7 @@ class GoogleCloudApigeeV1ReferenceConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (resourceName != null) 'resourceName': resourceName!,
       };
@@ -16486,7 +16481,7 @@ class GoogleCloudApigeeV1ReportInstanceStatusRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (instanceUid != null) 'instanceUid': instanceUid!,
         if (reportTime != null) 'reportTime': reportTime!,
         if (resources != null)
@@ -16502,7 +16497,7 @@ class GoogleCloudApigeeV1ReportInstanceStatusResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 class GoogleCloudApigeeV1ReportProperty {
@@ -16527,7 +16522,7 @@ class GoogleCloudApigeeV1ReportProperty {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (property != null) 'property': property!,
         if (value != null)
           'value': value!.map((value) => value.toJson()).toList(),
@@ -16554,7 +16549,7 @@ class GoogleCloudApigeeV1ResourceConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (location != null) 'location': location!,
         if (name != null) 'name': name!,
       };
@@ -16581,7 +16576,7 @@ class GoogleCloudApigeeV1ResourceFile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (type != null) 'type': type!,
       };
@@ -16604,7 +16599,7 @@ class GoogleCloudApigeeV1ResourceFiles {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resourceFile != null)
           'resourceFile': resourceFile!.map((value) => value.toJson()).toList(),
       };
@@ -16652,7 +16647,7 @@ class GoogleCloudApigeeV1ResourceStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resource != null) 'resource': resource!,
         if (revisions != null)
           'revisions': revisions!.map((value) => value.toJson()).toList(),
@@ -16767,7 +16762,7 @@ class GoogleCloudApigeeV1Result {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ActionResult != null) 'ActionResult': ActionResult!,
         if (accessList != null)
           'accessList': accessList!.map((value) => value.toJson()).toList(),
@@ -16818,7 +16813,7 @@ class GoogleCloudApigeeV1RevisionStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errors != null)
           'errors': errors!.map((value) => value.toJson()).toList(),
         if (jsonSpec != null) 'jsonSpec': jsonSpec!,
@@ -16881,7 +16876,7 @@ class GoogleCloudApigeeV1RoutingRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (basepath != null) 'basepath': basepath!,
         if (envGroupRevision != null) 'envGroupRevision': envGroupRevision!,
         if (environment != null) 'environment': environment!,
@@ -16955,7 +16950,7 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endpoint != null) 'endpoint': endpoint!,
         if (exporter != null) 'exporter': exporter!,
         if (name != null) 'name': name!,
@@ -17019,7 +17014,7 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiProxy != null) 'apiProxy': apiProxy!,
         if (name != null) 'name': name!,
         if (revisionCreateTime != null)
@@ -17065,7 +17060,7 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sampler != null) 'sampler': sampler!,
         if (samplingRate != null) 'samplingRate': samplingRate!,
       };
@@ -17111,7 +17106,7 @@ class GoogleCloudApigeeV1Schema {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dimensions != null)
           'dimensions': dimensions!.map((value) => value.toJson()).toList(),
         if (meta != null) 'meta': meta!,
@@ -17141,7 +17136,7 @@ class GoogleCloudApigeeV1SchemaSchemaElement {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (properties != null) 'properties': properties!.toJson(),
       };
@@ -17173,7 +17168,7 @@ class GoogleCloudApigeeV1SchemaSchemaProperty {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (custom != null) 'custom': custom!,
         if (type != null) 'type': type!,
@@ -17200,7 +17195,7 @@ class GoogleCloudApigeeV1ServiceIssuersMapping {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (emailIds != null) 'emailIds': emailIds!,
         if (service != null) 'service': service!,
       };
@@ -17225,7 +17220,7 @@ class GoogleCloudApigeeV1Session {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (timestampMs != null) 'timestampMs': timestampMs!,
       };
@@ -17265,7 +17260,7 @@ class GoogleCloudApigeeV1SharedFlow {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (latestRevisionId != null) 'latestRevisionId': latestRevisionId!,
         if (metaData != null) 'metaData': metaData!.toJson(),
         if (name != null) 'name': name!,
@@ -17345,15 +17340,14 @@ class GoogleCloudApigeeV1SharedFlowRevision {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('entityMetaDataAsProperties')) {
-      entityMetaDataAsProperties =
-          (_json['entityMetaDataAsProperties'] as core.Map)
-              .cast<core.String, core.String>()
-              .map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      entityMetaDataAsProperties = (_json['entityMetaDataAsProperties']
+              as core.Map<core.String, core.dynamic>)
+          .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('lastModifiedAt')) {
       lastModifiedAt = _json['lastModifiedAt'] as core.String;
@@ -17388,7 +17382,7 @@ class GoogleCloudApigeeV1SharedFlowRevision {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (configurationVersion != null)
           'configurationVersion': configurationVersion!.toJson(),
         if (contextInfo != null) 'contextInfo': contextInfo!,
@@ -17442,7 +17436,7 @@ class GoogleCloudApigeeV1Stats {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (environments != null)
           'environments': environments!.map((value) => value.toJson()).toList(),
         if (hosts != null)
@@ -17495,7 +17489,7 @@ class GoogleCloudApigeeV1StatsEnvironmentStats {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dimensions != null)
           'dimensions': dimensions!.map((value) => value.toJson()).toList(),
         if (metrics != null)
@@ -17549,7 +17543,7 @@ class GoogleCloudApigeeV1StatsHostStats {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dimensions != null)
           'dimensions': dimensions!.map((value) => value.toJson()).toList(),
         if (metrics != null)
@@ -17574,7 +17568,7 @@ class GoogleCloudApigeeV1Subscription {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
       };
 }
@@ -17627,7 +17621,7 @@ class GoogleCloudApigeeV1SyncAuthorization {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (identities != null) 'identities': identities!,
       };
@@ -17706,7 +17700,7 @@ class GoogleCloudApigeeV1TargetServer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (host != null) 'host': host!,
         if (isEnabled != null) 'isEnabled': isEnabled!,
@@ -17748,7 +17742,7 @@ class GoogleCloudApigeeV1TargetServerConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (host != null) 'host': host!,
         if (name != null) 'name': name!,
         if (port != null) 'port': port!,
@@ -17779,7 +17773,7 @@ class GoogleCloudApigeeV1TestDatastoreResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (error != null) 'error': error!,
         if (state != null) 'state': state!,
       };
@@ -17872,7 +17866,7 @@ class GoogleCloudApigeeV1TlsInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ciphers != null) 'ciphers': ciphers!,
         if (clientAuthEnabled != null) 'clientAuthEnabled': clientAuthEnabled!,
         if (commonName != null) 'commonName': commonName!.toJson(),
@@ -17904,7 +17898,7 @@ class GoogleCloudApigeeV1TlsInfoCommonName {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (value != null) 'value': value!,
         if (wildcardMatch != null) 'wildcardMatch': wildcardMatch!,
       };
@@ -17988,7 +17982,7 @@ class GoogleCloudApigeeV1TlsInfoConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ciphers != null) 'ciphers': ciphers!,
         if (clientAuthEnabled != null) 'clientAuthEnabled': clientAuthEnabled!,
         if (commonName != null) 'commonName': commonName!.toJson(),
@@ -18120,7 +18114,7 @@ class GoogleCloudApigeeV1UpdateError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (message != null) 'message': message!,
         if (resource != null) 'resource': resource!,
@@ -18170,7 +18164,7 @@ class GoogleIamV1AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
               auditLogConfigs!.map((value) => value.toJson()).toList(),
@@ -18212,7 +18206,7 @@ class GoogleIamV1AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
         if (logType != null) 'logType': logType!,
       };
@@ -18284,7 +18278,7 @@ class GoogleIamV1Binding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
@@ -18396,7 +18390,7 @@ class GoogleIamV1Policy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditConfigs != null)
           'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
@@ -18433,7 +18427,7 @@ class GoogleIamV1SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
         if (updateMask != null) 'updateMask': updateMask!,
       };
@@ -18458,7 +18452,7 @@ class GoogleIamV1TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -18479,7 +18473,7 @@ class GoogleIamV1TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -18507,7 +18501,7 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
@@ -18568,29 +18562,27 @@ class GoogleLongrunningOperation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -18613,7 +18605,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Describes what preconditions have failed.
@@ -18637,7 +18629,7 @@ class GoogleRpcPreconditionFailure {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (violations != null)
           'violations': violations!.map((value) => value.toJson()).toList(),
       };
@@ -18678,7 +18670,7 @@ class GoogleRpcPreconditionFailureViolation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (subject != null) 'subject': subject!,
         if (type != null) 'type': type!,
@@ -18718,8 +18710,8 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -18732,7 +18724,7 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -18800,7 +18792,7 @@ class GoogleTypeExpr {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,

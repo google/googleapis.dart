@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -991,13 +990,12 @@ class Backup {
       downloadBytes = _json['downloadBytes'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -1019,7 +1017,7 @@ class Backup {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (capacityGb != null) 'capacityGb': capacityGb!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
@@ -1043,7 +1041,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Time window specified for daily operations.
@@ -1068,7 +1066,7 @@ class DailyCycle {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (duration != null) 'duration': duration!,
         if (startTime != null) 'startTime': startTime!.toJson(),
       };
@@ -1114,7 +1112,7 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
         if (month != null) 'month': month!,
         if (year != null) 'year': year!,
@@ -1164,7 +1162,7 @@ class DenyMaintenancePeriod {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endDate != null) 'endDate': endDate!.toJson(),
         if (startDate != null) 'startDate': startDate!.toJson(),
         if (time != null) 'time': time!.toJson(),
@@ -1185,7 +1183,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// File share configuration for the instance.
@@ -1228,7 +1226,7 @@ class FileShareConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (capacityGb != null) 'capacityGb': capacityGb!,
         if (name != null) 'name': name!,
         if (nfsExportOptions != null)
@@ -1363,34 +1361,33 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
       createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('maintenancePolicyNames')) {
-      maintenancePolicyNames = (_json['maintenancePolicyNames'] as core.Map)
-          .cast<core.String, core.String>()
+      maintenancePolicyNames = (_json['maintenancePolicyNames']
+              as core.Map<core.String, core.dynamic>)
           .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('maintenanceSchedules')) {
-      maintenanceSchedules = (_json['maintenanceSchedules'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
-                  .fromJson(item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      maintenanceSchedules =
+          (_json['maintenanceSchedules'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
+              .fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('maintenanceSettings')) {
       maintenanceSettings =
@@ -1402,14 +1399,14 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('producerMetadata')) {
-      producerMetadata = (_json['producerMetadata'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      producerMetadata =
+          (_json['producerMetadata'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('provisionedResources')) {
       provisionedResources = (_json['provisionedResources'] as core.List)
@@ -1428,14 +1425,14 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
               _json['sloMetadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('softwareVersions')) {
-      softwareVersions = (_json['softwareVersions'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      softwareVersions =
+          (_json['softwareVersions'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
@@ -1448,7 +1445,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (consumerDefinedName != null)
           'consumerDefinedName': consumerDefinedName!,
         if (createTime != null) 'createTime': createTime!,
@@ -1525,7 +1522,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (canReschedule != null) 'canReschedule': canReschedule!,
         if (endTime != null) 'endTime': endTime!,
         if (rolloutManagementPolicy != null)
@@ -1578,19 +1575,19 @@ class GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings {
       isRollback = _json['isRollback'] as core.bool;
     }
     if (_json.containsKey('maintenancePolicies')) {
-      maintenancePolicies = (_json['maintenancePolicies'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              MaintenancePolicy.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      maintenancePolicies =
+          (_json['maintenancePolicies'] as core.Map<core.String, core.dynamic>)
+              .map(
+        (key, item) => core.MapEntry(
+          key,
+          MaintenancePolicy.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exclude != null) 'exclude': exclude!,
         if (isRollback != null) 'isRollback': isRollback!,
         if (maintenancePolicies != null)
@@ -1642,7 +1639,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exclusions != null)
           'exclusions': exclusions!.map((value) => value.toJson()).toList(),
         if (location != null) 'location': location!,
@@ -1675,19 +1672,18 @@ class GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility {
   GoogleCloudSaasacceleratorManagementProvidersV1PerSliSloEligibility.fromJson(
       core.Map _json) {
     if (_json.containsKey('eligibilities')) {
-      eligibilities = (_json['eligibilities'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
-                  .fromJson(item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      eligibilities =
+          (_json['eligibilities'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
+              .fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (eligibilities != null)
           'eligibilities': eligibilities!
               .map((key, item) => core.MapEntry(key, item.toJson())),
@@ -1722,7 +1718,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resourceType != null) 'resourceType': resourceType!,
         if (resourceUrl != null) 'resourceUrl': resourceUrl!,
       };
@@ -1753,7 +1749,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (eligible != null) 'eligible': eligible!,
         if (reason != null) 'reason': reason!,
       };
@@ -1808,7 +1804,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (duration != null) 'duration': duration!,
         if (reason != null) 'reason': reason!,
         if (sliName != null) 'sliName': sliName!,
@@ -1905,7 +1901,7 @@ class GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (eligibility != null) 'eligibility': eligibility!.toJson(),
         if (exclusions != null)
           'exclusions': exclusions!.map((value) => value.toJson()).toList(),
@@ -2006,13 +2002,12 @@ class Instance {
           .toList();
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -2034,7 +2029,7 @@ class Instance {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
@@ -2088,7 +2083,7 @@ class ListBackupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (backups != null)
           'backups': backups!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2134,7 +2129,7 @@ class ListInstancesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (instances != null)
           'instances': instances!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2164,7 +2159,7 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null)
           'locations': locations!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2193,7 +2188,7 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
@@ -2237,32 +2232,30 @@ class Location {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (labels != null) 'labels': labels!,
         if (locationId != null) 'locationId': locationId!,
@@ -2332,13 +2325,12 @@ class MaintenancePolicy {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -2355,7 +2347,7 @@ class MaintenancePolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (labels != null) 'labels': labels!,
@@ -2387,7 +2379,7 @@ class MaintenanceWindow {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dailyCycle != null) 'dailyCycle': dailyCycle!.toJson(),
         if (weeklyCycle != null) 'weeklyCycle': weeklyCycle!.toJson(),
       };
@@ -2443,7 +2435,7 @@ class NetworkConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ipAddresses != null) 'ipAddresses': ipAddresses!,
         if (modes != null) 'modes': modes!,
         if (network != null) 'network': network!,
@@ -2520,7 +2512,7 @@ class NfsExportOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessMode != null) 'accessMode': accessMode!,
         if (anonGid != null) 'anonGid': anonGid!,
         if (anonUid != null) 'anonUid': anonUid!,
@@ -2583,29 +2575,27 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -2681,7 +2671,7 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
         if (cancelRequested != null) 'cancelRequested': cancelRequested!,
         if (createTime != null) 'createTime': createTime!,
@@ -2716,7 +2706,7 @@ class RestoreInstanceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fileShare != null) 'fileShare': fileShare!,
         if (sourceBackup != null) 'sourceBackup': sourceBackup!,
       };
@@ -2759,7 +2749,7 @@ class Schedule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
         if (duration != null) 'duration': duration!,
         if (startTime != null) 'startTime': startTime!.toJson(),
@@ -2799,8 +2789,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -2813,7 +2803,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -2865,7 +2855,7 @@ class TimeOfDay {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hours != null) 'hours': hours!,
         if (minutes != null) 'minutes': minutes!,
         if (nanos != null) 'nanos': nanos!,
@@ -2914,7 +2904,7 @@ class UpdatePolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channel != null) 'channel': channel!,
         if (denyMaintenancePeriods != null)
           'denyMaintenancePeriods':
@@ -2941,7 +2931,7 @@ class WeeklyCycle {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (schedule != null)
           'schedule': schedule!.map((value) => value.toJson()).toList(),
       };

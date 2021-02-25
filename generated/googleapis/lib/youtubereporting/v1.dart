@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -528,7 +527,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// gdata
@@ -582,7 +581,7 @@ class GdataBlobstore2Info {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blobGeneration != null) 'blobGeneration': blobGeneration!,
         if (blobId != null) 'blobId': blobId!,
         if (downloadReadHandle != null)
@@ -705,7 +704,7 @@ class GdataCompositeMedia {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blobRef != null) 'blobRef': blobRef!,
         if (blobstore2Info != null) 'blobstore2Info': blobstore2Info!.toJson(),
         if (cosmoBinaryReference != null)
@@ -758,7 +757,7 @@ class GdataContentTypeInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bestGuess != null) 'bestGuess': bestGuess!,
         if (fromBytes != null) 'fromBytes': fromBytes!,
         if (fromFileName != null) 'fromFileName': fromFileName!,
@@ -806,7 +805,7 @@ class GdataDiffChecksumsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (checksumsLocation != null)
           'checksumsLocation': checksumsLocation!.toJson(),
         if (chunkSizeBytes != null) 'chunkSizeBytes': chunkSizeBytes!,
@@ -830,7 +829,7 @@ class GdataDiffDownloadResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (objectLocation != null) 'objectLocation': objectLocation!.toJson(),
       };
 }
@@ -862,7 +861,7 @@ class GdataDiffUploadRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (checksumsInfo != null) 'checksumsInfo': checksumsInfo!.toJson(),
         if (objectInfo != null) 'objectInfo': objectInfo!.toJson(),
         if (objectVersion != null) 'objectVersion': objectVersion!,
@@ -889,7 +888,7 @@ class GdataDiffUploadResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (objectVersion != null) 'objectVersion': objectVersion!,
         if (originalObject != null) 'originalObject': originalObject!.toJson(),
       };
@@ -914,7 +913,7 @@ class GdataDiffVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (objectSizeBytes != null) 'objectSizeBytes': objectSizeBytes!,
         if (objectVersion != null) 'objectVersion': objectVersion!,
       };
@@ -939,7 +938,7 @@ class GdataDownloadParameters {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowGzipCompression != null)
           'allowGzipCompression': allowGzipCompression!,
         if (ignoreRange != null) 'ignoreRange': ignoreRange!,
@@ -1211,7 +1210,7 @@ class GdataMedia {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (algorithm != null) 'algorithm': algorithm!,
         if (bigstoreObjectRef != null) 'bigstoreObjectRef': bigstoreObjectRef!,
         if (blobRef != null) 'blobRef': blobRef!,
@@ -1280,7 +1279,7 @@ class GdataObjectId {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bucketName != null) 'bucketName': bucketName!,
         if (generation != null) 'generation': generation!,
         if (objectName != null) 'objectName': objectName!,
@@ -1339,7 +1338,7 @@ class Job {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (expireTime != null) 'expireTime': expireTime!,
         if (id != null) 'id': id!,
@@ -1374,7 +1373,7 @@ class ListJobsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (jobs != null) 'jobs': jobs!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -1406,7 +1405,7 @@ class ListReportTypesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (reportTypes != null)
           'reportTypes': reportTypes!.map((value) => value.toJson()).toList(),
@@ -1439,7 +1438,7 @@ class ListReportsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (reports != null)
           'reports': reports!.map((value) => value.toJson()).toList(),
@@ -1502,7 +1501,7 @@ class Report {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (downloadUrl != null) 'downloadUrl': downloadUrl!,
         if (endTime != null) 'endTime': endTime!,
@@ -1551,7 +1550,7 @@ class ReportType {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deprecateTime != null) 'deprecateTime': deprecateTime!,
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,

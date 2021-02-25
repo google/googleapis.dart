@@ -7539,9 +7539,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1CreateInstructionMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1alpha1CreateInstructionMetadata.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1CreateInstructionMetadata(
           od as api.GoogleCloudDatalabelingV1alpha1CreateInstructionMetadata);
     });
@@ -7552,8 +7553,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata(
           od as api.GoogleCloudDatalabelingV1alpha1ExportDataOperationMetadata);
     });
@@ -7564,8 +7566,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1ExportDataOperationResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1alpha1ExportDataOperationResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1ExportDataOperationResponse(
           od as api.GoogleCloudDatalabelingV1alpha1ExportDataOperationResponse);
     });
@@ -7575,8 +7578,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1GcsDestination();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1alpha1GcsDestination.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1GcsDestination(
           od as api.GoogleCloudDatalabelingV1alpha1GcsDestination);
     });
@@ -7586,8 +7590,9 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1alpha1GcsFolderDestination', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1GcsFolderDestination();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1alpha1GcsFolderDestination.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1GcsFolderDestination(
           od as api.GoogleCloudDatalabelingV1alpha1GcsFolderDestination);
     });
@@ -7597,9 +7602,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1HumanAnnotationConfig(
           od as api.GoogleCloudDatalabelingV1alpha1HumanAnnotationConfig);
     });
@@ -7610,8 +7616,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata(
           od as api.GoogleCloudDatalabelingV1alpha1ImportDataOperationMetadata);
     });
@@ -7622,8 +7629,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1ImportDataOperationResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1alpha1ImportDataOperationResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1ImportDataOperationResponse(
           od as api.GoogleCloudDatalabelingV1alpha1ImportDataOperationResponse);
     });
@@ -7635,9 +7643,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelImageBoundingBoxOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1alpha1LabelImageBoundingBoxOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1LabelImageBoundingBoxOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1alpha1LabelImageBoundingBoxOperationMetadata);
@@ -7650,9 +7659,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelImageBoundingPolyOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1alpha1LabelImageBoundingPolyOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1LabelImageBoundingPolyOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1alpha1LabelImageBoundingPolyOperationMetadata);
@@ -7665,9 +7675,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelImageClassificationOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1alpha1LabelImageClassificationOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1LabelImageClassificationOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1alpha1LabelImageClassificationOperationMetadata);
@@ -7680,9 +7691,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelImageOrientedBoundingBoxOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1alpha1LabelImageOrientedBoundingBoxOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1LabelImageOrientedBoundingBoxOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1alpha1LabelImageOrientedBoundingBoxOperationMetadata);
@@ -7695,9 +7707,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelImagePolylineOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1alpha1LabelImagePolylineOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1LabelImagePolylineOperationMetadata(od
           as api
               .GoogleCloudDatalabelingV1alpha1LabelImagePolylineOperationMetadata);
@@ -7710,9 +7723,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1alpha1LabelImageSegmentationOperationMetadata);
@@ -7723,9 +7737,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1alpha1LabelOperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1LabelOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1alpha1LabelOperationMetadata.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1LabelOperationMetadata(
           od as api.GoogleCloudDatalabelingV1alpha1LabelOperationMetadata);
     });
@@ -7734,8 +7749,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1alpha1LabelStats', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1LabelStats();
-      var od =
-          api.GoogleCloudDatalabelingV1alpha1LabelStats.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1alpha1LabelStats.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1LabelStats(
           od as api.GoogleCloudDatalabelingV1alpha1LabelStats);
     });
@@ -7747,9 +7763,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1alpha1LabelTextClassificationOperationMetadata);
@@ -7762,9 +7779,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelTextEntityExtractionOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1alpha1LabelTextEntityExtractionOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1LabelTextEntityExtractionOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1alpha1LabelTextEntityExtractionOperationMetadata);
@@ -7777,9 +7795,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelVideoClassificationOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1alpha1LabelVideoClassificationOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1LabelVideoClassificationOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1alpha1LabelVideoClassificationOperationMetadata);
@@ -7792,9 +7811,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelVideoEventOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1alpha1LabelVideoEventOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1LabelVideoEventOperationMetadata(od
           as api
               .GoogleCloudDatalabelingV1alpha1LabelVideoEventOperationMetadata);
@@ -7807,9 +7827,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelVideoObjectDetectionOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1alpha1LabelVideoObjectDetectionOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1LabelVideoObjectDetectionOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1alpha1LabelVideoObjectDetectionOperationMetadata);
@@ -7822,9 +7843,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1alpha1LabelVideoObjectTrackingOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1alpha1LabelVideoObjectTrackingOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1LabelVideoObjectTrackingOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1alpha1LabelVideoObjectTrackingOperationMetadata);
@@ -7834,8 +7856,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1alpha1OutputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1alpha1OutputConfig();
-      var od =
-          api.GoogleCloudDatalabelingV1alpha1OutputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1alpha1OutputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1alpha1OutputConfig(
           od as api.GoogleCloudDatalabelingV1alpha1OutputConfig);
     });
@@ -7845,8 +7868,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1AnnotatedDataset();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1AnnotatedDataset.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1AnnotatedDataset(
           od as api.GoogleCloudDatalabelingV1beta1AnnotatedDataset);
     });
@@ -7856,9 +7880,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata(
           od as api.GoogleCloudDatalabelingV1beta1AnnotatedDatasetMetadata);
     });
@@ -7867,8 +7892,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1Annotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1Annotation();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1Annotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1Annotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1Annotation(
           od as api.GoogleCloudDatalabelingV1beta1Annotation);
     });
@@ -7878,8 +7904,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1AnnotationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1AnnotationMetadata.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1AnnotationMetadata(
           od as api.GoogleCloudDatalabelingV1beta1AnnotationMetadata);
     });
@@ -7888,8 +7915,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1AnnotationSpec', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1AnnotationSpec();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1AnnotationSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1AnnotationSpec(
           od as api.GoogleCloudDatalabelingV1beta1AnnotationSpec);
     });
@@ -7899,8 +7927,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1AnnotationSpecSet();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1AnnotationSpecSet.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1AnnotationSpecSet(
           od as api.GoogleCloudDatalabelingV1beta1AnnotationSpecSet);
     });
@@ -7910,9 +7939,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig(
           od as api.GoogleCloudDatalabelingV1beta1AnnotationSpecSetConfig);
     });
@@ -7922,8 +7952,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1AnnotationValue();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1AnnotationValue.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1AnnotationValue(
           od as api.GoogleCloudDatalabelingV1beta1AnnotationValue);
     });
@@ -7932,7 +7963,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1Attempt', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1Attempt();
-      var od = api.GoogleCloudDatalabelingV1beta1Attempt.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1Attempt.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1Attempt(
           od as api.GoogleCloudDatalabelingV1beta1Attempt);
     });
@@ -7941,8 +7974,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1BigQuerySource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1BigQuerySource();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1BigQuerySource.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1BigQuerySource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1BigQuerySource(
           od as api.GoogleCloudDatalabelingV1beta1BigQuerySource);
     });
@@ -7953,8 +7987,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions(
           od as api.GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions);
     });
@@ -7963,8 +7998,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1BoundingPoly', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1BoundingPoly();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1BoundingPoly.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1BoundingPoly.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1BoundingPoly(
           od as api.GoogleCloudDatalabelingV1beta1BoundingPoly);
     });
@@ -7974,8 +8010,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1BoundingPolyConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1BoundingPolyConfig.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1BoundingPolyConfig(
           od as api.GoogleCloudDatalabelingV1beta1BoundingPolyConfig);
     });
@@ -7985,9 +8022,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1ClassificationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ClassificationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1ClassificationMetadata.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ClassificationMetadata(
           od as api.GoogleCloudDatalabelingV1beta1ClassificationMetadata);
     });
@@ -7997,8 +8035,9 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1ClassificationMetrics', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ClassificationMetrics();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ClassificationMetrics.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ClassificationMetrics(
           od as api.GoogleCloudDatalabelingV1beta1ClassificationMetrics);
     });
@@ -8008,9 +8047,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry(
           od as api.GoogleCloudDatalabelingV1beta1ConfidenceMetricsEntry);
     });
@@ -8020,8 +8060,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ConfusionMatrix();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ConfusionMatrix.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ConfusionMatrix(
           od as api.GoogleCloudDatalabelingV1beta1ConfusionMatrix);
     });
@@ -8031,8 +8072,9 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ConfusionMatrixEntry();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ConfusionMatrixEntry(
           od as api.GoogleCloudDatalabelingV1beta1ConfusionMatrixEntry);
     });
@@ -8044,8 +8086,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest(od
           as api.GoogleCloudDatalabelingV1beta1CreateAnnotationSpecSetRequest);
     });
@@ -8055,8 +8098,9 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1CreateDatasetRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1CreateDatasetRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1CreateDatasetRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1CreateDatasetRequest(
           od as api.GoogleCloudDatalabelingV1beta1CreateDatasetRequest);
     });
@@ -8067,9 +8111,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest(
           od as api.GoogleCloudDatalabelingV1beta1CreateEvaluationJobRequest);
     });
@@ -8079,9 +8124,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1CreateInstructionMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1CreateInstructionMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1CreateInstructionMetadata.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1CreateInstructionMetadata(
           od as api.GoogleCloudDatalabelingV1beta1CreateInstructionMetadata);
     });
@@ -8091,9 +8137,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1CreateInstructionRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1CreateInstructionRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1CreateInstructionRequest.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1CreateInstructionRequest(
           od as api.GoogleCloudDatalabelingV1beta1CreateInstructionRequest);
     });
@@ -8102,8 +8149,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1CsvInstruction', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1CsvInstruction();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1CsvInstruction.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1CsvInstruction.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1CsvInstruction(
           od as api.GoogleCloudDatalabelingV1beta1CsvInstruction);
     });
@@ -8112,7 +8160,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1DataItem', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1DataItem();
-      var od = api.GoogleCloudDatalabelingV1beta1DataItem.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1DataItem.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1DataItem(
           od as api.GoogleCloudDatalabelingV1beta1DataItem);
     });
@@ -8121,7 +8171,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1Dataset', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1Dataset();
-      var od = api.GoogleCloudDatalabelingV1beta1Dataset.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1Dataset.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1Dataset(
           od as api.GoogleCloudDatalabelingV1beta1Dataset);
     });
@@ -8130,8 +8182,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1Evaluation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1Evaluation();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1Evaluation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1Evaluation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1Evaluation(
           od as api.GoogleCloudDatalabelingV1beta1Evaluation);
     });
@@ -8141,8 +8194,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1EvaluationConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1EvaluationConfig.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1EvaluationConfig(
           od as api.GoogleCloudDatalabelingV1beta1EvaluationConfig);
     });
@@ -8151,8 +8205,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1EvaluationJob', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1EvaluationJob();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1EvaluationJob.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1EvaluationJob.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1EvaluationJob(
           od as api.GoogleCloudDatalabelingV1beta1EvaluationJob);
     });
@@ -8162,9 +8217,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig(
           od as api.GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig);
     });
@@ -8174,8 +8230,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1EvaluationJobConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1EvaluationJobConfig.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1EvaluationJobConfig(
           od as api.GoogleCloudDatalabelingV1beta1EvaluationJobConfig);
     });
@@ -8185,8 +8242,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1EvaluationMetrics();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1EvaluationMetrics.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1EvaluationMetrics(
           od as api.GoogleCloudDatalabelingV1beta1EvaluationMetrics);
     });
@@ -8195,8 +8253,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1EventConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1EventConfig();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1EventConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1EventConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1EventConfig(
           od as api.GoogleCloudDatalabelingV1beta1EventConfig);
     });
@@ -8205,7 +8264,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1Example', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1Example();
-      var od = api.GoogleCloudDatalabelingV1beta1Example.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1Example.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1Example(
           od as api.GoogleCloudDatalabelingV1beta1Example);
     });
@@ -8215,8 +8276,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ExampleComparison();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ExampleComparison.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ExampleComparison(
           od as api.GoogleCloudDatalabelingV1beta1ExampleComparison);
     });
@@ -8227,8 +8289,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ExportDataOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ExportDataOperationMetadata
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ExportDataOperationMetadata(
           od as api.GoogleCloudDatalabelingV1beta1ExportDataOperationMetadata);
     });
@@ -8239,8 +8302,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ExportDataOperationResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ExportDataOperationResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ExportDataOperationResponse(
           od as api.GoogleCloudDatalabelingV1beta1ExportDataOperationResponse);
     });
@@ -8250,8 +8314,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ExportDataRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ExportDataRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ExportDataRequest(
           od as api.GoogleCloudDatalabelingV1beta1ExportDataRequest);
     });
@@ -8261,8 +8326,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1FeedbackMessage();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1FeedbackMessage.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1FeedbackMessage(
           od as api.GoogleCloudDatalabelingV1beta1FeedbackMessage);
     });
@@ -8271,8 +8337,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1FeedbackThread', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1FeedbackThread();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1FeedbackThread.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1FeedbackThread.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1FeedbackThread(
           od as api.GoogleCloudDatalabelingV1beta1FeedbackThread);
     });
@@ -8282,9 +8349,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1FeedbackThreadMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1FeedbackThreadMetadata(
           od as api.GoogleCloudDatalabelingV1beta1FeedbackThreadMetadata);
     });
@@ -8293,8 +8361,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1GcsDestination', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1GcsDestination();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1GcsDestination.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1GcsDestination.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1GcsDestination(
           od as api.GoogleCloudDatalabelingV1beta1GcsDestination);
     });
@@ -8304,8 +8373,9 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1GcsFolderDestination', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1GcsFolderDestination();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1GcsFolderDestination.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1GcsFolderDestination(
           od as api.GoogleCloudDatalabelingV1beta1GcsFolderDestination);
     });
@@ -8314,7 +8384,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1GcsSource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1GcsSource();
-      var od = api.GoogleCloudDatalabelingV1beta1GcsSource.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1GcsSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1GcsSource(
           od as api.GoogleCloudDatalabelingV1beta1GcsSource);
     });
@@ -8324,8 +8396,9 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1HumanAnnotationConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1HumanAnnotationConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1HumanAnnotationConfig(
           od as api.GoogleCloudDatalabelingV1beta1HumanAnnotationConfig);
     });
@@ -8336,8 +8409,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation(
           od as api.GoogleCloudDatalabelingV1beta1ImageBoundingPolyAnnotation);
     });
@@ -8349,8 +8423,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1ImageClassificationAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ImageClassificationAnnotation(od
           as api.GoogleCloudDatalabelingV1beta1ImageClassificationAnnotation);
     });
@@ -8360,9 +8435,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1ImageClassificationConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ImageClassificationConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1ImageClassificationConfig.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ImageClassificationConfig(
           od as api.GoogleCloudDatalabelingV1beta1ImageClassificationConfig);
     });
@@ -8371,8 +8447,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1ImagePayload', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ImagePayload();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1ImagePayload.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1ImagePayload.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ImagePayload(
           od as api.GoogleCloudDatalabelingV1beta1ImagePayload);
     });
@@ -8382,9 +8459,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ImagePolylineAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ImagePolylineAnnotation(
           od as api.GoogleCloudDatalabelingV1beta1ImagePolylineAnnotation);
     });
@@ -8395,8 +8473,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation(
           od as api.GoogleCloudDatalabelingV1beta1ImageSegmentationAnnotation);
     });
@@ -8407,8 +8486,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ImportDataOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ImportDataOperationMetadata
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ImportDataOperationMetadata(
           od as api.GoogleCloudDatalabelingV1beta1ImportDataOperationMetadata);
     });
@@ -8419,8 +8499,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ImportDataOperationResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ImportDataOperationResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ImportDataOperationResponse(
           od as api.GoogleCloudDatalabelingV1beta1ImportDataOperationResponse);
     });
@@ -8430,8 +8511,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ImportDataRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ImportDataRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ImportDataRequest(
           od as api.GoogleCloudDatalabelingV1beta1ImportDataRequest);
     });
@@ -8440,8 +8522,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1InputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1InputConfig();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1InputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1InputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1InputConfig(
           od as api.GoogleCloudDatalabelingV1beta1InputConfig);
     });
@@ -8450,8 +8533,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1Instruction', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1Instruction();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1Instruction.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1Instruction.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1Instruction(
           od as api.GoogleCloudDatalabelingV1beta1Instruction);
     });
@@ -8463,9 +8547,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelImageBoundingBoxOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1LabelImageBoundingBoxOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1LabelImageBoundingBoxOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1beta1LabelImageBoundingBoxOperationMetadata);
@@ -8478,9 +8563,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelImageBoundingPolyOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1LabelImageBoundingPolyOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1LabelImageBoundingPolyOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1beta1LabelImageBoundingPolyOperationMetadata);
@@ -8493,9 +8579,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelImageClassificationOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1LabelImageClassificationOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1LabelImageClassificationOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1beta1LabelImageClassificationOperationMetadata);
@@ -8508,9 +8595,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelImageOrientedBoundingBoxOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1LabelImageOrientedBoundingBoxOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1LabelImageOrientedBoundingBoxOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1beta1LabelImageOrientedBoundingBoxOperationMetadata);
@@ -8523,9 +8611,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelImagePolylineOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1LabelImagePolylineOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1LabelImagePolylineOperationMetadata(od
           as api
               .GoogleCloudDatalabelingV1beta1LabelImagePolylineOperationMetadata);
@@ -8536,8 +8625,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1LabelImageRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1LabelImageRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1LabelImageRequest(
           od as api.GoogleCloudDatalabelingV1beta1LabelImageRequest);
     });
@@ -8549,9 +8639,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1beta1LabelImageSegmentationOperationMetadata);
@@ -8562,9 +8653,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1LabelOperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1LabelOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1LabelOperationMetadata.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1LabelOperationMetadata(
           od as api.GoogleCloudDatalabelingV1beta1LabelOperationMetadata);
     });
@@ -8573,8 +8665,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1LabelStats', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1LabelStats();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1LabelStats.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1LabelStats.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1LabelStats(
           od as api.GoogleCloudDatalabelingV1beta1LabelStats);
     });
@@ -8586,9 +8679,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1beta1LabelTextClassificationOperationMetadata);
@@ -8601,9 +8695,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelTextEntityExtractionOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1LabelTextEntityExtractionOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1LabelTextEntityExtractionOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1beta1LabelTextEntityExtractionOperationMetadata);
@@ -8614,8 +8709,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1LabelTextRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1LabelTextRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1LabelTextRequest(
           od as api.GoogleCloudDatalabelingV1beta1LabelTextRequest);
     });
@@ -8627,9 +8723,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelVideoClassificationOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1LabelVideoClassificationOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1LabelVideoClassificationOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1beta1LabelVideoClassificationOperationMetadata);
@@ -8642,9 +8739,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelVideoEventOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1LabelVideoEventOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1LabelVideoEventOperationMetadata(od
           as api
               .GoogleCloudDatalabelingV1beta1LabelVideoEventOperationMetadata);
@@ -8657,9 +8755,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelVideoObjectDetectionOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1LabelVideoObjectDetectionOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1LabelVideoObjectDetectionOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1beta1LabelVideoObjectDetectionOperationMetadata);
@@ -8672,9 +8771,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1LabelVideoObjectTrackingOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1LabelVideoObjectTrackingOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1LabelVideoObjectTrackingOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1beta1LabelVideoObjectTrackingOperationMetadata);
@@ -8685,8 +8785,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1LabelVideoRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1LabelVideoRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1LabelVideoRequest(
           od as api.GoogleCloudDatalabelingV1beta1LabelVideoRequest);
     });
@@ -8698,8 +8799,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse(od
           as api.GoogleCloudDatalabelingV1beta1ListAnnotatedDatasetsResponse);
     });
@@ -8711,8 +8813,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse(od
           as api.GoogleCloudDatalabelingV1beta1ListAnnotationSpecSetsResponse);
     });
@@ -8722,8 +8825,9 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1ListDataItemsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ListDataItemsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ListDataItemsResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ListDataItemsResponse(
           od as api.GoogleCloudDatalabelingV1beta1ListDataItemsResponse);
     });
@@ -8733,8 +8837,9 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1ListDatasetsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ListDatasetsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ListDatasetsResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ListDatasetsResponse(
           od as api.GoogleCloudDatalabelingV1beta1ListDatasetsResponse);
     });
@@ -8745,9 +8850,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse(
           od as api.GoogleCloudDatalabelingV1beta1ListEvaluationJobsResponse);
     });
@@ -8757,8 +8863,9 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1ListExamplesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ListExamplesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ListExamplesResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ListExamplesResponse(
           od as api.GoogleCloudDatalabelingV1beta1ListExamplesResponse);
     });
@@ -8769,8 +8876,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse(
           od as api.GoogleCloudDatalabelingV1beta1ListFeedbackMessagesResponse);
     });
@@ -8781,8 +8889,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse(
           od as api.GoogleCloudDatalabelingV1beta1ListFeedbackThreadsResponse);
     });
@@ -8792,9 +8901,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1ListInstructionsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ListInstructionsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1ListInstructionsResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ListInstructionsResponse(
           od as api.GoogleCloudDatalabelingV1beta1ListInstructionsResponse);
     });
@@ -8804,9 +8914,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1NormalizedBoundingPoly(
           od as api.GoogleCloudDatalabelingV1beta1NormalizedBoundingPoly);
     });
@@ -8816,8 +8927,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1NormalizedPolyline();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1NormalizedPolyline.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1NormalizedPolyline(
           od as api.GoogleCloudDatalabelingV1beta1NormalizedPolyline);
     });
@@ -8827,8 +8939,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1NormalizedVertex();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1NormalizedVertex.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1NormalizedVertex(
           od as api.GoogleCloudDatalabelingV1beta1NormalizedVertex);
     });
@@ -8838,8 +8951,9 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1ObjectDetectionConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ObjectDetectionConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ObjectDetectionConfig.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ObjectDetectionConfig(
           od as api.GoogleCloudDatalabelingV1beta1ObjectDetectionConfig);
     });
@@ -8849,9 +8963,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ObjectDetectionMetrics();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ObjectDetectionMetrics(
           od as api.GoogleCloudDatalabelingV1beta1ObjectDetectionMetrics);
     });
@@ -8861,8 +8976,9 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1ObjectTrackingConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ObjectTrackingConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ObjectTrackingConfig.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ObjectTrackingConfig(
           od as api.GoogleCloudDatalabelingV1beta1ObjectTrackingConfig);
     });
@@ -8872,8 +8988,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ObjectTrackingFrame();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1ObjectTrackingFrame.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ObjectTrackingFrame(
           od as api.GoogleCloudDatalabelingV1beta1ObjectTrackingFrame);
     });
@@ -8883,9 +9000,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata(
           od as api.GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata);
     });
@@ -8895,8 +9013,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1OperatorMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1OperatorMetadata.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1OperatorMetadata(
           od as api.GoogleCloudDatalabelingV1beta1OperatorMetadata);
     });
@@ -8905,8 +9024,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1OutputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1OutputConfig();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1OutputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1OutputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1OutputConfig(
           od as api.GoogleCloudDatalabelingV1beta1OutputConfig);
     });
@@ -8916,9 +9036,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest(
           od as api.GoogleCloudDatalabelingV1beta1PauseEvaluationJobRequest);
     });
@@ -8927,8 +9048,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1PdfInstruction', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1PdfInstruction();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1PdfInstruction.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1PdfInstruction.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1PdfInstruction(
           od as api.GoogleCloudDatalabelingV1beta1PdfInstruction);
     });
@@ -8937,7 +9059,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1Polyline', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1Polyline();
-      var od = api.GoogleCloudDatalabelingV1beta1Polyline.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1Polyline.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1Polyline(
           od as api.GoogleCloudDatalabelingV1beta1Polyline);
     });
@@ -8946,8 +9070,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1PolylineConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1PolylineConfig();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1PolylineConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1PolylineConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1PolylineConfig(
           od as api.GoogleCloudDatalabelingV1beta1PolylineConfig);
     });
@@ -8956,7 +9081,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1PrCurve', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1PrCurve();
-      var od = api.GoogleCloudDatalabelingV1beta1PrCurve.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1PrCurve.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1PrCurve(
           od as api.GoogleCloudDatalabelingV1beta1PrCurve);
     });
@@ -8966,9 +9093,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata(
           od as api.GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata);
     });
@@ -8979,9 +9107,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest(
           od as api.GoogleCloudDatalabelingV1beta1ResumeEvaluationJobRequest);
     });
@@ -8990,7 +9119,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1Row', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1Row();
-      var od = api.GoogleCloudDatalabelingV1beta1Row.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1Row.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1Row(
           od as api.GoogleCloudDatalabelingV1beta1Row);
     });
@@ -9000,9 +9131,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1SearchEvaluationsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1SearchEvaluationsResponse(
           od as api.GoogleCloudDatalabelingV1beta1SearchEvaluationsResponse);
     });
@@ -9014,8 +9146,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest(od
           as api.GoogleCloudDatalabelingV1beta1SearchExampleComparisonsRequest);
     });
@@ -9027,9 +9160,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse(od
           as api
               .GoogleCloudDatalabelingV1beta1SearchExampleComparisonsResponse);
@@ -9040,8 +9174,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1SegmentationConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1SegmentationConfig.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1SegmentationConfig(
           od as api.GoogleCloudDatalabelingV1beta1SegmentationConfig);
     });
@@ -9051,8 +9186,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1SentimentConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1SentimentConfig.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1SentimentConfig(
           od as api.GoogleCloudDatalabelingV1beta1SentimentConfig);
     });
@@ -9062,8 +9198,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1SequentialSegment();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1SequentialSegment.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1SequentialSegment(
           od as api.GoogleCloudDatalabelingV1beta1SequentialSegment);
     });
@@ -9074,8 +9211,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1TextClassificationAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1TextClassificationAnnotation
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1TextClassificationAnnotation(
           od as api.GoogleCloudDatalabelingV1beta1TextClassificationAnnotation);
     });
@@ -9085,9 +9223,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1TextClassificationConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1TextClassificationConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1TextClassificationConfig.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1TextClassificationConfig(
           od as api.GoogleCloudDatalabelingV1beta1TextClassificationConfig);
     });
@@ -9099,8 +9238,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation(od
           as api.GoogleCloudDatalabelingV1beta1TextEntityExtractionAnnotation);
     });
@@ -9111,9 +9251,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1TextEntityExtractionConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1TextEntityExtractionConfig(
           od as api.GoogleCloudDatalabelingV1beta1TextEntityExtractionConfig);
     });
@@ -9122,8 +9263,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1TextMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1TextMetadata();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1TextMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1TextMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1TextMetadata(
           od as api.GoogleCloudDatalabelingV1beta1TextMetadata);
     });
@@ -9132,8 +9274,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1TextPayload', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1TextPayload();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1TextPayload.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1TextPayload.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1TextPayload(
           od as api.GoogleCloudDatalabelingV1beta1TextPayload);
     });
@@ -9142,8 +9285,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1TimeSegment', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1TimeSegment();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1TimeSegment.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1TimeSegment.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1TimeSegment(
           od as api.GoogleCloudDatalabelingV1beta1TimeSegment);
     });
@@ -9152,7 +9296,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1Vertex', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1Vertex();
-      var od = api.GoogleCloudDatalabelingV1beta1Vertex.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1Vertex.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1Vertex(
           od as api.GoogleCloudDatalabelingV1beta1Vertex);
     });
@@ -9164,8 +9310,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1VideoClassificationAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1VideoClassificationAnnotation(od
           as api.GoogleCloudDatalabelingV1beta1VideoClassificationAnnotation);
     });
@@ -9175,9 +9322,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1VideoClassificationConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1VideoClassificationConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1beta1VideoClassificationConfig.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1VideoClassificationConfig(
           od as api.GoogleCloudDatalabelingV1beta1VideoClassificationConfig);
     });
@@ -9187,8 +9335,9 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1beta1VideoEventAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1VideoEventAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1VideoEventAnnotation.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1VideoEventAnnotation(
           od as api.GoogleCloudDatalabelingV1beta1VideoEventAnnotation);
     });
@@ -9200,8 +9349,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation(od
           as api.GoogleCloudDatalabelingV1beta1VideoObjectTrackingAnnotation);
     });
@@ -9210,8 +9360,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1VideoPayload', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1VideoPayload();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1VideoPayload.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1VideoPayload.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1VideoPayload(
           od as api.GoogleCloudDatalabelingV1beta1VideoPayload);
     });
@@ -9220,8 +9371,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1beta1VideoThumbnail', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1beta1VideoThumbnail();
-      var od =
-          api.GoogleCloudDatalabelingV1beta1VideoThumbnail.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1beta1VideoThumbnail.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1beta1VideoThumbnail(
           od as api.GoogleCloudDatalabelingV1beta1VideoThumbnail);
     });
@@ -9232,8 +9384,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata(
           od as api.GoogleCloudDatalabelingV1p1alpha1CreateInstructionMetadata);
     });
@@ -9245,8 +9398,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata(od
           as api.GoogleCloudDatalabelingV1p1alpha1ExportDataOperationMetadata);
     });
@@ -9258,8 +9412,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1ExportDataOperationResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1p1alpha1ExportDataOperationResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1ExportDataOperationResponse(od
           as api.GoogleCloudDatalabelingV1p1alpha1ExportDataOperationResponse);
     });
@@ -9269,8 +9424,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p1alpha1GcsDestination();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1p1alpha1GcsDestination.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1GcsDestination(
           od as api.GoogleCloudDatalabelingV1p1alpha1GcsDestination);
     });
@@ -9280,9 +9436,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1GcsFolderDestination', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p1alpha1GcsFolderDestination();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1GcsFolderDestination.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1GcsFolderDestination(
           od as api.GoogleCloudDatalabelingV1p1alpha1GcsFolderDestination);
     });
@@ -9294,9 +9451,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1GenerateAnalysisReportOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1GenerateAnalysisReportOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1GenerateAnalysisReportOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p1alpha1GenerateAnalysisReportOperationMetadata);
@@ -9307,9 +9465,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig(
           od as api.GoogleCloudDatalabelingV1p1alpha1HumanAnnotationConfig);
     });
@@ -9321,8 +9480,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata(od
           as api.GoogleCloudDatalabelingV1p1alpha1ImportDataOperationMetadata);
     });
@@ -9334,8 +9494,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse(od
           as api.GoogleCloudDatalabelingV1p1alpha1ImportDataOperationResponse);
     });
@@ -9347,9 +9508,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelImageBoundingBoxOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingBoxOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1LabelImageBoundingBoxOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingBoxOperationMetadata);
@@ -9362,9 +9524,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelImageBoundingPolyOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingPolyOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1LabelImageBoundingPolyOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p1alpha1LabelImageBoundingPolyOperationMetadata);
@@ -9377,9 +9540,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelImageClassificationOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1LabelImageClassificationOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1LabelImageClassificationOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p1alpha1LabelImageClassificationOperationMetadata);
@@ -9392,9 +9556,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelImageOrientedBoundingBoxOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1LabelImageOrientedBoundingBoxOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1LabelImageOrientedBoundingBoxOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p1alpha1LabelImageOrientedBoundingBoxOperationMetadata);
@@ -9407,9 +9572,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelImagePolylineOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1LabelImagePolylineOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1LabelImagePolylineOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p1alpha1LabelImagePolylineOperationMetadata);
@@ -9422,9 +9588,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p1alpha1LabelImageSegmentationOperationMetadata);
@@ -9435,9 +9602,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata(
           od as api.GoogleCloudDatalabelingV1p1alpha1LabelOperationMetadata);
     });
@@ -9446,8 +9614,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1p1alpha1LabelStats', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p1alpha1LabelStats();
-      var od =
-          api.GoogleCloudDatalabelingV1p1alpha1LabelStats.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1p1alpha1LabelStats.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1LabelStats(
           od as api.GoogleCloudDatalabelingV1p1alpha1LabelStats);
     });
@@ -9459,9 +9628,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p1alpha1LabelTextClassificationOperationMetadata);
@@ -9474,9 +9644,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelTextEntityExtractionOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1LabelTextEntityExtractionOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1LabelTextEntityExtractionOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p1alpha1LabelTextEntityExtractionOperationMetadata);
@@ -9489,9 +9660,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelVideoClassificationOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1LabelVideoClassificationOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1LabelVideoClassificationOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p1alpha1LabelVideoClassificationOperationMetadata);
@@ -9504,9 +9676,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelVideoEventOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1LabelVideoEventOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1LabelVideoEventOperationMetadata(od
           as api
               .GoogleCloudDatalabelingV1p1alpha1LabelVideoEventOperationMetadata);
@@ -9519,9 +9692,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelVideoObjectDetectionOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1LabelVideoObjectDetectionOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1LabelVideoObjectDetectionOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p1alpha1LabelVideoObjectDetectionOperationMetadata);
@@ -9534,9 +9708,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p1alpha1LabelVideoObjectTrackingOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p1alpha1LabelVideoObjectTrackingOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1LabelVideoObjectTrackingOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p1alpha1LabelVideoObjectTrackingOperationMetadata);
@@ -9547,8 +9722,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p1alpha1OutputConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1p1alpha1OutputConfig.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p1alpha1OutputConfig(
           od as api.GoogleCloudDatalabelingV1p1alpha1OutputConfig);
     });
@@ -9559,8 +9735,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata(
           od as api.GoogleCloudDatalabelingV1p2alpha1CreateInstructionMetadata);
     });
@@ -9572,8 +9749,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata(od
           as api.GoogleCloudDatalabelingV1p2alpha1ExportDataOperationMetadata);
     });
@@ -9585,8 +9763,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1ExportDataOperationResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1p2alpha1ExportDataOperationResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1ExportDataOperationResponse(od
           as api.GoogleCloudDatalabelingV1p2alpha1ExportDataOperationResponse);
     });
@@ -9596,8 +9775,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p2alpha1GcsDestination();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1p2alpha1GcsDestination.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1GcsDestination(
           od as api.GoogleCloudDatalabelingV1p2alpha1GcsDestination);
     });
@@ -9607,9 +9787,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1GcsFolderDestination', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p2alpha1GcsFolderDestination();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1GcsFolderDestination.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1GcsFolderDestination(
           od as api.GoogleCloudDatalabelingV1p2alpha1GcsFolderDestination);
     });
@@ -9619,9 +9800,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig(
           od as api.GoogleCloudDatalabelingV1p2alpha1HumanAnnotationConfig);
     });
@@ -9633,8 +9815,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata(od
           as api.GoogleCloudDatalabelingV1p2alpha1ImportDataOperationMetadata);
     });
@@ -9646,8 +9829,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse(od
           as api.GoogleCloudDatalabelingV1p2alpha1ImportDataOperationResponse);
     });
@@ -9659,9 +9843,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelImageBoundingBoxOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingBoxOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1LabelImageBoundingBoxOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingBoxOperationMetadata);
@@ -9674,9 +9859,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelImageBoundingPolyOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingPolyOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1LabelImageBoundingPolyOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p2alpha1LabelImageBoundingPolyOperationMetadata);
@@ -9689,9 +9875,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelImageClassificationOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1LabelImageClassificationOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1LabelImageClassificationOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p2alpha1LabelImageClassificationOperationMetadata);
@@ -9704,9 +9891,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelImageOrientedBoundingBoxOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1LabelImageOrientedBoundingBoxOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1LabelImageOrientedBoundingBoxOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p2alpha1LabelImageOrientedBoundingBoxOperationMetadata);
@@ -9719,9 +9907,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelImagePolylineOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1LabelImagePolylineOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1LabelImagePolylineOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p2alpha1LabelImagePolylineOperationMetadata);
@@ -9734,9 +9923,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p2alpha1LabelImageSegmentationOperationMetadata);
@@ -9747,9 +9937,10 @@ void main() {
       'obj-schema-GoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata(
           od as api.GoogleCloudDatalabelingV1p2alpha1LabelOperationMetadata);
     });
@@ -9758,8 +9949,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudDatalabelingV1p2alpha1LabelStats', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p2alpha1LabelStats();
-      var od =
-          api.GoogleCloudDatalabelingV1p2alpha1LabelStats.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudDatalabelingV1p2alpha1LabelStats.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1LabelStats(
           od as api.GoogleCloudDatalabelingV1p2alpha1LabelStats);
     });
@@ -9771,9 +9963,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p2alpha1LabelTextClassificationOperationMetadata);
@@ -9786,9 +9979,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelTextEntityExtractionOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1LabelTextEntityExtractionOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1LabelTextEntityExtractionOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p2alpha1LabelTextEntityExtractionOperationMetadata);
@@ -9801,9 +9995,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelVideoClassificationOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1LabelVideoClassificationOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1LabelVideoClassificationOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p2alpha1LabelVideoClassificationOperationMetadata);
@@ -9816,9 +10011,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelVideoEventOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1LabelVideoEventOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1LabelVideoEventOperationMetadata(od
           as api
               .GoogleCloudDatalabelingV1p2alpha1LabelVideoEventOperationMetadata);
@@ -9831,9 +10027,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelVideoObjectDetectionOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1LabelVideoObjectDetectionOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1LabelVideoObjectDetectionOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p2alpha1LabelVideoObjectDetectionOperationMetadata);
@@ -9846,9 +10043,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudDatalabelingV1p2alpha1LabelVideoObjectTrackingOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudDatalabelingV1p2alpha1LabelVideoObjectTrackingOperationMetadata
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1LabelVideoObjectTrackingOperationMetadata(
           od as api
               .GoogleCloudDatalabelingV1p2alpha1LabelVideoObjectTrackingOperationMetadata);
@@ -9859,8 +10057,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudDatalabelingV1p2alpha1OutputConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudDatalabelingV1p2alpha1OutputConfig.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudDatalabelingV1p2alpha1OutputConfig(
           od as api.GoogleCloudDatalabelingV1p2alpha1OutputConfig);
     });
@@ -9869,7 +10068,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
-      var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningListOperationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningListOperationsResponse(
           od as api.GoogleLongrunningListOperationsResponse);
     });
@@ -9878,7 +10079,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
-      var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningOperation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
     });
   });
@@ -9886,7 +10089,9 @@ void main() {
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
-      var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleProtobufEmpty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
     });
   });
@@ -9894,7 +10099,9 @@ void main() {
   unittest.group('obj-schema-GoogleRpcStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
-      var od = api.GoogleRpcStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleRpcStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
     });
   });

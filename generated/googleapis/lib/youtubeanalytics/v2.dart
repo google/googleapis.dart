@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -597,7 +596,7 @@ class EmptyResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errors != null) 'errors': errors!.toJson(),
       };
 }
@@ -680,7 +679,7 @@ class ErrorProto {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (argument != null) 'argument': argument!,
         if (code != null) 'code': code!,
         if (debugInfo != null) 'debugInfo': debugInfo!,
@@ -735,7 +734,7 @@ class Errors {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (error != null)
           'error': error!.map((value) => value.toJson()).toList(),
@@ -793,7 +792,7 @@ class Group {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentDetails != null) 'contentDetails': contentDetails!.toJson(),
         if (errors != null) 'errors': errors!.toJson(),
         if (etag != null) 'etag': etag!,
@@ -825,7 +824,7 @@ class GroupContentDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (itemCount != null) 'itemCount': itemCount!,
         if (itemType != null) 'itemType': itemType!,
       };
@@ -887,7 +886,7 @@ class GroupItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errors != null) 'errors': errors!.toJson(),
         if (etag != null) 'etag': etag!,
         if (groupId != null) 'groupId': groupId!,
@@ -919,7 +918,7 @@ class GroupItemResource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
       };
@@ -948,7 +947,7 @@ class GroupSnippet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (publishedAt != null) 'publishedAt': publishedAt!,
         if (title != null) 'title': title!,
       };
@@ -993,7 +992,7 @@ class ListGroupItemsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errors != null) 'errors': errors!.toJson(),
         if (etag != null) 'etag': etag!,
         if (items != null)
@@ -1048,7 +1047,7 @@ class ListGroupsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errors != null) 'errors': errors!.toJson(),
         if (etag != null) 'etag': etag!,
         if (items != null)
@@ -1122,7 +1121,7 @@ class QueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (columnHeaders != null)
           'columnHeaders':
               columnHeaders!.map((value) => value.toJson()).toList(),
@@ -1157,7 +1156,7 @@ class ResultTableColumnHeader {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (columnType != null) 'columnType': columnType!,
         if (dataType != null) 'dataType': dataType!,
         if (name != null) 'name': name!,

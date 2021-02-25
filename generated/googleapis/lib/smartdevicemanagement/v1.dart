@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -443,20 +442,19 @@ class GoogleHomeEnterpriseSdmV1Device {
           .toList();
     }
     if (_json.containsKey('traits')) {
-      traits =
-          (_json['traits'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      traits = (_json['traits'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (parentRelations != null)
           'parentRelations':
@@ -486,17 +484,16 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
       command = _json['command'] as core.String;
     }
     if (_json.containsKey('params')) {
-      params =
-          (_json['params'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      params = (_json['params'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (command != null) 'command': command!,
         if (params != null) 'params': params!,
       };
@@ -515,17 +512,16 @@ class GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse {
   GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey('results')) {
-      results =
-          (_json['results'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      results = (_json['results'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (results != null) 'results': results!,
       };
 }
@@ -553,7 +549,7 @@ class GoogleHomeEnterpriseSdmV1ListDevicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (devices != null)
           'devices': devices!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -585,7 +581,7 @@ class GoogleHomeEnterpriseSdmV1ListRoomsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (rooms != null)
           'rooms': rooms!.map((value) => value.toJson()).toList(),
@@ -617,7 +613,7 @@ class GoogleHomeEnterpriseSdmV1ListStructuresResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (structures != null)
           'structures': structures!.map((value) => value.toJson()).toList(),
@@ -653,7 +649,7 @@ class GoogleHomeEnterpriseSdmV1ParentRelation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (parent != null) 'parent': parent!,
       };
@@ -682,17 +678,16 @@ class GoogleHomeEnterpriseSdmV1Room {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('traits')) {
-      traits =
-          (_json['traits'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      traits = (_json['traits'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (traits != null) 'traits': traits!,
       };
@@ -721,17 +716,16 @@ class GoogleHomeEnterpriseSdmV1Structure {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('traits')) {
-      traits =
-          (_json['traits'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      traits = (_json['traits'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (traits != null) 'traits': traits!,
       };

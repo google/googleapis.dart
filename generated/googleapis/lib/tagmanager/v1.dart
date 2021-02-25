@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -2469,7 +2468,7 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
         if (name != null) 'name': name!,
@@ -2496,7 +2495,7 @@ class AccountAccess {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permission != null) 'permission': permission!,
       };
 }
@@ -2548,7 +2547,7 @@ class Condition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parameter != null)
           'parameter': parameter!.map((value) => value.toJson()).toList(),
         if (type != null) 'type': type!,
@@ -2664,7 +2663,7 @@ class Container {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (containerId != null) 'containerId': containerId!,
         if (domainName != null) 'domainName': domainName!,
@@ -2708,7 +2707,7 @@ class ContainerAccess {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (containerId != null) 'containerId': containerId!,
         if (permission != null) 'permission': permission!,
       };
@@ -2830,7 +2829,7 @@ class ContainerVersion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (container != null) 'container': container!.toJson(),
         if (containerId != null) 'containerId': containerId!,
@@ -2920,7 +2919,7 @@ class ContainerVersionHeader {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (containerId != null) 'containerId': containerId!,
         if (containerVersionId != null)
@@ -2961,7 +2960,7 @@ class CreateContainerVersionRequestVersionOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (notes != null) 'notes': notes!,
         if (quickPreview != null) 'quickPreview': quickPreview!,
@@ -2988,7 +2987,7 @@ class CreateContainerVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (compilerError != null) 'compilerError': compilerError!,
         if (containerVersion != null)
           'containerVersion': containerVersion!.toJson(),
@@ -3101,7 +3100,7 @@ class Environment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (authorizationCode != null) 'authorizationCode': authorizationCode!,
         if (authorizationTimestampMs != null)
@@ -3161,7 +3160,7 @@ class Folder {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (containerId != null) 'containerId': containerId!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
@@ -3204,7 +3203,7 @@ class FolderEntities {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (tag != null) 'tag': tag!.map((value) => value.toJson()).toList(),
         if (trigger != null)
           'trigger': trigger!.map((value) => value.toJson()).toList(),
@@ -3229,7 +3228,7 @@ class ListAccountUsersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (userAccess != null)
           'userAccess': userAccess!.map((value) => value.toJson()).toList(),
       };
@@ -3251,7 +3250,7 @@ class ListAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accounts != null)
           'accounts': accounts!.map((value) => value.toJson()).toList(),
       };
@@ -3283,7 +3282,7 @@ class ListContainerVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (containerVersion != null)
           'containerVersion':
               containerVersion!.map((value) => value.toJson()).toList(),
@@ -3309,7 +3308,7 @@ class ListContainersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (containers != null)
           'containers': containers!.map((value) => value.toJson()).toList(),
       };
@@ -3331,7 +3330,7 @@ class ListEnvironmentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (environments != null)
           'environments': environments!.map((value) => value.toJson()).toList(),
       };
@@ -3353,7 +3352,7 @@ class ListFoldersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (folders != null)
           'folders': folders!.map((value) => value.toJson()).toList(),
       };
@@ -3375,7 +3374,7 @@ class ListTagsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (tags != null) 'tags': tags!.map((value) => value.toJson()).toList(),
       };
 }
@@ -3396,7 +3395,7 @@ class ListTriggersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (triggers != null)
           'triggers': triggers!.map((value) => value.toJson()).toList(),
       };
@@ -3418,7 +3417,7 @@ class ListVariablesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (variables != null)
           'variables': variables!.map((value) => value.toJson()).toList(),
       };
@@ -3548,7 +3547,7 @@ class Macro {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (containerId != null) 'containerId': containerId!,
         if (disablingRuleId != null) 'disablingRuleId': disablingRuleId!,
@@ -3662,7 +3661,7 @@ class Parameter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (list != null) 'list': list!.map((value) => value.toJson()).toList(),
         if (map != null) 'map': map!.map((value) => value.toJson()).toList(),
@@ -3691,7 +3690,7 @@ class PublishContainerVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (compilerError != null) 'compilerError': compilerError!,
         if (containerVersion != null)
           'containerVersion': containerVersion!.toJson(),
@@ -3761,7 +3760,7 @@ class Rule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (condition != null)
           'condition': condition!.map((value) => value.toJson()).toList(),
@@ -3794,7 +3793,7 @@ class SetupTag {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (stopOnSetupFailure != null)
           'stopOnSetupFailure': stopOnSetupFailure!,
         if (tagName != null) 'tagName': tagName!,
@@ -4013,7 +4012,7 @@ class Tag {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (blockingRuleId != null) 'blockingRuleId': blockingRuleId!,
         if (blockingTriggerId != null) 'blockingTriggerId': blockingTriggerId!,
@@ -4062,7 +4061,7 @@ class TeardownTag {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (stopTeardownOnFailure != null)
           'stopTeardownOnFailure': stopTeardownOnFailure!,
         if (tagName != null) 'tagName': tagName!,
@@ -4398,7 +4397,7 @@ class Trigger {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (autoEventFilter != null)
           'autoEventFilter':
@@ -4500,7 +4499,7 @@ class UserAccess {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountAccess != null) 'accountAccess': accountAccess!.toJson(),
         if (accountId != null) 'accountId': accountId!,
         if (containerAccess != null)
@@ -4635,7 +4634,7 @@ class Variable {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (containerId != null) 'containerId': containerId!,
         if (disablingTriggerId != null)

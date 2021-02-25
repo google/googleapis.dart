@@ -328,7 +328,9 @@ void main() {
   unittest.group('obj-schema-GoogleChromeManagementV1BrowserVersion', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleChromeManagementV1BrowserVersion();
-      var od = api.GoogleChromeManagementV1BrowserVersion.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleChromeManagementV1BrowserVersion.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleChromeManagementV1BrowserVersion(
           od as api.GoogleChromeManagementV1BrowserVersion);
     });
@@ -338,8 +340,9 @@ void main() {
       'obj-schema-GoogleChromeManagementV1CountChromeVersionsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleChromeManagementV1CountChromeVersionsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleChromeManagementV1CountChromeVersionsResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleChromeManagementV1CountChromeVersionsResponse(
           od as api.GoogleChromeManagementV1CountChromeVersionsResponse);
     });
@@ -349,8 +352,9 @@ void main() {
       'obj-schema-GoogleChromeManagementV1CountInstalledAppsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleChromeManagementV1CountInstalledAppsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleChromeManagementV1CountInstalledAppsResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleChromeManagementV1CountInstalledAppsResponse(
           od as api.GoogleChromeManagementV1CountInstalledAppsResponse);
     });
@@ -359,7 +363,9 @@ void main() {
   unittest.group('obj-schema-GoogleChromeManagementV1Device', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleChromeManagementV1Device();
-      var od = api.GoogleChromeManagementV1Device.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleChromeManagementV1Device.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleChromeManagementV1Device(
           od as api.GoogleChromeManagementV1Device);
     });
@@ -369,9 +375,10 @@ void main() {
       'obj-schema-GoogleChromeManagementV1FindInstalledAppDevicesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleChromeManagementV1FindInstalledAppDevicesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleChromeManagementV1FindInstalledAppDevicesResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleChromeManagementV1FindInstalledAppDevicesResponse(
           od as api.GoogleChromeManagementV1FindInstalledAppDevicesResponse);
     });
@@ -380,7 +387,9 @@ void main() {
   unittest.group('obj-schema-GoogleChromeManagementV1InstalledApp', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleChromeManagementV1InstalledApp();
-      var od = api.GoogleChromeManagementV1InstalledApp.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleChromeManagementV1InstalledApp.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleChromeManagementV1InstalledApp(
           od as api.GoogleChromeManagementV1InstalledApp);
     });

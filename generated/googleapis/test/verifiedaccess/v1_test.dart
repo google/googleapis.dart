@@ -155,7 +155,9 @@ void main() {
   unittest.group('obj-schema-Challenge', () {
     unittest.test('to-json--from-json', () async {
       var o = buildChallenge();
-      var od = api.Challenge.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Challenge.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkChallenge(od as api.Challenge);
     });
   });
@@ -163,7 +165,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -171,7 +174,9 @@ void main() {
   unittest.group('obj-schema-SignedData', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSignedData();
-      var od = api.SignedData.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.SignedData.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkSignedData(od as api.SignedData);
     });
   });
@@ -179,7 +184,9 @@ void main() {
   unittest.group('obj-schema-VerifyChallengeResponseRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildVerifyChallengeResponseRequest();
-      var od = api.VerifyChallengeResponseRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.VerifyChallengeResponseRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkVerifyChallengeResponseRequest(
           od as api.VerifyChallengeResponseRequest);
     });
@@ -188,7 +195,9 @@ void main() {
   unittest.group('obj-schema-VerifyChallengeResponseResult', () {
     unittest.test('to-json--from-json', () async {
       var o = buildVerifyChallengeResponseResult();
-      var od = api.VerifyChallengeResponseResult.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.VerifyChallengeResponseResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkVerifyChallengeResponseResult(
           od as api.VerifyChallengeResponseResult);
     });

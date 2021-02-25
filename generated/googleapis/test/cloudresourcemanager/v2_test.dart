@@ -1054,7 +1054,9 @@ void main() {
   unittest.group('obj-schema-AuditConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAuditConfig();
-      var od = api.AuditConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AuditConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAuditConfig(od as api.AuditConfig);
     });
   });
@@ -1062,7 +1064,9 @@ void main() {
   unittest.group('obj-schema-AuditLogConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAuditLogConfig();
-      var od = api.AuditLogConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AuditLogConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAuditLogConfig(od as api.AuditLogConfig);
     });
   });
@@ -1070,7 +1074,9 @@ void main() {
   unittest.group('obj-schema-Binding', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBinding();
-      var od = api.Binding.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Binding.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBinding(od as api.Binding);
     });
   });
@@ -1081,9 +1087,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildCloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkCloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation(
           od as api
               .CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation);
@@ -1096,9 +1103,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildCloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkCloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation(
           od as api
               .CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation);
@@ -1108,7 +1116,9 @@ void main() {
   unittest.group('obj-schema-CreateTagKeyMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreateTagKeyMetadata();
-      var od = api.CreateTagKeyMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreateTagKeyMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreateTagKeyMetadata(od as api.CreateTagKeyMetadata);
     });
   });
@@ -1116,7 +1126,9 @@ void main() {
   unittest.group('obj-schema-CreateTagValueMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreateTagValueMetadata();
-      var od = api.CreateTagValueMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreateTagValueMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreateTagValueMetadata(od as api.CreateTagValueMetadata);
     });
   });
@@ -1124,7 +1136,9 @@ void main() {
   unittest.group('obj-schema-DeleteTagKeyMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDeleteTagKeyMetadata();
-      var od = api.DeleteTagKeyMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DeleteTagKeyMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDeleteTagKeyMetadata(od as api.DeleteTagKeyMetadata);
     });
   });
@@ -1132,7 +1146,9 @@ void main() {
   unittest.group('obj-schema-DeleteTagValueMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDeleteTagValueMetadata();
-      var od = api.DeleteTagValueMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DeleteTagValueMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDeleteTagValueMetadata(od as api.DeleteTagValueMetadata);
     });
   });
@@ -1140,7 +1156,8 @@ void main() {
   unittest.group('obj-schema-Expr', () {
     unittest.test('to-json--from-json', () async {
       var o = buildExpr();
-      var od = api.Expr.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Expr.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkExpr(od as api.Expr);
     });
   });
@@ -1148,7 +1165,9 @@ void main() {
   unittest.group('obj-schema-Folder', () {
     unittest.test('to-json--from-json', () async {
       var o = buildFolder();
-      var od = api.Folder.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Folder.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkFolder(od as api.Folder);
     });
   });
@@ -1156,7 +1175,9 @@ void main() {
   unittest.group('obj-schema-FolderOperation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildFolderOperation();
-      var od = api.FolderOperation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.FolderOperation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkFolderOperation(od as api.FolderOperation);
     });
   });
@@ -1164,7 +1185,9 @@ void main() {
   unittest.group('obj-schema-FolderOperationError', () {
     unittest.test('to-json--from-json', () async {
       var o = buildFolderOperationError();
-      var od = api.FolderOperationError.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.FolderOperationError.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkFolderOperationError(od as api.FolderOperationError);
     });
   });
@@ -1172,7 +1195,9 @@ void main() {
   unittest.group('obj-schema-GetIamPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGetIamPolicyRequest();
-      var od = api.GetIamPolicyRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GetIamPolicyRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
     });
   });
@@ -1180,7 +1205,9 @@ void main() {
   unittest.group('obj-schema-GetPolicyOptions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGetPolicyOptions();
-      var od = api.GetPolicyOptions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GetPolicyOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetPolicyOptions(od as api.GetPolicyOptions);
     });
   });
@@ -1188,7 +1215,9 @@ void main() {
   unittest.group('obj-schema-ListFoldersResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListFoldersResponse();
-      var od = api.ListFoldersResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListFoldersResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListFoldersResponse(od as api.ListFoldersResponse);
     });
   });
@@ -1196,7 +1225,9 @@ void main() {
   unittest.group('obj-schema-MoveFolderRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMoveFolderRequest();
-      var od = api.MoveFolderRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MoveFolderRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkMoveFolderRequest(od as api.MoveFolderRequest);
     });
   });
@@ -1204,7 +1235,9 @@ void main() {
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOperation();
-      var od = api.Operation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od as api.Operation);
     });
   });
@@ -1212,7 +1245,9 @@ void main() {
   unittest.group('obj-schema-Policy', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
-      var od = api.Policy.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Policy.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPolicy(od as api.Policy);
     });
   });
@@ -1220,7 +1255,9 @@ void main() {
   unittest.group('obj-schema-ProjectCreationStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildProjectCreationStatus();
-      var od = api.ProjectCreationStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ProjectCreationStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkProjectCreationStatus(od as api.ProjectCreationStatus);
     });
   });
@@ -1228,7 +1265,9 @@ void main() {
   unittest.group('obj-schema-SearchFoldersRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSearchFoldersRequest();
-      var od = api.SearchFoldersRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SearchFoldersRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSearchFoldersRequest(od as api.SearchFoldersRequest);
     });
   });
@@ -1236,7 +1275,9 @@ void main() {
   unittest.group('obj-schema-SearchFoldersResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSearchFoldersResponse();
-      var od = api.SearchFoldersResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SearchFoldersResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSearchFoldersResponse(od as api.SearchFoldersResponse);
     });
   });
@@ -1244,7 +1285,9 @@ void main() {
   unittest.group('obj-schema-SetIamPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
-      var od = api.SetIamPolicyRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SetIamPolicyRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
@@ -1252,7 +1295,9 @@ void main() {
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStatus();
-      var od = api.Status.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od as api.Status);
     });
   });
@@ -1260,7 +1305,9 @@ void main() {
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
-      var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TestIamPermissionsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
@@ -1268,7 +1315,9 @@ void main() {
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
-      var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TestIamPermissionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
@@ -1276,7 +1325,9 @@ void main() {
   unittest.group('obj-schema-UndeleteFolderRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUndeleteFolderRequest();
-      var od = api.UndeleteFolderRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UndeleteFolderRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUndeleteFolderRequest(od as api.UndeleteFolderRequest);
     });
   });
@@ -1284,7 +1335,9 @@ void main() {
   unittest.group('obj-schema-UpdateTagKeyMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUpdateTagKeyMetadata();
-      var od = api.UpdateTagKeyMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UpdateTagKeyMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUpdateTagKeyMetadata(od as api.UpdateTagKeyMetadata);
     });
   });
@@ -1292,7 +1345,9 @@ void main() {
   unittest.group('obj-schema-UpdateTagValueMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUpdateTagValueMetadata();
-      var od = api.UpdateTagValueMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UpdateTagValueMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUpdateTagValueMetadata(od as api.UpdateTagValueMetadata);
     });
   });

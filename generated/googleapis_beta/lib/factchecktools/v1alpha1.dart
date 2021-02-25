@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -414,7 +413,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Claim {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (claimDate != null) 'claimDate': claimDate!,
         if (claimReview != null)
           'claimReview': claimReview!.map((value) => value.toJson()).toList(),
@@ -457,7 +456,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (imageUrl != null) 'imageUrl': imageUrl!,
         if (jobTitle != null) 'jobTitle': jobTitle!,
         if (name != null) 'name': name!,
@@ -519,7 +518,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bestRating != null) 'bestRating': bestRating!,
         if (imageUrl != null) 'imageUrl': imageUrl!,
         if (ratingExplanation != null) 'ratingExplanation': ratingExplanation!,
@@ -577,7 +576,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
         if (publisher != null) 'publisher': publisher!.toJson(),
         if (reviewDate != null) 'reviewDate': reviewDate!,
@@ -609,7 +608,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (imageUrl != null) 'imageUrl': imageUrl!,
         if (name != null) 'name': name!,
       };
@@ -696,7 +695,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (claimAppearances != null) 'claimAppearances': claimAppearances!,
         if (claimAuthor != null) 'claimAuthor': claimAuthor!.toJson(),
         if (claimDate != null) 'claimDate': claimDate!,
@@ -783,7 +782,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (claimReviewAuthor != null)
           'claimReviewAuthor': claimReviewAuthor!.toJson(),
         if (claimReviewMarkups != null)
@@ -823,7 +822,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (claims != null)
           'claims': claims!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -859,7 +858,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (claimReviewMarkupPages != null)
           'claimReviewMarkupPages':
               claimReviewMarkupPages!.map((value) => value.toJson()).toList(),
@@ -891,7 +890,7 @@ class GoogleFactcheckingFactchecktoolsV1alpha1Publisher {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (site != null) 'site': site!,
       };
@@ -911,5 +910,5 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }

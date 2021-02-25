@@ -973,7 +973,9 @@ void main() {
   unittest.group('obj-schema-AnalyticsInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAnalyticsInfo();
-      var od = api.AnalyticsInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AnalyticsInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAnalyticsInfo(od as api.AnalyticsInfo);
     });
   });
@@ -981,7 +983,9 @@ void main() {
   unittest.group('obj-schema-AndroidInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAndroidInfo();
-      var od = api.AndroidInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AndroidInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAndroidInfo(od as api.AndroidInfo);
     });
   });
@@ -989,7 +993,9 @@ void main() {
   unittest.group('obj-schema-CreateManagedShortLinkRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreateManagedShortLinkRequest();
-      var od = api.CreateManagedShortLinkRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreateManagedShortLinkRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreateManagedShortLinkRequest(
           od as api.CreateManagedShortLinkRequest);
     });
@@ -998,7 +1004,9 @@ void main() {
   unittest.group('obj-schema-CreateManagedShortLinkResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreateManagedShortLinkResponse();
-      var od = api.CreateManagedShortLinkResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreateManagedShortLinkResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreateManagedShortLinkResponse(
           od as api.CreateManagedShortLinkResponse);
     });
@@ -1007,7 +1015,9 @@ void main() {
   unittest.group('obj-schema-CreateShortDynamicLinkRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreateShortDynamicLinkRequest();
-      var od = api.CreateShortDynamicLinkRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreateShortDynamicLinkRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreateShortDynamicLinkRequest(
           od as api.CreateShortDynamicLinkRequest);
     });
@@ -1016,7 +1026,9 @@ void main() {
   unittest.group('obj-schema-CreateShortDynamicLinkResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreateShortDynamicLinkResponse();
-      var od = api.CreateShortDynamicLinkResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreateShortDynamicLinkResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreateShortDynamicLinkResponse(
           od as api.CreateShortDynamicLinkResponse);
     });
@@ -1025,7 +1037,9 @@ void main() {
   unittest.group('obj-schema-DesktopInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDesktopInfo();
-      var od = api.DesktopInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DesktopInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDesktopInfo(od as api.DesktopInfo);
     });
   });
@@ -1033,7 +1047,9 @@ void main() {
   unittest.group('obj-schema-DeviceInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDeviceInfo();
-      var od = api.DeviceInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.DeviceInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDeviceInfo(od as api.DeviceInfo);
     });
   });
@@ -1041,7 +1057,9 @@ void main() {
   unittest.group('obj-schema-DynamicLinkEventStat', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDynamicLinkEventStat();
-      var od = api.DynamicLinkEventStat.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DynamicLinkEventStat.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDynamicLinkEventStat(od as api.DynamicLinkEventStat);
     });
   });
@@ -1049,7 +1067,9 @@ void main() {
   unittest.group('obj-schema-DynamicLinkInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDynamicLinkInfo();
-      var od = api.DynamicLinkInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DynamicLinkInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDynamicLinkInfo(od as api.DynamicLinkInfo);
     });
   });
@@ -1057,7 +1077,9 @@ void main() {
   unittest.group('obj-schema-DynamicLinkStats', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDynamicLinkStats();
-      var od = api.DynamicLinkStats.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DynamicLinkStats.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDynamicLinkStats(od as api.DynamicLinkStats);
     });
   });
@@ -1065,7 +1087,9 @@ void main() {
   unittest.group('obj-schema-DynamicLinkWarning', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDynamicLinkWarning();
-      var od = api.DynamicLinkWarning.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DynamicLinkWarning.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDynamicLinkWarning(od as api.DynamicLinkWarning);
     });
   });
@@ -1073,7 +1097,9 @@ void main() {
   unittest.group('obj-schema-GetIosPostInstallAttributionRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGetIosPostInstallAttributionRequest();
-      var od = api.GetIosPostInstallAttributionRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GetIosPostInstallAttributionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetIosPostInstallAttributionRequest(
           od as api.GetIosPostInstallAttributionRequest);
     });
@@ -1082,7 +1108,9 @@ void main() {
   unittest.group('obj-schema-GetIosPostInstallAttributionResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGetIosPostInstallAttributionResponse();
-      var od = api.GetIosPostInstallAttributionResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GetIosPostInstallAttributionResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetIosPostInstallAttributionResponse(
           od as api.GetIosPostInstallAttributionResponse);
     });
@@ -1091,7 +1119,9 @@ void main() {
   unittest.group('obj-schema-GetIosReopenAttributionRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGetIosReopenAttributionRequest();
-      var od = api.GetIosReopenAttributionRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GetIosReopenAttributionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetIosReopenAttributionRequest(
           od as api.GetIosReopenAttributionRequest);
     });
@@ -1100,7 +1130,9 @@ void main() {
   unittest.group('obj-schema-GetIosReopenAttributionResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGetIosReopenAttributionResponse();
-      var od = api.GetIosReopenAttributionResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GetIosReopenAttributionResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetIosReopenAttributionResponse(
           od as api.GetIosReopenAttributionResponse);
     });
@@ -1109,7 +1141,9 @@ void main() {
   unittest.group('obj-schema-GooglePlayAnalytics', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGooglePlayAnalytics();
-      var od = api.GooglePlayAnalytics.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GooglePlayAnalytics.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGooglePlayAnalytics(od as api.GooglePlayAnalytics);
     });
   });
@@ -1117,7 +1151,9 @@ void main() {
   unittest.group('obj-schema-ITunesConnectAnalytics', () {
     unittest.test('to-json--from-json', () async {
       var o = buildITunesConnectAnalytics();
-      var od = api.ITunesConnectAnalytics.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ITunesConnectAnalytics.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkITunesConnectAnalytics(od as api.ITunesConnectAnalytics);
     });
   });
@@ -1125,7 +1161,9 @@ void main() {
   unittest.group('obj-schema-IosInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildIosInfo();
-      var od = api.IosInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.IosInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkIosInfo(od as api.IosInfo);
     });
   });
@@ -1133,7 +1171,9 @@ void main() {
   unittest.group('obj-schema-ManagedShortLink', () {
     unittest.test('to-json--from-json', () async {
       var o = buildManagedShortLink();
-      var od = api.ManagedShortLink.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ManagedShortLink.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkManagedShortLink(od as api.ManagedShortLink);
     });
   });
@@ -1141,7 +1181,9 @@ void main() {
   unittest.group('obj-schema-NavigationInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildNavigationInfo();
-      var od = api.NavigationInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.NavigationInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkNavigationInfo(od as api.NavigationInfo);
     });
   });
@@ -1149,7 +1191,9 @@ void main() {
   unittest.group('obj-schema-SocialMetaTagInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSocialMetaTagInfo();
-      var od = api.SocialMetaTagInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SocialMetaTagInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSocialMetaTagInfo(od as api.SocialMetaTagInfo);
     });
   });
@@ -1157,7 +1201,9 @@ void main() {
   unittest.group('obj-schema-Suffix', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSuffix();
-      var od = api.Suffix.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Suffix.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkSuffix(od as api.Suffix);
     });
   });

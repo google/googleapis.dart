@@ -1031,7 +1031,9 @@ void main() {
   unittest.group('obj-schema-AliasContext', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAliasContext();
-      var od = api.AliasContext.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AliasContext.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAliasContext(od as api.AliasContext);
     });
   });
@@ -1039,7 +1041,9 @@ void main() {
   unittest.group('obj-schema-Breakpoint', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBreakpoint();
-      var od = api.Breakpoint.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Breakpoint.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBreakpoint(od as api.Breakpoint);
     });
   });
@@ -1047,7 +1051,9 @@ void main() {
   unittest.group('obj-schema-CloudRepoSourceContext', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCloudRepoSourceContext();
-      var od = api.CloudRepoSourceContext.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CloudRepoSourceContext.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCloudRepoSourceContext(od as api.CloudRepoSourceContext);
     });
   });
@@ -1055,7 +1061,9 @@ void main() {
   unittest.group('obj-schema-CloudWorkspaceId', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCloudWorkspaceId();
-      var od = api.CloudWorkspaceId.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CloudWorkspaceId.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCloudWorkspaceId(od as api.CloudWorkspaceId);
     });
   });
@@ -1063,7 +1071,9 @@ void main() {
   unittest.group('obj-schema-CloudWorkspaceSourceContext', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCloudWorkspaceSourceContext();
-      var od = api.CloudWorkspaceSourceContext.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CloudWorkspaceSourceContext.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCloudWorkspaceSourceContext(od as api.CloudWorkspaceSourceContext);
     });
   });
@@ -1071,7 +1081,9 @@ void main() {
   unittest.group('obj-schema-Debuggee', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDebuggee();
-      var od = api.Debuggee.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Debuggee.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDebuggee(od as api.Debuggee);
     });
   });
@@ -1079,7 +1091,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -1087,7 +1100,9 @@ void main() {
   unittest.group('obj-schema-ExtendedSourceContext', () {
     unittest.test('to-json--from-json', () async {
       var o = buildExtendedSourceContext();
-      var od = api.ExtendedSourceContext.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ExtendedSourceContext.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkExtendedSourceContext(od as api.ExtendedSourceContext);
     });
   });
@@ -1095,7 +1110,9 @@ void main() {
   unittest.group('obj-schema-FormatMessage', () {
     unittest.test('to-json--from-json', () async {
       var o = buildFormatMessage();
-      var od = api.FormatMessage.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.FormatMessage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkFormatMessage(od as api.FormatMessage);
     });
   });
@@ -1103,7 +1120,9 @@ void main() {
   unittest.group('obj-schema-GerritSourceContext', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGerritSourceContext();
-      var od = api.GerritSourceContext.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GerritSourceContext.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGerritSourceContext(od as api.GerritSourceContext);
     });
   });
@@ -1111,7 +1130,9 @@ void main() {
   unittest.group('obj-schema-GetBreakpointResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGetBreakpointResponse();
-      var od = api.GetBreakpointResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GetBreakpointResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetBreakpointResponse(od as api.GetBreakpointResponse);
     });
   });
@@ -1119,7 +1140,9 @@ void main() {
   unittest.group('obj-schema-GitSourceContext', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGitSourceContext();
-      var od = api.GitSourceContext.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GitSourceContext.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGitSourceContext(od as api.GitSourceContext);
     });
   });
@@ -1127,7 +1150,9 @@ void main() {
   unittest.group('obj-schema-ListActiveBreakpointsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListActiveBreakpointsResponse();
-      var od = api.ListActiveBreakpointsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListActiveBreakpointsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListActiveBreakpointsResponse(
           od as api.ListActiveBreakpointsResponse);
     });
@@ -1136,7 +1161,9 @@ void main() {
   unittest.group('obj-schema-ListBreakpointsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListBreakpointsResponse();
-      var od = api.ListBreakpointsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListBreakpointsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListBreakpointsResponse(od as api.ListBreakpointsResponse);
     });
   });
@@ -1144,7 +1171,9 @@ void main() {
   unittest.group('obj-schema-ListDebuggeesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListDebuggeesResponse();
-      var od = api.ListDebuggeesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListDebuggeesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListDebuggeesResponse(od as api.ListDebuggeesResponse);
     });
   });
@@ -1152,7 +1181,9 @@ void main() {
   unittest.group('obj-schema-ProjectRepoId', () {
     unittest.test('to-json--from-json', () async {
       var o = buildProjectRepoId();
-      var od = api.ProjectRepoId.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ProjectRepoId.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkProjectRepoId(od as api.ProjectRepoId);
     });
   });
@@ -1160,7 +1191,9 @@ void main() {
   unittest.group('obj-schema-RegisterDebuggeeRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRegisterDebuggeeRequest();
-      var od = api.RegisterDebuggeeRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RegisterDebuggeeRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRegisterDebuggeeRequest(od as api.RegisterDebuggeeRequest);
     });
   });
@@ -1168,7 +1201,9 @@ void main() {
   unittest.group('obj-schema-RegisterDebuggeeResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRegisterDebuggeeResponse();
-      var od = api.RegisterDebuggeeResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RegisterDebuggeeResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRegisterDebuggeeResponse(od as api.RegisterDebuggeeResponse);
     });
   });
@@ -1176,7 +1211,9 @@ void main() {
   unittest.group('obj-schema-RepoId', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRepoId();
-      var od = api.RepoId.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.RepoId.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkRepoId(od as api.RepoId);
     });
   });
@@ -1184,7 +1221,9 @@ void main() {
   unittest.group('obj-schema-SetBreakpointResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSetBreakpointResponse();
-      var od = api.SetBreakpointResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SetBreakpointResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSetBreakpointResponse(od as api.SetBreakpointResponse);
     });
   });
@@ -1192,7 +1231,9 @@ void main() {
   unittest.group('obj-schema-SourceContext', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSourceContext();
-      var od = api.SourceContext.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SourceContext.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSourceContext(od as api.SourceContext);
     });
   });
@@ -1200,7 +1241,9 @@ void main() {
   unittest.group('obj-schema-SourceLocation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSourceLocation();
-      var od = api.SourceLocation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SourceLocation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSourceLocation(od as api.SourceLocation);
     });
   });
@@ -1208,7 +1251,9 @@ void main() {
   unittest.group('obj-schema-StackFrame', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStackFrame();
-      var od = api.StackFrame.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.StackFrame.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStackFrame(od as api.StackFrame);
     });
   });
@@ -1216,7 +1261,9 @@ void main() {
   unittest.group('obj-schema-StatusMessage', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStatusMessage();
-      var od = api.StatusMessage.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.StatusMessage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkStatusMessage(od as api.StatusMessage);
     });
   });
@@ -1224,7 +1271,9 @@ void main() {
   unittest.group('obj-schema-UpdateActiveBreakpointRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUpdateActiveBreakpointRequest();
-      var od = api.UpdateActiveBreakpointRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UpdateActiveBreakpointRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUpdateActiveBreakpointRequest(
           od as api.UpdateActiveBreakpointRequest);
     });
@@ -1233,7 +1282,9 @@ void main() {
   unittest.group('obj-schema-UpdateActiveBreakpointResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUpdateActiveBreakpointResponse();
-      var od = api.UpdateActiveBreakpointResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UpdateActiveBreakpointResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUpdateActiveBreakpointResponse(
           od as api.UpdateActiveBreakpointResponse);
     });
@@ -1242,7 +1293,9 @@ void main() {
   unittest.group('obj-schema-Variable', () {
     unittest.test('to-json--from-json', () async {
       var o = buildVariable();
-      var od = api.Variable.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Variable.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkVariable(od as api.Variable);
     });
   });

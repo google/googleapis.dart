@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -298,7 +297,7 @@ class AgentDeviceId {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
       };
 }
@@ -322,7 +321,7 @@ class AgentOtherDeviceId {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agentId != null) 'agentId': agentId!,
         if (deviceId != null) 'deviceId': deviceId!,
       };
@@ -412,24 +411,22 @@ class Device {
 
   Device.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes = (_json['attributes'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      attributes =
+          (_json['attributes'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('customData')) {
-      customData = (_json['customData'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      customData =
+          (_json['customData'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('deviceInfo')) {
       deviceInfo = DeviceInfo.fromJson(
@@ -477,7 +474,7 @@ class Device {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!,
         if (customData != null) 'customData': customData!,
         if (deviceInfo != null) 'deviceInfo': deviceInfo!.toJson(),
@@ -530,7 +527,7 @@ class DeviceInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hwVersion != null) 'hwVersion': hwVersion!,
         if (manufacturer != null) 'manufacturer': manufacturer!,
         if (model != null) 'model': model!,
@@ -568,7 +565,7 @@ class DeviceNames {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (defaultNames != null) 'defaultNames': defaultNames!,
         if (name != null) 'name': name!,
         if (nicknames != null) 'nicknames': nicknames!,
@@ -589,7 +586,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// LINT.IfChange go/shed-per-trait-routing.
@@ -611,7 +608,7 @@ class NonLocalTrait {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (trait != null) 'trait': trait!,
       };
 }
@@ -650,7 +647,7 @@ class QueryRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agentUserId != null) 'agentUserId': agentUserId!,
         if (inputs != null)
           'inputs': inputs!.map((value) => value.toJson()).toList(),
@@ -672,7 +669,7 @@ class QueryRequestInput {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (payload != null) 'payload': payload!.toJson(),
       };
 }
@@ -693,7 +690,7 @@ class QueryRequestPayload {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (devices != null)
           'devices': devices!.map((value) => value.toJson()).toList(),
       };
@@ -730,7 +727,7 @@ class QueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (payload != null) 'payload': payload!.toJson(),
         if (requestId != null) 'requestId': requestId!,
       };
@@ -750,23 +747,21 @@ class QueryResponsePayload {
 
   QueryResponsePayload.fromJson(core.Map _json) {
     if (_json.containsKey('devices')) {
-      devices = (_json['devices'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
+      devices = (_json['devices'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          (item as core.Map<core.String, core.dynamic>).map(
             (key, item) => core.MapEntry(
               key,
-              (item as core.Map).cast<core.String, core.Object>().map(
-                    (key, item) => core.MapEntry(
-                      key,
-                      item as core.Object,
-                    ),
-                  ),
+              item as core.Object,
             ),
-          );
+          ),
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (devices != null) 'devices': devices!,
       };
 }
@@ -795,27 +790,25 @@ class ReportStateAndNotificationDevice {
 
   ReportStateAndNotificationDevice.fromJson(core.Map _json) {
     if (_json.containsKey('notifications')) {
-      notifications = (_json['notifications'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      notifications =
+          (_json['notifications'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('states')) {
-      states =
-          (_json['states'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      states = (_json['states'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (notifications != null) 'notifications': notifications!,
         if (states != null) 'states': states!,
       };
@@ -876,7 +869,7 @@ class ReportStateAndNotificationRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agentUserId != null) 'agentUserId': agentUserId!,
         if (eventId != null) 'eventId': eventId!,
         if (followUpToken != null) 'followUpToken': followUpToken!,
@@ -900,7 +893,7 @@ class ReportStateAndNotificationResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (requestId != null) 'requestId': requestId!,
       };
 }
@@ -934,7 +927,7 @@ class RequestSyncDevicesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agentUserId != null) 'agentUserId': agentUserId!,
         if (async != null) 'async': async!,
       };
@@ -953,7 +946,7 @@ class RequestSyncDevicesResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Payload containing the state and notification information for devices.
@@ -970,7 +963,7 @@ class StateAndNotificationPayload {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (devices != null) 'devices': devices!.toJson(),
       };
 }
@@ -997,7 +990,7 @@ class SyncRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agentUserId != null) 'agentUserId': agentUserId!,
         if (requestId != null) 'requestId': requestId!,
       };
@@ -1038,7 +1031,7 @@ class SyncResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (payload != null) 'payload': payload!.toJson(),
         if (requestId != null) 'requestId': requestId!,
       };
@@ -1066,7 +1059,7 @@ class SyncResponsePayload {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agentUserId != null) 'agentUserId': agentUserId!,
         if (devices != null)
           'devices': devices!.map((value) => value.toJson()).toList(),

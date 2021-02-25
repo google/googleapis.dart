@@ -751,7 +751,9 @@ void main() {
   unittest.group('obj-schema-AndroidConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAndroidConfig();
-      var od = api.AndroidConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AndroidConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAndroidConfig(od as api.AndroidConfig);
     });
   });
@@ -759,7 +761,9 @@ void main() {
   unittest.group('obj-schema-AndroidFcmOptions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAndroidFcmOptions();
-      var od = api.AndroidFcmOptions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AndroidFcmOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAndroidFcmOptions(od as api.AndroidFcmOptions);
     });
   });
@@ -767,7 +771,9 @@ void main() {
   unittest.group('obj-schema-AndroidNotification', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAndroidNotification();
-      var od = api.AndroidNotification.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AndroidNotification.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAndroidNotification(od as api.AndroidNotification);
     });
   });
@@ -775,7 +781,9 @@ void main() {
   unittest.group('obj-schema-ApnsConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApnsConfig();
-      var od = api.ApnsConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.ApnsConfig.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkApnsConfig(od as api.ApnsConfig);
     });
   });
@@ -783,7 +791,9 @@ void main() {
   unittest.group('obj-schema-ApnsFcmOptions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApnsFcmOptions();
-      var od = api.ApnsFcmOptions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApnsFcmOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApnsFcmOptions(od as api.ApnsFcmOptions);
     });
   });
@@ -791,7 +801,8 @@ void main() {
   unittest.group('obj-schema-Color', () {
     unittest.test('to-json--from-json', () async {
       var o = buildColor();
-      var od = api.Color.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Color.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkColor(od as api.Color);
     });
   });
@@ -799,7 +810,9 @@ void main() {
   unittest.group('obj-schema-FcmOptions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildFcmOptions();
-      var od = api.FcmOptions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.FcmOptions.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkFcmOptions(od as api.FcmOptions);
     });
   });
@@ -807,7 +820,9 @@ void main() {
   unittest.group('obj-schema-LightSettings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLightSettings();
-      var od = api.LightSettings.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LightSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLightSettings(od as api.LightSettings);
     });
   });
@@ -815,7 +830,9 @@ void main() {
   unittest.group('obj-schema-Message', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMessage();
-      var od = api.Message.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Message.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkMessage(od as api.Message);
     });
   });
@@ -823,7 +840,9 @@ void main() {
   unittest.group('obj-schema-Notification', () {
     unittest.test('to-json--from-json', () async {
       var o = buildNotification();
-      var od = api.Notification.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Notification.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkNotification(od as api.Notification);
     });
   });
@@ -831,7 +850,9 @@ void main() {
   unittest.group('obj-schema-SendMessageRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSendMessageRequest();
-      var od = api.SendMessageRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SendMessageRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSendMessageRequest(od as api.SendMessageRequest);
     });
   });
@@ -839,7 +860,9 @@ void main() {
   unittest.group('obj-schema-WebpushConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWebpushConfig();
-      var od = api.WebpushConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.WebpushConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkWebpushConfig(od as api.WebpushConfig);
     });
   });
@@ -847,7 +870,9 @@ void main() {
   unittest.group('obj-schema-WebpushFcmOptions', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWebpushFcmOptions();
-      var od = api.WebpushFcmOptions.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.WebpushFcmOptions.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkWebpushFcmOptions(od as api.WebpushFcmOptions);
     });
   });

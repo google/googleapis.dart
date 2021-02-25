@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -141,7 +140,7 @@ class Bin {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (density != null) 'density': density!,
         if (end != null) 'end': end!,
         if (start != null) 'start': start!,
@@ -201,7 +200,7 @@ class Key {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (effectiveConnectionType != null)
           'effectiveConnectionType': effectiveConnectionType!,
         if (formFactor != null) 'formFactor': formFactor!,
@@ -243,7 +242,7 @@ class Metric {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (histogram != null)
           'histogram': histogram!.map((value) => value.toJson()).toList(),
         if (percentiles != null) 'percentiles': percentiles!.toJson(),
@@ -270,7 +269,7 @@ class Percentiles {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (p75 != null) 'p75': p75!,
       };
 }
@@ -343,7 +342,7 @@ class QueryRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (effectiveConnectionType != null)
           'effectiveConnectionType': effectiveConnectionType!,
         if (formFactor != null) 'formFactor': formFactor!,
@@ -381,7 +380,7 @@ class QueryResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (record != null) 'record': record!.toJson(),
         if (urlNormalizationDetails != null)
           'urlNormalizationDetails': urlNormalizationDetails!.toJson(),
@@ -412,18 +411,16 @@ class Record {
       key = Key.fromJson(_json['key'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metrics')) {
-      metrics = (_json['metrics'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              Metric.fromJson(item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      metrics = (_json['metrics'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          Metric.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!.toJson(),
         if (metrics != null)
           'metrics':
@@ -457,7 +454,7 @@ class UrlNormalization {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedUrl != null) 'normalizedUrl': normalizedUrl!,
         if (originalUrl != null) 'originalUrl': originalUrl!,
       };

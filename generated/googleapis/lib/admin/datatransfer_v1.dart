@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -334,7 +333,7 @@ class Application {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
         if (kind != null) 'kind': kind!,
@@ -381,7 +380,7 @@ class ApplicationDataTransfer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (applicationId != null) 'applicationId': applicationId!,
         if (applicationTransferParams != null)
           'applicationTransferParams': applicationTransferParams!
@@ -417,7 +416,7 @@ class ApplicationTransferParam {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (value != null) 'value': value!,
       };
@@ -458,7 +457,7 @@ class ApplicationsListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (applications != null)
           'applications': applications!.map((value) => value.toJson()).toList(),
         if (etag != null) 'etag': etag!,
@@ -534,7 +533,7 @@ class DataTransfer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (applicationDataTransfers != null)
           'applicationDataTransfers':
               applicationDataTransfers!.map((value) => value.toJson()).toList(),
@@ -583,7 +582,7 @@ class DataTransfersListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataTransfers != null)
           'dataTransfers':
               dataTransfers!.map((value) => value.toJson()).toList(),

@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -341,7 +340,7 @@ class GoogleChromeManagementV1BrowserVersion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channel != null) 'channel': channel!,
         if (count != null) 'count': count!,
         if (deviceOsVersion != null) 'deviceOsVersion': deviceOsVersion!,
@@ -379,7 +378,7 @@ class GoogleChromeManagementV1CountChromeVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (browserVersions != null)
           'browserVersions':
               browserVersions!.map((value) => value.toJson()).toList(),
@@ -417,7 +416,7 @@ class GoogleChromeManagementV1CountInstalledAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (installedApps != null)
           'installedApps':
               installedApps!.map((value) => value.toJson()).toList(),
@@ -449,7 +448,7 @@ class GoogleChromeManagementV1Device {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
         if (machine != null) 'machine': machine!,
       };
@@ -487,7 +486,7 @@ class GoogleChromeManagementV1FindInstalledAppDevicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (devices != null)
           'devices': devices!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -615,7 +614,7 @@ class GoogleChromeManagementV1InstalledApp {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appId != null) 'appId': appId!,
         if (appInstallType != null) 'appInstallType': appInstallType!,
         if (appSource != null) 'appSource': appSource!,

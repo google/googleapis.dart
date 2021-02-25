@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -346,7 +345,7 @@ class SiteVerificationWebResourceGettokenRequestSite {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (identifier != null) 'identifier': identifier!,
         if (type != null) 'type': type!,
       };
@@ -374,7 +373,7 @@ class SiteVerificationWebResourceGettokenRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (site != null) 'site': site!.toJson(),
         if (verificationMethod != null)
           'verificationMethod': verificationMethod!,
@@ -407,7 +406,7 @@ class SiteVerificationWebResourceGettokenResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (method != null) 'method': method!,
         if (token != null) 'token': token!,
       };
@@ -429,7 +428,7 @@ class SiteVerificationWebResourceListResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
       };
@@ -459,7 +458,7 @@ class SiteVerificationWebResourceResourceSite {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (identifier != null) 'identifier': identifier!,
         if (type != null) 'type': type!,
       };
@@ -495,7 +494,7 @@ class SiteVerificationWebResourceResource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (owners != null) 'owners': owners!,
         if (site != null) 'site': site!.toJson(),

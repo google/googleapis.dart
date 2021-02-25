@@ -2068,7 +2068,9 @@ void main() {
   unittest.group('obj-schema-CheckTransitiveMembershipResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCheckTransitiveMembershipResponse();
-      var od = api.CheckTransitiveMembershipResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CheckTransitiveMembershipResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCheckTransitiveMembershipResponse(
           od as api.CheckTransitiveMembershipResponse);
     });
@@ -2077,7 +2079,9 @@ void main() {
   unittest.group('obj-schema-DynamicGroupMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDynamicGroupMetadata();
-      var od = api.DynamicGroupMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DynamicGroupMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDynamicGroupMetadata(od as api.DynamicGroupMetadata);
     });
   });
@@ -2085,7 +2089,9 @@ void main() {
   unittest.group('obj-schema-DynamicGroupQuery', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDynamicGroupQuery();
-      var od = api.DynamicGroupQuery.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DynamicGroupQuery.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDynamicGroupQuery(od as api.DynamicGroupQuery);
     });
   });
@@ -2093,7 +2099,9 @@ void main() {
   unittest.group('obj-schema-DynamicGroupStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDynamicGroupStatus();
-      var od = api.DynamicGroupStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DynamicGroupStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDynamicGroupStatus(od as api.DynamicGroupStatus);
     });
   });
@@ -2101,7 +2109,9 @@ void main() {
   unittest.group('obj-schema-EntityKey', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEntityKey();
-      var od = api.EntityKey.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.EntityKey.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEntityKey(od as api.EntityKey);
     });
   });
@@ -2109,7 +2119,9 @@ void main() {
   unittest.group('obj-schema-ExpiryDetail', () {
     unittest.test('to-json--from-json', () async {
       var o = buildExpiryDetail();
-      var od = api.ExpiryDetail.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ExpiryDetail.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkExpiryDetail(od as api.ExpiryDetail);
     });
   });
@@ -2117,7 +2129,9 @@ void main() {
   unittest.group('obj-schema-GetMembershipGraphResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGetMembershipGraphResponse();
-      var od = api.GetMembershipGraphResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GetMembershipGraphResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGetMembershipGraphResponse(od as api.GetMembershipGraphResponse);
     });
   });
@@ -2126,8 +2140,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1AndroidAttributes();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1AndroidAttributes(
           od as api.GoogleAppsCloudidentityDevicesV1AndroidAttributes);
     });
@@ -2138,9 +2153,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest(
           od as api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest);
     });
@@ -2151,8 +2167,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse(
           od as api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse);
     });
@@ -2162,9 +2179,10 @@ void main() {
       'obj-schema-GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest(
           od as api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest);
     });
@@ -2174,9 +2192,10 @@ void main() {
       'obj-schema-GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse(
           od as api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse);
     });
@@ -2186,9 +2205,10 @@ void main() {
       'obj-schema-GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest(
           od as api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest);
     });
@@ -2199,9 +2219,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse(
           od as api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse);
     });
@@ -2213,8 +2234,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest(od
           as api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest);
     });
@@ -2226,8 +2248,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse(od
           as api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse);
     });
@@ -2236,8 +2259,9 @@ void main() {
   unittest.group('obj-schema-GoogleAppsCloudidentityDevicesV1ClientState', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1ClientState();
-      var od =
-          api.GoogleAppsCloudidentityDevicesV1ClientState.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCloudidentityDevicesV1ClientState.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1ClientState(
           od as api.GoogleAppsCloudidentityDevicesV1ClientState);
     });
@@ -2247,9 +2271,10 @@ void main() {
       'obj-schema-GoogleAppsCloudidentityDevicesV1CustomAttributeValue', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1CustomAttributeValue();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1CustomAttributeValue(
           od as api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue);
     });
@@ -2258,7 +2283,9 @@ void main() {
   unittest.group('obj-schema-GoogleAppsCloudidentityDevicesV1Device', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1Device();
-      var od = api.GoogleAppsCloudidentityDevicesV1Device.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCloudidentityDevicesV1Device.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1Device(
           od as api.GoogleAppsCloudidentityDevicesV1Device);
     });
@@ -2267,8 +2294,9 @@ void main() {
   unittest.group('obj-schema-GoogleAppsCloudidentityDevicesV1DeviceUser', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1DeviceUser();
-      var od =
-          api.GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1DeviceUser(
           od as api.GoogleAppsCloudidentityDevicesV1DeviceUser);
     });
@@ -2279,9 +2307,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1ListClientStatesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAppsCloudidentityDevicesV1ListClientStatesResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1ListClientStatesResponse(
           od as api.GoogleAppsCloudidentityDevicesV1ListClientStatesResponse);
     });
@@ -2291,9 +2320,10 @@ void main() {
       'obj-schema-GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse(
           od as api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse);
     });
@@ -2303,8 +2333,9 @@ void main() {
       'obj-schema-GoogleAppsCloudidentityDevicesV1ListDevicesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1ListDevicesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1ListDevicesResponse(
           od as api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse);
     });
@@ -2316,8 +2347,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse(od
           as api.GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse);
     });
@@ -2327,8 +2359,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1WipeDeviceRequest(
           od as api.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest);
     });
@@ -2338,8 +2371,9 @@ void main() {
       'obj-schema-GoogleAppsCloudidentityDevicesV1WipeDeviceResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAppsCloudidentityDevicesV1WipeDeviceResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1WipeDeviceResponse(
           od as api.GoogleAppsCloudidentityDevicesV1WipeDeviceResponse);
     });
@@ -2349,9 +2383,10 @@ void main() {
       'obj-schema-GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest(
           od as api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest);
     });
@@ -2361,9 +2396,10 @@ void main() {
       'obj-schema-GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse(
           od as api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse);
     });
@@ -2372,7 +2408,8 @@ void main() {
   unittest.group('obj-schema-Group', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGroup();
-      var od = api.Group.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Group.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGroup(od as api.Group);
     });
   });
@@ -2380,7 +2417,9 @@ void main() {
   unittest.group('obj-schema-GroupRelation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGroupRelation();
-      var od = api.GroupRelation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GroupRelation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGroupRelation(od as api.GroupRelation);
     });
   });
@@ -2388,7 +2427,9 @@ void main() {
   unittest.group('obj-schema-ListGroupsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListGroupsResponse();
-      var od = api.ListGroupsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListGroupsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListGroupsResponse(od as api.ListGroupsResponse);
     });
   });
@@ -2396,7 +2437,9 @@ void main() {
   unittest.group('obj-schema-ListMembershipsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListMembershipsResponse();
-      var od = api.ListMembershipsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListMembershipsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListMembershipsResponse(od as api.ListMembershipsResponse);
     });
   });
@@ -2404,7 +2447,9 @@ void main() {
   unittest.group('obj-schema-LookupGroupNameResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLookupGroupNameResponse();
-      var od = api.LookupGroupNameResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LookupGroupNameResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLookupGroupNameResponse(od as api.LookupGroupNameResponse);
     });
   });
@@ -2412,7 +2457,9 @@ void main() {
   unittest.group('obj-schema-LookupMembershipNameResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLookupMembershipNameResponse();
-      var od = api.LookupMembershipNameResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LookupMembershipNameResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLookupMembershipNameResponse(od as api.LookupMembershipNameResponse);
     });
   });
@@ -2420,7 +2467,9 @@ void main() {
   unittest.group('obj-schema-MemberRelation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMemberRelation();
-      var od = api.MemberRelation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MemberRelation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkMemberRelation(od as api.MemberRelation);
     });
   });
@@ -2428,7 +2477,9 @@ void main() {
   unittest.group('obj-schema-Membership', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMembership();
-      var od = api.Membership.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Membership.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkMembership(od as api.Membership);
     });
   });
@@ -2436,7 +2487,9 @@ void main() {
   unittest.group('obj-schema-MembershipAdjacencyList', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMembershipAdjacencyList();
-      var od = api.MembershipAdjacencyList.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MembershipAdjacencyList.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkMembershipAdjacencyList(od as api.MembershipAdjacencyList);
     });
   });
@@ -2444,7 +2497,9 @@ void main() {
   unittest.group('obj-schema-MembershipRole', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMembershipRole();
-      var od = api.MembershipRole.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MembershipRole.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkMembershipRole(od as api.MembershipRole);
     });
   });
@@ -2452,7 +2507,9 @@ void main() {
   unittest.group('obj-schema-ModifyMembershipRolesRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildModifyMembershipRolesRequest();
-      var od = api.ModifyMembershipRolesRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ModifyMembershipRolesRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkModifyMembershipRolesRequest(od as api.ModifyMembershipRolesRequest);
     });
   });
@@ -2460,7 +2517,9 @@ void main() {
   unittest.group('obj-schema-ModifyMembershipRolesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildModifyMembershipRolesResponse();
-      var od = api.ModifyMembershipRolesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ModifyMembershipRolesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkModifyMembershipRolesResponse(
           od as api.ModifyMembershipRolesResponse);
     });
@@ -2469,7 +2528,9 @@ void main() {
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOperation();
-      var od = api.Operation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od as api.Operation);
     });
   });
@@ -2477,7 +2538,9 @@ void main() {
   unittest.group('obj-schema-SearchGroupsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSearchGroupsResponse();
-      var od = api.SearchGroupsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SearchGroupsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSearchGroupsResponse(od as api.SearchGroupsResponse);
     });
   });
@@ -2485,7 +2548,9 @@ void main() {
   unittest.group('obj-schema-SearchTransitiveGroupsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSearchTransitiveGroupsResponse();
-      var od = api.SearchTransitiveGroupsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SearchTransitiveGroupsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSearchTransitiveGroupsResponse(
           od as api.SearchTransitiveGroupsResponse);
     });
@@ -2494,7 +2559,9 @@ void main() {
   unittest.group('obj-schema-SearchTransitiveMembershipsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSearchTransitiveMembershipsResponse();
-      var od = api.SearchTransitiveMembershipsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SearchTransitiveMembershipsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSearchTransitiveMembershipsResponse(
           od as api.SearchTransitiveMembershipsResponse);
     });
@@ -2503,7 +2570,9 @@ void main() {
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStatus();
-      var od = api.Status.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od as api.Status);
     });
   });
@@ -2511,7 +2580,9 @@ void main() {
   unittest.group('obj-schema-TransitiveMembershipRole', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTransitiveMembershipRole();
-      var od = api.TransitiveMembershipRole.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TransitiveMembershipRole.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTransitiveMembershipRole(od as api.TransitiveMembershipRole);
     });
   });
@@ -2519,7 +2590,9 @@ void main() {
   unittest.group('obj-schema-UpdateMembershipRolesParams', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUpdateMembershipRolesParams();
-      var od = api.UpdateMembershipRolesParams.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UpdateMembershipRolesParams.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUpdateMembershipRolesParams(od as api.UpdateMembershipRolesParams);
     });
   });
@@ -2527,7 +2600,9 @@ void main() {
   unittest.group('obj-schema-UserInvitation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUserInvitation();
-      var od = api.UserInvitation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UserInvitation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUserInvitation(od as api.UserInvitation);
     });
   });

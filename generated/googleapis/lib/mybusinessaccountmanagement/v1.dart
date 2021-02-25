@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -767,7 +766,7 @@ class AcceptInvitationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// An account is a container for your location.
@@ -916,7 +915,7 @@ class Account {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountName != null) 'accountName': accountName!,
         if (accountNumber != null) 'accountNumber': accountNumber!,
         if (name != null) 'name': name!,
@@ -991,7 +990,7 @@ class Admin {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (admin != null) 'admin': admin!,
         if (name != null) 'name': name!,
         if (pendingInvitation != null) 'pendingInvitation': pendingInvitation!,
@@ -1007,7 +1006,7 @@ class DeclineInvitationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A generic empty message that you can re-use to avoid defining duplicated
@@ -1024,7 +1023,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Represents a pending invitation.
@@ -1087,7 +1086,7 @@ class Invitation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (role != null) 'role': role!,
         if (targetAccount != null) 'targetAccount': targetAccount!.toJson(),
@@ -1112,7 +1111,7 @@ class ListAccountAdminsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountAdmins != null)
           'accountAdmins':
               accountAdmins!.map((value) => value.toJson()).toList(),
@@ -1148,7 +1147,7 @@ class ListAccountsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accounts != null)
           'accounts': accounts!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1173,7 +1172,7 @@ class ListInvitationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (invitations != null)
           'invitations': invitations!.map((value) => value.toJson()).toList(),
       };
@@ -1195,7 +1194,7 @@ class ListLocationAdminsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (admins != null)
           'admins': admins!.map((value) => value.toJson()).toList(),
       };
@@ -1233,7 +1232,7 @@ class OrganizationInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!.toJson(),
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
         if (registeredDomain != null) 'registeredDomain': registeredDomain!,
@@ -1403,7 +1402,7 @@ class PostalAddress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addressLines != null) 'addressLines': addressLines!,
         if (administrativeArea != null)
           'administrativeArea': administrativeArea!,
@@ -1438,7 +1437,7 @@ class TargetLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
         if (locationName != null) 'locationName': locationName!,
       };

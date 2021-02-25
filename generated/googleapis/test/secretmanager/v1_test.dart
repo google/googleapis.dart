@@ -1075,7 +1075,9 @@ void main() {
   unittest.group('obj-schema-AccessSecretVersionResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAccessSecretVersionResponse();
-      var od = api.AccessSecretVersionResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AccessSecretVersionResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAccessSecretVersionResponse(od as api.AccessSecretVersionResponse);
     });
   });
@@ -1083,7 +1085,9 @@ void main() {
   unittest.group('obj-schema-AddSecretVersionRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAddSecretVersionRequest();
-      var od = api.AddSecretVersionRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AddSecretVersionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAddSecretVersionRequest(od as api.AddSecretVersionRequest);
     });
   });
@@ -1091,7 +1095,9 @@ void main() {
   unittest.group('obj-schema-AuditConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAuditConfig();
-      var od = api.AuditConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AuditConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAuditConfig(od as api.AuditConfig);
     });
   });
@@ -1099,7 +1105,9 @@ void main() {
   unittest.group('obj-schema-AuditLogConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAuditLogConfig();
-      var od = api.AuditLogConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AuditLogConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAuditLogConfig(od as api.AuditLogConfig);
     });
   });
@@ -1107,7 +1115,9 @@ void main() {
   unittest.group('obj-schema-Automatic', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAutomatic();
-      var od = api.Automatic.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Automatic.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkAutomatic(od as api.Automatic);
     });
   });
@@ -1115,7 +1125,9 @@ void main() {
   unittest.group('obj-schema-AutomaticStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAutomaticStatus();
-      var od = api.AutomaticStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AutomaticStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAutomaticStatus(od as api.AutomaticStatus);
     });
   });
@@ -1123,7 +1135,9 @@ void main() {
   unittest.group('obj-schema-Binding', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBinding();
-      var od = api.Binding.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Binding.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBinding(od as api.Binding);
     });
   });
@@ -1131,7 +1145,9 @@ void main() {
   unittest.group('obj-schema-CustomerManagedEncryption', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCustomerManagedEncryption();
-      var od = api.CustomerManagedEncryption.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CustomerManagedEncryption.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCustomerManagedEncryption(od as api.CustomerManagedEncryption);
     });
   });
@@ -1139,7 +1155,9 @@ void main() {
   unittest.group('obj-schema-CustomerManagedEncryptionStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCustomerManagedEncryptionStatus();
-      var od = api.CustomerManagedEncryptionStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CustomerManagedEncryptionStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCustomerManagedEncryptionStatus(
           od as api.CustomerManagedEncryptionStatus);
     });
@@ -1148,7 +1166,9 @@ void main() {
   unittest.group('obj-schema-DestroySecretVersionRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDestroySecretVersionRequest();
-      var od = api.DestroySecretVersionRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DestroySecretVersionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDestroySecretVersionRequest(od as api.DestroySecretVersionRequest);
     });
   });
@@ -1156,7 +1176,9 @@ void main() {
   unittest.group('obj-schema-DisableSecretVersionRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDisableSecretVersionRequest();
-      var od = api.DisableSecretVersionRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DisableSecretVersionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDisableSecretVersionRequest(od as api.DisableSecretVersionRequest);
     });
   });
@@ -1164,7 +1186,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -1172,7 +1195,9 @@ void main() {
   unittest.group('obj-schema-EnableSecretVersionRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEnableSecretVersionRequest();
-      var od = api.EnableSecretVersionRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.EnableSecretVersionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkEnableSecretVersionRequest(od as api.EnableSecretVersionRequest);
     });
   });
@@ -1180,7 +1205,8 @@ void main() {
   unittest.group('obj-schema-Expr', () {
     unittest.test('to-json--from-json', () async {
       var o = buildExpr();
-      var od = api.Expr.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Expr.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkExpr(od as api.Expr);
     });
   });
@@ -1188,7 +1214,9 @@ void main() {
   unittest.group('obj-schema-ListLocationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
-      var od = api.ListLocationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListLocationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
@@ -1196,7 +1224,9 @@ void main() {
   unittest.group('obj-schema-ListSecretVersionsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListSecretVersionsResponse();
-      var od = api.ListSecretVersionsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListSecretVersionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListSecretVersionsResponse(od as api.ListSecretVersionsResponse);
     });
   });
@@ -1204,7 +1234,9 @@ void main() {
   unittest.group('obj-schema-ListSecretsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListSecretsResponse();
-      var od = api.ListSecretsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListSecretsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListSecretsResponse(od as api.ListSecretsResponse);
     });
   });
@@ -1212,7 +1244,9 @@ void main() {
   unittest.group('obj-schema-Location', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLocation();
-      var od = api.Location.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Location.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLocation(od as api.Location);
     });
   });
@@ -1220,7 +1254,9 @@ void main() {
   unittest.group('obj-schema-Policy', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPolicy();
-      var od = api.Policy.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Policy.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPolicy(od as api.Policy);
     });
   });
@@ -1228,7 +1264,9 @@ void main() {
   unittest.group('obj-schema-Replica', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReplica();
-      var od = api.Replica.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Replica.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkReplica(od as api.Replica);
     });
   });
@@ -1236,7 +1274,9 @@ void main() {
   unittest.group('obj-schema-ReplicaStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReplicaStatus();
-      var od = api.ReplicaStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ReplicaStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkReplicaStatus(od as api.ReplicaStatus);
     });
   });
@@ -1244,7 +1284,9 @@ void main() {
   unittest.group('obj-schema-Replication', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReplication();
-      var od = api.Replication.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Replication.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkReplication(od as api.Replication);
     });
   });
@@ -1252,7 +1294,9 @@ void main() {
   unittest.group('obj-schema-ReplicationStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReplicationStatus();
-      var od = api.ReplicationStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ReplicationStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkReplicationStatus(od as api.ReplicationStatus);
     });
   });
@@ -1260,7 +1304,9 @@ void main() {
   unittest.group('obj-schema-Secret', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSecret();
-      var od = api.Secret.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Secret.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkSecret(od as api.Secret);
     });
   });
@@ -1268,7 +1314,9 @@ void main() {
   unittest.group('obj-schema-SecretPayload', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSecretPayload();
-      var od = api.SecretPayload.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SecretPayload.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSecretPayload(od as api.SecretPayload);
     });
   });
@@ -1276,7 +1324,9 @@ void main() {
   unittest.group('obj-schema-SecretVersion', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSecretVersion();
-      var od = api.SecretVersion.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SecretVersion.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSecretVersion(od as api.SecretVersion);
     });
   });
@@ -1284,7 +1334,9 @@ void main() {
   unittest.group('obj-schema-SetIamPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSetIamPolicyRequest();
-      var od = api.SetIamPolicyRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SetIamPolicyRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
@@ -1292,7 +1344,9 @@ void main() {
   unittest.group('obj-schema-TestIamPermissionsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsRequest();
-      var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TestIamPermissionsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
@@ -1300,7 +1354,9 @@ void main() {
   unittest.group('obj-schema-TestIamPermissionsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTestIamPermissionsResponse();
-      var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TestIamPermissionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
@@ -1308,7 +1364,8 @@ void main() {
   unittest.group('obj-schema-Topic', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTopic();
-      var od = api.Topic.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Topic.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkTopic(od as api.Topic);
     });
   });
@@ -1316,7 +1373,9 @@ void main() {
   unittest.group('obj-schema-UserManaged', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUserManaged();
-      var od = api.UserManaged.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UserManaged.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUserManaged(od as api.UserManaged);
     });
   });
@@ -1324,7 +1383,9 @@ void main() {
   unittest.group('obj-schema-UserManagedStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUserManagedStatus();
-      var od = api.UserManagedStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UserManagedStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUserManagedStatus(od as api.UserManagedStatus);
     });
   });

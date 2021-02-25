@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1069,7 +1068,7 @@ class Address {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addressLine1 != null) 'addressLine1': addressLine1!,
         if (addressLine2 != null) 'addressLine2': addressLine2!,
         if (addressLine3 != null) 'addressLine3': addressLine3!,
@@ -1147,7 +1146,7 @@ class ChangePlanRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dealCode != null) 'dealCode': dealCode!,
         if (kind != null) 'kind': kind!,
         if (planName != null) 'planName': planName!,
@@ -1240,7 +1239,7 @@ class Customer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternateEmail != null) 'alternateEmail': alternateEmail!,
         if (customerDomain != null) 'customerDomain': customerDomain!,
         if (customerDomainVerified != null)
@@ -1278,7 +1277,7 @@ class RenewalSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (renewalType != null) 'renewalType': renewalType!,
       };
@@ -1306,7 +1305,7 @@ class ResellernotifyGetwatchdetailsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (serviceAccountEmailAddresses != null)
           'serviceAccountEmailAddresses': serviceAccountEmailAddresses!,
         if (topicName != null) 'topicName': topicName!,
@@ -1326,7 +1325,7 @@ class ResellernotifyResource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (topicName != null) 'topicName': topicName!,
       };
 }
@@ -1384,7 +1383,7 @@ class Seats {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (licensedNumberOfSeats != null)
           'licensedNumberOfSeats': licensedNumberOfSeats!,
@@ -1422,7 +1421,7 @@ class SubscriptionPlanCommitmentInterval {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
       };
@@ -1478,7 +1477,7 @@ class SubscriptionPlan {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commitmentInterval != null)
           'commitmentInterval': commitmentInterval!.toJson(),
         if (isCommitmentPlan != null) 'isCommitmentPlan': isCommitmentPlan!,
@@ -1515,7 +1514,7 @@ class SubscriptionTransferInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (minimumTransferableSeats != null)
           'minimumTransferableSeats': minimumTransferableSeats!,
         if (transferabilityExpirationTime != null)
@@ -1551,7 +1550,7 @@ class SubscriptionTrialSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (isInTrial != null) 'isInTrial': isInTrial!,
         if (trialEndTime != null) 'trialEndTime': trialEndTime!,
       };
@@ -1744,7 +1743,7 @@ class Subscription {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (billingMethod != null) 'billingMethod': billingMethod!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (customerDomain != null) 'customerDomain': customerDomain!,
@@ -1805,7 +1804,7 @@ class Subscriptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (subscriptions != null)

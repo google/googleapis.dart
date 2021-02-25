@@ -179,7 +179,9 @@ void main() {
   unittest.group('obj-schema-CreateProfileRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreateProfileRequest();
-      var od = api.CreateProfileRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreateProfileRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreateProfileRequest(od as api.CreateProfileRequest);
     });
   });
@@ -187,7 +189,9 @@ void main() {
   unittest.group('obj-schema-Deployment', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDeployment();
-      var od = api.Deployment.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Deployment.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkDeployment(od as api.Deployment);
     });
   });
@@ -195,7 +199,9 @@ void main() {
   unittest.group('obj-schema-Profile', () {
     unittest.test('to-json--from-json', () async {
       var o = buildProfile();
-      var od = api.Profile.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Profile.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkProfile(od as api.Profile);
     });
   });

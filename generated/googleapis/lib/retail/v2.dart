@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1123,8 +1122,8 @@ class GoogleApiHttpBody {
     }
     if (_json.containsKey('extensions')) {
       extensions = (_json['extensions'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -1134,7 +1133,7 @@ class GoogleApiHttpBody {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentType != null) 'contentType': contentType!,
         if (data != null) 'data': data!,
         if (extensions != null) 'extensions': extensions!,
@@ -1163,7 +1162,7 @@ class GoogleCloudRetailLoggingErrorContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (httpRequest != null) 'httpRequest': httpRequest!.toJson(),
         if (reportLocation != null) 'reportLocation': reportLocation!.toJson(),
       };
@@ -1227,24 +1226,22 @@ class GoogleCloudRetailLoggingErrorLog {
       message = _json['message'] as core.String;
     }
     if (_json.containsKey('requestPayload')) {
-      requestPayload = (_json['requestPayload'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      requestPayload =
+          (_json['requestPayload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('responsePayload')) {
-      responsePayload = (_json['responsePayload'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      responsePayload =
+          (_json['responsePayload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('serviceContext')) {
       serviceContext = GoogleCloudRetailLoggingServiceContext.fromJson(
@@ -1256,7 +1253,7 @@ class GoogleCloudRetailLoggingErrorLog {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (context != null) 'context': context!.toJson(),
         if (importPayload != null) 'importPayload': importPayload!.toJson(),
         if (message != null) 'message': message!,
@@ -1280,7 +1277,7 @@ class GoogleCloudRetailLoggingHttpRequestContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (responseStatusCode != null)
           'responseStatusCode': responseStatusCode!,
       };
@@ -1336,7 +1333,7 @@ class GoogleCloudRetailLoggingImportErrorContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (catalogItem != null) 'catalogItem': catalogItem!,
         if (gcsPath != null) 'gcsPath': gcsPath!,
         if (lineNumber != null) 'lineNumber': lineNumber!,
@@ -1361,7 +1358,7 @@ class GoogleCloudRetailLoggingServiceContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (service != null) 'service': service!,
       };
 }
@@ -1382,7 +1379,7 @@ class GoogleCloudRetailLoggingSourceLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (functionName != null) 'functionName': functionName!,
       };
 }
@@ -1445,7 +1442,7 @@ class GoogleCloudRetailV2BigQuerySource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataSchema != null) 'dataSchema': dataSchema!,
         if (datasetId != null) 'datasetId': datasetId!,
         if (gcsStagingDir != null) 'gcsStagingDir': gcsStagingDir!,
@@ -1489,7 +1486,7 @@ class GoogleCloudRetailV2Catalog {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (productLevelConfig != null)
@@ -1531,7 +1528,7 @@ class GoogleCloudRetailV2CustomAttribute {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (numbers != null) 'numbers': numbers!,
         if (text != null) 'text': text!,
       };
@@ -1577,7 +1574,7 @@ class GoogleCloudRetailV2GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataSchema != null) 'dataSchema': dataSchema!,
         if (inputUris != null) 'inputUris': inputUris!,
       };
@@ -1622,7 +1619,7 @@ class GoogleCloudRetailV2Image {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (uri != null) 'uri': uri!,
         if (width != null) 'width': width!,
@@ -1646,7 +1643,7 @@ class GoogleCloudRetailV2ImportErrorsConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
       };
 }
@@ -1686,7 +1683,7 @@ class GoogleCloudRetailV2ImportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (failureCount != null) 'failureCount': failureCount!,
         if (successCount != null) 'successCount': successCount!,
@@ -1725,7 +1722,7 @@ class GoogleCloudRetailV2ImportProductsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
         if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
         if (updateMask != null) 'updateMask': updateMask!,
@@ -1759,7 +1756,7 @@ class GoogleCloudRetailV2ImportProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
           'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
@@ -1791,7 +1788,7 @@ class GoogleCloudRetailV2ImportUserEventsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
         if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
       };
@@ -1832,7 +1829,7 @@ class GoogleCloudRetailV2ImportUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
           'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
@@ -1866,7 +1863,7 @@ class GoogleCloudRetailV2ListCatalogsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (catalogs != null)
           'catalogs': catalogs!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1953,13 +1950,12 @@ class GoogleCloudRetailV2PredictRequest {
       filter = _json['filter'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('pageSize')) {
       pageSize = _json['pageSize'] as core.int;
@@ -1968,13 +1964,12 @@ class GoogleCloudRetailV2PredictRequest {
       pageToken = _json['pageToken'] as core.String;
     }
     if (_json.containsKey('params')) {
-      params =
-          (_json['params'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      params = (_json['params'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('userEvent')) {
       userEvent = GoogleCloudRetailV2UserEvent.fromJson(
@@ -1985,7 +1980,7 @@ class GoogleCloudRetailV2PredictRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (filter != null) 'filter': filter!,
         if (labels != null) 'labels': labels!,
         if (pageSize != null) 'pageSize': pageSize!,
@@ -2040,7 +2035,7 @@ class GoogleCloudRetailV2PredictResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributionToken != null) 'attributionToken': attributionToken!,
         if (missingIds != null) 'missingIds': missingIds!,
         if (results != null)
@@ -2072,17 +2067,16 @@ class GoogleCloudRetailV2PredictResponsePredictionResult {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (metadata != null) 'metadata': metadata!,
       };
@@ -2134,7 +2128,7 @@ class GoogleCloudRetailV2PriceInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cost != null) 'cost': cost!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (originalPrice != null) 'originalPrice': originalPrice!,
@@ -2319,15 +2313,14 @@ class GoogleCloudRetailV2Product {
 
   GoogleCloudRetailV2Product.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes = (_json['attributes'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              GoogleCloudRetailV2CustomAttribute.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      attributes =
+          (_json['attributes'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleCloudRetailV2CustomAttribute.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('availability')) {
       availability = _json['availability'] as core.String;
@@ -2382,7 +2375,7 @@ class GoogleCloudRetailV2Product {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null)
           'attributes':
               attributes!.map((key, item) => core.MapEntry(key, item.toJson())),
@@ -2433,7 +2426,7 @@ class GoogleCloudRetailV2ProductDetail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (product != null) 'product': product!.toJson(),
         if (quantity != null) 'quantity': quantity!,
       };
@@ -2460,7 +2453,7 @@ class GoogleCloudRetailV2ProductInlineSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (products != null)
           'products': products!.map((value) => value.toJson()).toList(),
       };
@@ -2494,7 +2487,7 @@ class GoogleCloudRetailV2ProductInputConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!.toJson(),
         if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
         if (productInlineSource != null)
@@ -2546,7 +2539,7 @@ class GoogleCloudRetailV2ProductLevelConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ingestionProductType != null)
           'ingestionProductType': ingestionProductType!,
         if (merchantCenterProductIdField != null)
@@ -2603,7 +2596,7 @@ class GoogleCloudRetailV2PurchaseTransaction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cost != null) 'cost': cost!,
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (id != null) 'id': id!,
@@ -2622,7 +2615,7 @@ class GoogleCloudRetailV2PurgeMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Request message for PurgeUserEvents method.
@@ -2662,7 +2655,7 @@ class GoogleCloudRetailV2PurgeUserEventsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (filter != null) 'filter': filter!,
         if (force != null) 'force': force!,
       };
@@ -2684,7 +2677,7 @@ class GoogleCloudRetailV2PurgeUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
       };
 }
@@ -2697,7 +2690,7 @@ class GoogleCloudRetailV2RejoinUserEventsMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Request message for RejoinUserEvents method.
@@ -2724,7 +2717,7 @@ class GoogleCloudRetailV2RejoinUserEventsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (userEventRejoinScope != null)
           'userEventRejoinScope': userEventRejoinScope!,
       };
@@ -2743,7 +2736,7 @@ class GoogleCloudRetailV2RejoinUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rejoinedUserEventsCount != null)
           'rejoinedUserEventsCount': rejoinedUserEventsCount!,
       };
@@ -2887,15 +2880,14 @@ class GoogleCloudRetailV2UserEvent {
 
   GoogleCloudRetailV2UserEvent.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes = (_json['attributes'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              GoogleCloudRetailV2CustomAttribute.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      attributes =
+          (_json['attributes'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          GoogleCloudRetailV2CustomAttribute.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('attributionToken')) {
       attributionToken = _json['attributionToken'] as core.String;
@@ -2951,7 +2943,7 @@ class GoogleCloudRetailV2UserEvent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null)
           'attributes':
               attributes!.map((key, item) => core.MapEntry(key, item.toJson())),
@@ -2997,7 +2989,7 @@ class GoogleCloudRetailV2UserEventImportSummary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
         if (unjoinedEventsCount != null)
           'unjoinedEventsCount': unjoinedEventsCount!,
@@ -3025,7 +3017,7 @@ class GoogleCloudRetailV2UserEventInlineSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (userEvents != null)
           'userEvents': userEvents!.map((value) => value.toJson()).toList(),
       };
@@ -3066,7 +3058,7 @@ class GoogleCloudRetailV2UserEventInputConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bigQuerySource != null) 'bigQuerySource': bigQuerySource!.toJson(),
         if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
         if (userEventInlineSource != null)
@@ -3128,7 +3120,7 @@ class GoogleCloudRetailV2UserInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (directUserRequest != null) 'directUserRequest': directUserRequest!,
         if (ipAddress != null) 'ipAddress': ipAddress!,
         if (userAgent != null) 'userAgent': userAgent!,
@@ -3153,7 +3145,7 @@ class GoogleCloudRetailV2alphaExportErrorsConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
       };
 }
@@ -3181,7 +3173,7 @@ class GoogleCloudRetailV2alphaExportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -3214,7 +3206,7 @@ class GoogleCloudRetailV2alphaExportProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
           'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
@@ -3249,7 +3241,7 @@ class GoogleCloudRetailV2alphaExportUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
           'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
@@ -3273,7 +3265,7 @@ class GoogleCloudRetailV2alphaImportErrorsConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
       };
 }
@@ -3313,7 +3305,7 @@ class GoogleCloudRetailV2alphaImportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (failureCount != null) 'failureCount': failureCount!,
         if (successCount != null) 'successCount': successCount!,
@@ -3348,7 +3340,7 @@ class GoogleCloudRetailV2alphaImportProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
           'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
@@ -3390,7 +3382,7 @@ class GoogleCloudRetailV2alphaImportUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
           'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
@@ -3408,7 +3400,7 @@ class GoogleCloudRetailV2alphaPurgeMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Response of the PurgeUserEventsRequest.
@@ -3427,7 +3419,7 @@ class GoogleCloudRetailV2alphaPurgeUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
       };
 }
@@ -3440,7 +3432,7 @@ class GoogleCloudRetailV2alphaRejoinUserEventsMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Response message for RejoinUserEvents method.
@@ -3456,7 +3448,7 @@ class GoogleCloudRetailV2alphaRejoinUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rejoinedUserEventsCount != null)
           'rejoinedUserEventsCount': rejoinedUserEventsCount!,
       };
@@ -3484,7 +3476,7 @@ class GoogleCloudRetailV2alphaUserEventImportSummary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
         if (unjoinedEventsCount != null)
           'unjoinedEventsCount': unjoinedEventsCount!,
@@ -3508,7 +3500,7 @@ class GoogleCloudRetailV2betaExportErrorsConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
       };
 }
@@ -3536,7 +3528,7 @@ class GoogleCloudRetailV2betaExportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -3569,7 +3561,7 @@ class GoogleCloudRetailV2betaExportProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
           'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
@@ -3604,7 +3596,7 @@ class GoogleCloudRetailV2betaExportUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
           'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
@@ -3628,7 +3620,7 @@ class GoogleCloudRetailV2betaImportErrorsConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
       };
 }
@@ -3668,7 +3660,7 @@ class GoogleCloudRetailV2betaImportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (failureCount != null) 'failureCount': failureCount!,
         if (successCount != null) 'successCount': successCount!,
@@ -3703,7 +3695,7 @@ class GoogleCloudRetailV2betaImportProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
           'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
@@ -3745,7 +3737,7 @@ class GoogleCloudRetailV2betaImportUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
           'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
@@ -3763,7 +3755,7 @@ class GoogleCloudRetailV2betaPurgeMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Response of the PurgeUserEventsRequest.
@@ -3782,7 +3774,7 @@ class GoogleCloudRetailV2betaPurgeUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
       };
 }
@@ -3795,7 +3787,7 @@ class GoogleCloudRetailV2betaRejoinUserEventsMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Response message for RejoinUserEvents method.
@@ -3811,7 +3803,7 @@ class GoogleCloudRetailV2betaRejoinUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rejoinedUserEventsCount != null)
           'rejoinedUserEventsCount': rejoinedUserEventsCount!,
       };
@@ -3839,7 +3831,7 @@ class GoogleCloudRetailV2betaUserEventImportSummary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
         if (unjoinedEventsCount != null)
           'unjoinedEventsCount': unjoinedEventsCount!,
@@ -3863,7 +3855,7 @@ class GoogleCloudRetailV2mainExportErrorsConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
       };
 }
@@ -3891,7 +3883,7 @@ class GoogleCloudRetailV2mainExportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -3924,7 +3916,7 @@ class GoogleCloudRetailV2mainExportProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
           'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
@@ -3959,7 +3951,7 @@ class GoogleCloudRetailV2mainExportUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
           'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
@@ -3983,7 +3975,7 @@ class GoogleCloudRetailV2mainImportErrorsConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!,
       };
 }
@@ -4023,7 +4015,7 @@ class GoogleCloudRetailV2mainImportMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (failureCount != null) 'failureCount': failureCount!,
         if (successCount != null) 'successCount': successCount!,
@@ -4058,7 +4050,7 @@ class GoogleCloudRetailV2mainImportProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
           'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
@@ -4100,7 +4092,7 @@ class GoogleCloudRetailV2mainImportUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorSamples != null)
           'errorSamples': errorSamples!.map((value) => value.toJson()).toList(),
         if (errorsConfig != null) 'errorsConfig': errorsConfig!.toJson(),
@@ -4118,7 +4110,7 @@ class GoogleCloudRetailV2mainPurgeMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Response of the PurgeUserEventsRequest.
@@ -4137,7 +4129,7 @@ class GoogleCloudRetailV2mainPurgeUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (purgedEventsCount != null) 'purgedEventsCount': purgedEventsCount!,
       };
 }
@@ -4150,7 +4142,7 @@ class GoogleCloudRetailV2mainRejoinUserEventsMetadata {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Response message for RejoinUserEvents method.
@@ -4166,7 +4158,7 @@ class GoogleCloudRetailV2mainRejoinUserEventsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rejoinedUserEventsCount != null)
           'rejoinedUserEventsCount': rejoinedUserEventsCount!,
       };
@@ -4194,7 +4186,7 @@ class GoogleCloudRetailV2mainUserEventImportSummary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (joinedEventsCount != null) 'joinedEventsCount': joinedEventsCount!,
         if (unjoinedEventsCount != null)
           'unjoinedEventsCount': unjoinedEventsCount!,
@@ -4224,7 +4216,7 @@ class GoogleLongrunningListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
@@ -4285,29 +4277,27 @@ class GoogleLongrunningOperation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -4330,7 +4320,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -4366,8 +4356,8 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -4380,7 +4370,7 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,

@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -309,7 +308,7 @@ class AnalyticsInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (googlePlayAnalytics != null)
           'googlePlayAnalytics': googlePlayAnalytics!.toJson(),
         if (itunesConnectAnalytics != null)
@@ -352,7 +351,7 @@ class AndroidInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (androidFallbackLink != null)
           'androidFallbackLink': androidFallbackLink!,
         if (androidLink != null) 'androidLink': androidLink!,
@@ -416,7 +415,7 @@ class CreateManagedShortLinkRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dynamicLinkInfo != null)
           'dynamicLinkInfo': dynamicLinkInfo!.toJson(),
         if (longDynamicLink != null) 'longDynamicLink': longDynamicLink!,
@@ -459,7 +458,7 @@ class CreateManagedShortLinkResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (managedShortLink != null)
           'managedShortLink': managedShortLink!.toJson(),
         if (previewLink != null) 'previewLink': previewLink!,
@@ -511,7 +510,7 @@ class CreateShortDynamicLinkRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dynamicLinkInfo != null)
           'dynamicLinkInfo': dynamicLinkInfo!.toJson(),
         if (longDynamicLink != null) 'longDynamicLink': longDynamicLink!,
@@ -552,7 +551,7 @@ class CreateShortDynamicLinkResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (previewLink != null) 'previewLink': previewLink!,
         if (shortLink != null) 'shortLink': shortLink!,
         if (warning != null)
@@ -573,7 +572,7 @@ class DesktopInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (desktopFallbackLink != null)
           'desktopFallbackLink': desktopFallbackLink!,
       };
@@ -633,7 +632,7 @@ class DeviceInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceModelName != null) 'deviceModelName': deviceModelName!,
         if (languageCode != null) 'languageCode': languageCode!,
         if (languageCodeFromWebview != null)
@@ -691,7 +690,7 @@ class DynamicLinkEventStat {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
         if (event != null) 'event': event!,
         if (platform != null) 'platform': platform!,
@@ -792,7 +791,7 @@ class DynamicLinkInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (analyticsInfo != null) 'analyticsInfo': analyticsInfo!.toJson(),
         if (androidInfo != null) 'androidInfo': androidInfo!.toJson(),
         if (desktopInfo != null) 'desktopInfo': desktopInfo!.toJson(),
@@ -822,7 +821,7 @@ class DynamicLinkStats {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (linkEventStats != null)
           'linkEventStats':
               linkEventStats!.map((value) => value.toJson()).toList(),
@@ -899,7 +898,7 @@ class DynamicLinkWarning {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (warningCode != null) 'warningCode': warningCode!,
         if (warningDocumentLink != null)
           'warningDocumentLink': warningDocumentLink!,
@@ -995,7 +994,7 @@ class GetIosPostInstallAttributionRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appInstallationTime != null)
           'appInstallationTime': appInstallationTime!,
         if (bundleId != null) 'bundleId': bundleId!,
@@ -1149,7 +1148,7 @@ class GetIosPostInstallAttributionResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appMinimumVersion != null) 'appMinimumVersion': appMinimumVersion!,
         if (attributionConfidence != null)
           'attributionConfidence': attributionConfidence!,
@@ -1205,7 +1204,7 @@ class GetIosReopenAttributionRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bundleId != null) 'bundleId': bundleId!,
         if (requestedLink != null) 'requestedLink': requestedLink!,
         if (sdkVersion != null) 'sdkVersion': sdkVersion!,
@@ -1281,7 +1280,7 @@ class GetIosReopenAttributionResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deepLink != null) 'deepLink': deepLink!,
         if (invitationId != null) 'invitationId': invitationId!,
         if (iosMinAppVersion != null) 'iosMinAppVersion': iosMinAppVersion!,
@@ -1346,7 +1345,7 @@ class GooglePlayAnalytics {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gclid != null) 'gclid': gclid!,
         if (utmCampaign != null) 'utmCampaign': utmCampaign!,
         if (utmContent != null) 'utmContent': utmContent!,
@@ -1389,7 +1388,7 @@ class ITunesConnectAnalytics {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (at != null) 'at': at!,
         if (ct != null) 'ct': ct!,
         if (mt != null) 'mt': mt!,
@@ -1449,7 +1448,7 @@ class IosInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (iosAppStoreId != null) 'iosAppStoreId': iosAppStoreId!,
         if (iosBundleId != null) 'iosBundleId': iosBundleId!,
         if (iosCustomScheme != null) 'iosCustomScheme': iosCustomScheme!,
@@ -1518,7 +1517,7 @@ class ManagedShortLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (creationTime != null) 'creationTime': creationTime!,
         if (flaggedAttribute != null) 'flaggedAttribute': flaggedAttribute!,
         if (info != null) 'info': info!.toJson(),
@@ -1542,7 +1541,7 @@ class NavigationInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enableForcedRedirect != null)
           'enableForcedRedirect': enableForcedRedirect!,
       };
@@ -1581,7 +1580,7 @@ class SocialMetaTagInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (socialDescription != null) 'socialDescription': socialDescription!,
         if (socialImageLink != null) 'socialImageLink': socialImageLink!,
         if (socialTitle != null) 'socialTitle': socialTitle!,
@@ -1621,7 +1620,7 @@ class Suffix {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customSuffix != null) 'customSuffix': customSuffix!,
         if (option != null) 'option': option!,
       };

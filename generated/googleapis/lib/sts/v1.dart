@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -245,7 +244,7 @@ class GoogleIdentityStsV1ExchangeTokenRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audience != null) 'audience': audience!,
         if (grantType != null) 'grantType': grantType!,
         if (options != null) 'options': options!,
@@ -302,7 +301,7 @@ class GoogleIdentityStsV1ExchangeTokenResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessToken != null) 'access_token': accessToken!,
         if (expiresIn != null) 'expires_in': expiresIn!,
         if (issuedTokenType != null) 'issued_token_type': issuedTokenType!,

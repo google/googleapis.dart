@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1832,7 +1831,7 @@ class AddFirebaseRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (locationId != null) 'locationId': locationId!,
         if (regionCode != null) 'regionCode': regionCode!,
         if (timeZone != null) 'timeZone': timeZone!,
@@ -1864,7 +1863,7 @@ class AddGoogleAnalyticsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (analyticsAccountId != null)
           'analyticsAccountId': analyticsAccountId!,
         if (analyticsPropertyId != null)
@@ -1915,7 +1914,7 @@ class AdminSdkConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (databaseURL != null) 'databaseURL': databaseURL!,
         if (locationId != null) 'locationId': locationId!,
         if (projectId != null) 'projectId': projectId!,
@@ -1955,7 +1954,7 @@ class AnalyticsDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (analyticsProperty != null)
           'analyticsProperty': analyticsProperty!.toJson(),
         if (streamMappings != null)
@@ -1991,7 +1990,7 @@ class AnalyticsProperty {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (id != null) 'id': id!,
       };
@@ -2056,7 +2055,7 @@ class AndroidApp {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appId != null) 'appId': appId!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
@@ -2094,7 +2093,7 @@ class AndroidAppConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (configFileContents != null)
           'configFileContents': configFileContents!,
         if (configFilename != null) 'configFilename': configFilename!,
@@ -2158,7 +2157,7 @@ class DefaultResources {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hostingSite != null) 'hostingSite': hostingSite!,
         if (locationId != null) 'locationId': locationId!,
         if (realtimeDatabaseInstance != null)
@@ -2181,7 +2180,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 class FinalizeDefaultLocationRequest {
@@ -2199,7 +2198,7 @@ class FinalizeDefaultLocationRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (locationId != null) 'locationId': locationId!,
       };
 }
@@ -2264,7 +2263,7 @@ class FirebaseAppInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appId != null) 'appId': appId!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
@@ -2357,7 +2356,7 @@ class FirebaseProject {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,
@@ -2433,7 +2432,7 @@ class IosApp {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appId != null) 'appId': appId!,
         if (appStoreId != null) 'appStoreId': appStoreId!,
         if (bundleId != null) 'bundleId': bundleId!,
@@ -2472,7 +2471,7 @@ class IosAppConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (configFileContents != null)
           'configFileContents': configFileContents!,
         if (configFilename != null) 'configFilename': configFilename!,
@@ -2506,7 +2505,7 @@ class ListAndroidAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apps != null) 'apps': apps!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -2539,7 +2538,7 @@ class ListAvailableLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null)
           'locations': locations!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2574,7 +2573,7 @@ class ListAvailableProjectsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (projectInfo != null)
           'projectInfo': projectInfo!.map((value) => value.toJson()).toList(),
@@ -2608,7 +2607,7 @@ class ListFirebaseProjectsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (results != null)
           'results': results!.map((value) => value.toJson()).toList(),
@@ -2642,7 +2641,7 @@ class ListIosAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apps != null) 'apps': apps!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -2663,7 +2662,7 @@ class ListShaCertificatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (certificates != null)
           'certificates': certificates!.map((value) => value.toJson()).toList(),
       };
@@ -2696,7 +2695,7 @@ class ListWebAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apps != null) 'apps': apps!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -2743,7 +2742,7 @@ class Location {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (features != null) 'features': features!,
         if (locationId != null) 'locationId': locationId!,
         if (type != null) 'type': type!,
@@ -2758,7 +2757,7 @@ class MessageSet {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// This resource represents a long-running operation that is the result of a
@@ -2815,29 +2814,27 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -2882,7 +2879,7 @@ class ProjectInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (locationId != null) 'locationId': locationId!,
         if (project != null) 'project': project!,
@@ -2910,7 +2907,7 @@ class RemoveAnalyticsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (analyticsPropertyId != null)
           'analyticsPropertyId': analyticsPropertyId!,
       };
@@ -2942,7 +2939,7 @@ class SearchFirebaseAppsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apps != null) 'apps': apps!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
       };
@@ -2991,7 +2988,7 @@ class ShaCertificate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (certType != null) 'certType': certType!,
         if (name != null) 'name': name!,
         if (shaHash != null) 'shaHash': shaHash!,
@@ -3031,8 +3028,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -3045,7 +3042,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -3097,7 +3094,7 @@ class StatusProto {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (canonicalCode != null) 'canonicalCode': canonicalCode!,
         if (code != null) 'code': code!,
         if (message != null) 'message': message!,
@@ -3146,7 +3143,7 @@ class StreamMapping {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (app != null) 'app': app!,
         if (measurementId != null) 'measurementId': measurementId!,
         if (streamId != null) 'streamId': streamId!,
@@ -3224,7 +3221,7 @@ class WebApp {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appId != null) 'appId': appId!,
         if (appUrls != null) 'appUrls': appUrls!,
         if (displayName != null) 'displayName': displayName!,
@@ -3321,7 +3318,7 @@ class WebAppConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiKey != null) 'apiKey': apiKey!,
         if (appId != null) 'appId': appId!,
         if (authDomain != null) 'authDomain': authDomain!,

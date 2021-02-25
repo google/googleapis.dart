@@ -1204,7 +1204,9 @@ void main() {
   unittest.group('obj-schema-BatchTranslateTextRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBatchTranslateTextRequest();
-      var od = api.BatchTranslateTextRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BatchTranslateTextRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBatchTranslateTextRequest(od as api.BatchTranslateTextRequest);
     });
   });
@@ -1212,7 +1214,9 @@ void main() {
   unittest.group('obj-schema-CancelOperationRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
-      var od = api.CancelOperationRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CancelOperationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCancelOperationRequest(od as api.CancelOperationRequest);
     });
   });
@@ -1220,7 +1224,9 @@ void main() {
   unittest.group('obj-schema-DetectLanguageRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDetectLanguageRequest();
-      var od = api.DetectLanguageRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DetectLanguageRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDetectLanguageRequest(od as api.DetectLanguageRequest);
     });
   });
@@ -1228,7 +1234,9 @@ void main() {
   unittest.group('obj-schema-DetectLanguageResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDetectLanguageResponse();
-      var od = api.DetectLanguageResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DetectLanguageResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDetectLanguageResponse(od as api.DetectLanguageResponse);
     });
   });
@@ -1236,7 +1244,9 @@ void main() {
   unittest.group('obj-schema-DetectedLanguage', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDetectedLanguage();
-      var od = api.DetectedLanguage.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DetectedLanguage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDetectedLanguage(od as api.DetectedLanguage);
     });
   });
@@ -1244,7 +1254,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -1252,7 +1263,9 @@ void main() {
   unittest.group('obj-schema-GcsDestination', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGcsDestination();
-      var od = api.GcsDestination.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GcsDestination.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGcsDestination(od as api.GcsDestination);
     });
   });
@@ -1260,7 +1273,9 @@ void main() {
   unittest.group('obj-schema-GcsSource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGcsSource();
-      var od = api.GcsSource.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.GcsSource.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGcsSource(od as api.GcsSource);
     });
   });
@@ -1268,7 +1283,9 @@ void main() {
   unittest.group('obj-schema-Glossary', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGlossary();
-      var od = api.Glossary.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Glossary.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGlossary(od as api.Glossary);
     });
   });
@@ -1276,7 +1293,9 @@ void main() {
   unittest.group('obj-schema-GlossaryInputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGlossaryInputConfig();
-      var od = api.GlossaryInputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GlossaryInputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGlossaryInputConfig(od as api.GlossaryInputConfig);
     });
   });
@@ -1284,7 +1303,9 @@ void main() {
   unittest.group('obj-schema-InputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildInputConfig();
-      var od = api.InputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.InputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkInputConfig(od as api.InputConfig);
     });
   });
@@ -1292,7 +1313,9 @@ void main() {
   unittest.group('obj-schema-LanguageCodePair', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLanguageCodePair();
-      var od = api.LanguageCodePair.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LanguageCodePair.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLanguageCodePair(od as api.LanguageCodePair);
     });
   });
@@ -1300,7 +1323,9 @@ void main() {
   unittest.group('obj-schema-LanguageCodesSet', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLanguageCodesSet();
-      var od = api.LanguageCodesSet.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LanguageCodesSet.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLanguageCodesSet(od as api.LanguageCodesSet);
     });
   });
@@ -1308,7 +1333,9 @@ void main() {
   unittest.group('obj-schema-ListGlossariesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListGlossariesResponse();
-      var od = api.ListGlossariesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListGlossariesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListGlossariesResponse(od as api.ListGlossariesResponse);
     });
   });
@@ -1316,7 +1343,9 @@ void main() {
   unittest.group('obj-schema-ListLocationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListLocationsResponse();
-      var od = api.ListLocationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListLocationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
@@ -1324,7 +1353,9 @@ void main() {
   unittest.group('obj-schema-ListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
-      var od = api.ListOperationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListOperationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
@@ -1332,7 +1363,9 @@ void main() {
   unittest.group('obj-schema-Location', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLocation();
-      var od = api.Location.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Location.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLocation(od as api.Location);
     });
   });
@@ -1340,7 +1373,9 @@ void main() {
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOperation();
-      var od = api.Operation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od as api.Operation);
     });
   });
@@ -1348,7 +1383,9 @@ void main() {
   unittest.group('obj-schema-OutputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOutputConfig();
-      var od = api.OutputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.OutputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkOutputConfig(od as api.OutputConfig);
     });
   });
@@ -1356,7 +1393,9 @@ void main() {
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStatus();
-      var od = api.Status.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od as api.Status);
     });
   });
@@ -1364,7 +1403,9 @@ void main() {
   unittest.group('obj-schema-SupportedLanguage', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSupportedLanguage();
-      var od = api.SupportedLanguage.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SupportedLanguage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSupportedLanguage(od as api.SupportedLanguage);
     });
   });
@@ -1372,7 +1413,9 @@ void main() {
   unittest.group('obj-schema-SupportedLanguages', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSupportedLanguages();
-      var od = api.SupportedLanguages.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SupportedLanguages.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSupportedLanguages(od as api.SupportedLanguages);
     });
   });
@@ -1380,7 +1423,9 @@ void main() {
   unittest.group('obj-schema-TranslateTextGlossaryConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTranslateTextGlossaryConfig();
-      var od = api.TranslateTextGlossaryConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TranslateTextGlossaryConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTranslateTextGlossaryConfig(od as api.TranslateTextGlossaryConfig);
     });
   });
@@ -1388,7 +1433,9 @@ void main() {
   unittest.group('obj-schema-TranslateTextRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTranslateTextRequest();
-      var od = api.TranslateTextRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TranslateTextRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTranslateTextRequest(od as api.TranslateTextRequest);
     });
   });
@@ -1396,7 +1443,9 @@ void main() {
   unittest.group('obj-schema-TranslateTextResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTranslateTextResponse();
-      var od = api.TranslateTextResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TranslateTextResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTranslateTextResponse(od as api.TranslateTextResponse);
     });
   });
@@ -1404,7 +1453,9 @@ void main() {
   unittest.group('obj-schema-Translation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTranslation();
-      var od = api.Translation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Translation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTranslation(od as api.Translation);
     });
   });
@@ -1412,7 +1463,9 @@ void main() {
   unittest.group('obj-schema-WaitOperationRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWaitOperationRequest();
-      var od = api.WaitOperationRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.WaitOperationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkWaitOperationRequest(od as api.WaitOperationRequest);
     });
   });

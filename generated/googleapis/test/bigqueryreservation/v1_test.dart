@@ -771,7 +771,9 @@ void main() {
   unittest.group('obj-schema-Assignment', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAssignment();
-      var od = api.Assignment.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Assignment.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkAssignment(od as api.Assignment);
     });
   });
@@ -779,7 +781,9 @@ void main() {
   unittest.group('obj-schema-BiReservation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBiReservation();
-      var od = api.BiReservation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BiReservation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBiReservation(od as api.BiReservation);
     });
   });
@@ -787,7 +791,9 @@ void main() {
   unittest.group('obj-schema-CapacityCommitment', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCapacityCommitment();
-      var od = api.CapacityCommitment.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CapacityCommitment.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCapacityCommitment(od as api.CapacityCommitment);
     });
   });
@@ -795,7 +801,9 @@ void main() {
   unittest.group('obj-schema-CreateSlotPoolMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCreateSlotPoolMetadata();
-      var od = api.CreateSlotPoolMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CreateSlotPoolMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCreateSlotPoolMetadata(od as api.CreateSlotPoolMetadata);
     });
   });
@@ -803,7 +811,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -811,7 +820,9 @@ void main() {
   unittest.group('obj-schema-ListAssignmentsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListAssignmentsResponse();
-      var od = api.ListAssignmentsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListAssignmentsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListAssignmentsResponse(od as api.ListAssignmentsResponse);
     });
   });
@@ -819,7 +830,9 @@ void main() {
   unittest.group('obj-schema-ListCapacityCommitmentsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListCapacityCommitmentsResponse();
-      var od = api.ListCapacityCommitmentsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListCapacityCommitmentsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListCapacityCommitmentsResponse(
           od as api.ListCapacityCommitmentsResponse);
     });
@@ -828,7 +841,9 @@ void main() {
   unittest.group('obj-schema-ListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
-      var od = api.ListOperationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListOperationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
@@ -836,7 +851,9 @@ void main() {
   unittest.group('obj-schema-ListReservationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListReservationsResponse();
-      var od = api.ListReservationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListReservationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListReservationsResponse(od as api.ListReservationsResponse);
     });
   });
@@ -844,7 +861,9 @@ void main() {
   unittest.group('obj-schema-MergeCapacityCommitmentsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMergeCapacityCommitmentsRequest();
-      var od = api.MergeCapacityCommitmentsRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MergeCapacityCommitmentsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkMergeCapacityCommitmentsRequest(
           od as api.MergeCapacityCommitmentsRequest);
     });
@@ -853,7 +872,9 @@ void main() {
   unittest.group('obj-schema-MoveAssignmentRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMoveAssignmentRequest();
-      var od = api.MoveAssignmentRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.MoveAssignmentRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkMoveAssignmentRequest(od as api.MoveAssignmentRequest);
     });
   });
@@ -861,7 +882,9 @@ void main() {
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOperation();
-      var od = api.Operation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od as api.Operation);
     });
   });
@@ -869,7 +892,9 @@ void main() {
   unittest.group('obj-schema-Reservation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReservation();
-      var od = api.Reservation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Reservation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkReservation(od as api.Reservation);
     });
   });
@@ -877,7 +902,9 @@ void main() {
   unittest.group('obj-schema-SearchAllAssignmentsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSearchAllAssignmentsResponse();
-      var od = api.SearchAllAssignmentsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SearchAllAssignmentsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSearchAllAssignmentsResponse(od as api.SearchAllAssignmentsResponse);
     });
   });
@@ -885,7 +912,9 @@ void main() {
   unittest.group('obj-schema-SearchAssignmentsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSearchAssignmentsResponse();
-      var od = api.SearchAssignmentsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SearchAssignmentsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSearchAssignmentsResponse(od as api.SearchAssignmentsResponse);
     });
   });
@@ -893,7 +922,9 @@ void main() {
   unittest.group('obj-schema-SplitCapacityCommitmentRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSplitCapacityCommitmentRequest();
-      var od = api.SplitCapacityCommitmentRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SplitCapacityCommitmentRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSplitCapacityCommitmentRequest(
           od as api.SplitCapacityCommitmentRequest);
     });
@@ -902,7 +933,9 @@ void main() {
   unittest.group('obj-schema-SplitCapacityCommitmentResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSplitCapacityCommitmentResponse();
-      var od = api.SplitCapacityCommitmentResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SplitCapacityCommitmentResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSplitCapacityCommitmentResponse(
           od as api.SplitCapacityCommitmentResponse);
     });
@@ -911,7 +944,9 @@ void main() {
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStatus();
-      var od = api.Status.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od as api.Status);
     });
   });

@@ -353,7 +353,9 @@ void main() {
   unittest.group('obj-schema-Groups', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGroups();
-      var od = api.Groups.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Groups.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGroups(od as api.Groups);
     });
   });

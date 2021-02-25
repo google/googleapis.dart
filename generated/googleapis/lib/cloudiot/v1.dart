@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1365,7 +1364,7 @@ class BindDeviceToGatewayRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
         if (gatewayId != null) 'gatewayId': gatewayId!,
       };
@@ -1379,7 +1378,7 @@ class BindDeviceToGatewayResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Associates `members` with a `role`.
@@ -1448,7 +1447,7 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
@@ -1641,13 +1640,12 @@ class Device {
       logLevel = _json['logLevel'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -1661,7 +1659,7 @@ class Device {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blocked != null) 'blocked': blocked!,
         if (config != null) 'config': config!.toJson(),
         if (credentials != null)
@@ -1748,7 +1746,7 @@ class DeviceConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (binaryData != null) 'binaryData': binaryData!,
         if (cloudUpdateTime != null) 'cloudUpdateTime': cloudUpdateTime!,
         if (deviceAckTime != null) 'deviceAckTime': deviceAckTime!,
@@ -1791,7 +1789,7 @@ class DeviceCredential {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (expirationTime != null) 'expirationTime': expirationTime!,
         if (publicKey != null) 'publicKey': publicKey!.toJson(),
       };
@@ -1906,7 +1904,7 @@ class DeviceRegistry {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (credentials != null)
           'credentials': credentials!.map((value) => value.toJson()).toList(),
         if (eventNotificationConfigs != null)
@@ -1950,7 +1948,7 @@ class DeviceState {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (binaryData != null) 'binaryData': binaryData!,
         if (updateTime != null) 'updateTime': updateTime!,
       };
@@ -1970,7 +1968,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The configuration for forwarding telemetry events.
@@ -1999,7 +1997,7 @@ class EventNotificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (pubsubTopicName != null) 'pubsubTopicName': pubsubTopicName!,
         if (subfolderMatches != null) 'subfolderMatches': subfolderMatches!,
       };
@@ -2066,7 +2064,7 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,
@@ -2126,7 +2124,7 @@ class GatewayConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gatewayAuthMethod != null) 'gatewayAuthMethod': gatewayAuthMethod!,
         if (gatewayType != null) 'gatewayType': gatewayType!,
         if (lastAccessedGatewayId != null)
@@ -2151,7 +2149,7 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (options != null) 'options': options!.toJson(),
       };
 }
@@ -2178,7 +2176,7 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (requestedPolicyVersion != null)
           'requestedPolicyVersion': requestedPolicyVersion!,
       };
@@ -2205,7 +2203,7 @@ class HttpConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (httpEnabledState != null) 'httpEnabledState': httpEnabledState!,
       };
 }
@@ -2229,7 +2227,7 @@ class ListDeviceConfigVersionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceConfigs != null)
           'deviceConfigs':
               deviceConfigs!.map((value) => value.toJson()).toList(),
@@ -2260,7 +2258,7 @@ class ListDeviceRegistriesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceRegistries != null)
           'deviceRegistries':
               deviceRegistries!.map((value) => value.toJson()).toList(),
@@ -2287,7 +2285,7 @@ class ListDeviceStatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceStates != null)
           'deviceStates': deviceStates!.map((value) => value.toJson()).toList(),
       };
@@ -2316,7 +2314,7 @@ class ListDevicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (devices != null)
           'devices': devices!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -2357,7 +2355,7 @@ class ModifyCloudToDeviceConfigRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (binaryData != null) 'binaryData': binaryData!,
         if (versionToUpdate != null) 'versionToUpdate': versionToUpdate!,
       };
@@ -2383,7 +2381,7 @@ class MqttConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mqttEnabledState != null) 'mqttEnabledState': mqttEnabledState!,
       };
 }
@@ -2483,7 +2481,7 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bindings != null)
           'bindings': bindings!.map((value) => value.toJson()).toList(),
         if (etag != null) 'etag': etag!,
@@ -2527,7 +2525,7 @@ class PublicKeyCertificate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (certificate != null) 'certificate': certificate!,
         if (format != null) 'format': format!,
         if (x509Details != null) 'x509Details': x509Details!.toJson(),
@@ -2574,7 +2572,7 @@ class PublicKeyCredential {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (format != null) 'format': format!,
         if (key != null) 'key': key!,
       };
@@ -2594,7 +2592,7 @@ class RegistryCredential {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (publicKeyCertificate != null)
           'publicKeyCertificate': publicKeyCertificate!.toJson(),
       };
@@ -2634,7 +2632,7 @@ class SendCommandToDeviceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (binaryData != null) 'binaryData': binaryData!,
         if (subfolder != null) 'subfolder': subfolder!,
       };
@@ -2648,7 +2646,7 @@ class SendCommandToDeviceResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Request message for `SetIamPolicy` method.
@@ -2669,7 +2667,7 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
       };
 }
@@ -2689,7 +2687,7 @@ class StateNotificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (pubsubTopicName != null) 'pubsubTopicName': pubsubTopicName!,
       };
 }
@@ -2727,8 +2725,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -2741,7 +2739,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -2767,7 +2765,7 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -2788,7 +2786,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -2820,7 +2818,7 @@ class UnbindDeviceFromGatewayRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceId != null) 'deviceId': deviceId!,
         if (gatewayId != null) 'gatewayId': gatewayId!,
       };
@@ -2834,7 +2832,7 @@ class UnbindDeviceFromGatewayResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Details of an X.509 certificate.
@@ -2882,7 +2880,7 @@ class X509CertificateDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (expiryTime != null) 'expiryTime': expiryTime!,
         if (issuer != null) 'issuer': issuer!,
         if (publicKeyType != null) 'publicKeyType': publicKeyType!,

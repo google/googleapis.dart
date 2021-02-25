@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -190,12 +189,12 @@ class AndroidConfig {
       collapseKey = _json['collapseKey'] as core.String;
     }
     if (_json.containsKey('data')) {
-      data = (_json['data'] as core.Map).cast<core.String, core.String>().map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      data = (_json['data'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('directBootOk')) {
       directBootOk = _json['directBootOk'] as core.bool;
@@ -219,7 +218,7 @@ class AndroidConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (collapseKey != null) 'collapseKey': collapseKey!,
         if (data != null) 'data': data!,
         if (directBootOk != null) 'directBootOk': directBootOk!,
@@ -245,7 +244,7 @@ class AndroidFcmOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (analyticsLabel != null) 'analyticsLabel': analyticsLabel!,
       };
 }
@@ -550,7 +549,7 @@ class AndroidNotification {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (body != null) 'body': body!,
         if (bodyLocArgs != null) 'bodyLocArgs': bodyLocArgs!,
         if (bodyLocKey != null) 'bodyLocKey': bodyLocKey!,
@@ -614,26 +613,24 @@ class ApnsConfig {
           _json['fcmOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('headers')) {
-      headers =
-          (_json['headers'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      headers = (_json['headers'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('payload')) {
-      payload =
-          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      payload = (_json['payload'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fcmOptions != null) 'fcmOptions': fcmOptions!.toJson(),
         if (headers != null) 'headers': headers!,
         if (payload != null) 'payload': payload!,
@@ -662,7 +659,7 @@ class ApnsFcmOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (analyticsLabel != null) 'analyticsLabel': analyticsLabel!,
         if (image != null) 'image': image!,
       };
@@ -756,7 +753,7 @@ class Color {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alpha != null) 'alpha': alpha!,
         if (blue != null) 'blue': blue!,
         if (green != null) 'green': green!,
@@ -777,7 +774,7 @@ class FcmOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (analyticsLabel != null) 'analyticsLabel': analyticsLabel!,
       };
 }
@@ -821,7 +818,7 @@ class LightSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (color != null) 'color': color!.toJson(),
         if (lightOffDuration != null) 'lightOffDuration': lightOffDuration!,
         if (lightOnDuration != null) 'lightOnDuration': lightOnDuration!,
@@ -894,12 +891,12 @@ class Message {
       condition = _json['condition'] as core.String;
     }
     if (_json.containsKey('data')) {
-      data = (_json['data'] as core.Map).cast<core.String, core.String>().map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      data = (_json['data'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('fcmOptions')) {
       fcmOptions = FcmOptions.fromJson(
@@ -924,7 +921,7 @@ class Message {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (android != null) 'android': android!.toJson(),
         if (apns != null) 'apns': apns!.toJson(),
         if (condition != null) 'condition': condition!,
@@ -970,7 +967,7 @@ class Notification {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (body != null) 'body': body!,
         if (image != null) 'image': image!,
         if (title != null) 'title': title!,
@@ -999,7 +996,7 @@ class SendMessageRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (message != null) 'message': message!.toJson(),
         if (validateOnly != null) 'validateOnly': validateOnly!,
       };
@@ -1037,39 +1034,37 @@ class WebpushConfig {
 
   WebpushConfig.fromJson(core.Map _json) {
     if (_json.containsKey('data')) {
-      data = (_json['data'] as core.Map).cast<core.String, core.String>().map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      data = (_json['data'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('fcmOptions')) {
       fcmOptions = WebpushFcmOptions.fromJson(
           _json['fcmOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('headers')) {
-      headers =
-          (_json['headers'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      headers = (_json['headers'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('notification')) {
-      notification = (_json['notification'] as core.Map)
-          .cast<core.String, core.Object>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      notification =
+          (_json['notification'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (data != null) 'data': data!,
         if (fcmOptions != null) 'fcmOptions': fcmOptions!.toJson(),
         if (headers != null) 'headers': headers!,
@@ -1098,7 +1093,7 @@ class WebpushFcmOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (analyticsLabel != null) 'analyticsLabel': analyticsLabel!,
         if (link != null) 'link': link!,
       };

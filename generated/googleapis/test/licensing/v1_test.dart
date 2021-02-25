@@ -172,7 +172,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -180,7 +181,9 @@ void main() {
   unittest.group('obj-schema-LicenseAssignment', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLicenseAssignment();
-      var od = api.LicenseAssignment.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LicenseAssignment.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLicenseAssignment(od as api.LicenseAssignment);
     });
   });
@@ -188,7 +191,9 @@ void main() {
   unittest.group('obj-schema-LicenseAssignmentInsert', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLicenseAssignmentInsert();
-      var od = api.LicenseAssignmentInsert.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LicenseAssignmentInsert.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLicenseAssignmentInsert(od as api.LicenseAssignmentInsert);
     });
   });
@@ -196,7 +201,9 @@ void main() {
   unittest.group('obj-schema-LicenseAssignmentList', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLicenseAssignmentList();
-      var od = api.LicenseAssignmentList.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LicenseAssignmentList.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLicenseAssignmentList(od as api.LicenseAssignmentList);
     });
   });

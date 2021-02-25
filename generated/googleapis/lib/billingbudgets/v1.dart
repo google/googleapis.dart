@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -399,7 +398,7 @@ class GoogleCloudBillingBudgetsV1Budget {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (amount != null) 'amount': amount!.toJson(),
         if (budgetFilter != null) 'budgetFilter': budgetFilter!.toJson(),
         if (displayName != null) 'displayName': displayName!,
@@ -441,7 +440,7 @@ class GoogleCloudBillingBudgetsV1BudgetAmount {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (lastPeriodAmount != null)
           'lastPeriodAmount': lastPeriodAmount!.toJson(),
         if (specifiedAmount != null)
@@ -477,7 +476,7 @@ class GoogleCloudBillingBudgetsV1CustomPeriod {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endDate != null) 'endDate': endDate!.toJson(),
         if (startDate != null) 'startDate': startDate!.toJson(),
       };
@@ -595,16 +594,14 @@ class GoogleCloudBillingBudgetsV1Filter {
           _json['customPeriod'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map)
-          .cast<core.String, core.List<core.Object>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              (item as core.List)
-                  .map<core.Object>((value) => value as core.Object)
-                  .toList(),
-            ),
-          );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          (item as core.List)
+              .map<core.Object>((value) => value as core.Object)
+              .toList(),
+        ),
+      );
     }
     if (_json.containsKey('projects')) {
       projects = (_json['projects'] as core.List)
@@ -623,7 +620,7 @@ class GoogleCloudBillingBudgetsV1Filter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (calendarPeriod != null) 'calendarPeriod': calendarPeriod!,
         if (creditTypes != null) 'creditTypes': creditTypes!,
         if (creditTypesTreatment != null)
@@ -648,7 +645,7 @@ class GoogleCloudBillingBudgetsV1LastPeriodAmount {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Response for ListBudgets
@@ -675,7 +672,7 @@ class GoogleCloudBillingBudgetsV1ListBudgetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (budgets != null)
           'budgets': budgets!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -753,7 +750,7 @@ class GoogleCloudBillingBudgetsV1NotificationsRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (disableDefaultIamRecipients != null)
           'disableDefaultIamRecipients': disableDefaultIamRecipients!,
         if (monitoringNotificationChannels != null)
@@ -805,7 +802,7 @@ class GoogleCloudBillingBudgetsV1ThresholdRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (spendBasis != null) 'spendBasis': spendBasis!,
         if (thresholdPercent != null) 'thresholdPercent': thresholdPercent!,
       };
@@ -825,7 +822,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Represents a whole or partial calendar date, such as a birthday.
@@ -868,7 +865,7 @@ class GoogleTypeDate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
         if (month != null) 'month': month!,
         if (year != null) 'year': year!,
@@ -908,7 +905,7 @@ class GoogleTypeMoney {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (nanos != null) 'nanos': nanos!,
         if (units != null) 'units': units!,

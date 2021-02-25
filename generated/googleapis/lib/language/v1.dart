@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -329,7 +328,7 @@ class AnalyzeEntitiesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (document != null) 'document': document!.toJson(),
         if (encodingType != null) 'encodingType': encodingType!,
       };
@@ -360,7 +359,7 @@ class AnalyzeEntitiesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entities != null)
           'entities': entities!.map((value) => value.toJson()).toList(),
         if (language != null) 'language': language!,
@@ -401,7 +400,7 @@ class AnalyzeEntitySentimentRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (document != null) 'document': document!.toJson(),
         if (encodingType != null) 'encodingType': encodingType!,
       };
@@ -432,7 +431,7 @@ class AnalyzeEntitySentimentResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (entities != null)
           'entities': entities!.map((value) => value.toJson()).toList(),
         if (language != null) 'language': language!,
@@ -473,7 +472,7 @@ class AnalyzeSentimentRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (document != null) 'document': document!.toJson(),
         if (encodingType != null) 'encodingType': encodingType!,
       };
@@ -511,7 +510,7 @@ class AnalyzeSentimentResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (documentSentiment != null)
           'documentSentiment': documentSentiment!.toJson(),
         if (language != null) 'language': language!,
@@ -554,7 +553,7 @@ class AnalyzeSyntaxRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (document != null) 'document': document!.toJson(),
         if (encodingType != null) 'encodingType': encodingType!,
       };
@@ -594,7 +593,7 @@ class AnalyzeSyntaxResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (language != null) 'language': language!,
         if (sentences != null)
           'sentences': sentences!.map((value) => value.toJson()).toList(),
@@ -647,7 +646,7 @@ class AnnotateTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (document != null) 'document': document!.toJson(),
         if (encodingType != null) 'encodingType': encodingType!,
         if (features != null) 'features': features!.toJson(),
@@ -724,7 +723,7 @@ class AnnotateTextResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (categories != null)
           'categories': categories!.map((value) => value.toJson()).toList(),
         if (documentSentiment != null)
@@ -762,7 +761,7 @@ class ClassificationCategory {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (name != null) 'name': name!,
       };
@@ -784,7 +783,7 @@ class ClassifyTextRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (document != null) 'document': document!.toJson(),
       };
 }
@@ -806,7 +805,7 @@ class ClassifyTextResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (categories != null)
           'categories': categories!.map((value) => value.toJson()).toList(),
       };
@@ -924,7 +923,7 @@ class DependencyEdge {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (headTokenIndex != null) 'headTokenIndex': headTokenIndex!,
         if (label != null) 'label': label!,
       };
@@ -983,7 +982,7 @@ class Document {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (gcsContentUri != null) 'gcsContentUri': gcsContentUri!,
         if (language != null) 'language': language!,
@@ -1066,13 +1065,12 @@ class Entity {
           .toList();
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -1089,7 +1087,7 @@ class Entity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mentions != null)
           'mentions': mentions!.map((value) => value.toJson()).toList(),
         if (metadata != null) 'metadata': metadata!,
@@ -1136,7 +1134,7 @@ class EntityMention {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sentiment != null) 'sentiment': sentiment!.toJson(),
         if (text != null) 'text': text!.toJson(),
         if (type != null) 'type': type!,
@@ -1182,7 +1180,7 @@ class Features {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (classifyText != null) 'classifyText': classifyText!,
         if (extractDocumentSentiment != null)
           'extractDocumentSentiment': extractDocumentSentiment!,
@@ -1380,7 +1378,7 @@ class PartOfSpeech {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aspect != null) 'aspect': aspect!,
         if (case_ != null) 'case': case_!,
         if (form != null) 'form': form!,
@@ -1419,7 +1417,7 @@ class Sentence {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sentiment != null) 'sentiment': sentiment!.toJson(),
         if (text != null) 'text': text!.toJson(),
       };
@@ -1448,7 +1446,7 @@ class Sentiment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (magnitude != null) 'magnitude': magnitude!,
         if (score != null) 'score': score!,
       };
@@ -1487,8 +1485,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -1501,7 +1499,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -1528,7 +1526,7 @@ class TextSpan {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (beginOffset != null) 'beginOffset': beginOffset!,
         if (content != null) 'content': content!,
       };
@@ -1569,7 +1567,7 @@ class Token {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dependencyEdge != null) 'dependencyEdge': dependencyEdge!.toJson(),
         if (lemma != null) 'lemma': lemma!,
         if (partOfSpeech != null) 'partOfSpeech': partOfSpeech!.toJson(),

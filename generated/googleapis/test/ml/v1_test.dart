@@ -3847,7 +3847,9 @@ void main() {
   unittest.group('obj-schema-GoogleApiHttpBody', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiHttpBody();
-      var od = api.GoogleApiHttpBody.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleApiHttpBody.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleApiHttpBody(od as api.GoogleApiHttpBody);
     });
   });
@@ -3858,9 +3860,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig(
           od as api
               .GoogleCloudMlV1AutomatedStoppingConfigDecayCurveAutomatedStoppingConfig);
@@ -3873,9 +3876,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig(
           od as api
               .GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig);
@@ -3886,9 +3890,10 @@ void main() {
       'obj-schema-GoogleCloudMlV1HyperparameterOutputHyperparameterMetric', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1HyperparameterOutputHyperparameterMetric();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1HyperparameterOutputHyperparameterMetric(
           od as api.GoogleCloudMlV1HyperparameterOutputHyperparameterMetric);
     });
@@ -3897,7 +3902,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1MeasurementMetric', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1MeasurementMetric();
-      var od = api.GoogleCloudMlV1MeasurementMetric.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1MeasurementMetric.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1MeasurementMetric(
           od as api.GoogleCloudMlV1MeasurementMetric);
     });
@@ -3909,8 +3916,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec(od
           as api.GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpec);
     });
@@ -3921,9 +3929,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec(
           od as api.GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec);
     });
@@ -3933,9 +3942,10 @@ void main() {
       'obj-schema-GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec(
           od as api.GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec);
     });
@@ -3945,9 +3955,10 @@ void main() {
       'obj-schema-GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec(
           od as api.GoogleCloudMlV1StudyConfigParameterSpecIntegerValueSpec);
     });
@@ -3959,9 +3970,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec(
           od as api
               .GoogleCloudMlV1StudyConfigParameterSpecMatchingParentCategoricalValueSpec);
@@ -3974,9 +3986,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec(
           od as api
               .GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec);
@@ -3989,9 +4002,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec(od
           as api
               .GoogleCloudMlV1StudyConfigParameterSpecMatchingParentIntValueSpec);
@@ -4001,7 +4015,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1StudyConfigMetricSpec', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1StudyConfigMetricSpec();
-      var od = api.GoogleCloudMlV1StudyConfigMetricSpec.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1StudyConfigMetricSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1StudyConfigMetricSpec(
           od as api.GoogleCloudMlV1StudyConfigMetricSpec);
     });
@@ -4010,7 +4026,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1StudyConfigParameterSpec', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1StudyConfigParameterSpec();
-      var od = api.GoogleCloudMlV1StudyConfigParameterSpec.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1StudyConfigParameterSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1StudyConfigParameterSpec(
           od as api.GoogleCloudMlV1StudyConfigParameterSpec);
     });
@@ -4019,7 +4037,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1TrialParameter', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1TrialParameter();
-      var od = api.GoogleCloudMlV1TrialParameter.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1TrialParameter.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1TrialParameter(
           od as api.GoogleCloudMlV1TrialParameter);
     });
@@ -4028,7 +4048,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1AcceleratorConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1AcceleratorConfig();
-      var od = api.GoogleCloudMlV1AcceleratorConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1AcceleratorConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1AcceleratorConfig(
           od as api.GoogleCloudMlV1AcceleratorConfig);
     });
@@ -4037,8 +4059,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1AddTrialMeasurementRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1AddTrialMeasurementRequest();
-      var od =
-          api.GoogleCloudMlV1AddTrialMeasurementRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1AddTrialMeasurementRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1AddTrialMeasurementRequest(
           od as api.GoogleCloudMlV1AddTrialMeasurementRequest);
     });
@@ -4047,7 +4070,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1AutoScaling', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1AutoScaling();
-      var od = api.GoogleCloudMlV1AutoScaling.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1AutoScaling.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1AutoScaling(od as api.GoogleCloudMlV1AutoScaling);
     });
   });
@@ -4055,7 +4080,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1AutomatedStoppingConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1AutomatedStoppingConfig();
-      var od = api.GoogleCloudMlV1AutomatedStoppingConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1AutomatedStoppingConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1AutomatedStoppingConfig(
           od as api.GoogleCloudMlV1AutomatedStoppingConfig);
     });
@@ -4064,7 +4091,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1BuiltInAlgorithmOutput', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1BuiltInAlgorithmOutput();
-      var od = api.GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1BuiltInAlgorithmOutput.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1BuiltInAlgorithmOutput(
           od as api.GoogleCloudMlV1BuiltInAlgorithmOutput);
     });
@@ -4073,7 +4102,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1CancelJobRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1CancelJobRequest();
-      var od = api.GoogleCloudMlV1CancelJobRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1CancelJobRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1CancelJobRequest(
           od as api.GoogleCloudMlV1CancelJobRequest);
     });
@@ -4082,7 +4113,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1Capability', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Capability();
-      var od = api.GoogleCloudMlV1Capability.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1Capability.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1Capability(od as api.GoogleCloudMlV1Capability);
     });
   });
@@ -4091,9 +4124,10 @@ void main() {
       'obj-schema-GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata(
           od as api.GoogleCloudMlV1CheckTrialEarlyStoppingStateMetatdata);
     });
@@ -4103,8 +4137,9 @@ void main() {
       'obj-schema-GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1CheckTrialEarlyStoppingStateRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1CheckTrialEarlyStoppingStateRequest(
           od as api.GoogleCloudMlV1CheckTrialEarlyStoppingStateRequest);
     });
@@ -4114,8 +4149,9 @@ void main() {
       'obj-schema-GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1CheckTrialEarlyStoppingStateResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1CheckTrialEarlyStoppingStateResponse(
           od as api.GoogleCloudMlV1CheckTrialEarlyStoppingStateResponse);
     });
@@ -4124,7 +4160,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1CompleteTrialRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1CompleteTrialRequest();
-      var od = api.GoogleCloudMlV1CompleteTrialRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1CompleteTrialRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1CompleteTrialRequest(
           od as api.GoogleCloudMlV1CompleteTrialRequest);
     });
@@ -4133,7 +4171,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1Config', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Config();
-      var od = api.GoogleCloudMlV1Config.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1Config.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1Config(od as api.GoogleCloudMlV1Config);
     });
   });
@@ -4141,7 +4181,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1ContainerPort', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ContainerPort();
-      var od = api.GoogleCloudMlV1ContainerPort.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1ContainerPort.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1ContainerPort(od as api.GoogleCloudMlV1ContainerPort);
     });
   });
@@ -4149,7 +4191,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1ContainerSpec', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ContainerSpec();
-      var od = api.GoogleCloudMlV1ContainerSpec.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1ContainerSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1ContainerSpec(od as api.GoogleCloudMlV1ContainerSpec);
     });
   });
@@ -4157,7 +4201,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1DiskConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1DiskConfig();
-      var od = api.GoogleCloudMlV1DiskConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1DiskConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1DiskConfig(od as api.GoogleCloudMlV1DiskConfig);
     });
   });
@@ -4165,7 +4211,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1EncryptionConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1EncryptionConfig();
-      var od = api.GoogleCloudMlV1EncryptionConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1EncryptionConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1EncryptionConfig(
           od as api.GoogleCloudMlV1EncryptionConfig);
     });
@@ -4174,7 +4222,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1EnvVar', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1EnvVar();
-      var od = api.GoogleCloudMlV1EnvVar.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1EnvVar.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1EnvVar(od as api.GoogleCloudMlV1EnvVar);
     });
   });
@@ -4182,7 +4232,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1ExplainRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ExplainRequest();
-      var od = api.GoogleCloudMlV1ExplainRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1ExplainRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1ExplainRequest(
           od as api.GoogleCloudMlV1ExplainRequest);
     });
@@ -4191,7 +4243,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1ExplanationConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ExplanationConfig();
-      var od = api.GoogleCloudMlV1ExplanationConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1ExplanationConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1ExplanationConfig(
           od as api.GoogleCloudMlV1ExplanationConfig);
     });
@@ -4200,7 +4254,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1GetConfigResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1GetConfigResponse();
-      var od = api.GoogleCloudMlV1GetConfigResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1GetConfigResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1GetConfigResponse(
           od as api.GoogleCloudMlV1GetConfigResponse);
     });
@@ -4209,7 +4265,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1HyperparameterOutput', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1HyperparameterOutput();
-      var od = api.GoogleCloudMlV1HyperparameterOutput.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1HyperparameterOutput.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1HyperparameterOutput(
           od as api.GoogleCloudMlV1HyperparameterOutput);
     });
@@ -4218,7 +4276,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1HyperparameterSpec', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1HyperparameterSpec();
-      var od = api.GoogleCloudMlV1HyperparameterSpec.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1HyperparameterSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1HyperparameterSpec(
           od as api.GoogleCloudMlV1HyperparameterSpec);
     });
@@ -4228,8 +4288,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1IntegratedGradientsAttribution();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudMlV1IntegratedGradientsAttribution.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1IntegratedGradientsAttribution(
           od as api.GoogleCloudMlV1IntegratedGradientsAttribution);
     });
@@ -4238,7 +4299,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1Job', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Job();
-      var od = api.GoogleCloudMlV1Job.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1Job.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1Job(od as api.GoogleCloudMlV1Job);
     });
   });
@@ -4246,7 +4309,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1ListJobsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ListJobsResponse();
-      var od = api.GoogleCloudMlV1ListJobsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1ListJobsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1ListJobsResponse(
           od as api.GoogleCloudMlV1ListJobsResponse);
     });
@@ -4255,7 +4320,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1ListLocationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ListLocationsResponse();
-      var od = api.GoogleCloudMlV1ListLocationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1ListLocationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1ListLocationsResponse(
           od as api.GoogleCloudMlV1ListLocationsResponse);
     });
@@ -4264,7 +4331,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1ListModelsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ListModelsResponse();
-      var od = api.GoogleCloudMlV1ListModelsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1ListModelsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1ListModelsResponse(
           od as api.GoogleCloudMlV1ListModelsResponse);
     });
@@ -4273,7 +4342,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1ListOptimalTrialsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ListOptimalTrialsRequest();
-      var od = api.GoogleCloudMlV1ListOptimalTrialsRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1ListOptimalTrialsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1ListOptimalTrialsRequest(
           od as api.GoogleCloudMlV1ListOptimalTrialsRequest);
     });
@@ -4282,8 +4353,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1ListOptimalTrialsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ListOptimalTrialsResponse();
-      var od =
-          api.GoogleCloudMlV1ListOptimalTrialsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1ListOptimalTrialsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1ListOptimalTrialsResponse(
           od as api.GoogleCloudMlV1ListOptimalTrialsResponse);
     });
@@ -4292,7 +4364,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1ListStudiesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ListStudiesResponse();
-      var od = api.GoogleCloudMlV1ListStudiesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1ListStudiesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1ListStudiesResponse(
           od as api.GoogleCloudMlV1ListStudiesResponse);
     });
@@ -4301,7 +4375,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1ListTrialsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ListTrialsResponse();
-      var od = api.GoogleCloudMlV1ListTrialsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1ListTrialsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1ListTrialsResponse(
           od as api.GoogleCloudMlV1ListTrialsResponse);
     });
@@ -4310,7 +4386,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1ListVersionsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ListVersionsResponse();
-      var od = api.GoogleCloudMlV1ListVersionsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1ListVersionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1ListVersionsResponse(
           od as api.GoogleCloudMlV1ListVersionsResponse);
     });
@@ -4319,7 +4397,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1Location', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Location();
-      var od = api.GoogleCloudMlV1Location.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1Location.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1Location(od as api.GoogleCloudMlV1Location);
     });
   });
@@ -4327,7 +4407,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1ManualScaling', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ManualScaling();
-      var od = api.GoogleCloudMlV1ManualScaling.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1ManualScaling.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1ManualScaling(od as api.GoogleCloudMlV1ManualScaling);
     });
   });
@@ -4335,7 +4417,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1Measurement', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Measurement();
-      var od = api.GoogleCloudMlV1Measurement.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1Measurement.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1Measurement(od as api.GoogleCloudMlV1Measurement);
     });
   });
@@ -4343,7 +4427,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1MetricSpec', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1MetricSpec();
-      var od = api.GoogleCloudMlV1MetricSpec.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1MetricSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1MetricSpec(od as api.GoogleCloudMlV1MetricSpec);
     });
   });
@@ -4351,7 +4437,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1Model', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Model();
-      var od = api.GoogleCloudMlV1Model.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1Model.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1Model(od as api.GoogleCloudMlV1Model);
     });
   });
@@ -4359,7 +4447,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1OperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1OperationMetadata();
-      var od = api.GoogleCloudMlV1OperationMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1OperationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1OperationMetadata(
           od as api.GoogleCloudMlV1OperationMetadata);
     });
@@ -4368,7 +4458,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1ParameterSpec', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ParameterSpec();
-      var od = api.GoogleCloudMlV1ParameterSpec.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1ParameterSpec.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1ParameterSpec(od as api.GoogleCloudMlV1ParameterSpec);
     });
   });
@@ -4376,7 +4468,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1PredictRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1PredictRequest();
-      var od = api.GoogleCloudMlV1PredictRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1PredictRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1PredictRequest(
           od as api.GoogleCloudMlV1PredictRequest);
     });
@@ -4385,7 +4479,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1PredictionInput', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1PredictionInput();
-      var od = api.GoogleCloudMlV1PredictionInput.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1PredictionInput.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1PredictionInput(
           od as api.GoogleCloudMlV1PredictionInput);
     });
@@ -4394,7 +4490,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1PredictionOutput', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1PredictionOutput();
-      var od = api.GoogleCloudMlV1PredictionOutput.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1PredictionOutput.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1PredictionOutput(
           od as api.GoogleCloudMlV1PredictionOutput);
     });
@@ -4403,7 +4501,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1ReplicaConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1ReplicaConfig();
-      var od = api.GoogleCloudMlV1ReplicaConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1ReplicaConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1ReplicaConfig(od as api.GoogleCloudMlV1ReplicaConfig);
     });
   });
@@ -4411,7 +4511,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1RequestLoggingConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1RequestLoggingConfig();
-      var od = api.GoogleCloudMlV1RequestLoggingConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1RequestLoggingConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1RequestLoggingConfig(
           od as api.GoogleCloudMlV1RequestLoggingConfig);
     });
@@ -4420,7 +4522,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1RouteMap', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1RouteMap();
-      var od = api.GoogleCloudMlV1RouteMap.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1RouteMap.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1RouteMap(od as api.GoogleCloudMlV1RouteMap);
     });
   });
@@ -4428,8 +4532,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1SampledShapleyAttribution', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1SampledShapleyAttribution();
-      var od =
-          api.GoogleCloudMlV1SampledShapleyAttribution.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1SampledShapleyAttribution.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1SampledShapleyAttribution(
           od as api.GoogleCloudMlV1SampledShapleyAttribution);
     });
@@ -4438,7 +4543,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1Scheduling', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Scheduling();
-      var od = api.GoogleCloudMlV1Scheduling.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1Scheduling.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1Scheduling(od as api.GoogleCloudMlV1Scheduling);
     });
   });
@@ -4446,7 +4553,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1SetDefaultVersionRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1SetDefaultVersionRequest();
-      var od = api.GoogleCloudMlV1SetDefaultVersionRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1SetDefaultVersionRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1SetDefaultVersionRequest(
           od as api.GoogleCloudMlV1SetDefaultVersionRequest);
     });
@@ -4455,7 +4564,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1StopTrialRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1StopTrialRequest();
-      var od = api.GoogleCloudMlV1StopTrialRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1StopTrialRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1StopTrialRequest(
           od as api.GoogleCloudMlV1StopTrialRequest);
     });
@@ -4464,7 +4575,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1Study', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Study();
-      var od = api.GoogleCloudMlV1Study.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1Study.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1Study(od as api.GoogleCloudMlV1Study);
     });
   });
@@ -4472,7 +4585,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1StudyConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1StudyConfig();
-      var od = api.GoogleCloudMlV1StudyConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1StudyConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1StudyConfig(od as api.GoogleCloudMlV1StudyConfig);
     });
   });
@@ -4480,7 +4595,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1SuggestTrialsMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1SuggestTrialsMetadata();
-      var od = api.GoogleCloudMlV1SuggestTrialsMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1SuggestTrialsMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1SuggestTrialsMetadata(
           od as api.GoogleCloudMlV1SuggestTrialsMetadata);
     });
@@ -4489,7 +4606,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1SuggestTrialsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1SuggestTrialsRequest();
-      var od = api.GoogleCloudMlV1SuggestTrialsRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1SuggestTrialsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1SuggestTrialsRequest(
           od as api.GoogleCloudMlV1SuggestTrialsRequest);
     });
@@ -4498,7 +4617,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1SuggestTrialsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1SuggestTrialsResponse();
-      var od = api.GoogleCloudMlV1SuggestTrialsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1SuggestTrialsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1SuggestTrialsResponse(
           od as api.GoogleCloudMlV1SuggestTrialsResponse);
     });
@@ -4507,7 +4628,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1TrainingInput', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1TrainingInput();
-      var od = api.GoogleCloudMlV1TrainingInput.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1TrainingInput.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1TrainingInput(od as api.GoogleCloudMlV1TrainingInput);
     });
   });
@@ -4515,7 +4638,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1TrainingOutput', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1TrainingOutput();
-      var od = api.GoogleCloudMlV1TrainingOutput.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1TrainingOutput.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1TrainingOutput(
           od as api.GoogleCloudMlV1TrainingOutput);
     });
@@ -4524,7 +4649,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1Trial', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Trial();
-      var od = api.GoogleCloudMlV1Trial.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1Trial.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1Trial(od as api.GoogleCloudMlV1Trial);
     });
   });
@@ -4532,7 +4659,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1Version', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1Version();
-      var od = api.GoogleCloudMlV1Version.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1Version.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1Version(od as api.GoogleCloudMlV1Version);
     });
   });
@@ -4540,7 +4669,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudMlV1XraiAttribution', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudMlV1XraiAttribution();
-      var od = api.GoogleCloudMlV1XraiAttribution.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudMlV1XraiAttribution.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudMlV1XraiAttribution(
           od as api.GoogleCloudMlV1XraiAttribution);
     });
@@ -4549,7 +4680,9 @@ void main() {
   unittest.group('obj-schema-GoogleIamV1AuditConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1AuditConfig();
-      var od = api.GoogleIamV1AuditConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIamV1AuditConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamV1AuditConfig(od as api.GoogleIamV1AuditConfig);
     });
   });
@@ -4557,7 +4690,9 @@ void main() {
   unittest.group('obj-schema-GoogleIamV1AuditLogConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1AuditLogConfig();
-      var od = api.GoogleIamV1AuditLogConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIamV1AuditLogConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamV1AuditLogConfig(od as api.GoogleIamV1AuditLogConfig);
     });
   });
@@ -4565,7 +4700,9 @@ void main() {
   unittest.group('obj-schema-GoogleIamV1Binding', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1Binding();
-      var od = api.GoogleIamV1Binding.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIamV1Binding.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamV1Binding(od as api.GoogleIamV1Binding);
     });
   });
@@ -4573,7 +4710,9 @@ void main() {
   unittest.group('obj-schema-GoogleIamV1Policy', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1Policy();
-      var od = api.GoogleIamV1Policy.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIamV1Policy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamV1Policy(od as api.GoogleIamV1Policy);
     });
   });
@@ -4581,7 +4720,9 @@ void main() {
   unittest.group('obj-schema-GoogleIamV1SetIamPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1SetIamPolicyRequest();
-      var od = api.GoogleIamV1SetIamPolicyRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIamV1SetIamPolicyRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamV1SetIamPolicyRequest(
           od as api.GoogleIamV1SetIamPolicyRequest);
     });
@@ -4590,7 +4731,9 @@ void main() {
   unittest.group('obj-schema-GoogleIamV1TestIamPermissionsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1TestIamPermissionsRequest();
-      var od = api.GoogleIamV1TestIamPermissionsRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIamV1TestIamPermissionsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamV1TestIamPermissionsRequest(
           od as api.GoogleIamV1TestIamPermissionsRequest);
     });
@@ -4599,7 +4742,9 @@ void main() {
   unittest.group('obj-schema-GoogleIamV1TestIamPermissionsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1TestIamPermissionsResponse();
-      var od = api.GoogleIamV1TestIamPermissionsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIamV1TestIamPermissionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamV1TestIamPermissionsResponse(
           od as api.GoogleIamV1TestIamPermissionsResponse);
     });
@@ -4608,7 +4753,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
-      var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningListOperationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningListOperationsResponse(
           od as api.GoogleLongrunningListOperationsResponse);
     });
@@ -4617,7 +4764,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
-      var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningOperation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
     });
   });
@@ -4625,7 +4774,9 @@ void main() {
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
-      var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleProtobufEmpty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
     });
   });
@@ -4633,7 +4784,9 @@ void main() {
   unittest.group('obj-schema-GoogleRpcStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
-      var od = api.GoogleRpcStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleRpcStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
     });
   });
@@ -4641,7 +4794,9 @@ void main() {
   unittest.group('obj-schema-GoogleTypeExpr', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeExpr();
-      var od = api.GoogleTypeExpr.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleTypeExpr.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleTypeExpr(od as api.GoogleTypeExpr);
     });
   });

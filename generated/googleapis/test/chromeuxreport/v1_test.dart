@@ -338,7 +338,8 @@ void main() {
   unittest.group('obj-schema-Bin', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBin();
-      var od = api.Bin.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Bin.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBin(od as api.Bin);
     });
   });
@@ -346,7 +347,8 @@ void main() {
   unittest.group('obj-schema-Key', () {
     unittest.test('to-json--from-json', () async {
       var o = buildKey();
-      var od = api.Key.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Key.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkKey(od as api.Key);
     });
   });
@@ -354,7 +356,9 @@ void main() {
   unittest.group('obj-schema-Metric', () {
     unittest.test('to-json--from-json', () async {
       var o = buildMetric();
-      var od = api.Metric.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Metric.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkMetric(od as api.Metric);
     });
   });
@@ -362,7 +366,9 @@ void main() {
   unittest.group('obj-schema-Percentiles', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPercentiles();
-      var od = api.Percentiles.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Percentiles.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPercentiles(od as api.Percentiles);
     });
   });
@@ -370,7 +376,9 @@ void main() {
   unittest.group('obj-schema-QueryRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildQueryRequest();
-      var od = api.QueryRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.QueryRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkQueryRequest(od as api.QueryRequest);
     });
   });
@@ -378,7 +386,9 @@ void main() {
   unittest.group('obj-schema-QueryResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildQueryResponse();
-      var od = api.QueryResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.QueryResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkQueryResponse(od as api.QueryResponse);
     });
   });
@@ -386,7 +396,9 @@ void main() {
   unittest.group('obj-schema-Record', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRecord();
-      var od = api.Record.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Record.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkRecord(od as api.Record);
     });
   });
@@ -394,7 +406,9 @@ void main() {
   unittest.group('obj-schema-UrlNormalization', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUrlNormalization();
-      var od = api.UrlNormalization.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UrlNormalization.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUrlNormalization(od as api.UrlNormalization);
     });
   });

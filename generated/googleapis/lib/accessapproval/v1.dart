@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1155,7 +1154,7 @@ class AccessApprovalSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enrolledAncestor != null) 'enrolledAncestor': enrolledAncestor!,
         if (enrolledServices != null)
           'enrolledServices':
@@ -1198,7 +1197,7 @@ class AccessLocations {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (principalOfficeCountry != null)
           'principalOfficeCountry': principalOfficeCountry!,
         if (principalPhysicalLocationCountry != null)
@@ -1240,7 +1239,7 @@ class AccessReason {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detail != null) 'detail': detail!,
         if (type != null) 'type': type!,
       };
@@ -1326,7 +1325,7 @@ class ApprovalRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (approve != null) 'approve': approve!.toJson(),
         if (dismiss != null) 'dismiss': dismiss!.toJson(),
         if (name != null) 'name': name!,
@@ -1357,7 +1356,7 @@ class ApproveApprovalRequestMessage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (expireTime != null) 'expireTime': expireTime!,
       };
 }
@@ -1381,7 +1380,7 @@ class ApproveDecision {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (approveTime != null) 'approveTime': approveTime!,
         if (expireTime != null) 'expireTime': expireTime!,
       };
@@ -1395,7 +1394,7 @@ class DismissApprovalRequestMessage {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A decision that has been made to dismiss an approval request.
@@ -1419,7 +1418,7 @@ class DismissDecision {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dismissTime != null) 'dismissTime': dismissTime!,
         if (implicit != null) 'implicit': implicit!,
       };
@@ -1439,7 +1438,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Represents the enrollment of a cloud resource into a specific service.
@@ -1480,7 +1479,7 @@ class EnrolledService {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cloudProduct != null) 'cloudProduct': cloudProduct!,
         if (enrollmentLevel != null) 'enrollmentLevel': enrollmentLevel!,
       };
@@ -1508,7 +1507,7 @@ class ListApprovalRequestsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (approvalRequests != null)
           'approvalRequests':
               approvalRequests!.map((value) => value.toJson()).toList(),
@@ -1530,7 +1529,7 @@ class ResourceProperties {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (excludesDescendants != null)
           'excludesDescendants': excludesDescendants!,
       };

@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -207,7 +206,7 @@ class Annotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!.toJson(),
         if (description != null) 'description': description!.toJson(),
       };
@@ -239,7 +238,7 @@ class AttributeValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boolValue != null) 'boolValue': boolValue!,
         if (intValue != null) 'intValue': intValue!,
         if (stringValue != null) 'stringValue': stringValue!.toJson(),
@@ -268,22 +267,20 @@ class Attributes {
 
   Attributes.fromJson(core.Map _json) {
     if (_json.containsKey('attributeMap')) {
-      attributeMap = (_json['attributeMap'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              AttributeValue.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      attributeMap =
+          (_json['attributeMap'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          AttributeValue.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('droppedAttributesCount')) {
       droppedAttributesCount = _json['droppedAttributesCount'] as core.int;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributeMap != null)
           'attributeMap': attributeMap!
               .map((key, item) => core.MapEntry(key, item.toJson())),
@@ -313,7 +310,7 @@ class BatchWriteSpansRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (spans != null)
           'spans': spans!.map((value) => value.toJson()).toList(),
       };
@@ -333,7 +330,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A pointer from the current span to another span in the same trace or in a
@@ -379,7 +376,7 @@ class Link {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!.toJson(),
         if (spanId != null) 'spanId': spanId!,
         if (traceId != null) 'traceId': traceId!,
@@ -412,7 +409,7 @@ class Links {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (droppedLinksCount != null) 'droppedLinksCount': droppedLinksCount!,
         if (link != null) 'link': link!.map((value) => value.toJson()).toList(),
       };
@@ -460,7 +457,7 @@ class MessageEvent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (compressedSizeBytes != null)
           'compressedSizeBytes': compressedSizeBytes!,
         if (id != null) 'id': id!,
@@ -493,7 +490,7 @@ class Module {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (buildId != null) 'buildId': buildId!.toJson(),
         if (module != null) 'module': module!.toJson(),
       };
@@ -674,7 +671,7 @@ class Span {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!.toJson(),
         if (childSpanCount != null) 'childSpanCount': childSpanCount!,
         if (displayName != null) 'displayName': displayName!.toJson(),
@@ -754,7 +751,7 @@ class StackFrame {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (columnNumber != null) 'columnNumber': columnNumber!,
         if (fileName != null) 'fileName': fileName!.toJson(),
         if (functionName != null) 'functionName': functionName!.toJson(),
@@ -791,7 +788,7 @@ class StackFrames {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (droppedFramesCount != null)
           'droppedFramesCount': droppedFramesCount!,
         if (frame != null)
@@ -827,7 +824,7 @@ class StackTrace {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (stackFrames != null) 'stackFrames': stackFrames!.toJson(),
         if (stackTraceHashId != null) 'stackTraceHashId': stackTraceHashId!,
       };
@@ -866,8 +863,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -880,7 +877,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -914,7 +911,7 @@ class TimeEvent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (annotation != null) 'annotation': annotation!.toJson(),
         if (messageEvent != null) 'messageEvent': messageEvent!.toJson(),
         if (time != null) 'time': time!,
@@ -958,7 +955,7 @@ class TimeEvents {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (droppedAnnotationsCount != null)
           'droppedAnnotationsCount': droppedAnnotationsCount!,
         if (droppedMessageEventsCount != null)
@@ -995,7 +992,7 @@ class TruncatableString {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (truncatedByteCount != null)
           'truncatedByteCount': truncatedByteCount!,
         if (value != null) 'value': value!,

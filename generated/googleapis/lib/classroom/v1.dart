@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -3810,7 +3809,7 @@ class Announcement {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,
         if (assigneeMode != null) 'assigneeMode': assigneeMode!,
         if (courseId != null) 'courseId': courseId!,
@@ -3844,7 +3843,7 @@ class Assignment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (studentWorkFolder != null)
           'studentWorkFolder': studentWorkFolder!.toJson(),
       };
@@ -3872,7 +3871,7 @@ class AssignmentSubmission {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attachments != null)
           'attachments': attachments!.map((value) => value.toJson()).toList(),
       };
@@ -3915,7 +3914,7 @@ class Attachment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (driveFile != null) 'driveFile': driveFile!.toJson(),
         if (form != null) 'form': form!.toJson(),
         if (link != null) 'link': link!.toJson(),
@@ -3941,7 +3940,7 @@ class CloudPubsubTopic {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (topicName != null) 'topicName': topicName!,
       };
 }
@@ -4143,7 +4142,7 @@ class Course {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,
         if (calendarId != null) 'calendarId': calendarId!,
         if (courseGroupEmail != null) 'courseGroupEmail': courseGroupEmail!,
@@ -4198,7 +4197,7 @@ class CourseAlias {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alias != null) 'alias': alias!,
       };
 }
@@ -4238,7 +4237,7 @@ class CourseMaterial {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (driveFile != null) 'driveFile': driveFile!.toJson(),
         if (form != null) 'form': form!.toJson(),
         if (link != null) 'link': link!.toJson(),
@@ -4271,7 +4270,7 @@ class CourseMaterialSet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (materials != null)
           'materials': materials!.map((value) => value.toJson()).toList(),
         if (title != null) 'title': title!,
@@ -4291,7 +4290,7 @@ class CourseRosterChangesInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (courseId != null) 'courseId': courseId!,
       };
 }
@@ -4525,7 +4524,7 @@ class CourseWork {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,
         if (assigneeMode != null) 'assigneeMode': assigneeMode!,
         if (assignment != null) 'assignment': assignment!.toJson(),
@@ -4569,7 +4568,7 @@ class CourseWorkChangesInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (courseId != null) 'courseId': courseId!,
       };
 }
@@ -4720,7 +4719,7 @@ class CourseWorkMaterial {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,
         if (assigneeMode != null) 'assigneeMode': assigneeMode!,
         if (courseId != null) 'courseId': courseId!,
@@ -4780,7 +4779,7 @@ class Date {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
         if (month != null) 'month': month!,
         if (year != null) 'year': year!,
@@ -4824,7 +4823,7 @@ class DriveFile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,
         if (id != null) 'id': id!,
         if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
@@ -4861,7 +4860,7 @@ class DriveFolder {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,
         if (id != null) 'id': id!,
         if (title != null) 'title': title!,
@@ -4882,7 +4881,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A class of notifications that an application can register to receive.
@@ -4939,7 +4938,7 @@ class Feed {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (courseRosterChangesInfo != null)
           'courseRosterChangesInfo': courseRosterChangesInfo!.toJson(),
         if (courseWorkChangesInfo != null)
@@ -4986,7 +4985,7 @@ class Form {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (formUrl != null) 'formUrl': formUrl!,
         if (responseUrl != null) 'responseUrl': responseUrl!,
         if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
@@ -5011,7 +5010,7 @@ class GlobalPermission {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permission != null) 'permission': permission!,
       };
 }
@@ -5061,7 +5060,7 @@ class GradeHistory {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (actorUserId != null) 'actorUserId': actorUserId!,
         if (gradeChangeType != null) 'gradeChangeType': gradeChangeType!,
         if (gradeTimestamp != null) 'gradeTimestamp': gradeTimestamp!,
@@ -5106,7 +5105,7 @@ class Guardian {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (guardianId != null) 'guardianId': guardianId!,
         if (guardianProfile != null)
           'guardianProfile': guardianProfile!.toJson(),
@@ -5165,7 +5164,7 @@ class GuardianInvitation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (creationTime != null) 'creationTime': creationTime!,
         if (invitationId != null) 'invitationId': invitationId!,
         if (invitedEmailAddress != null)
@@ -5193,7 +5192,7 @@ class IndividualStudentsOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (studentIds != null) 'studentIds': studentIds!,
       };
 }
@@ -5243,7 +5242,7 @@ class Invitation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (courseId != null) 'courseId': courseId!,
         if (id != null) 'id': id!,
         if (role != null) 'role': role!,
@@ -5283,7 +5282,7 @@ class Link {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,
         if (title != null) 'title': title!,
         if (url != null) 'url': url!,
@@ -5314,7 +5313,7 @@ class ListAnnouncementsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (announcements != null)
           'announcements':
               announcements!.map((value) => value.toJson()).toList(),
@@ -5346,7 +5345,7 @@ class ListCourseAliasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aliases != null)
           'aliases': aliases!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5377,7 +5376,7 @@ class ListCourseWorkMaterialResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (courseWorkMaterial != null)
           'courseWorkMaterial':
               courseWorkMaterial!.map((value) => value.toJson()).toList(),
@@ -5409,7 +5408,7 @@ class ListCourseWorkResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (courseWork != null)
           'courseWork': courseWork!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5440,7 +5439,7 @@ class ListCoursesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (courses != null)
           'courses': courses!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5471,7 +5470,7 @@ class ListGuardianInvitationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (guardianInvitations != null)
           'guardianInvitations':
               guardianInvitations!.map((value) => value.toJson()).toList(),
@@ -5504,7 +5503,7 @@ class ListGuardiansResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (guardians != null)
           'guardians': guardians!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5535,7 +5534,7 @@ class ListInvitationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (invitations != null)
           'invitations': invitations!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -5566,7 +5565,7 @@ class ListStudentSubmissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (studentSubmissions != null)
           'studentSubmissions':
@@ -5598,7 +5597,7 @@ class ListStudentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (students != null)
           'students': students!.map((value) => value.toJson()).toList(),
@@ -5629,7 +5628,7 @@ class ListTeachersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (teachers != null)
           'teachers': teachers!.map((value) => value.toJson()).toList(),
@@ -5660,7 +5659,7 @@ class ListTopicResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (topic != null)
           'topic': topic!.map((value) => value.toJson()).toList(),
@@ -5707,7 +5706,7 @@ class Material {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (driveFile != null) 'driveFile': driveFile!.toJson(),
         if (form != null) 'form': form!.toJson(),
         if (link != null) 'link': link!.toJson(),
@@ -5745,7 +5744,7 @@ class ModifyAnnouncementAssigneesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (assigneeMode != null) 'assigneeMode': assigneeMode!,
         if (modifyIndividualStudentsOptions != null)
           'modifyIndividualStudentsOptions':
@@ -5772,7 +5771,7 @@ class ModifyAttachmentsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addAttachments != null)
           'addAttachments':
               addAttachments!.map((value) => value.toJson()).toList(),
@@ -5809,7 +5808,7 @@ class ModifyCourseWorkAssigneesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (assigneeMode != null) 'assigneeMode': assigneeMode!,
         if (modifyIndividualStudentsOptions != null)
           'modifyIndividualStudentsOptions':
@@ -5843,7 +5842,7 @@ class ModifyIndividualStudentsOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addStudentIds != null) 'addStudentIds': addStudentIds!,
         if (removeStudentIds != null) 'removeStudentIds': removeStudentIds!,
       };
@@ -5864,7 +5863,7 @@ class MultipleChoiceQuestion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (choices != null) 'choices': choices!,
       };
 }
@@ -5882,7 +5881,7 @@ class MultipleChoiceSubmission {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (answer != null) 'answer': answer!,
       };
 }
@@ -5919,7 +5918,7 @@ class Name {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (familyName != null) 'familyName': familyName!,
         if (fullName != null) 'fullName': fullName!,
         if (givenName != null) 'givenName': givenName!,
@@ -5934,7 +5933,7 @@ class ReclaimStudentSubmissionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// An instruction to Classroom to send notifications from the `feed` to the
@@ -5976,7 +5975,7 @@ class Registration {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cloudPubsubTopic != null)
           'cloudPubsubTopic': cloudPubsubTopic!.toJson(),
         if (expiryTime != null) 'expiryTime': expiryTime!,
@@ -5993,7 +5992,7 @@ class ReturnStudentSubmissionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Drive file that is used as material for course work.
@@ -6022,7 +6021,7 @@ class SharedDriveFile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (driveFile != null) 'driveFile': driveFile!.toJson(),
         if (shareMode != null) 'shareMode': shareMode!,
       };
@@ -6041,7 +6040,7 @@ class ShortAnswerSubmission {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (answer != null) 'answer': answer!,
       };
 }
@@ -6084,7 +6083,7 @@ class StateHistory {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (actorUserId != null) 'actorUserId': actorUserId!,
         if (state != null) 'state': state!,
         if (stateTimestamp != null) 'stateTimestamp': stateTimestamp!,
@@ -6134,7 +6133,7 @@ class Student {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (courseId != null) 'courseId': courseId!,
         if (profile != null) 'profile': profile!.toJson(),
         if (studentWorkFolder != null)
@@ -6314,7 +6313,7 @@ class StudentSubmission {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,
         if (assignedGrade != null) 'assignedGrade': assignedGrade!,
         if (assignmentSubmission != null)
@@ -6364,7 +6363,7 @@ class SubmissionHistory {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gradeHistory != null) 'gradeHistory': gradeHistory!.toJson(),
         if (stateHistory != null) 'stateHistory': stateHistory!.toJson(),
       };
@@ -6404,7 +6403,7 @@ class Teacher {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (courseId != null) 'courseId': courseId!,
         if (profile != null) 'profile': profile!.toJson(),
         if (userId != null) 'userId': userId!,
@@ -6456,7 +6455,7 @@ class TimeOfDay {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (hours != null) 'hours': hours!,
         if (minutes != null) 'minutes': minutes!,
         if (nanos != null) 'nanos': nanos!,
@@ -6506,7 +6505,7 @@ class Topic {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (courseId != null) 'courseId': courseId!,
         if (name != null) 'name': name!,
         if (topicId != null) 'topicId': topicId!,
@@ -6522,7 +6521,7 @@ class TurnInStudentSubmissionRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Global information for a user.
@@ -6586,7 +6585,7 @@ class UserProfile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (emailAddress != null) 'emailAddress': emailAddress!,
         if (id != null) 'id': id!,
         if (name != null) 'name': name!.toJson(),
@@ -6634,7 +6633,7 @@ class YouTubeVideo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternateLink != null) 'alternateLink': alternateLink!,
         if (id != null) 'id': id!,
         if (thumbnailUrl != null) 'thumbnailUrl': thumbnailUrl!,

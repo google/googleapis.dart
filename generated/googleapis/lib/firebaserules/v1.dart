@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -646,7 +645,7 @@ class Arg {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (anyValue != null) 'anyValue': anyValue!.toJson(),
         if (exactValue != null) 'exactValue': exactValue!,
       };
@@ -666,7 +665,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Describes where in a file an expression is found and what it was evaluated
@@ -702,7 +701,7 @@ class ExpressionReport {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (children != null)
           'children': children!.map((value) => value.toJson()).toList(),
         if (sourcePosition != null) 'sourcePosition': sourcePosition!.toJson(),
@@ -743,7 +742,7 @@ class File {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
         if (name != null) 'name': name!,
@@ -775,7 +774,7 @@ class FunctionCall {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (args != null) 'args': args!,
         if (function != null) 'function': function!,
       };
@@ -823,7 +822,7 @@ class FunctionMock {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (args != null) 'args': args!.map((value) => value.toJson()).toList(),
         if (function != null) 'function': function!,
         if (result != null) 'result': result!.toJson(),
@@ -895,7 +894,7 @@ class GetReleaseExecutableResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (executable != null) 'executable': executable!,
         if (executableVersion != null) 'executableVersion': executableVersion!,
         if (language != null) 'language': language!,
@@ -938,7 +937,7 @@ class Issue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (severity != null) 'severity': severity!,
         if (sourcePosition != null) 'sourcePosition': sourcePosition!.toJson(),
@@ -969,7 +968,7 @@ class ListReleasesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (releases != null)
           'releases': releases!.map((value) => value.toJson()).toList(),
@@ -1000,7 +999,7 @@ class ListRulesetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (rulesets != null)
           'rulesets': rulesets!.map((value) => value.toJson()).toList(),
@@ -1024,7 +1023,7 @@ class Metadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (services != null) 'services': services!,
       };
 }
@@ -1085,7 +1084,7 @@ class Release {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (name != null) 'name': name!,
         if (rulesetName != null) 'rulesetName': rulesetName!,
@@ -1118,7 +1117,7 @@ class Result {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (undefined != null) 'undefined': undefined!.toJson(),
         if (value != null) 'value': value!,
       };
@@ -1165,7 +1164,7 @@ class Ruleset {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (metadata != null) 'metadata': metadata!.toJson(),
         if (name != null) 'name': name!,
@@ -1189,7 +1188,7 @@ class Source {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (files != null)
           'files': files!.map((value) => value.toJson()).toList(),
       };
@@ -1237,7 +1236,7 @@ class SourcePosition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (column != null) 'column': column!,
         if (currentOffset != null) 'currentOffset': currentOffset!,
         if (endOffset != null) 'endOffset': endOffset!,
@@ -1337,7 +1336,7 @@ class TestCase {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (expectation != null) 'expectation': expectation!,
         if (expressionReportLevel != null)
           'expressionReportLevel': expressionReportLevel!,
@@ -1435,7 +1434,7 @@ class TestResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (debugMessages != null) 'debugMessages': debugMessages!,
         if (errorPosition != null) 'errorPosition': errorPosition!.toJson(),
         if (expressionReports != null)
@@ -1474,7 +1473,7 @@ class TestRulesetRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (source != null) 'source': source!.toJson(),
         if (testSuite != null) 'testSuite': testSuite!.toJson(),
       };
@@ -1510,7 +1509,7 @@ class TestRulesetResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (issues != null)
           'issues': issues!.map((value) => value.toJson()).toList(),
         if (testResults != null)
@@ -1538,7 +1537,7 @@ class TestSuite {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (testCases != null)
           'testCases': testCases!.map((value) => value.toJson()).toList(),
       };
@@ -1564,7 +1563,7 @@ class UpdateReleaseRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (release != null) 'release': release!.toJson(),
         if (updateMask != null) 'updateMask': updateMask!,
       };
@@ -1593,7 +1592,7 @@ class ValueCount {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (count != null) 'count': count!,
         if (value != null) 'value': value!,
       };
@@ -1622,7 +1621,7 @@ class VisitedExpression {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sourcePosition != null) 'sourcePosition': sourcePosition!.toJson(),
         if (value != null) 'value': value!,
       };

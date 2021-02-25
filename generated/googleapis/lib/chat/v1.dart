@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -976,7 +975,7 @@ class ActionParameter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (key != null) 'key': key!,
         if (value != null) 'value': value!,
       };
@@ -1009,7 +1008,7 @@ class ActionResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
         if (url != null) 'url': url!,
       };
@@ -1067,7 +1066,7 @@ class Annotation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (length != null) 'length': length!,
         if (slashCommand != null) 'slashCommand': slashCommand!.toJson(),
         if (startIndex != null) 'startIndex': startIndex!,
@@ -1152,7 +1151,7 @@ class Attachment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attachmentDataRef != null)
           'attachmentDataRef': attachmentDataRef!.toJson(),
         if (contentName != null) 'contentName': contentName!,
@@ -1180,7 +1179,7 @@ class AttachmentDataRef {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resourceName != null) 'resourceName': resourceName!,
       };
 }
@@ -1208,7 +1207,7 @@ class Button {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (imageButton != null) 'imageButton': imageButton!.toJson(),
         if (textButton != null) 'textButton': textButton!.toJson(),
       };
@@ -1254,7 +1253,7 @@ class Card {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cardActions != null)
           'cardActions': cardActions!.map((value) => value.toJson()).toList(),
         if (header != null) 'header': header!.toJson(),
@@ -1287,7 +1286,7 @@ class CardAction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (actionLabel != null) 'actionLabel': actionLabel!,
         if (onClick != null) 'onClick': onClick!.toJson(),
       };
@@ -1331,7 +1330,7 @@ class CardHeader {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (imageStyle != null) 'imageStyle': imageStyle!,
         if (imageUrl != null) 'imageUrl': imageUrl!,
         if (subtitle != null) 'subtitle': subtitle!,
@@ -1425,7 +1424,7 @@ class DeprecatedEvent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!.toJson(),
         if (configCompleteRedirectUrl != null)
           'configCompleteRedirectUrl': configCompleteRedirectUrl!,
@@ -1452,7 +1451,7 @@ class DriveDataRef {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (driveFileId != null) 'driveFileId': driveFileId!,
       };
 }
@@ -1471,7 +1470,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A form action describes the behavior when the form is submitted.
@@ -1503,7 +1502,7 @@ class FormAction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (actionMethodName != null) 'actionMethodName': actionMethodName!,
         if (parameters != null)
           'parameters': parameters!.map((value) => value.toJson()).toList(),
@@ -1540,7 +1539,7 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aspectRatio != null) 'aspectRatio': aspectRatio!,
         if (imageUrl != null) 'imageUrl': imageUrl!,
         if (onClick != null) 'onClick': onClick!.toJson(),
@@ -1614,7 +1613,7 @@ class ImageButton {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (icon != null) 'icon': icon!,
         if (iconUrl != null) 'iconUrl': iconUrl!,
         if (name != null) 'name': name!,
@@ -1722,7 +1721,7 @@ class KeyValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bottomLabel != null) 'bottomLabel': bottomLabel!,
         if (button != null) 'button': button!.toJson(),
         if (content != null) 'content': content!,
@@ -1757,7 +1756,7 @@ class ListMembershipsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (memberships != null)
           'memberships': memberships!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1788,7 +1787,7 @@ class ListSpacesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (spaces != null)
           'spaces': spaces!.map((value) => value.toJson()).toList(),
@@ -1808,7 +1807,7 @@ class Media {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resourceName != null) 'resourceName': resourceName!,
       };
 }
@@ -1851,7 +1850,7 @@ class Membership {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (member != null) 'member': member!.toJson(),
         if (name != null) 'name': name!,
@@ -1979,7 +1978,7 @@ class Message {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (actionResponse != null) 'actionResponse': actionResponse!.toJson(),
         if (annotations != null)
           'annotations': annotations!.map((value) => value.toJson()).toList(),
@@ -2021,7 +2020,7 @@ class OnClick {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!.toJson(),
         if (openLink != null) 'openLink': openLink!.toJson(),
       };
@@ -2040,7 +2039,7 @@ class OpenLink {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (url != null) 'url': url!,
       };
 }
@@ -2071,7 +2070,7 @@ class Section {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (header != null) 'header': header!,
         if (widgets != null)
           'widgets': widgets!.map((value) => value.toJson()).toList(),
@@ -2091,7 +2090,7 @@ class SlashCommand {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commandId != null) 'commandId': commandId!,
       };
 }
@@ -2137,7 +2136,7 @@ class SlashCommandMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bot != null) 'bot': bot!.toJson(),
         if (commandId != null) 'commandId': commandId!,
         if (commandName != null) 'commandName': commandName!,
@@ -2199,7 +2198,7 @@ class Space {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,
         if (singleUserBotDm != null) 'singleUserBotDm': singleUserBotDm!,
@@ -2228,7 +2227,7 @@ class TextButton {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (onClick != null) 'onClick': onClick!.toJson(),
         if (text != null) 'text': text!,
       };
@@ -2248,7 +2247,7 @@ class TextParagraph {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (text != null) 'text': text!,
       };
 }
@@ -2268,7 +2267,7 @@ class Thread {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
       };
 }
@@ -2314,7 +2313,7 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (domainId != null) 'domainId': domainId!,
         if (isAnonymous != null) 'isAnonymous': isAnonymous!,
@@ -2347,7 +2346,7 @@ class UserMentionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
         if (user != null) 'user': user!.toJson(),
       };
@@ -2392,7 +2391,7 @@ class WidgetMarkup {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (buttons != null)
           'buttons': buttons!.map((value) => value.toJson()).toList(),
         if (image != null) 'image': image!.toJson(),

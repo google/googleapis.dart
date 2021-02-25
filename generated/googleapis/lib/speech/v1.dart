@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -266,7 +265,7 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
@@ -314,7 +313,7 @@ class LongRunningRecognizeMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (lastUpdateTime != null) 'lastUpdateTime': lastUpdateTime!,
         if (progressPercent != null) 'progressPercent': progressPercent!,
         if (startTime != null) 'startTime': startTime!,
@@ -349,7 +348,7 @@ class LongRunningRecognizeRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audio != null) 'audio': audio!.toJson(),
         if (config != null) 'config': config!.toJson(),
       };
@@ -379,7 +378,7 @@ class LongRunningRecognizeResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (results != null)
           'results': results!.map((value) => value.toJson()).toList(),
       };
@@ -439,29 +438,27 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -509,7 +506,7 @@ class RecognitionAudio {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (uri != null) 'uri': uri!,
       };
@@ -724,7 +721,7 @@ class RecognitionConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audioChannelCount != null) 'audioChannelCount': audioChannelCount!,
         if (diarizationConfig != null)
           'diarizationConfig': diarizationConfig!.toJson(),
@@ -857,7 +854,7 @@ class RecognitionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audioTopic != null) 'audioTopic': audioTopic!,
         if (industryNaicsCodeOfAudio != null)
           'industryNaicsCodeOfAudio': industryNaicsCodeOfAudio!,
@@ -899,7 +896,7 @@ class RecognizeRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audio != null) 'audio': audio!.toJson(),
         if (config != null) 'config': config!.toJson(),
       };
@@ -926,7 +923,7 @@ class RecognizeResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (results != null)
           'results': results!.map((value) => value.toJson()).toList(),
       };
@@ -975,7 +972,7 @@ class SpeakerDiarizationConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enableSpeakerDiarization != null)
           'enableSpeakerDiarization': enableSpeakerDiarization!,
         if (maxSpeakerCount != null) 'maxSpeakerCount': maxSpeakerCount!,
@@ -1012,7 +1009,7 @@ class SpeechContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (phrases != null) 'phrases': phrases!,
       };
 }
@@ -1055,7 +1052,7 @@ class SpeechRecognitionAlternative {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (transcript != null) 'transcript': transcript!,
         if (words != null)
@@ -1093,7 +1090,7 @@ class SpeechRecognitionResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternatives != null)
           'alternatives': alternatives!.map((value) => value.toJson()).toList(),
         if (channelTag != null) 'channelTag': channelTag!,
@@ -1133,8 +1130,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -1147,7 +1144,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -1202,7 +1199,7 @@ class WordInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (speakerTag != null) 'speakerTag': speakerTag!,
         if (startTime != null) 'startTime': startTime!,

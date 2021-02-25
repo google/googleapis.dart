@@ -8529,7 +8529,9 @@ void main() {
   unittest.group('obj-schema-GoogleApiHttpBody', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleApiHttpBody();
-      var od = api.GoogleApiHttpBody.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleApiHttpBody.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleApiHttpBody(od as api.GoogleApiHttpBody);
     });
   });
@@ -8537,7 +8539,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Access', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Access();
-      var od = api.GoogleCloudApigeeV1Access.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Access.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Access(od as api.GoogleCloudApigeeV1Access);
     });
   });
@@ -8545,7 +8549,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1AccessGet', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1AccessGet();
-      var od = api.GoogleCloudApigeeV1AccessGet.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1AccessGet.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1AccessGet(od as api.GoogleCloudApigeeV1AccessGet);
     });
   });
@@ -8553,7 +8559,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1AccessRemove', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1AccessRemove();
-      var od = api.GoogleCloudApigeeV1AccessRemove.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1AccessRemove.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1AccessRemove(
           od as api.GoogleCloudApigeeV1AccessRemove);
     });
@@ -8562,7 +8570,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1AccessSet', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1AccessSet();
-      var od = api.GoogleCloudApigeeV1AccessSet.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1AccessSet.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1AccessSet(od as api.GoogleCloudApigeeV1AccessSet);
     });
   });
@@ -8570,8 +8580,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ActivateNatAddressRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ActivateNatAddressRequest();
-      var od =
-          api.GoogleCloudApigeeV1ActivateNatAddressRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ActivateNatAddressRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ActivateNatAddressRequest(
           od as api.GoogleCloudApigeeV1ActivateNatAddressRequest);
     });
@@ -8580,7 +8591,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Alias', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Alias();
-      var od = api.GoogleCloudApigeeV1Alias.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Alias.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Alias(od as api.GoogleCloudApigeeV1Alias);
     });
   });
@@ -8588,7 +8601,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1AliasRevisionConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1AliasRevisionConfig();
-      var od = api.GoogleCloudApigeeV1AliasRevisionConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1AliasRevisionConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1AliasRevisionConfig(
           od as api.GoogleCloudApigeeV1AliasRevisionConfig);
     });
@@ -8597,7 +8612,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiCategory', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ApiCategory();
-      var od = api.GoogleCloudApigeeV1ApiCategory.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ApiCategory.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ApiCategory(
           od as api.GoogleCloudApigeeV1ApiCategory);
     });
@@ -8606,7 +8623,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiCategoryData', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ApiCategoryData();
-      var od = api.GoogleCloudApigeeV1ApiCategoryData.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ApiCategoryData.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ApiCategoryData(
           od as api.GoogleCloudApigeeV1ApiCategoryData);
     });
@@ -8615,7 +8634,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiProduct', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ApiProduct();
-      var od = api.GoogleCloudApigeeV1ApiProduct.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ApiProduct.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ApiProduct(
           od as api.GoogleCloudApigeeV1ApiProduct);
     });
@@ -8624,7 +8645,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiProductRef', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ApiProductRef();
-      var od = api.GoogleCloudApigeeV1ApiProductRef.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ApiProductRef.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ApiProductRef(
           od as api.GoogleCloudApigeeV1ApiProductRef);
     });
@@ -8633,7 +8656,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiProxy', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ApiProxy();
-      var od = api.GoogleCloudApigeeV1ApiProxy.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ApiProxy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ApiProxy(od as api.GoogleCloudApigeeV1ApiProxy);
     });
   });
@@ -8641,7 +8666,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiProxyRevision', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ApiProxyRevision();
-      var od = api.GoogleCloudApigeeV1ApiProxyRevision.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ApiProxyRevision.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ApiProxyRevision(
           od as api.GoogleCloudApigeeV1ApiProxyRevision);
     });
@@ -8650,7 +8677,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ApiResponseWrapper', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ApiResponseWrapper();
-      var od = api.GoogleCloudApigeeV1ApiResponseWrapper.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ApiResponseWrapper.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ApiResponseWrapper(
           od as api.GoogleCloudApigeeV1ApiResponseWrapper);
     });
@@ -8659,7 +8688,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1App', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1App();
-      var od = api.GoogleCloudApigeeV1App.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1App.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1App(od as api.GoogleCloudApigeeV1App);
     });
   });
@@ -8667,7 +8698,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1AsyncQuery', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1AsyncQuery();
-      var od = api.GoogleCloudApigeeV1AsyncQuery.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1AsyncQuery.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1AsyncQuery(
           od as api.GoogleCloudApigeeV1AsyncQuery);
     });
@@ -8676,7 +8709,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1AsyncQueryResult', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1AsyncQueryResult();
-      var od = api.GoogleCloudApigeeV1AsyncQueryResult.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1AsyncQueryResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1AsyncQueryResult(
           od as api.GoogleCloudApigeeV1AsyncQueryResult);
     });
@@ -8685,7 +8720,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1AsyncQueryResultView', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1AsyncQueryResultView();
-      var od = api.GoogleCloudApigeeV1AsyncQueryResultView.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1AsyncQueryResultView.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1AsyncQueryResultView(
           od as api.GoogleCloudApigeeV1AsyncQueryResultView);
     });
@@ -8694,7 +8731,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Attribute', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Attribute();
-      var od = api.GoogleCloudApigeeV1Attribute.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Attribute.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Attribute(od as api.GoogleCloudApigeeV1Attribute);
     });
   });
@@ -8702,7 +8741,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Attributes', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Attributes();
-      var od = api.GoogleCloudApigeeV1Attributes.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Attributes.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Attributes(
           od as api.GoogleCloudApigeeV1Attributes);
     });
@@ -8711,7 +8752,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1CanaryEvaluation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1CanaryEvaluation();
-      var od = api.GoogleCloudApigeeV1CanaryEvaluation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1CanaryEvaluation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1CanaryEvaluation(
           od as api.GoogleCloudApigeeV1CanaryEvaluation);
     });
@@ -8721,8 +8764,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1CanaryEvaluationMetricLabels();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudApigeeV1CanaryEvaluationMetricLabels.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1CanaryEvaluationMetricLabels(
           od as api.GoogleCloudApigeeV1CanaryEvaluationMetricLabels);
     });
@@ -8731,7 +8775,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1CertInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1CertInfo();
-      var od = api.GoogleCloudApigeeV1CertInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1CertInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1CertInfo(od as api.GoogleCloudApigeeV1CertInfo);
     });
   });
@@ -8739,7 +8785,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Certificate', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Certificate();
-      var od = api.GoogleCloudApigeeV1Certificate.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Certificate.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Certificate(
           od as api.GoogleCloudApigeeV1Certificate);
     });
@@ -8748,7 +8796,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1CommonNameConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1CommonNameConfig();
-      var od = api.GoogleCloudApigeeV1CommonNameConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1CommonNameConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1CommonNameConfig(
           od as api.GoogleCloudApigeeV1CommonNameConfig);
     });
@@ -8757,7 +8807,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ConfigVersion', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ConfigVersion();
-      var od = api.GoogleCloudApigeeV1ConfigVersion.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ConfigVersion.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ConfigVersion(
           od as api.GoogleCloudApigeeV1ConfigVersion);
     });
@@ -8766,7 +8818,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Credential', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Credential();
-      var od = api.GoogleCloudApigeeV1Credential.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Credential.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Credential(
           od as api.GoogleCloudApigeeV1Credential);
     });
@@ -8775,7 +8829,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1CustomReport', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1CustomReport();
-      var od = api.GoogleCloudApigeeV1CustomReport.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1CustomReport.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1CustomReport(
           od as api.GoogleCloudApigeeV1CustomReport);
     });
@@ -8784,7 +8840,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1CustomReportMetric', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1CustomReportMetric();
-      var od = api.GoogleCloudApigeeV1CustomReportMetric.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1CustomReportMetric.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1CustomReportMetric(
           od as api.GoogleCloudApigeeV1CustomReportMetric);
     });
@@ -8793,7 +8851,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1DataCollector', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DataCollector();
-      var od = api.GoogleCloudApigeeV1DataCollector.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1DataCollector.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1DataCollector(
           od as api.GoogleCloudApigeeV1DataCollector);
     });
@@ -8802,7 +8862,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1DataCollectorConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DataCollectorConfig();
-      var od = api.GoogleCloudApigeeV1DataCollectorConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1DataCollectorConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1DataCollectorConfig(
           od as api.GoogleCloudApigeeV1DataCollectorConfig);
     });
@@ -8811,7 +8873,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Datastore', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Datastore();
-      var od = api.GoogleCloudApigeeV1Datastore.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Datastore.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Datastore(od as api.GoogleCloudApigeeV1Datastore);
     });
   });
@@ -8819,7 +8883,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1DatastoreConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DatastoreConfig();
-      var od = api.GoogleCloudApigeeV1DatastoreConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1DatastoreConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1DatastoreConfig(
           od as api.GoogleCloudApigeeV1DatastoreConfig);
     });
@@ -8828,7 +8894,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1DateRange', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DateRange();
-      var od = api.GoogleCloudApigeeV1DateRange.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1DateRange.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1DateRange(od as api.GoogleCloudApigeeV1DateRange);
     });
   });
@@ -8836,7 +8904,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1DebugMask', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DebugMask();
-      var od = api.GoogleCloudApigeeV1DebugMask.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1DebugMask.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1DebugMask(od as api.GoogleCloudApigeeV1DebugMask);
     });
   });
@@ -8844,7 +8914,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1DebugSession', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DebugSession();
-      var od = api.GoogleCloudApigeeV1DebugSession.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1DebugSession.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1DebugSession(
           od as api.GoogleCloudApigeeV1DebugSession);
     });
@@ -8853,8 +8925,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1DebugSessionTransaction', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DebugSessionTransaction();
-      var od =
-          api.GoogleCloudApigeeV1DebugSessionTransaction.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1DebugSessionTransaction.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1DebugSessionTransaction(
           od as api.GoogleCloudApigeeV1DebugSessionTransaction);
     });
@@ -8864,8 +8937,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DeleteCustomReportResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudApigeeV1DeleteCustomReportResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1DeleteCustomReportResponse(
           od as api.GoogleCloudApigeeV1DeleteCustomReportResponse);
     });
@@ -8874,7 +8948,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Deployment', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Deployment();
-      var od = api.GoogleCloudApigeeV1Deployment.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Deployment.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Deployment(
           od as api.GoogleCloudApigeeV1Deployment);
     });
@@ -8883,8 +8959,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1DeploymentChangeReport', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DeploymentChangeReport();
-      var od =
-          api.GoogleCloudApigeeV1DeploymentChangeReport.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1DeploymentChangeReport.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1DeploymentChangeReport(
           od as api.GoogleCloudApigeeV1DeploymentChangeReport);
     });
@@ -8894,9 +8971,10 @@ void main() {
       'obj-schema-GoogleCloudApigeeV1DeploymentChangeReportRoutingChange', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DeploymentChangeReportRoutingChange();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1DeploymentChangeReportRoutingChange(
           od as api.GoogleCloudApigeeV1DeploymentChangeReportRoutingChange);
     });
@@ -8907,9 +8985,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1DeploymentChangeReportRoutingConflict(
           od as api.GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict);
     });
@@ -8920,8 +8999,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment(
           od as api.GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment);
     });
@@ -8930,7 +9010,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1DeploymentConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DeploymentConfig();
-      var od = api.GoogleCloudApigeeV1DeploymentConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1DeploymentConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1DeploymentConfig(
           od as api.GoogleCloudApigeeV1DeploymentConfig);
     });
@@ -8939,7 +9021,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Developer', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Developer();
-      var od = api.GoogleCloudApigeeV1Developer.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Developer.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Developer(od as api.GoogleCloudApigeeV1Developer);
     });
   });
@@ -8947,7 +9031,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1DeveloperApp', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DeveloperApp();
-      var od = api.GoogleCloudApigeeV1DeveloperApp.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1DeveloperApp.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1DeveloperApp(
           od as api.GoogleCloudApigeeV1DeveloperApp);
     });
@@ -8956,7 +9042,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1DeveloperAppKey', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DeveloperAppKey();
-      var od = api.GoogleCloudApigeeV1DeveloperAppKey.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1DeveloperAppKey(
           od as api.GoogleCloudApigeeV1DeveloperAppKey);
     });
@@ -8965,7 +9053,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1DimensionMetric', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1DimensionMetric();
-      var od = api.GoogleCloudApigeeV1DimensionMetric.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1DimensionMetric.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1DimensionMetric(
           od as api.GoogleCloudApigeeV1DimensionMetric);
     });
@@ -8974,7 +9064,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1EntityMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1EntityMetadata();
-      var od = api.GoogleCloudApigeeV1EntityMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1EntityMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1EntityMetadata(
           od as api.GoogleCloudApigeeV1EntityMetadata);
     });
@@ -8983,7 +9075,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Environment', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Environment();
-      var od = api.GoogleCloudApigeeV1Environment.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Environment.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Environment(
           od as api.GoogleCloudApigeeV1Environment);
     });
@@ -8992,7 +9086,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1EnvironmentConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1EnvironmentConfig();
-      var od = api.GoogleCloudApigeeV1EnvironmentConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1EnvironmentConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1EnvironmentConfig(
           od as api.GoogleCloudApigeeV1EnvironmentConfig);
     });
@@ -9001,7 +9097,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1EnvironmentGroup', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1EnvironmentGroup();
-      var od = api.GoogleCloudApigeeV1EnvironmentGroup.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1EnvironmentGroup.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1EnvironmentGroup(
           od as api.GoogleCloudApigeeV1EnvironmentGroup);
     });
@@ -9011,8 +9109,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1EnvironmentGroupAttachment();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1EnvironmentGroupAttachment(
           od as api.GoogleCloudApigeeV1EnvironmentGroupAttachment);
     });
@@ -9021,8 +9120,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1EnvironmentGroupConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1EnvironmentGroupConfig();
-      var od =
-          api.GoogleCloudApigeeV1EnvironmentGroupConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1EnvironmentGroupConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1EnvironmentGroupConfig(
           od as api.GoogleCloudApigeeV1EnvironmentGroupConfig);
     });
@@ -9031,7 +9131,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Export', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Export();
-      var od = api.GoogleCloudApigeeV1Export.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Export.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Export(od as api.GoogleCloudApigeeV1Export);
     });
   });
@@ -9039,7 +9141,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ExportRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ExportRequest();
-      var od = api.GoogleCloudApigeeV1ExportRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ExportRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ExportRequest(
           od as api.GoogleCloudApigeeV1ExportRequest);
     });
@@ -9048,7 +9152,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1FlowHook', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1FlowHook();
-      var od = api.GoogleCloudApigeeV1FlowHook.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1FlowHook.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1FlowHook(od as api.GoogleCloudApigeeV1FlowHook);
     });
   });
@@ -9056,7 +9162,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1FlowHookConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1FlowHookConfig();
-      var od = api.GoogleCloudApigeeV1FlowHookConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1FlowHookConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1FlowHookConfig(
           od as api.GoogleCloudApigeeV1FlowHookConfig);
     });
@@ -9066,8 +9174,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1GetSyncAuthorizationRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudApigeeV1GetSyncAuthorizationRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1GetSyncAuthorizationRequest(
           od as api.GoogleCloudApigeeV1GetSyncAuthorizationRequest);
     });
@@ -9076,7 +9185,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1IngressConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1IngressConfig();
-      var od = api.GoogleCloudApigeeV1IngressConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1IngressConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1IngressConfig(
           od as api.GoogleCloudApigeeV1IngressConfig);
     });
@@ -9085,7 +9196,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Instance', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Instance();
-      var od = api.GoogleCloudApigeeV1Instance.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Instance.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Instance(od as api.GoogleCloudApigeeV1Instance);
     });
   });
@@ -9093,7 +9206,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1InstanceAttachment', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1InstanceAttachment();
-      var od = api.GoogleCloudApigeeV1InstanceAttachment.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1InstanceAttachment.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1InstanceAttachment(
           od as api.GoogleCloudApigeeV1InstanceAttachment);
     });
@@ -9102,8 +9217,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1InstanceDeploymentStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1InstanceDeploymentStatus();
-      var od =
-          api.GoogleCloudApigeeV1InstanceDeploymentStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1InstanceDeploymentStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1InstanceDeploymentStatus(
           od as api.GoogleCloudApigeeV1InstanceDeploymentStatus);
     });
@@ -9115,8 +9231,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision(od
           as api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision);
     });
@@ -9127,9 +9244,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute(
           od as api.GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute);
     });
@@ -9138,7 +9256,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1KeyAliasReference', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1KeyAliasReference();
-      var od = api.GoogleCloudApigeeV1KeyAliasReference.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1KeyAliasReference.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1KeyAliasReference(
           od as api.GoogleCloudApigeeV1KeyAliasReference);
     });
@@ -9147,7 +9267,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1KeyValueMap', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1KeyValueMap();
-      var od = api.GoogleCloudApigeeV1KeyValueMap.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1KeyValueMap.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1KeyValueMap(
           od as api.GoogleCloudApigeeV1KeyValueMap);
     });
@@ -9156,7 +9278,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Keystore', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Keystore();
-      var od = api.GoogleCloudApigeeV1Keystore.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Keystore.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Keystore(od as api.GoogleCloudApigeeV1Keystore);
     });
   });
@@ -9164,7 +9288,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1KeystoreConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1KeystoreConfig();
-      var od = api.GoogleCloudApigeeV1KeystoreConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1KeystoreConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1KeystoreConfig(
           od as api.GoogleCloudApigeeV1KeystoreConfig);
     });
@@ -9173,8 +9299,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ListApiCategoriesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListApiCategoriesResponse();
-      var od =
-          api.GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListApiCategoriesResponse(
           od as api.GoogleCloudApigeeV1ListApiCategoriesResponse);
     });
@@ -9183,8 +9310,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ListApiProductsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListApiProductsResponse();
-      var od =
-          api.GoogleCloudApigeeV1ListApiProductsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ListApiProductsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListApiProductsResponse(
           od as api.GoogleCloudApigeeV1ListApiProductsResponse);
     });
@@ -9193,8 +9321,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ListApiProxiesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListApiProxiesResponse();
-      var od =
-          api.GoogleCloudApigeeV1ListApiProxiesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ListApiProxiesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListApiProxiesResponse(
           od as api.GoogleCloudApigeeV1ListApiProxiesResponse);
     });
@@ -9203,7 +9332,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ListAppsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListAppsResponse();
-      var od = api.GoogleCloudApigeeV1ListAppsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ListAppsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListAppsResponse(
           od as api.GoogleCloudApigeeV1ListAppsResponse);
     });
@@ -9212,8 +9343,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ListAsyncQueriesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListAsyncQueriesResponse();
-      var od =
-          api.GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListAsyncQueriesResponse(
           od as api.GoogleCloudApigeeV1ListAsyncQueriesResponse);
     });
@@ -9222,8 +9354,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ListCustomReportsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListCustomReportsResponse();
-      var od =
-          api.GoogleCloudApigeeV1ListCustomReportsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ListCustomReportsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListCustomReportsResponse(
           od as api.GoogleCloudApigeeV1ListCustomReportsResponse);
     });
@@ -9233,8 +9366,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListDataCollectorsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudApigeeV1ListDataCollectorsResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListDataCollectorsResponse(
           od as api.GoogleCloudApigeeV1ListDataCollectorsResponse);
     });
@@ -9243,8 +9377,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ListDatastoresResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListDatastoresResponse();
-      var od =
-          api.GoogleCloudApigeeV1ListDatastoresResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ListDatastoresResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListDatastoresResponse(
           od as api.GoogleCloudApigeeV1ListDatastoresResponse);
     });
@@ -9253,8 +9388,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ListDebugSessionsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListDebugSessionsResponse();
-      var od =
-          api.GoogleCloudApigeeV1ListDebugSessionsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ListDebugSessionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListDebugSessionsResponse(
           od as api.GoogleCloudApigeeV1ListDebugSessionsResponse);
     });
@@ -9263,8 +9399,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ListDeploymentsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListDeploymentsResponse();
-      var od =
-          api.GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListDeploymentsResponse(
           od as api.GoogleCloudApigeeV1ListDeploymentsResponse);
     });
@@ -9273,8 +9410,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ListDeveloperAppsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListDeveloperAppsResponse();
-      var od =
-          api.GoogleCloudApigeeV1ListDeveloperAppsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ListDeveloperAppsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListDeveloperAppsResponse(
           od as api.GoogleCloudApigeeV1ListDeveloperAppsResponse);
     });
@@ -9285,8 +9423,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse(
           od as api.GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse);
     });
@@ -9296,8 +9435,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListEnvironmentGroupsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListEnvironmentGroupsResponse(
           od as api.GoogleCloudApigeeV1ListEnvironmentGroupsResponse);
     });
@@ -9307,8 +9447,9 @@ void main() {
       'obj-schema-GoogleCloudApigeeV1ListEnvironmentResourcesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListEnvironmentResourcesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListEnvironmentResourcesResponse(
           od as api.GoogleCloudApigeeV1ListEnvironmentResourcesResponse);
     });
@@ -9317,7 +9458,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ListExportsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListExportsResponse();
-      var od = api.GoogleCloudApigeeV1ListExportsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ListExportsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListExportsResponse(
           od as api.GoogleCloudApigeeV1ListExportsResponse);
     });
@@ -9326,8 +9469,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ListHybridIssuersResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListHybridIssuersResponse();
-      var od =
-          api.GoogleCloudApigeeV1ListHybridIssuersResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ListHybridIssuersResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListHybridIssuersResponse(
           od as api.GoogleCloudApigeeV1ListHybridIssuersResponse);
     });
@@ -9337,8 +9481,9 @@ void main() {
       'obj-schema-GoogleCloudApigeeV1ListInstanceAttachmentsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListInstanceAttachmentsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListInstanceAttachmentsResponse(
           od as api.GoogleCloudApigeeV1ListInstanceAttachmentsResponse);
     });
@@ -9347,8 +9492,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ListInstancesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListInstancesResponse();
-      var od =
-          api.GoogleCloudApigeeV1ListInstancesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ListInstancesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListInstancesResponse(
           od as api.GoogleCloudApigeeV1ListInstancesResponse);
     });
@@ -9357,8 +9503,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ListNatAddressesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListNatAddressesResponse();
-      var od =
-          api.GoogleCloudApigeeV1ListNatAddressesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ListNatAddressesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListNatAddressesResponse(
           od as api.GoogleCloudApigeeV1ListNatAddressesResponse);
     });
@@ -9367,8 +9514,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ListOfDevelopersResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListOfDevelopersResponse();
-      var od =
-          api.GoogleCloudApigeeV1ListOfDevelopersResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ListOfDevelopersResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListOfDevelopersResponse(
           od as api.GoogleCloudApigeeV1ListOfDevelopersResponse);
     });
@@ -9377,8 +9525,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ListOrganizationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListOrganizationsResponse();
-      var od =
-          api.GoogleCloudApigeeV1ListOrganizationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ListOrganizationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListOrganizationsResponse(
           od as api.GoogleCloudApigeeV1ListOrganizationsResponse);
     });
@@ -9387,8 +9536,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ListSharedFlowsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ListSharedFlowsResponse();
-      var od =
-          api.GoogleCloudApigeeV1ListSharedFlowsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ListSharedFlowsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ListSharedFlowsResponse(
           od as api.GoogleCloudApigeeV1ListSharedFlowsResponse);
     });
@@ -9397,7 +9547,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Metadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Metadata();
-      var od = api.GoogleCloudApigeeV1Metadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Metadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Metadata(od as api.GoogleCloudApigeeV1Metadata);
     });
   });
@@ -9405,7 +9557,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Metric', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Metric();
-      var od = api.GoogleCloudApigeeV1Metric.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Metric.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Metric(od as api.GoogleCloudApigeeV1Metric);
     });
   });
@@ -9413,7 +9567,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1NatAddress', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1NatAddress();
-      var od = api.GoogleCloudApigeeV1NatAddress.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1NatAddress.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1NatAddress(
           od as api.GoogleCloudApigeeV1NatAddress);
     });
@@ -9422,7 +9578,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Operation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Operation();
-      var od = api.GoogleCloudApigeeV1Operation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Operation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Operation(od as api.GoogleCloudApigeeV1Operation);
     });
   });
@@ -9430,7 +9588,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1OperationConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1OperationConfig();
-      var od = api.GoogleCloudApigeeV1OperationConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1OperationConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1OperationConfig(
           od as api.GoogleCloudApigeeV1OperationConfig);
     });
@@ -9439,7 +9599,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1OperationGroup', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1OperationGroup();
-      var od = api.GoogleCloudApigeeV1OperationGroup.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1OperationGroup.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1OperationGroup(
           od as api.GoogleCloudApigeeV1OperationGroup);
     });
@@ -9448,7 +9610,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1OperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1OperationMetadata();
-      var od = api.GoogleCloudApigeeV1OperationMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1OperationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1OperationMetadata(
           od as api.GoogleCloudApigeeV1OperationMetadata);
     });
@@ -9457,7 +9621,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1OptimizedStats', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1OptimizedStats();
-      var od = api.GoogleCloudApigeeV1OptimizedStats.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1OptimizedStats.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1OptimizedStats(
           od as api.GoogleCloudApigeeV1OptimizedStats);
     });
@@ -9466,7 +9632,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1OptimizedStatsNode', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1OptimizedStatsNode();
-      var od = api.GoogleCloudApigeeV1OptimizedStatsNode.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1OptimizedStatsNode.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1OptimizedStatsNode(
           od as api.GoogleCloudApigeeV1OptimizedStatsNode);
     });
@@ -9475,8 +9643,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1OptimizedStatsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1OptimizedStatsResponse();
-      var od =
-          api.GoogleCloudApigeeV1OptimizedStatsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1OptimizedStatsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1OptimizedStatsResponse(
           od as api.GoogleCloudApigeeV1OptimizedStatsResponse);
     });
@@ -9485,7 +9654,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Organization', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Organization();
-      var od = api.GoogleCloudApigeeV1Organization.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Organization.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Organization(
           od as api.GoogleCloudApigeeV1Organization);
     });
@@ -9495,8 +9666,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1OrganizationProjectMapping();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudApigeeV1OrganizationProjectMapping.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1OrganizationProjectMapping(
           od as api.GoogleCloudApigeeV1OrganizationProjectMapping);
     });
@@ -9505,7 +9677,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1PodStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1PodStatus();
-      var od = api.GoogleCloudApigeeV1PodStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1PodStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1PodStatus(od as api.GoogleCloudApigeeV1PodStatus);
     });
   });
@@ -9513,7 +9687,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Point', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Point();
-      var od = api.GoogleCloudApigeeV1Point.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Point.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Point(od as api.GoogleCloudApigeeV1Point);
     });
   });
@@ -9521,7 +9697,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Properties', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Properties();
-      var od = api.GoogleCloudApigeeV1Properties.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Properties.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Properties(
           od as api.GoogleCloudApigeeV1Properties);
     });
@@ -9530,7 +9708,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Property', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Property();
-      var od = api.GoogleCloudApigeeV1Property.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Property.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Property(od as api.GoogleCloudApigeeV1Property);
     });
   });
@@ -9539,8 +9719,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ProvisionOrganizationRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudApigeeV1ProvisionOrganizationRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ProvisionOrganizationRequest(
           od as api.GoogleCloudApigeeV1ProvisionOrganizationRequest);
     });
@@ -9549,7 +9730,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Query', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Query();
-      var od = api.GoogleCloudApigeeV1Query.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Query.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Query(od as api.GoogleCloudApigeeV1Query);
     });
   });
@@ -9557,7 +9740,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1QueryMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1QueryMetadata();
-      var od = api.GoogleCloudApigeeV1QueryMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1QueryMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1QueryMetadata(
           od as api.GoogleCloudApigeeV1QueryMetadata);
     });
@@ -9566,7 +9751,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1QueryMetric', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1QueryMetric();
-      var od = api.GoogleCloudApigeeV1QueryMetric.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1QueryMetric.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1QueryMetric(
           od as api.GoogleCloudApigeeV1QueryMetric);
     });
@@ -9575,7 +9762,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Quota', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Quota();
-      var od = api.GoogleCloudApigeeV1Quota.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Quota.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Quota(od as api.GoogleCloudApigeeV1Quota);
     });
   });
@@ -9583,7 +9772,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Reference', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Reference();
-      var od = api.GoogleCloudApigeeV1Reference.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Reference.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Reference(od as api.GoogleCloudApigeeV1Reference);
     });
   });
@@ -9591,7 +9782,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ReferenceConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ReferenceConfig();
-      var od = api.GoogleCloudApigeeV1ReferenceConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ReferenceConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ReferenceConfig(
           od as api.GoogleCloudApigeeV1ReferenceConfig);
     });
@@ -9601,8 +9794,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ReportInstanceStatusRequest();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudApigeeV1ReportInstanceStatusRequest.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ReportInstanceStatusRequest(
           od as api.GoogleCloudApigeeV1ReportInstanceStatusRequest);
     });
@@ -9612,8 +9806,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ReportInstanceStatusResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudApigeeV1ReportInstanceStatusResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ReportInstanceStatusResponse(
           od as api.GoogleCloudApigeeV1ReportInstanceStatusResponse);
     });
@@ -9622,7 +9817,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ReportProperty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ReportProperty();
-      var od = api.GoogleCloudApigeeV1ReportProperty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ReportProperty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ReportProperty(
           od as api.GoogleCloudApigeeV1ReportProperty);
     });
@@ -9631,7 +9828,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ResourceConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ResourceConfig();
-      var od = api.GoogleCloudApigeeV1ResourceConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ResourceConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ResourceConfig(
           od as api.GoogleCloudApigeeV1ResourceConfig);
     });
@@ -9640,7 +9839,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ResourceFile', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ResourceFile();
-      var od = api.GoogleCloudApigeeV1ResourceFile.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ResourceFile.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ResourceFile(
           od as api.GoogleCloudApigeeV1ResourceFile);
     });
@@ -9649,7 +9850,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ResourceFiles', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ResourceFiles();
-      var od = api.GoogleCloudApigeeV1ResourceFiles.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ResourceFiles.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ResourceFiles(
           od as api.GoogleCloudApigeeV1ResourceFiles);
     });
@@ -9658,7 +9861,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ResourceStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ResourceStatus();
-      var od = api.GoogleCloudApigeeV1ResourceStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ResourceStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ResourceStatus(
           od as api.GoogleCloudApigeeV1ResourceStatus);
     });
@@ -9667,7 +9872,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Result', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Result();
-      var od = api.GoogleCloudApigeeV1Result.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Result.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Result(od as api.GoogleCloudApigeeV1Result);
     });
   });
@@ -9675,7 +9882,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1RevisionStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1RevisionStatus();
-      var od = api.GoogleCloudApigeeV1RevisionStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1RevisionStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1RevisionStatus(
           od as api.GoogleCloudApigeeV1RevisionStatus);
     });
@@ -9684,7 +9893,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1RoutingRule', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1RoutingRule();
-      var od = api.GoogleCloudApigeeV1RoutingRule.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1RoutingRule.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1RoutingRule(
           od as api.GoogleCloudApigeeV1RoutingRule);
     });
@@ -9693,7 +9904,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1RuntimeTraceConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1RuntimeTraceConfig();
-      var od = api.GoogleCloudApigeeV1RuntimeTraceConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1RuntimeTraceConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1RuntimeTraceConfig(
           od as api.GoogleCloudApigeeV1RuntimeTraceConfig);
     });
@@ -9703,8 +9916,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1RuntimeTraceConfigOverride();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudApigeeV1RuntimeTraceConfigOverride.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1RuntimeTraceConfigOverride(
           od as api.GoogleCloudApigeeV1RuntimeTraceConfigOverride);
     });
@@ -9714,8 +9928,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1RuntimeTraceSamplingConfig();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1RuntimeTraceSamplingConfig(
           od as api.GoogleCloudApigeeV1RuntimeTraceSamplingConfig);
     });
@@ -9724,7 +9939,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Schema', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Schema();
-      var od = api.GoogleCloudApigeeV1Schema.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Schema.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Schema(od as api.GoogleCloudApigeeV1Schema);
     });
   });
@@ -9732,7 +9949,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1SchemaSchemaElement', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1SchemaSchemaElement();
-      var od = api.GoogleCloudApigeeV1SchemaSchemaElement.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1SchemaSchemaElement.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1SchemaSchemaElement(
           od as api.GoogleCloudApigeeV1SchemaSchemaElement);
     });
@@ -9741,7 +9960,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1SchemaSchemaProperty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1SchemaSchemaProperty();
-      var od = api.GoogleCloudApigeeV1SchemaSchemaProperty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1SchemaSchemaProperty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1SchemaSchemaProperty(
           od as api.GoogleCloudApigeeV1SchemaSchemaProperty);
     });
@@ -9750,8 +9971,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1ServiceIssuersMapping', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1ServiceIssuersMapping();
-      var od =
-          api.GoogleCloudApigeeV1ServiceIssuersMapping.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1ServiceIssuersMapping.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1ServiceIssuersMapping(
           od as api.GoogleCloudApigeeV1ServiceIssuersMapping);
     });
@@ -9760,7 +9982,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Session', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Session();
-      var od = api.GoogleCloudApigeeV1Session.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Session.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Session(od as api.GoogleCloudApigeeV1Session);
     });
   });
@@ -9768,7 +9992,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1SharedFlow', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1SharedFlow();
-      var od = api.GoogleCloudApigeeV1SharedFlow.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1SharedFlow.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1SharedFlow(
           od as api.GoogleCloudApigeeV1SharedFlow);
     });
@@ -9777,7 +10003,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1SharedFlowRevision', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1SharedFlowRevision();
-      var od = api.GoogleCloudApigeeV1SharedFlowRevision.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1SharedFlowRevision.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1SharedFlowRevision(
           od as api.GoogleCloudApigeeV1SharedFlowRevision);
     });
@@ -9786,7 +10014,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Stats', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Stats();
-      var od = api.GoogleCloudApigeeV1Stats.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Stats.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Stats(od as api.GoogleCloudApigeeV1Stats);
     });
   });
@@ -9794,8 +10024,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1StatsEnvironmentStats', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1StatsEnvironmentStats();
-      var od =
-          api.GoogleCloudApigeeV1StatsEnvironmentStats.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1StatsEnvironmentStats.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1StatsEnvironmentStats(
           od as api.GoogleCloudApigeeV1StatsEnvironmentStats);
     });
@@ -9804,7 +10035,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1StatsHostStats', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1StatsHostStats();
-      var od = api.GoogleCloudApigeeV1StatsHostStats.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1StatsHostStats.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1StatsHostStats(
           od as api.GoogleCloudApigeeV1StatsHostStats);
     });
@@ -9813,7 +10046,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1Subscription', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1Subscription();
-      var od = api.GoogleCloudApigeeV1Subscription.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1Subscription.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1Subscription(
           od as api.GoogleCloudApigeeV1Subscription);
     });
@@ -9822,7 +10057,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1SyncAuthorization', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1SyncAuthorization();
-      var od = api.GoogleCloudApigeeV1SyncAuthorization.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1SyncAuthorization.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1SyncAuthorization(
           od as api.GoogleCloudApigeeV1SyncAuthorization);
     });
@@ -9831,7 +10068,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1TargetServer', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1TargetServer();
-      var od = api.GoogleCloudApigeeV1TargetServer.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1TargetServer.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1TargetServer(
           od as api.GoogleCloudApigeeV1TargetServer);
     });
@@ -9840,7 +10079,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1TargetServerConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1TargetServerConfig();
-      var od = api.GoogleCloudApigeeV1TargetServerConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1TargetServerConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1TargetServerConfig(
           od as api.GoogleCloudApigeeV1TargetServerConfig);
     });
@@ -9849,8 +10090,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1TestDatastoreResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1TestDatastoreResponse();
-      var od =
-          api.GoogleCloudApigeeV1TestDatastoreResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1TestDatastoreResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1TestDatastoreResponse(
           od as api.GoogleCloudApigeeV1TestDatastoreResponse);
     });
@@ -9859,7 +10101,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1TlsInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1TlsInfo();
-      var od = api.GoogleCloudApigeeV1TlsInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1TlsInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1TlsInfo(od as api.GoogleCloudApigeeV1TlsInfo);
     });
   });
@@ -9867,7 +10111,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1TlsInfoCommonName', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1TlsInfoCommonName();
-      var od = api.GoogleCloudApigeeV1TlsInfoCommonName.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1TlsInfoCommonName.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1TlsInfoCommonName(
           od as api.GoogleCloudApigeeV1TlsInfoCommonName);
     });
@@ -9876,7 +10122,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1TlsInfoConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1TlsInfoConfig();
-      var od = api.GoogleCloudApigeeV1TlsInfoConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1TlsInfoConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1TlsInfoConfig(
           od as api.GoogleCloudApigeeV1TlsInfoConfig);
     });
@@ -9885,7 +10133,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudApigeeV1UpdateError', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudApigeeV1UpdateError();
-      var od = api.GoogleCloudApigeeV1UpdateError.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudApigeeV1UpdateError.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudApigeeV1UpdateError(
           od as api.GoogleCloudApigeeV1UpdateError);
     });
@@ -9894,7 +10144,9 @@ void main() {
   unittest.group('obj-schema-GoogleIamV1AuditConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1AuditConfig();
-      var od = api.GoogleIamV1AuditConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIamV1AuditConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamV1AuditConfig(od as api.GoogleIamV1AuditConfig);
     });
   });
@@ -9902,7 +10154,9 @@ void main() {
   unittest.group('obj-schema-GoogleIamV1AuditLogConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1AuditLogConfig();
-      var od = api.GoogleIamV1AuditLogConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIamV1AuditLogConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamV1AuditLogConfig(od as api.GoogleIamV1AuditLogConfig);
     });
   });
@@ -9910,7 +10164,9 @@ void main() {
   unittest.group('obj-schema-GoogleIamV1Binding', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1Binding();
-      var od = api.GoogleIamV1Binding.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIamV1Binding.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamV1Binding(od as api.GoogleIamV1Binding);
     });
   });
@@ -9918,7 +10174,9 @@ void main() {
   unittest.group('obj-schema-GoogleIamV1Policy', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1Policy();
-      var od = api.GoogleIamV1Policy.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIamV1Policy.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamV1Policy(od as api.GoogleIamV1Policy);
     });
   });
@@ -9926,7 +10184,9 @@ void main() {
   unittest.group('obj-schema-GoogleIamV1SetIamPolicyRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1SetIamPolicyRequest();
-      var od = api.GoogleIamV1SetIamPolicyRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIamV1SetIamPolicyRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamV1SetIamPolicyRequest(
           od as api.GoogleIamV1SetIamPolicyRequest);
     });
@@ -9935,7 +10195,9 @@ void main() {
   unittest.group('obj-schema-GoogleIamV1TestIamPermissionsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1TestIamPermissionsRequest();
-      var od = api.GoogleIamV1TestIamPermissionsRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIamV1TestIamPermissionsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamV1TestIamPermissionsRequest(
           od as api.GoogleIamV1TestIamPermissionsRequest);
     });
@@ -9944,7 +10206,9 @@ void main() {
   unittest.group('obj-schema-GoogleIamV1TestIamPermissionsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleIamV1TestIamPermissionsResponse();
-      var od = api.GoogleIamV1TestIamPermissionsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleIamV1TestIamPermissionsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleIamV1TestIamPermissionsResponse(
           od as api.GoogleIamV1TestIamPermissionsResponse);
     });
@@ -9953,7 +10217,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningListOperationsResponse();
-      var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningListOperationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningListOperationsResponse(
           od as api.GoogleLongrunningListOperationsResponse);
     });
@@ -9962,7 +10228,9 @@ void main() {
   unittest.group('obj-schema-GoogleLongrunningOperation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleLongrunningOperation();
-      var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleLongrunningOperation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
     });
   });
@@ -9970,7 +10238,9 @@ void main() {
   unittest.group('obj-schema-GoogleProtobufEmpty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleProtobufEmpty();
-      var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleProtobufEmpty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
     });
   });
@@ -9978,7 +10248,9 @@ void main() {
   unittest.group('obj-schema-GoogleRpcPreconditionFailure', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcPreconditionFailure();
-      var od = api.GoogleRpcPreconditionFailure.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleRpcPreconditionFailure.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleRpcPreconditionFailure(od as api.GoogleRpcPreconditionFailure);
     });
   });
@@ -9986,7 +10258,9 @@ void main() {
   unittest.group('obj-schema-GoogleRpcPreconditionFailureViolation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcPreconditionFailureViolation();
-      var od = api.GoogleRpcPreconditionFailureViolation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleRpcPreconditionFailureViolation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleRpcPreconditionFailureViolation(
           od as api.GoogleRpcPreconditionFailureViolation);
     });
@@ -9995,7 +10269,9 @@ void main() {
   unittest.group('obj-schema-GoogleRpcStatus', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleRpcStatus();
-      var od = api.GoogleRpcStatus.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleRpcStatus.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleRpcStatus(od as api.GoogleRpcStatus);
     });
   });
@@ -10003,7 +10279,9 @@ void main() {
   unittest.group('obj-schema-GoogleTypeExpr', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeExpr();
-      var od = api.GoogleTypeExpr.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleTypeExpr.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleTypeExpr(od as api.GoogleTypeExpr);
     });
   });

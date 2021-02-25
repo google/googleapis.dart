@@ -109,7 +109,9 @@ void main() {
   unittest.group('obj-schema-PublishUrlNotificationResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPublishUrlNotificationResponse();
-      var od = api.PublishUrlNotificationResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PublishUrlNotificationResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPublishUrlNotificationResponse(
           od as api.PublishUrlNotificationResponse);
     });
@@ -118,7 +120,9 @@ void main() {
   unittest.group('obj-schema-UrlNotification', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUrlNotification();
-      var od = api.UrlNotification.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UrlNotification.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUrlNotification(od as api.UrlNotification);
     });
   });
@@ -126,7 +130,9 @@ void main() {
   unittest.group('obj-schema-UrlNotificationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUrlNotificationMetadata();
-      var od = api.UrlNotificationMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UrlNotificationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUrlNotificationMetadata(od as api.UrlNotificationMetadata);
     });
   });

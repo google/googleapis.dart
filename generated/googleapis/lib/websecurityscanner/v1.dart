@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -732,7 +731,7 @@ class Authentication {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customAccount != null) 'customAccount': customAccount!.toJson(),
         if (googleAccount != null) 'googleAccount': googleAccount!.toJson(),
         if (iapCredential != null) 'iapCredential': iapCredential!.toJson(),
@@ -774,7 +773,7 @@ class CrawledUrl {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (body != null) 'body': body!,
         if (httpMethod != null) 'httpMethod': httpMethod!,
         if (url != null) 'url': url!,
@@ -815,7 +814,7 @@ class CustomAccount {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (loginUrl != null) 'loginUrl': loginUrl!,
         if (password != null) 'password': password!,
         if (username != null) 'username': username!,
@@ -836,7 +835,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A Finding resource represents a vulnerability instance identified during a
@@ -1009,7 +1008,7 @@ class Finding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (body != null) 'body': body!,
         if (description != null) 'description': description!,
         if (finalUrl != null) 'finalUrl': finalUrl!,
@@ -1058,7 +1057,7 @@ class FindingTypeStats {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (findingCount != null) 'findingCount': findingCount!,
         if (findingType != null) 'findingType': findingType!,
       };
@@ -1085,7 +1084,7 @@ class Form {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (actionUri != null) 'actionUri': actionUri!,
         if (fields != null) 'fields': fields!,
       };
@@ -1117,7 +1116,7 @@ class GoogleAccount {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (password != null) 'password': password!,
         if (username != null) 'username': username!,
       };
@@ -1142,7 +1141,7 @@ class Header {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
       };
@@ -1164,7 +1163,7 @@ class IapCredential {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (iapTestServiceAccountInfo != null)
           'iapTestServiceAccountInfo': iapTestServiceAccountInfo!.toJson(),
       };
@@ -1187,7 +1186,7 @@ class IapTestServiceAccountInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (targetAudienceClientId != null)
           'targetAudienceClientId': targetAudienceClientId!,
       };
@@ -1216,7 +1215,7 @@ class ListCrawledUrlsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (crawledUrls != null)
           'crawledUrls': crawledUrls!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1239,7 +1238,7 @@ class ListFindingTypeStatsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (findingTypeStats != null)
           'findingTypeStats':
               findingTypeStats!.map((value) => value.toJson()).toList(),
@@ -1269,7 +1268,7 @@ class ListFindingsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (findings != null)
           'findings': findings!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -1299,7 +1298,7 @@ class ListScanConfigsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (scanConfigs != null)
           'scanConfigs': scanConfigs!.map((value) => value.toJson()).toList(),
@@ -1329,7 +1328,7 @@ class ListScanRunsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (scanRuns != null)
           'scanRuns': scanRuns!.map((value) => value.toJson()).toList(),
@@ -1363,7 +1362,7 @@ class OutdatedLibrary {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (learnMoreUrls != null) 'learnMoreUrls': learnMoreUrls!,
         if (libraryName != null) 'libraryName': libraryName!,
         if (version != null) 'version': version!,
@@ -1492,7 +1491,7 @@ class ScanConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (authentication != null) 'authentication': authentication!.toJson(),
         if (blacklistPatterns != null) 'blacklistPatterns': blacklistPatterns!,
         if (displayName != null) 'displayName': displayName!,
@@ -1620,7 +1619,7 @@ class ScanConfigError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (fieldName != null) 'fieldName': fieldName!,
       };
@@ -1758,7 +1757,7 @@ class ScanRun {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (errorTrace != null) 'errorTrace': errorTrace!.toJson(),
         if (executionState != null) 'executionState': executionState!,
@@ -1834,7 +1833,7 @@ class ScanRunErrorTrace {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (mostCommonHttpErrorCode != null)
           'mostCommonHttpErrorCode': mostCommonHttpErrorCode!,
@@ -1877,7 +1876,7 @@ class ScanRunWarningTrace {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
       };
 }
@@ -1907,7 +1906,7 @@ class Schedule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (intervalDurationDays != null)
           'intervalDurationDays': intervalDurationDays!,
         if (scheduleTime != null) 'scheduleTime': scheduleTime!,
@@ -1922,7 +1921,7 @@ class StartScanRunRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Request for the `StopScanRun` method.
@@ -1933,7 +1932,7 @@ class StopScanRunRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Information regarding any resource causing the vulnerability such as
@@ -1956,7 +1955,7 @@ class ViolatingResource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentType != null) 'contentType': contentType!,
         if (resourceUrl != null) 'resourceUrl': resourceUrl!,
       };
@@ -1987,7 +1986,7 @@ class VulnerableHeaders {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (headers != null)
           'headers': headers!.map((value) => value.toJson()).toList(),
         if (missingHeaders != null)
@@ -2011,7 +2010,7 @@ class VulnerableParameters {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parameterNames != null) 'parameterNames': parameterNames!,
       };
 }
@@ -2072,7 +2071,7 @@ class Xss {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attackVector != null) 'attackVector': attackVector!,
         if (errorMessage != null) 'errorMessage': errorMessage!,
         if (stackTraces != null) 'stackTraces': stackTraces!,

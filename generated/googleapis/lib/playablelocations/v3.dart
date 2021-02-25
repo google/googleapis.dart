@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -220,7 +219,7 @@ class GoogleMapsPlayablelocationsV3Impression {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gameObjectType != null) 'gameObjectType': gameObjectType!,
         if (impressionType != null) 'impressionType': impressionType!,
         if (locationName != null) 'locationName': locationName!,
@@ -272,7 +271,7 @@ class GoogleMapsPlayablelocationsV3LogImpressionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clientInfo != null) 'clientInfo': clientInfo!.toJson(),
         if (impressions != null)
           'impressions': impressions!.map((value) => value.toJson()).toList(),
@@ -290,7 +289,7 @@ class GoogleMapsPlayablelocationsV3LogImpressionsResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A request for logging your player's bad location reports.
@@ -339,7 +338,7 @@ class GoogleMapsPlayablelocationsV3LogPlayerReportsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clientInfo != null) 'clientInfo': clientInfo!.toJson(),
         if (playerReports != null)
           'playerReports':
@@ -358,7 +357,7 @@ class GoogleMapsPlayablelocationsV3LogPlayerReportsResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A report submitted by a player about a playable location that is considered
@@ -406,7 +405,7 @@ class GoogleMapsPlayablelocationsV3PlayerReport {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
         if (locationName != null) 'locationName': locationName!,
         if (reasonDetails != null) 'reasonDetails': reasonDetails!,
@@ -438,7 +437,7 @@ class GoogleMapsPlayablelocationsV3SampleAreaFilter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (s2CellId != null) 's2CellId': s2CellId!,
       };
 }
@@ -486,7 +485,7 @@ class GoogleMapsPlayablelocationsV3SampleCriterion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fieldsToReturn != null) 'fieldsToReturn': fieldsToReturn!,
         if (filter != null) 'filter': filter!.toJson(),
         if (gameObjectType != null) 'gameObjectType': gameObjectType!,
@@ -527,7 +526,7 @@ class GoogleMapsPlayablelocationsV3SampleFilter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (includedTypes != null) 'includedTypes': includedTypes!,
         if (maxLocationCount != null) 'maxLocationCount': maxLocationCount!,
         if (spacing != null) 'spacing': spacing!.toJson(),
@@ -595,7 +594,7 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (centerPoint != null) 'centerPoint': centerPoint!.toJson(),
         if (name != null) 'name': name!,
         if (placeId != null) 'placeId': placeId!,
@@ -623,7 +622,7 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationList {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null)
           'locations': locations!.map((value) => value.toJson()).toList(),
       };
@@ -673,7 +672,7 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (areaFilter != null) 'areaFilter': areaFilter!.toJson(),
         if (criteria != null)
           'criteria': criteria!.map((value) => value.toJson()).toList(),
@@ -705,22 +704,21 @@ class GoogleMapsPlayablelocationsV3SamplePlayableLocationsResponse {
       core.Map _json) {
     if (_json.containsKey('locationsPerGameObjectType')) {
       locationsPerGameObjectType = (_json['locationsPerGameObjectType']
-              as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
+              as core.Map<core.String, core.dynamic>)
           .map(
-            (key, item) => core.MapEntry(
-              key,
-              GoogleMapsPlayablelocationsV3SamplePlayableLocationList.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+        (key, item) => core.MapEntry(
+          key,
+          GoogleMapsPlayablelocationsV3SamplePlayableLocationList.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('ttl')) {
       ttl = _json['ttl'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (locationsPerGameObjectType != null)
           'locationsPerGameObjectType': locationsPerGameObjectType!
               .map((key, item) => core.MapEntry(key, item.toJson())),
@@ -778,7 +776,7 @@ class GoogleMapsPlayablelocationsV3SampleSpacingOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (minSpacingMeters != null) 'minSpacingMeters': minSpacingMeters!,
         if (pointType != null) 'pointType': pointType!,
       };
@@ -864,7 +862,7 @@ class GoogleMapsUnityClientInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiClient != null) 'apiClient': apiClient!,
         if (applicationId != null) 'applicationId': applicationId!,
         if (applicationVersion != null)
@@ -905,7 +903,7 @@ class GoogleTypeLatLng {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (latitude != null) 'latitude': latitude!,
         if (longitude != null) 'longitude': longitude!,
       };

@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -870,7 +869,7 @@ class CreateAuthUriResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allProviders != null) 'allProviders': allProviders!,
         if (authUri != null) 'authUri': authUri!,
         if (captchaRequired != null) 'captchaRequired': captchaRequired!,
@@ -897,7 +896,7 @@ class DeleteAccountResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
       };
 }
@@ -932,7 +931,7 @@ class DownloadAccountResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (users != null)
@@ -989,7 +988,7 @@ class EmailLinkSigninResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
         if (expiresIn != null) 'expiresIn': expiresIn!,
         if (idToken != null) 'idToken': idToken!,
@@ -1043,7 +1042,7 @@ class EmailTemplate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (body != null) 'body': body!,
         if (format != null) 'format': format!,
         if (from != null) 'from': from!,
@@ -1075,7 +1074,7 @@ class GetAccountInfoResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (users != null)
           'users': users!.map((value) => value.toJson()).toList(),
@@ -1108,7 +1107,7 @@ class GetOobConfirmationCodeResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
         if (kind != null) 'kind': kind!,
         if (oobCode != null) 'oobCode': oobCode!,
@@ -1141,7 +1140,7 @@ class GetRecaptchaParamResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (recaptchaSiteKey != null) 'recaptchaSiteKey': recaptchaSiteKey!,
         if (recaptchaStoken != null) 'recaptchaStoken': recaptchaStoken!,
@@ -1237,14 +1236,13 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
       continueUri = _json['continueUri'] as core.String;
     }
     if (_json.containsKey('customParameter')) {
-      customParameter = (_json['customParameter'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      customParameter =
+          (_json['customParameter'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('hostedDomain')) {
       hostedDomain = _json['hostedDomain'] as core.String;
@@ -1278,7 +1276,7 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (appId != null) 'appId': appId!,
         if (authFlowType != null) 'authFlowType': authFlowType!,
         if (clientId != null) 'clientId': clientId!,
@@ -1326,7 +1324,7 @@ class IdentitytoolkitRelyingpartyDeleteAccountRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (delegatedProjectNumber != null)
           'delegatedProjectNumber': delegatedProjectNumber!,
         if (idToken != null) 'idToken': idToken!,
@@ -1371,7 +1369,7 @@ class IdentitytoolkitRelyingpartyDownloadAccountRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (delegatedProjectNumber != null)
           'delegatedProjectNumber': delegatedProjectNumber!,
         if (maxResults != null) 'maxResults': maxResults!,
@@ -1405,7 +1403,7 @@ class IdentitytoolkitRelyingpartyEmailLinkSigninRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
         if (idToken != null) 'idToken': idToken!,
         if (oobCode != null) 'oobCode': oobCode!,
@@ -1457,7 +1455,7 @@ class IdentitytoolkitRelyingpartyGetAccountInfoRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (delegatedProjectNumber != null)
           'delegatedProjectNumber': delegatedProjectNumber!,
         if (email != null) 'email': email!,
@@ -1555,7 +1553,7 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowPasswordUser != null) 'allowPasswordUser': allowPasswordUser!,
         if (apiKey != null) 'apiKey': apiKey!,
         if (authorizedDomains != null) 'authorizedDomains': authorizedDomains!,
@@ -1646,7 +1644,7 @@ class IdentitytoolkitRelyingpartyResetPasswordRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
         if (newPassword != null) 'newPassword': newPassword!,
         if (oldPassword != null) 'oldPassword': oldPassword!,
@@ -1686,7 +1684,7 @@ class IdentitytoolkitRelyingpartySendVerificationCodeRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (iosReceipt != null) 'iosReceipt': iosReceipt!,
         if (iosSecret != null) 'iosSecret': iosSecret!,
         if (phoneNumber != null) 'phoneNumber': phoneNumber!,
@@ -1708,7 +1706,7 @@ class IdentitytoolkitRelyingpartySendVerificationCodeResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sessionInfo != null) 'sessionInfo': sessionInfo!,
       };
 }
@@ -1866,7 +1864,7 @@ class IdentitytoolkitRelyingpartySetAccountInfoRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (captchaChallenge != null) 'captchaChallenge': captchaChallenge!,
         if (captchaResponse != null) 'captchaResponse': captchaResponse!,
         if (createdAt != null) 'createdAt': createdAt!,
@@ -1981,7 +1979,7 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowPasswordUser != null) 'allowPasswordUser': allowPasswordUser!,
         if (apiKey != null) 'apiKey': apiKey!,
         if (authorizedDomains != null) 'authorizedDomains': authorizedDomains!,
@@ -2016,7 +2014,7 @@ class IdentitytoolkitRelyingpartySetProjectConfigResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (projectId != null) 'projectId': projectId!,
       };
 }
@@ -2040,7 +2038,7 @@ class IdentitytoolkitRelyingpartySignOutUserRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (instanceId != null) 'instanceId': instanceId!,
         if (localId != null) 'localId': localId!,
       };
@@ -2059,7 +2057,7 @@ class IdentitytoolkitRelyingpartySignOutUserResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (localId != null) 'localId': localId!,
       };
 }
@@ -2161,7 +2159,7 @@ class IdentitytoolkitRelyingpartySignupNewUserRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (captchaChallenge != null) 'captchaChallenge': captchaChallenge!,
         if (captchaResponse != null) 'captchaResponse': captchaResponse!,
         if (disabled != null) 'disabled': disabled!,
@@ -2290,7 +2288,7 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowOverwrite != null) 'allowOverwrite': allowOverwrite!,
         if (blockSize != null) 'blockSize': blockSize!,
         if (cpuMemCost != null) 'cpuMemCost': cpuMemCost!,
@@ -2407,7 +2405,7 @@ class IdentitytoolkitRelyingpartyVerifyAssertionRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (autoCreate != null) 'autoCreate': autoCreate!,
         if (delegatedProjectNumber != null)
           'delegatedProjectNumber': delegatedProjectNumber!,
@@ -2461,7 +2459,7 @@ class IdentitytoolkitRelyingpartyVerifyCustomTokenRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (delegatedProjectNumber != null)
           'delegatedProjectNumber': delegatedProjectNumber!,
         if (instanceId != null) 'instanceId': instanceId!,
@@ -2548,7 +2546,7 @@ class IdentitytoolkitRelyingpartyVerifyPasswordRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (captchaChallenge != null) 'captchaChallenge': captchaChallenge!,
         if (captchaResponse != null) 'captchaResponse': captchaResponse!,
         if (delegatedProjectNumber != null)
@@ -2604,7 +2602,7 @@ class IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (idToken != null) 'idToken': idToken!,
         if (operation != null) 'operation': operation!,
@@ -2665,7 +2663,7 @@ class IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (expiresIn != null) 'expiresIn': expiresIn!,
         if (idToken != null) 'idToken': idToken!,
         if (isNewUser != null) 'isNewUser': isNewUser!,
@@ -2727,7 +2725,7 @@ class IdpConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clientId != null) 'clientId': clientId!,
         if (enabled != null) 'enabled': enabled!,
         if (experimentPercent != null) 'experimentPercent': experimentPercent!,
@@ -2840,7 +2838,7 @@ class Relyingparty {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (androidInstallApp != null) 'androidInstallApp': androidInstallApp!,
         if (androidMinimumVersion != null)
           'androidMinimumVersion': androidMinimumVersion!,
@@ -2895,7 +2893,7 @@ class ResetPasswordResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
         if (kind != null) 'kind': kind!,
         if (newEmail != null) 'newEmail': newEmail!,
@@ -2936,7 +2934,7 @@ class SetAccountInfoResponseProviderUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (federatedId != null) 'federatedId': federatedId!,
         if (photoUrl != null) 'photoUrl': photoUrl!,
@@ -3035,7 +3033,7 @@ class SetAccountInfoResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (email != null) 'email': email!,
         if (emailVerified != null) 'emailVerified': emailVerified!,
@@ -3104,7 +3102,7 @@ class SignupNewUserResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (email != null) 'email': email!,
         if (expiresIn != null) 'expiresIn': expiresIn!,
@@ -3133,7 +3131,7 @@ class UploadAccountResponseError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (index != null) 'index': index!,
         if (message != null) 'message': message!,
       };
@@ -3162,7 +3160,7 @@ class UploadAccountResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (error != null)
           'error': error!.map((value) => value.toJson()).toList(),
         if (kind != null) 'kind': kind!,
@@ -3226,7 +3224,7 @@ class UserInfoProviderUserInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (email != null) 'email': email!,
         if (federatedId != null) 'federatedId': federatedId!,
@@ -3376,7 +3374,7 @@ class UserInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createdAt != null) 'createdAt': createdAt!,
         if (customAttributes != null) 'customAttributes': customAttributes!,
         if (customAuth != null) 'customAuth': customAuth!,
@@ -3665,7 +3663,7 @@ class VerifyAssertionResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
         if (appInstallationUrl != null)
           'appInstallationUrl': appInstallationUrl!,
@@ -3748,7 +3746,7 @@ class VerifyCustomTokenResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (expiresIn != null) 'expiresIn': expiresIn!,
         if (idToken != null) 'idToken': idToken!,
         if (isNewUser != null) 'isNewUser': isNewUser!,
@@ -3840,7 +3838,7 @@ class VerifyPasswordResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (email != null) 'email': email!,
         if (expiresIn != null) 'expiresIn': expiresIn!,

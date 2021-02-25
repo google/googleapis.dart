@@ -379,7 +379,9 @@ void main() {
   unittest.group('obj-schema-AccessApprovalSettings', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAccessApprovalSettings();
-      var od = api.AccessApprovalSettings.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AccessApprovalSettings.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAccessApprovalSettings(od as api.AccessApprovalSettings);
     });
   });
@@ -387,7 +389,9 @@ void main() {
   unittest.group('obj-schema-AccessLocations', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAccessLocations();
-      var od = api.AccessLocations.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AccessLocations.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAccessLocations(od as api.AccessLocations);
     });
   });
@@ -395,7 +399,9 @@ void main() {
   unittest.group('obj-schema-AccessReason', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAccessReason();
-      var od = api.AccessReason.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AccessReason.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAccessReason(od as api.AccessReason);
     });
   });
@@ -403,7 +409,9 @@ void main() {
   unittest.group('obj-schema-ApprovalRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApprovalRequest();
-      var od = api.ApprovalRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApprovalRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApprovalRequest(od as api.ApprovalRequest);
     });
   });
@@ -411,7 +419,9 @@ void main() {
   unittest.group('obj-schema-ApproveApprovalRequestMessage', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApproveApprovalRequestMessage();
-      var od = api.ApproveApprovalRequestMessage.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApproveApprovalRequestMessage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApproveApprovalRequestMessage(
           od as api.ApproveApprovalRequestMessage);
     });
@@ -420,7 +430,9 @@ void main() {
   unittest.group('obj-schema-ApproveDecision', () {
     unittest.test('to-json--from-json', () async {
       var o = buildApproveDecision();
-      var od = api.ApproveDecision.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ApproveDecision.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkApproveDecision(od as api.ApproveDecision);
     });
   });
@@ -428,7 +440,9 @@ void main() {
   unittest.group('obj-schema-DismissApprovalRequestMessage', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDismissApprovalRequestMessage();
-      var od = api.DismissApprovalRequestMessage.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DismissApprovalRequestMessage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDismissApprovalRequestMessage(
           od as api.DismissApprovalRequestMessage);
     });
@@ -437,7 +451,9 @@ void main() {
   unittest.group('obj-schema-DismissDecision', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDismissDecision();
-      var od = api.DismissDecision.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DismissDecision.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDismissDecision(od as api.DismissDecision);
     });
   });
@@ -445,7 +461,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -453,7 +470,9 @@ void main() {
   unittest.group('obj-schema-EnrolledService', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEnrolledService();
-      var od = api.EnrolledService.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.EnrolledService.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkEnrolledService(od as api.EnrolledService);
     });
   });
@@ -461,7 +480,9 @@ void main() {
   unittest.group('obj-schema-ListApprovalRequestsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListApprovalRequestsResponse();
-      var od = api.ListApprovalRequestsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListApprovalRequestsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListApprovalRequestsResponse(od as api.ListApprovalRequestsResponse);
     });
   });
@@ -469,7 +490,9 @@ void main() {
   unittest.group('obj-schema-ResourceProperties', () {
     unittest.test('to-json--from-json', () async {
       var o = buildResourceProperties();
-      var od = api.ResourceProperties.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ResourceProperties.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkResourceProperties(od as api.ResourceProperties);
     });
   });

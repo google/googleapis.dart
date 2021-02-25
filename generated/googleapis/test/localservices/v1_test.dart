@@ -437,8 +437,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAdsHomeservicesLocalservicesV1AccountReport();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAdsHomeservicesLocalservicesV1AccountReport.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAdsHomeservicesLocalservicesV1AccountReport(
           od as api.GoogleAdsHomeservicesLocalservicesV1AccountReport);
     });
@@ -448,8 +449,9 @@ void main() {
       'obj-schema-GoogleAdsHomeservicesLocalservicesV1AggregatorInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAdsHomeservicesLocalservicesV1AggregatorInfo();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAdsHomeservicesLocalservicesV1AggregatorInfo.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAdsHomeservicesLocalservicesV1AggregatorInfo(
           od as api.GoogleAdsHomeservicesLocalservicesV1AggregatorInfo);
     });
@@ -459,9 +461,10 @@ void main() {
       'obj-schema-GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAdsHomeservicesLocalservicesV1DetailedLeadReport(
           od as api.GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport);
     });
@@ -471,8 +474,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAdsHomeservicesLocalservicesV1MessageLead();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAdsHomeservicesLocalservicesV1MessageLead.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAdsHomeservicesLocalservicesV1MessageLead(
           od as api.GoogleAdsHomeservicesLocalservicesV1MessageLead);
     });
@@ -482,8 +486,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleAdsHomeservicesLocalservicesV1PhoneLead();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleAdsHomeservicesLocalservicesV1PhoneLead.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAdsHomeservicesLocalservicesV1PhoneLead(
           od as api.GoogleAdsHomeservicesLocalservicesV1PhoneLead);
     });
@@ -495,9 +500,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse(od
           as api
               .GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse);
@@ -510,9 +516,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse(
           od as api
               .GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse);
@@ -522,7 +529,9 @@ void main() {
   unittest.group('obj-schema-GoogleTypeTimeZone', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleTypeTimeZone();
-      var od = api.GoogleTypeTimeZone.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleTypeTimeZone.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleTypeTimeZone(od as api.GoogleTypeTimeZone);
     });
   });

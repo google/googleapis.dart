@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -659,7 +658,7 @@ class Attributes {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (additionalImageLink != null)
           'additionalImageLink':
               additionalImageLink!.map((value) => value.toJson()).toList(),
@@ -732,7 +731,7 @@ class Capacity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (unit != null) 'unit': unit!,
         if (value != null) 'value': value!,
       };
@@ -760,7 +759,7 @@ class Count {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (unit != null) 'unit': unit!,
         if (value != null) 'value': value!,
       };
@@ -790,7 +789,7 @@ class DestinationStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (destination != null) 'destination': destination!,
         if (status != null) 'status': status!,
       };
@@ -810,7 +809,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A feature description of the product.
@@ -842,7 +841,7 @@ class FeatureDescription {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (headline != null) 'headline': headline!,
         if (image != null) 'image': image!.toJson(),
         if (text != null) 'text': text!,
@@ -904,7 +903,7 @@ class Image {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (imageUrl != null) 'imageUrl': imageUrl!,
         if (status != null) 'status': status!,
         if (type != null) 'type': type!,
@@ -987,7 +986,7 @@ class Issue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attribute != null) 'attribute': attribute!,
         if (description != null) 'description': description!,
         if (destination != null) 'destination': destination!,
@@ -1020,7 +1019,7 @@ class ListProductsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (products != null)
           'products': products!.map((value) => value.toJson()).toList(),
@@ -1046,7 +1045,7 @@ class Price {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (amount != null) 'amount': amount!,
         if (currency != null) 'currency': currency!,
       };
@@ -1129,7 +1128,7 @@ class Product {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributes != null) 'attributes': attributes!.toJson(),
         if (contentLanguage != null) 'contentLanguage': contentLanguage!,
         if (destinationStatuses != null)
@@ -1172,7 +1171,7 @@ class ProductDetail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attributeName != null) 'attributeName': attributeName!,
         if (attributeValue != null) 'attributeValue': attributeValue!,
         if (sectionName != null) 'sectionName': sectionName!,

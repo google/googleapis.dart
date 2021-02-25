@@ -154,7 +154,9 @@ void main() {
   unittest.group('obj-schema-PlatformSummary', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPlatformSummary();
-      var od = api.PlatformSummary.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PlatformSummary.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPlatformSummary(od as api.PlatformSummary);
     });
   });
@@ -162,7 +164,9 @@ void main() {
   unittest.group('obj-schema-SiteSummaryResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSiteSummaryResponse();
-      var od = api.SiteSummaryResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SiteSummaryResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSiteSummaryResponse(od as api.SiteSummaryResponse);
     });
   });
@@ -170,7 +174,9 @@ void main() {
   unittest.group('obj-schema-ViolatingSitesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildViolatingSitesResponse();
-      var od = api.ViolatingSitesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ViolatingSitesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkViolatingSitesResponse(od as api.ViolatingSitesResponse);
     });
   });

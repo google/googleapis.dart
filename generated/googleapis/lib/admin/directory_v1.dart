@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -5566,7 +5565,7 @@ class Alias {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alias != null) 'alias': alias!,
         if (etag != null) 'etag': etag!,
         if (id != null) 'id': id!,
@@ -5601,7 +5600,7 @@ class Aliases {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aliases != null) 'aliases': aliases!,
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
@@ -5671,7 +5670,7 @@ class Asp {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (codeId != null) 'codeId': codeId!,
         if (creationTime != null) 'creationTime': creationTime!,
         if (etag != null) 'etag': etag!,
@@ -5711,7 +5710,7 @@ class Asps {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -5794,7 +5793,7 @@ class Building {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!.toJson(),
         if (buildingId != null) 'buildingId': buildingId!,
         if (buildingName != null) 'buildingName': buildingName!,
@@ -5874,7 +5873,7 @@ class BuildingAddress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addressLines != null) 'addressLines': addressLines!,
         if (administrativeArea != null)
           'administrativeArea': administrativeArea!,
@@ -5905,7 +5904,7 @@ class BuildingCoordinates {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (latitude != null) 'latitude': latitude!,
         if (longitude != null) 'longitude': longitude!,
       };
@@ -5948,7 +5947,7 @@ class Buildings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (buildings != null)
           'buildings': buildings!.map((value) => value.toJson()).toList(),
         if (etag != null) 'etag': etag!,
@@ -6069,7 +6068,7 @@ class CalendarResource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (buildingId != null) 'buildingId': buildingId!,
         if (capacity != null) 'capacity': capacity!,
         if (etags != null) 'etags': etags!,
@@ -6131,7 +6130,7 @@ class CalendarResources {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -6201,13 +6200,12 @@ class Channel {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('params')) {
-      params =
-          (_json['params'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      params = (_json['params'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('payload')) {
       payload = _json['payload'] as core.bool;
@@ -6226,7 +6224,7 @@ class Channel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
         if (expiration != null) 'expiration': expiration!,
         if (id != null) 'id': id!,
@@ -6258,7 +6256,7 @@ class ChromeOsDeviceActiveTimeRanges {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (activeTime != null) 'activeTime': activeTime!,
         if (date != null)
           'date':
@@ -6284,7 +6282,7 @@ class ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (label != null) 'label': label!,
         if (temperature != null) 'temperature': temperature!,
       };
@@ -6320,7 +6318,7 @@ class ChromeOsDeviceCpuStatusReports {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cpuTemperatureInfo != null)
           'cpuTemperatureInfo':
               cpuTemperatureInfo!.map((value) => value.toJson()).toList(),
@@ -6360,7 +6358,7 @@ class ChromeOsDeviceDeviceFiles {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!.toIso8601String(),
         if (downloadUrl != null) 'downloadUrl': downloadUrl!,
         if (name != null) 'name': name!,
@@ -6392,7 +6390,7 @@ class ChromeOsDeviceDiskVolumeReportsVolumeInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (storageFree != null) 'storageFree': storageFree!,
         if (storageTotal != null) 'storageTotal': storageTotal!,
         if (volumeId != null) 'volumeId': volumeId!,
@@ -6415,7 +6413,7 @@ class ChromeOsDeviceDiskVolumeReports {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (volumeInfo != null)
           'volumeInfo': volumeInfo!.map((value) => value.toJson()).toList(),
       };
@@ -6440,7 +6438,7 @@ class ChromeOsDeviceLastKnownNetwork {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ipAddress != null) 'ipAddress': ipAddress!,
         if (wanIpAddress != null) 'wanIpAddress': wanIpAddress!,
       };
@@ -6464,7 +6462,7 @@ class ChromeOsDeviceSystemRamFreeReports {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (reportTime != null) 'reportTime': reportTime!.toIso8601String(),
         if (systemRamFreeInfo != null) 'systemRamFreeInfo': systemRamFreeInfo!,
       };
@@ -6518,7 +6516,7 @@ class ChromeOsDeviceTpmVersionInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (family != null) 'family': family!,
         if (firmwareVersion != null) 'firmwareVersion': firmwareVersion!,
         if (manufacturer != null) 'manufacturer': manufacturer!,
@@ -6847,7 +6845,7 @@ class ChromeOsDevice {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (activeTimeRanges != null)
           'activeTimeRanges':
               activeTimeRanges!.map((value) => value.toJson()).toList(),
@@ -6926,7 +6924,7 @@ class ChromeOsDeviceAction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
         if (deprovisionReason != null) 'deprovisionReason': deprovisionReason!,
       };
@@ -6968,7 +6966,7 @@ class ChromeOsDevices {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (chromeosdevices != null)
           'chromeosdevices':
               chromeosdevices!.map((value) => value.toJson()).toList(),
@@ -6992,7 +6990,7 @@ class ChromeOsMoveDevicesToOu {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deviceIds != null) 'deviceIds': deviceIds!,
       };
 }
@@ -7073,7 +7071,7 @@ class Customer {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alternateEmail != null) 'alternateEmail': alternateEmail!,
         if (customerCreationTime != null)
           'customerCreationTime': customerCreationTime!.toIso8601String(),
@@ -7160,7 +7158,7 @@ class CustomerPostalAddress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addressLine1 != null) 'addressLine1': addressLine1!,
         if (addressLine2 != null) 'addressLine2': addressLine2!,
         if (addressLine3 != null) 'addressLine3': addressLine3!,
@@ -7254,7 +7252,7 @@ class DirectoryChromeosdevicesCommand {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commandExpireTime != null) 'commandExpireTime': commandExpireTime!,
         if (commandId != null) 'commandId': commandId!,
         if (commandResult != null) 'commandResult': commandResult!.toJson(),
@@ -7297,7 +7295,7 @@ class DirectoryChromeosdevicesCommandResult {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (errorMessage != null) 'errorMessage': errorMessage!,
         if (executeTime != null) 'executeTime': executeTime!,
         if (result != null) 'result': result!,
@@ -7344,7 +7342,7 @@ class DirectoryChromeosdevicesIssueCommandRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commandType != null) 'commandType': commandType!,
         if (payload != null) 'payload': payload!,
       };
@@ -7363,7 +7361,7 @@ class DirectoryChromeosdevicesIssueCommandResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commandId != null) 'commandId': commandId!,
       };
 }
@@ -7416,7 +7414,7 @@ class DomainAlias {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (creationTime != null) 'creationTime': creationTime!,
         if (domainAliasName != null) 'domainAliasName': domainAliasName!,
         if (etag != null) 'etag': etag!,
@@ -7453,7 +7451,7 @@ class DomainAliases {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (domainAliases != null)
           'domainAliases':
               domainAliases!.map((value) => value.toJson()).toList(),
@@ -7520,7 +7518,7 @@ class Domains {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (creationTime != null) 'creationTime': creationTime!,
         if (domainAliases != null)
           'domainAliases':
@@ -7560,7 +7558,7 @@ class Domains2 {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (domains != null)
           'domains': domains!.map((value) => value.toJson()).toList(),
         if (etag != null) 'etag': etag!,
@@ -7593,7 +7591,7 @@ class Feature {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etags != null) 'etags': etags!,
         if (kind != null) 'kind': kind!,
         if (name != null) 'name': name!,
@@ -7616,7 +7614,7 @@ class FeatureInstance {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (feature != null) 'feature': feature!.toJson(),
       };
 }
@@ -7633,7 +7631,7 @@ class FeatureRename {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (newName != null) 'newName': newName!,
       };
 }
@@ -7675,7 +7673,7 @@ class Features {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (features != null)
           'features': features!.map((value) => value.toJson()).toList(),
@@ -7783,7 +7781,7 @@ class Group {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (adminCreated != null) 'adminCreated': adminCreated!,
         if (aliases != null) 'aliases': aliases!,
         if (description != null) 'description': description!,
@@ -7832,7 +7830,7 @@ class Groups {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (groups != null)
           'groups': groups!.map((value) => value.toJson()).toList(),
@@ -7916,7 +7914,7 @@ class Member {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deliverySettings != null) 'delivery_settings': deliverySettings!,
         if (email != null) 'email': email!,
         if (etag != null) 'etag': etag!,
@@ -7961,7 +7959,7 @@ class Members {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (members != null)
@@ -7987,7 +7985,7 @@ class MembersHasMember {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (isMember != null) 'isMember': isMember!,
       };
 }
@@ -8044,7 +8042,7 @@ class MobileDeviceApplications {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (packageName != null) 'packageName': packageName!,
         if (permission != null) 'permission': permission!,
@@ -8361,7 +8359,7 @@ class MobileDevice {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (adbStatus != null) 'adbStatus': adbStatus!,
         if (applications != null)
           'applications': applications!.map((value) => value.toJson()).toList(),
@@ -8425,7 +8423,7 @@ class MobileDeviceAction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
       };
 }
@@ -8463,7 +8461,7 @@ class MobileDevices {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (mobiledevices != null)
@@ -8568,7 +8566,7 @@ class OrgUnit {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blockInheritance != null) 'blockInheritance': blockInheritance!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
@@ -8610,7 +8608,7 @@ class OrgUnits {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (organizationUnits != null)
@@ -8678,7 +8676,7 @@ class Privilege {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (childPrivileges != null)
           'childPrivileges':
               childPrivileges!.map((value) => value.toJson()).toList(),
@@ -8720,7 +8718,7 @@ class Privileges {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -8749,7 +8747,7 @@ class RecentUsers {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (email != null) 'email': email!,
         if (type != null) 'type': type!,
       };
@@ -8776,7 +8774,7 @@ class RoleRolePrivileges {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (privilegeName != null) 'privilegeName': privilegeName!,
         if (serviceId != null) 'serviceId': serviceId!,
       };
@@ -8841,7 +8839,7 @@ class Role {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (isSuperAdminRole != null) 'isSuperAdminRole': isSuperAdminRole!,
         if (isSystemRole != null) 'isSystemRole': isSystemRole!,
@@ -8906,7 +8904,7 @@ class RoleAssignment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (assignedTo != null) 'assignedTo': assignedTo!,
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
@@ -8950,7 +8948,7 @@ class RoleAssignments {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -8992,7 +8990,7 @@ class Roles {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -9049,7 +9047,7 @@ class Schema {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (etag != null) 'etag': etag!,
         if (fields != null)
@@ -9088,7 +9086,7 @@ class SchemaFieldSpecNumericIndexingSpec {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (maxValue != null) 'maxValue': maxValue!,
         if (minValue != null) 'minValue': minValue!,
       };
@@ -9181,7 +9179,7 @@ class SchemaFieldSpec {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (etag != null) 'etag': etag!,
         if (fieldId != null) 'fieldId': fieldId!,
@@ -9224,7 +9222,7 @@ class Schemas {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (schemas != null)
@@ -9296,7 +9294,7 @@ class Token {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (anonymous != null) 'anonymous': anonymous!,
         if (clientId != null) 'clientId': clientId!,
         if (displayText != null) 'displayText': displayText!,
@@ -9338,7 +9336,7 @@ class Tokens {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),
@@ -9685,15 +9683,14 @@ class User {
       creationTime = core.DateTime.parse(_json['creationTime'] as core.String);
     }
     if (_json.containsKey('customSchemas')) {
-      customSchemas = (_json['customSchemas'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              UserCustomProperties.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      customSchemas =
+          (_json['customSchemas'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          UserCustomProperties.fromJson(
+              item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('customerId')) {
       customerId = _json['customerId'] as core.String;
@@ -9819,7 +9816,7 @@ class User {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addresses != null) 'addresses': addresses!,
         if (agreedToTerms != null) 'agreedToTerms': agreedToTerms!,
         if (aliases != null) 'aliases': aliases!,
@@ -9898,7 +9895,7 @@ class UserAbout {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentType != null) 'contentType': contentType!,
         if (value != null) 'value': value!,
       };
@@ -9998,7 +9995,7 @@ class UserAddress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (country != null) 'country': country!,
         if (countryCode != null) 'countryCode': countryCode!,
         if (customType != null) 'customType': customType!,
@@ -10090,7 +10087,7 @@ class UserEmail {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
         if (customType != null) 'customType': customType!,
         if (primary != null) 'primary': primary!,
@@ -10123,7 +10120,7 @@ class UserExternalId {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customType != null) 'customType': customType!,
         if (type != null) 'type': type!,
         if (value != null) 'value': value!,
@@ -10157,7 +10154,7 @@ class UserGender {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addressMeAs != null) 'addressMeAs': addressMeAs!,
         if (customGender != null) 'customGender': customGender!,
         if (type != null) 'type': type!,
@@ -10218,7 +10215,7 @@ class UserIm {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customProtocol != null) 'customProtocol': customProtocol!,
         if (customType != null) 'customType': customType!,
         if (im != null) 'im': im!,
@@ -10258,7 +10255,7 @@ class UserKeyword {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customType != null) 'customType': customType!,
         if (type != null) 'type': type!,
         if (value != null) 'value': value!,
@@ -10290,7 +10287,7 @@ class UserLanguage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customLanguage != null) 'customLanguage': customLanguage!,
         if (languageCode != null) 'languageCode': languageCode!,
       };
@@ -10357,7 +10354,7 @@ class UserLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (area != null) 'area': area!,
         if (buildingId != null) 'buildingId': buildingId!,
         if (customType != null) 'customType': customType!,
@@ -10380,7 +10377,7 @@ class UserMakeAdmin {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (status != null) 'status': status!,
       };
 }
@@ -10414,7 +10411,7 @@ class UserName {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (familyName != null) 'familyName': familyName!,
         if (fullName != null) 'fullName': fullName!,
         if (givenName != null) 'givenName': givenName!,
@@ -10508,7 +10505,7 @@ class UserOrganization {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (costCenter != null) 'costCenter': costCenter!,
         if (customType != null) 'customType': customType!,
         if (department != null) 'department': department!,
@@ -10561,7 +10558,7 @@ class UserPhone {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customType != null) 'customType': customType!,
         if (primary != null) 'primary': primary!,
         if (type != null) 'type': type!,
@@ -10644,7 +10641,7 @@ class UserPhoto {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (height != null) 'height': height!,
         if (id != null) 'id': id!,
@@ -10723,7 +10720,7 @@ class UserPosixAccount {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accountId != null) 'accountId': accountId!,
         if (gecos != null) 'gecos': gecos!,
         if (gid != null) 'gid': gid!,
@@ -10766,7 +10763,7 @@ class UserRelation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customType != null) 'customType': customType!,
         if (type != null) 'type': type!,
         if (value != null) 'value': value!,
@@ -10800,7 +10797,7 @@ class UserSshPublicKey {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (expirationTimeUsec != null)
           'expirationTimeUsec': expirationTimeUsec!,
         if (fingerprint != null) 'fingerprint': fingerprint!,
@@ -10820,7 +10817,7 @@ class UserUndelete {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (orgUnitPath != null) 'orgUnitPath': orgUnitPath!,
       };
 }
@@ -10861,7 +10858,7 @@ class UserWebsite {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customType != null) 'customType': customType!,
         if (primary != null) 'primary': primary!,
         if (type != null) 'type': type!,
@@ -10908,7 +10905,7 @@ class Users {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -10955,7 +10952,7 @@ class VerificationCode {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (kind != null) 'kind': kind!,
         if (userId != null) 'userId': userId!,
@@ -10994,7 +10991,7 @@ class VerificationCodes {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (items != null)
           'items': items!.map((value) => value.toJson()).toList(),

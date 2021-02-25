@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -3504,7 +3503,7 @@ class AutoForwarding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (disposition != null) 'disposition': disposition!,
         if (emailAddress != null) 'emailAddress': emailAddress!,
         if (enabled != null) 'enabled': enabled!,
@@ -3525,7 +3524,7 @@ class BatchDeleteMessagesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ids != null) 'ids': ids!,
       };
 }
@@ -3562,7 +3561,7 @@ class BatchModifyMessagesRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addLabelIds != null) 'addLabelIds': addLabelIds!,
         if (ids != null) 'ids': ids!,
         if (removeLabelIds != null) 'removeLabelIds': removeLabelIds!,
@@ -3604,7 +3603,7 @@ class Delegate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (delegateEmail != null) 'delegateEmail': delegateEmail!,
         if (verificationStatus != null)
           'verificationStatus': verificationStatus!,
@@ -3631,7 +3630,7 @@ class Draft {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (message != null) 'message': message!.toJson(),
       };
@@ -3666,7 +3665,7 @@ class Filter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!.toJson(),
         if (criteria != null) 'criteria': criteria!.toJson(),
         if (id != null) 'id': id!,
@@ -3702,7 +3701,7 @@ class FilterAction {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addLabelIds != null) 'addLabelIds': addLabelIds!,
         if (forward != null) 'forward': forward!,
         if (removeLabelIds != null) 'removeLabelIds': removeLabelIds!,
@@ -3788,7 +3787,7 @@ class FilterCriteria {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (excludeChats != null) 'excludeChats': excludeChats!,
         if (from != null) 'from': from!,
         if (hasAttachment != null) 'hasAttachment': hasAttachment!,
@@ -3827,7 +3826,7 @@ class ForwardingAddress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (forwardingEmail != null) 'forwardingEmail': forwardingEmail!,
         if (verificationStatus != null)
           'verificationStatus': verificationStatus!,
@@ -3898,7 +3897,7 @@ class History {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (labelsAdded != null)
           'labelsAdded': labelsAdded!.map((value) => value.toJson()).toList(),
@@ -3935,7 +3934,7 @@ class HistoryLabelAdded {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (labelIds != null) 'labelIds': labelIds!,
         if (message != null) 'message': message!.toJson(),
       };
@@ -3960,7 +3959,7 @@ class HistoryLabelRemoved {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (labelIds != null) 'labelIds': labelIds!,
         if (message != null) 'message': message!.toJson(),
       };
@@ -3978,7 +3977,7 @@ class HistoryMessageAdded {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (message != null) 'message': message!.toJson(),
       };
 }
@@ -3995,7 +3994,7 @@ class HistoryMessageDeleted {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (message != null) 'message': message!.toJson(),
       };
 }
@@ -4046,7 +4045,7 @@ class ImapSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (autoExpunge != null) 'autoExpunge': autoExpunge!,
         if (enabled != null) 'enabled': enabled!,
         if (expungeBehavior != null) 'expungeBehavior': expungeBehavior!,
@@ -4146,7 +4145,7 @@ class Label {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (color != null) 'color': color!.toJson(),
         if (id != null) 'id': id!,
         if (labelListVisibility != null)
@@ -4212,7 +4211,7 @@ class LabelColor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (backgroundColor != null) 'backgroundColor': backgroundColor!,
         if (textColor != null) 'textColor': textColor!,
       };
@@ -4245,7 +4244,7 @@ class LanguageSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayLanguage != null) 'displayLanguage': displayLanguage!,
       };
 }
@@ -4268,7 +4267,7 @@ class ListDelegatesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (delegates != null)
           'delegates': delegates!.map((value) => value.toJson()).toList(),
       };
@@ -4305,7 +4304,7 @@ class ListDraftsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (drafts != null)
           'drafts': drafts!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -4330,7 +4329,7 @@ class ListFiltersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (filter != null)
           'filter': filter!.map((value) => value.toJson()).toList(),
       };
@@ -4352,7 +4351,7 @@ class ListForwardingAddressesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (forwardingAddresses != null)
           'forwardingAddresses':
               forwardingAddresses!.map((value) => value.toJson()).toList(),
@@ -4389,7 +4388,7 @@ class ListHistoryResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (history != null)
           'history': history!.map((value) => value.toJson()).toList(),
         if (historyId != null) 'historyId': historyId!,
@@ -4416,7 +4415,7 @@ class ListLabelsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (labels != null)
           'labels': labels!.map((value) => value.toJson()).toList(),
       };
@@ -4452,7 +4451,7 @@ class ListMessagesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (messages != null)
           'messages': messages!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -4477,7 +4476,7 @@ class ListSendAsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sendAs != null)
           'sendAs': sendAs!.map((value) => value.toJson()).toList(),
       };
@@ -4498,7 +4497,7 @@ class ListSmimeInfoResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (smimeInfo != null)
           'smimeInfo': smimeInfo!.map((value) => value.toJson()).toList(),
       };
@@ -4535,7 +4534,7 @@ class ListThreadsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (resultSizeEstimate != null)
           'resultSizeEstimate': resultSizeEstimate!,
@@ -4631,7 +4630,7 @@ class Message {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (historyId != null) 'historyId': historyId!,
         if (id != null) 'id': id!,
         if (internalDate != null) 'internalDate': internalDate!,
@@ -4705,7 +4704,7 @@ class MessagePart {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (body != null) 'body': body!.toJson(),
         if (filename != null) 'filename': filename!,
         if (headers != null)
@@ -4756,7 +4755,7 @@ class MessagePartBody {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (attachmentId != null) 'attachmentId': attachmentId!,
         if (data != null) 'data': data!,
         if (size != null) 'size': size!,
@@ -4785,7 +4784,7 @@ class MessagePartHeader {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
       };
@@ -4813,7 +4812,7 @@ class ModifyMessageRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addLabelIds != null) 'addLabelIds': addLabelIds!,
         if (removeLabelIds != null) 'removeLabelIds': removeLabelIds!,
       };
@@ -4841,7 +4840,7 @@ class ModifyThreadRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addLabelIds != null) 'addLabelIds': addLabelIds!,
         if (removeLabelIds != null) 'removeLabelIds': removeLabelIds!,
       };
@@ -4880,7 +4879,7 @@ class PopSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accessWindow != null) 'accessWindow': accessWindow!,
         if (disposition != null) 'disposition': disposition!,
       };
@@ -4917,7 +4916,7 @@ class Profile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (emailAddress != null) 'emailAddress': emailAddress!,
         if (historyId != null) 'historyId': historyId!,
         if (messagesTotal != null) 'messagesTotal': messagesTotal!,
@@ -5029,7 +5028,7 @@ class SendAs {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (isDefault != null) 'isDefault': isDefault!,
         if (isPrimary != null) 'isPrimary': isPrimary!,
@@ -5108,7 +5107,7 @@ class SmimeInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (encryptedKeyPassword != null)
           'encryptedKeyPassword': encryptedKeyPassword!,
         if (expiration != null) 'expiration': expiration!,
@@ -5177,7 +5176,7 @@ class SmtpMsa {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (host != null) 'host': host!,
         if (password != null) 'password': password!,
         if (port != null) 'port': port!,
@@ -5220,7 +5219,7 @@ class Thread {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (historyId != null) 'historyId': historyId!,
         if (id != null) 'id': id!,
         if (messages != null)
@@ -5309,7 +5308,7 @@ class VacationSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enableAutoReply != null) 'enableAutoReply': enableAutoReply!,
         if (endTime != null) 'endTime': endTime!,
         if (responseBodyHtml != null) 'responseBodyHtml': responseBodyHtml!,
@@ -5367,7 +5366,7 @@ class WatchRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (labelFilterAction != null) 'labelFilterAction': labelFilterAction!,
         if (labelIds != null) 'labelIds': labelIds!,
         if (topicName != null) 'topicName': topicName!,
@@ -5396,7 +5395,7 @@ class WatchResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (expiration != null) 'expiration': expiration!,
         if (historyId != null) 'historyId': historyId!,
       };

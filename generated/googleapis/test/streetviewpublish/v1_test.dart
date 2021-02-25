@@ -809,7 +809,9 @@ void main() {
   unittest.group('obj-schema-BatchDeletePhotosRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBatchDeletePhotosRequest();
-      var od = api.BatchDeletePhotosRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BatchDeletePhotosRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBatchDeletePhotosRequest(od as api.BatchDeletePhotosRequest);
     });
   });
@@ -817,7 +819,9 @@ void main() {
   unittest.group('obj-schema-BatchDeletePhotosResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBatchDeletePhotosResponse();
-      var od = api.BatchDeletePhotosResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BatchDeletePhotosResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBatchDeletePhotosResponse(od as api.BatchDeletePhotosResponse);
     });
   });
@@ -825,7 +829,9 @@ void main() {
   unittest.group('obj-schema-BatchGetPhotosResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBatchGetPhotosResponse();
-      var od = api.BatchGetPhotosResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BatchGetPhotosResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBatchGetPhotosResponse(od as api.BatchGetPhotosResponse);
     });
   });
@@ -833,7 +839,9 @@ void main() {
   unittest.group('obj-schema-BatchUpdatePhotosRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBatchUpdatePhotosRequest();
-      var od = api.BatchUpdatePhotosRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BatchUpdatePhotosRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBatchUpdatePhotosRequest(od as api.BatchUpdatePhotosRequest);
     });
   });
@@ -841,7 +849,9 @@ void main() {
   unittest.group('obj-schema-BatchUpdatePhotosResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBatchUpdatePhotosResponse();
-      var od = api.BatchUpdatePhotosResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BatchUpdatePhotosResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBatchUpdatePhotosResponse(od as api.BatchUpdatePhotosResponse);
     });
   });
@@ -849,7 +859,9 @@ void main() {
   unittest.group('obj-schema-Connection', () {
     unittest.test('to-json--from-json', () async {
       var o = buildConnection();
-      var od = api.Connection.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Connection.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkConnection(od as api.Connection);
     });
   });
@@ -857,7 +869,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -865,7 +878,9 @@ void main() {
   unittest.group('obj-schema-LatLng', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLatLng();
-      var od = api.LatLng.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.LatLng.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLatLng(od as api.LatLng);
     });
   });
@@ -873,7 +888,8 @@ void main() {
   unittest.group('obj-schema-Level', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLevel();
-      var od = api.Level.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Level.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLevel(od as api.Level);
     });
   });
@@ -881,7 +897,9 @@ void main() {
   unittest.group('obj-schema-ListPhotosResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListPhotosResponse();
-      var od = api.ListPhotosResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListPhotosResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListPhotosResponse(od as api.ListPhotosResponse);
     });
   });
@@ -889,7 +907,9 @@ void main() {
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOperation();
-      var od = api.Operation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od as api.Operation);
     });
   });
@@ -897,7 +917,8 @@ void main() {
   unittest.group('obj-schema-Photo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPhoto();
-      var od = api.Photo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Photo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPhoto(od as api.Photo);
     });
   });
@@ -905,7 +926,9 @@ void main() {
   unittest.group('obj-schema-PhotoId', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPhotoId();
-      var od = api.PhotoId.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.PhotoId.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPhotoId(od as api.PhotoId);
     });
   });
@@ -913,7 +936,9 @@ void main() {
   unittest.group('obj-schema-PhotoResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPhotoResponse();
-      var od = api.PhotoResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PhotoResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPhotoResponse(od as api.PhotoResponse);
     });
   });
@@ -921,7 +946,8 @@ void main() {
   unittest.group('obj-schema-Place', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPlace();
-      var od = api.Place.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Place.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPlace(od as api.Place);
     });
   });
@@ -929,7 +955,8 @@ void main() {
   unittest.group('obj-schema-Pose', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPose();
-      var od = api.Pose.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Pose.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPose(od as api.Pose);
     });
   });
@@ -937,7 +964,9 @@ void main() {
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStatus();
-      var od = api.Status.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od as api.Status);
     });
   });
@@ -945,7 +974,9 @@ void main() {
   unittest.group('obj-schema-UpdatePhotoRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUpdatePhotoRequest();
-      var od = api.UpdatePhotoRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.UpdatePhotoRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkUpdatePhotoRequest(od as api.UpdatePhotoRequest);
     });
   });
@@ -953,7 +984,9 @@ void main() {
   unittest.group('obj-schema-UploadRef', () {
     unittest.test('to-json--from-json', () async {
       var o = buildUploadRef();
-      var od = api.UploadRef.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.UploadRef.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkUploadRef(od as api.UploadRef);
     });
   });

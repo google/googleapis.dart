@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -666,7 +665,7 @@ class BatchCreateRowsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (requests != null)
           'requests': requests!.map((value) => value.toJson()).toList(),
       };
@@ -688,7 +687,7 @@ class BatchCreateRowsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
       };
 }
@@ -714,7 +713,7 @@ class BatchDeleteRowsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (names != null) 'names': names!,
       };
 }
@@ -739,7 +738,7 @@ class BatchUpdateRowsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (requests != null)
           'requests': requests!.map((value) => value.toJson()).toList(),
       };
@@ -761,7 +760,7 @@ class BatchUpdateRowsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
       };
 }
@@ -836,7 +835,7 @@ class ColumnDescription {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dataType != null) 'dataType': dataType!,
         if (id != null) 'id': id!,
         if (labels != null)
@@ -887,7 +886,7 @@ class CreateRowRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parent != null) 'parent': parent!,
         if (row != null) 'row': row!.toJson(),
         if (view != null) 'view': view!,
@@ -908,7 +907,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A single item in a labeled column.
@@ -930,7 +929,7 @@ class LabeledItem {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (name != null) 'name': name!,
       };
@@ -960,7 +959,7 @@ class ListRowsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (rows != null) 'rows': rows!.map((value) => value.toJson()).toList(),
       };
@@ -990,7 +989,7 @@ class ListTablesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (tables != null)
           'tables': tables!.map((value) => value.toJson()).toList(),
@@ -1021,7 +1020,7 @@ class ListWorkspacesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (workspaces != null)
           'workspaces': workspaces!.map((value) => value.toJson()).toList(),
@@ -1048,7 +1047,7 @@ class LookupDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (relationshipColumn != null)
           'relationshipColumn': relationshipColumn!,
         if (relationshipColumnId != null)
@@ -1069,7 +1068,7 @@ class RelationshipDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (linkedTable != null) 'linkedTable': linkedTable!,
       };
 }
@@ -1110,17 +1109,16 @@ class Row {
       updateTime = _json['updateTime'] as core.String;
     }
     if (_json.containsKey('values')) {
-      values =
-          (_json['values'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      values = (_json['values'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (name != null) 'name': name!,
         if (updateTime != null) 'updateTime': updateTime!,
@@ -1172,7 +1170,7 @@ class Table {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (columns != null)
           'columns': columns!.map((value) => value.toJson()).toList(),
         if (createTime != null) 'createTime': createTime!,
@@ -1217,7 +1215,7 @@ class UpdateRowRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (row != null) 'row': row!.toJson(),
         if (updateMask != null) 'updateMask': updateMask!,
         if (view != null) 'view': view!,
@@ -1266,7 +1264,7 @@ class Workspace {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (displayName != null) 'displayName': displayName!,
         if (name != null) 'name': name!,

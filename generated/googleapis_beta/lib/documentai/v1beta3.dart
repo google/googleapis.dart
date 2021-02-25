@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -521,7 +520,7 @@ class GoogleCloudDocumentaiUiv1beta3CommonOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
@@ -545,7 +544,7 @@ class GoogleCloudDocumentaiUiv1beta3CreateLabelerPoolOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
@@ -566,7 +565,7 @@ class GoogleCloudDocumentaiUiv1beta3DeleteLabelerPoolOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
@@ -587,7 +586,7 @@ class GoogleCloudDocumentaiUiv1beta3DeleteProcessorMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
@@ -608,7 +607,7 @@ class GoogleCloudDocumentaiUiv1beta3DeleteProcessorVersionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
@@ -629,7 +628,7 @@ class GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
@@ -642,7 +641,7 @@ class GoogleCloudDocumentaiUiv1beta3DeployProcessorVersionResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The long running operation metadata for disable processor method.
@@ -661,7 +660,7 @@ class GoogleCloudDocumentaiUiv1beta3DisableProcessorMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
@@ -676,7 +675,7 @@ class GoogleCloudDocumentaiUiv1beta3DisableProcessorResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The long running operation metadata for enable processor method.
@@ -695,7 +694,7 @@ class GoogleCloudDocumentaiUiv1beta3EnableProcessorMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
@@ -710,7 +709,7 @@ class GoogleCloudDocumentaiUiv1beta3EnableProcessorResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Metadata of the EvaluateProcessorVersion method.
@@ -729,7 +728,7 @@ class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
@@ -748,7 +747,7 @@ class GoogleCloudDocumentaiUiv1beta3EvaluateProcessorVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (evaluation != null) 'evaluation': evaluation!,
       };
 }
@@ -789,7 +788,7 @@ class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
         if (testDatasetValidation != null)
           'testDatasetValidation': testDatasetValidation!.toJson(),
@@ -832,7 +831,7 @@ class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionMetadataDatasetValidati
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (datasetErrors != null)
           'datasetErrors':
               datasetErrors!.map((value) => value.toJson()).toList(),
@@ -856,7 +855,7 @@ class GoogleCloudDocumentaiUiv1beta3TrainProcessorVersionResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (processorVersion != null) 'processorVersion': processorVersion!,
       };
 }
@@ -878,7 +877,7 @@ class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
@@ -891,7 +890,7 @@ class GoogleCloudDocumentaiUiv1beta3UndeployProcessorVersionResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The long running operation metadata for updating the human review
@@ -911,7 +910,7 @@ class GoogleCloudDocumentaiUiv1beta3UpdateHumanReviewConfigMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
@@ -932,7 +931,7 @@ class GoogleCloudDocumentaiUiv1beta3UpdateLabelerPoolOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
@@ -992,7 +991,7 @@ class GoogleCloudDocumentaiV1BatchProcessMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (individualProcessStatuses != null)
           'individualProcessStatuses': individualProcessStatuses!
@@ -1043,7 +1042,7 @@ class GoogleCloudDocumentaiV1BatchProcessMetadataIndividualProcessStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (humanReviewStatus != null)
           'humanReviewStatus': humanReviewStatus!.toJson(),
         if (inputGcsSource != null) 'inputGcsSource': inputGcsSource!,
@@ -1061,7 +1060,7 @@ class GoogleCloudDocumentaiV1BatchProcessResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The common metadata for long running operations.
@@ -1102,7 +1101,7 @@ class GoogleCloudDocumentaiV1CommonOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
@@ -1151,7 +1150,7 @@ class GoogleCloudDocumentaiV1HumanReviewStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (humanReviewOperation != null)
           'humanReviewOperation': humanReviewOperation!,
         if (state != null) 'state': state!,
@@ -1174,7 +1173,7 @@ class GoogleCloudDocumentaiV1ReviewDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
       };
 }
@@ -1192,7 +1191,7 @@ class GoogleCloudDocumentaiV1ReviewDocumentResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsDestination != null) 'gcsDestination': gcsDestination!,
       };
 }
@@ -1217,7 +1216,7 @@ class GoogleCloudDocumentaiV1beta1BatchProcessDocumentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (responses != null)
           'responses': responses!.map((value) => value.toJson()).toList(),
       };
@@ -1250,7 +1249,7 @@ class GoogleCloudDocumentaiV1beta1BoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedVertices != null)
           'normalizedVertices':
               normalizedVertices!.map((value) => value.toJson()).toList(),
@@ -1407,7 +1406,7 @@ class GoogleCloudDocumentaiV1beta1Document {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (entities != null)
           'entities': entities!.map((value) => value.toJson()).toList(),
@@ -1544,7 +1543,7 @@ class GoogleCloudDocumentaiV1beta1DocumentEntity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (id != null) 'id': id!,
         if (mentionId != null) 'mentionId': mentionId!,
@@ -1631,7 +1630,7 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityNormalizedValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addressValue != null) 'addressValue': addressValue!.toJson(),
         if (booleanValue != null) 'booleanValue': booleanValue!,
         if (dateValue != null) 'dateValue': dateValue!.toJson(),
@@ -1666,7 +1665,7 @@ class GoogleCloudDocumentaiV1beta1DocumentEntityRelation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (objectId != null) 'objectId': objectId!,
         if (relation != null) 'relation': relation!,
         if (subjectId != null) 'subjectId': subjectId!,
@@ -1815,7 +1814,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blocks != null)
           'blocks': blocks!.map((value) => value.toJson()).toList(),
         if (detectedLanguages != null)
@@ -1863,7 +1862,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (pageRefs != null)
           'pageRefs': pageRefs!.map((value) => value.toJson()).toList(),
       };
@@ -1920,7 +1919,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageAnchorPageRef {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
         if (layoutId != null) 'layoutId': layoutId!,
         if (layoutType != null) 'layoutType': layoutType!,
@@ -1962,7 +1961,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageBlock {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
               detectedLanguages!.map((value) => value.toJson()).toList(),
@@ -1996,7 +1995,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (languageCode != null) 'languageCode': languageCode!,
       };
@@ -2027,7 +2026,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageDimension {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (unit != null) 'unit': unit!,
         if (width != null) 'width': width!,
@@ -2090,7 +2089,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageFormField {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fieldName != null) 'fieldName': fieldName!.toJson(),
         if (fieldValue != null) 'fieldValue': fieldValue!.toJson(),
         if (nameDetectedLanguages != null)
@@ -2140,7 +2139,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageImage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (height != null) 'height': height!,
         if (mimeType != null) 'mimeType': mimeType!,
@@ -2194,7 +2193,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLayout {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
         if (confidence != null) 'confidence': confidence!,
         if (orientation != null) 'orientation': orientation!,
@@ -2237,7 +2236,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLine {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
               detectedLanguages!.map((value) => value.toJson()).toList(),
@@ -2288,7 +2287,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageMatrix {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cols != null) 'cols': cols!,
         if (data != null) 'data': data!,
         if (rows != null) 'rows': rows!,
@@ -2329,7 +2328,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageParagraph {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
               detectedLanguages!.map((value) => value.toJson()).toList(),
@@ -2384,7 +2383,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTable {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bodyRows != null)
           'bodyRows': bodyRows!.map((value) => value.toJson()).toList(),
         if (detectedLanguages != null)
@@ -2435,7 +2434,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTableTableCell {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (colSpan != null) 'colSpan': colSpan!,
         if (detectedLanguages != null)
           'detectedLanguages':
@@ -2463,7 +2462,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTableTableRow {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cells != null)
           'cells': cells!.map((value) => value.toJson()).toList(),
       };
@@ -2510,7 +2509,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageToken {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectedBreak != null) 'detectedBreak': detectedBreak!.toJson(),
         if (detectedLanguages != null)
           'detectedLanguages':
@@ -2540,7 +2539,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageTokenDetectedBreak {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
       };
 }
@@ -2580,7 +2579,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageVisualElement {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
               detectedLanguages!.map((value) => value.toJson()).toList(),
@@ -2636,7 +2635,7 @@ class GoogleCloudDocumentaiV1beta1DocumentProvenance {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (parents != null)
           'parents': parents!.map((value) => value.toJson()).toList(),
@@ -2668,7 +2667,7 @@ class GoogleCloudDocumentaiV1beta1DocumentProvenanceParent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (revision != null) 'revision': revision!,
       };
@@ -2727,7 +2726,7 @@ class GoogleCloudDocumentaiV1beta1DocumentRevision {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agent != null) 'agent': agent!,
         if (createTime != null) 'createTime': createTime!,
         if (humanReview != null) 'humanReview': humanReview!.toJson(),
@@ -2761,7 +2760,7 @@ class GoogleCloudDocumentaiV1beta1DocumentRevisionHumanReview {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
       };
@@ -2796,7 +2795,7 @@ class GoogleCloudDocumentaiV1beta1DocumentShardInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (shardCount != null) 'shardCount': shardCount!,
         if (shardIndex != null) 'shardIndex': shardIndex!,
         if (textOffset != null) 'textOffset': textOffset!,
@@ -2867,7 +2866,7 @@ class GoogleCloudDocumentaiV1beta1DocumentStyle {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (backgroundColor != null)
           'backgroundColor': backgroundColor!.toJson(),
         if (color != null) 'color': color!.toJson(),
@@ -2900,7 +2899,7 @@ class GoogleCloudDocumentaiV1beta1DocumentStyleFontSize {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (size != null) 'size': size!,
         if (unit != null) 'unit': unit!,
       };
@@ -2932,7 +2931,7 @@ class GoogleCloudDocumentaiV1beta1DocumentTextAnchor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (textSegments != null)
           'textSegments': textSegments!.map((value) => value.toJson()).toList(),
@@ -2963,7 +2962,7 @@ class GoogleCloudDocumentaiV1beta1DocumentTextAnchorTextSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endIndex != null) 'endIndex': endIndex!,
         if (startIndex != null) 'startIndex': startIndex!,
       };
@@ -3005,7 +3004,7 @@ class GoogleCloudDocumentaiV1beta1DocumentTextChange {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (changedText != null) 'changedText': changedText!,
         if (provenance != null)
           'provenance': provenance!.map((value) => value.toJson()).toList(),
@@ -3056,7 +3055,7 @@ class GoogleCloudDocumentaiV1beta1DocumentTranslation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
         if (provenance != null)
           'provenance': provenance!.map((value) => value.toJson()).toList(),
@@ -3077,7 +3076,7 @@ class GoogleCloudDocumentaiV1beta1GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
       };
 }
@@ -3094,7 +3093,7 @@ class GoogleCloudDocumentaiV1beta1GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
       };
 }
@@ -3128,7 +3127,7 @@ class GoogleCloudDocumentaiV1beta1InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
         if (mimeType != null) 'mimeType': mimeType!,
       };
@@ -3156,7 +3155,7 @@ class GoogleCloudDocumentaiV1beta1NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
       };
@@ -3202,7 +3201,7 @@ class GoogleCloudDocumentaiV1beta1OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
@@ -3240,7 +3239,7 @@ class GoogleCloudDocumentaiV1beta1OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
         if (pagesPerShard != null) 'pagesPerShard': pagesPerShard!,
       };
@@ -3272,7 +3271,7 @@ class GoogleCloudDocumentaiV1beta1ProcessDocumentResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
         if (outputConfig != null) 'outputConfig': outputConfig!.toJson(),
       };
@@ -3299,7 +3298,7 @@ class GoogleCloudDocumentaiV1beta1Vertex {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
       };
@@ -3325,7 +3324,7 @@ class GoogleCloudDocumentaiV1beta2BatchProcessDocumentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (responses != null)
           'responses': responses!.map((value) => value.toJson()).toList(),
       };
@@ -3358,7 +3357,7 @@ class GoogleCloudDocumentaiV1beta2BoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedVertices != null)
           'normalizedVertices':
               normalizedVertices!.map((value) => value.toJson()).toList(),
@@ -3525,7 +3524,7 @@ class GoogleCloudDocumentaiV1beta2Document {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (entities != null)
           'entities': entities!.map((value) => value.toJson()).toList(),
@@ -3664,7 +3663,7 @@ class GoogleCloudDocumentaiV1beta2DocumentEntity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (id != null) 'id': id!,
         if (mentionId != null) 'mentionId': mentionId!,
@@ -3751,7 +3750,7 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityNormalizedValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addressValue != null) 'addressValue': addressValue!.toJson(),
         if (booleanValue != null) 'booleanValue': booleanValue!,
         if (dateValue != null) 'dateValue': dateValue!.toJson(),
@@ -3786,7 +3785,7 @@ class GoogleCloudDocumentaiV1beta2DocumentEntityRelation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (objectId != null) 'objectId': objectId!,
         if (relation != null) 'relation': relation!,
         if (subjectId != null) 'subjectId': subjectId!,
@@ -3829,7 +3828,7 @@ class GoogleCloudDocumentaiV1beta2DocumentLabel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (automlModel != null) 'automlModel': automlModel!,
         if (confidence != null) 'confidence': confidence!,
         if (name != null) 'name': name!,
@@ -3978,7 +3977,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blocks != null)
           'blocks': blocks!.map((value) => value.toJson()).toList(),
         if (detectedLanguages != null)
@@ -4026,7 +4025,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (pageRefs != null)
           'pageRefs': pageRefs!.map((value) => value.toJson()).toList(),
       };
@@ -4083,7 +4082,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageAnchorPageRef {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
         if (layoutId != null) 'layoutId': layoutId!,
         if (layoutType != null) 'layoutType': layoutType!,
@@ -4125,7 +4124,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageBlock {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
               detectedLanguages!.map((value) => value.toJson()).toList(),
@@ -4159,7 +4158,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (languageCode != null) 'languageCode': languageCode!,
       };
@@ -4190,7 +4189,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageDimension {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (unit != null) 'unit': unit!,
         if (width != null) 'width': width!,
@@ -4253,7 +4252,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageFormField {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fieldName != null) 'fieldName': fieldName!.toJson(),
         if (fieldValue != null) 'fieldValue': fieldValue!.toJson(),
         if (nameDetectedLanguages != null)
@@ -4303,7 +4302,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageImage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (height != null) 'height': height!,
         if (mimeType != null) 'mimeType': mimeType!,
@@ -4357,7 +4356,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLayout {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
         if (confidence != null) 'confidence': confidence!,
         if (orientation != null) 'orientation': orientation!,
@@ -4400,7 +4399,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLine {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
               detectedLanguages!.map((value) => value.toJson()).toList(),
@@ -4451,7 +4450,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageMatrix {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cols != null) 'cols': cols!,
         if (data != null) 'data': data!,
         if (rows != null) 'rows': rows!,
@@ -4492,7 +4491,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageParagraph {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
               detectedLanguages!.map((value) => value.toJson()).toList(),
@@ -4547,7 +4546,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTable {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bodyRows != null)
           'bodyRows': bodyRows!.map((value) => value.toJson()).toList(),
         if (detectedLanguages != null)
@@ -4598,7 +4597,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTableTableCell {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (colSpan != null) 'colSpan': colSpan!,
         if (detectedLanguages != null)
           'detectedLanguages':
@@ -4626,7 +4625,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTableTableRow {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cells != null)
           'cells': cells!.map((value) => value.toJson()).toList(),
       };
@@ -4673,7 +4672,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageToken {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectedBreak != null) 'detectedBreak': detectedBreak!.toJson(),
         if (detectedLanguages != null)
           'detectedLanguages':
@@ -4703,7 +4702,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageTokenDetectedBreak {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
       };
 }
@@ -4743,7 +4742,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageVisualElement {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
               detectedLanguages!.map((value) => value.toJson()).toList(),
@@ -4799,7 +4798,7 @@ class GoogleCloudDocumentaiV1beta2DocumentProvenance {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (parents != null)
           'parents': parents!.map((value) => value.toJson()).toList(),
@@ -4831,7 +4830,7 @@ class GoogleCloudDocumentaiV1beta2DocumentProvenanceParent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (revision != null) 'revision': revision!,
       };
@@ -4890,7 +4889,7 @@ class GoogleCloudDocumentaiV1beta2DocumentRevision {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agent != null) 'agent': agent!,
         if (createTime != null) 'createTime': createTime!,
         if (humanReview != null) 'humanReview': humanReview!.toJson(),
@@ -4924,7 +4923,7 @@ class GoogleCloudDocumentaiV1beta2DocumentRevisionHumanReview {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
       };
@@ -4959,7 +4958,7 @@ class GoogleCloudDocumentaiV1beta2DocumentShardInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (shardCount != null) 'shardCount': shardCount!,
         if (shardIndex != null) 'shardIndex': shardIndex!,
         if (textOffset != null) 'textOffset': textOffset!,
@@ -5030,7 +5029,7 @@ class GoogleCloudDocumentaiV1beta2DocumentStyle {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (backgroundColor != null)
           'backgroundColor': backgroundColor!.toJson(),
         if (color != null) 'color': color!.toJson(),
@@ -5063,7 +5062,7 @@ class GoogleCloudDocumentaiV1beta2DocumentStyleFontSize {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (size != null) 'size': size!,
         if (unit != null) 'unit': unit!,
       };
@@ -5095,7 +5094,7 @@ class GoogleCloudDocumentaiV1beta2DocumentTextAnchor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (textSegments != null)
           'textSegments': textSegments!.map((value) => value.toJson()).toList(),
@@ -5126,7 +5125,7 @@ class GoogleCloudDocumentaiV1beta2DocumentTextAnchorTextSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endIndex != null) 'endIndex': endIndex!,
         if (startIndex != null) 'startIndex': startIndex!,
       };
@@ -5168,7 +5167,7 @@ class GoogleCloudDocumentaiV1beta2DocumentTextChange {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (changedText != null) 'changedText': changedText!,
         if (provenance != null)
           'provenance': provenance!.map((value) => value.toJson()).toList(),
@@ -5219,7 +5218,7 @@ class GoogleCloudDocumentaiV1beta2DocumentTranslation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
         if (provenance != null)
           'provenance': provenance!.map((value) => value.toJson()).toList(),
@@ -5240,7 +5239,7 @@ class GoogleCloudDocumentaiV1beta2GcsDestination {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
       };
 }
@@ -5257,7 +5256,7 @@ class GoogleCloudDocumentaiV1beta2GcsSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (uri != null) 'uri': uri!,
       };
 }
@@ -5307,7 +5306,7 @@ class GoogleCloudDocumentaiV1beta2InputConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contents != null) 'contents': contents!,
         if (gcsSource != null) 'gcsSource': gcsSource!.toJson(),
         if (mimeType != null) 'mimeType': mimeType!,
@@ -5336,7 +5335,7 @@ class GoogleCloudDocumentaiV1beta2NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
       };
@@ -5382,7 +5381,7 @@ class GoogleCloudDocumentaiV1beta2OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
@@ -5420,7 +5419,7 @@ class GoogleCloudDocumentaiV1beta2OutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsDestination != null) 'gcsDestination': gcsDestination!.toJson(),
         if (pagesPerShard != null) 'pagesPerShard': pagesPerShard!,
       };
@@ -5452,7 +5451,7 @@ class GoogleCloudDocumentaiV1beta2ProcessDocumentResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (inputConfig != null) 'inputConfig': inputConfig!.toJson(),
         if (outputConfig != null) 'outputConfig': outputConfig!.toJson(),
       };
@@ -5479,7 +5478,7 @@ class GoogleCloudDocumentaiV1beta2Vertex {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
       };
@@ -5508,7 +5507,7 @@ class GoogleCloudDocumentaiV1beta3BatchDocumentsInputConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsDocuments != null) 'gcsDocuments': gcsDocuments!.toJson(),
         if (gcsPrefix != null) 'gcsPrefix': gcsPrefix!.toJson(),
       };
@@ -5570,7 +5569,7 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (individualProcessStatuses != null)
           'individualProcessStatuses': individualProcessStatuses!
@@ -5633,7 +5632,7 @@ class GoogleCloudDocumentaiV1beta3BatchProcessMetadataIndividualProcessStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (humanReviewOperation != null)
           'humanReviewOperation': humanReviewOperation!,
         if (humanReviewStatus != null)
@@ -5699,7 +5698,7 @@ class GoogleCloudDocumentaiV1beta3BatchProcessRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (documentOutputConfig != null)
           'documentOutputConfig': documentOutputConfig!.toJson(),
         if (inputConfigs != null)
@@ -5734,7 +5733,7 @@ class GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchInputConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsSource != null) 'gcsSource': gcsSource!,
         if (mimeType != null) 'mimeType': mimeType!,
       };
@@ -5754,7 +5753,7 @@ class GoogleCloudDocumentaiV1beta3BatchProcessRequestBatchOutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsDestination != null) 'gcsDestination': gcsDestination!,
       };
 }
@@ -5767,7 +5766,7 @@ class GoogleCloudDocumentaiV1beta3BatchProcessResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// A bounding polygon for the detected image annotation.
@@ -5797,7 +5796,7 @@ class GoogleCloudDocumentaiV1beta3BoundingPoly {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (normalizedVertices != null)
           'normalizedVertices':
               normalizedVertices!.map((value) => value.toJson()).toList(),
@@ -5844,7 +5843,7 @@ class GoogleCloudDocumentaiV1beta3CommonOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
@@ -6000,7 +5999,7 @@ class GoogleCloudDocumentaiV1beta3Document {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (entities != null)
           'entities': entities!.map((value) => value.toJson()).toList(),
@@ -6137,7 +6136,7 @@ class GoogleCloudDocumentaiV1beta3DocumentEntity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (id != null) 'id': id!,
         if (mentionId != null) 'mentionId': mentionId!,
@@ -6224,7 +6223,7 @@ class GoogleCloudDocumentaiV1beta3DocumentEntityNormalizedValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addressValue != null) 'addressValue': addressValue!.toJson(),
         if (booleanValue != null) 'booleanValue': booleanValue!,
         if (dateValue != null) 'dateValue': dateValue!.toJson(),
@@ -6259,7 +6258,7 @@ class GoogleCloudDocumentaiV1beta3DocumentEntityRelation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (objectId != null) 'objectId': objectId!,
         if (relation != null) 'relation': relation!,
         if (subjectId != null) 'subjectId': subjectId!,
@@ -6285,7 +6284,7 @@ class GoogleCloudDocumentaiV1beta3DocumentOutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsOutputConfig != null)
           'gcsOutputConfig': gcsOutputConfig!.toJson(),
       };
@@ -6305,7 +6304,7 @@ class GoogleCloudDocumentaiV1beta3DocumentOutputConfigGcsOutputConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsUri != null) 'gcsUri': gcsUri!,
       };
 }
@@ -6452,7 +6451,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (blocks != null)
           'blocks': blocks!.map((value) => value.toJson()).toList(),
         if (detectedLanguages != null)
@@ -6500,7 +6499,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageAnchor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (pageRefs != null)
           'pageRefs': pageRefs!.map((value) => value.toJson()).toList(),
       };
@@ -6557,7 +6556,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageAnchorPageRef {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
         if (layoutId != null) 'layoutId': layoutId!,
         if (layoutType != null) 'layoutType': layoutType!,
@@ -6599,7 +6598,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageBlock {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
               detectedLanguages!.map((value) => value.toJson()).toList(),
@@ -6633,7 +6632,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageDetectedLanguage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (confidence != null) 'confidence': confidence!,
         if (languageCode != null) 'languageCode': languageCode!,
       };
@@ -6664,7 +6663,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageDimension {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (height != null) 'height': height!,
         if (unit != null) 'unit': unit!,
         if (width != null) 'width': width!,
@@ -6727,7 +6726,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageFormField {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fieldName != null) 'fieldName': fieldName!.toJson(),
         if (fieldValue != null) 'fieldValue': fieldValue!.toJson(),
         if (nameDetectedLanguages != null)
@@ -6777,7 +6776,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageImage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (height != null) 'height': height!,
         if (mimeType != null) 'mimeType': mimeType!,
@@ -6831,7 +6830,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageLayout {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (boundingPoly != null) 'boundingPoly': boundingPoly!.toJson(),
         if (confidence != null) 'confidence': confidence!,
         if (orientation != null) 'orientation': orientation!,
@@ -6874,7 +6873,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageLine {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
               detectedLanguages!.map((value) => value.toJson()).toList(),
@@ -6925,7 +6924,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageMatrix {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cols != null) 'cols': cols!,
         if (data != null) 'data': data!,
         if (rows != null) 'rows': rows!,
@@ -6966,7 +6965,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageParagraph {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
               detectedLanguages!.map((value) => value.toJson()).toList(),
@@ -7021,7 +7020,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageTable {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bodyRows != null)
           'bodyRows': bodyRows!.map((value) => value.toJson()).toList(),
         if (detectedLanguages != null)
@@ -7072,7 +7071,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageTableTableCell {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (colSpan != null) 'colSpan': colSpan!,
         if (detectedLanguages != null)
           'detectedLanguages':
@@ -7100,7 +7099,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageTableTableRow {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cells != null)
           'cells': cells!.map((value) => value.toJson()).toList(),
       };
@@ -7147,7 +7146,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageToken {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectedBreak != null) 'detectedBreak': detectedBreak!.toJson(),
         if (detectedLanguages != null)
           'detectedLanguages':
@@ -7177,7 +7176,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageTokenDetectedBreak {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
       };
 }
@@ -7217,7 +7216,7 @@ class GoogleCloudDocumentaiV1beta3DocumentPageVisualElement {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (detectedLanguages != null)
           'detectedLanguages':
               detectedLanguages!.map((value) => value.toJson()).toList(),
@@ -7273,7 +7272,7 @@ class GoogleCloudDocumentaiV1beta3DocumentProvenance {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (parents != null)
           'parents': parents!.map((value) => value.toJson()).toList(),
@@ -7305,7 +7304,7 @@ class GoogleCloudDocumentaiV1beta3DocumentProvenanceParent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (revision != null) 'revision': revision!,
       };
@@ -7364,7 +7363,7 @@ class GoogleCloudDocumentaiV1beta3DocumentRevision {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (agent != null) 'agent': agent!,
         if (createTime != null) 'createTime': createTime!,
         if (humanReview != null) 'humanReview': humanReview!.toJson(),
@@ -7398,7 +7397,7 @@ class GoogleCloudDocumentaiV1beta3DocumentRevisionHumanReview {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (state != null) 'state': state!,
         if (stateMessage != null) 'stateMessage': stateMessage!,
       };
@@ -7433,7 +7432,7 @@ class GoogleCloudDocumentaiV1beta3DocumentShardInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (shardCount != null) 'shardCount': shardCount!,
         if (shardIndex != null) 'shardIndex': shardIndex!,
         if (textOffset != null) 'textOffset': textOffset!,
@@ -7504,7 +7503,7 @@ class GoogleCloudDocumentaiV1beta3DocumentStyle {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (backgroundColor != null)
           'backgroundColor': backgroundColor!.toJson(),
         if (color != null) 'color': color!.toJson(),
@@ -7537,7 +7536,7 @@ class GoogleCloudDocumentaiV1beta3DocumentStyleFontSize {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (size != null) 'size': size!,
         if (unit != null) 'unit': unit!,
       };
@@ -7569,7 +7568,7 @@ class GoogleCloudDocumentaiV1beta3DocumentTextAnchor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (textSegments != null)
           'textSegments': textSegments!.map((value) => value.toJson()).toList(),
@@ -7600,7 +7599,7 @@ class GoogleCloudDocumentaiV1beta3DocumentTextAnchorTextSegment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endIndex != null) 'endIndex': endIndex!,
         if (startIndex != null) 'startIndex': startIndex!,
       };
@@ -7642,7 +7641,7 @@ class GoogleCloudDocumentaiV1beta3DocumentTextChange {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (changedText != null) 'changedText': changedText!,
         if (provenance != null)
           'provenance': provenance!.map((value) => value.toJson()).toList(),
@@ -7693,7 +7692,7 @@ class GoogleCloudDocumentaiV1beta3DocumentTranslation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (languageCode != null) 'languageCode': languageCode!,
         if (provenance != null)
           'provenance': provenance!.map((value) => value.toJson()).toList(),
@@ -7721,7 +7720,7 @@ class GoogleCloudDocumentaiV1beta3GcsDocument {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsUri != null) 'gcsUri': gcsUri!,
         if (mimeType != null) 'mimeType': mimeType!,
       };
@@ -7744,7 +7743,7 @@ class GoogleCloudDocumentaiV1beta3GcsDocuments {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (documents != null)
           'documents': documents!.map((value) => value.toJson()).toList(),
       };
@@ -7763,7 +7762,7 @@ class GoogleCloudDocumentaiV1beta3GcsPrefix {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsUriPrefix != null) 'gcsUriPrefix': gcsUriPrefix!,
       };
 }
@@ -7809,7 +7808,7 @@ class GoogleCloudDocumentaiV1beta3HumanReviewStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (humanReviewOperation != null)
           'humanReviewOperation': humanReviewOperation!,
         if (state != null) 'state': state!,
@@ -7839,7 +7838,7 @@ class GoogleCloudDocumentaiV1beta3NormalizedVertex {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
       };
@@ -7882,7 +7881,7 @@ class GoogleCloudDocumentaiV1beta3ProcessRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (document != null) 'document': document!.toJson(),
         if (inlineDocument != null) 'inlineDocument': inlineDocument!.toJson(),
         if (rawDocument != null) 'rawDocument': rawDocument!.toJson(),
@@ -7924,7 +7923,7 @@ class GoogleCloudDocumentaiV1beta3ProcessResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (document != null) 'document': document!.toJson(),
         if (humanReviewOperation != null)
           'humanReviewOperation': humanReviewOperation!,
@@ -7959,7 +7958,7 @@ class GoogleCloudDocumentaiV1beta3RawDocument {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (mimeType != null) 'mimeType': mimeType!,
       };
@@ -8014,7 +8013,7 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentOperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (commonMetadata != null) 'commonMetadata': commonMetadata!.toJson(),
         if (createTime != null) 'createTime': createTime!,
         if (state != null) 'state': state!,
@@ -8044,7 +8043,7 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (document != null) 'document': document!.toJson(),
         if (inlineDocument != null) 'inlineDocument': inlineDocument!.toJson(),
       };
@@ -8063,7 +8062,7 @@ class GoogleCloudDocumentaiV1beta3ReviewDocumentResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gcsDestination != null) 'gcsDestination': gcsDestination!,
       };
 }
@@ -8089,7 +8088,7 @@ class GoogleCloudDocumentaiV1beta3Vertex {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
       };
@@ -8118,7 +8117,7 @@ class GoogleCloudLocationListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null)
           'locations': locations!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -8162,32 +8161,30 @@ class GoogleCloudLocationLocation {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (labels != null) 'labels': labels!,
         if (locationId != null) 'locationId': locationId!,
@@ -8250,29 +8247,27 @@ class GoogleLongrunningOperation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -8295,7 +8290,7 @@ class GoogleProtobufEmpty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// The `Status` type defines a logical error model that is suitable for
@@ -8331,8 +8326,8 @@ class GoogleRpcStatus {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -8345,7 +8340,7 @@ class GoogleRpcStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -8440,7 +8435,7 @@ class GoogleTypeColor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alpha != null) 'alpha': alpha!,
         if (blue != null) 'blue': blue!,
         if (green != null) 'green': green!,
@@ -8488,7 +8483,7 @@ class GoogleTypeDate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
         if (month != null) 'month': month!,
         if (year != null) 'year': year!,
@@ -8605,7 +8600,7 @@ class GoogleTypeDateTime {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (day != null) 'day': day!,
         if (hours != null) 'hours': hours!,
         if (minutes != null) 'minutes': minutes!,
@@ -8651,7 +8646,7 @@ class GoogleTypeMoney {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currencyCode != null) 'currencyCode': currencyCode!,
         if (nanos != null) 'nanos': nanos!,
         if (units != null) 'units': units!,
@@ -8821,7 +8816,7 @@ class GoogleTypePostalAddress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addressLines != null) 'addressLines': addressLines!,
         if (administrativeArea != null)
           'administrativeArea': administrativeArea!,
@@ -8859,7 +8854,7 @@ class GoogleTypeTimeZone {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (id != null) 'id': id!,
         if (version != null) 'version': version!,
       };

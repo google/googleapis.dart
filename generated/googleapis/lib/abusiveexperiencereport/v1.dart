@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -204,7 +203,7 @@ class SiteSummaryResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (abusiveStatus != null) 'abusiveStatus': abusiveStatus!,
         if (enforcementTime != null) 'enforcementTime': enforcementTime!,
         if (filterStatus != null) 'filterStatus': filterStatus!,
@@ -231,7 +230,7 @@ class ViolatingSitesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (violatingSites != null)
           'violatingSites':
               violatingSites!.map((value) => value.toJson()).toList(),

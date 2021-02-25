@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1925,7 +1924,7 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
               auditLogConfigs!.map((value) => value.toJson()).toList(),
@@ -1972,7 +1971,7 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
         if (ignoreChildExemptions != null)
           'ignoreChildExemptions': ignoreChildExemptions!,
@@ -1999,7 +1998,7 @@ class AuthorizationLoggingOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissionType != null) 'permissionType': permissionType!,
       };
 }
@@ -2075,7 +2074,7 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bindingId != null) 'bindingId': bindingId!,
         if (condition != null) 'condition': condition!.toJson(),
         if (members != null) 'members': members!,
@@ -2091,7 +2090,7 @@ class CancelOperationRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Write a Cloud Audit log
@@ -2119,7 +2118,7 @@ class CloudAuditOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (authorizationLoggingOptions != null)
           'authorizationLoggingOptions': authorizationLoggingOptions!.toJson(),
         if (logName != null) 'logName': logName!,
@@ -2222,7 +2221,7 @@ class Condition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (iam != null) 'iam': iam!,
         if (op != null) 'op': op!,
         if (svc != null) 'svc': svc!,
@@ -2273,7 +2272,7 @@ class CounterOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (customFields != null)
           'customFields': customFields!.map((value) => value.toJson()).toList(),
         if (field != null) 'field': field!,
@@ -2306,7 +2305,7 @@ class CustomField {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
       };
@@ -2338,7 +2337,7 @@ class DataAccessOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (logMode != null) 'logMode': logMode!,
       };
 }
@@ -2366,7 +2365,7 @@ class DeployedClusterState {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cluster != null) 'cluster': cluster!,
         if (fleetDetails != null)
           'fleetDetails': fleetDetails!.map((value) => value.toJson()).toList(),
@@ -2410,7 +2409,7 @@ class DeployedFleet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fleet != null) 'fleet': fleet!,
         if (fleetSpec != null) 'fleetSpec': fleetSpec!,
         if (specSource != null) 'specSource': specSource!.toJson(),
@@ -2446,7 +2445,7 @@ class DeployedFleetAutoscaler {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (autoscaler != null) 'autoscaler': autoscaler!,
         if (fleetAutoscalerSpec != null)
           'fleetAutoscalerSpec': fleetAutoscalerSpec!,
@@ -2475,7 +2474,7 @@ class DeployedFleetDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deployedAutoscaler != null)
           'deployedAutoscaler': deployedAutoscaler!.toJson(),
         if (deployedFleet != null) 'deployedFleet': deployedFleet!.toJson(),
@@ -2517,7 +2516,7 @@ class DeployedFleetStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allocatedReplicas != null) 'allocatedReplicas': allocatedReplicas!,
         if (readyReplicas != null) 'readyReplicas': readyReplicas!,
         if (replicas != null) 'replicas': replicas!,
@@ -2539,7 +2538,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Represents a textual expression in the Common Expression Language (CEL)
@@ -2603,7 +2602,7 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,
@@ -2619,7 +2618,7 @@ class FetchDeploymentStateRequest {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Response message for GameServerDeploymentsService.FetchDeploymentState.
@@ -2646,7 +2645,7 @@ class FetchDeploymentStateResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterState != null)
           'clusterState': clusterState!.map((value) => value.toJson()).toList(),
         if (unavailable != null) 'unavailable': unavailable!,
@@ -2674,7 +2673,7 @@ class FleetConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fleetSpec != null) 'fleetSpec': fleetSpec!,
         if (name != null) 'name': name!,
       };
@@ -2734,13 +2733,12 @@ class GameServerCluster {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -2750,7 +2748,7 @@ class GameServerCluster {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (connectionInfo != null) 'connectionInfo': connectionInfo!.toJson(),
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
@@ -2784,7 +2782,7 @@ class GameServerClusterConnectionInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gkeClusterReference != null)
           'gkeClusterReference': gkeClusterReference!.toJson(),
         if (namespace != null) 'namespace': namespace!,
@@ -2842,13 +2840,12 @@ class GameServerConfig {
           .toList();
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -2864,7 +2861,7 @@ class GameServerConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (fleetConfigs != null)
@@ -2898,7 +2895,7 @@ class GameServerConfigOverride {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (configVersion != null) 'configVersion': configVersion!,
         if (realmsSelector != null) 'realmsSelector': realmsSelector!.toJson(),
       };
@@ -2947,13 +2944,12 @@ class GameServerDeployment {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -2963,7 +2959,7 @@ class GameServerDeployment {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
@@ -3038,7 +3034,7 @@ class GameServerDeploymentRollout {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (defaultGameServerConfig != null)
           'defaultGameServerConfig': defaultGameServerConfig!,
@@ -3070,7 +3066,7 @@ class GkeClusterReference {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cluster != null) 'cluster': cluster!,
       };
 }
@@ -3084,17 +3080,16 @@ class LabelSelector {
 
   LabelSelector.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (labels != null) 'labels': labels!,
       };
 }
@@ -3130,7 +3125,7 @@ class ListGameServerClustersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gameServerClusters != null)
           'gameServerClusters':
               gameServerClusters!.map((value) => value.toJson()).toList(),
@@ -3170,7 +3165,7 @@ class ListGameServerConfigsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gameServerConfigs != null)
           'gameServerConfigs':
               gameServerConfigs!.map((value) => value.toJson()).toList(),
@@ -3210,7 +3205,7 @@ class ListGameServerDeploymentsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gameServerDeployments != null)
           'gameServerDeployments':
               gameServerDeployments!.map((value) => value.toJson()).toList(),
@@ -3241,7 +3236,7 @@ class ListLocationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (locations != null)
           'locations': locations!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -3270,7 +3265,7 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
@@ -3308,7 +3303,7 @@ class ListRealmsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (realms != null)
           'realms': realms!.map((value) => value.toJson()).toList(),
@@ -3353,32 +3348,30 @@ class Location {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (displayName != null) 'displayName': displayName!,
         if (labels != null) 'labels': labels!,
         if (locationId != null) 'locationId': locationId!,
@@ -3415,7 +3408,7 @@ class LogConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cloudAudit != null) 'cloudAudit': cloudAudit!.toJson(),
         if (counter != null) 'counter': counter!.toJson(),
         if (dataAccess != null) 'dataAccess': dataAccess!.toJson(),
@@ -3476,29 +3469,27 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -3575,15 +3566,13 @@ class OperationMetadata {
       endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('operationStatus')) {
-      operationStatus = (_json['operationStatus'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              OperationStatus.fromJson(
-                  item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+      operationStatus =
+          (_json['operationStatus'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          OperationStatus.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('requestedCancellation')) {
       requestedCancellation = _json['requestedCancellation'] as core.bool;
@@ -3604,7 +3593,7 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apiVersion != null) 'apiVersion': apiVersion!,
         if (createTime != null) 'createTime': createTime!,
         if (endTime != null) 'endTime': endTime!,
@@ -3651,7 +3640,7 @@ class OperationStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (errorCode != null) 'errorCode': errorCode!,
         if (errorMessage != null) 'errorMessage': errorMessage!,
@@ -3783,7 +3772,7 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditConfigs != null)
           'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
@@ -3817,7 +3806,7 @@ class PreviewCreateGameServerClusterResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (targetState != null) 'targetState': targetState!.toJson(),
       };
@@ -3844,7 +3833,7 @@ class PreviewDeleteGameServerClusterResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (targetState != null) 'targetState': targetState!.toJson(),
       };
@@ -3880,7 +3869,7 @@ class PreviewGameServerDeploymentRolloutResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (targetState != null) 'targetState': targetState!.toJson(),
         if (unavailable != null) 'unavailable': unavailable!,
@@ -3907,7 +3896,7 @@ class PreviewRealmUpdateResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (targetState != null) 'targetState': targetState!.toJson(),
       };
@@ -3934,7 +3923,7 @@ class PreviewUpdateGameServerClusterResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (etag != null) 'etag': etag!,
         if (targetState != null) 'targetState': targetState!.toJson(),
       };
@@ -3990,13 +3979,12 @@ class Realm {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -4009,7 +3997,7 @@ class Realm {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
         if (etag != null) 'etag': etag!,
@@ -4035,7 +4023,7 @@ class RealmSelector {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (realms != null) 'realms': realms!,
       };
 }
@@ -4121,7 +4109,7 @@ class Rule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
         if (conditions != null)
           'conditions': conditions!.map((value) => value.toJson()).toList(),
@@ -4181,7 +4169,7 @@ class ScalingConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fleetAutoscalerSpec != null)
           'fleetAutoscalerSpec': fleetAutoscalerSpec!,
         if (name != null) 'name': name!,
@@ -4236,7 +4224,7 @@ class Schedule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cronJobDuration != null) 'cronJobDuration': cronJobDuration!,
         if (cronSpec != null) 'cronSpec': cronSpec!,
         if (endTime != null) 'endTime': endTime!,
@@ -4271,7 +4259,7 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
         if (updateMask != null) 'updateMask': updateMask!,
       };
@@ -4300,7 +4288,7 @@ class SpecSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (gameServerConfigName != null)
           'gameServerConfigName': gameServerConfigName!,
         if (name != null) 'name': name!,
@@ -4340,8 +4328,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -4354,7 +4342,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -4396,7 +4384,7 @@ class TargetDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fleetDetails != null)
           'fleetDetails': fleetDetails!.map((value) => value.toJson()).toList(),
         if (gameServerClusterName != null)
@@ -4428,7 +4416,7 @@ class TargetFleet {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (specSource != null) 'specSource': specSource!.toJson(),
       };
@@ -4456,7 +4444,7 @@ class TargetFleetAutoscaler {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (specSource != null) 'specSource': specSource!.toJson(),
       };
@@ -4483,7 +4471,7 @@ class TargetFleetDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (autoscaler != null) 'autoscaler': autoscaler!.toJson(),
         if (fleet != null) 'fleet': fleet!.toJson(),
       };
@@ -4505,7 +4493,7 @@ class TargetState {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (details != null)
           'details': details!.map((value) => value.toJson()).toList(),
       };
@@ -4530,7 +4518,7 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -4551,7 +4539,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }

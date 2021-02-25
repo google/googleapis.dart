@@ -11912,7 +11912,9 @@ void main() {
   unittest.group('obj-schema-AddProductToProductSetRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAddProductToProductSetRequest();
-      var od = api.AddProductToProductSetRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AddProductToProductSetRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAddProductToProductSetRequest(
           od as api.AddProductToProductSetRequest);
     });
@@ -11921,7 +11923,9 @@ void main() {
   unittest.group('obj-schema-AnnotateFileRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAnnotateFileRequest();
-      var od = api.AnnotateFileRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AnnotateFileRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAnnotateFileRequest(od as api.AnnotateFileRequest);
     });
   });
@@ -11929,7 +11933,9 @@ void main() {
   unittest.group('obj-schema-AnnotateFileResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAnnotateFileResponse();
-      var od = api.AnnotateFileResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AnnotateFileResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAnnotateFileResponse(od as api.AnnotateFileResponse);
     });
   });
@@ -11937,7 +11943,9 @@ void main() {
   unittest.group('obj-schema-AnnotateImageRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAnnotateImageRequest();
-      var od = api.AnnotateImageRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AnnotateImageRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAnnotateImageRequest(od as api.AnnotateImageRequest);
     });
   });
@@ -11945,7 +11953,9 @@ void main() {
   unittest.group('obj-schema-AnnotateImageResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAnnotateImageResponse();
-      var od = api.AnnotateImageResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AnnotateImageResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAnnotateImageResponse(od as api.AnnotateImageResponse);
     });
   });
@@ -11953,7 +11963,9 @@ void main() {
   unittest.group('obj-schema-AsyncAnnotateFileRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAsyncAnnotateFileRequest();
-      var od = api.AsyncAnnotateFileRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AsyncAnnotateFileRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAsyncAnnotateFileRequest(od as api.AsyncAnnotateFileRequest);
     });
   });
@@ -11961,7 +11973,9 @@ void main() {
   unittest.group('obj-schema-AsyncAnnotateFileResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAsyncAnnotateFileResponse();
-      var od = api.AsyncAnnotateFileResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AsyncAnnotateFileResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAsyncAnnotateFileResponse(od as api.AsyncAnnotateFileResponse);
     });
   });
@@ -11969,7 +11983,9 @@ void main() {
   unittest.group('obj-schema-AsyncBatchAnnotateFilesRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAsyncBatchAnnotateFilesRequest();
-      var od = api.AsyncBatchAnnotateFilesRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AsyncBatchAnnotateFilesRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAsyncBatchAnnotateFilesRequest(
           od as api.AsyncBatchAnnotateFilesRequest);
     });
@@ -11978,7 +11994,9 @@ void main() {
   unittest.group('obj-schema-AsyncBatchAnnotateFilesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAsyncBatchAnnotateFilesResponse();
-      var od = api.AsyncBatchAnnotateFilesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AsyncBatchAnnotateFilesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAsyncBatchAnnotateFilesResponse(
           od as api.AsyncBatchAnnotateFilesResponse);
     });
@@ -11987,7 +12005,9 @@ void main() {
   unittest.group('obj-schema-AsyncBatchAnnotateImagesRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAsyncBatchAnnotateImagesRequest();
-      var od = api.AsyncBatchAnnotateImagesRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AsyncBatchAnnotateImagesRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAsyncBatchAnnotateImagesRequest(
           od as api.AsyncBatchAnnotateImagesRequest);
     });
@@ -11996,7 +12016,9 @@ void main() {
   unittest.group('obj-schema-AsyncBatchAnnotateImagesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildAsyncBatchAnnotateImagesResponse();
-      var od = api.AsyncBatchAnnotateImagesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.AsyncBatchAnnotateImagesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkAsyncBatchAnnotateImagesResponse(
           od as api.AsyncBatchAnnotateImagesResponse);
     });
@@ -12005,7 +12027,9 @@ void main() {
   unittest.group('obj-schema-BatchAnnotateFilesRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBatchAnnotateFilesRequest();
-      var od = api.BatchAnnotateFilesRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BatchAnnotateFilesRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBatchAnnotateFilesRequest(od as api.BatchAnnotateFilesRequest);
     });
   });
@@ -12013,7 +12037,9 @@ void main() {
   unittest.group('obj-schema-BatchAnnotateFilesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBatchAnnotateFilesResponse();
-      var od = api.BatchAnnotateFilesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BatchAnnotateFilesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBatchAnnotateFilesResponse(od as api.BatchAnnotateFilesResponse);
     });
   });
@@ -12021,7 +12047,9 @@ void main() {
   unittest.group('obj-schema-BatchAnnotateImagesRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBatchAnnotateImagesRequest();
-      var od = api.BatchAnnotateImagesRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BatchAnnotateImagesRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBatchAnnotateImagesRequest(od as api.BatchAnnotateImagesRequest);
     });
   });
@@ -12029,7 +12057,9 @@ void main() {
   unittest.group('obj-schema-BatchAnnotateImagesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBatchAnnotateImagesResponse();
-      var od = api.BatchAnnotateImagesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BatchAnnotateImagesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBatchAnnotateImagesResponse(od as api.BatchAnnotateImagesResponse);
     });
   });
@@ -12037,7 +12067,9 @@ void main() {
   unittest.group('obj-schema-BatchOperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBatchOperationMetadata();
-      var od = api.BatchOperationMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BatchOperationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBatchOperationMetadata(od as api.BatchOperationMetadata);
     });
   });
@@ -12045,7 +12077,8 @@ void main() {
   unittest.group('obj-schema-Block', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBlock();
-      var od = api.Block.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Block.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkBlock(od as api.Block);
     });
   });
@@ -12053,7 +12086,9 @@ void main() {
   unittest.group('obj-schema-BoundingPoly', () {
     unittest.test('to-json--from-json', () async {
       var o = buildBoundingPoly();
-      var od = api.BoundingPoly.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.BoundingPoly.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkBoundingPoly(od as api.BoundingPoly);
     });
   });
@@ -12061,7 +12096,9 @@ void main() {
   unittest.group('obj-schema-CancelOperationRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCancelOperationRequest();
-      var od = api.CancelOperationRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CancelOperationRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCancelOperationRequest(od as api.CancelOperationRequest);
     });
   });
@@ -12069,7 +12106,8 @@ void main() {
   unittest.group('obj-schema-Color', () {
     unittest.test('to-json--from-json', () async {
       var o = buildColor();
-      var od = api.Color.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Color.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkColor(od as api.Color);
     });
   });
@@ -12077,7 +12115,9 @@ void main() {
   unittest.group('obj-schema-ColorInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildColorInfo();
-      var od = api.ColorInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.ColorInfo.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkColorInfo(od as api.ColorInfo);
     });
   });
@@ -12085,7 +12125,9 @@ void main() {
   unittest.group('obj-schema-CropHint', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCropHint();
-      var od = api.CropHint.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.CropHint.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkCropHint(od as api.CropHint);
     });
   });
@@ -12093,7 +12135,9 @@ void main() {
   unittest.group('obj-schema-CropHintsAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCropHintsAnnotation();
-      var od = api.CropHintsAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CropHintsAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCropHintsAnnotation(od as api.CropHintsAnnotation);
     });
   });
@@ -12101,7 +12145,9 @@ void main() {
   unittest.group('obj-schema-CropHintsParams', () {
     unittest.test('to-json--from-json', () async {
       var o = buildCropHintsParams();
-      var od = api.CropHintsParams.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.CropHintsParams.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkCropHintsParams(od as api.CropHintsParams);
     });
   });
@@ -12109,7 +12155,9 @@ void main() {
   unittest.group('obj-schema-DetectedBreak', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDetectedBreak();
-      var od = api.DetectedBreak.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DetectedBreak.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDetectedBreak(od as api.DetectedBreak);
     });
   });
@@ -12117,7 +12165,9 @@ void main() {
   unittest.group('obj-schema-DetectedLanguage', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDetectedLanguage();
-      var od = api.DetectedLanguage.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DetectedLanguage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDetectedLanguage(od as api.DetectedLanguage);
     });
   });
@@ -12125,7 +12175,9 @@ void main() {
   unittest.group('obj-schema-DominantColorsAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildDominantColorsAnnotation();
-      var od = api.DominantColorsAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.DominantColorsAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkDominantColorsAnnotation(od as api.DominantColorsAnnotation);
     });
   });
@@ -12133,7 +12185,8 @@ void main() {
   unittest.group('obj-schema-Empty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEmpty();
-      var od = api.Empty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Empty.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkEmpty(od as api.Empty);
     });
   });
@@ -12141,7 +12194,9 @@ void main() {
   unittest.group('obj-schema-EntityAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildEntityAnnotation();
-      var od = api.EntityAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.EntityAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkEntityAnnotation(od as api.EntityAnnotation);
     });
   });
@@ -12149,7 +12204,9 @@ void main() {
   unittest.group('obj-schema-FaceAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildFaceAnnotation();
-      var od = api.FaceAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.FaceAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkFaceAnnotation(od as api.FaceAnnotation);
     });
   });
@@ -12157,7 +12214,9 @@ void main() {
   unittest.group('obj-schema-Feature', () {
     unittest.test('to-json--from-json', () async {
       var o = buildFeature();
-      var od = api.Feature.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Feature.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkFeature(od as api.Feature);
     });
   });
@@ -12165,7 +12224,9 @@ void main() {
   unittest.group('obj-schema-GcsDestination', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGcsDestination();
-      var od = api.GcsDestination.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GcsDestination.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGcsDestination(od as api.GcsDestination);
     });
   });
@@ -12173,7 +12234,9 @@ void main() {
   unittest.group('obj-schema-GcsSource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGcsSource();
-      var od = api.GcsSource.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.GcsSource.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGcsSource(od as api.GcsSource);
     });
   });
@@ -12182,8 +12245,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1AnnotateFileResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p1beta1AnnotateFileResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1AnnotateFileResponse(
           od as api.GoogleCloudVisionV1p1beta1AnnotateFileResponse);
     });
@@ -12193,8 +12257,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1AnnotateImageResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p1beta1AnnotateImageResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1AnnotateImageResponse(
           od as api.GoogleCloudVisionV1p1beta1AnnotateImageResponse);
     });
@@ -12204,8 +12269,9 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse(
           od as api.GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse);
     });
@@ -12216,8 +12282,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse(
           od as api.GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse);
     });
@@ -12226,7 +12293,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Block', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1Block();
-      var od = api.GoogleCloudVisionV1p1beta1Block.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1Block.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1Block(
           od as api.GoogleCloudVisionV1p1beta1Block);
     });
@@ -12235,7 +12304,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1BoundingPoly', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1BoundingPoly();
-      var od = api.GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1BoundingPoly(
           od as api.GoogleCloudVisionV1p1beta1BoundingPoly);
     });
@@ -12244,7 +12315,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1ColorInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1ColorInfo();
-      var od = api.GoogleCloudVisionV1p1beta1ColorInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1ColorInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1ColorInfo(
           od as api.GoogleCloudVisionV1p1beta1ColorInfo);
     });
@@ -12253,7 +12326,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1CropHint', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1CropHint();
-      var od = api.GoogleCloudVisionV1p1beta1CropHint.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1CropHint.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1CropHint(
           od as api.GoogleCloudVisionV1p1beta1CropHint);
     });
@@ -12263,8 +12338,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1CropHintsAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p1beta1CropHintsAnnotation.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1CropHintsAnnotation(
           od as api.GoogleCloudVisionV1p1beta1CropHintsAnnotation);
     });
@@ -12274,8 +12350,9 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p1beta1DominantColorsAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1DominantColorsAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p1beta1DominantColorsAnnotation.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1DominantColorsAnnotation(
           od as api.GoogleCloudVisionV1p1beta1DominantColorsAnnotation);
     });
@@ -12284,8 +12361,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1EntityAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1EntityAnnotation();
-      var od =
-          api.GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1EntityAnnotation(
           od as api.GoogleCloudVisionV1p1beta1EntityAnnotation);
     });
@@ -12294,8 +12372,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1FaceAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1FaceAnnotation();
-      var od =
-          api.GoogleCloudVisionV1p1beta1FaceAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1FaceAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1FaceAnnotation(
           od as api.GoogleCloudVisionV1p1beta1FaceAnnotation);
     });
@@ -12305,8 +12384,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1FaceAnnotationLandmark();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1FaceAnnotationLandmark(
           od as api.GoogleCloudVisionV1p1beta1FaceAnnotationLandmark);
     });
@@ -12315,8 +12395,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1GcsDestination', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1GcsDestination();
-      var od =
-          api.GoogleCloudVisionV1p1beta1GcsDestination.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1GcsDestination.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1GcsDestination(
           od as api.GoogleCloudVisionV1p1beta1GcsDestination);
     });
@@ -12325,7 +12406,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1GcsSource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1GcsSource();
-      var od = api.GoogleCloudVisionV1p1beta1GcsSource.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1GcsSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1GcsSource(
           od as api.GoogleCloudVisionV1p1beta1GcsSource);
     });
@@ -12335,8 +12418,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1ImageAnnotationContext();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p1beta1ImageAnnotationContext.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1ImageAnnotationContext(
           od as api.GoogleCloudVisionV1p1beta1ImageAnnotationContext);
     });
@@ -12345,8 +12429,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1ImageProperties', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1ImageProperties();
-      var od =
-          api.GoogleCloudVisionV1p1beta1ImageProperties.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1ImageProperties.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1ImageProperties(
           od as api.GoogleCloudVisionV1p1beta1ImageProperties);
     });
@@ -12355,7 +12440,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1InputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1InputConfig();
-      var od = api.GoogleCloudVisionV1p1beta1InputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1InputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1InputConfig(
           od as api.GoogleCloudVisionV1p1beta1InputConfig);
     });
@@ -12365,8 +12452,9 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1LocalizedObjectAnnotation(
           od as api.GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation);
     });
@@ -12375,7 +12463,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1LocationInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1LocationInfo();
-      var od = api.GoogleCloudVisionV1p1beta1LocationInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1LocationInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1LocationInfo(
           od as api.GoogleCloudVisionV1p1beta1LocationInfo);
     });
@@ -12384,8 +12474,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1NormalizedVertex', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1NormalizedVertex();
-      var od =
-          api.GoogleCloudVisionV1p1beta1NormalizedVertex.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1NormalizedVertex.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1NormalizedVertex(
           od as api.GoogleCloudVisionV1p1beta1NormalizedVertex);
     });
@@ -12394,8 +12485,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1OperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1OperationMetadata();
-      var od =
-          api.GoogleCloudVisionV1p1beta1OperationMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1OperationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1OperationMetadata(
           od as api.GoogleCloudVisionV1p1beta1OperationMetadata);
     });
@@ -12404,7 +12496,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1OutputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1OutputConfig();
-      var od = api.GoogleCloudVisionV1p1beta1OutputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1OutputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1OutputConfig(
           od as api.GoogleCloudVisionV1p1beta1OutputConfig);
     });
@@ -12413,7 +12507,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Page', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1Page();
-      var od = api.GoogleCloudVisionV1p1beta1Page.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1Page.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1Page(
           od as api.GoogleCloudVisionV1p1beta1Page);
     });
@@ -12422,7 +12518,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Paragraph', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1Paragraph();
-      var od = api.GoogleCloudVisionV1p1beta1Paragraph.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1Paragraph.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1Paragraph(
           od as api.GoogleCloudVisionV1p1beta1Paragraph);
     });
@@ -12431,7 +12529,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Position', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1Position();
-      var od = api.GoogleCloudVisionV1p1beta1Position.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1Position.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1Position(
           od as api.GoogleCloudVisionV1p1beta1Position);
     });
@@ -12440,7 +12540,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Product', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1Product();
-      var od = api.GoogleCloudVisionV1p1beta1Product.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1Product.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1Product(
           od as api.GoogleCloudVisionV1p1beta1Product);
     });
@@ -12449,8 +12551,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1ProductKeyValue', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1ProductKeyValue();
-      var od =
-          api.GoogleCloudVisionV1p1beta1ProductKeyValue.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1ProductKeyValue.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1ProductKeyValue(
           od as api.GoogleCloudVisionV1p1beta1ProductKeyValue);
     });
@@ -12460,8 +12563,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1ProductSearchResults();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p1beta1ProductSearchResults.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1ProductSearchResults(
           od as api.GoogleCloudVisionV1p1beta1ProductSearchResults);
     });
@@ -12473,8 +12577,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult(od
           as api.GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult);
     });
@@ -12486,9 +12591,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation(od
           as api
               .GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation);
@@ -12499,9 +12605,10 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p1beta1ProductSearchResultsResult', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1ProductSearchResultsResult();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1ProductSearchResultsResult(
           od as api.GoogleCloudVisionV1p1beta1ProductSearchResultsResult);
     });
@@ -12510,7 +12617,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Property', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1Property();
-      var od = api.GoogleCloudVisionV1p1beta1Property.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1Property.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1Property(
           od as api.GoogleCloudVisionV1p1beta1Property);
     });
@@ -12520,8 +12629,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1SafeSearchAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p1beta1SafeSearchAnnotation.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1SafeSearchAnnotation(
           od as api.GoogleCloudVisionV1p1beta1SafeSearchAnnotation);
     });
@@ -12530,7 +12640,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Symbol', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1Symbol();
-      var od = api.GoogleCloudVisionV1p1beta1Symbol.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1Symbol.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1Symbol(
           od as api.GoogleCloudVisionV1p1beta1Symbol);
     });
@@ -12539,8 +12651,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1TextAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1TextAnnotation();
-      var od =
-          api.GoogleCloudVisionV1p1beta1TextAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1TextAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1TextAnnotation(
           od as api.GoogleCloudVisionV1p1beta1TextAnnotation);
     });
@@ -12550,9 +12663,10 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak(
           od as api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak);
     });
@@ -12563,9 +12677,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage(
           od as api.GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage);
     });
@@ -12575,9 +12690,10 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p1beta1TextAnnotationTextProperty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1TextAnnotationTextProperty();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1TextAnnotationTextProperty(
           od as api.GoogleCloudVisionV1p1beta1TextAnnotationTextProperty);
     });
@@ -12586,7 +12702,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Vertex', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1Vertex();
-      var od = api.GoogleCloudVisionV1p1beta1Vertex.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1Vertex.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1Vertex(
           od as api.GoogleCloudVisionV1p1beta1Vertex);
     });
@@ -12595,7 +12713,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1WebDetection', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1WebDetection();
-      var od = api.GoogleCloudVisionV1p1beta1WebDetection.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1WebDetection.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1WebDetection(
           od as api.GoogleCloudVisionV1p1beta1WebDetection);
     });
@@ -12605,8 +12725,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1WebDetectionWebEntity();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1WebDetectionWebEntity(
           od as api.GoogleCloudVisionV1p1beta1WebDetectionWebEntity);
     });
@@ -12616,8 +12737,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1WebDetectionWebImage();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1WebDetectionWebImage(
           od as api.GoogleCloudVisionV1p1beta1WebDetectionWebImage);
     });
@@ -12627,8 +12749,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1WebDetectionWebLabel();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1WebDetectionWebLabel(
           od as api.GoogleCloudVisionV1p1beta1WebDetectionWebLabel);
     });
@@ -12638,8 +12761,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1WebDetectionWebPage();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p1beta1WebDetectionWebPage.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1WebDetectionWebPage(
           od as api.GoogleCloudVisionV1p1beta1WebDetectionWebPage);
     });
@@ -12648,7 +12772,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p1beta1Word', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p1beta1Word();
-      var od = api.GoogleCloudVisionV1p1beta1Word.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p1beta1Word.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p1beta1Word(
           od as api.GoogleCloudVisionV1p1beta1Word);
     });
@@ -12658,8 +12784,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1AnnotateFileResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p2beta1AnnotateFileResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1AnnotateFileResponse(
           od as api.GoogleCloudVisionV1p2beta1AnnotateFileResponse);
     });
@@ -12669,8 +12796,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1AnnotateImageResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p2beta1AnnotateImageResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1AnnotateImageResponse(
           od as api.GoogleCloudVisionV1p2beta1AnnotateImageResponse);
     });
@@ -12680,8 +12808,9 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse(
           od as api.GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse);
     });
@@ -12692,8 +12821,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse(
           od as api.GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse);
     });
@@ -12702,7 +12832,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Block', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1Block();
-      var od = api.GoogleCloudVisionV1p2beta1Block.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1Block.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1Block(
           od as api.GoogleCloudVisionV1p2beta1Block);
     });
@@ -12711,7 +12843,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1BoundingPoly', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1BoundingPoly();
-      var od = api.GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1BoundingPoly(
           od as api.GoogleCloudVisionV1p2beta1BoundingPoly);
     });
@@ -12720,7 +12854,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1ColorInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1ColorInfo();
-      var od = api.GoogleCloudVisionV1p2beta1ColorInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1ColorInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1ColorInfo(
           od as api.GoogleCloudVisionV1p2beta1ColorInfo);
     });
@@ -12729,7 +12865,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1CropHint', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1CropHint();
-      var od = api.GoogleCloudVisionV1p2beta1CropHint.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1CropHint.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1CropHint(
           od as api.GoogleCloudVisionV1p2beta1CropHint);
     });
@@ -12739,8 +12877,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1CropHintsAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p2beta1CropHintsAnnotation.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1CropHintsAnnotation(
           od as api.GoogleCloudVisionV1p2beta1CropHintsAnnotation);
     });
@@ -12750,8 +12889,9 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p2beta1DominantColorsAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1DominantColorsAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p2beta1DominantColorsAnnotation.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1DominantColorsAnnotation(
           od as api.GoogleCloudVisionV1p2beta1DominantColorsAnnotation);
     });
@@ -12760,8 +12900,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1EntityAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1EntityAnnotation();
-      var od =
-          api.GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1EntityAnnotation(
           od as api.GoogleCloudVisionV1p2beta1EntityAnnotation);
     });
@@ -12770,8 +12911,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1FaceAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1FaceAnnotation();
-      var od =
-          api.GoogleCloudVisionV1p2beta1FaceAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1FaceAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1FaceAnnotation(
           od as api.GoogleCloudVisionV1p2beta1FaceAnnotation);
     });
@@ -12781,8 +12923,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1FaceAnnotationLandmark();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1FaceAnnotationLandmark(
           od as api.GoogleCloudVisionV1p2beta1FaceAnnotationLandmark);
     });
@@ -12791,8 +12934,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1GcsDestination', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1GcsDestination();
-      var od =
-          api.GoogleCloudVisionV1p2beta1GcsDestination.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1GcsDestination.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1GcsDestination(
           od as api.GoogleCloudVisionV1p2beta1GcsDestination);
     });
@@ -12801,7 +12945,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1GcsSource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1GcsSource();
-      var od = api.GoogleCloudVisionV1p2beta1GcsSource.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1GcsSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1GcsSource(
           od as api.GoogleCloudVisionV1p2beta1GcsSource);
     });
@@ -12811,8 +12957,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1ImageAnnotationContext();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p2beta1ImageAnnotationContext.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1ImageAnnotationContext(
           od as api.GoogleCloudVisionV1p2beta1ImageAnnotationContext);
     });
@@ -12821,8 +12968,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1ImageProperties', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1ImageProperties();
-      var od =
-          api.GoogleCloudVisionV1p2beta1ImageProperties.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1ImageProperties.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1ImageProperties(
           od as api.GoogleCloudVisionV1p2beta1ImageProperties);
     });
@@ -12831,7 +12979,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1InputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1InputConfig();
-      var od = api.GoogleCloudVisionV1p2beta1InputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1InputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1InputConfig(
           od as api.GoogleCloudVisionV1p2beta1InputConfig);
     });
@@ -12841,8 +12991,9 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1LocalizedObjectAnnotation(
           od as api.GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation);
     });
@@ -12851,7 +13002,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1LocationInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1LocationInfo();
-      var od = api.GoogleCloudVisionV1p2beta1LocationInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1LocationInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1LocationInfo(
           od as api.GoogleCloudVisionV1p2beta1LocationInfo);
     });
@@ -12860,8 +13013,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1NormalizedVertex', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1NormalizedVertex();
-      var od =
-          api.GoogleCloudVisionV1p2beta1NormalizedVertex.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1NormalizedVertex.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1NormalizedVertex(
           od as api.GoogleCloudVisionV1p2beta1NormalizedVertex);
     });
@@ -12870,8 +13024,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1OperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1OperationMetadata();
-      var od =
-          api.GoogleCloudVisionV1p2beta1OperationMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1OperationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1OperationMetadata(
           od as api.GoogleCloudVisionV1p2beta1OperationMetadata);
     });
@@ -12880,7 +13035,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1OutputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1OutputConfig();
-      var od = api.GoogleCloudVisionV1p2beta1OutputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1OutputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1OutputConfig(
           od as api.GoogleCloudVisionV1p2beta1OutputConfig);
     });
@@ -12889,7 +13046,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Page', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1Page();
-      var od = api.GoogleCloudVisionV1p2beta1Page.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1Page.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1Page(
           od as api.GoogleCloudVisionV1p2beta1Page);
     });
@@ -12898,7 +13057,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Paragraph', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1Paragraph();
-      var od = api.GoogleCloudVisionV1p2beta1Paragraph.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1Paragraph.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1Paragraph(
           od as api.GoogleCloudVisionV1p2beta1Paragraph);
     });
@@ -12907,7 +13068,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Position', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1Position();
-      var od = api.GoogleCloudVisionV1p2beta1Position.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1Position.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1Position(
           od as api.GoogleCloudVisionV1p2beta1Position);
     });
@@ -12916,7 +13079,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Product', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1Product();
-      var od = api.GoogleCloudVisionV1p2beta1Product.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1Product.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1Product(
           od as api.GoogleCloudVisionV1p2beta1Product);
     });
@@ -12925,8 +13090,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1ProductKeyValue', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1ProductKeyValue();
-      var od =
-          api.GoogleCloudVisionV1p2beta1ProductKeyValue.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1ProductKeyValue.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1ProductKeyValue(
           od as api.GoogleCloudVisionV1p2beta1ProductKeyValue);
     });
@@ -12936,8 +13102,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1ProductSearchResults();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p2beta1ProductSearchResults.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1ProductSearchResults(
           od as api.GoogleCloudVisionV1p2beta1ProductSearchResults);
     });
@@ -12949,8 +13116,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult(od
           as api.GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult);
     });
@@ -12962,9 +13130,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation(od
           as api
               .GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation);
@@ -12975,9 +13144,10 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p2beta1ProductSearchResultsResult', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1ProductSearchResultsResult();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1ProductSearchResultsResult(
           od as api.GoogleCloudVisionV1p2beta1ProductSearchResultsResult);
     });
@@ -12986,7 +13156,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Property', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1Property();
-      var od = api.GoogleCloudVisionV1p2beta1Property.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1Property.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1Property(
           od as api.GoogleCloudVisionV1p2beta1Property);
     });
@@ -12996,8 +13168,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1SafeSearchAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p2beta1SafeSearchAnnotation.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1SafeSearchAnnotation(
           od as api.GoogleCloudVisionV1p2beta1SafeSearchAnnotation);
     });
@@ -13006,7 +13179,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Symbol', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1Symbol();
-      var od = api.GoogleCloudVisionV1p2beta1Symbol.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1Symbol.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1Symbol(
           od as api.GoogleCloudVisionV1p2beta1Symbol);
     });
@@ -13015,8 +13190,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1TextAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1TextAnnotation();
-      var od =
-          api.GoogleCloudVisionV1p2beta1TextAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1TextAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1TextAnnotation(
           od as api.GoogleCloudVisionV1p2beta1TextAnnotation);
     });
@@ -13026,9 +13202,10 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak(
           od as api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak);
     });
@@ -13039,9 +13216,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage(
           od as api.GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage);
     });
@@ -13051,9 +13229,10 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p2beta1TextAnnotationTextProperty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1TextAnnotationTextProperty();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1TextAnnotationTextProperty(
           od as api.GoogleCloudVisionV1p2beta1TextAnnotationTextProperty);
     });
@@ -13062,7 +13241,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Vertex', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1Vertex();
-      var od = api.GoogleCloudVisionV1p2beta1Vertex.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1Vertex.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1Vertex(
           od as api.GoogleCloudVisionV1p2beta1Vertex);
     });
@@ -13071,7 +13252,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1WebDetection', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1WebDetection();
-      var od = api.GoogleCloudVisionV1p2beta1WebDetection.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1WebDetection.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1WebDetection(
           od as api.GoogleCloudVisionV1p2beta1WebDetection);
     });
@@ -13081,8 +13264,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1WebDetectionWebEntity();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1WebDetectionWebEntity(
           od as api.GoogleCloudVisionV1p2beta1WebDetectionWebEntity);
     });
@@ -13092,8 +13276,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1WebDetectionWebImage();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1WebDetectionWebImage(
           od as api.GoogleCloudVisionV1p2beta1WebDetectionWebImage);
     });
@@ -13103,8 +13288,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1WebDetectionWebLabel();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1WebDetectionWebLabel(
           od as api.GoogleCloudVisionV1p2beta1WebDetectionWebLabel);
     });
@@ -13114,8 +13300,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1WebDetectionWebPage();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p2beta1WebDetectionWebPage.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1WebDetectionWebPage(
           od as api.GoogleCloudVisionV1p2beta1WebDetectionWebPage);
     });
@@ -13124,7 +13311,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p2beta1Word', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p2beta1Word();
-      var od = api.GoogleCloudVisionV1p2beta1Word.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p2beta1Word.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p2beta1Word(
           od as api.GoogleCloudVisionV1p2beta1Word);
     });
@@ -13134,8 +13323,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1AnnotateFileResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p3beta1AnnotateFileResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1AnnotateFileResponse(
           od as api.GoogleCloudVisionV1p3beta1AnnotateFileResponse);
     });
@@ -13145,8 +13335,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1AnnotateImageResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p3beta1AnnotateImageResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1AnnotateImageResponse(
           od as api.GoogleCloudVisionV1p3beta1AnnotateImageResponse);
     });
@@ -13156,8 +13347,9 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse(
           od as api.GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse);
     });
@@ -13168,8 +13360,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse(
           od as api.GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse);
     });
@@ -13179,8 +13372,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1BatchOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p3beta1BatchOperationMetadata.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1BatchOperationMetadata(
           od as api.GoogleCloudVisionV1p3beta1BatchOperationMetadata);
     });
@@ -13189,7 +13383,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Block', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1Block();
-      var od = api.GoogleCloudVisionV1p3beta1Block.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1Block.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1Block(
           od as api.GoogleCloudVisionV1p3beta1Block);
     });
@@ -13198,7 +13394,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1BoundingPoly', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1BoundingPoly();
-      var od = api.GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1BoundingPoly(
           od as api.GoogleCloudVisionV1p3beta1BoundingPoly);
     });
@@ -13207,7 +13405,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ColorInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1ColorInfo();
-      var od = api.GoogleCloudVisionV1p3beta1ColorInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1ColorInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1ColorInfo(
           od as api.GoogleCloudVisionV1p3beta1ColorInfo);
     });
@@ -13216,7 +13416,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1CropHint', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1CropHint();
-      var od = api.GoogleCloudVisionV1p3beta1CropHint.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1CropHint.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1CropHint(
           od as api.GoogleCloudVisionV1p3beta1CropHint);
     });
@@ -13226,8 +13428,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1CropHintsAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p3beta1CropHintsAnnotation.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1CropHintsAnnotation(
           od as api.GoogleCloudVisionV1p3beta1CropHintsAnnotation);
     });
@@ -13237,8 +13440,9 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p3beta1DominantColorsAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1DominantColorsAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p3beta1DominantColorsAnnotation.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1DominantColorsAnnotation(
           od as api.GoogleCloudVisionV1p3beta1DominantColorsAnnotation);
     });
@@ -13247,8 +13451,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1EntityAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1EntityAnnotation();
-      var od =
-          api.GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1EntityAnnotation(
           od as api.GoogleCloudVisionV1p3beta1EntityAnnotation);
     });
@@ -13257,8 +13462,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1FaceAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1FaceAnnotation();
-      var od =
-          api.GoogleCloudVisionV1p3beta1FaceAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1FaceAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1FaceAnnotation(
           od as api.GoogleCloudVisionV1p3beta1FaceAnnotation);
     });
@@ -13268,8 +13474,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1FaceAnnotationLandmark();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1FaceAnnotationLandmark(
           od as api.GoogleCloudVisionV1p3beta1FaceAnnotationLandmark);
     });
@@ -13278,8 +13485,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1GcsDestination', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1GcsDestination();
-      var od =
-          api.GoogleCloudVisionV1p3beta1GcsDestination.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1GcsDestination.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1GcsDestination(
           od as api.GoogleCloudVisionV1p3beta1GcsDestination);
     });
@@ -13288,7 +13496,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1GcsSource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1GcsSource();
-      var od = api.GoogleCloudVisionV1p3beta1GcsSource.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1GcsSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1GcsSource(
           od as api.GoogleCloudVisionV1p3beta1GcsSource);
     });
@@ -13298,8 +13508,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1ImageAnnotationContext();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p3beta1ImageAnnotationContext.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1ImageAnnotationContext(
           od as api.GoogleCloudVisionV1p3beta1ImageAnnotationContext);
     });
@@ -13308,8 +13519,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ImageProperties', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1ImageProperties();
-      var od =
-          api.GoogleCloudVisionV1p3beta1ImageProperties.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1ImageProperties.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1ImageProperties(
           od as api.GoogleCloudVisionV1p3beta1ImageProperties);
     });
@@ -13319,8 +13531,9 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p3beta1ImportProductSetsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1ImportProductSetsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p3beta1ImportProductSetsResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1ImportProductSetsResponse(
           od as api.GoogleCloudVisionV1p3beta1ImportProductSetsResponse);
     });
@@ -13329,7 +13542,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1InputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1InputConfig();
-      var od = api.GoogleCloudVisionV1p3beta1InputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1InputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1InputConfig(
           od as api.GoogleCloudVisionV1p3beta1InputConfig);
     });
@@ -13339,8 +13554,9 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1LocalizedObjectAnnotation(
           od as api.GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation);
     });
@@ -13349,7 +13565,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1LocationInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1LocationInfo();
-      var od = api.GoogleCloudVisionV1p3beta1LocationInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1LocationInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1LocationInfo(
           od as api.GoogleCloudVisionV1p3beta1LocationInfo);
     });
@@ -13358,8 +13576,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1NormalizedVertex', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1NormalizedVertex();
-      var od =
-          api.GoogleCloudVisionV1p3beta1NormalizedVertex.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1NormalizedVertex.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1NormalizedVertex(
           od as api.GoogleCloudVisionV1p3beta1NormalizedVertex);
     });
@@ -13368,8 +13587,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1OperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1OperationMetadata();
-      var od =
-          api.GoogleCloudVisionV1p3beta1OperationMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1OperationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1OperationMetadata(
           od as api.GoogleCloudVisionV1p3beta1OperationMetadata);
     });
@@ -13378,7 +13598,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1OutputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1OutputConfig();
-      var od = api.GoogleCloudVisionV1p3beta1OutputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1OutputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1OutputConfig(
           od as api.GoogleCloudVisionV1p3beta1OutputConfig);
     });
@@ -13387,7 +13609,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Page', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1Page();
-      var od = api.GoogleCloudVisionV1p3beta1Page.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1Page.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1Page(
           od as api.GoogleCloudVisionV1p3beta1Page);
     });
@@ -13396,7 +13620,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Paragraph', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1Paragraph();
-      var od = api.GoogleCloudVisionV1p3beta1Paragraph.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1Paragraph.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1Paragraph(
           od as api.GoogleCloudVisionV1p3beta1Paragraph);
     });
@@ -13405,7 +13631,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Position', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1Position();
-      var od = api.GoogleCloudVisionV1p3beta1Position.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1Position.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1Position(
           od as api.GoogleCloudVisionV1p3beta1Position);
     });
@@ -13414,7 +13642,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Product', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1Product();
-      var od = api.GoogleCloudVisionV1p3beta1Product.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1Product.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1Product(
           od as api.GoogleCloudVisionV1p3beta1Product);
     });
@@ -13423,8 +13653,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ProductKeyValue', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1ProductKeyValue();
-      var od =
-          api.GoogleCloudVisionV1p3beta1ProductKeyValue.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1ProductKeyValue.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1ProductKeyValue(
           od as api.GoogleCloudVisionV1p3beta1ProductKeyValue);
     });
@@ -13434,8 +13665,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1ProductSearchResults();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p3beta1ProductSearchResults.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1ProductSearchResults(
           od as api.GoogleCloudVisionV1p3beta1ProductSearchResults);
     });
@@ -13447,8 +13679,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult(od
           as api.GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult);
     });
@@ -13460,9 +13693,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation(od
           as api
               .GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation);
@@ -13473,9 +13707,10 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p3beta1ProductSearchResultsResult', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1ProductSearchResultsResult();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1ProductSearchResultsResult(
           od as api.GoogleCloudVisionV1p3beta1ProductSearchResultsResult);
     });
@@ -13484,7 +13719,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Property', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1Property();
-      var od = api.GoogleCloudVisionV1p3beta1Property.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1Property.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1Property(
           od as api.GoogleCloudVisionV1p3beta1Property);
     });
@@ -13493,8 +13730,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1ReferenceImage', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1ReferenceImage();
-      var od =
-          api.GoogleCloudVisionV1p3beta1ReferenceImage.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1ReferenceImage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1ReferenceImage(
           od as api.GoogleCloudVisionV1p3beta1ReferenceImage);
     });
@@ -13504,8 +13742,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1SafeSearchAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p3beta1SafeSearchAnnotation.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1SafeSearchAnnotation(
           od as api.GoogleCloudVisionV1p3beta1SafeSearchAnnotation);
     });
@@ -13514,7 +13753,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Symbol', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1Symbol();
-      var od = api.GoogleCloudVisionV1p3beta1Symbol.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1Symbol.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1Symbol(
           od as api.GoogleCloudVisionV1p3beta1Symbol);
     });
@@ -13523,8 +13764,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1TextAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1TextAnnotation();
-      var od =
-          api.GoogleCloudVisionV1p3beta1TextAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1TextAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1TextAnnotation(
           od as api.GoogleCloudVisionV1p3beta1TextAnnotation);
     });
@@ -13534,9 +13776,10 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak(
           od as api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak);
     });
@@ -13547,9 +13790,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage(
           od as api.GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage);
     });
@@ -13559,9 +13803,10 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p3beta1TextAnnotationTextProperty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1TextAnnotationTextProperty();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1TextAnnotationTextProperty(
           od as api.GoogleCloudVisionV1p3beta1TextAnnotationTextProperty);
     });
@@ -13570,7 +13815,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Vertex', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1Vertex();
-      var od = api.GoogleCloudVisionV1p3beta1Vertex.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1Vertex.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1Vertex(
           od as api.GoogleCloudVisionV1p3beta1Vertex);
     });
@@ -13579,7 +13826,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1WebDetection', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1WebDetection();
-      var od = api.GoogleCloudVisionV1p3beta1WebDetection.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1WebDetection.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1WebDetection(
           od as api.GoogleCloudVisionV1p3beta1WebDetection);
     });
@@ -13589,8 +13838,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1WebDetectionWebEntity();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1WebDetectionWebEntity(
           od as api.GoogleCloudVisionV1p3beta1WebDetectionWebEntity);
     });
@@ -13600,8 +13850,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1WebDetectionWebImage();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1WebDetectionWebImage(
           od as api.GoogleCloudVisionV1p3beta1WebDetectionWebImage);
     });
@@ -13611,8 +13862,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1WebDetectionWebLabel();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1WebDetectionWebLabel(
           od as api.GoogleCloudVisionV1p3beta1WebDetectionWebLabel);
     });
@@ -13622,8 +13874,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1WebDetectionWebPage();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p3beta1WebDetectionWebPage.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1WebDetectionWebPage(
           od as api.GoogleCloudVisionV1p3beta1WebDetectionWebPage);
     });
@@ -13632,7 +13885,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p3beta1Word', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p3beta1Word();
-      var od = api.GoogleCloudVisionV1p3beta1Word.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p3beta1Word.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p3beta1Word(
           od as api.GoogleCloudVisionV1p3beta1Word);
     });
@@ -13642,8 +13897,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1AnnotateFileResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1AnnotateFileResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1AnnotateFileResponse(
           od as api.GoogleCloudVisionV1p4beta1AnnotateFileResponse);
     });
@@ -13653,8 +13909,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1AnnotateImageResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1AnnotateImageResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1AnnotateImageResponse(
           od as api.GoogleCloudVisionV1p4beta1AnnotateImageResponse);
     });
@@ -13664,8 +13921,9 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse(
           od as api.GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse);
     });
@@ -13676,8 +13934,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse(
           od as api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse);
     });
@@ -13688,8 +13947,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse(
           od as api.GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse);
     });
@@ -13699,9 +13959,10 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse(
           od as api.GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse);
     });
@@ -13711,8 +13972,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1BatchOperationMetadata();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1BatchOperationMetadata.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1BatchOperationMetadata(
           od as api.GoogleCloudVisionV1p4beta1BatchOperationMetadata);
     });
@@ -13721,7 +13983,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Block', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Block();
-      var od = api.GoogleCloudVisionV1p4beta1Block.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1Block.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1Block(
           od as api.GoogleCloudVisionV1p4beta1Block);
     });
@@ -13730,7 +13994,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1BoundingPoly', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1BoundingPoly();
-      var od = api.GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1BoundingPoly(
           od as api.GoogleCloudVisionV1p4beta1BoundingPoly);
     });
@@ -13739,7 +14005,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Celebrity', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Celebrity();
-      var od = api.GoogleCloudVisionV1p4beta1Celebrity.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1Celebrity.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1Celebrity(
           od as api.GoogleCloudVisionV1p4beta1Celebrity);
     });
@@ -13748,7 +14016,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ColorInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1ColorInfo();
-      var od = api.GoogleCloudVisionV1p4beta1ColorInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1ColorInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1ColorInfo(
           od as api.GoogleCloudVisionV1p4beta1ColorInfo);
     });
@@ -13757,7 +14027,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1CropHint', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1CropHint();
-      var od = api.GoogleCloudVisionV1p4beta1CropHint.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1CropHint.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1CropHint(
           od as api.GoogleCloudVisionV1p4beta1CropHint);
     });
@@ -13767,8 +14039,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1CropHintsAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1CropHintsAnnotation.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1CropHintsAnnotation(
           od as api.GoogleCloudVisionV1p4beta1CropHintsAnnotation);
     });
@@ -13778,8 +14051,9 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p4beta1DominantColorsAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1DominantColorsAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1DominantColorsAnnotation.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1DominantColorsAnnotation(
           od as api.GoogleCloudVisionV1p4beta1DominantColorsAnnotation);
     });
@@ -13788,8 +14062,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1EntityAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1EntityAnnotation();
-      var od =
-          api.GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1EntityAnnotation(
           od as api.GoogleCloudVisionV1p4beta1EntityAnnotation);
     });
@@ -13798,8 +14073,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1FaceAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1FaceAnnotation();
-      var od =
-          api.GoogleCloudVisionV1p4beta1FaceAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1FaceAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1FaceAnnotation(
           od as api.GoogleCloudVisionV1p4beta1FaceAnnotation);
     });
@@ -13809,8 +14085,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1FaceAnnotationLandmark();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1FaceAnnotationLandmark(
           od as api.GoogleCloudVisionV1p4beta1FaceAnnotationLandmark);
     });
@@ -13820,8 +14097,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1FaceRecognitionResult();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1FaceRecognitionResult.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1FaceRecognitionResult(
           od as api.GoogleCloudVisionV1p4beta1FaceRecognitionResult);
     });
@@ -13830,8 +14108,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1GcsDestination', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1GcsDestination();
-      var od =
-          api.GoogleCloudVisionV1p4beta1GcsDestination.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1GcsDestination.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1GcsDestination(
           od as api.GoogleCloudVisionV1p4beta1GcsDestination);
     });
@@ -13840,7 +14119,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1GcsSource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1GcsSource();
-      var od = api.GoogleCloudVisionV1p4beta1GcsSource.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1GcsSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1GcsSource(
           od as api.GoogleCloudVisionV1p4beta1GcsSource);
     });
@@ -13850,8 +14131,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1ImageAnnotationContext();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1ImageAnnotationContext.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1ImageAnnotationContext(
           od as api.GoogleCloudVisionV1p4beta1ImageAnnotationContext);
     });
@@ -13860,8 +14142,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ImageProperties', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1ImageProperties();
-      var od =
-          api.GoogleCloudVisionV1p4beta1ImageProperties.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1ImageProperties.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1ImageProperties(
           od as api.GoogleCloudVisionV1p4beta1ImageProperties);
     });
@@ -13871,8 +14154,9 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p4beta1ImportProductSetsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1ImportProductSetsResponse();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1ImportProductSetsResponse.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1ImportProductSetsResponse(
           od as api.GoogleCloudVisionV1p4beta1ImportProductSetsResponse);
     });
@@ -13881,7 +14165,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1InputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1InputConfig();
-      var od = api.GoogleCloudVisionV1p4beta1InputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1InputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1InputConfig(
           od as api.GoogleCloudVisionV1p4beta1InputConfig);
     });
@@ -13891,8 +14177,9 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1LocalizedObjectAnnotation(
           od as api.GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation);
     });
@@ -13901,7 +14188,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1LocationInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1LocationInfo();
-      var od = api.GoogleCloudVisionV1p4beta1LocationInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1LocationInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1LocationInfo(
           od as api.GoogleCloudVisionV1p4beta1LocationInfo);
     });
@@ -13910,8 +14199,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1NormalizedVertex', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1NormalizedVertex();
-      var od =
-          api.GoogleCloudVisionV1p4beta1NormalizedVertex.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1NormalizedVertex.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1NormalizedVertex(
           od as api.GoogleCloudVisionV1p4beta1NormalizedVertex);
     });
@@ -13920,8 +14210,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1OperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1OperationMetadata();
-      var od =
-          api.GoogleCloudVisionV1p4beta1OperationMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1OperationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1OperationMetadata(
           od as api.GoogleCloudVisionV1p4beta1OperationMetadata);
     });
@@ -13930,7 +14221,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1OutputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1OutputConfig();
-      var od = api.GoogleCloudVisionV1p4beta1OutputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1OutputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1OutputConfig(
           od as api.GoogleCloudVisionV1p4beta1OutputConfig);
     });
@@ -13939,7 +14232,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Page', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Page();
-      var od = api.GoogleCloudVisionV1p4beta1Page.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1Page.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1Page(
           od as api.GoogleCloudVisionV1p4beta1Page);
     });
@@ -13948,7 +14243,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Paragraph', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Paragraph();
-      var od = api.GoogleCloudVisionV1p4beta1Paragraph.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1Paragraph.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1Paragraph(
           od as api.GoogleCloudVisionV1p4beta1Paragraph);
     });
@@ -13957,7 +14254,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Position', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Position();
-      var od = api.GoogleCloudVisionV1p4beta1Position.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1Position.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1Position(
           od as api.GoogleCloudVisionV1p4beta1Position);
     });
@@ -13966,7 +14265,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Product', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Product();
-      var od = api.GoogleCloudVisionV1p4beta1Product.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1Product.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1Product(
           od as api.GoogleCloudVisionV1p4beta1Product);
     });
@@ -13975,8 +14276,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ProductKeyValue', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1ProductKeyValue();
-      var od =
-          api.GoogleCloudVisionV1p4beta1ProductKeyValue.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1ProductKeyValue.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1ProductKeyValue(
           od as api.GoogleCloudVisionV1p4beta1ProductKeyValue);
     });
@@ -13986,8 +14288,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1ProductSearchResults();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1ProductSearchResults.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1ProductSearchResults(
           od as api.GoogleCloudVisionV1p4beta1ProductSearchResults);
     });
@@ -13999,8 +14302,9 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult
-          .fromJson(o.toJson());
+          .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult(od
           as api.GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult);
     });
@@ -14012,9 +14316,10 @@ void main() {
     unittest.test('to-json--from-json', () async {
       var o =
           buildGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation
-              .fromJson(o.toJson());
+              .fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation(od
           as api
               .GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation);
@@ -14025,9 +14330,10 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p4beta1ProductSearchResultsResult', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1ProductSearchResultsResult();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1ProductSearchResultsResult(
           od as api.GoogleCloudVisionV1p4beta1ProductSearchResultsResult);
     });
@@ -14036,7 +14342,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Property', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Property();
-      var od = api.GoogleCloudVisionV1p4beta1Property.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1Property.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1Property(
           od as api.GoogleCloudVisionV1p4beta1Property);
     });
@@ -14045,8 +14353,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1ReferenceImage', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1ReferenceImage();
-      var od =
-          api.GoogleCloudVisionV1p4beta1ReferenceImage.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1ReferenceImage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1ReferenceImage(
           od as api.GoogleCloudVisionV1p4beta1ReferenceImage);
     });
@@ -14056,8 +14365,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1SafeSearchAnnotation();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1SafeSearchAnnotation.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1SafeSearchAnnotation(
           od as api.GoogleCloudVisionV1p4beta1SafeSearchAnnotation);
     });
@@ -14066,7 +14376,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Symbol', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Symbol();
-      var od = api.GoogleCloudVisionV1p4beta1Symbol.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1Symbol.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1Symbol(
           od as api.GoogleCloudVisionV1p4beta1Symbol);
     });
@@ -14075,8 +14387,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1TextAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1TextAnnotation();
-      var od =
-          api.GoogleCloudVisionV1p4beta1TextAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1TextAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1TextAnnotation(
           od as api.GoogleCloudVisionV1p4beta1TextAnnotation);
     });
@@ -14086,9 +14399,10 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak(
           od as api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak);
     });
@@ -14099,9 +14413,10 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage(
           od as api.GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage);
     });
@@ -14111,9 +14426,10 @@ void main() {
       'obj-schema-GoogleCloudVisionV1p4beta1TextAnnotationTextProperty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1TextAnnotationTextProperty();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od =
           api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
-              o.toJson());
+              oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1TextAnnotationTextProperty(
           od as api.GoogleCloudVisionV1p4beta1TextAnnotationTextProperty);
     });
@@ -14122,7 +14438,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Vertex', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Vertex();
-      var od = api.GoogleCloudVisionV1p4beta1Vertex.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1Vertex.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1Vertex(
           od as api.GoogleCloudVisionV1p4beta1Vertex);
     });
@@ -14131,7 +14449,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1WebDetection', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1WebDetection();
-      var od = api.GoogleCloudVisionV1p4beta1WebDetection.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1WebDetection.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1WebDetection(
           od as api.GoogleCloudVisionV1p4beta1WebDetection);
     });
@@ -14141,8 +14461,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1WebDetectionWebEntity();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1WebDetectionWebEntity(
           od as api.GoogleCloudVisionV1p4beta1WebDetectionWebEntity);
     });
@@ -14152,8 +14473,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1WebDetectionWebImage();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1WebDetectionWebImage(
           od as api.GoogleCloudVisionV1p4beta1WebDetectionWebImage);
     });
@@ -14163,8 +14485,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1WebDetectionWebLabel();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1WebDetectionWebLabel(
           od as api.GoogleCloudVisionV1p4beta1WebDetectionWebLabel);
     });
@@ -14174,8 +14497,9 @@ void main() {
       () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1WebDetectionWebPage();
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
       var od = api.GoogleCloudVisionV1p4beta1WebDetectionWebPage.fromJson(
-          o.toJson());
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1WebDetectionWebPage(
           od as api.GoogleCloudVisionV1p4beta1WebDetectionWebPage);
     });
@@ -14184,7 +14508,9 @@ void main() {
   unittest.group('obj-schema-GoogleCloudVisionV1p4beta1Word', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGoogleCloudVisionV1p4beta1Word();
-      var od = api.GoogleCloudVisionV1p4beta1Word.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GoogleCloudVisionV1p4beta1Word.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGoogleCloudVisionV1p4beta1Word(
           od as api.GoogleCloudVisionV1p4beta1Word);
     });
@@ -14193,7 +14519,9 @@ void main() {
   unittest.group('obj-schema-GroupedResult', () {
     unittest.test('to-json--from-json', () async {
       var o = buildGroupedResult();
-      var od = api.GroupedResult.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.GroupedResult.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkGroupedResult(od as api.GroupedResult);
     });
   });
@@ -14201,7 +14529,8 @@ void main() {
   unittest.group('obj-schema-Image', () {
     unittest.test('to-json--from-json', () async {
       var o = buildImage();
-      var od = api.Image.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Image.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkImage(od as api.Image);
     });
   });
@@ -14209,7 +14538,9 @@ void main() {
   unittest.group('obj-schema-ImageAnnotationContext', () {
     unittest.test('to-json--from-json', () async {
       var o = buildImageAnnotationContext();
-      var od = api.ImageAnnotationContext.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ImageAnnotationContext.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkImageAnnotationContext(od as api.ImageAnnotationContext);
     });
   });
@@ -14217,7 +14548,9 @@ void main() {
   unittest.group('obj-schema-ImageContext', () {
     unittest.test('to-json--from-json', () async {
       var o = buildImageContext();
-      var od = api.ImageContext.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ImageContext.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkImageContext(od as api.ImageContext);
     });
   });
@@ -14225,7 +14558,9 @@ void main() {
   unittest.group('obj-schema-ImageProperties', () {
     unittest.test('to-json--from-json', () async {
       var o = buildImageProperties();
-      var od = api.ImageProperties.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ImageProperties.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkImageProperties(od as api.ImageProperties);
     });
   });
@@ -14233,7 +14568,9 @@ void main() {
   unittest.group('obj-schema-ImageSource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildImageSource();
-      var od = api.ImageSource.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ImageSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkImageSource(od as api.ImageSource);
     });
   });
@@ -14241,7 +14578,9 @@ void main() {
   unittest.group('obj-schema-ImportProductSetsGcsSource', () {
     unittest.test('to-json--from-json', () async {
       var o = buildImportProductSetsGcsSource();
-      var od = api.ImportProductSetsGcsSource.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ImportProductSetsGcsSource.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkImportProductSetsGcsSource(od as api.ImportProductSetsGcsSource);
     });
   });
@@ -14249,7 +14588,9 @@ void main() {
   unittest.group('obj-schema-ImportProductSetsInputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildImportProductSetsInputConfig();
-      var od = api.ImportProductSetsInputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ImportProductSetsInputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkImportProductSetsInputConfig(od as api.ImportProductSetsInputConfig);
     });
   });
@@ -14257,7 +14598,9 @@ void main() {
   unittest.group('obj-schema-ImportProductSetsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildImportProductSetsRequest();
-      var od = api.ImportProductSetsRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ImportProductSetsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkImportProductSetsRequest(od as api.ImportProductSetsRequest);
     });
   });
@@ -14265,7 +14608,9 @@ void main() {
   unittest.group('obj-schema-ImportProductSetsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildImportProductSetsResponse();
-      var od = api.ImportProductSetsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ImportProductSetsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkImportProductSetsResponse(od as api.ImportProductSetsResponse);
     });
   });
@@ -14273,7 +14618,9 @@ void main() {
   unittest.group('obj-schema-InputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildInputConfig();
-      var od = api.InputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.InputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkInputConfig(od as api.InputConfig);
     });
   });
@@ -14281,7 +14628,9 @@ void main() {
   unittest.group('obj-schema-KeyValue', () {
     unittest.test('to-json--from-json', () async {
       var o = buildKeyValue();
-      var od = api.KeyValue.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.KeyValue.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkKeyValue(od as api.KeyValue);
     });
   });
@@ -14289,7 +14638,9 @@ void main() {
   unittest.group('obj-schema-Landmark', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLandmark();
-      var od = api.Landmark.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Landmark.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLandmark(od as api.Landmark);
     });
   });
@@ -14297,7 +14648,9 @@ void main() {
   unittest.group('obj-schema-LatLng', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLatLng();
-      var od = api.LatLng.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.LatLng.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkLatLng(od as api.LatLng);
     });
   });
@@ -14305,7 +14658,9 @@ void main() {
   unittest.group('obj-schema-LatLongRect', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLatLongRect();
-      var od = api.LatLongRect.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LatLongRect.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLatLongRect(od as api.LatLongRect);
     });
   });
@@ -14313,7 +14668,9 @@ void main() {
   unittest.group('obj-schema-ListOperationsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListOperationsResponse();
-      var od = api.ListOperationsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListOperationsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
@@ -14321,7 +14678,9 @@ void main() {
   unittest.group('obj-schema-ListProductSetsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListProductSetsResponse();
-      var od = api.ListProductSetsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListProductSetsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListProductSetsResponse(od as api.ListProductSetsResponse);
     });
   });
@@ -14329,7 +14688,9 @@ void main() {
   unittest.group('obj-schema-ListProductsInProductSetResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListProductsInProductSetResponse();
-      var od = api.ListProductsInProductSetResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListProductsInProductSetResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListProductsInProductSetResponse(
           od as api.ListProductsInProductSetResponse);
     });
@@ -14338,7 +14699,9 @@ void main() {
   unittest.group('obj-schema-ListProductsResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListProductsResponse();
-      var od = api.ListProductsResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListProductsResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListProductsResponse(od as api.ListProductsResponse);
     });
   });
@@ -14346,7 +14709,9 @@ void main() {
   unittest.group('obj-schema-ListReferenceImagesResponse', () {
     unittest.test('to-json--from-json', () async {
       var o = buildListReferenceImagesResponse();
-      var od = api.ListReferenceImagesResponse.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ListReferenceImagesResponse.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkListReferenceImagesResponse(od as api.ListReferenceImagesResponse);
     });
   });
@@ -14354,7 +14719,9 @@ void main() {
   unittest.group('obj-schema-LocalizedObjectAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLocalizedObjectAnnotation();
-      var od = api.LocalizedObjectAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LocalizedObjectAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLocalizedObjectAnnotation(od as api.LocalizedObjectAnnotation);
     });
   });
@@ -14362,7 +14729,9 @@ void main() {
   unittest.group('obj-schema-LocationInfo', () {
     unittest.test('to-json--from-json', () async {
       var o = buildLocationInfo();
-      var od = api.LocationInfo.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.LocationInfo.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkLocationInfo(od as api.LocationInfo);
     });
   });
@@ -14370,7 +14739,9 @@ void main() {
   unittest.group('obj-schema-NormalizedVertex', () {
     unittest.test('to-json--from-json', () async {
       var o = buildNormalizedVertex();
-      var od = api.NormalizedVertex.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.NormalizedVertex.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkNormalizedVertex(od as api.NormalizedVertex);
     });
   });
@@ -14378,7 +14749,9 @@ void main() {
   unittest.group('obj-schema-ObjectAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildObjectAnnotation();
-      var od = api.ObjectAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ObjectAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkObjectAnnotation(od as api.ObjectAnnotation);
     });
   });
@@ -14386,7 +14759,9 @@ void main() {
   unittest.group('obj-schema-Operation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOperation();
-      var od = api.Operation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Operation.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkOperation(od as api.Operation);
     });
   });
@@ -14394,7 +14769,9 @@ void main() {
   unittest.group('obj-schema-OperationMetadata', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOperationMetadata();
-      var od = api.OperationMetadata.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.OperationMetadata.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkOperationMetadata(od as api.OperationMetadata);
     });
   });
@@ -14402,7 +14779,9 @@ void main() {
   unittest.group('obj-schema-OutputConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildOutputConfig();
-      var od = api.OutputConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.OutputConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkOutputConfig(od as api.OutputConfig);
     });
   });
@@ -14410,7 +14789,8 @@ void main() {
   unittest.group('obj-schema-Page', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPage();
-      var od = api.Page.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Page.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPage(od as api.Page);
     });
   });
@@ -14418,7 +14798,9 @@ void main() {
   unittest.group('obj-schema-Paragraph', () {
     unittest.test('to-json--from-json', () async {
       var o = buildParagraph();
-      var od = api.Paragraph.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Paragraph.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkParagraph(od as api.Paragraph);
     });
   });
@@ -14426,7 +14808,9 @@ void main() {
   unittest.group('obj-schema-Position', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPosition();
-      var od = api.Position.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Position.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkPosition(od as api.Position);
     });
   });
@@ -14434,7 +14818,9 @@ void main() {
   unittest.group('obj-schema-Product', () {
     unittest.test('to-json--from-json', () async {
       var o = buildProduct();
-      var od = api.Product.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Product.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkProduct(od as api.Product);
     });
   });
@@ -14442,7 +14828,9 @@ void main() {
   unittest.group('obj-schema-ProductSearchParams', () {
     unittest.test('to-json--from-json', () async {
       var o = buildProductSearchParams();
-      var od = api.ProductSearchParams.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ProductSearchParams.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkProductSearchParams(od as api.ProductSearchParams);
     });
   });
@@ -14450,7 +14838,9 @@ void main() {
   unittest.group('obj-schema-ProductSearchResults', () {
     unittest.test('to-json--from-json', () async {
       var o = buildProductSearchResults();
-      var od = api.ProductSearchResults.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ProductSearchResults.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkProductSearchResults(od as api.ProductSearchResults);
     });
   });
@@ -14458,7 +14848,9 @@ void main() {
   unittest.group('obj-schema-ProductSet', () {
     unittest.test('to-json--from-json', () async {
       var o = buildProductSet();
-      var od = api.ProductSet.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.ProductSet.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkProductSet(od as api.ProductSet);
     });
   });
@@ -14466,7 +14858,9 @@ void main() {
   unittest.group('obj-schema-ProductSetPurgeConfig', () {
     unittest.test('to-json--from-json', () async {
       var o = buildProductSetPurgeConfig();
-      var od = api.ProductSetPurgeConfig.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ProductSetPurgeConfig.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkProductSetPurgeConfig(od as api.ProductSetPurgeConfig);
     });
   });
@@ -14474,7 +14868,9 @@ void main() {
   unittest.group('obj-schema-Property', () {
     unittest.test('to-json--from-json', () async {
       var o = buildProperty();
-      var od = api.Property.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Property.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkProperty(od as api.Property);
     });
   });
@@ -14482,7 +14878,9 @@ void main() {
   unittest.group('obj-schema-PurgeProductsRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildPurgeProductsRequest();
-      var od = api.PurgeProductsRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.PurgeProductsRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkPurgeProductsRequest(od as api.PurgeProductsRequest);
     });
   });
@@ -14490,7 +14888,9 @@ void main() {
   unittest.group('obj-schema-ReferenceImage', () {
     unittest.test('to-json--from-json', () async {
       var o = buildReferenceImage();
-      var od = api.ReferenceImage.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.ReferenceImage.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkReferenceImage(od as api.ReferenceImage);
     });
   });
@@ -14498,7 +14898,9 @@ void main() {
   unittest.group('obj-schema-RemoveProductFromProductSetRequest', () {
     unittest.test('to-json--from-json', () async {
       var o = buildRemoveProductFromProductSetRequest();
-      var od = api.RemoveProductFromProductSetRequest.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.RemoveProductFromProductSetRequest.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkRemoveProductFromProductSetRequest(
           od as api.RemoveProductFromProductSetRequest);
     });
@@ -14507,7 +14909,9 @@ void main() {
   unittest.group('obj-schema-Result', () {
     unittest.test('to-json--from-json', () async {
       var o = buildResult();
-      var od = api.Result.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Result.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkResult(od as api.Result);
     });
   });
@@ -14515,7 +14919,9 @@ void main() {
   unittest.group('obj-schema-SafeSearchAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSafeSearchAnnotation();
-      var od = api.SafeSearchAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.SafeSearchAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkSafeSearchAnnotation(od as api.SafeSearchAnnotation);
     });
   });
@@ -14523,7 +14929,9 @@ void main() {
   unittest.group('obj-schema-Status', () {
     unittest.test('to-json--from-json', () async {
       var o = buildStatus();
-      var od = api.Status.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Status.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkStatus(od as api.Status);
     });
   });
@@ -14531,7 +14939,9 @@ void main() {
   unittest.group('obj-schema-Symbol', () {
     unittest.test('to-json--from-json', () async {
       var o = buildSymbol();
-      var od = api.Symbol.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Symbol.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkSymbol(od as api.Symbol);
     });
   });
@@ -14539,7 +14949,9 @@ void main() {
   unittest.group('obj-schema-TextAnnotation', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTextAnnotation();
-      var od = api.TextAnnotation.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TextAnnotation.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTextAnnotation(od as api.TextAnnotation);
     });
   });
@@ -14547,7 +14959,9 @@ void main() {
   unittest.group('obj-schema-TextDetectionParams', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTextDetectionParams();
-      var od = api.TextDetectionParams.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TextDetectionParams.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTextDetectionParams(od as api.TextDetectionParams);
     });
   });
@@ -14555,7 +14969,9 @@ void main() {
   unittest.group('obj-schema-TextProperty', () {
     unittest.test('to-json--from-json', () async {
       var o = buildTextProperty();
-      var od = api.TextProperty.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.TextProperty.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkTextProperty(od as api.TextProperty);
     });
   });
@@ -14563,7 +14979,9 @@ void main() {
   unittest.group('obj-schema-Vertex', () {
     unittest.test('to-json--from-json', () async {
       var o = buildVertex();
-      var od = api.Vertex.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.Vertex.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkVertex(od as api.Vertex);
     });
   });
@@ -14571,7 +14989,9 @@ void main() {
   unittest.group('obj-schema-WebDetection', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWebDetection();
-      var od = api.WebDetection.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.WebDetection.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkWebDetection(od as api.WebDetection);
     });
   });
@@ -14579,7 +14999,9 @@ void main() {
   unittest.group('obj-schema-WebDetectionParams', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWebDetectionParams();
-      var od = api.WebDetectionParams.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.WebDetectionParams.fromJson(
+          oJson as core.Map<core.String, core.dynamic>);
       checkWebDetectionParams(od as api.WebDetectionParams);
     });
   });
@@ -14587,7 +15009,9 @@ void main() {
   unittest.group('obj-schema-WebEntity', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWebEntity();
-      var od = api.WebEntity.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.WebEntity.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkWebEntity(od as api.WebEntity);
     });
   });
@@ -14595,7 +15019,9 @@ void main() {
   unittest.group('obj-schema-WebImage', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWebImage();
-      var od = api.WebImage.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.WebImage.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkWebImage(od as api.WebImage);
     });
   });
@@ -14603,7 +15029,9 @@ void main() {
   unittest.group('obj-schema-WebLabel', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWebLabel();
-      var od = api.WebLabel.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.WebLabel.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkWebLabel(od as api.WebLabel);
     });
   });
@@ -14611,7 +15039,9 @@ void main() {
   unittest.group('obj-schema-WebPage', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWebPage();
-      var od = api.WebPage.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od =
+          api.WebPage.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkWebPage(od as api.WebPage);
     });
   });
@@ -14619,7 +15049,8 @@ void main() {
   unittest.group('obj-schema-Word', () {
     unittest.test('to-json--from-json', () async {
       var o = buildWord();
-      var od = api.Word.fromJson(o.toJson());
+      var oJson = convert.jsonDecode(convert.jsonEncode(o));
+      var od = api.Word.fromJson(oJson as core.Map<core.String, core.dynamic>);
       checkWord(od as api.Word);
     });
   });

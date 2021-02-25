@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -479,7 +478,7 @@ class Asset {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (authorName != null) 'authorName': authorName!,
         if (createTime != null) 'createTime': createTime!,
         if (description != null) 'description': description!,
@@ -563,7 +562,7 @@ class AssetImportMessage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (filePath != null) 'filePath': filePath!,
         if (imageError != null) 'imageError': imageError!.toJson(),
@@ -601,7 +600,7 @@ class File {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (contentType != null) 'contentType': contentType!,
         if (relativePath != null) 'relativePath': relativePath!,
         if (url != null) 'url': url!,
@@ -660,7 +659,7 @@ class Format {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (formatComplexity != null)
           'formatComplexity': formatComplexity!.toJson(),
         if (formatType != null) 'formatType': formatType!,
@@ -694,7 +693,7 @@ class FormatComplexity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (lodHint != null) 'lodHint': lodHint!,
         if (triangleCount != null) 'triangleCount': triangleCount!,
       };
@@ -727,7 +726,7 @@ class ImageError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (filePath != null) 'filePath': filePath!,
       };
@@ -764,7 +763,7 @@ class ListAssetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (assets != null)
           'assets': assets!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -803,7 +802,7 @@ class ListLikedAssetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (assets != null)
           'assets': assets!.map((value) => value.toJson()).toList(),
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
@@ -842,7 +841,7 @@ class ListUserAssetsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (totalSize != null) 'totalSize': totalSize!,
         if (userAssets != null)
@@ -937,7 +936,7 @@ class ObjParseError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (endIndex != null) 'endIndex': endIndex!,
         if (filePath != null) 'filePath': filePath!,
@@ -999,7 +998,7 @@ class PresentationParams {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (backgroundColor != null) 'backgroundColor': backgroundColor!,
         if (colorSpace != null) 'colorSpace': colorSpace!,
         if (orientingRotation != null)
@@ -1041,7 +1040,7 @@ class Quaternion {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (w != null) 'w': w!,
         if (x != null) 'x': x!,
         if (y != null) 'y': y!,
@@ -1066,7 +1065,7 @@ class RemixInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sourceAsset != null) 'sourceAsset': sourceAsset!,
       };
 }
@@ -1114,7 +1113,7 @@ class StartAssetImportResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (assetId != null) 'assetId': assetId!,
         if (assetImportId != null) 'assetImportId': assetImportId!,
         if (assetImportMessages != null)
@@ -1138,7 +1137,7 @@ class UserAsset {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (asset != null) 'asset': asset!.toJson(),
       };
 }

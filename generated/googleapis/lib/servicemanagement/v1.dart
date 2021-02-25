@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -1235,7 +1234,7 @@ class Advice {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
       };
 }
@@ -1329,7 +1328,7 @@ class Api {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (methods != null)
           'methods': methods!.map((value) => value.toJson()).toList(),
         if (mixins != null)
@@ -1384,7 +1383,7 @@ class AuditConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditLogConfigs != null)
           'auditLogConfigs':
               auditLogConfigs!.map((value) => value.toJson()).toList(),
@@ -1426,7 +1425,7 @@ class AuditLogConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exemptedMembers != null) 'exemptedMembers': exemptedMembers!,
         if (logType != null) 'logType': logType!,
       };
@@ -1519,7 +1518,7 @@ class AuthProvider {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audiences != null) 'audiences': audiences!,
         if (authorizationUrl != null) 'authorizationUrl': authorizationUrl!,
         if (id != null) 'id': id!,
@@ -1565,7 +1564,7 @@ class AuthRequirement {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (audiences != null) 'audiences': audiences!,
         if (providerId != null) 'providerId': providerId!,
       };
@@ -1604,7 +1603,7 @@ class Authentication {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (providers != null)
           'providers': providers!.map((value) => value.toJson()).toList(),
         if (rules != null)
@@ -1657,7 +1656,7 @@ class AuthenticationRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowWithoutCredential != null)
           'allowWithoutCredential': allowWithoutCredential!,
         if (oauth != null) 'oauth': oauth!.toJson(),
@@ -1685,7 +1684,7 @@ class Backend {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rules != null)
           'rules': rules!.map((value) => value.toJson()).toList(),
       };
@@ -1811,7 +1810,7 @@ class BackendRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (address != null) 'address': address!,
         if (deadline != null) 'deadline': deadline!,
         if (disableAuth != null) 'disableAuth': disableAuth!,
@@ -1860,7 +1859,7 @@ class Billing {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (consumerDestinations != null)
           'consumerDestinations':
               consumerDestinations!.map((value) => value.toJson()).toList(),
@@ -1893,7 +1892,7 @@ class BillingDestination {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metrics != null) 'metrics': metrics!,
         if (monitoredResource != null) 'monitoredResource': monitoredResource!,
       };
@@ -1965,7 +1964,7 @@ class Binding {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (condition != null) 'condition': condition!.toJson(),
         if (members != null) 'members': members!,
         if (role != null) 'role': role!,
@@ -1996,7 +1995,7 @@ class ChangeReport {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (configChanges != null)
           'configChanges':
               configChanges!.map((value) => value.toJson()).toList(),
@@ -2073,7 +2072,7 @@ class ConfigChange {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (advices != null)
           'advices': advices!.map((value) => value.toJson()).toList(),
         if (changeType != null) 'changeType': changeType!,
@@ -2130,7 +2129,7 @@ class ConfigFile {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fileContents != null) 'fileContents': fileContents!,
         if (filePath != null) 'filePath': filePath!,
         if (fileType != null) 'fileType': fileType!,
@@ -2153,7 +2152,7 @@ class ConfigRef {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
       };
 }
@@ -2185,7 +2184,7 @@ class ConfigSource {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (files != null)
           'files': files!.map((value) => value.toJson()).toList(),
         if (id != null) 'id': id!,
@@ -2224,7 +2223,7 @@ class Context {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rules != null)
           'rules': rules!.map((value) => value.toJson()).toList(),
       };
@@ -2282,7 +2281,7 @@ class ContextRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowedRequestExtensions != null)
           'allowedRequestExtensions': allowedRequestExtensions!,
         if (allowedResponseExtensions != null)
@@ -2312,7 +2311,7 @@ class Control {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (environment != null) 'environment': environment!,
       };
 }
@@ -2347,7 +2346,7 @@ class CustomError {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rules != null)
           'rules': rules!.map((value) => value.toJson()).toList(),
         if (types != null) 'types': types!,
@@ -2378,7 +2377,7 @@ class CustomErrorRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (isErrorType != null) 'isErrorType': isErrorType!,
         if (selector != null) 'selector': selector!,
       };
@@ -2403,7 +2402,7 @@ class CustomHttpPattern {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (path != null) 'path': path!,
       };
@@ -2420,7 +2419,7 @@ class DeleteServiceStrategy {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Represents a diagnostic message (error or warning)
@@ -2451,7 +2450,7 @@ class Diagnostic {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (kind != null) 'kind': kind!,
         if (location != null) 'location': location!,
         if (message != null) 'message': message!,
@@ -2466,7 +2465,7 @@ class DisableServiceResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// `Documentation` provides the information for describing a service.
@@ -2560,7 +2559,7 @@ class Documentation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (documentationRootUrl != null)
           'documentationRootUrl': documentationRootUrl!,
         if (overview != null) 'overview': overview!,
@@ -2607,7 +2606,7 @@ class DocumentationRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (deprecationDescription != null)
           'deprecationDescription': deprecationDescription!,
         if (description != null) 'description': description!,
@@ -2635,7 +2634,7 @@ class EnableServiceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (consumerId != null) 'consumerId': consumerId!,
       };
 }
@@ -2648,7 +2647,7 @@ class EnableServiceResponse {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// `Endpoint` describes a network endpoint of a service that serves a set of
@@ -2710,7 +2709,7 @@ class Endpoint {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (aliases != null) 'aliases': aliases!,
         if (allowCors != null) 'allowCors': allowCors!,
         if (name != null) 'name': name!,
@@ -2765,7 +2764,7 @@ class Enum {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enumvalue != null)
           'enumvalue': enumvalue!.map((value) => value.toJson()).toList(),
         if (name != null) 'name': name!,
@@ -2804,7 +2803,7 @@ class EnumValue {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (number != null) 'number': number!,
         if (options != null)
@@ -2873,7 +2872,7 @@ class Expr {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (expression != null) 'expression': expression!,
         if (location != null) 'location': location!,
@@ -2983,7 +2982,7 @@ class Field {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cardinality != null) 'cardinality': cardinality!,
         if (defaultValue != null) 'defaultValue': defaultValue!,
         if (jsonName != null) 'jsonName': jsonName!,
@@ -3019,7 +3018,7 @@ class FlowErrorDetails {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (exceptionType != null) 'exceptionType': exceptionType!,
         if (flowStepId != null) 'flowStepId': flowStepId!,
       };
@@ -3056,25 +3055,25 @@ class GenerateConfigReportRequest {
   GenerateConfigReportRequest.fromJson(core.Map _json) {
     if (_json.containsKey('newConfig')) {
       newConfig =
-          (_json['newConfig'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+          (_json['newConfig'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('oldConfig')) {
       oldConfig =
-          (_json['oldConfig'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+          (_json['oldConfig'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (newConfig != null) 'newConfig': newConfig!,
         if (oldConfig != null) 'oldConfig': oldConfig!,
       };
@@ -3119,7 +3118,7 @@ class GenerateConfigReportResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (changeReports != null)
           'changeReports':
               changeReports!.map((value) => value.toJson()).toList(),
@@ -3145,7 +3144,7 @@ class GetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (options != null) 'options': options!.toJson(),
       };
 }
@@ -3172,7 +3171,7 @@ class GetPolicyOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (requestedPolicyVersion != null)
           'requestedPolicyVersion': requestedPolicyVersion!,
       };
@@ -3211,7 +3210,7 @@ class Http {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fullyDecodeReservedExpansion != null)
           'fullyDecodeReservedExpansion': fullyDecodeReservedExpansion!,
         if (rules != null)
@@ -3459,7 +3458,7 @@ class HttpRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (additionalBindings != null)
           'additionalBindings':
               additionalBindings!.map((value) => value.toJson()).toList(),
@@ -3507,7 +3506,7 @@ class JwtLocation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (header != null) 'header': header!,
         if (query != null) 'query': query!,
         if (valuePrefix != null) 'valuePrefix': valuePrefix!,
@@ -3543,7 +3542,7 @@ class LabelDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (key != null) 'key': key!,
         if (valueType != null) 'valueType': valueType!,
@@ -3572,7 +3571,7 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
@@ -3601,7 +3600,7 @@ class ListServiceConfigsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (serviceConfigs != null)
           'serviceConfigs':
@@ -3631,7 +3630,7 @@ class ListServiceRolloutsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (rollouts != null)
           'rollouts': rollouts!.map((value) => value.toJson()).toList(),
@@ -3660,7 +3659,7 @@ class ListServicesResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (services != null)
           'services': services!.map((value) => value.toJson()).toList(),
@@ -3718,7 +3717,7 @@ class LogDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (labels != null)
@@ -3772,7 +3771,7 @@ class Logging {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (consumerDestinations != null)
           'consumerDestinations':
               consumerDestinations!.map((value) => value.toJson()).toList(),
@@ -3810,7 +3809,7 @@ class LoggingDestination {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (logs != null) 'logs': logs!,
         if (monitoredResource != null) 'monitoredResource': monitoredResource!,
       };
@@ -3839,7 +3838,7 @@ class ManagedService {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (producerProjectId != null) 'producerProjectId': producerProjectId!,
         if (serviceName != null) 'serviceName': serviceName!,
       };
@@ -3900,7 +3899,7 @@ class Method {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (options != null)
           'options': options!.map((value) => value.toJson()).toList(),
@@ -4126,7 +4125,7 @@ class MetricDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (labels != null)
@@ -4209,7 +4208,7 @@ class MetricDescriptorMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ingestDelay != null) 'ingestDelay': ingestDelay!,
         if (launchStage != null) 'launchStage': launchStage!,
         if (samplePeriod != null) 'samplePeriod': samplePeriod!,
@@ -4238,21 +4237,20 @@ class MetricRule {
 
   MetricRule.fromJson(core.Map _json) {
     if (_json.containsKey('metricCosts')) {
-      metricCosts = (_json['metricCosts'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      metricCosts =
+          (_json['metricCosts'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('selector')) {
       selector = _json['selector'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metricCosts != null) 'metricCosts': metricCosts!,
         if (selector != null) 'selector': selector!,
       };
@@ -4308,7 +4306,7 @@ class Mixin {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (root != null) 'root': root!,
       };
@@ -4430,7 +4428,7 @@ class MonitoredResourceDescriptor {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
         if (labels != null)
@@ -4502,7 +4500,7 @@ class Monitoring {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (consumerDestinations != null)
           'consumerDestinations':
               consumerDestinations!.map((value) => value.toJson()).toList(),
@@ -4538,7 +4536,7 @@ class MonitoringDestination {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metrics != null) 'metrics': metrics!,
         if (monitoredResource != null) 'monitoredResource': monitoredResource!,
       };
@@ -4575,7 +4573,7 @@ class OAuthRequirements {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (canonicalScopes != null) 'canonicalScopes': canonicalScopes!,
       };
 }
@@ -4634,29 +4632,27 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.Object,
-                ),
-              );
+      response = (_json['response'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (done != null) 'done': done!,
         if (error != null) 'error': error!.toJson(),
         if (metadata != null) 'metadata': metadata!,
@@ -4704,7 +4700,7 @@ class OperationMetadata {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (progressPercentage != null)
           'progressPercentage': progressPercentage!,
         if (resourceNames != null) 'resourceNames': resourceNames!,
@@ -4742,16 +4738,16 @@ class Option {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = (_json['value'] as core.Map).cast<core.String, core.Object>().map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.Object,
-            ),
-          );
+      value = (_json['value'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.Object,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (value != null) 'value': value!,
       };
@@ -4801,7 +4797,7 @@ class Page {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (content != null) 'content': content!,
         if (name != null) 'name': name!,
         if (subpages != null)
@@ -4913,7 +4909,7 @@ class Policy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (auditConfigs != null)
           'auditConfigs': auditConfigs!.map((value) => value.toJson()).toList(),
         if (bindings != null)
@@ -4972,7 +4968,7 @@ class Quota {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (limits != null)
           'limits': limits!.map((value) => value.toJson()).toList(),
         if (metricRules != null)
@@ -5096,17 +5092,16 @@ class QuotaLimit {
       unit = _json['unit'] as core.String;
     }
     if (_json.containsKey('values')) {
-      values =
-          (_json['values'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      values = (_json['values'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (defaultLimit != null) 'defaultLimit': defaultLimit!,
         if (description != null) 'description': description!,
         if (displayName != null) 'displayName': displayName!,
@@ -5153,7 +5148,7 @@ class ResourceReference {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (childType != null) 'childType': childType!,
         if (type != null) 'type': type!,
       };
@@ -5247,7 +5242,7 @@ class Rollout {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (createTime != null) 'createTime': createTime!,
         if (createdBy != null) 'createdBy': createdBy!,
         if (deleteServiceStrategy != null)
@@ -5517,7 +5512,7 @@ class Service {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (apis != null) 'apis': apis!.map((value) => value.toJson()).toList(),
         if (authentication != null) 'authentication': authentication!.toJson(),
         if (backend != null) 'backend': backend!.toJson(),
@@ -5583,7 +5578,7 @@ class SetIamPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (policy != null) 'policy': policy!.toJson(),
         if (updateMask != null) 'updateMask': updateMask!,
       };
@@ -5606,7 +5601,7 @@ class SourceContext {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fileName != null) 'fileName': fileName!,
       };
 }
@@ -5624,8 +5619,8 @@ class SourceInfo {
   SourceInfo.fromJson(core.Map _json) {
     if (_json.containsKey('sourceFiles')) {
       sourceFiles = (_json['sourceFiles'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -5635,7 +5630,7 @@ class SourceInfo {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sourceFiles != null) 'sourceFiles': sourceFiles!,
       };
 }
@@ -5673,8 +5668,8 @@ class Status {
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>((value) =>
-              (value as core.Map).cast<core.String, core.Object>().map(
+          .map<core.Map<core.String, core.Object>>(
+              (value) => (value as core.Map<core.String, core.dynamic>).map(
                     (key, item) => core.MapEntry(
                       key,
                       item as core.Object,
@@ -5687,7 +5682,7 @@ class Status {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (details != null) 'details': details!,
         if (message != null) 'message': message!,
@@ -5721,7 +5716,7 @@ class Step {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (description != null) 'description': description!,
         if (status != null) 'status': status!,
       };
@@ -5753,7 +5748,7 @@ class SubmitConfigSourceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (configSource != null) 'configSource': configSource!.toJson(),
         if (validateOnly != null) 'validateOnly': validateOnly!,
       };
@@ -5773,7 +5768,7 @@ class SubmitConfigSourceResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (serviceConfig != null) 'serviceConfig': serviceConfig!.toJson(),
       };
 }
@@ -5812,7 +5807,7 @@ class SystemParameter {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (httpHeader != null) 'httpHeader': httpHeader!,
         if (name != null) 'name': name!,
         if (urlQueryParameter != null) 'urlQueryParameter': urlQueryParameter!,
@@ -5850,7 +5845,7 @@ class SystemParameterRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (parameters != null)
           'parameters': parameters!.map((value) => value.toJson()).toList(),
         if (selector != null) 'selector': selector!,
@@ -5889,7 +5884,7 @@ class SystemParameters {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (rules != null)
           'rules': rules!.map((value) => value.toJson()).toList(),
       };
@@ -5914,7 +5909,7 @@ class TestIamPermissionsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -5935,7 +5930,7 @@ class TestIamPermissionsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (permissions != null) 'permissions': permissions!,
       };
 }
@@ -5962,18 +5957,17 @@ class TrafficPercentStrategy {
 
   TrafficPercentStrategy.fromJson(core.Map _json) {
     if (_json.containsKey('percentages')) {
-      percentages = (_json['percentages'] as core.Map)
-          .cast<core.String, core.double>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              (item as core.num).toDouble(),
-            ),
-          );
+      percentages =
+          (_json['percentages'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          (item as core.num).toDouble(),
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (percentages != null) 'percentages': percentages!,
       };
 }
@@ -6033,7 +6027,7 @@ class Type {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (fields != null)
           'fields': fields!.map((value) => value.toJson()).toList(),
         if (name != null) 'name': name!,
@@ -6059,7 +6053,7 @@ class UndeleteServiceResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (service != null) 'service': service!.toJson(),
       };
 }
@@ -6112,7 +6106,7 @@ class Usage {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (producerNotificationChannel != null)
           'producerNotificationChannel': producerNotificationChannel!,
         if (requirements != null) 'requirements': requirements!,
@@ -6166,7 +6160,7 @@ class UsageRule {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (allowUnregisteredCalls != null)
           'allowUnregisteredCalls': allowUnregisteredCalls!,
         if (selector != null) 'selector': selector!,

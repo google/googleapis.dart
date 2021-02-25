@@ -9,7 +9,6 @@
 // ignore_for_file: prefer_expression_function_bodies
 // ignore_for_file: prefer_interpolation_to_compose_strings
 // ignore_for_file: unnecessary_brace_in_string_interps
-// ignore_for_file: unnecessary_cast
 // ignore_for_file: unnecessary_lambdas
 // ignore_for_file: unnecessary_string_interpolations
 
@@ -3560,7 +3559,7 @@ class AcceleratorConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (acceleratorCount != null) 'acceleratorCount': acceleratorCount!,
         if (acceleratorType != null) 'acceleratorType': acceleratorType!,
       };
@@ -3647,7 +3646,7 @@ class AddonsConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cloudRunConfig != null) 'cloudRunConfig': cloudRunConfig!.toJson(),
         if (configConnectorConfig != null)
           'configConnectorConfig': configConnectorConfig!.toJson(),
@@ -3688,7 +3687,7 @@ class AuthenticatorGroupsConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
         if (securityGroup != null) 'securityGroup': securityGroup!,
       };
@@ -3721,7 +3720,7 @@ class AutoUpgradeOptions {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (autoUpgradeStartTime != null)
           'autoUpgradeStartTime': autoUpgradeStartTime!,
         if (description != null) 'description': description!,
@@ -3743,7 +3742,7 @@ class Autopilot {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
       };
 }
@@ -3834,7 +3833,7 @@ class AutoprovisioningNodePoolDefaults {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bootDiskKmsKey != null) 'bootDiskKmsKey': bootDiskKmsKey!,
         if (diskSizeGb != null) 'diskSizeGb': diskSizeGb!,
         if (diskType != null) 'diskType': diskType!,
@@ -3862,7 +3861,7 @@ class BigQueryDestination {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (datasetId != null) 'datasetId': datasetId!,
       };
 }
@@ -3883,7 +3882,7 @@ class BinaryAuthorization {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
       };
 }
@@ -3936,7 +3935,7 @@ class CancelOperationRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (name != null) 'name': name!,
         if (operationId != null) 'operationId': operationId!,
         if (projectId != null) 'projectId': projectId!,
@@ -3963,7 +3962,7 @@ class CidrBlock {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cidrBlock != null) 'cidrBlock': cidrBlock!,
         if (displayName != null) 'displayName': displayName!,
       };
@@ -3982,7 +3981,7 @@ class ClientCertificateConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (issueClientCertificate != null)
           'issueClientCertificate': issueClientCertificate!,
       };
@@ -4014,7 +4013,7 @@ class CloudRunConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
         if (loadBalancerType != null) 'loadBalancerType': loadBalancerType!,
       };
@@ -4509,14 +4508,13 @@ class Cluster {
           _json['releaseChannel'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resourceLabels')) {
-      resourceLabels = (_json['resourceLabels'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      resourceLabels =
+          (_json['resourceLabels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('resourceUsageExportConfig')) {
       resourceUsageExportConfig = ResourceUsageExportConfig.fromJson(
@@ -4560,7 +4558,7 @@ class Cluster {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addonsConfig != null) 'addonsConfig': addonsConfig!.toJson(),
         if (authenticatorGroupsConfig != null)
           'authenticatorGroupsConfig': authenticatorGroupsConfig!.toJson(),
@@ -4683,7 +4681,7 @@ class ClusterAutoscaling {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (autoprovisioningLocations != null)
           'autoprovisioningLocations': autoprovisioningLocations!,
         if (autoprovisioningNodePoolDefaults != null)
@@ -4933,7 +4931,7 @@ class ClusterUpdate {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (desiredAddonsConfig != null)
           'desiredAddonsConfig': desiredAddonsConfig!.toJson(),
         if (desiredBinaryAuthorization != null)
@@ -5034,7 +5032,7 @@ class CompleteIPRotationRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,
@@ -5055,7 +5053,7 @@ class ConfigConnectorConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
       };
 }
@@ -5076,7 +5074,7 @@ class ConsumptionMeteringConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
       };
 }
@@ -5129,7 +5127,7 @@ class CreateClusterRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cluster != null) 'cluster': cluster!.toJson(),
         if (parent != null) 'parent': parent!,
         if (projectId != null) 'projectId': projectId!,
@@ -5195,7 +5193,7 @@ class CreateNodePoolRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (nodePool != null) 'nodePool': nodePool!.toJson(),
         if (parent != null) 'parent': parent!,
@@ -5232,7 +5230,7 @@ class DailyMaintenanceWindow {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (duration != null) 'duration': duration!,
         if (startTime != null) 'startTime': startTime!,
       };
@@ -5265,7 +5263,7 @@ class DatabaseEncryption {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (keyName != null) 'keyName': keyName!,
         if (state != null) 'state': state!,
       };
@@ -5285,7 +5283,7 @@ class DefaultSnatStatus {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
       };
 }
@@ -5303,7 +5301,7 @@ class DnsCacheConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
       };
 }
@@ -5322,7 +5320,7 @@ class Empty {
       // ignore: avoid_unused_constructor_parameters
       core.Map _json);
 
-  core.Map<core.String, core.Object?> toJson() => {};
+  core.Map<core.String, core.dynamic> toJson() => {};
 }
 
 /// Configuration for the Compute Engine PD CSI driver.
@@ -5338,7 +5336,7 @@ class GcePersistentDiskCsiDriverConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
       };
 }
@@ -5368,7 +5366,7 @@ class GetJSONWebKeysResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cacheHeader != null) 'cacheHeader': cacheHeader!.toJson(),
         if (keys != null) 'keys': keys!.map((value) => value.toJson()).toList(),
       };
@@ -5444,7 +5442,7 @@ class GetOpenIDConfigResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cacheHeader != null) 'cacheHeader': cacheHeader!.toJson(),
         if (claimsSupported != null) 'claims_supported': claimsSupported!,
         if (grantTypes != null) 'grant_types': grantTypes!,
@@ -5478,7 +5476,7 @@ class HorizontalPodAutoscaling {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
       };
 }
@@ -5508,7 +5506,7 @@ class HttpCacheControlResponseHeader {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (age != null) 'age': age!,
         if (directive != null) 'directive': directive!,
         if (expires != null) 'expires': expires!,
@@ -5532,7 +5530,7 @@ class HttpLoadBalancing {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
       };
 }
@@ -5682,7 +5680,7 @@ class IPAllocationPolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterIpv4Cidr != null) 'clusterIpv4Cidr': clusterIpv4Cidr!,
         if (clusterIpv4CidrBlock != null)
           'clusterIpv4CidrBlock': clusterIpv4CidrBlock!,
@@ -5717,7 +5715,7 @@ class IntraNodeVisibilityConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
       };
 }
@@ -5783,7 +5781,7 @@ class Jwk {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (alg != null) 'alg': alg!,
         if (crv != null) 'crv': crv!,
         if (e != null) 'e': e!,
@@ -5809,7 +5807,7 @@ class KubernetesDashboard {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
       };
 }
@@ -5832,7 +5830,7 @@ class LegacyAbac {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
       };
 }
@@ -5852,17 +5850,16 @@ class LinuxNodeConfig {
 
   LinuxNodeConfig.fromJson(core.Map _json) {
     if (_json.containsKey('sysctls')) {
-      sysctls =
-          (_json['sysctls'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      sysctls = (_json['sysctls'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (sysctls != null) 'sysctls': sysctls!,
       };
 }
@@ -5893,7 +5890,7 @@ class ListClustersResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusters != null)
           'clusters': clusters!.map((value) => value.toJson()).toList(),
         if (missingZones != null) 'missingZones': missingZones!,
@@ -5916,7 +5913,7 @@ class ListNodePoolsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nodePools != null)
           'nodePools': nodePools!.map((value) => value.toJson()).toList(),
       };
@@ -5947,7 +5944,7 @@ class ListOperationsResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (missingZones != null) 'missingZones': missingZones!,
         if (operations != null)
           'operations': operations!.map((value) => value.toJson()).toList(),
@@ -5981,7 +5978,7 @@ class ListUsableSubnetworksResponse {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (nextPageToken != null) 'nextPageToken': nextPageToken!,
         if (subnetworks != null)
           'subnetworks': subnetworks!.map((value) => value.toJson()).toList(),
@@ -6014,7 +6011,7 @@ class MaintenancePolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (resourceVersion != null) 'resourceVersion': resourceVersion!,
         if (window != null) 'window': window!.toJson(),
       };
@@ -6046,14 +6043,14 @@ class MaintenanceWindow {
               as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maintenanceExclusions')) {
-      maintenanceExclusions = (_json['maintenanceExclusions'] as core.Map)
-          .cast<core.String, core.Map<core.String, core.Object?>>()
+      maintenanceExclusions = (_json['maintenanceExclusions']
+              as core.Map<core.String, core.dynamic>)
           .map(
-            (key, item) => core.MapEntry(
-              key,
-              TimeWindow.fromJson(item as core.Map<core.String, core.dynamic>),
-            ),
-          );
+        (key, item) => core.MapEntry(
+          key,
+          TimeWindow.fromJson(item as core.Map<core.String, core.dynamic>),
+        ),
+      );
     }
     if (_json.containsKey('recurringWindow')) {
       recurringWindow = RecurringTimeWindow.fromJson(
@@ -6061,7 +6058,7 @@ class MaintenanceWindow {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (dailyMaintenanceWindow != null)
           'dailyMaintenanceWindow': dailyMaintenanceWindow!.toJson(),
         if (maintenanceExclusions != null)
@@ -6146,7 +6143,7 @@ class MasterAuth {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clientCertificate != null) 'clientCertificate': clientCertificate!,
         if (clientCertificateConfig != null)
           'clientCertificateConfig': clientCertificateConfig!.toJson(),
@@ -6185,7 +6182,7 @@ class MasterAuthorizedNetworksConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cidrBlocks != null)
           'cidrBlocks': cidrBlocks!.map((value) => value.toJson()).toList(),
         if (enabled != null) 'enabled': enabled!,
@@ -6205,7 +6202,7 @@ class MaxPodsConstraint {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (maxPodsPerNode != null) 'maxPodsPerNode': maxPodsPerNode!,
       };
 }
@@ -6243,7 +6240,7 @@ class Metric {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (doubleValue != null) 'doubleValue': doubleValue!,
         if (intValue != null) 'intValue': intValue!,
         if (name != null) 'name': name!,
@@ -6320,7 +6317,7 @@ class NetworkConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (defaultSnatStatus != null)
           'defaultSnatStatus': defaultSnatStatus!.toJson(),
         if (enableIntraNodeVisibility != null)
@@ -6356,7 +6353,7 @@ class NetworkPolicy {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
         if (provider != null) 'provider': provider!,
       };
@@ -6378,7 +6375,7 @@ class NetworkPolicyConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (disabled != null) 'disabled': disabled!,
       };
 }
@@ -6560,13 +6557,12 @@ class NodeConfig {
           _json['kubeletConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
-      labels =
-          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      labels = (_json['labels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('linuxNodeConfig')) {
       linuxNodeConfig = LinuxNodeConfig.fromJson(
@@ -6579,13 +6575,12 @@ class NodeConfig {
       machineType = _json['machineType'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.String>().map(
-                (key, item) => core.MapEntry(
-                  key,
-                  item as core.String,
-                ),
-              );
+      metadata = (_json['metadata'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('minCpuPlatform')) {
       minCpuPlatform = _json['minCpuPlatform'] as core.String;
@@ -6635,7 +6630,7 @@ class NodeConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (accelerators != null)
           'accelerators': accelerators!.map((value) => value.toJson()).toList(),
         if (bootDiskKmsKey != null) 'bootDiskKmsKey': bootDiskKmsKey!,
@@ -6711,7 +6706,7 @@ class NodeKubeletConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (cpuCfsQuota != null) 'cpuCfsQuota': cpuCfsQuota!,
         if (cpuCfsQuotaPeriod != null) 'cpuCfsQuotaPeriod': cpuCfsQuotaPeriod!,
         if (cpuManagerPolicy != null) 'cpuManagerPolicy': cpuManagerPolicy!,
@@ -6754,7 +6749,7 @@ class NodeManagement {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (autoRepair != null) 'autoRepair': autoRepair!,
         if (autoUpgrade != null) 'autoUpgrade': autoUpgrade!,
         if (upgradeOptions != null) 'upgradeOptions': upgradeOptions!.toJson(),
@@ -6923,7 +6918,7 @@ class NodePool {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (autoscaling != null) 'autoscaling': autoscaling!.toJson(),
         if (conditions != null)
           'conditions': conditions!.map((value) => value.toJson()).toList(),
@@ -6982,7 +6977,7 @@ class NodePoolAutoscaling {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (autoprovisioned != null) 'autoprovisioned': autoprovisioned!,
         if (enabled != null) 'enabled': enabled!,
         if (maxNodeCount != null) 'maxNodeCount': maxNodeCount!,
@@ -7025,7 +7020,7 @@ class NodeTaint {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (effect != null) 'effect': effect!,
         if (key != null) 'key': key!,
         if (value != null) 'value': value!,
@@ -7046,7 +7041,7 @@ class NotificationConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (pubsub != null) 'pubsub': pubsub!.toJson(),
       };
 }
@@ -7196,7 +7191,7 @@ class Operation {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterConditions != null)
           'clusterConditions':
               clusterConditions!.map((value) => value.toJson()).toList(),
@@ -7268,7 +7263,7 @@ class OperationProgress {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (metrics != null)
           'metrics': metrics!.map((value) => value.toJson()).toList(),
         if (name != null) 'name': name!,
@@ -7343,7 +7338,7 @@ class PrivateClusterConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enablePrivateEndpoint != null)
           'enablePrivateEndpoint': enablePrivateEndpoint!,
         if (enablePrivateNodes != null)
@@ -7371,7 +7366,7 @@ class PrivateClusterMasterGlobalAccessConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
       };
 }
@@ -7397,7 +7392,7 @@ class PubSub {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
         if (topic != null) 'topic': topic!,
       };
@@ -7440,7 +7435,7 @@ class RecurringTimeWindow {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (recurrence != null) 'recurrence': recurrence!,
         if (window != null) 'window': window!.toJson(),
       };
@@ -7474,7 +7469,7 @@ class ReleaseChannel {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channel != null) 'channel': channel!,
       };
 }
@@ -7517,7 +7512,7 @@ class ReleaseChannelConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channel != null) 'channel': channel!,
         if (defaultVersion != null) 'defaultVersion': defaultVersion!,
         if (validVersions != null) 'validVersions': validVersions!,
@@ -7563,7 +7558,7 @@ class ReservationAffinity {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (consumeReservationType != null)
           'consumeReservationType': consumeReservationType!,
         if (key != null) 'key': key!,
@@ -7598,7 +7593,7 @@ class ResourceLimit {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (maximum != null) 'maximum': maximum!,
         if (minimum != null) 'minimum': minimum!,
         if (resourceType != null) 'resourceType': resourceType!,
@@ -7637,7 +7632,7 @@ class ResourceUsageExportConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (bigqueryDestination != null)
           'bigqueryDestination': bigqueryDestination!.toJson(),
         if (consumptionMeteringConfig != null)
@@ -7710,7 +7705,7 @@ class RollbackNodePoolUpgradeRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (name != null) 'name': name!,
         if (nodePoolId != null) 'nodePoolId': nodePoolId!,
@@ -7735,7 +7730,7 @@ class SandboxConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (type != null) 'type': type!,
       };
 }
@@ -7792,7 +7787,7 @@ class ServerConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (channels != null)
           'channels': channels!.map((value) => value.toJson()).toList(),
         if (defaultClusterVersion != null)
@@ -7863,7 +7858,7 @@ class SetAddonsConfigRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (addonsConfig != null) 'addonsConfig': addonsConfig!.toJson(),
         if (clusterId != null) 'clusterId': clusterId!,
         if (name != null) 'name': name!,
@@ -7937,21 +7932,20 @@ class SetLabelsRequest {
       projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('resourceLabels')) {
-      resourceLabels = (_json['resourceLabels'] as core.Map)
-          .cast<core.String, core.String>()
-          .map(
-            (key, item) => core.MapEntry(
-              key,
-              item as core.String,
-            ),
-          );
+      resourceLabels =
+          (_json['resourceLabels'] as core.Map<core.String, core.dynamic>).map(
+        (key, item) => core.MapEntry(
+          key,
+          item as core.String,
+        ),
+      );
     }
     if (_json.containsKey('zone')) {
       zone = _json['zone'] as core.String;
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (labelFingerprint != null) 'labelFingerprint': labelFingerprint!,
         if (name != null) 'name': name!,
@@ -8019,7 +8013,7 @@ class SetLegacyAbacRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (enabled != null) 'enabled': enabled!,
         if (name != null) 'name': name!,
@@ -8093,7 +8087,7 @@ class SetLocationsRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (locations != null) 'locations': locations!,
         if (name != null) 'name': name!,
@@ -8166,7 +8160,7 @@ class SetLoggingServiceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (loggingService != null) 'loggingService': loggingService!,
         if (name != null) 'name': name!,
@@ -8229,7 +8223,7 @@ class SetMaintenancePolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (maintenancePolicy != null)
           'maintenancePolicy': maintenancePolicy!.toJson(),
@@ -8312,7 +8306,7 @@ class SetMasterAuthRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (action != null) 'action': action!,
         if (clusterId != null) 'clusterId': clusterId!,
         if (name != null) 'name': name!,
@@ -8386,7 +8380,7 @@ class SetMonitoringServiceRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (monitoringService != null) 'monitoringService': monitoringService!,
         if (name != null) 'name': name!,
@@ -8453,7 +8447,7 @@ class SetNetworkPolicyRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (name != null) 'name': name!,
         if (networkPolicy != null) 'networkPolicy': networkPolicy!.toJson(),
@@ -8531,7 +8525,7 @@ class SetNodePoolAutoscalingRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (autoscaling != null) 'autoscaling': autoscaling!.toJson(),
         if (clusterId != null) 'clusterId': clusterId!,
         if (name != null) 'name': name!,
@@ -8611,7 +8605,7 @@ class SetNodePoolManagementRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (management != null) 'management': management!.toJson(),
         if (name != null) 'name': name!,
@@ -8689,7 +8683,7 @@ class SetNodePoolSizeRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (name != null) 'name': name!,
         if (nodeCount != null) 'nodeCount': nodeCount!,
@@ -8728,7 +8722,7 @@ class ShieldedInstanceConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enableIntegrityMonitoring != null)
           'enableIntegrityMonitoring': enableIntegrityMonitoring!,
         if (enableSecureBoot != null) 'enableSecureBoot': enableSecureBoot!,
@@ -8748,7 +8742,7 @@ class ShieldedNodes {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
       };
 }
@@ -8809,7 +8803,7 @@ class StartIPRotationRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,
@@ -8849,7 +8843,7 @@ class StatusCondition {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (code != null) 'code': code!,
         if (message != null) 'message': message!,
       };
@@ -8876,7 +8870,7 @@ class TimeWindow {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (endTime != null) 'endTime': endTime!,
         if (startTime != null) 'startTime': startTime!,
       };
@@ -8939,7 +8933,7 @@ class UpdateClusterRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (name != null) 'name': name!,
         if (projectId != null) 'projectId': projectId!,
@@ -9011,7 +9005,7 @@ class UpdateMasterRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (masterVersion != null) 'masterVersion': masterVersion!,
         if (name != null) 'name': name!,
@@ -9146,7 +9140,7 @@ class UpdateNodePoolRequest {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (clusterId != null) 'clusterId': clusterId!,
         if (imageType != null) 'imageType': imageType!,
         if (kubeletConfig != null) 'kubeletConfig': kubeletConfig!.toJson(),
@@ -9216,7 +9210,7 @@ class UpgradeEvent {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (currentVersion != null) 'currentVersion': currentVersion!,
         if (operation != null) 'operation': operation!,
         if (operationStartTime != null)
@@ -9265,7 +9259,7 @@ class UpgradeSettings {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (maxSurge != null) 'maxSurge': maxSurge!,
         if (maxUnavailable != null) 'maxUnavailable': maxUnavailable!,
       };
@@ -9321,7 +9315,7 @@ class UsableSubnetwork {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
         if (network != null) 'network': network!,
         if (secondaryIpRanges != null)
@@ -9369,7 +9363,7 @@ class UsableSubnetworkSecondaryRange {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (ipCidrRange != null) 'ipCidrRange': ipCidrRange!,
         if (rangeName != null) 'rangeName': rangeName!,
         if (status != null) 'status': status!,
@@ -9391,7 +9385,7 @@ class VerticalPodAutoscaling {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (enabled != null) 'enabled': enabled!,
       };
 }
@@ -9410,7 +9404,7 @@ class WorkloadIdentityConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (workloadPool != null) 'workloadPool': workloadPool!,
       };
 }
@@ -9438,7 +9432,7 @@ class WorkloadMetadataConfig {
     }
   }
 
-  core.Map<core.String, core.Object?> toJson() => {
+  core.Map<core.String, core.dynamic> toJson() => {
         if (mode != null) 'mode': mode!,
       };
 }
